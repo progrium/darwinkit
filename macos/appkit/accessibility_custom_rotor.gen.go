@@ -21,13 +21,13 @@ type IAccessibilityCustomRotor interface {
 	ItemSearchDelegate() AccessibilityCustomRotorItemSearchDelegateObject
 	SetItemSearchDelegate(value PAccessibilityCustomRotorItemSearchDelegate)
 	SetItemSearchDelegateObject(valueObject objc.IObject)
-	Label() string
-	SetLabel(value string)
 	ItemLoadingDelegate() AccessibilityElementLoadingObject
 	SetItemLoadingDelegate(value PAccessibilityElementLoading)
 	SetItemLoadingDelegateObject(valueObject objc.IObject)
 	Type() AccessibilityCustomRotorType
 	SetType(value AccessibilityCustomRotorType)
+	Label() string
+	SetLabel(value string)
 }
 
 // A context-sensitive function that helps VoiceOver users find the next instance of a related accessibility element. [Full Topic]
@@ -117,21 +117,6 @@ func (a_ AccessibilityCustomRotor) SetItemSearchDelegateObject(valueObject objc.
 	objc.Call[objc.Void](a_, objc.Sel("setItemSearchDelegate:"), valueObject)
 }
 
-// The localized label that assistive apps use to describe the custom rotor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876331-label?language=objc
-func (a_ AccessibilityCustomRotor) Label() string {
-	rv := objc.Call[string](a_, objc.Sel("label"))
-	return rv
-}
-
-// The localized label that assistive apps use to describe the custom rotor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876331-label?language=objc
-func (a_ AccessibilityCustomRotor) SetLabel(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setLabel:"), value)
-}
-
 // The delegate for loading item results that don’t have a backing UI element at loading time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2890783-itemloadingdelegate?language=objc
@@ -169,4 +154,19 @@ func (a_ AccessibilityCustomRotor) Type() AccessibilityCustomRotorType {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876321-type?language=objc
 func (a_ AccessibilityCustomRotor) SetType(value AccessibilityCustomRotorType) {
 	objc.Call[objc.Void](a_, objc.Sel("setType:"), value)
+}
+
+// The localized label that assistive apps use to describe the custom rotor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876331-label?language=objc
+func (a_ AccessibilityCustomRotor) Label() string {
+	rv := objc.Call[string](a_, objc.Sel("label"))
+	return rv
+}
+
+// The localized label that assistive apps use to describe the custom rotor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876331-label?language=objc
+func (a_ AccessibilityCustomRotor) SetLabel(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setLabel:"), value)
 }

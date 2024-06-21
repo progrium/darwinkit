@@ -20,10 +20,10 @@ type _AssetVariantVideoAttributesClass struct {
 // An interface definition for the [AssetVariantVideoAttributes] class.
 type IAssetVariantVideoAttributes interface {
 	objc.IObject
-	PresentationSize() coregraphics.Size
-	NominalFrameRate() float64
 	VideoRange() VideoRange
 	CodecTypes() []foundation.Number
+	PresentationSize() coregraphics.Size
+	NominalFrameRate() float64
 }
 
 // An object that defines the video attributes for an asset variant. [Full Topic]
@@ -59,22 +59,6 @@ func (a_ AssetVariantVideoAttributes) Init() AssetVariantVideoAttributes {
 	return rv
 }
 
-// The presentation size of the variant’s renditions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746555-presentationsize?language=objc
-func (a_ AssetVariantVideoAttributes) PresentationSize() coregraphics.Size {
-	rv := objc.Call[coregraphics.Size](a_, objc.Sel("presentationSize"))
-	return rv
-}
-
-// The nominal frame rate of the variant’s renditions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746554-nominalframerate?language=objc
-func (a_ AssetVariantVideoAttributes) NominalFrameRate() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("nominalFrameRate"))
-	return rv
-}
-
 // The video range of the variant. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746556-videorange?language=objc
@@ -88,5 +72,21 @@ func (a_ AssetVariantVideoAttributes) VideoRange() VideoRange {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746553-codectypes?language=objc
 func (a_ AssetVariantVideoAttributes) CodecTypes() []foundation.Number {
 	rv := objc.Call[[]foundation.Number](a_, objc.Sel("codecTypes"))
+	return rv
+}
+
+// The presentation size of the variant’s renditions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746555-presentationsize?language=objc
+func (a_ AssetVariantVideoAttributes) PresentationSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](a_, objc.Sel("presentationSize"))
+	return rv
+}
+
+// The nominal frame rate of the variant’s renditions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantvideoattributes/3746554-nominalframerate?language=objc
+func (a_ AssetVariantVideoAttributes) NominalFrameRate() float64 {
+	rv := objc.Call[float64](a_, objc.Sel("nominalFrameRate"))
 	return rv
 }

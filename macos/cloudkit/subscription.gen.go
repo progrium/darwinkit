@@ -18,9 +18,9 @@ type _SubscriptionClass struct {
 // An interface definition for the [Subscription] class.
 type ISubscription interface {
 	objc.IObject
+	SubscriptionType() SubscriptionType
 	NotificationInfo() NotificationInfo
 	SetNotificationInfo(value INotificationInfo)
-	SubscriptionType() SubscriptionType
 	SubscriptionID() SubscriptionID
 }
 
@@ -57,6 +57,14 @@ func (s_ Subscription) Init() Subscription {
 	return rv
 }
 
+// The behavior that a subscription provides. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cksubscription/1515250-subscriptiontype?language=objc
+func (s_ Subscription) SubscriptionType() SubscriptionType {
+	rv := objc.Call[SubscriptionType](s_, objc.Sel("subscriptionType"))
+	return rv
+}
+
 // The configuration for a subscription’s push notifications. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cksubscription/1514948-notificationinfo?language=objc
@@ -70,14 +78,6 @@ func (s_ Subscription) NotificationInfo() NotificationInfo {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cksubscription/1514948-notificationinfo?language=objc
 func (s_ Subscription) SetNotificationInfo(value INotificationInfo) {
 	objc.Call[objc.Void](s_, objc.Sel("setNotificationInfo:"), value)
-}
-
-// The behavior that a subscription provides. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cksubscription/1515250-subscriptiontype?language=objc
-func (s_ Subscription) SubscriptionType() SubscriptionType {
-	rv := objc.Call[SubscriptionType](s_, objc.Sel("subscriptionType"))
-	return rv
 }
 
 // The subscription’s unique identifier. [Full Topic]

@@ -16,19 +16,14 @@ type PCameraDeviceViewDelegate interface {
 	HasCameraDeviceViewDidEncounterError() bool
 
 	// optional
-	CameraDeviceViewDidDownloadFileLocationFileDataError(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error)
-	HasCameraDeviceViewDidDownloadFileLocationFileDataError() bool
-
-	// optional
 	CameraDeviceViewSelectionDidChange(cameraDeviceView CameraDeviceView)
 	HasCameraDeviceViewSelectionDidChange() bool
 }
 
 // A delegate implementation builder for the [PCameraDeviceViewDelegate] protocol.
 type CameraDeviceViewDelegate struct {
-	_CameraDeviceViewDidEncounterError                    func(cameraDeviceView CameraDeviceView, error foundation.Error)
-	_CameraDeviceViewDidDownloadFileLocationFileDataError func(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error)
-	_CameraDeviceViewSelectionDidChange                   func(cameraDeviceView CameraDeviceView)
+	_CameraDeviceViewDidEncounterError  func(cameraDeviceView CameraDeviceView, error foundation.Error)
+	_CameraDeviceViewSelectionDidChange func(cameraDeviceView CameraDeviceView)
 }
 
 func (di *CameraDeviceViewDelegate) HasCameraDeviceViewDidEncounterError() bool {
@@ -47,23 +42,6 @@ func (di *CameraDeviceViewDelegate) SetCameraDeviceViewDidEncounterError(f func(
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1505239-cameradeviceview?language=objc
 func (di *CameraDeviceViewDelegate) CameraDeviceViewDidEncounterError(cameraDeviceView CameraDeviceView, error foundation.Error) {
 	di._CameraDeviceViewDidEncounterError(cameraDeviceView, error)
-}
-func (di *CameraDeviceViewDelegate) HasCameraDeviceViewDidDownloadFileLocationFileDataError() bool {
-	return di._CameraDeviceViewDidDownloadFileLocationFileDataError != nil
-}
-
-// Invoked for each file that is downloaded from the camera device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1503524-cameradeviceview?language=objc
-func (di *CameraDeviceViewDelegate) SetCameraDeviceViewDidDownloadFileLocationFileDataError(f func(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error)) {
-	di._CameraDeviceViewDidDownloadFileLocationFileDataError = f
-}
-
-// Invoked for each file that is downloaded from the camera device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1503524-cameradeviceview?language=objc
-func (di *CameraDeviceViewDelegate) CameraDeviceViewDidDownloadFileLocationFileDataError(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error) {
-	di._CameraDeviceViewDidDownloadFileLocationFileDataError(cameraDeviceView, file, url, data, error)
 }
 func (di *CameraDeviceViewDelegate) HasCameraDeviceViewSelectionDidChange() bool {
 	return di._CameraDeviceViewSelectionDidChange != nil
@@ -100,17 +78,6 @@ func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewDidEncounterError() 
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1505239-cameradeviceview?language=objc
 func (c_ CameraDeviceViewDelegateObject) CameraDeviceViewDidEncounterError(cameraDeviceView CameraDeviceView, error foundation.Error) {
 	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didEncounterError:"), cameraDeviceView, error)
-}
-
-func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewDidDownloadFileLocationFileDataError() bool {
-	return c_.RespondsToSelector(objc.Sel("cameraDeviceView:didDownloadFile:location:fileData:error:"))
-}
-
-// Invoked for each file that is downloaded from the camera device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1503524-cameradeviceview?language=objc
-func (c_ CameraDeviceViewDelegateObject) CameraDeviceViewDidDownloadFileLocationFileDataError(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didDownloadFile:location:fileData:error:"), cameraDeviceView, file, url, data, error)
 }
 
 func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewSelectionDidChange() bool {

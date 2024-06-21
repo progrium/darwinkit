@@ -11,6 +11,22 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand?language=objc
 type PIndirectComputeCommand interface {
 	// optional
+	SetThreadgroupMemoryLengthAtIndex(length uint, index uint)
+	HasSetThreadgroupMemoryLengthAtIndex() bool
+
+	// optional
+	SetComputePipelineState(pipelineState ComputePipelineStateObject)
+	HasSetComputePipelineState() bool
+
+	// optional
+	ConcurrentDispatchThreadgroupsThreadsPerThreadgroup(threadgroupsPerGrid Size, threadsPerThreadgroup Size)
+	HasConcurrentDispatchThreadgroupsThreadsPerThreadgroup() bool
+
+	// optional
+	SetKernelBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
+	HasSetKernelBufferOffsetAtIndex() bool
+
+	// optional
 	SetStageInRegion(region Region)
 	HasSetStageInRegion() bool
 
@@ -19,36 +35,20 @@ type PIndirectComputeCommand interface {
 	HasConcurrentDispatchThreadsThreadsPerThreadgroup() bool
 
 	// optional
-	ConcurrentDispatchThreadgroupsThreadsPerThreadgroup(threadgroupsPerGrid Size, threadsPerThreadgroup Size)
-	HasConcurrentDispatchThreadgroupsThreadsPerThreadgroup() bool
-
-	// optional
-	Reset()
-	HasReset() bool
-
-	// optional
-	SetImageblockWidthHeight(width uint, height uint)
-	HasSetImageblockWidthHeight() bool
-
-	// optional
-	SetComputePipelineState(pipelineState ComputePipelineStateObject)
-	HasSetComputePipelineState() bool
-
-	// optional
-	SetThreadgroupMemoryLengthAtIndex(length uint, index uint)
-	HasSetThreadgroupMemoryLengthAtIndex() bool
-
-	// optional
-	SetKernelBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
-	HasSetKernelBufferOffsetAtIndex() bool
-
-	// optional
 	ClearBarrier()
 	HasClearBarrier() bool
 
 	// optional
 	SetBarrier()
 	HasSetBarrier() bool
+
+	// optional
+	SetImageblockWidthHeight(width uint, height uint)
+	HasSetImageblockWidthHeight() bool
+
+	// optional
+	Reset()
+	HasReset() bool
 }
 
 // ensure impl type implements protocol interface
@@ -57,6 +57,52 @@ var _ PIndirectComputeCommand = (*IndirectComputeCommandObject)(nil)
 // A concrete type for the [PIndirectComputeCommand] protocol.
 type IndirectComputeCommandObject struct {
 	objc.Object
+}
+
+func (i_ IndirectComputeCommandObject) HasSetThreadgroupMemoryLengthAtIndex() bool {
+	return i_.RespondsToSelector(objc.Sel("setThreadgroupMemoryLength:atIndex:"))
+}
+
+// Sets the size of a block of threadgroup memory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966612-setthreadgroupmemorylength?language=objc
+func (i_ IndirectComputeCommandObject) SetThreadgroupMemoryLengthAtIndex(length uint, index uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setThreadgroupMemoryLength:atIndex:"), length, index)
+}
+
+func (i_ IndirectComputeCommandObject) HasSetComputePipelineState() bool {
+	return i_.RespondsToSelector(objc.Sel("setComputePipelineState:"))
+}
+
+// Sets the command’s compute pipeline state object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966609-setcomputepipelinestate?language=objc
+func (i_ IndirectComputeCommandObject) SetComputePipelineState(pipelineState ComputePipelineStateObject) {
+	po0 := objc.WrapAsProtocol("MTLComputePipelineState", pipelineState)
+	objc.Call[objc.Void](i_, objc.Sel("setComputePipelineState:"), po0)
+}
+
+func (i_ IndirectComputeCommandObject) HasConcurrentDispatchThreadgroupsThreadsPerThreadgroup() bool {
+	return i_.RespondsToSelector(objc.Sel("concurrentDispatchThreadgroups:threadsPerThreadgroup:"))
+}
+
+// Encodes a compute command using a grid aligned to threadgroup boundaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966604-concurrentdispatchthreadgroups?language=objc
+func (i_ IndirectComputeCommandObject) ConcurrentDispatchThreadgroupsThreadsPerThreadgroup(threadgroupsPerGrid Size, threadsPerThreadgroup Size) {
+	objc.Call[objc.Void](i_, objc.Sel("concurrentDispatchThreadgroups:threadsPerThreadgroup:"), threadgroupsPerGrid, threadsPerThreadgroup)
+}
+
+func (i_ IndirectComputeCommandObject) HasSetKernelBufferOffsetAtIndex() bool {
+	return i_.RespondsToSelector(objc.Sel("setKernelBuffer:offset:atIndex:"))
+}
+
+// Sets a buffer for the compute function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2976452-setkernelbuffer?language=objc
+func (i_ IndirectComputeCommandObject) SetKernelBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](i_, objc.Sel("setKernelBuffer:offset:atIndex:"), po0, offset, index)
 }
 
 func (i_ IndirectComputeCommandObject) HasSetStageInRegion() bool {
@@ -81,74 +127,6 @@ func (i_ IndirectComputeCommandObject) ConcurrentDispatchThreadsThreadsPerThread
 	objc.Call[objc.Void](i_, objc.Sel("concurrentDispatchThreads:threadsPerThreadgroup:"), threadsPerGrid, threadsPerThreadgroup)
 }
 
-func (i_ IndirectComputeCommandObject) HasConcurrentDispatchThreadgroupsThreadsPerThreadgroup() bool {
-	return i_.RespondsToSelector(objc.Sel("concurrentDispatchThreadgroups:threadsPerThreadgroup:"))
-}
-
-// Encodes a compute command using a grid aligned to threadgroup boundaries. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966604-concurrentdispatchthreadgroups?language=objc
-func (i_ IndirectComputeCommandObject) ConcurrentDispatchThreadgroupsThreadsPerThreadgroup(threadgroupsPerGrid Size, threadsPerThreadgroup Size) {
-	objc.Call[objc.Void](i_, objc.Sel("concurrentDispatchThreadgroups:threadsPerThreadgroup:"), threadgroupsPerGrid, threadsPerThreadgroup)
-}
-
-func (i_ IndirectComputeCommandObject) HasReset() bool {
-	return i_.RespondsToSelector(objc.Sel("reset"))
-}
-
-// Resets the command to its default state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2981029-reset?language=objc
-func (i_ IndirectComputeCommandObject) Reset() {
-	objc.Call[objc.Void](i_, objc.Sel("reset"))
-}
-
-func (i_ IndirectComputeCommandObject) HasSetImageblockWidthHeight() bool {
-	return i_.RespondsToSelector(objc.Sel("setImageblockWidth:height:"))
-}
-
-// Sets the size, in pixels, of the imageblock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/3172768-setimageblockwidth?language=objc
-func (i_ IndirectComputeCommandObject) SetImageblockWidthHeight(width uint, height uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setImageblockWidth:height:"), width, height)
-}
-
-func (i_ IndirectComputeCommandObject) HasSetComputePipelineState() bool {
-	return i_.RespondsToSelector(objc.Sel("setComputePipelineState:"))
-}
-
-// Sets the command’s compute pipeline state object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966609-setcomputepipelinestate?language=objc
-func (i_ IndirectComputeCommandObject) SetComputePipelineState(pipelineState ComputePipelineStateObject) {
-	po0 := objc.WrapAsProtocol("MTLComputePipelineState", pipelineState)
-	objc.Call[objc.Void](i_, objc.Sel("setComputePipelineState:"), po0)
-}
-
-func (i_ IndirectComputeCommandObject) HasSetThreadgroupMemoryLengthAtIndex() bool {
-	return i_.RespondsToSelector(objc.Sel("setThreadgroupMemoryLength:atIndex:"))
-}
-
-// Sets the size of a block of threadgroup memory. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2966612-setthreadgroupmemorylength?language=objc
-func (i_ IndirectComputeCommandObject) SetThreadgroupMemoryLengthAtIndex(length uint, index uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setThreadgroupMemoryLength:atIndex:"), length, index)
-}
-
-func (i_ IndirectComputeCommandObject) HasSetKernelBufferOffsetAtIndex() bool {
-	return i_.RespondsToSelector(objc.Sel("setKernelBuffer:offset:atIndex:"))
-}
-
-// Sets a buffer for the compute function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2976452-setkernelbuffer?language=objc
-func (i_ IndirectComputeCommandObject) SetKernelBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](i_, objc.Sel("setKernelBuffer:offset:atIndex:"), po0, offset, index)
-}
-
 func (i_ IndirectComputeCommandObject) HasClearBarrier() bool {
 	return i_.RespondsToSelector(objc.Sel("clearBarrier"))
 }
@@ -169,4 +147,26 @@ func (i_ IndirectComputeCommandObject) HasSetBarrier() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/3043399-setbarrier?language=objc
 func (i_ IndirectComputeCommandObject) SetBarrier() {
 	objc.Call[objc.Void](i_, objc.Sel("setBarrier"))
+}
+
+func (i_ IndirectComputeCommandObject) HasSetImageblockWidthHeight() bool {
+	return i_.RespondsToSelector(objc.Sel("setImageblockWidth:height:"))
+}
+
+// Sets the size, in pixels, of the imageblock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/3172768-setimageblockwidth?language=objc
+func (i_ IndirectComputeCommandObject) SetImageblockWidthHeight(width uint, height uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setImageblockWidth:height:"), width, height)
+}
+
+func (i_ IndirectComputeCommandObject) HasReset() bool {
+	return i_.RespondsToSelector(objc.Sel("reset"))
+}
+
+// Resets the command to its default state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcomputecommand/2981029-reset?language=objc
+func (i_ IndirectComputeCommandObject) Reset() {
+	objc.Call[objc.Void](i_, objc.Sel("reset"))
 }

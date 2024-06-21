@@ -19,12 +19,12 @@ type _ScrubberLayoutAttributesClass struct {
 // An interface definition for the [ScrubberLayoutAttributes] class.
 type IScrubberLayoutAttributes interface {
 	objc.IObject
+	Alpha() float64
+	SetAlpha(value float64)
 	Frame() foundation.Rect
 	SetFrame(value foundation.Rect)
 	ItemIndex() int
 	SetItemIndex(value int)
-	Alpha() float64
-	SetAlpha(value float64)
 }
 
 // The layout of a scrubber item. [Full Topic]
@@ -72,6 +72,21 @@ func (s_ ScrubberLayoutAttributes) Init() ScrubberLayoutAttributes {
 	return rv
 }
 
+// The item's alpha value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544648-alpha?language=objc
+func (s_ ScrubberLayoutAttributes) Alpha() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("alpha"))
+	return rv
+}
+
+// The item's alpha value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544648-alpha?language=objc
+func (s_ ScrubberLayoutAttributes) SetAlpha(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setAlpha:"), value)
+}
+
 // The frame of the scrubber item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544623-frame?language=objc
@@ -100,19 +115,4 @@ func (s_ ScrubberLayoutAttributes) ItemIndex() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544635-itemindex?language=objc
 func (s_ ScrubberLayoutAttributes) SetItemIndex(value int) {
 	objc.Call[objc.Void](s_, objc.Sel("setItemIndex:"), value)
-}
-
-// The item's alpha value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544648-alpha?language=objc
-func (s_ ScrubberLayoutAttributes) Alpha() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("alpha"))
-	return rv
-}
-
-// The item's alpha value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayoutattributes/2544648-alpha?language=objc
-func (s_ ScrubberLayoutAttributes) SetAlpha(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setAlpha:"), value)
 }

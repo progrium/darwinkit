@@ -21,10 +21,10 @@ type IContoursObservation interface {
 	IObservation
 	ContourAtIndexError(contourIndex int, error unsafe.Pointer) Contour
 	ContourAtIndexPathError(indexPath foundation.IIndexPath, error unsafe.Pointer) Contour
-	TopLevelContours() []Contour
 	ContourCount() int
-	TopLevelContourCount() int
+	TopLevelContours() []Contour
 	NormalizedPath() unsafe.Pointer
+	TopLevelContourCount() int
 }
 
 // An object that represents the detected contours in an image. [Full Topic]
@@ -76,14 +76,6 @@ func (c_ ContoursObservation) ContourAtIndexPathError(indexPath foundation.IInde
 	return rv
 }
 
-// An array of contours that don’t have another contour enclosing them. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548364-toplevelcontours?language=objc
-func (c_ ContoursObservation) TopLevelContours() []Contour {
-	rv := objc.Call[[]Contour](c_, objc.Sel("topLevelContours"))
-	return rv
-}
-
 // The total number of detected contours. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548362-contourcount?language=objc
@@ -92,11 +84,11 @@ func (c_ ContoursObservation) ContourCount() int {
 	return rv
 }
 
-// The total number of detected top-level contours. [Full Topic]
+// An array of contours that don’t have another contour enclosing them. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3675675-toplevelcontourcount?language=objc
-func (c_ ContoursObservation) TopLevelContourCount() int {
-	rv := objc.Call[int](c_, objc.Sel("topLevelContourCount"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548364-toplevelcontours?language=objc
+func (c_ ContoursObservation) TopLevelContours() []Contour {
+	rv := objc.Call[[]Contour](c_, objc.Sel("topLevelContours"))
 	return rv
 }
 
@@ -105,5 +97,13 @@ func (c_ ContoursObservation) TopLevelContourCount() int {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548363-normalizedpath?language=objc
 func (c_ ContoursObservation) NormalizedPath() unsafe.Pointer {
 	rv := objc.Call[unsafe.Pointer](c_, objc.Sel("normalizedPath"))
+	return rv
+}
+
+// The total number of detected top-level contours. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3675675-toplevelcontourcount?language=objc
+func (c_ ContoursObservation) TopLevelContourCount() int {
+	rv := objc.Call[int](c_, objc.Sel("topLevelContourCount"))
 	return rv
 }

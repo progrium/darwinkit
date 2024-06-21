@@ -18,8 +18,8 @@ type _DelegatingPlaybackCoordinatorPlaybackControlCommandClass struct {
 // An interface definition for the [DelegatingPlaybackCoordinatorPlaybackControlCommand] class.
 type IDelegatingPlaybackCoordinatorPlaybackControlCommand interface {
 	objc.IObject
-	ExpectedCurrentItemIdentifier() string
 	Originator() CoordinatedPlaybackParticipant
+	ExpectedCurrentItemIdentifier() string
 }
 
 // An abstract superclass for playback commands. [Full Topic]
@@ -55,18 +55,18 @@ func (d_ DelegatingPlaybackCoordinatorPlaybackControlCommand) Init() DelegatingP
 	return rv
 }
 
-// An item identifier the coordinator issues the command for. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorplaybackcontrolcommand/3750270-expectedcurrentitemidentifier?language=objc
-func (d_ DelegatingPlaybackCoordinatorPlaybackControlCommand) ExpectedCurrentItemIdentifier() string {
-	rv := objc.Call[string](d_, objc.Sel("expectedCurrentItemIdentifier"))
-	return rv
-}
-
 // The participant that causes the coordinator to issue the command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorplaybackcontrolcommand/3750271-originator?language=objc
 func (d_ DelegatingPlaybackCoordinatorPlaybackControlCommand) Originator() CoordinatedPlaybackParticipant {
 	rv := objc.Call[CoordinatedPlaybackParticipant](d_, objc.Sel("originator"))
+	return rv
+}
+
+// An item identifier the coordinator issues the command for. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorplaybackcontrolcommand/3750270-expectedcurrentitemidentifier?language=objc
+func (d_ DelegatingPlaybackCoordinatorPlaybackControlCommand) ExpectedCurrentItemIdentifier() string {
+	rv := objc.Call[string](d_, objc.Sel("expectedCurrentItemIdentifier"))
 	return rv
 }

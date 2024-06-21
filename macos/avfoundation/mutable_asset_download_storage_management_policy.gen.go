@@ -19,8 +19,8 @@ type _MutableAssetDownloadStorageManagementPolicyClass struct {
 // An interface definition for the [MutableAssetDownloadStorageManagementPolicy] class.
 type IMutableAssetDownloadStorageManagementPolicy interface {
 	IAssetDownloadStorageManagementPolicy
-	SetExpirationDate(value foundation.IDate)
 	SetPriority(value AssetDownloadedAssetEvictionPriority)
+	SetExpirationDate(value foundation.IDate)
 }
 
 // A mutable object that you use to create a new storage management policy. [Full Topic]
@@ -56,16 +56,16 @@ func (m_ MutableAssetDownloadStorageManagementPolicy) Init() MutableAssetDownloa
 	return rv
 }
 
-// The expiration date for an asset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableassetdownloadstoragemanagementpolicy/2865564-expirationdate?language=objc
-func (m_ MutableAssetDownloadStorageManagementPolicy) SetExpirationDate(value foundation.IDate) {
-	objc.Call[objc.Void](m_, objc.Sel("setExpirationDate:"), value)
-}
-
 // The eviction priority for a downloaded asset. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableassetdownloadstoragemanagementpolicy/2865558-priority?language=objc
 func (m_ MutableAssetDownloadStorageManagementPolicy) SetPriority(value AssetDownloadedAssetEvictionPriority) {
 	objc.Call[objc.Void](m_, objc.Sel("setPriority:"), value)
+}
+
+// The expiration date for an asset. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableassetdownloadstoragemanagementpolicy/2865564-expirationdate?language=objc
+func (m_ MutableAssetDownloadStorageManagementPolicy) SetExpirationDate(value foundation.IDate) {
+	objc.Call[objc.Void](m_, objc.Sel("setExpirationDate:"), value)
 }

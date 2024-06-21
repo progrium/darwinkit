@@ -18,14 +18,14 @@ type _PostalAddressClass struct {
 // An interface definition for the [PostalAddress] class.
 type IPostalAddress interface {
 	objc.IObject
-	SubLocality() string
 	State() string
+	SubLocality() string
+	Street() string
+	City() string
+	PostalCode() string
+	ISOCountryCode() string
 	SubAdministrativeArea() string
 	Country() string
-	ISOCountryCode() string
-	City() string
-	Street() string
-	PostalCode() string
 }
 
 // An immutable representation of the postal address for a contact. [Full Topic]
@@ -76,6 +76,14 @@ func PostalAddress_LocalizedStringForKey(key string) string {
 	return PostalAddressClass.LocalizedStringForKey(key)
 }
 
+// The state name in a postal address. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1402886-state?language=objc
+func (p_ PostalAddress) State() string {
+	rv := objc.Call[string](p_, objc.Sel("state"))
+	return rv
+}
+
 // Additional information associated with the location, typically defined at the city or town level, in a postal address. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/2799049-sublocality?language=objc
@@ -84,11 +92,35 @@ func (p_ PostalAddress) SubLocality() string {
 	return rv
 }
 
-// The state name in a postal address. [Full Topic]
+// The street name in a postal address. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1402886-state?language=objc
-func (p_ PostalAddress) State() string {
-	rv := objc.Call[string](p_, objc.Sel("state"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403414-street?language=objc
+func (p_ PostalAddress) Street() string {
+	rv := objc.Call[string](p_, objc.Sel("street"))
+	return rv
+}
+
+// The city name in a postal address. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403034-city?language=objc
+func (p_ PostalAddress) City() string {
+	rv := objc.Call[string](p_, objc.Sel("city"))
+	return rv
+}
+
+// The postal code in a postal address. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1402983-postalcode?language=objc
+func (p_ PostalAddress) PostalCode() string {
+	rv := objc.Call[string](p_, objc.Sel("postalCode"))
+	return rv
+}
+
+// The ISO country code for the country or region in a postal address, using the ISO 3166-1 alpha-2 standard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403396-isocountrycode?language=objc
+func (p_ PostalAddress) ISOCountryCode() string {
+	rv := objc.Call[string](p_, objc.Sel("ISOCountryCode"))
 	return rv
 }
 
@@ -105,37 +137,5 @@ func (p_ PostalAddress) SubAdministrativeArea() string {
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1402880-country?language=objc
 func (p_ PostalAddress) Country() string {
 	rv := objc.Call[string](p_, objc.Sel("country"))
-	return rv
-}
-
-// The ISO country code for the country or region in a postal address, using the ISO 3166-1 alpha-2 standard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403396-isocountrycode?language=objc
-func (p_ PostalAddress) ISOCountryCode() string {
-	rv := objc.Call[string](p_, objc.Sel("ISOCountryCode"))
-	return rv
-}
-
-// The city name in a postal address. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403034-city?language=objc
-func (p_ PostalAddress) City() string {
-	rv := objc.Call[string](p_, objc.Sel("city"))
-	return rv
-}
-
-// The street name in a postal address. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1403414-street?language=objc
-func (p_ PostalAddress) Street() string {
-	rv := objc.Call[string](p_, objc.Sel("street"))
-	return rv
-}
-
-// The postal code in a postal address. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdress/1402983-postalcode?language=objc
-func (p_ PostalAddress) PostalCode() string {
-	rv := objc.Call[string](p_, objc.Sel("postalCode"))
 	return rv
 }

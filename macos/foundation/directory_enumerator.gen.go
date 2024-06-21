@@ -18,12 +18,12 @@ type _DirectoryEnumeratorClass struct {
 // An interface definition for the [DirectoryEnumerator] class.
 type IDirectoryEnumerator interface {
 	IEnumerator
-	SkipDescendants()
 	SkipDescendents()
+	SkipDescendants()
 	Level() uint
 	IsEnumeratingDirectoryPostOrder() bool
-	FileAttributes() map[FileAttributeKey]objc.Object
 	DirectoryAttributes() map[FileAttributeKey]objc.Object
+	FileAttributes() map[FileAttributeKey]objc.Object
 }
 
 // An object that enumerates the contents of a directory. [Full Topic]
@@ -61,16 +61,16 @@ func (d_ DirectoryEnumerator) Init() DirectoryEnumerator {
 
 // Causes the receiver to skip recursion into the most recently obtained subdirectory. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1409644-skipdescendants?language=objc
-func (d_ DirectoryEnumerator) SkipDescendants() {
-	objc.Call[objc.Void](d_, objc.Sel("skipDescendants"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1412990-skipdescendents?language=objc
+func (d_ DirectoryEnumerator) SkipDescendents() {
+	objc.Call[objc.Void](d_, objc.Sel("skipDescendents"))
 }
 
 // Causes the receiver to skip recursion into the most recently obtained subdirectory. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1412990-skipdescendents?language=objc
-func (d_ DirectoryEnumerator) SkipDescendents() {
-	objc.Call[objc.Void](d_, objc.Sel("skipDescendents"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1409644-skipdescendants?language=objc
+func (d_ DirectoryEnumerator) SkipDescendants() {
+	objc.Call[objc.Void](d_, objc.Sel("skipDescendants"))
 }
 
 // The number of levels deep the current object is in the directory hierarchy being enumerated. [Full Topic]
@@ -89,18 +89,18 @@ func (d_ DirectoryEnumerator) IsEnumeratingDirectoryPostOrder() bool {
 	return rv
 }
 
-// A dictionary with the attributes of the most recently returned file or subdirectory (as referenced by the pathname). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1413284-fileattributes?language=objc
-func (d_ DirectoryEnumerator) FileAttributes() map[FileAttributeKey]objc.Object {
-	rv := objc.Call[map[FileAttributeKey]objc.Object](d_, objc.Sel("fileAttributes"))
-	return rv
-}
-
 // A dictionary with the attributes of the directory at which enumeration started. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1411357-directoryattributes?language=objc
 func (d_ DirectoryEnumerator) DirectoryAttributes() map[FileAttributeKey]objc.Object {
 	rv := objc.Call[map[FileAttributeKey]objc.Object](d_, objc.Sel("directoryAttributes"))
+	return rv
+}
+
+// A dictionary with the attributes of the most recently returned file or subdirectory (as referenced by the pathname). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdirectoryenumerator/1413284-fileattributes?language=objc
+func (d_ DirectoryEnumerator) FileAttributes() map[FileAttributeKey]objc.Object {
+	rv := objc.Call[map[FileAttributeKey]objc.Object](d_, objc.Sel("fileAttributes"))
 	return rv
 }

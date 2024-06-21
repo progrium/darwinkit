@@ -3,7 +3,6 @@
 package coredata
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -11,22 +10,6 @@ import (
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate?language=objc
 type PFetchedResultsControllerDelegate interface {
-	// optional
-	ControllerDidChangeContentWithDifference(controller FetchedResultsController, diff foundation.OrderedCollectionDifference)
-	HasControllerDidChangeContentWithDifference() bool
-
-	// optional
-	ControllerDidChangeSectionAtIndexForChangeType(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType)
-	HasControllerDidChangeSectionAtIndexForChangeType() bool
-
-	// optional
-	ControllerSectionIndexTitleForSectionName(controller FetchedResultsController, sectionName string) string
-	HasControllerSectionIndexTitleForSectionName() bool
-
-	// optional
-	ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath)
-	HasControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath() bool
-
 	// optional
 	ControllerWillChangeContent(controller FetchedResultsController)
 	HasControllerWillChangeContent() bool
@@ -38,82 +21,10 @@ type PFetchedResultsControllerDelegate interface {
 
 // A delegate implementation builder for the [PFetchedResultsControllerDelegate] protocol.
 type FetchedResultsControllerDelegate struct {
-	_ControllerDidChangeContentWithDifference                      func(controller FetchedResultsController, diff foundation.OrderedCollectionDifference)
-	_ControllerDidChangeSectionAtIndexForChangeType                func(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType)
-	_ControllerSectionIndexTitleForSectionName                     func(controller FetchedResultsController, sectionName string) string
-	_ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath func(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath)
-	_ControllerWillChangeContent                                   func(controller FetchedResultsController)
-	_ControllerDidChangeContent                                    func(controller FetchedResultsController)
+	_ControllerWillChangeContent func(controller FetchedResultsController)
+	_ControllerDidChangeContent  func(controller FetchedResultsController)
 }
 
-func (di *FetchedResultsControllerDelegate) HasControllerDidChangeContentWithDifference() bool {
-	return di._ControllerDidChangeContentWithDifference != nil
-}
-
-// Notifies the receiver about changes to the content in the fetched results controller, by using a collection difference. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/3235741-controller?language=objc
-func (di *FetchedResultsControllerDelegate) SetControllerDidChangeContentWithDifference(f func(controller FetchedResultsController, diff foundation.OrderedCollectionDifference)) {
-	di._ControllerDidChangeContentWithDifference = f
-}
-
-// Notifies the receiver about changes to the content in the fetched results controller, by using a collection difference. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/3235741-controller?language=objc
-func (di *FetchedResultsControllerDelegate) ControllerDidChangeContentWithDifference(controller FetchedResultsController, diff foundation.OrderedCollectionDifference) {
-	di._ControllerDidChangeContentWithDifference(controller, diff)
-}
-func (di *FetchedResultsControllerDelegate) HasControllerDidChangeSectionAtIndexForChangeType() bool {
-	return di._ControllerDidChangeSectionAtIndexForChangeType != nil
-}
-
-// Notifies the receiver of the addition or removal of a section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622298-controller?language=objc
-func (di *FetchedResultsControllerDelegate) SetControllerDidChangeSectionAtIndexForChangeType(f func(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType)) {
-	di._ControllerDidChangeSectionAtIndexForChangeType = f
-}
-
-// Notifies the receiver of the addition or removal of a section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622298-controller?language=objc
-func (di *FetchedResultsControllerDelegate) ControllerDidChangeSectionAtIndexForChangeType(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType) {
-	di._ControllerDidChangeSectionAtIndexForChangeType(controller, sectionInfo, sectionIndex, type_)
-}
-func (di *FetchedResultsControllerDelegate) HasControllerSectionIndexTitleForSectionName() bool {
-	return di._ControllerSectionIndexTitleForSectionName != nil
-}
-
-// Returns the name for a given section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622286-controller?language=objc
-func (di *FetchedResultsControllerDelegate) SetControllerSectionIndexTitleForSectionName(f func(controller FetchedResultsController, sectionName string) string) {
-	di._ControllerSectionIndexTitleForSectionName = f
-}
-
-// Returns the name for a given section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622286-controller?language=objc
-func (di *FetchedResultsControllerDelegate) ControllerSectionIndexTitleForSectionName(controller FetchedResultsController, sectionName string) string {
-	return di._ControllerSectionIndexTitleForSectionName(controller, sectionName)
-}
-func (di *FetchedResultsControllerDelegate) HasControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath() bool {
-	return di._ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath != nil
-}
-
-// Notifies the receiver that a fetched object has been changed due to an add, remove, move, or update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller?language=objc
-func (di *FetchedResultsControllerDelegate) SetControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(f func(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath)) {
-	di._ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath = f
-}
-
-// Notifies the receiver that a fetched object has been changed due to an add, remove, move, or update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller?language=objc
-func (di *FetchedResultsControllerDelegate) ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath) {
-	di._ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(controller, anObject, indexPath, type_, newIndexPath)
-}
 func (di *FetchedResultsControllerDelegate) HasControllerWillChangeContent() bool {
 	return di._ControllerWillChangeContent != nil
 }
@@ -155,52 +66,6 @@ var _ PFetchedResultsControllerDelegate = (*FetchedResultsControllerDelegateObje
 // A concrete type for the [PFetchedResultsControllerDelegate] protocol.
 type FetchedResultsControllerDelegateObject struct {
 	objc.Object
-}
-
-func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeContentWithDifference() bool {
-	return f_.RespondsToSelector(objc.Sel("controller:didChangeContentWithDifference:"))
-}
-
-// Notifies the receiver about changes to the content in the fetched results controller, by using a collection difference. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/3235741-controller?language=objc
-func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeContentWithDifference(controller FetchedResultsController, diff foundation.OrderedCollectionDifference) {
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeContentWithDifference:"), controller, diff)
-}
-
-func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeSectionAtIndexForChangeType() bool {
-	return f_.RespondsToSelector(objc.Sel("controller:didChangeSection:atIndex:forChangeType:"))
-}
-
-// Notifies the receiver of the addition or removal of a section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622298-controller?language=objc
-func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeSectionAtIndexForChangeType(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType) {
-	po1 := objc.WrapAsProtocol("NSFetchedResultsSectionInfo", sectionInfo)
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeSection:atIndex:forChangeType:"), controller, po1, sectionIndex, type_)
-}
-
-func (f_ FetchedResultsControllerDelegateObject) HasControllerSectionIndexTitleForSectionName() bool {
-	return f_.RespondsToSelector(objc.Sel("controller:sectionIndexTitleForSectionName:"))
-}
-
-// Returns the name for a given section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622286-controller?language=objc
-func (f_ FetchedResultsControllerDelegateObject) ControllerSectionIndexTitleForSectionName(controller FetchedResultsController, sectionName string) string {
-	rv := objc.Call[string](f_, objc.Sel("controller:sectionIndexTitleForSectionName:"), controller, sectionName)
-	return rv
-}
-
-func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath() bool {
-	return f_.RespondsToSelector(objc.Sel("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"))
-}
-
-// Notifies the receiver that a fetched object has been changed due to an add, remove, move, or update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller?language=objc
-func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath) {
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"), controller, anObject, indexPath, type_, newIndexPath)
 }
 
 func (f_ FetchedResultsControllerDelegateObject) HasControllerWillChangeContent() bool {

@@ -19,15 +19,15 @@ type _CommandBufferClass struct {
 // An interface definition for the [CommandBuffer] class.
 type ICommandBuffer interface {
 	objc.IObject
-	CommitAndContinue()
 	PrefetchHeapForWorkloadSize(size uint)
+	CommitAndContinue()
+	RootCommandBuffer() metal.CommandBufferObject
 	CommandBuffer() metal.CommandBufferObject
 	Predicate() Predicate
 	SetPredicate(value IPredicate)
 	HeapProvider() HeapProviderObject
 	SetHeapProvider(value PHeapProvider)
 	SetHeapProviderObject(valueObject objc.IObject)
-	RootCommandBuffer() metal.CommandBufferObject
 }
 
 //	[Full Topic]
@@ -106,6 +106,13 @@ func (c_ CommandBuffer) Init() CommandBuffer {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3229858-prefetchheapforworkloadsize?language=objc
+func (c_ CommandBuffer) PrefetchHeapForWorkloadSize(size uint) {
+	objc.Call[objc.Void](c_, objc.Sel("prefetchHeapForWorkloadSize:"), size)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3152524-commitandcontinue?language=objc
 func (c_ CommandBuffer) CommitAndContinue() {
 	objc.Call[objc.Void](c_, objc.Sel("commitAndContinue"))
@@ -113,9 +120,10 @@ func (c_ CommandBuffer) CommitAndContinue() {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3229858-prefetchheapforworkloadsize?language=objc
-func (c_ CommandBuffer) PrefetchHeapForWorkloadSize(size uint) {
-	objc.Call[objc.Void](c_, objc.Sel("prefetchHeapForWorkloadSize:"), size)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3166772-rootcommandbuffer?language=objc
+func (c_ CommandBuffer) RootCommandBuffer() metal.CommandBufferObject {
+	rv := objc.Call[metal.CommandBufferObject](c_, objc.Sel("rootCommandBuffer"))
+	return rv
 }
 
 //	[Full Topic]
@@ -162,12 +170,4 @@ func (c_ CommandBuffer) SetHeapProvider(value PHeapProvider) {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3229857-heapprovider?language=objc
 func (c_ CommandBuffer) SetHeapProviderObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setHeapProvider:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3166772-rootcommandbuffer?language=objc
-func (c_ CommandBuffer) RootCommandBuffer() metal.CommandBufferObject {
-	rv := objc.Call[metal.CommandBufferObject](c_, objc.Sel("rootCommandBuffer"))
-	return rv
 }

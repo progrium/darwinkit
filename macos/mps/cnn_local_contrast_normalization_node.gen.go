@@ -18,16 +18,16 @@ type _CNNLocalContrastNormalizationNodeClass struct {
 // An interface definition for the [CNNLocalContrastNormalizationNode] class.
 type ICNNLocalContrastNormalizationNode interface {
 	ICNNNormalizationNode
-	P0() float32
-	SetP0(value float32)
 	Ps() float32
 	SetPs(value float32)
-	KernelWidth() uint
-	SetKernelWidth(value uint)
+	P0() float32
+	SetP0(value float32)
 	Pm() float32
 	SetPm(value float32)
 	KernelHeight() uint
 	SetKernelHeight(value uint)
+	KernelWidth() uint
+	SetKernelWidth(value uint)
 }
 
 // A representation of a local-contrast normalization kernel. [Full Topic]
@@ -53,20 +53,6 @@ func (cc _CNNLocalContrastNormalizationNodeClass) NodeWithSourceKernelSize(sourc
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866439-nodewithsource?language=objc
 func CNNLocalContrastNormalizationNode_NodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNLocalContrastNormalizationNode {
 	return CNNLocalContrastNormalizationNodeClass.NodeWithSourceKernelSize(sourceNode, kernelSize)
-}
-
-func (c_ CNNLocalContrastNormalizationNode) InitWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNLocalContrastNormalizationNode {
-	rv := objc.Call[CNNLocalContrastNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), sourceNode, kernelSize)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866473-initwithsource?language=objc
-func NewCNNLocalContrastNormalizationNodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNLocalContrastNormalizationNode {
-	instance := CNNLocalContrastNormalizationNodeClass.Alloc().InitWithSourceKernelSize(sourceNode, kernelSize)
-	instance.Autorelease()
-	return instance
 }
 
 func (c_ CNNLocalContrastNormalizationNode) InitWithSource(sourceNode INNImageNode) CNNLocalContrastNormalizationNode {
@@ -117,21 +103,6 @@ func CNNLocalContrastNormalizationNode_NodeWithSource(sourceNode INNImageNode) C
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
-func (c_ CNNLocalContrastNormalizationNode) P0() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("p0"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
-func (c_ CNNLocalContrastNormalizationNode) SetP0(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setP0:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866500-ps?language=objc
 func (c_ CNNLocalContrastNormalizationNode) Ps() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("ps"))
@@ -147,17 +118,17 @@ func (c_ CNNLocalContrastNormalizationNode) SetPs(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866441-kernelwidth?language=objc
-func (c_ CNNLocalContrastNormalizationNode) KernelWidth() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
+func (c_ CNNLocalContrastNormalizationNode) P0() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("p0"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866441-kernelwidth?language=objc
-func (c_ CNNLocalContrastNormalizationNode) SetKernelWidth(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
+func (c_ CNNLocalContrastNormalizationNode) SetP0(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setP0:"), value)
 }
 
 //	[Full Topic]
@@ -188,4 +159,19 @@ func (c_ CNNLocalContrastNormalizationNode) KernelHeight() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866485-kernelheight?language=objc
 func (c_ CNNLocalContrastNormalizationNode) SetKernelHeight(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866441-kernelwidth?language=objc
+func (c_ CNNLocalContrastNormalizationNode) KernelWidth() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866441-kernelwidth?language=objc
+func (c_ CNNLocalContrastNormalizationNode) SetKernelWidth(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
 }

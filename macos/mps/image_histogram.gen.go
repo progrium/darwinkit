@@ -20,14 +20,14 @@ type _ImageHistogramClass struct {
 // An interface definition for the [ImageHistogram] class.
 type IImageHistogram interface {
 	IKernel
+	HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint
 	EncodeToCommandBufferSourceTextureHistogramHistogramOffset(commandBuffer metal.PCommandBuffer, source metal.PTexture, histogram metal.PBuffer, histogramOffset uint)
 	EncodeToCommandBufferObjectSourceTextureObjectHistogramObjectHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, histogramObject objc.IObject, histogramOffset uint)
-	HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint
-	ZeroHistogram() bool
-	SetZeroHistogram(value bool)
+	HistogramInfo() ImageHistogramInfo
 	MinPixelThresholdValue() kernel.Vector_float4
 	SetMinPixelThresholdValue(value kernel.Vector_float4)
-	HistogramInfo() ImageHistogramInfo
+	ZeroHistogram() bool
+	SetZeroHistogram(value bool)
 	ClipRectSource() metal.Region
 	SetClipRectSource(value metal.Region)
 }
@@ -80,6 +80,21 @@ func (i_ ImageHistogram) Init() ImageHistogram {
 	return rv
 }
 
+func (i_ ImageHistogram) InitWithDevice(device metal.PDevice) ImageHistogram {
+	po0 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[ImageHistogram](i_, objc.Sel("initWithDevice:"), po0)
+	return rv
+}
+
+// Initializes a new kernel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
+func NewImageHistogramWithDevice(device metal.PDevice) ImageHistogram {
+	instance := ImageHistogramClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
 func (i_ ImageHistogram) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageHistogram {
 	po1 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageHistogram](i_, objc.Sel("copyWithZone:device:"), zone, po1)
@@ -95,19 +110,12 @@ func ImageHistogram_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice
 	return instance
 }
 
-func (i_ ImageHistogram) InitWithDevice(device metal.PDevice) ImageHistogram {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageHistogram](i_, objc.Sel("initWithDevice:"), po0)
-	return rv
-}
-
-// Initializes a new kernel object. [Full Topic]
+// The amount of space the histogram will take up in the output buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
-func NewImageHistogramWithDevice(device metal.PDevice) ImageHistogram {
-	instance := ImageHistogramClass.Alloc().InitWithDevice(device)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618839-histogramsizeforsourceformat?language=objc
+func (i_ ImageHistogram) HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint {
+	rv := objc.Call[uint](i_, objc.Sel("histogramSizeForSourceFormat:"), sourceFormat)
+	return rv
 }
 
 // Encodes the filter to a command buffer using a compute command encoder. [Full Topic]
@@ -127,27 +135,12 @@ func (i_ ImageHistogram) EncodeToCommandBufferObjectSourceTextureObjectHistogram
 	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:histogram:histogramOffset:"), commandBufferObject, sourceObject, histogramObject, histogramOffset)
 }
 
-// The amount of space the histogram will take up in the output buffer. [Full Topic]
+// A structure describing the histogram content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618839-histogramsizeforsourceformat?language=objc
-func (i_ ImageHistogram) HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint {
-	rv := objc.Call[uint](i_, objc.Sel("histogramSizeForSourceFormat:"), sourceFormat)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618844-histograminfo?language=objc
+func (i_ ImageHistogram) HistogramInfo() ImageHistogramInfo {
+	rv := objc.Call[ImageHistogramInfo](i_, objc.Sel("histogramInfo"))
 	return rv
-}
-
-// Determines whether to zero-initialize the histogram results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618891-zerohistogram?language=objc
-func (i_ ImageHistogram) ZeroHistogram() bool {
-	rv := objc.Call[bool](i_, objc.Sel("zeroHistogram"))
-	return rv
-}
-
-// Determines whether to zero-initialize the histogram results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618891-zerohistogram?language=objc
-func (i_ ImageHistogram) SetZeroHistogram(value bool) {
-	objc.Call[objc.Void](i_, objc.Sel("setZeroHistogram:"), value)
 }
 
 //	[Full Topic]
@@ -165,12 +158,19 @@ func (i_ ImageHistogram) SetMinPixelThresholdValue(value kernel.Vector_float4) {
 	objc.Call[objc.Void](i_, objc.Sel("setMinPixelThresholdValue:"), value)
 }
 
-// A structure describing the histogram content. [Full Topic]
+// Determines whether to zero-initialize the histogram results. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618844-histograminfo?language=objc
-func (i_ ImageHistogram) HistogramInfo() ImageHistogramInfo {
-	rv := objc.Call[ImageHistogramInfo](i_, objc.Sel("histogramInfo"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618891-zerohistogram?language=objc
+func (i_ ImageHistogram) ZeroHistogram() bool {
+	rv := objc.Call[bool](i_, objc.Sel("zeroHistogram"))
 	return rv
+}
+
+// Determines whether to zero-initialize the histogram results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618891-zerohistogram?language=objc
+func (i_ ImageHistogram) SetZeroHistogram(value bool) {
+	objc.Call[objc.Void](i_, objc.Sel("setZeroHistogram:"), value)
 }
 
 // The source rectangle to use when reading data. [Full Topic]

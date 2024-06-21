@@ -12,10 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate?language=objc
 type PPictureInPictureControllerDelegate interface {
 	// optional
-	PictureInPictureControllerWillStartPictureInPicture(pictureInPictureController PictureInPictureController)
-	HasPictureInPictureControllerWillStartPictureInPicture() bool
-
-	// optional
 	PictureInPictureControllerDidStartPictureInPicture(pictureInPictureController PictureInPictureController)
 	HasPictureInPictureControllerDidStartPictureInPicture() bool
 
@@ -30,39 +26,16 @@ type PPictureInPictureControllerDelegate interface {
 	// optional
 	PictureInPictureControllerFailedToStartPictureInPictureWithError(pictureInPictureController PictureInPictureController, error foundation.Error)
 	HasPictureInPictureControllerFailedToStartPictureInPictureWithError() bool
-
-	// optional
-	PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(pictureInPictureController PictureInPictureController, completionHandler func(restored bool))
-	HasPictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool
 }
 
 // A delegate implementation builder for the [PPictureInPictureControllerDelegate] protocol.
 type PictureInPictureControllerDelegate struct {
-	_PictureInPictureControllerWillStartPictureInPicture                                        func(pictureInPictureController PictureInPictureController)
-	_PictureInPictureControllerDidStartPictureInPicture                                         func(pictureInPictureController PictureInPictureController)
-	_PictureInPictureControllerDidStopPictureInPicture                                          func(pictureInPictureController PictureInPictureController)
-	_PictureInPictureControllerWillStopPictureInPicture                                         func(pictureInPictureController PictureInPictureController)
-	_PictureInPictureControllerFailedToStartPictureInPictureWithError                           func(pictureInPictureController PictureInPictureController, error foundation.Error)
-	_PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler func(pictureInPictureController PictureInPictureController, completionHandler func(restored bool))
+	_PictureInPictureControllerDidStartPictureInPicture               func(pictureInPictureController PictureInPictureController)
+	_PictureInPictureControllerDidStopPictureInPicture                func(pictureInPictureController PictureInPictureController)
+	_PictureInPictureControllerWillStopPictureInPicture               func(pictureInPictureController PictureInPictureController)
+	_PictureInPictureControllerFailedToStartPictureInPictureWithError func(pictureInPictureController PictureInPictureController, error foundation.Error)
 }
 
-func (di *PictureInPictureControllerDelegate) HasPictureInPictureControllerWillStartPictureInPicture() bool {
-	return di._PictureInPictureControllerWillStartPictureInPicture != nil
-}
-
-// Tells the delegate that Picture in Picture is about to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614711-pictureinpicturecontrollerwillst?language=objc
-func (di *PictureInPictureControllerDelegate) SetPictureInPictureControllerWillStartPictureInPicture(f func(pictureInPictureController PictureInPictureController)) {
-	di._PictureInPictureControllerWillStartPictureInPicture = f
-}
-
-// Tells the delegate that Picture in Picture is about to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614711-pictureinpicturecontrollerwillst?language=objc
-func (di *PictureInPictureControllerDelegate) PictureInPictureControllerWillStartPictureInPicture(pictureInPictureController PictureInPictureController) {
-	di._PictureInPictureControllerWillStartPictureInPicture(pictureInPictureController)
-}
 func (di *PictureInPictureControllerDelegate) HasPictureInPictureControllerDidStartPictureInPicture() bool {
 	return di._PictureInPictureControllerDidStartPictureInPicture != nil
 }
@@ -131,23 +104,6 @@ func (di *PictureInPictureControllerDelegate) SetPictureInPictureControllerFaile
 func (di *PictureInPictureControllerDelegate) PictureInPictureControllerFailedToStartPictureInPictureWithError(pictureInPictureController PictureInPictureController, error foundation.Error) {
 	di._PictureInPictureControllerFailedToStartPictureInPictureWithError(pictureInPictureController, error)
 }
-func (di *PictureInPictureControllerDelegate) HasPictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
-	return di._PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler != nil
-}
-
-// Tells the delegate to restore the user interface before Picture in Picture stops. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614703-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureControllerDelegate) SetPictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(f func(pictureInPictureController PictureInPictureController, completionHandler func(restored bool))) {
-	di._PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler = f
-}
-
-// Tells the delegate to restore the user interface before Picture in Picture stops. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614703-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureControllerDelegate) PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(pictureInPictureController PictureInPictureController, completionHandler func(restored bool)) {
-	di._PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(pictureInPictureController, completionHandler)
-}
 
 // ensure impl type implements protocol interface
 var _ PPictureInPictureControllerDelegate = (*PictureInPictureControllerDelegateObject)(nil)
@@ -155,17 +111,6 @@ var _ PPictureInPictureControllerDelegate = (*PictureInPictureControllerDelegate
 // A concrete type for the [PPictureInPictureControllerDelegate] protocol.
 type PictureInPictureControllerDelegateObject struct {
 	objc.Object
-}
-
-func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerWillStartPictureInPicture() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureControllerWillStartPictureInPicture:"))
-}
-
-// Tells the delegate that Picture in Picture is about to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614711-pictureinpicturecontrollerwillst?language=objc
-func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerWillStartPictureInPicture(pictureInPictureController PictureInPictureController) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerWillStartPictureInPicture:"), pictureInPictureController)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerDidStartPictureInPicture() bool {
@@ -210,15 +155,4 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614697-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerFailedToStartPictureInPictureWithError(pictureInPictureController PictureInPictureController, error foundation.Error) {
 	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:failedToStartPictureInPictureWithError:"), pictureInPictureController, error)
-}
-
-func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"))
-}
-
-// Tells the delegate to restore the user interface before Picture in Picture stops. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614703-pictureinpicturecontroller?language=objc
-func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(pictureInPictureController PictureInPictureController, completionHandler func(restored bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), pictureInPictureController, completionHandler)
 }

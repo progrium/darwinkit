@@ -53,6 +53,18 @@ func (u_ UnitFuelEfficiency) Init() UnitFuelEfficiency {
 	return rv
 }
 
+func (uc _UnitFuelEfficiencyClass) BaseUnit() UnitFuelEfficiency {
+	rv := objc.Call[UnitFuelEfficiency](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitFuelEfficiency_BaseUnit() UnitFuelEfficiency {
+	return UnitFuelEfficiencyClass.BaseUnit()
+}
+
 func (u_ UnitFuelEfficiency) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitFuelEfficiency {
 	rv := objc.Call[UnitFuelEfficiency](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitFuelEfficiencyWithSymbolConverter(symbol string, converter IUnitConv
 	return instance
 }
 
-func (uc _UnitFuelEfficiencyClass) BaseUnit() UnitFuelEfficiency {
-	rv := objc.Call[UnitFuelEfficiency](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitFuelEfficiency_BaseUnit() UnitFuelEfficiency {
-	return UnitFuelEfficiencyClass.BaseUnit()
-}
-
 func (u_ UnitFuelEfficiency) InitWithSymbol(symbol string) UnitFuelEfficiency {
 	rv := objc.Call[UnitFuelEfficiency](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,6 +91,21 @@ func NewUnitFuelEfficiencyWithSymbol(symbol string) UnitFuelEfficiency {
 	instance := UnitFuelEfficiencyClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
+}
+
+// The liters per 100 kilometers unit of fuel efficiency. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitfuelefficiency/1856054-litersper100kilometers?language=objc
+func (uc _UnitFuelEfficiencyClass) LitersPer100Kilometers() UnitFuelEfficiency {
+	rv := objc.Call[UnitFuelEfficiency](uc, objc.Sel("litersPer100Kilometers"))
+	return rv
+}
+
+// The liters per 100 kilometers unit of fuel efficiency. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitfuelefficiency/1856054-litersper100kilometers?language=objc
+func UnitFuelEfficiency_LitersPer100Kilometers() UnitFuelEfficiency {
+	return UnitFuelEfficiencyClass.LitersPer100Kilometers()
 }
 
 // The miles per imperial gallon unit of fuel efficiency. [Full Topic]
@@ -121,19 +136,4 @@ func (uc _UnitFuelEfficiencyClass) MilesPerGallon() UnitFuelEfficiency {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitfuelefficiency/1856085-milespergallon?language=objc
 func UnitFuelEfficiency_MilesPerGallon() UnitFuelEfficiency {
 	return UnitFuelEfficiencyClass.MilesPerGallon()
-}
-
-// The liters per 100 kilometers unit of fuel efficiency. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitfuelefficiency/1856054-litersper100kilometers?language=objc
-func (uc _UnitFuelEfficiencyClass) LitersPer100Kilometers() UnitFuelEfficiency {
-	rv := objc.Call[UnitFuelEfficiency](uc, objc.Sel("litersPer100Kilometers"))
-	return rv
-}
-
-// The liters per 100 kilometers unit of fuel efficiency. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitfuelefficiency/1856054-litersper100kilometers?language=objc
-func UnitFuelEfficiency_LitersPer100Kilometers() UnitFuelEfficiency {
-	return UnitFuelEfficiencyClass.LitersPer100Kilometers()
 }

@@ -19,11 +19,11 @@ type _UserIdentityClass struct {
 // An interface definition for the [UserIdentity] class.
 type IUserIdentity interface {
 	objc.IObject
+	UserRecordID() RecordID
 	HasiCloudAccount() bool
+	ContactIdentifiers() []string
 	LookupInfo() UserIdentityLookupInfo
 	NameComponents() foundation.PersonNameComponents
-	ContactIdentifiers() []string
-	UserRecordID() RecordID
 }
 
 // The identity of a user. [Full Topic]
@@ -59,11 +59,27 @@ func (u_ UserIdentity) Init() UserIdentity {
 	return rv
 }
 
+// The user record ID for the corresponding user record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/1640504-userrecordid?language=objc
+func (u_ UserIdentity) UserRecordID() RecordID {
+	rv := objc.Call[RecordID](u_, objc.Sel("userRecordID"))
+	return rv
+}
+
 // A Boolean value that indicates whether the user has an iCloud account. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/1640513-hasicloudaccount?language=objc
 func (u_ UserIdentity) HasiCloudAccount() bool {
 	rv := objc.Call[bool](u_, objc.Sel("hasiCloudAccount"))
+	return rv
+}
+
+// Identifiers that match contacts in the local Contacts database. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/2866227-contactidentifiers?language=objc
+func (u_ UserIdentity) ContactIdentifiers() []string {
+	rv := objc.Call[[]string](u_, objc.Sel("contactIdentifiers"))
 	return rv
 }
 
@@ -80,21 +96,5 @@ func (u_ UserIdentity) LookupInfo() UserIdentityLookupInfo {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/1640458-namecomponents?language=objc
 func (u_ UserIdentity) NameComponents() foundation.PersonNameComponents {
 	rv := objc.Call[foundation.PersonNameComponents](u_, objc.Sel("nameComponents"))
-	return rv
-}
-
-// Identifiers that match contacts in the local Contacts database. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/2866227-contactidentifiers?language=objc
-func (u_ UserIdentity) ContactIdentifiers() []string {
-	rv := objc.Call[[]string](u_, objc.Sel("contactIdentifiers"))
-	return rv
-}
-
-// The user record ID for the corresponding user record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentity/1640504-userrecordid?language=objc
-func (u_ UserIdentity) UserRecordID() RecordID {
-	rv := objc.Call[RecordID](u_, objc.Sel("userRecordID"))
 	return rv
 }

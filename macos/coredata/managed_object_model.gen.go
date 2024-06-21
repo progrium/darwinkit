@@ -19,22 +19,22 @@ type _ManagedObjectModelClass struct {
 // An interface definition for the [ManagedObjectModel] class.
 type IManagedObjectModel interface {
 	objc.IObject
+	FetchRequestFromTemplateWithNameSubstitutionVariables(name string, variables map[string]objc.IObject) FetchRequest
 	EntitiesForConfiguration(configuration string) []EntityDescription
 	SetFetchRequestTemplateForName(fetchRequestTemplate IFetchRequest, name string)
-	SetEntitiesForConfiguration(entities []IEntityDescription, configuration string)
-	FetchRequestFromTemplateWithNameSubstitutionVariables(name string, variables map[string]objc.IObject) FetchRequest
 	IsConfigurationCompatibleWithStoreMetadata(configuration string, metadata map[string]objc.IObject) bool
 	FetchRequestTemplateForName(name string) FetchRequest
-	EntityVersionHashesByName() map[string][]byte
-	Entities() []EntityDescription
-	SetEntities(value []IEntityDescription)
+	SetEntitiesForConfiguration(entities []IEntityDescription, configuration string)
 	VersionIdentifiers() foundation.Set
 	SetVersionIdentifiers(value foundation.ISet)
-	Configurations() []string
 	LocalizationDictionary() map[string]string
 	SetLocalizationDictionary(value map[string]string)
-	EntitiesByName() map[string]EntityDescription
 	FetchRequestTemplatesByName() map[string]FetchRequest
+	Entities() []EntityDescription
+	SetEntities(value []IEntityDescription)
+	EntitiesByName() map[string]EntityDescription
+	EntityVersionHashesByName() map[string][]byte
+	Configurations() []string
 }
 
 // A programmatic representation of the .xcdatamodeld file describing your objects. [Full Topic]
@@ -50,11 +50,6 @@ func ManagedObjectModelFrom(ptr unsafe.Pointer) ManagedObjectModel {
 	}
 }
 
-func (m_ ManagedObjectModel) Init() ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](m_, objc.Sel("init"))
-	return rv
-}
-
 func (m_ ManagedObjectModel) InitWithContentsOfURL(url foundation.IURL) ManagedObjectModel {
 	rv := objc.Call[ManagedObjectModel](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
@@ -67,6 +62,11 @@ func NewManagedObjectModelWithContentsOfURL(url foundation.IURL) ManagedObjectMo
 	instance := ManagedObjectModelClass.Alloc().InitWithContentsOfURL(url)
 	instance.Autorelease()
 	return instance
+}
+
+func (m_ ManagedObjectModel) Init() ManagedObjectModel {
+	rv := objc.Call[ManagedObjectModel](m_, objc.Sel("init"))
+	return rv
 }
 
 func (mc _ManagedObjectModelClass) Alloc() ManagedObjectModel {
@@ -84,6 +84,14 @@ func NewManagedObjectModel() ManagedObjectModel {
 	return ManagedObjectModelClass.New()
 }
 
+// Returns a copy of the fetch request template with the variables substituted by values from the substitutions dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506422-fetchrequestfromtemplatewithname?language=objc
+func (m_ ManagedObjectModel) FetchRequestFromTemplateWithNameSubstitutionVariables(name string, variables map[string]objc.IObject) FetchRequest {
+	rv := objc.Call[FetchRequest](m_, objc.Sel("fetchRequestFromTemplateWithName:substitutionVariables:"), name, variables)
+	return rv
+}
+
 // Returns the entities of the model for a specified configuration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506693-entitiesforconfiguration?language=objc
@@ -92,41 +100,11 @@ func (m_ ManagedObjectModel) EntitiesForConfiguration(configuration string) []En
 	return rv
 }
 
-// Returns a model created by merging all the models found in given bundles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506704-mergedmodelfrombundles?language=objc
-func (mc _ManagedObjectModelClass) MergedModelFromBundles(bundles []foundation.IBundle) ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](mc, objc.Sel("mergedModelFromBundles:"), bundles)
-	return rv
-}
-
-// Returns a model created by merging all the models found in given bundles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506704-mergedmodelfrombundles?language=objc
-func ManagedObjectModel_MergedModelFromBundles(bundles []foundation.IBundle) ManagedObjectModel {
-	return ManagedObjectModelClass.MergedModelFromBundles(bundles)
-}
-
 // Associates the specified fetch request with the receiver using the given name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506695-setfetchrequesttemplate?language=objc
 func (m_ ManagedObjectModel) SetFetchRequestTemplateForName(fetchRequestTemplate IFetchRequest, name string) {
 	objc.Call[objc.Void](m_, objc.Sel("setFetchRequestTemplate:forName:"), fetchRequestTemplate, name)
-}
-
-// Associates the specified entities with the model using the given configuration name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506287-setentities?language=objc
-func (m_ ManagedObjectModel) SetEntitiesForConfiguration(entities []IEntityDescription, configuration string) {
-	objc.Call[objc.Void](m_, objc.Sel("setEntities:forConfiguration:"), entities, configuration)
-}
-
-// Returns a copy of the fetch request template with the variables substituted by values from the substitutions dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506422-fetchrequestfromtemplatewithname?language=objc
-func (m_ ManagedObjectModel) FetchRequestFromTemplateWithNameSubstitutionVariables(name string, variables map[string]objc.IObject) FetchRequest {
-	rv := objc.Call[FetchRequest](m_, objc.Sel("fetchRequestFromTemplateWithName:substitutionVariables:"), name, variables)
-	return rv
 }
 
 // Returns a Boolean value that indicates whether a given configuration in the model is compatible with given metadata from a persistent store. [Full Topic]
@@ -137,19 +115,19 @@ func (m_ ManagedObjectModel) IsConfigurationCompatibleWithStoreMetadata(configur
 	return rv
 }
 
-// Returns a merged model from a specified array for the version information in provided metadata. [Full Topic]
+// Returns the fetch request with a specified name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506788-mergedmodelfrombundles?language=objc
-func (mc _ManagedObjectModelClass) MergedModelFromBundlesForStoreMetadata(bundles []foundation.IBundle, metadata map[string]objc.IObject) ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](mc, objc.Sel("mergedModelFromBundles:forStoreMetadata:"), bundles, metadata)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506369-fetchrequesttemplateforname?language=objc
+func (m_ ManagedObjectModel) FetchRequestTemplateForName(name string) FetchRequest {
+	rv := objc.Call[FetchRequest](m_, objc.Sel("fetchRequestTemplateForName:"), name)
 	return rv
 }
 
-// Returns a merged model from a specified array for the version information in provided metadata. [Full Topic]
+// Associates the specified entities with the model using the given configuration name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506788-mergedmodelfrombundles?language=objc
-func ManagedObjectModel_MergedModelFromBundlesForStoreMetadata(bundles []foundation.IBundle, metadata map[string]objc.IObject) ManagedObjectModel {
-	return ManagedObjectModelClass.MergedModelFromBundlesForStoreMetadata(bundles, metadata)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506287-setentities?language=objc
+func (m_ ManagedObjectModel) SetEntitiesForConfiguration(entities []IEntityDescription, configuration string) {
+	objc.Call[objc.Void](m_, objc.Sel("setEntities:forConfiguration:"), entities, configuration)
 }
 
 // Returns, for the version information in given metadata, a model merged from a given array of models. [Full Topic]
@@ -167,34 +145,56 @@ func ManagedObjectModel_ModelByMergingModelsForStoreMetadata(models []IManagedOb
 	return ManagedObjectModelClass.ModelByMergingModelsForStoreMetadata(models, metadata)
 }
 
-// Creates a single model from an array of existing models. [Full Topic]
+// Returns a model created by merging all the models found in given bundles. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506450-modelbymergingmodels?language=objc
-func (mc _ManagedObjectModelClass) ModelByMergingModels(models []IManagedObjectModel) ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](mc, objc.Sel("modelByMergingModels:"), models)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506704-mergedmodelfrombundles?language=objc
+func (mc _ManagedObjectModelClass) MergedModelFromBundles(bundles []foundation.IBundle) ManagedObjectModel {
+	rv := objc.Call[ManagedObjectModel](mc, objc.Sel("mergedModelFromBundles:"), bundles)
 	return rv
 }
 
-// Creates a single model from an array of existing models. [Full Topic]
+// Returns a model created by merging all the models found in given bundles. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506450-modelbymergingmodels?language=objc
-func ManagedObjectModel_ModelByMergingModels(models []IManagedObjectModel) ManagedObjectModel {
-	return ManagedObjectModelClass.ModelByMergingModels(models)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506704-mergedmodelfrombundles?language=objc
+func ManagedObjectModel_MergedModelFromBundles(bundles []foundation.IBundle) ManagedObjectModel {
+	return ManagedObjectModelClass.MergedModelFromBundles(bundles)
 }
 
-// Returns the fetch request with a specified name. [Full Topic]
+// The set of developer-defined version identifiers for the object model. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506369-fetchrequesttemplateforname?language=objc
-func (m_ ManagedObjectModel) FetchRequestTemplateForName(name string) FetchRequest {
-	rv := objc.Call[FetchRequest](m_, objc.Sel("fetchRequestTemplateForName:"), name)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506268-versionidentifiers?language=objc
+func (m_ ManagedObjectModel) VersionIdentifiers() foundation.Set {
+	rv := objc.Call[foundation.Set](m_, objc.Sel("versionIdentifiers"))
 	return rv
 }
 
-// The dictionary of the model’s entity names and their corresponding version hashes. [Full Topic]
+// The set of developer-defined version identifiers for the object model. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506992-entityversionhashesbyname?language=objc
-func (m_ ManagedObjectModel) EntityVersionHashesByName() map[string][]byte {
-	rv := objc.Call[map[string][]byte](m_, objc.Sel("entityVersionHashesByName"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506268-versionidentifiers?language=objc
+func (m_ ManagedObjectModel) SetVersionIdentifiers(value foundation.ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("setVersionIdentifiers:"), value)
+}
+
+// The localization dictionary of the model. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506846-localizationdictionary?language=objc
+func (m_ ManagedObjectModel) LocalizationDictionary() map[string]string {
+	rv := objc.Call[map[string]string](m_, objc.Sel("localizationDictionary"))
+	return rv
+}
+
+// The localization dictionary of the model. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506846-localizationdictionary?language=objc
+func (m_ ManagedObjectModel) SetLocalizationDictionary(value map[string]string) {
+	objc.Call[objc.Void](m_, objc.Sel("setLocalizationDictionary:"), value)
+}
+
+// A dictionary of the receiver’s fetch request templates, keyed by name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506580-fetchrequesttemplatesbyname?language=objc
+func (m_ ManagedObjectModel) FetchRequestTemplatesByName() map[string]FetchRequest {
+	rv := objc.Call[map[string]FetchRequest](m_, objc.Sel("fetchRequestTemplatesByName"))
 	return rv
 }
 
@@ -213,44 +213,6 @@ func (m_ ManagedObjectModel) SetEntities(value []IEntityDescription) {
 	objc.Call[objc.Void](m_, objc.Sel("setEntities:"), value)
 }
 
-// The set of developer-defined version identifiers for the object model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506268-versionidentifiers?language=objc
-func (m_ ManagedObjectModel) VersionIdentifiers() foundation.Set {
-	rv := objc.Call[foundation.Set](m_, objc.Sel("versionIdentifiers"))
-	return rv
-}
-
-// The set of developer-defined version identifiers for the object model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506268-versionidentifiers?language=objc
-func (m_ ManagedObjectModel) SetVersionIdentifiers(value foundation.ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("setVersionIdentifiers:"), value)
-}
-
-// All the available configuration names of the model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506804-configurations?language=objc
-func (m_ ManagedObjectModel) Configurations() []string {
-	rv := objc.Call[[]string](m_, objc.Sel("configurations"))
-	return rv
-}
-
-// The localization dictionary of the model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506846-localizationdictionary?language=objc
-func (m_ ManagedObjectModel) LocalizationDictionary() map[string]string {
-	rv := objc.Call[map[string]string](m_, objc.Sel("localizationDictionary"))
-	return rv
-}
-
-// The localization dictionary of the model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506846-localizationdictionary?language=objc
-func (m_ ManagedObjectModel) SetLocalizationDictionary(value map[string]string) {
-	objc.Call[objc.Void](m_, objc.Sel("setLocalizationDictionary:"), value)
-}
-
 // The entities of the model, keyed by name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506203-entitiesbyname?language=objc
@@ -259,10 +221,18 @@ func (m_ ManagedObjectModel) EntitiesByName() map[string]EntityDescription {
 	return rv
 }
 
-// A dictionary of the receiver’s fetch request templates, keyed by name. [Full Topic]
+// The dictionary of the model’s entity names and their corresponding version hashes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506580-fetchrequesttemplatesbyname?language=objc
-func (m_ ManagedObjectModel) FetchRequestTemplatesByName() map[string]FetchRequest {
-	rv := objc.Call[map[string]FetchRequest](m_, objc.Sel("fetchRequestTemplatesByName"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506992-entityversionhashesbyname?language=objc
+func (m_ ManagedObjectModel) EntityVersionHashesByName() map[string][]byte {
+	rv := objc.Call[map[string][]byte](m_, objc.Sel("entityVersionHashesByName"))
+	return rv
+}
+
+// All the available configuration names of the model. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506804-configurations?language=objc
+func (m_ ManagedObjectModel) Configurations() []string {
+	rv := objc.Call[[]string](m_, objc.Sel("configurations"))
 	return rv
 }

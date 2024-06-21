@@ -54,45 +54,16 @@ func (n_ NNBinaryGradientState) Init() NNBinaryGradientState {
 	return rv
 }
 
-func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (n_ NNBinaryGradientState) InitWithResources(resources []metal.PResource) NNBinaryGradientState {
+	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func NNBinaryGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNBinaryGradientState {
-	return NNBinaryGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (n_ NNBinaryGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewNNBinaryGradientStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
-	instance := NNBinaryGradientStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (n_ NNBinaryGradientState) InitWithResource(resource metal.PResource) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewNNBinaryGradientStateWithResource(resource metal.PResource) NNBinaryGradientState {
-	instance := NNBinaryGradientStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewNNBinaryGradientStateWithResources(resources []metal.PResource) NNBinaryGradientState {
+	instance := NNBinaryGradientStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -112,70 +83,30 @@ func NewNNBinaryGradientStateWithDeviceBufferSize(device metal.PDevice, bufferSi
 	return instance
 }
 
-func (n_ NNBinaryGradientState) InitWithResources(resources []metal.PResource) NNBinaryGradientState {
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithResources:"), resources)
+func (n_ NNBinaryGradientState) InitWithResource(resource metal.PResource) NNBinaryGradientState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewNNBinaryGradientStateWithResources(resources []metal.PResource) NNBinaryGradientState {
-	instance := NNBinaryGradientStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewNNBinaryGradientStateWithResource(resource metal.PResource) NNBinaryGradientState {
+	instance := NNBinaryGradientStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNBinaryGradientState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func NNBinaryGradientState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) NNBinaryGradientState {
-	return NNBinaryGradientStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func NNBinaryGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) NNBinaryGradientState {
-	return NNBinaryGradientStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func NNBinaryGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
-	return NNBinaryGradientStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (n_ NNBinaryGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NNBinaryGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewNNBinaryGradientStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NNBinaryGradientState {
-	instance := NNBinaryGradientStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func NNBinaryGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNBinaryGradientState {
+	return NNBinaryGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }

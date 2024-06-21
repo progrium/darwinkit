@@ -65,20 +65,6 @@ func NNSubtractionNode_NodeWithSources(sourceNodes []INNImageNode) NNSubtraction
 	return NNSubtractionNodeClass.NodeWithSources(sourceNodes)
 }
 
-func (n_ NNSubtractionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
-	rv := objc.Call[NNSubtractionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
-func NewNNSubtractionNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
-	instance := NNSubtractionNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNSubtractionNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
 	rv := objc.Call[NNSubtractionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
@@ -101,6 +87,20 @@ func (n_ NNSubtractionNode) InitWithSources(sourceNodes []INNImageNode) NNSubtra
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890820-initwithsources?language=objc
 func NewNNSubtractionNodeWithSources(sourceNodes []INNImageNode) NNSubtractionNode {
 	instance := NNSubtractionNodeClass.Alloc().InitWithSources(sourceNodes)
+	instance.Autorelease()
+	return instance
+}
+
+func (n_ NNSubtractionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
+	rv := objc.Call[NNSubtractionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
+func NewNNSubtractionNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
+	instance := NNSubtractionNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
 	instance.Autorelease()
 	return instance
 }

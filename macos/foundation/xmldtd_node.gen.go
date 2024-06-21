@@ -18,15 +18,15 @@ type _XMLDTDNodeClass struct {
 // An interface definition for the [XMLDTDNode] class.
 type IXMLDTDNode interface {
 	IXMLNode
-	NotationName() string
-	SetNotationName(value string)
-	IsExternal() bool
 	DTDKind() XMLDTDNodeKind
 	SetDTDKind(value XMLDTDNodeKind)
 	SystemID() string
 	SetSystemID(value string)
 	PublicID() string
 	SetPublicID(value string)
+	NotationName() string
+	SetNotationName(value string)
+	IsExternal() bool
 }
 
 // A representation of element, attribute-list, entity, and notation declarations in a Document Type Definition. [Full Topic]
@@ -90,43 +90,6 @@ func NewXMLDTDNode() XMLDTDNode {
 	return XMLDTDNodeClass.New()
 }
 
-func (x_ XMLDTDNode) InitWithKind(kind XMLNodeKind) XMLDTDNode {
-	rv := objc.Call[XMLDTDNode](x_, objc.Sel("initWithKind:"), kind)
-	return rv
-}
-
-// Returns an NSXMLNode instance initialized with the constant indicating node kind. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409766-initwithkind?language=objc
-func NewXMLDTDNodeWithKind(kind XMLNodeKind) XMLDTDNode {
-	instance := XMLDTDNodeClass.Alloc().InitWithKind(kind)
-	instance.Autorelease()
-	return instance
-}
-
-// Returns the name of the notation associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1407292-notationname?language=objc
-func (x_ XMLDTDNode) NotationName() string {
-	rv := objc.Call[string](x_, objc.Sel("notationName"))
-	return rv
-}
-
-// Returns the name of the notation associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1407292-notationname?language=objc
-func (x_ XMLDTDNode) SetNotationName(value string) {
-	objc.Call[objc.Void](x_, objc.Sel("setNotationName:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1409467-external?language=objc
-func (x_ XMLDTDNode) IsExternal() bool {
-	rv := objc.Call[bool](x_, objc.Sel("isExternal"))
-	return rv
-}
-
 // Returns the receiver’s DTD kind. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1408902-dtdkind?language=objc
@@ -170,4 +133,27 @@ func (x_ XMLDTDNode) PublicID() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1415631-publicid?language=objc
 func (x_ XMLDTDNode) SetPublicID(value string) {
 	objc.Call[objc.Void](x_, objc.Sel("setPublicID:"), value)
+}
+
+// Returns the name of the notation associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1407292-notationname?language=objc
+func (x_ XMLDTDNode) NotationName() string {
+	rv := objc.Call[string](x_, objc.Sel("notationName"))
+	return rv
+}
+
+// Returns the name of the notation associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1407292-notationname?language=objc
+func (x_ XMLDTDNode) SetNotationName(value string) {
+	objc.Call[objc.Void](x_, objc.Sel("setNotationName:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1409467-external?language=objc
+func (x_ XMLDTDNode) IsExternal() bool {
+	rv := objc.Call[bool](x_, objc.Sel("isExternal"))
+	return rv
 }

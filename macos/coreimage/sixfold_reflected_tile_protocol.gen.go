@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile?language=objc
 type PSixfoldReflectedTile interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
@@ -42,6 +34,14 @@ type PSixfoldReflectedTile interface {
 	// optional
 	Angle() float32
 	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PSixfoldReflectedTile = (*SixfoldReflectedTileObject)(nil)
 // A concrete type for the [PSixfoldReflectedTile] protocol.
 type SixfoldReflectedTileObject struct {
 	objc.Object
-}
-
-func (s_ SixfoldReflectedTileObject) HasSetCenter() bool {
-	return s_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile/3228714-center?language=objc
-func (s_ SixfoldReflectedTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](s_, objc.Sel("setCenter:"), value)
-}
-
-func (s_ SixfoldReflectedTileObject) HasCenter() bool {
-	return s_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile/3228714-center?language=objc
-func (s_ SixfoldReflectedTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](s_, objc.Sel("center"))
-	return rv
 }
 
 func (s_ SixfoldReflectedTileObject) HasSetWidth() bool {
@@ -141,5 +118,28 @@ func (s_ SixfoldReflectedTileObject) HasAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile/3228713-angle?language=objc
 func (s_ SixfoldReflectedTileObject) Angle() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("angle"))
+	return rv
+}
+
+func (s_ SixfoldReflectedTileObject) HasSetCenter() bool {
+	return s_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile/3228714-center?language=objc
+func (s_ SixfoldReflectedTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](s_, objc.Sel("setCenter:"), value)
+}
+
+func (s_ SixfoldReflectedTileObject) HasCenter() bool {
+	return s_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldreflectedtile/3228714-center?language=objc
+func (s_ SixfoldReflectedTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](s_, objc.Sel("center"))
 	return rv
 }

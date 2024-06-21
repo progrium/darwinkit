@@ -18,18 +18,18 @@ type _ArgumentDescriptorClass struct {
 // An interface definition for the [ArgumentDescriptor] class.
 type IArgumentDescriptor interface {
 	objc.IObject
-	Index() uint
-	SetIndex(value uint)
-	DataType() DataType
-	SetDataType(value DataType)
-	ConstantBlockAlignment() uint
-	SetConstantBlockAlignment(value uint)
 	ArrayLength() uint
 	SetArrayLength(value uint)
-	Access() objc.Object
-	SetAccess(value objc.IObject)
+	ConstantBlockAlignment() uint
+	SetConstantBlockAlignment(value uint)
 	TextureType() TextureType
 	SetTextureType(value TextureType)
+	Access() objc.Object
+	SetAccess(value objc.IObject)
+	DataType() DataType
+	SetDataType(value DataType)
+	Index() uint
+	SetIndex(value uint)
 }
 
 // A representation of an argument within an argument buffer. [Full Topic]
@@ -80,34 +80,19 @@ func ArgumentDescriptor_ArgumentDescriptor() ArgumentDescriptor {
 	return ArgumentDescriptorClass.ArgumentDescriptor()
 }
 
-// The index ID of the argument. [Full Topic]
+// The length of an array argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915732-index?language=objc
-func (a_ ArgumentDescriptor) Index() uint {
-	rv := objc.Call[uint](a_, objc.Sel("index"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915734-arraylength?language=objc
+func (a_ ArgumentDescriptor) ArrayLength() uint {
+	rv := objc.Call[uint](a_, objc.Sel("arrayLength"))
 	return rv
 }
 
-// The index ID of the argument. [Full Topic]
+// The length of an array argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915732-index?language=objc
-func (a_ ArgumentDescriptor) SetIndex(value uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setIndex:"), value)
-}
-
-// The data type of the argument. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915733-datatype?language=objc
-func (a_ ArgumentDescriptor) DataType() DataType {
-	rv := objc.Call[DataType](a_, objc.Sel("dataType"))
-	return rv
-}
-
-// The data type of the argument. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915733-datatype?language=objc
-func (a_ ArgumentDescriptor) SetDataType(value DataType) {
-	objc.Call[objc.Void](a_, objc.Sel("setDataType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915734-arraylength?language=objc
+func (a_ ArgumentDescriptor) SetArrayLength(value uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setArrayLength:"), value)
 }
 
 // The alignment of the constant block. [Full Topic]
@@ -125,19 +110,19 @@ func (a_ ArgumentDescriptor) SetConstantBlockAlignment(value uint) {
 	objc.Call[objc.Void](a_, objc.Sel("setConstantBlockAlignment:"), value)
 }
 
-// The length of an array argument. [Full Topic]
+// The texture type of a texture argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915734-arraylength?language=objc
-func (a_ ArgumentDescriptor) ArrayLength() uint {
-	rv := objc.Call[uint](a_, objc.Sel("arrayLength"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915741-texturetype?language=objc
+func (a_ ArgumentDescriptor) TextureType() TextureType {
+	rv := objc.Call[TextureType](a_, objc.Sel("textureType"))
 	return rv
 }
 
-// The length of an array argument. [Full Topic]
+// The texture type of a texture argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915734-arraylength?language=objc
-func (a_ ArgumentDescriptor) SetArrayLength(value uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setArrayLength:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915741-texturetype?language=objc
+func (a_ ArgumentDescriptor) SetTextureType(value TextureType) {
+	objc.Call[objc.Void](a_, objc.Sel("setTextureType:"), value)
 }
 
 // The access permissions of the argument. [Full Topic]
@@ -155,17 +140,32 @@ func (a_ ArgumentDescriptor) SetAccess(value objc.IObject) {
 	objc.Call[objc.Void](a_, objc.Sel("setAccess:"), value)
 }
 
-// The texture type of a texture argument. [Full Topic]
+// The data type of the argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915741-texturetype?language=objc
-func (a_ ArgumentDescriptor) TextureType() TextureType {
-	rv := objc.Call[TextureType](a_, objc.Sel("textureType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915733-datatype?language=objc
+func (a_ ArgumentDescriptor) DataType() DataType {
+	rv := objc.Call[DataType](a_, objc.Sel("dataType"))
 	return rv
 }
 
-// The texture type of a texture argument. [Full Topic]
+// The data type of the argument. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915741-texturetype?language=objc
-func (a_ ArgumentDescriptor) SetTextureType(value TextureType) {
-	objc.Call[objc.Void](a_, objc.Sel("setTextureType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915733-datatype?language=objc
+func (a_ ArgumentDescriptor) SetDataType(value DataType) {
+	objc.Call[objc.Void](a_, objc.Sel("setDataType:"), value)
+}
+
+// The index ID of the argument. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915732-index?language=objc
+func (a_ ArgumentDescriptor) Index() uint {
+	rv := objc.Call[uint](a_, objc.Sel("index"))
+	return rv
+}
+
+// The index ID of the argument. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915732-index?language=objc
+func (a_ ArgumentDescriptor) SetIndex(value uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setIndex:"), value)
 }

@@ -20,8 +20,8 @@ type _CNNDropoutGradientNodeClass struct {
 type ICNNDropoutGradientNode interface {
 	INNGradientFilterNode
 	KeepProbability() float32
-	Seed() uint
 	MaskStrideInPixels() metal.Size
+	Seed() uint
 }
 
 // A representation of a gradient dropout filter. [Full Topic]
@@ -93,16 +93,16 @@ func (c_ CNNDropoutGradientNode) KeepProbability() float32 {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2948003-seed?language=objc
-func (c_ CNNDropoutGradientNode) Seed() uint {
-	rv := objc.Call[uint](c_, objc.Sel("seed"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2947972-maskstrideinpixels?language=objc
+func (c_ CNNDropoutGradientNode) MaskStrideInPixels() metal.Size {
+	rv := objc.Call[metal.Size](c_, objc.Sel("maskStrideInPixels"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2947972-maskstrideinpixels?language=objc
-func (c_ CNNDropoutGradientNode) MaskStrideInPixels() metal.Size {
-	rv := objc.Call[metal.Size](c_, objc.Sel("maskStrideInPixels"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2948003-seed?language=objc
+func (c_ CNNDropoutGradientNode) Seed() uint {
+	rv := objc.Call[uint](c_, objc.Sel("seed"))
 	return rv
 }

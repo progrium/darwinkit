@@ -19,83 +19,77 @@ type _CoderClass struct {
 // An interface definition for the [Coder] class.
 type ICoder interface {
 	objc.IObject
-	EncodeDoubleForKey(value float64, key string)
-	DecodePropertyListForKey(key string) objc.Object
-	DecodeBytesWithReturnedLength(lengthp *uint) unsafe.Pointer
-	DecodePoint() Point
-	EncodeCMTimeRangeForKey(timeRange coremedia.TimeRange, key string)
-	DecodePointForKey(key string) Point
-	EncodeConditionalObjectForKey(object objc.IObject, key string)
-	EncodeCMTimeForKey(time coremedia.Time, key string)
-	DecodeArrayOfObjCTypeCountAt(itemType *uint8, count uint, array unsafe.Pointer)
-	EncodeObject(object objc.IObject)
-	DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object
-	DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object
-	DecodeInt32ForKey(key string) int32
-	DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object
-	DecodeCMTimeRangeForKey(key string) coremedia.TimeRange
-	DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error unsafe.Pointer) objc.Object
-	DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary
-	DecodeObjectForKey(key string) objc.Object
-	EncodeRectForKey(rect Rect, key string)
-	DecodeCMTimeMappingForKey(key string) coremedia.TimeMapping
-	EncodeCMTimeMappingForKey(timeMapping coremedia.TimeMapping, key string)
-	DecodeIntForKey(key string) int
-	SetObjectZone(zone unsafe.Pointer)
-	EncodeDataObject(data []byte)
-	DecodeObject() objc.Object
-	DecodeFloatForKey(key string) float32
-	EncodePoint(point Point)
-	DecodeArrayOfObjectsOfClassForKey(cls objc.IClass, key string) []objc.Object
-	DecodeInt64ForKey(key string) int64
-	EncodeIntForKey(value int, key string)
-	ObjectZone() unsafe.Pointer
-	DecodeDictionaryWithKeysOfClassObjectsOfClassForKey(keyCls objc.IClass, objectCls objc.IClass, key string) Dictionary
-	EncodeBytesLength(byteaddr unsafe.Pointer, length uint)
 	DecodeDataObject() []byte
-	DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object
-	EncodeValuesOfObjCTypes(types *uint8, args ...any)
-	EncodeRootObject(rootObject objc.IObject)
-	DecodeSize() Size
-	DecodeRectForKey(key string) Rect
-	VersionForClassName(className string) int
-	DecodeIntegerForKey(key string) int
-	EncodeFloatForKey(value float32, key string)
-	EncodeObjectForKey(object objc.IObject, key string)
-	DecodeValueOfObjCTypeAtSize(type_ *uint8, data unsafe.Pointer, size uint)
-	DecodeCMTimeForKey(key string) coremedia.Time
-	EncodePropertyList(aPropertyList objc.IObject)
-	DecodeDoubleForKey(key string) float64
-	DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object
-	EncodeRect(rect Rect)
-	EncodeByrefObject(anObject objc.IObject)
 	DecodeSizeForKey(key string) Size
-	EncodeBytesLengthForKey(bytes *uint8, length uint, key string)
-	EncodeIntegerForKey(value int, key string)
-	DecodeBytesForKeyReturnedLength(key string, lengthp *uint) *uint8
-	DecodeValuesOfObjCTypes(types *uint8, args ...any)
-	DecodeBoolForKey(key string) bool
-	DecodeArrayOfObjectsOfClassesForKey(classes ISet, key string) []objc.Object
-	EncodeValueOfObjCTypeAt(type_ *uint8, addr unsafe.Pointer)
-	EncodeSizeForKey(size Size, key string)
-	DecodePropertyList() objc.Object
-	ContainsValueForKey(key string) bool
-	FailWithError(error IError)
-	EncodeSize(size Size)
-	EncodePointForKey(point Point, key string)
-	DecodeRect() Rect
-	EncodeInt64ForKey(value int64, key string)
-	EncodeInt32ForKey(value int32, key string)
-	EncodeConditionalObject(object objc.IObject)
+	EncodeCMTimeMappingForKey(timeMapping coremedia.TimeMapping, key string)
+	DecodeFloatForKey(key string) float32
+	DecodeSize() Size
+	EncodeRectForKey(rect Rect, key string)
+	DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary
+	EncodePropertyList(aPropertyList objc.IObject)
+	EncodeObject(object objc.IObject)
+	DecodeDoubleForKey(key string) float64
+	VersionForClassName(className string) int
+	EncodeCMTimeRangeForKey(timeRange coremedia.TimeRange, key string)
 	EncodeArrayOfObjCTypeCountAt(type_ *uint8, count uint, array unsafe.Pointer)
+	EncodeValueOfObjCTypeAt(type_ *uint8, addr unsafe.Pointer)
+	EncodeConditionalObject(object objc.IObject)
+	DecodeValuesOfObjCTypes(types *uint8, args ...any)
+	DecodeObject() objc.Object
+	DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object
+	FailWithError(error IError)
+	DecodeInt64ForKey(key string) int64
+	DecodeBytesForKeyReturnedLength(key string, lengthp *uint) *uint8
+	DecodeCMTimeForKey(key string) coremedia.Time
+	DecodePoint() Point
 	EncodeBycopyObject(anObject objc.IObject)
 	EncodeBoolForKey(value bool, key string)
-	AllowsKeyedCoding() bool
-	SystemVersion() int
-	AllowedClasses() Set
-	RequiresSecureCoding() bool
+	DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object
+	DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error unsafe.Pointer) objc.Object
+	DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object
+	DecodeArrayOfObjectsOfClassForKey(cls objc.IClass, key string) []objc.Object
+	DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object
+	DecodeArrayOfObjCTypeCountAt(itemType *uint8, count uint, array unsafe.Pointer)
+	EncodeDataObject(data []byte)
+	DecodeValueOfObjCTypeAtSize(type_ *uint8, data unsafe.Pointer, size uint)
+	EncodeCMTimeForKey(time coremedia.Time, key string)
+	ObjectZone() unsafe.Pointer
+	DecodeInt32ForKey(key string) int32
+	DecodeObjectForKey(key string) objc.Object
+	EncodeRootObject(rootObject objc.IObject)
+	DecodeRectForKey(key string) Rect
+	DecodeRect() Rect
+	SetObjectZone(zone unsafe.Pointer)
+	DecodeIntForKey(key string) int
+	EncodeSizeForKey(size Size, key string)
+	DecodeIntegerForKey(key string) int
+	EncodeIntegerForKey(value int, key string)
+	EncodeByrefObject(anObject objc.IObject)
+	EncodeInt32ForKey(value int32, key string)
+	EncodePointForKey(point Point, key string)
+	DecodePropertyList() objc.Object
+	DecodePointForKey(key string) Point
+	DecodeDictionaryWithKeysOfClassObjectsOfClassForKey(keyCls objc.IClass, objectCls objc.IClass, key string) Dictionary
+	EncodeBytesLength(byteaddr unsafe.Pointer, length uint)
+	DecodePropertyListForKey(key string) objc.Object
+	DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object
+	DecodeBoolForKey(key string) bool
+	DecodeArrayOfObjectsOfClassesForKey(classes ISet, key string) []objc.Object
+	DecodeCMTimeRangeForKey(key string) coremedia.TimeRange
+	EncodeFloatForKey(value float32, key string)
+	EncodeValuesOfObjCTypes(types *uint8, args ...any)
+	ContainsValueForKey(key string) bool
+	EncodeDoubleForKey(value float64, key string)
+	EncodeIntForKey(value int, key string)
+	DecodeCMTimeMappingForKey(key string) coremedia.TimeMapping
+	DecodeBytesWithReturnedLength(lengthp *uint) unsafe.Pointer
+	EncodeInt64ForKey(value int64, key string)
 	Error() Error
 	DecodingFailurePolicy() DecodingFailurePolicy
+	AllowedClasses() Set
+	AllowsKeyedCoding() bool
+	SystemVersion() int
+	RequiresSecureCoding() bool
 }
 
 // An abstract class that serves as the basis for objects that enable archiving and distribution of other objects. [Full Topic]
@@ -131,34 +125,87 @@ func (c_ Coder) Init() Coder {
 	return rv
 }
 
-// Encodes a double-precision floating point value and associates it with the string key. [Full Topic]
+// Decodes and returns an NSData object that was previously encoded with encodeDataObject:. Subclasses must override this method. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409008-encodedouble?language=objc
-func (c_ Coder) EncodeDoubleForKey(value float64, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeDouble:forKey:"), value, key)
-}
-
-// Returns a decoded property list for the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1416284-decodepropertylistforkey?language=objc
-func (c_ Coder) DecodePropertyListForKey(key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodePropertyListForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409876-decodedataobject?language=objc
+func (c_ Coder) DecodeDataObject() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("decodeDataObject"))
 	return rv
 }
 
-// Decodes a buffer of data whose types are unspecified. [Full Topic]
+// Decodes and returns an NSSize structure that was previously encoded with encodeSize:forKey:. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1415441-decodebyteswithreturnedlength?language=objc
-func (c_ Coder) DecodeBytesWithReturnedLength(lengthp *uint) unsafe.Pointer {
-	rv := objc.Call[unsafe.Pointer](c_, objc.Sel("decodeBytesWithReturnedLength:"), lengthp)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391253-decodesizeforkey?language=objc
+func (c_ Coder) DecodeSizeForKey(key string) Size {
+	rv := objc.Call[Size](c_, objc.Sel("decodeSizeForKey:"), key)
 	return rv
 }
 
-// Decodes and returns an NSPoint structure that was previously encoded with [foundation/nscoder/encodepoint]. [Full Topic]
+// Encodes a given Core Media time mapping structure and associates it with a specified key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391189-decodepoint?language=objc
-func (c_ Coder) DecodePoint() Point {
-	rv := objc.Call[Point](c_, objc.Sel("decodePoint"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389496-encodecmtimemapping?language=objc
+func (c_ Coder) EncodeCMTimeMappingForKey(timeMapping coremedia.TimeMapping, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeCMTimeMapping:forKey:"), timeMapping, key)
+}
+
+// Decodes and returns a float value that was previously encoded with encodeFloat:forKey: or encodeDouble:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408104-decodefloatforkey?language=objc
+func (c_ Coder) DecodeFloatForKey(key string) float32 {
+	rv := objc.Call[float32](c_, objc.Sel("decodeFloatForKey:"), key)
+	return rv
+}
+
+// Decodes and returns an NSSize structure that was previously encoded with encodeSize:forKey:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391144-decodesize?language=objc
+func (c_ Coder) DecodeSize() Size {
+	rv := objc.Call[Size](c_, objc.Sel("decodeSize"))
+	return rv
+}
+
+// Encodes a rectangle structure and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391287-encoderect?language=objc
+func (c_ Coder) EncodeRectForKey(rect Rect, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeRect:forKey:"), rect, key)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563980-decodedictionarywithkeysofclasse?language=objc
+func (c_ Coder) DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary {
+	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClasses:objectsOfClasses:forKey:"), keyClasses, objectClasses, key)
+	return rv
+}
+
+// Encodes a property list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1410643-encodepropertylist?language=objc
+func (c_ Coder) EncodePropertyList(aPropertyList objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodePropertyList:"), aPropertyList)
+}
+
+// Encodes an object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417647-encodeobject?language=objc
+func (c_ Coder) EncodeObject(object objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeObject:"), object)
+}
+
+// Decodes and returns a double value that was previously encoded with either encodeFloat:forKey: or encodeDouble:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409374-decodedoubleforkey?language=objc
+func (c_ Coder) DecodeDoubleForKey(key string) float64 {
+	rv := objc.Call[float64](c_, objc.Sel("decodeDoubleForKey:"), key)
+	return rv
+}
+
+// This method is present for historical reasons and is not used with keyed archivers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417703-versionforclassname?language=objc
+func (c_ Coder) VersionForClassName(className string) int {
+	rv := objc.Call[int](c_, objc.Sel("versionForClassName:"), className)
 	return rv
 }
 
@@ -169,79 +216,108 @@ func (c_ Coder) EncodeCMTimeRangeForKey(timeRange coremedia.TimeRange, key strin
 	objc.Call[objc.Void](c_, objc.Sel("encodeCMTimeRange:forKey:"), timeRange, key)
 }
 
-// Decodes and returns an NSPoint structure that was previously encoded with [foundation/nscoder/encodepoint]. [Full Topic]
+// Encodes an array of the given Objective-C type, provided the number of items and a pointer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391214-decodepointforkey?language=objc
-func (c_ Coder) DecodePointForKey(key string) Point {
-	rv := objc.Call[Point](c_, objc.Sel("decodePointForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417865-encodearrayofobjctype?language=objc
+func (c_ Coder) EncodeArrayOfObjCTypeCountAt(type_ *uint8, count uint, array unsafe.Pointer) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeArrayOfObjCType:count:at:"), type_, count, array)
+}
+
+// Encodes a value of the given type at the given address. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414648-encodevalueofobjctype?language=objc
+func (c_ Coder) EncodeValueOfObjCTypeAt(type_ *uint8, addr unsafe.Pointer) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeValueOfObjCType:at:"), type_, addr)
+}
+
+// An encoding method for subclasses to override to conditionally encode an object, preserving common references to it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1415196-encodeconditionalobject?language=objc
+func (c_ Coder) EncodeConditionalObject(object objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeConditionalObject:"), object)
+}
+
+// Decodes a series of potentially different Objective-C types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442577-decodevaluesofobjctypes?language=objc
+func (c_ Coder) DecodeValuesOfObjCTypes(types *uint8, args ...any) {
+	objc.Call[objc.Void](c_, objc.Sel("decodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
+}
+
+// Decodes and returns an object that was previously encoded with any of the encode…Object methods. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414478-decodeobject?language=objc
+func (c_ Coder) DecodeObject() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObject"))
 	return rv
 }
 
-// An encoding method for subclasses to override to conditionally encode an object, preserving common references to it, only if it has been unconditionally encoded. [Full Topic]
+// Decodes an object for the key, restricted to the specified class. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1413918-encodeconditionalobject?language=objc
-func (c_ Coder) EncodeConditionalObjectForKey(object objc.IObject, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeConditionalObject:forKey:"), object, key)
-}
-
-// Encodes a given Core Media time structure and associates it with a specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1388869-encodecmtime?language=objc
-func (c_ Coder) EncodeCMTimeForKey(time coremedia.Time, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeCMTime:forKey:"), time, key)
-}
-
-// Decodes an array of count items, whose Objective-C type is given by itemType. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408354-decodearrayofobjctype?language=objc
-func (c_ Coder) DecodeArrayOfObjCTypeCountAt(itemType *uint8, count uint, array unsafe.Pointer) {
-	objc.Call[objc.Void](c_, objc.Sel("decodeArrayOfObjCType:count:at:"), itemType, count, array)
-}
-
-// Encodes an object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417647-encodeobject?language=objc
-func (c_ Coder) EncodeObject(object objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeObject:"), object)
-}
-
-// Decodes a previously-encoded object, populating an error if decoding fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442553-decodetoplevelobjectandreturnerr?language=objc
-func (c_ Coder) DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectAndReturnError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442558-decodeobjectofclass?language=objc
+func (c_ Coder) DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClass:forKey:"), aClass, key)
 	return rv
 }
 
-// Decodes an object for the key, restricted to the specified classes. [Full Topic]
+// Signals to this coder that the decode operation has failed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442560-decodeobjectofclasses?language=objc
-func (c_ Coder) DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClasses:forKey:"), classes, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411455-failwitherror?language=objc
+func (c_ Coder) FailWithError(error IError) {
+	objc.Call[objc.Void](c_, objc.Sel("failWithError:"), error)
+}
+
+// Decodes and returns a 64-bit integer value that was previously encoded with encodeInt:forKey:, encodeInteger:forKey:, encodeInt32:forKey:, or encodeInt64:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1407878-decodeint64forkey?language=objc
+func (c_ Coder) DecodeInt64ForKey(key string) int64 {
+	rv := objc.Call[int64](c_, objc.Sel("decodeInt64ForKey:"), key)
 	return rv
 }
 
-// Decodes and returns a 32-bit integer value that was previously encoded with [foundation/nscoder/encodeint], [foundation/nscoder/encodeinteger], [foundation/nscoder/encodeint32], or [foundation/nscoder/encodeint64] and associated with the string key. [Full Topic]
+// Decodes a buffer of data that was previously encoded with encodeBytes:length: and associated with the string key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408918-decodeint32forkey?language=objc
-func (c_ Coder) DecodeInt32ForKey(key string) int32 {
-	rv := objc.Call[int32](c_, objc.Sel("decodeInt32ForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411987-decodebytesforkey?language=objc
+func (c_ Coder) DecodeBytesForKeyReturnedLength(key string, lengthp *uint) *uint8 {
+	rv := objc.Call[*uint8](c_, objc.Sel("decodeBytesForKey:returnedLength:"), key, lengthp)
 	return rv
 }
 
-// Decode an object as one of several expected types, failing if the archived type does not match. [Full Topic]
+// Returns the Core Media time structure associated with a given key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442539-decodetoplevelobjectofclasses?language=objc
-func (c_ Coder) DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClasses:forKey:error:"), classes, key, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389544-decodecmtimeforkey?language=objc
+func (c_ Coder) DecodeCMTimeForKey(key string) coremedia.Time {
+	rv := objc.Call[coremedia.Time](c_, objc.Sel("decodeCMTimeForKey:"), key)
 	return rv
 }
 
-// Returns the Core Media time range structure associated with a given key. [Full Topic]
+// Decodes and returns an NSPoint structure that was previously encoded with encodePoint:forKey:. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1385718-decodecmtimerangeforkey?language=objc
-func (c_ Coder) DecodeCMTimeRangeForKey(key string) coremedia.TimeRange {
-	rv := objc.Call[coremedia.TimeRange](c_, objc.Sel("decodeCMTimeRangeForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391189-decodepoint?language=objc
+func (c_ Coder) DecodePoint() Point {
+	rv := objc.Call[Point](c_, objc.Sel("decodePoint"))
+	return rv
+}
+
+// An encoding method for subclasses to override such that it creates a copy, rather than a proxy, when decoded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1418225-encodebycopyobject?language=objc
+func (c_ Coder) EncodeBycopyObject(anObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeBycopyObject:"), anObject)
+}
+
+// Encodes a Boolean value and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409236-encodebool?language=objc
+func (c_ Coder) EncodeBoolForKey(value bool, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeBool:forKey:"), value, key)
+}
+
+// Decodes the previously-encoded object associated by a key, populating an error if decoding fails. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442541-decodetoplevelobjectforkey?language=objc
+func (c_ Coder) DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectForKey:error:"), key, error)
 	return rv
 }
 
@@ -253,87 +329,12 @@ func (c_ Coder) DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key s
 	return rv
 }
 
-//	[Full Topic]
+// Decodes an object for the key, restricted to the specified classes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563980-decodedictionarywithkeysofclasse?language=objc
-func (c_ Coder) DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary {
-	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClasses:objectsOfClasses:forKey:"), keyClasses, objectClasses, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442560-decodeobjectofclasses?language=objc
+func (c_ Coder) DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClasses:forKey:"), classes, key)
 	return rv
-}
-
-// Decodes and returns a previously-encoded object that was previously encoded with [foundation/nscoder/encodeobject] or [foundation/nscoder/encodeconditionalobject] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1418185-decodeobjectforkey?language=objc
-func (c_ Coder) DecodeObjectForKey(key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectForKey:"), key)
-	return rv
-}
-
-// Encodes a rectangle structure and associates it with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391287-encoderect?language=objc
-func (c_ Coder) EncodeRectForKey(rect Rect, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeRect:forKey:"), rect, key)
-}
-
-// Returns the Core Media time mapping structure associated with a given key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389860-decodecmtimemappingforkey?language=objc
-func (c_ Coder) DecodeCMTimeMappingForKey(key string) coremedia.TimeMapping {
-	rv := objc.Call[coremedia.TimeMapping](c_, objc.Sel("decodeCMTimeMappingForKey:"), key)
-	return rv
-}
-
-// Encodes a given Core Media time mapping structure and associates it with a specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389496-encodecmtimemapping?language=objc
-func (c_ Coder) EncodeCMTimeMappingForKey(timeMapping coremedia.TimeMapping, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeCMTimeMapping:forKey:"), timeMapping, key)
-}
-
-// Decodes and returns an int value that was previously encoded with [foundation/nscoder/encodeint], [foundation/nscoder/encodeinteger], [foundation/nscoder/encodeint32], or [foundation/nscoder/encodeint64] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411168-decodeintforkey?language=objc
-func (c_ Coder) DecodeIntForKey(key string) int {
-	rv := objc.Call[int](c_, objc.Sel("decodeIntForKey:"), key)
-	return rv
-}
-
-// This method is present for historical reasons and has no effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442547-setobjectzone?language=objc
-func (c_ Coder) SetObjectZone(zone unsafe.Pointer) {
-	objc.Call[objc.Void](c_, objc.Sel("setObjectZone:"), zone)
-}
-
-// Encodes a given data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411473-encodedataobject?language=objc
-func (c_ Coder) EncodeDataObject(data []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeDataObject:"), data)
-}
-
-// Decodes and returns an object that was previously encoded with any of the encode…Object methods. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414478-decodeobject?language=objc
-func (c_ Coder) DecodeObject() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObject"))
-	return rv
-}
-
-// Decodes and returns a float value that was previously encoded with [foundation/nscoder/encodefloat] or [foundation/nscoder/encodedouble] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408104-decodefloatforkey?language=objc
-func (c_ Coder) DecodeFloatForKey(key string) float32 {
-	rv := objc.Call[float32](c_, objc.Sel("decodeFloatForKey:"), key)
-	return rv
-}
-
-// Encodes a point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391138-encodepoint?language=objc
-func (c_ Coder) EncodePoint(point Point) {
-	objc.Call[objc.Void](c_, objc.Sel("encodePoint:"), point)
 }
 
 //	[Full Topic]
@@ -344,19 +345,40 @@ func (c_ Coder) DecodeArrayOfObjectsOfClassForKey(cls objc.IClass, key string) [
 	return rv
 }
 
-// Decodes and returns a 64-bit integer value that was previously encoded with [foundation/nscoder/encodeint], [foundation/nscoder/encodeinteger], [foundation/nscoder/encodeint32], or [foundation/nscoder/encodeint64] and associated with the string key. [Full Topic]
+// Decodes a previously-encoded object, populating an error if decoding fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1407878-decodeint64forkey?language=objc
-func (c_ Coder) DecodeInt64ForKey(key string) int64 {
-	rv := objc.Call[int64](c_, objc.Sel("decodeInt64ForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442553-decodetoplevelobjectandreturnerr?language=objc
+func (c_ Coder) DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectAndReturnError:"), error)
 	return rv
 }
 
-// Encodes a C integer value and associates it with the string key. [Full Topic]
+// Decodes an array of count items, whose Objective-C type is given by itemType. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1413906-encodeint?language=objc
-func (c_ Coder) EncodeIntForKey(value int, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeInt:forKey:"), value, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408354-decodearrayofobjctype?language=objc
+func (c_ Coder) DecodeArrayOfObjCTypeCountAt(itemType *uint8, count uint, array unsafe.Pointer) {
+	objc.Call[objc.Void](c_, objc.Sel("decodeArrayOfObjCType:count:at:"), itemType, count, array)
+}
+
+// Encodes a given data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411473-encodedataobject?language=objc
+func (c_ Coder) EncodeDataObject(data []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeDataObject:"), data)
+}
+
+// Decodes a single value of a known type from the specified data buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/2919430-decodevalueofobjctype?language=objc
+func (c_ Coder) DecodeValueOfObjCTypeAtSize(type_ *uint8, data unsafe.Pointer, size uint) {
+	objc.Call[objc.Void](c_, objc.Sel("decodeValueOfObjCType:at:size:"), type_, data, size)
+}
+
+// Encodes a given Core Media time structure and associates it with a specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1388869-encodecmtime?language=objc
+func (c_ Coder) EncodeCMTimeForKey(time coremedia.Time, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeCMTime:forKey:"), time, key)
 }
 
 // This method is present for historical reasons and has no effect. [Full Topic]
@@ -364,6 +386,119 @@ func (c_ Coder) EncodeIntForKey(value int, key string) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442570-objectzone?language=objc
 func (c_ Coder) ObjectZone() unsafe.Pointer {
 	rv := objc.Call[unsafe.Pointer](c_, objc.Sel("objectZone"))
+	return rv
+}
+
+// Decodes and returns a 32-bit integer value that was previously encoded with encodeInt:forKey:, encodeInteger:forKey:, encodeInt32:forKey:, or encodeInt64:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408918-decodeint32forkey?language=objc
+func (c_ Coder) DecodeInt32ForKey(key string) int32 {
+	rv := objc.Call[int32](c_, objc.Sel("decodeInt32ForKey:"), key)
+	return rv
+}
+
+// Decodes and returns a previously-encoded object that was previously encoded with encodeObject: or encodeConditionalObject: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1418185-decodeobjectforkey?language=objc
+func (c_ Coder) DecodeObjectForKey(key string) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectForKey:"), key)
+	return rv
+}
+
+// An encoding method for subclasses to override to encode an interconnected group of objects, starting with the provided root object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409439-encoderootobject?language=objc
+func (c_ Coder) EncodeRootObject(rootObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeRootObject:"), rootObject)
+}
+
+// Decodes and returns an NSRect structure that was previously encoded with encodeRect:forKey:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391116-decoderectforkey?language=objc
+func (c_ Coder) DecodeRectForKey(key string) Rect {
+	rv := objc.Call[Rect](c_, objc.Sel("decodeRectForKey:"), key)
+	return rv
+}
+
+// Decodes and returns an NSRect structure that was previously encoded with encodeRect:forKey:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391269-decoderect?language=objc
+func (c_ Coder) DecodeRect() Rect {
+	rv := objc.Call[Rect](c_, objc.Sel("decodeRect"))
+	return rv
+}
+
+// This method is present for historical reasons and has no effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442547-setobjectzone?language=objc
+func (c_ Coder) SetObjectZone(zone unsafe.Pointer) {
+	objc.Call[objc.Void](c_, objc.Sel("setObjectZone:"), zone)
+}
+
+// Decodes and returns an int value that was previously encoded with encodeInt:forKey:, encodeInteger:forKey:, encodeInt32:forKey:, or encodeInt64:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411168-decodeintforkey?language=objc
+func (c_ Coder) DecodeIntForKey(key string) int {
+	rv := objc.Call[int](c_, objc.Sel("decodeIntForKey:"), key)
+	return rv
+}
+
+// Encodes a size structure and associates it with the given string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391176-encodesize?language=objc
+func (c_ Coder) EncodeSizeForKey(size Size, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeSize:forKey:"), size, key)
+}
+
+// Decodes and returns an NSInteger value that was previously encoded with encodeInt:forKey:, encodeInteger:forKey:, encodeInt32:forKey:, or encodeInt64:forKey: and associated with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409246-decodeintegerforkey?language=objc
+func (c_ Coder) DecodeIntegerForKey(key string) int {
+	rv := objc.Call[int](c_, objc.Sel("decodeIntegerForKey:"), key)
+	return rv
+}
+
+// Encodes an integer value and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411551-encodeinteger?language=objc
+func (c_ Coder) EncodeIntegerForKey(value int, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeInteger:forKey:"), value, key)
+}
+
+// An encoding method for subclasses to override such that it creates a proxy, rather than a copy, when decoded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1416279-encodebyrefobject?language=objc
+func (c_ Coder) EncodeByrefObject(anObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeByrefObject:"), anObject)
+}
+
+// Encodes a 32-bit integer value and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1412395-encodeint32?language=objc
+func (c_ Coder) EncodeInt32ForKey(value int32, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeInt32:forKey:"), value, key)
+}
+
+// Encodes a point and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391114-encodepoint?language=objc
+func (c_ Coder) EncodePointForKey(point Point, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodePoint:forKey:"), point, key)
+}
+
+// Decodes a property list that was previously encoded with encodePropertyList:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411916-decodepropertylist?language=objc
+func (c_ Coder) DecodePropertyList() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodePropertyList"))
+	return rv
+}
+
+// Decodes and returns an NSPoint structure that was previously encoded with encodePoint:forKey:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391214-decodepointforkey?language=objc
+func (c_ Coder) DecodePointForKey(key string) Point {
+	rv := objc.Call[Point](c_, objc.Sel("decodePointForKey:"), key)
 	return rv
 }
 
@@ -382,172 +517,23 @@ func (c_ Coder) EncodeBytesLength(byteaddr unsafe.Pointer, length uint) {
 	objc.Call[objc.Void](c_, objc.Sel("encodeBytes:length:"), byteaddr, length)
 }
 
-// Decodes and returns an NSData object that was previously encoded with [foundation/nscoder/encodedataobject]. Subclasses must override this method. [Full Topic]
+// Returns a decoded property list for the specified key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409876-decodedataobject?language=objc
-func (c_ Coder) DecodeDataObject() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("decodeDataObject"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1416284-decodepropertylistforkey?language=objc
+func (c_ Coder) DecodePropertyListForKey(key string) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodePropertyListForKey:"), key)
 	return rv
 }
 
-// Decodes the previously-encoded object associated by a key, populating an error if decoding fails. [Full Topic]
+// Decode an object as one of several expected types, failing if the archived type does not match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442541-decodetoplevelobjectforkey?language=objc
-func (c_ Coder) DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectForKey:error:"), key, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442539-decodetoplevelobjectofclasses?language=objc
+func (c_ Coder) DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClasses:forKey:error:"), classes, key, error)
 	return rv
 }
 
-// Encodes a series of values of potentially differing Objective-C types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442581-encodevaluesofobjctypes?language=objc
-func (c_ Coder) EncodeValuesOfObjCTypes(types *uint8, args ...any) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
-}
-
-// An encoding method for subclasses to override to encode an interconnected group of objects, starting with the provided root object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409439-encoderootobject?language=objc
-func (c_ Coder) EncodeRootObject(rootObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeRootObject:"), rootObject)
-}
-
-// Decodes and returns an NSSize structure that was previously encoded with [foundation/nscoder/encodesize]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391144-decodesize?language=objc
-func (c_ Coder) DecodeSize() Size {
-	rv := objc.Call[Size](c_, objc.Sel("decodeSize"))
-	return rv
-}
-
-// Decodes and returns an NSRect structure that was previously encoded with [foundation/nscoder/encoderect]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391116-decoderectforkey?language=objc
-func (c_ Coder) DecodeRectForKey(key string) Rect {
-	rv := objc.Call[Rect](c_, objc.Sel("decodeRectForKey:"), key)
-	return rv
-}
-
-// This method is present for historical reasons and is not used with keyed archivers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417703-versionforclassname?language=objc
-func (c_ Coder) VersionForClassName(className string) int {
-	rv := objc.Call[int](c_, objc.Sel("versionForClassName:"), className)
-	return rv
-}
-
-// Decodes and returns an NSInteger value that was previously encoded with [foundation/nscoder/encodeint], [foundation/nscoder/encodeinteger], [foundation/nscoder/encodeint32], or [foundation/nscoder/encodeint64] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409246-decodeintegerforkey?language=objc
-func (c_ Coder) DecodeIntegerForKey(key string) int {
-	rv := objc.Call[int](c_, objc.Sel("decodeIntegerForKey:"), key)
-	return rv
-}
-
-// Encodes a floating point value and associates it with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414384-encodefloat?language=objc
-func (c_ Coder) EncodeFloatForKey(value float32, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeFloat:forKey:"), value, key)
-}
-
-// Encodes an object and associates it with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411568-encodeobject?language=objc
-func (c_ Coder) EncodeObjectForKey(object objc.IObject, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeObject:forKey:"), object, key)
-}
-
-// Decodes a single value of a known type from the specified data buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/2919430-decodevalueofobjctype?language=objc
-func (c_ Coder) DecodeValueOfObjCTypeAtSize(type_ *uint8, data unsafe.Pointer, size uint) {
-	objc.Call[objc.Void](c_, objc.Sel("decodeValueOfObjCType:at:size:"), type_, data, size)
-}
-
-// Returns the Core Media time structure associated with a given key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389544-decodecmtimeforkey?language=objc
-func (c_ Coder) DecodeCMTimeForKey(key string) coremedia.Time {
-	rv := objc.Call[coremedia.Time](c_, objc.Sel("decodeCMTimeForKey:"), key)
-	return rv
-}
-
-// Encodes a property list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1410643-encodepropertylist?language=objc
-func (c_ Coder) EncodePropertyList(aPropertyList objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodePropertyList:"), aPropertyList)
-}
-
-// Decodes and returns a double value that was previously encoded with either [foundation/nscoder/encodefloat] or [foundation/nscoder/encodedouble] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409374-decodedoubleforkey?language=objc
-func (c_ Coder) DecodeDoubleForKey(key string) float64 {
-	rv := objc.Call[float64](c_, objc.Sel("decodeDoubleForKey:"), key)
-	return rv
-}
-
-// Decodes an object for the key, restricted to the specified class. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442558-decodeobjectofclass?language=objc
-func (c_ Coder) DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClass:forKey:"), aClass, key)
-	return rv
-}
-
-// Encodes a rectangle structure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391263-encoderect?language=objc
-func (c_ Coder) EncodeRect(rect Rect) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeRect:"), rect)
-}
-
-// An encoding method for subclasses to override such that it creates a proxy, rather than a copy, when decoded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1416279-encodebyrefobject?language=objc
-func (c_ Coder) EncodeByrefObject(anObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeByrefObject:"), anObject)
-}
-
-// Decodes and returns an NSSize structure that was previously encoded with [foundation/nscoder/encodesize]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391253-decodesizeforkey?language=objc
-func (c_ Coder) DecodeSizeForKey(key string) Size {
-	rv := objc.Call[Size](c_, objc.Sel("decodeSizeForKey:"), key)
-	return rv
-}
-
-// Encodes a buffer of data, given its length and a pointer, and associates it with a string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1413078-encodebytes?language=objc
-func (c_ Coder) EncodeBytesLengthForKey(bytes *uint8, length uint, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBytes:length:forKey:"), bytes, length, key)
-}
-
-// Encodes an integer value and associates it with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411551-encodeinteger?language=objc
-func (c_ Coder) EncodeIntegerForKey(value int, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeInteger:forKey:"), value, key)
-}
-
-// Decodes a buffer of data that was previously encoded with [foundation/nscoder/encodebytes] and associated with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411987-decodebytesforkey?language=objc
-func (c_ Coder) DecodeBytesForKeyReturnedLength(key string, lengthp *uint) *uint8 {
-	rv := objc.Call[*uint8](c_, objc.Sel("decodeBytesForKey:returnedLength:"), key, lengthp)
-	return rv
-}
-
-// Decodes a series of potentially different Objective-C types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442577-decodevaluesofobjctypes?language=objc
-func (c_ Coder) DecodeValuesOfObjCTypes(types *uint8, args ...any) {
-	objc.Call[objc.Void](c_, objc.Sel("decodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
-}
-
-// Decodes and returns a boolean value that was previously encoded with [foundation/nscoder/encodebool] and associated with the string key. [Full Topic]
+// Decodes and returns a boolean value that was previously encoded with encodeBool:forKey: and associated with the string key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409293-decodeboolforkey?language=objc
 func (c_ Coder) DecodeBoolForKey(key string) bool {
@@ -563,26 +549,26 @@ func (c_ Coder) DecodeArrayOfObjectsOfClassesForKey(classes ISet, key string) []
 	return rv
 }
 
-// Encodes a value of the given type at the given address. [Full Topic]
+// Returns the Core Media time range structure associated with a given key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414648-encodevalueofobjctype?language=objc
-func (c_ Coder) EncodeValueOfObjCTypeAt(type_ *uint8, addr unsafe.Pointer) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeValueOfObjCType:at:"), type_, addr)
-}
-
-// Encodes a size structure and associates it with the given string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391176-encodesize?language=objc
-func (c_ Coder) EncodeSizeForKey(size Size, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeSize:forKey:"), size, key)
-}
-
-// Decodes a property list that was previously encoded with [foundation/nscoder/encodepropertylist]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411916-decodepropertylist?language=objc
-func (c_ Coder) DecodePropertyList() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodePropertyList"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1385718-decodecmtimerangeforkey?language=objc
+func (c_ Coder) DecodeCMTimeRangeForKey(key string) coremedia.TimeRange {
+	rv := objc.Call[coremedia.TimeRange](c_, objc.Sel("decodeCMTimeRangeForKey:"), key)
 	return rv
+}
+
+// Encodes a floating point value and associates it with the string key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414384-encodefloat?language=objc
+func (c_ Coder) EncodeFloatForKey(value float32, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeFloat:forKey:"), value, key)
+}
+
+// Encodes a series of values of potentially differing Objective-C types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442581-encodevaluesofobjctypes?language=objc
+func (c_ Coder) EncodeValuesOfObjCTypes(types *uint8, args ...any) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
 }
 
 // Returns a Boolean value that indicates whether an encoded value is available for a string. [Full Topic]
@@ -593,32 +579,33 @@ func (c_ Coder) ContainsValueForKey(key string) bool {
 	return rv
 }
 
-// Signals to this coder that the decode operation has failed. [Full Topic]
+// Encodes a double-precision floating point value and associates it with the string key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411455-failwitherror?language=objc
-func (c_ Coder) FailWithError(error IError) {
-	objc.Call[objc.Void](c_, objc.Sel("failWithError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409008-encodedouble?language=objc
+func (c_ Coder) EncodeDoubleForKey(value float64, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeDouble:forKey:"), value, key)
 }
 
-// Encodes a size structure. [Full Topic]
+// Encodes a C integer value and associates it with the string key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391291-encodesize?language=objc
-func (c_ Coder) EncodeSize(size Size) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeSize:"), size)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1413906-encodeint?language=objc
+func (c_ Coder) EncodeIntForKey(value int, key string) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeInt:forKey:"), value, key)
 }
 
-// Encodes a point and associates it with the string key. [Full Topic]
+// Returns the Core Media time mapping structure associated with a given key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391114-encodepoint?language=objc
-func (c_ Coder) EncodePointForKey(point Point, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodePoint:forKey:"), point, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1389860-decodecmtimemappingforkey?language=objc
+func (c_ Coder) DecodeCMTimeMappingForKey(key string) coremedia.TimeMapping {
+	rv := objc.Call[coremedia.TimeMapping](c_, objc.Sel("decodeCMTimeMappingForKey:"), key)
+	return rv
 }
 
-// Decodes and returns an NSRect structure that was previously encoded with [foundation/nscoder/encoderect]. [Full Topic]
+// Decodes a buffer of data whose types are unspecified. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1391269-decoderect?language=objc
-func (c_ Coder) DecodeRect() Rect {
-	rv := objc.Call[Rect](c_, objc.Sel("decodeRect"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1415441-decodebyteswithreturnedlength?language=objc
+func (c_ Coder) DecodeBytesWithReturnedLength(lengthp *uint) unsafe.Pointer {
+	rv := objc.Call[unsafe.Pointer](c_, objc.Sel("decodeBytesWithReturnedLength:"), lengthp)
 	return rv
 }
 
@@ -629,39 +616,28 @@ func (c_ Coder) EncodeInt64ForKey(value int64, key string) {
 	objc.Call[objc.Void](c_, objc.Sel("encodeInt64:forKey:"), value, key)
 }
 
-// Encodes a 32-bit integer value and associates it with the string key. [Full Topic]
+// An error in the top-level encode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1412395-encodeint32?language=objc
-func (c_ Coder) EncodeInt32ForKey(value int32, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeInt32:forKey:"), value, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1643263-error?language=objc
+func (c_ Coder) Error() Error {
+	rv := objc.Call[Error](c_, objc.Sel("error"))
+	return rv
 }
 
-// An encoding method for subclasses to override to conditionally encode an object, preserving common references to it. [Full Topic]
+// The action the coder should take when decoding fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1415196-encodeconditionalobject?language=objc
-func (c_ Coder) EncodeConditionalObject(object objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeConditionalObject:"), object)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1642984-decodingfailurepolicy?language=objc
+func (c_ Coder) DecodingFailurePolicy() DecodingFailurePolicy {
+	rv := objc.Call[DecodingFailurePolicy](c_, objc.Sel("decodingFailurePolicy"))
+	return rv
 }
 
-// Encodes an array of the given Objective-C type, provided the number of items and a pointer. [Full Topic]
+// The set of coded classes allowed for secure coding. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1417865-encodearrayofobjctype?language=objc
-func (c_ Coder) EncodeArrayOfObjCTypeCountAt(type_ *uint8, count uint, array unsafe.Pointer) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeArrayOfObjCType:count:at:"), type_, count, array)
-}
-
-// An encoding method for subclasses to override such that it creates a copy, rather than a proxy, when decoded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1418225-encodebycopyobject?language=objc
-func (c_ Coder) EncodeBycopyObject(anObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBycopyObject:"), anObject)
-}
-
-// Encodes a Boolean value and associates it with the string key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409236-encodebool?language=objc
-func (c_ Coder) EncodeBoolForKey(value bool, key string) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBool:forKey:"), value, key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1412486-allowedclasses?language=objc
+func (c_ Coder) AllowedClasses() Set {
+	rv := objc.Call[Set](c_, objc.Sel("allowedClasses"))
+	return rv
 }
 
 // A Boolean value that indicates whether the receiver supports keyed coding of objects. [Full Topic]
@@ -680,34 +656,10 @@ func (c_ Coder) SystemVersion() int {
 	return rv
 }
 
-// The set of coded classes allowed for secure coding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1412486-allowedclasses?language=objc
-func (c_ Coder) AllowedClasses() Set {
-	rv := objc.Call[Set](c_, objc.Sel("allowedClasses"))
-	return rv
-}
-
 // Indicates whether the archiver requires all archived classes to resist object substitution attacks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1409845-requiressecurecoding?language=objc
 func (c_ Coder) RequiresSecureCoding() bool {
 	rv := objc.Call[bool](c_, objc.Sel("requiresSecureCoding"))
-	return rv
-}
-
-// An error in the top-level encode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1643263-error?language=objc
-func (c_ Coder) Error() Error {
-	rv := objc.Call[Error](c_, objc.Sel("error"))
-	return rv
-}
-
-// The action the coder should take when decoding fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1642984-decodingfailurepolicy?language=objc
-func (c_ Coder) DecodingFailurePolicy() DecodingFailurePolicy {
-	rv := objc.Call[DecodingFailurePolicy](c_, objc.Sel("decodingFailurePolicy"))
 	return rv
 }

@@ -20,15 +20,15 @@ type _PictureTakerClass struct {
 // An interface definition for the [PictureTaker] class.
 type IPictureTaker interface {
 	appkit.IPanel
-	Mirroring() bool
-	SetMirroring(b bool)
-	InputImage() appkit.Image
-	BeginPictureTakerSheetForWindowWithDelegateDidEndSelectorContextInfo(aWindow appkit.IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
 	PopUpRecentsMenuForViewWithDelegateDidEndSelectorContextInfo(aView appkit.IView, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
+	InputImage() appkit.Image
+	Mirroring() bool
 	SetInputImage(image appkit.IImage)
-	OutputImage() appkit.Image
 	RunModal() int
 	BeginPictureTakerWithDelegateDidEndSelectorContextInfo(delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
+	BeginPictureTakerSheetForWindowWithDelegateDidEndSelectorContextInfo(aWindow appkit.IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
+	SetMirroring(b bool)
+	OutputImage() appkit.Image
 }
 
 // The IKPictureTaker class represents a panel that allows users to choose images by browsing the file system. The picture taker panel provides an Open Recent menu, supports image cropping, and supports taking snapshots from an iSight or other digital camera. [Full Topic]
@@ -90,33 +90,11 @@ func NewPictureTakerWithContentRectStyleMaskBackingDeferScreen(contentRect found
 	return instance
 }
 
-func (p_ PictureTaker) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) PictureTaker {
-	rv := objc.Call[PictureTaker](p_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
+// Displays the Open Recent popup menu associated with the  picture taker. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewPictureTakerWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) PictureTaker {
-	instance := PictureTakerClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
-// Returns whether video mirroring is enabled during snapshots. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504121-mirroring?language=objc
-func (p_ PictureTaker) Mirroring() bool {
-	rv := objc.Call[bool](p_, objc.Sel("mirroring"))
-	return rv
-}
-
-// Controls whether the receiver enables video mirroring during snapshots. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504915-setmirroring?language=objc
-func (p_ PictureTaker) SetMirroring(b bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setMirroring:"), b)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504753-popuprecentsmenuforview?language=objc
+func (p_ PictureTaker) PopUpRecentsMenuForViewWithDelegateDidEndSelectorContextInfo(aView appkit.IView, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
+	objc.Call[objc.Void](p_, objc.Sel("popUpRecentsMenuForView:withDelegate:didEndSelector:contextInfo:"), aView, delegate, didEndSelector, contextInfo)
 }
 
 // Returns the  input  image associated with the picture taker. [Full Topic]
@@ -127,6 +105,36 @@ func (p_ PictureTaker) InputImage() appkit.Image {
 	return rv
 }
 
+// Returns whether video mirroring is enabled during snapshots. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504121-mirroring?language=objc
+func (p_ PictureTaker) Mirroring() bool {
+	rv := objc.Call[bool](p_, objc.Sel("mirroring"))
+	return rv
+}
+
+// Set the image input for the picture taker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503724-setinputimage?language=objc
+func (p_ PictureTaker) SetInputImage(image appkit.IImage) {
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), image)
+}
+
+// Opens a modal picture taker dialog. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503911-runmodal?language=objc
+func (p_ PictureTaker) RunModal() int {
+	rv := objc.Call[int](p_, objc.Sel("runModal"))
+	return rv
+}
+
+// Opens a picture taker pane. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503448-beginpicturetakerwithdelegate?language=objc
+func (p_ PictureTaker) BeginPictureTakerWithDelegateDidEndSelectorContextInfo(delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
+	objc.Call[objc.Void](p_, objc.Sel("beginPictureTakerWithDelegate:didEndSelector:contextInfo:"), delegate, didEndSelector, contextInfo)
+}
+
 // Opens a picture taker as a sheet whose parent is the specified window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504302-beginpicturetakersheetforwindow?language=objc
@@ -134,11 +142,11 @@ func (p_ PictureTaker) BeginPictureTakerSheetForWindowWithDelegateDidEndSelector
 	objc.Call[objc.Void](p_, objc.Sel("beginPictureTakerSheetForWindow:withDelegate:didEndSelector:contextInfo:"), aWindow, delegate, didEndSelector, contextInfo)
 }
 
-// Displays the Open Recent popup menu associated with the  picture taker. [Full Topic]
+// Controls whether the receiver enables video mirroring during snapshots. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504753-popuprecentsmenuforview?language=objc
-func (p_ PictureTaker) PopUpRecentsMenuForViewWithDelegateDidEndSelectorContextInfo(aView appkit.IView, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("popUpRecentsMenuForView:withDelegate:didEndSelector:contextInfo:"), aView, delegate, didEndSelector, contextInfo)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504915-setmirroring?language=objc
+func (p_ PictureTaker) SetMirroring(b bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setMirroring:"), b)
 }
 
 // Returns a shared IKPictureTaker instance, creating it if necessary. [Full Topic]
@@ -156,32 +164,10 @@ func PictureTaker_PictureTaker() PictureTaker {
 	return PictureTakerClass.PictureTaker()
 }
 
-// Set the image input for the picture taker. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503724-setinputimage?language=objc
-func (p_ PictureTaker) SetInputImage(image appkit.IImage) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), image)
-}
-
 // Returns the edited image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504563-outputimage?language=objc
 func (p_ PictureTaker) OutputImage() appkit.Image {
 	rv := objc.Call[appkit.Image](p_, objc.Sel("outputImage"))
 	return rv
-}
-
-// Opens a modal picture taker dialog. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503911-runmodal?language=objc
-func (p_ PictureTaker) RunModal() int {
-	rv := objc.Call[int](p_, objc.Sel("runModal"))
-	return rv
-}
-
-// Opens a picture taker pane. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503448-beginpicturetakerwithdelegate?language=objc
-func (p_ PictureTaker) BeginPictureTakerWithDelegateDidEndSelectorContextInfo(delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("beginPictureTakerWithDelegate:didEndSelector:contextInfo:"), delegate, didEndSelector, contextInfo)
 }

@@ -11,56 +11,36 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate?language=objc
 type PGestureRecognizerDelegate interface {
 	// optional
-	GestureRecognizerShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	HasGestureRecognizerShouldRequireFailureOfGestureRecognizer() bool
-
-	// optional
-	GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool
-	HasGestureRecognizerShouldReceiveTouch() bool
-
-	// optional
-	GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	HasGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer() bool
-
-	// optional
-	GestureRecognizerShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool
-	HasGestureRecognizerShouldAttemptToRecognizeWithEvent() bool
-
-	// optional
 	GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool
 	HasGestureRecognizerShouldBegin() bool
 
 	// optional
-	GestureRecognizerShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	HasGestureRecognizerShouldBeRequiredToFailByGestureRecognizer() bool
+	GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool
+	HasGestureRecognizerShouldReceiveTouch() bool
 }
 
 // A delegate implementation builder for the [PGestureRecognizerDelegate] protocol.
 type GestureRecognizerDelegate struct {
-	_GestureRecognizerShouldRequireFailureOfGestureRecognizer            func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	_GestureRecognizerShouldReceiveTouch                                 func(gestureRecognizer GestureRecognizer, touch Touch) bool
-	_GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	_GestureRecognizerShouldAttemptToRecognizeWithEvent                  func(gestureRecognizer GestureRecognizer, event Event) bool
-	_GestureRecognizerShouldBegin                                        func(gestureRecognizer GestureRecognizer) bool
-	_GestureRecognizerShouldBeRequiredToFailByGestureRecognizer          func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
+	_GestureRecognizerShouldBegin        func(gestureRecognizer GestureRecognizer) bool
+	_GestureRecognizerShouldReceiveTouch func(gestureRecognizer GestureRecognizer, touch Touch) bool
 }
 
-func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldRequireFailureOfGestureRecognizer() bool {
-	return di._GestureRecognizerShouldRequireFailureOfGestureRecognizer != nil
+func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldBegin() bool {
+	return di._GestureRecognizerShouldBegin != nil
 }
 
-// Asks the delegate if the current gesture recognizer must wait to recognize its gesture until the specified gesture recognizer fails. [Full Topic]
+// Asks the delegate if a gesture recognizer should transition out of the Possible (NSGestureRecognizerStatePossible) state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1527318-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldRequireFailureOfGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizerShouldRequireFailureOfGestureRecognizer = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535463-gesturerecognizershouldbegin?language=objc
+func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldBegin(f func(gestureRecognizer GestureRecognizer) bool) {
+	di._GestureRecognizerShouldBegin = f
 }
 
-// Asks the delegate if the current gesture recognizer must wait to recognize its gesture until the specified gesture recognizer fails. [Full Topic]
+// Asks the delegate if a gesture recognizer should transition out of the Possible (NSGestureRecognizerStatePossible) state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1527318-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) GestureRecognizerShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizerShouldRequireFailureOfGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535463-gesturerecognizershouldbegin?language=objc
+func (di *GestureRecognizerDelegate) GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool {
+	return di._GestureRecognizerShouldBegin(gestureRecognizer)
 }
 func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldReceiveTouch() bool {
 	return di._GestureRecognizerShouldReceiveTouch != nil
@@ -79,74 +59,6 @@ func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldReceiveTouch(f fu
 func (di *GestureRecognizerDelegate) GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
 	return di._GestureRecognizerShouldReceiveTouch(gestureRecognizer, touch)
 }
-func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer() bool {
-	return di._GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer != nil
-}
-
-// Asks the delegate if two gesture recognizers should be allowed to recognize their gestures simultaneously. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529773-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer = f
-}
-
-// Asks the delegate if two gesture recognizers should be allowed to recognize their gestures simultaneously. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529773-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
-}
-func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldAttemptToRecognizeWithEvent() bool {
-	return di._GestureRecognizerShouldAttemptToRecognizeWithEvent != nil
-}
-
-// Asks the delegate if a gesture recognizer should attempt to recognize gestures for a particular event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529420-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldAttemptToRecognizeWithEvent(f func(gestureRecognizer GestureRecognizer, event Event) bool) {
-	di._GestureRecognizerShouldAttemptToRecognizeWithEvent = f
-}
-
-// Asks the delegate if a gesture recognizer should attempt to recognize gestures for a particular event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529420-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) GestureRecognizerShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool {
-	return di._GestureRecognizerShouldAttemptToRecognizeWithEvent(gestureRecognizer, event)
-}
-func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldBegin() bool {
-	return di._GestureRecognizerShouldBegin != nil
-}
-
-// Asks the delegate if a gesture recognizer should transition out of the Possible (NSGestureRecognizerStatePossible) state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535463-gesturerecognizershouldbegin?language=objc
-func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldBegin(f func(gestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizerShouldBegin = f
-}
-
-// Asks the delegate if a gesture recognizer should transition out of the Possible (NSGestureRecognizerStatePossible) state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535463-gesturerecognizershouldbegin?language=objc
-func (di *GestureRecognizerDelegate) GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizerShouldBegin(gestureRecognizer)
-}
-func (di *GestureRecognizerDelegate) HasGestureRecognizerShouldBeRequiredToFailByGestureRecognizer() bool {
-	return di._GestureRecognizerShouldBeRequiredToFailByGestureRecognizer != nil
-}
-
-// Asks the delegate if the current gesture recognizer must fail before another gesture recognizer is allowed to recognize its gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535422-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) SetGestureRecognizerShouldBeRequiredToFailByGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizerShouldBeRequiredToFailByGestureRecognizer = f
-}
-
-// Asks the delegate if the current gesture recognizer must fail before another gesture recognizer is allowed to recognize its gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535422-gesturerecognizer?language=objc
-func (di *GestureRecognizerDelegate) GestureRecognizerShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizerShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
-}
 
 // ensure impl type implements protocol interface
 var _ PGestureRecognizerDelegate = (*GestureRecognizerDelegateObject)(nil)
@@ -154,54 +66,6 @@ var _ PGestureRecognizerDelegate = (*GestureRecognizerDelegateObject)(nil)
 // A concrete type for the [PGestureRecognizerDelegate] protocol.
 type GestureRecognizerDelegateObject struct {
 	objc.Object
-}
-
-func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldRequireFailureOfGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"))
-}
-
-// Asks the delegate if the current gesture recognizer must wait to recognize its gesture until the specified gesture recognizer fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1527318-gesturerecognizer?language=objc
-func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldReceiveTouch() bool {
-	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldReceiveTouch:"))
-}
-
-// Called, for a new touch, before the system calls the touchesBegan:withEvent: method on the gesture recognizer. Return NO to prevent the gesture recognizer from seeing this touch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/2544787-gesturerecognizer?language=objc
-func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldReceiveTouch:"), gestureRecognizer, touch)
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"))
-}
-
-// Asks the delegate if two gesture recognizers should be allowed to recognize their gestures simultaneously. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529773-gesturerecognizer?language=objc
-func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldAttemptToRecognizeWithEvent() bool {
-	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"))
-}
-
-// Asks the delegate if a gesture recognizer should attempt to recognize gestures for a particular event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529420-gesturerecognizer?language=objc
-func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), gestureRecognizer, event)
-	return rv
 }
 
 func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldBegin() bool {
@@ -216,14 +80,14 @@ func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldBegin(gestureRe
 	return rv
 }
 
-func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldBeRequiredToFailByGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"))
+func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldReceiveTouch() bool {
+	return g_.RespondsToSelector(objc.Sel("gestureRecognizer:shouldReceiveTouch:"))
 }
 
-// Asks the delegate if the current gesture recognizer must fail before another gesture recognizer is allowed to recognize its gesture. [Full Topic]
+// Called, for a new touch, before the system calls the touchesBegan:withEvent: method on the gesture recognizer. Return NO to prevent the gesture recognizer from seeing this touch. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535422-gesturerecognizer?language=objc
-func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/2544787-gesturerecognizer?language=objc
+func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldReceiveTouch:"), gestureRecognizer, touch)
 	return rv
 }

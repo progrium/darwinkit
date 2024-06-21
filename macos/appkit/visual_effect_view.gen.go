@@ -19,17 +19,17 @@ type _VisualEffectViewClass struct {
 // An interface definition for the [VisualEffectView] class.
 type IVisualEffectView interface {
 	IView
-	InteriorBackgroundStyle() BackgroundStyle
-	Material() VisualEffectMaterial
-	SetMaterial(value VisualEffectMaterial)
-	BlendingMode() VisualEffectBlendingMode
-	SetBlendingMode(value VisualEffectBlendingMode)
+	State() VisualEffectState
+	SetState(value VisualEffectState)
 	IsEmphasized() bool
 	SetEmphasized(value bool)
 	MaskImage() Image
 	SetMaskImage(value IImage)
-	State() VisualEffectState
-	SetState(value VisualEffectState)
+	InteriorBackgroundStyle() BackgroundStyle
+	BlendingMode() VisualEffectBlendingMode
+	SetBlendingMode(value VisualEffectBlendingMode)
+	Material() VisualEffectMaterial
+	SetMaterial(value VisualEffectMaterial)
 }
 
 // A view that adds translucency and vibrancy effects to the views in your interface. [Full Topic]
@@ -79,42 +79,19 @@ func NewVisualEffectViewWithFrame(frameRect foundation.Rect) VisualEffectView {
 	return instance
 }
 
-// The view’s interior background style. [Full Topic]
+// A value that indicates whether a view has a visual effect applied. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1529998-interiorbackgroundstyle?language=objc
-func (v_ VisualEffectView) InteriorBackgroundStyle() BackgroundStyle {
-	rv := objc.Call[BackgroundStyle](v_, objc.Sel("interiorBackgroundStyle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1532403-state?language=objc
+func (v_ VisualEffectView) State() VisualEffectState {
+	rv := objc.Call[VisualEffectState](v_, objc.Sel("state"))
 	return rv
 }
 
-// The material shown by the visual effect view. [Full Topic]
+// A value that indicates whether a view has a visual effect applied. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1526623-material?language=objc
-func (v_ VisualEffectView) Material() VisualEffectMaterial {
-	rv := objc.Call[VisualEffectMaterial](v_, objc.Sel("material"))
-	return rv
-}
-
-// The material shown by the visual effect view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1526623-material?language=objc
-func (v_ VisualEffectView) SetMaterial(value VisualEffectMaterial) {
-	objc.Call[objc.Void](v_, objc.Sel("setMaterial:"), value)
-}
-
-// A value indicating how the view’s contents blend with the surrounding content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535468-blendingmode?language=objc
-func (v_ VisualEffectView) BlendingMode() VisualEffectBlendingMode {
-	rv := objc.Call[VisualEffectBlendingMode](v_, objc.Sel("blendingMode"))
-	return rv
-}
-
-// A value indicating how the view’s contents blend with the surrounding content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535468-blendingmode?language=objc
-func (v_ VisualEffectView) SetBlendingMode(value VisualEffectBlendingMode) {
-	objc.Call[objc.Void](v_, objc.Sel("setBlendingMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1532403-state?language=objc
+func (v_ VisualEffectView) SetState(value VisualEffectState) {
+	objc.Call[objc.Void](v_, objc.Sel("setState:"), value)
 }
 
 // A Boolean value indicating whether to emphasize the look of the material. [Full Topic]
@@ -147,17 +124,40 @@ func (v_ VisualEffectView) SetMaskImage(value IImage) {
 	objc.Call[objc.Void](v_, objc.Sel("setMaskImage:"), value)
 }
 
-// A value that indicates whether a view has a visual effect applied. [Full Topic]
+// The view’s interior background style. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1532403-state?language=objc
-func (v_ VisualEffectView) State() VisualEffectState {
-	rv := objc.Call[VisualEffectState](v_, objc.Sel("state"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1529998-interiorbackgroundstyle?language=objc
+func (v_ VisualEffectView) InteriorBackgroundStyle() BackgroundStyle {
+	rv := objc.Call[BackgroundStyle](v_, objc.Sel("interiorBackgroundStyle"))
 	return rv
 }
 
-// A value that indicates whether a view has a visual effect applied. [Full Topic]
+// A value indicating how the view’s contents blend with the surrounding content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1532403-state?language=objc
-func (v_ VisualEffectView) SetState(value VisualEffectState) {
-	objc.Call[objc.Void](v_, objc.Sel("setState:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535468-blendingmode?language=objc
+func (v_ VisualEffectView) BlendingMode() VisualEffectBlendingMode {
+	rv := objc.Call[VisualEffectBlendingMode](v_, objc.Sel("blendingMode"))
+	return rv
+}
+
+// A value indicating how the view’s contents blend with the surrounding content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535468-blendingmode?language=objc
+func (v_ VisualEffectView) SetBlendingMode(value VisualEffectBlendingMode) {
+	objc.Call[objc.Void](v_, objc.Sel("setBlendingMode:"), value)
+}
+
+// The material shown by the visual effect view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1526623-material?language=objc
+func (v_ VisualEffectView) Material() VisualEffectMaterial {
+	rv := objc.Call[VisualEffectMaterial](v_, objc.Sel("material"))
+	return rv
+}
+
+// The material shown by the visual effect view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1526623-material?language=objc
+func (v_ VisualEffectView) SetMaterial(value VisualEffectMaterial) {
+	objc.Call[objc.Void](v_, objc.Sel("setMaterial:"), value)
 }

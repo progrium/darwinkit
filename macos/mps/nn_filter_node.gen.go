@@ -18,17 +18,17 @@ type _NNFilterNodeClass struct {
 // An interface definition for the [NNFilterNode] class.
 type INNFilterNode interface {
 	objc.IObject
-	GradientFilterWithSources(gradientImages []INNImageNode) NNGradientFilterNode
 	GradientFiltersWithSources(gradientImages []INNImageNode) []NNGradientFilterNode
-	TrainingGraphWithSourceGradientNodeHandler(gradientImage INNImageNode, nodeHandler GradientNodeBlock) []NNFilterNode
 	GradientFiltersWithSource(gradientImage INNImageNode) []NNGradientFilterNode
 	GradientFilterWithSource(gradientImage INNImageNode) NNGradientFilterNode
+	TrainingGraphWithSourceGradientNodeHandler(gradientImage INNImageNode, nodeHandler GradientNodeBlock) []NNFilterNode
+	GradientFilterWithSources(gradientImages []INNImageNode) NNGradientFilterNode
+	ResultState() NNStateNode
 	ResultImage() NNImageNode
+	ResultStates() []NNStateNode
 	PaddingPolicy() NNPaddingObject
 	SetPaddingPolicy(value PNNPadding)
 	SetPaddingPolicyObject(valueObject objc.IObject)
-	ResultState() NNStateNode
-	ResultStates() []NNStateNode
 	Label() string
 	SetLabel(value string)
 }
@@ -68,25 +68,9 @@ func (n_ NNFilterNode) Init() NNFilterNode {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2948052-gradientfilterwithsources?language=objc
-func (n_ NNFilterNode) GradientFilterWithSources(gradientImages []INNImageNode) NNGradientFilterNode {
-	rv := objc.Call[NNGradientFilterNode](n_, objc.Sel("gradientFilterWithSources:"), gradientImages)
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2951955-gradientfilterswithsources?language=objc
 func (n_ NNFilterNode) GradientFiltersWithSources(gradientImages []INNImageNode) []NNGradientFilterNode {
 	rv := objc.Call[[]NNGradientFilterNode](n_, objc.Sel("gradientFiltersWithSources:"), gradientImages)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/3020688-traininggraphwithsourcegradient?language=objc
-func (n_ NNFilterNode) TrainingGraphWithSourceGradientNodeHandler(gradientImage INNImageNode, nodeHandler GradientNodeBlock) []NNFilterNode {
-	rv := objc.Call[[]NNFilterNode](n_, objc.Sel("trainingGraphWithSourceGradient:nodeHandler:"), gradientImage, nodeHandler)
 	return rv
 }
 
@@ -108,9 +92,41 @@ func (n_ NNFilterNode) GradientFilterWithSource(gradientImage INNImageNode) NNGr
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/3020688-traininggraphwithsourcegradient?language=objc
+func (n_ NNFilterNode) TrainingGraphWithSourceGradientNodeHandler(gradientImage INNImageNode, nodeHandler GradientNodeBlock) []NNFilterNode {
+	rv := objc.Call[[]NNFilterNode](n_, objc.Sel("trainingGraphWithSourceGradient:nodeHandler:"), gradientImage, nodeHandler)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2948052-gradientfilterwithsources?language=objc
+func (n_ NNFilterNode) GradientFilterWithSources(gradientImages []INNImageNode) NNGradientFilterNode {
+	rv := objc.Call[NNGradientFilterNode](n_, objc.Sel("gradientFilterWithSources:"), gradientImages)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866503-resultstate?language=objc
+func (n_ NNFilterNode) ResultState() NNStateNode {
+	rv := objc.Call[NNStateNode](n_, objc.Sel("resultState"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866492-resultimage?language=objc
 func (n_ NNFilterNode) ResultImage() NNImageNode {
 	rv := objc.Call[NNImageNode](n_, objc.Sel("resultImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866486-resultstates?language=objc
+func (n_ NNFilterNode) ResultStates() []NNStateNode {
+	rv := objc.Call[[]NNStateNode](n_, objc.Sel("resultStates"))
 	return rv
 }
 
@@ -135,22 +151,6 @@ func (n_ NNFilterNode) SetPaddingPolicy(value PNNPadding) {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866496-paddingpolicy?language=objc
 func (n_ NNFilterNode) SetPaddingPolicyObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](n_, objc.Sel("setPaddingPolicy:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866503-resultstate?language=objc
-func (n_ NNFilterNode) ResultState() NNStateNode {
-	rv := objc.Call[NNStateNode](n_, objc.Sel("resultState"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866486-resultstates?language=objc
-func (n_ NNFilterNode) ResultStates() []NNStateNode {
-	rv := objc.Call[[]NNStateNode](n_, objc.Sel("resultStates"))
-	return rv
 }
 
 //	[Full Topic]

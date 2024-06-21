@@ -20,22 +20,6 @@ type PSwipeTransition interface {
 	HasColor() bool
 
 	// optional
-	SetExtent(value coregraphics.Rect)
-	HasSetExtent() bool
-
-	// optional
-	Extent() coregraphics.Rect
-	HasExtent() bool
-
-	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
@@ -50,6 +34,22 @@ type PSwipeTransition interface {
 	// optional
 	Opacity() float32
 	HasOpacity() bool
+
+	// optional
+	SetExtent(value coregraphics.Rect)
+	HasSetExtent() bool
+
+	// optional
+	Extent() coregraphics.Rect
+	HasExtent() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
 }
 
 // ensure impl type implements protocol interface
@@ -80,52 +80,6 @@ func (s_ SwipeTransitionObject) HasColor() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228776-color?language=objc
 func (s_ SwipeTransitionObject) Color() Color {
 	rv := objc.Call[Color](s_, objc.Sel("color"))
-	return rv
-}
-
-func (s_ SwipeTransitionObject) HasSetExtent() bool {
-	return s_.RespondsToSelector(objc.Sel("setExtent:"))
-}
-
-// The extent of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228777-extent?language=objc
-func (s_ SwipeTransitionObject) SetExtent(value coregraphics.Rect) {
-	objc.Call[objc.Void](s_, objc.Sel("setExtent:"), value)
-}
-
-func (s_ SwipeTransitionObject) HasExtent() bool {
-	return s_.RespondsToSelector(objc.Sel("extent"))
-}
-
-// The extent of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228777-extent?language=objc
-func (s_ SwipeTransitionObject) Extent() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](s_, objc.Sel("extent"))
-	return rv
-}
-
-func (s_ SwipeTransitionObject) HasSetAngle() bool {
-	return s_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-// The angle of the swipe. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
-func (s_ SwipeTransitionObject) SetAngle(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setAngle:"), value)
-}
-
-func (s_ SwipeTransitionObject) HasAngle() bool {
-	return s_.RespondsToSelector(objc.Sel("angle"))
-}
-
-// The angle of the swipe. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
-func (s_ SwipeTransitionObject) Angle() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("angle"))
 	return rv
 }
 
@@ -172,5 +126,51 @@ func (s_ SwipeTransitionObject) HasOpacity() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228778-opacity?language=objc
 func (s_ SwipeTransitionObject) Opacity() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("opacity"))
+	return rv
+}
+
+func (s_ SwipeTransitionObject) HasSetExtent() bool {
+	return s_.RespondsToSelector(objc.Sel("setExtent:"))
+}
+
+// The extent of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228777-extent?language=objc
+func (s_ SwipeTransitionObject) SetExtent(value coregraphics.Rect) {
+	objc.Call[objc.Void](s_, objc.Sel("setExtent:"), value)
+}
+
+func (s_ SwipeTransitionObject) HasExtent() bool {
+	return s_.RespondsToSelector(objc.Sel("extent"))
+}
+
+// The extent of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228777-extent?language=objc
+func (s_ SwipeTransitionObject) Extent() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](s_, objc.Sel("extent"))
+	return rv
+}
+
+func (s_ SwipeTransitionObject) HasSetAngle() bool {
+	return s_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle of the swipe. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
+func (s_ SwipeTransitionObject) SetAngle(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setAngle:"), value)
+}
+
+func (s_ SwipeTransitionObject) HasAngle() bool {
+	return s_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle of the swipe. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
+func (s_ SwipeTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("angle"))
 	return rv
 }

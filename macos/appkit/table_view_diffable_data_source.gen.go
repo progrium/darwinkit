@@ -18,14 +18,14 @@ type _TableViewDiffableDataSourceClass struct {
 // An interface definition for the [TableViewDiffableDataSource] class.
 type ITableViewDiffableDataSource interface {
 	objc.IObject
-	SectionIdentifierForRow(row int) objc.Object
-	RowForSectionIdentifier(identifier objc.IObject) int
 	RowForItemIdentifier(identifier objc.IObject) int
 	ItemIdentifierForRow(row int) objc.Object
-	SectionHeaderViewProvider() TableViewDiffableDataSourceSectionHeaderViewProvider
-	SetSectionHeaderViewProvider(value TableViewDiffableDataSourceSectionHeaderViewProvider)
+	RowForSectionIdentifier(identifier objc.IObject) int
+	SectionIdentifierForRow(row int) objc.Object
 	RowViewProvider() TableViewDiffableDataSourceRowProvider
 	SetRowViewProvider(value TableViewDiffableDataSourceRowProvider)
+	SectionHeaderViewProvider() TableViewDiffableDataSourceSectionHeaderViewProvider
+	SetSectionHeaderViewProvider(value TableViewDiffableDataSourceSectionHeaderViewProvider)
 	DefaultRowAnimation() TableViewAnimationOptions
 	SetDefaultRowAnimation(value TableViewAnimationOptions)
 }
@@ -77,22 +77,6 @@ func (t_ TableViewDiffableDataSource) Init() TableViewDiffableDataSource {
 	return rv
 }
 
-// Returns the identifier of the section containing the specified row in the snapshot. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553221-sectionidentifierforrow?language=objc
-func (t_ TableViewDiffableDataSource) SectionIdentifierForRow(row int) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("sectionIdentifierForRow:"), row)
-	return rv
-}
-
-// Returns a row for the section with the specified identifier in the table view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553218-rowforsectionidentifier?language=objc
-func (t_ TableViewDiffableDataSource) RowForSectionIdentifier(identifier objc.IObject) int {
-	rv := objc.Call[int](t_, objc.Sel("rowForSectionIdentifier:"), identifier)
-	return rv
-}
-
 // Returns a row for the item with the specified identifier in the table view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553217-rowforitemidentifier?language=objc
@@ -109,19 +93,20 @@ func (t_ TableViewDiffableDataSource) ItemIdentifierForRow(row int) objc.Object 
 	return rv
 }
 
-// The closure that configures and returns the table view’s section header views from the diffable data source. [Full Topic]
+// Returns a row for the section with the specified identifier in the table view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553220-sectionheaderviewprovider?language=objc
-func (t_ TableViewDiffableDataSource) SectionHeaderViewProvider() TableViewDiffableDataSourceSectionHeaderViewProvider {
-	rv := objc.Call[TableViewDiffableDataSourceSectionHeaderViewProvider](t_, objc.Sel("sectionHeaderViewProvider"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553218-rowforsectionidentifier?language=objc
+func (t_ TableViewDiffableDataSource) RowForSectionIdentifier(identifier objc.IObject) int {
+	rv := objc.Call[int](t_, objc.Sel("rowForSectionIdentifier:"), identifier)
 	return rv
 }
 
-// The closure that configures and returns the table view’s section header views from the diffable data source. [Full Topic]
+// Returns the identifier of the section containing the specified row in the snapshot. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553220-sectionheaderviewprovider?language=objc
-func (t_ TableViewDiffableDataSource) SetSectionHeaderViewProvider(value TableViewDiffableDataSourceSectionHeaderViewProvider) {
-	objc.Call[objc.Void](t_, objc.Sel("setSectionHeaderViewProvider:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553221-sectionidentifierforrow?language=objc
+func (t_ TableViewDiffableDataSource) SectionIdentifierForRow(row int) objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("sectionIdentifierForRow:"), row)
+	return rv
 }
 
 // The closure that configures and returns the table view’s row views from the diffable data source. [Full Topic]
@@ -137,6 +122,21 @@ func (t_ TableViewDiffableDataSource) RowViewProvider() TableViewDiffableDataSou
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553219-rowviewprovider?language=objc
 func (t_ TableViewDiffableDataSource) SetRowViewProvider(value TableViewDiffableDataSourceRowProvider) {
 	objc.Call[objc.Void](t_, objc.Sel("setRowViewProvider:"), value)
+}
+
+// The closure that configures and returns the table view’s section header views from the diffable data source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553220-sectionheaderviewprovider?language=objc
+func (t_ TableViewDiffableDataSource) SectionHeaderViewProvider() TableViewDiffableDataSourceSectionHeaderViewProvider {
+	rv := objc.Call[TableViewDiffableDataSourceSectionHeaderViewProvider](t_, objc.Sel("sectionHeaderViewProvider"))
+	return rv
+}
+
+// The closure that configures and returns the table view’s section header views from the diffable data source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553220-sectionheaderviewprovider?language=objc
+func (t_ TableViewDiffableDataSource) SetSectionHeaderViewProvider(value TableViewDiffableDataSourceSectionHeaderViewProvider) {
+	objc.Call[objc.Void](t_, objc.Sel("setSectionHeaderViewProvider:"), value)
 }
 
 // The default animation the UI uses to show differences between rows. [Full Topic]

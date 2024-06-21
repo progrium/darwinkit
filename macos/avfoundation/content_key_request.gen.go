@@ -19,19 +19,18 @@ type _ContentKeyRequestClass struct {
 // An interface definition for the [ContentKeyRequest] class.
 type IContentKeyRequest interface {
 	objc.IObject
-	ProcessContentKeyResponse(keyResponse IContentKeyResponse)
-	RespondByRequestingPersistableContentKeyRequestAndReturnError(outError unsafe.Pointer) bool
-	MakeStreamingContentKeyRequestDataForAppContentIdentifierOptionsCompletionHandler(appIdentifier []byte, contentIdentifier []byte, options map[string]objc.IObject, handler func(contentKeyRequestData []byte, error foundation.Error))
 	ProcessContentKeyResponseError(error foundation.IError)
-	Identifier() objc.Object
+	ProcessContentKeyResponse(keyResponse IContentKeyResponse)
+	MakeStreamingContentKeyRequestDataForAppContentIdentifierOptionsCompletionHandler(appIdentifier []byte, contentIdentifier []byte, options map[string]objc.IObject, handler func(contentKeyRequestData []byte, error foundation.Error))
+	RenewsExpiringResponseData() bool
+	Error() foundation.Error
+	Options() map[string]objc.Object
+	ContentKey() ContentKey
+	CanProvidePersistableContentKey() bool
 	InitializationData() []byte
 	ContentKeySpecifier() ContentKeySpecifier
-	ContentKey() ContentKey
 	Status() ContentKeyRequestStatus
-	CanProvidePersistableContentKey() bool
-	RenewsExpiringResponseData() bool
-	Options() map[string]objc.Object
-	Error() foundation.Error
+	Identifier() objc.Object
 }
 
 // An object that encapsulates information about a content decryption key request issued from a content key session object. [Full Topic]
@@ -67,19 +66,18 @@ func (c_ ContentKeyRequest) Init() ContentKeyRequest {
 	return rv
 }
 
+// Tells the receiver that the app was unable to obtain a content key response. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799159-processcontentkeyresponseerror?language=objc
+func (c_ ContentKeyRequest) ProcessContentKeyResponseError(error foundation.IError) {
+	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponseError:"), error)
+}
+
 // Sends the specified content key response to the receiver for processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799165-processcontentkeyresponse?language=objc
 func (c_ ContentKeyRequest) ProcessContentKeyResponse(keyResponse IContentKeyResponse) {
 	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponse:"), keyResponse)
-}
-
-// Tells the receiver that the app requires a persistable content key request object for processing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2936887-respondbyrequestingpersistableco?language=objc
-func (c_ ContentKeyRequest) RespondByRequestingPersistableContentKeyRequestAndReturnError(outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("respondByRequestingPersistableContentKeyRequestAndReturnError:"), outError)
-	return rv
 }
 
 // Obtains encrypted key request data for a specific combination of app and content. [Full Topic]
@@ -89,18 +87,43 @@ func (c_ ContentKeyRequest) MakeStreamingContentKeyRequestDataForAppContentIdent
 	objc.Call[objc.Void](c_, objc.Sel("makeStreamingContentKeyRequestDataForApp:contentIdentifier:options:completionHandler:"), appIdentifier, contentIdentifier, options, handler)
 }
 
-// Tells the receiver that the app was unable to obtain a content key response. [Full Topic]
+// A Boolean value that indicates whether the content key request renews previously provided response data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799159-processcontentkeyresponseerror?language=objc
-func (c_ ContentKeyRequest) ProcessContentKeyResponseError(error foundation.IError) {
-	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponseError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799193-renewsexpiringresponsedata?language=objc
+func (c_ ContentKeyRequest) RenewsExpiringResponseData() bool {
+	rv := objc.Call[bool](c_, objc.Sel("renewsExpiringResponseData"))
+	return rv
 }
 
-// The identifier for the content key. [Full Topic]
+// The error description for a failed key request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799205-identifier?language=objc
-func (c_ ContentKeyRequest) Identifier() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799182-error?language=objc
+func (c_ ContentKeyRequest) Error() foundation.Error {
+	rv := objc.Call[foundation.Error](c_, objc.Sel("error"))
+	return rv
+}
+
+// A dictionary of options used to initialize key loading. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/3112525-options?language=objc
+func (c_ ContentKeyRequest) Options() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("options"))
+	return rv
+}
+
+// The generated content key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/3726102-contentkey?language=objc
+func (c_ ContentKeyRequest) ContentKey() ContentKey {
+	rv := objc.Call[ContentKey](c_, objc.Sel("contentKey"))
+	return rv
+}
+
+// The content key request used to create a persistable content key or respond to a previous request with a persistable content key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799185-canprovidepersistablecontentkey?language=objc
+func (c_ ContentKeyRequest) CanProvidePersistableContentKey() bool {
+	rv := objc.Call[bool](c_, objc.Sel("canProvidePersistableContentKey"))
 	return rv
 }
 
@@ -120,14 +143,6 @@ func (c_ ContentKeyRequest) ContentKeySpecifier() ContentKeySpecifier {
 	return rv
 }
 
-// The generated content key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/3726102-contentkey?language=objc
-func (c_ ContentKeyRequest) ContentKey() ContentKey {
-	rv := objc.Call[ContentKey](c_, objc.Sel("contentKey"))
-	return rv
-}
-
 // The current state of the content key request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799190-status?language=objc
@@ -136,34 +151,10 @@ func (c_ ContentKeyRequest) Status() ContentKeyRequestStatus {
 	return rv
 }
 
-// The content key request used to create a persistable content key or respond to a previous request with a persistable content key. [Full Topic]
+// The identifier for the content key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799185-canprovidepersistablecontentkey?language=objc
-func (c_ ContentKeyRequest) CanProvidePersistableContentKey() bool {
-	rv := objc.Call[bool](c_, objc.Sel("canProvidePersistableContentKey"))
-	return rv
-}
-
-// A Boolean value that indicates whether the content key request renews previously provided response data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799193-renewsexpiringresponsedata?language=objc
-func (c_ ContentKeyRequest) RenewsExpiringResponseData() bool {
-	rv := objc.Call[bool](c_, objc.Sel("renewsExpiringResponseData"))
-	return rv
-}
-
-// A dictionary of options used to initialize key loading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/3112525-options?language=objc
-func (c_ ContentKeyRequest) Options() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("options"))
-	return rv
-}
-
-// The error description for a failed key request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799182-error?language=objc
-func (c_ ContentKeyRequest) Error() foundation.Error {
-	rv := objc.Call[foundation.Error](c_, objc.Sel("error"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799205-identifier?language=objc
+func (c_ ContentKeyRequest) Identifier() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("identifier"))
 	return rv
 }

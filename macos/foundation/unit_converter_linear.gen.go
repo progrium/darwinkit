@@ -35,34 +35,6 @@ func UnitConverterLinearFrom(ptr unsafe.Pointer) UnitConverterLinear {
 	}
 }
 
-func (u_ UnitConverterLinear) InitWithCoefficient(coefficient float64) UnitConverterLinear {
-	rv := objc.Call[UnitConverterLinear](u_, objc.Sel("initWithCoefficient:"), coefficient)
-	return rv
-}
-
-// Initializes the unit converter with the coefficient you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconverterlinear/1823611-initwithcoefficient?language=objc
-func NewUnitConverterLinearWithCoefficient(coefficient float64) UnitConverterLinear {
-	instance := UnitConverterLinearClass.Alloc().InitWithCoefficient(coefficient)
-	instance.Autorelease()
-	return instance
-}
-
-func (u_ UnitConverterLinear) InitWithCoefficientConstant(coefficient float64, constant float64) UnitConverterLinear {
-	rv := objc.Call[UnitConverterLinear](u_, objc.Sel("initWithCoefficient:constant:"), coefficient, constant)
-	return rv
-}
-
-// Creates a unit converter with the coefficient and constant you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconverterlinear/1823577-initwithcoefficient?language=objc
-func NewUnitConverterLinearWithCoefficientConstant(coefficient float64, constant float64) UnitConverterLinear {
-	instance := UnitConverterLinearClass.Alloc().InitWithCoefficientConstant(coefficient, constant)
-	instance.Autorelease()
-	return instance
-}
-
 func (uc _UnitConverterLinearClass) Alloc() UnitConverterLinear {
 	rv := objc.Call[UnitConverterLinear](uc, objc.Sel("alloc"))
 	return rv

@@ -19,8 +19,8 @@ type _URLSessionTaskMetricsClass struct {
 type IURLSessionTaskMetrics interface {
 	objc.IObject
 	RedirectCount() uint
-	TaskInterval() DateInterval
 	TransactionMetrics() []URLSessionTaskTransactionMetrics
+	TaskInterval() DateInterval
 }
 
 // An object encapsulating the metrics for a session task. [Full Topic]
@@ -64,18 +64,18 @@ func (u_ URLSessionTaskMetrics) RedirectCount() uint {
 	return rv
 }
 
-// The time interval between when a task is instantiated and when the task is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskmetrics/1643169-taskinterval?language=objc
-func (u_ URLSessionTaskMetrics) TaskInterval() DateInterval {
-	rv := objc.Call[DateInterval](u_, objc.Sel("taskInterval"))
-	return rv
-}
-
 // An array of metrics for each individual request-response transaction made during the execution of the task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskmetrics/1642789-transactionmetrics?language=objc
 func (u_ URLSessionTaskMetrics) TransactionMetrics() []URLSessionTaskTransactionMetrics {
 	rv := objc.Call[[]URLSessionTaskTransactionMetrics](u_, objc.Sel("transactionMetrics"))
+	return rv
+}
+
+// The time interval between when a task is instantiated and when the task is completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskmetrics/1643169-taskinterval?language=objc
+func (u_ URLSessionTaskMetrics) TaskInterval() DateInterval {
+	rv := objc.Call[DateInterval](u_, objc.Sel("taskInterval"))
 	return rv
 }

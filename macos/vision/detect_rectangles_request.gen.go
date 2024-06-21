@@ -18,18 +18,18 @@ type _DetectRectanglesRequestClass struct {
 // An interface definition for the [DetectRectanglesRequest] class.
 type IDetectRectanglesRequest interface {
 	IImageBasedRequest
-	MinimumConfidence() Confidence
-	SetMinimumConfidence(value Confidence)
-	MaximumAspectRatio() AspectRatio
-	SetMaximumAspectRatio(value AspectRatio)
 	MinimumAspectRatio() AspectRatio
 	SetMinimumAspectRatio(value AspectRatio)
 	MinimumSize() float32
 	SetMinimumSize(value float32)
-	QuadratureTolerance() Degrees
-	SetQuadratureTolerance(value Degrees)
+	MinimumConfidence() Confidence
+	SetMinimumConfidence(value Confidence)
 	MaximumObservations() uint
 	SetMaximumObservations(value uint)
+	MaximumAspectRatio() AspectRatio
+	SetMaximumAspectRatio(value AspectRatio)
+	QuadratureTolerance() Degrees
+	SetQuadratureTolerance(value Degrees)
 }
 
 // An image analysis request that finds projected rectangular regions in an image. [Full Topic]
@@ -79,36 +79,6 @@ func NewDetectRectanglesRequestWithCompletionHandler(completionHandler RequestCo
 	return instance
 }
 
-// A value specifying the minimum acceptable confidence level. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875375-minimumconfidence?language=objc
-func (d_ DetectRectanglesRequest) MinimumConfidence() Confidence {
-	rv := objc.Call[Confidence](d_, objc.Sel("minimumConfidence"))
-	return rv
-}
-
-// A value specifying the minimum acceptable confidence level. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875375-minimumconfidence?language=objc
-func (d_ DetectRectanglesRequest) SetMinimumConfidence(value Confidence) {
-	objc.Call[objc.Void](d_, objc.Sel("setMinimumConfidence:"), value)
-}
-
-// A float specifying the maximum aspect ratio of the rectangle to detect, defined as the shorter dimension over the longer dimension. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875376-maximumaspectratio?language=objc
-func (d_ DetectRectanglesRequest) MaximumAspectRatio() AspectRatio {
-	rv := objc.Call[AspectRatio](d_, objc.Sel("maximumAspectRatio"))
-	return rv
-}
-
-// A float specifying the maximum aspect ratio of the rectangle to detect, defined as the shorter dimension over the longer dimension. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875376-maximumaspectratio?language=objc
-func (d_ DetectRectanglesRequest) SetMaximumAspectRatio(value AspectRatio) {
-	objc.Call[objc.Void](d_, objc.Sel("setMaximumAspectRatio:"), value)
-}
-
 // A float specifying the minimum aspect ratio of the rectangle to detect, defined as the shorter dimension over the longer dimension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875378-minimumaspectratio?language=objc
@@ -139,19 +109,19 @@ func (d_ DetectRectanglesRequest) SetMinimumSize(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setMinimumSize:"), value)
 }
 
-// A float specifying the number of degrees a rectangle corner angle can deviate from 90°. [Full Topic]
+// A value specifying the minimum acceptable confidence level. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875379-quadraturetolerance?language=objc
-func (d_ DetectRectanglesRequest) QuadratureTolerance() Degrees {
-	rv := objc.Call[Degrees](d_, objc.Sel("quadratureTolerance"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875375-minimumconfidence?language=objc
+func (d_ DetectRectanglesRequest) MinimumConfidence() Confidence {
+	rv := objc.Call[Confidence](d_, objc.Sel("minimumConfidence"))
 	return rv
 }
 
-// A float specifying the number of degrees a rectangle corner angle can deviate from 90°. [Full Topic]
+// A value specifying the minimum acceptable confidence level. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875379-quadraturetolerance?language=objc
-func (d_ DetectRectanglesRequest) SetQuadratureTolerance(value Degrees) {
-	objc.Call[objc.Void](d_, objc.Sel("setQuadratureTolerance:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875375-minimumconfidence?language=objc
+func (d_ DetectRectanglesRequest) SetMinimumConfidence(value Confidence) {
+	objc.Call[objc.Void](d_, objc.Sel("setMinimumConfidence:"), value)
 }
 
 // An integer specifying the maximum number of rectangles Vision returns. [Full Topic]
@@ -167,4 +137,34 @@ func (d_ DetectRectanglesRequest) MaximumObservations() uint {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875373-maximumobservations?language=objc
 func (d_ DetectRectanglesRequest) SetMaximumObservations(value uint) {
 	objc.Call[objc.Void](d_, objc.Sel("setMaximumObservations:"), value)
+}
+
+// A float specifying the maximum aspect ratio of the rectangle to detect, defined as the shorter dimension over the longer dimension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875376-maximumaspectratio?language=objc
+func (d_ DetectRectanglesRequest) MaximumAspectRatio() AspectRatio {
+	rv := objc.Call[AspectRatio](d_, objc.Sel("maximumAspectRatio"))
+	return rv
+}
+
+// A float specifying the maximum aspect ratio of the rectangle to detect, defined as the shorter dimension over the longer dimension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875376-maximumaspectratio?language=objc
+func (d_ DetectRectanglesRequest) SetMaximumAspectRatio(value AspectRatio) {
+	objc.Call[objc.Void](d_, objc.Sel("setMaximumAspectRatio:"), value)
+}
+
+// A float specifying the number of degrees a rectangle corner angle can deviate from 90°. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875379-quadraturetolerance?language=objc
+func (d_ DetectRectanglesRequest) QuadratureTolerance() Degrees {
+	rv := objc.Call[Degrees](d_, objc.Sel("quadratureTolerance"))
+	return rv
+}
+
+// A float specifying the number of degrees a rectangle corner angle can deviate from 90°. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875379-quadraturetolerance?language=objc
+func (d_ DetectRectanglesRequest) SetQuadratureTolerance(value Degrees) {
+	objc.Call[objc.Void](d_, objc.Sel("setQuadratureTolerance:"), value)
 }

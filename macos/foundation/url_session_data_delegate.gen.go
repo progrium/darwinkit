@@ -11,52 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate?language=objc
 type PURLSessionDataDelegate interface {
 	// optional
-	URLSessionDataTaskWillCacheResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse))
-	HasURLSessionDataTaskWillCacheResponseCompletionHandler() bool
-
-	// optional
 	URLSessionDataTaskDidReceiveData(session URLSession, dataTask URLSessionDataTask, data []byte)
 	HasURLSessionDataTaskDidReceiveData() bool
-
-	// optional
-	URLSessionDataTaskDidReceiveResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition))
-	HasURLSessionDataTaskDidReceiveResponseCompletionHandler() bool
-
-	// optional
-	URLSessionDataTaskDidBecomeStreamTask(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask)
-	HasURLSessionDataTaskDidBecomeStreamTask() bool
-
-	// optional
-	URLSessionDataTaskDidBecomeDownloadTask(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask)
-	HasURLSessionDataTaskDidBecomeDownloadTask() bool
 }
 
 // A delegate implementation builder for the [PURLSessionDataDelegate] protocol.
 type URLSessionDataDelegate struct {
-	_URLSessionDataTaskWillCacheResponseCompletionHandler  func(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse))
-	_URLSessionDataTaskDidReceiveData                      func(session URLSession, dataTask URLSessionDataTask, data []byte)
-	_URLSessionDataTaskDidReceiveResponseCompletionHandler func(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition))
-	_URLSessionDataTaskDidBecomeStreamTask                 func(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask)
-	_URLSessionDataTaskDidBecomeDownloadTask               func(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask)
+	_URLSessionDataTaskDidReceiveData func(session URLSession, dataTask URLSessionDataTask, data []byte)
 }
 
-func (di *URLSessionDataDelegate) HasURLSessionDataTaskWillCacheResponseCompletionHandler() bool {
-	return di._URLSessionDataTaskWillCacheResponseCompletionHandler != nil
-}
-
-// Asks the delegate whether the data (or upload) task should store the response in the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411612-urlsession?language=objc
-func (di *URLSessionDataDelegate) SetURLSessionDataTaskWillCacheResponseCompletionHandler(f func(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse))) {
-	di._URLSessionDataTaskWillCacheResponseCompletionHandler = f
-}
-
-// Asks the delegate whether the data (or upload) task should store the response in the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411612-urlsession?language=objc
-func (di *URLSessionDataDelegate) URLSessionDataTaskWillCacheResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse)) {
-	di._URLSessionDataTaskWillCacheResponseCompletionHandler(session, dataTask, proposedResponse, completionHandler)
-}
 func (di *URLSessionDataDelegate) HasURLSessionDataTaskDidReceiveData() bool {
 	return di._URLSessionDataTaskDidReceiveData != nil
 }
@@ -74,57 +37,6 @@ func (di *URLSessionDataDelegate) SetURLSessionDataTaskDidReceiveData(f func(ses
 func (di *URLSessionDataDelegate) URLSessionDataTaskDidReceiveData(session URLSession, dataTask URLSessionDataTask, data []byte) {
 	di._URLSessionDataTaskDidReceiveData(session, dataTask, data)
 }
-func (di *URLSessionDataDelegate) HasURLSessionDataTaskDidReceiveResponseCompletionHandler() bool {
-	return di._URLSessionDataTaskDidReceiveResponseCompletionHandler != nil
-}
-
-// Tells the delegate that the data task received the initial reply (headers) from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession?language=objc
-func (di *URLSessionDataDelegate) SetURLSessionDataTaskDidReceiveResponseCompletionHandler(f func(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition))) {
-	di._URLSessionDataTaskDidReceiveResponseCompletionHandler = f
-}
-
-// Tells the delegate that the data task received the initial reply (headers) from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession?language=objc
-func (di *URLSessionDataDelegate) URLSessionDataTaskDidReceiveResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition)) {
-	di._URLSessionDataTaskDidReceiveResponseCompletionHandler(session, dataTask, response, completionHandler)
-}
-func (di *URLSessionDataDelegate) HasURLSessionDataTaskDidBecomeStreamTask() bool {
-	return di._URLSessionDataTaskDidBecomeStreamTask != nil
-}
-
-// Tells the delegate that the data task was changed to a stream task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411648-urlsession?language=objc
-func (di *URLSessionDataDelegate) SetURLSessionDataTaskDidBecomeStreamTask(f func(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask)) {
-	di._URLSessionDataTaskDidBecomeStreamTask = f
-}
-
-// Tells the delegate that the data task was changed to a stream task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411648-urlsession?language=objc
-func (di *URLSessionDataDelegate) URLSessionDataTaskDidBecomeStreamTask(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask) {
-	di._URLSessionDataTaskDidBecomeStreamTask(session, dataTask, streamTask)
-}
-func (di *URLSessionDataDelegate) HasURLSessionDataTaskDidBecomeDownloadTask() bool {
-	return di._URLSessionDataTaskDidBecomeDownloadTask != nil
-}
-
-// Tells the delegate that the data task was changed to a download task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1409936-urlsession?language=objc
-func (di *URLSessionDataDelegate) SetURLSessionDataTaskDidBecomeDownloadTask(f func(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask)) {
-	di._URLSessionDataTaskDidBecomeDownloadTask = f
-}
-
-// Tells the delegate that the data task was changed to a download task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1409936-urlsession?language=objc
-func (di *URLSessionDataDelegate) URLSessionDataTaskDidBecomeDownloadTask(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask) {
-	di._URLSessionDataTaskDidBecomeDownloadTask(session, dataTask, downloadTask)
-}
 
 // ensure impl type implements protocol interface
 var _ PURLSessionDataDelegate = (*URLSessionDataDelegateObject)(nil)
@@ -132,17 +44,6 @@ var _ PURLSessionDataDelegate = (*URLSessionDataDelegateObject)(nil)
 // A concrete type for the [PURLSessionDataDelegate] protocol.
 type URLSessionDataDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskWillCacheResponseCompletionHandler() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:dataTask:willCacheResponse:completionHandler:"))
-}
-
-// Asks the delegate whether the data (or upload) task should store the response in the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411612-urlsession?language=objc
-func (u_ URLSessionDataDelegateObject) URLSessionDataTaskWillCacheResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:willCacheResponse:completionHandler:"), session, dataTask, proposedResponse, completionHandler)
 }
 
 func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveData() bool {
@@ -154,37 +55,4 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveData() boo
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411528-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidReceiveData(session URLSession, dataTask URLSessionDataTask, data []byte) {
 	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveData:"), session, dataTask, data)
-}
-
-func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveResponseCompletionHandler() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:dataTask:didReceiveResponse:completionHandler:"))
-}
-
-// Tells the delegate that the data task received the initial reply (headers) from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession?language=objc
-func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidReceiveResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveResponse:completionHandler:"), session, dataTask, response, completionHandler)
-}
-
-func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeStreamTask() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:dataTask:didBecomeStreamTask:"))
-}
-
-// Tells the delegate that the data task was changed to a stream task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411648-urlsession?language=objc
-func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidBecomeStreamTask(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeStreamTask:"), session, dataTask, streamTask)
-}
-
-func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeDownloadTask() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:dataTask:didBecomeDownloadTask:"))
-}
-
-// Tells the delegate that the data task was changed to a download task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1409936-urlsession?language=objc
-func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidBecomeDownloadTask(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeDownloadTask:"), session, dataTask, downloadTask)
 }

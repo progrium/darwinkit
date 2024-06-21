@@ -19,23 +19,23 @@ type _TextCheckingResultClass struct {
 type ITextCheckingResult interface {
 	objc.IObject
 	RangeWithName(name string) Range
-	RangeAtIndex(idx uint) Range
 	ResultByAdjustingRangesWithOffset(offset int) TextCheckingResult
-	URL() URL
-	ReplacementString() string
-	Components() map[TextCheckingKey]string
-	RegularExpression() RegularExpression
-	Duration() TimeInterval
-	ResultType() TextCheckingType
-	Range() Range
+	RangeAtIndex(idx uint) Range
 	PhoneNumber() string
-	AlternativeStrings() []string
+	RegularExpression() RegularExpression
+	Date() Date
+	GrammarDetails() []map[string]objc.Object
+	NumberOfRanges() uint
+	Range() Range
 	AddressComponents() map[TextCheckingKey]string
 	Orthography() Orthography
 	TimeZone() TimeZone
-	Date() Date
-	NumberOfRanges() uint
-	GrammarDetails() []map[string]objc.Object
+	URL() URL
+	AlternativeStrings() []string
+	Components() map[TextCheckingKey]string
+	ReplacementString() string
+	Duration() TimeInterval
+	ResultType() TextCheckingType
 }
 
 // An occurrence of textual content found during the analysis of a block of text, such as when matching a regular expression. [Full Topic]
@@ -71,6 +71,81 @@ func (t_ TextCheckingResult) Init() TextCheckingResult {
 	return rv
 }
 
+// Creates and returns a text checking result with the specified orthography. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415506-orthographycheckingresultwithran?language=objc
+func (tc _TextCheckingResultClass) OrthographyCheckingResultWithRangeOrthography(range_ Range, orthography IOrthography) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("orthographyCheckingResultWithRange:orthography:"), range_, orthography)
+	return rv
+}
+
+// Creates and returns a text checking result with the specified orthography. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415506-orthographycheckingresultwithran?language=objc
+func TextCheckingResult_OrthographyCheckingResultWithRangeOrthography(range_ Range, orthography IOrthography) TextCheckingResult {
+	return TextCheckingResultClass.OrthographyCheckingResultWithRangeOrthography(range_, orthography)
+}
+
+// Creates and returns a text checking result with the specified transit information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408575-transitinformationcheckingresult?language=objc
+func (tc _TextCheckingResultClass) TransitInformationCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("transitInformationCheckingResultWithRange:components:"), range_, components)
+	return rv
+}
+
+// Creates and returns a text checking result with the specified transit information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408575-transitinformationcheckingresult?language=objc
+func TextCheckingResult_TransitInformationCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
+	return TextCheckingResultClass.TransitInformationCheckingResultWithRangeComponents(range_, components)
+}
+
+// Creates and returns a text checking result with the specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413056-linkcheckingresultwithrange?language=objc
+func (tc _TextCheckingResultClass) LinkCheckingResultWithRangeURL(range_ Range, url IURL) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("linkCheckingResultWithRange:URL:"), range_, url)
+	return rv
+}
+
+// Creates and returns a text checking result with the specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413056-linkcheckingresultwithrange?language=objc
+func TextCheckingResult_LinkCheckingResultWithRangeURL(range_ Range, url IURL) TextCheckingResult {
+	return TextCheckingResultClass.LinkCheckingResultWithRangeURL(range_, url)
+}
+
+// Creates and returns a text checking result with the specified array of grammatical errors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407190-grammarcheckingresultwithrange?language=objc
+func (tc _TextCheckingResultClass) GrammarCheckingResultWithRangeDetails(range_ Range, details []map[string]objc.IObject) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("grammarCheckingResultWithRange:details:"), range_, details)
+	return rv
+}
+
+// Creates and returns a text checking result with the specified array of grammatical errors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407190-grammarcheckingresultwithrange?language=objc
+func TextCheckingResult_GrammarCheckingResultWithRangeDetails(range_ Range, details []map[string]objc.IObject) TextCheckingResult {
+	return TextCheckingResultClass.GrammarCheckingResultWithRangeDetails(range_, details)
+}
+
+// Creates and returns a text checking result with the specified quote-balanced replacement string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413783-quotecheckingresultwithrange?language=objc
+func (tc _TextCheckingResultClass) QuoteCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("quoteCheckingResultWithRange:replacementString:"), range_, replacementString)
+	return rv
+}
+
+// Creates and returns a text checking result with the specified quote-balanced replacement string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413783-quotecheckingresultwithrange?language=objc
+func TextCheckingResult_QuoteCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
+	return TextCheckingResultClass.QuoteCheckingResultWithRangeReplacementString(range_, replacementString)
+}
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/2915200-rangewithname?language=objc
@@ -79,34 +154,35 @@ func (t_ TextCheckingResult) RangeWithName(name string) Range {
 	return rv
 }
 
-// Creates and returns a text checking result after detecting a possible correction. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415946-correctioncheckingresultwithrang?language=objc
-func (tc _TextCheckingResultClass) CorrectionCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("correctionCheckingResultWithRange:replacementString:"), range_, replacementString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416640-correctioncheckingresultwithrang?language=objc
+func (tc _TextCheckingResultClass) CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_ Range, replacementString string, alternativeStrings []string) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("correctionCheckingResultWithRange:replacementString:alternativeStrings:"), range_, replacementString, alternativeStrings)
 	return rv
 }
 
-// Creates and returns a text checking result after detecting a possible correction. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415946-correctioncheckingresultwithrang?language=objc
-func TextCheckingResult_CorrectionCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	return TextCheckingResultClass.CorrectionCheckingResultWithRangeReplacementString(range_, replacementString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416640-correctioncheckingresultwithrang?language=objc
+func TextCheckingResult_CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_ Range, replacementString string, alternativeStrings []string) TextCheckingResult {
+	return TextCheckingResultClass.CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_, replacementString, alternativeStrings)
 }
 
-// Creates and returns a text checking result with the specified date. [Full Topic]
+// Returns a new text checking result after adjusting the ranges as specified by the offset. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1410401-datecheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) DateCheckingResultWithRangeDate(range_ Range, date IDate) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:"), range_, date)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1417597-resultbyadjustingrangeswithoffse?language=objc
+func (t_ TextCheckingResult) ResultByAdjustingRangesWithOffset(offset int) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](t_, objc.Sel("resultByAdjustingRangesWithOffset:"), offset)
 	return rv
 }
 
-// Creates and returns a text checking result with the specified date. [Full Topic]
+// Returns the result type that the range represents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1410401-datecheckingresultwithrange?language=objc
-func TextCheckingResult_DateCheckingResultWithRangeDate(range_ Range, date IDate) TextCheckingResult {
-	return TextCheckingResultClass.DateCheckingResultWithRangeDate(range_, date)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416732-rangeatindex?language=objc
+func (t_ TextCheckingResult) RangeAtIndex(idx uint) Range {
+	rv := objc.Call[Range](t_, objc.Sel("rangeAtIndex:"), idx)
+	return rv
 }
 
 // Creates and returns a text checking result with the specified dash corrected replacement string. [Full Topic]
@@ -139,125 +215,19 @@ func TextCheckingResult_SpellCheckingResultWithRange(range_ Range) TextCheckingR
 	return TextCheckingResultClass.SpellCheckingResultWithRange(range_)
 }
 
-// Creates and returns a text checking result with the specified replacement string. [Full Topic]
+// Creates and returns a text checking result with the specified date. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416651-replacementcheckingresultwithran?language=objc
-func (tc _TextCheckingResultClass) ReplacementCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("replacementCheckingResultWithRange:replacementString:"), range_, replacementString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1410401-datecheckingresultwithrange?language=objc
+func (tc _TextCheckingResultClass) DateCheckingResultWithRangeDate(range_ Range, date IDate) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:"), range_, date)
 	return rv
 }
 
-// Creates and returns a text checking result with the specified replacement string. [Full Topic]
+// Creates and returns a text checking result with the specified date. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416651-replacementcheckingresultwithran?language=objc
-func TextCheckingResult_ReplacementCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	return TextCheckingResultClass.ReplacementCheckingResultWithRangeReplacementString(range_, replacementString)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416640-correctioncheckingresultwithrang?language=objc
-func (tc _TextCheckingResultClass) CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_ Range, replacementString string, alternativeStrings []string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("correctionCheckingResultWithRange:replacementString:alternativeStrings:"), range_, replacementString, alternativeStrings)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416640-correctioncheckingresultwithrang?language=objc
-func TextCheckingResult_CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_ Range, replacementString string, alternativeStrings []string) TextCheckingResult {
-	return TextCheckingResultClass.CorrectionCheckingResultWithRangeReplacementStringAlternativeStrings(range_, replacementString, alternativeStrings)
-}
-
-// Creates and returns a type checking result with the specified regular expression data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412104-regularexpressioncheckingresultw?language=objc
-func (tc _TextCheckingResultClass) RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges RangePointer, count uint, regularExpression IRegularExpression) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, regularExpression)
-	return rv
-}
-
-// Creates and returns a type checking result with the specified regular expression data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412104-regularexpressioncheckingresultw?language=objc
-func TextCheckingResult_RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges RangePointer, count uint, regularExpression IRegularExpression) TextCheckingResult {
-	return TextCheckingResultClass.RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges, count, regularExpression)
-}
-
-// Returns the result type that the range represents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416732-rangeatindex?language=objc
-func (t_ TextCheckingResult) RangeAtIndex(idx uint) Range {
-	rv := objc.Call[Range](t_, objc.Sel("rangeAtIndex:"), idx)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified array of grammatical errors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407190-grammarcheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) GrammarCheckingResultWithRangeDetails(range_ Range, details []map[string]objc.IObject) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("grammarCheckingResultWithRange:details:"), range_, details)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified array of grammatical errors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407190-grammarcheckingresultwithrange?language=objc
-func TextCheckingResult_GrammarCheckingResultWithRangeDetails(range_ Range, details []map[string]objc.IObject) TextCheckingResult {
-	return TextCheckingResultClass.GrammarCheckingResultWithRangeDetails(range_, details)
-}
-
-// Returns a new text checking result after adjusting the ranges as specified by the offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1417597-resultbyadjustingrangeswithoffse?language=objc
-func (t_ TextCheckingResult) ResultByAdjustingRangesWithOffset(offset int) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](t_, objc.Sel("resultByAdjustingRangesWithOffset:"), offset)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified date, time zone, and duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416392-datecheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) DateCheckingResultWithRangeDateTimeZoneDuration(range_ Range, date IDate, timeZone ITimeZone, duration TimeInterval) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:timeZone:duration:"), range_, date, timeZone, duration)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified date, time zone, and duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416392-datecheckingresultwithrange?language=objc
-func TextCheckingResult_DateCheckingResultWithRangeDateTimeZoneDuration(range_ Range, date IDate, timeZone ITimeZone, duration TimeInterval) TextCheckingResult {
-	return TextCheckingResultClass.DateCheckingResultWithRangeDateTimeZoneDuration(range_, date, timeZone, duration)
-}
-
-// Creates and returns a text checking result with the specified address components. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413828-addresscheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) AddressCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("addressCheckingResultWithRange:components:"), range_, components)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified address components. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413828-addresscheckingresultwithrange?language=objc
-func TextCheckingResult_AddressCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
-	return TextCheckingResultClass.AddressCheckingResultWithRangeComponents(range_, components)
-}
-
-// Creates and returns a text checking result with the specified orthography. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415506-orthographycheckingresultwithran?language=objc
-func (tc _TextCheckingResultClass) OrthographyCheckingResultWithRangeOrthography(range_ Range, orthography IOrthography) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("orthographyCheckingResultWithRange:orthography:"), range_, orthography)
-	return rv
-}
-
-// Creates and returns a text checking result with the specified orthography. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415506-orthographycheckingresultwithran?language=objc
-func TextCheckingResult_OrthographyCheckingResultWithRangeOrthography(range_ Range, orthography IOrthography) TextCheckingResult {
-	return TextCheckingResultClass.OrthographyCheckingResultWithRangeOrthography(range_, orthography)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1410401-datecheckingresultwithrange?language=objc
+func TextCheckingResult_DateCheckingResultWithRangeDate(range_ Range, date IDate) TextCheckingResult {
+	return TextCheckingResultClass.DateCheckingResultWithRangeDate(range_, date)
 }
 
 // Creates and returns a text checking result with the specified phone number. [Full Topic]
@@ -275,72 +245,56 @@ func TextCheckingResult_PhoneNumberCheckingResultWithRangePhoneNumber(range_ Ran
 	return TextCheckingResultClass.PhoneNumberCheckingResultWithRangePhoneNumber(range_, phoneNumber)
 }
 
-// Creates and returns a text checking result with the specified quote-balanced replacement string. [Full Topic]
+// Creates and returns a type checking result with the specified regular expression data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413783-quotecheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) QuoteCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("quoteCheckingResultWithRange:replacementString:"), range_, replacementString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412104-regularexpressioncheckingresultw?language=objc
+func (tc _TextCheckingResultClass) RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges RangePointer, count uint, regularExpression IRegularExpression) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, regularExpression)
 	return rv
 }
 
-// Creates and returns a text checking result with the specified quote-balanced replacement string. [Full Topic]
+// Creates and returns a type checking result with the specified regular expression data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413783-quotecheckingresultwithrange?language=objc
-func TextCheckingResult_QuoteCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
-	return TextCheckingResultClass.QuoteCheckingResultWithRangeReplacementString(range_, replacementString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412104-regularexpressioncheckingresultw?language=objc
+func TextCheckingResult_RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges RangePointer, count uint, regularExpression IRegularExpression) TextCheckingResult {
+	return TextCheckingResultClass.RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges, count, regularExpression)
 }
 
-// Creates and returns a text checking result with the specified URL. [Full Topic]
+// Creates and returns a text checking result with the specified address components. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413056-linkcheckingresultwithrange?language=objc
-func (tc _TextCheckingResultClass) LinkCheckingResultWithRangeURL(range_ Range, url IURL) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("linkCheckingResultWithRange:URL:"), range_, url)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413828-addresscheckingresultwithrange?language=objc
+func (tc _TextCheckingResultClass) AddressCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("addressCheckingResultWithRange:components:"), range_, components)
 	return rv
 }
 
-// Creates and returns a text checking result with the specified URL. [Full Topic]
+// Creates and returns a text checking result with the specified address components. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413056-linkcheckingresultwithrange?language=objc
-func TextCheckingResult_LinkCheckingResultWithRangeURL(range_ Range, url IURL) TextCheckingResult {
-	return TextCheckingResultClass.LinkCheckingResultWithRangeURL(range_, url)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413828-addresscheckingresultwithrange?language=objc
+func TextCheckingResult_AddressCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
+	return TextCheckingResultClass.AddressCheckingResultWithRangeComponents(range_, components)
 }
 
-// Creates and returns a text checking result with the specified transit information. [Full Topic]
+// Creates and returns a text checking result with the specified replacement string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408575-transitinformationcheckingresult?language=objc
-func (tc _TextCheckingResultClass) TransitInformationCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("transitInformationCheckingResultWithRange:components:"), range_, components)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416651-replacementcheckingresultwithran?language=objc
+func (tc _TextCheckingResultClass) ReplacementCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("replacementCheckingResultWithRange:replacementString:"), range_, replacementString)
 	return rv
 }
 
-// Creates and returns a text checking result with the specified transit information. [Full Topic]
+// Creates and returns a text checking result with the specified replacement string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408575-transitinformationcheckingresult?language=objc
-func TextCheckingResult_TransitInformationCheckingResultWithRangeComponents(range_ Range, components map[TextCheckingKey]string) TextCheckingResult {
-	return TextCheckingResultClass.TransitInformationCheckingResultWithRangeComponents(range_, components)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416651-replacementcheckingresultwithran?language=objc
+func TextCheckingResult_ReplacementCheckingResultWithRangeReplacementString(range_ Range, replacementString string) TextCheckingResult {
+	return TextCheckingResultClass.ReplacementCheckingResultWithRangeReplacementString(range_, replacementString)
 }
 
-// The URL of a type checking result. [Full Topic]
+// The phone number of a type checking result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1417843-url?language=objc
-func (t_ TextCheckingResult) URL() URL {
-	rv := objc.Call[URL](t_, objc.Sel("URL"))
-	return rv
-}
-
-// A replacement string from one of a number of replacement checking results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412681-replacementstring?language=objc
-func (t_ TextCheckingResult) ReplacementString() string {
-	rv := objc.Call[string](t_, objc.Sel("replacementString"))
-	return rv
-}
-
-// A dictionary containing the components of a type checking result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407367-components?language=objc
-func (t_ TextCheckingResult) Components() map[TextCheckingKey]string {
-	rv := objc.Call[map[TextCheckingKey]string](t_, objc.Sel("components"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415511-phonenumber?language=objc
+func (t_ TextCheckingResult) PhoneNumber() string {
+	rv := objc.Call[string](t_, objc.Sel("phoneNumber"))
 	return rv
 }
 
@@ -352,19 +306,27 @@ func (t_ TextCheckingResult) RegularExpression() RegularExpression {
 	return rv
 }
 
-// The duration component of a type checking result. [Full Topic]
+// The date component of a type checking result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415044-duration?language=objc
-func (t_ TextCheckingResult) Duration() TimeInterval {
-	rv := objc.Call[TimeInterval](t_, objc.Sel("duration"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1414289-date?language=objc
+func (t_ TextCheckingResult) Date() Date {
+	rv := objc.Call[Date](t_, objc.Sel("date"))
 	return rv
 }
 
-// Returns the text checking result type that the receiver represents. [Full Topic]
+// The details of a located grammatical type checking result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407779-resulttype?language=objc
-func (t_ TextCheckingResult) ResultType() TextCheckingType {
-	rv := objc.Call[TextCheckingType](t_, objc.Sel("resultType"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408959-grammardetails?language=objc
+func (t_ TextCheckingResult) GrammarDetails() []map[string]objc.Object {
+	rv := objc.Call[[]map[string]objc.Object](t_, objc.Sel("grammarDetails"))
+	return rv
+}
+
+// Returns the number of ranges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407475-numberofranges?language=objc
+func (t_ TextCheckingResult) NumberOfRanges() uint {
+	rv := objc.Call[uint](t_, objc.Sel("numberOfRanges"))
 	return rv
 }
 
@@ -373,22 +335,6 @@ func (t_ TextCheckingResult) ResultType() TextCheckingType {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415852-range?language=objc
 func (t_ TextCheckingResult) Range() Range {
 	rv := objc.Call[Range](t_, objc.Sel("range"))
-	return rv
-}
-
-// The phone number of a type checking result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415511-phonenumber?language=objc
-func (t_ TextCheckingResult) PhoneNumber() string {
-	rv := objc.Call[string](t_, objc.Sel("phoneNumber"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415454-alternativestrings?language=objc
-func (t_ TextCheckingResult) AlternativeStrings() []string {
-	rv := objc.Call[[]string](t_, objc.Sel("alternativeStrings"))
 	return rv
 }
 
@@ -416,26 +362,50 @@ func (t_ TextCheckingResult) TimeZone() TimeZone {
 	return rv
 }
 
-// The date component of a type checking result. [Full Topic]
+// The URL of a type checking result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1414289-date?language=objc
-func (t_ TextCheckingResult) Date() Date {
-	rv := objc.Call[Date](t_, objc.Sel("date"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1417843-url?language=objc
+func (t_ TextCheckingResult) URL() URL {
+	rv := objc.Call[URL](t_, objc.Sel("URL"))
 	return rv
 }
 
-// Returns the number of ranges. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407475-numberofranges?language=objc
-func (t_ TextCheckingResult) NumberOfRanges() uint {
-	rv := objc.Call[uint](t_, objc.Sel("numberOfRanges"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415454-alternativestrings?language=objc
+func (t_ TextCheckingResult) AlternativeStrings() []string {
+	rv := objc.Call[[]string](t_, objc.Sel("alternativeStrings"))
 	return rv
 }
 
-// The details of a located grammatical type checking result. [Full Topic]
+// A dictionary containing the components of a type checking result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1408959-grammardetails?language=objc
-func (t_ TextCheckingResult) GrammarDetails() []map[string]objc.Object {
-	rv := objc.Call[[]map[string]objc.Object](t_, objc.Sel("grammarDetails"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407367-components?language=objc
+func (t_ TextCheckingResult) Components() map[TextCheckingKey]string {
+	rv := objc.Call[map[TextCheckingKey]string](t_, objc.Sel("components"))
+	return rv
+}
+
+// A replacement string from one of a number of replacement checking results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412681-replacementstring?language=objc
+func (t_ TextCheckingResult) ReplacementString() string {
+	rv := objc.Call[string](t_, objc.Sel("replacementString"))
+	return rv
+}
+
+// The duration component of a type checking result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415044-duration?language=objc
+func (t_ TextCheckingResult) Duration() TimeInterval {
+	rv := objc.Call[TimeInterval](t_, objc.Sel("duration"))
+	return rv
+}
+
+// Returns the text checking result type that the receiver represents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1407779-resulttype?language=objc
+func (t_ TextCheckingResult) ResultType() TextCheckingType {
+	rv := objc.Call[TextCheckingType](t_, objc.Sel("resultType"))
 	return rv
 }

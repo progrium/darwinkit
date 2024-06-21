@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint?language=objc
 type PTemperatureAndTint interface {
 	// optional
-	SetNeutral(value Vector)
-	HasSetNeutral() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Neutral() Vector
-	HasNeutral() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetTargetNeutral(value Vector)
@@ -27,12 +27,12 @@ type PTemperatureAndTint interface {
 	HasTargetNeutral() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetNeutral(value Vector)
+	HasSetNeutral() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Neutral() Vector
+	HasNeutral() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type TemperatureAndTintObject struct {
 	objc.Object
 }
 
-func (t_ TemperatureAndTintObject) HasSetNeutral() bool {
-	return t_.RespondsToSelector(objc.Sel("setNeutral:"))
+func (t_ TemperatureAndTintObject) HasSetInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// A vector containing the source white point defined by color temperature and tint. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228782-neutral?language=objc
-func (t_ TemperatureAndTintObject) SetNeutral(value Vector) {
-	objc.Call[objc.Void](t_, objc.Sel("setNeutral:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228781-inputimage?language=objc
+func (t_ TemperatureAndTintObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
-func (t_ TemperatureAndTintObject) HasNeutral() bool {
-	return t_.RespondsToSelector(objc.Sel("neutral"))
+func (t_ TemperatureAndTintObject) HasInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// A vector containing the source white point defined by color temperature and tint. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228782-neutral?language=objc
-func (t_ TemperatureAndTintObject) Neutral() Vector {
-	rv := objc.Call[Vector](t_, objc.Sel("neutral"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228781-inputimage?language=objc
+func (t_ TemperatureAndTintObject) InputImage() Image {
+	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (t_ TemperatureAndTintObject) TargetNeutral() Vector {
 	return rv
 }
 
-func (t_ TemperatureAndTintObject) HasSetInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (t_ TemperatureAndTintObject) HasSetNeutral() bool {
+	return t_.RespondsToSelector(objc.Sel("setNeutral:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// A vector containing the source white point defined by color temperature and tint. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228781-inputimage?language=objc
-func (t_ TemperatureAndTintObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228782-neutral?language=objc
+func (t_ TemperatureAndTintObject) SetNeutral(value Vector) {
+	objc.Call[objc.Void](t_, objc.Sel("setNeutral:"), value)
 }
 
-func (t_ TemperatureAndTintObject) HasInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("inputImage"))
+func (t_ TemperatureAndTintObject) HasNeutral() bool {
+	return t_.RespondsToSelector(objc.Sel("neutral"))
 }
 
-// The image to use as an input image. [Full Topic]
+// A vector containing the source white point defined by color temperature and tint. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228781-inputimage?language=objc
-func (t_ TemperatureAndTintObject) InputImage() Image {
-	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228782-neutral?language=objc
+func (t_ TemperatureAndTintObject) Neutral() Vector {
+	rv := objc.Call[Vector](t_, objc.Sel("neutral"))
 	return rv
 }

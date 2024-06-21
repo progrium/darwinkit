@@ -18,8 +18,8 @@ type _URLQueryItemClass struct {
 // An interface definition for the [URLQueryItem] class.
 type IURLQueryItem interface {
 	objc.IObject
-	Name() string
 	Value() string
+	Name() string
 }
 
 // An object representing a single name/value pair for an item in the query portion of a URL. [Full Topic]
@@ -81,18 +81,18 @@ func (u_ URLQueryItem) Init() URLQueryItem {
 	return rv
 }
 
-// The name of the query item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlqueryitem/1407785-name?language=objc
-func (u_ URLQueryItem) Name() string {
-	rv := objc.Call[string](u_, objc.Sel("name"))
-	return rv
-}
-
 // The value for the query item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlqueryitem/1412041-value?language=objc
 func (u_ URLQueryItem) Value() string {
 	rv := objc.Call[string](u_, objc.Sel("value"))
+	return rv
+}
+
+// The name of the query item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlqueryitem/1407785-name?language=objc
+func (u_ URLQueryItem) Name() string {
+	rv := objc.Call[string](u_, objc.Sel("name"))
 	return rv
 }

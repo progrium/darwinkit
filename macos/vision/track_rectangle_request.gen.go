@@ -47,20 +47,6 @@ func NewTrackRectangleRequestWithRectangleObservation(observation IRectangleObse
 	return instance
 }
 
-func (t_ TrackRectangleRequest) InitWithRectangleObservationCompletionHandler(observation IRectangleObservation, completionHandler RequestCompletionHandler) TrackRectangleRequest {
-	rv := objc.Call[TrackRectangleRequest](t_, objc.Sel("initWithRectangleObservation:completionHandler:"), observation, completionHandler)
-	return rv
-}
-
-// Creates a new rectangle tracking request with a rectangle observation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackrectanglerequest/2887357-initwithrectangleobservation?language=objc
-func NewTrackRectangleRequestWithRectangleObservationCompletionHandler(observation IRectangleObservation, completionHandler RequestCompletionHandler) TrackRectangleRequest {
-	instance := TrackRectangleRequestClass.Alloc().InitWithRectangleObservationCompletionHandler(observation, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
 func (tc _TrackRectangleRequestClass) Alloc() TrackRectangleRequest {
 	rv := objc.Call[TrackRectangleRequest](tc, objc.Sel("alloc"))
 	return rv

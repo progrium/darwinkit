@@ -19,14 +19,13 @@ type _CoreDataCoreSpotlightDelegateClass struct {
 // An interface definition for the [CoreDataCoreSpotlightDelegate] class.
 type ICoreDataCoreSpotlightDelegate interface {
 	objc.IObject
-	IndexName() string
 	StartSpotlightIndexing()
-	StopSpotlightIndexing()
 	SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex objc.IObject, acknowledgementHandler func())
 	AttributeSetForObject(object IManagedObject) objc.Object
-	DeleteSpotlightIndexWithCompletionHandler(completionHandler func(error foundation.Error))
-	SearchableIndexReindexSearchableItemsWithIdentifiersAcknowledgementHandler(searchableIndex objc.IObject, identifiers []string, acknowledgementHandler func())
 	DomainIdentifier() string
+	StopSpotlightIndexing()
+	DeleteSpotlightIndexWithCompletionHandler(completionHandler func(error foundation.Error))
+	IndexName() string
 	IsIndexingEnabled() bool
 }
 
@@ -77,26 +76,11 @@ func (c_ CoreDataCoreSpotlightDelegate) Init() CoreDataCoreSpotlightDelegate {
 	return rv
 }
 
-// Returns the index’s name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897199-indexname?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) IndexName() string {
-	rv := objc.Call[string](c_, objc.Sel("indexName"))
-	return rv
-}
-
 // Starts the indexing of the store’s entities. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/3751985-startspotlightindexing?language=objc
 func (c_ CoreDataCoreSpotlightDelegate) StartSpotlightIndexing() {
 	objc.Call[objc.Void](c_, objc.Sel("startSpotlightIndexing"))
-}
-
-// Stops the indexing of the store’s entities. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/3751986-stopspotlightindexing?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) StopSpotlightIndexing() {
-	objc.Call[objc.Void](c_, objc.Sel("stopSpotlightIndexing"))
 }
 
 // Reindexes all searchable items and clears any local state. [Full Topic]
@@ -114,6 +98,21 @@ func (c_ CoreDataCoreSpotlightDelegate) AttributeSetForObject(object IManagedObj
 	return rv
 }
 
+// Returns the domain identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897202-domainidentifier?language=objc
+func (c_ CoreDataCoreSpotlightDelegate) DomainIdentifier() string {
+	rv := objc.Call[string](c_, objc.Sel("domainIdentifier"))
+	return rv
+}
+
+// Stops the indexing of the store’s entities. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/3751986-stopspotlightindexing?language=objc
+func (c_ CoreDataCoreSpotlightDelegate) StopSpotlightIndexing() {
+	objc.Call[objc.Void](c_, objc.Sel("stopSpotlightIndexing"))
+}
+
 // Deletes all searchable items from the configured index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/3751982-deletespotlightindexwithcompleti?language=objc
@@ -121,18 +120,11 @@ func (c_ CoreDataCoreSpotlightDelegate) DeleteSpotlightIndexWithCompletionHandle
 	objc.Call[objc.Void](c_, objc.Sel("deleteSpotlightIndexWithCompletionHandler:"), completionHandler)
 }
 
-// Reindexes the searchable items for the specified identifiers. [Full Topic]
+// Returns the index’s name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897198-searchableindex?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) SearchableIndexReindexSearchableItemsWithIdentifiersAcknowledgementHandler(searchableIndex objc.IObject, identifiers []string, acknowledgementHandler func()) {
-	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexSearchableItemsWithIdentifiers:acknowledgementHandler:"), searchableIndex, identifiers, acknowledgementHandler)
-}
-
-// Returns the domain identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897202-domainidentifier?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) DomainIdentifier() string {
-	rv := objc.Call[string](c_, objc.Sel("domainIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897199-indexname?language=objc
+func (c_ CoreDataCoreSpotlightDelegate) IndexName() string {
+	rv := objc.Call[string](c_, objc.Sel("indexName"))
 	return rv
 }
 

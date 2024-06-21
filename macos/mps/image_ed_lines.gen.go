@@ -21,21 +21,21 @@ type IImageEDLines interface {
 	IKernel
 	EncodeToCommandBufferSourceTextureDestinationTextureEndpointBufferEndpointOffset(commandBuffer metal.PCommandBuffer, source metal.PTexture, dest metal.PTexture, endpointBuffer metal.PBuffer, endpointOffset uint)
 	EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectEndpointBufferObjectEndpointOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, destObject objc.IObject, endpointBufferObject objc.IObject, endpointOffset uint)
+	MaxLines() uint
+	SetMaxLines(value uint)
+	MinLineLength() int
+	SetMinLineLength(value int)
+	LineErrorThreshold() float32
+	SetLineErrorThreshold(value float32)
+	GaussianSigma() float32
+	DetailRatio() int
+	SetDetailRatio(value int)
 	GradientThreshold() float32
 	SetGradientThreshold(value float32)
 	ClipRectSource() metal.Region
 	SetClipRectSource(value metal.Region)
-	DetailRatio() int
-	SetDetailRatio(value int)
-	LineErrorThreshold() float32
-	SetLineErrorThreshold(value float32)
 	MergeLocalityThreshold() float32
 	SetMergeLocalityThreshold(value float32)
-	MinLineLength() int
-	SetMinLineLength(value int)
-	MaxLines() uint
-	SetMaxLines(value uint)
-	GaussianSigma() float32
 }
 
 //	[Full Topic]
@@ -86,21 +86,6 @@ func (i_ ImageEDLines) Init() ImageEDLines {
 	return rv
 }
 
-func (i_ ImageEDLines) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageEDLines {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageEDLines](i_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func ImageEDLines_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageEDLines {
-	instance := ImageEDLinesClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ ImageEDLines) InitWithDevice(device metal.PDevice) ImageEDLines {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageEDLines](i_, objc.Sel("initWithDevice:"), po0)
@@ -112,6 +97,21 @@ func (i_ ImageEDLines) InitWithDevice(device metal.PDevice) ImageEDLines {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewImageEDLinesWithDevice(device metal.PDevice) ImageEDLines {
 	instance := ImageEDLinesClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ ImageEDLines) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageEDLines {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[ImageEDLines](i_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func ImageEDLines_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageEDLines {
+	instance := ImageEDLinesClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -132,6 +132,74 @@ func (i_ ImageEDLines) EncodeToCommandBufferSourceTextureDestinationTextureEndpo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618917-encodetocommandbuffer?language=objc
 func (i_ ImageEDLines) EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectEndpointBufferObjectEndpointOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, destObject objc.IObject, endpointBufferObject objc.IObject, endpointOffset uint) {
 	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:endpointBuffer:endpointOffset:"), commandBufferObject, sourceObject, destObject, endpointBufferObject, endpointOffset)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618923-maxlines?language=objc
+func (i_ ImageEDLines) MaxLines() uint {
+	rv := objc.Call[uint](i_, objc.Sel("maxLines"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618923-maxlines?language=objc
+func (i_ ImageEDLines) SetMaxLines(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setMaxLines:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618925-minlinelength?language=objc
+func (i_ ImageEDLines) MinLineLength() int {
+	rv := objc.Call[int](i_, objc.Sel("minLineLength"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618925-minlinelength?language=objc
+func (i_ ImageEDLines) SetMinLineLength(value int) {
+	objc.Call[objc.Void](i_, objc.Sel("setMinLineLength:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
+func (i_ ImageEDLines) LineErrorThreshold() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("lineErrorThreshold"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
+func (i_ ImageEDLines) SetLineErrorThreshold(value float32) {
+	objc.Call[objc.Void](i_, objc.Sel("setLineErrorThreshold:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618918-gaussiansigma?language=objc
+func (i_ ImageEDLines) GaussianSigma() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("gaussianSigma"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618916-detailratio?language=objc
+func (i_ ImageEDLines) DetailRatio() int {
+	rv := objc.Call[int](i_, objc.Sel("detailRatio"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618916-detailratio?language=objc
+func (i_ ImageEDLines) SetDetailRatio(value int) {
+	objc.Call[objc.Void](i_, objc.Sel("setDetailRatio:"), value)
 }
 
 //	[Full Topic]
@@ -166,36 +234,6 @@ func (i_ ImageEDLines) SetClipRectSource(value metal.Region) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618916-detailratio?language=objc
-func (i_ ImageEDLines) DetailRatio() int {
-	rv := objc.Call[int](i_, objc.Sel("detailRatio"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618916-detailratio?language=objc
-func (i_ ImageEDLines) SetDetailRatio(value int) {
-	objc.Call[objc.Void](i_, objc.Sel("setDetailRatio:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
-func (i_ ImageEDLines) LineErrorThreshold() float32 {
-	rv := objc.Call[float32](i_, objc.Sel("lineErrorThreshold"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
-func (i_ ImageEDLines) SetLineErrorThreshold(value float32) {
-	objc.Call[objc.Void](i_, objc.Sel("setLineErrorThreshold:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618924-mergelocalitythreshold?language=objc
 func (i_ ImageEDLines) MergeLocalityThreshold() float32 {
 	rv := objc.Call[float32](i_, objc.Sel("mergeLocalityThreshold"))
@@ -207,42 +245,4 @@ func (i_ ImageEDLines) MergeLocalityThreshold() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618924-mergelocalitythreshold?language=objc
 func (i_ ImageEDLines) SetMergeLocalityThreshold(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setMergeLocalityThreshold:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618925-minlinelength?language=objc
-func (i_ ImageEDLines) MinLineLength() int {
-	rv := objc.Call[int](i_, objc.Sel("minLineLength"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618925-minlinelength?language=objc
-func (i_ ImageEDLines) SetMinLineLength(value int) {
-	objc.Call[objc.Void](i_, objc.Sel("setMinLineLength:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618923-maxlines?language=objc
-func (i_ ImageEDLines) MaxLines() uint {
-	rv := objc.Call[uint](i_, objc.Sel("maxLines"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618923-maxlines?language=objc
-func (i_ ImageEDLines) SetMaxLines(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setMaxLines:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618918-gaussiansigma?language=objc
-func (i_ ImageEDLines) GaussianSigma() float32 {
-	rv := objc.Call[float32](i_, objc.Sel("gaussianSigma"))
-	return rv
 }

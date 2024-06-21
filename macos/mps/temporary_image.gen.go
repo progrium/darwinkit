@@ -50,32 +50,6 @@ func TemporaryImage_TemporaryImageWithCommandBufferTextureDescriptorFeatureChann
 	return TemporaryImageClass.TemporaryImageWithCommandBufferTextureDescriptorFeatureChannels(commandBuffer, textureDescriptor, featureChannels)
 }
 
-func (tc _TemporaryImageClass) TemporaryImageWithCommandBufferImageDescriptor(commandBuffer metal.PCommandBuffer, imageDescriptor IImageDescriptor) TemporaryImage {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:imageDescriptor:"), po0, imageDescriptor)
-	return rv
-}
-
-// Initializes a temporary image for use on a command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporaryimage/2097545-temporaryimagewithcommandbuffer?language=objc
-func TemporaryImage_TemporaryImageWithCommandBufferImageDescriptor(commandBuffer metal.PCommandBuffer, imageDescriptor IImageDescriptor) TemporaryImage {
-	return TemporaryImageClass.TemporaryImageWithCommandBufferImageDescriptor(commandBuffer, imageDescriptor)
-}
-
-func (tc _TemporaryImageClass) TemporaryImageWithCommandBufferTextureDescriptor(commandBuffer metal.PCommandBuffer, textureDescriptor metal.ITextureDescriptor) TemporaryImage {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:textureDescriptor:"), po0, textureDescriptor)
-	return rv
-}
-
-// Low-level interface for creating a temporary image using a texture descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporaryimage/2097543-temporaryimagewithcommandbuffer?language=objc
-func TemporaryImage_TemporaryImageWithCommandBufferTextureDescriptor(commandBuffer metal.PCommandBuffer, textureDescriptor metal.ITextureDescriptor) TemporaryImage {
-	return TemporaryImageClass.TemporaryImageWithCommandBufferTextureDescriptor(commandBuffer, textureDescriptor)
-}
-
 func (tc _TemporaryImageClass) Alloc() TemporaryImage {
 	rv := objc.Call[TemporaryImage](tc, objc.Sel("alloc"))
 	return rv
@@ -94,6 +68,20 @@ func NewTemporaryImage() TemporaryImage {
 func (t_ TemporaryImage) Init() TemporaryImage {
 	rv := objc.Call[TemporaryImage](t_, objc.Sel("init"))
 	return rv
+}
+
+func (t_ TemporaryImage) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) TemporaryImage {
+	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942493-initwithparentimage?language=objc
+func NewTemporaryImageWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) TemporaryImage {
+	instance := TemporaryImageClass.Alloc().InitWithParentImageSliceRangeFeatureChannels(parent, sliceRange, featureChannels)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TemporaryImage) InitWithTextureFeatureChannels(texture metal.PTexture, featureChannels uint) TemporaryImage {
@@ -122,20 +110,6 @@ func (t_ TemporaryImage) InitWithDeviceImageDescriptor(device metal.PDevice, ima
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648920-initwithdevice?language=objc
 func NewTemporaryImageWithDeviceImageDescriptor(device metal.PDevice, imageDescriptor IImageDescriptor) TemporaryImage {
 	instance := TemporaryImageClass.Alloc().InitWithDeviceImageDescriptor(device, imageDescriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TemporaryImage) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) TemporaryImage {
-	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942493-initwithparentimage?language=objc
-func NewTemporaryImageWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) TemporaryImage {
-	instance := TemporaryImageClass.Alloc().InitWithParentImageSliceRangeFeatureChannels(parent, sliceRange, featureChannels)
 	instance.Autorelease()
 	return instance
 }

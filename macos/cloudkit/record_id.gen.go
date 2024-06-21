@@ -18,8 +18,8 @@ type _RecordIDClass struct {
 // An interface definition for the [RecordID] class.
 type IRecordID interface {
 	objc.IObject
-	RecordName() string
 	ZoneID() RecordZoneID
+	RecordName() string
 }
 
 // An object that uniquely identifies a record in a database. [Full Topic]
@@ -33,20 +33,6 @@ func RecordIDFrom(ptr unsafe.Pointer) RecordID {
 	return RecordID{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (r_ RecordID) InitWithRecordNameZoneID(recordName string, zoneID IRecordZoneID) RecordID {
-	rv := objc.Call[RecordID](r_, objc.Sel("initWithRecordName:zoneID:"), recordName, zoneID)
-	return rv
-}
-
-// Creates a new record ID with the specified name and zone information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordid/1500967-initwithrecordname?language=objc
-func NewRecordIDWithRecordNameZoneID(recordName string, zoneID IRecordZoneID) RecordID {
-	instance := RecordIDClass.Alloc().InitWithRecordNameZoneID(recordName, zoneID)
-	instance.Autorelease()
-	return instance
 }
 
 func (r_ RecordID) InitWithRecordName(recordName string) RecordID {
@@ -83,18 +69,18 @@ func (r_ RecordID) Init() RecordID {
 	return rv
 }
 
-// The unique name of the record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordid/1500973-recordname?language=objc
-func (r_ RecordID) RecordName() string {
-	rv := objc.Call[string](r_, objc.Sel("recordName"))
-	return rv
-}
-
 // The ID of the zone that contains the record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordid/1500969-zoneid?language=objc
 func (r_ RecordID) ZoneID() RecordZoneID {
 	rv := objc.Call[RecordZoneID](r_, objc.Sel("zoneID"))
+	return rv
+}
+
+// The unique name of the record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordid/1500973-recordname?language=objc
+func (r_ RecordID) RecordName() string {
+	rv := objc.Call[string](r_, objc.Sel("recordName"))
 	return rv
 }

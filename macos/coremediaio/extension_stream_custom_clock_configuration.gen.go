@@ -20,11 +20,11 @@ type _ExtensionStreamCustomClockConfigurationClass struct {
 // An interface definition for the [ExtensionStreamCustomClockConfiguration] class.
 type IExtensionStreamCustomClockConfiguration interface {
 	objc.IObject
-	SourceIdentifier() foundation.UUID
 	NumberOfEventsForRateSmoothing() uint32
+	NumberOfAveragesForRateSmoothing() uint32
+	SourceIdentifier() foundation.UUID
 	GetTimeCallMinimumInterval() coremedia.Time
 	ClockName() string
-	NumberOfAveragesForRateSmoothing() uint32
 }
 
 // An object that describes the parameters to create a custom clock on the host side. [Full Topic]
@@ -40,18 +40,6 @@ func ExtensionStreamCustomClockConfigurationFrom(ptr unsafe.Pointer) ExtensionSt
 	}
 }
 
-func (ec _ExtensionStreamCustomClockConfigurationClass) CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
-	rv := objc.Call[ExtensionStreamCustomClockConfiguration](ec, objc.Sel("customClockConfigurationWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
-	return rv
-}
-
-// Returns a new a custom clock configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915890-customclockconfigurationwithcloc?language=objc
-func ExtensionStreamCustomClockConfiguration_CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
-	return ExtensionStreamCustomClockConfigurationClass.CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
-}
-
 func (e_ ExtensionStreamCustomClockConfiguration) InitWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
 	rv := objc.Call[ExtensionStreamCustomClockConfiguration](e_, objc.Sel("initWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
 	return rv
@@ -64,6 +52,18 @@ func NewExtensionStreamCustomClockConfigurationWithClockNameSourceIdentifierGetT
 	instance := ExtensionStreamCustomClockConfigurationClass.Alloc().InitWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
 	instance.Autorelease()
 	return instance
+}
+
+func (ec _ExtensionStreamCustomClockConfigurationClass) CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
+	rv := objc.Call[ExtensionStreamCustomClockConfiguration](ec, objc.Sel("customClockConfigurationWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
+	return rv
+}
+
+// Returns a new a custom clock configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915890-customclockconfigurationwithcloc?language=objc
+func ExtensionStreamCustomClockConfiguration_CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
+	return ExtensionStreamCustomClockConfigurationClass.CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
 }
 
 func (ec _ExtensionStreamCustomClockConfigurationClass) Alloc() ExtensionStreamCustomClockConfiguration {
@@ -86,19 +86,27 @@ func (e_ ExtensionStreamCustomClockConfiguration) Init() ExtensionStreamCustomCl
 	return rv
 }
 
-// A universally unique identifier for the clock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915895-sourceidentifier?language=objc
-func (e_ ExtensionStreamCustomClockConfiguration) SourceIdentifier() foundation.UUID {
-	rv := objc.Call[foundation.UUID](e_, objc.Sel("sourceIdentifier"))
-	return rv
-}
-
 // The number of events to use for rate smoothing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915894-numberofeventsforratesmoothing?language=objc
 func (e_ ExtensionStreamCustomClockConfiguration) NumberOfEventsForRateSmoothing() uint32 {
 	rv := objc.Call[uint32](e_, objc.Sel("numberOfEventsForRateSmoothing"))
+	return rv
+}
+
+// The number of averages to use for rate smoothing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915893-numberofaveragesforratesmoothing?language=objc
+func (e_ ExtensionStreamCustomClockConfiguration) NumberOfAveragesForRateSmoothing() uint32 {
+	rv := objc.Call[uint32](e_, objc.Sel("numberOfAveragesForRateSmoothing"))
+	return rv
+}
+
+// A universally unique identifier for the clock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915895-sourceidentifier?language=objc
+func (e_ ExtensionStreamCustomClockConfiguration) SourceIdentifier() foundation.UUID {
+	rv := objc.Call[foundation.UUID](e_, objc.Sel("sourceIdentifier"))
 	return rv
 }
 
@@ -115,13 +123,5 @@ func (e_ ExtensionStreamCustomClockConfiguration) GetTimeCallMinimumInterval() c
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915889-clockname?language=objc
 func (e_ ExtensionStreamCustomClockConfiguration) ClockName() string {
 	rv := objc.Call[string](e_, objc.Sel("clockName"))
-	return rv
-}
-
-// The number of averages to use for rate smoothing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamcustomclockconfiguration/3915893-numberofaveragesforratesmoothing?language=objc
-func (e_ ExtensionStreamCustomClockConfiguration) NumberOfAveragesForRateSmoothing() uint32 {
-	rv := objc.Call[uint32](e_, objc.Sel("numberOfAveragesForRateSmoothing"))
 	return rv
 }

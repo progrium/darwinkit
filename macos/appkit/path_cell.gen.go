@@ -19,30 +19,30 @@ type _PathCellClass struct {
 // An interface definition for the [PathCell] class.
 type IPathCell interface {
 	IActionCell
-	RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect
 	MouseEnteredWithFrameInView(event IEvent, frame foundation.Rect, view IView)
 	PathComponentCellAtPointWithFrameInView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell
+	RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect
 	MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView)
-	PathComponentCells() []PathComponentCell
-	SetPathComponentCells(value []IPathComponentCell)
-	ClickedPathComponentCell() PathComponentCell
-	AllowedTypes() []string
-	SetAllowedTypes(value []string)
-	PlaceholderAttributedString() foundation.AttributedString
-	SetPlaceholderAttributedString(value foundation.IAttributedString)
-	PlaceholderString() string
-	SetPlaceholderString(value string)
-	URL() foundation.URL
-	SetURL(value foundation.IURL)
+	DoubleAction() objc.Selector
+	SetDoubleAction(value objc.Selector)
 	Delegate() PathCellDelegateObject
 	SetDelegate(value PPathCellDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	PathStyle() PathStyle
-	SetPathStyle(value PathStyle)
+	PlaceholderAttributedString() foundation.AttributedString
+	SetPlaceholderAttributedString(value foundation.IAttributedString)
 	BackgroundColor() Color
 	SetBackgroundColor(value IColor)
-	DoubleAction() objc.Selector
-	SetDoubleAction(value objc.Selector)
+	PathComponentCells() []PathComponentCell
+	SetPathComponentCells(value []IPathComponentCell)
+	PathStyle() PathStyle
+	SetPathStyle(value PathStyle)
+	AllowedTypes() []string
+	SetAllowedTypes(value []string)
+	URL() foundation.URL
+	SetURL(value foundation.IURL)
+	PlaceholderString() string
+	SetPlaceholderString(value string)
+	ClickedPathComponentCell() PathComponentCell
 }
 
 // The user interface of a path control object. [Full Topic]
@@ -106,14 +106,6 @@ func NewPathCellTextCell(string_ string) PathCell {
 	return instance
 }
 
-// Returns the current rectangle being displayed for a given path component cell, with respect to a given frame in a given view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1534143-rectofpathcomponentcell?language=objc
-func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("rectOfPathComponentCell:withFrame:inView:"), cell, frame, view)
-	return rv
-}
-
 // Displays the cell component over which the mouse is hovering. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1526407-mouseentered?language=objc
@@ -129,6 +121,14 @@ func (p_ PathCell) PathComponentCellAtPointWithFrameInView(point foundation.Poin
 	return rv
 }
 
+// Returns the current rectangle being displayed for a given path component cell, with respect to a given frame in a given view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1534143-rectofpathcomponentcell?language=objc
+func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("rectOfPathComponentCell:withFrame:inView:"), cell, frame, view)
+	return rv
+}
+
 // Hides the cell component over which the mouse is hovering. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525878-mouseexited?language=objc
@@ -136,102 +136,19 @@ func (p_ PathCell) MouseExitedWithFrameInView(event IEvent, frame foundation.Rec
 	objc.Call[objc.Void](p_, objc.Sel("mouseExited:withFrame:inView:"), event, frame, view)
 }
 
-// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
+// Sets the receiver’s double-click action. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
-func (p_ PathCell) PathComponentCells() []PathComponentCell {
-	rv := objc.Call[[]PathComponentCell](p_, objc.Sel("pathComponentCells"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
+func (p_ PathCell) DoubleAction() objc.Selector {
+	rv := objc.Call[objc.Selector](p_, objc.Sel("doubleAction"))
 	return rv
 }
 
-// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
+// Sets the receiver’s double-click action. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
-func (p_ PathCell) SetPathComponentCells(value []IPathComponentCell) {
-	objc.Call[objc.Void](p_, objc.Sel("setPathComponentCells:"), value)
-}
-
-// Sets the value of the path displayed by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524894-clickedpathcomponentcell?language=objc
-func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
-	rv := objc.Call[PathComponentCell](p_, objc.Sel("clickedPathComponentCell"))
-	return rv
-}
-
-// Sets the component types allowed in the path when the cell is editable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
-func (p_ PathCell) AllowedTypes() []string {
-	rv := objc.Call[[]string](p_, objc.Sel("allowedTypes"))
-	return rv
-}
-
-// Sets the component types allowed in the path when the cell is editable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
-func (p_ PathCell) SetAllowedTypes(value []string) {
-	objc.Call[objc.Void](p_, objc.Sel("setAllowedTypes:"), value)
-}
-
-// Sets the value of the placeholder attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
-func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("placeholderAttributedString"))
-	return rv
-}
-
-// Sets the value of the placeholder attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
-func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), value)
-}
-
-// Returns the placeholder string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
-func (p_ PathCell) PlaceholderString() string {
-	rv := objc.Call[string](p_, objc.Sel("placeholderString"))
-	return rv
-}
-
-// Returns the placeholder string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
-func (p_ PathCell) SetPlaceholderString(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderString:"), value)
-}
-
-// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
-func (pc _PathCellClass) PathComponentCellClass() objc.Class {
-	rv := objc.Call[objc.Class](pc, objc.Sel("pathComponentCellClass"))
-	return rv
-}
-
-// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
-func PathCell_PathComponentCellClass() objc.Class {
-	return PathCellClass.PathComponentCellClass()
-}
-
-// Returns the path displayed by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
-func (p_ PathCell) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
-	return rv
-}
-
-// Returns the path displayed by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
-func (p_ PathCell) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
+func (p_ PathCell) SetDoubleAction(value objc.Selector) {
+	objc.Call[objc.Void](p_, objc.Sel("setDoubleAction:"), value)
 }
 
 // Sets the receiver’s delegate. [Full Topic]
@@ -258,19 +175,19 @@ func (p_ PathCell) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// Sets the receiver’s path style. [Full Topic]
+// Sets the value of the placeholder attributed string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
-func (p_ PathCell) PathStyle() PathStyle {
-	rv := objc.Call[PathStyle](p_, objc.Sel("pathStyle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
+func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("placeholderAttributedString"))
 	return rv
 }
 
-// Sets the receiver’s path style. [Full Topic]
+// Sets the value of the placeholder attributed string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
-func (p_ PathCell) SetPathStyle(value PathStyle) {
-	objc.Call[objc.Void](p_, objc.Sel("setPathStyle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
+func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 // Returns the current background color of the receiver. [Full Topic]
@@ -288,17 +205,100 @@ func (p_ PathCell) SetBackgroundColor(value IColor) {
 	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), value)
 }
 
-// Sets the receiver’s double-click action. [Full Topic]
+// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
-func (p_ PathCell) DoubleAction() objc.Selector {
-	rv := objc.Call[objc.Selector](p_, objc.Sel("doubleAction"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
+func (p_ PathCell) PathComponentCells() []PathComponentCell {
+	rv := objc.Call[[]PathComponentCell](p_, objc.Sel("pathComponentCells"))
 	return rv
 }
 
-// Sets the receiver’s double-click action. [Full Topic]
+// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
-func (p_ PathCell) SetDoubleAction(value objc.Selector) {
-	objc.Call[objc.Void](p_, objc.Sel("setDoubleAction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
+func (p_ PathCell) SetPathComponentCells(value []IPathComponentCell) {
+	objc.Call[objc.Void](p_, objc.Sel("setPathComponentCells:"), value)
+}
+
+// Sets the receiver’s path style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
+func (p_ PathCell) PathStyle() PathStyle {
+	rv := objc.Call[PathStyle](p_, objc.Sel("pathStyle"))
+	return rv
+}
+
+// Sets the receiver’s path style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
+func (p_ PathCell) SetPathStyle(value PathStyle) {
+	objc.Call[objc.Void](p_, objc.Sel("setPathStyle:"), value)
+}
+
+// Sets the component types allowed in the path when the cell is editable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
+func (p_ PathCell) AllowedTypes() []string {
+	rv := objc.Call[[]string](p_, objc.Sel("allowedTypes"))
+	return rv
+}
+
+// Sets the component types allowed in the path when the cell is editable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
+func (p_ PathCell) SetAllowedTypes(value []string) {
+	objc.Call[objc.Void](p_, objc.Sel("setAllowedTypes:"), value)
+}
+
+// Returns the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
+func (p_ PathCell) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
+	return rv
+}
+
+// Returns the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
+func (p_ PathCell) SetURL(value foundation.IURL) {
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
+}
+
+// Returns the placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
+func (p_ PathCell) PlaceholderString() string {
+	rv := objc.Call[string](p_, objc.Sel("placeholderString"))
+	return rv
+}
+
+// Returns the placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
+func (p_ PathCell) SetPlaceholderString(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderString:"), value)
+}
+
+// Sets the value of the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524894-clickedpathcomponentcell?language=objc
+func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
+	rv := objc.Call[PathComponentCell](p_, objc.Sel("clickedPathComponentCell"))
+	return rv
+}
+
+// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
+func (pc _PathCellClass) PathComponentCellClass() objc.Class {
+	rv := objc.Call[objc.Class](pc, objc.Sel("pathComponentCellClass"))
+	return rv
+}
+
+// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
+func PathCell_PathComponentCellClass() objc.Class {
+	return PathCellClass.PathComponentCellClass()
 }

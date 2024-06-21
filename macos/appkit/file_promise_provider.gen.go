@@ -20,11 +20,11 @@ type IFilePromiseProvider interface {
 	objc.IObject
 	UserInfo() objc.Object
 	SetUserInfo(value objc.IObject)
-	FileType() string
-	SetFileType(value string)
 	Delegate() FilePromiseProviderDelegateObject
 	SetDelegate(value PFilePromiseProviderDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	FileType() string
+	SetFileType(value string)
 }
 
 // An object that provides a promise for the pasteboard. [Full Topic]
@@ -90,21 +90,6 @@ func (f_ FilePromiseProvider) SetUserInfo(value objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("setUserInfo:"), value)
 }
 
-// The file type of the file promise provider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644738-filetype?language=objc
-func (f_ FilePromiseProvider) FileType() string {
-	rv := objc.Call[string](f_, objc.Sel("fileType"))
-	return rv
-}
-
-// The file type of the file promise provider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644738-filetype?language=objc
-func (f_ FilePromiseProvider) SetFileType(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setFileType:"), value)
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644726-delegate?language=objc
@@ -127,4 +112,19 @@ func (f_ FilePromiseProvider) SetDelegate(value PFilePromiseProviderDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644726-delegate?language=objc
 func (f_ FilePromiseProvider) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// The file type of the file promise provider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644738-filetype?language=objc
+func (f_ FilePromiseProvider) FileType() string {
+	rv := objc.Call[string](f_, objc.Sel("fileType"))
+	return rv
+}
+
+// The file type of the file promise provider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644738-filetype?language=objc
+func (f_ FilePromiseProvider) SetFileType(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setFileType:"), value)
 }

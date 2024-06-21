@@ -65,20 +65,6 @@ func NNDivisionNode_NodeWithSources(sourceNodes []INNImageNode) NNDivisionNode {
 	return NNDivisionNodeClass.NodeWithSources(sourceNodes)
 }
 
-func (n_ NNDivisionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
-	rv := objc.Call[NNDivisionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
-func NewNNDivisionNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
-	instance := NNDivisionNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNDivisionNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
 	rv := objc.Call[NNDivisionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
@@ -101,6 +87,20 @@ func (n_ NNDivisionNode) InitWithSources(sourceNodes []INNImageNode) NNDivisionN
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890820-initwithsources?language=objc
 func NewNNDivisionNodeWithSources(sourceNodes []INNImageNode) NNDivisionNode {
 	instance := NNDivisionNodeClass.Alloc().InitWithSources(sourceNodes)
+	instance.Autorelease()
+	return instance
+}
+
+func (n_ NNDivisionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
+	rv := objc.Call[NNDivisionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
+func NewNNDivisionNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
+	instance := NNDivisionNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
 	instance.Autorelease()
 	return instance
 }

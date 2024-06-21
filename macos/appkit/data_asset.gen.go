@@ -5,7 +5,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -47,20 +46,6 @@ func (d_ DataAsset) InitWithName(name DataAssetName) DataAsset {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdataasset/1403439-initwithname?language=objc
 func NewDataAssetWithName(name DataAssetName) DataAsset {
 	instance := DataAssetClass.Alloc().InitWithName(name)
-	instance.Autorelease()
-	return instance
-}
-
-func (d_ DataAsset) InitWithNameBundle(name DataAssetName, bundle foundation.IBundle) DataAsset {
-	rv := objc.Call[DataAsset](d_, objc.Sel("initWithName:bundle:"), name, bundle)
-	return rv
-}
-
-// Initializes and returns an object with a reference to the named data asset that’s in an asset catalog in the specified bundle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nsdataasset/1403436-initwithname?language=objc
-func NewDataAssetWithNameBundle(name DataAssetName, bundle foundation.IBundle) DataAsset {
-	instance := DataAssetClass.Alloc().InitWithNameBundle(name, bundle)
 	instance.Autorelease()
 	return instance
 }

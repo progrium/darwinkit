@@ -20,7 +20,6 @@ type _FontCollectionClass struct {
 type IFontCollection interface {
 	objc.IObject
 	MatchingDescriptorsForFamily(family string) []FontDescriptor
-	MatchingDescriptorsForFamilyOptions(family string, options map[FontCollectionMatchingOptionKey]foundation.INumber) []FontDescriptor
 	MatchingDescriptorsWithOptions(options map[FontCollectionMatchingOptionKey]foundation.INumber) []FontDescriptor
 	ExclusionDescriptors() []FontDescriptor
 	QueryDescriptors() []FontDescriptor
@@ -60,6 +59,21 @@ func (f_ FontCollection) Init() FontCollection {
 	return rv
 }
 
+// Creates a named font collection object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497514-fontcollectionwithname?language=objc
+func (fc _FontCollectionClass) FontCollectionWithName(name FontCollectionName) FontCollection {
+	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithName:"), name)
+	return rv
+}
+
+// Creates a named font collection object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497514-fontcollectionwithname?language=objc
+func FontCollection_FontCollectionWithName(name FontCollectionName) FontCollection {
+	return FontCollectionClass.FontCollectionWithName(name)
+}
+
 // Returns an array of font descriptors matching the logical descriptors for the given font family. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497496-matchingdescriptorsforfamily?language=objc
@@ -83,19 +97,19 @@ func FontCollection_RenameFontCollectionWithNameVisibilityToNameError(oldName Fo
 	return FontCollectionClass.RenameFontCollectionWithNameVisibilityToNameError(oldName, visibility, newName, outError)
 }
 
-// Returns a font collection matching the given descriptors. [Full Topic]
+// Make the given font collection visible by giving it a name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497467-fontcollectionwithdescriptors?language=objc
-func (fc _FontCollectionClass) FontCollectionWithDescriptors(queryDescriptors []IFontDescriptor) FontCollection {
-	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithDescriptors:"), queryDescriptors)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
+func (fc _FontCollectionClass) ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](fc, objc.Sel("showFontCollection:withName:visibility:error:"), collection, name, visibility, error)
 	return rv
 }
 
-// Returns a font collection matching the given descriptors. [Full Topic]
+// Make the given font collection visible by giving it a name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497467-fontcollectionwithdescriptors?language=objc
-func FontCollection_FontCollectionWithDescriptors(queryDescriptors []IFontDescriptor) FontCollection {
-	return FontCollectionClass.FontCollectionWithDescriptors(queryDescriptors)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
+func FontCollection_ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
+	return FontCollectionClass.ShowFontCollectionWithNameVisibilityError(collection, name, visibility, error)
 }
 
 // Remove from view the named font collection with the specified visibility. [Full Topic]
@@ -113,50 +127,19 @@ func FontCollection_HideFontCollectionWithNameVisibilityError(name FontCollectio
 	return FontCollectionClass.HideFontCollectionWithNameVisibilityError(name, visibility, error)
 }
 
-// Returns an array of font descriptors matching the logical descriptors for the given font family and options. [Full Topic]
+// Returns a font collection matching the given descriptors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497522-matchingdescriptorsforfamily?language=objc
-func (f_ FontCollection) MatchingDescriptorsForFamilyOptions(family string, options map[FontCollectionMatchingOptionKey]foundation.INumber) []FontDescriptor {
-	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("matchingDescriptorsForFamily:options:"), family, options)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497467-fontcollectionwithdescriptors?language=objc
+func (fc _FontCollectionClass) FontCollectionWithDescriptors(queryDescriptors []IFontDescriptor) FontCollection {
+	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithDescriptors:"), queryDescriptors)
 	return rv
 }
 
-// Creates a named font collection object. [Full Topic]
+// Returns a font collection matching the given descriptors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497514-fontcollectionwithname?language=objc
-func (fc _FontCollectionClass) FontCollectionWithName(name FontCollectionName) FontCollection {
-	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithName:"), name)
-	return rv
-}
-
-// Creates a named font collection object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497514-fontcollectionwithname?language=objc
-func FontCollection_FontCollectionWithName(name FontCollectionName) FontCollection {
-	return FontCollectionClass.FontCollectionWithName(name)
-}
-
-// Returns an array of font descriptors matching the logical descriptors with the given options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497510-matchingdescriptorswithoptions?language=objc
-func (f_ FontCollection) MatchingDescriptorsWithOptions(options map[FontCollectionMatchingOptionKey]foundation.INumber) []FontDescriptor {
-	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("matchingDescriptorsWithOptions:"), options)
-	return rv
-}
-
-// Make the given font collection visible by giving it a name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
-func (fc _FontCollectionClass) ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](fc, objc.Sel("showFontCollection:withName:visibility:error:"), collection, name, visibility, error)
-	return rv
-}
-
-// Make the given font collection visible by giving it a name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
-func FontCollection_ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
-	return FontCollectionClass.ShowFontCollectionWithNameVisibilityError(collection, name, visibility, error)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497467-fontcollectionwithdescriptors?language=objc
+func FontCollection_FontCollectionWithDescriptors(queryDescriptors []IFontDescriptor) FontCollection {
+	return FontCollectionClass.FontCollectionWithDescriptors(queryDescriptors)
 }
 
 // Returns a collection of fonts matching the given locale. [Full Topic]
@@ -174,19 +157,35 @@ func FontCollection_FontCollectionWithLocale(locale foundation.ILocale) FontColl
 	return FontCollectionClass.FontCollectionWithLocale(locale)
 }
 
-// Creates a font collection with the specified name and font visibility. [Full Topic]
+// Returns an array of font descriptors matching the logical descriptors with the given options. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497475-fontcollectionwithname?language=objc
-func (fc _FontCollectionClass) FontCollectionWithNameVisibility(name FontCollectionName, visibility FontCollectionVisibility) FontCollection {
-	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithName:visibility:"), name, visibility)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497510-matchingdescriptorswithoptions?language=objc
+func (f_ FontCollection) MatchingDescriptorsWithOptions(options map[FontCollectionMatchingOptionKey]foundation.INumber) []FontDescriptor {
+	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("matchingDescriptorsWithOptions:"), options)
 	return rv
 }
 
-// Creates a font collection with the specified name and font visibility. [Full Topic]
+// A list of query font descriptors whose matching results are excluded from the list of matching descriptors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497475-fontcollectionwithname?language=objc
-func FontCollection_FontCollectionWithNameVisibility(name FontCollectionName, visibility FontCollectionVisibility) FontCollection {
-	return FontCollectionClass.FontCollectionWithNameVisibility(name, visibility)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497456-exclusiondescriptors?language=objc
+func (f_ FontCollection) ExclusionDescriptors() []FontDescriptor {
+	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("exclusionDescriptors"))
+	return rv
+}
+
+// The font collection that matches all registered fonts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497473-fontcollectionwithallavailablede?language=objc
+func (fc _FontCollectionClass) FontCollectionWithAllAvailableDescriptors() FontCollection {
+	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithAllAvailableDescriptors"))
+	return rv
+}
+
+// The font collection that matches all registered fonts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497473-fontcollectionwithallavailablede?language=objc
+func FontCollection_FontCollectionWithAllAvailableDescriptors() FontCollection {
+	return FontCollectionClass.FontCollectionWithAllAvailableDescriptors()
 }
 
 // Returns all named collections visible to this process. [Full Topic]
@@ -204,35 +203,12 @@ func FontCollection_AllFontCollectionNames() []FontCollectionName {
 	return FontCollectionClass.AllFontCollectionNames()
 }
 
-// A list of query font descriptors whose matching results are excluded from the list of matching descriptors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497456-exclusiondescriptors?language=objc
-func (f_ FontCollection) ExclusionDescriptors() []FontDescriptor {
-	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("exclusionDescriptors"))
-	return rv
-}
-
 // An array of font descriptors whose matching results produce the collection’s matching descriptors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497441-querydescriptors?language=objc
 func (f_ FontCollection) QueryDescriptors() []FontDescriptor {
 	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("queryDescriptors"))
 	return rv
-}
-
-// The font collection that matches all registered fonts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497473-fontcollectionwithallavailablede?language=objc
-func (fc _FontCollectionClass) FontCollectionWithAllAvailableDescriptors() FontCollection {
-	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithAllAvailableDescriptors"))
-	return rv
-}
-
-// The font collection that matches all registered fonts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497473-fontcollectionwithallavailablede?language=objc
-func FontCollection_FontCollectionWithAllAvailableDescriptors() FontCollection {
-	return FontCollectionClass.FontCollectionWithAllAvailableDescriptors()
 }
 
 // An array of font descriptors matching the logical descriptors. [Full Topic]

@@ -17,32 +17,32 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput?language=objc
 type PImageProcessorInput interface {
 	// optional
-	BytesPerRow() uint
-	HasBytesPerRow() bool
-
-	// optional
-	Region() coregraphics.Rect
-	HasRegion() bool
+	Surface() iosurface.Ref
+	HasSurface() bool
 
 	// optional
 	MetalTexture() metal.TextureObject
 	HasMetalTexture() bool
 
 	// optional
-	Format() Format
-	HasFormat() bool
-
-	// optional
 	PixelBuffer() corevideo.PixelBufferRef
 	HasPixelBuffer() bool
+
+	// optional
+	BytesPerRow() uint
+	HasBytesPerRow() bool
 
 	// optional
 	BaseAddress() unsafe.Pointer
 	HasBaseAddress() bool
 
 	// optional
-	Surface() iosurface.Ref
-	HasSurface() bool
+	Region() coregraphics.Rect
+	HasRegion() bool
+
+	// optional
+	Format() Format
+	HasFormat() bool
 }
 
 // ensure impl type implements protocol interface
@@ -53,27 +53,15 @@ type ImageProcessorInputObject struct {
 	objc.Object
 }
 
-func (i_ ImageProcessorInputObject) HasBytesPerRow() bool {
-	return i_.RespondsToSelector(objc.Sel("bytesPerRow"))
+func (i_ ImageProcessorInputObject) HasSurface() bool {
+	return i_.RespondsToSelector(objc.Sel("surface"))
 }
 
-// The number of bytes per row of pixels in the input image data. [Full Topic]
+// An IOSurface object containing the image data to be processed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639655-bytesperrow?language=objc
-func (i_ ImageProcessorInputObject) BytesPerRow() uint {
-	rv := objc.Call[uint](i_, objc.Sel("bytesPerRow"))
-	return rv
-}
-
-func (i_ ImageProcessorInputObject) HasRegion() bool {
-	return i_.RespondsToSelector(objc.Sel("region"))
-}
-
-// The area within the input image to be processed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639633-region?language=objc
-func (i_ ImageProcessorInputObject) Region() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("region"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639657-surface?language=objc
+func (i_ ImageProcessorInputObject) Surface() iosurface.Ref {
+	rv := objc.Call[iosurface.Ref](i_, objc.Sel("surface"))
 	return rv
 }
 
@@ -89,18 +77,6 @@ func (i_ ImageProcessorInputObject) MetalTexture() metal.TextureObject {
 	return rv
 }
 
-func (i_ ImageProcessorInputObject) HasFormat() bool {
-	return i_.RespondsToSelector(objc.Sel("format"))
-}
-
-// The per-pixel data format of the image to be processed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639639-format?language=objc
-func (i_ ImageProcessorInputObject) Format() Format {
-	rv := objc.Call[Format](i_, objc.Sel("format"))
-	return rv
-}
-
 func (i_ ImageProcessorInputObject) HasPixelBuffer() bool {
 	return i_.RespondsToSelector(objc.Sel("pixelBuffer"))
 }
@@ -110,6 +86,18 @@ func (i_ ImageProcessorInputObject) HasPixelBuffer() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639649-pixelbuffer?language=objc
 func (i_ ImageProcessorInputObject) PixelBuffer() corevideo.PixelBufferRef {
 	rv := objc.Call[corevideo.PixelBufferRef](i_, objc.Sel("pixelBuffer"))
+	return rv
+}
+
+func (i_ ImageProcessorInputObject) HasBytesPerRow() bool {
+	return i_.RespondsToSelector(objc.Sel("bytesPerRow"))
+}
+
+// The number of bytes per row of pixels in the input image data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639655-bytesperrow?language=objc
+func (i_ ImageProcessorInputObject) BytesPerRow() uint {
+	rv := objc.Call[uint](i_, objc.Sel("bytesPerRow"))
 	return rv
 }
 
@@ -125,14 +113,26 @@ func (i_ ImageProcessorInputObject) BaseAddress() unsafe.Pointer {
 	return rv
 }
 
-func (i_ ImageProcessorInputObject) HasSurface() bool {
-	return i_.RespondsToSelector(objc.Sel("surface"))
+func (i_ ImageProcessorInputObject) HasRegion() bool {
+	return i_.RespondsToSelector(objc.Sel("region"))
 }
 
-// An IOSurface object containing the image data to be processed. [Full Topic]
+// The area within the input image to be processed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639657-surface?language=objc
-func (i_ ImageProcessorInputObject) Surface() iosurface.Ref {
-	rv := objc.Call[iosurface.Ref](i_, objc.Sel("surface"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639633-region?language=objc
+func (i_ ImageProcessorInputObject) Region() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("region"))
+	return rv
+}
+
+func (i_ ImageProcessorInputObject) HasFormat() bool {
+	return i_.RespondsToSelector(objc.Sel("format"))
+}
+
+// The per-pixel data format of the image to be processed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorinput/1639639-format?language=objc
+func (i_ ImageProcessorInputObject) Format() Format {
+	rv := objc.Call[Format](i_, objc.Sel("format"))
 	return rv
 }

@@ -18,11 +18,11 @@ type _OperationClass struct {
 // An interface definition for the [Operation] class.
 type IOperation interface {
 	objc.IObject
-	OutputTensors() []Tensor
-	Graph() Graph
-	InputTensors() []Tensor
-	ControlDependencies() []Operation
 	Name() string
+	ControlDependencies() []Operation
+	InputTensors() []Tensor
+	Graph() Graph
+	OutputTensors() []Tensor
 }
 
 //	[Full Topic]
@@ -60,25 +60,9 @@ func (o_ Operation) Init() Operation {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564660-outputtensors?language=objc
-func (o_ Operation) OutputTensors() []Tensor {
-	rv := objc.Call[[]Tensor](o_, objc.Sel("outputTensors"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3580488-graph?language=objc
-func (o_ Operation) Graph() Graph {
-	rv := objc.Call[Graph](o_, objc.Sel("graph"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564658-inputtensors?language=objc
-func (o_ Operation) InputTensors() []Tensor {
-	rv := objc.Call[[]Tensor](o_, objc.Sel("inputTensors"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564659-name?language=objc
+func (o_ Operation) Name() string {
+	rv := objc.Call[string](o_, objc.Sel("name"))
 	return rv
 }
 
@@ -92,8 +76,24 @@ func (o_ Operation) ControlDependencies() []Operation {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564659-name?language=objc
-func (o_ Operation) Name() string {
-	rv := objc.Call[string](o_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564658-inputtensors?language=objc
+func (o_ Operation) InputTensors() []Tensor {
+	rv := objc.Call[[]Tensor](o_, objc.Sel("inputTensors"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3580488-graph?language=objc
+func (o_ Operation) Graph() Graph {
+	rv := objc.Call[Graph](o_, objc.Sel("graph"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoperation/3564660-outputtensors?language=objc
+func (o_ Operation) OutputTensors() []Tensor {
+	rv := objc.Call[[]Tensor](o_, objc.Sel("outputTensors"))
 	return rv
 }

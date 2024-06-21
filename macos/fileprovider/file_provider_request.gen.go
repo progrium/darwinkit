@@ -19,10 +19,10 @@ type _FileProviderRequestClass struct {
 // An interface definition for the [FileProviderRequest] class.
 type IFileProviderRequest interface {
 	objc.IObject
+	IsFileViewerRequest() bool
 	IsSystemRequest() bool
 	DomainVersion() FileProviderDomainVersion
 	RequestingExecutable() foundation.URL
-	IsFileViewerRequest() bool
 }
 
 // An object that provides information about the application requesting data from the File Provider extension. [Full Topic]
@@ -58,6 +58,14 @@ func (f_ FileProviderRequest) Init() FileProviderRequest {
 	return rv
 }
 
+// A Boolean value that indicates whether the request came from Finder or related system file browsers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderrequest/3656553-isfileviewerrequest?language=objc
+func (f_ FileProviderRequest) IsFileViewerRequest() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isFileViewerRequest"))
+	return rv
+}
+
 // A Boolean value that indicates whether the request came from a system process. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderrequest/3656554-issystemrequest?language=objc
@@ -79,13 +87,5 @@ func (f_ FileProviderRequest) DomainVersion() FileProviderDomainVersion {
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderrequest/3142339-requestingexecutable?language=objc
 func (f_ FileProviderRequest) RequestingExecutable() foundation.URL {
 	rv := objc.Call[foundation.URL](f_, objc.Sel("requestingExecutable"))
-	return rv
-}
-
-// A Boolean value that indicates whether the request came from Finder or related system file browsers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderrequest/3656553-isfileviewerrequest?language=objc
-func (f_ FileProviderRequest) IsFileViewerRequest() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isFileViewerRequest"))
 	return rv
 }

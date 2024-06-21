@@ -18,8 +18,8 @@ type _UserScriptClass struct {
 // An interface definition for the [UserScript] class.
 type IUserScript interface {
 	objc.IObject
-	IsForMainFrameOnly() bool
 	Source() string
+	IsForMainFrameOnly() bool
 	InjectionTime() UserScriptInjectionTime
 }
 
@@ -34,20 +34,6 @@ func UserScriptFrom(ptr unsafe.Pointer) UserScript {
 	return UserScript{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	rv := objc.Call[UserScript](u_, objc.Sel("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, contentWorld)
-	return rv
-}
-
-// Creates a user script object that is scoped to a particular content world. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/3656354-initwithsource?language=objc
-func NewUserScriptWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	instance := UserScriptClass.Alloc().InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source, injectionTime, forMainFrameOnly, contentWorld)
-	instance.Autorelease()
-	return instance
 }
 
 func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
@@ -84,19 +70,19 @@ func (u_ UserScript) Init() UserScript {
 	return rv
 }
 
-// A Boolean value that indicates whether to inject the script into the main frame or all frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537856-formainframeonly?language=objc
-func (u_ UserScript) IsForMainFrameOnly() bool {
-	rv := objc.Call[bool](u_, objc.Sel("isForMainFrameOnly"))
-	return rv
-}
-
 // The script’s source code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537787-source?language=objc
 func (u_ UserScript) Source() string {
 	rv := objc.Call[string](u_, objc.Sel("source"))
+	return rv
+}
+
+// A Boolean value that indicates whether to inject the script into the main frame or all frames. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537856-formainframeonly?language=objc
+func (u_ UserScript) IsForMainFrameOnly() bool {
+	rv := objc.Call[bool](u_, objc.Sel("isForMainFrameOnly"))
 	return rv
 }
 

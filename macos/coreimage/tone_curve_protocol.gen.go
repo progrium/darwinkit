@@ -12,28 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve?language=objc
 type PToneCurve interface {
 	// optional
-	SetPoint4(value coregraphics.Point)
-	HasSetPoint4() bool
-
-	// optional
-	Point4() coregraphics.Point
-	HasPoint4() bool
-
-	// optional
-	SetPoint0(value coregraphics.Point)
-	HasSetPoint0() bool
-
-	// optional
-	Point0() coregraphics.Point
-	HasPoint0() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetPoint4(value coregraphics.Point)
+	HasSetPoint4() bool
+
+	// optional
+	Point4() coregraphics.Point
+	HasPoint4() bool
 
 	// optional
 	SetPoint3(value coregraphics.Point)
@@ -44,6 +36,14 @@ type PToneCurve interface {
 	HasPoint3() bool
 
 	// optional
+	SetPoint2(value coregraphics.Point)
+	HasSetPoint2() bool
+
+	// optional
+	Point2() coregraphics.Point
+	HasPoint2() bool
+
+	// optional
 	SetPoint1(value coregraphics.Point)
 	HasSetPoint1() bool
 
@@ -52,12 +52,12 @@ type PToneCurve interface {
 	HasPoint1() bool
 
 	// optional
-	SetPoint2(value coregraphics.Point)
-	HasSetPoint2() bool
+	SetPoint0(value coregraphics.Point)
+	HasSetPoint0() bool
 
 	// optional
-	Point2() coregraphics.Point
-	HasPoint2() bool
+	Point0() coregraphics.Point
+	HasPoint0() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,52 +66,6 @@ var _ PToneCurve = (*ToneCurveObject)(nil)
 // A concrete type for the [PToneCurve] protocol.
 type ToneCurveObject struct {
 	objc.Object
-}
-
-func (t_ ToneCurveObject) HasSetPoint4() bool {
-	return t_.RespondsToSelector(objc.Sel("setPoint4:"))
-}
-
-// A vector containing the position of the fifth point of the tone curve. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228797-point4?language=objc
-func (t_ ToneCurveObject) SetPoint4(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setPoint4:"), value)
-}
-
-func (t_ ToneCurveObject) HasPoint4() bool {
-	return t_.RespondsToSelector(objc.Sel("point4"))
-}
-
-// A vector containing the position of the fifth point of the tone curve. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228797-point4?language=objc
-func (t_ ToneCurveObject) Point4() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point4"))
-	return rv
-}
-
-func (t_ ToneCurveObject) HasSetPoint0() bool {
-	return t_.RespondsToSelector(objc.Sel("setPoint0:"))
-}
-
-// A vector containing the position of the first point of the tone curve. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228793-point0?language=objc
-func (t_ ToneCurveObject) SetPoint0(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setPoint0:"), value)
-}
-
-func (t_ ToneCurveObject) HasPoint0() bool {
-	return t_.RespondsToSelector(objc.Sel("point0"))
-}
-
-// A vector containing the position of the first point of the tone curve. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228793-point0?language=objc
-func (t_ ToneCurveObject) Point0() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point0"))
-	return rv
 }
 
 func (t_ ToneCurveObject) HasSetInputImage() bool {
@@ -134,6 +88,29 @@ func (t_ ToneCurveObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228792-inputimage?language=objc
 func (t_ ToneCurveObject) InputImage() Image {
 	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (t_ ToneCurveObject) HasSetPoint4() bool {
+	return t_.RespondsToSelector(objc.Sel("setPoint4:"))
+}
+
+// A vector containing the position of the fifth point of the tone curve. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228797-point4?language=objc
+func (t_ ToneCurveObject) SetPoint4(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setPoint4:"), value)
+}
+
+func (t_ ToneCurveObject) HasPoint4() bool {
+	return t_.RespondsToSelector(objc.Sel("point4"))
+}
+
+// A vector containing the position of the fifth point of the tone curve. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228797-point4?language=objc
+func (t_ ToneCurveObject) Point4() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point4"))
 	return rv
 }
 
@@ -160,6 +137,29 @@ func (t_ ToneCurveObject) Point3() coregraphics.Point {
 	return rv
 }
 
+func (t_ ToneCurveObject) HasSetPoint2() bool {
+	return t_.RespondsToSelector(objc.Sel("setPoint2:"))
+}
+
+// A vector containing the position of the third point of the tone curve. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228795-point2?language=objc
+func (t_ ToneCurveObject) SetPoint2(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setPoint2:"), value)
+}
+
+func (t_ ToneCurveObject) HasPoint2() bool {
+	return t_.RespondsToSelector(objc.Sel("point2"))
+}
+
+// A vector containing the position of the third point of the tone curve. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228795-point2?language=objc
+func (t_ ToneCurveObject) Point2() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point2"))
+	return rv
+}
+
 func (t_ ToneCurveObject) HasSetPoint1() bool {
 	return t_.RespondsToSelector(objc.Sel("setPoint1:"))
 }
@@ -183,25 +183,25 @@ func (t_ ToneCurveObject) Point1() coregraphics.Point {
 	return rv
 }
 
-func (t_ ToneCurveObject) HasSetPoint2() bool {
-	return t_.RespondsToSelector(objc.Sel("setPoint2:"))
+func (t_ ToneCurveObject) HasSetPoint0() bool {
+	return t_.RespondsToSelector(objc.Sel("setPoint0:"))
 }
 
-// A vector containing the position of the third point of the tone curve. [Full Topic]
+// A vector containing the position of the first point of the tone curve. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228795-point2?language=objc
-func (t_ ToneCurveObject) SetPoint2(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setPoint2:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228793-point0?language=objc
+func (t_ ToneCurveObject) SetPoint0(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setPoint0:"), value)
 }
 
-func (t_ ToneCurveObject) HasPoint2() bool {
-	return t_.RespondsToSelector(objc.Sel("point2"))
+func (t_ ToneCurveObject) HasPoint0() bool {
+	return t_.RespondsToSelector(objc.Sel("point0"))
 }
 
-// A vector containing the position of the third point of the tone curve. [Full Topic]
+// A vector containing the position of the first point of the tone curve. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228795-point2?language=objc
-func (t_ ToneCurveObject) Point2() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point2"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228793-point0?language=objc
+func (t_ ToneCurveObject) Point0() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point0"))
 	return rv
 }

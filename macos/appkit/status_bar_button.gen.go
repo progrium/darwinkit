@@ -56,16 +56,16 @@ func (s_ StatusBarButton) Init() StatusBarButton {
 	return rv
 }
 
-func (sc _StatusBarButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
+func (sc _StatusBarButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
-// Creates a standard push button with a title and image. [Full Topic]
+// Creates a standard checkbox with the title you specify. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc
-func StatusBarButton_ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.ButtonWithTitleImageTargetAction(title, image, target, action)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
+func StatusBarButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	return StatusBarButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (sc _StatusBarButtonClass) ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
@@ -78,18 +78,6 @@ func (sc _StatusBarButtonClass) ButtonWithTitleTargetAction(title string, target
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc
 func StatusBarButton_ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
 	return StatusBarButtonClass.ButtonWithTitleTargetAction(title, target, action)
-}
-
-func (sc _StatusBarButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.Call[StatusBarButton](sc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
-	return rv
-}
-
-// Creates a standard checkbox with the title you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
-func StatusBarButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (sc _StatusBarButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {

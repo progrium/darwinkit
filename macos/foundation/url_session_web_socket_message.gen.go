@@ -18,8 +18,8 @@ type _URLSessionWebSocketMessageClass struct {
 // An interface definition for the [URLSessionWebSocketMessage] class.
 type IURLSessionWebSocketMessage interface {
 	objc.IObject
-	String() string
 	Data() []byte
+	String() string
 	Type() URLSessionWebSocketMessageType
 }
 
@@ -36,20 +36,6 @@ func URLSessionWebSocketMessageFrom(ptr unsafe.Pointer) URLSessionWebSocketMessa
 	}
 }
 
-func (u_ URLSessionWebSocketMessage) InitWithString(string_ string) URLSessionWebSocketMessage {
-	rv := objc.Call[URLSessionWebSocketMessage](u_, objc.Sel("initWithString:"), string_)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181193-initwithstring?language=objc
-func NewURLSessionWebSocketMessageWithString(string_ string) URLSessionWebSocketMessage {
-	instance := URLSessionWebSocketMessageClass.Alloc().InitWithString(string_)
-	instance.Autorelease()
-	return instance
-}
-
 func (u_ URLSessionWebSocketMessage) InitWithData(data []byte) URLSessionWebSocketMessage {
 	rv := objc.Call[URLSessionWebSocketMessage](u_, objc.Sel("initWithData:"), data)
 	return rv
@@ -60,6 +46,20 @@ func (u_ URLSessionWebSocketMessage) InitWithData(data []byte) URLSessionWebSock
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181192-initwithdata?language=objc
 func NewURLSessionWebSocketMessageWithData(data []byte) URLSessionWebSocketMessage {
 	instance := URLSessionWebSocketMessageClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
+}
+
+func (u_ URLSessionWebSocketMessage) InitWithString(string_ string) URLSessionWebSocketMessage {
+	rv := objc.Call[URLSessionWebSocketMessage](u_, objc.Sel("initWithString:"), string_)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181193-initwithstring?language=objc
+func NewURLSessionWebSocketMessageWithString(string_ string) URLSessionWebSocketMessage {
+	instance := URLSessionWebSocketMessageClass.Alloc().InitWithString(string_)
 	instance.Autorelease()
 	return instance
 }
@@ -86,17 +86,17 @@ func (u_ URLSessionWebSocketMessage) Init() URLSessionWebSocketMessage {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181194-string?language=objc
-func (u_ URLSessionWebSocketMessage) String() string {
-	rv := objc.Call[string](u_, objc.Sel("string"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181191-data?language=objc
+func (u_ URLSessionWebSocketMessage) Data() []byte {
+	rv := objc.Call[[]byte](u_, objc.Sel("data"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181191-data?language=objc
-func (u_ URLSessionWebSocketMessage) Data() []byte {
-	rv := objc.Call[[]byte](u_, objc.Sel("data"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181194-string?language=objc
+func (u_ URLSessionWebSocketMessage) String() string {
+	rv := objc.Call[string](u_, objc.Sel("string"))
 	return rv
 }
 

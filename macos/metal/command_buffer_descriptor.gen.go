@@ -18,10 +18,10 @@ type _CommandBufferDescriptorClass struct {
 // An interface definition for the [CommandBufferDescriptor] class.
 type ICommandBufferDescriptor interface {
 	objc.IObject
-	ErrorOptions() CommandBufferErrorOption
-	SetErrorOptions(value CommandBufferErrorOption)
 	RetainedReferences() bool
 	SetRetainedReferences(value bool)
+	ErrorOptions() CommandBufferErrorOption
+	SetErrorOptions(value CommandBufferErrorOption)
 }
 
 // A configuration that customizes the behavior for a new command buffer. [Full Topic]
@@ -57,21 +57,6 @@ func (c_ CommandBufferDescriptor) Init() CommandBufferDescriptor {
 	return rv
 }
 
-// The reporting configuration that indicates which information the GPU driver stores in a command buffer’s error property. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553941-erroroptions?language=objc
-func (c_ CommandBufferDescriptor) ErrorOptions() CommandBufferErrorOption {
-	rv := objc.Call[CommandBufferErrorOption](c_, objc.Sel("errorOptions"))
-	return rv
-}
-
-// The reporting configuration that indicates which information the GPU driver stores in a command buffer’s error property. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553941-erroroptions?language=objc
-func (c_ CommandBufferDescriptor) SetErrorOptions(value CommandBufferErrorOption) {
-	objc.Call[objc.Void](c_, objc.Sel("setErrorOptions:"), value)
-}
-
 // A Boolean value that indicates whether the command buffer the descriptor creates maintains strong references to the resources it uses. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553942-retainedreferences?language=objc
@@ -85,4 +70,19 @@ func (c_ CommandBufferDescriptor) RetainedReferences() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553942-retainedreferences?language=objc
 func (c_ CommandBufferDescriptor) SetRetainedReferences(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setRetainedReferences:"), value)
+}
+
+// The reporting configuration that indicates which information the GPU driver stores in a command buffer’s error property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553941-erroroptions?language=objc
+func (c_ CommandBufferDescriptor) ErrorOptions() CommandBufferErrorOption {
+	rv := objc.Call[CommandBufferErrorOption](c_, objc.Sel("errorOptions"))
+	return rv
+}
+
+// The reporting configuration that indicates which information the GPU driver stores in a command buffer’s error property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbufferdescriptor/3553941-erroroptions?language=objc
+func (c_ CommandBufferDescriptor) SetErrorOptions(value CommandBufferErrorOption) {
+	objc.Call[objc.Void](c_, objc.Sel("setErrorOptions:"), value)
 }

@@ -18,8 +18,8 @@ type _AttributeDescriptorArrayClass struct {
 // An interface definition for the [AttributeDescriptorArray] class.
 type IAttributeDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(attributeDesc IAttributeDescriptor, index uint)
 	ObjectAtIndexedSubscript(index uint) AttributeDescriptor
+	SetObjectAtIndexedSubscript(attributeDesc IAttributeDescriptor, index uint)
 }
 
 // An array of attribute descriptor objects. [Full Topic]
@@ -55,17 +55,17 @@ func (a_ AttributeDescriptorArray) Init() AttributeDescriptorArray {
 	return rv
 }
 
-// Sets state for the specified attribute. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptorarray/2097293-setobject?language=objc
-func (a_ AttributeDescriptorArray) SetObjectAtIndexedSubscript(attributeDesc IAttributeDescriptor, index uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setObject:atIndexedSubscript:"), attributeDesc, index)
-}
-
 // Returns the state of the specified attribute. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptorarray/2097215-objectatindexedsubscript?language=objc
 func (a_ AttributeDescriptorArray) ObjectAtIndexedSubscript(index uint) AttributeDescriptor {
 	rv := objc.Call[AttributeDescriptor](a_, objc.Sel("objectAtIndexedSubscript:"), index)
 	return rv
+}
+
+// Sets state for the specified attribute. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptorarray/2097293-setobject?language=objc
+func (a_ AttributeDescriptorArray) SetObjectAtIndexedSubscript(attributeDesc IAttributeDescriptor, index uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setObject:atIndexedSubscript:"), attributeDesc, index)
 }

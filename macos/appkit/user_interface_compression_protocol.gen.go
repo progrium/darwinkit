@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompression?language=objc
 type PUserInterfaceCompression interface {
 	// optional
-	CompressWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions)
-	HasCompressWithPrioritizedCompressionOptions() bool
-
-	// optional
 	MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions) foundation.Size
 	HasMinimumSizeWithPrioritizedCompressionOptions() bool
+
+	// optional
+	CompressWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions)
+	HasCompressWithPrioritizedCompressionOptions() bool
 
 	// optional
 	ActiveCompressionOptions() UserInterfaceCompressionOptions
@@ -32,17 +32,6 @@ type UserInterfaceCompressionObject struct {
 	objc.Object
 }
 
-func (u_ UserInterfaceCompressionObject) HasCompressWithPrioritizedCompressionOptions() bool {
-	return u_.RespondsToSelector(objc.Sel("compressWithPrioritizedCompressionOptions:"))
-}
-
-// Compress the view by applying the specified compression options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompression/2909978-compresswithprioritizedcompressi?language=objc
-func (u_ UserInterfaceCompressionObject) CompressWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions) {
-	objc.Call[objc.Void](u_, objc.Sel("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
-}
-
 func (u_ UserInterfaceCompressionObject) HasMinimumSizeWithPrioritizedCompressionOptions() bool {
 	return u_.RespondsToSelector(objc.Sel("minimumSizeWithPrioritizedCompressionOptions:"))
 }
@@ -53,6 +42,17 @@ func (u_ UserInterfaceCompressionObject) HasMinimumSizeWithPrioritizedCompressio
 func (u_ UserInterfaceCompressionObject) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions) foundation.Size {
 	rv := objc.Call[foundation.Size](u_, objc.Sel("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
+}
+
+func (u_ UserInterfaceCompressionObject) HasCompressWithPrioritizedCompressionOptions() bool {
+	return u_.RespondsToSelector(objc.Sel("compressWithPrioritizedCompressionOptions:"))
+}
+
+// Compress the view by applying the specified compression options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompression/2909978-compresswithprioritizedcompressi?language=objc
+func (u_ UserInterfaceCompressionObject) CompressWithPrioritizedCompressionOptions(prioritizedOptions []UserInterfaceCompressionOptions) {
+	objc.Call[objc.Void](u_, objc.Sel("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
 }
 
 func (u_ UserInterfaceCompressionObject) HasActiveCompressionOptions() bool {

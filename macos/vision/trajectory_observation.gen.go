@@ -18,10 +18,10 @@ type _TrajectoryObservationClass struct {
 // An interface definition for the [TrajectoryObservation] class.
 type ITrajectoryObservation interface {
 	IObservation
-	EquationCoefficients() objc.Object
-	DetectedPoints() []Point
 	MovingAverageRadius() float64
+	DetectedPoints() []Point
 	ProjectedPoints() []Point
+	EquationCoefficients() objc.Object
 }
 
 // An observation that describes a detected trajectory. [Full Topic]
@@ -57,11 +57,11 @@ func (t_ TrajectoryObservation) Init() TrajectoryObservation {
 	return rv
 }
 
-// The coefficients of the parabolic equation. [Full Topic]
+// The moving average radius of the object the request is tracking. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrajectoryobservation/3564825-equationcoefficients?language=objc
-func (t_ TrajectoryObservation) EquationCoefficients() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("equationCoefficients"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntrajectoryobservation/3751001-movingaverageradius?language=objc
+func (t_ TrajectoryObservation) MovingAverageRadius() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("movingAverageRadius"))
 	return rv
 }
 
@@ -73,18 +73,18 @@ func (t_ TrajectoryObservation) DetectedPoints() []Point {
 	return rv
 }
 
-// The moving average radius of the object the request is tracking. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrajectoryobservation/3751001-movingaverageradius?language=objc
-func (t_ TrajectoryObservation) MovingAverageRadius() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("movingAverageRadius"))
-	return rv
-}
-
 // The centroids of the calculated trajectory from the detected points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vntrajectoryobservation/3564826-projectedpoints?language=objc
 func (t_ TrajectoryObservation) ProjectedPoints() []Point {
 	rv := objc.Call[[]Point](t_, objc.Sel("projectedPoints"))
+	return rv
+}
+
+// The coefficients of the parabolic equation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntrajectoryobservation/3564825-equationcoefficients?language=objc
+func (t_ TrajectoryObservation) EquationCoefficients() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("equationCoefficients"))
 	return rv
 }

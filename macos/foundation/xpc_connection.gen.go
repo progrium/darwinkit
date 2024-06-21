@@ -19,28 +19,28 @@ type _XPCConnectionClass struct {
 // An interface definition for the [XPCConnection] class.
 type IXPCConnection interface {
 	objc.IObject
+	SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
+	Suspend()
 	ScheduleSendBarrierBlock(block func())
 	RemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
-	Suspend()
-	Invalidate()
 	Resume()
-	SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
-	EffectiveUserIdentifier() kernel.Uid
-	EffectiveGroupIdentifier() kernel.Gid
+	Invalidate()
 	InterruptionHandler() func()
 	SetInterruptionHandler(value func())
+	ExportedObject() objc.Object
+	SetExportedObject(value objc.IObject)
+	RemoteObjectProxy() objc.Object
+	EffectiveUserIdentifier() kernel.Uid
+	Endpoint() XPCListenerEndpoint
+	EffectiveGroupIdentifier() kernel.Gid
 	RemoteObjectInterface() XPCInterface
 	SetRemoteObjectInterface(value IXPCInterface)
+	ServiceName() string
 	ExportedInterface() XPCInterface
 	SetExportedInterface(value IXPCInterface)
-	Endpoint() XPCListenerEndpoint
-	RemoteObjectProxy() objc.Object
 	ProcessIdentifier() kernel.Pid
 	InvalidationHandler() func()
 	SetInvalidationHandler(value func())
-	ServiceName() string
-	ExportedObject() objc.Object
-	SetExportedObject(value objc.IObject)
 }
 
 // A bidirectional communication channel between two processes. [Full Topic]
@@ -118,6 +118,28 @@ func (x_ XPCConnection) Init() XPCConnection {
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/2879410-synchronousremoteobjectproxywith?language=objc
+func (x_ XPCConnection) SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"), handler)
+	return rv
+}
+
+// Suspends the connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1410778-suspend?language=objc
+func (x_ XPCConnection) Suspend() {
+	objc.Call[objc.Void](x_, objc.Sel("suspend"))
+}
+
+// Add a barrier block to execute on the connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/3172583-schedulesendbarrierblock?language=objc
+func (x_ XPCConnection) ScheduleSendBarrierBlock(block func()) {
+	objc.Call[objc.Void](x_, objc.Sel("scheduleSendBarrierBlock:"), block)
+}
+
 // Returns the current connection, in the context of a call to a method on your exported object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/3172582-currentconnection?language=objc
@@ -133,33 +155,12 @@ func XPCConnection_CurrentConnection() XPCConnection {
 	return XPCConnectionClass.CurrentConnection()
 }
 
-// Add a barrier block to execute on the connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/3172583-schedulesendbarrierblock?language=objc
-func (x_ XPCConnection) ScheduleSendBarrierBlock(block func()) {
-	objc.Call[objc.Void](x_, objc.Sel("scheduleSendBarrierBlock:"), block)
-}
-
 // Returns a proxy for the remote object (that is, the object exported from the other side of this connection) with the specified error handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1407905-remoteobjectproxywitherrorhandle?language=objc
 func (x_ XPCConnection) RemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
 	rv := objc.Call[objc.Object](x_, objc.Sel("remoteObjectProxyWithErrorHandler:"), handler)
 	return rv
-}
-
-// Suspends the connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1410778-suspend?language=objc
-func (x_ XPCConnection) Suspend() {
-	objc.Call[objc.Void](x_, objc.Sel("suspend"))
-}
-
-// Invalidates the connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412618-invalidate?language=objc
-func (x_ XPCConnection) Invalidate() {
-	objc.Call[objc.Void](x_, objc.Sel("invalidate"))
 }
 
 // Starts or resumes handling of messages on a connection. [Full Topic]
@@ -169,28 +170,11 @@ func (x_ XPCConnection) Resume() {
 	objc.Call[objc.Void](x_, objc.Sel("resume"))
 }
 
-//	[Full Topic]
+// Invalidates the connection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/2879410-synchronousremoteobjectproxywith?language=objc
-func (x_ XPCConnection) SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"), handler)
-	return rv
-}
-
-// The effective user ID (EUID) of the connecting process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408346-effectiveuseridentifier?language=objc
-func (x_ XPCConnection) EffectiveUserIdentifier() kernel.Uid {
-	rv := objc.Call[kernel.Uid](x_, objc.Sel("effectiveUserIdentifier"))
-	return rv
-}
-
-// The effective group ID (EGID) of the connecting process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1407793-effectivegroupidentifier?language=objc
-func (x_ XPCConnection) EffectiveGroupIdentifier() kernel.Gid {
-	rv := objc.Call[kernel.Gid](x_, objc.Sel("effectiveGroupIdentifier"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412618-invalidate?language=objc
+func (x_ XPCConnection) Invalidate() {
+	objc.Call[objc.Void](x_, objc.Sel("invalidate"))
 }
 
 // An interruption handler that is called if the remote process exits or crashes. [Full Topic]
@@ -208,6 +192,53 @@ func (x_ XPCConnection) SetInterruptionHandler(value func()) {
 	objc.Call[objc.Void](x_, objc.Sel("setInterruptionHandler:"), value)
 }
 
+// An exported object for the connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412016-exportedobject?language=objc
+func (x_ XPCConnection) ExportedObject() objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("exportedObject"))
+	return rv
+}
+
+// An exported object for the connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412016-exportedobject?language=objc
+func (x_ XPCConnection) SetExportedObject(value objc.IObject) {
+	objc.Call[objc.Void](x_, objc.Sel("setExportedObject:"), value)
+}
+
+// Returns a proxy for the remote object (that is, the exportedObject from the other side of this connection). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411031-remoteobjectproxy?language=objc
+func (x_ XPCConnection) RemoteObjectProxy() objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("remoteObjectProxy"))
+	return rv
+}
+
+// The effective user ID (EUID) of the connecting process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408346-effectiveuseridentifier?language=objc
+func (x_ XPCConnection) EffectiveUserIdentifier() kernel.Uid {
+	rv := objc.Call[kernel.Uid](x_, objc.Sel("effectiveUserIdentifier"))
+	return rv
+}
+
+// If the connection was created with an NSXPCListenerEndpoint object, returns the endpoint object used. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411757-endpoint?language=objc
+func (x_ XPCConnection) Endpoint() XPCListenerEndpoint {
+	rv := objc.Call[XPCListenerEndpoint](x_, objc.Sel("endpoint"))
+	return rv
+}
+
+// The effective group ID (EGID) of the connecting process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1407793-effectivegroupidentifier?language=objc
+func (x_ XPCConnection) EffectiveGroupIdentifier() kernel.Gid {
+	rv := objc.Call[kernel.Gid](x_, objc.Sel("effectiveGroupIdentifier"))
+	return rv
+}
+
 // Defines the NSXPCInterface object that describes the protocol for the object represented by the remoteObjectProxy. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411472-remoteobjectinterface?language=objc
@@ -223,6 +254,14 @@ func (x_ XPCConnection) SetRemoteObjectInterface(value IXPCInterface) {
 	objc.Call[objc.Void](x_, objc.Sel("setRemoteObjectInterface:"), value)
 }
 
+// The name of the XPC service that this connection was configured to connect to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1413751-servicename?language=objc
+func (x_ XPCConnection) ServiceName() string {
+	rv := objc.Call[string](x_, objc.Sel("serviceName"))
+	return rv
+}
+
 // The NSXPCInterface object that describes the protocol for the exported object on this connection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408106-exportedinterface?language=objc
@@ -236,22 +275,6 @@ func (x_ XPCConnection) ExportedInterface() XPCInterface {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408106-exportedinterface?language=objc
 func (x_ XPCConnection) SetExportedInterface(value IXPCInterface) {
 	objc.Call[objc.Void](x_, objc.Sel("setExportedInterface:"), value)
-}
-
-// If the connection was created with an NSXPCListenerEndpoint object, returns the endpoint object used. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411757-endpoint?language=objc
-func (x_ XPCConnection) Endpoint() XPCListenerEndpoint {
-	rv := objc.Call[XPCListenerEndpoint](x_, objc.Sel("endpoint"))
-	return rv
-}
-
-// Returns a proxy for the remote object (that is, the exportedObject from the other side of this connection). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411031-remoteobjectproxy?language=objc
-func (x_ XPCConnection) RemoteObjectProxy() objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("remoteObjectProxy"))
-	return rv
 }
 
 // The process ID (PID) of the connecting process. [Full Topic]
@@ -275,27 +298,4 @@ func (x_ XPCConnection) InvalidationHandler() func() {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1414358-invalidationhandler?language=objc
 func (x_ XPCConnection) SetInvalidationHandler(value func()) {
 	objc.Call[objc.Void](x_, objc.Sel("setInvalidationHandler:"), value)
-}
-
-// The name of the XPC service that this connection was configured to connect to. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1413751-servicename?language=objc
-func (x_ XPCConnection) ServiceName() string {
-	rv := objc.Call[string](x_, objc.Sel("serviceName"))
-	return rv
-}
-
-// An exported object for the connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412016-exportedobject?language=objc
-func (x_ XPCConnection) ExportedObject() objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("exportedObject"))
-	return rv
-}
-
-// An exported object for the connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1412016-exportedobject?language=objc
-func (x_ XPCConnection) SetExportedObject(value objc.IObject) {
-	objc.Call[objc.Void](x_, objc.Sel("setExportedObject:"), value)
 }

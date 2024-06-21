@@ -19,17 +19,13 @@ type _ModelClass struct {
 // An interface definition for the [Model] class.
 type IModel interface {
 	objc.IObject
+	ParameterValueForKeyError(key IParameterKey, error unsafe.Pointer) objc.Object
 	PredictionsFromBatchError(inputBatch PBatchProvider, error unsafe.Pointer) BatchProviderObject
 	PredictionsFromBatchObjectError(inputBatchObject objc.IObject, error unsafe.Pointer) BatchProviderObject
-	PredictionFromFeaturesOptionsError(input PFeatureProvider, options IPredictionOptions, error unsafe.Pointer) FeatureProviderObject
-	PredictionFromFeaturesObjectOptionsError(inputObject objc.IObject, options IPredictionOptions, error unsafe.Pointer) FeatureProviderObject
 	PredictionFromFeaturesError(input PFeatureProvider, error unsafe.Pointer) FeatureProviderObject
 	PredictionFromFeaturesObjectError(inputObject objc.IObject, error unsafe.Pointer) FeatureProviderObject
-	PredictionsFromBatchOptionsError(inputBatch PBatchProvider, options IPredictionOptions, error unsafe.Pointer) BatchProviderObject
-	PredictionsFromBatchObjectOptionsError(inputBatchObject objc.IObject, options IPredictionOptions, error unsafe.Pointer) BatchProviderObject
-	ParameterValueForKeyError(key IParameterKey, error unsafe.Pointer) objc.Object
-	ModelDescription() ModelDescription
 	Configuration() ModelConfiguration
+	ModelDescription() ModelDescription
 }
 
 // An encapsulation of all the details of your machine learning model. [Full Topic]
@@ -57,18 +53,6 @@ func Model_ModelWithContentsOfURLError(url foundation.IURL, error unsafe.Pointer
 	return ModelClass.ModelWithContentsOfURLError(url, error)
 }
 
-func (mc _ModelClass) ModelWithContentsOfURLConfigurationError(url foundation.IURL, configuration IModelConfiguration, error unsafe.Pointer) Model {
-	rv := objc.Call[Model](mc, objc.Sel("modelWithContentsOfURL:configuration:error:"), url, configuration, error)
-	return rv
-}
-
-// Creates a Core ML model instance from a compiled model file and a custom configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3022229-modelwithcontentsofurl?language=objc
-func Model_ModelWithContentsOfURLConfigurationError(url foundation.IURL, configuration IModelConfiguration, error unsafe.Pointer) Model {
-	return ModelClass.ModelWithContentsOfURLConfigurationError(url, configuration, error)
-}
-
 func (mc _ModelClass) Alloc() Model {
 	rv := objc.Call[Model](mc, objc.Sel("alloc"))
 	return rv
@@ -89,20 +73,11 @@ func (m_ Model) Init() Model {
 	return rv
 }
 
-// Generates predictions for each input feature provider within the batch provider. [Full Topic]
+// Returns a model parameter value for a key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3088750-predictionsfrombatch?language=objc
-func (m_ Model) PredictionsFromBatchError(inputBatch PBatchProvider, error unsafe.Pointer) BatchProviderObject {
-	po0 := objc.WrapAsProtocol("MLBatchProvider", inputBatch)
-	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:error:"), po0, error)
-	return rv
-}
-
-// Generates predictions for each input feature provider within the batch provider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3088750-predictionsfrombatch?language=objc
-func (m_ Model) PredictionsFromBatchObjectError(inputBatchObject objc.IObject, error unsafe.Pointer) BatchProviderObject {
-	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:error:"), inputBatchObject, error)
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3362526-parametervalueforkey?language=objc
+func (m_ Model) ParameterValueForKeyError(key IParameterKey, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](m_, objc.Sel("parameterValueForKey:error:"), key, error)
 	return rv
 }
 
@@ -120,20 +95,20 @@ func Model_LoadContentsOfURLConfigurationCompletionHandler(url foundation.IURL, 
 	ModelClass.LoadContentsOfURLConfigurationCompletionHandler(url, configuration, handler)
 }
 
-// Generates a prediction from the feature values within the input feature provider using the prediction options. [Full Topic]
+// Generates predictions for each input feature provider within the batch provider. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/2921292-predictionfromfeatures?language=objc
-func (m_ Model) PredictionFromFeaturesOptionsError(input PFeatureProvider, options IPredictionOptions, error unsafe.Pointer) FeatureProviderObject {
-	po0 := objc.WrapAsProtocol("MLFeatureProvider", input)
-	rv := objc.Call[FeatureProviderObject](m_, objc.Sel("predictionFromFeatures:options:error:"), po0, options, error)
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3088750-predictionsfrombatch?language=objc
+func (m_ Model) PredictionsFromBatchError(inputBatch PBatchProvider, error unsafe.Pointer) BatchProviderObject {
+	po0 := objc.WrapAsProtocol("MLBatchProvider", inputBatch)
+	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:error:"), po0, error)
 	return rv
 }
 
-// Generates a prediction from the feature values within the input feature provider using the prediction options. [Full Topic]
+// Generates predictions for each input feature provider within the batch provider. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/2921292-predictionfromfeatures?language=objc
-func (m_ Model) PredictionFromFeaturesObjectOptionsError(inputObject objc.IObject, options IPredictionOptions, error unsafe.Pointer) FeatureProviderObject {
-	rv := objc.Call[FeatureProviderObject](m_, objc.Sel("predictionFromFeatures:options:error:"), inputObject, options, error)
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3088750-predictionsfrombatch?language=objc
+func (m_ Model) PredictionsFromBatchObjectError(inputBatchObject objc.IObject, error unsafe.Pointer) BatchProviderObject {
+	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:error:"), inputBatchObject, error)
 	return rv
 }
 
@@ -154,28 +129,11 @@ func (m_ Model) PredictionFromFeaturesObjectError(inputObject objc.IObject, erro
 	return rv
 }
 
-// Generates a prediction for each input feature provider within the batch provider using the prediction options. [Full Topic]
+// The configuration of the model set during initialization. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/2962866-predictionsfrombatch?language=objc
-func (m_ Model) PredictionsFromBatchOptionsError(inputBatch PBatchProvider, options IPredictionOptions, error unsafe.Pointer) BatchProviderObject {
-	po0 := objc.WrapAsProtocol("MLBatchProvider", inputBatch)
-	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:options:error:"), po0, options, error)
-	return rv
-}
-
-// Generates a prediction for each input feature provider within the batch provider using the prediction options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/2962866-predictionsfrombatch?language=objc
-func (m_ Model) PredictionsFromBatchObjectOptionsError(inputBatchObject objc.IObject, options IPredictionOptions, error unsafe.Pointer) BatchProviderObject {
-	rv := objc.Call[BatchProviderObject](m_, objc.Sel("predictionsFromBatch:options:error:"), inputBatchObject, options, error)
-	return rv
-}
-
-// Returns a model parameter value for a key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3362526-parametervalueforkey?language=objc
-func (m_ Model) ParameterValueForKeyError(key IParameterKey, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("parameterValueForKey:error:"), key, error)
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3022228-configuration?language=objc
+func (m_ Model) Configuration() ModelConfiguration {
+	rv := objc.Call[ModelConfiguration](m_, objc.Sel("configuration"))
 	return rv
 }
 
@@ -184,13 +142,5 @@ func (m_ Model) ParameterValueForKeyError(key IParameterKey, error unsafe.Pointe
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/2879179-modeldescription?language=objc
 func (m_ Model) ModelDescription() ModelDescription {
 	rv := objc.Call[ModelDescription](m_, objc.Sel("modelDescription"))
-	return rv
-}
-
-// The configuration of the model set during initialization. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodel/3022228-configuration?language=objc
-func (m_ Model) Configuration() ModelConfiguration {
-	rv := objc.Call[ModelConfiguration](m_, objc.Sel("configuration"))
 	return rv
 }

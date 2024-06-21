@@ -18,12 +18,11 @@ type _ConditionLockClass struct {
 // An interface definition for the [ConditionLock] class.
 type IConditionLock interface {
 	objc.IObject
-	LockWhenConditionBeforeDate(condition int, limit IDate) bool
-	TryLock() bool
 	LockWhenCondition(condition int)
-	TryLockWhenCondition(condition int) bool
-	LockBeforeDate(limit IDate) bool
 	UnlockWithCondition(condition int)
+	TryLockWhenCondition(condition int) bool
+	TryLock() bool
+	LockBeforeDate(limit IDate) bool
 	Name() string
 	SetName(value string)
 	Condition() int
@@ -76,11 +75,25 @@ func (c_ ConditionLock) Init() ConditionLock {
 	return rv
 }
 
-// Attempts to acquire a lock before a specified moment in time. [Full Topic]
+// Attempts to acquire a lock. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1408215-lockwhencondition?language=objc
-func (c_ ConditionLock) LockWhenConditionBeforeDate(condition int, limit IDate) bool {
-	rv := objc.Call[bool](c_, objc.Sel("lockWhenCondition:beforeDate:"), condition, limit)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1417832-lockwhencondition?language=objc
+func (c_ ConditionLock) LockWhenCondition(condition int) {
+	objc.Call[objc.Void](c_, objc.Sel("lockWhenCondition:"), condition)
+}
+
+// Relinquishes the lock and sets the receiver’s condition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1412052-unlockwithcondition?language=objc
+func (c_ ConditionLock) UnlockWithCondition(condition int) {
+	objc.Call[objc.Void](c_, objc.Sel("unlockWithCondition:"), condition)
+}
+
+// Attempts to acquire a lock if the receiver’s condition is equal to the specified condition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1413548-trylockwhencondition?language=objc
+func (c_ ConditionLock) TryLockWhenCondition(condition int) bool {
+	rv := objc.Call[bool](c_, objc.Sel("tryLockWhenCondition:"), condition)
 	return rv
 }
 
@@ -92,34 +105,12 @@ func (c_ ConditionLock) TryLock() bool {
 	return rv
 }
 
-// Attempts to acquire a lock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1417832-lockwhencondition?language=objc
-func (c_ ConditionLock) LockWhenCondition(condition int) {
-	objc.Call[objc.Void](c_, objc.Sel("lockWhenCondition:"), condition)
-}
-
-// Attempts to acquire a lock if the receiver’s condition is equal to the specified condition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1413548-trylockwhencondition?language=objc
-func (c_ ConditionLock) TryLockWhenCondition(condition int) bool {
-	rv := objc.Call[bool](c_, objc.Sel("tryLockWhenCondition:"), condition)
-	return rv
-}
-
 // Attempts to acquire a lock before a specified moment in time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1418253-lockbeforedate?language=objc
 func (c_ ConditionLock) LockBeforeDate(limit IDate) bool {
 	rv := objc.Call[bool](c_, objc.Sel("lockBeforeDate:"), limit)
 	return rv
-}
-
-// Relinquishes the lock and sets the receiver’s condition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1412052-unlockwithcondition?language=objc
-func (c_ ConditionLock) UnlockWithCondition(condition int) {
-	objc.Call[objc.Void](c_, objc.Sel("unlockWithCondition:"), condition)
 }
 
 // The name associated with the receiver. [Full Topic]

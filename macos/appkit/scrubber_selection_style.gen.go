@@ -62,21 +62,6 @@ func (s_ ScrubberSelectionStyle) MakeSelectionView() ScrubberSelectionView {
 	return rv
 }
 
-// A built-in selection style that draws the outline of the scrubber item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588266-outlineoverlaystyle?language=objc
-func (sc _ScrubberSelectionStyleClass) OutlineOverlayStyle() ScrubberSelectionStyle {
-	rv := objc.Call[ScrubberSelectionStyle](sc, objc.Sel("outlineOverlayStyle"))
-	return rv
-}
-
-// A built-in selection style that draws the outline of the scrubber item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588266-outlineoverlaystyle?language=objc
-func ScrubberSelectionStyle_OutlineOverlayStyle() ScrubberSelectionStyle {
-	return ScrubberSelectionStyleClass.OutlineOverlayStyle()
-}
-
 // A built-in selection style that draws a rounded rectangle as the background of the scrubber item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588261-roundedbackgroundstyle?language=objc
@@ -90,4 +75,19 @@ func (sc _ScrubberSelectionStyleClass) RoundedBackgroundStyle() ScrubberSelectio
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588261-roundedbackgroundstyle?language=objc
 func ScrubberSelectionStyle_RoundedBackgroundStyle() ScrubberSelectionStyle {
 	return ScrubberSelectionStyleClass.RoundedBackgroundStyle()
+}
+
+// A built-in selection style that draws the outline of the scrubber item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588266-outlineoverlaystyle?language=objc
+func (sc _ScrubberSelectionStyleClass) OutlineOverlayStyle() ScrubberSelectionStyle {
+	rv := objc.Call[ScrubberSelectionStyle](sc, objc.Sel("outlineOverlayStyle"))
+	return rv
+}
+
+// A built-in selection style that draws the outline of the scrubber item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberselectionstyle/2588266-outlineoverlaystyle?language=objc
+func ScrubberSelectionStyle_OutlineOverlayStyle() ScrubberSelectionStyle {
+	return ScrubberSelectionStyleClass.OutlineOverlayStyle()
 }

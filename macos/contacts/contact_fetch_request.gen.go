@@ -19,16 +19,16 @@ type _ContactFetchRequestClass struct {
 // An interface definition for the [ContactFetchRequest] class.
 type IContactFetchRequest interface {
 	IFetchRequest
-	UnifyResults() bool
-	SetUnifyResults(value bool)
+	MutableObjects() bool
+	SetMutableObjects(value bool)
+	KeysToFetch() []objc.Object
+	SetKeysToFetch(value []objc.IObject)
 	SortOrder() ContactSortOrder
 	SetSortOrder(value ContactSortOrder)
 	Predicate() foundation.Predicate
 	SetPredicate(value foundation.IPredicate)
-	KeysToFetch() []objc.Object
-	SetKeysToFetch(value []objc.IObject)
-	MutableObjects() bool
-	SetMutableObjects(value bool)
+	UnifyResults() bool
+	SetUnifyResults(value bool)
 }
 
 // An object that defines the options to use when fetching contacts. [Full Topic]
@@ -78,19 +78,34 @@ func (c_ ContactFetchRequest) Init() ContactFetchRequest {
 	return rv
 }
 
-// A Boolean value that indicates whether to return linked contacts as unified contacts. [Full Topic]
+// A Boolean value that indicates whether to return mutable contacts. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403293-unifyresults?language=objc
-func (c_ ContactFetchRequest) UnifyResults() bool {
-	rv := objc.Call[bool](c_, objc.Sel("unifyResults"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1402835-mutableobjects?language=objc
+func (c_ ContactFetchRequest) MutableObjects() bool {
+	rv := objc.Call[bool](c_, objc.Sel("mutableObjects"))
 	return rv
 }
 
-// A Boolean value that indicates whether to return linked contacts as unified contacts. [Full Topic]
+// A Boolean value that indicates whether to return mutable contacts. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403293-unifyresults?language=objc
-func (c_ ContactFetchRequest) SetUnifyResults(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setUnifyResults:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1402835-mutableobjects?language=objc
+func (c_ ContactFetchRequest) SetMutableObjects(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setMutableObjects:"), value)
+}
+
+// The properties to fetch in the returned contacts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403360-keystofetch?language=objc
+func (c_ ContactFetchRequest) KeysToFetch() []objc.Object {
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("keysToFetch"))
+	return rv
+}
+
+// The properties to fetch in the returned contacts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403360-keystofetch?language=objc
+func (c_ ContactFetchRequest) SetKeysToFetch(value []objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("setKeysToFetch:"), value)
 }
 
 // The sort order for contacts. [Full Topic]
@@ -123,32 +138,17 @@ func (c_ ContactFetchRequest) SetPredicate(value foundation.IPredicate) {
 	objc.Call[objc.Void](c_, objc.Sel("setPredicate:"), value)
 }
 
-// The properties to fetch in the returned contacts. [Full Topic]
+// A Boolean value that indicates whether to return linked contacts as unified contacts. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403360-keystofetch?language=objc
-func (c_ ContactFetchRequest) KeysToFetch() []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("keysToFetch"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403293-unifyresults?language=objc
+func (c_ ContactFetchRequest) UnifyResults() bool {
+	rv := objc.Call[bool](c_, objc.Sel("unifyResults"))
 	return rv
 }
 
-// The properties to fetch in the returned contacts. [Full Topic]
+// A Boolean value that indicates whether to return linked contacts as unified contacts. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403360-keystofetch?language=objc
-func (c_ ContactFetchRequest) SetKeysToFetch(value []objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setKeysToFetch:"), value)
-}
-
-// A Boolean value that indicates whether to return mutable contacts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1402835-mutableobjects?language=objc
-func (c_ ContactFetchRequest) MutableObjects() bool {
-	rv := objc.Call[bool](c_, objc.Sel("mutableObjects"))
-	return rv
-}
-
-// A Boolean value that indicates whether to return mutable contacts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1402835-mutableobjects?language=objc
-func (c_ ContactFetchRequest) SetMutableObjects(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setMutableObjects:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403293-unifyresults?language=objc
+func (c_ ContactFetchRequest) SetUnifyResults(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setUnifyResults:"), value)
 }

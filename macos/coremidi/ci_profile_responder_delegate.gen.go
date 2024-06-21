@@ -11,64 +11,30 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate?language=objc
 type PCIProfileResponderDelegate interface {
 	// optional
-	InitiatorDisconnected(initiatorMUID CIInitiatiorMUID)
-	HasInitiatorDisconnected() bool
-
-	// optional
-	ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool
-	HasConnectInitiatorWithDeviceInfo() bool
-
-	// optional
 	WillSetProfileOnChannelEnabled(aProfile CIProfile, channel ChannelNumber, shouldEnable bool) bool
 	HasWillSetProfileOnChannelEnabled() bool
 
 	// optional
+	InitiatorDisconnected(initiatorMUID CIInitiatiorMUID)
+	HasInitiatorDisconnected() bool
+
+	// optional
 	HandleDataForProfileOnChannelData(aProfile CIProfile, channel ChannelNumber, inData []byte)
 	HasHandleDataForProfileOnChannelData() bool
+
+	// optional
+	ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool
+	HasConnectInitiatorWithDeviceInfo() bool
 }
 
 // A delegate implementation builder for the [PCIProfileResponderDelegate] protocol.
 type CIProfileResponderDelegate struct {
-	_InitiatorDisconnected             func(initiatorMUID CIInitiatiorMUID)
-	_ConnectInitiatorWithDeviceInfo    func(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool
 	_WillSetProfileOnChannelEnabled    func(aProfile CIProfile, channel ChannelNumber, shouldEnable bool) bool
+	_InitiatorDisconnected             func(initiatorMUID CIInitiatiorMUID)
 	_HandleDataForProfileOnChannelData func(aProfile CIProfile, channel ChannelNumber, inData []byte)
+	_ConnectInitiatorWithDeviceInfo    func(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool
 }
 
-func (di *CIProfileResponderDelegate) HasInitiatorDisconnected() bool {
-	return di._InitiatorDisconnected != nil
-}
-
-// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
-func (di *CIProfileResponderDelegate) SetInitiatorDisconnected(f func(initiatorMUID CIInitiatiorMUID)) {
-	di._InitiatorDisconnected = f
-}
-
-// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
-func (di *CIProfileResponderDelegate) InitiatorDisconnected(initiatorMUID CIInitiatiorMUID) {
-	di._InitiatorDisconnected(initiatorMUID)
-}
-func (di *CIProfileResponderDelegate) HasConnectInitiatorWithDeviceInfo() bool {
-	return di._ConnectInitiatorWithDeviceInfo != nil
-}
-
-// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
-func (di *CIProfileResponderDelegate) SetConnectInitiatorWithDeviceInfo(f func(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool) {
-	di._ConnectInitiatorWithDeviceInfo = f
-}
-
-// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
-func (di *CIProfileResponderDelegate) ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool {
-	return di._ConnectInitiatorWithDeviceInfo(initiatorMUID, deviceInfo)
-}
 func (di *CIProfileResponderDelegate) HasWillSetProfileOnChannelEnabled() bool {
 	return di._WillSetProfileOnChannelEnabled != nil
 }
@@ -85,6 +51,23 @@ func (di *CIProfileResponderDelegate) SetWillSetProfileOnChannelEnabled(f func(a
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580331-willsetprofile?language=objc
 func (di *CIProfileResponderDelegate) WillSetProfileOnChannelEnabled(aProfile CIProfile, channel ChannelNumber, shouldEnable bool) bool {
 	return di._WillSetProfileOnChannelEnabled(aProfile, channel, shouldEnable)
+}
+func (di *CIProfileResponderDelegate) HasInitiatorDisconnected() bool {
+	return di._InitiatorDisconnected != nil
+}
+
+// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
+func (di *CIProfileResponderDelegate) SetInitiatorDisconnected(f func(initiatorMUID CIInitiatiorMUID)) {
+	di._InitiatorDisconnected = f
+}
+
+// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
+func (di *CIProfileResponderDelegate) InitiatorDisconnected(initiatorMUID CIInitiatiorMUID) {
+	di._InitiatorDisconnected(initiatorMUID)
 }
 func (di *CIProfileResponderDelegate) HasHandleDataForProfileOnChannelData() bool {
 	return di._HandleDataForProfileOnChannelData != nil
@@ -103,6 +86,23 @@ func (di *CIProfileResponderDelegate) SetHandleDataForProfileOnChannelData(f fun
 func (di *CIProfileResponderDelegate) HandleDataForProfileOnChannelData(aProfile CIProfile, channel ChannelNumber, inData []byte) {
 	di._HandleDataForProfileOnChannelData(aProfile, channel, inData)
 }
+func (di *CIProfileResponderDelegate) HasConnectInitiatorWithDeviceInfo() bool {
+	return di._ConnectInitiatorWithDeviceInfo != nil
+}
+
+// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
+func (di *CIProfileResponderDelegate) SetConnectInitiatorWithDeviceInfo(f func(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool) {
+	di._ConnectInitiatorWithDeviceInfo = f
+}
+
+// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
+func (di *CIProfileResponderDelegate) ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool {
+	return di._ConnectInitiatorWithDeviceInfo(initiatorMUID, deviceInfo)
+}
 
 // ensure impl type implements protocol interface
 var _ PCIProfileResponderDelegate = (*CIProfileResponderDelegateObject)(nil)
@@ -110,29 +110,6 @@ var _ PCIProfileResponderDelegate = (*CIProfileResponderDelegateObject)(nil)
 // A concrete type for the [PCIProfileResponderDelegate] protocol.
 type CIProfileResponderDelegateObject struct {
 	objc.Object
-}
-
-func (c_ CIProfileResponderDelegateObject) HasInitiatorDisconnected() bool {
-	return c_.RespondsToSelector(objc.Sel("initiatorDisconnected:"))
-}
-
-// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
-func (c_ CIProfileResponderDelegateObject) InitiatorDisconnected(initiatorMUID CIInitiatiorMUID) {
-	objc.Call[objc.Void](c_, objc.Sel("initiatorDisconnected:"), initiatorMUID)
-}
-
-func (c_ CIProfileResponderDelegateObject) HasConnectInitiatorWithDeviceInfo() bool {
-	return c_.RespondsToSelector(objc.Sel("connectInitiator:withDeviceInfo:"))
-}
-
-// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
-func (c_ CIProfileResponderDelegateObject) ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool {
-	rv := objc.Call[bool](c_, objc.Sel("connectInitiator:withDeviceInfo:"), initiatorMUID, deviceInfo)
-	return rv
 }
 
 func (c_ CIProfileResponderDelegateObject) HasWillSetProfileOnChannelEnabled() bool {
@@ -147,6 +124,17 @@ func (c_ CIProfileResponderDelegateObject) WillSetProfileOnChannelEnabled(aProfi
 	return rv
 }
 
+func (c_ CIProfileResponderDelegateObject) HasInitiatorDisconnected() bool {
+	return c_.RespondsToSelector(objc.Sel("initiatorDisconnected:"))
+}
+
+// Provides an opportunity to perform an action after the system disconnects the initiator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580330-initiatordisconnected?language=objc
+func (c_ CIProfileResponderDelegateObject) InitiatorDisconnected(initiatorMUID CIInitiatiorMUID) {
+	objc.Call[objc.Void](c_, objc.Sel("initiatorDisconnected:"), initiatorMUID)
+}
+
 func (c_ CIProfileResponderDelegateObject) HasHandleDataForProfileOnChannelData() bool {
 	return c_.RespondsToSelector(objc.Sel("handleDataForProfile:onChannel:data:"))
 }
@@ -156,4 +144,16 @@ func (c_ CIProfileResponderDelegateObject) HasHandleDataForProfileOnChannelData(
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580329-handledataforprofile?language=objc
 func (c_ CIProfileResponderDelegateObject) HandleDataForProfileOnChannelData(aProfile CIProfile, channel ChannelNumber, inData []byte) {
 	objc.Call[objc.Void](c_, objc.Sel("handleDataForProfile:onChannel:data:"), aProfile, channel, inData)
+}
+
+func (c_ CIProfileResponderDelegateObject) HasConnectInitiatorWithDeviceInfo() bool {
+	return c_.RespondsToSelector(objc.Sel("connectInitiator:withDeviceInfo:"))
+}
+
+// Enables a MIDI-CI initiator to create a session or reject the connection attempt. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
+func (c_ CIProfileResponderDelegateObject) ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool {
+	rv := objc.Call[bool](c_, objc.Sel("connectInitiator:withDeviceInfo:"), initiatorMUID, deviceInfo)
+	return rv
 }

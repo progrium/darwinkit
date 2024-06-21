@@ -18,16 +18,16 @@ type _StepperCellClass struct {
 // An interface definition for the [StepperCell] class.
 type IStepperCell interface {
 	IActionCell
-	Increment() float64
-	SetIncrement(value float64)
-	Autorepeat() bool
-	SetAutorepeat(value bool)
-	MinValue() float64
-	SetMinValue(value float64)
 	ValueWraps() bool
 	SetValueWraps(value bool)
+	MinValue() float64
+	SetMinValue(value float64)
+	Increment() float64
+	SetIncrement(value float64)
 	MaxValue() float64
 	SetMaxValue(value float64)
+	Autorepeat() bool
+	SetAutorepeat(value bool)
 }
 
 // An NSStepperCell object controls the appearance and behavior of an NSStepper object. [Full Topic]
@@ -91,34 +91,19 @@ func NewStepperCellTextCell(string_ string) StepperCell {
 	return instance
 }
 
-// The amount by which the receiver will change per increment or decrement. [Full Topic]
+// A Boolean value indicating whether the receiver wraps around the minimum and maximum values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392331-increment?language=objc
-func (s_ StepperCell) Increment() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("increment"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392325-valuewraps?language=objc
+func (s_ StepperCell) ValueWraps() bool {
+	rv := objc.Call[bool](s_, objc.Sel("valueWraps"))
 	return rv
 }
 
-// The amount by which the receiver will change per increment or decrement. [Full Topic]
+// A Boolean value indicating whether the receiver wraps around the minimum and maximum values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392331-increment?language=objc
-func (s_ StepperCell) SetIncrement(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setIncrement:"), value)
-}
-
-// A Boolean value indicating how the receiver responds to mouse events. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392323-autorepeat?language=objc
-func (s_ StepperCell) Autorepeat() bool {
-	rv := objc.Call[bool](s_, objc.Sel("autorepeat"))
-	return rv
-}
-
-// A Boolean value indicating how the receiver responds to mouse events. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392323-autorepeat?language=objc
-func (s_ StepperCell) SetAutorepeat(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setAutorepeat:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392325-valuewraps?language=objc
+func (s_ StepperCell) SetValueWraps(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setValueWraps:"), value)
 }
 
 // The minimum value for the receiver. [Full Topic]
@@ -136,19 +121,19 @@ func (s_ StepperCell) SetMinValue(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMinValue:"), value)
 }
 
-// A Boolean value indicating whether the receiver wraps around the minimum and maximum values. [Full Topic]
+// The amount by which the receiver will change per increment or decrement. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392325-valuewraps?language=objc
-func (s_ StepperCell) ValueWraps() bool {
-	rv := objc.Call[bool](s_, objc.Sel("valueWraps"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392331-increment?language=objc
+func (s_ StepperCell) Increment() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("increment"))
 	return rv
 }
 
-// A Boolean value indicating whether the receiver wraps around the minimum and maximum values. [Full Topic]
+// The amount by which the receiver will change per increment or decrement. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392325-valuewraps?language=objc
-func (s_ StepperCell) SetValueWraps(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setValueWraps:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392331-increment?language=objc
+func (s_ StepperCell) SetIncrement(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setIncrement:"), value)
 }
 
 // The maximum value for the receiver. [Full Topic]
@@ -164,4 +149,19 @@ func (s_ StepperCell) MaxValue() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392321-maxvalue?language=objc
 func (s_ StepperCell) SetMaxValue(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMaxValue:"), value)
+}
+
+// A Boolean value indicating how the receiver responds to mouse events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392323-autorepeat?language=objc
+func (s_ StepperCell) Autorepeat() bool {
+	rv := objc.Call[bool](s_, objc.Sel("autorepeat"))
+	return rv
+}
+
+// A Boolean value indicating how the receiver responds to mouse events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssteppercell/1392323-autorepeat?language=objc
+func (s_ StepperCell) SetAutorepeat(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setAutorepeat:"), value)
 }

@@ -18,15 +18,15 @@ type _MutableSetClass struct {
 // An interface definition for the [MutableSet] class.
 type IMutableSet interface {
 	ISet
-	SetSet(otherSet ISet)
-	IntersectSet(otherSet ISet)
-	RemoveAllObjects()
-	FilterUsingPredicate(predicate IPredicate)
-	RemoveObject(object objc.IObject)
 	AddObjectsFromArray(array []objc.IObject)
+	IntersectSet(otherSet ISet)
+	FilterUsingPredicate(predicate IPredicate)
+	SetSet(otherSet ISet)
 	AddObject(object objc.IObject)
-	UnionSet(otherSet ISet)
+	RemoveObject(object objc.IObject)
 	MinusSet(otherSet ISet)
+	UnionSet(otherSet ISet)
+	RemoveAllObjects()
 }
 
 // A dynamic unordered collection of unique objects. [Full Topic]
@@ -40,6 +40,20 @@ func MutableSetFrom(ptr unsafe.Pointer) MutableSet {
 	return MutableSet{
 		Set: SetFrom(ptr),
 	}
+}
+
+func (m_ MutableSet) InitWithCapacity(numItems uint) MutableSet {
+	rv := objc.Call[MutableSet](m_, objc.Sel("initWithCapacity:"), numItems)
+	return rv
+}
+
+// Returns an initialized mutable set with a given initial capacity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1411953-initwithcapacity?language=objc
+func NewMutableSetWithCapacity(numItems uint) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableSetClass) SetWithCapacity(numItems uint) MutableSet {
@@ -59,20 +73,6 @@ func (m_ MutableSet) Init() MutableSet {
 	return rv
 }
 
-func (m_ MutableSet) InitWithCapacity(numItems uint) MutableSet {
-	rv := objc.Call[MutableSet](m_, objc.Sel("initWithCapacity:"), numItems)
-	return rv
-}
-
-// Returns an initialized mutable set with a given initial capacity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1411953-initwithcapacity?language=objc
-func NewMutableSetWithCapacity(numItems uint) MutableSet {
-	instance := MutableSetClass.Alloc().InitWithCapacity(numItems)
-	instance.Autorelease()
-	return instance
-}
-
 func (mc _MutableSetClass) Alloc() MutableSet {
 	rv := objc.Call[MutableSet](mc, objc.Sel("alloc"))
 	return rv
@@ -88,18 +88,16 @@ func NewMutableSet() MutableSet {
 	return MutableSetClass.New()
 }
 
-func (m_ MutableSet) InitWithSetCopyItems(set ISet, flag bool) MutableSet {
-	rv := objc.Call[MutableSet](m_, objc.Sel("initWithSet:copyItems:"), set, flag)
+func (mc _MutableSetClass) Set() MutableSet {
+	rv := objc.Call[MutableSet](mc, objc.Sel("set"))
 	return rv
 }
 
-// Initializes a newly allocated set and adds to it members of another given set. [Full Topic]
+// Creates and returns an empty set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1408407-initwithset?language=objc
-func NewMutableSetWithSetCopyItems(set ISet, flag bool) MutableSet {
-	instance := MutableSetClass.Alloc().InitWithSetCopyItems(set, flag)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574818-set?language=objc
+func MutableSet_Set() MutableSet {
+	return MutableSetClass.Set()
 }
 
 func (m_ MutableSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableSet {
@@ -116,6 +114,18 @@ func NewMutableSetWithObjects(firstObj objc.IObject, args ...any) MutableSet {
 	return instance
 }
 
+func (mc _MutableSetClass) SetWithSet(set ISet) MutableSet {
+	rv := objc.Call[MutableSet](mc, objc.Sel("setWithSet:"), set)
+	return rv
+}
+
+// Creates and returns a set containing the objects from another set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574817-setwithset?language=objc
+func MutableSet_SetWithSet(set ISet) MutableSet {
+	return MutableSetClass.SetWithSet(set)
+}
+
 func (mc _MutableSetClass) SetWithObject(object objc.IObject) MutableSet {
 	rv := objc.Call[MutableSet](mc, objc.Sel("setWithObject:"), object)
 	return rv
@@ -126,44 +136,6 @@ func (mc _MutableSetClass) SetWithObject(object objc.IObject) MutableSet {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1415878-setwithobject?language=objc
 func MutableSet_SetWithObject(object objc.IObject) MutableSet {
 	return MutableSetClass.SetWithObject(object)
-}
-
-func (mc _MutableSetClass) SetWithObjects(firstObj objc.IObject, args ...any) MutableSet {
-	rv := objc.Call[MutableSet](mc, objc.Sel("setWithObjects:"), append([]any{firstObj}, args...)...)
-	return rv
-}
-
-// Creates and returns a set containing the objects in a given argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574825-setwithobjects?language=objc
-func MutableSet_SetWithObjects(firstObj objc.IObject, args ...any) MutableSet {
-	return MutableSetClass.SetWithObjects(firstObj, args...)
-}
-
-func (mc _MutableSetClass) SetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
-	rv := objc.Call[MutableSet](mc, objc.Sel("setWithObjects:count:"), objects, cnt)
-	return rv
-}
-
-// Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574824-setwithobjects?language=objc
-func MutableSet_SetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
-	return MutableSetClass.SetWithObjectsCount(objects, cnt)
-}
-
-func (m_ MutableSet) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
-	rv := objc.Call[MutableSet](m_, objc.Sel("initWithObjects:count:"), objects, cnt)
-	return rv
-}
-
-// Initializes a newly allocated set with a specified number of objects from a given C array of objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1407458-initwithobjects?language=objc
-func NewMutableSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
-	instance := MutableSetClass.Alloc().InitWithObjectsCount(objects, cnt)
-	instance.Autorelease()
-	return instance
 }
 
 func (m_ MutableSet) InitWithArray(array []objc.IObject) MutableSet {
@@ -180,20 +152,6 @@ func NewMutableSetWithArray(array []objc.IObject) MutableSet {
 	return instance
 }
 
-func (m_ MutableSet) InitWithSet(set ISet) MutableSet {
-	rv := objc.Call[MutableSet](m_, objc.Sel("initWithSet:"), set)
-	return rv
-}
-
-// Initializes a newly allocated set and adds to it objects from another given set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1410612-initwithset?language=objc
-func NewMutableSetWithSet(set ISet) MutableSet {
-	instance := MutableSetClass.Alloc().InitWithSet(set)
-	instance.Autorelease()
-	return instance
-}
-
 func (mc _MutableSetClass) SetWithArray(array []objc.IObject) MutableSet {
 	rv := objc.Call[MutableSet](mc, objc.Sel("setWithArray:"), array)
 	return rv
@@ -204,42 +162,6 @@ func (mc _MutableSetClass) SetWithArray(array []objc.IObject) MutableSet {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574823-setwitharray?language=objc
 func MutableSet_SetWithArray(array []objc.IObject) MutableSet {
 	return MutableSetClass.SetWithArray(array)
-}
-
-func (mc _MutableSetClass) SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) MutableSet {
-	rv := objc.Call[MutableSet](mc, objc.Sel("setWithCollectionViewIndexPaths:"), indexPaths)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1528255-setwithcollectionviewindexpaths?language=objc
-func MutableSet_SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) MutableSet {
-	return MutableSetClass.SetWithCollectionViewIndexPaths(indexPaths)
-}
-
-func (mc _MutableSetClass) Set() MutableSet {
-	rv := objc.Call[MutableSet](mc, objc.Sel("set"))
-	return rv
-}
-
-// Creates and returns an empty set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574818-set?language=objc
-func MutableSet_Set() MutableSet {
-	return MutableSetClass.Set()
-}
-
-func (mc _MutableSetClass) SetWithSet(set ISet) MutableSet {
-	rv := objc.Call[MutableSet](mc, objc.Sel("setWithSet:"), set)
-	return rv
-}
-
-// Creates and returns a set containing the objects from another set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574817-setwithset?language=objc
-func MutableSet_SetWithSet(set ISet) MutableSet {
-	return MutableSetClass.SetWithSet(set)
 }
 
 func (mc _MutableSetClass) SetWithCollectionViewIndexPath(indexPath IIndexPath) MutableSet {
@@ -254,39 +176,42 @@ func MutableSet_SetWithCollectionViewIndexPath(indexPath IIndexPath) MutableSet 
 	return MutableSetClass.SetWithCollectionViewIndexPath(indexPath)
 }
 
-// Empties the receiving set, then adds each object contained in another given set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416405-setset?language=objc
-func (m_ MutableSet) SetSet(otherSet ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("setSet:"), otherSet)
+func (mc _MutableSetClass) SetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
+	rv := objc.Call[MutableSet](mc, objc.Sel("setWithObjects:count:"), objects, cnt)
+	return rv
 }
 
-// Removes from the receiving set each object that isn’t a member of another given set. [Full Topic]
+// Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1407231-intersectset?language=objc
-func (m_ MutableSet) IntersectSet(otherSet ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), otherSet)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574824-setwithobjects?language=objc
+func MutableSet_SetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableSet {
+	return MutableSetClass.SetWithObjectsCount(objects, cnt)
 }
 
-// Empties the set of all of its members. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1417497-removeallobjects?language=objc
-func (m_ MutableSet) RemoveAllObjects() {
-	objc.Call[objc.Void](m_, objc.Sel("removeAllObjects"))
+func (mc _MutableSetClass) SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) MutableSet {
+	rv := objc.Call[MutableSet](mc, objc.Sel("setWithCollectionViewIndexPaths:"), indexPaths)
+	return rv
 }
 
-// Evaluates a given predicate against the set’s content and removes from the set those objects for which the predicate returns false. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1407868-filterusingpredicate?language=objc
-func (m_ MutableSet) FilterUsingPredicate(predicate IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), predicate)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1528255-setwithcollectionviewindexpaths?language=objc
+func MutableSet_SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) MutableSet {
+	return MutableSetClass.SetWithCollectionViewIndexPaths(indexPaths)
 }
 
-// Removes a given object from the set. [Full Topic]
+func (m_ MutableSet) InitWithSet(set ISet) MutableSet {
+	rv := objc.Call[MutableSet](m_, objc.Sel("initWithSet:"), set)
+	return rv
+}
+
+// Initializes a newly allocated set and adds to it objects from another given set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416085-removeobject?language=objc
-func (m_ MutableSet) RemoveObject(object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), object)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1410612-initwithset?language=objc
+func NewMutableSetWithSet(set ISet) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 // Adds to the set each object contained in a given array that is not already a member. [Full Topic]
@@ -296,11 +221,46 @@ func (m_ MutableSet) AddObjectsFromArray(array []objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("addObjectsFromArray:"), array)
 }
 
+// Removes from the receiving set each object that isn’t a member of another given set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1407231-intersectset?language=objc
+func (m_ MutableSet) IntersectSet(otherSet ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), otherSet)
+}
+
+// Evaluates a given predicate against the set’s content and removes from the set those objects for which the predicate returns false. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1407868-filterusingpredicate?language=objc
+func (m_ MutableSet) FilterUsingPredicate(predicate IPredicate) {
+	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), predicate)
+}
+
+// Empties the receiving set, then adds each object contained in another given set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416405-setset?language=objc
+func (m_ MutableSet) SetSet(otherSet ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("setSet:"), otherSet)
+}
+
 // Adds a given object to the set, if it is not already a member. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1407460-addobject?language=objc
 func (m_ MutableSet) AddObject(object objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("addObject:"), object)
+}
+
+// Removes a given object from the set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416085-removeobject?language=objc
+func (m_ MutableSet) RemoveObject(object objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), object)
+}
+
+// Removes each object in another given set from the receiving set, if present. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416710-minusset?language=objc
+func (m_ MutableSet) MinusSet(otherSet ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("minusSet:"), otherSet)
 }
 
 // Adds each object in another given set to the receiving set, if not present. [Full Topic]
@@ -310,9 +270,9 @@ func (m_ MutableSet) UnionSet(otherSet ISet) {
 	objc.Call[objc.Void](m_, objc.Sel("unionSet:"), otherSet)
 }
 
-// Removes each object in another given set from the receiving set, if present. [Full Topic]
+// Empties the set of all of its members. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1416710-minusset?language=objc
-func (m_ MutableSet) MinusSet(otherSet ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("minusSet:"), otherSet)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1417497-removeallobjects?language=objc
+func (m_ MutableSet) RemoveAllObjects() {
+	objc.Call[objc.Void](m_, objc.Sel("removeAllObjects"))
 }

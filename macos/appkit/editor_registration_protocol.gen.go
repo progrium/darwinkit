@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nseditorregistration?language=objc
 type PEditorRegistration interface {
 	// optional
-	ObjectDidEndEditing(editor EditorObject)
-	HasObjectDidEndEditing() bool
-
-	// optional
 	ObjectDidBeginEditing(editor EditorObject)
 	HasObjectDidBeginEditing() bool
+
+	// optional
+	ObjectDidEndEditing(editor EditorObject)
+	HasObjectDidEndEditing() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,18 +25,6 @@ var _ PEditorRegistration = (*EditorRegistrationObject)(nil)
 // A concrete type for the [PEditorRegistration] protocol.
 type EditorRegistrationObject struct {
 	objc.Object
-}
-
-func (e_ EditorRegistrationObject) HasObjectDidEndEditing() bool {
-	return e_.RespondsToSelector(objc.Sel("objectDidEndEditing:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditorregistration/3005189-objectdidendediting?language=objc
-func (e_ EditorRegistrationObject) ObjectDidEndEditing(editor EditorObject) {
-	po0 := objc.WrapAsProtocol("NSEditor", editor)
-	objc.Call[objc.Void](e_, objc.Sel("objectDidEndEditing:"), po0)
 }
 
 func (e_ EditorRegistrationObject) HasObjectDidBeginEditing() bool {
@@ -49,4 +37,16 @@ func (e_ EditorRegistrationObject) HasObjectDidBeginEditing() bool {
 func (e_ EditorRegistrationObject) ObjectDidBeginEditing(editor EditorObject) {
 	po0 := objc.WrapAsProtocol("NSEditor", editor)
 	objc.Call[objc.Void](e_, objc.Sel("objectDidBeginEditing:"), po0)
+}
+
+func (e_ EditorRegistrationObject) HasObjectDidEndEditing() bool {
+	return e_.RespondsToSelector(objc.Sel("objectDidEndEditing:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditorregistration/3005189-objectdidendediting?language=objc
+func (e_ EditorRegistrationObject) ObjectDidEndEditing(editor EditorObject) {
+	po0 := objc.WrapAsProtocol("NSEditor", editor)
+	objc.Call[objc.Void](e_, objc.Sel("objectDidEndEditing:"), po0)
 }

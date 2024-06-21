@@ -19,10 +19,10 @@ type _CNNPoolingAverageClass struct {
 // An interface definition for the [CNNPoolingAverage] class.
 type ICNNPoolingAverage interface {
 	ICNNPooling
-	ZeroPadSizeY() uint
-	SetZeroPadSizeY(value uint)
 	ZeroPadSizeX() uint
 	SetZeroPadSizeX(value uint)
+	ZeroPadSizeY() uint
+	SetZeroPadSizeY(value uint)
 }
 
 // An average pooling filter. [Full Topic]
@@ -73,21 +73,6 @@ func (c_ CNNPoolingAverage) Init() CNNPoolingAverage {
 	return rv
 }
 
-func (c_ CNNPoolingAverage) InitWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPoolingAverage {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNPoolingAverage](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:"), po0, kernelWidth, kernelHeight)
-	return rv
-}
-
-// Initializes a pooling filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpooling/1648887-initwithdevice?language=objc
-func NewCNNPoolingAverageWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPoolingAverage {
-	instance := CNNPoolingAverageClass.Alloc().InitWithDeviceKernelWidthKernelHeight(device, kernelWidth, kernelHeight)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNPoolingAverage) InitWithDevice(device metal.PDevice) CNNPoolingAverage {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNPoolingAverage](c_, objc.Sel("initWithDevice:"), po0)
@@ -120,21 +105,6 @@ func CNNPoolingAverage_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDev
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875221-zeropadsizey?language=objc
-func (c_ CNNPoolingAverage) ZeroPadSizeY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("zeroPadSizeY"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875221-zeropadsizey?language=objc
-func (c_ CNNPoolingAverage) SetZeroPadSizeY(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setZeroPadSizeY:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875207-zeropadsizex?language=objc
 func (c_ CNNPoolingAverage) ZeroPadSizeX() uint {
 	rv := objc.Call[uint](c_, objc.Sel("zeroPadSizeX"))
@@ -146,4 +116,19 @@ func (c_ CNNPoolingAverage) ZeroPadSizeX() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875207-zeropadsizex?language=objc
 func (c_ CNNPoolingAverage) SetZeroPadSizeX(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setZeroPadSizeX:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875221-zeropadsizey?language=objc
+func (c_ CNNPoolingAverage) ZeroPadSizeY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("zeroPadSizeY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingaverage/2875221-zeropadsizey?language=objc
+func (c_ CNNPoolingAverage) SetZeroPadSizeY(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setZeroPadSizeY:"), value)
 }

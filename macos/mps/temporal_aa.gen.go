@@ -40,21 +40,6 @@ func TemporalAAFrom(ptr unsafe.Pointer) TemporalAA {
 	}
 }
 
-func (t_ TemporalAA) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) TemporalAA {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporalAA](t_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143583-copywithzone?language=objc
-func TemporalAA_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) TemporalAA {
-	instance := TemporalAAClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TemporalAA) InitWithDevice(device metal.PDevice) TemporalAA {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[TemporalAA](t_, objc.Sel("initWithDevice:"), po0)
@@ -66,6 +51,21 @@ func (t_ TemporalAA) InitWithDevice(device metal.PDevice) TemporalAA {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143587-initwithdevice?language=objc
 func NewTemporalAAWithDevice(device metal.PDevice) TemporalAA {
 	instance := TemporalAAClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (t_ TemporalAA) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) TemporalAA {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[TemporalAA](t_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143583-copywithzone?language=objc
+func TemporalAA_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) TemporalAA {
+	instance := TemporalAAClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

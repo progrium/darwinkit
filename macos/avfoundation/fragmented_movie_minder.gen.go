@@ -19,8 +19,8 @@ type _FragmentedMovieMinderClass struct {
 // An interface definition for the [FragmentedMovieMinder] class.
 type IFragmentedMovieMinder interface {
 	IFragmentedAssetMinder
-	AddFragmentedMovie(movie IFragmentedMovie)
 	RemoveFragmentedMovie(movie IFragmentedMovie)
+	AddFragmentedMovie(movie IFragmentedMovie)
 	Movies() []FragmentedMovie
 }
 
@@ -109,18 +109,18 @@ func NewFragmentedMovieMinderWithAssetMindingInterval(asset IAsset, mindingInter
 	return instance
 }
 
-// Adds a fragmented movie to the array of movies being minded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedmovieminder/1386171-addfragmentedmovie?language=objc
-func (f_ FragmentedMovieMinder) AddFragmentedMovie(movie IFragmentedMovie) {
-	objc.Call[objc.Void](f_, objc.Sel("addFragmentedMovie:"), movie)
-}
-
 // Removes a fragmented movie from the array of movies being minded. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedmovieminder/1389794-removefragmentedmovie?language=objc
 func (f_ FragmentedMovieMinder) RemoveFragmentedMovie(movie IFragmentedMovie) {
 	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedMovie:"), movie)
+}
+
+// Adds a fragmented movie to the array of movies being minded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedmovieminder/1386171-addfragmentedmovie?language=objc
+func (f_ FragmentedMovieMinder) AddFragmentedMovie(movie IFragmentedMovie) {
+	objc.Call[objc.Void](f_, objc.Sel("addFragmentedMovie:"), movie)
 }
 
 // An array containing the fragmented movie objects being minded. [Full Topic]

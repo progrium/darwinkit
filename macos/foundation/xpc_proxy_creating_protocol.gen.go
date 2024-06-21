@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcproxycreating?language=objc
 type PXPCProxyCreating interface {
 	// optional
+	SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
+	HasSynchronousRemoteObjectProxyWithErrorHandler() bool
+
+	// optional
 	RemoteObjectProxy() objc.Object
 	HasRemoteObjectProxy() bool
 
 	// optional
 	RemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
 	HasRemoteObjectProxyWithErrorHandler() bool
-
-	// optional
-	SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
-	HasSynchronousRemoteObjectProxyWithErrorHandler() bool
 }
 
 // ensure impl type implements protocol interface
@@ -29,6 +29,18 @@ var _ PXPCProxyCreating = (*XPCProxyCreatingObject)(nil)
 // A concrete type for the [PXPCProxyCreating] protocol.
 type XPCProxyCreatingObject struct {
 	objc.Object
+}
+
+func (x_ XPCProxyCreatingObject) HasSynchronousRemoteObjectProxyWithErrorHandler() bool {
+	return x_.RespondsToSelector(objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcproxycreating/2879411-synchronousremoteobjectproxywith?language=objc
+func (x_ XPCProxyCreatingObject) SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"), handler)
+	return rv
 }
 
 func (x_ XPCProxyCreatingObject) HasRemoteObjectProxy() bool {
@@ -52,17 +64,5 @@ func (x_ XPCProxyCreatingObject) HasRemoteObjectProxyWithErrorHandler() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcproxycreating/1415611-remoteobjectproxywitherrorhandle?language=objc
 func (x_ XPCProxyCreatingObject) RemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
 	rv := objc.Call[objc.Object](x_, objc.Sel("remoteObjectProxyWithErrorHandler:"), handler)
-	return rv
-}
-
-func (x_ XPCProxyCreatingObject) HasSynchronousRemoteObjectProxyWithErrorHandler() bool {
-	return x_.RespondsToSelector(objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcproxycreating/2879411-synchronousremoteobjectproxywith?language=objc
-func (x_ XPCProxyCreatingObject) SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("synchronousRemoteObjectProxyWithErrorHandler:"), handler)
 	return rv
 }

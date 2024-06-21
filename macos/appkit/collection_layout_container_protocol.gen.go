@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutcontainer?language=objc
 type PCollectionLayoutContainer interface {
 	// optional
-	EffectiveContentInsets() DirectionalEdgeInsets
-	HasEffectiveContentInsets() bool
-
-	// optional
 	ContentInsets() DirectionalEdgeInsets
 	HasContentInsets() bool
 
 	// optional
-	ContentSize() foundation.Size
+	ContentSize() coregraphics.Size
 	HasContentSize() bool
 
 	// optional
-	EffectiveContentSize() foundation.Size
+	EffectiveContentInsets() DirectionalEdgeInsets
+	HasEffectiveContentInsets() bool
+
+	// optional
+	EffectiveContentSize() coregraphics.Size
 	HasEffectiveContentSize() bool
 }
 
@@ -34,18 +34,6 @@ var _ PCollectionLayoutContainer = (*CollectionLayoutContainerObject)(nil)
 // A concrete type for the [PCollectionLayoutContainer] protocol.
 type CollectionLayoutContainerObject struct {
 	objc.Object
-}
-
-func (c_ CollectionLayoutContainerObject) HasEffectiveContentInsets() bool {
-	return c_.RespondsToSelector(objc.Sel("effectiveContentInsets"))
-}
-
-// The amount of space added around the content of the container to adjust its final size after item content insets are applied. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutcontainer/3199048-effectivecontentinsets?language=objc
-func (c_ CollectionLayoutContainerObject) EffectiveContentInsets() DirectionalEdgeInsets {
-	rv := objc.Call[DirectionalEdgeInsets](c_, objc.Sel("effectiveContentInsets"))
-	return rv
 }
 
 func (c_ CollectionLayoutContainerObject) HasContentInsets() bool {
@@ -67,8 +55,20 @@ func (c_ CollectionLayoutContainerObject) HasContentSize() bool {
 // The size of the container before content insets are applied. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutcontainer/3199047-contentsize?language=objc
-func (c_ CollectionLayoutContainerObject) ContentSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("contentSize"))
+func (c_ CollectionLayoutContainerObject) ContentSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](c_, objc.Sel("contentSize"))
+	return rv
+}
+
+func (c_ CollectionLayoutContainerObject) HasEffectiveContentInsets() bool {
+	return c_.RespondsToSelector(objc.Sel("effectiveContentInsets"))
+}
+
+// The amount of space added around the content of the container to adjust its final size after item content insets are applied. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutcontainer/3199048-effectivecontentinsets?language=objc
+func (c_ CollectionLayoutContainerObject) EffectiveContentInsets() DirectionalEdgeInsets {
+	rv := objc.Call[DirectionalEdgeInsets](c_, objc.Sel("effectiveContentInsets"))
 	return rv
 }
 
@@ -79,7 +79,7 @@ func (c_ CollectionLayoutContainerObject) HasEffectiveContentSize() bool {
 // The size of the container after content insets are applied. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutcontainer/3199049-effectivecontentsize?language=objc
-func (c_ CollectionLayoutContainerObject) EffectiveContentSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("effectiveContentSize"))
+func (c_ CollectionLayoutContainerObject) EffectiveContentSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](c_, objc.Sel("effectiveContentSize"))
 	return rv
 }

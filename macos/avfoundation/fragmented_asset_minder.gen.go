@@ -21,9 +21,9 @@ type IFragmentedAssetMinder interface {
 	objc.IObject
 	AddFragmentedAsset(asset IAsset)
 	RemoveFragmentedAsset(asset IAsset)
-	Assets() []Asset
 	MindingInterval() foundation.TimeInterval
 	SetMindingInterval(value foundation.TimeInterval)
+	Assets() []Asset
 }
 
 // An object that periodically checks whether the system adds new fragments to a fragmented asset. [Full Topic]
@@ -99,14 +99,6 @@ func (f_ FragmentedAssetMinder) RemoveFragmentedAsset(asset IAsset) {
 	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedAsset:"), asset)
 }
 
-// The minded array of fragmented assets. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1390319-assets?language=objc
-func (f_ FragmentedAssetMinder) Assets() []Asset {
-	rv := objc.Call[[]Asset](f_, objc.Sel("assets"))
-	return rv
-}
-
 // An interval that specifies when to perform a check for additional fragments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1390760-mindinginterval?language=objc
@@ -120,4 +112,12 @@ func (f_ FragmentedAssetMinder) MindingInterval() foundation.TimeInterval {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1390760-mindinginterval?language=objc
 func (f_ FragmentedAssetMinder) SetMindingInterval(value foundation.TimeInterval) {
 	objc.Call[objc.Void](f_, objc.Sel("setMindingInterval:"), value)
+}
+
+// The minded array of fragmented assets. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1390319-assets?language=objc
+func (f_ FragmentedAssetMinder) Assets() []Asset {
+	rv := objc.Call[[]Asset](f_, objc.Sel("assets"))
+	return rv
 }

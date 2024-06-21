@@ -20,16 +20,16 @@ type _ExtensionDevicePropertiesClass struct {
 type IExtensionDeviceProperties interface {
 	objc.IObject
 	SetPropertyStateForProperty(propertyState IExtensionPropertyState, property ExtensionProperty)
+	Model() string
+	SetModel(value string)
 	TransportType() foundation.Number
 	SetTransportType(value foundation.INumber)
+	LinkedCoreAudioDeviceUID() string
+	SetLinkedCoreAudioDeviceUID(value string)
 	Suspended() foundation.Number
 	SetSuspended(value foundation.INumber)
 	PropertiesDictionary() map[ExtensionProperty]ExtensionPropertyState
 	SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState)
-	LinkedCoreAudioDeviceUID() string
-	SetLinkedCoreAudioDeviceUID(value string)
-	Model() string
-	SetModel(value string)
 }
 
 // An object that defines the properties of a device. [Full Topic]
@@ -45,18 +45,6 @@ func ExtensionDevicePropertiesFrom(ptr unsafe.Pointer) ExtensionDeviceProperties
 	}
 }
 
-func (ec _ExtensionDevicePropertiesClass) DevicePropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionDeviceProperties {
-	rv := objc.Call[ExtensionDeviceProperties](ec, objc.Sel("devicePropertiesWithDictionary:"), propertiesDictionary)
-	return rv
-}
-
-// Returns a new properties object with a dictionary of property states. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915839-devicepropertieswithdictionary?language=objc
-func ExtensionDeviceProperties_DevicePropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionDeviceProperties {
-	return ExtensionDevicePropertiesClass.DevicePropertiesWithDictionary(propertiesDictionary)
-}
-
 func (e_ ExtensionDeviceProperties) InitWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionDeviceProperties {
 	rv := objc.Call[ExtensionDeviceProperties](e_, objc.Sel("initWithDictionary:"), propertiesDictionary)
 	return rv
@@ -69,6 +57,18 @@ func NewExtensionDevicePropertiesWithDictionary(propertiesDictionary map[Extensi
 	instance := ExtensionDevicePropertiesClass.Alloc().InitWithDictionary(propertiesDictionary)
 	instance.Autorelease()
 	return instance
+}
+
+func (ec _ExtensionDevicePropertiesClass) DevicePropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionDeviceProperties {
+	rv := objc.Call[ExtensionDeviceProperties](ec, objc.Sel("devicePropertiesWithDictionary:"), propertiesDictionary)
+	return rv
+}
+
+// Returns a new properties object with a dictionary of property states. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915839-devicepropertieswithdictionary?language=objc
+func ExtensionDeviceProperties_DevicePropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionDeviceProperties {
+	return ExtensionDevicePropertiesClass.DevicePropertiesWithDictionary(propertiesDictionary)
 }
 
 func (ec _ExtensionDevicePropertiesClass) Alloc() ExtensionDeviceProperties {
@@ -98,6 +98,21 @@ func (e_ ExtensionDeviceProperties) SetPropertyStateForProperty(propertyState IE
 	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), propertyState, property)
 }
 
+// A device model string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915842-model?language=objc
+func (e_ ExtensionDeviceProperties) Model() string {
+	rv := objc.Call[string](e_, objc.Sel("model"))
+	return rv
+}
+
+// A device model string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915842-model?language=objc
+func (e_ ExtensionDeviceProperties) SetModel(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setModel:"), value)
+}
+
 // The transport type of the device, such as USB or HDMI. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915846-transporttype?language=objc
@@ -111,6 +126,21 @@ func (e_ ExtensionDeviceProperties) TransportType() foundation.Number {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915846-transporttype?language=objc
 func (e_ ExtensionDeviceProperties) SetTransportType(value foundation.INumber) {
 	objc.Call[objc.Void](e_, objc.Sel("setTransportType:"), value)
+}
+
+// A universal identifier of the audio device linked to this device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915841-linkedcoreaudiodeviceuid?language=objc
+func (e_ ExtensionDeviceProperties) LinkedCoreAudioDeviceUID() string {
+	rv := objc.Call[string](e_, objc.Sel("linkedCoreAudioDeviceUID"))
+	return rv
+}
+
+// A universal identifier of the audio device linked to this device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915841-linkedcoreaudiodeviceuid?language=objc
+func (e_ ExtensionDeviceProperties) SetLinkedCoreAudioDeviceUID(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setLinkedCoreAudioDeviceUID:"), value)
 }
 
 // A Boolean value that indicates whether the device is in a suspended state. [Full Topic]
@@ -141,34 +171,4 @@ func (e_ ExtensionDeviceProperties) PropertiesDictionary() map[ExtensionProperty
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915843-propertiesdictionary?language=objc
 func (e_ ExtensionDeviceProperties) SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState) {
 	objc.Call[objc.Void](e_, objc.Sel("setPropertiesDictionary:"), value)
-}
-
-// A universal identifier of the audio device linked to this device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915841-linkedcoreaudiodeviceuid?language=objc
-func (e_ ExtensionDeviceProperties) LinkedCoreAudioDeviceUID() string {
-	rv := objc.Call[string](e_, objc.Sel("linkedCoreAudioDeviceUID"))
-	return rv
-}
-
-// A universal identifier of the audio device linked to this device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915841-linkedcoreaudiodeviceuid?language=objc
-func (e_ ExtensionDeviceProperties) SetLinkedCoreAudioDeviceUID(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setLinkedCoreAudioDeviceUID:"), value)
-}
-
-// A device model string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915842-model?language=objc
-func (e_ ExtensionDeviceProperties) Model() string {
-	rv := objc.Call[string](e_, objc.Sel("model"))
-	return rv
-}
-
-// A device model string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915842-model?language=objc
-func (e_ ExtensionDeviceProperties) SetModel(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setModel:"), value)
 }

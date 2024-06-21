@@ -54,21 +54,6 @@ func (a_ AccelerationStructure) Init() AccelerationStructure {
 	return rv
 }
 
-func (a_ AccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) AccelerationStructure {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[AccelerationStructure](a_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func AccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) AccelerationStructure {
-	instance := AccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (a_ AccelerationStructure) InitWithDevice(device metal.PDevice) AccelerationStructure {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[AccelerationStructure](a_, objc.Sel("initWithDevice:"), po0)
@@ -80,6 +65,21 @@ func (a_ AccelerationStructure) InitWithDevice(device metal.PDevice) Acceleratio
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewAccelerationStructureWithDevice(device metal.PDevice) AccelerationStructure {
 	instance := AccelerationStructureClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (a_ AccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) AccelerationStructure {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[AccelerationStructure](a_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func AccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) AccelerationStructure {
+	instance := AccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

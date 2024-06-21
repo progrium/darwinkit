@@ -37,6 +37,19 @@ func CNNBatchNormalizationNodeFrom(ptr unsafe.Pointer) CNNBatchNormalizationNode
 	}
 }
 
+func (cc _CNNBatchNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
+	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
+	rv := objc.Call[CNNBatchNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationnode/2948033-nodewithsource?language=objc
+func CNNBatchNormalizationNode_NodeWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
+	return CNNBatchNormalizationNodeClass.NodeWithSourceDataSource(source, dataSource)
+}
+
 func (c_ CNNBatchNormalizationNode) InitWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
 	rv := objc.Call[CNNBatchNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), source, po1)
@@ -50,19 +63,6 @@ func NewCNNBatchNormalizationNodeWithSourceDataSource(source INNImageNode, dataS
 	instance := CNNBatchNormalizationNodeClass.Alloc().InitWithSourceDataSource(source, dataSource)
 	instance.Autorelease()
 	return instance
-}
-
-func (cc _CNNBatchNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
-	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNBatchNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationnode/2948033-nodewithsource?language=objc
-func CNNBatchNormalizationNode_NodeWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
-	return CNNBatchNormalizationNodeClass.NodeWithSourceDataSource(source, dataSource)
 }
 
 func (cc _CNNBatchNormalizationNodeClass) Alloc() CNNBatchNormalizationNode {

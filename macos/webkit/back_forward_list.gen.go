@@ -19,11 +19,11 @@ type _BackForwardListClass struct {
 type IBackForwardList interface {
 	objc.IObject
 	ItemAtIndex(index int) BackForwardListItem
-	CurrentItem() BackForwardListItem
-	ForwardList() []BackForwardListItem
 	BackList() []BackForwardListItem
-	BackItem() BackForwardListItem
 	ForwardItem() BackForwardListItem
+	CurrentItem() BackForwardListItem
+	BackItem() BackForwardListItem
+	ForwardList() []BackForwardListItem
 }
 
 // An object that manages the list of previously loaded webpages, which the web view uses for forward and backward navigation. [Full Topic]
@@ -67,27 +67,27 @@ func (b_ BackForwardList) ItemAtIndex(index int) BackForwardListItem {
 	return rv
 }
 
-// The current item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516703-currentitem?language=objc
-func (b_ BackForwardList) CurrentItem() BackForwardListItem {
-	rv := objc.Call[BackForwardListItem](b_, objc.Sel("currentItem"))
-	return rv
-}
-
-// The array of items that follow the current item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516701-forwardlist?language=objc
-func (b_ BackForwardList) ForwardList() []BackForwardListItem {
-	rv := objc.Call[[]BackForwardListItem](b_, objc.Sel("forwardList"))
-	return rv
-}
-
 // The array of items that precede the current item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516698-backlist?language=objc
 func (b_ BackForwardList) BackList() []BackForwardListItem {
 	rv := objc.Call[[]BackForwardListItem](b_, objc.Sel("backList"))
+	return rv
+}
+
+// The item immediately following the current item, if any. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516700-forwarditem?language=objc
+func (b_ BackForwardList) ForwardItem() BackForwardListItem {
+	rv := objc.Call[BackForwardListItem](b_, objc.Sel("forwardItem"))
+	return rv
+}
+
+// The current item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516703-currentitem?language=objc
+func (b_ BackForwardList) CurrentItem() BackForwardListItem {
+	rv := objc.Call[BackForwardListItem](b_, objc.Sel("currentItem"))
 	return rv
 }
 
@@ -99,10 +99,10 @@ func (b_ BackForwardList) BackItem() BackForwardListItem {
 	return rv
 }
 
-// The item immediately following the current item, if any. [Full Topic]
+// The array of items that follow the current item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516700-forwarditem?language=objc
-func (b_ BackForwardList) ForwardItem() BackForwardListItem {
-	rv := objc.Call[BackForwardListItem](b_, objc.Sel("forwardItem"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlist/1516701-forwardlist?language=objc
+func (b_ BackForwardList) ForwardList() []BackForwardListItem {
+	rv := objc.Call[[]BackForwardListItem](b_, objc.Sel("forwardList"))
 	return rv
 }

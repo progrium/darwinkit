@@ -10,7 +10,6 @@ import (
 	"github.com/progrium/darwinkit/macos/coremedia"
 	"github.com/progrium/darwinkit/macos/corevideo"
 	"github.com/progrium/darwinkit/macos/foundation"
-	"github.com/progrium/darwinkit/macos/imageio"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -59,226 +58,16 @@ func (h_ HomographicImageRegistrationRequest) Init() HomographicImageRegistratio
 	return rv
 }
 
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCGImageOrientationOptions(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCGImage:orientation:options:"), cgImage, orientation, options)
+func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
 	return rv
 }
 
-// Creates a new request targeting a Core Graphics image of known orientation. [Full Topic]
+// Creates a new request targeting an image at the specified URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923444-initwithtargetedcgimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCGImageOrientationOptions(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCGImageOrientationOptions(cgImage, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCGImage:options:"), cgImage, options)
-	return rv
-}
-
-// Creates a new request targeting a Core Graphics image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923452-initwithtargetedcgimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCGImageOptions(cgImage, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), imageURL, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image at the specified URL, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923453-initwithtargetedimageurl?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageURLOptionsCompletionHandler(imageURL, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageData:options:"), imageData, options)
-	return rv
-}
-
-// Creates a new request targeting an image as raw data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923460-initwithtargetedimagedata?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageDataOptions(imageData, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCVPixelBuffer:options:completionHandler:"), pixelBuffer, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image in a CVPixelBufferRef, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923446-initwithtargetedcvpixelbuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCMSampleBuffer:options:completionHandler:"), sampleBuffer, options, completionHandler)
-	return rv
-}
-
-// Creates a new request with a completion handler that targets an image in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571275-initwithtargetedcmsamplebuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageDataOrientationOptionsCompletionHandler(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageData:orientation:options:completionHandler:"), imageData, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a raw data image of known orientation, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923443-initwithtargetedimagedata?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageDataOrientationOptionsCompletionHandler(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageDataOrientationOptionsCompletionHandler(imageData, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCMSampleBuffer:orientation:options:"), sampleBuffer, orientation, options)
-	return rv
-}
-
-// Creates a new request that targets an image of a known orientation in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571276-initwithtargetedcmsamplebuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCMSampleBufferOrientationOptions(sampleBuffer, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCVPixelBuffer:options:"), pixelBuffer, options)
-	return rv
-}
-
-// Creates a new request targeting an image in a CVPixelBufferRef. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923445-initwithtargetedcvpixelbuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCVPixelBufferOptions(pixelBuffer, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageDataOptionsCompletionHandler(imageData []byte, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageData:options:completionHandler:"), imageData, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image as raw data, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923455-initwithtargetedimagedata?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageDataOptionsCompletionHandler(imageData []byte, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageDataOptionsCompletionHandler(imageData, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), ciImage, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a CIImage, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923454-initwithtargetedciimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCIImageOptionsCompletionHandler(ciImage, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCIImage:orientation:options:"), ciImage, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting a CIImage of known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923459-initwithtargetedciimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCIImageOrientationOptions(ciImage, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageURL:orientation:options:"), imageURL, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting an image of known orientation, at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923456-initwithtargetedimageurl?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageURLOrientationOptions(imageURL, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), ciImage, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a CIImage of known orientation, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923451-initwithtargetedciimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCGImageOptionsCompletionHandler(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCGImage:options:completionHandler:"), cgImage, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a Core Graphics image, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923448-initwithtargetedcgimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCGImageOptionsCompletionHandler(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCGImageOptionsCompletionHandler(cgImage, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageData:orientation:options:"), imageData, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting a raw data image of known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923441-initwithtargetedimagedata?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageDataOrientationOptions(imageData, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923458-initwithtargetedimageurl?language=objc
+func NewHomographicImageRegistrationRequestWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageURLOptions(imageURL, options)
 	instance.Autorelease()
 	return instance
 }
@@ -297,34 +86,6 @@ func NewHomographicImageRegistrationRequestWithTargetedCMSampleBufferOptions(sam
 	return instance
 }
 
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), imageURL, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image of known orientation, at the specified URL, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923457-initwithtargetedimageurl?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCMSampleBuffer:orientation:options:completionHandler:"), sampleBuffer, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request with a completion handler that targets an image of a known orientation in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571277-initwithtargetedcmsamplebuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
 func (h_ HomographicImageRegistrationRequest) InitWithTargetedCIImageOptions(ciImage coreimage.IImage, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
 	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCIImage:options:"), ciImage, options)
 	return rv
@@ -339,58 +100,44 @@ func NewHomographicImageRegistrationRequestWithTargetedCIImageOptions(ciImage co
 	return instance
 }
 
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCGImage:orientation:options:completionHandler:"), cgImage, orientation, options, completionHandler)
+func (h_ HomographicImageRegistrationRequest) InitWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCVPixelBuffer:options:"), pixelBuffer, options)
 	return rv
 }
 
-// Creates a new request targeting a Core Graphics image of known orientation, executing the completion handler when done. [Full Topic]
+// Creates a new request targeting an image in a CVPixelBufferRef. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923450-initwithtargetedcgimage?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage, orientation, options, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923445-initwithtargetedcvpixelbuffer?language=objc
+func NewHomographicImageRegistrationRequestWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCVPixelBufferOptions(pixelBuffer, options)
 	instance.Autorelease()
 	return instance
 }
 
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCVPixelBuffer:orientation:options:"), pixelBuffer, orientation, options)
+func (h_ HomographicImageRegistrationRequest) InitWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCGImage:options:"), cgImage, options)
 	return rv
 }
 
-// Creates a new request targeting an image in a CVPixelBufferRef of known orientation. [Full Topic]
+// Creates a new request targeting a Core Graphics image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923442-initwithtargetedcvpixelbuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCVPixelBufferOrientationOptions(pixelBuffer, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923452-initwithtargetedcgimage?language=objc
+func NewHomographicImageRegistrationRequestWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCGImageOptions(cgImage, options)
 	instance.Autorelease()
 	return instance
 }
 
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedCVPixelBuffer:orientation:options:completionHandler:"), pixelBuffer, orientation, options, completionHandler)
+func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageData:options:"), imageData, options)
 	return rv
 }
 
-// Creates a new request targeting an image in a CVPixelBufferRef of known orientation, executing the completion handler when done. [Full Topic]
+// Creates a new request targeting an image as raw data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923449-initwithtargetedcvpixelbuffer?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (h_ HomographicImageRegistrationRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	rv := objc.Call[HomographicImageRegistrationRequest](h_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
-	return rv
-}
-
-// Creates a new request targeting an image at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923458-initwithtargetedimageurl?language=objc
-func NewHomographicImageRegistrationRequestWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
-	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageURLOptions(imageURL, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923460-initwithtargetedimagedata?language=objc
+func NewHomographicImageRegistrationRequestWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) HomographicImageRegistrationRequest {
+	instance := HomographicImageRegistrationRequestClass.Alloc().InitWithTargetedImageDataOptions(imageData, options)
 	instance.Autorelease()
 	return instance
 }

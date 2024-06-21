@@ -18,12 +18,12 @@ type _BufferLayoutDescriptorClass struct {
 // An interface definition for the [BufferLayoutDescriptor] class.
 type IBufferLayoutDescriptor interface {
 	objc.IObject
-	StepFunction() StepFunction
-	SetStepFunction(value StepFunction)
 	StepRate() uint
 	SetStepRate(value uint)
 	Stride() uint
 	SetStride(value uint)
+	StepFunction() StepFunction
+	SetStepFunction(value StepFunction)
 }
 
 // An object that configures how a function fetches input data for an attribute. [Full Topic]
@@ -59,21 +59,6 @@ func (b_ BufferLayoutDescriptor) Init() BufferLayoutDescriptor {
 	return rv
 }
 
-// Determines which aspect of command execution triggers data fetches. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097182-stepfunction?language=objc
-func (b_ BufferLayoutDescriptor) StepFunction() StepFunction {
-	rv := objc.Call[StepFunction](b_, objc.Sel("stepFunction"))
-	return rv
-}
-
-// Determines which aspect of command execution triggers data fetches. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097182-stepfunction?language=objc
-func (b_ BufferLayoutDescriptor) SetStepFunction(value StepFunction) {
-	objc.Call[objc.Void](b_, objc.Sel("setStepFunction:"), value)
-}
-
 // The rate at which data is fetched by the step function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097164-steprate?language=objc
@@ -102,4 +87,19 @@ func (b_ BufferLayoutDescriptor) Stride() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097190-stride?language=objc
 func (b_ BufferLayoutDescriptor) SetStride(value uint) {
 	objc.Call[objc.Void](b_, objc.Sel("setStride:"), value)
+}
+
+// Determines which aspect of command execution triggers data fetches. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097182-stepfunction?language=objc
+func (b_ BufferLayoutDescriptor) StepFunction() StepFunction {
+	rv := objc.Call[StepFunction](b_, objc.Sel("stepFunction"))
+	return rv
+}
+
+// Determines which aspect of command execution triggers data fetches. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptor/2097182-stepfunction?language=objc
+func (b_ BufferLayoutDescriptor) SetStepFunction(value StepFunction) {
+	objc.Call[objc.Void](b_, objc.Sel("setStepFunction:"), value)
 }

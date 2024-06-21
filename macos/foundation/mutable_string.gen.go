@@ -19,14 +19,14 @@ type _MutableStringClass struct {
 type IMutableString interface {
 	IString
 	AppendFormat(format string, args ...any)
-	InsertStringAtIndex(aString string, loc uint)
-	ApplyTransformReverseRangeUpdatedRange(transform StringTransform, reverse bool, range_ Range, resultingRange RangePointer) bool
-	SetString(aString string)
-	ReplaceOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) uint
 	DeleteCharactersInRange(range_ Range)
+	ApplyTransformReverseRangeUpdatedRange(transform StringTransform, reverse bool, range_ Range, resultingRange RangePointer) bool
 	InitWithCapacity(capacity uint) MutableString
-	ReplaceCharactersInRangeWithString(range_ Range, aString string)
+	InsertStringAtIndex(aString string, loc uint)
 	AppendString(aString string)
+	SetString(aString string)
+	ReplaceCharactersInRangeWithString(range_ Range, aString string)
+	ReplaceOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) uint
 }
 
 // A dynamic plain-text Unicode string object. [Full Topic]
@@ -62,28 +62,16 @@ func (m_ MutableString) Init() MutableString {
 	return rv
 }
 
-func (mc _MutableStringClass) StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), url, enc, error)
+func (m_ MutableString) InitWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithCharactersNoCopy:length:deallocator:"), chars, len, deallocator)
 	return rv
 }
 
-// Returns a string created by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497408-stringwithcontentsofurl?language=objc
-func MutableString_StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	return MutableStringClass.StringWithContentsOfURLUsedEncodingError(url, enc, error)
-}
-
-func (m_ MutableString) InitWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414472-initwithcontentsofurl?language=objc
-func NewMutableStringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	instance := MutableStringClass.Alloc().InitWithContentsOfURLUsedEncodingError(url, enc, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
+func NewMutableStringWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
+	instance := MutableStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
 	instance.Autorelease()
 	return instance
 }
@@ -100,98 +88,6 @@ func MutableString_StringWithString(string_ string) MutableString {
 	return MutableStringClass.StringWithString(string_)
 }
 
-func (m_ MutableString) InitWithString(aString string) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithString:"), aString)
-	return rv
-}
-
-// Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
-func NewMutableStringWithString(aString string) MutableString {
-	instance := MutableStringClass.Alloc().InitWithString(aString)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(bytes unsafe.Pointer, len uint, encoding StringEncoding, freeBuffer bool) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithBytesNoCopy:length:encoding:freeWhenDone:"), bytes, len, encoding, freeBuffer)
-	return rv
-}
-
-// Returns an initialized NSString object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413830-initwithbytesnocopy?language=objc
-func NewMutableStringWithBytesNoCopyLengthEncodingFreeWhenDone(bytes unsafe.Pointer, len uint, encoding StringEncoding, freeBuffer bool) MutableString {
-	instance := MutableStringClass.Alloc().InitWithBytesNoCopyLengthEncodingFreeWhenDone(bytes, len, encoding, freeBuffer)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableString) InitWithCharactersNoCopyLengthFreeWhenDone(characters *Unichar, length uint, freeBuffer bool) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithCharactersNoCopy:length:freeWhenDone:"), characters, length, freeBuffer)
-	return rv
-}
-
-// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412121-initwithcharactersnocopy?language=objc
-func NewMutableStringWithCharactersNoCopyLengthFreeWhenDone(characters *Unichar, length uint, freeBuffer bool) MutableString {
-	instance := MutableStringClass.Alloc().InitWithCharactersNoCopyLengthFreeWhenDone(characters, length, freeBuffer)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableStringClass) StringWithFormat(format string, args ...any) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
-	return rv
-}
-
-// Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
-func MutableString_StringWithFormat(format string, args ...any) MutableString {
-	return MutableStringClass.StringWithFormat(format, args...)
-}
-
-func (mc _MutableStringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
-func MutableString_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
-	return MutableStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
-}
-
-func (m_ MutableString) InitWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:encoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from a given URL interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc
-func NewMutableStringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
-	instance := MutableStringClass.Alloc().InitWithContentsOfURLEncodingError(url, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from the file at a given path and returns by reference the encoding used to interpret the file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497254-stringwithcontentsoffile?language=objc
-func MutableString_StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	return MutableStringClass.StringWithContentsOfFileUsedEncodingError(path, enc, error)
-}
-
 func (m_ MutableString) InitWithFormatLocale(format string, locale objc.IObject, args ...any) MutableString {
 	rv := objc.Call[MutableString](m_, objc.Sel("initWithFormat:locale:"), append([]any{format, locale}, args...)...)
 	return rv
@@ -204,18 +100,6 @@ func NewMutableStringWithFormatLocale(format string, locale objc.IObject, args .
 	instance := MutableStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
 	instance.Autorelease()
 	return instance
-}
-
-func (mc _MutableStringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
-func MutableString_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
-	return MutableStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
 func (m_ MutableString) InitWithDataEncoding(data []byte, encoding StringEncoding) MutableString {
@@ -232,16 +116,42 @@ func NewMutableStringWithDataEncoding(data []byte, encoding StringEncoding) Muta
 	return instance
 }
 
-func (m_ MutableString) InitWithCharactersLength(characters *Unichar, length uint) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithCharacters:length:"), characters, length)
+func (mc _MutableStringClass) StringWithFormat(format string, args ...any) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
-// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
+// Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
-func NewMutableStringWithCharactersLength(characters *Unichar, length uint) MutableString {
-	instance := MutableStringClass.Alloc().InitWithCharactersLength(characters, length)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
+func MutableString_StringWithFormat(format string, args ...any) MutableString {
+	return MutableStringClass.StringWithFormat(format, args...)
+}
+
+func (m_ MutableString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithBytesNoCopy:length:encoding:deallocator:"), bytes, len, encoding, deallocator)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
+func NewMutableStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
+	instance := MutableStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MutableString) InitWithString(aString string) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithString:"), aString)
+	return rv
+}
+
+// Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
+func NewMutableStringWithString(aString string) MutableString {
+	instance := MutableStringClass.Alloc().InitWithString(aString)
 	instance.Autorelease()
 	return instance
 }
@@ -260,46 +170,6 @@ func NewMutableStringWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, enc
 	return instance
 }
 
-func (m_ MutableString) InitWithUTF8String(nullTerminatedCString *uint8) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithUTF8String:"), nullTerminatedCString)
-	return rv
-}
-
-// Returns an NSString object initialized by copying the characters from a given C array of UTF8-encoded bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412128-initwithutf8string?language=objc
-func NewMutableStringWithUTF8String(nullTerminatedCString *uint8) MutableString {
-	instance := MutableStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableStringClass) StringWithCStringEncoding(cString *uint8, enc StringEncoding) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithCString:encoding:"), cString, enc)
-	return rv
-}
-
-// Returns a string containing the bytes in a given C array, interpreted according to a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497310-stringwithcstring?language=objc
-func MutableString_StringWithCStringEncoding(cString *uint8, enc StringEncoding) MutableString {
-	return MutableStringClass.StringWithCStringEncoding(cString, enc)
-}
-
-func (m_ MutableString) InitWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from the file at a given path and returns by reference the encoding used to interpret the characters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1418227-initwithcontentsoffile?language=objc
-func NewMutableStringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
-	instance := MutableStringClass.Alloc().InitWithContentsOfFileUsedEncodingError(path, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
 func (mc _MutableStringClass) StringWithCharactersLength(characters *Unichar, length uint) MutableString {
 	rv := objc.Call[MutableString](mc, objc.Sel("stringWithCharacters:length:"), characters, length)
 	return rv
@@ -312,84 +182,30 @@ func MutableString_StringWithCharactersLength(characters *Unichar, length uint) 
 	return MutableStringClass.StringWithCharactersLength(characters, length)
 }
 
-func (m_ MutableString) InitWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithCharactersNoCopy:length:deallocator:"), chars, len, deallocator)
+func (m_ MutableString) InitWithCharactersLength(characters *Unichar, length uint) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithCharacters:length:"), characters, length)
 	return rv
 }
 
-//	[Full Topic]
+// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
-func NewMutableStringWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
-	instance := MutableStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
+func NewMutableStringWithCharactersLength(characters *Unichar, length uint) MutableString {
+	instance := MutableStringClass.Alloc().InitWithCharactersLength(characters, length)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithBytesNoCopy:length:encoding:deallocator:"), bytes, len, encoding, deallocator)
+func (m_ MutableString) InitWithUTF8String(nullTerminatedCString *uint8) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithUTF8String:"), nullTerminatedCString)
 	return rv
 }
 
-//	[Full Topic]
+// Returns an NSString object initialized by copying the characters from a given C array of UTF8-encoded bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
-func NewMutableStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
-	instance := MutableStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableString) InitWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from the file at a given path using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc
-func NewMutableStringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
-	instance := MutableStringClass.Alloc().InitWithContentsOfFileEncodingError(path, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableString) InitWithFormat(format string, args ...any) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithFormat:"), append([]any{format}, args...)...)
-	return rv
-}
-
-// Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497402-initwithformat?language=objc
-func NewMutableStringWithFormat(format string, args ...any) MutableString {
-	instance := MutableStringClass.Alloc().InitWithFormat(format, args...)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableStringClass) StringWithUTF8String(nullTerminatedCString *uint8) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithUTF8String:"), nullTerminatedCString)
-	return rv
-}
-
-// Returns a string created by copying the data from a given C array of UTF8-encoded bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497379-stringwithutf8string?language=objc
-func MutableString_StringWithUTF8String(nullTerminatedCString *uint8) MutableString {
-	return MutableStringClass.StringWithUTF8String(nullTerminatedCString)
-}
-
-func (m_ MutableString) InitWithCStringEncoding(nullTerminatedCString *uint8, encoding StringEncoding) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithCString:encoding:"), nullTerminatedCString, encoding)
-	return rv
-}
-
-// Returns an NSString object initialized using the characters in a given C array, interpreted according to a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411950-initwithcstring?language=objc
-func NewMutableStringWithCStringEncoding(nullTerminatedCString *uint8, encoding StringEncoding) MutableString {
-	instance := MutableStringClass.Alloc().InitWithCStringEncoding(nullTerminatedCString, encoding)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412128-initwithutf8string?language=objc
+func NewMutableStringWithUTF8String(nullTerminatedCString *uint8) MutableString {
+	instance := MutableStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
 	instance.Autorelease()
 	return instance
 }
@@ -406,41 +222,40 @@ func MutableString_LocalizedStringWithFormat(format string, args ...any) Mutable
 	return MutableStringClass.LocalizedStringWithFormat(format, args...)
 }
 
-// Adds a constructed string to the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc
-func (m_ MutableString) AppendFormat(format string, args ...any) {
-	objc.Call[objc.Void](m_, objc.Sel("appendFormat:"), append([]any{format}, args...)...)
-}
-
-// Inserts into the receiver the characters of a given string at a given location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1410999-insertstring?language=objc
-func (m_ MutableString) InsertStringAtIndex(aString string, loc uint) {
-	objc.Call[objc.Void](m_, objc.Sel("insertString:atIndex:"), aString, loc)
-}
-
-// Transliterates the receiver by applying a specified ICU string transform. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1415742-applytransform?language=objc
-func (m_ MutableString) ApplyTransformReverseRangeUpdatedRange(transform StringTransform, reverse bool, range_ Range, resultingRange RangePointer) bool {
-	rv := objc.Call[bool](m_, objc.Sel("applyTransform:reverse:range:updatedRange:"), transform, reverse, range_, resultingRange)
+func (mc _MutableStringClass) StringWithUTF8String(nullTerminatedCString *uint8) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithUTF8String:"), nullTerminatedCString)
 	return rv
 }
 
-// Replaces the characters of the receiver with those in a given string. [Full Topic]
+// Returns a string created by copying the data from a given C array of UTF8-encoded bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1409483-setstring?language=objc
-func (m_ MutableString) SetString(aString string) {
-	objc.Call[objc.Void](m_, objc.Sel("setString:"), aString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497379-stringwithutf8string?language=objc
+func MutableString_StringWithUTF8String(nullTerminatedCString *uint8) MutableString {
+	return MutableStringClass.StringWithUTF8String(nullTerminatedCString)
 }
 
-// Replaces all occurrences of a given string in a given range with another given string, returning the number of replacements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1412453-replaceoccurrencesofstring?language=objc
-func (m_ MutableString) ReplaceOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) uint {
-	rv := objc.Call[uint](m_, objc.Sel("replaceOccurrencesOfString:withString:options:range:"), target, replacement, options, searchRange)
+func (mc _MutableStringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
+}
+
+// Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
+func MutableString_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
+	return MutableStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
+}
+
+func (mc _MutableStringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
+	return rv
+}
+
+// Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
+func MutableString_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
+	return MutableStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
 }
 
 // Returns an empty NSMutableString object with initial storage for a given number of characters. [Full Topic]
@@ -458,11 +273,26 @@ func MutableString_StringWithCapacity(capacity uint) MutableString {
 	return MutableStringClass.StringWithCapacity(capacity)
 }
 
+// Adds a constructed string to the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc
+func (m_ MutableString) AppendFormat(format string, args ...any) {
+	objc.Call[objc.Void](m_, objc.Sel("appendFormat:"), append([]any{format}, args...)...)
+}
+
 // Removes from the receiver the characters in a given range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1415003-deletecharactersinrange?language=objc
 func (m_ MutableString) DeleteCharactersInRange(range_ Range) {
 	objc.Call[objc.Void](m_, objc.Sel("deleteCharactersInRange:"), range_)
+}
+
+// Transliterates the receiver by applying a specified ICU string transform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1415742-applytransform?language=objc
+func (m_ MutableString) ApplyTransformReverseRangeUpdatedRange(transform StringTransform, reverse bool, range_ Range, resultingRange RangePointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("applyTransform:reverse:range:updatedRange:"), transform, reverse, range_, resultingRange)
+	return rv
 }
 
 // Returns an NSMutableString object initialized with initial storage for a given number of characters, [Full Topic]
@@ -473,11 +303,11 @@ func (m_ MutableString) InitWithCapacity(capacity uint) MutableString {
 	return rv
 }
 
-// Replaces the characters from aRange with those in aString. [Full Topic]
+// Inserts into the receiver the characters of a given string at a given location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1416524-replacecharactersinrange?language=objc
-func (m_ MutableString) ReplaceCharactersInRangeWithString(range_ Range, aString string) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceCharactersInRange:withString:"), range_, aString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1410999-insertstring?language=objc
+func (m_ MutableString) InsertStringAtIndex(aString string, loc uint) {
+	objc.Call[objc.Void](m_, objc.Sel("insertString:atIndex:"), aString, loc)
 }
 
 // Adds to the end of the receiver the characters of a given string. [Full Topic]
@@ -485,4 +315,26 @@ func (m_ MutableString) ReplaceCharactersInRangeWithString(range_ Range, aString
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1417883-appendstring?language=objc
 func (m_ MutableString) AppendString(aString string) {
 	objc.Call[objc.Void](m_, objc.Sel("appendString:"), aString)
+}
+
+// Replaces the characters of the receiver with those in a given string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1409483-setstring?language=objc
+func (m_ MutableString) SetString(aString string) {
+	objc.Call[objc.Void](m_, objc.Sel("setString:"), aString)
+}
+
+// Replaces the characters from aRange with those in aString. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1416524-replacecharactersinrange?language=objc
+func (m_ MutableString) ReplaceCharactersInRangeWithString(range_ Range, aString string) {
+	objc.Call[objc.Void](m_, objc.Sel("replaceCharactersInRange:withString:"), range_, aString)
+}
+
+// Replaces all occurrences of a given string in a given range with another given string, returning the number of replacements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1412453-replaceoccurrencesofstring?language=objc
+func (m_ MutableString) ReplaceOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) uint {
+	rv := objc.Call[uint](m_, objc.Sel("replaceOccurrencesOfString:withString:options:range:"), target, replacement, options, searchRange)
+	return rv
 }

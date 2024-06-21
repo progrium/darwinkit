@@ -35,20 +35,6 @@ func InvocationOperationFrom(ptr unsafe.Pointer) InvocationOperation {
 	}
 }
 
-func (i_ InvocationOperation) InitWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
-	rv := objc.Call[InvocationOperation](i_, objc.Sel("initWithTarget:selector:object:"), target, sel, arg)
-	return rv
-}
-
-// Returns an NSInvocationOperation object initialized with the specified target and selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocationoperation/1543653-initwithtarget?language=objc
-func NewInvocationOperationWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
-	instance := InvocationOperationClass.Alloc().InitWithTargetSelectorObject(target, sel, arg)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ InvocationOperation) InitWithInvocation(inv IInvocation) InvocationOperation {
 	rv := objc.Call[InvocationOperation](i_, objc.Sel("initWithInvocation:"), inv)
 	return rv
@@ -59,6 +45,20 @@ func (i_ InvocationOperation) InitWithInvocation(inv IInvocation) InvocationOper
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocationoperation/1543647-initwithinvocation?language=objc
 func NewInvocationOperationWithInvocation(inv IInvocation) InvocationOperation {
 	instance := InvocationOperationClass.Alloc().InitWithInvocation(inv)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ InvocationOperation) InitWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
+	rv := objc.Call[InvocationOperation](i_, objc.Sel("initWithTarget:selector:object:"), target, sel, arg)
+	return rv
+}
+
+// Returns an NSInvocationOperation object initialized with the specified target and selector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocationoperation/1543653-initwithtarget?language=objc
+func NewInvocationOperationWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
+	instance := InvocationOperationClass.Alloc().InitWithTargetSelectorObject(target, sel, arg)
 	instance.Autorelease()
 	return instance
 }

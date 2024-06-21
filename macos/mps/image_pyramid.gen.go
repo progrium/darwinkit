@@ -19,8 +19,8 @@ type _ImagePyramidClass struct {
 // An interface definition for the [ImagePyramid] class.
 type IImagePyramid interface {
 	IUnaryImageKernel
-	KernelWidth() uint
 	KernelHeight() uint
+	KernelWidth() uint
 }
 
 // A base class for creating different kinds of pyramid images. [Full Topic]
@@ -47,36 +47,6 @@ func (i_ ImagePyramid) InitWithDevice(device metal.PDevice) ImagePyramid {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648935-initwithdevice?language=objc
 func NewImagePyramidWithDevice(device metal.PDevice) ImagePyramid {
 	instance := ImagePyramidClass.Alloc().InitWithDevice(device)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImagePyramid) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImagePyramid {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImagePyramid](i_, objc.Sel("initWithDevice:centerWeight:"), po0, centerWeight)
-	return rv
-}
-
-// Initialize a downwards 5-tap image pyramid with a central weight parameter and device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648889-initwithdevice?language=objc
-func NewImagePyramidWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImagePyramid {
-	instance := ImagePyramidClass.Alloc().InitWithDeviceCenterWeight(device, centerWeight)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImagePyramid) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImagePyramid {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImagePyramid](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:weights:"), po0, kernelWidth, kernelHeight, kernelWeights)
-	return rv
-}
-
-// Initialize a downwards n-tap image pyramid with a custom filter kernel and device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648821-initwithdevice?language=objc
-func NewImagePyramidWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImagePyramid {
-	instance := ImagePyramidClass.Alloc().InitWithDeviceKernelWidthKernelHeightWeights(device, kernelWidth, kernelHeight, kernelWeights)
 	instance.Autorelease()
 	return instance
 }
@@ -116,18 +86,18 @@ func ImagePyramid_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) 
 	return instance
 }
 
-// The width of the filter window. Must be an odd number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648842-kernelwidth?language=objc
-func (i_ ImagePyramid) KernelWidth() uint {
-	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
-	return rv
-}
-
 // The height of the filter window. Must be an odd number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648863-kernelheight?language=objc
 func (i_ ImagePyramid) KernelHeight() uint {
 	rv := objc.Call[uint](i_, objc.Sel("kernelHeight"))
+	return rv
+}
+
+// The width of the filter window. Must be an odd number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648842-kernelwidth?language=objc
+func (i_ ImagePyramid) KernelWidth() uint {
+	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
 	return rv
 }

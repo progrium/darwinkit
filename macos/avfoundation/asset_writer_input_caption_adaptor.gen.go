@@ -36,18 +36,6 @@ func AssetWriterInputCaptionAdaptorFrom(ptr unsafe.Pointer) AssetWriterInputCapt
 	}
 }
 
-func (ac _AssetWriterInputCaptionAdaptorClass) AssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
-	rv := objc.Call[AssetWriterInputCaptionAdaptor](ac, objc.Sel("assetWriterInputCaptionAdaptorWithAssetWriterInput:"), input)
-	return rv
-}
-
-// A class method that creates a new caption adaptor that writes to the specified asset writer input. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputcaptionadaptor/3752804-assetwriterinputcaptionadaptorwi?language=objc
-func AssetWriterInputCaptionAdaptor_AssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
-	return AssetWriterInputCaptionAdaptorClass.AssetWriterInputCaptionAdaptorWithAssetWriterInput(input)
-}
-
 func (a_ AssetWriterInputCaptionAdaptor) InitWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
 	rv := objc.Call[AssetWriterInputCaptionAdaptor](a_, objc.Sel("initWithAssetWriterInput:"), input)
 	return rv
@@ -60,6 +48,18 @@ func NewAssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInp
 	instance := AssetWriterInputCaptionAdaptorClass.Alloc().InitWithAssetWriterInput(input)
 	instance.Autorelease()
 	return instance
+}
+
+func (ac _AssetWriterInputCaptionAdaptorClass) AssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
+	rv := objc.Call[AssetWriterInputCaptionAdaptor](ac, objc.Sel("assetWriterInputCaptionAdaptorWithAssetWriterInput:"), input)
+	return rv
+}
+
+// A class method that creates a new caption adaptor that writes to the specified asset writer input. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputcaptionadaptor/3752804-assetwriterinputcaptionadaptorwi?language=objc
+func AssetWriterInputCaptionAdaptor_AssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
+	return AssetWriterInputCaptionAdaptorClass.AssetWriterInputCaptionAdaptorWithAssetWriterInput(input)
 }
 
 func (ac _AssetWriterInputCaptionAdaptorClass) Alloc() AssetWriterInputCaptionAdaptor {

@@ -21,15 +21,15 @@ type _AssetReaderClass struct {
 type IAssetReader interface {
 	objc.IObject
 	StartReading() bool
-	AddOutput(output IAssetReaderOutput)
 	CancelReading()
+	AddOutput(output IAssetReaderOutput)
 	CanAddOutput(output IAssetReaderOutput) bool
-	Status() AssetReaderStatus
-	TimeRange() coremedia.TimeRange
-	SetTimeRange(value coremedia.TimeRange)
-	Asset() Asset
 	Error() foundation.Error
 	Outputs() []AssetReaderOutput
+	TimeRange() coremedia.TimeRange
+	SetTimeRange(value coremedia.TimeRange)
+	Status() AssetReaderStatus
+	Asset() Asset
 }
 
 // An object that reads media data from an asset. [Full Topic]
@@ -99,18 +99,18 @@ func (a_ AssetReader) StartReading() bool {
 	return rv
 }
 
-// Adds an output to the reader. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390110-addoutput?language=objc
-func (a_ AssetReader) AddOutput(output IAssetReaderOutput) {
-	objc.Call[objc.Void](a_, objc.Sel("addOutput:"), output)
-}
-
 // Cancels any background work and stops the reader’s outputs from reading more samples. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390258-cancelreading?language=objc
 func (a_ AssetReader) CancelReading() {
 	objc.Call[objc.Void](a_, objc.Sel("cancelReading"))
+}
+
+// Adds an output to the reader. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390110-addoutput?language=objc
+func (a_ AssetReader) AddOutput(output IAssetReaderOutput) {
+	objc.Call[objc.Void](a_, objc.Sel("addOutput:"), output)
 }
 
 // Determines whether you can add the output to the asset reader. [Full Topic]
@@ -121,11 +121,19 @@ func (a_ AssetReader) CanAddOutput(output IAssetReaderOutput) bool {
 	return rv
 }
 
-// The status of reading sample buffers from the asset. [Full Topic]
+// An error that describes the reason for a failure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390211-status?language=objc
-func (a_ AssetReader) Status() AssetReaderStatus {
-	rv := objc.Call[AssetReaderStatus](a_, objc.Sel("status"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1388114-error?language=objc
+func (a_ AssetReader) Error() foundation.Error {
+	rv := objc.Call[foundation.Error](a_, objc.Sel("error"))
+	return rv
+}
+
+// The outputs from which you read media data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1387132-outputs?language=objc
+func (a_ AssetReader) Outputs() []AssetReaderOutput {
+	rv := objc.Call[[]AssetReaderOutput](a_, objc.Sel("outputs"))
 	return rv
 }
 
@@ -144,26 +152,18 @@ func (a_ AssetReader) SetTimeRange(value coremedia.TimeRange) {
 	objc.Call[objc.Void](a_, objc.Sel("setTimeRange:"), value)
 }
 
+// The status of reading sample buffers from the asset. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390211-status?language=objc
+func (a_ AssetReader) Status() AssetReaderStatus {
+	rv := objc.Call[AssetReaderStatus](a_, objc.Sel("status"))
+	return rv
+}
+
 // The asset from which to read media data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1389128-asset?language=objc
 func (a_ AssetReader) Asset() Asset {
 	rv := objc.Call[Asset](a_, objc.Sel("asset"))
-	return rv
-}
-
-// An error that describes the reason for a failure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1388114-error?language=objc
-func (a_ AssetReader) Error() foundation.Error {
-	rv := objc.Call[foundation.Error](a_, objc.Sel("error"))
-	return rv
-}
-
-// The outputs from which you read media data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1387132-outputs?language=objc
-func (a_ AssetReader) Outputs() []AssetReaderOutput {
-	rv := objc.Call[[]AssetReaderOutput](a_, objc.Sel("outputs"))
 	return rv
 }

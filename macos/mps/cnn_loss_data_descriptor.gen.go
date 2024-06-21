@@ -19,12 +19,12 @@ type _CNNLossDataDescriptorClass struct {
 // An interface definition for the [CNNLossDataDescriptor] class.
 type ICNNLossDataDescriptor interface {
 	objc.IObject
-	Layout() DataLayout
-	BytesPerImage() uint
-	SetBytesPerImage(value uint)
-	Size() metal.Size
 	BytesPerRow() uint
 	SetBytesPerRow(value uint)
+	BytesPerImage() uint
+	SetBytesPerImage(value uint)
+	Layout() DataLayout
+	Size() metal.Size
 }
 
 // An object that specifies properties used by a loss data descriptor. [Full Topic]
@@ -77,10 +77,17 @@ func CNNLossDataDescriptor_CnnLossDataDescriptorWithDataLayoutSize(data []byte, 
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951842-layout?language=objc
-func (c_ CNNLossDataDescriptor) Layout() DataLayout {
-	rv := objc.Call[DataLayout](c_, objc.Sel("layout"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951849-bytesperrow?language=objc
+func (c_ CNNLossDataDescriptor) BytesPerRow() uint {
+	rv := objc.Call[uint](c_, objc.Sel("bytesPerRow"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951849-bytesperrow?language=objc
+func (c_ CNNLossDataDescriptor) SetBytesPerRow(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setBytesPerRow:"), value)
 }
 
 //	[Full Topic]
@@ -100,23 +107,16 @@ func (c_ CNNLossDataDescriptor) SetBytesPerImage(value uint) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951842-layout?language=objc
+func (c_ CNNLossDataDescriptor) Layout() DataLayout {
+	rv := objc.Call[DataLayout](c_, objc.Sel("layout"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951848-size?language=objc
 func (c_ CNNLossDataDescriptor) Size() metal.Size {
 	rv := objc.Call[metal.Size](c_, objc.Sel("size"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951849-bytesperrow?language=objc
-func (c_ CNNLossDataDescriptor) BytesPerRow() uint {
-	rv := objc.Call[uint](c_, objc.Sel("bytesPerRow"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdatadescriptor/2951849-bytesperrow?language=objc
-func (c_ CNNLossDataDescriptor) SetBytesPerRow(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setBytesPerRow:"), value)
 }

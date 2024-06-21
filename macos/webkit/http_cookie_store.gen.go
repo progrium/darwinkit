@@ -19,13 +19,13 @@ type _HTTPCookieStoreClass struct {
 // An interface definition for the [HTTPCookieStore] class.
 type IHTTPCookieStore interface {
 	objc.IObject
+	DeleteCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func())
+	GetAllCookies(completionHandler func(arg0 []foundation.HTTPCookie))
 	RemoveObserver(observer PHTTPCookieStoreObserver)
 	RemoveObserverObject(observerObject objc.IObject)
-	GetAllCookies(completionHandler func(arg0 []foundation.HTTPCookie))
-	DeleteCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func())
+	SetCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func())
 	AddObserver(observer PHTTPCookieStoreObserver)
 	AddObserverObject(observerObject objc.IObject)
-	SetCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func())
 }
 
 // An object that manages the HTTP cookies associated with a particular web view. [Full Topic]
@@ -61,6 +61,20 @@ func (h_ HTTPCookieStore) Init() HTTPCookieStore {
 	return rv
 }
 
+// Deletes the specified cookie. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-deletecookie?language=objc
+func (h_ HTTPCookieStore) DeleteCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
+	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:completionHandler:"), cookie, completionHandler)
+}
+
+// Fetches all stored cookies asynchronously and delivers them to the specified completion handler. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies?language=objc
+func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(arg0 []foundation.HTTPCookie)) {
+	objc.Call[objc.Void](h_, objc.Sel("getAllCookies:"), completionHandler)
+}
+
 // Removes an observer from the cookie store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882004-removeobserver?language=objc
@@ -76,18 +90,11 @@ func (h_ HTTPCookieStore) RemoveObserverObject(observerObject objc.IObject) {
 	objc.Call[objc.Void](h_, objc.Sel("removeObserver:"), observerObject)
 }
 
-// Fetches all stored cookies asynchronously and delivers them to the specified completion handler. [Full Topic]
+// Adds a cookie to the cookie store. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882005-getallcookies?language=objc
-func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(arg0 []foundation.HTTPCookie)) {
-	objc.Call[objc.Void](h_, objc.Sel("getAllCookies:"), completionHandler)
-}
-
-// Deletes the specified cookie. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-deletecookie?language=objc
-func (h_ HTTPCookieStore) DeleteCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:completionHandler:"), cookie, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882007-setcookie?language=objc
+func (h_ HTTPCookieStore) SetCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
+	objc.Call[objc.Void](h_, objc.Sel("setCookie:completionHandler:"), cookie, completionHandler)
 }
 
 // Adds an observer to the cookie store. [Full Topic]
@@ -103,11 +110,4 @@ func (h_ HTTPCookieStore) AddObserver(observer PHTTPCookieStoreObserver) {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882010-addobserver?language=objc
 func (h_ HTTPCookieStore) AddObserverObject(observerObject objc.IObject) {
 	objc.Call[objc.Void](h_, objc.Sel("addObserver:"), observerObject)
-}
-
-// Adds a cookie to the cookie store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882007-setcookie?language=objc
-func (h_ HTTPCookieStore) SetCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.Call[objc.Void](h_, objc.Sel("setCookie:completionHandler:"), cookie, completionHandler)
 }

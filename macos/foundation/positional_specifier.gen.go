@@ -18,14 +18,14 @@ type _PositionalSpecifierClass struct {
 // An interface definition for the [PositionalSpecifier] class.
 type IPositionalSpecifier interface {
 	objc.IObject
-	Evaluate()
 	SetInsertionClassDescription(classDescription IScriptClassDescription)
+	Evaluate()
 	ObjectSpecifier() ScriptObjectSpecifier
 	InsertionContainer() objc.Object
-	InsertionReplaces() bool
-	InsertionKey() string
 	InsertionIndex() int
 	Position() InsertionPosition
+	InsertionReplaces() bool
+	InsertionKey() string
 }
 
 // A specifier for an insertion point in a container relative to another object in the container. [Full Topic]
@@ -75,18 +75,18 @@ func (p_ PositionalSpecifier) Init() PositionalSpecifier {
 	return rv
 }
 
-// Causes the receiver to evaluate its position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1417035-evaluate?language=objc
-func (p_ PositionalSpecifier) Evaluate() {
-	objc.Call[objc.Void](p_, objc.Sel("evaluate"))
-}
-
 // Sets the class description for the object or objects to be inserted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1414707-setinsertionclassdescription?language=objc
 func (p_ PositionalSpecifier) SetInsertionClassDescription(classDescription IScriptClassDescription) {
 	objc.Call[objc.Void](p_, objc.Sel("setInsertionClassDescription:"), classDescription)
+}
+
+// Causes the receiver to evaluate its position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1417035-evaluate?language=objc
+func (p_ PositionalSpecifier) Evaluate() {
+	objc.Call[objc.Void](p_, objc.Sel("evaluate"))
 }
 
 // Returns the object specifier specified at initialization time. [Full Topic]
@@ -105,22 +105,6 @@ func (p_ PositionalSpecifier) InsertionContainer() objc.Object {
 	return rv
 }
 
-// Returns a Boolean value that indicates whether evaluation has been successful and the object to be inserted should actually replace the keyed, indexed object in the insertion container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1411646-insertionreplaces?language=objc
-func (p_ PositionalSpecifier) InsertionReplaces() bool {
-	rv := objc.Call[bool](p_, objc.Sel("insertionReplaces"))
-	return rv
-}
-
-// Returns the key that identifies the relationship into which the new or copied object or objects should be inserted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1414059-insertionkey?language=objc
-func (p_ PositionalSpecifier) InsertionKey() string {
-	rv := objc.Call[string](p_, objc.Sel("insertionKey"))
-	return rv
-}
-
 // Returns an insertion index that indicates where the new or copied object or objects should be placed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1414703-insertionindex?language=objc
@@ -134,5 +118,21 @@ func (p_ PositionalSpecifier) InsertionIndex() int {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1413865-position?language=objc
 func (p_ PositionalSpecifier) Position() InsertionPosition {
 	rv := objc.Call[InsertionPosition](p_, objc.Sel("position"))
+	return rv
+}
+
+// Returns a Boolean value that indicates whether evaluation has been successful and the object to be inserted should actually replace the keyed, indexed object in the insertion container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1411646-insertionreplaces?language=objc
+func (p_ PositionalSpecifier) InsertionReplaces() bool {
+	rv := objc.Call[bool](p_, objc.Sel("insertionReplaces"))
+	return rv
+}
+
+// Returns the key that identifies the relationship into which the new or copied object or objects should be inserted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1414059-insertionkey?language=objc
+func (p_ PositionalSpecifier) InsertionKey() string {
+	rv := objc.Call[string](p_, objc.Sel("insertionKey"))
 	return rv
 }

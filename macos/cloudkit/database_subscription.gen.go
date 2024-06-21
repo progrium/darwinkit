@@ -35,6 +35,16 @@ func DatabaseSubscriptionFrom(ptr unsafe.Pointer) DatabaseSubscription {
 	}
 }
 
+func (dc _DatabaseSubscriptionClass) New() DatabaseSubscription {
+	rv := objc.Call[DatabaseSubscription](dc, objc.Sel("new"))
+	rv.Autorelease()
+	return rv
+}
+
+func NewDatabaseSubscription() DatabaseSubscription {
+	return DatabaseSubscriptionClass.New()
+}
+
 func (d_ DatabaseSubscription) InitWithSubscriptionID(subscriptionID SubscriptionID) DatabaseSubscription {
 	rv := objc.Call[DatabaseSubscription](d_, objc.Sel("initWithSubscriptionID:"), subscriptionID)
 	return rv
@@ -47,16 +57,6 @@ func NewDatabaseSubscriptionWithSubscriptionID(subscriptionID SubscriptionID) Da
 	instance := DatabaseSubscriptionClass.Alloc().InitWithSubscriptionID(subscriptionID)
 	instance.Autorelease()
 	return instance
-}
-
-func (dc _DatabaseSubscriptionClass) New() DatabaseSubscription {
-	rv := objc.Call[DatabaseSubscription](dc, objc.Sel("new"))
-	rv.Autorelease()
-	return rv
-}
-
-func NewDatabaseSubscription() DatabaseSubscription {
-	return DatabaseSubscriptionClass.New()
 }
 
 func (dc _DatabaseSubscriptionClass) Alloc() DatabaseSubscription {

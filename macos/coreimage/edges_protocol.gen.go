@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges?language=objc
 type PEdges interface {
 	// optional
-	SetIntensity(value float32)
-	HasSetIntensity() bool
-
-	// optional
-	Intensity() float32
-	HasIntensity() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetIntensity(value float32)
+	HasSetIntensity() bool
+
+	// optional
+	Intensity() float32
+	HasIntensity() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PEdges = (*EdgesObject)(nil)
 // A concrete type for the [PEdges] protocol.
 type EdgesObject struct {
 	objc.Object
-}
-
-func (e_ EdgesObject) HasSetIntensity() bool {
-	return e_.RespondsToSelector(objc.Sel("setIntensity:"))
-}
-
-// The intensity of the edges. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
-func (e_ EdgesObject) SetIntensity(value float32) {
-	objc.Call[objc.Void](e_, objc.Sel("setIntensity:"), value)
-}
-
-func (e_ EdgesObject) HasIntensity() bool {
-	return e_.RespondsToSelector(objc.Sel("intensity"))
-}
-
-// The intensity of the edges. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
-func (e_ EdgesObject) Intensity() float32 {
-	rv := objc.Call[float32](e_, objc.Sel("intensity"))
-	return rv
 }
 
 func (e_ EdgesObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (e_ EdgesObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228245-inputimage?language=objc
 func (e_ EdgesObject) InputImage() Image {
 	rv := objc.Call[Image](e_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (e_ EdgesObject) HasSetIntensity() bool {
+	return e_.RespondsToSelector(objc.Sel("setIntensity:"))
+}
+
+// The intensity of the edges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
+func (e_ EdgesObject) SetIntensity(value float32) {
+	objc.Call[objc.Void](e_, objc.Sel("setIntensity:"), value)
+}
+
+func (e_ EdgesObject) HasIntensity() bool {
+	return e_.RespondsToSelector(objc.Sel("intensity"))
+}
+
+// The intensity of the edges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
+func (e_ EdgesObject) Intensity() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("intensity"))
 	return rv
 }

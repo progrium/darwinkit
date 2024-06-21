@@ -51,21 +51,6 @@ func NewCNNPoolingGradientWithDeviceKernelWidthKernelHeight(device metal.PDevice
 	return instance
 }
 
-func (c_ CNNPoolingGradient) InitWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device metal.PDevice, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingGradient {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNPoolingGradient](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), po0, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradient/2942347-initwithdevice?language=objc
-func NewCNNPoolingGradientWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device metal.PDevice, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingGradient {
-	instance := CNNPoolingGradientClass.Alloc().InitWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CNNPoolingGradientClass) Alloc() CNNPoolingGradient {
 	rv := objc.Call[CNNPoolingGradient](cc, objc.Sel("alloc"))
 	return rv

@@ -18,14 +18,13 @@ type _IndexPathClass struct {
 // An interface definition for the [IndexPath] class.
 type IIndexPath interface {
 	objc.IObject
-	IndexPathByRemovingLastIndex() IndexPath
-	GetIndexesRange(indexes *uint, positionRange Range)
-	Compare(otherObject IIndexPath) ComparisonResult
 	IndexPathByAddingIndex(index uint) IndexPath
 	IndexAtPosition(position uint) uint
-	Length() uint
+	IndexPathByRemovingLastIndex() IndexPath
+	Compare(otherObject IIndexPath) ComparisonResult
 	Item() int
 	Section() int
+	Length() uint
 }
 
 // A list of indexes that together represent the path to a specific location in a tree of nested arrays. [Full Topic]
@@ -39,32 +38,6 @@ func IndexPathFrom(ptr unsafe.Pointer) IndexPath {
 	return IndexPath{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (ic _IndexPathClass) IndexPathWithIndex(index uint) IndexPath {
-	rv := objc.Call[IndexPath](ic, objc.Sel("indexPathWithIndex:"), index)
-	return rv
-}
-
-// Creates a one-node index path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1521019-indexpathwithindex?language=objc
-func IndexPath_IndexPathWithIndex(index uint) IndexPath {
-	return IndexPathClass.IndexPathWithIndex(index)
-}
-
-func (i_ IndexPath) InitWithIndex(index uint) IndexPath {
-	rv := objc.Call[IndexPath](i_, objc.Sel("initWithIndex:"), index)
-	return rv
-}
-
-// Initializes an index path with a single node. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1416855-initwithindex?language=objc
-func NewIndexPathWithIndex(index uint) IndexPath {
-	instance := IndexPathClass.Alloc().InitWithIndex(index)
-	instance.Autorelease()
-	return instance
 }
 
 func (ic _IndexPathClass) IndexPathWithIndexesLength(indexes *uint, length uint) IndexPath {
@@ -93,6 +66,44 @@ func NewIndexPathWithIndexesLength(indexes *uint, length uint) IndexPath {
 	return instance
 }
 
+func (ic _IndexPathClass) IndexPathForItemInSection(item int, section int) IndexPath {
+	rv := objc.Call[IndexPath](ic, objc.Sel("indexPathForItem:inSection:"), item, section)
+	return rv
+}
+
+// Initializes an index path with the indexes of a specific item and section in a collection view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1526053-indexpathforitem?language=objc
+func IndexPath_IndexPathForItemInSection(item int, section int) IndexPath {
+	return IndexPathClass.IndexPathForItemInSection(item, section)
+}
+
+func (ic _IndexPathClass) IndexPathWithIndex(index uint) IndexPath {
+	rv := objc.Call[IndexPath](ic, objc.Sel("indexPathWithIndex:"), index)
+	return rv
+}
+
+// Creates a one-node index path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1521019-indexpathwithindex?language=objc
+func IndexPath_IndexPathWithIndex(index uint) IndexPath {
+	return IndexPathClass.IndexPathWithIndex(index)
+}
+
+func (i_ IndexPath) InitWithIndex(index uint) IndexPath {
+	rv := objc.Call[IndexPath](i_, objc.Sel("initWithIndex:"), index)
+	return rv
+}
+
+// Initializes an index path with a single node. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1416855-initwithindex?language=objc
+func NewIndexPathWithIndex(index uint) IndexPath {
+	instance := IndexPathClass.Alloc().InitWithIndex(index)
+	instance.Autorelease()
+	return instance
+}
+
 func (ic _IndexPathClass) Alloc() IndexPath {
 	rv := objc.Call[IndexPath](ic, objc.Sel("alloc"))
 	return rv
@@ -113,44 +124,6 @@ func (i_ IndexPath) Init() IndexPath {
 	return rv
 }
 
-// Returns an index path with the nodes in the receiving index path, excluding the last one. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1415624-indexpathbyremovinglastindex?language=objc
-func (i_ IndexPath) IndexPathByRemovingLastIndex() IndexPath {
-	rv := objc.Call[IndexPath](i_, objc.Sel("indexPathByRemovingLastIndex"))
-	return rv
-}
-
-// Copies the indexes stored in the index path from the positions specified by the position range into the specified indexes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1413360-getindexes?language=objc
-func (i_ IndexPath) GetIndexesRange(indexes *uint, positionRange Range) {
-	objc.Call[objc.Void](i_, objc.Sel("getIndexes:range:"), indexes, positionRange)
-}
-
-// Initializes an index path with the indexes of a specific item and section in a collection view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1526053-indexpathforitem?language=objc
-func (ic _IndexPathClass) IndexPathForItemInSection(item int, section int) IndexPath {
-	rv := objc.Call[IndexPath](ic, objc.Sel("indexPathForItem:inSection:"), item, section)
-	return rv
-}
-
-// Initializes an index path with the indexes of a specific item and section in a collection view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1526053-indexpathforitem?language=objc
-func IndexPath_IndexPathForItemInSection(item int, section int) IndexPath {
-	return IndexPathClass.IndexPathForItemInSection(item, section)
-}
-
-// Indicates the depth-first traversal order of the receiving index path and another index path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1407552-compare?language=objc
-func (i_ IndexPath) Compare(otherObject IIndexPath) ComparisonResult {
-	rv := objc.Call[ComparisonResult](i_, objc.Sel("compare:"), otherObject)
-	return rv
-}
-
 // Returns an index path containing the nodes in the receiving index path plus another given index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1417553-indexpathbyaddingindex?language=objc
@@ -167,11 +140,19 @@ func (i_ IndexPath) IndexAtPosition(position uint) uint {
 	return rv
 }
 
-// The number of nodes in the index path. [Full Topic]
+// Returns an index path with the nodes in the receiving index path, excluding the last one. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1412001-length?language=objc
-func (i_ IndexPath) Length() uint {
-	rv := objc.Call[uint](i_, objc.Sel("length"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1415624-indexpathbyremovinglastindex?language=objc
+func (i_ IndexPath) IndexPathByRemovingLastIndex() IndexPath {
+	rv := objc.Call[IndexPath](i_, objc.Sel("indexPathByRemovingLastIndex"))
+	return rv
+}
+
+// Indicates the depth-first traversal order of the receiving index path and another index path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1407552-compare?language=objc
+func (i_ IndexPath) Compare(otherObject IIndexPath) ComparisonResult {
+	rv := objc.Call[ComparisonResult](i_, objc.Sel("compare:"), otherObject)
 	return rv
 }
 
@@ -188,5 +169,13 @@ func (i_ IndexPath) Item() int {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1528298-section?language=objc
 func (i_ IndexPath) Section() int {
 	rv := objc.Call[int](i_, objc.Sel("section"))
+	return rv
+}
+
+// The number of nodes in the index path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1412001-length?language=objc
+func (i_ IndexPath) Length() uint {
+	rv := objc.Call[uint](i_, objc.Sel("length"))
 	return rv
 }

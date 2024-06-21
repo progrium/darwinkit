@@ -69,14 +69,6 @@ func ContentWorld_WorldWithName(name string) ContentWorld {
 	return ContentWorldClass.WorldWithName(name)
 }
 
-// The name of a custom content world. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentworld/3552417-name?language=objc
-func (c_ ContentWorld) Name() string {
-	rv := objc.Call[string](c_, objc.Sel("name"))
-	return rv
-}
-
 // The content world for the current webpage’s content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentworld/3552418-pageworld?language=objc
@@ -105,4 +97,12 @@ func (cc _ContentWorldClass) DefaultClientWorld() ContentWorld {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentworld/3552416-defaultclientworld?language=objc
 func ContentWorld_DefaultClientWorld() ContentWorld {
 	return ContentWorldClass.DefaultClientWorld()
+}
+
+// The name of a custom content world. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentworld/3552417-name?language=objc
+func (c_ ContentWorld) Name() string {
+	rv := objc.Call[string](c_, objc.Sel("name"))
+	return rv
 }

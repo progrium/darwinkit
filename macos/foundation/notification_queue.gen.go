@@ -18,9 +18,8 @@ type _NotificationQueueClass struct {
 // An interface definition for the [NotificationQueue] class.
 type INotificationQueue interface {
 	objc.IObject
-	EnqueueNotificationPostingStyleCoalesceMaskForModes(notification INotification, postingStyle PostingStyle, coalesceMask NotificationCoalescing, modes []RunLoopMode)
-	EnqueueNotificationPostingStyle(notification INotification, postingStyle PostingStyle)
 	DequeueNotificationsMatchingCoalesceMask(notification INotification, coalesceMask uint)
+	EnqueueNotificationPostingStyle(notification INotification, postingStyle PostingStyle)
 }
 
 // A notification center buffer. [Full Topic]
@@ -70,11 +69,11 @@ func (n_ NotificationQueue) Init() NotificationQueue {
 	return rv
 }
 
-// Adds a notification to the notification queue with a specified posting style, criteria for coalescing, and run loop mode. [Full Topic]
+// Removes all notifications from the queue that match a provided notification using provided matching criteria. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1413873-enqueuenotification?language=objc
-func (n_ NotificationQueue) EnqueueNotificationPostingStyleCoalesceMaskForModes(notification INotification, postingStyle PostingStyle, coalesceMask NotificationCoalescing, modes []RunLoopMode) {
-	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:coalesceMask:forModes:"), notification, postingStyle, coalesceMask, modes)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1416688-dequeuenotificationsmatching?language=objc
+func (n_ NotificationQueue) DequeueNotificationsMatchingCoalesceMask(notification INotification, coalesceMask uint) {
+	objc.Call[objc.Void](n_, objc.Sel("dequeueNotificationsMatching:coalesceMask:"), notification, coalesceMask)
 }
 
 // Adds a notification to the notification queue with a specified posting style. [Full Topic]
@@ -82,13 +81,6 @@ func (n_ NotificationQueue) EnqueueNotificationPostingStyleCoalesceMaskForModes(
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1416340-enqueuenotification?language=objc
 func (n_ NotificationQueue) EnqueueNotificationPostingStyle(notification INotification, postingStyle PostingStyle) {
 	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:"), notification, postingStyle)
-}
-
-// Removes all notifications from the queue that match a provided notification using provided matching criteria. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1416688-dequeuenotificationsmatching?language=objc
-func (n_ NotificationQueue) DequeueNotificationsMatchingCoalesceMask(notification INotification, coalesceMask uint) {
-	objc.Call[objc.Void](n_, objc.Sel("dequeueNotificationsMatching:coalesceMask:"), notification, coalesceMask)
 }
 
 // Returns the default notification queue for the current thread. [Full Topic]

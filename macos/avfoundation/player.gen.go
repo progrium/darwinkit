@@ -21,57 +21,53 @@ type _PlayerClass struct {
 // An interface definition for the [Player] class.
 type IPlayer interface {
 	objc.IObject
-	SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time)
-	PlayImmediatelyAtRate(rate float32)
-	Play()
-	PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool))
-	SeekToTimeCompletionHandler(time coremedia.Time, completionHandler func(finished bool))
-	SeekToDateCompletionHandler(date foundation.IDate, completionHandler func(finished bool))
-	SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time)
-	Pause()
 	MediaSelectionCriteriaForMediaCharacteristic(mediaCharacteristic MediaCharacteristic) PlayerMediaSelectionCriteria
 	SeekToDate(date foundation.IDate)
+	PlayImmediatelyAtRate(rate float32)
+	RemoveTimeObserver(observer objc.IObject)
+	SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time)
 	ReplaceCurrentItemWithPlayerItem(item IPlayerItem)
 	CancelPendingPrerolls()
 	AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object
-	SetMediaSelectionCriteriaForMediaCharacteristic(criteria IPlayerMediaSelectionCriteria, mediaCharacteristic MediaCharacteristic)
 	AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object
+	SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time)
+	SetMediaSelectionCriteriaForMediaCharacteristic(criteria IPlayerMediaSelectionCriteria, mediaCharacteristic MediaCharacteristic)
+	Pause()
+	Play()
+	PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool))
 	CurrentTime() coremedia.Time
-	SeekToTimeToleranceBeforeToleranceAfterCompletionHandler(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time, completionHandler func(finished bool))
-	RemoveTimeObserver(observer objc.IObject)
-	SeekToTime(time coremedia.Time)
-	IsExternalPlaybackActive() bool
 	SourceClock() coremedia.ClockRef
 	SetSourceClock(value coremedia.ClockRef)
-	AppliesMediaSelectionCriteriaAutomatically() bool
-	SetAppliesMediaSelectionCriteriaAutomatically(value bool)
+	AudiovisualBackgroundPlaybackPolicy() PlayerAudiovisualBackgroundPlaybackPolicy
+	SetAudiovisualBackgroundPlaybackPolicy(value PlayerAudiovisualBackgroundPlaybackPolicy)
 	Volume() float32
 	SetVolume(value float32)
-	ActionAtItemEnd() PlayerActionAtItemEnd
-	SetActionAtItemEnd(value PlayerActionAtItemEnd)
-	CurrentItem() PlayerItem
+	Error() foundation.Error
+	OutputObscuredDueToInsufficientExternalProtection() bool
 	PreferredVideoDecoderGPURegistryID() uint64
 	SetPreferredVideoDecoderGPURegistryID(value uint64)
+	Rate() float32
+	SetRate(value float32)
 	IsMuted() bool
 	SetMuted(value bool)
+	ReasonForWaitingToPlay() PlayerWaitingReason
+	PlaybackCoordinator() PlayerPlaybackCoordinator
+	CurrentItem() PlayerItem
+	AudioOutputDeviceUniqueID() string
+	SetAudioOutputDeviceUniqueID(value string)
+	TimeControlStatus() PlayerTimeControlStatus
+	IsExternalPlaybackActive() bool
+	ActionAtItemEnd() PlayerActionAtItemEnd
+	SetActionAtItemEnd(value PlayerActionAtItemEnd)
 	AllowsExternalPlayback() bool
 	SetAllowsExternalPlayback(value bool)
-	AutomaticallyWaitsToMinimizeStalling() bool
-	SetAutomaticallyWaitsToMinimizeStalling(value bool)
+	AppliesMediaSelectionCriteriaAutomatically() bool
+	SetAppliesMediaSelectionCriteriaAutomatically(value bool)
 	PreventsDisplaySleepDuringVideoPlayback() bool
 	SetPreventsDisplaySleepDuringVideoPlayback(value bool)
 	Status() PlayerStatus
-	Rate() float32
-	SetRate(value float32)
-	TimeControlStatus() PlayerTimeControlStatus
-	Error() foundation.Error
-	ReasonForWaitingToPlay() PlayerWaitingReason
-	AudioOutputDeviceUniqueID() string
-	SetAudioOutputDeviceUniqueID(value string)
-	OutputObscuredDueToInsufficientExternalProtection() bool
-	PlaybackCoordinator() PlayerPlaybackCoordinator
-	AudiovisualBackgroundPlaybackPolicy() PlayerAudiovisualBackgroundPlaybackPolicy
-	SetAudiovisualBackgroundPlaybackPolicy(value PlayerAudiovisualBackgroundPlaybackPolicy)
+	AutomaticallyWaitsToMinimizeStalling() bool
+	SetAutomaticallyWaitsToMinimizeStalling(value bool)
 }
 
 // An object that provides the interface to control the player’s transport behavior. [Full Topic]
@@ -99,16 +95,18 @@ func Player_PlayerWithPlayerItem(item IPlayerItem) Player {
 	return PlayerClass.PlayerWithPlayerItem(item)
 }
 
-func (pc _PlayerClass) PlayerWithURL(URL foundation.IURL) Player {
-	rv := objc.Call[Player](pc, objc.Sel("playerWithURL:"), URL)
+func (p_ Player) InitWithURL(URL foundation.IURL) Player {
+	rv := objc.Call[Player](p_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
-// Returns a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
+// Creates a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1538409-playerwithurl?language=objc
-func Player_PlayerWithURL(URL foundation.IURL) Player {
-	return PlayerClass.PlayerWithURL(URL)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385706-initwithurl?language=objc
+func NewPlayerWithURL(URL foundation.IURL) Player {
+	instance := PlayerClass.Alloc().InitWithURL(URL)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ Player) InitWithPlayerItem(item IPlayerItem) Player {
@@ -125,18 +123,16 @@ func NewPlayerWithPlayerItem(item IPlayerItem) Player {
 	return instance
 }
 
-func (p_ Player) InitWithURL(URL foundation.IURL) Player {
-	rv := objc.Call[Player](p_, objc.Sel("initWithURL:"), URL)
+func (pc _PlayerClass) PlayerWithURL(URL foundation.IURL) Player {
+	rv := objc.Call[Player](pc, objc.Sel("playerWithURL:"), URL)
 	return rv
 }
 
-// Creates a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
+// Returns a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385706-initwithurl?language=objc
-func NewPlayerWithURL(URL foundation.IURL) Player {
-	instance := PlayerClass.Alloc().InitWithURL(URL)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1538409-playerwithurl?language=objc
+func Player_PlayerWithURL(URL foundation.IURL) Player {
+	return PlayerClass.PlayerWithURL(URL)
 }
 
 func (pc _PlayerClass) Alloc() Player {
@@ -159,62 +155,6 @@ func (p_ Player) Init() Player {
 	return rv
 }
 
-// Requests that the player seek to a specified time with the amount of accuracy specified by the time tolerance values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387741-seektotime?language=objc
-func (p_ Player) SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToTime:toleranceBefore:toleranceAfter:"), time, toleranceBefore, toleranceAfter)
-}
-
-// Plays the available media data immediately, at the specified rate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643480-playimmediatelyatrate?language=objc
-func (p_ Player) PlayImmediatelyAtRate(rate float32) {
-	objc.Call[objc.Void](p_, objc.Sel("playImmediatelyAtRate:"), rate)
-}
-
-// Begins playback of the current item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386726-play?language=objc
-func (p_ Player) Play() {
-	objc.Call[objc.Void](p_, objc.Sel("play"))
-}
-
-// Begins loading media data to prime the media pipelines for playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1389712-prerollatrate?language=objc
-func (p_ Player) PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("prerollAtRate:completionHandler:"), rate, completionHandler)
-}
-
-// Requests that the player seek to a specified time, and to notify you when the seek is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387018-seektotime?language=objc
-func (p_ Player) SeekToTimeCompletionHandler(time coremedia.Time, completionHandler func(finished bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToTime:completionHandler:"), time, completionHandler)
-}
-
-// Requests that the player seek to a specified date, and to notify you when the seek is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386108-seektodate?language=objc
-func (p_ Player) SeekToDateCompletionHandler(date foundation.IDate, completionHandler func(finished bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToDate:completionHandler:"), date, completionHandler)
-}
-
-// Synchronizes the playback rate and time of the current item with an external source. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386591-setrate?language=objc
-func (p_ Player) SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time) {
-	objc.Call[objc.Void](p_, objc.Sel("setRate:time:atHostTime:"), rate, itemTime, hostClockTime)
-}
-
-// Pauses playback of the current item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387895-pause?language=objc
-func (p_ Player) Pause() {
-	objc.Call[objc.Void](p_, objc.Sel("pause"))
-}
-
 // Returns the automatic selection criteria for media items with the specified media characteristic. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387825-mediaselectioncriteriaformediach?language=objc
@@ -228,6 +168,27 @@ func (p_ Player) MediaSelectionCriteriaForMediaCharacteristic(mediaCharacteristi
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386114-seektodate?language=objc
 func (p_ Player) SeekToDate(date foundation.IDate) {
 	objc.Call[objc.Void](p_, objc.Sel("seekToDate:"), date)
+}
+
+// Plays the available media data immediately, at the specified rate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643480-playimmediatelyatrate?language=objc
+func (p_ Player) PlayImmediatelyAtRate(rate float32) {
+	objc.Call[objc.Void](p_, objc.Sel("playImmediatelyAtRate:"), rate)
+}
+
+// Cancels a previously registered periodic or boundary time observer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387552-removetimeobserver?language=objc
+func (p_ Player) RemoveTimeObserver(observer objc.IObject) {
+	objc.Call[objc.Void](p_, objc.Sel("removeTimeObserver:"), observer)
+}
+
+// Synchronizes the playback rate and time of the current item with an external source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386591-setrate?language=objc
+func (p_ Player) SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time) {
+	objc.Call[objc.Void](p_, objc.Sel("setRate:time:atHostTime:"), rate, itemTime, hostClockTime)
 }
 
 // Replaces the current item with a new item. [Full Topic]
@@ -252,13 +213,6 @@ func (p_ Player) AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundati
 	return rv
 }
 
-// Applies automatic selection criteria for media that has the specified media characteristic. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390563-setmediaselectioncriteria?language=objc
-func (p_ Player) SetMediaSelectionCriteriaForMediaCharacteristic(criteria IPlayerMediaSelectionCriteria, mediaCharacteristic MediaCharacteristic) {
-	objc.Call[objc.Void](p_, objc.Sel("setMediaSelectionCriteria:forMediaCharacteristic:"), criteria, mediaCharacteristic)
-}
-
 // Requests the periodic invocation of a given block during playback to report changing time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385829-addperiodictimeobserverforinterv?language=objc
@@ -267,40 +221,46 @@ func (p_ Player) AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval core
 	return rv
 }
 
+// Requests that the player seek to a specified time with the amount of accuracy specified by the time tolerance values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387741-seektotime?language=objc
+func (p_ Player) SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time) {
+	objc.Call[objc.Void](p_, objc.Sel("seekToTime:toleranceBefore:toleranceAfter:"), time, toleranceBefore, toleranceAfter)
+}
+
+// Applies automatic selection criteria for media that has the specified media characteristic. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390563-setmediaselectioncriteria?language=objc
+func (p_ Player) SetMediaSelectionCriteriaForMediaCharacteristic(criteria IPlayerMediaSelectionCriteria, mediaCharacteristic MediaCharacteristic) {
+	objc.Call[objc.Void](p_, objc.Sel("setMediaSelectionCriteria:forMediaCharacteristic:"), criteria, mediaCharacteristic)
+}
+
+// Pauses playback of the current item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387895-pause?language=objc
+func (p_ Player) Pause() {
+	objc.Call[objc.Void](p_, objc.Sel("pause"))
+}
+
+// Begins playback of the current item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386726-play?language=objc
+func (p_ Player) Play() {
+	objc.Call[objc.Void](p_, objc.Sel("play"))
+}
+
+// Begins loading media data to prime the media pipelines for playback. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1389712-prerollatrate?language=objc
+func (p_ Player) PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool)) {
+	objc.Call[objc.Void](p_, objc.Sel("prerollAtRate:completionHandler:"), rate, completionHandler)
+}
+
 // Returns the current time of the current player item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390404-currenttime?language=objc
 func (p_ Player) CurrentTime() coremedia.Time {
 	rv := objc.Call[coremedia.Time](p_, objc.Sel("currentTime"))
-	return rv
-}
-
-// Requests that the player seek to a specified time with the amount of accuracy specified by the time tolerance values, and to notify you when the seek is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388493-seektotime?language=objc
-func (p_ Player) SeekToTimeToleranceBeforeToleranceAfterCompletionHandler(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time, completionHandler func(finished bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToTime:toleranceBefore:toleranceAfter:completionHandler:"), time, toleranceBefore, toleranceAfter, completionHandler)
-}
-
-// Cancels a previously registered periodic or boundary time observer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387552-removetimeobserver?language=objc
-func (p_ Player) RemoveTimeObserver(observer objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("removeTimeObserver:"), observer)
-}
-
-// Requests that the player seek to a specified time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385953-seektotime?language=objc
-func (p_ Player) SeekToTime(time coremedia.Time) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToTime:"), time)
-}
-
-// A Boolean value that indicates whether the player is currently playing video in external playback mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388982-externalplaybackactive?language=objc
-func (p_ Player) IsExternalPlaybackActive() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isExternalPlaybackActive"))
 	return rv
 }
 
@@ -317,6 +277,182 @@ func (p_ Player) SourceClock() coremedia.ClockRef {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3746583-sourceclock?language=objc
 func (p_ Player) SetSourceClock(value coremedia.ClockRef) {
 	objc.Call[objc.Void](p_, objc.Sel("setSourceClock:"), value)
+}
+
+// A policy that determines how playback of audiovisual media continues when the app transitions to the background. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3787548-audiovisualbackgroundplaybackpol?language=objc
+func (p_ Player) AudiovisualBackgroundPlaybackPolicy() PlayerAudiovisualBackgroundPlaybackPolicy {
+	rv := objc.Call[PlayerAudiovisualBackgroundPlaybackPolicy](p_, objc.Sel("audiovisualBackgroundPlaybackPolicy"))
+	return rv
+}
+
+// A policy that determines how playback of audiovisual media continues when the app transitions to the background. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3787548-audiovisualbackgroundplaybackpol?language=objc
+func (p_ Player) SetAudiovisualBackgroundPlaybackPolicy(value PlayerAudiovisualBackgroundPlaybackPolicy) {
+	objc.Call[objc.Void](p_, objc.Sel("setAudiovisualBackgroundPlaybackPolicy:"), value)
+}
+
+// The audio playback volume for the player. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
+func (p_ Player) Volume() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("volume"))
+	return rv
+}
+
+// The audio playback volume for the player. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
+func (p_ Player) SetVolume(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setVolume:"), value)
+}
+
+// An error that caused a failure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387764-error?language=objc
+func (p_ Player) Error() foundation.Error {
+	rv := objc.Call[foundation.Error](p_, objc.Sel("error"))
+	return rv
+}
+
+// A Boolean value that indicates whether output is being obscured because of insufficient external protection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1624254-outputobscuredduetoinsufficiente?language=objc
+func (p_ Player) OutputObscuredDueToInsufficientExternalProtection() bool {
+	rv := objc.Call[bool](p_, objc.Sel("outputObscuredDueToInsufficientExternalProtection"))
+	return rv
+}
+
+// The registry identifier for the GPU used for video decoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/2942616-preferredvideodecodergpuregistry?language=objc
+func (p_ Player) PreferredVideoDecoderGPURegistryID() uint64 {
+	rv := objc.Call[uint64](p_, objc.Sel("preferredVideoDecoderGPURegistryID"))
+	return rv
+}
+
+// The registry identifier for the GPU used for video decoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/2942616-preferredvideodecodergpuregistry?language=objc
+func (p_ Player) SetPreferredVideoDecoderGPURegistryID(value uint64) {
+	objc.Call[objc.Void](p_, objc.Sel("setPreferredVideoDecoderGPURegistryID:"), value)
+}
+
+// The current playback rate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
+func (p_ Player) Rate() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("rate"))
+	return rv
+}
+
+// The current playback rate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
+func (p_ Player) SetRate(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setRate:"), value)
+}
+
+// A Boolean value that indicates whether the audio output of the player is muted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387544-muted?language=objc
+func (p_ Player) IsMuted() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isMuted"))
+	return rv
+}
+
+// A Boolean value that indicates whether the audio output of the player is muted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387544-muted?language=objc
+func (p_ Player) SetMuted(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setMuted:"), value)
+}
+
+// The reason the player is currently waiting for playback to begin or resume. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643486-reasonforwaitingtoplay?language=objc
+func (p_ Player) ReasonForWaitingToPlay() PlayerWaitingReason {
+	rv := objc.Call[PlayerWaitingReason](p_, objc.Sel("reasonForWaitingToPlay"))
+	return rv
+}
+
+// The playback coordinator for the player. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3750305-playbackcoordinator?language=objc
+func (p_ Player) PlaybackCoordinator() PlayerPlaybackCoordinator {
+	rv := objc.Call[PlayerPlaybackCoordinator](p_, objc.Sel("playbackCoordinator"))
+	return rv
+}
+
+// The item for which the player is currently controlling playback. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387569-currentitem?language=objc
+func (p_ Player) CurrentItem() PlayerItem {
+	rv := objc.Call[PlayerItem](p_, objc.Sel("currentItem"))
+	return rv
+}
+
+// Specifies the unique ID of the Core Audio output device used to play audio. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390717-audiooutputdeviceuniqueid?language=objc
+func (p_ Player) AudioOutputDeviceUniqueID() string {
+	rv := objc.Call[string](p_, objc.Sel("audioOutputDeviceUniqueID"))
+	return rv
+}
+
+// Specifies the unique ID of the Core Audio output device used to play audio. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390717-audiooutputdeviceuniqueid?language=objc
+func (p_ Player) SetAudioOutputDeviceUniqueID(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setAudioOutputDeviceUniqueID:"), value)
+}
+
+// A value that indicates whether playback is in progress, paused indefinitely, or waiting for network conditions to improve. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643485-timecontrolstatus?language=objc
+func (p_ Player) TimeControlStatus() PlayerTimeControlStatus {
+	rv := objc.Call[PlayerTimeControlStatus](p_, objc.Sel("timeControlStatus"))
+	return rv
+}
+
+// A Boolean value that indicates whether the player is currently playing video in external playback mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388982-externalplaybackactive?language=objc
+func (p_ Player) IsExternalPlaybackActive() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isExternalPlaybackActive"))
+	return rv
+}
+
+// The action to perform when the current player item has finished playing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387376-actionatitemend?language=objc
+func (p_ Player) ActionAtItemEnd() PlayerActionAtItemEnd {
+	rv := objc.Call[PlayerActionAtItemEnd](p_, objc.Sel("actionAtItemEnd"))
+	return rv
+}
+
+// The action to perform when the current player item has finished playing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387376-actionatitemend?language=objc
+func (p_ Player) SetActionAtItemEnd(value PlayerActionAtItemEnd) {
+	objc.Call[objc.Void](p_, objc.Sel("setActionAtItemEnd:"), value)
+}
+
+// A Boolean value that indicates whether the player allows switching to external playback mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387441-allowsexternalplayback?language=objc
+func (p_ Player) AllowsExternalPlayback() bool {
+	rv := objc.Call[bool](p_, objc.Sel("allowsExternalPlayback"))
+	return rv
+}
+
+// A Boolean value that indicates whether the player allows switching to external playback mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387441-allowsexternalplayback?language=objc
+func (p_ Player) SetAllowsExternalPlayback(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setAllowsExternalPlayback:"), value)
 }
 
 // A Boolean value that indicates whether the current device can present content to an HDR display. [Full Topic]
@@ -349,104 +485,6 @@ func (p_ Player) SetAppliesMediaSelectionCriteriaAutomatically(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setAppliesMediaSelectionCriteriaAutomatically:"), value)
 }
 
-// The audio playback volume for the player. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
-func (p_ Player) Volume() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("volume"))
-	return rv
-}
-
-// The audio playback volume for the player. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
-func (p_ Player) SetVolume(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setVolume:"), value)
-}
-
-// The action to perform when the current player item has finished playing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387376-actionatitemend?language=objc
-func (p_ Player) ActionAtItemEnd() PlayerActionAtItemEnd {
-	rv := objc.Call[PlayerActionAtItemEnd](p_, objc.Sel("actionAtItemEnd"))
-	return rv
-}
-
-// The action to perform when the current player item has finished playing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387376-actionatitemend?language=objc
-func (p_ Player) SetActionAtItemEnd(value PlayerActionAtItemEnd) {
-	objc.Call[objc.Void](p_, objc.Sel("setActionAtItemEnd:"), value)
-}
-
-// The item for which the player is currently controlling playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387569-currentitem?language=objc
-func (p_ Player) CurrentItem() PlayerItem {
-	rv := objc.Call[PlayerItem](p_, objc.Sel("currentItem"))
-	return rv
-}
-
-// The registry identifier for the GPU used for video decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/2942616-preferredvideodecodergpuregistry?language=objc
-func (p_ Player) PreferredVideoDecoderGPURegistryID() uint64 {
-	rv := objc.Call[uint64](p_, objc.Sel("preferredVideoDecoderGPURegistryID"))
-	return rv
-}
-
-// The registry identifier for the GPU used for video decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/2942616-preferredvideodecodergpuregistry?language=objc
-func (p_ Player) SetPreferredVideoDecoderGPURegistryID(value uint64) {
-	objc.Call[objc.Void](p_, objc.Sel("setPreferredVideoDecoderGPURegistryID:"), value)
-}
-
-// A Boolean value that indicates whether the audio output of the player is muted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387544-muted?language=objc
-func (p_ Player) IsMuted() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isMuted"))
-	return rv
-}
-
-// A Boolean value that indicates whether the audio output of the player is muted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387544-muted?language=objc
-func (p_ Player) SetMuted(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setMuted:"), value)
-}
-
-// A Boolean value that indicates whether the player allows switching to external playback mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387441-allowsexternalplayback?language=objc
-func (p_ Player) AllowsExternalPlayback() bool {
-	rv := objc.Call[bool](p_, objc.Sel("allowsExternalPlayback"))
-	return rv
-}
-
-// A Boolean value that indicates whether the player allows switching to external playback mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387441-allowsexternalplayback?language=objc
-func (p_ Player) SetAllowsExternalPlayback(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setAllowsExternalPlayback:"), value)
-}
-
-// A Boolean value that indicates whether the player should automatically delay playback in order to minimize stalling. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal?language=objc
-func (p_ Player) AutomaticallyWaitsToMinimizeStalling() bool {
-	rv := objc.Call[bool](p_, objc.Sel("automaticallyWaitsToMinimizeStalling"))
-	return rv
-}
-
-// A Boolean value that indicates whether the player should automatically delay playback in order to minimize stalling. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal?language=objc
-func (p_ Player) SetAutomaticallyWaitsToMinimizeStalling(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setAutomaticallyWaitsToMinimizeStalling:"), value)
-}
-
 // A Boolean value that indicates whether video playback prevents display and device sleep. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/2990522-preventsdisplaysleepduringvideop?language=objc
@@ -470,87 +508,17 @@ func (p_ Player) Status() PlayerStatus {
 	return rv
 }
 
-// The current playback rate. [Full Topic]
+// A Boolean value that indicates whether the player should automatically delay playback in order to minimize stalling. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
-func (p_ Player) Rate() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("rate"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal?language=objc
+func (p_ Player) AutomaticallyWaitsToMinimizeStalling() bool {
+	rv := objc.Call[bool](p_, objc.Sel("automaticallyWaitsToMinimizeStalling"))
 	return rv
 }
 
-// The current playback rate. [Full Topic]
+// A Boolean value that indicates whether the player should automatically delay playback in order to minimize stalling. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
-func (p_ Player) SetRate(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setRate:"), value)
-}
-
-// A value that indicates whether playback is in progress, paused indefinitely, or waiting for network conditions to improve. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643485-timecontrolstatus?language=objc
-func (p_ Player) TimeControlStatus() PlayerTimeControlStatus {
-	rv := objc.Call[PlayerTimeControlStatus](p_, objc.Sel("timeControlStatus"))
-	return rv
-}
-
-// An error that caused a failure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1387764-error?language=objc
-func (p_ Player) Error() foundation.Error {
-	rv := objc.Call[foundation.Error](p_, objc.Sel("error"))
-	return rv
-}
-
-// The reason the player is currently waiting for playback to begin or resume. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643486-reasonforwaitingtoplay?language=objc
-func (p_ Player) ReasonForWaitingToPlay() PlayerWaitingReason {
-	rv := objc.Call[PlayerWaitingReason](p_, objc.Sel("reasonForWaitingToPlay"))
-	return rv
-}
-
-// Specifies the unique ID of the Core Audio output device used to play audio. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390717-audiooutputdeviceuniqueid?language=objc
-func (p_ Player) AudioOutputDeviceUniqueID() string {
-	rv := objc.Call[string](p_, objc.Sel("audioOutputDeviceUniqueID"))
-	return rv
-}
-
-// Specifies the unique ID of the Core Audio output device used to play audio. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390717-audiooutputdeviceuniqueid?language=objc
-func (p_ Player) SetAudioOutputDeviceUniqueID(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setAudioOutputDeviceUniqueID:"), value)
-}
-
-// A Boolean value that indicates whether output is being obscured because of insufficient external protection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1624254-outputobscuredduetoinsufficiente?language=objc
-func (p_ Player) OutputObscuredDueToInsufficientExternalProtection() bool {
-	rv := objc.Call[bool](p_, objc.Sel("outputObscuredDueToInsufficientExternalProtection"))
-	return rv
-}
-
-// The playback coordinator for the player. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3750305-playbackcoordinator?language=objc
-func (p_ Player) PlaybackCoordinator() PlayerPlaybackCoordinator {
-	rv := objc.Call[PlayerPlaybackCoordinator](p_, objc.Sel("playbackCoordinator"))
-	return rv
-}
-
-// A policy that determines how playback of audiovisual media continues when the app transitions to the background. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3787548-audiovisualbackgroundplaybackpol?language=objc
-func (p_ Player) AudiovisualBackgroundPlaybackPolicy() PlayerAudiovisualBackgroundPlaybackPolicy {
-	rv := objc.Call[PlayerAudiovisualBackgroundPlaybackPolicy](p_, objc.Sel("audiovisualBackgroundPlaybackPolicy"))
-	return rv
-}
-
-// A policy that determines how playback of audiovisual media continues when the app transitions to the background. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/3787548-audiovisualbackgroundplaybackpol?language=objc
-func (p_ Player) SetAudiovisualBackgroundPlaybackPolicy(value PlayerAudiovisualBackgroundPlaybackPolicy) {
-	objc.Call[objc.Void](p_, objc.Sel("setAudiovisualBackgroundPlaybackPolicy:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal?language=objc
+func (p_ Player) SetAutomaticallyWaitsToMinimizeStalling(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setAutomaticallyWaitsToMinimizeStalling:"), value)
 }

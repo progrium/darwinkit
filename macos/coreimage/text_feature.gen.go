@@ -19,11 +19,11 @@ type _TextFeatureClass struct {
 // An interface definition for the [TextFeature] class.
 type ITextFeature interface {
 	IFeature
-	TopRight() coregraphics.Point
-	TopLeft() coregraphics.Point
+	BottomRight() coregraphics.Point
 	BottomLeft() coregraphics.Point
 	SubFeatures() []objc.Object
-	BottomRight() coregraphics.Point
+	TopRight() coregraphics.Point
+	TopLeft() coregraphics.Point
 }
 
 // Information about a region likely to contain text detected in a still or video image. [Full Topic]
@@ -59,19 +59,11 @@ func (t_ TextFeature) Init() TextFeature {
 	return rv
 }
 
-// The upper-right corner of the detected text region, in image coordinates. [Full Topic]
+// The lower-right corner of the detected text region, in image coordinates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1438282-topright?language=objc
-func (t_ TextFeature) TopRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("topRight"))
-	return rv
-}
-
-// The upper-left corner of the detected text region, in image coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1438221-topleft?language=objc
-func (t_ TextFeature) TopLeft() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("topLeft"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1437659-bottomright?language=objc
+func (t_ TextFeature) BottomRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("bottomRight"))
 	return rv
 }
 
@@ -91,10 +83,18 @@ func (t_ TextFeature) SubFeatures() []objc.Object {
 	return rv
 }
 
-// The lower-right corner of the detected text region, in image coordinates. [Full Topic]
+// The upper-right corner of the detected text region, in image coordinates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1437659-bottomright?language=objc
-func (t_ TextFeature) BottomRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("bottomRight"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1438282-topright?language=objc
+func (t_ TextFeature) TopRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("topRight"))
+	return rv
+}
+
+// The upper-left corner of the detected text region, in image coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextfeature/1438221-topleft?language=objc
+func (t_ TextFeature) TopLeft() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("topLeft"))
 	return rv
 }

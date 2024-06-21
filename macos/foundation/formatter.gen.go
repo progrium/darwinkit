@@ -18,12 +18,11 @@ type _FormatterClass struct {
 // An interface definition for the [Formatter] class.
 type IFormatter interface {
 	objc.IObject
-	StringForObjectValue(obj objc.IObject) string
 	EditingStringForObjectValue(obj objc.IObject) string
-	IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr unsafe.Pointer, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error unsafe.Pointer) bool
+	StringForObjectValue(obj objc.IObject) string
+	GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool
 	IsPartialStringValidNewEditingStringErrorDescription(partialString string, newString unsafe.Pointer, error unsafe.Pointer) bool
 	AttributedStringForObjectValueWithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString
-	GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool
 }
 
 // An abstract class that declares an interface for objects that create, interpret, and validate the textual representation of values. [Full Topic]
@@ -59,6 +58,14 @@ func (f_ Formatter) Init() Formatter {
 	return rv
 }
 
+// The default implementation of this method invokes stringForObjectValue:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1416333-editingstringforobjectvalue?language=objc
+func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
+	rv := objc.Call[string](f_, objc.Sel("editingStringForObjectValue:"), obj)
+	return rv
+}
+
 // The default implementation of this method raises an exception. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1415993-stringforobjectvalue?language=objc
@@ -67,19 +74,11 @@ func (f_ Formatter) StringForObjectValue(obj objc.IObject) string {
 	return rv
 }
 
-// The default implementation of this method invokes [foundation/nsformatter/stringforobjectvalue]. [Full Topic]
+// The default implementation of this method raises an exception. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1416333-editingstringforobjectvalue?language=objc
-func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
-	rv := objc.Call[string](f_, objc.Sel("editingStringForObjectValue:"), obj)
-	return rv
-}
-
-// This method should be implemented in subclasses that want to validate user changes to a string in a field, where the user changes are not necessarily at the end of the string, and preserve the selection (or set a different one, such as selecting the erroneous part of the string the user has typed). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1415263-ispartialstringvalid?language=objc
-func (f_ Formatter) IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr unsafe.Pointer, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](f_, objc.Sel("isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:"), partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1408927-getobjectvalue?language=objc
+func (f_ Formatter) GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("getObjectValue:forString:errorDescription:"), obj, string_, error)
 	return rv
 }
 
@@ -96,13 +95,5 @@ func (f_ Formatter) IsPartialStringValidNewEditingStringErrorDescription(partial
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1409478-attributedstringforobjectvalue?language=objc
 func (f_ Formatter) AttributedStringForObjectValueWithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString {
 	rv := objc.Call[AttributedString](f_, objc.Sel("attributedStringForObjectValue:withDefaultAttributes:"), obj, attrs)
-	return rv
-}
-
-// The default implementation of this method raises an exception. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1408927-getobjectvalue?language=objc
-func (f_ Formatter) GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](f_, objc.Sel("getObjectValue:forString:errorDescription:"), obj, string_, error)
 	return rv
 }

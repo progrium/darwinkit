@@ -18,52 +18,52 @@ type _LSTMDescriptorClass struct {
 // An interface definition for the [LSTMDescriptor] class.
 type ILSTMDescriptor interface {
 	IRNNDescriptor
-	CellGateRecurrentWeights() CNNConvolutionDataSourceObject
-	SetCellGateRecurrentWeights(value PCNNConvolutionDataSource)
-	SetCellGateRecurrentWeightsObject(valueObject objc.IObject)
-	CellToOutputNeuronParamC() float32
-	SetCellToOutputNeuronParamC(value float32)
-	ForgetGateRecurrentWeights() CNNConvolutionDataSourceObject
-	SetForgetGateRecurrentWeights(value PCNNConvolutionDataSource)
-	SetForgetGateRecurrentWeightsObject(valueObject objc.IObject)
-	InputGateRecurrentWeights() CNNConvolutionDataSourceObject
-	SetInputGateRecurrentWeights(value PCNNConvolutionDataSource)
-	SetInputGateRecurrentWeightsObject(valueObject objc.IObject)
-	CellToOutputNeuronParamB() float32
-	SetCellToOutputNeuronParamB(value float32)
-	CellGateInputWeights() CNNConvolutionDataSourceObject
-	SetCellGateInputWeights(value PCNNConvolutionDataSource)
-	SetCellGateInputWeightsObject(valueObject objc.IObject)
-	CellToOutputNeuronType() CNNNeuronType
-	SetCellToOutputNeuronType(value CNNNeuronType)
-	CellToOutputNeuronParamA() float32
-	SetCellToOutputNeuronParamA(value float32)
-	OutputGateInputWeights() CNNConvolutionDataSourceObject
-	SetOutputGateInputWeights(value PCNNConvolutionDataSource)
-	SetOutputGateInputWeightsObject(valueObject objc.IObject)
-	ForgetGateMemoryWeights() CNNConvolutionDataSourceObject
-	SetForgetGateMemoryWeights(value PCNNConvolutionDataSource)
-	SetForgetGateMemoryWeightsObject(valueObject objc.IObject)
-	OutputGateRecurrentWeights() CNNConvolutionDataSourceObject
-	SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource)
-	SetOutputGateRecurrentWeightsObject(valueObject objc.IObject)
-	CellGateMemoryWeights() CNNConvolutionDataSourceObject
-	SetCellGateMemoryWeights(value PCNNConvolutionDataSource)
-	SetCellGateMemoryWeightsObject(valueObject objc.IObject)
-	ForgetGateInputWeights() CNNConvolutionDataSourceObject
-	SetForgetGateInputWeights(value PCNNConvolutionDataSource)
-	SetForgetGateInputWeightsObject(valueObject objc.IObject)
 	InputGateInputWeights() CNNConvolutionDataSourceObject
 	SetInputGateInputWeights(value PCNNConvolutionDataSource)
 	SetInputGateInputWeightsObject(valueObject objc.IObject)
+	CellToOutputNeuronParamA() float32
+	SetCellToOutputNeuronParamA(value float32)
+	ForgetGateInputWeights() CNNConvolutionDataSourceObject
+	SetForgetGateInputWeights(value PCNNConvolutionDataSource)
+	SetForgetGateInputWeightsObject(valueObject objc.IObject)
+	MemoryWeightsAreDiagonal() bool
+	SetMemoryWeightsAreDiagonal(value bool)
+	CellGateMemoryWeights() CNNConvolutionDataSourceObject
+	SetCellGateMemoryWeights(value PCNNConvolutionDataSource)
+	SetCellGateMemoryWeightsObject(valueObject objc.IObject)
+	ForgetGateRecurrentWeights() CNNConvolutionDataSourceObject
+	SetForgetGateRecurrentWeights(value PCNNConvolutionDataSource)
+	SetForgetGateRecurrentWeightsObject(valueObject objc.IObject)
+	ForgetGateMemoryWeights() CNNConvolutionDataSourceObject
+	SetForgetGateMemoryWeights(value PCNNConvolutionDataSource)
+	SetForgetGateMemoryWeightsObject(valueObject objc.IObject)
+	CellToOutputNeuronType() CNNNeuronType
+	SetCellToOutputNeuronType(value CNNNeuronType)
+	CellGateInputWeights() CNNConvolutionDataSourceObject
+	SetCellGateInputWeights(value PCNNConvolutionDataSource)
+	SetCellGateInputWeightsObject(valueObject objc.IObject)
+	OutputGateRecurrentWeights() CNNConvolutionDataSourceObject
+	SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource)
+	SetOutputGateRecurrentWeightsObject(valueObject objc.IObject)
 	InputGateMemoryWeights() CNNConvolutionDataSourceObject
 	SetInputGateMemoryWeights(value PCNNConvolutionDataSource)
 	SetInputGateMemoryWeightsObject(valueObject objc.IObject)
-	MemoryWeightsAreDiagonal() bool
-	SetMemoryWeightsAreDiagonal(value bool)
+	InputGateRecurrentWeights() CNNConvolutionDataSourceObject
+	SetInputGateRecurrentWeights(value PCNNConvolutionDataSource)
+	SetInputGateRecurrentWeightsObject(valueObject objc.IObject)
+	CellToOutputNeuronParamC() float32
+	SetCellToOutputNeuronParamC(value float32)
+	CellGateRecurrentWeights() CNNConvolutionDataSourceObject
+	SetCellGateRecurrentWeights(value PCNNConvolutionDataSource)
+	SetCellGateRecurrentWeightsObject(valueObject objc.IObject)
 	OutputGateMemoryWeights() CNNConvolutionDataSourceObject
 	SetOutputGateMemoryWeights(value PCNNConvolutionDataSource)
 	SetOutputGateMemoryWeightsObject(valueObject objc.IObject)
+	OutputGateInputWeights() CNNConvolutionDataSourceObject
+	SetOutputGateInputWeights(value PCNNConvolutionDataSource)
+	SetOutputGateInputWeightsObject(valueObject objc.IObject)
+	CellToOutputNeuronParamB() float32
+	SetCellToOutputNeuronParamB(value float32)
 }
 
 // A description of a long short-term memory block or layer. [Full Topic]
@@ -113,139 +113,25 @@ func (l_ LSTMDescriptor) Init() LSTMDescriptor {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) CellGateRecurrentWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateRecurrentWeights"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
+func (l_ LSTMDescriptor) InputGateInputWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("inputGateInputWeights"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateRecurrentWeights(value PCNNConvolutionDataSource) {
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetInputGateInputWeights(value PCNNConvolutionDataSource) {
 	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateRecurrentWeights:"), po0)
+	objc.Call[objc.Void](l_, objc.Sel("setInputGateInputWeights:"), po0)
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateRecurrentWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2935551-celltooutputneuronparamc?language=objc
-func (l_ LSTMDescriptor) CellToOutputNeuronParamC() float32 {
-	rv := objc.Call[float32](l_, objc.Sel("cellToOutputNeuronParamC"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2935551-celltooutputneuronparamc?language=objc
-func (l_ LSTMDescriptor) SetCellToOutputNeuronParamC(value float32) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronParamC:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) ForgetGateRecurrentWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("forgetGateRecurrentWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetForgetGateRecurrentWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setForgetGateRecurrentWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetForgetGateRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setForgetGateRecurrentWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) InputGateRecurrentWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("inputGateRecurrentWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetInputGateRecurrentWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setInputGateRecurrentWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetInputGateRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputGateRecurrentWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865694-celltooutputneuronparamb?language=objc
-func (l_ LSTMDescriptor) CellToOutputNeuronParamB() float32 {
-	rv := objc.Call[float32](l_, objc.Sel("cellToOutputNeuronParamB"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865694-celltooutputneuronparamb?language=objc
-func (l_ LSTMDescriptor) SetCellToOutputNeuronParamB(value float32) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronParamB:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
-func (l_ LSTMDescriptor) CellGateInputWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateInputWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateInputWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateInputWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateInputWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateInputWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865736-celltooutputneurontype?language=objc
-func (l_ LSTMDescriptor) CellToOutputNeuronType() CNNNeuronType {
-	rv := objc.Call[CNNNeuronType](l_, objc.Sel("cellToOutputNeuronType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865736-celltooutputneurontype?language=objc
-func (l_ LSTMDescriptor) SetCellToOutputNeuronType(value CNNNeuronType) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetInputGateInputWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setInputGateInputWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -261,98 +147,6 @@ func (l_ LSTMDescriptor) CellToOutputNeuronParamA() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865744-celltooutputneuronparama?language=objc
 func (l_ LSTMDescriptor) SetCellToOutputNeuronParamA(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronParamA:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
-func (l_ LSTMDescriptor) OutputGateInputWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("outputGateInputWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetOutputGateInputWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setOutputGateInputWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetOutputGateInputWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setOutputGateInputWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
-func (l_ LSTMDescriptor) ForgetGateMemoryWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("forgetGateMemoryWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
-func (l_ LSTMDescriptor) SetForgetGateMemoryWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setForgetGateMemoryWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
-func (l_ LSTMDescriptor) SetForgetGateMemoryWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setForgetGateMemoryWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) OutputGateRecurrentWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("outputGateRecurrentWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setOutputGateRecurrentWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
-func (l_ LSTMDescriptor) SetOutputGateRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setOutputGateRecurrentWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
-func (l_ LSTMDescriptor) CellGateMemoryWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateMemoryWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateMemoryWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateMemoryWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
-func (l_ LSTMDescriptor) SetCellGateMemoryWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateMemoryWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -380,25 +174,147 @@ func (l_ LSTMDescriptor) SetForgetGateInputWeightsObject(valueObject objc.IObjec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
-func (l_ LSTMDescriptor) InputGateInputWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("inputGateInputWeights"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865712-memoryweightsarediagonal?language=objc
+func (l_ LSTMDescriptor) MemoryWeightsAreDiagonal() bool {
+	rv := objc.Call[bool](l_, objc.Sel("memoryWeightsAreDiagonal"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetInputGateInputWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](l_, objc.Sel("setInputGateInputWeights:"), po0)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865712-memoryweightsarediagonal?language=objc
+func (l_ LSTMDescriptor) SetMemoryWeightsAreDiagonal(value bool) {
+	objc.Call[objc.Void](l_, objc.Sel("setMemoryWeightsAreDiagonal:"), value)
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865684-inputgateinputweights?language=objc
-func (l_ LSTMDescriptor) SetInputGateInputWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputGateInputWeights:"), valueObject)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
+func (l_ LSTMDescriptor) CellGateMemoryWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateMemoryWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateMemoryWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateMemoryWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865683-cellgatememoryweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateMemoryWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateMemoryWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) ForgetGateRecurrentWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("forgetGateRecurrentWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetForgetGateRecurrentWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setForgetGateRecurrentWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865735-forgetgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetForgetGateRecurrentWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setForgetGateRecurrentWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
+func (l_ LSTMDescriptor) ForgetGateMemoryWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("forgetGateMemoryWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
+func (l_ LSTMDescriptor) SetForgetGateMemoryWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setForgetGateMemoryWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865689-forgetgatememoryweights?language=objc
+func (l_ LSTMDescriptor) SetForgetGateMemoryWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setForgetGateMemoryWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865736-celltooutputneurontype?language=objc
+func (l_ LSTMDescriptor) CellToOutputNeuronType() CNNNeuronType {
+	rv := objc.Call[CNNNeuronType](l_, objc.Sel("cellToOutputNeuronType"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865736-celltooutputneurontype?language=objc
+func (l_ LSTMDescriptor) SetCellToOutputNeuronType(value CNNNeuronType) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronType:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
+func (l_ LSTMDescriptor) CellGateInputWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateInputWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateInputWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateInputWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865741-cellgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateInputWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateInputWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) OutputGateRecurrentWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("outputGateRecurrentWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setOutputGateRecurrentWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865750-outputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetOutputGateRecurrentWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setOutputGateRecurrentWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -426,17 +342,63 @@ func (l_ LSTMDescriptor) SetInputGateMemoryWeightsObject(valueObject objc.IObjec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865712-memoryweightsarediagonal?language=objc
-func (l_ LSTMDescriptor) MemoryWeightsAreDiagonal() bool {
-	rv := objc.Call[bool](l_, objc.Sel("memoryWeightsAreDiagonal"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) InputGateRecurrentWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("inputGateRecurrentWeights"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865712-memoryweightsarediagonal?language=objc
-func (l_ LSTMDescriptor) SetMemoryWeightsAreDiagonal(value bool) {
-	objc.Call[objc.Void](l_, objc.Sel("setMemoryWeightsAreDiagonal:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetInputGateRecurrentWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setInputGateRecurrentWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865747-inputgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetInputGateRecurrentWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setInputGateRecurrentWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2935551-celltooutputneuronparamc?language=objc
+func (l_ LSTMDescriptor) CellToOutputNeuronParamC() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("cellToOutputNeuronParamC"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2935551-celltooutputneuronparamc?language=objc
+func (l_ LSTMDescriptor) SetCellToOutputNeuronParamC(value float32) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronParamC:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) CellGateRecurrentWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("cellGateRecurrentWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateRecurrentWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateRecurrentWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865679-cellgaterecurrentweights?language=objc
+func (l_ LSTMDescriptor) SetCellGateRecurrentWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateRecurrentWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -460,4 +422,42 @@ func (l_ LSTMDescriptor) SetOutputGateMemoryWeights(value PCNNConvolutionDataSou
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865688-outputgatememoryweights?language=objc
 func (l_ LSTMDescriptor) SetOutputGateMemoryWeightsObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](l_, objc.Sel("setOutputGateMemoryWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
+func (l_ LSTMDescriptor) OutputGateInputWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](l_, objc.Sel("outputGateInputWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetOutputGateInputWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](l_, objc.Sel("setOutputGateInputWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865701-outputgateinputweights?language=objc
+func (l_ LSTMDescriptor) SetOutputGateInputWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](l_, objc.Sel("setOutputGateInputWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865694-celltooutputneuronparamb?language=objc
+func (l_ LSTMDescriptor) CellToOutputNeuronParamB() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("cellToOutputNeuronParamB"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpslstmdescriptor/2865694-celltooutputneuronparamb?language=objc
+func (l_ LSTMDescriptor) SetCellToOutputNeuronParamB(value float32) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellToOutputNeuronParamB:"), value)
 }

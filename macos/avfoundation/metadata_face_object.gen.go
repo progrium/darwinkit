@@ -19,10 +19,10 @@ type _MetadataFaceObjectClass struct {
 type IMetadataFaceObject interface {
 	IMetadataObject
 	HasRollAngle() bool
+	YawAngle() float64
 	RollAngle() float64
 	HasYawAngle() bool
 	FaceID() int
-	YawAngle() float64
 }
 
 // Face information detected by a metadata capture output. [Full Topic]
@@ -66,6 +66,14 @@ func (m_ MetadataFaceObject) HasRollAngle() bool {
 	return rv
 }
 
+// The yaw angle of the face specified in degrees. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatafaceobject/1386517-yawangle?language=objc
+func (m_ MetadataFaceObject) YawAngle() float64 {
+	rv := objc.Call[float64](m_, objc.Sel("yawAngle"))
+	return rv
+}
+
 // The roll angle of the face specified in degrees. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatafaceobject/1389110-rollangle?language=objc
@@ -87,13 +95,5 @@ func (m_ MetadataFaceObject) HasYawAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatafaceobject/1386945-faceid?language=objc
 func (m_ MetadataFaceObject) FaceID() int {
 	rv := objc.Call[int](m_, objc.Sel("faceID"))
-	return rv
-}
-
-// The yaw angle of the face specified in degrees. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatafaceobject/1386517-yawangle?language=objc
-func (m_ MetadataFaceObject) YawAngle() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("yawAngle"))
 	return rv
 }

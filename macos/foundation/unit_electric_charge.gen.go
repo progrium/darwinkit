@@ -53,6 +53,18 @@ func (u_ UnitElectricCharge) Init() UnitElectricCharge {
 	return rv
 }
 
+func (uc _UnitElectricChargeClass) BaseUnit() UnitElectricCharge {
+	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitElectricCharge_BaseUnit() UnitElectricCharge {
+	return UnitElectricChargeClass.BaseUnit()
+}
+
 func (u_ UnitElectricCharge) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCharge {
 	rv := objc.Call[UnitElectricCharge](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitElectricChargeWithSymbolConverter(symbol string, converter IUnitConv
 	instance := UnitElectricChargeClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitElectricChargeClass) BaseUnit() UnitElectricCharge {
-	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitElectricCharge_BaseUnit() UnitElectricCharge {
-	return UnitElectricChargeClass.BaseUnit()
 }
 
 func (u_ UnitElectricCharge) InitWithSymbol(symbol string) UnitElectricCharge {
@@ -93,19 +93,19 @@ func NewUnitElectricChargeWithSymbol(symbol string) UnitElectricCharge {
 	return instance
 }
 
-// The ampere hours unit of electric charge. [Full Topic]
+// The kiloampere hours unit of electric charge. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856117-amperehours?language=objc
-func (uc _UnitElectricChargeClass) AmpereHours() UnitElectricCharge {
-	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("ampereHours"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856045-kiloamperehours?language=objc
+func (uc _UnitElectricChargeClass) KiloampereHours() UnitElectricCharge {
+	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("kiloampereHours"))
 	return rv
 }
 
-// The ampere hours unit of electric charge. [Full Topic]
+// The kiloampere hours unit of electric charge. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856117-amperehours?language=objc
-func UnitElectricCharge_AmpereHours() UnitElectricCharge {
-	return UnitElectricChargeClass.AmpereHours()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856045-kiloamperehours?language=objc
+func UnitElectricCharge_KiloampereHours() UnitElectricCharge {
+	return UnitElectricChargeClass.KiloampereHours()
 }
 
 // The milliampere hours unit of electric charge. [Full Topic]
@@ -138,6 +138,21 @@ func UnitElectricCharge_Coulombs() UnitElectricCharge {
 	return UnitElectricChargeClass.Coulombs()
 }
 
+// The ampere hours unit of electric charge. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856117-amperehours?language=objc
+func (uc _UnitElectricChargeClass) AmpereHours() UnitElectricCharge {
+	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("ampereHours"))
+	return rv
+}
+
+// The ampere hours unit of electric charge. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856117-amperehours?language=objc
+func UnitElectricCharge_AmpereHours() UnitElectricCharge {
+	return UnitElectricChargeClass.AmpereHours()
+}
+
 // The microampere hours unit of electric charge. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856006-microamperehours?language=objc
@@ -166,19 +181,4 @@ func (uc _UnitElectricChargeClass) MegaampereHours() UnitElectricCharge {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856020-megaamperehours?language=objc
 func UnitElectricCharge_MegaampereHours() UnitElectricCharge {
 	return UnitElectricChargeClass.MegaampereHours()
-}
-
-// The kiloampere hours unit of electric charge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856045-kiloamperehours?language=objc
-func (uc _UnitElectricChargeClass) KiloampereHours() UnitElectricCharge {
-	rv := objc.Call[UnitElectricCharge](uc, objc.Sel("kiloampereHours"))
-	return rv
-}
-
-// The kiloampere hours unit of electric charge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccharge/1856045-kiloamperehours?language=objc
-func UnitElectricCharge_KiloampereHours() UnitElectricCharge {
-	return UnitElectricChargeClass.KiloampereHours()
 }

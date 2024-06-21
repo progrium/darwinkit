@@ -18,15 +18,15 @@ type _ExtensionContextClass struct {
 // An interface definition for the [ExtensionContext] class.
 type IExtensionContext interface {
 	objc.IObject
-	CompleteRequestReturningItemsCompletionHandler(items []objc.IObject, completionHandler func(expired bool))
-	CompleteRequestWithBroadcastURLSetupInfo(broadcastURL IURL, setupInfo map[string]objc.IObject)
 	DismissNotificationContentExtension()
-	MediaPlayingPaused()
+	CompleteRequestReturningItemsCompletionHandler(items []objc.IObject, completionHandler func(expired bool))
 	PerformNotificationDefaultAction()
-	MediaPlayingStarted()
-	LoadBroadcastingApplicationInfoWithCompletion(handler func(bundleID string, displayName string, appIcon objc.Object))
-	CancelRequestWithError(error IError)
 	OpenURLCompletionHandler(URL IURL, completionHandler func(success bool))
+	MediaPlayingStarted()
+	CompleteRequestWithBroadcastURLSetupInfo(broadcastURL IURL, setupInfo map[string]objc.IObject)
+	MediaPlayingPaused()
+	CancelRequestWithError(error IError)
+	LoadBroadcastingApplicationInfoWithCompletion(handler func(bundleID string, displayName string, appIcon objc.Object))
 	InputItems() []objc.Object
 }
 
@@ -63,6 +63,13 @@ func (e_ ExtensionContext) Init() ExtensionContext {
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2977624-dismissnotificationcontentextens?language=objc
+func (e_ ExtensionContext) DismissNotificationContentExtension() {
+	objc.Call[objc.Void](e_, objc.Sel("dismissNotificationContentExtension"))
+}
+
 // Tells the host app to complete the app extension request with an array of result items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1411301-completerequestreturningitems?language=objc
@@ -72,30 +79,16 @@ func (e_ ExtensionContext) CompleteRequestReturningItemsCompletionHandler(items 
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2891095-completerequestwithbroadcasturl?language=objc
-func (e_ ExtensionContext) CompleteRequestWithBroadcastURLSetupInfo(broadcastURL IURL, setupInfo map[string]objc.IObject) {
-	objc.Call[objc.Void](e_, objc.Sel("completeRequestWithBroadcastURL:setupInfo:"), broadcastURL, setupInfo)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2977624-dismissnotificationcontentextens?language=objc
-func (e_ ExtensionContext) DismissNotificationContentExtension() {
-	objc.Call[objc.Void](e_, objc.Sel("dismissNotificationContentExtension"))
-}
-
-// Tells the system that the Notification Content app extension stopped playing a media file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1648527-mediaplayingpaused?language=objc
-func (e_ ExtensionContext) MediaPlayingPaused() {
-	objc.Call[objc.Void](e_, objc.Sel("mediaPlayingPaused"))
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2968489-performnotificationdefaultaction?language=objc
 func (e_ ExtensionContext) PerformNotificationDefaultAction() {
 	objc.Call[objc.Void](e_, objc.Sel("performNotificationDefaultAction"))
+}
+
+// Asks the system to open a URL on behalf of the currently running app extension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1416791-openurl?language=objc
+func (e_ ExtensionContext) OpenURLCompletionHandler(URL IURL, completionHandler func(success bool)) {
+	objc.Call[objc.Void](e_, objc.Sel("openURL:completionHandler:"), URL, completionHandler)
 }
 
 // Tells the system that the Notification Content app extension began playing a media file. [Full Topic]
@@ -107,9 +100,16 @@ func (e_ ExtensionContext) MediaPlayingStarted() {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1845240-loadbroadcastingapplicationinfow?language=objc
-func (e_ ExtensionContext) LoadBroadcastingApplicationInfoWithCompletion(handler func(bundleID string, displayName string, appIcon objc.Object)) {
-	objc.Call[objc.Void](e_, objc.Sel("loadBroadcastingApplicationInfoWithCompletion:"), handler)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2891095-completerequestwithbroadcasturl?language=objc
+func (e_ ExtensionContext) CompleteRequestWithBroadcastURLSetupInfo(broadcastURL IURL, setupInfo map[string]objc.IObject) {
+	objc.Call[objc.Void](e_, objc.Sel("completeRequestWithBroadcastURL:setupInfo:"), broadcastURL, setupInfo)
+}
+
+// Tells the system that the Notification Content app extension stopped playing a media file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1648527-mediaplayingpaused?language=objc
+func (e_ ExtensionContext) MediaPlayingPaused() {
+	objc.Call[objc.Void](e_, objc.Sel("mediaPlayingPaused"))
 }
 
 // Tells the host app to cancel the app extension request, with a supplied error. [Full Topic]
@@ -119,11 +119,11 @@ func (e_ ExtensionContext) CancelRequestWithError(error IError) {
 	objc.Call[objc.Void](e_, objc.Sel("cancelRequestWithError:"), error)
 }
 
-// Asks the system to open a URL on behalf of the currently running app extension. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1416791-openurl?language=objc
-func (e_ ExtensionContext) OpenURLCompletionHandler(URL IURL, completionHandler func(success bool)) {
-	objc.Call[objc.Void](e_, objc.Sel("openURL:completionHandler:"), URL, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1845240-loadbroadcastingapplicationinfow?language=objc
+func (e_ ExtensionContext) LoadBroadcastingApplicationInfoWithCompletion(handler func(bundleID string, displayName string, appIcon objc.Object)) {
+	objc.Call[objc.Void](e_, objc.Sel("loadBroadcastingApplicationInfoWithCompletion:"), handler)
 }
 
 // The list of input NSExtensionItem objects associated with the context. [Full Topic]

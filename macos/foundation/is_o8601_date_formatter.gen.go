@@ -59,21 +59,6 @@ func NewISO8601DateFormatter() ISO8601DateFormatter {
 	return ISO8601DateFormatterClass.New()
 }
 
-// Creates a representation of the specified date with a given time zone and format options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1642834-stringfromdate?language=objc
-func (ic _ISO8601DateFormatterClass) StringFromDateTimeZoneFormatOptions(date IDate, timeZone ITimeZone, formatOptions ISO8601DateFormatOptions) string {
-	rv := objc.Call[string](ic, objc.Sel("stringFromDate:timeZone:formatOptions:"), date, timeZone, formatOptions)
-	return rv
-}
-
-// Creates a representation of the specified date with a given time zone and format options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1642834-stringfromdate?language=objc
-func ISO8601DateFormatter_StringFromDateTimeZoneFormatOptions(date IDate, timeZone ITimeZone, formatOptions ISO8601DateFormatOptions) string {
-	return ISO8601DateFormatterClass.StringFromDateTimeZoneFormatOptions(date, timeZone, formatOptions)
-}
-
 // Creates and returns a date object from the specified ISO 8601 formatted string representation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1643127-datefromstring?language=objc

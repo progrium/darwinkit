@@ -53,6 +53,32 @@ func (o_ OpenGLLayer) Init() OpenGLLayer {
 	return rv
 }
 
+func (oc _OpenGLLayerClass) Layer() OpenGLLayer {
+	rv := objc.Call[OpenGLLayer](oc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func OpenGLLayer_Layer() OpenGLLayer {
+	return OpenGLLayerClass.Layer()
+}
+
+func (o_ OpenGLLayer) InitWithLayer(layer objc.IObject) OpenGLLayer {
+	rv := objc.Call[OpenGLLayer](o_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewOpenGLLayerWithLayer(layer objc.IObject) OpenGLLayer {
+	instance := OpenGLLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (o_ OpenGLLayer) ModelLayer() OpenGLLayer {
 	rv := objc.Call[OpenGLLayer](o_, objc.Sel("modelLayer"))
 	return rv
@@ -79,30 +105,4 @@ func OpenGLLayer_PresentationLayer() OpenGLLayer {
 	instance := OpenGLLayerClass.Alloc().PresentationLayer()
 	instance.Autorelease()
 	return instance
-}
-
-func (o_ OpenGLLayer) InitWithLayer(layer objc.IObject) OpenGLLayer {
-	rv := objc.Call[OpenGLLayer](o_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewOpenGLLayerWithLayer(layer objc.IObject) OpenGLLayer {
-	instance := OpenGLLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (oc _OpenGLLayerClass) Layer() OpenGLLayer {
-	rv := objc.Call[OpenGLLayer](oc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func OpenGLLayer_Layer() OpenGLLayer {
-	return OpenGLLayerClass.Layer()
 }

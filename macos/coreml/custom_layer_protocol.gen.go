@@ -15,24 +15,24 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer?language=objc
 type PCustomLayer interface {
 	// optional
-	EvaluateOnCPUWithInputsOutputsError(inputs []MultiArray, outputs []MultiArray, error unsafe.Pointer) bool
-	HasEvaluateOnCPUWithInputsOutputsError() bool
-
-	// optional
-	OutputShapesForInputShapesError(inputShapes [][]foundation.Number, error unsafe.Pointer) [][]foundation.Number
-	HasOutputShapesForInputShapesError() bool
-
-	// optional
 	InitWithParameterDictionaryError(parameters map[string]objc.Object, error unsafe.Pointer) objc.Object
 	HasInitWithParameterDictionaryError() bool
+
+	// optional
+	SetWeightDataError(weights [][]byte, error unsafe.Pointer) bool
+	HasSetWeightDataError() bool
 
 	// optional
 	EncodeToCommandBufferInputsOutputsError(commandBuffer metal.CommandBufferObject, inputs []metal.TextureObject, outputs []metal.TextureObject, error unsafe.Pointer) bool
 	HasEncodeToCommandBufferInputsOutputsError() bool
 
 	// optional
-	SetWeightDataError(weights [][]byte, error unsafe.Pointer) bool
-	HasSetWeightDataError() bool
+	EvaluateOnCPUWithInputsOutputsError(inputs []MultiArray, outputs []MultiArray, error unsafe.Pointer) bool
+	HasEvaluateOnCPUWithInputsOutputsError() bool
+
+	// optional
+	OutputShapesForInputShapesError(inputShapes [][]foundation.Number, error unsafe.Pointer) [][]foundation.Number
+	HasOutputShapesForInputShapesError() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,43 @@ var _ PCustomLayer = (*CustomLayerObject)(nil)
 // A concrete type for the [PCustomLayer] protocol.
 type CustomLayerObject struct {
 	objc.Object
+}
+
+func (c_ CustomLayerObject) HasInitWithParameterDictionaryError() bool {
+	return c_.RespondsToSelector(objc.Sel("initWithParameterDictionary:error:"))
+}
+
+// Initializes the custom layer implementation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2935523-initwithparameterdictionary?language=objc
+func (c_ CustomLayerObject) InitWithParameterDictionaryError(parameters map[string]objc.Object, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithParameterDictionary:error:"), parameters, error)
+	return rv
+}
+
+func (c_ CustomLayerObject) HasSetWeightDataError() bool {
+	return c_.RespondsToSelector(objc.Sel("setWeightData:error:"))
+}
+
+// Assigns the weights for the connections within the layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2936860-setweightdata?language=objc
+func (c_ CustomLayerObject) SetWeightDataError(weights [][]byte, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("setWeightData:error:"), weights, error)
+	return rv
+}
+
+func (c_ CustomLayerObject) HasEncodeToCommandBufferInputsOutputsError() bool {
+	return c_.RespondsToSelector(objc.Sel("encodeToCommandBuffer:inputs:outputs:error:"))
+}
+
+// Encodes GPU commands to evaluate the custom layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2936859-encodetocommandbuffer?language=objc
+func (c_ CustomLayerObject) EncodeToCommandBufferInputsOutputsError(commandBuffer metal.CommandBufferObject, inputs []metal.TextureObject, outputs []metal.TextureObject, error unsafe.Pointer) bool {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[bool](c_, objc.Sel("encodeToCommandBuffer:inputs:outputs:error:"), po0, inputs, outputs, error)
+	return rv
 }
 
 func (c_ CustomLayerObject) HasEvaluateOnCPUWithInputsOutputsError() bool {
@@ -64,42 +101,5 @@ func (c_ CustomLayerObject) HasOutputShapesForInputShapesError() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2935525-outputshapesforinputshapes?language=objc
 func (c_ CustomLayerObject) OutputShapesForInputShapesError(inputShapes [][]foundation.Number, error unsafe.Pointer) [][]foundation.Number {
 	rv := objc.Call[[][]foundation.Number](c_, objc.Sel("outputShapesForInputShapes:error:"), inputShapes, error)
-	return rv
-}
-
-func (c_ CustomLayerObject) HasInitWithParameterDictionaryError() bool {
-	return c_.RespondsToSelector(objc.Sel("initWithParameterDictionary:error:"))
-}
-
-// Initializes the custom layer implementation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2935523-initwithparameterdictionary?language=objc
-func (c_ CustomLayerObject) InitWithParameterDictionaryError(parameters map[string]objc.Object, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithParameterDictionary:error:"), parameters, error)
-	return rv
-}
-
-func (c_ CustomLayerObject) HasEncodeToCommandBufferInputsOutputsError() bool {
-	return c_.RespondsToSelector(objc.Sel("encodeToCommandBuffer:inputs:outputs:error:"))
-}
-
-// Encodes GPU commands to evaluate the custom layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2936859-encodetocommandbuffer?language=objc
-func (c_ CustomLayerObject) EncodeToCommandBufferInputsOutputsError(commandBuffer metal.CommandBufferObject, inputs []metal.TextureObject, outputs []metal.TextureObject, error unsafe.Pointer) bool {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[bool](c_, objc.Sel("encodeToCommandBuffer:inputs:outputs:error:"), po0, inputs, outputs, error)
-	return rv
-}
-
-func (c_ CustomLayerObject) HasSetWeightDataError() bool {
-	return c_.RespondsToSelector(objc.Sel("setWeightData:error:"))
-}
-
-// Assigns the weights for the connections within the layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustomlayer/2936860-setweightdata?language=objc
-func (c_ CustomLayerObject) SetWeightDataError(weights [][]byte, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("setWeightData:error:"), weights, error)
 	return rv
 }

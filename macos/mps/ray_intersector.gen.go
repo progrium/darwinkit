@@ -54,21 +54,6 @@ func (r_ RayIntersector) Init() RayIntersector {
 	return rv
 }
 
-func (r_ RayIntersector) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) RayIntersector {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RayIntersector](r_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func RayIntersector_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) RayIntersector {
-	instance := RayIntersectorClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (r_ RayIntersector) InitWithDevice(device metal.PDevice) RayIntersector {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[RayIntersector](r_, objc.Sel("initWithDevice:"), po0)
@@ -80,6 +65,21 @@ func (r_ RayIntersector) InitWithDevice(device metal.PDevice) RayIntersector {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewRayIntersectorWithDevice(device metal.PDevice) RayIntersector {
 	instance := RayIntersectorClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (r_ RayIntersector) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) RayIntersector {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[RayIntersector](r_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func RayIntersector_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) RayIntersector {
+	instance := RayIntersectorClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

@@ -19,10 +19,10 @@ type _SVGFDefaultTextureAllocatorClass struct {
 // An interface definition for the [SVGFDefaultTextureAllocator] class.
 type ISVGFDefaultTextureAllocator interface {
 	objc.IObject
-	Reset()
-	TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject
 	ReturnTexture(texture metal.PTexture)
 	ReturnTextureObject(textureObject objc.IObject)
+	TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject
+	Reset()
 	Device() metal.DeviceObject
 	AllocatedTextureCount() uint
 }
@@ -77,9 +77,17 @@ func (s_ SVGFDefaultTextureAllocator) Init() SVGFDefaultTextureAllocator {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242898-reset?language=objc
-func (s_ SVGFDefaultTextureAllocator) Reset() {
-	objc.Call[objc.Void](s_, objc.Sel("reset"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242899-returntexture?language=objc
+func (s_ SVGFDefaultTextureAllocator) ReturnTexture(texture metal.PTexture) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242899-returntexture?language=objc
+func (s_ SVGFDefaultTextureAllocator) ReturnTextureObject(textureObject objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), textureObject)
 }
 
 //	[Full Topic]
@@ -92,17 +100,9 @@ func (s_ SVGFDefaultTextureAllocator) TextureWithPixelFormatWidthHeight(pixelFor
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242899-returntexture?language=objc
-func (s_ SVGFDefaultTextureAllocator) ReturnTexture(texture metal.PTexture) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242899-returntexture?language=objc
-func (s_ SVGFDefaultTextureAllocator) ReturnTextureObject(textureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), textureObject)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242898-reset?language=objc
+func (s_ SVGFDefaultTextureAllocator) Reset() {
+	objc.Call[objc.Void](s_, objc.Sel("reset"))
 }
 
 //	[Full Topic]

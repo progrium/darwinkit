@@ -20,12 +20,12 @@ type PMediaTiming interface {
 	HasTimeOffset() bool
 
 	// optional
-	SetDuration(value corefoundation.TimeInterval)
-	HasSetDuration() bool
+	SetAutoreverses(value bool)
+	HasSetAutoreverses() bool
 
 	// optional
-	Duration() corefoundation.TimeInterval
-	HasDuration() bool
+	Autoreverses() bool
+	HasAutoreverses() bool
 
 	// optional
 	SetRepeatDuration(value corefoundation.TimeInterval)
@@ -34,6 +34,22 @@ type PMediaTiming interface {
 	// optional
 	RepeatDuration() corefoundation.TimeInterval
 	HasRepeatDuration() bool
+
+	// optional
+	SetFillMode(value MediaTimingFillMode)
+	HasSetFillMode() bool
+
+	// optional
+	FillMode() MediaTimingFillMode
+	HasFillMode() bool
+
+	// optional
+	SetSpeed(value float32)
+	HasSetSpeed() bool
+
+	// optional
+	Speed() float32
+	HasSpeed() bool
 
 	// optional
 	SetRepeatCount(value float32)
@@ -52,28 +68,12 @@ type PMediaTiming interface {
 	HasBeginTime() bool
 
 	// optional
-	SetSpeed(value float32)
-	HasSetSpeed() bool
+	SetDuration(value corefoundation.TimeInterval)
+	HasSetDuration() bool
 
 	// optional
-	Speed() float32
-	HasSpeed() bool
-
-	// optional
-	SetAutoreverses(value bool)
-	HasSetAutoreverses() bool
-
-	// optional
-	Autoreverses() bool
-	HasAutoreverses() bool
-
-	// optional
-	SetFillMode(value MediaTimingFillMode)
-	HasSetFillMode() bool
-
-	// optional
-	FillMode() MediaTimingFillMode
-	HasFillMode() bool
+	Duration() corefoundation.TimeInterval
+	HasDuration() bool
 }
 
 // ensure impl type implements protocol interface
@@ -107,26 +107,26 @@ func (m_ MediaTimingObject) TimeOffset() corefoundation.TimeInterval {
 	return rv
 }
 
-func (m_ MediaTimingObject) HasSetDuration() bool {
-	return m_.RespondsToSelector(objc.Sel("setDuration:"))
+func (m_ MediaTimingObject) HasSetAutoreverses() bool {
+	return m_.RespondsToSelector(objc.Sel("setAutoreverses:"))
 }
 
-// Specifies the basic duration of the animation, in seconds. [Full Topic]
+// Determines if the receiver plays in the reverse upon completion. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427652-duration?language=objc
-func (m_ MediaTimingObject) SetDuration(value corefoundation.TimeInterval) {
-	objc.Call[objc.Void](m_, objc.Sel("setDuration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427645-autoreverses?language=objc
+func (m_ MediaTimingObject) SetAutoreverses(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAutoreverses:"), value)
 }
 
-func (m_ MediaTimingObject) HasDuration() bool {
-	return m_.RespondsToSelector(objc.Sel("duration"))
+func (m_ MediaTimingObject) HasAutoreverses() bool {
+	return m_.RespondsToSelector(objc.Sel("autoreverses"))
 }
 
-// Specifies the basic duration of the animation, in seconds. [Full Topic]
+// Determines if the receiver plays in the reverse upon completion. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427652-duration?language=objc
-func (m_ MediaTimingObject) Duration() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](m_, objc.Sel("duration"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427645-autoreverses?language=objc
+func (m_ MediaTimingObject) Autoreverses() bool {
+	rv := objc.Call[bool](m_, objc.Sel("autoreverses"))
 	return rv
 }
 
@@ -150,6 +150,52 @@ func (m_ MediaTimingObject) HasRepeatDuration() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427643-repeatduration?language=objc
 func (m_ MediaTimingObject) RepeatDuration() corefoundation.TimeInterval {
 	rv := objc.Call[corefoundation.TimeInterval](m_, objc.Sel("repeatDuration"))
+	return rv
+}
+
+func (m_ MediaTimingObject) HasSetFillMode() bool {
+	return m_.RespondsToSelector(objc.Sel("setFillMode:"))
+}
+
+// Determines if the receiver’s presentation is frozen or removed once its active duration has completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427656-fillmode?language=objc
+func (m_ MediaTimingObject) SetFillMode(value MediaTimingFillMode) {
+	objc.Call[objc.Void](m_, objc.Sel("setFillMode:"), value)
+}
+
+func (m_ MediaTimingObject) HasFillMode() bool {
+	return m_.RespondsToSelector(objc.Sel("fillMode"))
+}
+
+// Determines if the receiver’s presentation is frozen or removed once its active duration has completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427656-fillmode?language=objc
+func (m_ MediaTimingObject) FillMode() MediaTimingFillMode {
+	rv := objc.Call[MediaTimingFillMode](m_, objc.Sel("fillMode"))
+	return rv
+}
+
+func (m_ MediaTimingObject) HasSetSpeed() bool {
+	return m_.RespondsToSelector(objc.Sel("setSpeed:"))
+}
+
+// Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
+func (m_ MediaTimingObject) SetSpeed(value float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setSpeed:"), value)
+}
+
+func (m_ MediaTimingObject) HasSpeed() bool {
+	return m_.RespondsToSelector(objc.Sel("speed"))
+}
+
+// Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
+func (m_ MediaTimingObject) Speed() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("speed"))
 	return rv
 }
 
@@ -199,71 +245,25 @@ func (m_ MediaTimingObject) BeginTime() corefoundation.TimeInterval {
 	return rv
 }
 
-func (m_ MediaTimingObject) HasSetSpeed() bool {
-	return m_.RespondsToSelector(objc.Sel("setSpeed:"))
+func (m_ MediaTimingObject) HasSetDuration() bool {
+	return m_.RespondsToSelector(objc.Sel("setDuration:"))
 }
 
-// Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
+// Specifies the basic duration of the animation, in seconds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
-func (m_ MediaTimingObject) SetSpeed(value float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setSpeed:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427652-duration?language=objc
+func (m_ MediaTimingObject) SetDuration(value corefoundation.TimeInterval) {
+	objc.Call[objc.Void](m_, objc.Sel("setDuration:"), value)
 }
 
-func (m_ MediaTimingObject) HasSpeed() bool {
-	return m_.RespondsToSelector(objc.Sel("speed"))
+func (m_ MediaTimingObject) HasDuration() bool {
+	return m_.RespondsToSelector(objc.Sel("duration"))
 }
 
-// Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
+// Specifies the basic duration of the animation, in seconds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
-func (m_ MediaTimingObject) Speed() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("speed"))
-	return rv
-}
-
-func (m_ MediaTimingObject) HasSetAutoreverses() bool {
-	return m_.RespondsToSelector(objc.Sel("setAutoreverses:"))
-}
-
-// Determines if the receiver plays in the reverse upon completion. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427645-autoreverses?language=objc
-func (m_ MediaTimingObject) SetAutoreverses(value bool) {
-	objc.Call[objc.Void](m_, objc.Sel("setAutoreverses:"), value)
-}
-
-func (m_ MediaTimingObject) HasAutoreverses() bool {
-	return m_.RespondsToSelector(objc.Sel("autoreverses"))
-}
-
-// Determines if the receiver plays in the reverse upon completion. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427645-autoreverses?language=objc
-func (m_ MediaTimingObject) Autoreverses() bool {
-	rv := objc.Call[bool](m_, objc.Sel("autoreverses"))
-	return rv
-}
-
-func (m_ MediaTimingObject) HasSetFillMode() bool {
-	return m_.RespondsToSelector(objc.Sel("setFillMode:"))
-}
-
-// Determines if the receiver’s presentation is frozen or removed once its active duration has completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427656-fillmode?language=objc
-func (m_ MediaTimingObject) SetFillMode(value MediaTimingFillMode) {
-	objc.Call[objc.Void](m_, objc.Sel("setFillMode:"), value)
-}
-
-func (m_ MediaTimingObject) HasFillMode() bool {
-	return m_.RespondsToSelector(objc.Sel("fillMode"))
-}
-
-// Determines if the receiver’s presentation is frozen or removed once its active duration has completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427656-fillmode?language=objc
-func (m_ MediaTimingObject) FillMode() MediaTimingFillMode {
-	rv := objc.Call[MediaTimingFillMode](m_, objc.Sel("fillMode"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427652-duration?language=objc
+func (m_ MediaTimingObject) Duration() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](m_, objc.Sel("duration"))
 	return rv
 }

@@ -20,10 +20,10 @@ type _URLAssetClass struct {
 type IURLAsset interface {
 	IAsset
 	FindCompatibleTrackForCompositionTrackCompletionHandler(compositionTrack ICompositionTrack, completionHandler func(arg0 AssetTrack, arg1 foundation.Error))
-	AssetCache() AssetCache
-	MayRequireContentKeysForMediaDataProcessing() bool
 	ResourceLoader() AssetResourceLoader
+	MayRequireContentKeysForMediaDataProcessing() bool
 	URL() foundation.URL
+	AssetCache() AssetCache
 	Variants() []AssetVariant
 }
 
@@ -113,11 +113,19 @@ func URLAsset_AudiovisualTypes() []FileType {
 	return URLAssetClass.AudiovisualTypes()
 }
 
-// Loads an asset track from which you can insert any time range into the composition track. [Full Topic]
+// Returns a Boolean value that indicates whether the asset is playable with the specified codecs and container type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/3746535-findcompatibletrackforcompositio?language=objc
-func (u_ URLAsset) FindCompatibleTrackForCompositionTrackCompletionHandler(compositionTrack ICompositionTrack, completionHandler func(arg0 AssetTrack, arg1 foundation.Error)) {
-	objc.Call[objc.Void](u_, objc.Sel("findCompatibleTrackForCompositionTrack:completionHandler:"), compositionTrack, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1387142-isplayableextendedmimetype?language=objc
+func (uc _URLAssetClass) IsPlayableExtendedMIMEType(extendedMIMEType string) bool {
+	rv := objc.Call[bool](uc, objc.Sel("isPlayableExtendedMIMEType:"), extendedMIMEType)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether the asset is playable with the specified codecs and container type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1387142-isplayableextendedmimetype?language=objc
+func URLAsset_IsPlayableExtendedMIMEType(extendedMIMEType string) bool {
+	return URLAssetClass.IsPlayableExtendedMIMEType(extendedMIMEType)
 }
 
 // Returns an array of the MIME types the asset supports. [Full Topic]
@@ -135,26 +143,18 @@ func URLAsset_AudiovisualMIMETypes() []string {
 	return URLAssetClass.AudiovisualMIMETypes()
 }
 
-// Returns a Boolean value that indicates whether the asset is playable with the specified codecs and container type. [Full Topic]
+// Loads an asset track from which you can insert any time range into the composition track. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1387142-isplayableextendedmimetype?language=objc
-func (uc _URLAssetClass) IsPlayableExtendedMIMEType(extendedMIMEType string) bool {
-	rv := objc.Call[bool](uc, objc.Sel("isPlayableExtendedMIMEType:"), extendedMIMEType)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/3746535-findcompatibletrackforcompositio?language=objc
+func (u_ URLAsset) FindCompatibleTrackForCompositionTrackCompletionHandler(compositionTrack ICompositionTrack, completionHandler func(arg0 AssetTrack, arg1 foundation.Error)) {
+	objc.Call[objc.Void](u_, objc.Sel("findCompatibleTrackForCompositionTrack:completionHandler:"), compositionTrack, completionHandler)
 }
 
-// Returns a Boolean value that indicates whether the asset is playable with the specified codecs and container type. [Full Topic]
+// The resource loader for the asset. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1387142-isplayableextendedmimetype?language=objc
-func URLAsset_IsPlayableExtendedMIMEType(extendedMIMEType string) bool {
-	return URLAssetClass.IsPlayableExtendedMIMEType(extendedMIMEType)
-}
-
-// The asset’s associated asset cache, if it exists. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1823714-assetcache?language=objc
-func (u_ URLAsset) AssetCache() AssetCache {
-	rv := objc.Call[AssetCache](u_, objc.Sel("assetCache"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1389118-resourceloader?language=objc
+func (u_ URLAsset) ResourceLoader() AssetResourceLoader {
+	rv := objc.Call[AssetResourceLoader](u_, objc.Sel("resourceLoader"))
 	return rv
 }
 
@@ -166,19 +166,19 @@ func (u_ URLAsset) MayRequireContentKeysForMediaDataProcessing() bool {
 	return rv
 }
 
-// The resource loader for the asset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1389118-resourceloader?language=objc
-func (u_ URLAsset) ResourceLoader() AssetResourceLoader {
-	rv := objc.Call[AssetResourceLoader](u_, objc.Sel("resourceLoader"))
-	return rv
-}
-
 // A URL to the asset’s media. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1388127-url?language=objc
 func (u_ URLAsset) URL() foundation.URL {
 	rv := objc.Call[foundation.URL](u_, objc.Sel("URL"))
+	return rv
+}
+
+// The asset’s associated asset cache, if it exists. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/1823714-assetcache?language=objc
+func (u_ URLAsset) AssetCache() AssetCache {
+	rv := objc.Call[AssetCache](u_, objc.Sel("assetCache"))
 	return rv
 }
 

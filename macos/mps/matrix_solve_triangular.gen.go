@@ -71,21 +71,6 @@ func (m_ MatrixSolveTriangular) Init() MatrixSolveTriangular {
 	return rv
 }
 
-func (m_ MatrixSolveTriangular) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveTriangular {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixSolveTriangular](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixSolveTriangular_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveTriangular {
-	instance := MatrixSolveTriangularClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixSolveTriangular) InitWithDevice(device metal.PDevice) MatrixSolveTriangular {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixSolveTriangular](m_, objc.Sel("initWithDevice:"), po0)
@@ -97,6 +82,21 @@ func (m_ MatrixSolveTriangular) InitWithDevice(device metal.PDevice) MatrixSolve
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixSolveTriangularWithDevice(device metal.PDevice) MatrixSolveTriangular {
 	instance := MatrixSolveTriangularClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixSolveTriangular) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveTriangular {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixSolveTriangular](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixSolveTriangular_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveTriangular {
+	instance := MatrixSolveTriangularClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

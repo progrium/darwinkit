@@ -19,31 +19,31 @@ type _SplitViewClass struct {
 // An interface definition for the [SplitView] class.
 type ISplitView interface {
 	IView
-	MaxPossiblePositionOfDividerAtIndex(dividerIndex int) float64
-	HoldingPriorityForSubviewAtIndex(subviewIndex int) LayoutPriority
 	AdjustSubviews()
-	SetHoldingPriorityForSubviewAtIndex(priority LayoutPriority, subviewIndex int)
-	RemoveArrangedSubview(view IView)
-	MinPossiblePositionOfDividerAtIndex(dividerIndex int) float64
-	DrawDividerInRect(rect foundation.Rect)
-	SetPositionOfDividerAtIndex(position float64, dividerIndex int)
-	AddArrangedSubview(view IView)
 	IsSubviewCollapsed(subview IView) bool
+	SetPositionOfDividerAtIndex(position float64, dividerIndex int)
+	MaxPossiblePositionOfDividerAtIndex(dividerIndex int) float64
+	MinPossiblePositionOfDividerAtIndex(dividerIndex int) float64
+	AddArrangedSubview(view IView)
 	InsertArrangedSubviewAtIndex(view IView, index int)
+	HoldingPriorityForSubviewAtIndex(subviewIndex int) LayoutPriority
+	DrawDividerInRect(rect foundation.Rect)
+	RemoveArrangedSubview(view IView)
+	SetHoldingPriorityForSubviewAtIndex(priority LayoutPriority, subviewIndex int)
 	DividerColor() Color
 	DividerThickness() float64
-	ArrangedSubviews() []View
-	IsVertical() bool
-	SetVertical(value bool)
-	AutosaveName() SplitViewAutosaveName
-	SetAutosaveName(value SplitViewAutosaveName)
+	DividerStyle() SplitViewDividerStyle
+	SetDividerStyle(value SplitViewDividerStyle)
 	Delegate() SplitViewDelegateObject
 	SetDelegate(value PSplitViewDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	ArrangedSubviews() []View
+	AutosaveName() SplitViewAutosaveName
+	SetAutosaveName(value SplitViewAutosaveName)
+	IsVertical() bool
+	SetVertical(value bool)
 	ArrangesAllSubviews() bool
 	SetArrangesAllSubviews(value bool)
-	DividerStyle() SplitViewDividerStyle
-	SetDividerStyle(value SplitViewDividerStyle)
 }
 
 // A view that arranges two or more views in a linear stack running horizontally or vertically. [Full Topic]
@@ -93,70 +93,11 @@ func NewSplitViewWithFrame(frameRect foundation.Rect) SplitView {
 	return instance
 }
 
-// Returns the maximum possible position of the divider at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455261-maxpossiblepositionofdivideratin?language=objc
-func (s_ SplitView) MaxPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
-	rv := objc.Call[float64](s_, objc.Sel("maxPossiblePositionOfDividerAtIndex:"), dividerIndex)
-	return rv
-}
-
-// Returns the priority of the subview’s width or height when resizing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455287-holdingpriorityforsubviewatindex?language=objc
-func (s_ SplitView) HoldingPriorityForSubviewAtIndex(subviewIndex int) LayoutPriority {
-	rv := objc.Call[LayoutPriority](s_, objc.Sel("holdingPriorityForSubviewAtIndex:"), subviewIndex)
-	return rv
-}
-
 // Adjusts the sizes of the split view’s subviews so they (plus the dividers) fill the split view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455285-adjustsubviews?language=objc
 func (s_ SplitView) AdjustSubviews() {
 	objc.Call[objc.Void](s_, objc.Sel("adjustSubviews"))
-}
-
-// Sets the priority for split view subviews to maintain their width or height. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455320-setholdingpriority?language=objc
-func (s_ SplitView) SetHoldingPriorityForSubviewAtIndex(priority LayoutPriority, subviewIndex int) {
-	objc.Call[objc.Void](s_, objc.Sel("setHoldingPriority:forSubviewAtIndex:"), priority, subviewIndex)
-}
-
-// Removes a view as an arranged split pane. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455271-removearrangedsubview?language=objc
-func (s_ SplitView) RemoveArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), view)
-}
-
-// Returns the minimum possible position of the divider at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455278-minpossiblepositionofdivideratin?language=objc
-func (s_ SplitView) MinPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
-	rv := objc.Call[float64](s_, objc.Sel("minPossiblePositionOfDividerAtIndex:"), dividerIndex)
-	return rv
-}
-
-// Draws a divider between two of the split view’s subviews. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455297-drawdividerinrect?language=objc
-func (s_ SplitView) DrawDividerInRect(rect foundation.Rect) {
-	objc.Call[objc.Void](s_, objc.Sel("drawDividerInRect:"), rect)
-}
-
-// Updates the location of a divider you specify by index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455316-setposition?language=objc
-func (s_ SplitView) SetPositionOfDividerAtIndex(position float64, dividerIndex int) {
-	objc.Call[objc.Void](s_, objc.Sel("setPosition:ofDividerAtIndex:"), position, dividerIndex)
-}
-
-// Adds a view as an arranged split pane. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455295-addarrangedsubview?language=objc
-func (s_ SplitView) AddArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), view)
 }
 
 // Returns whether the specified view is in a collapsed state. [Full Topic]
@@ -167,11 +108,70 @@ func (s_ SplitView) IsSubviewCollapsed(subview IView) bool {
 	return rv
 }
 
+// Updates the location of a divider you specify by index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455316-setposition?language=objc
+func (s_ SplitView) SetPositionOfDividerAtIndex(position float64, dividerIndex int) {
+	objc.Call[objc.Void](s_, objc.Sel("setPosition:ofDividerAtIndex:"), position, dividerIndex)
+}
+
+// Returns the maximum possible position of the divider at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455261-maxpossiblepositionofdivideratin?language=objc
+func (s_ SplitView) MaxPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
+	rv := objc.Call[float64](s_, objc.Sel("maxPossiblePositionOfDividerAtIndex:"), dividerIndex)
+	return rv
+}
+
+// Returns the minimum possible position of the divider at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455278-minpossiblepositionofdivideratin?language=objc
+func (s_ SplitView) MinPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
+	rv := objc.Call[float64](s_, objc.Sel("minPossiblePositionOfDividerAtIndex:"), dividerIndex)
+	return rv
+}
+
+// Adds a view as an arranged split pane. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455295-addarrangedsubview?language=objc
+func (s_ SplitView) AddArrangedSubview(view IView) {
+	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), view)
+}
+
 // Adds a view as an arranged split pane at the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455321-insertarrangedsubview?language=objc
 func (s_ SplitView) InsertArrangedSubviewAtIndex(view IView, index int) {
 	objc.Call[objc.Void](s_, objc.Sel("insertArrangedSubview:atIndex:"), view, index)
+}
+
+// Returns the priority of the subview’s width or height when resizing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455287-holdingpriorityforsubviewatindex?language=objc
+func (s_ SplitView) HoldingPriorityForSubviewAtIndex(subviewIndex int) LayoutPriority {
+	rv := objc.Call[LayoutPriority](s_, objc.Sel("holdingPriorityForSubviewAtIndex:"), subviewIndex)
+	return rv
+}
+
+// Draws a divider between two of the split view’s subviews. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455297-drawdividerinrect?language=objc
+func (s_ SplitView) DrawDividerInRect(rect foundation.Rect) {
+	objc.Call[objc.Void](s_, objc.Sel("drawDividerInRect:"), rect)
+}
+
+// Removes a view as an arranged split pane. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455271-removearrangedsubview?language=objc
+func (s_ SplitView) RemoveArrangedSubview(view IView) {
+	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), view)
+}
+
+// Sets the priority for split view subviews to maintain their width or height. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455320-setholdingpriority?language=objc
+func (s_ SplitView) SetHoldingPriorityForSubviewAtIndex(priority LayoutPriority, subviewIndex int) {
+	objc.Call[objc.Void](s_, objc.Sel("setHoldingPriority:forSubviewAtIndex:"), priority, subviewIndex)
 }
 
 // The color of the dividers that the split view draws between subviews. [Full Topic]
@@ -190,42 +190,19 @@ func (s_ SplitView) DividerThickness() float64 {
 	return rv
 }
 
-// The array of views that the split view arranges as its split panes. [Full Topic]
+// The style of divider between views. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455253-arrangedsubviews?language=objc
-func (s_ SplitView) ArrangedSubviews() []View {
-	rv := objc.Call[[]View](s_, objc.Sel("arrangedSubviews"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455291-dividerstyle?language=objc
+func (s_ SplitView) DividerStyle() SplitViewDividerStyle {
+	rv := objc.Call[SplitViewDividerStyle](s_, objc.Sel("dividerStyle"))
 	return rv
 }
 
-// A Boolean value that determines the geometric orientation of the split view's dividers. [Full Topic]
+// The style of divider between views. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455318-vertical?language=objc
-func (s_ SplitView) IsVertical() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isVertical"))
-	return rv
-}
-
-// A Boolean value that determines the geometric orientation of the split view's dividers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455318-vertical?language=objc
-func (s_ SplitView) SetVertical(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setVertical:"), value)
-}
-
-// The name to use when the system automatically saves the split view’s divider configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455319-autosavename?language=objc
-func (s_ SplitView) AutosaveName() SplitViewAutosaveName {
-	rv := objc.Call[SplitViewAutosaveName](s_, objc.Sel("autosaveName"))
-	return rv
-}
-
-// The name to use when the system automatically saves the split view’s divider configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455319-autosavename?language=objc
-func (s_ SplitView) SetAutosaveName(value SplitViewAutosaveName) {
-	objc.Call[objc.Void](s_, objc.Sel("setAutosaveName:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455291-dividerstyle?language=objc
+func (s_ SplitView) SetDividerStyle(value SplitViewDividerStyle) {
+	objc.Call[objc.Void](s_, objc.Sel("setDividerStyle:"), value)
 }
 
 // The split view’s delegate. [Full Topic]
@@ -252,6 +229,44 @@ func (s_ SplitView) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
+// The array of views that the split view arranges as its split panes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455253-arrangedsubviews?language=objc
+func (s_ SplitView) ArrangedSubviews() []View {
+	rv := objc.Call[[]View](s_, objc.Sel("arrangedSubviews"))
+	return rv
+}
+
+// The name to use when the system automatically saves the split view’s divider configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455319-autosavename?language=objc
+func (s_ SplitView) AutosaveName() SplitViewAutosaveName {
+	rv := objc.Call[SplitViewAutosaveName](s_, objc.Sel("autosaveName"))
+	return rv
+}
+
+// The name to use when the system automatically saves the split view’s divider configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455319-autosavename?language=objc
+func (s_ SplitView) SetAutosaveName(value SplitViewAutosaveName) {
+	objc.Call[objc.Void](s_, objc.Sel("setAutosaveName:"), value)
+}
+
+// A Boolean value that determines the geometric orientation of the split view's dividers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455318-vertical?language=objc
+func (s_ SplitView) IsVertical() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isVertical"))
+	return rv
+}
+
+// A Boolean value that determines the geometric orientation of the split view's dividers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455318-vertical?language=objc
+func (s_ SplitView) SetVertical(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setVertical:"), value)
+}
+
 // A Boolean value that determines whether the split view arranges all of its subviews as split panes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455307-arrangesallsubviews?language=objc
@@ -265,19 +280,4 @@ func (s_ SplitView) ArrangesAllSubviews() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455307-arrangesallsubviews?language=objc
 func (s_ SplitView) SetArrangesAllSubviews(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setArrangesAllSubviews:"), value)
-}
-
-// The style of divider between views. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455291-dividerstyle?language=objc
-func (s_ SplitView) DividerStyle() SplitViewDividerStyle {
-	rv := objc.Call[SplitViewDividerStyle](s_, objc.Sel("dividerStyle"))
-	return rv
-}
-
-// The style of divider between views. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455291-dividerstyle?language=objc
-func (s_ SplitView) SetDividerStyle(value SplitViewDividerStyle) {
-	objc.Call[objc.Void](s_, objc.Sel("setDividerStyle:"), value)
 }

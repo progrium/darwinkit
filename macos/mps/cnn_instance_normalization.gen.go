@@ -19,12 +19,12 @@ type _CNNInstanceNormalizationClass struct {
 // An interface definition for the [CNNInstanceNormalization] class.
 type ICNNInstanceNormalization interface {
 	ICNNKernel
+	ReloadGammaAndBetaFromDataSource()
 	ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
 	ReloadGammaAndBetaWithCommandBufferObjectGammaAndBetaState(commandBufferObject objc.IObject, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
-	ReloadGammaAndBetaFromDataSource()
+	DataSource() CNNInstanceNormalizationDataSourceObject
 	Epsilon() float32
 	SetEpsilon(value float32)
-	DataSource() CNNInstanceNormalizationDataSourceObject
 }
 
 // An instance normalization kernel. [Full Topic]
@@ -108,6 +108,13 @@ func CNNInstanceNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device met
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2976471-reloadgammaandbetafromdatasource?language=objc
+func (c_ CNNInstanceNormalization) ReloadGammaAndBetaFromDataSource() {
+	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaFromDataSource"))
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2953921-reloadgammaandbetawithcommandbuf?language=objc
 func (c_ CNNInstanceNormalization) ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -123,9 +130,10 @@ func (c_ CNNInstanceNormalization) ReloadGammaAndBetaWithCommandBufferObjectGamm
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2976471-reloadgammaandbetafromdatasource?language=objc
-func (c_ CNNInstanceNormalization) ReloadGammaAndBetaFromDataSource() {
-	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaFromDataSource"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2953927-datasource?language=objc
+func (c_ CNNInstanceNormalization) DataSource() CNNInstanceNormalizationDataSourceObject {
+	rv := objc.Call[CNNInstanceNormalizationDataSourceObject](c_, objc.Sel("dataSource"))
+	return rv
 }
 
 //	[Full Topic]
@@ -141,12 +149,4 @@ func (c_ CNNInstanceNormalization) Epsilon() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2947943-epsilon?language=objc
 func (c_ CNNInstanceNormalization) SetEpsilon(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2953927-datasource?language=objc
-func (c_ CNNInstanceNormalization) DataSource() CNNInstanceNormalizationDataSourceObject {
-	rv := objc.Call[CNNInstanceNormalizationDataSourceObject](c_, objc.Sel("dataSource"))
-	return rv
 }

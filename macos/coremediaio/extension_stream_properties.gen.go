@@ -20,12 +20,10 @@ type _ExtensionStreamPropertiesClass struct {
 type IExtensionStreamProperties interface {
 	objc.IObject
 	SetPropertyStateForProperty(propertyState IExtensionPropertyState, property ExtensionProperty)
-	PropertiesDictionary() map[ExtensionProperty]ExtensionPropertyState
-	SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState)
-	SinkBufferQueueSize() foundation.Number
-	SetSinkBufferQueueSize(value foundation.INumber)
 	MaxFrameDuration() foundation.Dictionary
 	SetMaxFrameDuration(value foundation.Dictionary)
+	SinkBufferUnderrunCount() foundation.Number
+	SetSinkBufferUnderrunCount(value foundation.INumber)
 	SinkBuffersRequiredForStartup() foundation.Number
 	SetSinkBuffersRequiredForStartup(value foundation.INumber)
 	ActiveFormatIndex() foundation.Number
@@ -34,8 +32,10 @@ type IExtensionStreamProperties interface {
 	SetFrameDuration(value foundation.Dictionary)
 	SinkEndOfData() foundation.Number
 	SetSinkEndOfData(value foundation.INumber)
-	SinkBufferUnderrunCount() foundation.Number
-	SetSinkBufferUnderrunCount(value foundation.INumber)
+	SinkBufferQueueSize() foundation.Number
+	SetSinkBufferQueueSize(value foundation.INumber)
+	PropertiesDictionary() map[ExtensionProperty]ExtensionPropertyState
+	SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState)
 }
 
 // An object that describes the properties of an extension stream. [Full Topic]
@@ -51,18 +51,6 @@ func ExtensionStreamPropertiesFrom(ptr unsafe.Pointer) ExtensionStreamProperties
 	}
 }
 
-func (ec _ExtensionStreamPropertiesClass) StreamPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionStreamProperties {
-	rv := objc.Call[ExtensionStreamProperties](ec, objc.Sel("streamPropertiesWithDictionary:"), propertiesDictionary)
-	return rv
-}
-
-// Returns a new properties object that provides the specified properties and default states. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915968-streampropertieswithdictionary?language=objc
-func ExtensionStreamProperties_StreamPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionStreamProperties {
-	return ExtensionStreamPropertiesClass.StreamPropertiesWithDictionary(propertiesDictionary)
-}
-
 func (e_ ExtensionStreamProperties) InitWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionStreamProperties {
 	rv := objc.Call[ExtensionStreamProperties](e_, objc.Sel("initWithDictionary:"), propertiesDictionary)
 	return rv
@@ -75,6 +63,18 @@ func NewExtensionStreamPropertiesWithDictionary(propertiesDictionary map[Extensi
 	instance := ExtensionStreamPropertiesClass.Alloc().InitWithDictionary(propertiesDictionary)
 	instance.Autorelease()
 	return instance
+}
+
+func (ec _ExtensionStreamPropertiesClass) StreamPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionStreamProperties {
+	rv := objc.Call[ExtensionStreamProperties](ec, objc.Sel("streamPropertiesWithDictionary:"), propertiesDictionary)
+	return rv
+}
+
+// Returns a new properties object that provides the specified properties and default states. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915968-streampropertieswithdictionary?language=objc
+func ExtensionStreamProperties_StreamPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionStreamProperties {
+	return ExtensionStreamPropertiesClass.StreamPropertiesWithDictionary(propertiesDictionary)
 }
 
 func (ec _ExtensionStreamPropertiesClass) Alloc() ExtensionStreamProperties {
@@ -104,36 +104,6 @@ func (e_ ExtensionStreamProperties) SetPropertyStateForProperty(propertyState IE
 	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), propertyState, property)
 }
 
-// A dictionary representation of the property state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915962-propertiesdictionary?language=objc
-func (e_ ExtensionStreamProperties) PropertiesDictionary() map[ExtensionProperty]ExtensionPropertyState {
-	rv := objc.Call[map[ExtensionProperty]ExtensionPropertyState](e_, objc.Sel("propertiesDictionary"))
-	return rv
-}
-
-// A dictionary representation of the property state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915962-propertiesdictionary?language=objc
-func (e_ ExtensionStreamProperties) SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState) {
-	objc.Call[objc.Void](e_, objc.Sel("setPropertiesDictionary:"), value)
-}
-
-// The buffer queue size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915964-sinkbufferqueuesize?language=objc
-func (e_ ExtensionStreamProperties) SinkBufferQueueSize() foundation.Number {
-	rv := objc.Call[foundation.Number](e_, objc.Sel("sinkBufferQueueSize"))
-	return rv
-}
-
-// The buffer queue size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915964-sinkbufferqueuesize?language=objc
-func (e_ ExtensionStreamProperties) SetSinkBufferQueueSize(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferQueueSize:"), value)
-}
-
 // The maximum duration of a frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915961-maxframeduration?language=objc
@@ -147,6 +117,21 @@ func (e_ ExtensionStreamProperties) MaxFrameDuration() foundation.Dictionary {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915961-maxframeduration?language=objc
 func (e_ ExtensionStreamProperties) SetMaxFrameDuration(value foundation.Dictionary) {
 	objc.Call[objc.Void](e_, objc.Sel("setMaxFrameDuration:"), value)
+}
+
+// The buffer underrun count. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915965-sinkbufferunderruncount?language=objc
+func (e_ ExtensionStreamProperties) SinkBufferUnderrunCount() foundation.Number {
+	rv := objc.Call[foundation.Number](e_, objc.Sel("sinkBufferUnderrunCount"))
+	return rv
+}
+
+// The buffer underrun count. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915965-sinkbufferunderruncount?language=objc
+func (e_ ExtensionStreamProperties) SetSinkBufferUnderrunCount(value foundation.INumber) {
+	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferUnderrunCount:"), value)
 }
 
 // The number of buffers the stream requires for startup. [Full Topic]
@@ -209,17 +194,32 @@ func (e_ ExtensionStreamProperties) SetSinkEndOfData(value foundation.INumber) {
 	objc.Call[objc.Void](e_, objc.Sel("setSinkEndOfData:"), value)
 }
 
-// The buffer underrun count. [Full Topic]
+// The buffer queue size. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915965-sinkbufferunderruncount?language=objc
-func (e_ ExtensionStreamProperties) SinkBufferUnderrunCount() foundation.Number {
-	rv := objc.Call[foundation.Number](e_, objc.Sel("sinkBufferUnderrunCount"))
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915964-sinkbufferqueuesize?language=objc
+func (e_ ExtensionStreamProperties) SinkBufferQueueSize() foundation.Number {
+	rv := objc.Call[foundation.Number](e_, objc.Sel("sinkBufferQueueSize"))
 	return rv
 }
 
-// The buffer underrun count. [Full Topic]
+// The buffer queue size. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915965-sinkbufferunderruncount?language=objc
-func (e_ ExtensionStreamProperties) SetSinkBufferUnderrunCount(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferUnderrunCount:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915964-sinkbufferqueuesize?language=objc
+func (e_ ExtensionStreamProperties) SetSinkBufferQueueSize(value foundation.INumber) {
+	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferQueueSize:"), value)
+}
+
+// A dictionary representation of the property state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915962-propertiesdictionary?language=objc
+func (e_ ExtensionStreamProperties) PropertiesDictionary() map[ExtensionProperty]ExtensionPropertyState {
+	rv := objc.Call[map[ExtensionProperty]ExtensionPropertyState](e_, objc.Sel("propertiesDictionary"))
+	return rv
+}
+
+// A dictionary representation of the property state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915962-propertiesdictionary?language=objc
+func (e_ ExtensionStreamProperties) SetPropertiesDictionary(value map[ExtensionProperty]IExtensionPropertyState) {
+	objc.Call[objc.Void](e_, objc.Sel("setPropertiesDictionary:"), value)
 }

@@ -21,9 +21,9 @@ type _PlayerItemOutputClass struct {
 // An interface definition for the [PlayerItemOutput] class.
 type IPlayerItemOutput interface {
 	objc.IObject
-	ItemTimeForMachAbsoluteTime(machAbsoluteTime int64) coremedia.Time
-	ItemTimeForHostTime(hostTimeInSeconds corefoundation.TimeInterval) coremedia.Time
 	ItemTimeForCVTimeStamp(timestamp corevideo.TimeStamp) coremedia.Time
+	ItemTimeForHostTime(hostTimeInSeconds corefoundation.TimeInterval) coremedia.Time
+	ItemTimeForMachAbsoluteTime(machAbsoluteTime int64) coremedia.Time
 	SuppressesPlayerRendering() bool
 	SetSuppressesPlayerRendering(value bool)
 }
@@ -61,11 +61,11 @@ func (p_ PlayerItemOutput) Init() PlayerItemOutput {
 	return rv
 }
 
-// Converts a Mach host time to the item’s timebase. [Full Topic]
+// Converts a Core Video timestamp to the item’s timebase. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutput/1386962-itemtimeformachabsolutetime?language=objc
-func (p_ PlayerItemOutput) ItemTimeForMachAbsoluteTime(machAbsoluteTime int64) coremedia.Time {
-	rv := objc.Call[coremedia.Time](p_, objc.Sel("itemTimeForMachAbsoluteTime:"), machAbsoluteTime)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutput/1388333-itemtimeforcvtimestamp?language=objc
+func (p_ PlayerItemOutput) ItemTimeForCVTimeStamp(timestamp corevideo.TimeStamp) coremedia.Time {
+	rv := objc.Call[coremedia.Time](p_, objc.Sel("itemTimeForCVTimeStamp:"), timestamp)
 	return rv
 }
 
@@ -77,11 +77,11 @@ func (p_ PlayerItemOutput) ItemTimeForHostTime(hostTimeInSeconds corefoundation.
 	return rv
 }
 
-// Converts a Core Video timestamp to the item’s timebase. [Full Topic]
+// Converts a Mach host time to the item’s timebase. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutput/1388333-itemtimeforcvtimestamp?language=objc
-func (p_ PlayerItemOutput) ItemTimeForCVTimeStamp(timestamp corevideo.TimeStamp) coremedia.Time {
-	rv := objc.Call[coremedia.Time](p_, objc.Sel("itemTimeForCVTimeStamp:"), timestamp)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutput/1386962-itemtimeformachabsolutetime?language=objc
+func (p_ PlayerItemOutput) ItemTimeForMachAbsoluteTime(machAbsoluteTime int64) coremedia.Time {
+	rv := objc.Call[coremedia.Time](p_, objc.Sel("itemTimeForMachAbsoluteTime:"), machAbsoluteTime)
 	return rv
 }
 

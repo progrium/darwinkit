@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate?language=objc
 type PPixellate interface {
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
 	Scale() float32
 	HasScale() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetCenter(value coregraphics.Point)
@@ -42,29 +42,6 @@ var _ PPixellate = (*PixellateObject)(nil)
 // A concrete type for the [PPixellate] protocol.
 type PixellateObject struct {
 	objc.Object
-}
-
-func (p_ PixellateObject) HasSetInputImage() bool {
-	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228675-inputimage?language=objc
-func (p_ PixellateObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
-}
-
-func (p_ PixellateObject) HasInputImage() bool {
-	return p_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228675-inputimage?language=objc
-func (p_ PixellateObject) InputImage() Image {
-	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
-	return rv
 }
 
 func (p_ PixellateObject) HasSetScale() bool {
@@ -87,6 +64,29 @@ func (p_ PixellateObject) HasScale() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228676-scale?language=objc
 func (p_ PixellateObject) Scale() float32 {
 	rv := objc.Call[float32](p_, objc.Sel("scale"))
+	return rv
+}
+
+func (p_ PixellateObject) HasSetInputImage() bool {
+	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228675-inputimage?language=objc
+func (p_ PixellateObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
+}
+
+func (p_ PixellateObject) HasInputImage() bool {
+	return p_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228675-inputimage?language=objc
+func (p_ PixellateObject) InputImage() Image {
+	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
 	return rv
 }
 

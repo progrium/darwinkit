@@ -18,10 +18,10 @@ type _StitchedLibraryDescriptorClass struct {
 // An interface definition for the [StitchedLibraryDescriptor] class.
 type IStitchedLibraryDescriptor interface {
 	objc.IObject
-	Functions() []FunctionObject
-	SetFunctions(value []PFunction)
 	FunctionGraphs() []FunctionStitchingGraph
 	SetFunctionGraphs(value []IFunctionStitchingGraph)
+	Functions() []FunctionObject
+	SetFunctions(value []PFunction)
 }
 
 // A description of a new library of procedurally generated functions. [Full Topic]
@@ -57,21 +57,6 @@ func (s_ StitchedLibraryDescriptor) Init() StitchedLibraryDescriptor {
 	return rv
 }
 
-// The list of functions for creating the stitched library. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750550-functions?language=objc
-func (s_ StitchedLibraryDescriptor) Functions() []FunctionObject {
-	rv := objc.Call[[]FunctionObject](s_, objc.Sel("functions"))
-	return rv
-}
-
-// The list of functions for creating the stitched library. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750550-functions?language=objc
-func (s_ StitchedLibraryDescriptor) SetFunctions(value []PFunction) {
-	objc.Call[objc.Void](s_, objc.Sel("setFunctions:"), value)
-}
-
 // The function graphs that define the new stitched library’s functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750549-functiongraphs?language=objc
@@ -85,4 +70,19 @@ func (s_ StitchedLibraryDescriptor) FunctionGraphs() []FunctionStitchingGraph {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750549-functiongraphs?language=objc
 func (s_ StitchedLibraryDescriptor) SetFunctionGraphs(value []IFunctionStitchingGraph) {
 	objc.Call[objc.Void](s_, objc.Sel("setFunctionGraphs:"), value)
+}
+
+// The list of functions for creating the stitched library. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750550-functions?language=objc
+func (s_ StitchedLibraryDescriptor) Functions() []FunctionObject {
+	rv := objc.Call[[]FunctionObject](s_, objc.Sel("functions"))
+	return rv
+}
+
+// The list of functions for creating the stitched library. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstitchedlibrarydescriptor/3750550-functions?language=objc
+func (s_ StitchedLibraryDescriptor) SetFunctions(value []PFunction) {
+	objc.Call[objc.Void](s_, objc.Sel("setFunctions:"), value)
 }

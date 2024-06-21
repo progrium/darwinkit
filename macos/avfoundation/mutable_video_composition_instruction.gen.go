@@ -21,11 +21,11 @@ type _MutableVideoCompositionInstructionClass struct {
 // An interface definition for the [MutableVideoCompositionInstruction] class.
 type IMutableVideoCompositionInstruction interface {
 	IVideoCompositionInstruction
-	SetEnablePostProcessing(value bool)
+	SetRequiredSourceSampleDataTrackIDs(value []foundation.INumber)
 	SetLayerInstructions(value []IVideoCompositionLayerInstruction)
 	SetBackgroundColor(value coregraphics.ColorRef)
-	SetRequiredSourceSampleDataTrackIDs(value []foundation.INumber)
 	SetTimeRange(value coremedia.TimeRange)
+	SetEnablePostProcessing(value bool)
 }
 
 // A mutable video composition instruction subclass. [Full Topic]
@@ -73,11 +73,11 @@ func (m_ MutableVideoCompositionInstruction) Init() MutableVideoCompositionInstr
 	return rv
 }
 
-// A Boolean value that indicates whether the instruction requires post processing. [Full Topic]
+// The track identifiers of source sample data that the compositor requires to compose frames for the instruction. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositioninstruction/1385876-enablepostprocessing?language=objc
-func (m_ MutableVideoCompositionInstruction) SetEnablePostProcessing(value bool) {
-	objc.Call[objc.Void](m_, objc.Sel("setEnablePostProcessing:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositioninstruction/3750317-requiredsourcesampledatatrackids?language=objc
+func (m_ MutableVideoCompositionInstruction) SetRequiredSourceSampleDataTrackIDs(value []foundation.INumber) {
+	objc.Call[objc.Void](m_, objc.Sel("setRequiredSourceSampleDataTrackIDs:"), value)
 }
 
 // Instructions that specify how to layer and compose video frames from source tracks. [Full Topic]
@@ -94,16 +94,16 @@ func (m_ MutableVideoCompositionInstruction) SetBackgroundColor(value coregraphi
 	objc.Call[objc.Void](m_, objc.Sel("setBackgroundColor:"), value)
 }
 
-// The track identifiers of source sample data that the compositor requires to compose frames for the instruction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositioninstruction/3750317-requiredsourcesampledatatrackids?language=objc
-func (m_ MutableVideoCompositionInstruction) SetRequiredSourceSampleDataTrackIDs(value []foundation.INumber) {
-	objc.Call[objc.Void](m_, objc.Sel("setRequiredSourceSampleDataTrackIDs:"), value)
-}
-
 // The time range to which the instruction applies. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositioninstruction/1390418-timerange?language=objc
 func (m_ MutableVideoCompositionInstruction) SetTimeRange(value coremedia.TimeRange) {
 	objc.Call[objc.Void](m_, objc.Sel("setTimeRange:"), value)
+}
+
+// A Boolean value that indicates whether the instruction requires post processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositioninstruction/1385876-enablepostprocessing?language=objc
+func (m_ MutableVideoCompositionInstruction) SetEnablePostProcessing(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setEnablePostProcessing:"), value)
 }

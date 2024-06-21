@@ -20,12 +20,12 @@ type _ColorWellClass struct {
 type IColorWell interface {
 	IControl
 	Activate(exclusive bool)
-	Deactivate()
 	DrawWellInside(insideRect foundation.Rect)
 	TakeColorFrom(sender objc.IObject)
-	IsActive() bool
+	Deactivate()
 	Color() Color
 	SetColor(value IColor)
+	IsActive() bool
 }
 
 // A control that displays a color value and lets the user change that color value. [Full Topic]
@@ -82,13 +82,6 @@ func (c_ ColorWell) Activate(exclusive bool) {
 	objc.Call[objc.Void](c_, objc.Sel("activate:"), exclusive)
 }
 
-// Deactivates the color well. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1524493-deactivate?language=objc
-func (c_ ColorWell) Deactivate() {
-	objc.Call[objc.Void](c_, objc.Sel("deactivate"))
-}
-
 // Draws the area inside the color well at the specified location without drawing borders. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1530268-drawwellinside?language=objc
@@ -103,12 +96,11 @@ func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("takeColorFrom:"), sender)
 }
 
-// A Boolean value that indicates whether the color well is currently active. [Full Topic]
+// Deactivates the color well. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1528698-active?language=objc
-func (c_ ColorWell) IsActive() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isActive"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1524493-deactivate?language=objc
+func (c_ ColorWell) Deactivate() {
+	objc.Call[objc.Void](c_, objc.Sel("deactivate"))
 }
 
 // The currently selected color for the color well. [Full Topic]
@@ -124,4 +116,12 @@ func (c_ ColorWell) Color() Color {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1534546-color?language=objc
 func (c_ ColorWell) SetColor(value IColor) {
 	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
+}
+
+// A Boolean value that indicates whether the color well is currently active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1528698-active?language=objc
+func (c_ ColorWell) IsActive() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isActive"))
+	return rv
 }

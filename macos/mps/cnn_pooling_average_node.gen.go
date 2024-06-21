@@ -53,32 +53,6 @@ func (c_ CNNPoolingAverageNode) Init() CNNPoolingAverageNode {
 	return rv
 }
 
-func (c_ CNNPoolingAverageNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
-func NewCNNPoolingAverageNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
-	instance := CNNPoolingAverageNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNPoolingAverageNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2890831-nodewithsource?language=objc
-func CNNPoolingAverageNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	return CNNPoolingAverageNodeClass.NodeWithSourceFilterSizeStride(sourceNode, size, stride)
-}
-
 func (cc _CNNPoolingAverageNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
 	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
@@ -91,30 +65,16 @@ func CNNPoolingAverageNode_NodeWithSourceFilterSize(sourceNode INNImageNode, siz
 	return CNNPoolingAverageNodeClass.NodeWithSourceFilterSize(sourceNode, size)
 }
 
-func (c_ CNNPoolingAverageNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+func (c_ CNNPoolingAverageNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
+	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866471-initwithsource?language=objc
-func NewCNNPoolingAverageNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingAverageNode {
-	instance := CNNPoolingAverageNodeClass.Alloc().InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNPoolingAverageNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866444-initwithsource?language=objc
-func NewCNNPoolingAverageNodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	instance := CNNPoolingAverageNodeClass.Alloc().InitWithSourceFilterSizeStride(sourceNode, size, stride)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
+func NewCNNPoolingAverageNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
+	instance := CNNPoolingAverageNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
 	instance.Autorelease()
 	return instance
 }

@@ -18,8 +18,8 @@ type _ChangeHistoryAddGroupEventClass struct {
 // An interface definition for the [ChangeHistoryAddGroupEvent] class.
 type IChangeHistoryAddGroupEvent interface {
 	IChangeHistoryEvent
-	ContainerIdentifier() string
 	Group() Group
+	ContainerIdentifier() string
 }
 
 //	[Full Topic]
@@ -57,16 +57,16 @@ func (c_ ChangeHistoryAddGroupEvent) Init() ChangeHistoryAddGroupEvent {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddgroupevent/3113253-containeridentifier?language=objc
-func (c_ ChangeHistoryAddGroupEvent) ContainerIdentifier() string {
-	rv := objc.Call[string](c_, objc.Sel("containerIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddgroupevent/3113254-group?language=objc
+func (c_ ChangeHistoryAddGroupEvent) Group() Group {
+	rv := objc.Call[Group](c_, objc.Sel("group"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddgroupevent/3113254-group?language=objc
-func (c_ ChangeHistoryAddGroupEvent) Group() Group {
-	rv := objc.Call[Group](c_, objc.Sel("group"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddgroupevent/3113253-containeridentifier?language=objc
+func (c_ ChangeHistoryAddGroupEvent) ContainerIdentifier() string {
+	rv := objc.Call[string](c_, objc.Sel("containerIdentifier"))
 	return rv
 }

@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgftextureallocator?language=objc
 type PSVGFTextureAllocator interface {
 	// optional
-	TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject
-	HasTextureWithPixelFormatWidthHeight() bool
-
-	// optional
 	ReturnTexture(texture metal.TextureObject)
 	HasReturnTexture() bool
+
+	// optional
+	TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject
+	HasTextureWithPixelFormatWidthHeight() bool
 }
 
 // ensure impl type implements protocol interface
@@ -26,18 +26,6 @@ var _ PSVGFTextureAllocator = (*SVGFTextureAllocatorObject)(nil)
 // A concrete type for the [PSVGFTextureAllocator] protocol.
 type SVGFTextureAllocatorObject struct {
 	objc.Object
-}
-
-func (s_ SVGFTextureAllocatorObject) HasTextureWithPixelFormatWidthHeight() bool {
-	return s_.RespondsToSelector(objc.Sel("textureWithPixelFormat:width:height:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgftextureallocator/3242918-texturewithpixelformat?language=objc
-func (s_ SVGFTextureAllocatorObject) TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject {
-	rv := objc.Call[metal.TextureObject](s_, objc.Sel("textureWithPixelFormat:width:height:"), pixelFormat, width, height)
-	return rv
 }
 
 func (s_ SVGFTextureAllocatorObject) HasReturnTexture() bool {
@@ -50,4 +38,16 @@ func (s_ SVGFTextureAllocatorObject) HasReturnTexture() bool {
 func (s_ SVGFTextureAllocatorObject) ReturnTexture(texture metal.TextureObject) {
 	po0 := objc.WrapAsProtocol("MTLTexture", texture)
 	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), po0)
+}
+
+func (s_ SVGFTextureAllocatorObject) HasTextureWithPixelFormatWidthHeight() bool {
+	return s_.RespondsToSelector(objc.Sel("textureWithPixelFormat:width:height:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgftextureallocator/3242918-texturewithpixelformat?language=objc
+func (s_ SVGFTextureAllocatorObject) TextureWithPixelFormatWidthHeight(pixelFormat metal.PixelFormat, width uint, height uint) metal.TextureObject {
+	rv := objc.Call[metal.TextureObject](s_, objc.Sel("textureWithPixelFormat:width:height:"), pixelFormat, width, height)
+	return rv
 }

@@ -34,20 +34,6 @@ func CountedSetFrom(ptr unsafe.Pointer) CountedSet {
 	}
 }
 
-func (c_ CountedSet) InitWithArray(array []objc.IObject) CountedSet {
-	rv := objc.Call[CountedSet](c_, objc.Sel("initWithArray:"), array)
-	return rv
-}
-
-// Returns a counted set object initialized with the contents of a given array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1416767-initwitharray?language=objc
-func NewCountedSetWithArray(array []objc.IObject) CountedSet {
-	instance := CountedSetClass.Alloc().InitWithArray(array)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CountedSet) InitWithCapacity(numItems uint) CountedSet {
 	rv := objc.Call[CountedSet](c_, objc.Sel("initWithCapacity:"), numItems)
 	return rv
@@ -58,6 +44,20 @@ func (c_ CountedSet) InitWithCapacity(numItems uint) CountedSet {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1415625-initwithcapacity?language=objc
 func NewCountedSetWithCapacity(numItems uint) CountedSet {
 	instance := CountedSetClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
+}
+
+func (c_ CountedSet) InitWithArray(array []objc.IObject) CountedSet {
+	rv := objc.Call[CountedSet](c_, objc.Sel("initWithArray:"), array)
+	return rv
+}
+
+// Returns a counted set object initialized with the contents of a given array. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1416767-initwitharray?language=objc
+func NewCountedSetWithArray(array []objc.IObject) CountedSet {
+	instance := CountedSetClass.Alloc().InitWithArray(array)
 	instance.Autorelease()
 	return instance
 }
@@ -108,18 +108,16 @@ func CountedSet_SetWithCapacity(numItems uint) CountedSet {
 	return CountedSetClass.SetWithCapacity(numItems)
 }
 
-func (c_ CountedSet) InitWithSetCopyItems(set ISet, flag bool) CountedSet {
-	rv := objc.Call[CountedSet](c_, objc.Sel("initWithSet:copyItems:"), set, flag)
+func (cc _CountedSetClass) Set() CountedSet {
+	rv := objc.Call[CountedSet](cc, objc.Sel("set"))
 	return rv
 }
 
-// Initializes a newly allocated set and adds to it members of another given set. [Full Topic]
+// Creates and returns an empty set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1408407-initwithset?language=objc
-func NewCountedSetWithSetCopyItems(set ISet, flag bool) CountedSet {
-	instance := CountedSetClass.Alloc().InitWithSetCopyItems(set, flag)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574818-set?language=objc
+func CountedSet_Set() CountedSet {
+	return CountedSetClass.Set()
 }
 
 func (c_ CountedSet) InitWithObjects(firstObj objc.IObject, args ...any) CountedSet {
@@ -136,6 +134,18 @@ func NewCountedSetWithObjects(firstObj objc.IObject, args ...any) CountedSet {
 	return instance
 }
 
+func (cc _CountedSetClass) SetWithSet(set ISet) CountedSet {
+	rv := objc.Call[CountedSet](cc, objc.Sel("setWithSet:"), set)
+	return rv
+}
+
+// Creates and returns a set containing the objects from another set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574817-setwithset?language=objc
+func CountedSet_SetWithSet(set ISet) CountedSet {
+	return CountedSetClass.SetWithSet(set)
+}
+
 func (cc _CountedSetClass) SetWithObject(object objc.IObject) CountedSet {
 	rv := objc.Call[CountedSet](cc, objc.Sel("setWithObject:"), object)
 	return rv
@@ -146,44 +156,6 @@ func (cc _CountedSetClass) SetWithObject(object objc.IObject) CountedSet {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1415878-setwithobject?language=objc
 func CountedSet_SetWithObject(object objc.IObject) CountedSet {
 	return CountedSetClass.SetWithObject(object)
-}
-
-func (cc _CountedSetClass) SetWithObjects(firstObj objc.IObject, args ...any) CountedSet {
-	rv := objc.Call[CountedSet](cc, objc.Sel("setWithObjects:"), append([]any{firstObj}, args...)...)
-	return rv
-}
-
-// Creates and returns a set containing the objects in a given argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574825-setwithobjects?language=objc
-func CountedSet_SetWithObjects(firstObj objc.IObject, args ...any) CountedSet {
-	return CountedSetClass.SetWithObjects(firstObj, args...)
-}
-
-func (cc _CountedSetClass) SetWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
-	rv := objc.Call[CountedSet](cc, objc.Sel("setWithObjects:count:"), objects, cnt)
-	return rv
-}
-
-// Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574824-setwithobjects?language=objc
-func CountedSet_SetWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
-	return CountedSetClass.SetWithObjectsCount(objects, cnt)
-}
-
-func (c_ CountedSet) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
-	rv := objc.Call[CountedSet](c_, objc.Sel("initWithObjects:count:"), objects, cnt)
-	return rv
-}
-
-// Initializes a newly allocated set with a specified number of objects from a given C array of objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1407458-initwithobjects?language=objc
-func NewCountedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
-	instance := CountedSetClass.Alloc().InitWithObjectsCount(objects, cnt)
-	instance.Autorelease()
-	return instance
 }
 
 func (cc _CountedSetClass) SetWithArray(array []objc.IObject) CountedSet {
@@ -198,42 +170,6 @@ func CountedSet_SetWithArray(array []objc.IObject) CountedSet {
 	return CountedSetClass.SetWithArray(array)
 }
 
-func (cc _CountedSetClass) SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) CountedSet {
-	rv := objc.Call[CountedSet](cc, objc.Sel("setWithCollectionViewIndexPaths:"), indexPaths)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1528255-setwithcollectionviewindexpaths?language=objc
-func CountedSet_SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) CountedSet {
-	return CountedSetClass.SetWithCollectionViewIndexPaths(indexPaths)
-}
-
-func (cc _CountedSetClass) Set() CountedSet {
-	rv := objc.Call[CountedSet](cc, objc.Sel("set"))
-	return rv
-}
-
-// Creates and returns an empty set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574818-set?language=objc
-func CountedSet_Set() CountedSet {
-	return CountedSetClass.Set()
-}
-
-func (cc _CountedSetClass) SetWithSet(set ISet) CountedSet {
-	rv := objc.Call[CountedSet](cc, objc.Sel("setWithSet:"), set)
-	return rv
-}
-
-// Creates and returns a set containing the objects from another set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574817-setwithset?language=objc
-func CountedSet_SetWithSet(set ISet) CountedSet {
-	return CountedSetClass.SetWithSet(set)
-}
-
 func (cc _CountedSetClass) SetWithCollectionViewIndexPath(indexPath IIndexPath) CountedSet {
 	rv := objc.Call[CountedSet](cc, objc.Sel("setWithCollectionViewIndexPath:"), indexPath)
 	return rv
@@ -244,6 +180,30 @@ func (cc _CountedSetClass) SetWithCollectionViewIndexPath(indexPath IIndexPath) 
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1528161-setwithcollectionviewindexpath?language=objc
 func CountedSet_SetWithCollectionViewIndexPath(indexPath IIndexPath) CountedSet {
 	return CountedSetClass.SetWithCollectionViewIndexPath(indexPath)
+}
+
+func (cc _CountedSetClass) SetWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
+	rv := objc.Call[CountedSet](cc, objc.Sel("setWithObjects:count:"), objects, cnt)
+	return rv
+}
+
+// Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574824-setwithobjects?language=objc
+func CountedSet_SetWithObjectsCount(objects unsafe.Pointer, cnt uint) CountedSet {
+	return CountedSetClass.SetWithObjectsCount(objects, cnt)
+}
+
+func (cc _CountedSetClass) SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) CountedSet {
+	rv := objc.Call[CountedSet](cc, objc.Sel("setWithCollectionViewIndexPaths:"), indexPaths)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1528255-setwithcollectionviewindexpaths?language=objc
+func CountedSet_SetWithCollectionViewIndexPaths(indexPaths []IIndexPath) CountedSet {
+	return CountedSetClass.SetWithCollectionViewIndexPaths(indexPaths)
 }
 
 // Returns the count associated with a given object in the set. [Full Topic]

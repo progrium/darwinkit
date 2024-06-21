@@ -18,15 +18,15 @@ type _URLProtectionSpaceClass struct {
 // An interface definition for the [URLProtectionSpace] class.
 type IURLProtectionSpace interface {
 	objc.IObject
-	IsProxy() bool
 	ProxyType() string
-	Protocol() string
-	Realm() string
-	DistinguishedNames() [][]byte
 	Host() string
-	ReceivesCredentialSecurely() bool
+	Realm() string
+	IsProxy() bool
 	Port() int
+	Protocol() string
+	DistinguishedNames() [][]byte
 	AuthenticationMethod() string
+	ReceivesCredentialSecurely() bool
 }
 
 // A server or an area on a server, commonly referred to as a realm, that requires authentication. [Full Topic]
@@ -42,20 +42,6 @@ func URLProtectionSpaceFrom(ptr unsafe.Pointer) URLProtectionSpace {
 	}
 }
 
-func (u_ URLProtectionSpace) InitWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
-	rv := objc.Call[URLProtectionSpace](u_, objc.Sel("initWithHost:port:protocol:realm:authenticationMethod:"), host, port, protocol, realm, authenticationMethod)
-	return rv
-}
-
-// Creates a protection space object from the given host, port, protocol, realm, and authentication method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1414165-initwithhost?language=objc
-func NewURLProtectionSpaceWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
-	instance := URLProtectionSpaceClass.Alloc().InitWithHostPortProtocolRealmAuthenticationMethod(host, port, protocol, realm, authenticationMethod)
-	instance.Autorelease()
-	return instance
-}
-
 func (u_ URLProtectionSpace) InitWithProxyHostPortTypeRealmAuthenticationMethod(host string, port int, type_ string, realm string, authenticationMethod string) URLProtectionSpace {
 	rv := objc.Call[URLProtectionSpace](u_, objc.Sel("initWithProxyHost:port:type:realm:authenticationMethod:"), host, port, type_, realm, authenticationMethod)
 	return rv
@@ -66,6 +52,20 @@ func (u_ URLProtectionSpace) InitWithProxyHostPortTypeRealmAuthenticationMethod(
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1417998-initwithproxyhost?language=objc
 func NewURLProtectionSpaceWithProxyHostPortTypeRealmAuthenticationMethod(host string, port int, type_ string, realm string, authenticationMethod string) URLProtectionSpace {
 	instance := URLProtectionSpaceClass.Alloc().InitWithProxyHostPortTypeRealmAuthenticationMethod(host, port, type_, realm, authenticationMethod)
+	instance.Autorelease()
+	return instance
+}
+
+func (u_ URLProtectionSpace) InitWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
+	rv := objc.Call[URLProtectionSpace](u_, objc.Sel("initWithHost:port:protocol:realm:authenticationMethod:"), host, port, protocol, realm, authenticationMethod)
+	return rv
+}
+
+// Creates a protection space object from the given host, port, protocol, realm, and authentication method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1414165-initwithhost?language=objc
+func NewURLProtectionSpaceWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
+	instance := URLProtectionSpaceClass.Alloc().InitWithHostPortProtocolRealmAuthenticationMethod(host, port, protocol, realm, authenticationMethod)
 	instance.Autorelease()
 	return instance
 }
@@ -90,43 +90,11 @@ func (u_ URLProtectionSpace) Init() URLProtectionSpace {
 	return rv
 }
 
-// A Boolean value that indicates whether the receiver represents a proxy server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1561656-isproxy?language=objc
-func (u_ URLProtectionSpace) IsProxy() bool {
-	rv := objc.Call[bool](u_, objc.Sel("isProxy"))
-	return rv
-}
-
 // The receiver's proxy type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1411924-proxytype?language=objc
 func (u_ URLProtectionSpace) ProxyType() string {
 	rv := objc.Call[string](u_, objc.Sel("proxyType"))
-	return rv
-}
-
-// The receiver’s protocol. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1411191-protocol?language=objc
-func (u_ URLProtectionSpace) Protocol() string {
-	rv := objc.Call[string](u_, objc.Sel("protocol"))
-	return rv
-}
-
-// The receiver’s authentication realm [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1416007-realm?language=objc
-func (u_ URLProtectionSpace) Realm() string {
-	rv := objc.Call[string](u_, objc.Sel("realm"))
-	return rv
-}
-
-// The acceptable certificate-issuing authorities for client certificate authentication. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1417061-distinguishednames?language=objc
-func (u_ URLProtectionSpace) DistinguishedNames() [][]byte {
-	rv := objc.Call[[][]byte](u_, objc.Sel("distinguishedNames"))
 	return rv
 }
 
@@ -138,11 +106,19 @@ func (u_ URLProtectionSpace) Host() string {
 	return rv
 }
 
-// A Boolean value that indicates whether the credentials for the protection space can be sent securely. [Full Topic]
+// The receiver’s authentication realm [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1415176-receivescredentialsecurely?language=objc
-func (u_ URLProtectionSpace) ReceivesCredentialSecurely() bool {
-	rv := objc.Call[bool](u_, objc.Sel("receivesCredentialSecurely"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1416007-realm?language=objc
+func (u_ URLProtectionSpace) Realm() string {
+	rv := objc.Call[string](u_, objc.Sel("realm"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver represents a proxy server. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1561656-isproxy?language=objc
+func (u_ URLProtectionSpace) IsProxy() bool {
+	rv := objc.Call[bool](u_, objc.Sel("isProxy"))
 	return rv
 }
 
@@ -154,10 +130,34 @@ func (u_ URLProtectionSpace) Port() int {
 	return rv
 }
 
+// The receiver’s protocol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1411191-protocol?language=objc
+func (u_ URLProtectionSpace) Protocol() string {
+	rv := objc.Call[string](u_, objc.Sel("protocol"))
+	return rv
+}
+
+// The acceptable certificate-issuing authorities for client certificate authentication. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1417061-distinguishednames?language=objc
+func (u_ URLProtectionSpace) DistinguishedNames() [][]byte {
+	rv := objc.Call[[][]byte](u_, objc.Sel("distinguishedNames"))
+	return rv
+}
+
 // The authentication method used by the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1415028-authenticationmethod?language=objc
 func (u_ URLProtectionSpace) AuthenticationMethod() string {
 	rv := objc.Call[string](u_, objc.Sel("authenticationMethod"))
+	return rv
+}
+
+// A Boolean value that indicates whether the credentials for the protection space can be sent securely. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1415176-receivescredentialsecurely?language=objc
+func (u_ URLProtectionSpace) ReceivesCredentialSecurely() bool {
+	rv := objc.Call[bool](u_, objc.Sel("receivesCredentialSecurely"))
 	return rv
 }

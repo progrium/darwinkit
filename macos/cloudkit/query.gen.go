@@ -19,10 +19,10 @@ type _QueryClass struct {
 // An interface definition for the [Query] class.
 type IQuery interface {
 	objc.IObject
-	Predicate() foundation.Predicate
-	RecordType() RecordType
 	SortDescriptors() []foundation.SortDescriptor
 	SetSortDescriptors(value []foundation.ISortDescriptor)
+	Predicate() foundation.Predicate
+	RecordType() RecordType
 }
 
 // A query that describes the criteria to apply when searching for records in a database. [Full Topic]
@@ -72,6 +72,21 @@ func (q_ Query) Init() Query {
 	return rv
 }
 
+// The sort descriptors for organizing the query’s results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413121-sortdescriptors?language=objc
+func (q_ Query) SortDescriptors() []foundation.SortDescriptor {
+	rv := objc.Call[[]foundation.SortDescriptor](q_, objc.Sel("sortDescriptors"))
+	return rv
+}
+
+// The sort descriptors for organizing the query’s results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413121-sortdescriptors?language=objc
+func (q_ Query) SetSortDescriptors(value []foundation.ISortDescriptor) {
+	objc.Call[objc.Void](q_, objc.Sel("setSortDescriptors:"), value)
+}
+
 // The predicate to use for matching records. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413112-predicate?language=objc
@@ -86,19 +101,4 @@ func (q_ Query) Predicate() foundation.Predicate {
 func (q_ Query) RecordType() RecordType {
 	rv := objc.Call[RecordType](q_, objc.Sel("recordType"))
 	return rv
-}
-
-// The sort descriptors for organizing the query’s results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413121-sortdescriptors?language=objc
-func (q_ Query) SortDescriptors() []foundation.SortDescriptor {
-	rv := objc.Call[[]foundation.SortDescriptor](q_, objc.Sel("sortDescriptors"))
-	return rv
-}
-
-// The sort descriptors for organizing the query’s results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413121-sortdescriptors?language=objc
-func (q_ Query) SetSortDescriptors(value []foundation.ISortDescriptor) {
-	objc.Call[objc.Void](q_, objc.Sel("setSortDescriptors:"), value)
 }

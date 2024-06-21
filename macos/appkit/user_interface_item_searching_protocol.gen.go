@@ -15,16 +15,16 @@ type PUserInterfaceItemSearching interface {
 	HasLocalizedTitlesForItem() bool
 
 	// optional
-	ShowAllHelpTopicsForSearchString(searchString string)
-	HasShowAllHelpTopicsForSearchString() bool
-
-	// optional
 	PerformActionForItem(item objc.Object)
 	HasPerformActionForItem() bool
 
 	// optional
 	SearchForItemsWithSearchStringResultLimitMatchedItemHandler(searchString string, resultLimit int, handleMatchedItems func(items []objc.Object))
 	HasSearchForItemsWithSearchStringResultLimitMatchedItemHandler() bool
+
+	// optional
+	ShowAllHelpTopicsForSearchString(searchString string)
+	HasShowAllHelpTopicsForSearchString() bool
 }
 
 // ensure impl type implements protocol interface
@@ -47,17 +47,6 @@ func (u_ UserInterfaceItemSearchingObject) LocalizedTitlesForItem(item objc.Obje
 	return rv
 }
 
-func (u_ UserInterfaceItemSearchingObject) HasShowAllHelpTopicsForSearchString() bool {
-	return u_.RespondsToSelector(objc.Sel("showAllHelpTopicsForSearchString:"))
-}
-
-// If this method is implemented, a "Show All Help Topics" item will appear in the menu and this method is called when the user selects it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfaceitemsearching/1420806-showallhelptopicsforsearchstring?language=objc
-func (u_ UserInterfaceItemSearchingObject) ShowAllHelpTopicsForSearchString(searchString string) {
-	objc.Call[objc.Void](u_, objc.Sel("showAllHelpTopicsForSearchString:"), searchString)
-}
-
 func (u_ UserInterfaceItemSearchingObject) HasPerformActionForItem() bool {
 	return u_.RespondsToSelector(objc.Sel("performActionForItem:"))
 }
@@ -78,4 +67,15 @@ func (u_ UserInterfaceItemSearchingObject) HasSearchForItemsWithSearchStringResu
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfaceitemsearching/1420816-searchforitemswithsearchstring?language=objc
 func (u_ UserInterfaceItemSearchingObject) SearchForItemsWithSearchStringResultLimitMatchedItemHandler(searchString string, resultLimit int, handleMatchedItems func(items []objc.Object)) {
 	objc.Call[objc.Void](u_, objc.Sel("searchForItemsWithSearchString:resultLimit:matchedItemHandler:"), searchString, resultLimit, handleMatchedItems)
+}
+
+func (u_ UserInterfaceItemSearchingObject) HasShowAllHelpTopicsForSearchString() bool {
+	return u_.RespondsToSelector(objc.Sel("showAllHelpTopicsForSearchString:"))
+}
+
+// If this method is implemented, a "Show All Help Topics" item will appear in the menu and this method is called when the user selects it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfaceitemsearching/1420806-showallhelptopicsforsearchstring?language=objc
+func (u_ UserInterfaceItemSearchingObject) ShowAllHelpTopicsForSearchString(searchString string) {
+	objc.Call[objc.Void](u_, objc.Sel("showAllHelpTopicsForSearchString:"), searchString)
 }

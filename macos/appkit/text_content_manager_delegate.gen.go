@@ -11,37 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate?language=objc
 type PTextContentManagerDelegate interface {
 	// optional
-	TextContentManagerShouldEnumerateTextElementOptions(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool
-	HasTextContentManagerShouldEnumerateTextElementOptions() bool
-
-	// optional
 	TextContentManagerTextElementAtLocation(textContentManager TextContentManager, location TextLocationObject) TextElement
 	HasTextContentManagerTextElementAtLocation() bool
 }
 
 // A delegate implementation builder for the [PTextContentManagerDelegate] protocol.
 type TextContentManagerDelegate struct {
-	_TextContentManagerShouldEnumerateTextElementOptions func(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool
-	_TextContentManagerTextElementAtLocation             func(textContentManager TextContentManager, location TextLocationObject) TextElement
+	_TextContentManagerTextElementAtLocation func(textContentManager TextContentManager, location TextLocationObject) TextElement
 }
 
-func (di *TextContentManagerDelegate) HasTextContentManagerShouldEnumerateTextElementOptions() bool {
-	return di._TextContentManagerShouldEnumerateTextElementOptions != nil
-}
-
-// Returns a Boolean value that indicates whether the framework should skip this text element in the enumeration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate/3852566-textcontentmanager?language=objc
-func (di *TextContentManagerDelegate) SetTextContentManagerShouldEnumerateTextElementOptions(f func(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool) {
-	di._TextContentManagerShouldEnumerateTextElementOptions = f
-}
-
-// Returns a Boolean value that indicates whether the framework should skip this text element in the enumeration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate/3852566-textcontentmanager?language=objc
-func (di *TextContentManagerDelegate) TextContentManagerShouldEnumerateTextElementOptions(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool {
-	return di._TextContentManagerShouldEnumerateTextElementOptions(textContentManager, textElement, options)
-}
 func (di *TextContentManagerDelegate) HasTextContentManagerTextElementAtLocation() bool {
 	return di._TextContentManagerTextElementAtLocation != nil
 }
@@ -66,18 +44,6 @@ var _ PTextContentManagerDelegate = (*TextContentManagerDelegateObject)(nil)
 // A concrete type for the [PTextContentManagerDelegate] protocol.
 type TextContentManagerDelegateObject struct {
 	objc.Object
-}
-
-func (t_ TextContentManagerDelegateObject) HasTextContentManagerShouldEnumerateTextElementOptions() bool {
-	return t_.RespondsToSelector(objc.Sel("textContentManager:shouldEnumerateTextElement:options:"))
-}
-
-// Returns a Boolean value that indicates whether the framework should skip this text element in the enumeration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate/3852566-textcontentmanager?language=objc
-func (t_ TextContentManagerDelegateObject) TextContentManagerShouldEnumerateTextElementOptions(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textContentManager:shouldEnumerateTextElement:options:"), textContentManager, textElement, options)
-	return rv
 }
 
 func (t_ TextContentManagerDelegateObject) HasTextContentManagerTextElementAtLocation() bool {

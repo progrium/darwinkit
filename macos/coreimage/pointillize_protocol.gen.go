@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize?language=objc
 type PPointillize interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -34,6 +26,14 @@ type PPointillize interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -42,29 +42,6 @@ var _ PPointillize = (*PointillizeObject)(nil)
 // A concrete type for the [PPointillize] protocol.
 type PointillizeObject struct {
 	objc.Object
-}
-
-func (p_ PointillizeObject) HasSetCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228678-center?language=objc
-func (p_ PointillizeObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
-}
-
-func (p_ PointillizeObject) HasCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228678-center?language=objc
-func (p_ PointillizeObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
-	return rv
 }
 
 func (p_ PointillizeObject) HasSetInputImage() bool {
@@ -110,5 +87,28 @@ func (p_ PointillizeObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228680-radius?language=objc
 func (p_ PointillizeObject) Radius() float32 {
 	rv := objc.Call[float32](p_, objc.Sel("radius"))
+	return rv
+}
+
+func (p_ PointillizeObject) HasSetCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228678-center?language=objc
+func (p_ PointillizeObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
+}
+
+func (p_ PointillizeObject) HasCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228678-center?language=objc
+func (p_ PointillizeObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
 	return rv
 }

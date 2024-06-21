@@ -21,10 +21,10 @@ type IMatrixSoftMaxGradient interface {
 	IMatrixBinaryKernel
 	EncodeToCommandBufferGradientMatrixForwardOutputMatrixResultMatrix(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, forwardOutputMatrix IMatrix, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectGradientMatrixForwardOutputMatrixResultMatrix(commandBufferObject objc.IObject, gradientMatrix IMatrix, forwardOutputMatrix IMatrix, resultMatrix IMatrix)
-	SourceColumns() uint
-	SetSourceColumns(value uint)
 	SourceRows() uint
 	SetSourceRows(value uint)
+	SourceColumns() uint
+	SetSourceColumns(value uint)
 }
 
 // A gradient softmax kernel that operates on matrices. [Full Topic]
@@ -40,21 +40,6 @@ func MatrixSoftMaxGradientFrom(ptr unsafe.Pointer) MatrixSoftMaxGradient {
 	}
 }
 
-func (m_ MatrixSoftMaxGradient) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSoftMaxGradient {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixSoftMaxGradient](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966651-copywithzone?language=objc
-func MatrixSoftMaxGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSoftMaxGradient {
-	instance := MatrixSoftMaxGradientClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixSoftMaxGradient) InitWithDevice(device metal.PDevice) MatrixSoftMaxGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixSoftMaxGradient](m_, objc.Sel("initWithDevice:"), po0)
@@ -66,6 +51,21 @@ func (m_ MatrixSoftMaxGradient) InitWithDevice(device metal.PDevice) MatrixSoftM
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966654-initwithdevice?language=objc
 func NewMatrixSoftMaxGradientWithDevice(device metal.PDevice) MatrixSoftMaxGradient {
 	instance := MatrixSoftMaxGradientClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixSoftMaxGradient) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSoftMaxGradient {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixSoftMaxGradient](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966651-copywithzone?language=objc
+func MatrixSoftMaxGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSoftMaxGradient {
+	instance := MatrixSoftMaxGradientClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -107,21 +107,6 @@ func (m_ MatrixSoftMaxGradient) EncodeToCommandBufferObjectGradientMatrixForward
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966655-sourcecolumns?language=objc
-func (m_ MatrixSoftMaxGradient) SourceColumns() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceColumns"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966655-sourcecolumns?language=objc
-func (m_ MatrixSoftMaxGradient) SetSourceColumns(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceColumns:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966656-sourcerows?language=objc
 func (m_ MatrixSoftMaxGradient) SourceRows() uint {
 	rv := objc.Call[uint](m_, objc.Sel("sourceRows"))
@@ -133,4 +118,19 @@ func (m_ MatrixSoftMaxGradient) SourceRows() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966656-sourcerows?language=objc
 func (m_ MatrixSoftMaxGradient) SetSourceRows(value uint) {
 	objc.Call[objc.Void](m_, objc.Sel("setSourceRows:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966655-sourcecolumns?language=objc
+func (m_ MatrixSoftMaxGradient) SourceColumns() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceColumns"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966655-sourcecolumns?language=objc
+func (m_ MatrixSoftMaxGradient) SetSourceColumns(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceColumns:"), value)
 }

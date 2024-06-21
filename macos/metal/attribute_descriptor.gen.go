@@ -18,12 +18,12 @@ type _AttributeDescriptorClass struct {
 // An interface definition for the [AttributeDescriptor] class.
 type IAttributeDescriptor interface {
 	objc.IObject
-	Format() AttributeFormat
-	SetFormat(value AttributeFormat)
 	BufferIndex() uint
 	SetBufferIndex(value uint)
 	Offset() uint
 	SetOffset(value uint)
+	Format() AttributeFormat
+	SetFormat(value AttributeFormat)
 }
 
 // An object that describes an argument's format and where its data is in memory. [Full Topic]
@@ -59,21 +59,6 @@ func (a_ AttributeDescriptor) Init() AttributeDescriptor {
 	return rv
 }
 
-// The format of the attribute's data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097194-format?language=objc
-func (a_ AttributeDescriptor) Format() AttributeFormat {
-	rv := objc.Call[AttributeFormat](a_, objc.Sel("format"))
-	return rv
-}
-
-// The format of the attribute's data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097194-format?language=objc
-func (a_ AttributeDescriptor) SetFormat(value AttributeFormat) {
-	objc.Call[objc.Void](a_, objc.Sel("setFormat:"), value)
-}
-
 // The index in the argument table for the buffer that contains the data for the attribute. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097218-bufferindex?language=objc
@@ -102,4 +87,19 @@ func (a_ AttributeDescriptor) Offset() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097220-offset?language=objc
 func (a_ AttributeDescriptor) SetOffset(value uint) {
 	objc.Call[objc.Void](a_, objc.Sel("setOffset:"), value)
+}
+
+// The format of the attribute's data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097194-format?language=objc
+func (a_ AttributeDescriptor) Format() AttributeFormat {
+	rv := objc.Call[AttributeFormat](a_, objc.Sel("format"))
+	return rv
+}
+
+// The format of the attribute's data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptor/2097194-format?language=objc
+func (a_ AttributeDescriptor) SetFormat(value AttributeFormat) {
+	objc.Call[objc.Void](a_, objc.Sel("setFormat:"), value)
 }

@@ -56,6 +56,32 @@ func (s_ SynchronizedLayer) Init() SynchronizedLayer {
 	return rv
 }
 
+func (sc _SynchronizedLayerClass) Layer() SynchronizedLayer {
+	rv := objc.Call[SynchronizedLayer](sc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func SynchronizedLayer_Layer() SynchronizedLayer {
+	return SynchronizedLayerClass.Layer()
+}
+
+func (s_ SynchronizedLayer) InitWithLayer(layer objc.IObject) SynchronizedLayer {
+	rv := objc.Call[SynchronizedLayer](s_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewSynchronizedLayerWithLayer(layer objc.IObject) SynchronizedLayer {
+	instance := SynchronizedLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (s_ SynchronizedLayer) ModelLayer() SynchronizedLayer {
 	rv := objc.Call[SynchronizedLayer](s_, objc.Sel("modelLayer"))
 	return rv
@@ -82,32 +108,6 @@ func SynchronizedLayer_PresentationLayer() SynchronizedLayer {
 	instance := SynchronizedLayerClass.Alloc().PresentationLayer()
 	instance.Autorelease()
 	return instance
-}
-
-func (s_ SynchronizedLayer) InitWithLayer(layer objc.IObject) SynchronizedLayer {
-	rv := objc.Call[SynchronizedLayer](s_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewSynchronizedLayerWithLayer(layer objc.IObject) SynchronizedLayer {
-	instance := SynchronizedLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (sc _SynchronizedLayerClass) Layer() SynchronizedLayer {
-	rv := objc.Call[SynchronizedLayer](sc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func SynchronizedLayer_Layer() SynchronizedLayer {
-	return SynchronizedLayerClass.Layer()
 }
 
 // Creates a new synchronized layer with timing synchronized with a given player item. [Full Topic]

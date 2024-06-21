@@ -19,8 +19,8 @@ type _CIProfileStateClass struct {
 type ICIProfileState interface {
 	objc.IObject
 	MidiChannel() ChannelNumber
-	DisabledProfiles() []CIProfile
 	EnabledProfiles() []CIProfile
+	DisabledProfiles() []CIProfile
 }
 
 // An object that provides the enabled and disabled profiles for a MIDI channel or port on a device. [Full Topic]
@@ -78,18 +78,18 @@ func (c_ CIProfileState) MidiChannel() ChannelNumber {
 	return rv
 }
 
-// The object’s disabled profiles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofilestate/2977109-disabledprofiles?language=objc
-func (c_ CIProfileState) DisabledProfiles() []CIProfile {
-	rv := objc.Call[[]CIProfile](c_, objc.Sel("disabledProfiles"))
-	return rv
-}
-
 // The object’s enabled profiles. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofilestate/2977110-enabledprofiles?language=objc
 func (c_ CIProfileState) EnabledProfiles() []CIProfile {
 	rv := objc.Call[[]CIProfile](c_, objc.Sel("enabledProfiles"))
+	return rv
+}
+
+// The object’s disabled profiles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofilestate/2977109-disabledprofiles?language=objc
+func (c_ CIProfileState) DisabledProfiles() []CIProfile {
+	rv := objc.Call[[]CIProfile](c_, objc.Sel("disabledProfiles"))
 	return rv
 }

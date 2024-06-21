@@ -21,8 +21,8 @@ type _TensorClass struct {
 type ITensor interface {
 	objc.IObject
 	Shape() *foundation.Array
-	Operation() Operation
 	DataType() mps.DataType
+	Operation() Operation
 }
 
 //	[Full Topic]
@@ -68,16 +68,16 @@ func (t_ Tensor) Shape() *foundation.Array {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensor/3564665-operation?language=objc
-func (t_ Tensor) Operation() Operation {
-	rv := objc.Call[Operation](t_, objc.Sel("operation"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensor/3564663-datatype?language=objc
+func (t_ Tensor) DataType() mps.DataType {
+	rv := objc.Call[mps.DataType](t_, objc.Sel("dataType"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensor/3564663-datatype?language=objc
-func (t_ Tensor) DataType() mps.DataType {
-	rv := objc.Call[mps.DataType](t_, objc.Sel("dataType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensor/3564665-operation?language=objc
+func (t_ Tensor) Operation() Operation {
+	rv := objc.Call[Operation](t_, objc.Sel("operation"))
 	return rv
 }

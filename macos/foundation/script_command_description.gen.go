@@ -18,19 +18,19 @@ type _ScriptCommandDescriptionClass struct {
 // An interface definition for the [ScriptCommandDescription] class.
 type IScriptCommandDescription interface {
 	objc.IObject
-	CreateCommandInstance() ScriptCommand
 	IsOptionalArgumentWithName(argumentName string) bool
-	TypeForArgumentWithName(argumentName string) string
+	CreateCommandInstance() ScriptCommand
 	CreateCommandInstanceWithZone(zone unsafe.Pointer) ScriptCommand
+	TypeForArgumentWithName(argumentName string) string
 	AppleEventCodeForArgumentWithName(argumentName string) uint
-	AppleEventClassCode() uint
-	AppleEventCode() uint
-	AppleEventCodeForReturnType() uint
-	ReturnType() string
 	ArgumentNames() []string
-	CommandName() string
+	AppleEventCode() uint
+	AppleEventClassCode() uint
+	AppleEventCodeForReturnType() uint
 	SuiteName() string
 	CommandClassName() string
+	CommandName() string
+	ReturnType() string
 }
 
 // A script command that a macOS app supports. [Full Topic]
@@ -80,14 +80,6 @@ func (s_ ScriptCommandDescription) Init() ScriptCommandDescription {
 	return rv
 }
 
-// Creates and returns an instance of the command object described by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1418415-createcommandinstance?language=objc
-func (s_ ScriptCommandDescription) CreateCommandInstance() ScriptCommand {
-	rv := objc.Call[ScriptCommand](s_, objc.Sel("createCommandInstance"))
-	return rv
-}
-
 // Returns a Boolean value that indicates whether the command argument identified by the specified argument key is an optional argument. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1415798-isoptionalargumentwithname?language=objc
@@ -96,11 +88,11 @@ func (s_ ScriptCommandDescription) IsOptionalArgumentWithName(argumentName strin
 	return rv
 }
 
-// Returns the type of the command argument identified by the specified key. [Full Topic]
+// Creates and returns an instance of the command object described by the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1416163-typeforargumentwithname?language=objc
-func (s_ ScriptCommandDescription) TypeForArgumentWithName(argumentName string) string {
-	rv := objc.Call[string](s_, objc.Sel("typeForArgumentWithName:"), argumentName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1418415-createcommandinstance?language=objc
+func (s_ ScriptCommandDescription) CreateCommandInstance() ScriptCommand {
+	rv := objc.Call[ScriptCommand](s_, objc.Sel("createCommandInstance"))
 	return rv
 }
 
@@ -112,43 +104,19 @@ func (s_ ScriptCommandDescription) CreateCommandInstanceWithZone(zone unsafe.Poi
 	return rv
 }
 
+// Returns the type of the command argument identified by the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1416163-typeforargumentwithname?language=objc
+func (s_ ScriptCommandDescription) TypeForArgumentWithName(argumentName string) string {
+	rv := objc.Call[string](s_, objc.Sel("typeForArgumentWithName:"), argumentName)
+	return rv
+}
+
 // Returns the Apple event code for the specified command argument of the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1414752-appleeventcodeforargumentwithnam?language=objc
 func (s_ ScriptCommandDescription) AppleEventCodeForArgumentWithName(argumentName string) uint {
 	rv := objc.Call[uint](s_, objc.Sel("appleEventCodeForArgumentWithName:"), argumentName)
-	return rv
-}
-
-// Returns the four-character code for the Apple event class of the receiver’s command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1416191-appleeventclasscode?language=objc
-func (s_ ScriptCommandDescription) AppleEventClassCode() uint {
-	rv := objc.Call[uint](s_, objc.Sel("appleEventClassCode"))
-	return rv
-}
-
-// Returns the four-character code for the Apple event ID of the receiver’s command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1408972-appleeventcode?language=objc
-func (s_ ScriptCommandDescription) AppleEventCode() uint {
-	rv := objc.Call[uint](s_, objc.Sel("appleEventCode"))
-	return rv
-}
-
-// Returns the Apple event code that identifies the command’s return type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1408166-appleeventcodeforreturntype?language=objc
-func (s_ ScriptCommandDescription) AppleEventCodeForReturnType() uint {
-	rv := objc.Call[uint](s_, objc.Sel("appleEventCodeForReturnType"))
-	return rv
-}
-
-// Returns the return type of the command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1410754-returntype?language=objc
-func (s_ ScriptCommandDescription) ReturnType() string {
-	rv := objc.Call[string](s_, objc.Sel("returnType"))
 	return rv
 }
 
@@ -160,11 +128,27 @@ func (s_ ScriptCommandDescription) ArgumentNames() []string {
 	return rv
 }
 
-// Returns the name of the command. [Full Topic]
+// Returns the four-character code for the Apple event ID of the receiver’s command. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1407512-commandname?language=objc
-func (s_ ScriptCommandDescription) CommandName() string {
-	rv := objc.Call[string](s_, objc.Sel("commandName"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1408972-appleeventcode?language=objc
+func (s_ ScriptCommandDescription) AppleEventCode() uint {
+	rv := objc.Call[uint](s_, objc.Sel("appleEventCode"))
+	return rv
+}
+
+// Returns the four-character code for the Apple event class of the receiver’s command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1416191-appleeventclasscode?language=objc
+func (s_ ScriptCommandDescription) AppleEventClassCode() uint {
+	rv := objc.Call[uint](s_, objc.Sel("appleEventClassCode"))
+	return rv
+}
+
+// Returns the Apple event code that identifies the command’s return type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1408166-appleeventcodeforreturntype?language=objc
+func (s_ ScriptCommandDescription) AppleEventCodeForReturnType() uint {
+	rv := objc.Call[uint](s_, objc.Sel("appleEventCodeForReturnType"))
 	return rv
 }
 
@@ -181,5 +165,21 @@ func (s_ ScriptCommandDescription) SuiteName() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1417478-commandclassname?language=objc
 func (s_ ScriptCommandDescription) CommandClassName() string {
 	rv := objc.Call[string](s_, objc.Sel("commandClassName"))
+	return rv
+}
+
+// Returns the name of the command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1407512-commandname?language=objc
+func (s_ ScriptCommandDescription) CommandName() string {
+	rv := objc.Call[string](s_, objc.Sel("commandName"))
+	return rv
+}
+
+// Returns the return type of the command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1410754-returntype?language=objc
+func (s_ ScriptCommandDescription) ReturnType() string {
+	rv := objc.Call[string](s_, objc.Sel("returnType"))
 	return rv
 }

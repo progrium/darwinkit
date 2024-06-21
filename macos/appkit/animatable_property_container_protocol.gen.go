@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimatablepropertycontainer?language=objc
 type PAnimatablePropertyContainer interface {
 	// optional
-	AnimationForKey(key AnimatablePropertyKey) objc.Object
-	HasAnimationForKey() bool
-
-	// optional
 	Animator() objc.Object
 	HasAnimator() bool
+
+	// optional
+	AnimationForKey(key AnimatablePropertyKey) objc.Object
+	HasAnimationForKey() bool
 
 	// optional
 	SetAnimations(value map[AnimatablePropertyKey]objc.Object)
@@ -35,18 +35,6 @@ type AnimatablePropertyContainerObject struct {
 	objc.Object
 }
 
-func (a_ AnimatablePropertyContainerObject) HasAnimationForKey() bool {
-	return a_.RespondsToSelector(objc.Sel("animationForKey:"))
-}
-
-// Returns the animation that should be performed for the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimatablepropertycontainer/1526209-animationforkey?language=objc
-func (a_ AnimatablePropertyContainerObject) AnimationForKey(key AnimatablePropertyKey) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("animationForKey:"), key)
-	return rv
-}
-
 func (a_ AnimatablePropertyContainerObject) HasAnimator() bool {
 	return a_.RespondsToSelector(objc.Sel("animator"))
 }
@@ -56,6 +44,18 @@ func (a_ AnimatablePropertyContainerObject) HasAnimator() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimatablepropertycontainer/1530511-animator?language=objc
 func (a_ AnimatablePropertyContainerObject) Animator() objc.Object {
 	rv := objc.Call[objc.Object](a_, objc.Sel("animator"))
+	return rv
+}
+
+func (a_ AnimatablePropertyContainerObject) HasAnimationForKey() bool {
+	return a_.RespondsToSelector(objc.Sel("animationForKey:"))
+}
+
+// Returns the animation that should be performed for the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimatablepropertycontainer/1526209-animationforkey?language=objc
+func (a_ AnimatablePropertyContainerObject) AnimationForKey(key AnimatablePropertyKey) objc.Object {
+	rv := objc.Call[objc.Object](a_, objc.Sel("animationForKey:"), key)
 	return rv
 }
 

@@ -59,6 +59,13 @@ func (u_ URLDownload) Init() URLDownload {
 	return rv
 }
 
+// Sets the destination path of the downloaded file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownload/1412923-setdestination?language=objc
+func (u_ URLDownload) SetDestinationAllowOverwrite(path string, allowOverwrite bool) {
+	objc.Call[objc.Void](u_, objc.Sel("setDestination:allowOverwrite:"), path, allowOverwrite)
+}
+
 // Returns whether a URL download object can resume a download that was decoded with the specified MIME type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownload/1409113-canresumedownloaddecodedwithenco?language=objc
@@ -72,13 +79,6 @@ func (uc _URLDownloadClass) CanResumeDownloadDecodedWithEncodingMIMEType(MIMETyp
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownload/1409113-canresumedownloaddecodedwithenco?language=objc
 func URLDownload_CanResumeDownloadDecodedWithEncodingMIMEType(MIMEType string) bool {
 	return URLDownloadClass.CanResumeDownloadDecodedWithEncodingMIMEType(MIMEType)
-}
-
-// Sets the destination path of the downloaded file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownload/1412923-setdestination?language=objc
-func (u_ URLDownload) SetDestinationAllowOverwrite(path string, allowOverwrite bool) {
-	objc.Call[objc.Void](u_, objc.Sel("setDestination:allowOverwrite:"), path, allowOverwrite)
 }
 
 // Cancels the receiver’s download and deletes the downloaded file. [Full Topic]

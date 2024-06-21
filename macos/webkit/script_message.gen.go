@@ -18,10 +18,10 @@ type _ScriptMessageClass struct {
 // An interface definition for the [ScriptMessage] class.
 type IScriptMessage interface {
 	objc.IObject
+	Name() string
+	Body() objc.Object
 	FrameInfo() FrameInfo
 	World() ContentWorld
-	Body() objc.Object
-	Name() string
 }
 
 // An object that encapsulates a message sent by JavaScript code from a webpage. [Full Topic]
@@ -57,6 +57,22 @@ func (s_ ScriptMessage) Init() ScriptMessage {
 	return rv
 }
 
+// The name of the message handler to which the message is sent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/1417908-name?language=objc
+func (s_ ScriptMessage) Name() string {
+	rv := objc.Call[string](s_, objc.Sel("name"))
+	return rv
+}
+
+// The body of the message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/1417901-body?language=objc
+func (s_ ScriptMessage) Body() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("body"))
+	return rv
+}
+
 // The frame that sent the message. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/1417906-frameinfo?language=objc
@@ -70,21 +86,5 @@ func (s_ ScriptMessage) FrameInfo() FrameInfo {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/3585109-world?language=objc
 func (s_ ScriptMessage) World() ContentWorld {
 	rv := objc.Call[ContentWorld](s_, objc.Sel("world"))
-	return rv
-}
-
-// The body of the message. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/1417901-body?language=objc
-func (s_ ScriptMessage) Body() objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("body"))
-	return rv
-}
-
-// The name of the message handler to which the message is sent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessage/1417908-name?language=objc
-func (s_ ScriptMessage) Name() string {
-	rv := objc.Call[string](s_, objc.Sel("name"))
 	return rv
 }

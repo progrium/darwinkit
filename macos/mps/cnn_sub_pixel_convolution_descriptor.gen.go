@@ -67,18 +67,6 @@ func CNNSubPixelConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKer
 	return CNNSubPixelConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannels(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels)
 }
 
-func (cc _CNNSubPixelConvolutionDescriptorClass) CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNSubPixelConvolutionDescriptor {
-	rv := objc.Call[CNNSubPixelConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-	return rv
-}
-
-// Creates a convolution descriptor with an optional neuron filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648876-cnnconvolutiondescriptorwithkern?language=objc
-func CNNSubPixelConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNSubPixelConvolutionDescriptor {
-	return CNNSubPixelConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnsubpixelconvolutiondescriptor/2875156-subpixelscalefactor?language=objc

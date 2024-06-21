@@ -13,14 +13,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate?language=objc
 type PRenderPipelineState interface {
 	// optional
-	ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint
-	HasImageblockMemoryLengthForDimensions() bool
-
-	// optional
-	FunctionHandleWithFunctionStage(function FunctionObject, stage RenderStages) FunctionHandleObject
-	HasFunctionHandleWithFunctionStage() bool
-
-	// optional
 	NewIntersectionFunctionTableWithDescriptorStage(descriptor IntersectionFunctionTableDescriptor, stage RenderStages) IntersectionFunctionTableObject
 	HasNewIntersectionFunctionTableWithDescriptorStage() bool
 
@@ -33,28 +25,36 @@ type PRenderPipelineState interface {
 	HasNewVisibleFunctionTableWithDescriptorStage() bool
 
 	// optional
-	ThreadgroupSizeMatchesTileSize() bool
-	HasThreadgroupSizeMatchesTileSize() bool
+	FunctionHandleWithFunctionStage(function FunctionObject, stage RenderStages) FunctionHandleObject
+	HasFunctionHandleWithFunctionStage() bool
 
 	// optional
-	MaxTotalThreadsPerThreadgroup() uint
-	HasMaxTotalThreadsPerThreadgroup() bool
+	ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint
+	HasImageblockMemoryLengthForDimensions() bool
 
 	// optional
 	Device() DeviceObject
 	HasDevice() bool
 
 	// optional
-	ImageblockSampleLength() uint
-	HasImageblockSampleLength() bool
+	MaxTotalThreadsPerThreadgroup() uint
+	HasMaxTotalThreadsPerThreadgroup() bool
+
+	// optional
+	ThreadgroupSizeMatchesTileSize() bool
+	HasThreadgroupSizeMatchesTileSize() bool
+
+	// optional
+	Label() string
+	HasLabel() bool
 
 	// optional
 	SupportIndirectCommandBuffers() bool
 	HasSupportIndirectCommandBuffers() bool
 
 	// optional
-	Label() string
-	HasLabel() bool
+	ImageblockSampleLength() uint
+	HasImageblockSampleLength() bool
 }
 
 // ensure impl type implements protocol interface
@@ -63,31 +63,6 @@ var _ PRenderPipelineState = (*RenderPipelineStateObject)(nil)
 // A concrete type for the [PRenderPipelineState] protocol.
 type RenderPipelineStateObject struct {
 	objc.Object
-}
-
-func (r_ RenderPipelineStateObject) HasImageblockMemoryLengthForDimensions() bool {
-	return r_.RespondsToSelector(objc.Sel("imageblockMemoryLengthForDimensions:"))
-}
-
-// Returns the length of an imageblock’s memory for the specified imageblock dimensions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2928216-imageblockmemorylengthfordimensi?language=objc
-func (r_ RenderPipelineStateObject) ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint {
-	rv := objc.Call[uint](r_, objc.Sel("imageblockMemoryLengthForDimensions:"), imageblockDimensions)
-	return rv
-}
-
-func (r_ RenderPipelineStateObject) HasFunctionHandleWithFunctionStage() bool {
-	return r_.RespondsToSelector(objc.Sel("functionHandleWithFunction:stage:"))
-}
-
-// Creates a function handle for a shader. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/3750581-functionhandlewithfunction?language=objc
-func (r_ RenderPipelineStateObject) FunctionHandleWithFunctionStage(function FunctionObject, stage RenderStages) FunctionHandleObject {
-	po0 := objc.WrapAsProtocol("MTLFunction", function)
-	rv := objc.Call[FunctionHandleObject](r_, objc.Sel("functionHandleWithFunction:stage:"), po0, stage)
-	return rv
 }
 
 func (r_ RenderPipelineStateObject) HasNewIntersectionFunctionTableWithDescriptorStage() bool {
@@ -126,27 +101,28 @@ func (r_ RenderPipelineStateObject) NewVisibleFunctionTableWithDescriptorStage(d
 	return rv
 }
 
-func (r_ RenderPipelineStateObject) HasThreadgroupSizeMatchesTileSize() bool {
-	return r_.RespondsToSelector(objc.Sel("threadgroupSizeMatchesTileSize"))
+func (r_ RenderPipelineStateObject) HasFunctionHandleWithFunctionStage() bool {
+	return r_.RespondsToSelector(objc.Sel("functionHandleWithFunction:stage:"))
 }
 
-// A Boolean value that indicates whether the pipeline state needs a threadgroup’s size to equal a tile’s size. [Full Topic]
+// Creates a function handle for a shader. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2866353-threadgroupsizematchestilesize?language=objc
-func (r_ RenderPipelineStateObject) ThreadgroupSizeMatchesTileSize() bool {
-	rv := objc.Call[bool](r_, objc.Sel("threadgroupSizeMatchesTileSize"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/3750581-functionhandlewithfunction?language=objc
+func (r_ RenderPipelineStateObject) FunctionHandleWithFunctionStage(function FunctionObject, stage RenderStages) FunctionHandleObject {
+	po0 := objc.WrapAsProtocol("MTLFunction", function)
+	rv := objc.Call[FunctionHandleObject](r_, objc.Sel("functionHandleWithFunction:stage:"), po0, stage)
 	return rv
 }
 
-func (r_ RenderPipelineStateObject) HasMaxTotalThreadsPerThreadgroup() bool {
-	return r_.RespondsToSelector(objc.Sel("maxTotalThreadsPerThreadgroup"))
+func (r_ RenderPipelineStateObject) HasImageblockMemoryLengthForDimensions() bool {
+	return r_.RespondsToSelector(objc.Sel("imageblockMemoryLengthForDimensions:"))
 }
 
-// The largest number of threads the pipeline state can have in a single tile shader threadgroup. [Full Topic]
+// Returns the length of an imageblock’s memory for the specified imageblock dimensions. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2866352-maxtotalthreadsperthreadgroup?language=objc
-func (r_ RenderPipelineStateObject) MaxTotalThreadsPerThreadgroup() uint {
-	rv := objc.Call[uint](r_, objc.Sel("maxTotalThreadsPerThreadgroup"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2928216-imageblockmemorylengthfordimensi?language=objc
+func (r_ RenderPipelineStateObject) ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint {
+	rv := objc.Call[uint](r_, objc.Sel("imageblockMemoryLengthForDimensions:"), imageblockDimensions)
 	return rv
 }
 
@@ -162,15 +138,39 @@ func (r_ RenderPipelineStateObject) Device() DeviceObject {
 	return rv
 }
 
-func (r_ RenderPipelineStateObject) HasImageblockSampleLength() bool {
-	return r_.RespondsToSelector(objc.Sel("imageblockSampleLength"))
+func (r_ RenderPipelineStateObject) HasMaxTotalThreadsPerThreadgroup() bool {
+	return r_.RespondsToSelector(objc.Sel("maxTotalThreadsPerThreadgroup"))
 }
 
-// The memory size, in byes, of the render pipeline’s imageblock for a single sample. [Full Topic]
+// The largest number of threads the pipeline state can have in a single tile shader threadgroup. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2928215-imageblocksamplelength?language=objc
-func (r_ RenderPipelineStateObject) ImageblockSampleLength() uint {
-	rv := objc.Call[uint](r_, objc.Sel("imageblockSampleLength"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2866352-maxtotalthreadsperthreadgroup?language=objc
+func (r_ RenderPipelineStateObject) MaxTotalThreadsPerThreadgroup() uint {
+	rv := objc.Call[uint](r_, objc.Sel("maxTotalThreadsPerThreadgroup"))
+	return rv
+}
+
+func (r_ RenderPipelineStateObject) HasThreadgroupSizeMatchesTileSize() bool {
+	return r_.RespondsToSelector(objc.Sel("threadgroupSizeMatchesTileSize"))
+}
+
+// A Boolean value that indicates whether the pipeline state needs a threadgroup’s size to equal a tile’s size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2866353-threadgroupsizematchestilesize?language=objc
+func (r_ RenderPipelineStateObject) ThreadgroupSizeMatchesTileSize() bool {
+	rv := objc.Call[bool](r_, objc.Sel("threadgroupSizeMatchesTileSize"))
+	return rv
+}
+
+func (r_ RenderPipelineStateObject) HasLabel() bool {
+	return r_.RespondsToSelector(objc.Sel("label"))
+}
+
+// A string that helps you identify the render pipeline state during debugging. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/1514621-label?language=objc
+func (r_ RenderPipelineStateObject) Label() string {
+	rv := objc.Call[string](r_, objc.Sel("label"))
 	return rv
 }
 
@@ -186,14 +186,14 @@ func (r_ RenderPipelineStateObject) SupportIndirectCommandBuffers() bool {
 	return rv
 }
 
-func (r_ RenderPipelineStateObject) HasLabel() bool {
-	return r_.RespondsToSelector(objc.Sel("label"))
+func (r_ RenderPipelineStateObject) HasImageblockSampleLength() bool {
+	return r_.RespondsToSelector(objc.Sel("imageblockSampleLength"))
 }
 
-// A string that helps you identify the render pipeline state during debugging. [Full Topic]
+// The memory size, in byes, of the render pipeline’s imageblock for a single sample. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/1514621-label?language=objc
-func (r_ RenderPipelineStateObject) Label() string {
-	rv := objc.Call[string](r_, objc.Sel("label"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/2928215-imageblocksamplelength?language=objc
+func (r_ RenderPipelineStateObject) ImageblockSampleLength() uint {
+	rv := objc.Call[uint](r_, objc.Sel("imageblockSampleLength"))
 	return rv
 }

@@ -24,8 +24,8 @@ type IPlayerItemMetadataOutput interface {
 	SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue)
 	AdvanceIntervalForDelegateInvocation() foundation.TimeInterval
 	SetAdvanceIntervalForDelegateInvocation(value foundation.TimeInterval)
-	DelegateQueue() dispatch.Queue
 	Delegate() PlayerItemMetadataOutputPushDelegateObject
+	DelegateQueue() dispatch.Queue
 }
 
 // An object that vends collections of metadata items that a player item’s tracks carry. [Full Topic]
@@ -105,18 +105,18 @@ func (p_ PlayerItemMetadataOutput) SetAdvanceIntervalForDelegateInvocation(value
 	objc.Call[objc.Void](p_, objc.Sel("setAdvanceIntervalForDelegateInvocation:"), value)
 }
 
-// The dispatch queue on which messages are sent to the delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadataoutput/1387265-delegatequeue?language=objc
-func (p_ PlayerItemMetadataOutput) DelegateQueue() dispatch.Queue {
-	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
-	return rv
-}
-
 // The delegate object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadataoutput/1387200-delegate?language=objc
 func (p_ PlayerItemMetadataOutput) Delegate() PlayerItemMetadataOutputPushDelegateObject {
 	rv := objc.Call[PlayerItemMetadataOutputPushDelegateObject](p_, objc.Sel("delegate"))
+	return rv
+}
+
+// The dispatch queue on which messages are sent to the delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadataoutput/1387265-delegatequeue?language=objc
+func (p_ PlayerItemMetadataOutput) DelegateQueue() dispatch.Queue {
+	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
 	return rv
 }

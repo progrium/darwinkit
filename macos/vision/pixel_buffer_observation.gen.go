@@ -19,8 +19,8 @@ type _PixelBufferObservationClass struct {
 // An interface definition for the [PixelBufferObservation] class.
 type IPixelBufferObservation interface {
 	IObservation
-	PixelBuffer() corevideo.PixelBufferRef
 	FeatureName() string
+	PixelBuffer() corevideo.PixelBufferRef
 }
 
 // An object that represents an image that an image analysis request produces. [Full Topic]
@@ -56,18 +56,18 @@ func (p_ PixelBufferObservation) Init() PixelBufferObservation {
 	return rv
 }
 
-// The image that results from a request with image output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnpixelbufferobservation/2890132-pixelbuffer?language=objc
-func (p_ PixelBufferObservation) PixelBuffer() corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](p_, objc.Sel("pixelBuffer"))
-	return rv
-}
-
 // A feature name that the CoreML model defines. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpixelbufferobservation/3131945-featurename?language=objc
 func (p_ PixelBufferObservation) FeatureName() string {
 	rv := objc.Call[string](p_, objc.Sel("featureName"))
+	return rv
+}
+
+// The image that results from a request with image output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnpixelbufferobservation/2890132-pixelbuffer?language=objc
+func (p_ PixelBufferObservation) PixelBuffer() corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](p_, objc.Sel("pixelBuffer"))
 	return rv
 }

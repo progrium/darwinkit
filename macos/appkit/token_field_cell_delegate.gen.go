@@ -11,179 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate?language=objc
 type PTokenFieldCellDelegate interface {
 	// optional
-	TokenFieldCellMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu
-	HasTokenFieldCellMenuForRepresentedObject() bool
-
-	// optional
-	TokenFieldCellDisplayStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string
-	HasTokenFieldCellDisplayStringForRepresentedObject() bool
-
-	// optional
-	TokenFieldCellReadFromPasteboard(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object
-	HasTokenFieldCellReadFromPasteboard() bool
-
-	// optional
-	TokenFieldCellRepresentedObjectForEditingString(tokenFieldCell TokenFieldCell, editingString string) objc.Object
-	HasTokenFieldCellRepresentedObjectForEditingString() bool
-
-	// optional
-	TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object
-	HasTokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem() bool
-
-	// optional
-	TokenFieldCellWriteRepresentedObjectsToPasteboard(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool
-	HasTokenFieldCellWriteRepresentedObjectsToPasteboard() bool
-
-	// optional
-	TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object
-	HasTokenFieldCellShouldAddObjectsAtIndex() bool
-
-	// optional
 	TokenFieldCellEditingStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string
 	HasTokenFieldCellEditingStringForRepresentedObject() bool
-
-	// optional
-	TokenFieldCellHasMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool
-	HasTokenFieldCellHasMenuForRepresentedObject() bool
-
-	// optional
-	TokenFieldCellStyleForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle
-	HasTokenFieldCellStyleForRepresentedObject() bool
 }
 
 // A delegate implementation builder for the [PTokenFieldCellDelegate] protocol.
 type TokenFieldCellDelegate struct {
-	_TokenFieldCellMenuForRepresentedObject                               func(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu
-	_TokenFieldCellDisplayStringForRepresentedObject                      func(tokenFieldCell TokenFieldCell, representedObject objc.Object) string
-	_TokenFieldCellReadFromPasteboard                                     func(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object
-	_TokenFieldCellRepresentedObjectForEditingString                      func(tokenFieldCell TokenFieldCell, editingString string) objc.Object
-	_TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem func(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object
-	_TokenFieldCellWriteRepresentedObjectsToPasteboard                    func(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool
-	_TokenFieldCellShouldAddObjectsAtIndex                                func(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object
-	_TokenFieldCellEditingStringForRepresentedObject                      func(tokenFieldCell TokenFieldCell, representedObject objc.Object) string
-	_TokenFieldCellHasMenuForRepresentedObject                            func(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool
-	_TokenFieldCellStyleForRepresentedObject                              func(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle
+	_TokenFieldCellEditingStringForRepresentedObject func(tokenFieldCell TokenFieldCell, representedObject objc.Object) string
 }
 
-func (di *TokenFieldCellDelegate) HasTokenFieldCellMenuForRepresentedObject() bool {
-	return di._TokenFieldCellMenuForRepresentedObject != nil
-}
-
-// Allows the delegate to provide a menu for the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523796-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellMenuForRepresentedObject(f func(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu) {
-	di._TokenFieldCellMenuForRepresentedObject = f
-}
-
-// Allows the delegate to provide a menu for the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523796-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu {
-	return di._TokenFieldCellMenuForRepresentedObject(tokenFieldCell, representedObject)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellDisplayStringForRepresentedObject() bool {
-	return di._TokenFieldCellDisplayStringForRepresentedObject != nil
-}
-
-// Allows the delegate to provide a string to be displayed as a proxy for the represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523804-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellDisplayStringForRepresentedObject(f func(tokenFieldCell TokenFieldCell, representedObject objc.Object) string) {
-	di._TokenFieldCellDisplayStringForRepresentedObject = f
-}
-
-// Allows the delegate to provide a string to be displayed as a proxy for the represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523804-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellDisplayStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
-	return di._TokenFieldCellDisplayStringForRepresentedObject(tokenFieldCell, representedObject)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellReadFromPasteboard() bool {
-	return di._TokenFieldCellReadFromPasteboard != nil
-}
-
-// Allows the delegate to return an array of objects representing the data read from pboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523807-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellReadFromPasteboard(f func(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object) {
-	di._TokenFieldCellReadFromPasteboard = f
-}
-
-// Allows the delegate to return an array of objects representing the data read from pboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523807-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellReadFromPasteboard(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object {
-	return di._TokenFieldCellReadFromPasteboard(tokenFieldCell, pboard)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellRepresentedObjectForEditingString() bool {
-	return di._TokenFieldCellRepresentedObjectForEditingString != nil
-}
-
-// Allows the delegate to provide a represented object for the string being edited. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523795-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellRepresentedObjectForEditingString(f func(tokenFieldCell TokenFieldCell, editingString string) objc.Object) {
-	di._TokenFieldCellRepresentedObjectForEditingString = f
-}
-
-// Allows the delegate to provide a represented object for the string being edited. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523795-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellRepresentedObjectForEditingString(tokenFieldCell TokenFieldCell, editingString string) objc.Object {
-	return di._TokenFieldCellRepresentedObjectForEditingString(tokenFieldCell, editingString)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem() bool {
-	return di._TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem != nil
-}
-
-// Allows the delegate to provide an array of appropriate completions for the contents of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523818-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(f func(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object) {
-	di._TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem = f
-}
-
-// Allows the delegate to provide an array of appropriate completions for the contents of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523818-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	return di._TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell, substring, tokenIndex, selectedIndex)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellWriteRepresentedObjectsToPasteboard() bool {
-	return di._TokenFieldCellWriteRepresentedObjectsToPasteboard != nil
-}
-
-// Allows the delegate the opportunity to write custom pasteboard types to the pasteboard for the represented objects in objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523803-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellWriteRepresentedObjectsToPasteboard(f func(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool) {
-	di._TokenFieldCellWriteRepresentedObjectsToPasteboard = f
-}
-
-// Allows the delegate the opportunity to write custom pasteboard types to the pasteboard for the represented objects in objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523803-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellWriteRepresentedObjectsToPasteboard(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool {
-	return di._TokenFieldCellWriteRepresentedObjectsToPasteboard(tokenFieldCell, objects, pboard)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellShouldAddObjectsAtIndex() bool {
-	return di._TokenFieldCellShouldAddObjectsAtIndex != nil
-}
-
-// Allows the delegate to validate the tokens to be added to the receiver at a given index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523823-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellShouldAddObjectsAtIndex(f func(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object) {
-	di._TokenFieldCellShouldAddObjectsAtIndex = f
-}
-
-// Allows the delegate to validate the tokens to be added to the receiver at a given index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523823-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object {
-	return di._TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell, tokens, index)
-}
 func (di *TokenFieldCellDelegate) HasTokenFieldCellEditingStringForRepresentedObject() bool {
 	return di._TokenFieldCellEditingStringForRepresentedObject != nil
 }
@@ -201,40 +37,6 @@ func (di *TokenFieldCellDelegate) SetTokenFieldCellEditingStringForRepresentedOb
 func (di *TokenFieldCellDelegate) TokenFieldCellEditingStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
 	return di._TokenFieldCellEditingStringForRepresentedObject(tokenFieldCell, representedObject)
 }
-func (di *TokenFieldCellDelegate) HasTokenFieldCellHasMenuForRepresentedObject() bool {
-	return di._TokenFieldCellHasMenuForRepresentedObject != nil
-}
-
-// Allows the delegate to specify whether the represented object provides a menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523826-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellHasMenuForRepresentedObject(f func(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool) {
-	di._TokenFieldCellHasMenuForRepresentedObject = f
-}
-
-// Allows the delegate to specify whether the represented object provides a menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523826-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellHasMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool {
-	return di._TokenFieldCellHasMenuForRepresentedObject(tokenFieldCell, representedObject)
-}
-func (di *TokenFieldCellDelegate) HasTokenFieldCellStyleForRepresentedObject() bool {
-	return di._TokenFieldCellStyleForRepresentedObject != nil
-}
-
-// Allows the delegate to return the token style for editing the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523829-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) SetTokenFieldCellStyleForRepresentedObject(f func(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle) {
-	di._TokenFieldCellStyleForRepresentedObject = f
-}
-
-// Allows the delegate to return the token style for editing the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523829-tokenfieldcell?language=objc
-func (di *TokenFieldCellDelegate) TokenFieldCellStyleForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle {
-	return di._TokenFieldCellStyleForRepresentedObject(tokenFieldCell, representedObject)
-}
 
 // ensure impl type implements protocol interface
 var _ PTokenFieldCellDelegate = (*TokenFieldCellDelegateObject)(nil)
@@ -242,90 +44,6 @@ var _ PTokenFieldCellDelegate = (*TokenFieldCellDelegateObject)(nil)
 // A concrete type for the [PTokenFieldCellDelegate] protocol.
 type TokenFieldCellDelegateObject struct {
 	objc.Object
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellMenuForRepresentedObject() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:menuForRepresentedObject:"))
-}
-
-// Allows the delegate to provide a menu for the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523796-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu {
-	rv := objc.Call[Menu](t_, objc.Sel("tokenFieldCell:menuForRepresentedObject:"), tokenFieldCell, representedObject)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellDisplayStringForRepresentedObject() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:displayStringForRepresentedObject:"))
-}
-
-// Allows the delegate to provide a string to be displayed as a proxy for the represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523804-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellDisplayStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
-	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:displayStringForRepresentedObject:"), tokenFieldCell, representedObject)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellReadFromPasteboard() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:readFromPasteboard:"))
-}
-
-// Allows the delegate to return an array of objects representing the data read from pboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523807-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellReadFromPasteboard(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:readFromPasteboard:"), tokenFieldCell, pboard)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellRepresentedObjectForEditingString() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:representedObjectForEditingString:"))
-}
-
-// Allows the delegate to provide a represented object for the string being edited. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523795-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellRepresentedObjectForEditingString(tokenFieldCell TokenFieldCell, editingString string) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("tokenFieldCell:representedObjectForEditingString:"), tokenFieldCell, editingString)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"))
-}
-
-// Allows the delegate to provide an array of appropriate completions for the contents of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523818-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), tokenFieldCell, substring, tokenIndex, selectedIndex)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellWriteRepresentedObjectsToPasteboard() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:writeRepresentedObjects:toPasteboard:"))
-}
-
-// Allows the delegate the opportunity to write custom pasteboard types to the pasteboard for the represented objects in objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523803-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellWriteRepresentedObjectsToPasteboard(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), tokenFieldCell, objects, pboard)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellShouldAddObjectsAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:shouldAddObjects:atIndex:"))
-}
-
-// Allows the delegate to validate the tokens to be added to the receiver at a given index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523823-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:shouldAddObjects:atIndex:"), tokenFieldCell, tokens, index)
-	return rv
 }
 
 func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellEditingStringForRepresentedObject() bool {
@@ -337,29 +55,5 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellEditingStringForRepresen
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523824-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellEditingStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
 	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:editingStringForRepresentedObject:"), tokenFieldCell, representedObject)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellHasMenuForRepresentedObject() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:hasMenuForRepresentedObject:"))
-}
-
-// Allows the delegate to specify whether the represented object provides a menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523826-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellHasMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:hasMenuForRepresentedObject:"), tokenFieldCell, representedObject)
-	return rv
-}
-
-func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellStyleForRepresentedObject() bool {
-	return t_.RespondsToSelector(objc.Sel("tokenFieldCell:styleForRepresentedObject:"))
-}
-
-// Allows the delegate to return the token style for editing the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523829-tokenfieldcell?language=objc
-func (t_ TokenFieldCellDelegateObject) TokenFieldCellStyleForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle {
-	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenFieldCell:styleForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }

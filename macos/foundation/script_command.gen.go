@@ -18,29 +18,29 @@ type _ScriptCommandClass struct {
 // An interface definition for the [ScriptCommand] class.
 type IScriptCommand interface {
 	objc.IObject
-	SuspendExecution()
-	ResumeExecutionWithResult(result objc.IObject)
 	ExecuteCommand() objc.Object
 	PerformDefaultImplementation() objc.Object
-	DirectParameter() objc.Object
-	SetDirectParameter(value objc.IObject)
-	ScriptErrorOffendingObjectDescriptor() AppleEventDescriptor
-	SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor)
-	ScriptErrorString() string
-	SetScriptErrorString(value string)
-	ScriptErrorNumber() int
-	SetScriptErrorNumber(value int)
+	ResumeExecutionWithResult(result objc.IObject)
+	SuspendExecution()
 	Arguments() map[string]objc.Object
 	SetArguments(value map[string]objc.IObject)
-	EvaluatedReceivers() objc.Object
 	ReceiversSpecifier() ScriptObjectSpecifier
 	SetReceiversSpecifier(value IScriptObjectSpecifier)
+	ScriptErrorString() string
+	SetScriptErrorString(value string)
+	DirectParameter() objc.Object
+	SetDirectParameter(value objc.IObject)
+	CommandDescription() ScriptCommandDescription
+	EvaluatedArguments() map[string]objc.Object
+	EvaluatedReceivers() objc.Object
+	ScriptErrorNumber() int
+	SetScriptErrorNumber(value int)
+	IsWellFormed() bool
+	AppleEvent() AppleEventDescriptor
+	ScriptErrorOffendingObjectDescriptor() AppleEventDescriptor
+	SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor)
 	ScriptErrorExpectedTypeDescriptor() AppleEventDescriptor
 	SetScriptErrorExpectedTypeDescriptor(value IAppleEventDescriptor)
-	EvaluatedArguments() map[string]objc.Object
-	CommandDescription() ScriptCommandDescription
-	AppleEvent() AppleEventDescriptor
-	IsWellFormed() bool
 }
 
 // A self-contained scripting statement. [Full Topic]
@@ -90,11 +90,12 @@ func (s_ ScriptCommand) Init() ScriptCommand {
 	return rv
 }
 
-// Suspends the execution of the receiver. [Full Topic]
+// Executes the command if it is valid and returns the result, if any. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417785-suspendexecution?language=objc
-func (s_ ScriptCommand) SuspendExecution() {
-	objc.Call[objc.Void](s_, objc.Sel("suspendExecution"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414780-executecommand?language=objc
+func (s_ ScriptCommand) ExecuteCommand() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("executeCommand"))
+	return rv
 }
 
 // If a command is being executed in the current thread by Cocoa scripting's built-in Apple event handling, return the command. [Full Topic]
@@ -112,21 +113,6 @@ func ScriptCommand_CurrentCommand() ScriptCommand {
 	return ScriptCommandClass.CurrentCommand()
 }
 
-// If a successful, unmatched, invocation of [foundation/nsscriptcommand/suspendexecution] has been made, resume the execution of the command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1408227-resumeexecutionwithresult?language=objc
-func (s_ ScriptCommand) ResumeExecutionWithResult(result objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("resumeExecutionWithResult:"), result)
-}
-
-// Executes the command if it is valid and returns the result, if any. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414780-executecommand?language=objc
-func (s_ ScriptCommand) ExecuteCommand() objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("executeCommand"))
-	return rv
-}
-
 // Overridden by subclasses to provide a default implementation for the command represented by the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413379-performdefaultimplementation?language=objc
@@ -135,64 +121,18 @@ func (s_ ScriptCommand) PerformDefaultImplementation() objc.Object {
 	return rv
 }
 
-// Sets the object that corresponds to the direct parameter of the Apple event from which the receiver derives. [Full Topic]
+// If a successful, unmatched, invocation of suspendExecution has been made, resume the execution of the command. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1410675-directparameter?language=objc
-func (s_ ScriptCommand) DirectParameter() objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("directParameter"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1408227-resumeexecutionwithresult?language=objc
+func (s_ ScriptCommand) ResumeExecutionWithResult(result objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("resumeExecutionWithResult:"), result)
 }
 
-// Sets the object that corresponds to the direct parameter of the Apple event from which the receiver derives. [Full Topic]
+// Suspends the execution of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1410675-directparameter?language=objc
-func (s_ ScriptCommand) SetDirectParameter(value objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDirectParameter:"), value)
-}
-
-// Sets a descriptor for an object that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417217-scripterroroffendingobjectdescri?language=objc
-func (s_ ScriptCommand) ScriptErrorOffendingObjectDescriptor() AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](s_, objc.Sel("scriptErrorOffendingObjectDescriptor"))
-	return rv
-}
-
-// Sets a descriptor for an object that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417217-scripterroroffendingobjectdescri?language=objc
-func (s_ ScriptCommand) SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor) {
-	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorOffendingObjectDescriptor:"), value)
-}
-
-// Sets a script error string that is associated with execution of the command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414596-scripterrorstring?language=objc
-func (s_ ScriptCommand) ScriptErrorString() string {
-	rv := objc.Call[string](s_, objc.Sel("scriptErrorString"))
-	return rv
-}
-
-// Sets a script error string that is associated with execution of the command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414596-scripterrorstring?language=objc
-func (s_ ScriptCommand) SetScriptErrorString(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorString:"), value)
-}
-
-// Sets a script error number that is associated with the execution of the command and is returned in the reply Apple event, if a reply was requested by the sender. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411484-scripterrornumber?language=objc
-func (s_ ScriptCommand) ScriptErrorNumber() int {
-	rv := objc.Call[int](s_, objc.Sel("scriptErrorNumber"))
-	return rv
-}
-
-// Sets a script error number that is associated with the execution of the command and is returned in the reply Apple event, if a reply was requested by the sender. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411484-scripterrornumber?language=objc
-func (s_ ScriptCommand) SetScriptErrorNumber(value int) {
-	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorNumber:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417785-suspendexecution?language=objc
+func (s_ ScriptCommand) SuspendExecution() {
+	objc.Call[objc.Void](s_, objc.Sel("suspendExecution"))
 }
 
 // Sets the arguments of the command to args. [Full Topic]
@@ -210,14 +150,6 @@ func (s_ ScriptCommand) SetArguments(value map[string]objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setArguments:"), value)
 }
 
-// Returns the object or objects to which the command is to be sent (called both the “receivers” or “targets” of script commands). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411257-evaluatedreceivers?language=objc
-func (s_ ScriptCommand) EvaluatedReceivers() objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("evaluatedReceivers"))
-	return rv
-}
-
 // Sets the object specifier to receiversSpec that, when evaluated, indicates the receiver or receivers of the command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417016-receiversspecifier?language=objc
@@ -233,6 +165,106 @@ func (s_ ScriptCommand) SetReceiversSpecifier(value IScriptObjectSpecifier) {
 	objc.Call[objc.Void](s_, objc.Sel("setReceiversSpecifier:"), value)
 }
 
+// Sets a script error string that is associated with execution of the command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414596-scripterrorstring?language=objc
+func (s_ ScriptCommand) ScriptErrorString() string {
+	rv := objc.Call[string](s_, objc.Sel("scriptErrorString"))
+	return rv
+}
+
+// Sets a script error string that is associated with execution of the command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1414596-scripterrorstring?language=objc
+func (s_ ScriptCommand) SetScriptErrorString(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorString:"), value)
+}
+
+// Sets the object that corresponds to the direct parameter of the Apple event from which the receiver derives. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1410675-directparameter?language=objc
+func (s_ ScriptCommand) DirectParameter() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("directParameter"))
+	return rv
+}
+
+// Sets the object that corresponds to the direct parameter of the Apple event from which the receiver derives. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1410675-directparameter?language=objc
+func (s_ ScriptCommand) SetDirectParameter(value objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("setDirectParameter:"), value)
+}
+
+// Returns the command description for the command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1407452-commanddescription?language=objc
+func (s_ ScriptCommand) CommandDescription() ScriptCommandDescription {
+	rv := objc.Call[ScriptCommandDescription](s_, objc.Sel("commandDescription"))
+	return rv
+}
+
+// Returns a dictionary containing the arguments of the command, evaluated from object specifiers to objects if necessary. The keys in the dictionary are the argument names. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413335-evaluatedarguments?language=objc
+func (s_ ScriptCommand) EvaluatedArguments() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](s_, objc.Sel("evaluatedArguments"))
+	return rv
+}
+
+// Returns the object or objects to which the command is to be sent (called both the “receivers” or “targets” of script commands). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411257-evaluatedreceivers?language=objc
+func (s_ ScriptCommand) EvaluatedReceivers() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("evaluatedReceivers"))
+	return rv
+}
+
+// Sets a script error number that is associated with the execution of the command and is returned in the reply Apple event, if a reply was requested by the sender. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411484-scripterrornumber?language=objc
+func (s_ ScriptCommand) ScriptErrorNumber() int {
+	rv := objc.Call[int](s_, objc.Sel("scriptErrorNumber"))
+	return rv
+}
+
+// Sets a script error number that is associated with the execution of the command and is returned in the reply Apple event, if a reply was requested by the sender. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411484-scripterrornumber?language=objc
+func (s_ ScriptCommand) SetScriptErrorNumber(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorNumber:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413090-wellformed?language=objc
+func (s_ ScriptCommand) IsWellFormed() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isWellFormed"))
+	return rv
+}
+
+// If the receiver was constructed by Cocoa scripting's built-in Apple event handling, returns the Apple event descriptor from which it was constructed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1415626-appleevent?language=objc
+func (s_ ScriptCommand) AppleEvent() AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](s_, objc.Sel("appleEvent"))
+	return rv
+}
+
+// Sets a descriptor for an object that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417217-scripterroroffendingobjectdescri?language=objc
+func (s_ ScriptCommand) ScriptErrorOffendingObjectDescriptor() AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](s_, objc.Sel("scriptErrorOffendingObjectDescriptor"))
+	return rv
+}
+
+// Sets a descriptor for an object that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417217-scripterroroffendingobjectdescri?language=objc
+func (s_ ScriptCommand) SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor) {
+	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorOffendingObjectDescriptor:"), value)
+}
+
 // Sets a descriptor for the expected type that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411714-scripterrorexpectedtypedescripto?language=objc
@@ -246,36 +278,4 @@ func (s_ ScriptCommand) ScriptErrorExpectedTypeDescriptor() AppleEventDescriptor
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411714-scripterrorexpectedtypedescripto?language=objc
 func (s_ ScriptCommand) SetScriptErrorExpectedTypeDescriptor(value IAppleEventDescriptor) {
 	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorExpectedTypeDescriptor:"), value)
-}
-
-// Returns a dictionary containing the arguments of the command, evaluated from object specifiers to objects if necessary. The keys in the dictionary are the argument names. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413335-evaluatedarguments?language=objc
-func (s_ ScriptCommand) EvaluatedArguments() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](s_, objc.Sel("evaluatedArguments"))
-	return rv
-}
-
-// Returns the command description for the command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1407452-commanddescription?language=objc
-func (s_ ScriptCommand) CommandDescription() ScriptCommandDescription {
-	rv := objc.Call[ScriptCommandDescription](s_, objc.Sel("commandDescription"))
-	return rv
-}
-
-// If the receiver was constructed by Cocoa scripting's built-in Apple event handling, returns the Apple event descriptor from which it was constructed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1415626-appleevent?language=objc
-func (s_ ScriptCommand) AppleEvent() AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](s_, objc.Sel("appleEvent"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413090-wellformed?language=objc
-func (s_ ScriptCommand) IsWellFormed() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isWellFormed"))
-	return rv
 }

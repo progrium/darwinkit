@@ -21,22 +21,22 @@ type ILevelIndicatorCell interface {
 	IActionCell
 	RectOfTickMarkAtIndex(index int) foundation.Rect
 	TickMarkValueAtIndex(index int) float64
-	NumberOfTickMarks() int
-	SetNumberOfTickMarks(value int)
-	NumberOfMajorTickMarks() int
-	SetNumberOfMajorTickMarks(value int)
-	CriticalValue() float64
-	SetCriticalValue(value float64)
-	MinValue() float64
-	SetMinValue(value float64)
-	LevelIndicatorStyle() LevelIndicatorStyle
-	SetLevelIndicatorStyle(value LevelIndicatorStyle)
 	TickMarkPosition() TickMarkPosition
 	SetTickMarkPosition(value TickMarkPosition)
+	CriticalValue() float64
+	SetCriticalValue(value float64)
+	NumberOfMajorTickMarks() int
+	SetNumberOfMajorTickMarks(value int)
 	WarningValue() float64
 	SetWarningValue(value float64)
+	LevelIndicatorStyle() LevelIndicatorStyle
+	SetLevelIndicatorStyle(value LevelIndicatorStyle)
+	MinValue() float64
+	SetMinValue(value float64)
 	MaxValue() float64
 	SetMaxValue(value float64)
+	NumberOfTickMarks() int
+	SetNumberOfTickMarks(value int)
 }
 
 // NSLevelIndicatorCell is a subclass of NSActionCell that provides several level indicator display styles including: capacity, ranking and relevancy. The capacity style provides both continuous and discrete modes. [Full Topic]
@@ -130,34 +130,19 @@ func (l_ LevelIndicatorCell) TickMarkValueAtIndex(index int) float64 {
 	return rv
 }
 
-// The number of tick marks displayed by the control. [Full Topic]
+// The placement of tick marks on the level indicator control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534680-numberoftickmarks?language=objc
-func (l_ LevelIndicatorCell) NumberOfTickMarks() int {
-	rv := objc.Call[int](l_, objc.Sel("numberOfTickMarks"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1532399-tickmarkposition?language=objc
+func (l_ LevelIndicatorCell) TickMarkPosition() TickMarkPosition {
+	rv := objc.Call[TickMarkPosition](l_, objc.Sel("tickMarkPosition"))
 	return rv
 }
 
-// The number of tick marks displayed by the control. [Full Topic]
+// The placement of tick marks on the level indicator control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534680-numberoftickmarks?language=objc
-func (l_ LevelIndicatorCell) SetNumberOfTickMarks(value int) {
-	objc.Call[objc.Void](l_, objc.Sel("setNumberOfTickMarks:"), value)
-}
-
-// The number of major tick marks displayed by the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528987-numberofmajortickmarks?language=objc
-func (l_ LevelIndicatorCell) NumberOfMajorTickMarks() int {
-	rv := objc.Call[int](l_, objc.Sel("numberOfMajorTickMarks"))
-	return rv
-}
-
-// The number of major tick marks displayed by the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528987-numberofmajortickmarks?language=objc
-func (l_ LevelIndicatorCell) SetNumberOfMajorTickMarks(value int) {
-	objc.Call[objc.Void](l_, objc.Sel("setNumberOfMajorTickMarks:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1532399-tickmarkposition?language=objc
+func (l_ LevelIndicatorCell) SetTickMarkPosition(value TickMarkPosition) {
+	objc.Call[objc.Void](l_, objc.Sel("setTickMarkPosition:"), value)
 }
 
 // The critical value of the level indicator control. [Full Topic]
@@ -175,49 +160,19 @@ func (l_ LevelIndicatorCell) SetCriticalValue(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setCriticalValue:"), value)
 }
 
-// The minimum value of the control. [Full Topic]
+// The number of major tick marks displayed by the control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534472-minvalue?language=objc
-func (l_ LevelIndicatorCell) MinValue() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("minValue"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528987-numberofmajortickmarks?language=objc
+func (l_ LevelIndicatorCell) NumberOfMajorTickMarks() int {
+	rv := objc.Call[int](l_, objc.Sel("numberOfMajorTickMarks"))
 	return rv
 }
 
-// The minimum value of the control. [Full Topic]
+// The number of major tick marks displayed by the control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534472-minvalue?language=objc
-func (l_ LevelIndicatorCell) SetMinValue(value float64) {
-	objc.Call[objc.Void](l_, objc.Sel("setMinValue:"), value)
-}
-
-// The style of the level indicator control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1531954-levelindicatorstyle?language=objc
-func (l_ LevelIndicatorCell) LevelIndicatorStyle() LevelIndicatorStyle {
-	rv := objc.Call[LevelIndicatorStyle](l_, objc.Sel("levelIndicatorStyle"))
-	return rv
-}
-
-// The style of the level indicator control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1531954-levelindicatorstyle?language=objc
-func (l_ LevelIndicatorCell) SetLevelIndicatorStyle(value LevelIndicatorStyle) {
-	objc.Call[objc.Void](l_, objc.Sel("setLevelIndicatorStyle:"), value)
-}
-
-// The placement of tick marks on the level indicator control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1532399-tickmarkposition?language=objc
-func (l_ LevelIndicatorCell) TickMarkPosition() TickMarkPosition {
-	rv := objc.Call[TickMarkPosition](l_, objc.Sel("tickMarkPosition"))
-	return rv
-}
-
-// The placement of tick marks on the level indicator control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1532399-tickmarkposition?language=objc
-func (l_ LevelIndicatorCell) SetTickMarkPosition(value TickMarkPosition) {
-	objc.Call[objc.Void](l_, objc.Sel("setTickMarkPosition:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528987-numberofmajortickmarks?language=objc
+func (l_ LevelIndicatorCell) SetNumberOfMajorTickMarks(value int) {
+	objc.Call[objc.Void](l_, objc.Sel("setNumberOfMajorTickMarks:"), value)
 }
 
 // The warning value of the level indicator control. [Full Topic]
@@ -235,6 +190,36 @@ func (l_ LevelIndicatorCell) SetWarningValue(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setWarningValue:"), value)
 }
 
+// The style of the level indicator control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1531954-levelindicatorstyle?language=objc
+func (l_ LevelIndicatorCell) LevelIndicatorStyle() LevelIndicatorStyle {
+	rv := objc.Call[LevelIndicatorStyle](l_, objc.Sel("levelIndicatorStyle"))
+	return rv
+}
+
+// The style of the level indicator control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1531954-levelindicatorstyle?language=objc
+func (l_ LevelIndicatorCell) SetLevelIndicatorStyle(value LevelIndicatorStyle) {
+	objc.Call[objc.Void](l_, objc.Sel("setLevelIndicatorStyle:"), value)
+}
+
+// The minimum value of the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534472-minvalue?language=objc
+func (l_ LevelIndicatorCell) MinValue() float64 {
+	rv := objc.Call[float64](l_, objc.Sel("minValue"))
+	return rv
+}
+
+// The minimum value of the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534472-minvalue?language=objc
+func (l_ LevelIndicatorCell) SetMinValue(value float64) {
+	objc.Call[objc.Void](l_, objc.Sel("setMinValue:"), value)
+}
+
 // The maximum value of the control. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528309-maxvalue?language=objc
@@ -248,4 +233,19 @@ func (l_ LevelIndicatorCell) MaxValue() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1528309-maxvalue?language=objc
 func (l_ LevelIndicatorCell) SetMaxValue(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setMaxValue:"), value)
+}
+
+// The number of tick marks displayed by the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534680-numberoftickmarks?language=objc
+func (l_ LevelIndicatorCell) NumberOfTickMarks() int {
+	rv := objc.Call[int](l_, objc.Sel("numberOfTickMarks"))
+	return rv
+}
+
+// The number of tick marks displayed by the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1534680-numberoftickmarks?language=objc
+func (l_ LevelIndicatorCell) SetNumberOfTickMarks(value int) {
+	objc.Call[objc.Void](l_, objc.Sel("setNumberOfTickMarks:"), value)
 }

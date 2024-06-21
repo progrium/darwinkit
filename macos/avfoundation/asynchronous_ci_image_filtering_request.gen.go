@@ -24,9 +24,9 @@ type IAsynchronousCIImageFilteringRequest interface {
 	objc.IObject
 	FinishWithImageContext(filteredImage coreimage.IImage, context coreimage.IContext)
 	FinishWithError(error foundation.IError)
+	RenderSize() coregraphics.Size
 	CompositionTime() coremedia.Time
 	SourceImage() coreimage.Image
-	RenderSize() coregraphics.Size
 }
 
 // An object that supprts using Core Image filters to process an individual video frame in a video composition. [Full Topic]
@@ -76,6 +76,14 @@ func (a_ AsynchronousCIImageFilteringRequest) FinishWithError(error foundation.I
 	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), error)
 }
 
+// The width and height, in pixels, of the frame being processed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1387933-rendersize?language=objc
+func (a_ AsynchronousCIImageFilteringRequest) RenderSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](a_, objc.Sel("renderSize"))
+	return rv
+}
+
 // The time in the video composition corresponding to the frame being processed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1388240-compositiontime?language=objc
@@ -89,13 +97,5 @@ func (a_ AsynchronousCIImageFilteringRequest) CompositionTime() coremedia.Time {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1387577-sourceimage?language=objc
 func (a_ AsynchronousCIImageFilteringRequest) SourceImage() coreimage.Image {
 	rv := objc.Call[coreimage.Image](a_, objc.Sel("sourceImage"))
-	return rv
-}
-
-// The width and height, in pixels, of the frame being processed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1387933-rendersize?language=objc
-func (a_ AsynchronousCIImageFilteringRequest) RenderSize() coregraphics.Size {
-	rv := objc.Call[coregraphics.Size](a_, objc.Sel("renderSize"))
 	return rv
 }

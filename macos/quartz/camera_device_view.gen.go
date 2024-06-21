@@ -20,46 +20,46 @@ type _CameraDeviceViewClass struct {
 // An interface definition for the [CameraDeviceView] class.
 type ICameraDeviceView interface {
 	appkit.IView
-	SelectedIndexes() foundation.IndexSet
-	SetCustomDeleteControl(control appkit.ISegmentedControl)
-	RotateRight(sender objc.IObject) objc.Object
-	DownloadSelectedItems(sender objc.IObject) objc.Object
-	SetCustomRotateControl(control appkit.ISegmentedControl)
 	SetShowStatusInfoAsWindowSubtitle(value bool)
-	DownloadAllItems(sender objc.IObject) objc.Object
+	RotateRight(sender objc.IObject) objc.Object
 	SelectIndexesByExtendingSelection(indexes foundation.IIndexSet, extend bool)
-	SetCustomIconSizeSlider(slider appkit.ISlider)
-	SetCustomActionControl(control appkit.ISegmentedControl)
-	DeleteSelectedItems(sender objc.IObject) objc.Object
 	SetCustomModeControl(control appkit.ISegmentedControl)
+	DownloadAllItems(sender objc.IObject) objc.Object
+	SetCustomActionControl(control appkit.ISegmentedControl)
 	RotateLeft(sender objc.IObject) objc.Object
-	CanDownloadSelectedItems() bool
-	Mode() CameraDeviceViewDisplayMode
-	SetMode(value CameraDeviceViewDisplayMode)
+	DeleteSelectedItems(sender objc.IObject) objc.Object
+	SetCustomDeleteControl(control appkit.ISegmentedControl)
+	SetCustomIconSizeSlider(slider appkit.ISlider)
+	SetCustomRotateControl(control appkit.ISegmentedControl)
+	SelectedIndexes() foundation.IndexSet
+	DownloadSelectedItems(sender objc.IObject) objc.Object
+	DownloadsDirectory() foundation.URL
+	SetDownloadsDirectory(value foundation.IURL)
 	DownloadSelectedControlLabel() string
 	SetDownloadSelectedControlLabel(value string)
-	HasDisplayModeIcon() bool
-	SetHasDisplayModeIcon(value bool)
-	Delegate() CameraDeviceViewDelegateObject
-	SetDelegate(value PCameraDeviceViewDelegate)
-	SetDelegateObject(valueObject objc.IObject)
-	CanRotateSelectedItemsRight() bool
-	PostProcessApplication() foundation.URL
-	SetPostProcessApplication(value foundation.IURL)
+	DisplaysDownloadsDirectoryControl() bool
+	SetDisplaysDownloadsDirectoryControl(value bool)
+	CanDownloadSelectedItems() bool
 	CanRotateSelectedItemsLeft() bool
 	DisplaysPostProcessApplicationControl() bool
 	SetDisplaysPostProcessApplicationControl(value bool)
-	DisplaysDownloadsDirectoryControl() bool
-	SetDisplaysDownloadsDirectoryControl(value bool)
-	TransferMode() CameraDeviceViewTransferMode
-	SetTransferMode(value CameraDeviceViewTransferMode)
 	DownloadAllControlLabel() string
 	SetDownloadAllControlLabel(value string)
 	IconSize() uint
 	SetIconSize(value uint)
+	TransferMode() CameraDeviceViewTransferMode
+	SetTransferMode(value CameraDeviceViewTransferMode)
+	Delegate() CameraDeviceViewDelegateObject
+	SetDelegate(value PCameraDeviceViewDelegate)
+	SetDelegateObject(valueObject objc.IObject)
+	PostProcessApplication() foundation.URL
+	SetPostProcessApplication(value foundation.IURL)
+	HasDisplayModeIcon() bool
+	SetHasDisplayModeIcon(value bool)
+	Mode() CameraDeviceViewDisplayMode
+	SetMode(value CameraDeviceViewDisplayMode)
+	CanRotateSelectedItemsRight() bool
 	CanDeleteSelectedItems() bool
-	DownloadsDirectory() foundation.URL
-	SetDownloadsDirectory(value foundation.IURL)
 	HasDisplayModeTable() bool
 	SetHasDisplayModeTable(value bool)
 }
@@ -111,44 +111,6 @@ func NewCameraDeviceViewWithFrame(frameRect foundation.Rect) CameraDeviceView {
 	return instance
 }
 
-// The selected indexes of the camera files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504546-selectedindexes?language=objc
-func (c_ CameraDeviceView) SelectedIndexes() foundation.IndexSet {
-	rv := objc.Call[foundation.IndexSet](c_, objc.Sel("selectedIndexes"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852624-setcustomdeletecontrol?language=objc
-func (c_ CameraDeviceView) SetCustomDeleteControl(control appkit.ISegmentedControl) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomDeleteControl:"), control)
-}
-
-// Rotates the selected image to the right. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505123-rotateright?language=objc
-func (c_ CameraDeviceView) RotateRight(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("rotateRight:"), sender)
-	return rv
-}
-
-// Deletes the selected items from the camera. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504833-downloadselecteditems?language=objc
-func (c_ CameraDeviceView) DownloadSelectedItems(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("downloadSelectedItems:"), sender)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852627-setcustomrotatecontrol?language=objc
-func (c_ CameraDeviceView) SetCustomRotateControl(control appkit.ISegmentedControl) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomRotateControl:"), control)
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852628-setshowstatusinfoaswindowsubtitl?language=objc
@@ -156,11 +118,11 @@ func (c_ CameraDeviceView) SetShowStatusInfoAsWindowSubtitle(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setShowStatusInfoAsWindowSubtitle:"), value)
 }
 
-// Downloads all the items. [Full Topic]
+// Rotates the selected image to the right. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504326-downloadallitems?language=objc
-func (c_ CameraDeviceView) DownloadAllItems(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("downloadAllItems:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505123-rotateright?language=objc
+func (c_ CameraDeviceView) RotateRight(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("rotateRight:"), sender)
 	return rv
 }
 
@@ -173,9 +135,17 @@ func (c_ CameraDeviceView) SelectIndexesByExtendingSelection(indexes foundation.
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852625-setcustomiconsizeslider?language=objc
-func (c_ CameraDeviceView) SetCustomIconSizeSlider(slider appkit.ISlider) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomIconSizeSlider:"), slider)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852626-setcustommodecontrol?language=objc
+func (c_ CameraDeviceView) SetCustomModeControl(control appkit.ISegmentedControl) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomModeControl:"), control)
+}
+
+// Downloads all the items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504326-downloadallitems?language=objc
+func (c_ CameraDeviceView) DownloadAllItems(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("downloadAllItems:"), sender)
+	return rv
 }
 
 //	[Full Topic]
@@ -183,6 +153,14 @@ func (c_ CameraDeviceView) SetCustomIconSizeSlider(slider appkit.ISlider) {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852623-setcustomactioncontrol?language=objc
 func (c_ CameraDeviceView) SetCustomActionControl(control appkit.ISegmentedControl) {
 	objc.Call[objc.Void](c_, objc.Sel("setCustomActionControl:"), control)
+}
+
+// Rotates the selected image to the left. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503662-rotateleft?language=objc
+func (c_ CameraDeviceView) RotateLeft(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("rotateLeft:"), sender)
+	return rv
 }
 
 // Deletes the currently selected items. [Full Topic]
@@ -195,40 +173,54 @@ func (c_ CameraDeviceView) DeleteSelectedItems(sender objc.IObject) objc.Object 
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852626-setcustommodecontrol?language=objc
-func (c_ CameraDeviceView) SetCustomModeControl(control appkit.ISegmentedControl) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomModeControl:"), control)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852624-setcustomdeletecontrol?language=objc
+func (c_ CameraDeviceView) SetCustomDeleteControl(control appkit.ISegmentedControl) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomDeleteControl:"), control)
 }
 
-// Rotates the selected image to the left. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503662-rotateleft?language=objc
-func (c_ CameraDeviceView) RotateLeft(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("rotateLeft:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852625-setcustomiconsizeslider?language=objc
+func (c_ CameraDeviceView) SetCustomIconSizeSlider(slider appkit.ISlider) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomIconSizeSlider:"), slider)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/3852627-setcustomrotatecontrol?language=objc
+func (c_ CameraDeviceView) SetCustomRotateControl(control appkit.ISegmentedControl) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomRotateControl:"), control)
+}
+
+// The selected indexes of the camera files. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504546-selectedindexes?language=objc
+func (c_ CameraDeviceView) SelectedIndexes() foundation.IndexSet {
+	rv := objc.Call[foundation.IndexSet](c_, objc.Sel("selectedIndexes"))
 	return rv
 }
 
-// Returns whether the selected items can be downloaded [Full Topic]
+// Deletes the selected items from the camera. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504639-candownloadselecteditems?language=objc
-func (c_ CameraDeviceView) CanDownloadSelectedItems() bool {
-	rv := objc.Call[bool](c_, objc.Sel("canDownloadSelectedItems"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504833-downloadselecteditems?language=objc
+func (c_ CameraDeviceView) DownloadSelectedItems(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("downloadSelectedItems:"), sender)
 	return rv
 }
 
-// Specifies the display mode of the camera device view. [Full Topic]
+// Specifies the directory where files are downloaded [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504881-mode?language=objc
-func (c_ CameraDeviceView) Mode() CameraDeviceViewDisplayMode {
-	rv := objc.Call[CameraDeviceViewDisplayMode](c_, objc.Sel("mode"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503702-downloadsdirectory?language=objc
+func (c_ CameraDeviceView) DownloadsDirectory() foundation.URL {
+	rv := objc.Call[foundation.URL](c_, objc.Sel("downloadsDirectory"))
 	return rv
 }
 
-// Specifies the display mode of the camera device view. [Full Topic]
+// Specifies the directory where files are downloaded [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504881-mode?language=objc
-func (c_ CameraDeviceView) SetMode(value CameraDeviceViewDisplayMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503702-downloadsdirectory?language=objc
+func (c_ CameraDeviceView) SetDownloadsDirectory(value foundation.IURL) {
+	objc.Call[objc.Void](c_, objc.Sel("setDownloadsDirectory:"), value)
 }
 
 // Allows the “Download Selected” control to be renamed. [Full Topic]
@@ -246,65 +238,27 @@ func (c_ CameraDeviceView) SetDownloadSelectedControlLabel(value string) {
 	objc.Call[objc.Void](c_, objc.Sel("setDownloadSelectedControlLabel:"), value)
 }
 
-// Returns whether the device view is being displayed in icon mode. [Full Topic]
+// Specifies whether the downloads directory control should be displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504417-hasdisplaymodeicon?language=objc
-func (c_ CameraDeviceView) HasDisplayModeIcon() bool {
-	rv := objc.Call[bool](c_, objc.Sel("hasDisplayModeIcon"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505006-displaysdownloadsdirectorycontro?language=objc
+func (c_ CameraDeviceView) DisplaysDownloadsDirectoryControl() bool {
+	rv := objc.Call[bool](c_, objc.Sel("displaysDownloadsDirectoryControl"))
 	return rv
 }
 
-// Returns whether the device view is being displayed in icon mode. [Full Topic]
+// Specifies whether the downloads directory control should be displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504417-hasdisplaymodeicon?language=objc
-func (c_ CameraDeviceView) SetHasDisplayModeIcon(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setHasDisplayModeIcon:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505006-displaysdownloadsdirectorycontro?language=objc
+func (c_ CameraDeviceView) SetDisplaysDownloadsDirectoryControl(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setDisplaysDownloadsDirectoryControl:"), value)
 }
 
-// The camera device view delegate. [Full Topic]
+// Returns whether the selected items can be downloaded [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
-func (c_ CameraDeviceView) Delegate() CameraDeviceViewDelegateObject {
-	rv := objc.Call[CameraDeviceViewDelegateObject](c_, objc.Sel("delegate"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504639-candownloadselecteditems?language=objc
+func (c_ CameraDeviceView) CanDownloadSelectedItems() bool {
+	rv := objc.Call[bool](c_, objc.Sel("canDownloadSelectedItems"))
 	return rv
-}
-
-// The camera device view delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
-func (c_ CameraDeviceView) SetDelegate(value PCameraDeviceViewDelegate) {
-	po0 := objc.WrapAsProtocol("IKCameraDeviceViewDelegate", value)
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), po0)
-}
-
-// The camera device view delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
-func (c_ CameraDeviceView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
-}
-
-// Returns whether the selected items can be rotated right. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503525-canrotateselecteditemsright?language=objc
-func (c_ CameraDeviceView) CanRotateSelectedItemsRight() bool {
-	rv := objc.Call[bool](c_, objc.Sel("canRotateSelectedItemsRight"))
-	return rv
-}
-
-// The URL of the application used to post process the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504227-postprocessapplication?language=objc
-func (c_ CameraDeviceView) PostProcessApplication() foundation.URL {
-	rv := objc.Call[foundation.URL](c_, objc.Sel("postProcessApplication"))
-	return rv
-}
-
-// The URL of the application used to post process the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504227-postprocessapplication?language=objc
-func (c_ CameraDeviceView) SetPostProcessApplication(value foundation.IURL) {
-	objc.Call[objc.Void](c_, objc.Sel("setPostProcessApplication:"), value)
 }
 
 // Returns whether the selected items can be rotated left. [Full Topic]
@@ -328,36 +282,6 @@ func (c_ CameraDeviceView) DisplaysPostProcessApplicationControl() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503644-displayspostprocessapplicationco?language=objc
 func (c_ CameraDeviceView) SetDisplaysPostProcessApplicationControl(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setDisplaysPostProcessApplicationControl:"), value)
-}
-
-// Specifies whether the downloads directory control should be displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505006-displaysdownloadsdirectorycontro?language=objc
-func (c_ CameraDeviceView) DisplaysDownloadsDirectoryControl() bool {
-	rv := objc.Call[bool](c_, objc.Sel("displaysDownloadsDirectoryControl"))
-	return rv
-}
-
-// Specifies whether the downloads directory control should be displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1505006-displaysdownloadsdirectorycontro?language=objc
-func (c_ CameraDeviceView) SetDisplaysDownloadsDirectoryControl(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setDisplaysDownloadsDirectoryControl:"), value)
-}
-
-// Determines how the contents are saved by the delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503771-transfermode?language=objc
-func (c_ CameraDeviceView) TransferMode() CameraDeviceViewTransferMode {
-	rv := objc.Call[CameraDeviceViewTransferMode](c_, objc.Sel("transferMode"))
-	return rv
-}
-
-// Determines how the contents are saved by the delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503771-transfermode?language=objc
-func (c_ CameraDeviceView) SetTransferMode(value CameraDeviceViewTransferMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setTransferMode:"), value)
 }
 
 // Allows the “Download All” control to be renamed. [Full Topic]
@@ -390,27 +314,103 @@ func (c_ CameraDeviceView) SetIconSize(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setIconSize:"), value)
 }
 
+// Determines how the contents are saved by the delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503771-transfermode?language=objc
+func (c_ CameraDeviceView) TransferMode() CameraDeviceViewTransferMode {
+	rv := objc.Call[CameraDeviceViewTransferMode](c_, objc.Sel("transferMode"))
+	return rv
+}
+
+// Determines how the contents are saved by the delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503771-transfermode?language=objc
+func (c_ CameraDeviceView) SetTransferMode(value CameraDeviceViewTransferMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setTransferMode:"), value)
+}
+
+// The camera device view delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
+func (c_ CameraDeviceView) Delegate() CameraDeviceViewDelegateObject {
+	rv := objc.Call[CameraDeviceViewDelegateObject](c_, objc.Sel("delegate"))
+	return rv
+}
+
+// The camera device view delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
+func (c_ CameraDeviceView) SetDelegate(value PCameraDeviceViewDelegate) {
+	po0 := objc.WrapAsProtocol("IKCameraDeviceViewDelegate", value)
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), po0)
+}
+
+// The camera device view delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504315-delegate?language=objc
+func (c_ CameraDeviceView) SetDelegateObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// The URL of the application used to post process the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504227-postprocessapplication?language=objc
+func (c_ CameraDeviceView) PostProcessApplication() foundation.URL {
+	rv := objc.Call[foundation.URL](c_, objc.Sel("postProcessApplication"))
+	return rv
+}
+
+// The URL of the application used to post process the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504227-postprocessapplication?language=objc
+func (c_ CameraDeviceView) SetPostProcessApplication(value foundation.IURL) {
+	objc.Call[objc.Void](c_, objc.Sel("setPostProcessApplication:"), value)
+}
+
+// Returns whether the device view is being displayed in icon mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504417-hasdisplaymodeicon?language=objc
+func (c_ CameraDeviceView) HasDisplayModeIcon() bool {
+	rv := objc.Call[bool](c_, objc.Sel("hasDisplayModeIcon"))
+	return rv
+}
+
+// Returns whether the device view is being displayed in icon mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504417-hasdisplaymodeicon?language=objc
+func (c_ CameraDeviceView) SetHasDisplayModeIcon(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setHasDisplayModeIcon:"), value)
+}
+
+// Specifies the display mode of the camera device view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504881-mode?language=objc
+func (c_ CameraDeviceView) Mode() CameraDeviceViewDisplayMode {
+	rv := objc.Call[CameraDeviceViewDisplayMode](c_, objc.Sel("mode"))
+	return rv
+}
+
+// Specifies the display mode of the camera device view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504881-mode?language=objc
+func (c_ CameraDeviceView) SetMode(value CameraDeviceViewDisplayMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setMode:"), value)
+}
+
+// Returns whether the selected items can be rotated right. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503525-canrotateselecteditemsright?language=objc
+func (c_ CameraDeviceView) CanRotateSelectedItemsRight() bool {
+	rv := objc.Call[bool](c_, objc.Sel("canRotateSelectedItemsRight"))
+	return rv
+}
+
 // Returns whether the selected items can be deleted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1504949-candeleteselecteditems?language=objc
 func (c_ CameraDeviceView) CanDeleteSelectedItems() bool {
 	rv := objc.Call[bool](c_, objc.Sel("canDeleteSelectedItems"))
 	return rv
-}
-
-// Specifies the directory where files are downloaded [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503702-downloadsdirectory?language=objc
-func (c_ CameraDeviceView) DownloadsDirectory() foundation.URL {
-	rv := objc.Call[foundation.URL](c_, objc.Sel("downloadsDirectory"))
-	return rv
-}
-
-// Specifies the directory where files are downloaded [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceview/1503702-downloadsdirectory?language=objc
-func (c_ CameraDeviceView) SetDownloadsDirectory(value foundation.IURL) {
-	objc.Call[objc.Void](c_, objc.Sel("setDownloadsDirectory:"), value)
 }
 
 // Returns whether the device view is being displayed in table mode. [Full Topic]

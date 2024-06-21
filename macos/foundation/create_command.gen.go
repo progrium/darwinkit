@@ -18,8 +18,8 @@ type _CreateCommandClass struct {
 // An interface definition for the [CreateCommand] class.
 type ICreateCommand interface {
 	IScriptCommand
-	CreateClassDescription() ScriptClassDescription
 	ResolvedKeyDictionary() map[string]objc.Object
+	CreateClassDescription() ScriptClassDescription
 }
 
 // A command that creates a scriptable object. [Full Topic]
@@ -69,18 +69,18 @@ func NewCreateCommandWithCommandDescription(commandDef IScriptCommandDescription
 	return instance
 }
 
-// Returns the class description for the class that is to be created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscreatecommand/1413533-createclassdescription?language=objc
-func (c_ CreateCommand) CreateClassDescription() ScriptClassDescription {
-	rv := objc.Call[ScriptClassDescription](c_, objc.Sel("createClassDescription"))
-	return rv
-}
-
 // Returns a dictionary that contains the properties that were specified in the make Apple event command that has been converted to this NSCreateCommand object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscreatecommand/1407639-resolvedkeydictionary?language=objc
 func (c_ CreateCommand) ResolvedKeyDictionary() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("resolvedKeyDictionary"))
+	return rv
+}
+
+// Returns the class description for the class that is to be created. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscreatecommand/1413533-createclassdescription?language=objc
+func (c_ CreateCommand) CreateClassDescription() ScriptClassDescription {
+	rv := objc.Call[ScriptClassDescription](c_, objc.Sel("createClassDescription"))
 	return rv
 }

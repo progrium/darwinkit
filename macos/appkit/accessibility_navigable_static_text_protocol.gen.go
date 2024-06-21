@@ -16,16 +16,16 @@ type PAccessibilityNavigableStaticText interface {
 	HasAccessibilityFrameForRange() bool
 
 	// optional
+	AccessibilityRangeForLine(lineNumber int) foundation.Range
+	HasAccessibilityRangeForLine() bool
+
+	// optional
 	AccessibilityLineForIndex(index int) int
 	HasAccessibilityLineForIndex() bool
 
 	// optional
 	AccessibilityStringForRange(range_ foundation.Range) string
 	HasAccessibilityStringForRange() bool
-
-	// optional
-	AccessibilityRangeForLine(lineNumber int) foundation.Range
-	HasAccessibilityRangeForLine() bool
 }
 
 // ensure impl type implements protocol interface
@@ -45,6 +45,18 @@ func (a_ AccessibilityNavigableStaticTextObject) HasAccessibilityFrameForRange()
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynavigablestatictext/1524702-accessibilityframeforrange?language=objc
 func (a_ AccessibilityNavigableStaticTextObject) AccessibilityFrameForRange(range_ foundation.Range) foundation.Rect {
 	rv := objc.Call[foundation.Rect](a_, objc.Sel("accessibilityFrameForRange:"), range_)
+	return rv
+}
+
+func (a_ AccessibilityNavigableStaticTextObject) HasAccessibilityRangeForLine() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityRangeForLine:"))
+}
+
+// Returns the range of characters in the specified line. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynavigablestatictext/1527015-accessibilityrangeforline?language=objc
+func (a_ AccessibilityNavigableStaticTextObject) AccessibilityRangeForLine(lineNumber int) foundation.Range {
+	rv := objc.Call[foundation.Range](a_, objc.Sel("accessibilityRangeForLine:"), lineNumber)
 	return rv
 }
 
@@ -69,17 +81,5 @@ func (a_ AccessibilityNavigableStaticTextObject) HasAccessibilityStringForRange(
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynavigablestatictext/1525402-accessibilitystringforrange?language=objc
 func (a_ AccessibilityNavigableStaticTextObject) AccessibilityStringForRange(range_ foundation.Range) string {
 	rv := objc.Call[string](a_, objc.Sel("accessibilityStringForRange:"), range_)
-	return rv
-}
-
-func (a_ AccessibilityNavigableStaticTextObject) HasAccessibilityRangeForLine() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityRangeForLine:"))
-}
-
-// Returns the range of characters in the specified line. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynavigablestatictext/1527015-accessibilityrangeforline?language=objc
-func (a_ AccessibilityNavigableStaticTextObject) AccessibilityRangeForLine(lineNumber int) foundation.Range {
-	rv := objc.Call[foundation.Range](a_, objc.Sel("accessibilityRangeForLine:"), lineNumber)
 	return rv
 }

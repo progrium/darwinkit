@@ -22,13 +22,13 @@ type _DepthDataClass struct {
 type IDepthData interface {
 	objc.IObject
 	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary
-	DepthDataQuality() DepthDataQuality
 	AvailableDepthDataTypes() []foundation.Number
-	CameraCalibrationData() CameraCalibrationData
-	DepthDataMap() corevideo.PixelBufferRef
-	DepthDataAccuracy() DepthDataAccuracy
 	IsDepthDataFiltered() bool
+	DepthDataAccuracy() DepthDataAccuracy
+	DepthDataQuality() DepthDataQuality
 	DepthDataType() uint
+	DepthDataMap() corevideo.PixelBufferRef
+	CameraCalibrationData() CameraCalibrationData
 }
 
 // A container for per-pixel distance or disparity information captured by compatible camera devices. [Full Topic]
@@ -42,34 +42,6 @@ func DepthDataFrom(ptr unsafe.Pointer) DepthData {
 	return DepthData{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (d_ DepthData) DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
-	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByReplacingDepthDataMapWithPixelBuffer:error:"), pixelBuffer, outError)
-	return rv
-}
-
-// Returns a derivative depth data object by replacing the depth data map. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881231-depthdatabyreplacingdepthdatamap?language=objc
-func DepthData_DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
-	instance := DepthDataClass.Alloc().DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer, outError)
-	instance.Autorelease()
-	return instance
-}
-
-func (d_ DepthData) DepthDataByConvertingToDepthDataType(depthDataType uint) DepthData {
-	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByConvertingToDepthDataType:"), depthDataType)
-	return rv
-}
-
-// Returns a derivative depth data object by converting the depth data map to the specified data type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881222-depthdatabyconvertingtodepthdata?language=objc
-func DepthData_DepthDataByConvertingToDepthDataType(depthDataType uint) DepthData {
-	instance := DepthDataClass.Alloc().DepthDataByConvertingToDepthDataType(depthDataType)
-	instance.Autorelease()
-	return instance
 }
 
 func (d_ DepthData) DepthDataByApplyingExifOrientation(exifOrientation imageio.ImagePropertyOrientation) DepthData {
@@ -96,6 +68,34 @@ func (dc _DepthDataClass) DepthDataFromDictionaryRepresentationError(imageSource
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881221-depthdatafromdictionaryrepresent?language=objc
 func DepthData_DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) DepthData {
 	return DepthDataClass.DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary, outError)
+}
+
+func (d_ DepthData) DepthDataByConvertingToDepthDataType(depthDataType uint) DepthData {
+	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByConvertingToDepthDataType:"), depthDataType)
+	return rv
+}
+
+// Returns a derivative depth data object by converting the depth data map to the specified data type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881222-depthdatabyconvertingtodepthdata?language=objc
+func DepthData_DepthDataByConvertingToDepthDataType(depthDataType uint) DepthData {
+	instance := DepthDataClass.Alloc().DepthDataByConvertingToDepthDataType(depthDataType)
+	instance.Autorelease()
+	return instance
+}
+
+func (d_ DepthData) DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
+	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByReplacingDepthDataMapWithPixelBuffer:error:"), pixelBuffer, outError)
+	return rv
+}
+
+// Returns a derivative depth data object by replacing the depth data map. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881231-depthdatabyreplacingdepthdatamap?language=objc
+func DepthData_DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
+	instance := DepthDataClass.Alloc().DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer, outError)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DepthDataClass) Alloc() DepthData {
@@ -126,43 +126,11 @@ func (d_ DepthData) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType 
 	return rv
 }
 
-// The overall quality of the depth map. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2919804-depthdataquality?language=objc
-func (d_ DepthData) DepthDataQuality() DepthDataQuality {
-	rv := objc.Call[DepthDataQuality](d_, objc.Sel("depthDataQuality"))
-	return rv
-}
-
 // The list of depth data formats to which this depth data can be converted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881233-availabledepthdatatypes?language=objc
 func (d_ DepthData) AvailableDepthDataTypes() []foundation.Number {
 	rv := objc.Call[[]foundation.Number](d_, objc.Sel("availableDepthDataTypes"))
-	return rv
-}
-
-// The imaging parameters with which this depth data was captured. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881230-cameracalibrationdata?language=objc
-func (d_ DepthData) CameraCalibrationData() CameraCalibrationData {
-	rv := objc.Call[CameraCalibrationData](d_, objc.Sel("cameraCalibrationData"))
-	return rv
-}
-
-// A pixel buffer containing the depth data's per-pixel depth or disparity data map. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881227-depthdatamap?language=objc
-func (d_ DepthData) DepthDataMap() corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](d_, objc.Sel("depthDataMap"))
-	return rv
-}
-
-// The general accuracy of depth data map values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881229-depthdataaccuracy?language=objc
-func (d_ DepthData) DepthDataAccuracy() DepthDataAccuracy {
-	rv := objc.Call[DepthDataAccuracy](d_, objc.Sel("depthDataAccuracy"))
 	return rv
 }
 
@@ -174,10 +142,42 @@ func (d_ DepthData) IsDepthDataFiltered() bool {
 	return rv
 }
 
+// The general accuracy of depth data map values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881229-depthdataaccuracy?language=objc
+func (d_ DepthData) DepthDataAccuracy() DepthDataAccuracy {
+	rv := objc.Call[DepthDataAccuracy](d_, objc.Sel("depthDataAccuracy"))
+	return rv
+}
+
+// The overall quality of the depth map. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2919804-depthdataquality?language=objc
+func (d_ DepthData) DepthDataQuality() DepthDataQuality {
+	rv := objc.Call[DepthDataQuality](d_, objc.Sel("depthDataQuality"))
+	return rv
+}
+
 // The pixel format of the depth data map. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881228-depthdatatype?language=objc
 func (d_ DepthData) DepthDataType() uint {
 	rv := objc.Call[uint](d_, objc.Sel("depthDataType"))
+	return rv
+}
+
+// A pixel buffer containing the depth data's per-pixel depth or disparity data map. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881227-depthdatamap?language=objc
+func (d_ DepthData) DepthDataMap() corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](d_, objc.Sel("depthDataMap"))
+	return rv
+}
+
+// The imaging parameters with which this depth data was captured. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881230-cameracalibrationdata?language=objc
+func (d_ DepthData) CameraCalibrationData() CameraCalibrationData {
+	rv := objc.Call[CameraCalibrationData](d_, objc.Sel("cameraCalibrationData"))
 	return rv
 }

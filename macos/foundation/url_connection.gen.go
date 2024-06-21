@@ -19,10 +19,10 @@ type _URLConnectionClass struct {
 type IURLConnection interface {
 	objc.IObject
 	ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
-	Cancel()
 	Start()
-	UnscheduleFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
 	SetDelegateQueue(queue IOperationQueue)
+	UnscheduleFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
+	Cancel()
 	CurrentRequest() URLRequest
 	OriginalRequest() URLRequest
 }
@@ -60,6 +60,13 @@ func (u_ URLConnection) Init() URLConnection {
 	return rv
 }
 
+// Determines the run loop and mode that the connection uses to call methods on its delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1417485-scheduleinrunloop?language=objc
+func (u_ URLConnection) ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
+	objc.Call[objc.Void](u_, objc.Sel("scheduleInRunLoop:forMode:"), aRunLoop, mode)
+}
+
 // Returns whether a request can be handled based on a preflight evaluation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1413072-canhandlerequest?language=objc
@@ -75,25 +82,18 @@ func URLConnection_CanHandleRequest(request IURLRequest) bool {
 	return URLConnectionClass.CanHandleRequest(request)
 }
 
-// Determines the run loop and mode that the connection uses to call methods on its delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1417485-scheduleinrunloop?language=objc
-func (u_ URLConnection) ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](u_, objc.Sel("scheduleInRunLoop:forMode:"), aRunLoop, mode)
-}
-
-// Cancels an asynchronous load of a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1407797-cancel?language=objc
-func (u_ URLConnection) Cancel() {
-	objc.Call[objc.Void](u_, objc.Sel("cancel"))
-}
-
 // Causes the connection to begin loading data, if it has not already. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1417345-start?language=objc
 func (u_ URLConnection) Start() {
 	objc.Call[objc.Void](u_, objc.Sel("start"))
+}
+
+// Determines the operation queue that is used to call methods on the connection’s delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1411849-setdelegatequeue?language=objc
+func (u_ URLConnection) SetDelegateQueue(queue IOperationQueue) {
+	objc.Call[objc.Void](u_, objc.Sel("setDelegateQueue:"), queue)
 }
 
 // Causes the connection to stop calling delegate methods in the specified run loop and mode. [Full Topic]
@@ -103,11 +103,11 @@ func (u_ URLConnection) UnscheduleFromRunLoopForMode(aRunLoop IRunLoop, mode Run
 	objc.Call[objc.Void](u_, objc.Sel("unscheduleFromRunLoop:forMode:"), aRunLoop, mode)
 }
 
-// Determines the operation queue that is used to call methods on the connection’s delegate. [Full Topic]
+// Cancels an asynchronous load of a request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1411849-setdelegatequeue?language=objc
-func (u_ URLConnection) SetDelegateQueue(queue IOperationQueue) {
-	objc.Call[objc.Void](u_, objc.Sel("setDelegateQueue:"), queue)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnection/1407797-cancel?language=objc
+func (u_ URLConnection) Cancel() {
+	objc.Call[objc.Void](u_, objc.Sel("cancel"))
 }
 
 // The current connection request. [Full Topic]

@@ -19,13 +19,13 @@ type _CapturePhotoOutputClass struct {
 // An interface definition for the [CapturePhotoOutput] class.
 type ICapturePhotoOutput interface {
 	ICaptureOutput
-	CapturePhotoWithSettingsDelegate(settings ICapturePhotoSettings, delegate PCapturePhotoCaptureDelegate)
-	CapturePhotoWithSettingsDelegateObject(settings ICapturePhotoSettings, delegateObject objc.IObject)
 	SupportedPhotoPixelFormatTypesForFileType(fileType FileType) []foundation.Number
 	SupportedPhotoCodecTypesForFileType(fileType FileType) []VideoCodecType
+	CapturePhotoWithSettingsDelegate(settings ICapturePhotoSettings, delegate PCapturePhotoCaptureDelegate)
+	CapturePhotoWithSettingsDelegateObject(settings ICapturePhotoSettings, delegateObject objc.IObject)
+	AvailablePhotoCodecTypes() []VideoCodecType
 	AvailablePhotoPixelFormatTypes() []foundation.Number
 	AvailablePhotoFileTypes() []FileType
-	AvailablePhotoCodecTypes() []VideoCodecType
 }
 
 // A capture output for still image, Live Photos, and other photography workflows. [Full Topic]
@@ -41,11 +41,6 @@ func CapturePhotoOutputFrom(ptr unsafe.Pointer) CapturePhotoOutput {
 	}
 }
 
-func (c_ CapturePhotoOutput) Init() CapturePhotoOutput {
-	rv := objc.Call[CapturePhotoOutput](c_, objc.Sel("init"))
-	return rv
-}
-
 func (cc _CapturePhotoOutputClass) New() CapturePhotoOutput {
 	rv := objc.Call[CapturePhotoOutput](cc, objc.Sel("new"))
 	rv.Autorelease()
@@ -56,24 +51,14 @@ func NewCapturePhotoOutput() CapturePhotoOutput {
 	return CapturePhotoOutputClass.New()
 }
 
-func (cc _CapturePhotoOutputClass) Alloc() CapturePhotoOutput {
-	rv := objc.Call[CapturePhotoOutput](cc, objc.Sel("alloc"))
+func (c_ CapturePhotoOutput) Init() CapturePhotoOutput {
+	rv := objc.Call[CapturePhotoOutput](c_, objc.Sel("init"))
 	return rv
 }
 
-// Initiates a photo capture using the specified settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
-func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegate(settings ICapturePhotoSettings, delegate PCapturePhotoCaptureDelegate) {
-	po1 := objc.WrapAsProtocol("AVCapturePhotoCaptureDelegate", delegate)
-	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, po1)
-}
-
-// Initiates a photo capture using the specified settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
-func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegateObject(settings ICapturePhotoSettings, delegateObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, delegateObject)
+func (cc _CapturePhotoOutputClass) Alloc() CapturePhotoOutput {
+	rv := objc.Call[CapturePhotoOutput](cc, objc.Sel("alloc"))
+	return rv
 }
 
 // Returns the list of uncompressed pixel formats supported for photo data in the specified file type. [Full Topic]
@@ -92,6 +77,29 @@ func (c_ CapturePhotoOutput) SupportedPhotoCodecTypesForFileType(fileType FileTy
 	return rv
 }
 
+// Initiates a photo capture using the specified settings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
+func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegate(settings ICapturePhotoSettings, delegate PCapturePhotoCaptureDelegate) {
+	po1 := objc.WrapAsProtocol("AVCapturePhotoCaptureDelegate", delegate)
+	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, po1)
+}
+
+// Initiates a photo capture using the specified settings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
+func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegateObject(settings ICapturePhotoSettings, delegateObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, delegateObject)
+}
+
+// The compression codecs this capture output currently supports for photo capture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648654-availablephotocodectypes?language=objc
+func (c_ CapturePhotoOutput) AvailablePhotoCodecTypes() []VideoCodecType {
+	rv := objc.Call[[]VideoCodecType](c_, objc.Sel("availablePhotoCodecTypes"))
+	return rv
+}
+
 // The pixel formats the capture output supports for photo capture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1778630-availablephotopixelformattypes?language=objc
@@ -105,13 +113,5 @@ func (c_ CapturePhotoOutput) AvailablePhotoPixelFormatTypes() []foundation.Numbe
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/2873918-availablephotofiletypes?language=objc
 func (c_ CapturePhotoOutput) AvailablePhotoFileTypes() []FileType {
 	rv := objc.Call[[]FileType](c_, objc.Sel("availablePhotoFileTypes"))
-	return rv
-}
-
-// The compression codecs this capture output currently supports for photo capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648654-availablephotocodectypes?language=objc
-func (c_ CapturePhotoOutput) AvailablePhotoCodecTypes() []VideoCodecType {
-	rv := objc.Call[[]VideoCodecType](c_, objc.Sel("availablePhotoCodecTypes"))
 	return rv
 }

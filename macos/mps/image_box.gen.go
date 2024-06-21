@@ -19,8 +19,8 @@ type _ImageBoxClass struct {
 // An interface definition for the [ImageBox] class.
 type IImageBox interface {
 	IUnaryImageKernel
-	KernelWidth() uint
 	KernelHeight() uint
+	KernelWidth() uint
 }
 
 // A filter that convolves an image with a given kernel of odd width and height. [Full Topic]
@@ -101,18 +101,18 @@ func ImageBox_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Imag
 	return instance
 }
 
-// The width of the filter window. Must be an odd number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagebox/1618834-kernelwidth?language=objc
-func (i_ ImageBox) KernelWidth() uint {
-	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
-	return rv
-}
-
 // The height of the filter window. Must be an odd number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagebox/1618739-kernelheight?language=objc
 func (i_ ImageBox) KernelHeight() uint {
 	rv := objc.Call[uint](i_, objc.Sel("kernelHeight"))
+	return rv
+}
+
+// The width of the filter window. Must be an odd number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagebox/1618834-kernelwidth?language=objc
+func (i_ ImageBox) KernelWidth() uint {
+	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
 	return rv
 }

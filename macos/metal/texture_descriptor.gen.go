@@ -18,38 +18,38 @@ type _TextureDescriptorClass struct {
 // An interface definition for the [TextureDescriptor] class.
 type ITextureDescriptor interface {
 	objc.IObject
-	TextureType() TextureType
-	SetTextureType(value TextureType)
-	MipmapLevelCount() uint
-	SetMipmapLevelCount(value uint)
-	ResourceOptions() ResourceOptions
-	SetResourceOptions(value ResourceOptions)
-	PixelFormat() PixelFormat
-	SetPixelFormat(value PixelFormat)
-	Swizzle() TextureSwizzleChannels
-	SetSwizzle(value TextureSwizzleChannels)
-	HazardTrackingMode() HazardTrackingMode
-	SetHazardTrackingMode(value HazardTrackingMode)
-	ArrayLength() uint
-	SetArrayLength(value uint)
-	AllowGPUOptimizedContents() bool
-	SetAllowGPUOptimizedContents(value bool)
-	Height() uint
-	SetHeight(value uint)
-	StorageMode() StorageMode
-	SetStorageMode(value StorageMode)
 	Width() uint
 	SetWidth(value uint)
-	CpuCacheMode() CPUCacheMode
-	SetCpuCacheMode(value CPUCacheMode)
+	MipmapLevelCount() uint
+	SetMipmapLevelCount(value uint)
+	ArrayLength() uint
+	SetArrayLength(value uint)
 	Usage() TextureUsage
 	SetUsage(value TextureUsage)
-	Depth() uint
-	SetDepth(value uint)
-	CompressionType() TextureCompressionType
-	SetCompressionType(value TextureCompressionType)
+	Swizzle() TextureSwizzleChannels
+	SetSwizzle(value TextureSwizzleChannels)
 	SampleCount() uint
 	SetSampleCount(value uint)
+	Height() uint
+	SetHeight(value uint)
+	CompressionType() TextureCompressionType
+	SetCompressionType(value TextureCompressionType)
+	CpuCacheMode() CPUCacheMode
+	SetCpuCacheMode(value CPUCacheMode)
+	TextureType() TextureType
+	SetTextureType(value TextureType)
+	AllowGPUOptimizedContents() bool
+	SetAllowGPUOptimizedContents(value bool)
+	PixelFormat() PixelFormat
+	SetPixelFormat(value PixelFormat)
+	Depth() uint
+	SetDepth(value uint)
+	StorageMode() StorageMode
+	SetStorageMode(value StorageMode)
+	ResourceOptions() ResourceOptions
+	SetResourceOptions(value ResourceOptions)
+	HazardTrackingMode() HazardTrackingMode
+	SetHazardTrackingMode(value HazardTrackingMode)
 }
 
 // An object that you use to configure new Metal texture objects. [Full Topic]
@@ -85,19 +85,19 @@ func (t_ TextureDescriptor) Init() TextureDescriptor {
 	return rv
 }
 
-// Creates a texture descriptor object for a cube texture. [Full Topic]
+// Creates a texture descriptor object for a texture buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516090-texturecubedescriptorwithpixelfo?language=objc
-func (tc _TextureDescriptorClass) TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat PixelFormat, size uint, mipmapped bool) TextureDescriptor {
-	rv := objc.Call[TextureDescriptor](tc, objc.Sel("textureCubeDescriptorWithPixelFormat:size:mipmapped:"), pixelFormat, size, mipmapped)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966642-texturebufferdescriptorwithpixel?language=objc
+func (tc _TextureDescriptorClass) TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat PixelFormat, width uint, resourceOptions ResourceOptions, usage TextureUsage) TextureDescriptor {
+	rv := objc.Call[TextureDescriptor](tc, objc.Sel("textureBufferDescriptorWithPixelFormat:width:resourceOptions:usage:"), pixelFormat, width, resourceOptions, usage)
 	return rv
 }
 
-// Creates a texture descriptor object for a cube texture. [Full Topic]
+// Creates a texture descriptor object for a texture buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516090-texturecubedescriptorwithpixelfo?language=objc
-func TextureDescriptor_TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat PixelFormat, size uint, mipmapped bool) TextureDescriptor {
-	return TextureDescriptorClass.TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat, size, mipmapped)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966642-texturebufferdescriptorwithpixel?language=objc
+func TextureDescriptor_TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat PixelFormat, width uint, resourceOptions ResourceOptions, usage TextureUsage) TextureDescriptor {
+	return TextureDescriptorClass.TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat, width, resourceOptions, usage)
 }
 
 // Creates a texture descriptor object for a 2D texture. [Full Topic]
@@ -115,169 +115,19 @@ func TextureDescriptor_Texture2DDescriptorWithPixelFormatWidthHeightMipmapped(pi
 	return TextureDescriptorClass.Texture2DDescriptorWithPixelFormatWidthHeightMipmapped(pixelFormat, width, height, mipmapped)
 }
 
-// Creates a texture descriptor object for a texture buffer. [Full Topic]
+// Creates a texture descriptor object for a cube texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966642-texturebufferdescriptorwithpixel?language=objc
-func (tc _TextureDescriptorClass) TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat PixelFormat, width uint, resourceOptions ResourceOptions, usage TextureUsage) TextureDescriptor {
-	rv := objc.Call[TextureDescriptor](tc, objc.Sel("textureBufferDescriptorWithPixelFormat:width:resourceOptions:usage:"), pixelFormat, width, resourceOptions, usage)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516090-texturecubedescriptorwithpixelfo?language=objc
+func (tc _TextureDescriptorClass) TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat PixelFormat, size uint, mipmapped bool) TextureDescriptor {
+	rv := objc.Call[TextureDescriptor](tc, objc.Sel("textureCubeDescriptorWithPixelFormat:size:mipmapped:"), pixelFormat, size, mipmapped)
 	return rv
 }
 
-// Creates a texture descriptor object for a texture buffer. [Full Topic]
+// Creates a texture descriptor object for a cube texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966642-texturebufferdescriptorwithpixel?language=objc
-func TextureDescriptor_TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat PixelFormat, width uint, resourceOptions ResourceOptions, usage TextureUsage) TextureDescriptor {
-	return TextureDescriptorClass.TextureBufferDescriptorWithPixelFormatWidthResourceOptionsUsage(pixelFormat, width, resourceOptions, usage)
-}
-
-// The dimension and arrangement of texture image data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516228-texturetype?language=objc
-func (t_ TextureDescriptor) TextureType() TextureType {
-	rv := objc.Call[TextureType](t_, objc.Sel("textureType"))
-	return rv
-}
-
-// The dimension and arrangement of texture image data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516228-texturetype?language=objc
-func (t_ TextureDescriptor) SetTextureType(value TextureType) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextureType:"), value)
-}
-
-// The number of mipmap levels for this texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516300-mipmaplevelcount?language=objc
-func (t_ TextureDescriptor) MipmapLevelCount() uint {
-	rv := objc.Call[uint](t_, objc.Sel("mipmapLevelCount"))
-	return rv
-}
-
-// The number of mipmap levels for this texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516300-mipmaplevelcount?language=objc
-func (t_ TextureDescriptor) SetMipmapLevelCount(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setMipmapLevelCount:"), value)
-}
-
-// The behavior of a new memory allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515776-resourceoptions?language=objc
-func (t_ TextureDescriptor) ResourceOptions() ResourceOptions {
-	rv := objc.Call[ResourceOptions](t_, objc.Sel("resourceOptions"))
-	return rv
-}
-
-// The behavior of a new memory allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515776-resourceoptions?language=objc
-func (t_ TextureDescriptor) SetResourceOptions(value ResourceOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("setResourceOptions:"), value)
-}
-
-// The size and bit layout of all pixels in the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515450-pixelformat?language=objc
-func (t_ TextureDescriptor) PixelFormat() PixelFormat {
-	rv := objc.Call[PixelFormat](t_, objc.Sel("pixelFormat"))
-	return rv
-}
-
-// The size and bit layout of all pixels in the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515450-pixelformat?language=objc
-func (t_ TextureDescriptor) SetPixelFormat(value PixelFormat) {
-	objc.Call[objc.Void](t_, objc.Sel("setPixelFormat:"), value)
-}
-
-// The pattern you want the GPU to apply to pixels when you read or sample pixels from the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3114305-swizzle?language=objc
-func (t_ TextureDescriptor) Swizzle() TextureSwizzleChannels {
-	rv := objc.Call[TextureSwizzleChannels](t_, objc.Sel("swizzle"))
-	return rv
-}
-
-// The pattern you want the GPU to apply to pixels when you read or sample pixels from the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3114305-swizzle?language=objc
-func (t_ TextureDescriptor) SetSwizzle(value TextureSwizzleChannels) {
-	objc.Call[objc.Void](t_, objc.Sel("setSwizzle:"), value)
-}
-
-// The texture's hazard tracking mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3131697-hazardtrackingmode?language=objc
-func (t_ TextureDescriptor) HazardTrackingMode() HazardTrackingMode {
-	rv := objc.Call[HazardTrackingMode](t_, objc.Sel("hazardTrackingMode"))
-	return rv
-}
-
-// The texture's hazard tracking mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3131697-hazardtrackingmode?language=objc
-func (t_ TextureDescriptor) SetHazardTrackingMode(value HazardTrackingMode) {
-	objc.Call[objc.Void](t_, objc.Sel("setHazardTrackingMode:"), value)
-}
-
-// The number of array elements for this texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515331-arraylength?language=objc
-func (t_ TextureDescriptor) ArrayLength() uint {
-	rv := objc.Call[uint](t_, objc.Sel("arrayLength"))
-	return rv
-}
-
-// The number of array elements for this texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515331-arraylength?language=objc
-func (t_ TextureDescriptor) SetArrayLength(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setArrayLength:"), value)
-}
-
-// A Boolean value indicating whether the GPU is allowed to adjust the texture's contents to improve GPU performance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966641-allowgpuoptimizedcontents?language=objc
-func (t_ TextureDescriptor) AllowGPUOptimizedContents() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowGPUOptimizedContents"))
-	return rv
-}
-
-// A Boolean value indicating whether the GPU is allowed to adjust the texture's contents to improve GPU performance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966641-allowgpuoptimizedcontents?language=objc
-func (t_ TextureDescriptor) SetAllowGPUOptimizedContents(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowGPUOptimizedContents:"), value)
-}
-
-// The height of the texture image for the base level mipmap, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516000-height?language=objc
-func (t_ TextureDescriptor) Height() uint {
-	rv := objc.Call[uint](t_, objc.Sel("height"))
-	return rv
-}
-
-// The height of the texture image for the base level mipmap, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516000-height?language=objc
-func (t_ TextureDescriptor) SetHeight(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setHeight:"), value)
-}
-
-// The location and access permissions of the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516262-storagemode?language=objc
-func (t_ TextureDescriptor) StorageMode() StorageMode {
-	rv := objc.Call[StorageMode](t_, objc.Sel("storageMode"))
-	return rv
-}
-
-// The location and access permissions of the texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516262-storagemode?language=objc
-func (t_ TextureDescriptor) SetStorageMode(value StorageMode) {
-	objc.Call[objc.Void](t_, objc.Sel("setStorageMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516090-texturecubedescriptorwithpixelfo?language=objc
+func TextureDescriptor_TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat PixelFormat, size uint, mipmapped bool) TextureDescriptor {
+	return TextureDescriptorClass.TextureCubeDescriptorWithPixelFormatSizeMipmapped(pixelFormat, size, mipmapped)
 }
 
 // The width of the texture image for the base level mipmap, in pixels. [Full Topic]
@@ -295,19 +145,34 @@ func (t_ TextureDescriptor) SetWidth(value uint) {
 	objc.Call[objc.Void](t_, objc.Sel("setWidth:"), value)
 }
 
-// The CPU cache mode used for the CPU mapping of the texture. [Full Topic]
+// The number of mipmap levels for this texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515375-cpucachemode?language=objc
-func (t_ TextureDescriptor) CpuCacheMode() CPUCacheMode {
-	rv := objc.Call[CPUCacheMode](t_, objc.Sel("cpuCacheMode"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516300-mipmaplevelcount?language=objc
+func (t_ TextureDescriptor) MipmapLevelCount() uint {
+	rv := objc.Call[uint](t_, objc.Sel("mipmapLevelCount"))
 	return rv
 }
 
-// The CPU cache mode used for the CPU mapping of the texture. [Full Topic]
+// The number of mipmap levels for this texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515375-cpucachemode?language=objc
-func (t_ TextureDescriptor) SetCpuCacheMode(value CPUCacheMode) {
-	objc.Call[objc.Void](t_, objc.Sel("setCpuCacheMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516300-mipmaplevelcount?language=objc
+func (t_ TextureDescriptor) SetMipmapLevelCount(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setMipmapLevelCount:"), value)
+}
+
+// The number of array elements for this texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515331-arraylength?language=objc
+func (t_ TextureDescriptor) ArrayLength() uint {
+	rv := objc.Call[uint](t_, objc.Sel("arrayLength"))
+	return rv
+}
+
+// The number of array elements for this texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515331-arraylength?language=objc
+func (t_ TextureDescriptor) SetArrayLength(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setArrayLength:"), value)
 }
 
 // Options that determine how you can use the texture. [Full Topic]
@@ -325,19 +190,49 @@ func (t_ TextureDescriptor) SetUsage(value TextureUsage) {
 	objc.Call[objc.Void](t_, objc.Sel("setUsage:"), value)
 }
 
-// The depth of the texture image for the base level mipmap, in pixels. [Full Topic]
+// The pattern you want the GPU to apply to pixels when you read or sample pixels from the texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516298-depth?language=objc
-func (t_ TextureDescriptor) Depth() uint {
-	rv := objc.Call[uint](t_, objc.Sel("depth"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3114305-swizzle?language=objc
+func (t_ TextureDescriptor) Swizzle() TextureSwizzleChannels {
+	rv := objc.Call[TextureSwizzleChannels](t_, objc.Sel("swizzle"))
 	return rv
 }
 
-// The depth of the texture image for the base level mipmap, in pixels. [Full Topic]
+// The pattern you want the GPU to apply to pixels when you read or sample pixels from the texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516298-depth?language=objc
-func (t_ TextureDescriptor) SetDepth(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setDepth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3114305-swizzle?language=objc
+func (t_ TextureDescriptor) SetSwizzle(value TextureSwizzleChannels) {
+	objc.Call[objc.Void](t_, objc.Sel("setSwizzle:"), value)
+}
+
+// The number of samples in each fragment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516260-samplecount?language=objc
+func (t_ TextureDescriptor) SampleCount() uint {
+	rv := objc.Call[uint](t_, objc.Sel("sampleCount"))
+	return rv
+}
+
+// The number of samples in each fragment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516260-samplecount?language=objc
+func (t_ TextureDescriptor) SetSampleCount(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setSampleCount:"), value)
+}
+
+// The height of the texture image for the base level mipmap, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516000-height?language=objc
+func (t_ TextureDescriptor) Height() uint {
+	rv := objc.Call[uint](t_, objc.Sel("height"))
+	return rv
+}
+
+// The height of the texture image for the base level mipmap, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516000-height?language=objc
+func (t_ TextureDescriptor) SetHeight(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setHeight:"), value)
 }
 
 //	[Full Topic]
@@ -355,17 +250,122 @@ func (t_ TextureDescriptor) SetCompressionType(value TextureCompressionType) {
 	objc.Call[objc.Void](t_, objc.Sel("setCompressionType:"), value)
 }
 
-// The number of samples in each fragment. [Full Topic]
+// The CPU cache mode used for the CPU mapping of the texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516260-samplecount?language=objc
-func (t_ TextureDescriptor) SampleCount() uint {
-	rv := objc.Call[uint](t_, objc.Sel("sampleCount"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515375-cpucachemode?language=objc
+func (t_ TextureDescriptor) CpuCacheMode() CPUCacheMode {
+	rv := objc.Call[CPUCacheMode](t_, objc.Sel("cpuCacheMode"))
 	return rv
 }
 
-// The number of samples in each fragment. [Full Topic]
+// The CPU cache mode used for the CPU mapping of the texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516260-samplecount?language=objc
-func (t_ TextureDescriptor) SetSampleCount(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setSampleCount:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515375-cpucachemode?language=objc
+func (t_ TextureDescriptor) SetCpuCacheMode(value CPUCacheMode) {
+	objc.Call[objc.Void](t_, objc.Sel("setCpuCacheMode:"), value)
+}
+
+// The dimension and arrangement of texture image data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516228-texturetype?language=objc
+func (t_ TextureDescriptor) TextureType() TextureType {
+	rv := objc.Call[TextureType](t_, objc.Sel("textureType"))
+	return rv
+}
+
+// The dimension and arrangement of texture image data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516228-texturetype?language=objc
+func (t_ TextureDescriptor) SetTextureType(value TextureType) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextureType:"), value)
+}
+
+// A Boolean value indicating whether the GPU is allowed to adjust the texture's contents to improve GPU performance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966641-allowgpuoptimizedcontents?language=objc
+func (t_ TextureDescriptor) AllowGPUOptimizedContents() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowGPUOptimizedContents"))
+	return rv
+}
+
+// A Boolean value indicating whether the GPU is allowed to adjust the texture's contents to improve GPU performance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/2966641-allowgpuoptimizedcontents?language=objc
+func (t_ TextureDescriptor) SetAllowGPUOptimizedContents(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowGPUOptimizedContents:"), value)
+}
+
+// The size and bit layout of all pixels in the texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515450-pixelformat?language=objc
+func (t_ TextureDescriptor) PixelFormat() PixelFormat {
+	rv := objc.Call[PixelFormat](t_, objc.Sel("pixelFormat"))
+	return rv
+}
+
+// The size and bit layout of all pixels in the texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515450-pixelformat?language=objc
+func (t_ TextureDescriptor) SetPixelFormat(value PixelFormat) {
+	objc.Call[objc.Void](t_, objc.Sel("setPixelFormat:"), value)
+}
+
+// The depth of the texture image for the base level mipmap, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516298-depth?language=objc
+func (t_ TextureDescriptor) Depth() uint {
+	rv := objc.Call[uint](t_, objc.Sel("depth"))
+	return rv
+}
+
+// The depth of the texture image for the base level mipmap, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516298-depth?language=objc
+func (t_ TextureDescriptor) SetDepth(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setDepth:"), value)
+}
+
+// The location and access permissions of the texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516262-storagemode?language=objc
+func (t_ TextureDescriptor) StorageMode() StorageMode {
+	rv := objc.Call[StorageMode](t_, objc.Sel("storageMode"))
+	return rv
+}
+
+// The location and access permissions of the texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1516262-storagemode?language=objc
+func (t_ TextureDescriptor) SetStorageMode(value StorageMode) {
+	objc.Call[objc.Void](t_, objc.Sel("setStorageMode:"), value)
+}
+
+// The behavior of a new memory allocation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515776-resourceoptions?language=objc
+func (t_ TextureDescriptor) ResourceOptions() ResourceOptions {
+	rv := objc.Call[ResourceOptions](t_, objc.Sel("resourceOptions"))
+	return rv
+}
+
+// The behavior of a new memory allocation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/1515776-resourceoptions?language=objc
+func (t_ TextureDescriptor) SetResourceOptions(value ResourceOptions) {
+	objc.Call[objc.Void](t_, objc.Sel("setResourceOptions:"), value)
+}
+
+// The texture's hazard tracking mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3131697-hazardtrackingmode?language=objc
+func (t_ TextureDescriptor) HazardTrackingMode() HazardTrackingMode {
+	rv := objc.Call[HazardTrackingMode](t_, objc.Sel("hazardTrackingMode"))
+	return rv
+}
+
+// The texture's hazard tracking mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturedescriptor/3131697-hazardtrackingmode?language=objc
+func (t_ TextureDescriptor) SetHazardTrackingMode(value HazardTrackingMode) {
+	objc.Call[objc.Void](t_, objc.Sel("setHazardTrackingMode:"), value)
 }

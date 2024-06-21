@@ -9,7 +9,6 @@ void importAppKitProtocols() {
     o = @protocol(NSAccessibilityCheckBox);
     o = @protocol(NSAccessibilityContainsTransientUI);
     o = @protocol(NSAccessibilityCustomRotorItemSearchDelegate);
-    o = @protocol(NSAccessibilityElement);
     o = @protocol(NSAccessibilityElementLoading);
     o = @protocol(NSAccessibilityGroup);
     o = @protocol(NSAccessibilityImage);
@@ -107,7 +106,6 @@ void importAppKitProtocols() {
     o = @protocol(NSTabViewDelegate);
     o = @protocol(NSTableViewDataSource);
     o = @protocol(NSTableViewDelegate);
-    o = @protocol(NSTextAttachmentCell);
     o = @protocol(NSTextAttachmentContainer);
     o = @protocol(NSTextAttachmentLayout);
     o = @protocol(NSTextCheckingClient);

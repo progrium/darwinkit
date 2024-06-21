@@ -13,56 +13,52 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder?language=objc
 type PAccelerationStructureCommandEncoder interface {
 	// optional
-	RefitAccelerationStructureDescriptorDestinationScratchBufferScratchBufferOffset(sourceAccelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, destinationAccelerationStructure AccelerationStructureObject, scratchBuffer BufferObject, scratchBufferOffset uint)
-	HasRefitAccelerationStructureDescriptorDestinationScratchBufferScratchBufferOffset() bool
-
-	// optional
-	UpdateFence(fence FenceObject)
-	HasUpdateFence() bool
-
-	// optional
-	WriteCompactedAccelerationStructureSizeToBufferOffsetSizeDataType(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint, sizeDataType DataType)
-	HasWriteCompactedAccelerationStructureSizeToBufferOffsetSizeDataType() bool
+	UseResourceUsage(resource ResourceObject, usage ResourceUsage)
+	HasUseResourceUsage() bool
 
 	// optional
 	CopyAndCompactAccelerationStructureToAccelerationStructure(sourceAccelerationStructure AccelerationStructureObject, destinationAccelerationStructure AccelerationStructureObject)
 	HasCopyAndCompactAccelerationStructureToAccelerationStructure() bool
 
 	// optional
-	UseHeapsCount(heaps unsafe.Pointer, count uint)
-	HasUseHeapsCount() bool
-
-	// optional
-	CopyAccelerationStructureToAccelerationStructure(sourceAccelerationStructure AccelerationStructureObject, destinationAccelerationStructure AccelerationStructureObject)
-	HasCopyAccelerationStructureToAccelerationStructure() bool
-
-	// optional
-	BuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset(accelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, scratchBuffer BufferObject, scratchBufferOffset uint)
-	HasBuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset() bool
-
-	// optional
-	UseHeap(heap HeapObject)
-	HasUseHeap() bool
-
-	// optional
-	WaitForFence(fence FenceObject)
-	HasWaitForFence() bool
+	RefitAccelerationStructureDescriptorDestinationScratchBufferScratchBufferOffset(sourceAccelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, destinationAccelerationStructure AccelerationStructureObject, scratchBuffer BufferObject, scratchBufferOffset uint)
+	HasRefitAccelerationStructureDescriptorDestinationScratchBufferScratchBufferOffset() bool
 
 	// optional
 	SampleCountersInBufferAtSampleIndexWithBarrier(sampleBuffer CounterSampleBufferObject, sampleIndex uint, barrier bool)
 	HasSampleCountersInBufferAtSampleIndexWithBarrier() bool
 
 	// optional
-	UseResourceUsage(resource ResourceObject, usage ResourceUsage)
-	HasUseResourceUsage() bool
+	CopyAccelerationStructureToAccelerationStructure(sourceAccelerationStructure AccelerationStructureObject, destinationAccelerationStructure AccelerationStructureObject)
+	HasCopyAccelerationStructureToAccelerationStructure() bool
+
+	// optional
+	WriteCompactedAccelerationStructureSizeToBufferOffset(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint)
+	HasWriteCompactedAccelerationStructureSizeToBufferOffset() bool
+
+	// optional
+	UseHeap(heap HeapObject)
+	HasUseHeap() bool
 
 	// optional
 	UseResourcesCountUsage(resources unsafe.Pointer, count uint, usage ResourceUsage)
 	HasUseResourcesCountUsage() bool
 
 	// optional
-	WriteCompactedAccelerationStructureSizeToBufferOffset(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint)
-	HasWriteCompactedAccelerationStructureSizeToBufferOffset() bool
+	UseHeapsCount(heaps unsafe.Pointer, count uint)
+	HasUseHeapsCount() bool
+
+	// optional
+	UpdateFence(fence FenceObject)
+	HasUpdateFence() bool
+
+	// optional
+	BuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset(accelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, scratchBuffer BufferObject, scratchBufferOffset uint)
+	HasBuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset() bool
+
+	// optional
+	WaitForFence(fence FenceObject)
+	HasWaitForFence() bool
 }
 
 // ensure impl type implements protocol interface
@@ -71,6 +67,31 @@ var _ PAccelerationStructureCommandEncoder = (*AccelerationStructureCommandEncod
 // A concrete type for the [PAccelerationStructureCommandEncoder] protocol.
 type AccelerationStructureCommandEncoderObject struct {
 	objc.Object
+}
+
+func (a_ AccelerationStructureCommandEncoderObject) HasUseResourceUsage() bool {
+	return a_.RespondsToSelector(objc.Sel("useResource:usage:"))
+}
+
+// Makes a resource available to the acceleration structure pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553904-useresource?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) UseResourceUsage(resource ResourceObject, usage ResourceUsage) {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	objc.Call[objc.Void](a_, objc.Sel("useResource:usage:"), po0, usage)
+}
+
+func (a_ AccelerationStructureCommandEncoderObject) HasCopyAndCompactAccelerationStructureToAccelerationStructure() bool {
+	return a_.RespondsToSelector(objc.Sel("copyAndCompactAccelerationStructure:toAccelerationStructure:"))
+}
+
+// Encodes a command to compact an acceleration structure’s data and copy it into a different acceleration structure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553896-copyandcompactaccelerationstruct?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) CopyAndCompactAccelerationStructureToAccelerationStructure(sourceAccelerationStructure AccelerationStructureObject, destinationAccelerationStructure AccelerationStructureObject) {
+	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", sourceAccelerationStructure)
+	po1 := objc.WrapAsProtocol("MTLAccelerationStructure", destinationAccelerationStructure)
+	objc.Call[objc.Void](a_, objc.Sel("copyAndCompactAccelerationStructure:toAccelerationStructure:"), po0, po1)
 }
 
 func (a_ AccelerationStructureCommandEncoderObject) HasRefitAccelerationStructureDescriptorDestinationScratchBufferScratchBufferOffset() bool {
@@ -87,54 +108,16 @@ func (a_ AccelerationStructureCommandEncoderObject) RefitAccelerationStructureDe
 	objc.Call[objc.Void](a_, objc.Sel("refitAccelerationStructure:descriptor:destination:scratchBuffer:scratchBufferOffset:"), po0, descriptor, po2, po3, scratchBufferOffset)
 }
 
-func (a_ AccelerationStructureCommandEncoderObject) HasUpdateFence() bool {
-	return a_.RespondsToSelector(objc.Sel("updateFence:"))
+func (a_ AccelerationStructureCommandEncoderObject) HasSampleCountersInBufferAtSampleIndexWithBarrier() bool {
+	return a_.RespondsToSelector(objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"))
 }
 
-// Tells the GPU to update the fence after all commands encoded by the encoder have finished executing. [Full Topic]
+// Encodes a command to sample hardware counters at this point in the acceleration structure pass and store the samples into a counter sample buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553901-updatefence?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) UpdateFence(fence FenceObject) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](a_, objc.Sel("updateFence:"), po0)
-}
-
-func (a_ AccelerationStructureCommandEncoderObject) HasWriteCompactedAccelerationStructureSizeToBufferOffsetSizeDataType() bool {
-	return a_.RespondsToSelector(objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:sizeDataType:"))
-}
-
-// Encodes a command to calculate the compacted size of an acceleration structure, taking into account the size of the output data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3750514-writecompactedaccelerationstruct?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) WriteCompactedAccelerationStructureSizeToBufferOffsetSizeDataType(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint, sizeDataType DataType) {
-	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
-	po1 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](a_, objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:sizeDataType:"), po0, po1, offset, sizeDataType)
-}
-
-func (a_ AccelerationStructureCommandEncoderObject) HasCopyAndCompactAccelerationStructureToAccelerationStructure() bool {
-	return a_.RespondsToSelector(objc.Sel("copyAndCompactAccelerationStructure:toAccelerationStructure:"))
-}
-
-// Encodes a command to compact an acceleration structure’s data and copy it into a different acceleration structure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553896-copyandcompactaccelerationstruct?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) CopyAndCompactAccelerationStructureToAccelerationStructure(sourceAccelerationStructure AccelerationStructureObject, destinationAccelerationStructure AccelerationStructureObject) {
-	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", sourceAccelerationStructure)
-	po1 := objc.WrapAsProtocol("MTLAccelerationStructure", destinationAccelerationStructure)
-	objc.Call[objc.Void](a_, objc.Sel("copyAndCompactAccelerationStructure:toAccelerationStructure:"), po0, po1)
-}
-
-func (a_ AccelerationStructureCommandEncoderObject) HasUseHeapsCount() bool {
-	return a_.RespondsToSelector(objc.Sel("useHeaps:count:"))
-}
-
-// Specifies that an array of heaps containing resources in an argument buffer can be safely used by the acceleration structure pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553903-useheaps?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) UseHeapsCount(heaps unsafe.Pointer, count uint) {
-	po0 := objc.WrapAsProtocol("MTLHeap", heaps)
-	objc.Call[objc.Void](a_, objc.Sel("useHeaps:count:"), po0, count)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553899-samplecountersinbuffer?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) SampleCountersInBufferAtSampleIndexWithBarrier(sampleBuffer CounterSampleBufferObject, sampleIndex uint, barrier bool) {
+	po0 := objc.WrapAsProtocol("MTLCounterSampleBuffer", sampleBuffer)
+	objc.Call[objc.Void](a_, objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"), po0, sampleIndex, barrier)
 }
 
 func (a_ AccelerationStructureCommandEncoderObject) HasCopyAccelerationStructureToAccelerationStructure() bool {
@@ -150,17 +133,17 @@ func (a_ AccelerationStructureCommandEncoderObject) CopyAccelerationStructureToA
 	objc.Call[objc.Void](a_, objc.Sel("copyAccelerationStructure:toAccelerationStructure:"), po0, po1)
 }
 
-func (a_ AccelerationStructureCommandEncoderObject) HasBuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset() bool {
-	return a_.RespondsToSelector(objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"))
+func (a_ AccelerationStructureCommandEncoderObject) HasWriteCompactedAccelerationStructureSizeToBufferOffset() bool {
+	return a_.RespondsToSelector(objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:"))
 }
 
-// Encodes a command to build a new acceleration structure. [Full Topic]
+// Encodes a command to calculate the compacted size of an acceleration structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553894-buildaccelerationstructure?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) BuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset(accelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, scratchBuffer BufferObject, scratchBufferOffset uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553907-writecompactedaccelerationstruct?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) WriteCompactedAccelerationStructureSizeToBufferOffset(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint) {
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
-	po2 := objc.WrapAsProtocol("MTLBuffer", scratchBuffer)
-	objc.Call[objc.Void](a_, objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"), po0, descriptor, po2, scratchBufferOffset)
+	po1 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](a_, objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:"), po0, po1, offset)
 }
 
 func (a_ AccelerationStructureCommandEncoderObject) HasUseHeap() bool {
@@ -175,42 +158,6 @@ func (a_ AccelerationStructureCommandEncoderObject) UseHeap(heap HeapObject) {
 	objc.Call[objc.Void](a_, objc.Sel("useHeap:"), po0)
 }
 
-func (a_ AccelerationStructureCommandEncoderObject) HasWaitForFence() bool {
-	return a_.RespondsToSelector(objc.Sel("waitForFence:"))
-}
-
-// Tells the GPU to wait until the fence is updated before executing any commands encoded by the command encoder. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553906-waitforfence?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) WaitForFence(fence FenceObject) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](a_, objc.Sel("waitForFence:"), po0)
-}
-
-func (a_ AccelerationStructureCommandEncoderObject) HasSampleCountersInBufferAtSampleIndexWithBarrier() bool {
-	return a_.RespondsToSelector(objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"))
-}
-
-// Encodes a command to sample hardware counters at this point in the acceleration structure pass and store the samples into a counter sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553899-samplecountersinbuffer?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) SampleCountersInBufferAtSampleIndexWithBarrier(sampleBuffer CounterSampleBufferObject, sampleIndex uint, barrier bool) {
-	po0 := objc.WrapAsProtocol("MTLCounterSampleBuffer", sampleBuffer)
-	objc.Call[objc.Void](a_, objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"), po0, sampleIndex, barrier)
-}
-
-func (a_ AccelerationStructureCommandEncoderObject) HasUseResourceUsage() bool {
-	return a_.RespondsToSelector(objc.Sel("useResource:usage:"))
-}
-
-// Makes a resource available to the acceleration structure pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553904-useresource?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) UseResourceUsage(resource ResourceObject, usage ResourceUsage) {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	objc.Call[objc.Void](a_, objc.Sel("useResource:usage:"), po0, usage)
-}
-
 func (a_ AccelerationStructureCommandEncoderObject) HasUseResourcesCountUsage() bool {
 	return a_.RespondsToSelector(objc.Sel("useResources:count:usage:"))
 }
@@ -223,15 +170,51 @@ func (a_ AccelerationStructureCommandEncoderObject) UseResourcesCountUsage(resou
 	objc.Call[objc.Void](a_, objc.Sel("useResources:count:usage:"), po0, count, usage)
 }
 
-func (a_ AccelerationStructureCommandEncoderObject) HasWriteCompactedAccelerationStructureSizeToBufferOffset() bool {
-	return a_.RespondsToSelector(objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:"))
+func (a_ AccelerationStructureCommandEncoderObject) HasUseHeapsCount() bool {
+	return a_.RespondsToSelector(objc.Sel("useHeaps:count:"))
 }
 
-// Encodes a command to calculate the compacted size of an acceleration structure. [Full Topic]
+// Specifies that an array of heaps containing resources in an argument buffer can be safely used by the acceleration structure pass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553907-writecompactedaccelerationstruct?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) WriteCompactedAccelerationStructureSizeToBufferOffset(accelerationStructure AccelerationStructureObject, buffer BufferObject, offset uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553903-useheaps?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) UseHeapsCount(heaps unsafe.Pointer, count uint) {
+	po0 := objc.WrapAsProtocol("MTLHeap", heaps)
+	objc.Call[objc.Void](a_, objc.Sel("useHeaps:count:"), po0, count)
+}
+
+func (a_ AccelerationStructureCommandEncoderObject) HasUpdateFence() bool {
+	return a_.RespondsToSelector(objc.Sel("updateFence:"))
+}
+
+// Tells the GPU to update the fence after all commands encoded by the encoder have finished executing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553901-updatefence?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) UpdateFence(fence FenceObject) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](a_, objc.Sel("updateFence:"), po0)
+}
+
+func (a_ AccelerationStructureCommandEncoderObject) HasBuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset() bool {
+	return a_.RespondsToSelector(objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"))
+}
+
+// Encodes a command to build a new acceleration structure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553894-buildaccelerationstructure?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) BuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset(accelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, scratchBuffer BufferObject, scratchBufferOffset uint) {
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
-	po1 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](a_, objc.Sel("writeCompactedAccelerationStructureSize:toBuffer:offset:"), po0, po1, offset)
+	po2 := objc.WrapAsProtocol("MTLBuffer", scratchBuffer)
+	objc.Call[objc.Void](a_, objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"), po0, descriptor, po2, scratchBufferOffset)
+}
+
+func (a_ AccelerationStructureCommandEncoderObject) HasWaitForFence() bool {
+	return a_.RespondsToSelector(objc.Sel("waitForFence:"))
+}
+
+// Tells the GPU to wait until the fence is updated before executing any commands encoded by the command encoder. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553906-waitforfence?language=objc
+func (a_ AccelerationStructureCommandEncoderObject) WaitForFence(fence FenceObject) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](a_, objc.Sel("waitForFence:"), po0)
 }

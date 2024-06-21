@@ -35,18 +35,6 @@ func CIImageRepFrom(ptr unsafe.Pointer) CIImageRep {
 	}
 }
 
-func (cc _CIImageRepClass) ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
-	rv := objc.Call[CIImageRep](cc, objc.Sel("imageRepWithCIImage:"), image)
-	return rv
-}
-
-// Creates and returns a representation of an image initialized to the specified Core Image instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsciimagerep/1550736-imagerepwithciimage?language=objc
-func CIImageRep_ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
-	return CIImageRepClass.ImageRepWithCIImage(image)
-}
-
 func (c_ CIImageRep) InitWithCIImage(image coreimage.IImage) CIImageRep {
 	rv := objc.Call[CIImageRep](c_, objc.Sel("initWithCIImage:"), image)
 	return rv
@@ -59,6 +47,18 @@ func NewCIImageRepWithCIImage(image coreimage.IImage) CIImageRep {
 	instance := CIImageRepClass.Alloc().InitWithCIImage(image)
 	instance.Autorelease()
 	return instance
+}
+
+func (cc _CIImageRepClass) ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
+	rv := objc.Call[CIImageRep](cc, objc.Sel("imageRepWithCIImage:"), image)
+	return rv
+}
+
+// Creates and returns a representation of an image initialized to the specified Core Image instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsciimagerep/1550736-imagerepwithciimage?language=objc
+func CIImageRep_ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
+	return CIImageRepClass.ImageRepWithCIImage(image)
 }
 
 func (cc _CIImageRepClass) Alloc() CIImageRep {

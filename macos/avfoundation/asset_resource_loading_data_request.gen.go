@@ -19,10 +19,10 @@ type _AssetResourceLoadingDataRequestClass struct {
 type IAssetResourceLoadingDataRequest interface {
 	objc.IObject
 	RespondWithData(data []byte)
-	CurrentOffset() int64
-	RequestedOffset() int64
-	RequestsAllDataToEndOfResource() bool
 	RequestedLength() int
+	RequestsAllDataToEndOfResource() bool
+	RequestedOffset() int64
+	CurrentOffset() int64
 }
 
 // An object for requesting data from a resource that an asset resource-loading request references. [Full Topic]
@@ -65,19 +65,11 @@ func (a_ AssetResourceLoadingDataRequest) RespondWithData(data []byte) {
 	objc.Call[objc.Void](a_, objc.Sel("respondWithData:"), data)
 }
 
-// The position within the resource of the next byte. [Full Topic]
+// The length, in bytes, of the data requested. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1385945-currentoffset?language=objc
-func (a_ AssetResourceLoadingDataRequest) CurrentOffset() int64 {
-	rv := objc.Call[int64](a_, objc.Sel("currentOffset"))
-	return rv
-}
-
-// The position within the resource of the first byte requested. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1388428-requestedoffset?language=objc
-func (a_ AssetResourceLoadingDataRequest) RequestedOffset() int64 {
-	rv := objc.Call[int64](a_, objc.Sel("requestedOffset"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1387720-requestedlength?language=objc
+func (a_ AssetResourceLoadingDataRequest) RequestedLength() int {
+	rv := objc.Call[int](a_, objc.Sel("requestedLength"))
 	return rv
 }
 
@@ -89,10 +81,18 @@ func (a_ AssetResourceLoadingDataRequest) RequestsAllDataToEndOfResource() bool 
 	return rv
 }
 
-// The length, in bytes, of the data requested. [Full Topic]
+// The position within the resource of the first byte requested. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1387720-requestedlength?language=objc
-func (a_ AssetResourceLoadingDataRequest) RequestedLength() int {
-	rv := objc.Call[int](a_, objc.Sel("requestedLength"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1388428-requestedoffset?language=objc
+func (a_ AssetResourceLoadingDataRequest) RequestedOffset() int64 {
+	rv := objc.Call[int64](a_, objc.Sel("requestedOffset"))
+	return rv
+}
+
+// The position within the resource of the next byte. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingdatarequest/1385945-currentoffset?language=objc
+func (a_ AssetResourceLoadingDataRequest) CurrentOffset() int64 {
+	rv := objc.Call[int64](a_, objc.Sel("currentOffset"))
 	return rv
 }

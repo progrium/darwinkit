@@ -11,37 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate?language=objc
 type PPlayerItemOutputPullDelegate interface {
 	// optional
-	OutputMediaDataWillChange(sender PlayerItemOutput)
-	HasOutputMediaDataWillChange() bool
-
-	// optional
 	OutputSequenceWasFlushed(output PlayerItemOutput)
 	HasOutputSequenceWasFlushed() bool
+
+	// optional
+	OutputMediaDataWillChange(sender PlayerItemOutput)
+	HasOutputMediaDataWillChange() bool
 }
 
 // A delegate implementation builder for the [PPlayerItemOutputPullDelegate] protocol.
 type PlayerItemOutputPullDelegate struct {
-	_OutputMediaDataWillChange func(sender PlayerItemOutput)
 	_OutputSequenceWasFlushed  func(output PlayerItemOutput)
+	_OutputMediaDataWillChange func(sender PlayerItemOutput)
 }
 
-func (di *PlayerItemOutputPullDelegate) HasOutputMediaDataWillChange() bool {
-	return di._OutputMediaDataWillChange != nil
-}
-
-// Tells the delegate that new samples are about to arrive. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
-func (di *PlayerItemOutputPullDelegate) SetOutputMediaDataWillChange(f func(sender PlayerItemOutput)) {
-	di._OutputMediaDataWillChange = f
-}
-
-// Tells the delegate that new samples are about to arrive. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
-func (di *PlayerItemOutputPullDelegate) OutputMediaDataWillChange(sender PlayerItemOutput) {
-	di._OutputMediaDataWillChange(sender)
-}
 func (di *PlayerItemOutputPullDelegate) HasOutputSequenceWasFlushed() bool {
 	return di._OutputSequenceWasFlushed != nil
 }
@@ -59,6 +42,23 @@ func (di *PlayerItemOutputPullDelegate) SetOutputSequenceWasFlushed(f func(outpu
 func (di *PlayerItemOutputPullDelegate) OutputSequenceWasFlushed(output PlayerItemOutput) {
 	di._OutputSequenceWasFlushed(output)
 }
+func (di *PlayerItemOutputPullDelegate) HasOutputMediaDataWillChange() bool {
+	return di._OutputMediaDataWillChange != nil
+}
+
+// Tells the delegate that new samples are about to arrive. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
+func (di *PlayerItemOutputPullDelegate) SetOutputMediaDataWillChange(f func(sender PlayerItemOutput)) {
+	di._OutputMediaDataWillChange = f
+}
+
+// Tells the delegate that new samples are about to arrive. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
+func (di *PlayerItemOutputPullDelegate) OutputMediaDataWillChange(sender PlayerItemOutput) {
+	di._OutputMediaDataWillChange(sender)
+}
 
 // ensure impl type implements protocol interface
 var _ PPlayerItemOutputPullDelegate = (*PlayerItemOutputPullDelegateObject)(nil)
@@ -66,17 +66,6 @@ var _ PPlayerItemOutputPullDelegate = (*PlayerItemOutputPullDelegateObject)(nil)
 // A concrete type for the [PPlayerItemOutputPullDelegate] protocol.
 type PlayerItemOutputPullDelegateObject struct {
 	objc.Object
-}
-
-func (p_ PlayerItemOutputPullDelegateObject) HasOutputMediaDataWillChange() bool {
-	return p_.RespondsToSelector(objc.Sel("outputMediaDataWillChange:"))
-}
-
-// Tells the delegate that new samples are about to arrive. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
-func (p_ PlayerItemOutputPullDelegateObject) OutputMediaDataWillChange(sender PlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("outputMediaDataWillChange:"), sender)
 }
 
 func (p_ PlayerItemOutputPullDelegateObject) HasOutputSequenceWasFlushed() bool {
@@ -88,4 +77,15 @@ func (p_ PlayerItemOutputPullDelegateObject) HasOutputSequenceWasFlushed() bool 
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387279-outputsequencewasflushed?language=objc
 func (p_ PlayerItemOutputPullDelegateObject) OutputSequenceWasFlushed(output PlayerItemOutput) {
 	objc.Call[objc.Void](p_, objc.Sel("outputSequenceWasFlushed:"), output)
+}
+
+func (p_ PlayerItemOutputPullDelegateObject) HasOutputMediaDataWillChange() bool {
+	return p_.RespondsToSelector(objc.Sel("outputMediaDataWillChange:"))
+}
+
+// Tells the delegate that new samples are about to arrive. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
+func (p_ PlayerItemOutputPullDelegateObject) OutputMediaDataWillChange(sender PlayerItemOutput) {
+	objc.Call[objc.Void](p_, objc.Sel("outputMediaDataWillChange:"), sender)
 }

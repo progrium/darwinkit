@@ -18,18 +18,18 @@ type _IndirectCommandBufferDescriptorClass struct {
 // An interface definition for the [IndirectCommandBufferDescriptor] class.
 type IIndirectCommandBufferDescriptor interface {
 	objc.IObject
-	MaxFragmentBufferBindCount() uint
-	SetMaxFragmentBufferBindCount(value uint)
-	MaxKernelBufferBindCount() uint
-	SetMaxKernelBufferBindCount(value uint)
+	InheritBuffers() bool
+	SetInheritBuffers(value bool)
 	MaxVertexBufferBindCount() uint
 	SetMaxVertexBufferBindCount(value uint)
 	InheritPipelineState() bool
 	SetInheritPipelineState(value bool)
+	MaxFragmentBufferBindCount() uint
+	SetMaxFragmentBufferBindCount(value uint)
 	CommandTypes() IndirectCommandType
 	SetCommandTypes(value IndirectCommandType)
-	InheritBuffers() bool
-	SetInheritBuffers(value bool)
+	MaxKernelBufferBindCount() uint
+	SetMaxKernelBufferBindCount(value uint)
 }
 
 // A configuration you create to customize an indirect command buffer. [Full Topic]
@@ -65,34 +65,19 @@ func (i_ IndirectCommandBufferDescriptor) Init() IndirectCommandBufferDescriptor
 	return rv
 }
 
-// The maximum number of buffers that you can set per command for the fragment stage. [Full Topic]
+// A Boolean value that determines where commands in the indirect command buffer get their buffer arguments from when you execute them. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976449-maxfragmentbufferbindcount?language=objc
-func (i_ IndirectCommandBufferDescriptor) MaxFragmentBufferBindCount() uint {
-	rv := objc.Call[uint](i_, objc.Sel("maxFragmentBufferBindCount"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2967432-inheritbuffers?language=objc
+func (i_ IndirectCommandBufferDescriptor) InheritBuffers() bool {
+	rv := objc.Call[bool](i_, objc.Sel("inheritBuffers"))
 	return rv
 }
 
-// The maximum number of buffers that you can set per command for the fragment stage. [Full Topic]
+// A Boolean value that determines where commands in the indirect command buffer get their buffer arguments from when you execute them. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976449-maxfragmentbufferbindcount?language=objc
-func (i_ IndirectCommandBufferDescriptor) SetMaxFragmentBufferBindCount(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setMaxFragmentBufferBindCount:"), value)
-}
-
-// The maximum number of buffers that you can set per command for the compute kernel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976450-maxkernelbufferbindcount?language=objc
-func (i_ IndirectCommandBufferDescriptor) MaxKernelBufferBindCount() uint {
-	rv := objc.Call[uint](i_, objc.Sel("maxKernelBufferBindCount"))
-	return rv
-}
-
-// The maximum number of buffers that you can set per command for the compute kernel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976450-maxkernelbufferbindcount?language=objc
-func (i_ IndirectCommandBufferDescriptor) SetMaxKernelBufferBindCount(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setMaxKernelBufferBindCount:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2967432-inheritbuffers?language=objc
+func (i_ IndirectCommandBufferDescriptor) SetInheritBuffers(value bool) {
+	objc.Call[objc.Void](i_, objc.Sel("setInheritBuffers:"), value)
 }
 
 // The maximum number of buffers that you can set per command for the vertex stage. [Full Topic]
@@ -125,6 +110,21 @@ func (i_ IndirectCommandBufferDescriptor) SetInheritPipelineState(value bool) {
 	objc.Call[objc.Void](i_, objc.Sel("setInheritPipelineState:"), value)
 }
 
+// The maximum number of buffers that you can set per command for the fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976449-maxfragmentbufferbindcount?language=objc
+func (i_ IndirectCommandBufferDescriptor) MaxFragmentBufferBindCount() uint {
+	rv := objc.Call[uint](i_, objc.Sel("maxFragmentBufferBindCount"))
+	return rv
+}
+
+// The maximum number of buffers that you can set per command for the fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976449-maxfragmentbufferbindcount?language=objc
+func (i_ IndirectCommandBufferDescriptor) SetMaxFragmentBufferBindCount(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setMaxFragmentBufferBindCount:"), value)
+}
+
 // The set of command types that you can encode into the indirect command buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2966582-commandtypes?language=objc
@@ -140,17 +140,17 @@ func (i_ IndirectCommandBufferDescriptor) SetCommandTypes(value IndirectCommandT
 	objc.Call[objc.Void](i_, objc.Sel("setCommandTypes:"), value)
 }
 
-// A Boolean value that determines where commands in the indirect command buffer get their buffer arguments from when you execute them. [Full Topic]
+// The maximum number of buffers that you can set per command for the compute kernel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2967432-inheritbuffers?language=objc
-func (i_ IndirectCommandBufferDescriptor) InheritBuffers() bool {
-	rv := objc.Call[bool](i_, objc.Sel("inheritBuffers"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976450-maxkernelbufferbindcount?language=objc
+func (i_ IndirectCommandBufferDescriptor) MaxKernelBufferBindCount() uint {
+	rv := objc.Call[uint](i_, objc.Sel("maxKernelBufferBindCount"))
 	return rv
 }
 
-// A Boolean value that determines where commands in the indirect command buffer get their buffer arguments from when you execute them. [Full Topic]
+// The maximum number of buffers that you can set per command for the compute kernel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2967432-inheritbuffers?language=objc
-func (i_ IndirectCommandBufferDescriptor) SetInheritBuffers(value bool) {
-	objc.Call[objc.Void](i_, objc.Sel("setInheritBuffers:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbufferdescriptor/2976450-maxkernelbufferbindcount?language=objc
+func (i_ IndirectCommandBufferDescriptor) SetMaxKernelBufferBindCount(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setMaxKernelBufferBindCount:"), value)
 }

@@ -19,8 +19,8 @@ type _TrackingAreaClass struct {
 // An interface definition for the [TrackingArea] class.
 type ITrackingArea interface {
 	objc.IObject
-	Owner() objc.Object
 	Options() TrackingAreaOptions
+	Owner() objc.Object
 	Rect() foundation.Rect
 	UserInfo() foundation.Dictionary
 }
@@ -72,19 +72,19 @@ func (t_ TrackingArea) Init() TrackingArea {
 	return rv
 }
 
-// The object owning the receiver, which is the recipient of mouse-tracking, mouse-movement, and cursor-update messages. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingarea/1525965-owner?language=objc
-func (t_ TrackingArea) Owner() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("owner"))
-	return rv
-}
-
 // The options specified for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingarea/1533013-options?language=objc
 func (t_ TrackingArea) Options() TrackingAreaOptions {
 	rv := objc.Call[TrackingAreaOptions](t_, objc.Sel("options"))
+	return rv
+}
+
+// The object owning the receiver, which is the recipient of mouse-tracking, mouse-movement, and cursor-update messages. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingarea/1525965-owner?language=objc
+func (t_ TrackingArea) Owner() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("owner"))
 	return rv
 }
 

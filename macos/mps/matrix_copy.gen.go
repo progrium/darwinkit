@@ -21,12 +21,10 @@ type IMatrixCopy interface {
 	IKernel
 	EncodeToCommandBufferCopyDescriptor(commandBuffer metal.PCommandBuffer, copyDescriptor IMatrixCopyDescriptor)
 	EncodeToCommandBufferObjectCopyDescriptor(commandBufferObject objc.IObject, copyDescriptor IMatrixCopyDescriptor)
-	EncodeToCommandBufferCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBuffer metal.PCommandBuffer, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint)
-	EncodeToCommandBufferObjectCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBufferObject objc.IObject, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint)
-	CopyColumns() uint
-	DestinationsAreTransposed() bool
 	SourcesAreTransposed() bool
+	DestinationsAreTransposed() bool
 	CopyRows() uint
+	CopyColumns() uint
 }
 
 // A class that can perform multiple matrix copy operations. [Full Topic]
@@ -77,21 +75,6 @@ func (m_ MatrixCopy) Init() MatrixCopy {
 	return rv
 }
 
-func (m_ MatrixCopy) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixCopy {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixCopy](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixCopy_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixCopy {
-	instance := MatrixCopyClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixCopy) InitWithDevice(device metal.PDevice) MatrixCopy {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixCopy](m_, objc.Sel("initWithDevice:"), po0)
@@ -103,6 +86,21 @@ func (m_ MatrixCopy) InitWithDevice(device metal.PDevice) MatrixCopy {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixCopyWithDevice(device metal.PDevice) MatrixCopy {
 	instance := MatrixCopyClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixCopy) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixCopy {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixCopy](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixCopy_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixCopy {
+	instance := MatrixCopyClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -124,24 +122,9 @@ func (m_ MatrixCopy) EncodeToCommandBufferObjectCopyDescriptor(commandBufferObje
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2935558-encodetocommandbuffer?language=objc
-func (m_ MatrixCopy) EncodeToCommandBufferCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBuffer metal.PCommandBuffer, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), po0, copyDescriptor, rowPermuteIndices, rowPermuteOffset, columnPermuteIndices, columnPermuteOffset)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2935558-encodetocommandbuffer?language=objc
-func (m_ MatrixCopy) EncodeToCommandBufferObjectCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBufferObject objc.IObject, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), commandBufferObject, copyDescriptor, rowPermuteIndices, rowPermuteOffset, columnPermuteIndices, columnPermuteOffset)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915325-copycolumns?language=objc
-func (m_ MatrixCopy) CopyColumns() uint {
-	rv := objc.Call[uint](m_, objc.Sel("copyColumns"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915340-sourcesaretransposed?language=objc
+func (m_ MatrixCopy) SourcesAreTransposed() bool {
+	rv := objc.Call[bool](m_, objc.Sel("sourcesAreTransposed"))
 	return rv
 }
 
@@ -155,16 +138,16 @@ func (m_ MatrixCopy) DestinationsAreTransposed() bool {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915340-sourcesaretransposed?language=objc
-func (m_ MatrixCopy) SourcesAreTransposed() bool {
-	rv := objc.Call[bool](m_, objc.Sel("sourcesAreTransposed"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915342-copyrows?language=objc
+func (m_ MatrixCopy) CopyRows() uint {
+	rv := objc.Call[uint](m_, objc.Sel("copyRows"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915342-copyrows?language=objc
-func (m_ MatrixCopy) CopyRows() uint {
-	rv := objc.Call[uint](m_, objc.Sel("copyRows"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915325-copycolumns?language=objc
+func (m_ MatrixCopy) CopyColumns() uint {
+	rv := objc.Call[uint](m_, objc.Sel("copyColumns"))
 	return rv
 }

@@ -33,6 +33,19 @@ func CNNFullyConnectedNodeFrom(ptr unsafe.Pointer) CNNFullyConnectedNode {
 	}
 }
 
+func (cc _CNNFullyConnectedNodeClass) NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
+	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
+	rv := objc.Call[CNNFullyConnectedNode](cc, objc.Sel("nodeWithSource:weights:"), sourceNode, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnfullyconnectednode/2866458-nodewithsource?language=objc
+func CNNFullyConnectedNode_NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
+	return CNNFullyConnectedNodeClass.NodeWithSourceWeights(sourceNode, weights)
+}
+
 func (c_ CNNFullyConnectedNode) InitWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
 	rv := objc.Call[CNNFullyConnectedNode](c_, objc.Sel("initWithSource:weights:"), sourceNode, po1)
@@ -46,19 +59,6 @@ func NewCNNFullyConnectedNodeWithSourceWeights(sourceNode INNImageNode, weights 
 	instance := CNNFullyConnectedNodeClass.Alloc().InitWithSourceWeights(sourceNode, weights)
 	instance.Autorelease()
 	return instance
-}
-
-func (cc _CNNFullyConnectedNodeClass) NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
-	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNFullyConnectedNode](cc, objc.Sel("nodeWithSource:weights:"), sourceNode, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnfullyconnectednode/2866458-nodewithsource?language=objc
-func CNNFullyConnectedNode_NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
-	return CNNFullyConnectedNodeClass.NodeWithSourceWeights(sourceNode, weights)
 }
 
 func (cc _CNNFullyConnectedNodeClass) Alloc() CNNFullyConnectedNode {

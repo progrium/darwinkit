@@ -18,8 +18,8 @@ type _CapturePhotoSettingsClass struct {
 // An interface definition for the [CapturePhotoSettings] class.
 type ICapturePhotoSettings interface {
 	objc.IObject
-	Format() map[string]objc.Object
 	UniqueID() int64
+	Format() map[string]objc.Object
 	ProcessedFileType() FileType
 }
 
@@ -34,6 +34,18 @@ func CapturePhotoSettingsFrom(ptr unsafe.Pointer) CapturePhotoSettings {
 	return CapturePhotoSettings{
 		Object: objc.ObjectFrom(ptr),
 	}
+}
+
+func (cc _CapturePhotoSettingsClass) PhotoSettingsFromPhotoSettings(photoSettings ICapturePhotoSettings) CapturePhotoSettings {
+	rv := objc.Call[CapturePhotoSettings](cc, objc.Sel("photoSettingsFromPhotoSettings:"), photoSettings)
+	return rv
+}
+
+// Creates a unique photo settings object, copying all settings values from the specified photo settings object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotosettings/1778655-photosettingsfromphotosettings?language=objc
+func CapturePhotoSettings_PhotoSettingsFromPhotoSettings(photoSettings ICapturePhotoSettings) CapturePhotoSettings {
+	return CapturePhotoSettingsClass.PhotoSettingsFromPhotoSettings(photoSettings)
 }
 
 func (cc _CapturePhotoSettingsClass) PhotoSettings() CapturePhotoSettings {
@@ -60,18 +72,6 @@ func CapturePhotoSettings_PhotoSettingsWithFormat(format map[string]objc.IObject
 	return CapturePhotoSettingsClass.PhotoSettingsWithFormat(format)
 }
 
-func (cc _CapturePhotoSettingsClass) PhotoSettingsFromPhotoSettings(photoSettings ICapturePhotoSettings) CapturePhotoSettings {
-	rv := objc.Call[CapturePhotoSettings](cc, objc.Sel("photoSettingsFromPhotoSettings:"), photoSettings)
-	return rv
-}
-
-// Creates a unique photo settings object, copying all settings values from the specified photo settings object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotosettings/1778655-photosettingsfromphotosettings?language=objc
-func CapturePhotoSettings_PhotoSettingsFromPhotoSettings(photoSettings ICapturePhotoSettings) CapturePhotoSettings {
-	return CapturePhotoSettingsClass.PhotoSettingsFromPhotoSettings(photoSettings)
-}
-
 func (cc _CapturePhotoSettingsClass) Alloc() CapturePhotoSettings {
 	rv := objc.Call[CapturePhotoSettings](cc, objc.Sel("alloc"))
 	return rv
@@ -92,19 +92,19 @@ func (c_ CapturePhotoSettings) Init() CapturePhotoSettings {
 	return rv
 }
 
-// A dictionary describing the processed format (for example, JPEG) to deliver captured photos in. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotosettings/1648783-format?language=objc
-func (c_ CapturePhotoSettings) Format() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("format"))
-	return rv
-}
-
 // A unique identifier for this photo settings instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotosettings/1648767-uniqueid?language=objc
 func (c_ CapturePhotoSettings) UniqueID() int64 {
 	rv := objc.Call[int64](c_, objc.Sel("uniqueID"))
+	return rv
+}
+
+// A dictionary describing the processed format (for example, JPEG) to deliver captured photos in. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotosettings/1648783-format?language=objc
+func (c_ CapturePhotoSettings) Format() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("format"))
 	return rv
 }
 

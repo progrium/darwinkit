@@ -18,14 +18,14 @@ type _MassFormatterClass struct {
 // An interface definition for the [MassFormatter] class.
 type IMassFormatter interface {
 	IFormatter
-	StringFromKilograms(numberInKilograms float64) string
-	UnitStringFromKilogramsUsedUnit(numberInKilograms float64, unitp *MassFormatterUnit) string
 	StringFromValueUnit(value float64, unit MassFormatterUnit) string
+	StringFromKilograms(numberInKilograms float64) string
 	UnitStringFromValueUnit(value float64, unit MassFormatterUnit) string
-	IsForPersonMassUse() bool
-	SetForPersonMassUse(value bool)
+	UnitStringFromKilogramsUsedUnit(numberInKilograms float64, unitp *MassFormatterUnit) string
 	UnitStyle() FormattingUnitStyle
 	SetUnitStyle(value FormattingUnitStyle)
+	IsForPersonMassUse() bool
+	SetForPersonMassUse(value bool)
 	NumberFormatter() NumberFormatter
 	SetNumberFormatter(value INumberFormatter)
 }
@@ -63,27 +63,19 @@ func (m_ MassFormatter) Init() MassFormatter {
 	return rv
 }
 
-// Returns a mass string for the provided value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1414324-stringfromkilograms?language=objc
-func (m_ MassFormatter) StringFromKilograms(numberInKilograms float64) string {
-	rv := objc.Call[string](m_, objc.Sel("stringFromKilograms:"), numberInKilograms)
-	return rv
-}
-
-// Returns the unit string for the provided value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1408475-unitstringfromkilograms?language=objc
-func (m_ MassFormatter) UnitStringFromKilogramsUsedUnit(numberInKilograms float64, unitp *MassFormatterUnit) string {
-	rv := objc.Call[string](m_, objc.Sel("unitStringFromKilograms:usedUnit:"), numberInKilograms, unitp)
-	return rv
-}
-
 // Returns a properly formatted mass string for the given value and unit. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1409002-stringfromvalue?language=objc
 func (m_ MassFormatter) StringFromValueUnit(value float64, unit MassFormatterUnit) string {
 	rv := objc.Call[string](m_, objc.Sel("stringFromValue:unit:"), value, unit)
+	return rv
+}
+
+// Returns a mass string for the provided value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1414324-stringfromkilograms?language=objc
+func (m_ MassFormatter) StringFromKilograms(numberInKilograms float64) string {
+	rv := objc.Call[string](m_, objc.Sel("stringFromKilograms:"), numberInKilograms)
 	return rv
 }
 
@@ -95,19 +87,12 @@ func (m_ MassFormatter) UnitStringFromValueUnit(value float64, unit MassFormatte
 	return rv
 }
 
-// A Boolean value that indicates whether the resulting string represents a person’s mass. [Full Topic]
+// Returns the unit string for the provided value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1407306-forpersonmassuse?language=objc
-func (m_ MassFormatter) IsForPersonMassUse() bool {
-	rv := objc.Call[bool](m_, objc.Sel("isForPersonMassUse"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1408475-unitstringfromkilograms?language=objc
+func (m_ MassFormatter) UnitStringFromKilogramsUsedUnit(numberInKilograms float64, unitp *MassFormatterUnit) string {
+	rv := objc.Call[string](m_, objc.Sel("unitStringFromKilograms:usedUnit:"), numberInKilograms, unitp)
 	return rv
-}
-
-// A Boolean value that indicates whether the resulting string represents a person’s mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1407306-forpersonmassuse?language=objc
-func (m_ MassFormatter) SetForPersonMassUse(value bool) {
-	objc.Call[objc.Void](m_, objc.Sel("setForPersonMassUse:"), value)
 }
 
 // The unit style used by this formatter. [Full Topic]
@@ -123,6 +108,21 @@ func (m_ MassFormatter) UnitStyle() FormattingUnitStyle {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1411215-unitstyle?language=objc
 func (m_ MassFormatter) SetUnitStyle(value FormattingUnitStyle) {
 	objc.Call[objc.Void](m_, objc.Sel("setUnitStyle:"), value)
+}
+
+// A Boolean value that indicates whether the resulting string represents a person’s mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1407306-forpersonmassuse?language=objc
+func (m_ MassFormatter) IsForPersonMassUse() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isForPersonMassUse"))
+	return rv
+}
+
+// A Boolean value that indicates whether the resulting string represents a person’s mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1407306-forpersonmassuse?language=objc
+func (m_ MassFormatter) SetForPersonMassUse(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setForPersonMassUse:"), value)
 }
 
 // The number formatter used to format the numbers in a mass strings. [Full Topic]

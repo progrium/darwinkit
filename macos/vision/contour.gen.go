@@ -21,12 +21,12 @@ type IContour interface {
 	objc.IObject
 	PolygonApproximationWithEpsilonError(epsilon float32, error unsafe.Pointer) Contour
 	ChildContourAtIndexError(childContourIndex uint, error unsafe.Pointer) Contour
-	NormalizedPoints() objc.Object
-	AspectRatio() float32
-	IndexPath() foundation.IndexPath
 	ChildContours() []Contour
+	NormalizedPoints() objc.Object
 	PointCount() int
 	NormalizedPath() unsafe.Pointer
+	IndexPath() foundation.IndexPath
+	AspectRatio() float32
 	ChildContourCount() int
 }
 
@@ -79,35 +79,19 @@ func (c_ Contour) ChildContourAtIndexError(childContourIndex uint, error unsafe.
 	return rv
 }
 
-// The contour’s array of points in normalized coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548326-normalizedpoints?language=objc
-func (c_ Contour) NormalizedPoints() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("normalizedPoints"))
-	return rv
-}
-
-// The aspect ratio of the contour. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3600614-aspectratio?language=objc
-func (c_ Contour) AspectRatio() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("aspectRatio"))
-	return rv
-}
-
-// The contour object’s index path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548324-indexpath?language=objc
-func (c_ Contour) IndexPath() foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
-	return rv
-}
-
 // An array of contours that this contour encloses. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548323-childcontours?language=objc
 func (c_ Contour) ChildContours() []Contour {
 	rv := objc.Call[[]Contour](c_, objc.Sel("childContours"))
+	return rv
+}
+
+// The contour’s array of points in normalized coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548326-normalizedpoints?language=objc
+func (c_ Contour) NormalizedPoints() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("normalizedPoints"))
 	return rv
 }
 
@@ -124,6 +108,22 @@ func (c_ Contour) PointCount() int {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548325-normalizedpath?language=objc
 func (c_ Contour) NormalizedPath() unsafe.Pointer {
 	rv := objc.Call[unsafe.Pointer](c_, objc.Sel("normalizedPath"))
+	return rv
+}
+
+// The contour object’s index path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548324-indexpath?language=objc
+func (c_ Contour) IndexPath() foundation.IndexPath {
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
+	return rv
+}
+
+// The aspect ratio of the contour. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3600614-aspectratio?language=objc
+func (c_ Contour) AspectRatio() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("aspectRatio"))
 	return rv
 }
 

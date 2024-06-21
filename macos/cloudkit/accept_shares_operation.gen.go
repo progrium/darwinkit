@@ -19,12 +19,12 @@ type _AcceptSharesOperationClass struct {
 // An interface definition for the [AcceptSharesOperation] class.
 type IAcceptSharesOperation interface {
 	IOperation
-	PerShareCompletionBlock() func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)
-	SetPerShareCompletionBlock(value func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error))
 	AcceptSharesCompletionBlock() func(operationError foundation.Error)
 	SetAcceptSharesCompletionBlock(value func(operationError foundation.Error))
 	ShareMetadatas() []ShareMetadata
 	SetShareMetadatas(value []IShareMetadata)
+	PerShareCompletionBlock() func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)
+	SetPerShareCompletionBlock(value func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error))
 }
 
 // An operation that confirms a user’s participation in a share. [Full Topic]
@@ -38,11 +38,6 @@ func AcceptSharesOperationFrom(ptr unsafe.Pointer) AcceptSharesOperation {
 	return AcceptSharesOperation{
 		Operation: OperationFrom(ptr),
 	}
-}
-
-func (a_ AcceptSharesOperation) Init() AcceptSharesOperation {
-	rv := objc.Call[AcceptSharesOperation](a_, objc.Sel("init"))
-	return rv
 }
 
 func (a_ AcceptSharesOperation) InitWithShareMetadatas(shareMetadatas []IShareMetadata) AcceptSharesOperation {
@@ -59,6 +54,11 @@ func NewAcceptSharesOperationWithShareMetadatas(shareMetadatas []IShareMetadata)
 	return instance
 }
 
+func (a_ AcceptSharesOperation) Init() AcceptSharesOperation {
+	rv := objc.Call[AcceptSharesOperation](a_, objc.Sel("init"))
+	return rv
+}
+
 func (ac _AcceptSharesOperationClass) Alloc() AcceptSharesOperation {
 	rv := objc.Call[AcceptSharesOperation](ac, objc.Sel("alloc"))
 	return rv
@@ -72,21 +72,6 @@ func (ac _AcceptSharesOperationClass) New() AcceptSharesOperation {
 
 func NewAcceptSharesOperation() AcceptSharesOperation {
 	return AcceptSharesOperationClass.New()
-}
-
-// The block to execute as CloudKit processes individual shares. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1640426-persharecompletionblock?language=objc
-func (a_ AcceptSharesOperation) PerShareCompletionBlock() func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error) {
-	rv := objc.Call[func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)](a_, objc.Sel("perShareCompletionBlock"))
-	return rv
-}
-
-// The block to execute as CloudKit processes individual shares. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1640426-persharecompletionblock?language=objc
-func (a_ AcceptSharesOperation) SetPerShareCompletionBlock(value func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)) {
-	objc.Call[objc.Void](a_, objc.Sel("setPerShareCompletionBlock:"), value)
 }
 
 // The block to execute when the operation finishes. [Full Topic]
@@ -117,4 +102,19 @@ func (a_ AcceptSharesOperation) ShareMetadatas() []ShareMetadata {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1823508-sharemetadatas?language=objc
 func (a_ AcceptSharesOperation) SetShareMetadatas(value []IShareMetadata) {
 	objc.Call[objc.Void](a_, objc.Sel("setShareMetadatas:"), value)
+}
+
+// The block to execute as CloudKit processes individual shares. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1640426-persharecompletionblock?language=objc
+func (a_ AcceptSharesOperation) PerShareCompletionBlock() func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error) {
+	rv := objc.Call[func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)](a_, objc.Sel("perShareCompletionBlock"))
+	return rv
+}
+
+// The block to execute as CloudKit processes individual shares. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1640426-persharecompletionblock?language=objc
+func (a_ AcceptSharesOperation) SetPerShareCompletionBlock(value func(shareMetadata ShareMetadata, acceptedShare Share, error foundation.Error)) {
+	objc.Call[objc.Void](a_, objc.Sel("setPerShareCompletionBlock:"), value)
 }

@@ -21,8 +21,8 @@ type IWebResource interface {
 	objc.IObject
 	MIMEType() string
 	FrameName() string
-	URL() foundation.URL
 	Data() []byte
+	URL() foundation.URL
 	TextEncodingName() string
 }
 
@@ -89,19 +89,19 @@ func (w_ WebResource) FrameName() string {
 	return rv
 }
 
-// The receiver’s URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/webresource/1392195-url?language=objc
-func (w_ WebResource) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](w_, objc.Sel("URL"))
-	return rv
-}
-
 // The receiver’s data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webresource/1392191-data?language=objc
 func (w_ WebResource) Data() []byte {
 	rv := objc.Call[[]byte](w_, objc.Sel("data"))
+	return rv
+}
+
+// The receiver’s URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webresource/1392195-url?language=objc
+func (w_ WebResource) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](w_, objc.Sel("URL"))
 	return rv
 }
 

@@ -18,8 +18,9 @@ type _AccelerationStructureTriangleGeometryDescriptorClass struct {
 // An interface definition for the [AccelerationStructureTriangleGeometryDescriptor] class.
 type IAccelerationStructureTriangleGeometryDescriptor interface {
 	IAccelerationStructureGeometryDescriptor
-	IndexType() IndexType
-	SetIndexType(value IndexType)
+	VertexBuffer() BufferObject
+	SetVertexBuffer(value PBuffer)
+	SetVertexBufferObject(valueObject objc.IObject)
 	TriangleCount() uint
 	SetTriangleCount(value uint)
 	IndexBuffer() BufferObject
@@ -27,13 +28,12 @@ type IAccelerationStructureTriangleGeometryDescriptor interface {
 	SetIndexBufferObject(valueObject objc.IObject)
 	IndexBufferOffset() uint
 	SetIndexBufferOffset(value uint)
-	VertexBufferOffset() uint
-	SetVertexBufferOffset(value uint)
+	IndexType() IndexType
+	SetIndexType(value IndexType)
 	VertexStride() uint
 	SetVertexStride(value uint)
-	VertexBuffer() BufferObject
-	SetVertexBuffer(value PBuffer)
-	SetVertexBufferObject(valueObject objc.IObject)
+	VertexBufferOffset() uint
+	SetVertexBufferOffset(value uint)
 }
 
 // A description of a list of triangle primitives to turn into an acceleration structure. [Full Topic]
@@ -81,19 +81,27 @@ func (a_ AccelerationStructureTriangleGeometryDescriptor) Init() AccelerationStr
 	return rv
 }
 
-// The data type of indices in the index buffer. [Full Topic]
+// A buffer  that contains vertex data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3666587-indextype?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) IndexType() IndexType {
-	rv := objc.Call[IndexType](a_, objc.Sel("indexType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) VertexBuffer() BufferObject {
+	rv := objc.Call[BufferObject](a_, objc.Sel("vertexBuffer"))
 	return rv
 }
 
-// The data type of indices in the index buffer. [Full Topic]
+// A buffer  that contains vertex data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3666587-indextype?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) SetIndexType(value IndexType) {
-	objc.Call[objc.Void](a_, objc.Sel("setIndexType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBuffer(value PBuffer) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", value)
+	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), po0)
+}
+
+// A buffer  that contains vertex data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBufferObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), valueObject)
 }
 
 // The number of triangles in the buffers. [Full Topic]
@@ -149,19 +157,19 @@ func (a_ AccelerationStructureTriangleGeometryDescriptor) SetIndexBufferOffset(v
 	objc.Call[objc.Void](a_, objc.Sel("setIndexBufferOffset:"), value)
 }
 
-// The offset, in bytes, for the first vertex in the vertex buffer. [Full Topic]
+// The data type of indices in the index buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553877-vertexbufferoffset?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) VertexBufferOffset() uint {
-	rv := objc.Call[uint](a_, objc.Sel("vertexBufferOffset"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3666587-indextype?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) IndexType() IndexType {
+	rv := objc.Call[IndexType](a_, objc.Sel("indexType"))
 	return rv
 }
 
-// The offset, in bytes, for the first vertex in the vertex buffer. [Full Topic]
+// The data type of indices in the index buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553877-vertexbufferoffset?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBufferOffset(value uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setVertexBufferOffset:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3666587-indextype?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) SetIndexType(value IndexType) {
+	objc.Call[objc.Void](a_, objc.Sel("setIndexType:"), value)
 }
 
 // The stride, in bytes, between vertices in the vertex buffer. [Full Topic]
@@ -179,25 +187,17 @@ func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexStride(value 
 	objc.Call[objc.Void](a_, objc.Sel("setVertexStride:"), value)
 }
 
-// A buffer  that contains vertex data. [Full Topic]
+// The offset, in bytes, for the first vertex in the vertex buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) VertexBuffer() BufferObject {
-	rv := objc.Call[BufferObject](a_, objc.Sel("vertexBuffer"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553877-vertexbufferoffset?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) VertexBufferOffset() uint {
+	rv := objc.Call[uint](a_, objc.Sel("vertexBufferOffset"))
 	return rv
 }
 
-// A buffer  that contains vertex data. [Full Topic]
+// The offset, in bytes, for the first vertex in the vertex buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBuffer(value PBuffer) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", value)
-	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), po0)
-}
-
-// A buffer  that contains vertex data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
-func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), valueObject)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553877-vertexbufferoffset?language=objc
+func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBufferOffset(value uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setVertexBufferOffset:"), value)
 }

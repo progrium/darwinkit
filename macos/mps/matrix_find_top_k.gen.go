@@ -21,14 +21,14 @@ type IMatrixFindTopK interface {
 	IMatrixUnaryKernel
 	EncodeToCommandBufferInputMatrixResultIndexMatrixResultValueMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, resultIndexMatrix IMatrix, resultValueMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixResultIndexMatrixResultValueMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, resultIndexMatrix IMatrix, resultValueMatrix IMatrix)
-	NumberOfTopKValues() uint
-	SetNumberOfTopKValues(value uint)
-	IndexOffset() uint
-	SetIndexOffset(value uint)
 	SourceRows() uint
 	SetSourceRows(value uint)
 	SourceColumns() uint
 	SetSourceColumns(value uint)
+	NumberOfTopKValues() uint
+	SetNumberOfTopKValues(value uint)
+	IndexOffset() uint
+	SetIndexOffset(value uint)
 }
 
 // A kernel for computing the top-K values and their corresponding indices in a matrix. [Full Topic]
@@ -126,36 +126,6 @@ func (m_ MatrixFindTopK) EncodeToCommandBufferObjectInputMatrixResultIndexMatrix
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935577-numberoftopkvalues?language=objc
-func (m_ MatrixFindTopK) NumberOfTopKValues() uint {
-	rv := objc.Call[uint](m_, objc.Sel("numberOfTopKValues"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935577-numberoftopkvalues?language=objc
-func (m_ MatrixFindTopK) SetNumberOfTopKValues(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setNumberOfTopKValues:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935574-indexoffset?language=objc
-func (m_ MatrixFindTopK) IndexOffset() uint {
-	rv := objc.Call[uint](m_, objc.Sel("indexOffset"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935574-indexoffset?language=objc
-func (m_ MatrixFindTopK) SetIndexOffset(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setIndexOffset:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935580-sourcerows?language=objc
 func (m_ MatrixFindTopK) SourceRows() uint {
 	rv := objc.Call[uint](m_, objc.Sel("sourceRows"))
@@ -182,4 +152,34 @@ func (m_ MatrixFindTopK) SourceColumns() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935573-sourcecolumns?language=objc
 func (m_ MatrixFindTopK) SetSourceColumns(value uint) {
 	objc.Call[objc.Void](m_, objc.Sel("setSourceColumns:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935577-numberoftopkvalues?language=objc
+func (m_ MatrixFindTopK) NumberOfTopKValues() uint {
+	rv := objc.Call[uint](m_, objc.Sel("numberOfTopKValues"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935577-numberoftopkvalues?language=objc
+func (m_ MatrixFindTopK) SetNumberOfTopKValues(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setNumberOfTopKValues:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935574-indexoffset?language=objc
+func (m_ MatrixFindTopK) IndexOffset() uint {
+	rv := objc.Call[uint](m_, objc.Sel("indexOffset"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935574-indexoffset?language=objc
+func (m_ MatrixFindTopK) SetIndexOffset(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setIndexOffset:"), value)
 }

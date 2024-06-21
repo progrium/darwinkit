@@ -21,16 +21,16 @@ type _MutableVideoCompositionClass struct {
 // An interface definition for the [MutableVideoComposition] class.
 type IMutableVideoComposition interface {
 	IVideoComposition
-	SetInstructions(value []objc.IObject)
-	SetCustomVideoCompositorClass(value objc.IClass)
-	SetAnimationTool(value IVideoCompositionCoreAnimationTool)
 	SetColorPrimaries(value string)
-	SetSourceTrackIDForFrameTiming(value objc.IObject)
-	SetSourceSampleDataTrackIDs(value []foundation.INumber)
-	SetColorTransferFunction(value string)
 	SetColorYCbCrMatrix(value string)
-	SetRenderSize(value coregraphics.Size)
+	SetCustomVideoCompositorClass(value objc.IClass)
 	SetFrameDuration(value coremedia.Time)
+	SetInstructions(value []objc.IObject)
+	SetSourceSampleDataTrackIDs(value []foundation.INumber)
+	SetAnimationTool(value IVideoCompositionCoreAnimationTool)
+	SetColorTransferFunction(value string)
+	SetSourceTrackIDForFrameTiming(value objc.IObject)
+	SetRenderSize(value coregraphics.Size)
 	SetRenderScale(value float32)
 }
 
@@ -82,53 +82,11 @@ func MutableVideoComposition_VideoComposition() MutableVideoComposition {
 	return MutableVideoCompositionClass.VideoComposition()
 }
 
-// The video composition instructions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1385815-instructions?language=objc
-func (m_ MutableVideoComposition) SetInstructions(value []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setInstructions:"), value)
-}
-
-// The custom compositor class to use. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390649-customvideocompositorclass?language=objc
-func (m_ MutableVideoComposition) SetCustomVideoCompositorClass(value objc.IClass) {
-	objc.Call[objc.Void](m_, objc.Sel("setCustomVideoCompositorClass:"), value)
-}
-
-// A video composition tool to use with Core Animation in offline rendering. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390395-animationtool?language=objc
-func (m_ MutableVideoComposition) SetAnimationTool(value IVideoCompositionCoreAnimationTool) {
-	objc.Call[objc.Void](m_, objc.Sel("setAnimationTool:"), value)
-}
-
 // The color primaries used for video composition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1643234-colorprimaries?language=objc
 func (m_ MutableVideoComposition) SetColorPrimaries(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setColorPrimaries:"), value)
-}
-
-// An identifier of the source track from which the video composition derives frame timing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/2873799-sourcetrackidforframetiming?language=objc
-func (m_ MutableVideoComposition) SetSourceTrackIDForFrameTiming(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceTrackIDForFrameTiming:"), value)
-}
-
-// The identifiers of source sample data tracks in the composition that the compositor requires to compose frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/3750316-sourcesampledatatrackids?language=objc
-func (m_ MutableVideoComposition) SetSourceSampleDataTrackIDs(value []foundation.INumber) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceSampleDataTrackIDs:"), value)
-}
-
-// The transfer function used for video composition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1643237-colortransferfunction?language=objc
-func (m_ MutableVideoComposition) SetColorTransferFunction(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setColorTransferFunction:"), value)
 }
 
 // The YCbCr matrix used for video composition. [Full Topic]
@@ -138,11 +96,11 @@ func (m_ MutableVideoComposition) SetColorYCbCrMatrix(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setColorYCbCrMatrix:"), value)
 }
 
-// The size at which the video composition should render. [Full Topic]
+// The custom compositor class to use. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1386365-rendersize?language=objc
-func (m_ MutableVideoComposition) SetRenderSize(value coregraphics.Size) {
-	objc.Call[objc.Void](m_, objc.Sel("setRenderSize:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390649-customvideocompositorclass?language=objc
+func (m_ MutableVideoComposition) SetCustomVideoCompositorClass(value objc.IClass) {
+	objc.Call[objc.Void](m_, objc.Sel("setCustomVideoCompositorClass:"), value)
 }
 
 // A time interval for which the video composition should render composed video frames. [Full Topic]
@@ -150,6 +108,48 @@ func (m_ MutableVideoComposition) SetRenderSize(value coregraphics.Size) {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390059-frameduration?language=objc
 func (m_ MutableVideoComposition) SetFrameDuration(value coremedia.Time) {
 	objc.Call[objc.Void](m_, objc.Sel("setFrameDuration:"), value)
+}
+
+// The video composition instructions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1385815-instructions?language=objc
+func (m_ MutableVideoComposition) SetInstructions(value []objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setInstructions:"), value)
+}
+
+// The identifiers of source sample data tracks in the composition that the compositor requires to compose frames. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/3750316-sourcesampledatatrackids?language=objc
+func (m_ MutableVideoComposition) SetSourceSampleDataTrackIDs(value []foundation.INumber) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceSampleDataTrackIDs:"), value)
+}
+
+// A video composition tool to use with Core Animation in offline rendering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390395-animationtool?language=objc
+func (m_ MutableVideoComposition) SetAnimationTool(value IVideoCompositionCoreAnimationTool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAnimationTool:"), value)
+}
+
+// The transfer function used for video composition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1643237-colortransferfunction?language=objc
+func (m_ MutableVideoComposition) SetColorTransferFunction(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setColorTransferFunction:"), value)
+}
+
+// An identifier of the source track from which the video composition derives frame timing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/2873799-sourcetrackidforframetiming?language=objc
+func (m_ MutableVideoComposition) SetSourceTrackIDForFrameTiming(value objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceTrackIDForFrameTiming:"), value)
+}
+
+// The size at which the video composition should render. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1386365-rendersize?language=objc
+func (m_ MutableVideoComposition) SetRenderSize(value coregraphics.Size) {
+	objc.Call[objc.Void](m_, objc.Sel("setRenderSize:"), value)
 }
 
 // The scale at which the video composition should render. [Full Topic]

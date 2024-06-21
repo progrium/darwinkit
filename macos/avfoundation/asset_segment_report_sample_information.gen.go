@@ -19,9 +19,9 @@ type _AssetSegmentReportSampleInformationClass struct {
 // An interface definition for the [AssetSegmentReportSampleInformation] class.
 type IAssetSegmentReportSampleInformation interface {
 	objc.IObject
+	Length() int
 	IsSyncSample() bool
 	Offset() int
-	Length() int
 	PresentationTimeStamp() coremedia.Time
 }
 
@@ -58,6 +58,14 @@ func (a_ AssetSegmentReportSampleInformation) Init() AssetSegmentReportSampleInf
 	return rv
 }
 
+// The length of the sample data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreportsampleinformation/3546573-length?language=objc
+func (a_ AssetSegmentReportSampleInformation) Length() int {
+	rv := objc.Call[int](a_, objc.Sel("length"))
+	return rv
+}
+
 // A Boolean value that indicates whether the sample is a key frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreportsampleinformation/3563932-issyncsample?language=objc
@@ -71,14 +79,6 @@ func (a_ AssetSegmentReportSampleInformation) IsSyncSample() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreportsampleinformation/3546574-offset?language=objc
 func (a_ AssetSegmentReportSampleInformation) Offset() int {
 	rv := objc.Call[int](a_, objc.Sel("offset"))
-	return rv
-}
-
-// The length of the sample data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreportsampleinformation/3546573-length?language=objc
-func (a_ AssetSegmentReportSampleInformation) Length() int {
-	rv := objc.Call[int](a_, objc.Sel("length"))
 	return rv
 }
 

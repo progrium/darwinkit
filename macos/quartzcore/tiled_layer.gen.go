@@ -20,10 +20,10 @@ type _TiledLayerClass struct {
 // An interface definition for the [TiledLayer] class.
 type ITiledLayer interface {
 	ILayer
-	LevelsOfDetail() uint
-	SetLevelsOfDetail(value uint)
 	TileSize() coregraphics.Size
 	SetTileSize(value coregraphics.Size)
+	LevelsOfDetail() uint
+	SetLevelsOfDetail(value uint)
 	LevelsOfDetailBias() uint
 	SetLevelsOfDetailBias(value uint)
 }
@@ -61,6 +61,32 @@ func (t_ TiledLayer) Init() TiledLayer {
 	return rv
 }
 
+func (tc _TiledLayerClass) Layer() TiledLayer {
+	rv := objc.Call[TiledLayer](tc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func TiledLayer_Layer() TiledLayer {
+	return TiledLayerClass.Layer()
+}
+
+func (t_ TiledLayer) InitWithLayer(layer objc.IObject) TiledLayer {
+	rv := objc.Call[TiledLayer](t_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewTiledLayerWithLayer(layer objc.IObject) TiledLayer {
+	instance := TiledLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (t_ TiledLayer) ModelLayer() TiledLayer {
 	rv := objc.Call[TiledLayer](t_, objc.Sel("modelLayer"))
 	return rv
@@ -89,32 +115,6 @@ func TiledLayer_PresentationLayer() TiledLayer {
 	return instance
 }
 
-func (t_ TiledLayer) InitWithLayer(layer objc.IObject) TiledLayer {
-	rv := objc.Call[TiledLayer](t_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewTiledLayerWithLayer(layer objc.IObject) TiledLayer {
-	instance := TiledLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (tc _TiledLayerClass) Layer() TiledLayer {
-	rv := objc.Call[TiledLayer](tc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func TiledLayer_Layer() TiledLayer {
-	return TiledLayerClass.Layer()
-}
-
 // The time, in seconds, that newly added images take to "fade-in" to the rendered representation of the tiled layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522145-fadeduration?language=objc
@@ -130,21 +130,6 @@ func TiledLayer_FadeDuration() corefoundation.TimeInterval {
 	return TiledLayerClass.FadeDuration()
 }
 
-// The number of levels of detail maintained by this layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522244-levelsofdetail?language=objc
-func (t_ TiledLayer) LevelsOfDetail() uint {
-	rv := objc.Call[uint](t_, objc.Sel("levelsOfDetail"))
-	return rv
-}
-
-// The number of levels of detail maintained by this layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522244-levelsofdetail?language=objc
-func (t_ TiledLayer) SetLevelsOfDetail(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setLevelsOfDetail:"), value)
-}
-
 // The maximum size of each tile used to create the layer's content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522114-tilesize?language=objc
@@ -158,6 +143,21 @@ func (t_ TiledLayer) TileSize() coregraphics.Size {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522114-tilesize?language=objc
 func (t_ TiledLayer) SetTileSize(value coregraphics.Size) {
 	objc.Call[objc.Void](t_, objc.Sel("setTileSize:"), value)
+}
+
+// The number of levels of detail maintained by this layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522244-levelsofdetail?language=objc
+func (t_ TiledLayer) LevelsOfDetail() uint {
+	rv := objc.Call[uint](t_, objc.Sel("levelsOfDetail"))
+	return rv
+}
+
+// The number of levels of detail maintained by this layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catiledlayer/1522244-levelsofdetail?language=objc
+func (t_ TiledLayer) SetLevelsOfDetail(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setLevelsOfDetail:"), value)
 }
 
 // The number of magnified levels of detail for this layer. [Full Topic]

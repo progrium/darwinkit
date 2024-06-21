@@ -19,9 +19,9 @@ type _KernelClass struct {
 // An interface definition for the [Kernel] class.
 type IKernel interface {
 	objc.IObject
-	Device() metal.DeviceObject
 	Options() KernelOptions
 	SetOptions(value KernelOptions)
+	Device() metal.DeviceObject
 	Label() string
 	SetLabel(value string)
 }
@@ -39,21 +39,6 @@ func KernelFrom(ptr unsafe.Pointer) Kernel {
 	}
 }
 
-func (k_ Kernel) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Kernel {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[Kernel](k_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func Kernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Kernel {
-	instance := KernelClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (k_ Kernel) InitWithDevice(device metal.PDevice) Kernel {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[Kernel](k_, objc.Sel("initWithDevice:"), po0)
@@ -65,6 +50,21 @@ func (k_ Kernel) InitWithDevice(device metal.PDevice) Kernel {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewKernelWithDevice(device metal.PDevice) Kernel {
 	instance := KernelClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (k_ Kernel) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Kernel {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[Kernel](k_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func Kernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Kernel {
+	instance := KernelClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -89,14 +89,6 @@ func (k_ Kernel) Init() Kernel {
 	return rv
 }
 
-// The device on which the kernel will be used. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618824-device?language=objc
-func (k_ Kernel) Device() metal.DeviceObject {
-	rv := objc.Call[metal.DeviceObject](k_, objc.Sel("device"))
-	return rv
-}
-
 // The set of options used to run the kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618889-options?language=objc
@@ -110,6 +102,14 @@ func (k_ Kernel) Options() KernelOptions {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618889-options?language=objc
 func (k_ Kernel) SetOptions(value KernelOptions) {
 	objc.Call[objc.Void](k_, objc.Sel("setOptions:"), value)
+}
+
+// The device on which the kernel will be used. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618824-device?language=objc
+func (k_ Kernel) Device() metal.DeviceObject {
+	rv := objc.Call[metal.DeviceObject](k_, objc.Sel("device"))
+	return rv
 }
 
 // The string that identifies the kernel. [Full Topic]

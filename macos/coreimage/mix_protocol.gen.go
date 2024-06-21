@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix?language=objc
 type PMix interface {
 	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
+
+	// optional
 	SetBackgroundImage(value Image)
 	HasSetBackgroundImage() bool
 
@@ -25,14 +33,6 @@ type PMix interface {
 	// optional
 	Amount() float32
 	HasAmount() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PMix = (*MixObject)(nil)
 // A concrete type for the [PMix] protocol.
 type MixObject struct {
 	objc.Object
+}
+
+func (m_ MixObject) HasSetInputImage() bool {
+	return m_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as a foreground image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228567-inputimage?language=objc
+func (m_ MixObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
+}
+
+func (m_ MixObject) HasInputImage() bool {
+	return m_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as a foreground image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228567-inputimage?language=objc
+func (m_ MixObject) InputImage() Image {
+	rv := objc.Call[Image](m_, objc.Sel("inputImage"))
+	return rv
 }
 
 func (m_ MixObject) HasSetBackgroundImage() bool {
@@ -86,28 +109,5 @@ func (m_ MixObject) HasAmount() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228565-amount?language=objc
 func (m_ MixObject) Amount() float32 {
 	rv := objc.Call[float32](m_, objc.Sel("amount"))
-	return rv
-}
-
-func (m_ MixObject) HasSetInputImage() bool {
-	return m_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as a foreground image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228567-inputimage?language=objc
-func (m_ MixObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
-}
-
-func (m_ MixObject) HasInputImage() bool {
-	return m_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as a foreground image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228567-inputimage?language=objc
-func (m_ MixObject) InputImage() Image {
-	rv := objc.Call[Image](m_, objc.Sel("inputImage"))
 	return rv
 }

@@ -53,6 +53,18 @@ func (u_ UnitSpeed) Init() UnitSpeed {
 	return rv
 }
 
+func (uc _UnitSpeedClass) BaseUnit() UnitSpeed {
+	rv := objc.Call[UnitSpeed](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitSpeed_BaseUnit() UnitSpeed {
+	return UnitSpeedClass.BaseUnit()
+}
+
 func (u_ UnitSpeed) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitSpeed {
 	rv := objc.Call[UnitSpeed](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitSpeedWithSymbolConverter(symbol string, converter IUnitConverter) Un
 	return instance
 }
 
-func (uc _UnitSpeedClass) BaseUnit() UnitSpeed {
-	rv := objc.Call[UnitSpeed](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitSpeed_BaseUnit() UnitSpeed {
-	return UnitSpeedClass.BaseUnit()
-}
-
 func (u_ UnitSpeed) InitWithSymbol(symbol string) UnitSpeed {
 	rv := objc.Call[UnitSpeed](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,21 +91,6 @@ func NewUnitSpeedWithSymbol(symbol string) UnitSpeed {
 	instance := UnitSpeedClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
-}
-
-// The miles per hour unit of speed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitspeed/1856098-milesperhour?language=objc
-func (uc _UnitSpeedClass) MilesPerHour() UnitSpeed {
-	rv := objc.Call[UnitSpeed](uc, objc.Sel("milesPerHour"))
-	return rv
-}
-
-// The miles per hour unit of speed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitspeed/1856098-milesperhour?language=objc
-func UnitSpeed_MilesPerHour() UnitSpeed {
-	return UnitSpeedClass.MilesPerHour()
 }
 
 // The knots unit of speed. [Full Topic]
@@ -151,4 +136,19 @@ func (uc _UnitSpeedClass) KilometersPerHour() UnitSpeed {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitspeed/1856044-kilometersperhour?language=objc
 func UnitSpeed_KilometersPerHour() UnitSpeed {
 	return UnitSpeedClass.KilometersPerHour()
+}
+
+// The miles per hour unit of speed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitspeed/1856098-milesperhour?language=objc
+func (uc _UnitSpeedClass) MilesPerHour() UnitSpeed {
+	rv := objc.Call[UnitSpeed](uc, objc.Sel("milesPerHour"))
+	return rv
+}
+
+// The miles per hour unit of speed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitspeed/1856098-milesperhour?language=objc
+func UnitSpeed_MilesPerHour() UnitSpeed {
+	return UnitSpeedClass.MilesPerHour()
 }

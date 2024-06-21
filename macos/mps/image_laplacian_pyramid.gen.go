@@ -73,36 +73,6 @@ func NewImageLaplacianPyramidWithDevice(device metal.PDevice) ImageLaplacianPyra
 	return instance
 }
 
-func (i_ ImageLaplacianPyramid) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImageLaplacianPyramid {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageLaplacianPyramid](i_, objc.Sel("initWithDevice:centerWeight:"), po0, centerWeight)
-	return rv
-}
-
-// Initialize a downwards 5-tap image pyramid with a central weight parameter and device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648889-initwithdevice?language=objc
-func NewImageLaplacianPyramidWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImageLaplacianPyramid {
-	instance := ImageLaplacianPyramidClass.Alloc().InitWithDeviceCenterWeight(device, centerWeight)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageLaplacianPyramid) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageLaplacianPyramid {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageLaplacianPyramid](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:weights:"), po0, kernelWidth, kernelHeight, kernelWeights)
-	return rv
-}
-
-// Initialize a downwards n-tap image pyramid with a custom filter kernel and device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648821-initwithdevice?language=objc
-func NewImageLaplacianPyramidWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageLaplacianPyramid {
-	instance := ImageLaplacianPyramidClass.Alloc().InitWithDeviceKernelWidthKernelHeightWeights(device, kernelWidth, kernelHeight, kernelWeights)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ ImageLaplacianPyramid) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageLaplacianPyramid {
 	po1 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageLaplacianPyramid](i_, objc.Sel("copyWithZone:device:"), zone, po1)

@@ -19,17 +19,17 @@ type _ScrubberLayoutClass struct {
 // An interface definition for the [ScrubberLayout] class.
 type IScrubberLayout interface {
 	objc.IObject
-	ShouldInvalidateLayoutForChangeFromVisibleRectToVisibleRect(fromVisibleRect foundation.Rect, toVisibleRect foundation.Rect) bool
-	PrepareLayout()
-	LayoutAttributesForItemAtIndex(index int) ScrubberLayoutAttributes
-	InvalidateLayout()
 	LayoutAttributesForItemsInRect(rect foundation.Rect) foundation.Set
-	AutomaticallyMirrorsInRightToLeftLayout() bool
-	Scrubber() Scrubber
-	ShouldInvalidateLayoutForSelectionChange() bool
-	ShouldInvalidateLayoutForHighlightChange() bool
+	PrepareLayout()
+	InvalidateLayout()
+	LayoutAttributesForItemAtIndex(index int) ScrubberLayoutAttributes
+	ShouldInvalidateLayoutForChangeFromVisibleRectToVisibleRect(fromVisibleRect foundation.Rect, toVisibleRect foundation.Rect) bool
 	VisibleRect() foundation.Rect
+	ShouldInvalidateLayoutForSelectionChange() bool
 	ScrubberContentSize() foundation.Size
+	Scrubber() Scrubber
+	AutomaticallyMirrorsInRightToLeftLayout() bool
+	ShouldInvalidateLayoutForHighlightChange() bool
 }
 
 // An abstract class that describes the layout of items within a scrubber control. [Full Topic]
@@ -65,11 +65,11 @@ func NewScrubberLayout() ScrubberLayout {
 	return ScrubberLayoutClass.New()
 }
 
-// Determines whether the scrubber should refresh its layout in response to a change of its visible region. [Full Topic]
+// The set of layout attributes for all items within the provided rectangle. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544633-shouldinvalidatelayoutforchangef?language=objc
-func (s_ ScrubberLayout) ShouldInvalidateLayoutForChangeFromVisibleRectToVisibleRect(fromVisibleRect foundation.Rect, toVisibleRect foundation.Rect) bool {
-	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForChangeFromVisibleRect:toVisibleRect:"), fromVisibleRect, toVisibleRect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544636-layoutattributesforitemsinrect?language=objc
+func (s_ ScrubberLayout) LayoutAttributesForItemsInRect(rect foundation.Rect) foundation.Set {
+	rv := objc.Call[foundation.Set](s_, objc.Sel("layoutAttributesForItemsInRect:"), rect)
 	return rv
 }
 
@@ -80,6 +80,13 @@ func (s_ ScrubberLayout) PrepareLayout() {
 	objc.Call[objc.Void](s_, objc.Sel("prepareLayout"))
 }
 
+// Signals that the layout has been invalidated, and that the scrubber control should perform a new layout pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544626-invalidatelayout?language=objc
+func (s_ ScrubberLayout) InvalidateLayout() {
+	objc.Call[objc.Void](s_, objc.Sel("invalidateLayout"))
+}
+
 // The layout attributes for the item with the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544650-layoutattributesforitematindex?language=objc
@@ -88,34 +95,11 @@ func (s_ ScrubberLayout) LayoutAttributesForItemAtIndex(index int) ScrubberLayou
 	return rv
 }
 
-// Signals that the layout has been invalidated, and that the scrubber control should perform a new layout pass. [Full Topic]
+// Determines whether the scrubber should refresh its layout in response to a change of its visible region. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544626-invalidatelayout?language=objc
-func (s_ ScrubberLayout) InvalidateLayout() {
-	objc.Call[objc.Void](s_, objc.Sel("invalidateLayout"))
-}
-
-// The set of layout attributes for all items within the provided rectangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544636-layoutattributesforitemsinrect?language=objc
-func (s_ ScrubberLayout) LayoutAttributesForItemsInRect(rect foundation.Rect) foundation.Set {
-	rv := objc.Call[foundation.Set](s_, objc.Sel("layoutAttributesForItemsInRect:"), rect)
-	return rv
-}
-
-// Determines whether the scrubber mirrors its layout for right-to-left layouts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2646926-automaticallymirrorsinrighttolef?language=objc
-func (s_ ScrubberLayout) AutomaticallyMirrorsInRightToLeftLayout() bool {
-	rv := objc.Call[bool](s_, objc.Sel("automaticallyMirrorsInRightToLeftLayout"))
-	return rv
-}
-
-// The scrubber control that this layout is assigned to. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544638-scrubber?language=objc
-func (s_ ScrubberLayout) Scrubber() Scrubber {
-	rv := objc.Call[Scrubber](s_, objc.Sel("scrubber"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544633-shouldinvalidatelayoutforchangef?language=objc
+func (s_ ScrubberLayout) ShouldInvalidateLayoutForChangeFromVisibleRectToVisibleRect(fromVisibleRect foundation.Rect, toVisibleRect foundation.Rect) bool {
+	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForChangeFromVisibleRect:toVisibleRect:"), fromVisibleRect, toVisibleRect)
 	return rv
 }
 
@@ -134,22 +118,6 @@ func ScrubberLayout_LayoutAttributesClass() objc.Class {
 	return ScrubberLayoutClass.LayoutAttributesClass()
 }
 
-// Determines whether the scrubber should refresh its layout when the selection changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544631-shouldinvalidatelayoutforselecti?language=objc
-func (s_ ScrubberLayout) ShouldInvalidateLayoutForSelectionChange() bool {
-	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForSelectionChange"))
-	return rv
-}
-
-// Determines whether the scrubber should refresh its layout when an item is highlighted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544639-shouldinvalidatelayoutforhighlig?language=objc
-func (s_ ScrubberLayout) ShouldInvalidateLayoutForHighlightChange() bool {
-	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForHighlightChange"))
-	return rv
-}
-
 // The currently visible rectangle, in the coordinate space of the scrubber content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544637-visiblerect?language=objc
@@ -158,10 +126,42 @@ func (s_ ScrubberLayout) VisibleRect() foundation.Rect {
 	return rv
 }
 
+// Determines whether the scrubber should refresh its layout when the selection changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544631-shouldinvalidatelayoutforselecti?language=objc
+func (s_ ScrubberLayout) ShouldInvalidateLayoutForSelectionChange() bool {
+	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForSelectionChange"))
+	return rv
+}
+
 // The size required to contain all elements within the scrubber. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544644-scrubbercontentsize?language=objc
 func (s_ ScrubberLayout) ScrubberContentSize() foundation.Size {
 	rv := objc.Call[foundation.Size](s_, objc.Sel("scrubberContentSize"))
+	return rv
+}
+
+// The scrubber control that this layout is assigned to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544638-scrubber?language=objc
+func (s_ ScrubberLayout) Scrubber() Scrubber {
+	rv := objc.Call[Scrubber](s_, objc.Sel("scrubber"))
+	return rv
+}
+
+// Determines whether the scrubber mirrors its layout for right-to-left layouts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2646926-automaticallymirrorsinrighttolef?language=objc
+func (s_ ScrubberLayout) AutomaticallyMirrorsInRightToLeftLayout() bool {
+	rv := objc.Call[bool](s_, objc.Sel("automaticallyMirrorsInRightToLeftLayout"))
+	return rv
+}
+
+// Determines whether the scrubber should refresh its layout when an item is highlighted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberlayout/2544639-shouldinvalidatelayoutforhighlig?language=objc
+func (s_ ScrubberLayout) ShouldInvalidateLayoutForHighlightChange() bool {
+	rv := objc.Call[bool](s_, objc.Sel("shouldInvalidateLayoutForHighlightChange"))
 	return rv
 }

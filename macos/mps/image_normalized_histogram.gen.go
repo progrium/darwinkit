@@ -19,14 +19,14 @@ type _ImageNormalizedHistogramClass struct {
 // An interface definition for the [ImageNormalizedHistogram] class.
 type IImageNormalizedHistogram interface {
 	IKernel
+	HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint
 	EncodeToCommandBufferSourceTextureMinmaxTextureHistogramHistogramOffset(commandBuffer metal.PCommandBuffer, source metal.PTexture, minmaxTexture metal.PTexture, histogram metal.PBuffer, histogramOffset uint)
 	EncodeToCommandBufferObjectSourceTextureObjectMinmaxTextureObjectHistogramObjectHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, minmaxTextureObject objc.IObject, histogramObject objc.IObject, histogramOffset uint)
-	HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint
-	ClipRectSource() metal.Region
-	SetClipRectSource(value metal.Region)
+	HistogramInfo() ImageHistogramInfo
 	ZeroHistogram() bool
 	SetZeroHistogram(value bool)
-	HistogramInfo() ImageHistogramInfo
+	ClipRectSource() metal.Region
+	SetClipRectSource(value metal.Region)
 }
 
 // A filter that computes the normalized histogram of an image. [Full Topic]
@@ -77,6 +77,21 @@ func (i_ ImageNormalizedHistogram) Init() ImageNormalizedHistogram {
 	return rv
 }
 
+func (i_ ImageNormalizedHistogram) InitWithDevice(device metal.PDevice) ImageNormalizedHistogram {
+	po0 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[ImageNormalizedHistogram](i_, objc.Sel("initWithDevice:"), po0)
+	return rv
+}
+
+// Initializes a new kernel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
+func NewImageNormalizedHistogramWithDevice(device metal.PDevice) ImageNormalizedHistogram {
+	instance := ImageNormalizedHistogramClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
 func (i_ ImageNormalizedHistogram) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageNormalizedHistogram {
 	po1 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageNormalizedHistogram](i_, objc.Sel("copyWithZone:device:"), zone, po1)
@@ -92,19 +107,12 @@ func ImageNormalizedHistogram_CopyWithZoneDevice(zone unsafe.Pointer, device met
 	return instance
 }
 
-func (i_ ImageNormalizedHistogram) InitWithDevice(device metal.PDevice) ImageNormalizedHistogram {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageNormalizedHistogram](i_, objc.Sel("initWithDevice:"), po0)
-	return rv
-}
-
-// Initializes a new kernel object. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
-func NewImageNormalizedHistogramWithDevice(device metal.PDevice) ImageNormalizedHistogram {
-	instance := ImageNormalizedHistogramClass.Alloc().InitWithDevice(device)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019324-histogramsizeforsourceformat?language=objc
+func (i_ ImageNormalizedHistogram) HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint {
+	rv := objc.Call[uint](i_, objc.Sel("histogramSizeForSourceFormat:"), sourceFormat)
+	return rv
 }
 
 //	[Full Topic]
@@ -127,25 +135,10 @@ func (i_ ImageNormalizedHistogram) EncodeToCommandBufferObjectSourceTextureObjec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019324-histogramsizeforsourceformat?language=objc
-func (i_ ImageNormalizedHistogram) HistogramSizeForSourceFormat(sourceFormat metal.PixelFormat) uint {
-	rv := objc.Call[uint](i_, objc.Sel("histogramSizeForSourceFormat:"), sourceFormat)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019323-histograminfo?language=objc
+func (i_ ImageNormalizedHistogram) HistogramInfo() ImageHistogramInfo {
+	rv := objc.Call[ImageHistogramInfo](i_, objc.Sel("histogramInfo"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019321-cliprectsource?language=objc
-func (i_ ImageNormalizedHistogram) ClipRectSource() metal.Region {
-	rv := objc.Call[metal.Region](i_, objc.Sel("clipRectSource"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019321-cliprectsource?language=objc
-func (i_ ImageNormalizedHistogram) SetClipRectSource(value metal.Region) {
-	objc.Call[objc.Void](i_, objc.Sel("setClipRectSource:"), value)
 }
 
 //	[Full Topic]
@@ -165,8 +158,15 @@ func (i_ ImageNormalizedHistogram) SetZeroHistogram(value bool) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019323-histograminfo?language=objc
-func (i_ ImageNormalizedHistogram) HistogramInfo() ImageHistogramInfo {
-	rv := objc.Call[ImageHistogramInfo](i_, objc.Sel("histogramInfo"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019321-cliprectsource?language=objc
+func (i_ ImageNormalizedHistogram) ClipRectSource() metal.Region {
+	rv := objc.Call[metal.Region](i_, objc.Sel("clipRectSource"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019321-cliprectsource?language=objc
+func (i_ ImageNormalizedHistogram) SetClipRectSource(value metal.Region) {
+	objc.Call[objc.Void](i_, objc.Sel("setClipRectSource:"), value)
 }

@@ -19,51 +19,51 @@ type _TextFieldClass struct {
 // An interface definition for the [TextField] class.
 type ITextField interface {
 	IControl
-	TextDidChange(notification foundation.INotification)
 	SelectText(sender objc.IObject)
-	TextDidBeginEditing(notification foundation.INotification)
 	TextShouldBeginEditing(textObject IText) bool
+	TextDidChange(notification foundation.INotification)
+	TextDidBeginEditing(notification foundation.INotification)
 	TextShouldEndEditing(textObject IText) bool
 	TextDidEndEditing(notification foundation.INotification)
-	ImportsGraphics() bool
-	SetImportsGraphics(value bool)
-	PlaceholderAttributedString() foundation.AttributedString
-	SetPlaceholderAttributedString(value foundation.IAttributedString)
-	BezelStyle() TextFieldBezelStyle
-	SetBezelStyle(value TextFieldBezelStyle)
-	IsBezeled() bool
-	SetBezeled(value bool)
-	AllowsEditingTextAttributes() bool
-	SetAllowsEditingTextAttributes(value bool)
-	PlaceholderString() string
-	SetPlaceholderString(value string)
-	IsSelectable() bool
-	SetSelectable(value bool)
 	MaximumNumberOfLines() int
 	SetMaximumNumberOfLines(value int)
 	AllowsDefaultTighteningForTruncation() bool
 	SetAllowsDefaultTighteningForTruncation(value bool)
-	TextColor() Color
-	SetTextColor(value IColor)
-	AllowsCharacterPickerTouchBarItem() bool
-	SetAllowsCharacterPickerTouchBarItem(value bool)
-	BackgroundColor() Color
-	SetBackgroundColor(value IColor)
 	IsBordered() bool
 	SetBordered(value bool)
+	IsEditable() bool
+	SetEditable(value bool)
+	IsAutomaticTextCompletionEnabled() bool
+	SetAutomaticTextCompletionEnabled(value bool)
+	LineBreakStrategy() LineBreakStrategy
+	SetLineBreakStrategy(value LineBreakStrategy)
 	Delegate() TextFieldDelegateObject
 	SetDelegate(value PTextFieldDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	IsEditable() bool
-	SetEditable(value bool)
-	LineBreakStrategy() LineBreakStrategy
-	SetLineBreakStrategy(value LineBreakStrategy)
-	IsAutomaticTextCompletionEnabled() bool
-	SetAutomaticTextCompletionEnabled(value bool)
-	PreferredMaxLayoutWidth() float64
-	SetPreferredMaxLayoutWidth(value float64)
+	PlaceholderAttributedString() foundation.AttributedString
+	SetPlaceholderAttributedString(value foundation.IAttributedString)
+	AllowsCharacterPickerTouchBarItem() bool
+	SetAllowsCharacterPickerTouchBarItem(value bool)
+	AllowsEditingTextAttributes() bool
+	SetAllowsEditingTextAttributes(value bool)
+	BackgroundColor() Color
+	SetBackgroundColor(value IColor)
+	IsSelectable() bool
+	SetSelectable(value bool)
+	ImportsGraphics() bool
+	SetImportsGraphics(value bool)
 	DrawsBackground() bool
 	SetDrawsBackground(value bool)
+	TextColor() Color
+	SetTextColor(value IColor)
+	PlaceholderString() string
+	SetPlaceholderString(value string)
+	BezelStyle() TextFieldBezelStyle
+	SetBezelStyle(value TextFieldBezelStyle)
+	IsBezeled() bool
+	SetBezeled(value bool)
+	PreferredMaxLayoutWidth() float64
+	SetPreferredMaxLayoutWidth(value float64)
 }
 
 // Text the user can select or edit to send an action message to a target when the user presses the Return key. [Full Topic]
@@ -79,18 +79,6 @@ func TextFieldFrom(ptr unsafe.Pointer) TextField {
 	}
 }
 
-func (tc _TextFieldClass) LabelWithString(stringValue string) TextField {
-	rv := objc.Call[TextField](tc, objc.Sel("labelWithString:"), stringValue)
-	return rv
-}
-
-// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
-func TextField_LabelWithString(stringValue string) TextField {
-	return TextFieldClass.LabelWithString(stringValue)
-}
-
 func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
 	rv := objc.Call[TextField](tc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
@@ -101,6 +89,18 @@ func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue founda
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
 func TextField_LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
 	return TextFieldClass.LabelWithAttributedString(attributedStringValue)
+}
+
+func (tc _TextFieldClass) LabelWithString(stringValue string) TextField {
+	rv := objc.Call[TextField](tc, objc.Sel("labelWithString:"), stringValue)
+	return rv
+}
+
+// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func TextField_LabelWithString(stringValue string) TextField {
+	return TextFieldClass.LabelWithString(stringValue)
 }
 
 func (tc _TextFieldClass) WrappingLabelWithString(stringValue string) TextField {
@@ -161,25 +161,11 @@ func NewTextFieldWithFrame(frameRect foundation.Rect) TextField {
 	return instance
 }
 
-// Posts a notification when the text changes, and forwards the message to the text field’s cell if it responds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399397-textdidchange?language=objc
-func (t_ TextField) TextDidChange(notification foundation.INotification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), notification)
-}
-
 // Ends editing in the text field and, if it’s selectable, selects the entire text content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399430-selecttext?language=objc
 func (t_ TextField) SelectText(sender objc.IObject) {
 	objc.Call[objc.Void](t_, objc.Sel("selectText:"), sender)
-}
-
-// Posts a notification to the default notification center that the text is about to go into edit mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399426-textdidbeginediting?language=objc
-func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
 }
 
 // Requests permission to begin editing a text object. [Full Topic]
@@ -188,6 +174,20 @@ func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
 func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
 	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), textObject)
 	return rv
+}
+
+// Posts a notification when the text changes, and forwards the message to the text field’s cell if it responds. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399397-textdidchange?language=objc
+func (t_ TextField) TextDidChange(notification foundation.INotification) {
+	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), notification)
+}
+
+// Posts a notification to the default notification center that the text is about to go into edit mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399426-textdidbeginediting?language=objc
+func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
+	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
 }
 
 // Performs validation on the text field’s new value. [Full Topic]
@@ -203,111 +203,6 @@ func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399420-textdidendediting?language=objc
 func (t_ TextField) TextDidEndEditing(notification foundation.INotification) {
 	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), notification)
-}
-
-// A Boolean value that controls whether the user can drag image files into the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc
-func (t_ TextField) ImportsGraphics() bool {
-	rv := objc.Call[bool](t_, objc.Sel("importsGraphics"))
-	return rv
-}
-
-// A Boolean value that controls whether the user can drag image files into the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc
-func (t_ TextField) SetImportsGraphics(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setImportsGraphics:"), value)
-}
-
-// The attributed string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc
-func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("placeholderAttributedString"))
-	return rv
-}
-
-// The attributed string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc
-func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), value)
-}
-
-// The text field’s bezel style, square or rounded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399418-bezelstyle?language=objc
-func (t_ TextField) BezelStyle() TextFieldBezelStyle {
-	rv := objc.Call[TextFieldBezelStyle](t_, objc.Sel("bezelStyle"))
-	return rv
-}
-
-// The text field’s bezel style, square or rounded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399418-bezelstyle?language=objc
-func (t_ TextField) SetBezelStyle(value TextFieldBezelStyle) {
-	objc.Call[objc.Void](t_, objc.Sel("setBezelStyle:"), value)
-}
-
-// A Boolean value that controls whether the text field draws a bezeled background around its contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc
-func (t_ TextField) IsBezeled() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isBezeled"))
-	return rv
-}
-
-// A Boolean value that controls whether the text field draws a bezeled background around its contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc
-func (t_ TextField) SetBezeled(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setBezeled:"), value)
-}
-
-// A Boolean value that controls whether the user can change font attributes of the text field’s string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc
-func (t_ TextField) AllowsEditingTextAttributes() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsEditingTextAttributes"))
-	return rv
-}
-
-// A Boolean value that controls whether the user can change font attributes of the text field’s string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc
-func (t_ TextField) SetAllowsEditingTextAttributes(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowsEditingTextAttributes:"), value)
-}
-
-// The string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc
-func (t_ TextField) PlaceholderString() string {
-	rv := objc.Call[string](t_, objc.Sel("placeholderString"))
-	return rv
-}
-
-// The string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc
-func (t_ TextField) SetPlaceholderString(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderString:"), value)
-}
-
-// A Boolean value that determines whether the user can select the content of the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc
-func (t_ TextField) IsSelectable() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isSelectable"))
-	return rv
-}
-
-// A Boolean value that determines whether the user can select the content of the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc
-func (t_ TextField) SetSelectable(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setSelectable:"), value)
 }
 
 // The maximum number of lines a wrapping text field displays before clipping or truncating the text. [Full Topic]
@@ -340,51 +235,6 @@ func (t_ TextField) SetAllowsDefaultTighteningForTruncation(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setAllowsDefaultTighteningForTruncation:"), value)
 }
 
-// The color of the text field’s content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc
-func (t_ TextField) TextColor() Color {
-	rv := objc.Call[Color](t_, objc.Sel("textColor"))
-	return rv
-}
-
-// The color of the text field’s content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc
-func (t_ TextField) SetTextColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
-}
-
-// A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc
-func (t_ TextField) AllowsCharacterPickerTouchBarItem() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsCharacterPickerTouchBarItem"))
-	return rv
-}
-
-// A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc
-func (t_ TextField) SetAllowsCharacterPickerTouchBarItem(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowsCharacterPickerTouchBarItem:"), value)
-}
-
-// The color of the background the text field’s cell draws behind the text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc
-func (t_ TextField) BackgroundColor() Color {
-	rv := objc.Call[Color](t_, objc.Sel("backgroundColor"))
-	return rv
-}
-
-// The color of the background the text field’s cell draws behind the text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc
-func (t_ TextField) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
-}
-
 // A Boolean value that controls whether the text field draws a solid black border around its contents. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399403-bordered?language=objc
@@ -398,6 +248,51 @@ func (t_ TextField) IsBordered() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399403-bordered?language=objc
 func (t_ TextField) SetBordered(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setBordered:"), value)
+}
+
+// A Boolean value that controls whether the user can edit the value in the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc
+func (t_ TextField) IsEditable() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isEditable"))
+	return rv
+}
+
+// A Boolean value that controls whether the user can edit the value in the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc
+func (t_ TextField) SetEditable(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setEditable:"), value)
+}
+
+// A Boolean value that indicates whether the text field automatically completes text as the user types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc
+func (t_ TextField) IsAutomaticTextCompletionEnabled() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isAutomaticTextCompletionEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether the text field automatically completes text as the user types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc
+func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAutomaticTextCompletionEnabled:"), value)
+}
+
+// The strategy that the system uses to break lines when laying out multiple lines of text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/3667464-linebreakstrategy?language=objc
+func (t_ TextField) LineBreakStrategy() LineBreakStrategy {
+	rv := objc.Call[LineBreakStrategy](t_, objc.Sel("lineBreakStrategy"))
+	return rv
+}
+
+// The strategy that the system uses to break lines when laying out multiple lines of text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/3667464-linebreakstrategy?language=objc
+func (t_ TextField) SetLineBreakStrategy(value LineBreakStrategy) {
+	objc.Call[objc.Void](t_, objc.Sel("setLineBreakStrategy:"), value)
 }
 
 // The text field’s delegate. [Full Topic]
@@ -424,64 +319,94 @@ func (t_ TextField) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// A Boolean value that controls whether the user can edit the value in the text field. [Full Topic]
+// The attributed string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc
-func (t_ TextField) IsEditable() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isEditable"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc
+func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("placeholderAttributedString"))
 	return rv
 }
 
-// A Boolean value that controls whether the user can edit the value in the text field. [Full Topic]
+// The attributed string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc
-func (t_ TextField) SetEditable(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setEditable:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc
+func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
+	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
-// The strategy that the system uses to break lines when laying out multiple lines of text. [Full Topic]
+// A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/3667464-linebreakstrategy?language=objc
-func (t_ TextField) LineBreakStrategy() LineBreakStrategy {
-	rv := objc.Call[LineBreakStrategy](t_, objc.Sel("lineBreakStrategy"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc
+func (t_ TextField) AllowsCharacterPickerTouchBarItem() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsCharacterPickerTouchBarItem"))
 	return rv
 }
 
-// The strategy that the system uses to break lines when laying out multiple lines of text. [Full Topic]
+// A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/3667464-linebreakstrategy?language=objc
-func (t_ TextField) SetLineBreakStrategy(value LineBreakStrategy) {
-	objc.Call[objc.Void](t_, objc.Sel("setLineBreakStrategy:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc
+func (t_ TextField) SetAllowsCharacterPickerTouchBarItem(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowsCharacterPickerTouchBarItem:"), value)
 }
 
-// A Boolean value that indicates whether the text field automatically completes text as the user types. [Full Topic]
+// A Boolean value that controls whether the user can change font attributes of the text field’s string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc
-func (t_ TextField) IsAutomaticTextCompletionEnabled() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isAutomaticTextCompletionEnabled"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc
+func (t_ TextField) AllowsEditingTextAttributes() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsEditingTextAttributes"))
 	return rv
 }
 
-// A Boolean value that indicates whether the text field automatically completes text as the user types. [Full Topic]
+// A Boolean value that controls whether the user can change font attributes of the text field’s string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc
-func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAutomaticTextCompletionEnabled:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc
+func (t_ TextField) SetAllowsEditingTextAttributes(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowsEditingTextAttributes:"), value)
 }
 
-// The maximum width of the text field’s intrinsic content size. [Full Topic]
+// The color of the background the text field’s cell draws behind the text. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc
-func (t_ TextField) PreferredMaxLayoutWidth() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("preferredMaxLayoutWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc
+func (t_ TextField) BackgroundColor() Color {
+	rv := objc.Call[Color](t_, objc.Sel("backgroundColor"))
 	return rv
 }
 
-// The maximum width of the text field’s intrinsic content size. [Full Topic]
+// The color of the background the text field’s cell draws behind the text. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc
-func (t_ TextField) SetPreferredMaxLayoutWidth(value float64) {
-	objc.Call[objc.Void](t_, objc.Sel("setPreferredMaxLayoutWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc
+func (t_ TextField) SetBackgroundColor(value IColor) {
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
+}
+
+// A Boolean value that determines whether the user can select the content of the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc
+func (t_ TextField) IsSelectable() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isSelectable"))
+	return rv
+}
+
+// A Boolean value that determines whether the user can select the content of the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc
+func (t_ TextField) SetSelectable(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setSelectable:"), value)
+}
+
+// A Boolean value that controls whether the user can drag image files into the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc
+func (t_ TextField) ImportsGraphics() bool {
+	rv := objc.Call[bool](t_, objc.Sel("importsGraphics"))
+	return rv
+}
+
+// A Boolean value that controls whether the user can drag image files into the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc
+func (t_ TextField) SetImportsGraphics(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setImportsGraphics:"), value)
 }
 
 // A Boolean value that controls whether the text field’s cell draws a background color behind the text. [Full Topic]
@@ -497,4 +422,79 @@ func (t_ TextField) DrawsBackground() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399416-drawsbackground?language=objc
 func (t_ TextField) SetDrawsBackground(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setDrawsBackground:"), value)
+}
+
+// The color of the text field’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc
+func (t_ TextField) TextColor() Color {
+	rv := objc.Call[Color](t_, objc.Sel("textColor"))
+	return rv
+}
+
+// The color of the text field’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc
+func (t_ TextField) SetTextColor(value IColor) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
+}
+
+// The string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc
+func (t_ TextField) PlaceholderString() string {
+	rv := objc.Call[string](t_, objc.Sel("placeholderString"))
+	return rv
+}
+
+// The string the text field displays when empty to help the user understand the text field’s purpose. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc
+func (t_ TextField) SetPlaceholderString(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderString:"), value)
+}
+
+// The text field’s bezel style, square or rounded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399418-bezelstyle?language=objc
+func (t_ TextField) BezelStyle() TextFieldBezelStyle {
+	rv := objc.Call[TextFieldBezelStyle](t_, objc.Sel("bezelStyle"))
+	return rv
+}
+
+// The text field’s bezel style, square or rounded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399418-bezelstyle?language=objc
+func (t_ TextField) SetBezelStyle(value TextFieldBezelStyle) {
+	objc.Call[objc.Void](t_, objc.Sel("setBezelStyle:"), value)
+}
+
+// A Boolean value that controls whether the text field draws a bezeled background around its contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc
+func (t_ TextField) IsBezeled() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isBezeled"))
+	return rv
+}
+
+// A Boolean value that controls whether the text field draws a bezeled background around its contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc
+func (t_ TextField) SetBezeled(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setBezeled:"), value)
+}
+
+// The maximum width of the text field’s intrinsic content size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc
+func (t_ TextField) PreferredMaxLayoutWidth() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("preferredMaxLayoutWidth"))
+	return rv
+}
+
+// The maximum width of the text field’s intrinsic content size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc
+func (t_ TextField) SetPreferredMaxLayoutWidth(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setPreferredMaxLayoutWidth:"), value)
 }

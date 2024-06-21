@@ -6,7 +6,7 @@ import (
 	"github.com/progrium/darwinkit/objc"
 )
 
-// This protocol is adopted by document representation classes that handle specific MIME types. You can implement your own document view classes and document representation classes to render data for specific MIME types, and register those classes using the WebFrame [webkit/webview/registerviewclass] method. [Full Topic]
+// This protocol is adopted by document representation classes that handle specific MIME types. You can implement your own document view classes and document representation classes to render data for specific MIME types, and register those classes using the WebFrame registerViewClass:representationClass:forMIMEType: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webdocumentrepresentation?language=objc
 type PWebDocumentRepresentation interface {

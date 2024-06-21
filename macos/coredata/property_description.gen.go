@@ -20,24 +20,24 @@ type _PropertyDescriptionClass struct {
 type IPropertyDescription interface {
 	objc.IObject
 	SetValidationPredicatesWithValidationWarnings(validationPredicates []foundation.IPredicate, validationWarnings []string)
-	IsTransient() bool
-	SetTransient(value bool)
-	IsIndexedBySpotlight() bool
-	SetIndexedBySpotlight(value bool)
-	RenamingIdentifier() string
-	SetRenamingIdentifier(value string)
-	VersionHashModifier() string
-	SetVersionHashModifier(value string)
+	Entity() EntityDescription
 	Name() string
 	SetName(value string)
-	Entity() EntityDescription
-	ValidationWarnings() []objc.Object
+	VersionHash() []byte
+	IsTransient() bool
+	SetTransient(value bool)
+	ValidationPredicates() []foundation.Predicate
 	UserInfo() foundation.Dictionary
 	SetUserInfo(value foundation.Dictionary)
-	ValidationPredicates() []foundation.Predicate
+	ValidationWarnings() []objc.Object
+	VersionHashModifier() string
+	SetVersionHashModifier(value string)
+	RenamingIdentifier() string
+	SetRenamingIdentifier(value string)
 	IsOptional() bool
 	SetOptional(value bool)
-	VersionHash() []byte
+	IsIndexedBySpotlight() bool
+	SetIndexedBySpotlight(value bool)
 }
 
 // A description of a single property belonging to an entity. [Full Topic]
@@ -80,64 +80,12 @@ func (p_ PropertyDescription) SetValidationPredicatesWithValidationWarnings(vali
 	objc.Call[objc.Void](p_, objc.Sel("setValidationPredicates:withValidationWarnings:"), validationPredicates, validationWarnings)
 }
 
-// A Boolean value that indicates whether the receiver is transient. [Full Topic]
+// The entity description of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506766-transient?language=objc
-func (p_ PropertyDescription) IsTransient() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isTransient"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506745-entity?language=objc
+func (p_ PropertyDescription) Entity() EntityDescription {
+	rv := objc.Call[EntityDescription](p_, objc.Sel("entity"))
 	return rv
-}
-
-// A Boolean value that indicates whether the receiver is transient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506766-transient?language=objc
-func (p_ PropertyDescription) SetTransient(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setTransient:"), value)
-}
-
-// A Boolean value that indicates whether Core Data adds the property’s value to the Core Spotlight index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506784-indexedbyspotlight?language=objc
-func (p_ PropertyDescription) IsIndexedBySpotlight() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isIndexedBySpotlight"))
-	return rv
-}
-
-// A Boolean value that indicates whether Core Data adds the property’s value to the Core Spotlight index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506784-indexedbyspotlight?language=objc
-func (p_ PropertyDescription) SetIndexedBySpotlight(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setIndexedBySpotlight:"), value)
-}
-
-// The renaming identifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506641-renamingidentifier?language=objc
-func (p_ PropertyDescription) RenamingIdentifier() string {
-	rv := objc.Call[string](p_, objc.Sel("renamingIdentifier"))
-	return rv
-}
-
-// The renaming identifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506641-renamingidentifier?language=objc
-func (p_ PropertyDescription) SetRenamingIdentifier(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setRenamingIdentifier:"), value)
-}
-
-// The version hash modifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506214-versionhashmodifier?language=objc
-func (p_ PropertyDescription) VersionHashModifier() string {
-	rv := objc.Call[string](p_, objc.Sel("versionHashModifier"))
-	return rv
-}
-
-// The version hash modifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506214-versionhashmodifier?language=objc
-func (p_ PropertyDescription) SetVersionHashModifier(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setVersionHashModifier:"), value)
 }
 
 // The name of the receiver. [Full Topic]
@@ -155,19 +103,34 @@ func (p_ PropertyDescription) SetName(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setName:"), value)
 }
 
-// The entity description of the receiver. [Full Topic]
+// The version hash for the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506745-entity?language=objc
-func (p_ PropertyDescription) Entity() EntityDescription {
-	rv := objc.Call[EntityDescription](p_, objc.Sel("entity"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506198-versionhash?language=objc
+func (p_ PropertyDescription) VersionHash() []byte {
+	rv := objc.Call[[]byte](p_, objc.Sel("versionHash"))
 	return rv
 }
 
-// The error strings associated with the receiver’s validation predicates. [Full Topic]
+// A Boolean value that indicates whether the receiver is transient. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506886-validationwarnings?language=objc
-func (p_ PropertyDescription) ValidationWarnings() []objc.Object {
-	rv := objc.Call[[]objc.Object](p_, objc.Sel("validationWarnings"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506766-transient?language=objc
+func (p_ PropertyDescription) IsTransient() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isTransient"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver is transient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506766-transient?language=objc
+func (p_ PropertyDescription) SetTransient(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setTransient:"), value)
+}
+
+// The validation predicates of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506842-validationpredicates?language=objc
+func (p_ PropertyDescription) ValidationPredicates() []foundation.Predicate {
+	rv := objc.Call[[]foundation.Predicate](p_, objc.Sel("validationPredicates"))
 	return rv
 }
 
@@ -186,12 +149,42 @@ func (p_ PropertyDescription) SetUserInfo(value foundation.Dictionary) {
 	objc.Call[objc.Void](p_, objc.Sel("setUserInfo:"), value)
 }
 
-// The validation predicates of the receiver. [Full Topic]
+// The error strings associated with the receiver’s validation predicates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506842-validationpredicates?language=objc
-func (p_ PropertyDescription) ValidationPredicates() []foundation.Predicate {
-	rv := objc.Call[[]foundation.Predicate](p_, objc.Sel("validationPredicates"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506886-validationwarnings?language=objc
+func (p_ PropertyDescription) ValidationWarnings() []objc.Object {
+	rv := objc.Call[[]objc.Object](p_, objc.Sel("validationWarnings"))
 	return rv
+}
+
+// The version hash modifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506214-versionhashmodifier?language=objc
+func (p_ PropertyDescription) VersionHashModifier() string {
+	rv := objc.Call[string](p_, objc.Sel("versionHashModifier"))
+	return rv
+}
+
+// The version hash modifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506214-versionhashmodifier?language=objc
+func (p_ PropertyDescription) SetVersionHashModifier(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setVersionHashModifier:"), value)
+}
+
+// The renaming identifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506641-renamingidentifier?language=objc
+func (p_ PropertyDescription) RenamingIdentifier() string {
+	rv := objc.Call[string](p_, objc.Sel("renamingIdentifier"))
+	return rv
+}
+
+// The renaming identifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506641-renamingidentifier?language=objc
+func (p_ PropertyDescription) SetRenamingIdentifier(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setRenamingIdentifier:"), value)
 }
 
 // A Boolean value that indicates whether the receiver is optional. [Full Topic]
@@ -209,10 +202,17 @@ func (p_ PropertyDescription) SetOptional(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setOptional:"), value)
 }
 
-// The version hash for the receiver. [Full Topic]
+// A Boolean value that indicates whether Core Data adds the property’s value to the Core Spotlight index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506198-versionhash?language=objc
-func (p_ PropertyDescription) VersionHash() []byte {
-	rv := objc.Call[[]byte](p_, objc.Sel("versionHash"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506784-indexedbyspotlight?language=objc
+func (p_ PropertyDescription) IsIndexedBySpotlight() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isIndexedBySpotlight"))
 	return rv
+}
+
+// A Boolean value that indicates whether Core Data adds the property’s value to the Core Spotlight index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertydescription/1506784-indexedbyspotlight?language=objc
+func (p_ PropertyDescription) SetIndexedBySpotlight(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setIndexedBySpotlight:"), value)
 }

@@ -21,14 +21,14 @@ type _VideoCompositionInstructionClass struct {
 // An interface definition for the [VideoCompositionInstruction] class.
 type IVideoCompositionInstruction interface {
 	objc.IObject
-	EnablePostProcessing() bool
-	TimeRange() coremedia.TimeRange
-	ContainsTweening() bool
-	PassthroughTrackID() objc.Object
-	RequiredSourceTrackIDs() []foundation.Value
 	RequiredSourceSampleDataTrackIDs() []foundation.Number
 	LayerInstructions() []VideoCompositionLayerInstruction
+	RequiredSourceTrackIDs() []foundation.Value
+	PassthroughTrackID() objc.Object
 	BackgroundColor() coregraphics.ColorRef
+	TimeRange() coremedia.TimeRange
+	EnablePostProcessing() bool
+	ContainsTweening() bool
 }
 
 // An operation that a compositor performs. [Full Topic]
@@ -64,49 +64,9 @@ func (v_ VideoCompositionInstruction) Init() VideoCompositionInstruction {
 	return rv
 }
 
-// A Boolean value that indicates whether the composition enables post-processing. [Full Topic]
+// The identifiers of source sample data tracks that the compositor requires to compose frames for the instruction. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1386216-enablepostprocessing?language=objc
-func (v_ VideoCompositionInstruction) EnablePostProcessing() bool {
-	rv := objc.Call[bool](v_, objc.Sel("enablePostProcessing"))
-	return rv
-}
-
-// The time range during which the instruction is effective. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1389873-timerange?language=objc
-func (v_ VideoCompositionInstruction) TimeRange() coremedia.TimeRange {
-	rv := objc.Call[coremedia.TimeRange](v_, objc.Sel("timeRange"))
-	return rv
-}
-
-// A Boolean value that indicates whether the composition contains tweening. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1389376-containstweening?language=objc
-func (v_ VideoCompositionInstruction) ContainsTweening() bool {
-	rv := objc.Call[bool](v_, objc.Sel("containsTweening"))
-	return rv
-}
-
-// An identifier of a source track to pass through without compositing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1389919-passthroughtrackid?language=objc
-func (v_ VideoCompositionInstruction) PassthroughTrackID() objc.Object {
-	rv := objc.Call[objc.Object](v_, objc.Sel("passthroughTrackID"))
-	return rv
-}
-
-// The identifiers of the video tracks the instruction requires to compose frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1388661-requiredsourcetrackids?language=objc
-func (v_ VideoCompositionInstruction) RequiredSourceTrackIDs() []foundation.Value {
-	rv := objc.Call[[]foundation.Value](v_, objc.Sel("requiredSourceTrackIDs"))
-	return rv
-}
-
-// The identifiers of the sample data tracks the instruction requires to compose frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/3750315-requiredsourcesampledatatrackids?language=objc
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/3750319-requiredsourcesampledatatrackids?language=objc
 func (v_ VideoCompositionInstruction) RequiredSourceSampleDataTrackIDs() []foundation.Number {
 	rv := objc.Call[[]foundation.Number](v_, objc.Sel("requiredSourceSampleDataTrackIDs"))
 	return rv
@@ -120,10 +80,50 @@ func (v_ VideoCompositionInstruction) LayerInstructions() []VideoCompositionLaye
 	return rv
 }
 
+// The identifiers of source video tracks that the compositor requires to compose frames for the instruction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/1390913-requiredsourcetrackids?language=objc
+func (v_ VideoCompositionInstruction) RequiredSourceTrackIDs() []foundation.Value {
+	rv := objc.Call[[]foundation.Value](v_, objc.Sel("requiredSourceTrackIDs"))
+	return rv
+}
+
+// The track identifier from an instruction source frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/1387657-passthroughtrackid?language=objc
+func (v_ VideoCompositionInstruction) PassthroughTrackID() objc.Object {
+	rv := objc.Call[objc.Object](v_, objc.Sel("passthroughTrackID"))
+	return rv
+}
+
 // The background color of the composition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/1389384-backgroundcolor?language=objc
 func (v_ VideoCompositionInstruction) BackgroundColor() coregraphics.ColorRef {
 	rv := objc.Call[coregraphics.ColorRef](v_, objc.Sel("backgroundColor"))
+	return rv
+}
+
+// The time range to which the instruction applies. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/1387857-timerange?language=objc
+func (v_ VideoCompositionInstruction) TimeRange() coremedia.TimeRange {
+	rv := objc.Call[coremedia.TimeRange](v_, objc.Sel("timeRange"))
+	return rv
+}
+
+// A Boolean value that indicates whether the instruction requires post processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioninstruction/1388697-enablepostprocessing?language=objc
+func (v_ VideoCompositionInstruction) EnablePostProcessing() bool {
+	rv := objc.Call[bool](v_, objc.Sel("enablePostProcessing"))
+	return rv
+}
+
+// A Boolean value that indicates whether the composition contains tweening. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/1386654-avvideocompositioninstruction/1389376-containstweening?language=objc
+func (v_ VideoCompositionInstruction) ContainsTweening() bool {
+	rv := objc.Call[bool](v_, objc.Sel("containsTweening"))
 	return rv
 }

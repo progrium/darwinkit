@@ -20,14 +20,14 @@ type _AssetReaderOutputClass struct {
 // An interface definition for the [AssetReaderOutput] class.
 type IAssetReaderOutput interface {
 	objc.IObject
-	CopyNextSampleBuffer() coremedia.SampleBufferRef
 	ResetForReadingTimeRanges(timeRanges []foundation.IValue)
+	CopyNextSampleBuffer() coremedia.SampleBufferRef
 	MarkConfigurationAsFinal()
-	AlwaysCopiesSampleData() bool
-	SetAlwaysCopiesSampleData(value bool)
 	MediaType() MediaType
 	SupportsRandomAccess() bool
 	SetSupportsRandomAccess(value bool)
+	AlwaysCopiesSampleData() bool
+	SetAlwaysCopiesSampleData(value bool)
 }
 
 // An abstract class that defines the interface to read media samples from an asset reader. [Full Topic]
@@ -63,6 +63,13 @@ func (a_ AssetReaderOutput) Init() AssetReaderOutput {
 	return rv
 }
 
+// Restarts reading with a new set of time ranges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1388890-resetforreadingtimeranges?language=objc
+func (a_ AssetReaderOutput) ResetForReadingTimeRanges(timeRanges []foundation.IValue) {
+	objc.Call[objc.Void](a_, objc.Sel("resetForReadingTimeRanges:"), timeRanges)
+}
+
 // Copies the next sample buffer from the output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1385732-copynextsamplebuffer?language=objc
@@ -71,33 +78,11 @@ func (a_ AssetReaderOutput) CopyNextSampleBuffer() coremedia.SampleBufferRef {
 	return rv
 }
 
-// Restarts reading with a new set of time ranges. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1388890-resetforreadingtimeranges?language=objc
-func (a_ AssetReaderOutput) ResetForReadingTimeRanges(timeRanges []foundation.IValue) {
-	objc.Call[objc.Void](a_, objc.Sel("resetForReadingTimeRanges:"), timeRanges)
-}
-
 // Tells the output that it’s finished reconfiguring time ranges, and allows the asset reader to advance to a completed state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1386974-markconfigurationasfinal?language=objc
 func (a_ AssetReaderOutput) MarkConfigurationAsFinal() {
 	objc.Call[objc.Void](a_, objc.Sel("markConfigurationAsFinal"))
-}
-
-// A Boolean value that indicates whether the output vends copied sample data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1389189-alwayscopiessampledata?language=objc
-func (a_ AssetReaderOutput) AlwaysCopiesSampleData() bool {
-	rv := objc.Call[bool](a_, objc.Sel("alwaysCopiesSampleData"))
-	return rv
-}
-
-// A Boolean value that indicates whether the output vends copied sample data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1389189-alwayscopiessampledata?language=objc
-func (a_ AssetReaderOutput) SetAlwaysCopiesSampleData(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setAlwaysCopiesSampleData:"), value)
 }
 
 // The media type of samples that the output reads. [Full Topic]
@@ -121,4 +106,19 @@ func (a_ AssetReaderOutput) SupportsRandomAccess() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1387927-supportsrandomaccess?language=objc
 func (a_ AssetReaderOutput) SetSupportsRandomAccess(value bool) {
 	objc.Call[objc.Void](a_, objc.Sel("setSupportsRandomAccess:"), value)
+}
+
+// A Boolean value that indicates whether the output vends copied sample data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1389189-alwayscopiessampledata?language=objc
+func (a_ AssetReaderOutput) AlwaysCopiesSampleData() bool {
+	rv := objc.Call[bool](a_, objc.Sel("alwaysCopiesSampleData"))
+	return rv
+}
+
+// A Boolean value that indicates whether the output vends copied sample data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutput/1389189-alwayscopiessampledata?language=objc
+func (a_ AssetReaderOutput) SetAlwaysCopiesSampleData(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setAlwaysCopiesSampleData:"), value)
 }

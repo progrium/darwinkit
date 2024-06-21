@@ -18,11 +18,11 @@ type _ConstraintClass struct {
 // An interface definition for the [Constraint] class.
 type IConstraint interface {
 	objc.IObject
-	Attribute() ConstraintAttribute
 	Scale() float64
-	SourceAttribute() ConstraintAttribute
+	Attribute() ConstraintAttribute
 	SourceName() string
 	Offset() float64
+	SourceAttribute() ConstraintAttribute
 }
 
 // A representation of a single layout constraint between two layers. [Full Topic]
@@ -64,30 +64,6 @@ func NewConstraintWithAttributeRelativeToAttributeScaleOffset(attr ConstraintAtt
 	return instance
 }
 
-func (cc _ConstraintClass) ConstraintWithAttributeRelativeToAttributeOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, c float64) Constraint {
-	rv := objc.Call[Constraint](cc, objc.Sel("constraintWithAttribute:relativeTo:attribute:offset:"), attr, srcId, srcAttr, c)
-	return rv
-}
-
-// Creates and returns an CAConstraint object with the specified parameters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522328-constraintwithattribute?language=objc
-func Constraint_ConstraintWithAttributeRelativeToAttributeOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, c float64) Constraint {
-	return ConstraintClass.ConstraintWithAttributeRelativeToAttributeOffset(attr, srcId, srcAttr, c)
-}
-
-func (cc _ConstraintClass) ConstraintWithAttributeRelativeToAttributeScaleOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, m float64, c float64) Constraint {
-	rv := objc.Call[Constraint](cc, objc.Sel("constraintWithAttribute:relativeTo:attribute:scale:offset:"), attr, srcId, srcAttr, m, c)
-	return rv
-}
-
-// Creates and returns an CAConstraint object with the specified parameters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1574941-constraintwithattribute?language=objc
-func Constraint_ConstraintWithAttributeRelativeToAttributeScaleOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, m float64, c float64) Constraint {
-	return ConstraintClass.ConstraintWithAttributeRelativeToAttributeScaleOffset(attr, srcId, srcAttr, m, c)
-}
-
 func (cc _ConstraintClass) Alloc() Constraint {
 	rv := objc.Call[Constraint](cc, objc.Sel("alloc"))
 	return rv
@@ -108,14 +84,6 @@ func (c_ Constraint) Init() Constraint {
 	return rv
 }
 
-// The attribute the constraint affects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522186-attribute?language=objc
-func (c_ Constraint) Attribute() ConstraintAttribute {
-	rv := objc.Call[ConstraintAttribute](c_, objc.Sel("attribute"))
-	return rv
-}
-
 // Scale factor of the constraint attribute. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1521911-scale?language=objc
@@ -124,11 +92,11 @@ func (c_ Constraint) Scale() float64 {
 	return rv
 }
 
-// The constraint attribute of the layer the receiver is calculated relative to [Full Topic]
+// The attribute the constraint affects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522385-sourceattribute?language=objc
-func (c_ Constraint) SourceAttribute() ConstraintAttribute {
-	rv := objc.Call[ConstraintAttribute](c_, objc.Sel("sourceAttribute"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522186-attribute?language=objc
+func (c_ Constraint) Attribute() ConstraintAttribute {
+	rv := objc.Call[ConstraintAttribute](c_, objc.Sel("attribute"))
 	return rv
 }
 
@@ -145,5 +113,13 @@ func (c_ Constraint) SourceName() string {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522142-offset?language=objc
 func (c_ Constraint) Offset() float64 {
 	rv := objc.Call[float64](c_, objc.Sel("offset"))
+	return rv
+}
+
+// The constraint attribute of the layer the receiver is calculated relative to [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522385-sourceattribute?language=objc
+func (c_ Constraint) SourceAttribute() ConstraintAttribute {
+	rv := objc.Call[ConstraintAttribute](c_, objc.Sel("sourceAttribute"))
 	return rv
 }

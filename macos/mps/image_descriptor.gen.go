@@ -19,23 +19,23 @@ type _ImageDescriptorClass struct {
 // An interface definition for the [ImageDescriptor] class.
 type IImageDescriptor interface {
 	objc.IObject
-	PixelFormat() metal.PixelFormat
-	Height() uint
-	SetHeight(value uint)
-	FeatureChannels() uint
-	SetFeatureChannels(value uint)
-	CpuCacheMode() metal.CPUCacheMode
-	SetCpuCacheMode(value metal.CPUCacheMode)
-	StorageMode() metal.StorageMode
-	SetStorageMode(value metal.StorageMode)
-	ChannelFormat() ImageFeatureChannelFormat
-	SetChannelFormat(value ImageFeatureChannelFormat)
+	Width() uint
+	SetWidth(value uint)
 	Usage() metal.TextureUsage
 	SetUsage(value metal.TextureUsage)
 	NumberOfImages() uint
 	SetNumberOfImages(value uint)
-	Width() uint
-	SetWidth(value uint)
+	Height() uint
+	SetHeight(value uint)
+	CpuCacheMode() metal.CPUCacheMode
+	SetCpuCacheMode(value metal.CPUCacheMode)
+	PixelFormat() metal.PixelFormat
+	StorageMode() metal.StorageMode
+	SetStorageMode(value metal.StorageMode)
+	FeatureChannels() uint
+	SetFeatureChannels(value uint)
+	ChannelFormat() ImageFeatureChannelFormat
+	SetChannelFormat(value ImageFeatureChannelFormat)
 }
 
 // A description of the attributes used to create an MPSImage. [Full Topic]
@@ -49,18 +49,6 @@ func ImageDescriptorFrom(ptr unsafe.Pointer) ImageDescriptor {
 	return ImageDescriptor{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (ic _ImageDescriptorClass) ImageDescriptorWithChannelFormatWidthHeightFeatureChannelsNumberOfImagesUsage(channelFormat ImageFeatureChannelFormat, width uint, height uint, featureChannels uint, numberOfImages uint, usage metal.TextureUsage) ImageDescriptor {
-	rv := objc.Call[ImageDescriptor](ic, objc.Sel("imageDescriptorWithChannelFormat:width:height:featureChannels:numberOfImages:usage:"), channelFormat, width, height, featureChannels, numberOfImages, usage)
-	return rv
-}
-
-// Creates an image descriptor for an image container with options to set texture usage and batch size (number of images). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648893-imagedescriptorwithchannelformat?language=objc
-func ImageDescriptor_ImageDescriptorWithChannelFormatWidthHeightFeatureChannelsNumberOfImagesUsage(channelFormat ImageFeatureChannelFormat, width uint, height uint, featureChannels uint, numberOfImages uint, usage metal.TextureUsage) ImageDescriptor {
-	return ImageDescriptorClass.ImageDescriptorWithChannelFormatWidthHeightFeatureChannelsNumberOfImagesUsage(channelFormat, width, height, featureChannels, numberOfImages, usage)
 }
 
 func (ic _ImageDescriptorClass) ImageDescriptorWithChannelFormatWidthHeightFeatureChannels(channelFormat ImageFeatureChannelFormat, width uint, height uint, featureChannels uint) ImageDescriptor {
@@ -109,87 +97,19 @@ func (i_ ImageDescriptor) Init() ImageDescriptor {
 	return rv
 }
 
-// The pixel format for the underlying texture. [Full Topic]
+// The width of the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648913-pixelformat?language=objc
-func (i_ ImageDescriptor) PixelFormat() metal.PixelFormat {
-	rv := objc.Call[metal.PixelFormat](i_, objc.Sel("pixelFormat"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648830-width?language=objc
+func (i_ ImageDescriptor) Width() uint {
+	rv := objc.Call[uint](i_, objc.Sel("width"))
 	return rv
 }
 
-// The height of the image. [Full Topic]
+// The width of the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648947-height?language=objc
-func (i_ ImageDescriptor) Height() uint {
-	rv := objc.Call[uint](i_, objc.Sel("height"))
-	return rv
-}
-
-// The height of the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648947-height?language=objc
-func (i_ ImageDescriptor) SetHeight(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setHeight:"), value)
-}
-
-// The number of feature channels per pixel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648918-featurechannels?language=objc
-func (i_ ImageDescriptor) FeatureChannels() uint {
-	rv := objc.Call[uint](i_, objc.Sel("featureChannels"))
-	return rv
-}
-
-// The number of feature channels per pixel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648918-featurechannels?language=objc
-func (i_ ImageDescriptor) SetFeatureChannels(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setFeatureChannels:"), value)
-}
-
-// The CPU cache mode of the underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648930-cpucachemode?language=objc
-func (i_ ImageDescriptor) CpuCacheMode() metal.CPUCacheMode {
-	rv := objc.Call[metal.CPUCacheMode](i_, objc.Sel("cpuCacheMode"))
-	return rv
-}
-
-// The CPU cache mode of the underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648930-cpucachemode?language=objc
-func (i_ ImageDescriptor) SetCpuCacheMode(value metal.CPUCacheMode) {
-	objc.Call[objc.Void](i_, objc.Sel("setCpuCacheMode:"), value)
-}
-
-// The storage mode of underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648955-storagemode?language=objc
-func (i_ ImageDescriptor) StorageMode() metal.StorageMode {
-	rv := objc.Call[metal.StorageMode](i_, objc.Sel("storageMode"))
-	return rv
-}
-
-// The storage mode of underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648955-storagemode?language=objc
-func (i_ ImageDescriptor) SetStorageMode(value metal.StorageMode) {
-	objc.Call[objc.Void](i_, objc.Sel("setStorageMode:"), value)
-}
-
-// The storage format to use for each channel in the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648818-channelformat?language=objc
-func (i_ ImageDescriptor) ChannelFormat() ImageFeatureChannelFormat {
-	rv := objc.Call[ImageFeatureChannelFormat](i_, objc.Sel("channelFormat"))
-	return rv
-}
-
-// The storage format to use for each channel in the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648818-channelformat?language=objc
-func (i_ ImageDescriptor) SetChannelFormat(value ImageFeatureChannelFormat) {
-	objc.Call[objc.Void](i_, objc.Sel("setChannelFormat:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648830-width?language=objc
+func (i_ ImageDescriptor) SetWidth(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setWidth:"), value)
 }
 
 // Options to specify the intended usage of the underlying texture. [Full Topic]
@@ -222,17 +142,85 @@ func (i_ ImageDescriptor) SetNumberOfImages(value uint) {
 	objc.Call[objc.Void](i_, objc.Sel("setNumberOfImages:"), value)
 }
 
-// The width of the image. [Full Topic]
+// The height of the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648830-width?language=objc
-func (i_ ImageDescriptor) Width() uint {
-	rv := objc.Call[uint](i_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648947-height?language=objc
+func (i_ ImageDescriptor) Height() uint {
+	rv := objc.Call[uint](i_, objc.Sel("height"))
 	return rv
 }
 
-// The width of the image. [Full Topic]
+// The height of the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648830-width?language=objc
-func (i_ ImageDescriptor) SetWidth(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648947-height?language=objc
+func (i_ ImageDescriptor) SetHeight(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setHeight:"), value)
+}
+
+// The CPU cache mode of the underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648930-cpucachemode?language=objc
+func (i_ ImageDescriptor) CpuCacheMode() metal.CPUCacheMode {
+	rv := objc.Call[metal.CPUCacheMode](i_, objc.Sel("cpuCacheMode"))
+	return rv
+}
+
+// The CPU cache mode of the underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648930-cpucachemode?language=objc
+func (i_ ImageDescriptor) SetCpuCacheMode(value metal.CPUCacheMode) {
+	objc.Call[objc.Void](i_, objc.Sel("setCpuCacheMode:"), value)
+}
+
+// The pixel format for the underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648913-pixelformat?language=objc
+func (i_ ImageDescriptor) PixelFormat() metal.PixelFormat {
+	rv := objc.Call[metal.PixelFormat](i_, objc.Sel("pixelFormat"))
+	return rv
+}
+
+// The storage mode of underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648955-storagemode?language=objc
+func (i_ ImageDescriptor) StorageMode() metal.StorageMode {
+	rv := objc.Call[metal.StorageMode](i_, objc.Sel("storageMode"))
+	return rv
+}
+
+// The storage mode of underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648955-storagemode?language=objc
+func (i_ ImageDescriptor) SetStorageMode(value metal.StorageMode) {
+	objc.Call[objc.Void](i_, objc.Sel("setStorageMode:"), value)
+}
+
+// The number of feature channels per pixel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648918-featurechannels?language=objc
+func (i_ ImageDescriptor) FeatureChannels() uint {
+	rv := objc.Call[uint](i_, objc.Sel("featureChannels"))
+	return rv
+}
+
+// The number of feature channels per pixel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648918-featurechannels?language=objc
+func (i_ ImageDescriptor) SetFeatureChannels(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setFeatureChannels:"), value)
+}
+
+// The storage format to use for each channel in the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648818-channelformat?language=objc
+func (i_ ImageDescriptor) ChannelFormat() ImageFeatureChannelFormat {
+	rv := objc.Call[ImageFeatureChannelFormat](i_, objc.Sel("channelFormat"))
+	return rv
+}
+
+// The storage format to use for each channel in the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedescriptor/1648818-channelformat?language=objc
+func (i_ ImageDescriptor) SetChannelFormat(value ImageFeatureChannelFormat) {
+	objc.Call[objc.Void](i_, objc.Sel("setChannelFormat:"), value)
 }

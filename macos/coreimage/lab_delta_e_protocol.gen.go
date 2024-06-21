@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae?language=objc
 type PLabDeltaE interface {
 	// optional
-	SetImage2(value Image)
-	HasSetImage2() bool
-
-	// optional
-	Image2() Image
-	HasImage2() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetImage2(value Image)
+	HasSetImage2() bool
+
+	// optional
+	Image2() Image
+	HasImage2() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PLabDeltaE = (*LabDeltaEObject)(nil)
 // A concrete type for the [PLabDeltaE] protocol.
 type LabDeltaEObject struct {
 	objc.Object
-}
-
-func (l_ LabDeltaEObject) HasSetImage2() bool {
-	return l_.RespondsToSelector(objc.Sel("setImage2:"))
-}
-
-// The second input image for comparison. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228513-image2?language=objc
-func (l_ LabDeltaEObject) SetImage2(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setImage2:"), value)
-}
-
-func (l_ LabDeltaEObject) HasImage2() bool {
-	return l_.RespondsToSelector(objc.Sel("image2"))
-}
-
-// The second input image for comparison. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228513-image2?language=objc
-func (l_ LabDeltaEObject) Image2() Image {
-	rv := objc.Call[Image](l_, objc.Sel("image2"))
-	return rv
 }
 
 func (l_ LabDeltaEObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (l_ LabDeltaEObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228514-inputimage?language=objc
 func (l_ LabDeltaEObject) InputImage() Image {
 	rv := objc.Call[Image](l_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (l_ LabDeltaEObject) HasSetImage2() bool {
+	return l_.RespondsToSelector(objc.Sel("setImage2:"))
+}
+
+// The second input image for comparison. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228513-image2?language=objc
+func (l_ LabDeltaEObject) SetImage2(value Image) {
+	objc.Call[objc.Void](l_, objc.Sel("setImage2:"), value)
+}
+
+func (l_ LabDeltaEObject) HasImage2() bool {
+	return l_.RespondsToSelector(objc.Sel("image2"))
+}
+
+// The second input image for comparison. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228513-image2?language=objc
+func (l_ LabDeltaEObject) Image2() Image {
+	rv := objc.Call[Image](l_, objc.Sel("image2"))
 	return rv
 }

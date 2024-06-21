@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter?language=objc
 type PTransitionFilter interface {
 	// optional
-	SetTime(value float32)
-	HasSetTime() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Time() float32
-	HasTime() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetTargetImage(value Image)
@@ -27,12 +27,12 @@ type PTransitionFilter interface {
 	HasTargetImage() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetTime(value float32)
+	HasSetTime() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Time() float32
+	HasTime() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type TransitionFilterObject struct {
 	objc.Object
 }
 
-func (t_ TransitionFilterObject) HasSetTime() bool {
-	return t_.RespondsToSelector(objc.Sel("setTime:"))
+func (t_ TransitionFilterObject) HasSetInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// The parametric time of the transition. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
-func (t_ TransitionFilterObject) SetTime(value float32) {
-	objc.Call[objc.Void](t_, objc.Sel("setTime:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228799-inputimage?language=objc
+func (t_ TransitionFilterObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
-func (t_ TransitionFilterObject) HasTime() bool {
-	return t_.RespondsToSelector(objc.Sel("time"))
+func (t_ TransitionFilterObject) HasInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// The parametric time of the transition. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
-func (t_ TransitionFilterObject) Time() float32 {
-	rv := objc.Call[float32](t_, objc.Sel("time"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228799-inputimage?language=objc
+func (t_ TransitionFilterObject) InputImage() Image {
+	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (t_ TransitionFilterObject) TargetImage() Image {
 	return rv
 }
 
-func (t_ TransitionFilterObject) HasSetInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (t_ TransitionFilterObject) HasSetTime() bool {
+	return t_.RespondsToSelector(objc.Sel("setTime:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The parametric time of the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228799-inputimage?language=objc
-func (t_ TransitionFilterObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
+func (t_ TransitionFilterObject) SetTime(value float32) {
+	objc.Call[objc.Void](t_, objc.Sel("setTime:"), value)
 }
 
-func (t_ TransitionFilterObject) HasInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("inputImage"))
+func (t_ TransitionFilterObject) HasTime() bool {
+	return t_.RespondsToSelector(objc.Sel("time"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The parametric time of the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228799-inputimage?language=objc
-func (t_ TransitionFilterObject) InputImage() Image {
-	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
+func (t_ TransitionFilterObject) Time() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("time"))
 	return rv
 }

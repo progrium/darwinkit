@@ -20,7 +20,7 @@ type IWebBackForwardList interface {
 	objc.IObject
 }
 
-// A WebBackForwardList object maintains a list of visited pages used to go back and forward to the most recent page. A WebBackForwardList object maintains only the list data—it does not perform actual page loads (in other words, it does not make any client requests). If you need to perform a page load, see the [webkit/webframe/loadrequest] method in WebFrame to find out how to do this. [Full Topic]
+// A WebBackForwardList object maintains a list of visited pages used to go back and forward to the most recent page. A WebBackForwardList object maintains only the list data—it does not perform actual page loads (in other words, it does not make any client requests). If you need to perform a page load, see the loadRequest: method in WebFrame to find out how to do this. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webbackforwardlist?language=objc
 type WebBackForwardList struct {

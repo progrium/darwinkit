@@ -18,17 +18,17 @@ type _StreamClass struct {
 // An interface definition for the [Stream] class.
 type IStream interface {
 	objc.IObject
+	ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
+	RemoveFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
+	Open()
 	Close()
 	PropertyForKey(key StreamPropertyKey) objc.Object
 	SetPropertyForKey(property objc.IObject, key StreamPropertyKey) bool
-	Open()
-	RemoveFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
-	ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode)
-	StreamStatus() StreamStatus
 	StreamError() Error
 	Delegate() StreamDelegateObject
 	SetDelegate(value PStreamDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	StreamStatus() StreamStatus
 }
 
 // An abstract class representing a stream. [Full Topic]
@@ -64,6 +64,27 @@ func (s_ Stream) Init() Stream {
 	return rv
 }
 
+// Schedules the receiver on a given run loop in a given mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1417370-scheduleinrunloop?language=objc
+func (s_ Stream) ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
+	objc.Call[objc.Void](s_, objc.Sel("scheduleInRunLoop:forMode:"), aRunLoop, mode)
+}
+
+// Removes the receiver from a given run loop running in a given mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1411285-removefromrunloop?language=objc
+func (s_ Stream) RemoveFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
+	objc.Call[objc.Void](s_, objc.Sel("removeFromRunLoop:forMode:"), aRunLoop, mode)
+}
+
+// Opens the receiving stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1411963-open?language=objc
+func (s_ Stream) Open() {
+	objc.Call[objc.Void](s_, objc.Sel("open"))
+}
+
 // Closes the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1410399-close?language=objc
@@ -87,13 +108,6 @@ func (s_ Stream) SetPropertyForKey(property objc.IObject, key StreamPropertyKey)
 	return rv
 }
 
-// Opens the receiving stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1411963-open?language=objc
-func (s_ Stream) Open() {
-	objc.Call[objc.Void](s_, objc.Sel("open"))
-}
-
 // Creates and returns by reference a bound pair of input and output streams. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1412683-getboundstreamswithbuffersize?language=objc
@@ -106,28 +120,6 @@ func (sc _StreamClass) GetBoundStreamsWithBufferSizeInputStreamOutputStream(buff
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1412683-getboundstreamswithbuffersize?language=objc
 func Stream_GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint, inputStream unsafe.Pointer, outputStream unsafe.Pointer) {
 	StreamClass.GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize, inputStream, outputStream)
-}
-
-// Removes the receiver from a given run loop running in a given mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1411285-removefromrunloop?language=objc
-func (s_ Stream) RemoveFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](s_, objc.Sel("removeFromRunLoop:forMode:"), aRunLoop, mode)
-}
-
-// Schedules the receiver on a given run loop in a given mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1417370-scheduleinrunloop?language=objc
-func (s_ Stream) ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](s_, objc.Sel("scheduleInRunLoop:forMode:"), aRunLoop, mode)
-}
-
-// Returns the receiver’s status. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1413038-streamstatus?language=objc
-func (s_ Stream) StreamStatus() StreamStatus {
-	rv := objc.Call[StreamStatus](s_, objc.Sel("streamStatus"))
-	return rv
 }
 
 // Returns an NSError object representing the stream error. [Full Topic]
@@ -159,4 +151,12 @@ func (s_ Stream) SetDelegate(value PStreamDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1418423-delegate?language=objc
 func (s_ Stream) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// Returns the receiver’s status. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1413038-streamstatus?language=objc
+func (s_ Stream) StreamStatus() StreamStatus {
+	rv := objc.Call[StreamStatus](s_, objc.Sel("streamStatus"))
+	return rv
 }

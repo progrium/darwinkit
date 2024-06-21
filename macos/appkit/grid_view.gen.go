@@ -19,33 +19,33 @@ type _GridViewClass struct {
 // An interface definition for the [GridView] class.
 type IGridView interface {
 	IView
-	RemoveRowAtIndex(index int)
-	InsertColumnAtIndexWithViews(index int, views []IView) GridColumn
-	RemoveColumnAtIndex(index int)
-	MergeCellsInHorizontalRangeVerticalRange(hRange foundation.Range, vRange foundation.Range)
-	AddRowWithViews(views []IView) GridRow
-	MoveColumnAtIndexToIndex(fromIndex int, toIndex int)
-	InsertRowAtIndexWithViews(index int, views []IView) GridRow
-	IndexOfRow(row IGridRow) int
 	IndexOfColumn(column IGridColumn) int
+	RemoveColumnAtIndex(index int)
+	IndexOfRow(row IGridRow) int
+	InsertColumnAtIndexWithViews(index int, views []IView) GridColumn
 	ColumnAtIndex(index int) GridColumn
-	RowAtIndex(index int) GridRow
-	CellAtColumnIndexRowIndex(columnIndex int, rowIndex int) GridCell
-	CellForView(view IView) GridCell
+	MergeCellsInHorizontalRangeVerticalRange(hRange foundation.Range, vRange foundation.Range)
 	AddColumnWithViews(views []IView) GridColumn
+	AddRowWithViews(views []IView) GridRow
+	CellForView(view IView) GridCell
+	InsertRowAtIndexWithViews(index int, views []IView) GridRow
 	MoveRowAtIndexToIndex(fromIndex int, toIndex int)
-	NumberOfColumns() int
-	XPlacement() GridCellPlacement
-	SetXPlacement(value GridCellPlacement)
-	NumberOfRows() int
-	YPlacement() GridCellPlacement
-	SetYPlacement(value GridCellPlacement)
-	RowSpacing() float64
-	SetRowSpacing(value float64)
-	ColumnSpacing() float64
-	SetColumnSpacing(value float64)
+	CellAtColumnIndexRowIndex(columnIndex int, rowIndex int) GridCell
+	MoveColumnAtIndexToIndex(fromIndex int, toIndex int)
+	RemoveRowAtIndex(index int)
+	RowAtIndex(index int) GridRow
 	RowAlignment() GridRowAlignment
 	SetRowAlignment(value GridRowAlignment)
+	ColumnSpacing() float64
+	SetColumnSpacing(value float64)
+	YPlacement() GridCellPlacement
+	SetYPlacement(value GridCellPlacement)
+	XPlacement() GridCellPlacement
+	SetXPlacement(value GridCellPlacement)
+	RowSpacing() float64
+	SetRowSpacing(value float64)
+	NumberOfRows() int
+	NumberOfColumns() int
 }
 
 // A container that aligns views in a flexible grid of rows and columns. [Full Topic]
@@ -119,18 +119,11 @@ func (g_ GridView) Init() GridView {
 	return rv
 }
 
-// Removes the row from the grid view at the index. [Full Topic]
+// Returns the index of the specified grid column. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639771-removerowatindex?language=objc
-func (g_ GridView) RemoveRowAtIndex(index int) {
-	objc.Call[objc.Void](g_, objc.Sel("removeRowAtIndex:"), index)
-}
-
-// Inserts the array of view objects at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639700-insertcolumnatindex?language=objc
-func (g_ GridView) InsertColumnAtIndexWithViews(index int, views []IView) GridColumn {
-	rv := objc.Call[GridColumn](g_, objc.Sel("insertColumnAtIndex:withViews:"), index, views)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639667-indexofcolumn?language=objc
+func (g_ GridView) IndexOfColumn(column IGridColumn) int {
+	rv := objc.Call[int](g_, objc.Sel("indexOfColumn:"), column)
 	return rv
 }
 
@@ -141,36 +134,6 @@ func (g_ GridView) RemoveColumnAtIndex(index int) {
 	objc.Call[objc.Void](g_, objc.Sel("removeColumnAtIndex:"), index)
 }
 
-// Expands the cell at the top-leading corner of the horizontal and vertical range to cover the entire area. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639749-mergecellsinhorizontalrange?language=objc
-func (g_ GridView) MergeCellsInHorizontalRangeVerticalRange(hRange foundation.Range, vRange foundation.Range) {
-	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInHorizontalRange:verticalRange:"), hRange, vRange)
-}
-
-// Adds an array of views to a new row. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639690-addrowwithviews?language=objc
-func (g_ GridView) AddRowWithViews(views []IView) GridRow {
-	rv := objc.Call[GridRow](g_, objc.Sel("addRowWithViews:"), views)
-	return rv
-}
-
-// Moves the specified column to a new column location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639659-movecolumnatindex?language=objc
-func (g_ GridView) MoveColumnAtIndexToIndex(fromIndex int, toIndex int) {
-	objc.Call[objc.Void](g_, objc.Sel("moveColumnAtIndex:toIndex:"), fromIndex, toIndex)
-}
-
-// Inserts the array of view objects into the grid view at the index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639787-insertrowatindex?language=objc
-func (g_ GridView) InsertRowAtIndexWithViews(index int, views []IView) GridRow {
-	rv := objc.Call[GridRow](g_, objc.Sel("insertRowAtIndex:withViews:"), index, views)
-	return rv
-}
-
 // Returns the index of the specified grid row. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639661-indexofrow?language=objc
@@ -179,11 +142,11 @@ func (g_ GridView) IndexOfRow(row IGridRow) int {
 	return rv
 }
 
-// Returns the index of the specified grid column. [Full Topic]
+// Inserts the array of view objects at the specified index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639667-indexofcolumn?language=objc
-func (g_ GridView) IndexOfColumn(column IGridColumn) int {
-	rv := objc.Call[int](g_, objc.Sel("indexOfColumn:"), column)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639700-insertcolumnatindex?language=objc
+func (g_ GridView) InsertColumnAtIndexWithViews(index int, views []IView) GridColumn {
+	rv := objc.Call[GridColumn](g_, objc.Sel("insertColumnAtIndex:withViews:"), index, views)
 	return rv
 }
 
@@ -195,19 +158,26 @@ func (g_ GridView) ColumnAtIndex(index int) GridColumn {
 	return rv
 }
 
-// Returns the grid row object at the specified index. [Full Topic]
+// Expands the cell at the top-leading corner of the horizontal and vertical range to cover the entire area. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639761-rowatindex?language=objc
-func (g_ GridView) RowAtIndex(index int) GridRow {
-	rv := objc.Call[GridRow](g_, objc.Sel("rowAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639749-mergecellsinhorizontalrange?language=objc
+func (g_ GridView) MergeCellsInHorizontalRangeVerticalRange(hRange foundation.Range, vRange foundation.Range) {
+	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInHorizontalRange:verticalRange:"), hRange, vRange)
+}
+
+// Adds a new column containing the array of views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639783-addcolumnwithviews?language=objc
+func (g_ GridView) AddColumnWithViews(views []IView) GridColumn {
+	rv := objc.Call[GridColumn](g_, objc.Sel("addColumnWithViews:"), views)
 	return rv
 }
 
-// Returns the grid cell object at the specified column and row index. [Full Topic]
+// Adds an array of views to a new row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639778-cellatcolumnindex?language=objc
-func (g_ GridView) CellAtColumnIndexRowIndex(columnIndex int, rowIndex int) GridCell {
-	rv := objc.Call[GridCell](g_, objc.Sel("cellAtColumnIndex:rowIndex:"), columnIndex, rowIndex)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639690-addrowwithviews?language=objc
+func (g_ GridView) AddRowWithViews(views []IView) GridRow {
+	rv := objc.Call[GridRow](g_, objc.Sel("addRowWithViews:"), views)
 	return rv
 }
 
@@ -219,11 +189,11 @@ func (g_ GridView) CellForView(view IView) GridCell {
 	return rv
 }
 
-// Adds a new column containing the array of views. [Full Topic]
+// Inserts the array of view objects into the grid view at the index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639783-addcolumnwithviews?language=objc
-func (g_ GridView) AddColumnWithViews(views []IView) GridColumn {
-	rv := objc.Call[GridColumn](g_, objc.Sel("addColumnWithViews:"), views)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639787-insertrowatindex?language=objc
+func (g_ GridView) InsertRowAtIndexWithViews(index int, views []IView) GridRow {
+	rv := objc.Call[GridRow](g_, objc.Sel("insertRowAtIndex:withViews:"), index, views)
 	return rv
 }
 
@@ -234,65 +204,49 @@ func (g_ GridView) MoveRowAtIndexToIndex(fromIndex int, toIndex int) {
 	objc.Call[objc.Void](g_, objc.Sel("moveRowAtIndex:toIndex:"), fromIndex, toIndex)
 }
 
-// The number of columns in the grid view. [Full Topic]
+// Returns the grid cell object at the specified column and row index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639698-numberofcolumns?language=objc
-func (g_ GridView) NumberOfColumns() int {
-	rv := objc.Call[int](g_, objc.Sel("numberOfColumns"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639778-cellatcolumnindex?language=objc
+func (g_ GridView) CellAtColumnIndexRowIndex(columnIndex int, rowIndex int) GridCell {
+	rv := objc.Call[GridCell](g_, objc.Sel("cellAtColumnIndex:rowIndex:"), columnIndex, rowIndex)
 	return rv
 }
 
-// The placement of the cell within the grid column. [Full Topic]
+// Moves the specified column to a new column location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639732-xplacement?language=objc
-func (g_ GridView) XPlacement() GridCellPlacement {
-	rv := objc.Call[GridCellPlacement](g_, objc.Sel("xPlacement"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639659-movecolumnatindex?language=objc
+func (g_ GridView) MoveColumnAtIndexToIndex(fromIndex int, toIndex int) {
+	objc.Call[objc.Void](g_, objc.Sel("moveColumnAtIndex:toIndex:"), fromIndex, toIndex)
+}
+
+// Removes the row from the grid view at the index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639771-removerowatindex?language=objc
+func (g_ GridView) RemoveRowAtIndex(index int) {
+	objc.Call[objc.Void](g_, objc.Sel("removeRowAtIndex:"), index)
+}
+
+// Returns the grid row object at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639761-rowatindex?language=objc
+func (g_ GridView) RowAtIndex(index int) GridRow {
+	rv := objc.Call[GridRow](g_, objc.Sel("rowAtIndex:"), index)
 	return rv
 }
 
-// The placement of the cell within the grid column. [Full Topic]
+// The row alignment for the grid view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639732-xplacement?language=objc
-func (g_ GridView) SetXPlacement(value GridCellPlacement) {
-	objc.Call[objc.Void](g_, objc.Sel("setXPlacement:"), value)
-}
-
-// The number of rows in the grid view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639705-numberofrows?language=objc
-func (g_ GridView) NumberOfRows() int {
-	rv := objc.Call[int](g_, objc.Sel("numberOfRows"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1823691-rowalignment?language=objc
+func (g_ GridView) RowAlignment() GridRowAlignment {
+	rv := objc.Call[GridRowAlignment](g_, objc.Sel("rowAlignment"))
 	return rv
 }
 
-// The placement of the cell within the grid row. [Full Topic]
+// The row alignment for the grid view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639767-yplacement?language=objc
-func (g_ GridView) YPlacement() GridCellPlacement {
-	rv := objc.Call[GridCellPlacement](g_, objc.Sel("yPlacement"))
-	return rv
-}
-
-// The placement of the cell within the grid row. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639767-yplacement?language=objc
-func (g_ GridView) SetYPlacement(value GridCellPlacement) {
-	objc.Call[objc.Void](g_, objc.Sel("setYPlacement:"), value)
-}
-
-// The row spacing for the grid view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639730-rowspacing?language=objc
-func (g_ GridView) RowSpacing() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("rowSpacing"))
-	return rv
-}
-
-// The row spacing for the grid view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639730-rowspacing?language=objc
-func (g_ GridView) SetRowSpacing(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setRowSpacing:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1823691-rowalignment?language=objc
+func (g_ GridView) SetRowAlignment(value GridRowAlignment) {
+	objc.Call[objc.Void](g_, objc.Sel("setRowAlignment:"), value)
 }
 
 // The column spacing for the grid view. [Full Topic]
@@ -310,17 +264,63 @@ func (g_ GridView) SetColumnSpacing(value float64) {
 	objc.Call[objc.Void](g_, objc.Sel("setColumnSpacing:"), value)
 }
 
-// The row alignment for the grid view. [Full Topic]
+// The placement of the cell within the grid row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1823691-rowalignment?language=objc
-func (g_ GridView) RowAlignment() GridRowAlignment {
-	rv := objc.Call[GridRowAlignment](g_, objc.Sel("rowAlignment"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639767-yplacement?language=objc
+func (g_ GridView) YPlacement() GridCellPlacement {
+	rv := objc.Call[GridCellPlacement](g_, objc.Sel("yPlacement"))
 	return rv
 }
 
-// The row alignment for the grid view. [Full Topic]
+// The placement of the cell within the grid row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1823691-rowalignment?language=objc
-func (g_ GridView) SetRowAlignment(value GridRowAlignment) {
-	objc.Call[objc.Void](g_, objc.Sel("setRowAlignment:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639767-yplacement?language=objc
+func (g_ GridView) SetYPlacement(value GridCellPlacement) {
+	objc.Call[objc.Void](g_, objc.Sel("setYPlacement:"), value)
+}
+
+// The placement of the cell within the grid column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639732-xplacement?language=objc
+func (g_ GridView) XPlacement() GridCellPlacement {
+	rv := objc.Call[GridCellPlacement](g_, objc.Sel("xPlacement"))
+	return rv
+}
+
+// The placement of the cell within the grid column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639732-xplacement?language=objc
+func (g_ GridView) SetXPlacement(value GridCellPlacement) {
+	objc.Call[objc.Void](g_, objc.Sel("setXPlacement:"), value)
+}
+
+// The row spacing for the grid view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639730-rowspacing?language=objc
+func (g_ GridView) RowSpacing() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("rowSpacing"))
+	return rv
+}
+
+// The row spacing for the grid view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639730-rowspacing?language=objc
+func (g_ GridView) SetRowSpacing(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setRowSpacing:"), value)
+}
+
+// The number of rows in the grid view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639705-numberofrows?language=objc
+func (g_ GridView) NumberOfRows() int {
+	rv := objc.Call[int](g_, objc.Sel("numberOfRows"))
+	return rv
+}
+
+// The number of columns in the grid view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639698-numberofcolumns?language=objc
+func (g_ GridView) NumberOfColumns() int {
+	rv := objc.Call[int](g_, objc.Sel("numberOfColumns"))
+	return rv
 }

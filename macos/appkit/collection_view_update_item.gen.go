@@ -20,8 +20,8 @@ type _CollectionViewUpdateItemClass struct {
 type ICollectionViewUpdateItem interface {
 	objc.IObject
 	UpdateAction() CollectionUpdateAction
-	IndexPathAfterUpdate() foundation.IndexPath
 	IndexPathBeforeUpdate() foundation.IndexPath
+	IndexPathAfterUpdate() foundation.IndexPath
 }
 
 // A description of a single change to make to an item in a collection view. [Full Topic]
@@ -65,18 +65,18 @@ func (c_ CollectionViewUpdateItem) UpdateAction() CollectionUpdateAction {
 	return rv
 }
 
-// The index path of the item after the update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewupdateitem/1530431-indexpathafterupdate?language=objc
-func (c_ CollectionViewUpdateItem) IndexPathAfterUpdate() foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathAfterUpdate"))
-	return rv
-}
-
 // The index path of the item before the update. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewupdateitem/1534798-indexpathbeforeupdate?language=objc
 func (c_ CollectionViewUpdateItem) IndexPathBeforeUpdate() foundation.IndexPath {
 	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathBeforeUpdate"))
+	return rv
+}
+
+// The index path of the item after the update. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewupdateitem/1530431-indexpathafterupdate?language=objc
+func (c_ CollectionViewUpdateItem) IndexPathAfterUpdate() foundation.IndexPath {
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathAfterUpdate"))
 	return rv
 }

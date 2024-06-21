@@ -12,12 +12,28 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile?language=objc
 type PFourfoldTranslatedTile interface {
 	// optional
+	SetWidth(value float32)
+	HasSetWidth() bool
+
+	// optional
+	Width() float32
+	HasWidth() bool
+
+	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
 
 	// optional
 	SetAcuteAngle(value float32)
@@ -28,28 +44,12 @@ type PFourfoldTranslatedTile interface {
 	HasAcuteAngle() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
-
-	// optional
-	Width() float32
-	HasWidth() bool
-
-	// optional
 	SetCenter(value coregraphics.Point)
 	HasSetCenter() bool
 
 	// optional
 	Center() coregraphics.Point
 	HasCenter() bool
-
-	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,6 +58,29 @@ var _ PFourfoldTranslatedTile = (*FourfoldTranslatedTileObject)(nil)
 // A concrete type for the [PFourfoldTranslatedTile] protocol.
 type FourfoldTranslatedTileObject struct {
 	objc.Object
+}
+
+func (f_ FourfoldTranslatedTileObject) HasSetWidth() bool {
+	return f_.RespondsToSelector(objc.Sel("setWidth:"))
+}
+
+// The width of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
+func (f_ FourfoldTranslatedTileObject) SetWidth(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setWidth:"), value)
+}
+
+func (f_ FourfoldTranslatedTileObject) HasWidth() bool {
+	return f_.RespondsToSelector(objc.Sel("width"))
+}
+
+// The width of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
+func (f_ FourfoldTranslatedTileObject) Width() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("width"))
+	return rv
 }
 
 func (f_ FourfoldTranslatedTileObject) HasSetInputImage() bool {
@@ -80,6 +103,29 @@ func (f_ FourfoldTranslatedTileObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228458-inputimage?language=objc
 func (f_ FourfoldTranslatedTileObject) InputImage() Image {
 	rv := objc.Call[Image](f_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (f_ FourfoldTranslatedTileObject) HasSetAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
+func (f_ FourfoldTranslatedTileObject) SetAngle(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
+}
+
+func (f_ FourfoldTranslatedTileObject) HasAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
+func (f_ FourfoldTranslatedTileObject) Angle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("angle"))
 	return rv
 }
 
@@ -106,29 +152,6 @@ func (f_ FourfoldTranslatedTileObject) AcuteAngle() float32 {
 	return rv
 }
 
-func (f_ FourfoldTranslatedTileObject) HasSetWidth() bool {
-	return f_.RespondsToSelector(objc.Sel("setWidth:"))
-}
-
-// The width of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
-func (f_ FourfoldTranslatedTileObject) SetWidth(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setWidth:"), value)
-}
-
-func (f_ FourfoldTranslatedTileObject) HasWidth() bool {
-	return f_.RespondsToSelector(objc.Sel("width"))
-}
-
-// The width of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
-func (f_ FourfoldTranslatedTileObject) Width() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("width"))
-	return rv
-}
-
 func (f_ FourfoldTranslatedTileObject) HasSetCenter() bool {
 	return f_.RespondsToSelector(objc.Sel("setCenter:"))
 }
@@ -149,28 +172,5 @@ func (f_ FourfoldTranslatedTileObject) HasCenter() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228457-center?language=objc
 func (f_ FourfoldTranslatedTileObject) Center() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
-	return rv
-}
-
-func (f_ FourfoldTranslatedTileObject) HasSetAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
-func (f_ FourfoldTranslatedTileObject) SetAngle(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
-}
-
-func (f_ FourfoldTranslatedTileObject) HasAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("angle"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
-func (f_ FourfoldTranslatedTileObject) Angle() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("angle"))
 	return rv
 }

@@ -18,8 +18,8 @@ type _ScriptCoercionHandlerClass struct {
 // An interface definition for the [ScriptCoercionHandler] class.
 type IScriptCoercionHandler interface {
 	objc.IObject
-	RegisterCoercerSelectorToConvertFromClassToClass(coercer objc.IObject, selector objc.Selector, fromClass objc.IClass, toClass objc.IClass)
 	CoerceValueToClass(value objc.IObject, toClass objc.IClass) objc.Object
+	RegisterCoercerSelectorToConvertFromClassToClass(coercer objc.IObject, selector objc.Selector, fromClass objc.IClass, toClass objc.IClass)
 }
 
 // A mechanism for converting one kind of scripting data to another. [Full Topic]
@@ -55,11 +55,12 @@ func (s_ ScriptCoercionHandler) Init() ScriptCoercionHandler {
 	return rv
 }
 
-// Registers a given object (typically a class) to handle coercions (conversions) from one given class to another. [Full Topic]
+// Returns an object of a given class representing a given value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1413218-registercoercer?language=objc
-func (s_ ScriptCoercionHandler) RegisterCoercerSelectorToConvertFromClassToClass(coercer objc.IObject, selector objc.Selector, fromClass objc.IClass, toClass objc.IClass) {
-	objc.Call[objc.Void](s_, objc.Sel("registerCoercer:selector:toConvertFromClass:toClass:"), coercer, selector, fromClass, toClass)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1412034-coercevalue?language=objc
+func (s_ ScriptCoercionHandler) CoerceValueToClass(value objc.IObject, toClass objc.IClass) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("coerceValue:toClass:"), value, toClass)
+	return rv
 }
 
 // Returns the shared NSScriptCoercionHandler for the application. [Full Topic]
@@ -77,10 +78,9 @@ func ScriptCoercionHandler_SharedCoercionHandler() ScriptCoercionHandler {
 	return ScriptCoercionHandlerClass.SharedCoercionHandler()
 }
 
-// Returns an object of a given class representing a given value. [Full Topic]
+// Registers a given object (typically a class) to handle coercions (conversions) from one given class to another. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1412034-coercevalue?language=objc
-func (s_ ScriptCoercionHandler) CoerceValueToClass(value objc.IObject, toClass objc.IClass) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("coerceValue:toClass:"), value, toClass)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1413218-registercoercer?language=objc
+func (s_ ScriptCoercionHandler) RegisterCoercerSelectorToConvertFromClassToClass(coercer objc.IObject, selector objc.Selector, fromClass objc.IClass, toClass objc.IClass) {
+	objc.Call[objc.Void](s_, objc.Sel("registerCoercer:selector:toConvertFromClass:toClass:"), coercer, selector, fromClass, toClass)
 }

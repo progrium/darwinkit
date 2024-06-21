@@ -20,23 +20,23 @@ type _PlacemarkClass struct {
 // An interface definition for the [Placemark] class.
 type IPlacemark interface {
 	objc.IObject
-	Country() string
-	SubAdministrativeArea() string
-	Ocean() string
-	SubThoroughfare() string
-	PostalAddress() contacts.PostalAddress
 	InlandWater() string
-	Location() Location
-	Region() Region
-	Thoroughfare() string
-	PostalCode() string
 	AreasOfInterest() []string
-	SubLocality() string
-	AdministrativeArea() string
-	TimeZone() foundation.TimeZone
-	Locality() string
-	ISOcountryCode() string
+	Ocean() string
 	Name() string
+	SubLocality() string
+	Location() Location
+	Locality() string
+	PostalCode() string
+	ISOcountryCode() string
+	TimeZone() foundation.TimeZone
+	AdministrativeArea() string
+	PostalAddress() contacts.PostalAddress
+	SubThoroughfare() string
+	Region() Region
+	SubAdministrativeArea() string
+	Country() string
+	Thoroughfare() string
 }
 
 // A user-friendly description of a geographic coordinate, often containing the name of the place, its address, and other relevant information. [Full Topic]
@@ -98,83 +98,11 @@ func (p_ Placemark) Init() Placemark {
 	return rv
 }
 
-// The name of the country or region associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423800-country?language=objc
-func (p_ Placemark) Country() string {
-	rv := objc.Call[string](p_, objc.Sel("country"))
-	return rv
-}
-
-// Additional administrative area information for the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423776-subadministrativearea?language=objc
-func (p_ Placemark) SubAdministrativeArea() string {
-	rv := objc.Call[string](p_, objc.Sel("subAdministrativeArea"))
-	return rv
-}
-
-// The name of the ocean associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423619-ocean?language=objc
-func (p_ Placemark) Ocean() string {
-	rv := objc.Call[string](p_, objc.Sel("ocean"))
-	return rv
-}
-
-// Additional street-level information for the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423782-subthoroughfare?language=objc
-func (p_ Placemark) SubThoroughfare() string {
-	rv := objc.Call[string](p_, objc.Sel("subThoroughfare"))
-	return rv
-}
-
-// The postal address associated with the location, formatted for use with the Contacts framework. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/2890749-postaladdress?language=objc
-func (p_ Placemark) PostalAddress() contacts.PostalAddress {
-	rv := objc.Call[contacts.PostalAddress](p_, objc.Sel("postalAddress"))
-	return rv
-}
-
 // The name of the inland water body associated with the placemark. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423738-inlandwater?language=objc
 func (p_ Placemark) InlandWater() string {
 	rv := objc.Call[string](p_, objc.Sel("inlandWater"))
-	return rv
-}
-
-// The location object containing latitude and longitude information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423603-location?language=objc
-func (p_ Placemark) Location() Location {
-	rv := objc.Call[Location](p_, objc.Sel("location"))
-	return rv
-}
-
-// The geographic region associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423808-region?language=objc
-func (p_ Placemark) Region() Region {
-	rv := objc.Call[Region](p_, objc.Sel("region"))
-	return rv
-}
-
-// The street address associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423814-thoroughfare?language=objc
-func (p_ Placemark) Thoroughfare() string {
-	rv := objc.Call[string](p_, objc.Sel("thoroughfare"))
-	return rv
-}
-
-// The postal code associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423851-postalcode?language=objc
-func (p_ Placemark) PostalCode() string {
-	rv := objc.Call[string](p_, objc.Sel("postalCode"))
 	return rv
 }
 
@@ -186,6 +114,22 @@ func (p_ Placemark) AreasOfInterest() []string {
 	return rv
 }
 
+// The name of the ocean associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423619-ocean?language=objc
+func (p_ Placemark) Ocean() string {
+	rv := objc.Call[string](p_, objc.Sel("ocean"))
+	return rv
+}
+
+// The name of the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423634-name?language=objc
+func (p_ Placemark) Name() string {
+	rv := objc.Call[string](p_, objc.Sel("name"))
+	return rv
+}
+
 // Additional city-level information for the placemark. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423794-sublocality?language=objc
@@ -194,19 +138,11 @@ func (p_ Placemark) SubLocality() string {
 	return rv
 }
 
-// The state or province associated with the placemark. [Full Topic]
+// The location object containing latitude and longitude information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423628-administrativearea?language=objc
-func (p_ Placemark) AdministrativeArea() string {
-	rv := objc.Call[string](p_, objc.Sel("administrativeArea"))
-	return rv
-}
-
-// The time zone associated with the placemark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423707-timezone?language=objc
-func (p_ Placemark) TimeZone() foundation.TimeZone {
-	rv := objc.Call[foundation.TimeZone](p_, objc.Sel("timeZone"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423603-location?language=objc
+func (p_ Placemark) Location() Location {
+	rv := objc.Call[Location](p_, objc.Sel("location"))
 	return rv
 }
 
@@ -218,6 +154,14 @@ func (p_ Placemark) Locality() string {
 	return rv
 }
 
+// The postal code associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423851-postalcode?language=objc
+func (p_ Placemark) PostalCode() string {
+	rv := objc.Call[string](p_, objc.Sel("postalCode"))
+	return rv
+}
+
 // The abbreviated country or region name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423796-isocountrycode?language=objc
@@ -226,10 +170,66 @@ func (p_ Placemark) ISOcountryCode() string {
 	return rv
 }
 
-// The name of the placemark. [Full Topic]
+// The time zone associated with the placemark. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423634-name?language=objc
-func (p_ Placemark) Name() string {
-	rv := objc.Call[string](p_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423707-timezone?language=objc
+func (p_ Placemark) TimeZone() foundation.TimeZone {
+	rv := objc.Call[foundation.TimeZone](p_, objc.Sel("timeZone"))
+	return rv
+}
+
+// The state or province associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423628-administrativearea?language=objc
+func (p_ Placemark) AdministrativeArea() string {
+	rv := objc.Call[string](p_, objc.Sel("administrativeArea"))
+	return rv
+}
+
+// The postal address associated with the location, formatted for use with the Contacts framework. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/2890749-postaladdress?language=objc
+func (p_ Placemark) PostalAddress() contacts.PostalAddress {
+	rv := objc.Call[contacts.PostalAddress](p_, objc.Sel("postalAddress"))
+	return rv
+}
+
+// Additional street-level information for the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423782-subthoroughfare?language=objc
+func (p_ Placemark) SubThoroughfare() string {
+	rv := objc.Call[string](p_, objc.Sel("subThoroughfare"))
+	return rv
+}
+
+// The geographic region associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423808-region?language=objc
+func (p_ Placemark) Region() Region {
+	rv := objc.Call[Region](p_, objc.Sel("region"))
+	return rv
+}
+
+// Additional administrative area information for the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423776-subadministrativearea?language=objc
+func (p_ Placemark) SubAdministrativeArea() string {
+	rv := objc.Call[string](p_, objc.Sel("subAdministrativeArea"))
+	return rv
+}
+
+// The name of the country or region associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423800-country?language=objc
+func (p_ Placemark) Country() string {
+	rv := objc.Call[string](p_, objc.Sel("country"))
+	return rv
+}
+
+// The street address associated with the placemark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423814-thoroughfare?language=objc
+func (p_ Placemark) Thoroughfare() string {
+	rv := objc.Call[string](p_, objc.Sel("thoroughfare"))
 	return rv
 }

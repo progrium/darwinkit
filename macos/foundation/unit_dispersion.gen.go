@@ -53,6 +53,18 @@ func (u_ UnitDispersion) Init() UnitDispersion {
 	return rv
 }
 
+func (uc _UnitDispersionClass) BaseUnit() UnitDispersion {
+	rv := objc.Call[UnitDispersion](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitDispersion_BaseUnit() UnitDispersion {
+	return UnitDispersionClass.BaseUnit()
+}
+
 func (u_ UnitDispersion) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitDispersion {
 	rv := objc.Call[UnitDispersion](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitDispersionWithSymbolConverter(symbol string, converter IUnitConverte
 	instance := UnitDispersionClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitDispersionClass) BaseUnit() UnitDispersion {
-	rv := objc.Call[UnitDispersion](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitDispersion_BaseUnit() UnitDispersion {
-	return UnitDispersionClass.BaseUnit()
 }
 
 func (u_ UnitDispersion) InitWithSymbol(symbol string) UnitDispersion {

@@ -19,8 +19,8 @@ type _ImageAreaMaxClass struct {
 // An interface definition for the [ImageAreaMax] class.
 type IImageAreaMax interface {
 	IUnaryImageKernel
-	KernelWidth() uint
 	KernelHeight() uint
+	KernelWidth() uint
 }
 
 // A filter that finds the maximum pixel value in a rectangular region centered around each pixel in the source image. [Full Topic]
@@ -101,18 +101,18 @@ func ImageAreaMax_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) 
 	return instance
 }
 
-// The width of the filter window. Must be an odd number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageareamax/1618282-kernelwidth?language=objc
-func (i_ ImageAreaMax) KernelWidth() uint {
-	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
-	return rv
-}
-
 // The height of the filter window. Must be an odd number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageareamax/1618277-kernelheight?language=objc
 func (i_ ImageAreaMax) KernelHeight() uint {
 	rv := objc.Call[uint](i_, objc.Sel("kernelHeight"))
+	return rv
+}
+
+// The width of the filter window. Must be an odd number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageareamax/1618282-kernelwidth?language=objc
+func (i_ ImageAreaMax) KernelWidth() uint {
+	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
 	return rv
 }

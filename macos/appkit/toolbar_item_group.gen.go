@@ -18,16 +18,16 @@ type _ToolbarItemGroupClass struct {
 // An interface definition for the [ToolbarItemGroup] class.
 type IToolbarItemGroup interface {
 	IToolbarItem
-	IsSelectedAtIndex(index int) bool
 	SetSelectedAtIndex(selected bool, index int)
+	IsSelectedAtIndex(index int) bool
 	SelectionMode() ToolbarItemGroupSelectionMode
 	SetSelectionMode(value ToolbarItemGroupSelectionMode)
+	Subitems() []ToolbarItem
+	SetSubitems(value []IToolbarItem)
 	ControlRepresentation() ToolbarItemGroupControlRepresentation
 	SetControlRepresentation(value ToolbarItemGroupControlRepresentation)
 	SelectedIndex() int
 	SetSelectedIndex(value int)
-	Subitems() []ToolbarItem
-	SetSubitems(value []IToolbarItem)
 }
 
 // A group of subitems in a toolbar item. [Full Topic]
@@ -53,18 +53,6 @@ func (tc _ToolbarItemGroupClass) GroupWithItemIdentifierTitlesSelectionModeLabel
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242764-groupwithitemidentifier?language=objc
 func ToolbarItemGroup_GroupWithItemIdentifierTitlesSelectionModeLabelsTargetAction(itemIdentifier ToolbarItemIdentifier, titles []string, selectionMode ToolbarItemGroupSelectionMode, labels []string, target objc.IObject, action objc.Selector) ToolbarItemGroup {
 	return ToolbarItemGroupClass.GroupWithItemIdentifierTitlesSelectionModeLabelsTargetAction(itemIdentifier, titles, selectionMode, labels, target, action)
-}
-
-func (tc _ToolbarItemGroupClass) GroupWithItemIdentifierImagesSelectionModeLabelsTargetAction(itemIdentifier ToolbarItemIdentifier, images []IImage, selectionMode ToolbarItemGroupSelectionMode, labels []string, target objc.IObject, action objc.Selector) ToolbarItemGroup {
-	rv := objc.Call[ToolbarItemGroup](tc, objc.Sel("groupWithItemIdentifier:images:selectionMode:labels:target:action:"), itemIdentifier, images, selectionMode, labels, target, action)
-	return rv
-}
-
-// Creates a grouped toolbar item with images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242763-groupwithitemidentifier?language=objc
-func ToolbarItemGroup_GroupWithItemIdentifierImagesSelectionModeLabelsTargetAction(itemIdentifier ToolbarItemIdentifier, images []IImage, selectionMode ToolbarItemGroupSelectionMode, labels []string, target objc.IObject, action objc.Selector) ToolbarItemGroup {
-	return ToolbarItemGroupClass.GroupWithItemIdentifierImagesSelectionModeLabelsTargetAction(itemIdentifier, images, selectionMode, labels, target, action)
 }
 
 func (tc _ToolbarItemGroupClass) Alloc() ToolbarItemGroup {
@@ -101,19 +89,19 @@ func NewToolbarItemGroupWithItemIdentifier(itemIdentifier ToolbarItemIdentifier)
 	return instance
 }
 
+// Sets the selected state of a subitem in a grouped toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242768-setselected?language=objc
+func (t_ ToolbarItemGroup) SetSelectedAtIndex(selected bool, index int) {
+	objc.Call[objc.Void](t_, objc.Sel("setSelected:atIndex:"), selected, index)
+}
+
 // Indicates whether a specified index is currently selected. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242765-isselectedatindex?language=objc
 func (t_ ToolbarItemGroup) IsSelectedAtIndex(index int) bool {
 	rv := objc.Call[bool](t_, objc.Sel("isSelectedAtIndex:"), index)
 	return rv
-}
-
-// Sets the selected state of a subitem in a grouped toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242768-setselected?language=objc
-func (t_ ToolbarItemGroup) SetSelectedAtIndex(selected bool, index int) {
-	objc.Call[objc.Void](t_, objc.Sel("setSelected:atIndex:"), selected, index)
 }
 
 // The selection mode of the grouped toolbar item. [Full Topic]
@@ -129,6 +117,21 @@ func (t_ ToolbarItemGroup) SelectionMode() ToolbarItemGroupSelectionMode {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242767-selectionmode?language=objc
 func (t_ ToolbarItemGroup) SetSelectionMode(value ToolbarItemGroupSelectionMode) {
 	objc.Call[objc.Void](t_, objc.Sel("setSelectionMode:"), value)
+}
+
+// The subitems of the grouped toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/1529923-subitems?language=objc
+func (t_ ToolbarItemGroup) Subitems() []ToolbarItem {
+	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("subitems"))
+	return rv
+}
+
+// The subitems of the grouped toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/1529923-subitems?language=objc
+func (t_ ToolbarItemGroup) SetSubitems(value []IToolbarItem) {
+	objc.Call[objc.Void](t_, objc.Sel("setSubitems:"), value)
 }
 
 // A value that represents how a toolbar displays a grouped toolbar item. [Full Topic]
@@ -159,19 +162,4 @@ func (t_ ToolbarItemGroup) SelectedIndex() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/3242766-selectedindex?language=objc
 func (t_ ToolbarItemGroup) SetSelectedIndex(value int) {
 	objc.Call[objc.Void](t_, objc.Sel("setSelectedIndex:"), value)
-}
-
-// The subitems of the grouped toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/1529923-subitems?language=objc
-func (t_ ToolbarItemGroup) Subitems() []ToolbarItem {
-	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("subitems"))
-	return rv
-}
-
-// The subitems of the grouped toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroup/1529923-subitems?language=objc
-func (t_ ToolbarItemGroup) SetSubitems(value []IToolbarItem) {
-	objc.Call[objc.Void](t_, objc.Sel("setSubitems:"), value)
 }

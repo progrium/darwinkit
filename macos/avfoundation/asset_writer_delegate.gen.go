@@ -13,16 +13,11 @@ type PAssetWriterDelegate interface {
 	// optional
 	AssetWriterDidOutputSegmentDataSegmentType(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType)
 	HasAssetWriterDidOutputSegmentDataSegmentType() bool
-
-	// optional
-	AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport)
-	HasAssetWriterDidOutputSegmentDataSegmentTypeSegmentReport() bool
 }
 
 // A delegate implementation builder for the [PAssetWriterDelegate] protocol.
 type AssetWriterDelegate struct {
-	_AssetWriterDidOutputSegmentDataSegmentType              func(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType)
-	_AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport func(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport)
+	_AssetWriterDidOutputSegmentDataSegmentType func(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType)
 }
 
 func (di *AssetWriterDelegate) HasAssetWriterDidOutputSegmentDataSegmentType() bool {
@@ -42,23 +37,6 @@ func (di *AssetWriterDelegate) SetAssetWriterDidOutputSegmentDataSegmentType(f f
 func (di *AssetWriterDelegate) AssetWriterDidOutputSegmentDataSegmentType(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType) {
 	di._AssetWriterDidOutputSegmentDataSegmentType(writer, segmentData, segmentType)
 }
-func (di *AssetWriterDelegate) HasAssetWriterDidOutputSegmentDataSegmentTypeSegmentReport() bool {
-	return di._AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport != nil
-}
-
-// Tells the delegate that the asset writer output segment data and a report. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546593-assetwriter?language=objc
-func (di *AssetWriterDelegate) SetAssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(f func(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport)) {
-	di._AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport = f
-}
-
-// Tells the delegate that the asset writer output segment data and a report. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546593-assetwriter?language=objc
-func (di *AssetWriterDelegate) AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport) {
-	di._AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(writer, segmentData, segmentType, segmentReport)
-}
 
 // ensure impl type implements protocol interface
 var _ PAssetWriterDelegate = (*AssetWriterDelegateObject)(nil)
@@ -77,15 +55,4 @@ func (a_ AssetWriterDelegateObject) HasAssetWriterDidOutputSegmentDataSegmentTyp
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546592-assetwriter?language=objc
 func (a_ AssetWriterDelegateObject) AssetWriterDidOutputSegmentDataSegmentType(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType) {
 	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:"), writer, segmentData, segmentType)
-}
-
-func (a_ AssetWriterDelegateObject) HasAssetWriterDidOutputSegmentDataSegmentTypeSegmentReport() bool {
-	return a_.RespondsToSelector(objc.Sel("assetWriter:didOutputSegmentData:segmentType:segmentReport:"))
-}
-
-// Tells the delegate that the asset writer output segment data and a report. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546593-assetwriter?language=objc
-func (a_ AssetWriterDelegateObject) AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport) {
-	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:segmentReport:"), writer, segmentData, segmentType, segmentReport)
 }

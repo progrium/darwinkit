@@ -11,28 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial?language=objc
 type PColorPolynomial interface {
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
-	SetAlphaCoefficients(value Vector)
-	HasSetAlphaCoefficients() bool
-
-	// optional
-	AlphaCoefficients() Vector
-	HasAlphaCoefficients() bool
-
-	// optional
 	SetRedCoefficients(value Vector)
 	HasSetRedCoefficients() bool
 
 	// optional
 	RedCoefficients() Vector
 	HasRedCoefficients() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetGreenCoefficients(value Vector)
@@ -49,6 +41,14 @@ type PColorPolynomial interface {
 	// optional
 	BlueCoefficients() Vector
 	HasBlueCoefficients() bool
+
+	// optional
+	SetAlphaCoefficients(value Vector)
+	HasSetAlphaCoefficients() bool
+
+	// optional
+	AlphaCoefficients() Vector
+	HasAlphaCoefficients() bool
 }
 
 // ensure impl type implements protocol interface
@@ -57,52 +57,6 @@ var _ PColorPolynomial = (*ColorPolynomialObject)(nil)
 // A concrete type for the [PColorPolynomial] protocol.
 type ColorPolynomialObject struct {
 	objc.Object
-}
-
-func (c_ ColorPolynomialObject) HasSetInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228174-inputimage?language=objc
-func (c_ ColorPolynomialObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
-}
-
-func (c_ ColorPolynomialObject) HasInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228174-inputimage?language=objc
-func (c_ ColorPolynomialObject) InputImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
-	return rv
-}
-
-func (c_ ColorPolynomialObject) HasSetAlphaCoefficients() bool {
-	return c_.RespondsToSelector(objc.Sel("setAlphaCoefficients:"))
-}
-
-// Polynomial coefficients for the alpha channel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228171-alphacoefficients?language=objc
-func (c_ ColorPolynomialObject) SetAlphaCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setAlphaCoefficients:"), value)
-}
-
-func (c_ ColorPolynomialObject) HasAlphaCoefficients() bool {
-	return c_.RespondsToSelector(objc.Sel("alphaCoefficients"))
-}
-
-// Polynomial coefficients for the alpha channel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228171-alphacoefficients?language=objc
-func (c_ ColorPolynomialObject) AlphaCoefficients() Vector {
-	rv := objc.Call[Vector](c_, objc.Sel("alphaCoefficients"))
-	return rv
 }
 
 func (c_ ColorPolynomialObject) HasSetRedCoefficients() bool {
@@ -125,6 +79,29 @@ func (c_ ColorPolynomialObject) HasRedCoefficients() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228175-redcoefficients?language=objc
 func (c_ ColorPolynomialObject) RedCoefficients() Vector {
 	rv := objc.Call[Vector](c_, objc.Sel("redCoefficients"))
+	return rv
+}
+
+func (c_ ColorPolynomialObject) HasSetInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228174-inputimage?language=objc
+func (c_ ColorPolynomialObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+}
+
+func (c_ ColorPolynomialObject) HasInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228174-inputimage?language=objc
+func (c_ ColorPolynomialObject) InputImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -171,5 +148,28 @@ func (c_ ColorPolynomialObject) HasBlueCoefficients() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228172-bluecoefficients?language=objc
 func (c_ ColorPolynomialObject) BlueCoefficients() Vector {
 	rv := objc.Call[Vector](c_, objc.Sel("blueCoefficients"))
+	return rv
+}
+
+func (c_ ColorPolynomialObject) HasSetAlphaCoefficients() bool {
+	return c_.RespondsToSelector(objc.Sel("setAlphaCoefficients:"))
+}
+
+// Polynomial coefficients for the alpha channel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228171-alphacoefficients?language=objc
+func (c_ ColorPolynomialObject) SetAlphaCoefficients(value Vector) {
+	objc.Call[objc.Void](c_, objc.Sel("setAlphaCoefficients:"), value)
+}
+
+func (c_ ColorPolynomialObject) HasAlphaCoefficients() bool {
+	return c_.RespondsToSelector(objc.Sel("alphaCoefficients"))
+}
+
+// Polynomial coefficients for the alpha channel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228171-alphacoefficients?language=objc
+func (c_ ColorPolynomialObject) AlphaCoefficients() Vector {
+	rv := objc.Call[Vector](c_, objc.Sel("alphaCoefficients"))
 	return rv
 }

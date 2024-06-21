@@ -14,12 +14,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource?language=objc
 type PExtensionStreamSource interface {
 	// optional
-	StreamPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionStreamProperties
-	HasStreamPropertiesForPropertiesError() bool
-
-	// optional
 	AuthorizedToStartStreamForClient(client ExtensionClient) bool
 	HasAuthorizedToStartStreamForClient() bool
+
+	// optional
+	StopStreamAndReturnError(outError unsafe.Pointer) bool
+	HasStopStreamAndReturnError() bool
+
+	// optional
+	StreamPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionStreamProperties
+	HasStreamPropertiesForPropertiesError() bool
 
 	// optional
 	SetStreamPropertiesError(streamProperties ExtensionStreamProperties, outError unsafe.Pointer) bool
@@ -28,10 +32,6 @@ type PExtensionStreamSource interface {
 	// optional
 	StartStreamAndReturnError(outError unsafe.Pointer) bool
 	HasStartStreamAndReturnError() bool
-
-	// optional
-	StopStreamAndReturnError(outError unsafe.Pointer) bool
-	HasStopStreamAndReturnError() bool
 
 	// optional
 	Formats() []ExtensionStreamFormat
@@ -50,18 +50,6 @@ type ExtensionStreamSourceObject struct {
 	objc.Object
 }
 
-func (e_ ExtensionStreamSourceObject) HasStreamPropertiesForPropertiesError() bool {
-	return e_.RespondsToSelector(objc.Sel("streamPropertiesForProperties:error:"))
-}
-
-// Gets the states of specified properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915976-streampropertiesforproperties?language=objc
-func (e_ ExtensionStreamSourceObject) StreamPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionStreamProperties {
-	rv := objc.Call[ExtensionStreamProperties](e_, objc.Sel("streamPropertiesForProperties:error:"), properties, outError)
-	return rv
-}
-
 func (e_ ExtensionStreamSourceObject) HasAuthorizedToStartStreamForClient() bool {
 	return e_.RespondsToSelector(objc.Sel("authorizedToStartStreamForClient:"))
 }
@@ -71,6 +59,30 @@ func (e_ ExtensionStreamSourceObject) HasAuthorizedToStartStreamForClient() bool
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915970-authorizedtostartstreamforclient?language=objc
 func (e_ ExtensionStreamSourceObject) AuthorizedToStartStreamForClient(client ExtensionClient) bool {
 	rv := objc.Call[bool](e_, objc.Sel("authorizedToStartStreamForClient:"), client)
+	return rv
+}
+
+func (e_ ExtensionStreamSourceObject) HasStopStreamAndReturnError() bool {
+	return e_.RespondsToSelector(objc.Sel("stopStreamAndReturnError:"))
+}
+
+// Stops the stream of media data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915975-stopstreamandreturnerror?language=objc
+func (e_ ExtensionStreamSourceObject) StopStreamAndReturnError(outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("stopStreamAndReturnError:"), outError)
+	return rv
+}
+
+func (e_ ExtensionStreamSourceObject) HasStreamPropertiesForPropertiesError() bool {
+	return e_.RespondsToSelector(objc.Sel("streamPropertiesForProperties:error:"))
+}
+
+// Gets the states of specified properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915976-streampropertiesforproperties?language=objc
+func (e_ ExtensionStreamSourceObject) StreamPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionStreamProperties {
+	rv := objc.Call[ExtensionStreamProperties](e_, objc.Sel("streamPropertiesForProperties:error:"), properties, outError)
 	return rv
 }
 
@@ -95,18 +107,6 @@ func (e_ ExtensionStreamSourceObject) HasStartStreamAndReturnError() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915974-startstreamandreturnerror?language=objc
 func (e_ ExtensionStreamSourceObject) StartStreamAndReturnError(outError unsafe.Pointer) bool {
 	rv := objc.Call[bool](e_, objc.Sel("startStreamAndReturnError:"), outError)
-	return rv
-}
-
-func (e_ ExtensionStreamSourceObject) HasStopStreamAndReturnError() bool {
-	return e_.RespondsToSelector(objc.Sel("stopStreamAndReturnError:"))
-}
-
-// Stops the stream of media data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamsource/3915975-stopstreamandreturnerror?language=objc
-func (e_ ExtensionStreamSourceObject) StopStreamAndReturnError(outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](e_, objc.Sel("stopStreamAndReturnError:"), outError)
 	return rv
 }
 

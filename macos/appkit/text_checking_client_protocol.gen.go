@@ -12,20 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient?language=objc
 type PTextCheckingClient interface {
 	// optional
-	SelectAndShowRange(range_ foundation.Range)
-	HasSelectAndShowRange() bool
+	RemoveAnnotationRange(annotationName foundation.AttributedStringKey, range_ foundation.Range)
+	HasRemoveAnnotationRange() bool
 
 	// optional
 	ViewForRangeFirstRectActualRange(range_ foundation.Range, firstRect foundation.RectPointer, actualRange foundation.RangePointer) View
 	HasViewForRangeFirstRectActualRange() bool
-
-	// optional
-	AnnotatedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString
-	HasAnnotatedSubstringForProposedRangeActualRange() bool
-
-	// optional
-	ReplaceCharactersInRangeWithAnnotatedString(range_ foundation.Range, annotatedString foundation.AttributedString)
-	HasReplaceCharactersInRangeWithAnnotatedString() bool
 
 	// optional
 	AddAnnotationsRange(annotations map[foundation.AttributedStringKey]string, range_ foundation.Range)
@@ -36,12 +28,20 @@ type PTextCheckingClient interface {
 	HasSetAnnotationsRange() bool
 
 	// optional
-	RemoveAnnotationRange(annotationName foundation.AttributedStringKey, range_ foundation.Range)
-	HasRemoveAnnotationRange() bool
-
-	// optional
 	CandidateListTouchBarItem() CandidateListTouchBarItem
 	HasCandidateListTouchBarItem() bool
+
+	// optional
+	ReplaceCharactersInRangeWithAnnotatedString(range_ foundation.Range, annotatedString foundation.AttributedString)
+	HasReplaceCharactersInRangeWithAnnotatedString() bool
+
+	// optional
+	AnnotatedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString
+	HasAnnotatedSubstringForProposedRangeActualRange() bool
+
+	// optional
+	SelectAndShowRange(range_ foundation.Range)
+	HasSelectAndShowRange() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,15 +52,15 @@ type TextCheckingClientObject struct {
 	objc.Object
 }
 
-func (t_ TextCheckingClientObject) HasSelectAndShowRange() bool {
-	return t_.RespondsToSelector(objc.Sel("selectAndShowRange:"))
+func (t_ TextCheckingClientObject) HasRemoveAnnotationRange() bool {
+	return t_.RespondsToSelector(objc.Sel("removeAnnotation:range:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242724-selectandshowrange?language=objc
-func (t_ TextCheckingClientObject) SelectAndShowRange(range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("selectAndShowRange:"), range_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242722-removeannotation?language=objc
+func (t_ TextCheckingClientObject) RemoveAnnotationRange(annotationName foundation.AttributedStringKey, range_ foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("removeAnnotation:range:"), annotationName, range_)
 }
 
 func (t_ TextCheckingClientObject) HasViewForRangeFirstRectActualRange() bool {
@@ -73,29 +73,6 @@ func (t_ TextCheckingClientObject) HasViewForRangeFirstRectActualRange() bool {
 func (t_ TextCheckingClientObject) ViewForRangeFirstRectActualRange(range_ foundation.Range, firstRect foundation.RectPointer, actualRange foundation.RangePointer) View {
 	rv := objc.Call[View](t_, objc.Sel("viewForRange:firstRect:actualRange:"), range_, firstRect, actualRange)
 	return rv
-}
-
-func (t_ TextCheckingClientObject) HasAnnotatedSubstringForProposedRangeActualRange() bool {
-	return t_.RespondsToSelector(objc.Sel("annotatedSubstringForProposedRange:actualRange:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242720-annotatedsubstringforproposedran?language=objc
-func (t_ TextCheckingClientObject) AnnotatedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("annotatedSubstringForProposedRange:actualRange:"), range_, actualRange)
-	return rv
-}
-
-func (t_ TextCheckingClientObject) HasReplaceCharactersInRangeWithAnnotatedString() bool {
-	return t_.RespondsToSelector(objc.Sel("replaceCharactersInRange:withAnnotatedString:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242723-replacecharactersinrange?language=objc
-func (t_ TextCheckingClientObject) ReplaceCharactersInRangeWithAnnotatedString(range_ foundation.Range, annotatedString foundation.AttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withAnnotatedString:"), range_, annotatedString)
 }
 
 func (t_ TextCheckingClientObject) HasAddAnnotationsRange() bool {
@@ -120,17 +97,6 @@ func (t_ TextCheckingClientObject) SetAnnotationsRange(annotations map[foundatio
 	objc.Call[objc.Void](t_, objc.Sel("setAnnotations:range:"), annotations, range_)
 }
 
-func (t_ TextCheckingClientObject) HasRemoveAnnotationRange() bool {
-	return t_.RespondsToSelector(objc.Sel("removeAnnotation:range:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242722-removeannotation?language=objc
-func (t_ TextCheckingClientObject) RemoveAnnotationRange(annotationName foundation.AttributedStringKey, range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("removeAnnotation:range:"), annotationName, range_)
-}
-
 func (t_ TextCheckingClientObject) HasCandidateListTouchBarItem() bool {
 	return t_.RespondsToSelector(objc.Sel("candidateListTouchBarItem"))
 }
@@ -141,4 +107,38 @@ func (t_ TextCheckingClientObject) HasCandidateListTouchBarItem() bool {
 func (t_ TextCheckingClientObject) CandidateListTouchBarItem() CandidateListTouchBarItem {
 	rv := objc.Call[CandidateListTouchBarItem](t_, objc.Sel("candidateListTouchBarItem"))
 	return rv
+}
+
+func (t_ TextCheckingClientObject) HasReplaceCharactersInRangeWithAnnotatedString() bool {
+	return t_.RespondsToSelector(objc.Sel("replaceCharactersInRange:withAnnotatedString:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242723-replacecharactersinrange?language=objc
+func (t_ TextCheckingClientObject) ReplaceCharactersInRangeWithAnnotatedString(range_ foundation.Range, annotatedString foundation.AttributedString) {
+	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withAnnotatedString:"), range_, annotatedString)
+}
+
+func (t_ TextCheckingClientObject) HasAnnotatedSubstringForProposedRangeActualRange() bool {
+	return t_.RespondsToSelector(objc.Sel("annotatedSubstringForProposedRange:actualRange:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242720-annotatedsubstringforproposedran?language=objc
+func (t_ TextCheckingClientObject) AnnotatedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("annotatedSubstringForProposedRange:actualRange:"), range_, actualRange)
+	return rv
+}
+
+func (t_ TextCheckingClientObject) HasSelectAndShowRange() bool {
+	return t_.RespondsToSelector(objc.Sel("selectAndShowRange:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242724-selectandshowrange?language=objc
+func (t_ TextCheckingClientObject) SelectAndShowRange(range_ foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("selectAndShowRange:"), range_)
 }

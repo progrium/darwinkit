@@ -28,20 +28,20 @@ type PHueSaturationValueGradient interface {
 	HasDither() bool
 
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
-
-	// optional
-	Radius() float32
-	HasRadius() bool
-
-	// optional
 	SetColorSpace(value coregraphics.ColorSpaceRef)
 	HasSetColorSpace() bool
 
 	// optional
 	ColorSpace() coregraphics.ColorSpaceRef
 	HasColorSpace() bool
+
+	// optional
+	SetRadius(value float32)
+	HasSetRadius() bool
+
+	// optional
+	Radius() float32
+	HasRadius() bool
 
 	// optional
 	SetSoftness(value float32)
@@ -106,29 +106,6 @@ func (h_ HueSaturationValueGradientObject) Dither() float32 {
 	return rv
 }
 
-func (h_ HueSaturationValueGradientObject) HasSetRadius() bool {
-	return h_.RespondsToSelector(objc.Sel("setRadius:"))
-}
-
-// The distance from the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
-func (h_ HueSaturationValueGradientObject) SetRadius(value float32) {
-	objc.Call[objc.Void](h_, objc.Sel("setRadius:"), value)
-}
-
-func (h_ HueSaturationValueGradientObject) HasRadius() bool {
-	return h_.RespondsToSelector(objc.Sel("radius"))
-}
-
-// The distance from the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
-func (h_ HueSaturationValueGradientObject) Radius() float32 {
-	rv := objc.Call[float32](h_, objc.Sel("radius"))
-	return rv
-}
-
 func (h_ HueSaturationValueGradientObject) HasSetColorSpace() bool {
 	return h_.RespondsToSelector(objc.Sel("setColorSpace:"))
 }
@@ -149,6 +126,29 @@ func (h_ HueSaturationValueGradientObject) HasColorSpace() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228502-colorspace?language=objc
 func (h_ HueSaturationValueGradientObject) ColorSpace() coregraphics.ColorSpaceRef {
 	rv := objc.Call[coregraphics.ColorSpaceRef](h_, objc.Sel("colorSpace"))
+	return rv
+}
+
+func (h_ HueSaturationValueGradientObject) HasSetRadius() bool {
+	return h_.RespondsToSelector(objc.Sel("setRadius:"))
+}
+
+// The distance from the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
+func (h_ HueSaturationValueGradientObject) SetRadius(value float32) {
+	objc.Call[objc.Void](h_, objc.Sel("setRadius:"), value)
+}
+
+func (h_ HueSaturationValueGradientObject) HasRadius() bool {
+	return h_.RespondsToSelector(objc.Sel("radius"))
+}
+
+// The distance from the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
+func (h_ HueSaturationValueGradientObject) Radius() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("radius"))
 	return rv
 }
 

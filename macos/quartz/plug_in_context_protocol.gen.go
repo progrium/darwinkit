@@ -6,7 +6,7 @@ import (
 	"github.com/progrium/darwinkit/objc"
 )
 
-// The QCPlugInContext protocol defines methods that you use only from within the execution method ([quartz/qcplugin/execute]) of a QCPlugIn object. [Full Topic]
+// The QCPlugInContext protocol defines methods that you use only from within the execution method (execute:atTime:withArguments:) of a QCPlugIn object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/qcplugincontext?language=objc
 type PPlugInContext interface {

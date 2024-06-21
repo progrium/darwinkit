@@ -69,36 +69,6 @@ func (t_ TemporaryMatrix) Init() TemporaryMatrix {
 	return rv
 }
 
-func (t_ TemporaryMatrix) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) TemporaryMatrix {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrix/3229863-initwithbuffer?language=objc
-func NewTemporaryMatrixWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) TemporaryMatrix {
-	instance := TemporaryMatrixClass.Alloc().InitWithBufferOffsetDescriptor(buffer, offset, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TemporaryMatrix) InitWithBufferDescriptor(buffer metal.PBuffer, descriptor IMatrixDescriptor) TemporaryMatrix {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:descriptor:"), po0, descriptor)
-	return rv
-}
-
-// Initializes a matrix with a buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrix/2143201-initwithbuffer?language=objc
-func NewTemporaryMatrixWithBufferDescriptor(buffer metal.PBuffer, descriptor IMatrixDescriptor) TemporaryMatrix {
-	instance := TemporaryMatrixClass.Alloc().InitWithBufferDescriptor(buffer, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TemporaryMatrix) InitWithDeviceDescriptor(device metal.PDevice, descriptor IMatrixDescriptor) TemporaryMatrix {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
@@ -110,6 +80,21 @@ func (t_ TemporaryMatrix) InitWithDeviceDescriptor(device metal.PDevice, descrip
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrix/2942567-initwithdevice?language=objc
 func NewTemporaryMatrixWithDeviceDescriptor(device metal.PDevice, descriptor IMatrixDescriptor) TemporaryMatrix {
 	instance := TemporaryMatrixClass.Alloc().InitWithDeviceDescriptor(device, descriptor)
+	instance.Autorelease()
+	return instance
+}
+
+func (t_ TemporaryMatrix) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) TemporaryMatrix {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrix/3229863-initwithbuffer?language=objc
+func NewTemporaryMatrixWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) TemporaryMatrix {
+	instance := TemporaryMatrixClass.Alloc().InitWithBufferOffsetDescriptor(buffer, offset, descriptor)
 	instance.Autorelease()
 	return instance
 }

@@ -12,12 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition?language=objc
 type PFlashTransition interface {
 	// optional
-	SetStriationStrength(value float32)
-	HasSetStriationStrength() bool
+	SetStriationContrast(value float32)
+	HasSetStriationContrast() bool
 
 	// optional
-	StriationStrength() float32
-	HasStriationStrength() bool
+	StriationContrast() float32
+	HasStriationContrast() bool
+
+	// optional
+	SetColor(value Color)
+	HasSetColor() bool
+
+	// optional
+	Color() Color
+	HasColor() bool
 
 	// optional
 	SetMaxStriationRadius(value float32)
@@ -28,12 +36,12 @@ type PFlashTransition interface {
 	HasMaxStriationRadius() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetStriationStrength(value float32)
+	HasSetStriationStrength() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	StriationStrength() float32
+	HasStriationStrength() bool
 
 	// optional
 	SetFadeThreshold(value float32)
@@ -52,20 +60,12 @@ type PFlashTransition interface {
 	HasExtent() bool
 
 	// optional
-	SetStriationContrast(value float32)
-	HasSetStriationContrast() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	StriationContrast() float32
-	HasStriationContrast() bool
-
-	// optional
-	SetColor(value Color)
-	HasSetColor() bool
-
-	// optional
-	Color() Color
-	HasColor() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -76,26 +76,49 @@ type FlashTransitionObject struct {
 	objc.Object
 }
 
-func (f_ FlashTransitionObject) HasSetStriationStrength() bool {
-	return f_.RespondsToSelector(objc.Sel("setStriationStrength:"))
+func (f_ FlashTransitionObject) HasSetStriationContrast() bool {
+	return f_.RespondsToSelector(objc.Sel("setStriationContrast:"))
 }
 
-// The strength of the light rays emanating from the flash. [Full Topic]
+// The contrast of the light rays emanating from the flash. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
-func (f_ FlashTransitionObject) SetStriationStrength(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setStriationStrength:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
+func (f_ FlashTransitionObject) SetStriationContrast(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setStriationContrast:"), value)
 }
 
-func (f_ FlashTransitionObject) HasStriationStrength() bool {
-	return f_.RespondsToSelector(objc.Sel("striationStrength"))
+func (f_ FlashTransitionObject) HasStriationContrast() bool {
+	return f_.RespondsToSelector(objc.Sel("striationContrast"))
 }
 
-// The strength of the light rays emanating from the flash. [Full Topic]
+// The contrast of the light rays emanating from the flash. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
-func (f_ FlashTransitionObject) StriationStrength() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("striationStrength"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
+func (f_ FlashTransitionObject) StriationContrast() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("striationContrast"))
+	return rv
+}
+
+func (f_ FlashTransitionObject) HasSetColor() bool {
+	return f_.RespondsToSelector(objc.Sel("setColor:"))
+}
+
+// The color of the light rays emanating from the flash. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228437-color?language=objc
+func (f_ FlashTransitionObject) SetColor(value Color) {
+	objc.Call[objc.Void](f_, objc.Sel("setColor:"), value)
+}
+
+func (f_ FlashTransitionObject) HasColor() bool {
+	return f_.RespondsToSelector(objc.Sel("color"))
+}
+
+// The color of the light rays emanating from the flash. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228437-color?language=objc
+func (f_ FlashTransitionObject) Color() Color {
+	rv := objc.Call[Color](f_, objc.Sel("color"))
 	return rv
 }
 
@@ -122,26 +145,26 @@ func (f_ FlashTransitionObject) MaxStriationRadius() float32 {
 	return rv
 }
 
-func (f_ FlashTransitionObject) HasSetCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("setCenter:"))
+func (f_ FlashTransitionObject) HasSetStriationStrength() bool {
+	return f_.RespondsToSelector(objc.Sel("setStriationStrength:"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The strength of the light rays emanating from the flash. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228436-center?language=objc
-func (f_ FlashTransitionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
+func (f_ FlashTransitionObject) SetStriationStrength(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setStriationStrength:"), value)
 }
 
-func (f_ FlashTransitionObject) HasCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("center"))
+func (f_ FlashTransitionObject) HasStriationStrength() bool {
+	return f_.RespondsToSelector(objc.Sel("striationStrength"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The strength of the light rays emanating from the flash. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228436-center?language=objc
-func (f_ FlashTransitionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
+func (f_ FlashTransitionObject) StriationStrength() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("striationStrength"))
 	return rv
 }
 
@@ -191,48 +214,25 @@ func (f_ FlashTransitionObject) Extent() coregraphics.Rect {
 	return rv
 }
 
-func (f_ FlashTransitionObject) HasSetStriationContrast() bool {
-	return f_.RespondsToSelector(objc.Sel("setStriationContrast:"))
+func (f_ FlashTransitionObject) HasSetCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
-// The contrast of the light rays emanating from the flash. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
-func (f_ FlashTransitionObject) SetStriationContrast(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setStriationContrast:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228436-center?language=objc
+func (f_ FlashTransitionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
 }
 
-func (f_ FlashTransitionObject) HasStriationContrast() bool {
-	return f_.RespondsToSelector(objc.Sel("striationContrast"))
+func (f_ FlashTransitionObject) HasCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("center"))
 }
 
-// The contrast of the light rays emanating from the flash. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
-func (f_ FlashTransitionObject) StriationContrast() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("striationContrast"))
-	return rv
-}
-
-func (f_ FlashTransitionObject) HasSetColor() bool {
-	return f_.RespondsToSelector(objc.Sel("setColor:"))
-}
-
-// The color of the light rays emanating from the flash. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228437-color?language=objc
-func (f_ FlashTransitionObject) SetColor(value Color) {
-	objc.Call[objc.Void](f_, objc.Sel("setColor:"), value)
-}
-
-func (f_ FlashTransitionObject) HasColor() bool {
-	return f_.RespondsToSelector(objc.Sel("color"))
-}
-
-// The color of the light rays emanating from the flash. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228437-color?language=objc
-func (f_ FlashTransitionObject) Color() Color {
-	rv := objc.Call[Color](f_, objc.Sel("color"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228436-center?language=objc
+func (f_ FlashTransitionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
 	return rv
 }

@@ -17,26 +17,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput?language=objc
 type PImageProcessorOutput interface {
 	// optional
-	BytesPerRow() uint
-	HasBytesPerRow() bool
-
-	// optional
-	BaseAddress() unsafe.Pointer
-	HasBaseAddress() bool
-
-	// optional
-	Format() Format
-	HasFormat() bool
-
-	// optional
-	PixelBuffer() corevideo.PixelBufferRef
-	HasPixelBuffer() bool
-
-	// optional
-	MetalCommandBuffer() metal.CommandBufferObject
-	HasMetalCommandBuffer() bool
-
-	// optional
 	Surface() iosurface.Ref
 	HasSurface() bool
 
@@ -45,8 +25,28 @@ type PImageProcessorOutput interface {
 	HasMetalTexture() bool
 
 	// optional
+	MetalCommandBuffer() metal.CommandBufferObject
+	HasMetalCommandBuffer() bool
+
+	// optional
+	PixelBuffer() corevideo.PixelBufferRef
+	HasPixelBuffer() bool
+
+	// optional
+	BytesPerRow() uint
+	HasBytesPerRow() bool
+
+	// optional
+	BaseAddress() unsafe.Pointer
+	HasBaseAddress() bool
+
+	// optional
 	Region() coregraphics.Rect
 	HasRegion() bool
+
+	// optional
+	Format() Format
+	HasFormat() bool
 }
 
 // ensure impl type implements protocol interface
@@ -55,66 +55,6 @@ var _ PImageProcessorOutput = (*ImageProcessorOutputObject)(nil)
 // A concrete type for the [PImageProcessorOutput] protocol.
 type ImageProcessorOutputObject struct {
 	objc.Object
-}
-
-func (i_ ImageProcessorOutputObject) HasBytesPerRow() bool {
-	return i_.RespondsToSelector(objc.Sel("bytesPerRow"))
-}
-
-// The number of bytes per row of pixels for the output image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639635-bytesperrow?language=objc
-func (i_ ImageProcessorOutputObject) BytesPerRow() uint {
-	rv := objc.Call[uint](i_, objc.Sel("bytesPerRow"))
-	return rv
-}
-
-func (i_ ImageProcessorOutputObject) HasBaseAddress() bool {
-	return i_.RespondsToSelector(objc.Sel("baseAddress"))
-}
-
-// A pointer to CPU memory at which to write output pixel data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639626-baseaddress?language=objc
-func (i_ ImageProcessorOutputObject) BaseAddress() unsafe.Pointer {
-	rv := objc.Call[unsafe.Pointer](i_, objc.Sel("baseAddress"))
-	return rv
-}
-
-func (i_ ImageProcessorOutputObject) HasFormat() bool {
-	return i_.RespondsToSelector(objc.Sel("format"))
-}
-
-// The per-pixel data format expected of the output image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639628-format?language=objc
-func (i_ ImageProcessorOutputObject) Format() Format {
-	rv := objc.Call[Format](i_, objc.Sel("format"))
-	return rv
-}
-
-func (i_ ImageProcessorOutputObject) HasPixelBuffer() bool {
-	return i_.RespondsToSelector(objc.Sel("pixelBuffer"))
-}
-
-// A CoreVideo pixel buffer to which you can write output pixel data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639647-pixelbuffer?language=objc
-func (i_ ImageProcessorOutputObject) PixelBuffer() corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](i_, objc.Sel("pixelBuffer"))
-	return rv
-}
-
-func (i_ ImageProcessorOutputObject) HasMetalCommandBuffer() bool {
-	return i_.RespondsToSelector(objc.Sel("metalCommandBuffer"))
-}
-
-// A command buffer to use for image processing using Metal. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639641-metalcommandbuffer?language=objc
-func (i_ ImageProcessorOutputObject) MetalCommandBuffer() metal.CommandBufferObject {
-	rv := objc.Call[metal.CommandBufferObject](i_, objc.Sel("metalCommandBuffer"))
-	return rv
 }
 
 func (i_ ImageProcessorOutputObject) HasSurface() bool {
@@ -141,6 +81,54 @@ func (i_ ImageProcessorOutputObject) MetalTexture() metal.TextureObject {
 	return rv
 }
 
+func (i_ ImageProcessorOutputObject) HasMetalCommandBuffer() bool {
+	return i_.RespondsToSelector(objc.Sel("metalCommandBuffer"))
+}
+
+// A command buffer to use for image processing using Metal. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639641-metalcommandbuffer?language=objc
+func (i_ ImageProcessorOutputObject) MetalCommandBuffer() metal.CommandBufferObject {
+	rv := objc.Call[metal.CommandBufferObject](i_, objc.Sel("metalCommandBuffer"))
+	return rv
+}
+
+func (i_ ImageProcessorOutputObject) HasPixelBuffer() bool {
+	return i_.RespondsToSelector(objc.Sel("pixelBuffer"))
+}
+
+// A CoreVideo pixel buffer to which you can write output pixel data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639647-pixelbuffer?language=objc
+func (i_ ImageProcessorOutputObject) PixelBuffer() corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](i_, objc.Sel("pixelBuffer"))
+	return rv
+}
+
+func (i_ ImageProcessorOutputObject) HasBytesPerRow() bool {
+	return i_.RespondsToSelector(objc.Sel("bytesPerRow"))
+}
+
+// The number of bytes per row of pixels for the output image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639635-bytesperrow?language=objc
+func (i_ ImageProcessorOutputObject) BytesPerRow() uint {
+	rv := objc.Call[uint](i_, objc.Sel("bytesPerRow"))
+	return rv
+}
+
+func (i_ ImageProcessorOutputObject) HasBaseAddress() bool {
+	return i_.RespondsToSelector(objc.Sel("baseAddress"))
+}
+
+// A pointer to CPU memory at which to write output pixel data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639626-baseaddress?language=objc
+func (i_ ImageProcessorOutputObject) BaseAddress() unsafe.Pointer {
+	rv := objc.Call[unsafe.Pointer](i_, objc.Sel("baseAddress"))
+	return rv
+}
+
 func (i_ ImageProcessorOutputObject) HasRegion() bool {
 	return i_.RespondsToSelector(objc.Sel("region"))
 }
@@ -150,5 +138,17 @@ func (i_ ImageProcessorOutputObject) HasRegion() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639629-region?language=objc
 func (i_ ImageProcessorOutputObject) Region() coregraphics.Rect {
 	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("region"))
+	return rv
+}
+
+func (i_ ImageProcessorOutputObject) HasFormat() bool {
+	return i_.RespondsToSelector(objc.Sel("format"))
+}
+
+// The per-pixel data format expected of the output image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessoroutput/1639628-format?language=objc
+func (i_ ImageProcessorOutputObject) Format() Format {
+	rv := objc.Call[Format](i_, objc.Sel("format"))
 	return rv
 }

@@ -11,16 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination?language=objc
 type PDraggingDestination interface {
 	// optional
-	DraggingExited(sender DraggingInfoObject)
-	HasDraggingExited() bool
-
-	// optional
 	WantsPeriodicDraggingUpdates() bool
 	HasWantsPeriodicDraggingUpdates() bool
 
 	// optional
-	ConcludeDragOperation(sender DraggingInfoObject)
-	HasConcludeDragOperation() bool
+	PrepareForDragOperation(sender DraggingInfoObject) bool
+	HasPrepareForDragOperation() bool
 
 	// optional
 	DraggingEntered(sender DraggingInfoObject) DragOperation
@@ -31,12 +27,8 @@ type PDraggingDestination interface {
 	HasPerformDragOperation() bool
 
 	// optional
-	UpdateDraggingItemsForDrag(sender DraggingInfoObject)
-	HasUpdateDraggingItemsForDrag() bool
-
-	// optional
-	PrepareForDragOperation(sender DraggingInfoObject) bool
-	HasPrepareForDragOperation() bool
+	ConcludeDragOperation(sender DraggingInfoObject)
+	HasConcludeDragOperation() bool
 
 	// optional
 	DraggingUpdated(sender DraggingInfoObject) DragOperation
@@ -45,6 +37,14 @@ type PDraggingDestination interface {
 	// optional
 	DraggingEnded(sender DraggingInfoObject)
 	HasDraggingEnded() bool
+
+	// optional
+	UpdateDraggingItemsForDrag(sender DraggingInfoObject)
+	HasUpdateDraggingItemsForDrag() bool
+
+	// optional
+	DraggingExited(sender DraggingInfoObject)
+	HasDraggingExited() bool
 }
 
 // ensure impl type implements protocol interface
@@ -55,23 +55,11 @@ type DraggingDestinationObject struct {
 	objc.Object
 }
 
-func (d_ DraggingDestinationObject) HasDraggingExited() bool {
-	return d_.RespondsToSelector(objc.Sel("draggingExited:"))
-}
-
-// Invoked when the dragged image exits the destination’s bounds rectangle (in the case of a view object) or its frame rectangle (in the case of a window object). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416056-draggingexited?language=objc
-func (d_ DraggingDestinationObject) DraggingExited(sender DraggingInfoObject) {
-	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.Call[objc.Void](d_, objc.Sel("draggingExited:"), po0)
-}
-
 func (d_ DraggingDestinationObject) HasWantsPeriodicDraggingUpdates() bool {
 	return d_.RespondsToSelector(objc.Sel("wantsPeriodicDraggingUpdates"))
 }
 
-// Asks the destination object whether it wants to receive periodic [appkit/nsdraggingdestination/draggingupdated] messages. [Full Topic]
+// Asks the destination object whether it wants to receive periodic draggingUpdated: messages. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416049-wantsperiodicdraggingupdates?language=objc
 func (d_ DraggingDestinationObject) WantsPeriodicDraggingUpdates() bool {
@@ -79,16 +67,17 @@ func (d_ DraggingDestinationObject) WantsPeriodicDraggingUpdates() bool {
 	return rv
 }
 
-func (d_ DraggingDestinationObject) HasConcludeDragOperation() bool {
-	return d_.RespondsToSelector(objc.Sel("concludeDragOperation:"))
+func (d_ DraggingDestinationObject) HasPrepareForDragOperation() bool {
+	return d_.RespondsToSelector(objc.Sel("prepareForDragOperation:"))
 }
 
-// Invoked when the dragging operation is complete, signaling the receiver to perform any necessary clean-up. [Full Topic]
+// Invoked when the image is released, allowing the receiver to agree to or refuse drag operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416010-concludedragoperation?language=objc
-func (d_ DraggingDestinationObject) ConcludeDragOperation(sender DraggingInfoObject) {
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416066-preparefordragoperation?language=objc
+func (d_ DraggingDestinationObject) PrepareForDragOperation(sender DraggingInfoObject) bool {
 	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.Call[objc.Void](d_, objc.Sel("concludeDragOperation:"), po0)
+	rv := objc.Call[bool](d_, objc.Sel("prepareForDragOperation:"), po0)
+	return rv
 }
 
 func (d_ DraggingDestinationObject) HasDraggingEntered() bool {
@@ -117,29 +106,16 @@ func (d_ DraggingDestinationObject) PerformDragOperation(sender DraggingInfoObje
 	return rv
 }
 
-func (d_ DraggingDestinationObject) HasUpdateDraggingItemsForDrag() bool {
-	return d_.RespondsToSelector(objc.Sel("updateDraggingItemsForDrag:"))
+func (d_ DraggingDestinationObject) HasConcludeDragOperation() bool {
+	return d_.RespondsToSelector(objc.Sel("concludeDragOperation:"))
 }
 
-// Invoked when the dragging images should be changed. [Full Topic]
+// Invoked when the dragging operation is complete, signaling the receiver to perform any necessary clean-up. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416050-updatedraggingitemsfordrag?language=objc
-func (d_ DraggingDestinationObject) UpdateDraggingItemsForDrag(sender DraggingInfoObject) {
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416010-concludedragoperation?language=objc
+func (d_ DraggingDestinationObject) ConcludeDragOperation(sender DraggingInfoObject) {
 	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.Call[objc.Void](d_, objc.Sel("updateDraggingItemsForDrag:"), po0)
-}
-
-func (d_ DraggingDestinationObject) HasPrepareForDragOperation() bool {
-	return d_.RespondsToSelector(objc.Sel("prepareForDragOperation:"))
-}
-
-// Invoked when the image is released, allowing the receiver to agree to or refuse drag operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416066-preparefordragoperation?language=objc
-func (d_ DraggingDestinationObject) PrepareForDragOperation(sender DraggingInfoObject) bool {
-	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.Call[bool](d_, objc.Sel("prepareForDragOperation:"), po0)
-	return rv
+	objc.Call[objc.Void](d_, objc.Sel("concludeDragOperation:"), po0)
 }
 
 func (d_ DraggingDestinationObject) HasDraggingUpdated() bool {
@@ -165,4 +141,28 @@ func (d_ DraggingDestinationObject) HasDraggingEnded() bool {
 func (d_ DraggingDestinationObject) DraggingEnded(sender DraggingInfoObject) {
 	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	objc.Call[objc.Void](d_, objc.Sel("draggingEnded:"), po0)
+}
+
+func (d_ DraggingDestinationObject) HasUpdateDraggingItemsForDrag() bool {
+	return d_.RespondsToSelector(objc.Sel("updateDraggingItemsForDrag:"))
+}
+
+// Invoked when the dragging images should be changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416050-updatedraggingitemsfordrag?language=objc
+func (d_ DraggingDestinationObject) UpdateDraggingItemsForDrag(sender DraggingInfoObject) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("updateDraggingItemsForDrag:"), po0)
+}
+
+func (d_ DraggingDestinationObject) HasDraggingExited() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingExited:"))
+}
+
+// Invoked when the dragged image exits the destination’s bounds rectangle (in the case of a view object) or its frame rectangle (in the case of a window object). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416056-draggingexited?language=objc
+func (d_ DraggingDestinationObject) DraggingExited(sender DraggingInfoObject) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("draggingExited:"), po0)
 }

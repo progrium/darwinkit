@@ -20,8 +20,8 @@ type _ImageConversionClass struct {
 // An interface definition for the [ImageConversion] class.
 type IImageConversion interface {
 	IUnaryImageKernel
-	DestinationAlpha() AlphaType
 	SourceAlpha() AlphaType
+	DestinationAlpha() AlphaType
 }
 
 // A filter that performs a conversion of color space, alpha, or pixel format. [Full Topic]
@@ -102,18 +102,18 @@ func ImageConversion_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevic
 	return instance
 }
 
-// Premultiplication description for the destination texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconversion/1648515-destinationalpha?language=objc
-func (i_ ImageConversion) DestinationAlpha() AlphaType {
-	rv := objc.Call[AlphaType](i_, objc.Sel("destinationAlpha"))
-	return rv
-}
-
 // Premultiplication description for the source texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconversion/1648518-sourcealpha?language=objc
 func (i_ ImageConversion) SourceAlpha() AlphaType {
 	rv := objc.Call[AlphaType](i_, objc.Sel("sourceAlpha"))
+	return rv
+}
+
+// Premultiplication description for the destination texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconversion/1648515-destinationalpha?language=objc
+func (i_ ImageConversion) DestinationAlpha() AlphaType {
+	rv := objc.Call[AlphaType](i_, objc.Sel("destinationAlpha"))
 	return rv
 }

@@ -34,18 +34,6 @@ func AssetVariantQualifierFrom(ptr unsafe.Pointer) AssetVariantQualifier {
 	}
 }
 
-func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithPredicate(predicate foundation.IPredicate) AssetVariantQualifier {
-	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithPredicate:"), predicate)
-	return rv
-}
-
-// Creates a variant qualifier with a predicate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750227-assetvariantqualifierwithpredica?language=objc
-func AssetVariantQualifier_AssetVariantQualifierWithPredicate(predicate foundation.IPredicate) AssetVariantQualifier {
-	return AssetVariantQualifierClass.AssetVariantQualifierWithPredicate(predicate)
-}
-
 func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithVariant(variant IAssetVariant) AssetVariantQualifier {
 	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithVariant:"), variant)
 	return rv
@@ -56,6 +44,18 @@ func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithVariant(variant I
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750228-assetvariantqualifierwithvariant?language=objc
 func AssetVariantQualifier_AssetVariantQualifierWithVariant(variant IAssetVariant) AssetVariantQualifier {
 	return AssetVariantQualifierClass.AssetVariantQualifierWithVariant(variant)
+}
+
+func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithPredicate(predicate foundation.IPredicate) AssetVariantQualifier {
+	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithPredicate:"), predicate)
+	return rv
+}
+
+// Creates a variant qualifier with a predicate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750227-assetvariantqualifierwithpredica?language=objc
+func AssetVariantQualifier_AssetVariantQualifierWithPredicate(predicate foundation.IPredicate) AssetVariantQualifier {
+	return AssetVariantQualifierClass.AssetVariantQualifierWithPredicate(predicate)
 }
 
 func (ac _AssetVariantQualifierClass) Alloc() AssetVariantQualifier {
@@ -78,21 +78,6 @@ func (a_ AssetVariantQualifier) Init() AssetVariantQualifier {
 	return rv
 }
 
-// Creates a predicate with a channel count, media selection option, and operator type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750230-predicateforchannelcount?language=objc
-func (ac _AssetVariantQualifierClass) PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount int, mediaSelectionOption IMediaSelectionOption, operatorType foundation.PredicateOperatorType) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](ac, objc.Sel("predicateForChannelCount:mediaSelectionOption:operatorType:"), channelCount, mediaSelectionOption, operatorType)
-	return rv
-}
-
-// Creates a predicate with a channel count, media selection option, and operator type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750230-predicateforchannelcount?language=objc
-func AssetVariantQualifier_PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount int, mediaSelectionOption IMediaSelectionOption, operatorType foundation.PredicateOperatorType) foundation.Predicate {
-	return AssetVariantQualifierClass.PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount, mediaSelectionOption, operatorType)
-}
-
 // Creates a predicate with a width and operator type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3857562-predicateforpresentationwidth?language=objc
@@ -106,6 +91,21 @@ func (ac _AssetVariantQualifierClass) PredicateForPresentationWidthOperatorType(
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3857562-predicateforpresentationwidth?language=objc
 func AssetVariantQualifier_PredicateForPresentationWidthOperatorType(width float64, operatorType foundation.PredicateOperatorType) foundation.Predicate {
 	return AssetVariantQualifierClass.PredicateForPresentationWidthOperatorType(width, operatorType)
+}
+
+// Creates a predicate with a channel count, media selection option, and operator type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750230-predicateforchannelcount?language=objc
+func (ac _AssetVariantQualifierClass) PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount int, mediaSelectionOption IMediaSelectionOption, operatorType foundation.PredicateOperatorType) foundation.Predicate {
+	rv := objc.Call[foundation.Predicate](ac, objc.Sel("predicateForChannelCount:mediaSelectionOption:operatorType:"), channelCount, mediaSelectionOption, operatorType)
+	return rv
+}
+
+// Creates a predicate with a channel count, media selection option, and operator type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750230-predicateforchannelcount?language=objc
+func AssetVariantQualifier_PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount int, mediaSelectionOption IMediaSelectionOption, operatorType foundation.PredicateOperatorType) foundation.Predicate {
+	return AssetVariantQualifierClass.PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount, mediaSelectionOption, operatorType)
 }
 
 // Creates a predicate with a height and operator type. [Full Topic]

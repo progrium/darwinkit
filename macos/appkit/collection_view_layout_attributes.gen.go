@@ -19,20 +19,20 @@ type _CollectionViewLayoutAttributesClass struct {
 // An interface definition for the [CollectionViewLayoutAttributes] class.
 type ICollectionViewLayoutAttributes interface {
 	objc.IObject
-	RepresentedElementCategory() CollectionElementCategory
 	IsHidden() bool
 	SetHidden(value bool)
-	ZIndex() int
-	SetZIndex(value int)
+	RepresentedElementKind() string
+	RepresentedElementCategory() CollectionElementCategory
 	Alpha() float64
 	SetAlpha(value float64)
-	RepresentedElementKind() string
-	Size() foundation.Size
-	SetSize(value foundation.Size)
-	Frame() foundation.Rect
-	SetFrame(value foundation.Rect)
 	IndexPath() foundation.IndexPath
 	SetIndexPath(value foundation.IIndexPath)
+	Frame() foundation.Rect
+	SetFrame(value foundation.Rect)
+	ZIndex() int
+	SetZIndex(value int)
+	Size() foundation.Size
+	SetSize(value foundation.Size)
 }
 
 // An object that contains layout-related attributes for an element in a collection view. [Full Topic]
@@ -48,30 +48,6 @@ func CollectionViewLayoutAttributesFrom(ptr unsafe.Pointer) CollectionViewLayout
 	}
 }
 
-func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, indexPath)
-	return rv
-}
-
-// Creates and returns a layout attributes object for a decoration view based on the specified information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1535736-layoutattributesfordecorationvie?language=objc
-func CollectionViewLayoutAttributes_LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	return CollectionViewLayoutAttributesClass.LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind, indexPath)
-}
-
-func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForItemWithIndexPath:"), indexPath)
-	return rv
-}
-
-// Creates and returns a layout attributes object for the item at the specified index path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1529886-layoutattributesforitemwithindex?language=objc
-func CollectionViewLayoutAttributes_LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	return CollectionViewLayoutAttributesClass.LayoutAttributesForItemWithIndexPath(indexPath)
-}
-
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
 	return rv
@@ -84,6 +60,18 @@ func CollectionViewLayoutAttributes_LayoutAttributesForInterItemGapBeforeIndexPa
 	return CollectionViewLayoutAttributesClass.LayoutAttributesForInterItemGapBeforeIndexPath(indexPath)
 }
 
+func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, indexPath)
+	return rv
+}
+
+// Creates and returns a layout attributes object for a decoration view based on the specified information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1535736-layoutattributesfordecorationvie?language=objc
+func CollectionViewLayoutAttributes_LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
+	return CollectionViewLayoutAttributesClass.LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind, indexPath)
+}
+
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForSupplementaryViewOfKindWithIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, indexPath)
 	return rv
@@ -94,6 +82,18 @@ func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForSupplementaryV
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1529406-layoutattributesforsupplementary?language=objc
 func CollectionViewLayoutAttributes_LayoutAttributesForSupplementaryViewOfKindWithIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	return CollectionViewLayoutAttributesClass.LayoutAttributesForSupplementaryViewOfKindWithIndexPath(elementKind, indexPath)
+}
+
+func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForItemWithIndexPath:"), indexPath)
+	return rv
+}
+
+// Creates and returns a layout attributes object for the item at the specified index path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1529886-layoutattributesforitemwithindex?language=objc
+func CollectionViewLayoutAttributes_LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
+	return CollectionViewLayoutAttributesClass.LayoutAttributesForItemWithIndexPath(indexPath)
 }
 
 func (cc _CollectionViewLayoutAttributesClass) Alloc() CollectionViewLayoutAttributes {
@@ -116,14 +116,6 @@ func (c_ CollectionViewLayoutAttributes) Init() CollectionViewLayoutAttributes {
 	return rv
 }
 
-// The type of the element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1529026-representedelementcategory?language=objc
-func (c_ CollectionViewLayoutAttributes) RepresentedElementCategory() CollectionElementCategory {
-	rv := objc.Call[CollectionElementCategory](c_, objc.Sel("representedElementCategory"))
-	return rv
-}
-
 // A Boolean value indicating whether the element is hidden. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1535336-hidden?language=objc
@@ -139,19 +131,20 @@ func (c_ CollectionViewLayoutAttributes) SetHidden(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setHidden:"), value)
 }
 
-// The element’s position on the z axis. [Full Topic]
+// The identifier for specific elements of your collection view interface. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531553-zindex?language=objc
-func (c_ CollectionViewLayoutAttributes) ZIndex() int {
-	rv := objc.Call[int](c_, objc.Sel("zIndex"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1533826-representedelementkind?language=objc
+func (c_ CollectionViewLayoutAttributes) RepresentedElementKind() string {
+	rv := objc.Call[string](c_, objc.Sel("representedElementKind"))
 	return rv
 }
 
-// The element’s position on the z axis. [Full Topic]
+// The type of the element. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531553-zindex?language=objc
-func (c_ CollectionViewLayoutAttributes) SetZIndex(value int) {
-	objc.Call[objc.Void](c_, objc.Sel("setZIndex:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1529026-representedelementcategory?language=objc
+func (c_ CollectionViewLayoutAttributes) RepresentedElementCategory() CollectionElementCategory {
+	rv := objc.Call[CollectionElementCategory](c_, objc.Sel("representedElementCategory"))
+	return rv
 }
 
 // The transparency of the element. [Full Topic]
@@ -169,27 +162,19 @@ func (c_ CollectionViewLayoutAttributes) SetAlpha(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
-// The identifier for specific elements of your collection view interface. [Full Topic]
+// The index path of the element. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1533826-representedelementkind?language=objc
-func (c_ CollectionViewLayoutAttributes) RepresentedElementKind() string {
-	rv := objc.Call[string](c_, objc.Sel("representedElementKind"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531306-indexpath?language=objc
+func (c_ CollectionViewLayoutAttributes) IndexPath() foundation.IndexPath {
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
 	return rv
 }
 
-// The size of the element. [Full Topic]
+// The index path of the element. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1528769-size?language=objc
-func (c_ CollectionViewLayoutAttributes) Size() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("size"))
-	return rv
-}
-
-// The size of the element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1528769-size?language=objc
-func (c_ CollectionViewLayoutAttributes) SetSize(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setSize:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531306-indexpath?language=objc
+func (c_ CollectionViewLayoutAttributes) SetIndexPath(value foundation.IIndexPath) {
+	objc.Call[objc.Void](c_, objc.Sel("setIndexPath:"), value)
 }
 
 // The frame rectangle of the element. [Full Topic]
@@ -207,17 +192,32 @@ func (c_ CollectionViewLayoutAttributes) SetFrame(value foundation.Rect) {
 	objc.Call[objc.Void](c_, objc.Sel("setFrame:"), value)
 }
 
-// The index path of the element. [Full Topic]
+// The element’s position on the z axis. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531306-indexpath?language=objc
-func (c_ CollectionViewLayoutAttributes) IndexPath() foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531553-zindex?language=objc
+func (c_ CollectionViewLayoutAttributes) ZIndex() int {
+	rv := objc.Call[int](c_, objc.Sel("zIndex"))
 	return rv
 }
 
-// The index path of the element. [Full Topic]
+// The element’s position on the z axis. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531306-indexpath?language=objc
-func (c_ CollectionViewLayoutAttributes) SetIndexPath(value foundation.IIndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("setIndexPath:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531553-zindex?language=objc
+func (c_ CollectionViewLayoutAttributes) SetZIndex(value int) {
+	objc.Call[objc.Void](c_, objc.Sel("setZIndex:"), value)
+}
+
+// The size of the element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1528769-size?language=objc
+func (c_ CollectionViewLayoutAttributes) Size() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("size"))
+	return rv
+}
+
+// The size of the element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1528769-size?language=objc
+func (c_ CollectionViewLayoutAttributes) SetSize(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setSize:"), value)
 }

@@ -19,9 +19,9 @@ type _ClassDescriptionClass struct {
 type IClassDescription interface {
 	objc.IObject
 	InverseForRelationshipKey(relationshipKey string) string
-	ToOneRelationshipKeys() []string
-	ToManyRelationshipKeys() []string
 	AttributeKeys() []string
+	ToManyRelationshipKeys() []string
+	ToOneRelationshipKeys() []string
 }
 
 // An abstract class that provides the interface for querying the relationships and properties of a class. [Full Topic]
@@ -57,20 +57,6 @@ func (c_ ClassDescription) Init() ClassDescription {
 	return rv
 }
 
-// Removes all NSClassDescription objects from the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1413040-invalidateclassdescriptioncache?language=objc
-func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
-	objc.Call[objc.Void](cc, objc.Sel("invalidateClassDescriptionCache"))
-}
-
-// Removes all NSClassDescription objects from the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1413040-invalidateclassdescriptioncache?language=objc
-func ClassDescription_InvalidateClassDescriptionCache() {
-	ClassDescriptionClass.InvalidateClassDescriptionCache()
-}
-
 // Registers an NSClassDescription object for a given class in the NSClassDescription cache. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1407444-registerclassdescription?language=objc
@@ -83,6 +69,20 @@ func (cc _ClassDescriptionClass) RegisterClassDescriptionForClass(description IC
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1407444-registerclassdescription?language=objc
 func ClassDescription_RegisterClassDescriptionForClass(description IClassDescription, aClass objc.IClass) {
 	ClassDescriptionClass.RegisterClassDescriptionForClass(description, aClass)
+}
+
+// Removes all NSClassDescription objects from the cache. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1413040-invalidateclassdescriptioncache?language=objc
+func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
+	objc.Call[objc.Void](cc, objc.Sel("invalidateClassDescriptionCache"))
+}
+
+// Removes all NSClassDescription objects from the cache. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1413040-invalidateclassdescriptioncache?language=objc
+func ClassDescription_InvalidateClassDescriptionCache() {
+	ClassDescriptionClass.InvalidateClassDescriptionCache()
 }
 
 // Overridden by subclasses to return the name of the inverse relationship from a relationship specified by a given key. [Full Topic]
@@ -108,11 +108,11 @@ func ClassDescription_ClassDescriptionForClass(aClass objc.IClass) ClassDescript
 	return ClassDescriptionClass.ClassDescriptionForClass(aClass)
 }
 
-// Overridden by subclasses to return the keys for the to-one relationship properties of instances of the described class. [Full Topic]
+// Overridden by subclasses to return the names of attributes of instances of the described class. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1411937-toonerelationshipkeys?language=objc
-func (c_ ClassDescription) ToOneRelationshipKeys() []string {
-	rv := objc.Call[[]string](c_, objc.Sel("toOneRelationshipKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1415001-attributekeys?language=objc
+func (c_ ClassDescription) AttributeKeys() []string {
+	rv := objc.Call[[]string](c_, objc.Sel("attributeKeys"))
 	return rv
 }
 
@@ -124,10 +124,10 @@ func (c_ ClassDescription) ToManyRelationshipKeys() []string {
 	return rv
 }
 
-// Overridden by subclasses to return the names of attributes of instances of the described class. [Full Topic]
+// Overridden by subclasses to return the keys for the to-one relationship properties of instances of the described class. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1415001-attributekeys?language=objc
-func (c_ ClassDescription) AttributeKeys() []string {
-	rv := objc.Call[[]string](c_, objc.Sel("attributeKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1411937-toonerelationshipkeys?language=objc
+func (c_ ClassDescription) ToOneRelationshipKeys() []string {
+	rv := objc.Call[[]string](c_, objc.Sel("toOneRelationshipKeys"))
 	return rv
 }

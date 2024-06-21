@@ -12,22 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope?language=objc
 type PKaleidoscope interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -42,6 +26,22 @@ type PKaleidoscope interface {
 	// optional
 	Count() int
 	HasCount() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,52 +50,6 @@ var _ PKaleidoscope = (*KaleidoscopeObject)(nil)
 // A concrete type for the [PKaleidoscope] protocol.
 type KaleidoscopeObject struct {
 	objc.Object
-}
-
-func (k_ KaleidoscopeObject) HasSetCenter() bool {
-	return k_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228509-center?language=objc
-func (k_ KaleidoscopeObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](k_, objc.Sel("setCenter:"), value)
-}
-
-func (k_ KaleidoscopeObject) HasCenter() bool {
-	return k_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228509-center?language=objc
-func (k_ KaleidoscopeObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](k_, objc.Sel("center"))
-	return rv
-}
-
-func (k_ KaleidoscopeObject) HasSetAngle() bool {
-	return k_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-// The angle of the reflection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
-func (k_ KaleidoscopeObject) SetAngle(value float32) {
-	objc.Call[objc.Void](k_, objc.Sel("setAngle:"), value)
-}
-
-func (k_ KaleidoscopeObject) HasAngle() bool {
-	return k_.RespondsToSelector(objc.Sel("angle"))
-}
-
-// The angle of the reflection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
-func (k_ KaleidoscopeObject) Angle() float32 {
-	rv := objc.Call[float32](k_, objc.Sel("angle"))
-	return rv
 }
 
 func (k_ KaleidoscopeObject) HasSetInputImage() bool {
@@ -141,5 +95,51 @@ func (k_ KaleidoscopeObject) HasCount() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228510-count?language=objc
 func (k_ KaleidoscopeObject) Count() int {
 	rv := objc.Call[int](k_, objc.Sel("count"))
+	return rv
+}
+
+func (k_ KaleidoscopeObject) HasSetAngle() bool {
+	return k_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle of the reflection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
+func (k_ KaleidoscopeObject) SetAngle(value float32) {
+	objc.Call[objc.Void](k_, objc.Sel("setAngle:"), value)
+}
+
+func (k_ KaleidoscopeObject) HasAngle() bool {
+	return k_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle of the reflection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
+func (k_ KaleidoscopeObject) Angle() float32 {
+	rv := objc.Call[float32](k_, objc.Sel("angle"))
+	return rv
+}
+
+func (k_ KaleidoscopeObject) HasSetCenter() bool {
+	return k_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228509-center?language=objc
+func (k_ KaleidoscopeObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](k_, objc.Sel("setCenter:"), value)
+}
+
+func (k_ KaleidoscopeObject) HasCenter() bool {
+	return k_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228509-center?language=objc
+func (k_ KaleidoscopeObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](k_, objc.Sel("center"))
 	return rv
 }

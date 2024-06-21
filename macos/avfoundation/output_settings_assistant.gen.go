@@ -19,17 +19,17 @@ type _OutputSettingsAssistantClass struct {
 // An interface definition for the [OutputSettingsAssistant] class.
 type IOutputSettingsAssistant interface {
 	objc.IObject
-	SourceVideoMinFrameDuration() coremedia.Time
-	SetSourceVideoMinFrameDuration(value coremedia.Time)
 	SourceVideoFormat() coremedia.VideoFormatDescriptionRef
 	SetSourceVideoFormat(value coremedia.VideoFormatDescriptionRef)
-	SourceAudioFormat() coremedia.AudioFormatDescriptionRef
-	SetSourceAudioFormat(value coremedia.AudioFormatDescriptionRef)
+	SourceVideoMinFrameDuration() coremedia.Time
+	SetSourceVideoMinFrameDuration(value coremedia.Time)
+	SourceVideoAverageFrameDuration() coremedia.Time
+	SetSourceVideoAverageFrameDuration(value coremedia.Time)
 	VideoSettings() map[string]objc.Object
 	AudioSettings() map[string]objc.Object
 	OutputFileType() FileType
-	SourceVideoAverageFrameDuration() coremedia.Time
-	SetSourceVideoAverageFrameDuration(value coremedia.Time)
+	SourceAudioFormat() coremedia.AudioFormatDescriptionRef
+	SetSourceAudioFormat(value coremedia.AudioFormatDescriptionRef)
 }
 
 // An object that builds audio and video output settings dictionaries. [Full Topic]
@@ -92,21 +92,6 @@ func OutputSettingsAssistant_AvailableOutputSettingsPresets() []OutputSettingsPr
 	return OutputSettingsAssistantClass.AvailableOutputSettingsPresets()
 }
 
-// A time value that describes the minimum frame duration of the video data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1386812-sourcevideominframeduration?language=objc
-func (o_ OutputSettingsAssistant) SourceVideoMinFrameDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](o_, objc.Sel("sourceVideoMinFrameDuration"))
-	return rv
-}
-
-// A time value that describes the minimum frame duration of the video data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1386812-sourcevideominframeduration?language=objc
-func (o_ OutputSettingsAssistant) SetSourceVideoMinFrameDuration(value coremedia.Time) {
-	objc.Call[objc.Void](o_, objc.Sel("setSourceVideoMinFrameDuration:"), value)
-}
-
 // The format of the source video data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1387885-sourcevideoformat?language=objc
@@ -122,19 +107,34 @@ func (o_ OutputSettingsAssistant) SetSourceVideoFormat(value coremedia.VideoForm
 	objc.Call[objc.Void](o_, objc.Sel("setSourceVideoFormat:"), value)
 }
 
-// The format of the source audio data. [Full Topic]
+// A time value that describes the minimum frame duration of the video data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1390673-sourceaudioformat?language=objc
-func (o_ OutputSettingsAssistant) SourceAudioFormat() coremedia.AudioFormatDescriptionRef {
-	rv := objc.Call[coremedia.AudioFormatDescriptionRef](o_, objc.Sel("sourceAudioFormat"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1386812-sourcevideominframeduration?language=objc
+func (o_ OutputSettingsAssistant) SourceVideoMinFrameDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](o_, objc.Sel("sourceVideoMinFrameDuration"))
 	return rv
 }
 
-// The format of the source audio data. [Full Topic]
+// A time value that describes the minimum frame duration of the video data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1390673-sourceaudioformat?language=objc
-func (o_ OutputSettingsAssistant) SetSourceAudioFormat(value coremedia.AudioFormatDescriptionRef) {
-	objc.Call[objc.Void](o_, objc.Sel("setSourceAudioFormat:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1386812-sourcevideominframeduration?language=objc
+func (o_ OutputSettingsAssistant) SetSourceVideoMinFrameDuration(value coremedia.Time) {
+	objc.Call[objc.Void](o_, objc.Sel("setSourceVideoMinFrameDuration:"), value)
+}
+
+// A time value that describes the average frame duration of the video data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1387414-sourcevideoaverageframeduration?language=objc
+func (o_ OutputSettingsAssistant) SourceVideoAverageFrameDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](o_, objc.Sel("sourceVideoAverageFrameDuration"))
+	return rv
+}
+
+// A time value that describes the average frame duration of the video data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1387414-sourcevideoaverageframeduration?language=objc
+func (o_ OutputSettingsAssistant) SetSourceVideoAverageFrameDuration(value coremedia.Time) {
+	objc.Call[objc.Void](o_, objc.Sel("setSourceVideoAverageFrameDuration:"), value)
 }
 
 // A video settings dictionary. [Full Topic]
@@ -161,17 +161,17 @@ func (o_ OutputSettingsAssistant) OutputFileType() FileType {
 	return rv
 }
 
-// A time value that describes the average frame duration of the video data. [Full Topic]
+// The format of the source audio data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1387414-sourcevideoaverageframeduration?language=objc
-func (o_ OutputSettingsAssistant) SourceVideoAverageFrameDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](o_, objc.Sel("sourceVideoAverageFrameDuration"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1390673-sourceaudioformat?language=objc
+func (o_ OutputSettingsAssistant) SourceAudioFormat() coremedia.AudioFormatDescriptionRef {
+	rv := objc.Call[coremedia.AudioFormatDescriptionRef](o_, objc.Sel("sourceAudioFormat"))
 	return rv
 }
 
-// A time value that describes the average frame duration of the video data. [Full Topic]
+// The format of the source audio data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1387414-sourcevideoaverageframeduration?language=objc
-func (o_ OutputSettingsAssistant) SetSourceVideoAverageFrameDuration(value coremedia.Time) {
-	objc.Call[objc.Void](o_, objc.Sel("setSourceVideoAverageFrameDuration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avoutputsettingsassistant/1390673-sourceaudioformat?language=objc
+func (o_ OutputSettingsAssistant) SetSourceAudioFormat(value coremedia.AudioFormatDescriptionRef) {
+	objc.Call[objc.Void](o_, objc.Sel("setSourceAudioFormat:"), value)
 }

@@ -18,9 +18,9 @@ type _RouteDetectorClass struct {
 // An interface definition for the [RouteDetector] class.
 type IRouteDetector interface {
 	objc.IObject
+	MultipleRoutesDetected() bool
 	IsRouteDetectionEnabled() bool
 	SetRouteDetectionEnabled(value bool)
-	MultipleRoutesDetected() bool
 }
 
 // An object that detects available media playback routes. [Full Topic]
@@ -56,6 +56,14 @@ func (r_ RouteDetector) Init() RouteDetector {
 	return rv
 }
 
+// A Boolean value that indicates whether the object detects more than one playback route. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avroutedetector/2915760-multipleroutesdetected?language=objc
+func (r_ RouteDetector) MultipleRoutesDetected() bool {
+	rv := objc.Call[bool](r_, objc.Sel("multipleRoutesDetected"))
+	return rv
+}
+
 // A Boolean value that indicates whether route detection is in an enabled state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avroutedetector/2915762-routedetectionenabled?language=objc
@@ -69,12 +77,4 @@ func (r_ RouteDetector) IsRouteDetectionEnabled() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avroutedetector/2915762-routedetectionenabled?language=objc
 func (r_ RouteDetector) SetRouteDetectionEnabled(value bool) {
 	objc.Call[objc.Void](r_, objc.Sel("setRouteDetectionEnabled:"), value)
-}
-
-// A Boolean value that indicates whether the object detects more than one playback route. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avroutedetector/2915760-multipleroutesdetected?language=objc
-func (r_ RouteDetector) MultipleRoutesDetected() bool {
-	rv := objc.Call[bool](r_, objc.Sel("multipleRoutesDetected"))
-	return rv
 }

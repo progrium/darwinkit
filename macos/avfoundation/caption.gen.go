@@ -21,17 +21,17 @@ type _CaptionClass struct {
 // An interface definition for the [Caption] class.
 type ICaption interface {
 	objc.IObject
-	TextCombineAtIndexRange(index int, outRange *foundation.Range) CaptionTextCombine
-	BackgroundColorAtIndexRange(index int, outRange *foundation.Range) coregraphics.ColorRef
-	FontStyleAtIndexRange(index int, outRange *foundation.Range) CaptionFontStyle
 	DecorationAtIndexRange(index int, outRange *foundation.Range) CaptionDecoration
-	RubyAtIndexRange(index int, outRange *foundation.Range) CaptionRuby
-	FontWeightAtIndexRange(index int, outRange *foundation.Range) CaptionFontWeight
+	TextCombineAtIndexRange(index int, outRange *foundation.Range) CaptionTextCombine
 	TextColorAtIndexRange(index int, outRange *foundation.Range) coregraphics.ColorRef
-	TextAlignment() CaptionTextAlignment
-	Region() CaptionRegion
-	TimeRange() coremedia.TimeRange
+	FontWeightAtIndexRange(index int, outRange *foundation.Range) CaptionFontWeight
+	FontStyleAtIndexRange(index int, outRange *foundation.Range) CaptionFontStyle
+	RubyAtIndexRange(index int, outRange *foundation.Range) CaptionRuby
+	BackgroundColorAtIndexRange(index int, outRange *foundation.Range) coregraphics.ColorRef
 	Animation() CaptionAnimation
+	TextAlignment() CaptionTextAlignment
+	TimeRange() coremedia.TimeRange
+	Region() CaptionRegion
 	Text() string
 }
 
@@ -82,30 +82,6 @@ func (c_ Caption) Init() Caption {
 	return rv
 }
 
-// Returns the text combine at the index position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752826-textcombineatindex?language=objc
-func (c_ Caption) TextCombineAtIndexRange(index int, outRange *foundation.Range) CaptionTextCombine {
-	rv := objc.Call[CaptionTextCombine](c_, objc.Sel("textCombineAtIndex:range:"), index, outRange)
-	return rv
-}
-
-// Returns the background color at the index position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752816-backgroundcoloratindex?language=objc
-func (c_ Caption) BackgroundColorAtIndexRange(index int, outRange *foundation.Range) coregraphics.ColorRef {
-	rv := objc.Call[coregraphics.ColorRef](c_, objc.Sel("backgroundColorAtIndex:range:"), index, outRange)
-	return rv
-}
-
-// Returns the font style and range at the index position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752818-fontstyleatindex?language=objc
-func (c_ Caption) FontStyleAtIndexRange(index int, outRange *foundation.Range) CaptionFontStyle {
-	rv := objc.Call[CaptionFontStyle](c_, objc.Sel("fontStyleAtIndex:range:"), index, outRange)
-	return rv
-}
-
 // Returns the text decoration at the index position. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752817-decorationatindex?language=objc
@@ -114,19 +90,11 @@ func (c_ Caption) DecorationAtIndexRange(index int, outRange *foundation.Range) 
 	return rv
 }
 
-// Returns the ruby text at the index position. [Full Topic]
+// Returns the text combine at the index position. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752822-rubyatindex?language=objc
-func (c_ Caption) RubyAtIndexRange(index int, outRange *foundation.Range) CaptionRuby {
-	rv := objc.Call[CaptionRuby](c_, objc.Sel("rubyAtIndex:range:"), index, outRange)
-	return rv
-}
-
-// Returns the font weight and range at the index position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752819-fontweightatindex?language=objc
-func (c_ Caption) FontWeightAtIndexRange(index int, outRange *foundation.Range) CaptionFontWeight {
-	rv := objc.Call[CaptionFontWeight](c_, objc.Sel("fontWeightAtIndex:range:"), index, outRange)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752826-textcombineatindex?language=objc
+func (c_ Caption) TextCombineAtIndexRange(index int, outRange *foundation.Range) CaptionTextCombine {
+	rv := objc.Call[CaptionTextCombine](c_, objc.Sel("textCombineAtIndex:range:"), index, outRange)
 	return rv
 }
 
@@ -138,19 +106,51 @@ func (c_ Caption) TextColorAtIndexRange(index int, outRange *foundation.Range) c
 	return rv
 }
 
+// Returns the font weight and range at the index position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752819-fontweightatindex?language=objc
+func (c_ Caption) FontWeightAtIndexRange(index int, outRange *foundation.Range) CaptionFontWeight {
+	rv := objc.Call[CaptionFontWeight](c_, objc.Sel("fontWeightAtIndex:range:"), index, outRange)
+	return rv
+}
+
+// Returns the font style and range at the index position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752818-fontstyleatindex?language=objc
+func (c_ Caption) FontStyleAtIndexRange(index int, outRange *foundation.Range) CaptionFontStyle {
+	rv := objc.Call[CaptionFontStyle](c_, objc.Sel("fontStyleAtIndex:range:"), index, outRange)
+	return rv
+}
+
+// Returns the ruby text at the index position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752822-rubyatindex?language=objc
+func (c_ Caption) RubyAtIndexRange(index int, outRange *foundation.Range) CaptionRuby {
+	rv := objc.Call[CaptionRuby](c_, objc.Sel("rubyAtIndex:range:"), index, outRange)
+	return rv
+}
+
+// Returns the background color at the index position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752816-backgroundcoloratindex?language=objc
+func (c_ Caption) BackgroundColorAtIndexRange(index int, outRange *foundation.Range) coregraphics.ColorRef {
+	rv := objc.Call[coregraphics.ColorRef](c_, objc.Sel("backgroundColorAtIndex:range:"), index, outRange)
+	return rv
+}
+
+// The animation that the system applies to this caption. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752815-animation?language=objc
+func (c_ Caption) Animation() CaptionAnimation {
+	rv := objc.Call[CaptionAnimation](c_, objc.Sel("animation"))
+	return rv
+}
+
 // The alignment for the caption text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752824-textalignment?language=objc
 func (c_ Caption) TextAlignment() CaptionTextAlignment {
 	rv := objc.Call[CaptionTextAlignment](c_, objc.Sel("textAlignment"))
-	return rv
-}
-
-// The region in which the caption exists. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752821-region?language=objc
-func (c_ Caption) Region() CaptionRegion {
-	rv := objc.Call[CaptionRegion](c_, objc.Sel("region"))
 	return rv
 }
 
@@ -162,11 +162,11 @@ func (c_ Caption) TimeRange() coremedia.TimeRange {
 	return rv
 }
 
-// The animation that the system applies to this caption. [Full Topic]
+// The region in which the caption exists. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752815-animation?language=objc
-func (c_ Caption) Animation() CaptionAnimation {
-	rv := objc.Call[CaptionAnimation](c_, objc.Sel("animation"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaption/3752821-region?language=objc
+func (c_ Caption) Region() CaptionRegion {
+	rv := objc.Call[CaptionRegion](c_, objc.Sel("region"))
 	return rv
 }
 

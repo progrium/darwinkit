@@ -13,12 +13,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading?language=objc
 type PAsynchronousKeyValueLoading interface {
 	// optional
-	LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func())
-	HasLoadValuesAsynchronouslyForKeysCompletionHandler() bool
-
-	// optional
 	StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus
 	HasStatusOfValueForKeyError() bool
+
+	// optional
+	LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func())
+	HasLoadValuesAsynchronouslyForKeysCompletionHandler() bool
 }
 
 // ensure impl type implements protocol interface
@@ -27,17 +27,6 @@ var _ PAsynchronousKeyValueLoading = (*AsynchronousKeyValueLoadingObject)(nil)
 // A concrete type for the [PAsynchronousKeyValueLoading] protocol.
 type AsynchronousKeyValueLoadingObject struct {
 	objc.Object
-}
-
-func (a_ AsynchronousKeyValueLoadingObject) HasLoadValuesAsynchronouslyForKeysCompletionHandler() bool {
-	return a_.RespondsToSelector(objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"))
-}
-
-// Tells the asset to load the values of all of the specified keys that aren’t already loaded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading/1387321-loadvaluesasynchronouslyforkeys?language=objc
-func (a_ AsynchronousKeyValueLoadingObject) LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func()) {
-	objc.Call[objc.Void](a_, objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"), keys, handler)
 }
 
 func (a_ AsynchronousKeyValueLoadingObject) HasStatusOfValueForKeyError() bool {
@@ -50,4 +39,15 @@ func (a_ AsynchronousKeyValueLoadingObject) HasStatusOfValueForKeyError() bool {
 func (a_ AsynchronousKeyValueLoadingObject) StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus {
 	rv := objc.Call[KeyValueStatus](a_, objc.Sel("statusOfValueForKey:error:"), key, outError)
 	return rv
+}
+
+func (a_ AsynchronousKeyValueLoadingObject) HasLoadValuesAsynchronouslyForKeysCompletionHandler() bool {
+	return a_.RespondsToSelector(objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"))
+}
+
+// Tells the asset to load the values of all of the specified keys that aren’t already loaded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading/1387321-loadvaluesasynchronouslyforkeys?language=objc
+func (a_ AsynchronousKeyValueLoadingObject) LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func()) {
+	objc.Call[objc.Void](a_, objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"), keys, handler)
 }

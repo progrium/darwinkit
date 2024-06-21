@@ -50,6 +50,23 @@ func NewUUIDWithUUIDBytes(bytes *uint8) UUID {
 	return instance
 }
 
+func (uc _UUIDClass) UUID() UUID {
+	rv := objc.Call[UUID](uc, objc.Sel("UUID"))
+	return rv
+}
+
+// Create and returns a new UUID with RFC 4122 version 4 random bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuuid/1574571-uuid?language=objc
+func UUID_UUID() UUID {
+	return UUIDClass.UUID()
+}
+
+func (u_ UUID) Init() UUID {
+	rv := objc.Call[UUID](u_, objc.Sel("init"))
+	return rv
+}
+
 func (u_ UUID) InitWithUUIDString(string_ string) UUID {
 	rv := objc.Call[UUID](u_, objc.Sel("initWithUUIDString:"), string_)
 	return rv
@@ -62,23 +79,6 @@ func NewUUIDWithUUIDString(string_ string) UUID {
 	instance := UUIDClass.Alloc().InitWithUUIDString(string_)
 	instance.Autorelease()
 	return instance
-}
-
-func (u_ UUID) Init() UUID {
-	rv := objc.Call[UUID](u_, objc.Sel("init"))
-	return rv
-}
-
-func (uc _UUIDClass) UUID() UUID {
-	rv := objc.Call[UUID](uc, objc.Sel("UUID"))
-	return rv
-}
-
-// Create and returns a new UUID with RFC 4122 version 4 random bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuuid/1574571-uuid?language=objc
-func UUID_UUID() UUID {
-	return UUIDClass.UUID()
 }
 
 func (uc _UUIDClass) Alloc() UUID {

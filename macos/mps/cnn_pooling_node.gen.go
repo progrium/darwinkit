@@ -18,9 +18,9 @@ type _CNNPoolingNodeClass struct {
 // An interface definition for the [CNNPoolingNode] class.
 type ICNNPoolingNode interface {
 	INNFilterNode
+	StrideInPixelsY() uint
 	StrideInPixelsX() uint
 	KernelHeight() uint
-	StrideInPixelsY() uint
 	KernelWidth() uint
 }
 
@@ -37,32 +37,6 @@ func CNNPoolingNodeFrom(ptr unsafe.Pointer) CNNPoolingNode {
 	}
 }
 
-func (c_ CNNPoolingNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingNode {
-	rv := objc.Call[CNNPoolingNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
-func NewCNNPoolingNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingNode {
-	instance := CNNPoolingNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNPoolingNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingNode {
-	rv := objc.Call[CNNPoolingNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2890831-nodewithsource?language=objc
-func CNNPoolingNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingNode {
-	return CNNPoolingNodeClass.NodeWithSourceFilterSizeStride(sourceNode, size, stride)
-}
-
 func (cc _CNNPoolingNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingNode {
 	rv := objc.Call[CNNPoolingNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
@@ -75,30 +49,16 @@ func CNNPoolingNode_NodeWithSourceFilterSize(sourceNode INNImageNode, size uint)
 	return CNNPoolingNodeClass.NodeWithSourceFilterSize(sourceNode, size)
 }
 
-func (c_ CNNPoolingNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingNode {
-	rv := objc.Call[CNNPoolingNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+func (c_ CNNPoolingNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingNode {
+	rv := objc.Call[CNNPoolingNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866471-initwithsource?language=objc
-func NewCNNPoolingNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingNode {
-	instance := CNNPoolingNodeClass.Alloc().InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNPoolingNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingNode {
-	rv := objc.Call[CNNPoolingNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866444-initwithsource?language=objc
-func NewCNNPoolingNodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingNode {
-	instance := CNNPoolingNodeClass.Alloc().InitWithSourceFilterSizeStride(sourceNode, size, stride)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
+func NewCNNPoolingNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingNode {
+	instance := CNNPoolingNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
 	instance.Autorelease()
 	return instance
 }
@@ -125,6 +85,14 @@ func (c_ CNNPoolingNode) Init() CNNPoolingNode {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2993004-strideinpixelsy?language=objc
+func (c_ CNNPoolingNode) StrideInPixelsY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsY"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2993003-strideinpixelsx?language=objc
 func (c_ CNNPoolingNode) StrideInPixelsX() uint {
 	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsX"))
@@ -136,14 +104,6 @@ func (c_ CNNPoolingNode) StrideInPixelsX() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2993001-kernelheight?language=objc
 func (c_ CNNPoolingNode) KernelHeight() uint {
 	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2993004-strideinpixelsy?language=objc
-func (c_ CNNPoolingNode) StrideInPixelsY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsY"))
 	return rv
 }
 

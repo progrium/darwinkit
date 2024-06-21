@@ -19,24 +19,24 @@ type _RandomOpDescriptorClass struct {
 // An interface definition for the [RandomOpDescriptor] class.
 type IRandomOpDescriptor interface {
 	objc.IObject
-	DataType() mps.DataType
-	SetDataType(value mps.DataType)
-	Mean() float32
-	SetMean(value float32)
-	SamplingMethod() RandomNormalSamplingMethod
-	SetSamplingMethod(value RandomNormalSamplingMethod)
+	Distribution() RandomDistribution
+	SetDistribution(value RandomDistribution)
 	MinInteger() int
 	SetMinInteger(value int)
 	Min() float32
 	SetMin(value float32)
-	Distribution() RandomDistribution
-	SetDistribution(value RandomDistribution)
-	StandardDeviation() float32
-	SetStandardDeviation(value float32)
-	MaxInteger() int
-	SetMaxInteger(value int)
 	Max() float32
 	SetMax(value float32)
+	StandardDeviation() float32
+	SetStandardDeviation(value float32)
+	DataType() mps.DataType
+	SetDataType(value mps.DataType)
+	MaxInteger() int
+	SetMaxInteger(value int)
+	SamplingMethod() RandomNormalSamplingMethod
+	SetSamplingMethod(value RandomNormalSamplingMethod)
+	Mean() float32
+	SetMean(value float32)
 }
 
 //	[Full Topic]
@@ -86,47 +86,17 @@ func (r_ RandomOpDescriptor) Init() RandomOpDescriptor {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901498-datatype?language=objc
-func (r_ RandomOpDescriptor) DataType() mps.DataType {
-	rv := objc.Call[mps.DataType](r_, objc.Sel("dataType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901500-distribution?language=objc
+func (r_ RandomOpDescriptor) Distribution() RandomDistribution {
+	rv := objc.Call[RandomDistribution](r_, objc.Sel("distribution"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901498-datatype?language=objc
-func (r_ RandomOpDescriptor) SetDataType(value mps.DataType) {
-	objc.Call[objc.Void](r_, objc.Sel("setDataType:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901503-mean?language=objc
-func (r_ RandomOpDescriptor) Mean() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("mean"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901503-mean?language=objc
-func (r_ RandomOpDescriptor) SetMean(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setMean:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901506-samplingmethod?language=objc
-func (r_ RandomOpDescriptor) SamplingMethod() RandomNormalSamplingMethod {
-	rv := objc.Call[RandomNormalSamplingMethod](r_, objc.Sel("samplingMethod"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901506-samplingmethod?language=objc
-func (r_ RandomOpDescriptor) SetSamplingMethod(value RandomNormalSamplingMethod) {
-	objc.Call[objc.Void](r_, objc.Sel("setSamplingMethod:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901500-distribution?language=objc
+func (r_ RandomOpDescriptor) SetDistribution(value RandomDistribution) {
+	objc.Call[objc.Void](r_, objc.Sel("setDistribution:"), value)
 }
 
 //	[Full Topic]
@@ -161,17 +131,17 @@ func (r_ RandomOpDescriptor) SetMin(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901500-distribution?language=objc
-func (r_ RandomOpDescriptor) Distribution() RandomDistribution {
-	rv := objc.Call[RandomDistribution](r_, objc.Sel("distribution"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901501-max?language=objc
+func (r_ RandomOpDescriptor) Max() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("max"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901500-distribution?language=objc
-func (r_ RandomOpDescriptor) SetDistribution(value RandomDistribution) {
-	objc.Call[objc.Void](r_, objc.Sel("setDistribution:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901501-max?language=objc
+func (r_ RandomOpDescriptor) SetMax(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setMax:"), value)
 }
 
 //	[Full Topic]
@@ -191,6 +161,21 @@ func (r_ RandomOpDescriptor) SetStandardDeviation(value float32) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901498-datatype?language=objc
+func (r_ RandomOpDescriptor) DataType() mps.DataType {
+	rv := objc.Call[mps.DataType](r_, objc.Sel("dataType"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901498-datatype?language=objc
+func (r_ RandomOpDescriptor) SetDataType(value mps.DataType) {
+	objc.Call[objc.Void](r_, objc.Sel("setDataType:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901502-maxinteger?language=objc
 func (r_ RandomOpDescriptor) MaxInteger() int {
 	rv := objc.Call[int](r_, objc.Sel("maxInteger"))
@@ -206,15 +191,30 @@ func (r_ RandomOpDescriptor) SetMaxInteger(value int) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901501-max?language=objc
-func (r_ RandomOpDescriptor) Max() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("max"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901506-samplingmethod?language=objc
+func (r_ RandomOpDescriptor) SamplingMethod() RandomNormalSamplingMethod {
+	rv := objc.Call[RandomNormalSamplingMethod](r_, objc.Sel("samplingMethod"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901501-max?language=objc
-func (r_ RandomOpDescriptor) SetMax(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setMax:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901506-samplingmethod?language=objc
+func (r_ RandomOpDescriptor) SetSamplingMethod(value RandomNormalSamplingMethod) {
+	objc.Call[objc.Void](r_, objc.Sel("setSamplingMethod:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901503-mean?language=objc
+func (r_ RandomOpDescriptor) Mean() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("mean"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomopdescriptor/3901503-mean?language=objc
+func (r_ RandomOpDescriptor) SetMean(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setMean:"), value)
 }

@@ -19,10 +19,10 @@ type _NDArrayMatrixMultiplicationClass struct {
 // An interface definition for the [NDArrayMatrixMultiplication] class.
 type INDArrayMatrixMultiplication interface {
 	INDArrayMultiaryKernel
-	Alpha() float64
-	SetAlpha(value float64)
 	Beta() float64
 	SetBeta(value float64)
+	Alpha() float64
+	SetAlpha(value float64)
 }
 
 //	[Full Topic]
@@ -105,21 +105,6 @@ func NewNDArrayMatrixMultiplicationWithDevice(device metal.PDevice) NDArrayMatri
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131760-alpha?language=objc
-func (n_ NDArrayMatrixMultiplication) Alpha() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alpha"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131760-alpha?language=objc
-func (n_ NDArrayMatrixMultiplication) SetAlpha(value float64) {
-	objc.Call[objc.Void](n_, objc.Sel("setAlpha:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131761-beta?language=objc
 func (n_ NDArrayMatrixMultiplication) Beta() float64 {
 	rv := objc.Call[float64](n_, objc.Sel("beta"))
@@ -131,4 +116,19 @@ func (n_ NDArrayMatrixMultiplication) Beta() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131761-beta?language=objc
 func (n_ NDArrayMatrixMultiplication) SetBeta(value float64) {
 	objc.Call[objc.Void](n_, objc.Sel("setBeta:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131760-alpha?language=objc
+func (n_ NDArrayMatrixMultiplication) Alpha() float64 {
+	rv := objc.Call[float64](n_, objc.Sel("alpha"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymatrixmultiplication/3131760-alpha?language=objc
+func (n_ NDArrayMatrixMultiplication) SetAlpha(value float64) {
+	objc.Call[objc.Void](n_, objc.Sel("setAlpha:"), value)
 }

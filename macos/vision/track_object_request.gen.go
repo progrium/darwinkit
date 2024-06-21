@@ -33,20 +33,6 @@ func TrackObjectRequestFrom(ptr unsafe.Pointer) TrackObjectRequest {
 	}
 }
 
-func (t_ TrackObjectRequest) InitWithDetectedObjectObservationCompletionHandler(observation IDetectedObjectObservation, completionHandler RequestCompletionHandler) TrackObjectRequest {
-	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:completionHandler:"), observation, completionHandler)
-	return rv
-}
-
-// Creates a new object tracking request with a detected object observation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackobjectrequest/2887295-initwithdetectedobjectobservatio?language=objc
-func NewTrackObjectRequestWithDetectedObjectObservationCompletionHandler(observation IDetectedObjectObservation, completionHandler RequestCompletionHandler) TrackObjectRequest {
-	instance := TrackObjectRequestClass.Alloc().InitWithDetectedObjectObservationCompletionHandler(observation, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TrackObjectRequest) InitWithDetectedObjectObservation(observation IDetectedObjectObservation) TrackObjectRequest {
 	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:"), observation)
 	return rv

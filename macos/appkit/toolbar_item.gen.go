@@ -21,37 +21,37 @@ type IToolbarItem interface {
 	Validate()
 	MenuFormRepresentation() MenuItem
 	SetMenuFormRepresentation(value IMenuItem)
-	IsNavigational() bool
-	SetNavigational(value bool)
-	ItemIdentifier() ToolbarItemIdentifier
-	Title() string
-	SetTitle(value string)
-	AllowsDuplicatesInToolbar() bool
+	Target() objc.Object
+	SetTarget(value objc.IObject)
+	IsBordered() bool
+	SetBordered(value bool)
+	VisibilityPriority() ToolbarItemVisibilityPriority
+	SetVisibilityPriority(value ToolbarItemVisibilityPriority)
+	Action() objc.Selector
+	SetAction(value objc.Selector)
+	Autovalidates() bool
+	SetAutovalidates(value bool)
 	ToolTip() string
 	SetToolTip(value string)
 	View() View
 	SetView(value IView)
+	AllowsDuplicatesInToolbar() bool
+	Toolbar() Toolbar
+	ItemIdentifier() ToolbarItemIdentifier
+	IsNavigational() bool
+	SetNavigational(value bool)
 	Tag() int
 	SetTag(value int)
-	Action() objc.Selector
-	SetAction(value objc.Selector)
+	Title() string
+	SetTitle(value string)
 	IsEnabled() bool
 	SetEnabled(value bool)
-	Autovalidates() bool
-	SetAutovalidates(value bool)
-	IsBordered() bool
-	SetBordered(value bool)
-	PaletteLabel() string
-	SetPaletteLabel(value string)
-	Toolbar() Toolbar
 	Label() string
 	SetLabel(value string)
-	VisibilityPriority() ToolbarItemVisibilityPriority
-	SetVisibilityPriority(value ToolbarItemVisibilityPriority)
-	Target() objc.Object
-	SetTarget(value objc.IObject)
 	Image() Image
 	SetImage(value IImage)
+	PaletteLabel() string
+	SetPaletteLabel(value string)
 }
 
 // A single item that appears in a window’s toolbar. [Full Topic]
@@ -123,50 +123,79 @@ func (t_ ToolbarItem) SetMenuFormRepresentation(value IMenuItem) {
 	objc.Call[objc.Void](t_, objc.Sel("setMenuFormRepresentation:"), value)
 }
 
-// A Boolean value that indicates whether the item behaves as a navigation item in the toolbar. [Full Topic]
+// The object that defines the action method the toolbar item calls when clicked. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3622481-navigational?language=objc
-func (t_ ToolbarItem) IsNavigational() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isNavigational"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525982-target?language=objc
+func (t_ ToolbarItem) Target() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("target"))
 	return rv
 }
 
-// A Boolean value that indicates whether the item behaves as a navigation item in the toolbar. [Full Topic]
+// The object that defines the action method the toolbar item calls when clicked. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3622481-navigational?language=objc
-func (t_ ToolbarItem) SetNavigational(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setNavigational:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525982-target?language=objc
+func (t_ ToolbarItem) SetTarget(value objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("setTarget:"), value)
 }
 
-// The value you use to identify the toolbar item. [Full Topic]
+// A Boolean value that indicates whether the toolbar item has a bordered style. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524394-itemidentifier?language=objc
-func (t_ ToolbarItem) ItemIdentifier() ToolbarItemIdentifier {
-	rv := objc.Call[ToolbarItemIdentifier](t_, objc.Sel("itemIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237224-bordered?language=objc
+func (t_ ToolbarItem) IsBordered() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isBordered"))
 	return rv
 }
 
-// The title of the toolbar item. [Full Topic]
+// A Boolean value that indicates whether the toolbar item has a bordered style. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237225-title?language=objc
-func (t_ ToolbarItem) Title() string {
-	rv := objc.Call[string](t_, objc.Sel("title"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237224-bordered?language=objc
+func (t_ ToolbarItem) SetBordered(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setBordered:"), value)
+}
+
+// The display priority associated with the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527947-visibilitypriority?language=objc
+func (t_ ToolbarItem) VisibilityPriority() ToolbarItemVisibilityPriority {
+	rv := objc.Call[ToolbarItemVisibilityPriority](t_, objc.Sel("visibilityPriority"))
 	return rv
 }
 
-// The title of the toolbar item. [Full Topic]
+// The display priority associated with the toolbar item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237225-title?language=objc
-func (t_ ToolbarItem) SetTitle(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setTitle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527947-visibilitypriority?language=objc
+func (t_ ToolbarItem) SetVisibilityPriority(value ToolbarItemVisibilityPriority) {
+	objc.Call[objc.Void](t_, objc.Sel("setVisibilityPriority:"), value)
 }
 
-// A Boolean value that indicates whether the toolbar item can appear more than once in a toolbar. [Full Topic]
+// The action method to call when someone clicks on the toolbar item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1530116-allowsduplicatesintoolbar?language=objc
-func (t_ ToolbarItem) AllowsDuplicatesInToolbar() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsDuplicatesInToolbar"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525723-action?language=objc
+func (t_ ToolbarItem) Action() objc.Selector {
+	rv := objc.Call[objc.Selector](t_, objc.Sel("action"))
 	return rv
+}
+
+// The action method to call when someone clicks on the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525723-action?language=objc
+func (t_ ToolbarItem) SetAction(value objc.Selector) {
+	objc.Call[objc.Void](t_, objc.Sel("setAction:"), value)
+}
+
+// A Boolean value that indicates whether the toolbar automatically validates the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524463-autovalidates?language=objc
+func (t_ ToolbarItem) Autovalidates() bool {
+	rv := objc.Call[bool](t_, objc.Sel("autovalidates"))
+	return rv
+}
+
+// A Boolean value that indicates whether the toolbar automatically validates the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524463-autovalidates?language=objc
+func (t_ ToolbarItem) SetAutovalidates(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAutovalidates:"), value)
 }
 
 // The tooltip to display when someone hovers over the item in the toolbar. [Full Topic]
@@ -199,6 +228,45 @@ func (t_ ToolbarItem) SetView(value IView) {
 	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
 }
 
+// A Boolean value that indicates whether the toolbar item can appear more than once in a toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1530116-allowsduplicatesintoolbar?language=objc
+func (t_ ToolbarItem) AllowsDuplicatesInToolbar() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsDuplicatesInToolbar"))
+	return rv
+}
+
+// The toolbar that currently includes the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1532976-toolbar?language=objc
+func (t_ ToolbarItem) Toolbar() Toolbar {
+	rv := objc.Call[Toolbar](t_, objc.Sel("toolbar"))
+	return rv
+}
+
+// The value you use to identify the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524394-itemidentifier?language=objc
+func (t_ ToolbarItem) ItemIdentifier() ToolbarItemIdentifier {
+	rv := objc.Call[ToolbarItemIdentifier](t_, objc.Sel("itemIdentifier"))
+	return rv
+}
+
+// A Boolean value that indicates whether the item behaves as a navigation item in the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3622481-navigational?language=objc
+func (t_ ToolbarItem) IsNavigational() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isNavigational"))
+	return rv
+}
+
+// A Boolean value that indicates whether the item behaves as a navigation item in the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3622481-navigational?language=objc
+func (t_ ToolbarItem) SetNavigational(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setNavigational:"), value)
+}
+
 // An integer tag you can use to identify the toolbar item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524618-tag?language=objc
@@ -214,19 +282,19 @@ func (t_ ToolbarItem) SetTag(value int) {
 	objc.Call[objc.Void](t_, objc.Sel("setTag:"), value)
 }
 
-// The action method to call when someone clicks on the toolbar item. [Full Topic]
+// The title of the toolbar item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525723-action?language=objc
-func (t_ ToolbarItem) Action() objc.Selector {
-	rv := objc.Call[objc.Selector](t_, objc.Sel("action"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237225-title?language=objc
+func (t_ ToolbarItem) Title() string {
+	rv := objc.Call[string](t_, objc.Sel("title"))
 	return rv
 }
 
-// The action method to call when someone clicks on the toolbar item. [Full Topic]
+// The title of the toolbar item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525723-action?language=objc
-func (t_ ToolbarItem) SetAction(value objc.Selector) {
-	objc.Call[objc.Void](t_, objc.Sel("setAction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237225-title?language=objc
+func (t_ ToolbarItem) SetTitle(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setTitle:"), value)
 }
 
 // A Boolean value that indicates whether the item is enabled. [Full Topic]
@@ -244,59 +312,6 @@ func (t_ ToolbarItem) SetEnabled(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setEnabled:"), value)
 }
 
-// A Boolean value that indicates whether the toolbar automatically validates the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524463-autovalidates?language=objc
-func (t_ ToolbarItem) Autovalidates() bool {
-	rv := objc.Call[bool](t_, objc.Sel("autovalidates"))
-	return rv
-}
-
-// A Boolean value that indicates whether the toolbar automatically validates the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1524463-autovalidates?language=objc
-func (t_ ToolbarItem) SetAutovalidates(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAutovalidates:"), value)
-}
-
-// A Boolean value that indicates whether the toolbar item has a bordered style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237224-bordered?language=objc
-func (t_ ToolbarItem) IsBordered() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isBordered"))
-	return rv
-}
-
-// A Boolean value that indicates whether the toolbar item has a bordered style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/3237224-bordered?language=objc
-func (t_ ToolbarItem) SetBordered(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setBordered:"), value)
-}
-
-// The label that appears when the toolbar item is in the customization palette. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525421-palettelabel?language=objc
-func (t_ ToolbarItem) PaletteLabel() string {
-	rv := objc.Call[string](t_, objc.Sel("paletteLabel"))
-	return rv
-}
-
-// The label that appears when the toolbar item is in the customization palette. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525421-palettelabel?language=objc
-func (t_ ToolbarItem) SetPaletteLabel(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setPaletteLabel:"), value)
-}
-
-// The toolbar that currently includes the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1532976-toolbar?language=objc
-func (t_ ToolbarItem) Toolbar() Toolbar {
-	rv := objc.Call[Toolbar](t_, objc.Sel("toolbar"))
-	return rv
-}
-
 // The label that appears for this item in the toolbar. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1535127-label?language=objc
@@ -312,36 +327,6 @@ func (t_ ToolbarItem) SetLabel(value string) {
 	objc.Call[objc.Void](t_, objc.Sel("setLabel:"), value)
 }
 
-// The display priority associated with the toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527947-visibilitypriority?language=objc
-func (t_ ToolbarItem) VisibilityPriority() ToolbarItemVisibilityPriority {
-	rv := objc.Call[ToolbarItemVisibilityPriority](t_, objc.Sel("visibilityPriority"))
-	return rv
-}
-
-// The display priority associated with the toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527947-visibilitypriority?language=objc
-func (t_ ToolbarItem) SetVisibilityPriority(value ToolbarItemVisibilityPriority) {
-	objc.Call[objc.Void](t_, objc.Sel("setVisibilityPriority:"), value)
-}
-
-// The object that defines the action method the toolbar item calls when clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525982-target?language=objc
-func (t_ ToolbarItem) Target() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("target"))
-	return rv
-}
-
-// The object that defines the action method the toolbar item calls when clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525982-target?language=objc
-func (t_ ToolbarItem) SetTarget(value objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setTarget:"), value)
-}
-
 // The image to display for the toolbar item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527749-image?language=objc
@@ -355,4 +340,19 @@ func (t_ ToolbarItem) Image() Image {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527749-image?language=objc
 func (t_ ToolbarItem) SetImage(value IImage) {
 	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
+}
+
+// The label that appears when the toolbar item is in the customization palette. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525421-palettelabel?language=objc
+func (t_ ToolbarItem) PaletteLabel() string {
+	rv := objc.Call[string](t_, objc.Sel("paletteLabel"))
+	return rv
+}
+
+// The label that appears when the toolbar item is in the customization palette. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1525421-palettelabel?language=objc
+func (t_ ToolbarItem) SetPaletteLabel(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setPaletteLabel:"), value)
 }

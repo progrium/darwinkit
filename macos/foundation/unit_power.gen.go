@@ -53,6 +53,18 @@ func (u_ UnitPower) Init() UnitPower {
 	return rv
 }
 
+func (uc _UnitPowerClass) BaseUnit() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitPower_BaseUnit() UnitPower {
+	return UnitPowerClass.BaseUnit()
+}
+
 func (u_ UnitPower) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitPower {
 	rv := objc.Call[UnitPower](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitPowerWithSymbolConverter(symbol string, converter IUnitConverter) Un
 	return instance
 }
 
-func (uc _UnitPowerClass) BaseUnit() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitPower_BaseUnit() UnitPower {
-	return UnitPowerClass.BaseUnit()
-}
-
 func (u_ UnitPower) InitWithSymbol(symbol string) UnitPower {
 	rv := objc.Call[UnitPower](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,111 +91,6 @@ func NewUnitPowerWithSymbol(symbol string) UnitPower {
 	instance := UnitPowerClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
-}
-
-// The kilowatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856084-kilowatts?language=objc
-func (uc _UnitPowerClass) Kilowatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("kilowatts"))
-	return rv
-}
-
-// The kilowatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856084-kilowatts?language=objc
-func UnitPower_Kilowatts() UnitPower {
-	return UnitPowerClass.Kilowatts()
-}
-
-// The megawatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856073-megawatts?language=objc
-func (uc _UnitPowerClass) Megawatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("megawatts"))
-	return rv
-}
-
-// The megawatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856073-megawatts?language=objc
-func UnitPower_Megawatts() UnitPower {
-	return UnitPowerClass.Megawatts()
-}
-
-// The milliwatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855984-milliwatts?language=objc
-func (uc _UnitPowerClass) Milliwatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("milliwatts"))
-	return rv
-}
-
-// The milliwatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855984-milliwatts?language=objc
-func UnitPower_Milliwatts() UnitPower {
-	return UnitPowerClass.Milliwatts()
-}
-
-// The gigawatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856108-gigawatts?language=objc
-func (uc _UnitPowerClass) Gigawatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("gigawatts"))
-	return rv
-}
-
-// The gigawatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856108-gigawatts?language=objc
-func UnitPower_Gigawatts() UnitPower {
-	return UnitPowerClass.Gigawatts()
-}
-
-// The watts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856075-watts?language=objc
-func (uc _UnitPowerClass) Watts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("watts"))
-	return rv
-}
-
-// The watts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856075-watts?language=objc
-func UnitPower_Watts() UnitPower {
-	return UnitPowerClass.Watts()
-}
-
-// The microwatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856051-microwatts?language=objc
-func (uc _UnitPowerClass) Microwatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("microwatts"))
-	return rv
-}
-
-// The microwatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856051-microwatts?language=objc
-func UnitPower_Microwatts() UnitPower {
-	return UnitPowerClass.Microwatts()
-}
-
-// The nanowatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855999-nanowatts?language=objc
-func (uc _UnitPowerClass) Nanowatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("nanowatts"))
-	return rv
-}
-
-// The nanowatts unit of power. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855999-nanowatts?language=objc
-func UnitPower_Nanowatts() UnitPower {
-	return UnitPowerClass.Nanowatts()
 }
 
 // The femtowatts unit of power. [Full Topic]
@@ -228,6 +123,96 @@ func UnitPower_Picowatts() UnitPower {
 	return UnitPowerClass.Picowatts()
 }
 
+// The terawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856100-terawatts?language=objc
+func (uc _UnitPowerClass) Terawatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("terawatts"))
+	return rv
+}
+
+// The terawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856100-terawatts?language=objc
+func UnitPower_Terawatts() UnitPower {
+	return UnitPowerClass.Terawatts()
+}
+
+// The milliwatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855984-milliwatts?language=objc
+func (uc _UnitPowerClass) Milliwatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("milliwatts"))
+	return rv
+}
+
+// The milliwatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855984-milliwatts?language=objc
+func UnitPower_Milliwatts() UnitPower {
+	return UnitPowerClass.Milliwatts()
+}
+
+// The watts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856075-watts?language=objc
+func (uc _UnitPowerClass) Watts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("watts"))
+	return rv
+}
+
+// The watts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856075-watts?language=objc
+func UnitPower_Watts() UnitPower {
+	return UnitPowerClass.Watts()
+}
+
+// The nanowatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855999-nanowatts?language=objc
+func (uc _UnitPowerClass) Nanowatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("nanowatts"))
+	return rv
+}
+
+// The nanowatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1855999-nanowatts?language=objc
+func UnitPower_Nanowatts() UnitPower {
+	return UnitPowerClass.Nanowatts()
+}
+
+// The kilowatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856084-kilowatts?language=objc
+func (uc _UnitPowerClass) Kilowatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("kilowatts"))
+	return rv
+}
+
+// The kilowatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856084-kilowatts?language=objc
+func UnitPower_Kilowatts() UnitPower {
+	return UnitPowerClass.Kilowatts()
+}
+
+// The megawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856073-megawatts?language=objc
+func (uc _UnitPowerClass) Megawatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("megawatts"))
+	return rv
+}
+
+// The megawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856073-megawatts?language=objc
+func UnitPower_Megawatts() UnitPower {
+	return UnitPowerClass.Megawatts()
+}
+
 // The horsepower unit of power. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1690871-horsepower?language=objc
@@ -243,17 +228,32 @@ func UnitPower_Horsepower() UnitPower {
 	return UnitPowerClass.Horsepower()
 }
 
-// The terawatts unit of power. [Full Topic]
+// The microwatts unit of power. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856100-terawatts?language=objc
-func (uc _UnitPowerClass) Terawatts() UnitPower {
-	rv := objc.Call[UnitPower](uc, objc.Sel("terawatts"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856051-microwatts?language=objc
+func (uc _UnitPowerClass) Microwatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("microwatts"))
 	return rv
 }
 
-// The terawatts unit of power. [Full Topic]
+// The microwatts unit of power. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856100-terawatts?language=objc
-func UnitPower_Terawatts() UnitPower {
-	return UnitPowerClass.Terawatts()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856051-microwatts?language=objc
+func UnitPower_Microwatts() UnitPower {
+	return UnitPowerClass.Microwatts()
+}
+
+// The gigawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856108-gigawatts?language=objc
+func (uc _UnitPowerClass) Gigawatts() UnitPower {
+	rv := objc.Call[UnitPower](uc, objc.Sel("gigawatts"))
+	return rv
+}
+
+// The gigawatts unit of power. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpower/1856108-gigawatts?language=objc
+func UnitPower_Gigawatts() UnitPower {
+	return UnitPowerClass.Gigawatts()
 }

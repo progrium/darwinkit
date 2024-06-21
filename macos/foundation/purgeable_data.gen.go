@@ -53,32 +53,6 @@ func (p_ PurgeableData) Init() PurgeableData {
 	return rv
 }
 
-func (p_ PurgeableData) InitWithCapacity(capacity uint) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithCapacity:"), capacity)
-	return rv
-}
-
-// Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
-func NewPurgeableDataWithCapacity(capacity uint) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithCapacity(capacity)
-	instance.Autorelease()
-	return instance
-}
-
-func (pc _PurgeableDataClass) DataWithCapacity(aNumItems uint) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithCapacity:"), aNumItems)
-	return rv
-}
-
-// Creates and returns a mutable data object capable of holding the specified number of bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc
-func PurgeableData_DataWithCapacity(aNumItems uint) PurgeableData {
-	return PurgeableDataClass.DataWithCapacity(aNumItems)
-}
-
 func (p_ PurgeableData) InitWithLength(length uint) PurgeableData {
 	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithLength:"), length)
 	return rv
@@ -105,28 +79,96 @@ func PurgeableData_DataWithLength(length uint) PurgeableData {
 	return PurgeableDataClass.DataWithLength(length)
 }
 
-func (pc _PurgeableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
+func (p_ PurgeableData) InitWithCapacity(capacity uint) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithCapacity:"), capacity)
 	return rv
 }
 
-// Creates a data object by reading every byte from the file at a given path. [Full Topic]
+// Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
-func PurgeableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	return PurgeableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
+func NewPurgeableDataWithCapacity(capacity uint) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithCapacity(capacity)
+	instance.Autorelease()
+	return instance
 }
 
-func (p_ PurgeableData) InitWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBytesNoCopy:length:"), bytes, length)
+func (pc _PurgeableDataClass) DataWithCapacity(aNumItems uint) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithCapacity:"), aNumItems)
 	return rv
 }
 
-// Initializes a data object filled with a given number of bytes of data from a given buffer. [Full Topic]
+// Creates and returns a mutable data object capable of holding the specified number of bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1409454-initwithbytesnocopy?language=objc
-func NewPurgeableDataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithBytesNoCopyLength(bytes, length)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc
+func PurgeableData_DataWithCapacity(aNumItems uint) PurgeableData {
+	return PurgeableDataClass.DataWithCapacity(aNumItems)
+}
+
+func (p_ PurgeableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
+	return rv
+}
+
+// Initializes a data object with the content of the file at a given path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
+func NewPurgeableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+	instance.Autorelease()
+	return instance
+}
+
+func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
+	return rv
+}
+
+// Returns a new data object by compressing the data object’s bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
+func PurgeableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
+	instance := PurgeableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
+}
+
+func (pc _PurgeableDataClass) DataWithContentsOfURL(url IURL) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:"), url)
+	return rv
+}
+
+// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc
+func PurgeableData_DataWithContentsOfURL(url IURL) PurgeableData {
+	return PurgeableDataClass.DataWithContentsOfURL(url)
+}
+
+func (p_ PurgeableData) InitWithData(data []byte) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithData:"), data)
+	return rv
+}
+
+// Initializes a data object with the contents of another data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
+func NewPurgeableDataWithData(data []byte) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
+}
+
+func (p_ PurgeableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBytesNoCopy:length:freeWhenDone:"), bytes, length, b)
+	return rv
+}
+
+// Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
+func NewPurgeableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
 	instance.Autorelease()
 	return instance
 }
@@ -155,30 +197,28 @@ func PurgeableData_DataWithData(data []byte) PurgeableData {
 	return PurgeableDataClass.DataWithData(data)
 }
 
-func (pc _PurgeableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
+func (pc _PurgeableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
-// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
+// Creates a data object by reading every byte from the file at a given path. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547238-datawithcontentsofurl?language=objc
-func PurgeableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	return PurgeableDataClass.DataWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
+func PurgeableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	return PurgeableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 }
 
-func (p_ PurgeableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBase64EncodedString:options:"), base64String, options)
+func (pc _PurgeableDataClass) Data() PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("data"))
 	return rv
 }
 
-// Initializes a data object with the given Base64 encoded string. [Full Topic]
+// Creates an empty data object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
-func NewPurgeableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547234-data?language=objc
+func PurgeableData_Data() PurgeableData {
+	return PurgeableDataClass.Data()
 }
 
 func (p_ PurgeableData) InitWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
@@ -195,60 +235,6 @@ func NewPurgeableDataWithBytesLength(bytes unsafe.Pointer, length uint) Purgeabl
 	return instance
 }
 
-func (p_ PurgeableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBytesNoCopy:length:freeWhenDone:"), bytes, length, b)
-	return rv
-}
-
-// Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
-func NewPurgeableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
-	instance.Autorelease()
-	return instance
-}
-
-func (p_ PurgeableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
-	return rv
-}
-
-// Initializes a data object with the data from the location specified by a given URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1407864-initwithcontentsofurl?language=objc
-func NewPurgeableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
-	instance.Autorelease()
-	return instance
-}
-
-func (p_ PurgeableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
-	return rv
-}
-
-// Initializes a data object with the content of the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func NewPurgeableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
-	instance.Autorelease()
-	return instance
-}
-
-func (pc _PurgeableDataClass) DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithBytesNoCopy:length:"), bytes, length)
-	return rv
-}
-
-// Creates a data object that holds a given number of bytes from a given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547229-datawithbytesnocopy?language=objc
-func PurgeableData_DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	return PurgeableDataClass.DataWithBytesNoCopyLength(bytes, length)
-}
-
 func (p_ PurgeableData) InitWithContentsOfURL(url IURL) PurgeableData {
 	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
@@ -259,124 +245,6 @@ func (p_ PurgeableData) InitWithContentsOfURL(url IURL) PurgeableData {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc
 func NewPurgeableDataWithContentsOfURL(url IURL) PurgeableData {
 	instance := PurgeableDataClass.Alloc().InitWithContentsOfURL(url)
-	instance.Autorelease()
-	return instance
-}
-
-func (pc _PurgeableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithBytes:length:"), bytes, length)
-	return rv
-}
-
-// Creates a data object containing a given number of bytes copied from a given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547231-datawithbytes?language=objc
-func PurgeableData_DataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	return PurgeableDataClass.DataWithBytesLength(bytes, length)
-}
-
-func (pc _PurgeableDataClass) Data() PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("data"))
-	return rv
-}
-
-// Creates an empty data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547234-data?language=objc
-func PurgeableData_Data() PurgeableData {
-	return PurgeableDataClass.Data()
-}
-
-func (p_ PurgeableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBase64EncodedData:options:"), base64Data, options)
-	return rv
-}
-
-// Initializes a data object with the given Base64 encoded data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
-func NewPurgeableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (p_ PurgeableData) InitWithContentsOfFile(path string) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfFile:"), path)
-	return rv
-}
-
-// Initializes a data object with the content of the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1408672-initwithcontentsoffile?language=objc
-func NewPurgeableDataWithContentsOfFile(path string) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithContentsOfFile(path)
-	instance.Autorelease()
-	return instance
-}
-
-func (p_ PurgeableData) InitWithBytesNoCopyLengthDeallocator(bytes unsafe.Pointer, length uint, deallocator func(bytes unsafe.Pointer, length uint)) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBytesNoCopy:length:deallocator:"), bytes, length, deallocator)
-	return rv
-}
-
-// Initializes a data object filled with a given number of bytes of data from a given buffer, with a custom deallocator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417337-initwithbytesnocopy?language=objc
-func NewPurgeableDataWithBytesNoCopyLengthDeallocator(bytes unsafe.Pointer, length uint, deallocator func(bytes unsafe.Pointer, length uint)) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithBytesNoCopyLengthDeallocator(bytes, length, deallocator)
-	instance.Autorelease()
-	return instance
-}
-
-func (pc _PurgeableDataClass) DataWithContentsOfFile(path string) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfFile:"), path)
-	return rv
-}
-
-// Creates a data object by reading every byte from the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547226-datawithcontentsoffile?language=objc
-func PurgeableData_DataWithContentsOfFile(path string) PurgeableData {
-	return PurgeableDataClass.DataWithContentsOfFile(path)
-}
-
-func (p_ PurgeableData) InitWithData(data []byte) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithData:"), data)
-	return rv
-}
-
-// Initializes a data object with the contents of another data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
-func NewPurgeableDataWithData(data []byte) PurgeableData {
-	instance := PurgeableDataClass.Alloc().InitWithData(data)
-	instance.Autorelease()
-	return instance
-}
-
-func (pc _PurgeableDataClass) DataWithContentsOfURL(url IURL) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:"), url)
-	return rv
-}
-
-// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc
-func PurgeableData_DataWithContentsOfURL(url IURL) PurgeableData {
-	return PurgeableDataClass.DataWithContentsOfURL(url)
-}
-
-func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
-	return rv
-}
-
-// Returns a new data object by compressing the data object’s bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
-func PurgeableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
-	instance := PurgeableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
 }
@@ -393,4 +261,44 @@ func PurgeableData_DecompressedDataUsingAlgorithmError(algorithm DataCompression
 	instance := PurgeableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
+}
+
+func (p_ PurgeableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBase64EncodedData:options:"), base64Data, options)
+	return rv
+}
+
+// Initializes a data object with the given Base64 encoded data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
+func NewPurgeableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+	instance.Autorelease()
+	return instance
+}
+
+func (p_ PurgeableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithBase64EncodedString:options:"), base64String, options)
+	return rv
+}
+
+// Initializes a data object with the given Base64 encoded string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
+func NewPurgeableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+	instance.Autorelease()
+	return instance
+}
+
+func (pc _PurgeableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithBytes:length:"), bytes, length)
+	return rv
+}
+
+// Creates a data object containing a given number of bytes copied from a given buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547231-datawithbytes?language=objc
+func PurgeableData_DataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
+	return PurgeableDataClass.DataWithBytesLength(bytes, length)
 }

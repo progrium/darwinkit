@@ -19,12 +19,12 @@ type _PersistentHistoryChangeClass struct {
 // An interface definition for the [PersistentHistoryChange] class.
 type IPersistentHistoryChange interface {
 	objc.IObject
-	ChangeID() int64
-	ChangedObjectID() ManagedObjectID
-	Tombstone() foundation.Dictionary
 	Transaction() PersistentHistoryTransaction
 	UpdatedProperties() foundation.Set
+	ChangedObjectID() ManagedObjectID
+	Tombstone() foundation.Dictionary
 	ChangeType() PersistentHistoryChangeType
+	ChangeID() int64
 }
 
 // A change representing the insertion, update, or deletion of a managed object in the persistent store. [Full Topic]
@@ -75,11 +75,34 @@ func PersistentHistoryChange_EntityDescriptionWithContext(context IManagedObject
 	return PersistentHistoryChangeClass.EntityDescriptionWithContext(context)
 }
 
-// The change’s numeric identifier. [Full Topic]
+// The persistent history transaction containing this change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892569-changeid?language=objc
-func (p_ PersistentHistoryChange) ChangeID() int64 {
-	rv := objc.Call[int64](p_, objc.Sel("changeID"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892567-transaction?language=objc
+func (p_ PersistentHistoryChange) Transaction() PersistentHistoryTransaction {
+	rv := objc.Call[PersistentHistoryTransaction](p_, objc.Sel("transaction"))
+	return rv
+}
+
+// A fetch request that has the persistent history change as the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/3240591-fetchrequest?language=objc
+func (pc _PersistentHistoryChangeClass) FetchRequest() FetchRequest {
+	rv := objc.Call[FetchRequest](pc, objc.Sel("fetchRequest"))
+	return rv
+}
+
+// A fetch request that has the persistent history change as the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/3240591-fetchrequest?language=objc
+func PersistentHistoryChange_FetchRequest() FetchRequest {
+	return PersistentHistoryChangeClass.FetchRequest()
+}
+
+// The set of properties that were updated on the managed object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892568-updatedproperties?language=objc
+func (p_ PersistentHistoryChange) UpdatedProperties() foundation.Set {
+	rv := objc.Call[foundation.Set](p_, objc.Sel("updatedProperties"))
 	return rv
 }
 
@@ -114,41 +137,18 @@ func PersistentHistoryChange_EntityDescription() EntityDescription {
 	return PersistentHistoryChangeClass.EntityDescription()
 }
 
-// The persistent history transaction containing this change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892567-transaction?language=objc
-func (p_ PersistentHistoryChange) Transaction() PersistentHistoryTransaction {
-	rv := objc.Call[PersistentHistoryTransaction](p_, objc.Sel("transaction"))
-	return rv
-}
-
-// The set of properties that were updated on the managed object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892568-updatedproperties?language=objc
-func (p_ PersistentHistoryChange) UpdatedProperties() foundation.Set {
-	rv := objc.Call[foundation.Set](p_, objc.Sel("updatedProperties"))
-	return rv
-}
-
-// A fetch request that has the persistent history change as the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/3240591-fetchrequest?language=objc
-func (pc _PersistentHistoryChangeClass) FetchRequest() FetchRequest {
-	rv := objc.Call[FetchRequest](pc, objc.Sel("fetchRequest"))
-	return rv
-}
-
-// A fetch request that has the persistent history change as the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/3240591-fetchrequest?language=objc
-func PersistentHistoryChange_FetchRequest() FetchRequest {
-	return PersistentHistoryChangeClass.FetchRequest()
-}
-
 // The type of change to the managed object in the persistent store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892563-changetype?language=objc
 func (p_ PersistentHistoryChange) ChangeType() PersistentHistoryChangeType {
 	rv := objc.Call[PersistentHistoryChangeType](p_, objc.Sel("changeType"))
+	return rv
+}
+
+// The change’s numeric identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychange/2892569-changeid?language=objc
+func (p_ PersistentHistoryChange) ChangeID() int64 {
+	rv := objc.Call[int64](p_, objc.Sel("changeID"))
 	return rv
 }

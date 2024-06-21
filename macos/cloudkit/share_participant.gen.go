@@ -20,10 +20,10 @@ type IShareParticipant interface {
 	objc.IObject
 	Role() ShareParticipantRole
 	SetRole(value ShareParticipantRole)
-	AcceptanceStatus() ShareParticipantAcceptanceStatus
 	Permission() ShareParticipantPermission
 	SetPermission(value ShareParticipantPermission)
 	UserIdentity() UserIdentity
+	AcceptanceStatus() ShareParticipantAcceptanceStatus
 }
 
 // An object that describes a user’s participation in a share. [Full Topic]
@@ -74,14 +74,6 @@ func (s_ ShareParticipant) SetRole(value ShareParticipantRole) {
 	objc.Call[objc.Void](s_, objc.Sel("setRole:"), value)
 }
 
-// The current state of the user’s acceptance of the share. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshareparticipant/1640395-acceptancestatus?language=objc
-func (s_ ShareParticipant) AcceptanceStatus() ShareParticipantAcceptanceStatus {
-	rv := objc.Call[ShareParticipantAcceptanceStatus](s_, objc.Sel("acceptanceStatus"))
-	return rv
-}
-
 // The participant’s permission level for the share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshareparticipant/1640433-permission?language=objc
@@ -102,5 +94,13 @@ func (s_ ShareParticipant) SetPermission(value ShareParticipantPermission) {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshareparticipant/1640488-useridentity?language=objc
 func (s_ ShareParticipant) UserIdentity() UserIdentity {
 	rv := objc.Call[UserIdentity](s_, objc.Sel("userIdentity"))
+	return rv
+}
+
+// The current state of the user’s acceptance of the share. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshareparticipant/1640395-acceptancestatus?language=objc
+func (s_ ShareParticipant) AcceptanceStatus() ShareParticipantAcceptanceStatus {
+	rv := objc.Call[ShareParticipantAcceptanceStatus](s_, objc.Sel("acceptanceStatus"))
 	return rv
 }

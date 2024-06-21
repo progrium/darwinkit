@@ -19,24 +19,24 @@ type _KeyframeAnimationClass struct {
 // An interface definition for the [KeyframeAnimation] class.
 type IKeyframeAnimation interface {
 	IPropertyAnimation
-	CalculationMode() AnimationCalculationMode
-	SetCalculationMode(value AnimationCalculationMode)
+	Path() unsafe.Pointer
+	SetPath(value unsafe.Pointer)
+	RotationMode() AnimationRotationMode
+	SetRotationMode(value AnimationRotationMode)
 	BiasValues() []foundation.Number
 	SetBiasValues(value []foundation.INumber)
 	TensionValues() []foundation.Number
 	SetTensionValues(value []foundation.INumber)
 	KeyTimes() []foundation.Number
 	SetKeyTimes(value []foundation.INumber)
+	CalculationMode() AnimationCalculationMode
+	SetCalculationMode(value AnimationCalculationMode)
 	ContinuityValues() []foundation.Number
 	SetContinuityValues(value []foundation.INumber)
-	RotationMode() AnimationRotationMode
-	SetRotationMode(value AnimationRotationMode)
-	TimingFunctions() []MediaTimingFunction
-	SetTimingFunctions(value []IMediaTimingFunction)
 	Values() []objc.Object
 	SetValues(value []objc.IObject)
-	Path() unsafe.Pointer
-	SetPath(value unsafe.Pointer)
+	TimingFunctions() []MediaTimingFunction
+	SetTimingFunctions(value []IMediaTimingFunction)
 }
 
 // An object that provides keyframe animation capabilities for a layer object. [Full Topic]
@@ -96,19 +96,34 @@ func KeyframeAnimation_Animation() KeyframeAnimation {
 	return KeyframeAnimationClass.Animation()
 }
 
-// Specifies how intermediate keyframe values are calculated by the receiver. [Full Topic]
+// The path for a point-based property to follow. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412500-calculationmode?language=objc
-func (k_ KeyframeAnimation) CalculationMode() AnimationCalculationMode {
-	rv := objc.Call[AnimationCalculationMode](k_, objc.Sel("calculationMode"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412474-path?language=objc
+func (k_ KeyframeAnimation) Path() unsafe.Pointer {
+	rv := objc.Call[unsafe.Pointer](k_, objc.Sel("path"))
 	return rv
 }
 
-// Specifies how intermediate keyframe values are calculated by the receiver. [Full Topic]
+// The path for a point-based property to follow. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412500-calculationmode?language=objc
-func (k_ KeyframeAnimation) SetCalculationMode(value AnimationCalculationMode) {
-	objc.Call[objc.Void](k_, objc.Sel("setCalculationMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412474-path?language=objc
+func (k_ KeyframeAnimation) SetPath(value unsafe.Pointer) {
+	objc.Call[objc.Void](k_, objc.Sel("setPath:"), value)
+}
+
+// Determines whether objects animating along the path rotate to match the path tangent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412454-rotationmode?language=objc
+func (k_ KeyframeAnimation) RotationMode() AnimationRotationMode {
+	rv := objc.Call[AnimationRotationMode](k_, objc.Sel("rotationMode"))
+	return rv
+}
+
+// Determines whether objects animating along the path rotate to match the path tangent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412454-rotationmode?language=objc
+func (k_ KeyframeAnimation) SetRotationMode(value AnimationRotationMode) {
+	objc.Call[objc.Void](k_, objc.Sel("setRotationMode:"), value)
 }
 
 // An array of NSNumber objects that define the position of the curve relative to a control point. [Full Topic]
@@ -156,6 +171,21 @@ func (k_ KeyframeAnimation) SetKeyTimes(value []foundation.INumber) {
 	objc.Call[objc.Void](k_, objc.Sel("setKeyTimes:"), value)
 }
 
+// Specifies how intermediate keyframe values are calculated by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412500-calculationmode?language=objc
+func (k_ KeyframeAnimation) CalculationMode() AnimationCalculationMode {
+	rv := objc.Call[AnimationCalculationMode](k_, objc.Sel("calculationMode"))
+	return rv
+}
+
+// Specifies how intermediate keyframe values are calculated by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412500-calculationmode?language=objc
+func (k_ KeyframeAnimation) SetCalculationMode(value AnimationCalculationMode) {
+	objc.Call[objc.Void](k_, objc.Sel("setCalculationMode:"), value)
+}
+
 // An array of NSNumber objects that define the sharpness of the timing curve’s corners. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412491-continuityvalues?language=objc
@@ -169,36 +199,6 @@ func (k_ KeyframeAnimation) ContinuityValues() []foundation.Number {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412491-continuityvalues?language=objc
 func (k_ KeyframeAnimation) SetContinuityValues(value []foundation.INumber) {
 	objc.Call[objc.Void](k_, objc.Sel("setContinuityValues:"), value)
-}
-
-// Determines whether objects animating along the path rotate to match the path tangent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412454-rotationmode?language=objc
-func (k_ KeyframeAnimation) RotationMode() AnimationRotationMode {
-	rv := objc.Call[AnimationRotationMode](k_, objc.Sel("rotationMode"))
-	return rv
-}
-
-// Determines whether objects animating along the path rotate to match the path tangent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412454-rotationmode?language=objc
-func (k_ KeyframeAnimation) SetRotationMode(value AnimationRotationMode) {
-	objc.Call[objc.Void](k_, objc.Sel("setRotationMode:"), value)
-}
-
-// An optional array of CAMediaTimingFunction objects that define the pacing for each keyframe segment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412465-timingfunctions?language=objc
-func (k_ KeyframeAnimation) TimingFunctions() []MediaTimingFunction {
-	rv := objc.Call[[]MediaTimingFunction](k_, objc.Sel("timingFunctions"))
-	return rv
-}
-
-// An optional array of CAMediaTimingFunction objects that define the pacing for each keyframe segment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412465-timingfunctions?language=objc
-func (k_ KeyframeAnimation) SetTimingFunctions(value []IMediaTimingFunction) {
-	objc.Call[objc.Void](k_, objc.Sel("setTimingFunctions:"), value)
 }
 
 // An array of objects that specify the keyframe values to use for the animation. [Full Topic]
@@ -216,17 +216,17 @@ func (k_ KeyframeAnimation) SetValues(value []objc.IObject) {
 	objc.Call[objc.Void](k_, objc.Sel("setValues:"), value)
 }
 
-// The path for a point-based property to follow. [Full Topic]
+// An optional array of CAMediaTimingFunction objects that define the pacing for each keyframe segment. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412474-path?language=objc
-func (k_ KeyframeAnimation) Path() unsafe.Pointer {
-	rv := objc.Call[unsafe.Pointer](k_, objc.Sel("path"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412465-timingfunctions?language=objc
+func (k_ KeyframeAnimation) TimingFunctions() []MediaTimingFunction {
+	rv := objc.Call[[]MediaTimingFunction](k_, objc.Sel("timingFunctions"))
 	return rv
 }
 
-// The path for a point-based property to follow. [Full Topic]
+// An optional array of CAMediaTimingFunction objects that define the pacing for each keyframe segment. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412474-path?language=objc
-func (k_ KeyframeAnimation) SetPath(value unsafe.Pointer) {
-	objc.Call[objc.Void](k_, objc.Sel("setPath:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cakeyframeanimation/1412465-timingfunctions?language=objc
+func (k_ KeyframeAnimation) SetTimingFunctions(value []IMediaTimingFunction) {
+	objc.Call[objc.Void](k_, objc.Sel("setTimingFunctions:"), value)
 }

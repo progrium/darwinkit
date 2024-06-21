@@ -21,10 +21,10 @@ type ICaptionConversionValidator interface {
 	objc.IObject
 	StopValidating()
 	ValidateCaptionConversionWithWarningHandler(handler func(warning CaptionConversionWarning))
-	Warnings() []CaptionConversionWarning
+	Captions() []Caption
 	TimeRange() coremedia.TimeRange
 	Status() CaptionConversionValidatorStatus
-	Captions() []Caption
+	Warnings() []CaptionConversionWarning
 }
 
 // An object that validates captions for a conversion operation. [Full Topic]
@@ -100,11 +100,11 @@ func (c_ CaptionConversionValidator) ValidateCaptionConversionWithWarningHandler
 	objc.Call[objc.Void](c_, objc.Sel("validateCaptionConversionWithWarningHandler:"), handler)
 }
 
-// The collection of warnings the validator encountered. [Full Topic]
+// The array of captions that the system validates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionvalidator/3752942-warnings?language=objc
-func (c_ CaptionConversionValidator) Warnings() []CaptionConversionWarning {
-	rv := objc.Call[[]CaptionConversionWarning](c_, objc.Sel("warnings"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionvalidator/3752936-captions?language=objc
+func (c_ CaptionConversionValidator) Captions() []Caption {
+	rv := objc.Call[[]Caption](c_, objc.Sel("captions"))
 	return rv
 }
 
@@ -124,10 +124,10 @@ func (c_ CaptionConversionValidator) Status() CaptionConversionValidatorStatus {
 	return rv
 }
 
-// The array of captions that the system validates. [Full Topic]
+// The collection of warnings the validator encountered. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionvalidator/3752936-captions?language=objc
-func (c_ CaptionConversionValidator) Captions() []Caption {
-	rv := objc.Call[[]Caption](c_, objc.Sel("captions"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionvalidator/3752942-warnings?language=objc
+func (c_ CaptionConversionValidator) Warnings() []CaptionConversionWarning {
+	rv := objc.Call[[]CaptionConversionWarning](c_, objc.Sel("warnings"))
 	return rv
 }

@@ -23,8 +23,8 @@ type _SemanticSegmentationMatteClass struct {
 type ISemanticSegmentationMatte interface {
 	objc.IObject
 	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary
-	PixelFormatType() uint
 	MatteType() SemanticSegmentationMatteType
+	PixelFormatType() uint
 	MattingImage() corevideo.PixelBufferRef
 }
 
@@ -39,18 +39,6 @@ func SemanticSegmentationMatteFrom(ptr unsafe.Pointer) SemanticSegmentationMatte
 	return SemanticSegmentationMatte{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (sc _SemanticSegmentationMatteClass) SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
-	rv := objc.Call[SemanticSegmentationMatte](sc, objc.Sel("semanticSegmentationMatteFromImageSourceAuxiliaryDataType:dictionaryRepresentation:error:"), imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
-	return rv
-}
-
-// Returns a new semantic segmentation matte instance from auxiliary image information in an image file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152124-semanticsegmentationmattefromima?language=objc
-func SemanticSegmentationMatte_SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
-	return SemanticSegmentationMatteClass.SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
 }
 
 func (s_ SemanticSegmentationMatte) SemanticSegmentationMatteByApplyingExifOrientation(exifOrientation imageio.ImagePropertyOrientation) SemanticSegmentationMatte {
@@ -81,6 +69,18 @@ func SemanticSegmentationMatte_SemanticSegmentationMatteByReplacingSemanticSegme
 	return instance
 }
 
+func (sc _SemanticSegmentationMatteClass) SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
+	rv := objc.Call[SemanticSegmentationMatte](sc, objc.Sel("semanticSegmentationMatteFromImageSourceAuxiliaryDataType:dictionaryRepresentation:error:"), imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
+	return rv
+}
+
+// Returns a new semantic segmentation matte instance from auxiliary image information in an image file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152124-semanticsegmentationmattefromima?language=objc
+func SemanticSegmentationMatte_SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
+	return SemanticSegmentationMatteClass.SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
+}
+
 func (sc _SemanticSegmentationMatteClass) Alloc() SemanticSegmentationMatte {
 	rv := objc.Call[SemanticSegmentationMatte](sc, objc.Sel("alloc"))
 	return rv
@@ -109,19 +109,19 @@ func (s_ SemanticSegmentationMatte) DictionaryRepresentationForAuxiliaryDataType
 	return rv
 }
 
-// The pixel format type for this object’s internal matting image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152121-pixelformattype?language=objc
-func (s_ SemanticSegmentationMatte) PixelFormatType() uint {
-	rv := objc.Call[uint](s_, objc.Sel("pixelFormatType"))
-	return rv
-}
-
 // The semantic segmentation matte image type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152119-mattetype?language=objc
 func (s_ SemanticSegmentationMatte) MatteType() SemanticSegmentationMatteType {
 	rv := objc.Call[SemanticSegmentationMatteType](s_, objc.Sel("matteType"))
+	return rv
+}
+
+// The pixel format type for this object’s internal matting image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152121-pixelformattype?language=objc
+func (s_ SemanticSegmentationMatte) PixelFormatType() uint {
+	rv := objc.Call[uint](s_, objc.Sel("pixelFormatType"))
 	return rv
 }
 

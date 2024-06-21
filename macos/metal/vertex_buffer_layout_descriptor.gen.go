@@ -18,12 +18,12 @@ type _VertexBufferLayoutDescriptorClass struct {
 // An interface definition for the [VertexBufferLayoutDescriptor] class.
 type IVertexBufferLayoutDescriptor interface {
 	objc.IObject
-	StepFunction() VertexStepFunction
-	SetStepFunction(value VertexStepFunction)
 	StepRate() uint
 	SetStepRate(value uint)
 	Stride() uint
 	SetStride(value uint)
+	StepFunction() VertexStepFunction
+	SetStepFunction(value VertexStepFunction)
 }
 
 // An object that configures how a render pipeline fetches data to send to the vertex function. [Full Topic]
@@ -59,21 +59,6 @@ func (v_ VertexBufferLayoutDescriptor) Init() VertexBufferLayoutDescriptor {
 	return rv
 }
 
-// The circumstances under which the vertex and its attributes are presented to the vertex function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1515341-stepfunction?language=objc
-func (v_ VertexBufferLayoutDescriptor) StepFunction() VertexStepFunction {
-	rv := objc.Call[VertexStepFunction](v_, objc.Sel("stepFunction"))
-	return rv
-}
-
-// The circumstances under which the vertex and its attributes are presented to the vertex function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1515341-stepfunction?language=objc
-func (v_ VertexBufferLayoutDescriptor) SetStepFunction(value VertexStepFunction) {
-	objc.Call[objc.Void](v_, objc.Sel("setStepFunction:"), value)
-}
-
 // The interval at which the vertex and its attributes are presented to the vertex function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1516148-steprate?language=objc
@@ -102,4 +87,19 @@ func (v_ VertexBufferLayoutDescriptor) Stride() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1515441-stride?language=objc
 func (v_ VertexBufferLayoutDescriptor) SetStride(value uint) {
 	objc.Call[objc.Void](v_, objc.Sel("setStride:"), value)
+}
+
+// The circumstances under which the vertex and its attributes are presented to the vertex function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1515341-stepfunction?language=objc
+func (v_ VertexBufferLayoutDescriptor) StepFunction() VertexStepFunction {
+	rv := objc.Call[VertexStepFunction](v_, objc.Sel("stepFunction"))
+	return rv
+}
+
+// The circumstances under which the vertex and its attributes are presented to the vertex function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptor/1515341-stepfunction?language=objc
+func (v_ VertexBufferLayoutDescriptor) SetStepFunction(value VertexStepFunction) {
+	objc.Call[objc.Void](v_, objc.Sel("setStepFunction:"), value)
 }

@@ -18,9 +18,9 @@ type _CNNPoolingGradientNodeClass struct {
 // An interface definition for the [CNNPoolingGradientNode] class.
 type ICNNPoolingGradientNode interface {
 	INNGradientFilterNode
-	KernelHeight() uint
 	StrideInPixelsY() uint
 	StrideInPixelsX() uint
+	KernelHeight() uint
 	KernelWidth() uint
 }
 
@@ -87,14 +87,6 @@ func (c_ CNNPoolingGradientNode) Init() CNNPoolingGradientNode {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradientnode/2947992-kernelheight?language=objc
-func (c_ CNNPoolingGradientNode) KernelHeight() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradientnode/2948048-strideinpixelsy?language=objc
 func (c_ CNNPoolingGradientNode) StrideInPixelsY() uint {
 	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsY"))
@@ -106,6 +98,14 @@ func (c_ CNNPoolingGradientNode) StrideInPixelsY() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradientnode/2948018-strideinpixelsx?language=objc
 func (c_ CNNPoolingGradientNode) StrideInPixelsX() uint {
 	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsX"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradientnode/2947992-kernelheight?language=objc
+func (c_ CNNPoolingGradientNode) KernelHeight() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
 	return rv
 }
 

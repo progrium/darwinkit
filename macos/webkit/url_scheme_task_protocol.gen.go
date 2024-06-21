@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask?language=objc
 type PURLSchemeTask interface {
 	// optional
-	DidReceiveResponse(response foundation.URLResponse)
-	HasDidReceiveResponse() bool
-
-	// optional
-	DidReceiveData(data []byte)
-	HasDidReceiveData() bool
+	DidFailWithError(error foundation.Error)
+	HasDidFailWithError() bool
 
 	// optional
 	DidFinish()
 	HasDidFinish() bool
 
 	// optional
-	DidFailWithError(error foundation.Error)
-	HasDidFailWithError() bool
+	DidReceiveData(data []byte)
+	HasDidReceiveData() bool
+
+	// optional
+	DidReceiveResponse(response foundation.URLResponse)
+	HasDidReceiveResponse() bool
 
 	// optional
 	Request() foundation.URLRequest
@@ -40,26 +40,15 @@ type URLSchemeTaskObject struct {
 	objc.Object
 }
 
-func (u_ URLSchemeTaskObject) HasDidReceiveResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("didReceiveResponse:"))
+func (u_ URLSchemeTaskObject) HasDidFailWithError() bool {
+	return u_.RespondsToSelector(objc.Sel("didFailWithError:"))
 }
 
-// Returns a URL response to WebKit with information about the requested resource. [Full Topic]
+// Completes the task and reports the specified error back to WebKit. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890839-didreceiveresponse?language=objc
-func (u_ URLSchemeTaskObject) DidReceiveResponse(response foundation.URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("didReceiveResponse:"), response)
-}
-
-func (u_ URLSchemeTaskObject) HasDidReceiveData() bool {
-	return u_.RespondsToSelector(objc.Sel("didReceiveData:"))
-}
-
-// Sends some or all of the resource data to WebKit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890836-didreceivedata?language=objc
-func (u_ URLSchemeTaskObject) DidReceiveData(data []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("didReceiveData:"), data)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890841-didfailwitherror?language=objc
+func (u_ URLSchemeTaskObject) DidFailWithError(error foundation.Error) {
+	objc.Call[objc.Void](u_, objc.Sel("didFailWithError:"), error)
 }
 
 func (u_ URLSchemeTaskObject) HasDidFinish() bool {
@@ -73,15 +62,26 @@ func (u_ URLSchemeTaskObject) DidFinish() {
 	objc.Call[objc.Void](u_, objc.Sel("didFinish"))
 }
 
-func (u_ URLSchemeTaskObject) HasDidFailWithError() bool {
-	return u_.RespondsToSelector(objc.Sel("didFailWithError:"))
+func (u_ URLSchemeTaskObject) HasDidReceiveData() bool {
+	return u_.RespondsToSelector(objc.Sel("didReceiveData:"))
 }
 
-// Completes the task and reports the specified error back to WebKit. [Full Topic]
+// Sends some or all of the resource data to WebKit. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890841-didfailwitherror?language=objc
-func (u_ URLSchemeTaskObject) DidFailWithError(error foundation.Error) {
-	objc.Call[objc.Void](u_, objc.Sel("didFailWithError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890836-didreceivedata?language=objc
+func (u_ URLSchemeTaskObject) DidReceiveData(data []byte) {
+	objc.Call[objc.Void](u_, objc.Sel("didReceiveData:"), data)
+}
+
+func (u_ URLSchemeTaskObject) HasDidReceiveResponse() bool {
+	return u_.RespondsToSelector(objc.Sel("didReceiveResponse:"))
+}
+
+// Returns a URL response to WebKit with information about the requested resource. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890839-didreceiveresponse?language=objc
+func (u_ URLSchemeTaskObject) DidReceiveResponse(response foundation.URLResponse) {
+	objc.Call[objc.Void](u_, objc.Sel("didReceiveResponse:"), response)
 }
 
 func (u_ URLSchemeTaskObject) HasRequest() bool {

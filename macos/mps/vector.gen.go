@@ -19,16 +19,16 @@ type _VectorClass struct {
 // An interface definition for the [Vector] class.
 type IVector interface {
 	objc.IObject
+	ResourceSize() uint
 	SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer)
 	SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject)
-	ResourceSize() uint
-	DataType() DataType
-	Offset() uint
-	Data() metal.BufferObject
-	Length() uint
-	VectorBytes() uint
-	Vectors() uint
 	Device() metal.DeviceObject
+	VectorBytes() uint
+	Data() metal.BufferObject
+	Vectors() uint
+	Length() uint
+	Offset() uint
+	DataType() DataType
 }
 
 // A 1D array of data that stores the data's values. [Full Topic]
@@ -42,21 +42,6 @@ func VectorFrom(ptr unsafe.Pointer) Vector {
 	return Vector{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (v_ Vector) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) Vector {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Vector](v_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/3229864-initwithbuffer?language=objc
-func NewVectorWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) Vector {
-	instance := VectorClass.Alloc().InitWithBufferOffsetDescriptor(buffer, offset, descriptor)
-	instance.Autorelease()
-	return instance
 }
 
 func (v_ Vector) InitWithDeviceDescriptor(device metal.PDevice, descriptor IVectorDescriptor) Vector {
@@ -111,6 +96,14 @@ func (v_ Vector) Init() Vector {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2942570-resourcesize?language=objc
+func (v_ Vector) ResourceSize() uint {
+	rv := objc.Call[uint](v_, objc.Sel("resourceSize"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2942568-synchronizeoncommandbuffer?language=objc
 func (v_ Vector) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -126,41 +119,9 @@ func (v_ Vector) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObje
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2942570-resourcesize?language=objc
-func (v_ Vector) ResourceSize() uint {
-	rv := objc.Call[uint](v_, objc.Sel("resourceSize"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873336-datatype?language=objc
-func (v_ Vector) DataType() DataType {
-	rv := objc.Call[DataType](v_, objc.Sel("dataType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/3375741-offset?language=objc
-func (v_ Vector) Offset() uint {
-	rv := objc.Call[uint](v_, objc.Sel("offset"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873393-data?language=objc
-func (v_ Vector) Data() metal.BufferObject {
-	rv := objc.Call[metal.BufferObject](v_, objc.Sel("data"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873392-length?language=objc
-func (v_ Vector) Length() uint {
-	rv := objc.Call[uint](v_, objc.Sel("length"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873338-device?language=objc
+func (v_ Vector) Device() metal.DeviceObject {
+	rv := objc.Call[metal.DeviceObject](v_, objc.Sel("device"))
 	return rv
 }
 
@@ -174,6 +135,14 @@ func (v_ Vector) VectorBytes() uint {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873393-data?language=objc
+func (v_ Vector) Data() metal.BufferObject {
+	rv := objc.Call[metal.BufferObject](v_, objc.Sel("data"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873388-vectors?language=objc
 func (v_ Vector) Vectors() uint {
 	rv := objc.Call[uint](v_, objc.Sel("vectors"))
@@ -182,8 +151,24 @@ func (v_ Vector) Vectors() uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873338-device?language=objc
-func (v_ Vector) Device() metal.DeviceObject {
-	rv := objc.Call[metal.DeviceObject](v_, objc.Sel("device"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873392-length?language=objc
+func (v_ Vector) Length() uint {
+	rv := objc.Call[uint](v_, objc.Sel("length"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/3375741-offset?language=objc
+func (v_ Vector) Offset() uint {
+	rv := objc.Call[uint](v_, objc.Sel("offset"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2873336-datatype?language=objc
+func (v_ Vector) DataType() DataType {
+	rv := objc.Call[DataType](v_, objc.Sel("dataType"))
 	return rv
 }

@@ -12,16 +12,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbuffer?language=objc
 type PIndirectCommandBuffer interface {
 	// optional
-	ResetWithRange(range_ foundation.Range)
-	HasResetWithRange() bool
-
-	// optional
 	IndirectComputeCommandAtIndex(commandIndex uint) IndirectComputeCommandObject
 	HasIndirectComputeCommandAtIndex() bool
 
 	// optional
 	IndirectRenderCommandAtIndex(commandIndex uint) IndirectRenderCommandObject
 	HasIndirectRenderCommandAtIndex() bool
+
+	// optional
+	ResetWithRange(range_ foundation.Range)
+	HasResetWithRange() bool
 
 	// optional
 	Size() uint
@@ -34,17 +34,6 @@ var _ PIndirectCommandBuffer = (*IndirectCommandBufferObject)(nil)
 // A concrete type for the [PIndirectCommandBuffer] protocol.
 type IndirectCommandBufferObject struct {
 	objc.Object
-}
-
-func (i_ IndirectCommandBufferObject) HasResetWithRange() bool {
-	return i_.RespondsToSelector(objc.Sel("resetWithRange:"))
-}
-
-// Resets a range of commands to their default state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbuffer/3012870-resetwithrange?language=objc
-func (i_ IndirectCommandBufferObject) ResetWithRange(range_ foundation.Range) {
-	objc.Call[objc.Void](i_, objc.Sel("resetWithRange:"), range_)
 }
 
 func (i_ IndirectCommandBufferObject) HasIndirectComputeCommandAtIndex() bool {
@@ -69,6 +58,17 @@ func (i_ IndirectCommandBufferObject) HasIndirectRenderCommandAtIndex() bool {
 func (i_ IndirectCommandBufferObject) IndirectRenderCommandAtIndex(commandIndex uint) IndirectRenderCommandObject {
 	rv := objc.Call[IndirectRenderCommandObject](i_, objc.Sel("indirectRenderCommandAtIndex:"), commandIndex)
 	return rv
+}
+
+func (i_ IndirectCommandBufferObject) HasResetWithRange() bool {
+	return i_.RespondsToSelector(objc.Sel("resetWithRange:"))
+}
+
+// Resets a range of commands to their default state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectcommandbuffer/3012870-resetwithrange?language=objc
+func (i_ IndirectCommandBufferObject) ResetWithRange(range_ foundation.Range) {
+	objc.Call[objc.Void](i_, objc.Sel("resetWithRange:"), range_)
 }
 
 func (i_ IndirectCommandBufferObject) HasSize() bool {

@@ -19,11 +19,11 @@ type _PersistentHistoryChangeRequestClass struct {
 // An interface definition for the [PersistentHistoryChangeRequest] class.
 type IPersistentHistoryChangeRequest interface {
 	IPersistentStoreRequest
+	FetchRequest() FetchRequest
+	SetFetchRequest(value IFetchRequest)
 	Token() PersistentHistoryToken
 	ResultType() PersistentHistoryResultType
 	SetResultType(value PersistentHistoryResultType)
-	FetchRequest() FetchRequest
-	SetFetchRequest(value IFetchRequest)
 }
 
 // A request to fetch or purge persistent history. [Full Topic]
@@ -39,18 +39,6 @@ func PersistentHistoryChangeRequestFrom(ptr unsafe.Pointer) PersistentHistoryCha
 	}
 }
 
-func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterTransaction:"), transaction)
-	return rv
-}
-
-// Retrieves history since a given transaction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892344-fetchhistoryaftertransaction?language=objc
-func PersistentHistoryChangeRequest_FetchHistoryAfterTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
-	return PersistentHistoryChangeRequestClass.FetchHistoryAfterTransaction(transaction)
-}
-
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeDate(date foundation.IDate) PersistentHistoryChangeRequest {
 	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeDate:"), date)
 	return rv
@@ -63,28 +51,28 @@ func PersistentHistoryChangeRequest_DeleteHistoryBeforeDate(date foundation.IDat
 	return PersistentHistoryChangeRequestClass.DeleteHistoryBeforeDate(date)
 }
 
-func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterToken:"), token)
+func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterTransaction:"), transaction)
 	return rv
 }
 
-// Retrieves the request history after a given token. [Full Topic]
+// Retrieves history since a given transaction. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892337-fetchhistoryaftertoken?language=objc
-func PersistentHistoryChangeRequest_FetchHistoryAfterToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
-	return PersistentHistoryChangeRequestClass.FetchHistoryAfterToken(token)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892344-fetchhistoryaftertransaction?language=objc
+func PersistentHistoryChangeRequest_FetchHistoryAfterTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
+	return PersistentHistoryChangeRequestClass.FetchHistoryAfterTransaction(transaction)
 }
 
-func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterDate(date foundation.IDate) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterDate:"), date)
+func (pc _PersistentHistoryChangeRequestClass) FetchHistoryWithFetchRequest(fetchRequest IFetchRequest) PersistentHistoryChangeRequest {
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryWithFetchRequest:"), fetchRequest)
 	return rv
 }
 
-// Retrieves history since a given date. [Full Topic]
+// Retrieves history based on a fetch request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892339-fetchhistoryafterdate?language=objc
-func PersistentHistoryChangeRequest_FetchHistoryAfterDate(date foundation.IDate) PersistentHistoryChangeRequest {
-	return PersistentHistoryChangeRequestClass.FetchHistoryAfterDate(date)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240592-fetchhistorywithfetchrequest?language=objc
+func PersistentHistoryChangeRequest_FetchHistoryWithFetchRequest(fetchRequest IFetchRequest) PersistentHistoryChangeRequest {
+	return PersistentHistoryChangeRequestClass.FetchHistoryWithFetchRequest(fetchRequest)
 }
 
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
@@ -99,16 +87,28 @@ func PersistentHistoryChangeRequest_DeleteHistoryBeforeTransaction(transaction I
 	return PersistentHistoryChangeRequestClass.DeleteHistoryBeforeTransaction(transaction)
 }
 
-func (pc _PersistentHistoryChangeRequestClass) FetchHistoryWithFetchRequest(fetchRequest IFetchRequest) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryWithFetchRequest:"), fetchRequest)
+func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterDate(date foundation.IDate) PersistentHistoryChangeRequest {
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterDate:"), date)
 	return rv
 }
 
-// Retrieves history based on a fetch request. [Full Topic]
+// Retrieves history since a given date. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240592-fetchhistorywithfetchrequest?language=objc
-func PersistentHistoryChangeRequest_FetchHistoryWithFetchRequest(fetchRequest IFetchRequest) PersistentHistoryChangeRequest {
-	return PersistentHistoryChangeRequestClass.FetchHistoryWithFetchRequest(fetchRequest)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892339-fetchhistoryafterdate?language=objc
+func PersistentHistoryChangeRequest_FetchHistoryAfterDate(date foundation.IDate) PersistentHistoryChangeRequest {
+	return PersistentHistoryChangeRequestClass.FetchHistoryAfterDate(date)
+}
+
+func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterToken:"), token)
+	return rv
+}
+
+// Retrieves the request history after a given token. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892337-fetchhistoryaftertoken?language=objc
+func PersistentHistoryChangeRequest_FetchHistoryAfterToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
+	return PersistentHistoryChangeRequestClass.FetchHistoryAfterToken(token)
 }
 
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
@@ -143,6 +143,21 @@ func (p_ PersistentHistoryChangeRequest) Init() PersistentHistoryChangeRequest {
 	return rv
 }
 
+// The specified fetch request, when retrieving history. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240593-fetchrequest?language=objc
+func (p_ PersistentHistoryChangeRequest) FetchRequest() FetchRequest {
+	rv := objc.Call[FetchRequest](p_, objc.Sel("fetchRequest"))
+	return rv
+}
+
+// The specified fetch request, when retrieving history. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240593-fetchrequest?language=objc
+func (p_ PersistentHistoryChangeRequest) SetFetchRequest(value IFetchRequest) {
+	objc.Call[objc.Void](p_, objc.Sel("setFetchRequest:"), value)
+}
+
 // The specified token, when retrieving history defined by a token. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892342-token?language=objc
@@ -164,19 +179,4 @@ func (p_ PersistentHistoryChangeRequest) ResultType() PersistentHistoryResultTyp
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/2892341-resulttype?language=objc
 func (p_ PersistentHistoryChangeRequest) SetResultType(value PersistentHistoryResultType) {
 	objc.Call[objc.Void](p_, objc.Sel("setResultType:"), value)
-}
-
-// The specified fetch request, when retrieving history. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240593-fetchrequest?language=objc
-func (p_ PersistentHistoryChangeRequest) FetchRequest() FetchRequest {
-	rv := objc.Call[FetchRequest](p_, objc.Sel("fetchRequest"))
-	return rv
-}
-
-// The specified fetch request, when retrieving history. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240593-fetchrequest?language=objc
-func (p_ PersistentHistoryChangeRequest) SetFetchRequest(value IFetchRequest) {
-	objc.Call[objc.Void](p_, objc.Sel("setFetchRequest:"), value)
 }

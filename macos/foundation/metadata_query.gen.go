@@ -18,41 +18,41 @@ type _MetadataQueryClass struct {
 // An interface definition for the [MetadataQuery] class.
 type IMetadataQuery interface {
 	objc.IObject
-	EnableUpdates()
-	EnumerateResultsWithOptionsUsingBlock(opts EnumerationOptions, block func(result objc.Object, idx uint, stop *bool))
-	EnumerateResultsUsingBlock(block func(result objc.Object, idx uint, stop *bool))
-	DisableUpdates()
 	ResultAtIndex(idx uint) objc.Object
 	StopQuery()
 	StartQuery() bool
 	IndexOfResult(result objc.IObject) uint
+	EnumerateResultsUsingBlock(block func(result objc.Object, idx uint, stop *bool))
+	DisableUpdates()
 	ValueOfAttributeForResultAtIndex(attrName string, idx uint) objc.Object
-	Predicate() Predicate
-	SetPredicate(value IPredicate)
-	SearchScopes() []objc.Object
-	SetSearchScopes(value []objc.IObject)
-	SearchItems() []objc.Object
-	SetSearchItems(value []objc.IObject)
-	ResultCount() uint
-	Results() []objc.Object
-	OperationQueue() OperationQueue
-	SetOperationQueue(value IOperationQueue)
-	IsGathering() bool
+	EnableUpdates()
+	EnumerateResultsWithOptionsUsingBlock(opts EnumerationOptions, block func(result objc.Object, idx uint, stop *bool))
 	ValueListAttributes() []string
 	SetValueListAttributes(value []string)
-	IsStopped() bool
-	SortDescriptors() []SortDescriptor
-	SetSortDescriptors(value []ISortDescriptor)
-	ValueLists() map[string][]MetadataQueryAttributeValueTuple
 	NotificationBatchingInterval() TimeInterval
 	SetNotificationBatchingInterval(value TimeInterval)
+	ValueLists() map[string][]MetadataQueryAttributeValueTuple
+	GroupedResults() []MetadataQueryResultGroup
+	SortDescriptors() []SortDescriptor
+	SetSortDescriptors(value []ISortDescriptor)
+	Results() []objc.Object
+	IsStopped() bool
+	SearchItems() []objc.Object
+	SetSearchItems(value []objc.IObject)
+	GroupingAttributes() []string
+	SetGroupingAttributes(value []string)
 	Delegate() MetadataQueryDelegateObject
 	SetDelegate(value PMetadataQueryDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	GroupedResults() []MetadataQueryResultGroup
+	Predicate() Predicate
+	SetPredicate(value IPredicate)
 	IsStarted() bool
-	GroupingAttributes() []string
-	SetGroupingAttributes(value []string)
+	IsGathering() bool
+	SearchScopes() []objc.Object
+	SetSearchScopes(value []objc.IObject)
+	ResultCount() uint
+	OperationQueue() OperationQueue
+	SetOperationQueue(value IOperationQueue)
 }
 
 // A query that you perform against Spotlight metadata. [Full Topic]
@@ -88,34 +88,6 @@ func (m_ MetadataQuery) Init() MetadataQuery {
 	return rv
 }
 
-// Enables updates to the query results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416943-enableupdates?language=objc
-func (m_ MetadataQuery) EnableUpdates() {
-	objc.Call[objc.Void](m_, objc.Sel("enableUpdates"))
-}
-
-// Enumerates the current set of results using the given options and block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1415123-enumerateresultswithoptions?language=objc
-func (m_ MetadataQuery) EnumerateResultsWithOptionsUsingBlock(opts EnumerationOptions, block func(result objc.Object, idx uint, stop *bool)) {
-	objc.Call[objc.Void](m_, objc.Sel("enumerateResultsWithOptions:usingBlock:"), opts, block)
-}
-
-// Enumerates the current set of results using the given block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1415856-enumerateresultsusingblock?language=objc
-func (m_ MetadataQuery) EnumerateResultsUsingBlock(block func(result objc.Object, idx uint, stop *bool)) {
-	objc.Call[objc.Void](m_, objc.Sel("enumerateResultsUsingBlock:"), block)
-}
-
-// Disables updates to the query results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416337-disableupdates?language=objc
-func (m_ MetadataQuery) DisableUpdates() {
-	objc.Call[objc.Void](m_, objc.Sel("disableUpdates"))
-}
-
 // Returns the query result at a specific index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410162-resultatindex?language=objc
@@ -147,6 +119,20 @@ func (m_ MetadataQuery) IndexOfResult(result objc.IObject) uint {
 	return rv
 }
 
+// Enumerates the current set of results using the given block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1415856-enumerateresultsusingblock?language=objc
+func (m_ MetadataQuery) EnumerateResultsUsingBlock(block func(result objc.Object, idx uint, stop *bool)) {
+	objc.Call[objc.Void](m_, objc.Sel("enumerateResultsUsingBlock:"), block)
+}
+
+// Disables updates to the query results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416337-disableupdates?language=objc
+func (m_ MetadataQuery) DisableUpdates() {
+	objc.Call[objc.Void](m_, objc.Sel("disableUpdates"))
+}
+
 // Returns the value for the attribute name attrName at the index in the results specified by idx. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1417133-valueofattribute?language=objc
@@ -155,88 +141,18 @@ func (m_ MetadataQuery) ValueOfAttributeForResultAtIndex(attrName string, idx ui
 	return rv
 }
 
-// The predicate used to filter query results. [Full Topic]
+// Enables updates to the query results. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411478-predicate?language=objc
-func (m_ MetadataQuery) Predicate() Predicate {
-	rv := objc.Call[Predicate](m_, objc.Sel("predicate"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416943-enableupdates?language=objc
+func (m_ MetadataQuery) EnableUpdates() {
+	objc.Call[objc.Void](m_, objc.Sel("enableUpdates"))
 }
 
-// The predicate used to filter query results. [Full Topic]
+// Enumerates the current set of results using the given options and block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411478-predicate?language=objc
-func (m_ MetadataQuery) SetPredicate(value IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("setPredicate:"), value)
-}
-
-// An array containing the search scopes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1412155-searchscopes?language=objc
-func (m_ MetadataQuery) SearchScopes() []objc.Object {
-	rv := objc.Call[[]objc.Object](m_, objc.Sel("searchScopes"))
-	return rv
-}
-
-// An array containing the search scopes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1412155-searchscopes?language=objc
-func (m_ MetadataQuery) SetSearchScopes(value []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setSearchScopes:"), value)
-}
-
-// An array of objects that define the query’s scope. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411307-searchitems?language=objc
-func (m_ MetadataQuery) SearchItems() []objc.Object {
-	rv := objc.Call[[]objc.Object](m_, objc.Sel("searchItems"))
-	return rv
-}
-
-// An array of objects that define the query’s scope. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411307-searchitems?language=objc
-func (m_ MetadataQuery) SetSearchItems(value []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setSearchItems:"), value)
-}
-
-// The number of results returned by the query. (read-only) [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1418315-resultcount?language=objc
-func (m_ MetadataQuery) ResultCount() uint {
-	rv := objc.Call[uint](m_, objc.Sel("resultCount"))
-	return rv
-}
-
-// An array containing the query’s results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1408872-results?language=objc
-func (m_ MetadataQuery) Results() []objc.Object {
-	rv := objc.Call[[]objc.Object](m_, objc.Sel("results"))
-	return rv
-}
-
-// The queue on which query result notifications are posted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410953-operationqueue?language=objc
-func (m_ MetadataQuery) OperationQueue() OperationQueue {
-	rv := objc.Call[OperationQueue](m_, objc.Sel("operationQueue"))
-	return rv
-}
-
-// The queue on which query result notifications are posted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410953-operationqueue?language=objc
-func (m_ MetadataQuery) SetOperationQueue(value IOperationQueue) {
-	objc.Call[objc.Void](m_, objc.Sel("setOperationQueue:"), value)
-}
-
-// A Boolean value that indicates whether the receiver is in the initial gathering phase of the query. (read-only) [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1407539-gathering?language=objc
-func (m_ MetadataQuery) IsGathering() bool {
-	rv := objc.Call[bool](m_, objc.Sel("isGathering"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1415123-enumerateresultswithoptions?language=objc
+func (m_ MetadataQuery) EnumerateResultsWithOptionsUsingBlock(opts EnumerationOptions, block func(result objc.Object, idx uint, stop *bool)) {
+	objc.Call[objc.Void](m_, objc.Sel("enumerateResultsWithOptions:usingBlock:"), opts, block)
 }
 
 // An array of attributes whose values are gathered by the query. [Full Topic]
@@ -254,11 +170,34 @@ func (m_ MetadataQuery) SetValueListAttributes(value []string) {
 	objc.Call[objc.Void](m_, objc.Sel("setValueListAttributes:"), value)
 }
 
-// A Boolean value that indicates whether the query has stopped. [Full Topic]
+// The interval at which notification of updated results occurs. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411941-stopped?language=objc
-func (m_ MetadataQuery) IsStopped() bool {
-	rv := objc.Call[bool](m_, objc.Sel("isStopped"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411884-notificationbatchinginterval?language=objc
+func (m_ MetadataQuery) NotificationBatchingInterval() TimeInterval {
+	rv := objc.Call[TimeInterval](m_, objc.Sel("notificationBatchingInterval"))
+	return rv
+}
+
+// The interval at which notification of updated results occurs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411884-notificationbatchinginterval?language=objc
+func (m_ MetadataQuery) SetNotificationBatchingInterval(value TimeInterval) {
+	objc.Call[objc.Void](m_, objc.Sel("setNotificationBatchingInterval:"), value)
+}
+
+// A dictionary containing the value lists generated by the query. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1418401-valuelists?language=objc
+func (m_ MetadataQuery) ValueLists() map[string][]MetadataQueryAttributeValueTuple {
+	rv := objc.Call[map[string][]MetadataQueryAttributeValueTuple](m_, objc.Sel("valueLists"))
+	return rv
+}
+
+// An array containing hierarchical groups of query results. (read-only) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416579-groupedresults?language=objc
+func (m_ MetadataQuery) GroupedResults() []MetadataQueryResultGroup {
+	rv := objc.Call[[]MetadataQueryResultGroup](m_, objc.Sel("groupedResults"))
 	return rv
 }
 
@@ -277,27 +216,50 @@ func (m_ MetadataQuery) SetSortDescriptors(value []ISortDescriptor) {
 	objc.Call[objc.Void](m_, objc.Sel("setSortDescriptors:"), value)
 }
 
-// A dictionary containing the value lists generated by the query. [Full Topic]
+// An array containing the query’s results. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1418401-valuelists?language=objc
-func (m_ MetadataQuery) ValueLists() map[string][]MetadataQueryAttributeValueTuple {
-	rv := objc.Call[map[string][]MetadataQueryAttributeValueTuple](m_, objc.Sel("valueLists"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1408872-results?language=objc
+func (m_ MetadataQuery) Results() []objc.Object {
+	rv := objc.Call[[]objc.Object](m_, objc.Sel("results"))
 	return rv
 }
 
-// The interval at which notification of updated results occurs. [Full Topic]
+// A Boolean value that indicates whether the query has stopped. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411884-notificationbatchinginterval?language=objc
-func (m_ MetadataQuery) NotificationBatchingInterval() TimeInterval {
-	rv := objc.Call[TimeInterval](m_, objc.Sel("notificationBatchingInterval"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411941-stopped?language=objc
+func (m_ MetadataQuery) IsStopped() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isStopped"))
 	return rv
 }
 
-// The interval at which notification of updated results occurs. [Full Topic]
+// An array of objects that define the query’s scope. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411884-notificationbatchinginterval?language=objc
-func (m_ MetadataQuery) SetNotificationBatchingInterval(value TimeInterval) {
-	objc.Call[objc.Void](m_, objc.Sel("setNotificationBatchingInterval:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411307-searchitems?language=objc
+func (m_ MetadataQuery) SearchItems() []objc.Object {
+	rv := objc.Call[[]objc.Object](m_, objc.Sel("searchItems"))
+	return rv
+}
+
+// An array of objects that define the query’s scope. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411307-searchitems?language=objc
+func (m_ MetadataQuery) SetSearchItems(value []objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setSearchItems:"), value)
+}
+
+// An array of grouping attributes. (read-only) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1409191-groupingattributes?language=objc
+func (m_ MetadataQuery) GroupingAttributes() []string {
+	rv := objc.Call[[]string](m_, objc.Sel("groupingAttributes"))
+	return rv
+}
+
+// An array of grouping attributes. (read-only) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1409191-groupingattributes?language=objc
+func (m_ MetadataQuery) SetGroupingAttributes(value []string) {
+	objc.Call[objc.Void](m_, objc.Sel("setGroupingAttributes:"), value)
 }
 
 // The query’s delegate. [Full Topic]
@@ -323,12 +285,19 @@ func (m_ MetadataQuery) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// An array containing hierarchical groups of query results. (read-only) [Full Topic]
+// The predicate used to filter query results. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1416579-groupedresults?language=objc
-func (m_ MetadataQuery) GroupedResults() []MetadataQueryResultGroup {
-	rv := objc.Call[[]MetadataQueryResultGroup](m_, objc.Sel("groupedResults"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411478-predicate?language=objc
+func (m_ MetadataQuery) Predicate() Predicate {
+	rv := objc.Call[Predicate](m_, objc.Sel("predicate"))
 	return rv
+}
+
+// The predicate used to filter query results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411478-predicate?language=objc
+func (m_ MetadataQuery) SetPredicate(value IPredicate) {
+	objc.Call[objc.Void](m_, objc.Sel("setPredicate:"), value)
 }
 
 // A Boolean value that indicates whether the query has started. (read-only) [Full Topic]
@@ -339,17 +308,48 @@ func (m_ MetadataQuery) IsStarted() bool {
 	return rv
 }
 
-// An array of grouping attributes. (read-only) [Full Topic]
+// A Boolean value that indicates whether the receiver is in the initial gathering phase of the query. (read-only) [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1409191-groupingattributes?language=objc
-func (m_ MetadataQuery) GroupingAttributes() []string {
-	rv := objc.Call[[]string](m_, objc.Sel("groupingAttributes"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1407539-gathering?language=objc
+func (m_ MetadataQuery) IsGathering() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isGathering"))
 	return rv
 }
 
-// An array of grouping attributes. (read-only) [Full Topic]
+// An array containing the search scopes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1409191-groupingattributes?language=objc
-func (m_ MetadataQuery) SetGroupingAttributes(value []string) {
-	objc.Call[objc.Void](m_, objc.Sel("setGroupingAttributes:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1412155-searchscopes?language=objc
+func (m_ MetadataQuery) SearchScopes() []objc.Object {
+	rv := objc.Call[[]objc.Object](m_, objc.Sel("searchScopes"))
+	return rv
+}
+
+// An array containing the search scopes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1412155-searchscopes?language=objc
+func (m_ MetadataQuery) SetSearchScopes(value []objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setSearchScopes:"), value)
+}
+
+// The number of results returned by the query. (read-only) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1418315-resultcount?language=objc
+func (m_ MetadataQuery) ResultCount() uint {
+	rv := objc.Call[uint](m_, objc.Sel("resultCount"))
+	return rv
+}
+
+// The queue on which query result notifications are posted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410953-operationqueue?language=objc
+func (m_ MetadataQuery) OperationQueue() OperationQueue {
+	rv := objc.Call[OperationQueue](m_, objc.Sel("operationQueue"))
+	return rv
+}
+
+// The queue on which query result notifications are posted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410953-operationqueue?language=objc
+func (m_ MetadataQuery) SetOperationQueue(value IOperationQueue) {
+	objc.Call[objc.Void](m_, objc.Sel("setOperationQueue:"), value)
 }

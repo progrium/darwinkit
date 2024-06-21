@@ -19,13 +19,13 @@ type _PanGestureRecognizerClass struct {
 // An interface definition for the [PanGestureRecognizer] class.
 type IPanGestureRecognizer interface {
 	IGestureRecognizer
+	SetTranslationInView(translation foundation.Point, view IView)
 	VelocityInView(view IView) foundation.Point
 	TranslationInView(view IView) foundation.Point
-	SetTranslationInView(translation foundation.Point, view IView)
-	NumberOfTouchesRequired() int
-	SetNumberOfTouchesRequired(value int)
 	ButtonMask() uint
 	SetButtonMask(value uint)
+	NumberOfTouchesRequired() int
+	SetNumberOfTouchesRequired(value int)
 }
 
 // A continuous gesture recognizer for panning gestures. [Full Topic]
@@ -75,6 +75,13 @@ func NewPanGestureRecognizerWithTargetAction(target objc.IObject, action objc.Se
 	return instance
 }
 
+// Changes the current translation value of the gesture recognizer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515533-settranslation?language=objc
+func (p_ PanGestureRecognizer) SetTranslationInView(translation foundation.Point, view IView) {
+	objc.Call[objc.Void](p_, objc.Sel("setTranslation:inView:"), translation, view)
+}
+
 // The velocity of the pan, measured in points per second. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515532-velocityinview?language=objc
@@ -91,11 +98,19 @@ func (p_ PanGestureRecognizer) TranslationInView(view IView) foundation.Point {
 	return rv
 }
 
-// Changes the current translation value of the gesture recognizer. [Full Topic]
+// A bit mask of the button (or buttons) required to recognize this gesture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515533-settranslation?language=objc
-func (p_ PanGestureRecognizer) SetTranslationInView(translation foundation.Point, view IView) {
-	objc.Call[objc.Void](p_, objc.Sel("setTranslation:inView:"), translation, view)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515529-buttonmask?language=objc
+func (p_ PanGestureRecognizer) ButtonMask() uint {
+	rv := objc.Call[uint](p_, objc.Sel("buttonMask"))
+	return rv
+}
+
+// A bit mask of the button (or buttons) required to recognize this gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515529-buttonmask?language=objc
+func (p_ PanGestureRecognizer) SetButtonMask(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setButtonMask:"), value)
 }
 
 // The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]
@@ -111,19 +126,4 @@ func (p_ PanGestureRecognizer) NumberOfTouchesRequired() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/2544781-numberoftouchesrequired?language=objc
 func (p_ PanGestureRecognizer) SetNumberOfTouchesRequired(value int) {
 	objc.Call[objc.Void](p_, objc.Sel("setNumberOfTouchesRequired:"), value)
-}
-
-// A bit mask of the button (or buttons) required to recognize this gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515529-buttonmask?language=objc
-func (p_ PanGestureRecognizer) ButtonMask() uint {
-	rv := objc.Call[uint](p_, objc.Sel("buttonMask"))
-	return rv
-}
-
-// A bit mask of the button (or buttons) required to recognize this gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515529-buttonmask?language=objc
-func (p_ PanGestureRecognizer) SetButtonMask(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setButtonMask:"), value)
 }

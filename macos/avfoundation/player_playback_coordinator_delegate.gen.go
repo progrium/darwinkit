@@ -3,7 +3,6 @@
 package avfoundation
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,37 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate?language=objc
 type PPlayerPlaybackCoordinatorDelegate interface {
 	// optional
-	PlaybackCoordinatorInterstitialTimeRangesForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value
-	HasPlaybackCoordinatorInterstitialTimeRangesForPlayerItem() bool
-
-	// optional
 	PlaybackCoordinatorIdentifierForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) string
 	HasPlaybackCoordinatorIdentifierForPlayerItem() bool
 }
 
 // A delegate implementation builder for the [PPlayerPlaybackCoordinatorDelegate] protocol.
 type PlayerPlaybackCoordinatorDelegate struct {
-	_PlaybackCoordinatorInterstitialTimeRangesForPlayerItem func(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value
-	_PlaybackCoordinatorIdentifierForPlayerItem             func(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) string
+	_PlaybackCoordinatorIdentifierForPlayerItem func(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) string
 }
 
-func (di *PlayerPlaybackCoordinatorDelegate) HasPlaybackCoordinatorInterstitialTimeRangesForPlayerItem() bool {
-	return di._PlaybackCoordinatorInterstitialTimeRangesForPlayerItem != nil
-}
-
-// Asks the delegate for time ranges in a player item that don’t correspond to the primary content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate/3920458-playbackcoordinator?language=objc
-func (di *PlayerPlaybackCoordinatorDelegate) SetPlaybackCoordinatorInterstitialTimeRangesForPlayerItem(f func(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value) {
-	di._PlaybackCoordinatorInterstitialTimeRangesForPlayerItem = f
-}
-
-// Asks the delegate for time ranges in a player item that don’t correspond to the primary content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate/3920458-playbackcoordinator?language=objc
-func (di *PlayerPlaybackCoordinatorDelegate) PlaybackCoordinatorInterstitialTimeRangesForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value {
-	return di._PlaybackCoordinatorInterstitialTimeRangesForPlayerItem(coordinator, playerItem)
-}
 func (di *PlayerPlaybackCoordinatorDelegate) HasPlaybackCoordinatorIdentifierForPlayerItem() bool {
 	return di._PlaybackCoordinatorIdentifierForPlayerItem != nil
 }
@@ -67,18 +44,6 @@ var _ PPlayerPlaybackCoordinatorDelegate = (*PlayerPlaybackCoordinatorDelegateOb
 // A concrete type for the [PPlayerPlaybackCoordinatorDelegate] protocol.
 type PlayerPlaybackCoordinatorDelegateObject struct {
 	objc.Object
-}
-
-func (p_ PlayerPlaybackCoordinatorDelegateObject) HasPlaybackCoordinatorInterstitialTimeRangesForPlayerItem() bool {
-	return p_.RespondsToSelector(objc.Sel("playbackCoordinator:interstitialTimeRangesForPlayerItem:"))
-}
-
-// Asks the delegate for time ranges in a player item that don’t correspond to the primary content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate/3920458-playbackcoordinator?language=objc
-func (p_ PlayerPlaybackCoordinatorDelegateObject) PlaybackCoordinatorInterstitialTimeRangesForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value {
-	rv := objc.Call[[]foundation.Value](p_, objc.Sel("playbackCoordinator:interstitialTimeRangesForPlayerItem:"), coordinator, playerItem)
-	return rv
 }
 
 func (p_ PlayerPlaybackCoordinatorDelegateObject) HasPlaybackCoordinatorIdentifierForPlayerItem() bool {

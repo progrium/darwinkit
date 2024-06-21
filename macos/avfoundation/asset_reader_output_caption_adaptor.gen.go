@@ -18,8 +18,8 @@ type _AssetReaderOutputCaptionAdaptorClass struct {
 // An interface definition for the [AssetReaderOutputCaptionAdaptor] class.
 type IAssetReaderOutputCaptionAdaptor interface {
 	objc.IObject
-	NextCaptionGroup() CaptionGroup
 	CaptionsNotPresentInPreviousGroupsInCaptionGroup(captionGroup ICaptionGroup) []Caption
+	NextCaptionGroup() CaptionGroup
 	AssetReaderTrackOutput() AssetReaderTrackOutput
 	ValidationDelegate() AssetReaderCaptionValidationHandlingObject
 	SetValidationDelegate(value PAssetReaderCaptionValidationHandling)
@@ -39,18 +39,6 @@ func AssetReaderOutputCaptionAdaptorFrom(ptr unsafe.Pointer) AssetReaderOutputCa
 	}
 }
 
-func (ac _AssetReaderOutputCaptionAdaptorClass) AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
-	rv := objc.Call[AssetReaderOutputCaptionAdaptor](ac, objc.Sel("assetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput:"), trackOutput)
-	return rv
-}
-
-// A class method that creates a caption adaptor that reads from a track output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752794-assetreaderoutputcaptionadaptorw?language=objc
-func AssetReaderOutputCaptionAdaptor_AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
-	return AssetReaderOutputCaptionAdaptorClass.AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput)
-}
-
 func (a_ AssetReaderOutputCaptionAdaptor) InitWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
 	rv := objc.Call[AssetReaderOutputCaptionAdaptor](a_, objc.Sel("initWithAssetReaderTrackOutput:"), trackOutput)
 	return rv
@@ -63,6 +51,18 @@ func NewAssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IA
 	instance := AssetReaderOutputCaptionAdaptorClass.Alloc().InitWithAssetReaderTrackOutput(trackOutput)
 	instance.Autorelease()
 	return instance
+}
+
+func (ac _AssetReaderOutputCaptionAdaptorClass) AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
+	rv := objc.Call[AssetReaderOutputCaptionAdaptor](ac, objc.Sel("assetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput:"), trackOutput)
+	return rv
+}
+
+// A class method that creates a caption adaptor that reads from a track output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752794-assetreaderoutputcaptionadaptorw?language=objc
+func AssetReaderOutputCaptionAdaptor_AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
+	return AssetReaderOutputCaptionAdaptorClass.AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput)
 }
 
 func (ac _AssetReaderOutputCaptionAdaptorClass) Alloc() AssetReaderOutputCaptionAdaptor {
@@ -85,19 +85,19 @@ func (a_ AssetReaderOutputCaptionAdaptor) Init() AssetReaderOutputCaptionAdaptor
 	return rv
 }
 
-// Returns the next caption group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752798-nextcaptiongroup?language=objc
-func (a_ AssetReaderOutputCaptionAdaptor) NextCaptionGroup() CaptionGroup {
-	rv := objc.Call[CaptionGroup](a_, objc.Sel("nextCaptionGroup"))
-	return rv
-}
-
 // Returns the set of captions in the caption group that weren’t vended by the adaptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752796-captionsnotpresentinpreviousgrou?language=objc
 func (a_ AssetReaderOutputCaptionAdaptor) CaptionsNotPresentInPreviousGroupsInCaptionGroup(captionGroup ICaptionGroup) []Caption {
 	rv := objc.Call[[]Caption](a_, objc.Sel("captionsNotPresentInPreviousGroupsInCaptionGroup:"), captionGroup)
+	return rv
+}
+
+// Returns the next caption group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752798-nextcaptiongroup?language=objc
+func (a_ AssetReaderOutputCaptionAdaptor) NextCaptionGroup() CaptionGroup {
+	rv := objc.Call[CaptionGroup](a_, objc.Sel("nextCaptionGroup"))
 	return rv
 }
 

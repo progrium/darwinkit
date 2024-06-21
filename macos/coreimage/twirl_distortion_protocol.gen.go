@@ -12,20 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion?language=objc
 type PTwirlDistortion interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetRadius(value float32)
@@ -36,12 +28,20 @@ type PTwirlDistortion interface {
 	HasRadius() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetAngle(value float32)
+	HasSetAngle() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,49 +52,26 @@ type TwirlDistortionObject struct {
 	objc.Object
 }
 
-func (t_ TwirlDistortionObject) HasSetCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("setCenter:"))
+func (t_ TwirlDistortionObject) HasSetInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600204-center?language=objc
-func (t_ TwirlDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600205-inputimage?language=objc
+func (t_ TwirlDistortionObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
-func (t_ TwirlDistortionObject) HasCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("center"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600204-center?language=objc
-func (t_ TwirlDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
-	return rv
-}
-
-func (t_ TwirlDistortionObject) HasSetAngle() bool {
-	return t_.RespondsToSelector(objc.Sel("setAngle:"))
+func (t_ TwirlDistortionObject) HasInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
-func (t_ TwirlDistortionObject) SetAngle(value float32) {
-	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
-}
-
-func (t_ TwirlDistortionObject) HasAngle() bool {
-	return t_.RespondsToSelector(objc.Sel("angle"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
-func (t_ TwirlDistortionObject) Angle() float32 {
-	rv := objc.Call[float32](t_, objc.Sel("angle"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600205-inputimage?language=objc
+func (t_ TwirlDistortionObject) InputImage() Image {
+	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -121,25 +98,48 @@ func (t_ TwirlDistortionObject) Radius() float32 {
 	return rv
 }
 
-func (t_ TwirlDistortionObject) HasSetInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (t_ TwirlDistortionObject) HasSetAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("setAngle:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600205-inputimage?language=objc
-func (t_ TwirlDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
+func (t_ TwirlDistortionObject) SetAngle(value float32) {
+	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
 }
 
-func (t_ TwirlDistortionObject) HasInputImage() bool {
-	return t_.RespondsToSelector(objc.Sel("inputImage"))
+func (t_ TwirlDistortionObject) HasAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("angle"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600205-inputimage?language=objc
-func (t_ TwirlDistortionObject) InputImage() Image {
-	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
+func (t_ TwirlDistortionObject) Angle() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("angle"))
+	return rv
+}
+
+func (t_ TwirlDistortionObject) HasSetCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600204-center?language=objc
+func (t_ TwirlDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
+}
+
+func (t_ TwirlDistortionObject) HasCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600204-center?language=objc
+func (t_ TwirlDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
 	return rv
 }

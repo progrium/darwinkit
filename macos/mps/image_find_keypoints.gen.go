@@ -72,21 +72,6 @@ func (i_ ImageFindKeypoints) Init() ImageFindKeypoints {
 	return rv
 }
 
-func (i_ ImageFindKeypoints) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageFindKeypoints {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageFindKeypoints](i_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func ImageFindKeypoints_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageFindKeypoints {
-	instance := ImageFindKeypointsClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ ImageFindKeypoints) InitWithDevice(device metal.PDevice) ImageFindKeypoints {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageFindKeypoints](i_, objc.Sel("initWithDevice:"), po0)
@@ -98,6 +83,21 @@ func (i_ ImageFindKeypoints) InitWithDevice(device metal.PDevice) ImageFindKeypo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewImageFindKeypointsWithDevice(device metal.PDevice) ImageFindKeypoints {
 	instance := ImageFindKeypointsClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ ImageFindKeypoints) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageFindKeypoints {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[ImageFindKeypoints](i_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func ImageFindKeypoints_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageFindKeypoints {
+	instance := ImageFindKeypointsClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

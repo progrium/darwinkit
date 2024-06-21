@@ -13,12 +13,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageallocator?language=objc
 type PImageAllocator interface {
 	// optional
-	ImageBatchForCommandBufferImageDescriptorKernelCount(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel, count uint) *foundation.Array
-	HasImageBatchForCommandBufferImageDescriptorKernelCount() bool
-
-	// optional
 	ImageForCommandBufferImageDescriptorKernel(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel) Image
 	HasImageForCommandBufferImageDescriptorKernel() bool
+
+	// optional
+	ImageBatchForCommandBufferImageDescriptorKernelCount(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel, count uint) *foundation.Array
+	HasImageBatchForCommandBufferImageDescriptorKernelCount() bool
 }
 
 // ensure impl type implements protocol interface
@@ -27,19 +27,6 @@ var _ PImageAllocator = (*ImageAllocatorObject)(nil)
 // A concrete type for the [PImageAllocator] protocol.
 type ImageAllocatorObject struct {
 	objc.Object
-}
-
-func (i_ ImageAllocatorObject) HasImageBatchForCommandBufferImageDescriptorKernelCount() bool {
-	return i_.RespondsToSelector(objc.Sel("imageBatchForCommandBuffer:imageDescriptor:kernel:count:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageallocator/3020685-imagebatchforcommandbuffer?language=objc
-func (i_ ImageAllocatorObject) ImageBatchForCommandBufferImageDescriptorKernelCount(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel, count uint) *foundation.Array {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[*foundation.Array](i_, objc.Sel("imageBatchForCommandBuffer:imageDescriptor:kernel:count:"), po0, descriptor, kernel, count)
-	return rv
 }
 
 func (i_ ImageAllocatorObject) HasImageForCommandBufferImageDescriptorKernel() bool {
@@ -52,5 +39,18 @@ func (i_ ImageAllocatorObject) HasImageForCommandBufferImageDescriptorKernel() b
 func (i_ ImageAllocatorObject) ImageForCommandBufferImageDescriptorKernel(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
 	rv := objc.Call[Image](i_, objc.Sel("imageForCommandBuffer:imageDescriptor:kernel:"), po0, descriptor, kernel)
+	return rv
+}
+
+func (i_ ImageAllocatorObject) HasImageBatchForCommandBufferImageDescriptorKernelCount() bool {
+	return i_.RespondsToSelector(objc.Sel("imageBatchForCommandBuffer:imageDescriptor:kernel:count:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageallocator/3020685-imagebatchforcommandbuffer?language=objc
+func (i_ ImageAllocatorObject) ImageBatchForCommandBufferImageDescriptorKernelCount(cmdBuf metal.CommandBufferObject, descriptor ImageDescriptor, kernel Kernel, count uint) *foundation.Array {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
+	rv := objc.Call[*foundation.Array](i_, objc.Sel("imageBatchForCommandBuffer:imageDescriptor:kernel:count:"), po0, descriptor, kernel, count)
 	return rv
 }

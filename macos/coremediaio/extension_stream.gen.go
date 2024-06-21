@@ -20,17 +20,17 @@ type _ExtensionStreamClass struct {
 // An interface definition for the [ExtensionStream] class.
 type IExtensionStream interface {
 	objc.IObject
-	NotifyScheduledOutputChanged(scheduledOutput IExtensionScheduledOutput)
-	ConsumeSampleBufferFromClientCompletionHandler(client IExtensionClient, completionHandler func(sampleBuffer coremedia.SampleBufferRef, sampleBufferSequenceNumber uint64, discontinuity ExtensionStreamDiscontinuityFlags, hasMoreSampleBuffers bool, error foundation.Error))
-	SendSampleBufferDiscontinuityHostTimeInNanoseconds(sampleBuffer coremedia.SampleBufferRef, discontinuity ExtensionStreamDiscontinuityFlags, hostTimeInNanoseconds uint64)
 	NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState)
-	LocalizedName() string
-	StreamingClients() []ExtensionClient
-	Source() ExtensionStreamSourceObject
+	NotifyScheduledOutputChanged(scheduledOutput IExtensionScheduledOutput)
+	SendSampleBufferDiscontinuityHostTimeInNanoseconds(sampleBuffer coremedia.SampleBufferRef, discontinuity ExtensionStreamDiscontinuityFlags, hostTimeInNanoseconds uint64)
+	ConsumeSampleBufferFromClientCompletionHandler(client IExtensionClient, completionHandler func(sampleBuffer coremedia.SampleBufferRef, sampleBufferSequenceNumber uint64, discontinuity ExtensionStreamDiscontinuityFlags, hasMoreSampleBuffers bool, error foundation.Error))
 	StreamID() foundation.UUID
-	ClockType() ExtensionStreamClockType
 	Direction() ExtensionStreamDirection
+	Source() ExtensionStreamSourceObject
+	LocalizedName() string
+	ClockType() ExtensionStreamClockType
 	CustomClockConfiguration() ExtensionStreamCustomClockConfiguration
+	StreamingClients() []ExtensionClient
 }
 
 // An object that represents a stream of media data. [Full Topic]
@@ -57,34 +57,6 @@ func (e_ ExtensionStream) InitWithLocalizedNameStreamIDDirectionClockTypeSource(
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915934-initwithlocalizedname?language=objc
 func NewExtensionStreamWithLocalizedNameStreamIDDirectionClockTypeSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, clockType ExtensionStreamClockType, source PExtensionStreamSource) ExtensionStream {
 	instance := ExtensionStreamClass.Alloc().InitWithLocalizedNameStreamIDDirectionClockTypeSource(localizedName, streamID, direction, clockType, source)
-	instance.Autorelease()
-	return instance
-}
-
-func (ec _ExtensionStreamClass) StreamWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
-	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](ec, objc.Sel("streamWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, streamID, direction, customClockConfiguration, po4)
-	return rv
-}
-
-// Returns a new stream that uses a custom clock configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915943-streamwithlocalizedname?language=objc
-func ExtensionStream_StreamWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
-	return ExtensionStreamClass.StreamWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName, streamID, direction, customClockConfiguration, source)
-}
-
-func (e_ ExtensionStream) InitWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
-	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](e_, objc.Sel("initWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, streamID, direction, customClockConfiguration, po4)
-	return rv
-}
-
-// Creates a stream that uses a custom clock configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915935-initwithlocalizedname?language=objc
-func NewExtensionStreamWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
-	instance := ExtensionStreamClass.Alloc().InitWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName, streamID, direction, customClockConfiguration, source)
 	instance.Autorelease()
 	return instance
 }
@@ -122,18 +94,18 @@ func (e_ ExtensionStream) Init() ExtensionStream {
 	return rv
 }
 
+// Notifies clients about stream property changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915937-notifypropertieschanged?language=objc
+func (e_ ExtensionStream) NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState) {
+	objc.Call[objc.Void](e_, objc.Sel("notifyPropertiesChanged:"), propertyStates)
+}
+
 // Notifies clients when a particular buffer is output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915938-notifyscheduledoutputchanged?language=objc
 func (e_ ExtensionStream) NotifyScheduledOutputChanged(scheduledOutput IExtensionScheduledOutput) {
 	objc.Call[objc.Void](e_, objc.Sel("notifyScheduledOutputChanged:"), scheduledOutput)
-}
-
-// Consumes a sample buffer from a client. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915931-consumesamplebufferfromclient?language=objc
-func (e_ ExtensionStream) ConsumeSampleBufferFromClientCompletionHandler(client IExtensionClient, completionHandler func(sampleBuffer coremedia.SampleBufferRef, sampleBufferSequenceNumber uint64, discontinuity ExtensionStreamDiscontinuityFlags, hasMoreSampleBuffers bool, error foundation.Error)) {
-	objc.Call[objc.Void](e_, objc.Sel("consumeSampleBufferFromClient:completionHandler:"), client, completionHandler)
 }
 
 // Sends a media sample to stream client. [Full Topic]
@@ -143,35 +115,11 @@ func (e_ ExtensionStream) SendSampleBufferDiscontinuityHostTimeInNanoseconds(sam
 	objc.Call[objc.Void](e_, objc.Sel("sendSampleBuffer:discontinuity:hostTimeInNanoseconds:"), sampleBuffer, discontinuity, hostTimeInNanoseconds)
 }
 
-// Notifies clients about stream property changes. [Full Topic]
+// Consumes a sample buffer from a client. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915937-notifypropertieschanged?language=objc
-func (e_ ExtensionStream) NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState) {
-	objc.Call[objc.Void](e_, objc.Sel("notifyPropertiesChanged:"), propertyStates)
-}
-
-// A localized name for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915936-localizedname?language=objc
-func (e_ ExtensionStream) LocalizedName() string {
-	rv := objc.Call[string](e_, objc.Sel("localizedName"))
-	return rv
-}
-
-// An array of clients of the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915944-streamingclients?language=objc
-func (e_ ExtensionStream) StreamingClients() []ExtensionClient {
-	rv := objc.Call[[]ExtensionClient](e_, objc.Sel("streamingClients"))
-	return rv
-}
-
-// The source object for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915940-source?language=objc
-func (e_ ExtensionStream) Source() ExtensionStreamSourceObject {
-	rv := objc.Call[ExtensionStreamSourceObject](e_, objc.Sel("source"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915931-consumesamplebufferfromclient?language=objc
+func (e_ ExtensionStream) ConsumeSampleBufferFromClientCompletionHandler(client IExtensionClient, completionHandler func(sampleBuffer coremedia.SampleBufferRef, sampleBufferSequenceNumber uint64, discontinuity ExtensionStreamDiscontinuityFlags, hasMoreSampleBuffers bool, error foundation.Error)) {
+	objc.Call[objc.Void](e_, objc.Sel("consumeSampleBufferFromClient:completionHandler:"), client, completionHandler)
 }
 
 // A universally unique identifier for the stream. [Full Topic]
@@ -179,14 +127,6 @@ func (e_ ExtensionStream) Source() ExtensionStreamSourceObject {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915941-streamid?language=objc
 func (e_ ExtensionStream) StreamID() foundation.UUID {
 	rv := objc.Call[foundation.UUID](e_, objc.Sel("streamID"))
-	return rv
-}
-
-// A clock type for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915930-clocktype?language=objc
-func (e_ ExtensionStream) ClockType() ExtensionStreamClockType {
-	rv := objc.Call[ExtensionStreamClockType](e_, objc.Sel("clockType"))
 	return rv
 }
 
@@ -198,10 +138,42 @@ func (e_ ExtensionStream) Direction() ExtensionStreamDirection {
 	return rv
 }
 
+// The source object for the stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915940-source?language=objc
+func (e_ ExtensionStream) Source() ExtensionStreamSourceObject {
+	rv := objc.Call[ExtensionStreamSourceObject](e_, objc.Sel("source"))
+	return rv
+}
+
+// A localized name for the stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915936-localizedname?language=objc
+func (e_ ExtensionStream) LocalizedName() string {
+	rv := objc.Call[string](e_, objc.Sel("localizedName"))
+	return rv
+}
+
+// A clock type for the stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915930-clocktype?language=objc
+func (e_ ExtensionStream) ClockType() ExtensionStreamClockType {
+	rv := objc.Call[ExtensionStreamClockType](e_, objc.Sel("clockType"))
+	return rv
+}
+
 // An optional custom clock configuration for a stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915932-customclockconfiguration?language=objc
 func (e_ ExtensionStream) CustomClockConfiguration() ExtensionStreamCustomClockConfiguration {
 	rv := objc.Call[ExtensionStreamCustomClockConfiguration](e_, objc.Sel("customClockConfiguration"))
+	return rv
+}
+
+// An array of clients of the stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915944-streamingclients?language=objc
+func (e_ ExtensionStream) StreamingClients() []ExtensionClient {
+	rv := objc.Call[[]ExtensionClient](e_, objc.Sel("streamingClients"))
 	return rv
 }

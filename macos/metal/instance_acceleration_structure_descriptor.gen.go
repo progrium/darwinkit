@@ -18,26 +18,26 @@ type _InstanceAccelerationStructureDescriptorClass struct {
 // An interface definition for the [InstanceAccelerationStructureDescriptor] class.
 type IInstanceAccelerationStructureDescriptor interface {
 	IAccelerationStructureDescriptor
-	InstancedAccelerationStructures() []AccelerationStructureObject
-	SetInstancedAccelerationStructures(value []PAccelerationStructure)
-	MotionTransformCount() uint
-	SetMotionTransformCount(value uint)
-	InstanceDescriptorBufferOffset() uint
-	SetInstanceDescriptorBufferOffset(value uint)
-	MotionTransformBuffer() BufferObject
-	SetMotionTransformBuffer(value PBuffer)
-	SetMotionTransformBufferObject(valueObject objc.IObject)
 	InstanceDescriptorBuffer() BufferObject
 	SetInstanceDescriptorBuffer(value PBuffer)
 	SetInstanceDescriptorBufferObject(valueObject objc.IObject)
-	InstanceDescriptorStride() uint
-	SetInstanceDescriptorStride(value uint)
-	MotionTransformBufferOffset() uint
-	SetMotionTransformBufferOffset(value uint)
-	InstanceCount() uint
-	SetInstanceCount(value uint)
+	MotionTransformBuffer() BufferObject
+	SetMotionTransformBuffer(value PBuffer)
+	SetMotionTransformBufferObject(valueObject objc.IObject)
 	InstanceDescriptorType() AccelerationStructureInstanceDescriptorType
 	SetInstanceDescriptorType(value AccelerationStructureInstanceDescriptorType)
+	InstanceDescriptorBufferOffset() uint
+	SetInstanceDescriptorBufferOffset(value uint)
+	InstancedAccelerationStructures() []AccelerationStructureObject
+	SetInstancedAccelerationStructures(value []PAccelerationStructure)
+	InstanceDescriptorStride() uint
+	SetInstanceDescriptorStride(value uint)
+	InstanceCount() uint
+	SetInstanceCount(value uint)
+	MotionTransformCount() uint
+	SetMotionTransformCount(value uint)
+	MotionTransformBufferOffset() uint
+	SetMotionTransformBufferOffset(value uint)
 }
 
 // A description of an acceleration structure that derives from instances of primitive acceleration structures. [Full Topic]
@@ -85,49 +85,27 @@ func (i_ InstanceAccelerationStructureDescriptor) Init() InstanceAccelerationStr
 	return rv
 }
 
-// The bottom-level acceleration structures that instances use in the instance acceleration structure . [Full Topic]
+// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553889-instancedaccelerationstructures?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) InstancedAccelerationStructures() []AccelerationStructureObject {
-	rv := objc.Call[[]AccelerationStructureObject](i_, objc.Sel("instancedAccelerationStructures"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorBuffer() BufferObject {
+	rv := objc.Call[BufferObject](i_, objc.Sel("instanceDescriptorBuffer"))
 	return rv
 }
 
-// The bottom-level acceleration structures that instances use in the instance acceleration structure . [Full Topic]
+// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553889-instancedaccelerationstructures?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetInstancedAccelerationStructures(value []PAccelerationStructure) {
-	objc.Call[objc.Void](i_, objc.Sel("setInstancedAccelerationStructures:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBuffer(value PBuffer) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", value)
+	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), po0)
 }
 
-// The number of motion transforms in the motion transform buffer. [Full Topic]
+// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750501-motiontransformcount?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) MotionTransformCount() uint {
-	rv := objc.Call[uint](i_, objc.Sel("motionTransformCount"))
-	return rv
-}
-
-// The number of motion transforms in the motion transform buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750501-motiontransformcount?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformCount(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformCount:"), value)
-}
-
-// The offset, in bytes, to the descripton of the first instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553887-instancedescriptorbufferoffset?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorBufferOffset() uint {
-	rv := objc.Call[uint](i_, objc.Sel("instanceDescriptorBufferOffset"))
-	return rv
-}
-
-// The offset, in bytes, to the descripton of the first instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553887-instancedescriptorbufferoffset?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBufferOffset(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBufferOffset:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBufferObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), valueObject)
 }
 
 // A buffer that contains descriptions of each motion transform in the acceleration structure. [Full Topic]
@@ -153,27 +131,49 @@ func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformBufferObject
 	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformBuffer:"), valueObject)
 }
 
-// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
+// The format of the instance data in the descriptor buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorBuffer() BufferObject {
-	rv := objc.Call[BufferObject](i_, objc.Sel("instanceDescriptorBuffer"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750498-instancedescriptortype?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorType() AccelerationStructureInstanceDescriptorType {
+	rv := objc.Call[AccelerationStructureInstanceDescriptorType](i_, objc.Sel("instanceDescriptorType"))
 	return rv
 }
 
-// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
+// The format of the instance data in the descriptor buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBuffer(value PBuffer) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", value)
-	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), po0)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750498-instancedescriptortype?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorType(value AccelerationStructureInstanceDescriptorType) {
+	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorType:"), value)
 }
 
-// A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
+// The offset, in bytes, to the descripton of the first instance. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), valueObject)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553887-instancedescriptorbufferoffset?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorBufferOffset() uint {
+	rv := objc.Call[uint](i_, objc.Sel("instanceDescriptorBufferOffset"))
+	return rv
+}
+
+// The offset, in bytes, to the descripton of the first instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553887-instancedescriptorbufferoffset?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBufferOffset(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBufferOffset:"), value)
+}
+
+// The bottom-level acceleration structures that instances use in the instance acceleration structure . [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553889-instancedaccelerationstructures?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) InstancedAccelerationStructures() []AccelerationStructureObject {
+	rv := objc.Call[[]AccelerationStructureObject](i_, objc.Sel("instancedAccelerationStructures"))
+	return rv
+}
+
+// The bottom-level acceleration structures that instances use in the instance acceleration structure . [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553889-instancedaccelerationstructures?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetInstancedAccelerationStructures(value []PAccelerationStructure) {
+	objc.Call[objc.Void](i_, objc.Sel("setInstancedAccelerationStructures:"), value)
 }
 
 // The stride, in bytes, between instance descriptions. [Full Topic]
@@ -191,21 +191,6 @@ func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorStride(va
 	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorStride:"), value)
 }
 
-// The offset, in bytes, to the descripton of the first motion transform. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750500-motiontransformbufferoffset?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) MotionTransformBufferOffset() uint {
-	rv := objc.Call[uint](i_, objc.Sel("motionTransformBufferOffset"))
-	return rv
-}
-
-// The offset, in bytes, to the descripton of the first motion transform. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750500-motiontransformbufferoffset?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformBufferOffset(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformBufferOffset:"), value)
-}
-
 // The number of instances in the instance descriptor buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553885-instancecount?language=objc
@@ -221,17 +206,32 @@ func (i_ InstanceAccelerationStructureDescriptor) SetInstanceCount(value uint) {
 	objc.Call[objc.Void](i_, objc.Sel("setInstanceCount:"), value)
 }
 
-// The format of the instance data in the descriptor buffer. [Full Topic]
+// The number of motion transforms in the motion transform buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750498-instancedescriptortype?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) InstanceDescriptorType() AccelerationStructureInstanceDescriptorType {
-	rv := objc.Call[AccelerationStructureInstanceDescriptorType](i_, objc.Sel("instanceDescriptorType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750501-motiontransformcount?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) MotionTransformCount() uint {
+	rv := objc.Call[uint](i_, objc.Sel("motionTransformCount"))
 	return rv
 }
 
-// The format of the instance data in the descriptor buffer. [Full Topic]
+// The number of motion transforms in the motion transform buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750498-instancedescriptortype?language=objc
-func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorType(value AccelerationStructureInstanceDescriptorType) {
-	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750501-motiontransformcount?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformCount(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformCount:"), value)
+}
+
+// The offset, in bytes, to the descripton of the first motion transform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750500-motiontransformbufferoffset?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) MotionTransformBufferOffset() uint {
+	rv := objc.Call[uint](i_, objc.Sel("motionTransformBufferOffset"))
+	return rv
+}
+
+// The offset, in bytes, to the descripton of the first motion transform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750500-motiontransformbufferoffset?language=objc
+func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformBufferOffset(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformBufferOffset:"), value)
 }

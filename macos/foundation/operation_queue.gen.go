@@ -20,22 +20,22 @@ type _OperationQueueClass struct {
 type IOperationQueue interface {
 	objc.IObject
 	AddOperation(op IOperation)
-	AddOperationsWaitUntilFinished(ops []IOperation, wait bool)
-	CancelAllOperations()
 	AddBarrierBlock(barrier func())
-	AddOperationWithBlock(block func())
 	WaitUntilAllOperationsAreFinished()
+	AddOperationsWaitUntilFinished(ops []IOperation, wait bool)
+	AddOperationWithBlock(block func())
+	CancelAllOperations()
+	Name() string
+	SetName(value string)
 	QualityOfService() QualityOfService
 	SetQualityOfService(value QualityOfService)
 	IsSuspended() bool
 	SetSuspended(value bool)
-	MaxConcurrentOperationCount() int
-	SetMaxConcurrentOperationCount(value int)
-	Name() string
-	SetName(value string)
-	Progress() Progress
 	UnderlyingQueue() dispatch.Queue
 	SetUnderlyingQueue(value dispatch.Queue)
+	Progress() Progress
+	MaxConcurrentOperationCount() int
+	SetMaxConcurrentOperationCount(value int)
 }
 
 // A queue that regulates the execution of operations. [Full Topic]
@@ -78,25 +78,25 @@ func (o_ OperationQueue) AddOperation(op IOperation) {
 	objc.Call[objc.Void](o_, objc.Sel("addOperation:"), op)
 }
 
-// Adds the specified operations to the queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1408358-addoperations?language=objc
-func (o_ OperationQueue) AddOperationsWaitUntilFinished(ops []IOperation, wait bool) {
-	objc.Call[objc.Void](o_, objc.Sel("addOperations:waitUntilFinished:"), ops, wait)
-}
-
-// Cancels all queued and executing operations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1417849-cancelalloperations?language=objc
-func (o_ OperationQueue) CancelAllOperations() {
-	objc.Call[objc.Void](o_, objc.Sel("cancelAllOperations"))
-}
-
 // Invokes a block when the queue finishes all enqueued operations, and prevents subsequent operations from starting until the block has completed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/3172534-addbarrierblock?language=objc
 func (o_ OperationQueue) AddBarrierBlock(barrier func()) {
 	objc.Call[objc.Void](o_, objc.Sel("addBarrierBlock:"), barrier)
+}
+
+// Blocks the current thread until all the receiver’s queued and executing operations finish executing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1407971-waituntilalloperationsarefinishe?language=objc
+func (o_ OperationQueue) WaitUntilAllOperationsAreFinished() {
+	objc.Call[objc.Void](o_, objc.Sel("waitUntilAllOperationsAreFinished"))
+}
+
+// Adds the specified operations to the queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1408358-addoperations?language=objc
+func (o_ OperationQueue) AddOperationsWaitUntilFinished(ops []IOperation, wait bool) {
+	objc.Call[objc.Void](o_, objc.Sel("addOperations:waitUntilFinished:"), ops, wait)
 }
 
 // Wraps the specified block in an operation and adds it to the receiver. [Full Topic]
@@ -106,11 +106,26 @@ func (o_ OperationQueue) AddOperationWithBlock(block func()) {
 	objc.Call[objc.Void](o_, objc.Sel("addOperationWithBlock:"), block)
 }
 
-// Blocks the current thread until all the receiver’s queued and executing operations finish executing. [Full Topic]
+// Cancels all queued and executing operations. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1407971-waituntilalloperationsarefinishe?language=objc
-func (o_ OperationQueue) WaitUntilAllOperationsAreFinished() {
-	objc.Call[objc.Void](o_, objc.Sel("waitUntilAllOperationsAreFinished"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1417849-cancelalloperations?language=objc
+func (o_ OperationQueue) CancelAllOperations() {
+	objc.Call[objc.Void](o_, objc.Sel("cancelAllOperations"))
+}
+
+// The name of the operation queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1418063-name?language=objc
+func (o_ OperationQueue) Name() string {
+	rv := objc.Call[string](o_, objc.Sel("name"))
+	return rv
+}
+
+// The name of the operation queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1418063-name?language=objc
+func (o_ OperationQueue) SetName(value string) {
+	objc.Call[objc.Void](o_, objc.Sel("setName:"), value)
 }
 
 // The default service level to apply to operations that the queue invokes. [Full Topic]
@@ -158,6 +173,29 @@ func (o_ OperationQueue) SetSuspended(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setSuspended:"), value)
 }
 
+// The dispatch queue that the operation queue uses to invoke operations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1415344-underlyingqueue?language=objc
+func (o_ OperationQueue) UnderlyingQueue() dispatch.Queue {
+	rv := objc.Call[dispatch.Queue](o_, objc.Sel("underlyingQueue"))
+	return rv
+}
+
+// The dispatch queue that the operation queue uses to invoke operations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1415344-underlyingqueue?language=objc
+func (o_ OperationQueue) SetUnderlyingQueue(value dispatch.Queue) {
+	objc.Call[objc.Void](o_, objc.Sel("setUnderlyingQueue:"), value)
+}
+
+// An object that represents the total progress of the operations executing in the queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/3172535-progress?language=objc
+func (o_ OperationQueue) Progress() Progress {
+	rv := objc.Call[Progress](o_, objc.Sel("progress"))
+	return rv
+}
+
 // The maximum number of queued operations that can run at the same time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1414982-maxconcurrentoperationcount?language=objc
@@ -173,21 +211,6 @@ func (o_ OperationQueue) SetMaxConcurrentOperationCount(value int) {
 	objc.Call[objc.Void](o_, objc.Sel("setMaxConcurrentOperationCount:"), value)
 }
 
-// The name of the operation queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1418063-name?language=objc
-func (o_ OperationQueue) Name() string {
-	rv := objc.Call[string](o_, objc.Sel("name"))
-	return rv
-}
-
-// The name of the operation queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1418063-name?language=objc
-func (o_ OperationQueue) SetName(value string) {
-	objc.Call[objc.Void](o_, objc.Sel("setName:"), value)
-}
-
 // Returns the operation queue that launched the current operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1413097-currentqueue?language=objc
@@ -201,27 +224,4 @@ func (oc _OperationQueueClass) CurrentQueue() OperationQueue {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1413097-currentqueue?language=objc
 func OperationQueue_CurrentQueue() OperationQueue {
 	return OperationQueueClass.CurrentQueue()
-}
-
-// An object that represents the total progress of the operations executing in the queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/3172535-progress?language=objc
-func (o_ OperationQueue) Progress() Progress {
-	rv := objc.Call[Progress](o_, objc.Sel("progress"))
-	return rv
-}
-
-// The dispatch queue that the operation queue uses to invoke operations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1415344-underlyingqueue?language=objc
-func (o_ OperationQueue) UnderlyingQueue() dispatch.Queue {
-	rv := objc.Call[dispatch.Queue](o_, objc.Sel("underlyingQueue"))
-	return rv
-}
-
-// The dispatch queue that the operation queue uses to invoke operations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1415344-underlyingqueue?language=objc
-func (o_ OperationQueue) SetUnderlyingQueue(value dispatch.Queue) {
-	objc.Call[objc.Void](o_, objc.Sel("setUnderlyingQueue:"), value)
 }

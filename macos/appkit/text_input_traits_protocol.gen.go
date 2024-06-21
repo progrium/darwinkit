@@ -11,12 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits?language=objc
 type PTextInputTraits interface {
 	// optional
-	SetAutocorrectionType(value TextInputTraitType)
-	HasSetAutocorrectionType() bool
+	SetTextCompletionType(value TextInputTraitType)
+	HasSetTextCompletionType() bool
 
 	// optional
-	AutocorrectionType() TextInputTraitType
-	HasAutocorrectionType() bool
+	TextCompletionType() TextInputTraitType
+	HasTextCompletionType() bool
+
+	// optional
+	SetSmartQuotesType(value TextInputTraitType)
+	HasSetSmartQuotesType() bool
+
+	// optional
+	SmartQuotesType() TextInputTraitType
+	HasSmartQuotesType() bool
 
 	// optional
 	SetGrammarCheckingType(value TextInputTraitType)
@@ -35,20 +43,12 @@ type PTextInputTraits interface {
 	HasSpellCheckingType() bool
 
 	// optional
-	SetTextCompletionType(value TextInputTraitType)
-	HasSetTextCompletionType() bool
+	SetAutocorrectionType(value TextInputTraitType)
+	HasSetAutocorrectionType() bool
 
 	// optional
-	TextCompletionType() TextInputTraitType
-	HasTextCompletionType() bool
-
-	// optional
-	SetSmartQuotesType(value TextInputTraitType)
-	HasSetSmartQuotesType() bool
-
-	// optional
-	SmartQuotesType() TextInputTraitType
-	HasSmartQuotesType() bool
+	AutocorrectionType() TextInputTraitType
+	HasAutocorrectionType() bool
 
 	// optional
 	SetSmartDashesType(value TextInputTraitType)
@@ -75,20 +75,20 @@ type PTextInputTraits interface {
 	HasLinkDetectionType() bool
 
 	// optional
-	SetDataDetectionType(value TextInputTraitType)
-	HasSetDataDetectionType() bool
-
-	// optional
-	DataDetectionType() TextInputTraitType
-	HasDataDetectionType() bool
-
-	// optional
 	SetTextReplacementType(value TextInputTraitType)
 	HasSetTextReplacementType() bool
 
 	// optional
 	TextReplacementType() TextInputTraitType
 	HasTextReplacementType() bool
+
+	// optional
+	SetDataDetectionType(value TextInputTraitType)
+	HasSetDataDetectionType() bool
+
+	// optional
+	DataDetectionType() TextInputTraitType
+	HasDataDetectionType() bool
 }
 
 // ensure impl type implements protocol interface
@@ -99,26 +99,49 @@ type TextInputTraitsObject struct {
 	objc.Object
 }
 
-func (t_ TextInputTraitsObject) HasSetAutocorrectionType() bool {
-	return t_.RespondsToSelector(objc.Sel("setAutocorrectionType:"))
+func (t_ TextInputTraitsObject) HasSetTextCompletionType() bool {
+	return t_.RespondsToSelector(objc.Sel("setTextCompletionType:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242732-autocorrectiontype?language=objc
-func (t_ TextInputTraitsObject) SetAutocorrectionType(value TextInputTraitType) {
-	objc.Call[objc.Void](t_, objc.Sel("setAutocorrectionType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242740-textcompletiontype?language=objc
+func (t_ TextInputTraitsObject) SetTextCompletionType(value TextInputTraitType) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextCompletionType:"), value)
 }
 
-func (t_ TextInputTraitsObject) HasAutocorrectionType() bool {
-	return t_.RespondsToSelector(objc.Sel("autocorrectionType"))
+func (t_ TextInputTraitsObject) HasTextCompletionType() bool {
+	return t_.RespondsToSelector(objc.Sel("textCompletionType"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242732-autocorrectiontype?language=objc
-func (t_ TextInputTraitsObject) AutocorrectionType() TextInputTraitType {
-	rv := objc.Call[TextInputTraitType](t_, objc.Sel("autocorrectionType"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242740-textcompletiontype?language=objc
+func (t_ TextInputTraitsObject) TextCompletionType() TextInputTraitType {
+	rv := objc.Call[TextInputTraitType](t_, objc.Sel("textCompletionType"))
+	return rv
+}
+
+func (t_ TextInputTraitsObject) HasSetSmartQuotesType() bool {
+	return t_.RespondsToSelector(objc.Sel("setSmartQuotesType:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242738-smartquotestype?language=objc
+func (t_ TextInputTraitsObject) SetSmartQuotesType(value TextInputTraitType) {
+	objc.Call[objc.Void](t_, objc.Sel("setSmartQuotesType:"), value)
+}
+
+func (t_ TextInputTraitsObject) HasSmartQuotesType() bool {
+	return t_.RespondsToSelector(objc.Sel("smartQuotesType"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242738-smartquotestype?language=objc
+func (t_ TextInputTraitsObject) SmartQuotesType() TextInputTraitType {
+	rv := objc.Call[TextInputTraitType](t_, objc.Sel("smartQuotesType"))
 	return rv
 }
 
@@ -168,49 +191,26 @@ func (t_ TextInputTraitsObject) SpellCheckingType() TextInputTraitType {
 	return rv
 }
 
-func (t_ TextInputTraitsObject) HasSetTextCompletionType() bool {
-	return t_.RespondsToSelector(objc.Sel("setTextCompletionType:"))
+func (t_ TextInputTraitsObject) HasSetAutocorrectionType() bool {
+	return t_.RespondsToSelector(objc.Sel("setAutocorrectionType:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242740-textcompletiontype?language=objc
-func (t_ TextInputTraitsObject) SetTextCompletionType(value TextInputTraitType) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextCompletionType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242732-autocorrectiontype?language=objc
+func (t_ TextInputTraitsObject) SetAutocorrectionType(value TextInputTraitType) {
+	objc.Call[objc.Void](t_, objc.Sel("setAutocorrectionType:"), value)
 }
 
-func (t_ TextInputTraitsObject) HasTextCompletionType() bool {
-	return t_.RespondsToSelector(objc.Sel("textCompletionType"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242740-textcompletiontype?language=objc
-func (t_ TextInputTraitsObject) TextCompletionType() TextInputTraitType {
-	rv := objc.Call[TextInputTraitType](t_, objc.Sel("textCompletionType"))
-	return rv
-}
-
-func (t_ TextInputTraitsObject) HasSetSmartQuotesType() bool {
-	return t_.RespondsToSelector(objc.Sel("setSmartQuotesType:"))
+func (t_ TextInputTraitsObject) HasAutocorrectionType() bool {
+	return t_.RespondsToSelector(objc.Sel("autocorrectionType"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242738-smartquotestype?language=objc
-func (t_ TextInputTraitsObject) SetSmartQuotesType(value TextInputTraitType) {
-	objc.Call[objc.Void](t_, objc.Sel("setSmartQuotesType:"), value)
-}
-
-func (t_ TextInputTraitsObject) HasSmartQuotesType() bool {
-	return t_.RespondsToSelector(objc.Sel("smartQuotesType"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242738-smartquotestype?language=objc
-func (t_ TextInputTraitsObject) SmartQuotesType() TextInputTraitType {
-	rv := objc.Call[TextInputTraitType](t_, objc.Sel("smartQuotesType"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242732-autocorrectiontype?language=objc
+func (t_ TextInputTraitsObject) AutocorrectionType() TextInputTraitType {
+	rv := objc.Call[TextInputTraitType](t_, objc.Sel("autocorrectionType"))
 	return rv
 }
 
@@ -283,29 +283,6 @@ func (t_ TextInputTraitsObject) LinkDetectionType() TextInputTraitType {
 	return rv
 }
 
-func (t_ TextInputTraitsObject) HasSetDataDetectionType() bool {
-	return t_.RespondsToSelector(objc.Sel("setDataDetectionType:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242733-datadetectiontype?language=objc
-func (t_ TextInputTraitsObject) SetDataDetectionType(value TextInputTraitType) {
-	objc.Call[objc.Void](t_, objc.Sel("setDataDetectionType:"), value)
-}
-
-func (t_ TextInputTraitsObject) HasDataDetectionType() bool {
-	return t_.RespondsToSelector(objc.Sel("dataDetectionType"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242733-datadetectiontype?language=objc
-func (t_ TextInputTraitsObject) DataDetectionType() TextInputTraitType {
-	rv := objc.Call[TextInputTraitType](t_, objc.Sel("dataDetectionType"))
-	return rv
-}
-
 func (t_ TextInputTraitsObject) HasSetTextReplacementType() bool {
 	return t_.RespondsToSelector(objc.Sel("setTextReplacementType:"))
 }
@@ -326,5 +303,28 @@ func (t_ TextInputTraitsObject) HasTextReplacementType() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242741-textreplacementtype?language=objc
 func (t_ TextInputTraitsObject) TextReplacementType() TextInputTraitType {
 	rv := objc.Call[TextInputTraitType](t_, objc.Sel("textReplacementType"))
+	return rv
+}
+
+func (t_ TextInputTraitsObject) HasSetDataDetectionType() bool {
+	return t_.RespondsToSelector(objc.Sel("setDataDetectionType:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242733-datadetectiontype?language=objc
+func (t_ TextInputTraitsObject) SetDataDetectionType(value TextInputTraitType) {
+	objc.Call[objc.Void](t_, objc.Sel("setDataDetectionType:"), value)
+}
+
+func (t_ TextInputTraitsObject) HasDataDetectionType() bool {
+	return t_.RespondsToSelector(objc.Sel("dataDetectionType"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraits/3242733-datadetectiontype?language=objc
+func (t_ TextInputTraitsObject) DataDetectionType() TextInputTraitType {
+	rv := objc.Call[TextInputTraitType](t_, objc.Sel("dataDetectionType"))
 	return rv
 }

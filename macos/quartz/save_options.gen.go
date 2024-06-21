@@ -22,11 +22,11 @@ type ISaveOptions interface {
 	objc.IObject
 	AddSaveOptionsToView(view appkit.IView)
 	AddSaveOptionsAccessoryViewToSavePanel(savePanel appkit.ISavePanel)
-	UserSelection() foundation.Dictionary
 	ImageUTType() string
-	ImageProperties() foundation.Dictionary
 	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
+	ImageProperties() foundation.Dictionary
+	UserSelection() foundation.Dictionary
 	RememberLastSetting() bool
 	SetRememberLastSetting(value bool)
 }
@@ -92,27 +92,11 @@ func (s_ SaveOptions) AddSaveOptionsAccessoryViewToSavePanel(savePanel appkit.IS
 	objc.Call[objc.Void](s_, objc.Sel("addSaveOptionsAccessoryViewToSavePanel:"), savePanel)
 }
 
-// Returns a dictionary that contains the save options selected by the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1504791-userselection?language=objc
-func (s_ SaveOptions) UserSelection() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](s_, objc.Sel("userSelection"))
-	return rv
-}
-
 // Returns the uniform type identifier that reflects the user’s selection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1504388-imageuttype?language=objc
 func (s_ SaveOptions) ImageUTType() string {
 	rv := objc.Call[string](s_, objc.Sel("imageUTType"))
-	return rv
-}
-
-// Returns a dictionary of updated image properties that reflects the user’s selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1505299-imageproperties?language=objc
-func (s_ SaveOptions) ImageProperties() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](s_, objc.Sel("imageProperties"))
 	return rv
 }
 
@@ -129,6 +113,22 @@ func (s_ SaveOptions) Delegate() objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1503653-delegate?language=objc
 func (s_ SaveOptions) SetDelegate(value objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), value)
+}
+
+// Returns a dictionary of updated image properties that reflects the user’s selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1505299-imageproperties?language=objc
+func (s_ SaveOptions) ImageProperties() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](s_, objc.Sel("imageProperties"))
+	return rv
+}
+
+// Returns a dictionary that contains the save options selected by the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1504791-userselection?language=objc
+func (s_ SaveOptions) UserSelection() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](s_, objc.Sel("userSelection"))
+	return rv
 }
 
 //	[Full Topic]

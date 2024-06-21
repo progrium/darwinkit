@@ -20,16 +20,15 @@ type _CaptureMovieFileOutputClass struct {
 type ICaptureMovieFileOutput interface {
 	ICaptureFileOutput
 	OutputSettingsForConnection(connection ICaptureConnection) map[string]objc.Object
-	SetPrimaryConstituentDeviceSwitchingBehaviorForRecordingRestrictedSwitchingBehaviorConditions(switchingBehavior CapturePrimaryConstituentDeviceSwitchingBehavior, restrictedSwitchingBehaviorConditions CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions)
 	SetOutputSettingsForConnection(outputSettings map[string]objc.IObject, connection ICaptureConnection)
+	SetPrimaryConstituentDeviceSwitchingBehaviorForRecordingRestrictedSwitchingBehaviorConditions(switchingBehavior CapturePrimaryConstituentDeviceSwitchingBehavior, restrictedSwitchingBehaviorConditions CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions)
+	PrimaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording() CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions
 	MovieFragmentInterval() coremedia.Time
 	SetMovieFragmentInterval(value coremedia.Time)
-	PrimaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording() CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions
-	IsPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled() bool
-	SetPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled(value bool)
-	PrimaryConstituentDeviceSwitchingBehaviorForRecording() CapturePrimaryConstituentDeviceSwitchingBehavior
 	Metadata() []MetadataItem
 	SetMetadata(value []IMetadataItem)
+	IsPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled() bool
+	SetPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled(value bool)
 }
 
 // A capture output that records video and audio to a QuickTime movie file. [Full Topic]
@@ -45,11 +44,6 @@ func CaptureMovieFileOutputFrom(ptr unsafe.Pointer) CaptureMovieFileOutput {
 	}
 }
 
-func (c_ CaptureMovieFileOutput) Init() CaptureMovieFileOutput {
-	rv := objc.Call[CaptureMovieFileOutput](c_, objc.Sel("init"))
-	return rv
-}
-
 func (cc _CaptureMovieFileOutputClass) New() CaptureMovieFileOutput {
 	rv := objc.Call[CaptureMovieFileOutput](cc, objc.Sel("new"))
 	rv.Autorelease()
@@ -58,6 +52,11 @@ func (cc _CaptureMovieFileOutputClass) New() CaptureMovieFileOutput {
 
 func NewCaptureMovieFileOutput() CaptureMovieFileOutput {
 	return CaptureMovieFileOutputClass.New()
+}
+
+func (c_ CaptureMovieFileOutput) Init() CaptureMovieFileOutput {
+	rv := objc.Call[CaptureMovieFileOutput](c_, objc.Sel("init"))
+	return rv
 }
 
 func (cc _CaptureMovieFileOutputClass) Alloc() CaptureMovieFileOutput {
@@ -73,6 +72,13 @@ func (c_ CaptureMovieFileOutput) OutputSettingsForConnection(connection ICapture
 	return rv
 }
 
+// Sets the options dictionary used to reencode media from the given connection as it's being recorded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1388448-setoutputsettings?language=objc
+func (c_ CaptureMovieFileOutput) SetOutputSettingsForConnection(outputSettings map[string]objc.IObject, connection ICaptureConnection) {
+	objc.Call[objc.Void](c_, objc.Sel("setOutputSettings:forConnection:"), outputSettings, connection)
+}
+
 // Sets the camera switching behavior to use during recording. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/3875327-setprimaryconstituentdeviceswitc?language=objc
@@ -80,11 +86,12 @@ func (c_ CaptureMovieFileOutput) SetPrimaryConstituentDeviceSwitchingBehaviorFor
 	objc.Call[objc.Void](c_, objc.Sel("setPrimaryConstituentDeviceSwitchingBehaviorForRecording:restrictedSwitchingBehaviorConditions:"), switchingBehavior, restrictedSwitchingBehaviorConditions)
 }
 
-// Sets the options dictionary used to reencode media from the given connection as it's being recorded. [Full Topic]
+// The conditions during which camera switching may occur while recording. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1388448-setoutputsettings?language=objc
-func (c_ CaptureMovieFileOutput) SetOutputSettingsForConnection(outputSettings map[string]objc.IObject, connection ICaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("setOutputSettings:forConnection:"), outputSettings, connection)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/3875324-primaryconstituentdevicerestrict?language=objc
+func (c_ CaptureMovieFileOutput) PrimaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording() CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions {
+	rv := objc.Call[CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions](c_, objc.Sel("primaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording"))
+	return rv
 }
 
 // The number of seconds of output that are written per fragment. [Full Topic]
@@ -102,12 +109,19 @@ func (c_ CaptureMovieFileOutput) SetMovieFragmentInterval(value coremedia.Time) 
 	objc.Call[objc.Void](c_, objc.Sel("setMovieFragmentInterval:"), value)
 }
 
-// The conditions during which camera switching may occur while recording. [Full Topic]
+// The metadata for the output file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/3875324-primaryconstituentdevicerestrict?language=objc
-func (c_ CaptureMovieFileOutput) PrimaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording() CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions {
-	rv := objc.Call[CapturePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions](c_, objc.Sel("primaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1387808-metadata?language=objc
+func (c_ CaptureMovieFileOutput) Metadata() []MetadataItem {
+	rv := objc.Call[[]MetadataItem](c_, objc.Sel("metadata"))
 	return rv
+}
+
+// The metadata for the output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1387808-metadata?language=objc
+func (c_ CaptureMovieFileOutput) SetMetadata(value []IMetadataItem) {
+	objc.Call[objc.Void](c_, objc.Sel("setMetadata:"), value)
 }
 
 // A Boolean value that indicates whether to restrict constituent device switching behavior during recording. [Full Topic]
@@ -123,27 +137,4 @@ func (c_ CaptureMovieFileOutput) IsPrimaryConstituentDeviceSwitchingBehaviorForR
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/3875326-primaryconstituentdeviceswitchin?language=objc
 func (c_ CaptureMovieFileOutput) SetPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled:"), value)
-}
-
-// The camera switching behavior to use for recording. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/3875325-primaryconstituentdeviceswitchin?language=objc
-func (c_ CaptureMovieFileOutput) PrimaryConstituentDeviceSwitchingBehaviorForRecording() CapturePrimaryConstituentDeviceSwitchingBehavior {
-	rv := objc.Call[CapturePrimaryConstituentDeviceSwitchingBehavior](c_, objc.Sel("primaryConstituentDeviceSwitchingBehaviorForRecording"))
-	return rv
-}
-
-// The metadata for the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1387808-metadata?language=objc
-func (c_ CaptureMovieFileOutput) Metadata() []MetadataItem {
-	rv := objc.Call[[]MetadataItem](c_, objc.Sel("metadata"))
-	return rv
-}
-
-// The metadata for the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1387808-metadata?language=objc
-func (c_ CaptureMovieFileOutput) SetMetadata(value []IMetadataItem) {
-	objc.Call[objc.Void](c_, objc.Sel("setMetadata:"), value)
 }

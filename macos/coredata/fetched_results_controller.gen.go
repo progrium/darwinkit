@@ -20,18 +20,18 @@ type _FetchedResultsControllerClass struct {
 type IFetchedResultsController interface {
 	objc.IObject
 	PerformFetch(error unsafe.Pointer) bool
-	ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object
+	SectionIndexTitleForSectionName(sectionName string) string
 	IndexPathForObject(object objc.IObject) foundation.IndexPath
 	SectionForSectionIndexTitleAtIndex(title string, sectionIndex int) int
-	SectionIndexTitleForSectionName(sectionName string) string
+	ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object
+	CacheName() string
 	FetchRequest() FetchRequest
-	SectionIndexTitles() []string
-	FetchedObjects() []objc.Object
 	SectionNameKeyPath() string
 	Delegate() FetchedResultsControllerDelegateObject
 	SetDelegate(value PFetchedResultsControllerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	CacheName() string
+	SectionIndexTitles() []string
+	FetchedObjects() []objc.Object
 	Sections() []FetchedResultsSectionInfoObject
 	ManagedObjectContext() ManagedObjectContext
 }
@@ -91,30 +91,6 @@ func (f_ FetchedResultsController) PerformFetch(error unsafe.Pointer) bool {
 	return rv
 }
 
-// Returns the object at the given index path in the fetch results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622281-objectatindexpath?language=objc
-func (f_ FetchedResultsController) ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("objectAtIndexPath:"), indexPath)
-	return rv
-}
-
-// Returns the index path of a given object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622306-indexpathforobject?language=objc
-func (f_ FetchedResultsController) IndexPathForObject(object objc.IObject) foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](f_, objc.Sel("indexPathForObject:"), object)
-	return rv
-}
-
-// Returns the section number for a given section title and index in the section index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622284-sectionforsectionindextitle?language=objc
-func (f_ FetchedResultsController) SectionForSectionIndexTitleAtIndex(title string, sectionIndex int) int {
-	rv := objc.Call[int](f_, objc.Sel("sectionForSectionIndexTitle:atIndex:"), title, sectionIndex)
-	return rv
-}
-
 // Returns the corresponding section index entry for a given section name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622308-sectionindextitleforsectionname?language=objc
@@ -137,27 +113,43 @@ func FetchedResultsController_DeleteCacheWithName(name string) {
 	FetchedResultsControllerClass.DeleteCacheWithName(name)
 }
 
+// Returns the index path of a given object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622306-indexpathforobject?language=objc
+func (f_ FetchedResultsController) IndexPathForObject(object objc.IObject) foundation.IndexPath {
+	rv := objc.Call[foundation.IndexPath](f_, objc.Sel("indexPathForObject:"), object)
+	return rv
+}
+
+// Returns the section number for a given section title and index in the section index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622284-sectionforsectionindextitle?language=objc
+func (f_ FetchedResultsController) SectionForSectionIndexTitleAtIndex(title string, sectionIndex int) int {
+	rv := objc.Call[int](f_, objc.Sel("sectionForSectionIndexTitle:atIndex:"), title, sectionIndex)
+	return rv
+}
+
+// Returns the object at the given index path in the fetch results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622281-objectatindexpath?language=objc
+func (f_ FetchedResultsController) ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("objectAtIndexPath:"), indexPath)
+	return rv
+}
+
+// The name of the file used to cache section information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622280-cachename?language=objc
+func (f_ FetchedResultsController) CacheName() string {
+	rv := objc.Call[string](f_, objc.Sel("cacheName"))
+	return rv
+}
+
 // The fetch request used to do the fetching. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622287-fetchrequest?language=objc
 func (f_ FetchedResultsController) FetchRequest() FetchRequest {
 	rv := objc.Call[FetchRequest](f_, objc.Sel("fetchRequest"))
-	return rv
-}
-
-// The array of section index titles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622299-sectionindextitles?language=objc
-func (f_ FetchedResultsController) SectionIndexTitles() []string {
-	rv := objc.Call[[]string](f_, objc.Sel("sectionIndexTitles"))
-	return rv
-}
-
-// The results of the fetch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622278-fetchedobjects?language=objc
-func (f_ FetchedResultsController) FetchedObjects() []objc.Object {
-	rv := objc.Call[[]objc.Object](f_, objc.Sel("fetchedObjects"))
 	return rv
 }
 
@@ -192,11 +184,19 @@ func (f_ FetchedResultsController) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The name of the file used to cache section information. [Full Topic]
+// The array of section index titles. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622280-cachename?language=objc
-func (f_ FetchedResultsController) CacheName() string {
-	rv := objc.Call[string](f_, objc.Sel("cacheName"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622299-sectionindextitles?language=objc
+func (f_ FetchedResultsController) SectionIndexTitles() []string {
+	rv := objc.Call[[]string](f_, objc.Sel("sectionIndexTitles"))
+	return rv
+}
+
+// The results of the fetch. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622278-fetchedobjects?language=objc
+func (f_ FetchedResultsController) FetchedObjects() []objc.Object {
+	rv := objc.Call[[]objc.Object](f_, objc.Sel("fetchedObjects"))
 	return rv
 }
 

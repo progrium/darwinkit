@@ -18,12 +18,12 @@ type _MethodSignatureClass struct {
 // An interface definition for the [MethodSignature] class.
 type IMethodSignature interface {
 	objc.IObject
-	GetArgumentTypeAtIndex(idx uint) *uint8
 	IsOneway() bool
-	MethodReturnType() *uint8
-	NumberOfArguments() uint
-	FrameLength() uint
+	GetArgumentTypeAtIndex(idx uint) *uint8
 	MethodReturnLength() uint
+	FrameLength() uint
+	NumberOfArguments() uint
+	MethodReturnType() *uint8
 }
 
 // A record of the type information for the return value and parameters of a method. [Full Topic]
@@ -59,6 +59,14 @@ func (m_ MethodSignature) Init() MethodSignature {
 	return rv
 }
 
+// Whether the receiver is asynchronous when invoked through distributed objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519664-isoneway?language=objc
+func (m_ MethodSignature) IsOneway() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isOneway"))
+	return rv
+}
+
 // Returns an NSMethodSignature object for the given Objective-C method type string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519670-signaturewithobjctypes?language=objc
@@ -82,27 +90,11 @@ func (m_ MethodSignature) GetArgumentTypeAtIndex(idx uint) *uint8 {
 	return rv
 }
 
-// Whether the receiver is asynchronous when invoked through distributed objects. [Full Topic]
+// The number of bytes required for the return value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519664-isoneway?language=objc
-func (m_ MethodSignature) IsOneway() bool {
-	rv := objc.Call[bool](m_, objc.Sel("isOneway"))
-	return rv
-}
-
-// A C string encoding the return type of the method in Objective-C type encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519667-methodreturntype?language=objc
-func (m_ MethodSignature) MethodReturnType() *uint8 {
-	rv := objc.Call[*uint8](m_, objc.Sel("methodReturnType"))
-	return rv
-}
-
-// The number of arguments recorded in the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519662-numberofarguments?language=objc
-func (m_ MethodSignature) NumberOfArguments() uint {
-	rv := objc.Call[uint](m_, objc.Sel("numberOfArguments"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519666-methodreturnlength?language=objc
+func (m_ MethodSignature) MethodReturnLength() uint {
+	rv := objc.Call[uint](m_, objc.Sel("methodReturnLength"))
 	return rv
 }
 
@@ -114,10 +106,18 @@ func (m_ MethodSignature) FrameLength() uint {
 	return rv
 }
 
-// The number of bytes required for the return value. [Full Topic]
+// The number of arguments recorded in the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519666-methodreturnlength?language=objc
-func (m_ MethodSignature) MethodReturnLength() uint {
-	rv := objc.Call[uint](m_, objc.Sel("methodReturnLength"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519662-numberofarguments?language=objc
+func (m_ MethodSignature) NumberOfArguments() uint {
+	rv := objc.Call[uint](m_, objc.Sel("numberOfArguments"))
+	return rv
+}
+
+// A C string encoding the return type of the method in Objective-C type encoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmethodsignature/1519667-methodreturntype?language=objc
+func (m_ MethodSignature) MethodReturnType() *uint8 {
+	rv := objc.Call[*uint8](m_, objc.Sel("methodReturnType"))
 	return rv
 }

@@ -22,24 +22,24 @@ type IPopover interface {
 	Close()
 	ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge)
 	PerformClose(sender objc.IObject) objc.Object
+	Behavior() PopoverBehavior
+	SetBehavior(value PopoverBehavior)
+	IsShown() bool
+	EffectiveAppearance() Appearance
+	IsDetached() bool
 	Delegate() PopoverDelegateObject
 	SetDelegate(value PPopoverDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	PositioningRect() foundation.Rect
-	SetPositioningRect(value foundation.Rect)
-	Appearance() Appearance
-	SetAppearance(value IAppearance)
-	IsShown() bool
-	IsDetached() bool
-	Behavior() PopoverBehavior
-	SetBehavior(value PopoverBehavior)
-	Animates() bool
-	SetAnimates(value bool)
 	ContentSize() foundation.Size
 	SetContentSize(value foundation.Size)
 	ContentViewController() ViewController
 	SetContentViewController(value IViewController)
-	EffectiveAppearance() Appearance
+	PositioningRect() foundation.Rect
+	SetPositioningRect(value foundation.Rect)
+	Animates() bool
+	SetAnimates(value bool)
+	Appearance() Appearance
+	SetAppearance(value IAppearance)
 }
 
 // A means to display additional content related to existing content on the screen. [Full Topic]
@@ -97,6 +97,45 @@ func (p_ Popover) PerformClose(sender objc.IObject) objc.Object {
 	return rv
 }
 
+// Specifies the behavior of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
+func (p_ Popover) Behavior() PopoverBehavior {
+	rv := objc.Call[PopoverBehavior](p_, objc.Sel("behavior"))
+	return rv
+}
+
+// Specifies the behavior of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
+func (p_ Popover) SetBehavior(value PopoverBehavior) {
+	objc.Call[objc.Void](p_, objc.Sel("setBehavior:"), value)
+}
+
+// The display state of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1535120-shown?language=objc
+func (p_ Popover) IsShown() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isShown"))
+	return rv
+}
+
+// The appearance that will be used when the popover is displayed onscreen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526863-effectiveappearance?language=objc
+func (p_ Popover) EffectiveAppearance() Appearance {
+	rv := objc.Call[Appearance](p_, objc.Sel("effectiveAppearance"))
+	return rv
+}
+
+// A Boolean value that indicates whether the window created by a popover's detachment is automatically created. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1534278-detached?language=objc
+func (p_ Popover) IsDetached() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isDetached"))
+	return rv
+}
+
 // The delegate of the popover. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
@@ -119,82 +158,6 @@ func (p_ Popover) SetDelegate(value PPopoverDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
 func (p_ Popover) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
-}
-
-// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
-func (p_ Popover) PositioningRect() foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("positioningRect"))
-	return rv
-}
-
-// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
-func (p_ Popover) SetPositioningRect(value foundation.Rect) {
-	objc.Call[objc.Void](p_, objc.Sel("setPositioningRect:"), value)
-}
-
-// The appearance of the popover. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
-func (p_ Popover) Appearance() Appearance {
-	rv := objc.Call[Appearance](p_, objc.Sel("appearance"))
-	return rv
-}
-
-// The appearance of the popover. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
-func (p_ Popover) SetAppearance(value IAppearance) {
-	objc.Call[objc.Void](p_, objc.Sel("setAppearance:"), value)
-}
-
-// The display state of the popover. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1535120-shown?language=objc
-func (p_ Popover) IsShown() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isShown"))
-	return rv
-}
-
-// A Boolean value that indicates whether the window created by a popover's detachment is automatically created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1534278-detached?language=objc
-func (p_ Popover) IsDetached() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isDetached"))
-	return rv
-}
-
-// Specifies the behavior of the popover. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
-func (p_ Popover) Behavior() PopoverBehavior {
-	rv := objc.Call[PopoverBehavior](p_, objc.Sel("behavior"))
-	return rv
-}
-
-// Specifies the behavior of the popover. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
-func (p_ Popover) SetBehavior(value PopoverBehavior) {
-	objc.Call[objc.Void](p_, objc.Sel("setBehavior:"), value)
-}
-
-// Specifies if the popover is to be animated. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
-func (p_ Popover) Animates() bool {
-	rv := objc.Call[bool](p_, objc.Sel("animates"))
-	return rv
-}
-
-// Specifies if the popover is to be animated. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
-func (p_ Popover) SetAnimates(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setAnimates:"), value)
 }
 
 // The content size of the popover. [Full Topic]
@@ -227,10 +190,47 @@ func (p_ Popover) SetContentViewController(value IViewController) {
 	objc.Call[objc.Void](p_, objc.Sel("setContentViewController:"), value)
 }
 
-// The appearance that will be used when the popover is displayed onscreen. [Full Topic]
+// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526863-effectiveappearance?language=objc
-func (p_ Popover) EffectiveAppearance() Appearance {
-	rv := objc.Call[Appearance](p_, objc.Sel("effectiveAppearance"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
+func (p_ Popover) PositioningRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("positioningRect"))
 	return rv
+}
+
+// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
+func (p_ Popover) SetPositioningRect(value foundation.Rect) {
+	objc.Call[objc.Void](p_, objc.Sel("setPositioningRect:"), value)
+}
+
+// Specifies if the popover is to be animated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
+func (p_ Popover) Animates() bool {
+	rv := objc.Call[bool](p_, objc.Sel("animates"))
+	return rv
+}
+
+// Specifies if the popover is to be animated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
+func (p_ Popover) SetAnimates(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setAnimates:"), value)
+}
+
+// The appearance of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
+func (p_ Popover) Appearance() Appearance {
+	rv := objc.Call[Appearance](p_, objc.Sel("appearance"))
+	return rv
+}
+
+// The appearance of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
+func (p_ Popover) SetAppearance(value IAppearance) {
+	objc.Call[objc.Void](p_, objc.Sel("setAppearance:"), value)
 }

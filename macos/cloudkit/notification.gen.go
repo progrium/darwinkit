@@ -19,12 +19,12 @@ type _NotificationClass struct {
 // An interface definition for the [Notification] class.
 type INotification interface {
 	objc.IObject
-	ContainerIdentifier() string
-	SubscriptionID() SubscriptionID
-	NotificationType() NotificationType
 	NotificationID() NotificationID
-	SubscriptionOwnerUserRecordID() RecordID
 	IsPruned() bool
+	NotificationType() NotificationType
+	SubscriptionID() SubscriptionID
+	ContainerIdentifier() string
+	SubscriptionOwnerUserRecordID() RecordID
 }
 
 // The abstract base class for CloudKit notifications. [Full Topic]
@@ -72,19 +72,19 @@ func (n_ Notification) Init() Notification {
 	return rv
 }
 
-// The ID of the container with the content that triggers the notification. [Full Topic]
+// The notification’s ID. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428119-containeridentifier?language=objc
-func (n_ Notification) ContainerIdentifier() string {
-	rv := objc.Call[string](n_, objc.Sel("containerIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428080-notificationid?language=objc
+func (n_ Notification) NotificationID() NotificationID {
+	rv := objc.Call[NotificationID](n_, objc.Sel("notificationID"))
 	return rv
 }
 
-// The ID of the subscription that triggers the notification. [Full Topic]
+// A Boolean value that indicates whether the system removes some push notification content before delivery. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428118-subscriptionid?language=objc
-func (n_ Notification) SubscriptionID() SubscriptionID {
-	rv := objc.Call[SubscriptionID](n_, objc.Sel("subscriptionID"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428088-ispruned?language=objc
+func (n_ Notification) IsPruned() bool {
+	rv := objc.Call[bool](n_, objc.Sel("isPruned"))
 	return rv
 }
 
@@ -96,11 +96,19 @@ func (n_ Notification) NotificationType() NotificationType {
 	return rv
 }
 
-// The notification’s ID. [Full Topic]
+// The ID of the subscription that triggers the notification. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428080-notificationid?language=objc
-func (n_ Notification) NotificationID() NotificationID {
-	rv := objc.Call[NotificationID](n_, objc.Sel("notificationID"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428118-subscriptionid?language=objc
+func (n_ Notification) SubscriptionID() SubscriptionID {
+	rv := objc.Call[SubscriptionID](n_, objc.Sel("subscriptionID"))
+	return rv
+}
+
+// The ID of the container with the content that triggers the notification. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428119-containeridentifier?language=objc
+func (n_ Notification) ContainerIdentifier() string {
+	rv := objc.Call[string](n_, objc.Sel("containerIdentifier"))
 	return rv
 }
 
@@ -109,13 +117,5 @@ func (n_ Notification) NotificationID() NotificationID {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/3577533-subscriptionowneruserrecordid?language=objc
 func (n_ Notification) SubscriptionOwnerUserRecordID() RecordID {
 	rv := objc.Call[RecordID](n_, objc.Sel("subscriptionOwnerUserRecordID"))
-	return rv
-}
-
-// A Boolean value that indicates whether the system removes some push notification content before delivery. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/cknotification/1428088-ispruned?language=objc
-func (n_ Notification) IsPruned() bool {
-	rv := objc.Call[bool](n_, objc.Sel("isPruned"))
 	return rv
 }

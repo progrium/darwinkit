@@ -20,9 +20,9 @@ type _BarcodeObservationClass struct {
 // An interface definition for the [BarcodeObservation] class.
 type IBarcodeObservation interface {
 	IRectangleObservation
-	Symbology() BarcodeSymbology
-	BarcodeDescriptor() coreimage.BarcodeDescriptor
 	PayloadStringValue() string
+	BarcodeDescriptor() coreimage.BarcodeDescriptor
+	Symbology() BarcodeSymbology
 }
 
 // An object that represents barcode information that an image analysis request detects. [Full Topic]
@@ -82,11 +82,11 @@ func BarcodeObservation_ObservationWithRequestRevisionBoundingBox(requestRevisio
 	return BarcodeObservationClass.ObservationWithRequestRevisionBoundingBox(requestRevision, boundingBox)
 }
 
-// The symbology of the observed barcode. [Full Topic]
+// A string value that represents the barcode payload. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnbarcodeobservation/2869611-symbology?language=objc
-func (b_ BarcodeObservation) Symbology() BarcodeSymbology {
-	rv := objc.Call[BarcodeSymbology](b_, objc.Sel("symbology"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnbarcodeobservation/2923485-payloadstringvalue?language=objc
+func (b_ BarcodeObservation) PayloadStringValue() string {
+	rv := objc.Call[string](b_, objc.Sel("payloadStringValue"))
 	return rv
 }
 
@@ -98,10 +98,10 @@ func (b_ BarcodeObservation) BarcodeDescriptor() coreimage.BarcodeDescriptor {
 	return rv
 }
 
-// A string value that represents the barcode payload. [Full Topic]
+// The symbology of the observed barcode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnbarcodeobservation/2923485-payloadstringvalue?language=objc
-func (b_ BarcodeObservation) PayloadStringValue() string {
-	rv := objc.Call[string](b_, objc.Sel("payloadStringValue"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnbarcodeobservation/2869611-symbology?language=objc
+func (b_ BarcodeObservation) Symbology() BarcodeSymbology {
+	rv := objc.Call[BarcodeSymbology](b_, objc.Sel("symbology"))
 	return rv
 }

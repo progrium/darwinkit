@@ -19,18 +19,18 @@ type _CollectionViewLayoutInvalidationContextClass struct {
 // An interface definition for the [CollectionViewLayoutInvalidationContext] class.
 type ICollectionViewLayoutInvalidationContext interface {
 	objc.IObject
-	InvalidateItemsAtIndexPaths(indexPaths foundation.ISet)
-	InvalidateDecorationElementsOfKindAtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet)
 	InvalidateSupplementaryElementsOfKindAtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet)
-	ContentOffsetAdjustment() foundation.Point
-	SetContentOffsetAdjustment(value foundation.Point)
-	ContentSizeAdjustment() foundation.Size
-	SetContentSizeAdjustment(value foundation.Size)
+	InvalidateDecorationElementsOfKindAtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet)
+	InvalidateItemsAtIndexPaths(indexPaths foundation.ISet)
+	InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set
 	InvalidateEverything() bool
+	InvalidatedItemIndexPaths() foundation.Set
 	InvalidateDataSourceCounts() bool
 	InvalidatedSupplementaryIndexPaths() map[CollectionViewSupplementaryElementKind]foundation.Set
-	InvalidatedItemIndexPaths() foundation.Set
-	InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set
+	ContentSizeAdjustment() foundation.Size
+	SetContentSizeAdjustment(value foundation.Size)
+	ContentOffsetAdjustment() foundation.Point
+	SetContentOffsetAdjustment(value foundation.Point)
 }
 
 // An object that identifies the portions of your layout that need to be updated. [Full Topic]
@@ -66,11 +66,11 @@ func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInv
 	return rv
 }
 
-// Marks the specified items as invalid so that their layout information can be updated. [Full Topic]
+// Marks the specified supplementary views as invalid so that their layout information can be updated. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1526592-invalidateitemsatindexpaths?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateItemsAtIndexPaths:"), indexPaths)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533990-invalidatesupplementaryelementso?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKindAtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
+	objc.Call[objc.Void](c_, objc.Sel("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
 // Marks the specified decoration views as invalid so that their layout information can be updated. [Full Topic]
@@ -80,41 +80,19 @@ func (c_ CollectionViewLayoutInvalidationContext) InvalidateDecorationElementsOf
 	objc.Call[objc.Void](c_, objc.Sel("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
-// Marks the specified supplementary views as invalid so that their layout information can be updated. [Full Topic]
+// Marks the specified items as invalid so that their layout information can be updated. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533990-invalidatesupplementaryelementso?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKindAtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1526592-invalidateitemsatindexpaths?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
+	objc.Call[objc.Void](c_, objc.Sel("invalidateItemsAtIndexPaths:"), indexPaths)
 }
 
-// The delta value to add to the collection view’s content offset. [Full Topic]
+// A dictionary containing the decoration views whose layout attributes are invalid. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533465-contentoffsetadjustment?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) ContentOffsetAdjustment() foundation.Point {
-	rv := objc.Call[foundation.Point](c_, objc.Sel("contentOffsetAdjustment"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1530481-invalidateddecorationindexpaths?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set {
+	rv := objc.Call[map[CollectionViewDecorationElementKind]foundation.Set](c_, objc.Sel("invalidatedDecorationIndexPaths"))
 	return rv
-}
-
-// The delta value to add to the collection view’s content offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533465-contentoffsetadjustment?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) SetContentOffsetAdjustment(value foundation.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setContentOffsetAdjustment:"), value)
-}
-
-// The delta value to add to the collection view’s content size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1527883-contentsizeadjustment?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) ContentSizeAdjustment() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("contentSizeAdjustment"))
-	return rv
-}
-
-// The delta value to add to the collection view’s content size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1527883-contentsizeadjustment?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) SetContentSizeAdjustment(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setContentSizeAdjustment:"), value)
 }
 
 // A Boolean that indicates whether all layout data should be marked as invalid. [Full Topic]
@@ -122,6 +100,14 @@ func (c_ CollectionViewLayoutInvalidationContext) SetContentSizeAdjustment(value
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1525613-invalidateeverything?language=objc
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateEverything() bool {
 	rv := objc.Call[bool](c_, objc.Sel("invalidateEverything"))
+	return rv
+}
+
+// The set of items whose layout attributes are invalid. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1525361-invalidateditemindexpaths?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) InvalidatedItemIndexPaths() foundation.Set {
+	rv := objc.Call[foundation.Set](c_, objc.Sel("invalidatedItemIndexPaths"))
 	return rv
 }
 
@@ -141,18 +127,32 @@ func (c_ CollectionViewLayoutInvalidationContext) InvalidatedSupplementaryIndexP
 	return rv
 }
 
-// The set of items whose layout attributes are invalid. [Full Topic]
+// The delta value to add to the collection view’s content size. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1525361-invalidateditemindexpaths?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) InvalidatedItemIndexPaths() foundation.Set {
-	rv := objc.Call[foundation.Set](c_, objc.Sel("invalidatedItemIndexPaths"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1527883-contentsizeadjustment?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) ContentSizeAdjustment() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("contentSizeAdjustment"))
 	return rv
 }
 
-// A dictionary containing the decoration views whose layout attributes are invalid. [Full Topic]
+// The delta value to add to the collection view’s content size. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1530481-invalidateddecorationindexpaths?language=objc
-func (c_ CollectionViewLayoutInvalidationContext) InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set {
-	rv := objc.Call[map[CollectionViewDecorationElementKind]foundation.Set](c_, objc.Sel("invalidatedDecorationIndexPaths"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1527883-contentsizeadjustment?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) SetContentSizeAdjustment(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setContentSizeAdjustment:"), value)
+}
+
+// The delta value to add to the collection view’s content offset. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533465-contentoffsetadjustment?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) ContentOffsetAdjustment() foundation.Point {
+	rv := objc.Call[foundation.Point](c_, objc.Sel("contentOffsetAdjustment"))
 	return rv
+}
+
+// The delta value to add to the collection view’s content offset. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533465-contentoffsetadjustment?language=objc
+func (c_ CollectionViewLayoutInvalidationContext) SetContentOffsetAdjustment(value foundation.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setContentOffsetAdjustment:"), value)
 }

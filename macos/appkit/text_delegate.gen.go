@@ -12,51 +12,51 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate?language=objc
 type PTextDelegate interface {
 	// optional
-	TextDidBeginEditing(notification foundation.Notification)
-	HasTextDidBeginEditing() bool
+	TextShouldBeginEditing(textObject Text) bool
+	HasTextShouldBeginEditing() bool
 
 	// optional
 	TextDidChange(notification foundation.Notification)
 	HasTextDidChange() bool
 
 	// optional
-	TextDidEndEditing(notification foundation.Notification)
-	HasTextDidEndEditing() bool
+	TextDidBeginEditing(notification foundation.Notification)
+	HasTextDidBeginEditing() bool
 
 	// optional
 	TextShouldEndEditing(textObject Text) bool
 	HasTextShouldEndEditing() bool
 
 	// optional
-	TextShouldBeginEditing(textObject Text) bool
-	HasTextShouldBeginEditing() bool
+	TextDidEndEditing(notification foundation.Notification)
+	HasTextDidEndEditing() bool
 }
 
 // A delegate implementation builder for the [PTextDelegate] protocol.
 type TextDelegate struct {
-	_TextDidBeginEditing    func(notification foundation.Notification)
-	_TextDidChange          func(notification foundation.Notification)
-	_TextDidEndEditing      func(notification foundation.Notification)
-	_TextShouldEndEditing   func(textObject Text) bool
 	_TextShouldBeginEditing func(textObject Text) bool
+	_TextDidChange          func(notification foundation.Notification)
+	_TextDidBeginEditing    func(notification foundation.Notification)
+	_TextShouldEndEditing   func(textObject Text) bool
+	_TextDidEndEditing      func(notification foundation.Notification)
 }
 
-func (di *TextDelegate) HasTextDidBeginEditing() bool {
-	return di._TextDidBeginEditing != nil
+func (di *TextDelegate) HasTextShouldBeginEditing() bool {
+	return di._TextShouldBeginEditing != nil
 }
 
-// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
-func (di *TextDelegate) SetTextDidBeginEditing(f func(notification foundation.Notification)) {
-	di._TextDidBeginEditing = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
+func (di *TextDelegate) SetTextShouldBeginEditing(f func(textObject Text) bool) {
+	di._TextShouldBeginEditing = f
 }
 
-// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
-func (di *TextDelegate) TextDidBeginEditing(notification foundation.Notification) {
-	di._TextDidBeginEditing(notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
+func (di *TextDelegate) TextShouldBeginEditing(textObject Text) bool {
+	return di._TextShouldBeginEditing(textObject)
 }
 func (di *TextDelegate) HasTextDidChange() bool {
 	return di._TextDidChange != nil
@@ -75,6 +75,40 @@ func (di *TextDelegate) SetTextDidChange(f func(notification foundation.Notifica
 func (di *TextDelegate) TextDidChange(notification foundation.Notification) {
 	di._TextDidChange(notification)
 }
+func (di *TextDelegate) HasTextDidBeginEditing() bool {
+	return di._TextDidBeginEditing != nil
+}
+
+// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
+func (di *TextDelegate) SetTextDidBeginEditing(f func(notification foundation.Notification)) {
+	di._TextDidBeginEditing = f
+}
+
+// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
+func (di *TextDelegate) TextDidBeginEditing(notification foundation.Notification) {
+	di._TextDidBeginEditing(notification)
+}
+func (di *TextDelegate) HasTextShouldEndEditing() bool {
+	return di._TextShouldEndEditing != nil
+}
+
+// Invoked from a text object’s implementation of resignFirstResponder, this method requests permission for aTextObject to end editing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
+func (di *TextDelegate) SetTextShouldEndEditing(f func(textObject Text) bool) {
+	di._TextShouldEndEditing = f
+}
+
+// Invoked from a text object’s implementation of resignFirstResponder, this method requests permission for aTextObject to end editing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
+func (di *TextDelegate) TextShouldEndEditing(textObject Text) bool {
+	return di._TextShouldEndEditing(textObject)
+}
 func (di *TextDelegate) HasTextDidEndEditing() bool {
 	return di._TextDidEndEditing != nil
 }
@@ -92,40 +126,6 @@ func (di *TextDelegate) SetTextDidEndEditing(f func(notification foundation.Noti
 func (di *TextDelegate) TextDidEndEditing(notification foundation.Notification) {
 	di._TextDidEndEditing(notification)
 }
-func (di *TextDelegate) HasTextShouldEndEditing() bool {
-	return di._TextShouldEndEditing != nil
-}
-
-// Invoked from a text object’s implementation of [appkit/nsresponder/resignfirstresponder], this method requests permission for aTextObject to end editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
-func (di *TextDelegate) SetTextShouldEndEditing(f func(textObject Text) bool) {
-	di._TextShouldEndEditing = f
-}
-
-// Invoked from a text object’s implementation of [appkit/nsresponder/resignfirstresponder], this method requests permission for aTextObject to end editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
-func (di *TextDelegate) TextShouldEndEditing(textObject Text) bool {
-	return di._TextShouldEndEditing(textObject)
-}
-func (di *TextDelegate) HasTextShouldBeginEditing() bool {
-	return di._TextShouldBeginEditing != nil
-}
-
-// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
-func (di *TextDelegate) SetTextShouldBeginEditing(f func(textObject Text) bool) {
-	di._TextShouldBeginEditing = f
-}
-
-// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
-func (di *TextDelegate) TextShouldBeginEditing(textObject Text) bool {
-	return di._TextShouldBeginEditing(textObject)
-}
 
 // ensure impl type implements protocol interface
 var _ PTextDelegate = (*TextDelegateObject)(nil)
@@ -135,15 +135,16 @@ type TextDelegateObject struct {
 	objc.Object
 }
 
-func (t_ TextDelegateObject) HasTextDidBeginEditing() bool {
-	return t_.RespondsToSelector(objc.Sel("textDidBeginEditing:"))
+func (t_ TextDelegateObject) HasTextShouldBeginEditing() bool {
+	return t_.RespondsToSelector(objc.Sel("textShouldBeginEditing:"))
 }
 
-// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
-func (t_ TextDelegateObject) TextDidBeginEditing(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
+func (t_ TextDelegateObject) TextShouldBeginEditing(textObject Text) bool {
+	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), textObject)
+	return rv
 }
 
 func (t_ TextDelegateObject) HasTextDidChange() bool {
@@ -157,6 +158,29 @@ func (t_ TextDelegateObject) TextDidChange(notification foundation.Notification)
 	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), notification)
 }
 
+func (t_ TextDelegateObject) HasTextDidBeginEditing() bool {
+	return t_.RespondsToSelector(objc.Sel("textDidBeginEditing:"))
+}
+
+// Informs the delegate that the text object has begun editing (that the user has begun changing it). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
+func (t_ TextDelegateObject) TextDidBeginEditing(notification foundation.Notification) {
+	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
+}
+
+func (t_ TextDelegateObject) HasTextShouldEndEditing() bool {
+	return t_.RespondsToSelector(objc.Sel("textShouldEndEditing:"))
+}
+
+// Invoked from a text object’s implementation of resignFirstResponder, this method requests permission for aTextObject to end editing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
+func (t_ TextDelegateObject) TextShouldEndEditing(textObject Text) bool {
+	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), textObject)
+	return rv
+}
+
 func (t_ TextDelegateObject) HasTextDidEndEditing() bool {
 	return t_.RespondsToSelector(objc.Sel("textDidEndEditing:"))
 }
@@ -166,28 +190,4 @@ func (t_ TextDelegateObject) HasTextDidEndEditing() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1529016-textdidendediting?language=objc
 func (t_ TextDelegateObject) TextDidEndEditing(notification foundation.Notification) {
 	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), notification)
-}
-
-func (t_ TextDelegateObject) HasTextShouldEndEditing() bool {
-	return t_.RespondsToSelector(objc.Sel("textShouldEndEditing:"))
-}
-
-// Invoked from a text object’s implementation of [appkit/nsresponder/resignfirstresponder], this method requests permission for aTextObject to end editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
-func (t_ TextDelegateObject) TextShouldEndEditing(textObject Text) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), textObject)
-	return rv
-}
-
-func (t_ TextDelegateObject) HasTextShouldBeginEditing() bool {
-	return t_.RespondsToSelector(objc.Sel("textShouldBeginEditing:"))
-}
-
-// Invoked when a text object begins to change its text, this method requests permission for aTextObject to begin editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
-func (t_ TextDelegateObject) TextShouldBeginEditing(textObject Text) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), textObject)
-	return rv
 }

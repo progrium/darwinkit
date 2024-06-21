@@ -12,28 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen?language=objc
 type PLineScreen interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
 	Width() float32
 	HasWidth() bool
-
-	// optional
-	SetSharpness(value float32)
-	HasSetSharpness() bool
-
-	// optional
-	Sharpness() float32
-	HasSharpness() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -44,12 +28,28 @@ type PLineScreen interface {
 	HasInputImage() bool
 
 	// optional
+	SetSharpness(value float32)
+	HasSetSharpness() bool
+
+	// optional
+	Sharpness() float32
+	HasSharpness() bool
+
+	// optional
 	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
 	Angle() float32
 	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,29 +58,6 @@ var _ PLineScreen = (*LineScreenObject)(nil)
 // A concrete type for the [PLineScreen] protocol.
 type LineScreenObject struct {
 	objc.Object
-}
-
-func (l_ LineScreenObject) HasSetCenter() bool {
-	return l_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the line screen pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228537-center?language=objc
-func (l_ LineScreenObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](l_, objc.Sel("setCenter:"), value)
-}
-
-func (l_ LineScreenObject) HasCenter() bool {
-	return l_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the line screen pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228537-center?language=objc
-func (l_ LineScreenObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](l_, objc.Sel("center"))
-	return rv
 }
 
 func (l_ LineScreenObject) HasSetWidth() bool {
@@ -103,29 +80,6 @@ func (l_ LineScreenObject) HasWidth() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228540-width?language=objc
 func (l_ LineScreenObject) Width() float32 {
 	rv := objc.Call[float32](l_, objc.Sel("width"))
-	return rv
-}
-
-func (l_ LineScreenObject) HasSetSharpness() bool {
-	return l_.RespondsToSelector(objc.Sel("setSharpness:"))
-}
-
-// The sharpness of the pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
-func (l_ LineScreenObject) SetSharpness(value float32) {
-	objc.Call[objc.Void](l_, objc.Sel("setSharpness:"), value)
-}
-
-func (l_ LineScreenObject) HasSharpness() bool {
-	return l_.RespondsToSelector(objc.Sel("sharpness"))
-}
-
-// The sharpness of the pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
-func (l_ LineScreenObject) Sharpness() float32 {
-	rv := objc.Call[float32](l_, objc.Sel("sharpness"))
 	return rv
 }
 
@@ -152,6 +106,29 @@ func (l_ LineScreenObject) InputImage() Image {
 	return rv
 }
 
+func (l_ LineScreenObject) HasSetSharpness() bool {
+	return l_.RespondsToSelector(objc.Sel("setSharpness:"))
+}
+
+// The sharpness of the pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
+func (l_ LineScreenObject) SetSharpness(value float32) {
+	objc.Call[objc.Void](l_, objc.Sel("setSharpness:"), value)
+}
+
+func (l_ LineScreenObject) HasSharpness() bool {
+	return l_.RespondsToSelector(objc.Sel("sharpness"))
+}
+
+// The sharpness of the pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
+func (l_ LineScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("sharpness"))
+	return rv
+}
+
 func (l_ LineScreenObject) HasSetAngle() bool {
 	return l_.RespondsToSelector(objc.Sel("setAngle:"))
 }
@@ -172,5 +149,28 @@ func (l_ LineScreenObject) HasAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228536-angle?language=objc
 func (l_ LineScreenObject) Angle() float32 {
 	rv := objc.Call[float32](l_, objc.Sel("angle"))
+	return rv
+}
+
+func (l_ LineScreenObject) HasSetCenter() bool {
+	return l_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the line screen pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228537-center?language=objc
+func (l_ LineScreenObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](l_, objc.Sel("setCenter:"), value)
+}
+
+func (l_ LineScreenObject) HasCenter() bool {
+	return l_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the line screen pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228537-center?language=objc
+func (l_ LineScreenObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](l_, objc.Sel("center"))
 	return rv
 }

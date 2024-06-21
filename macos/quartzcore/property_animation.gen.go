@@ -18,14 +18,14 @@ type _PropertyAnimationClass struct {
 // An interface definition for the [PropertyAnimation] class.
 type IPropertyAnimation interface {
 	IAnimation
-	ValueFunction() ValueFunction
-	SetValueFunction(value IValueFunction)
+	KeyPath() string
+	SetKeyPath(value string)
 	IsCumulative() bool
 	SetCumulative(value bool)
 	IsAdditive() bool
 	SetAdditive(value bool)
-	KeyPath() string
-	SetKeyPath(value string)
+	ValueFunction() ValueFunction
+	SetValueFunction(value IValueFunction)
 }
 
 // An abstract subclass of CAAnimation for creating animations that manipulate the value of layer properties. [Full Topic]
@@ -85,19 +85,19 @@ func PropertyAnimation_Animation() PropertyAnimation {
 	return PropertyAnimationClass.Animation()
 }
 
-// An optional value function that is applied to interpolated values. [Full Topic]
+// Specifies the key path the receiver animates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
-func (p_ PropertyAnimation) ValueFunction() ValueFunction {
-	rv := objc.Call[ValueFunction](p_, objc.Sel("valueFunction"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
+func (p_ PropertyAnimation) KeyPath() string {
+	rv := objc.Call[string](p_, objc.Sel("keyPath"))
 	return rv
 }
 
-// An optional value function that is applied to interpolated values. [Full Topic]
+// Specifies the key path the receiver animates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
-func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	objc.Call[objc.Void](p_, objc.Sel("setValueFunction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
+func (p_ PropertyAnimation) SetKeyPath(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setKeyPath:"), value)
 }
 
 // Determines if the value of the property is the value at the end of the previous repeat cycle, plus the value of the current repeat cycle. [Full Topic]
@@ -130,17 +130,17 @@ func (p_ PropertyAnimation) SetAdditive(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setAdditive:"), value)
 }
 
-// Specifies the key path the receiver animates. [Full Topic]
+// An optional value function that is applied to interpolated values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
-func (p_ PropertyAnimation) KeyPath() string {
-	rv := objc.Call[string](p_, objc.Sel("keyPath"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
+func (p_ PropertyAnimation) ValueFunction() ValueFunction {
+	rv := objc.Call[ValueFunction](p_, objc.Sel("valueFunction"))
 	return rv
 }
 
-// Specifies the key path the receiver animates. [Full Topic]
+// An optional value function that is applied to interpolated values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
-func (p_ PropertyAnimation) SetKeyPath(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setKeyPath:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
+func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
+	objc.Call[objc.Void](p_, objc.Sel("setValueFunction:"), value)
 }

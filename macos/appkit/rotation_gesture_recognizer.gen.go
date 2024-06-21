@@ -18,10 +18,10 @@ type _RotationGestureRecognizerClass struct {
 // An interface definition for the [RotationGestureRecognizer] class.
 type IRotationGestureRecognizer interface {
 	IGestureRecognizer
-	RotationInDegrees() float64
-	SetRotationInDegrees(value float64)
 	Rotation() float64
 	SetRotation(value float64)
+	RotationInDegrees() float64
+	SetRotationInDegrees(value float64)
 }
 
 // A continuous gesture recognizer that tracks two trackpad touches moving opposite each other in a circular motion. [Full Topic]
@@ -71,21 +71,6 @@ func NewRotationGestureRecognizerWithTargetAction(target objc.IObject, action ob
 	return instance
 }
 
-// The rotation of the gesture in degrees. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1535523-rotationindegrees?language=objc
-func (r_ RotationGestureRecognizer) RotationInDegrees() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("rotationInDegrees"))
-	return rv
-}
-
-// The rotation of the gesture in degrees. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1535523-rotationindegrees?language=objc
-func (r_ RotationGestureRecognizer) SetRotationInDegrees(value float64) {
-	objc.Call[objc.Void](r_, objc.Sel("setRotationInDegrees:"), value)
-}
-
 // The rotation of the gesture in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1527087-rotation?language=objc
@@ -99,4 +84,19 @@ func (r_ RotationGestureRecognizer) Rotation() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1527087-rotation?language=objc
 func (r_ RotationGestureRecognizer) SetRotation(value float64) {
 	objc.Call[objc.Void](r_, objc.Sel("setRotation:"), value)
+}
+
+// The rotation of the gesture in degrees. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1535523-rotationindegrees?language=objc
+func (r_ RotationGestureRecognizer) RotationInDegrees() float64 {
+	rv := objc.Call[float64](r_, objc.Sel("rotationInDegrees"))
+	return rv
+}
+
+// The rotation of the gesture in degrees. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrotationgesturerecognizer/1535523-rotationindegrees?language=objc
+func (r_ RotationGestureRecognizer) SetRotationInDegrees(value float64) {
+	objc.Call[objc.Void](r_, objc.Sel("setRotationInDegrees:"), value)
 }

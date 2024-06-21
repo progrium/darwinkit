@@ -18,9 +18,9 @@ type _ParameterDescriptionClass struct {
 // An interface definition for the [ParameterDescription] class.
 type IParameterDescription interface {
 	objc.IObject
-	NumericConstraint() NumericConstraint
-	DefaultValue() objc.Object
 	Key() ParameterKey
+	DefaultValue() objc.Object
+	NumericConstraint() NumericConstraint
 }
 
 // A description of a model parameter that includes a default value and a constraint, if applicable. [Full Topic]
@@ -56,11 +56,11 @@ func (p_ ParameterDescription) Init() ParameterDescription {
 	return rv
 }
 
-// The constraints of this paramter description value, if and only if the value is numerical. [Full Topic]
+// The key for this parameter description value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlparameterdescription/3180070-numericconstraint?language=objc
-func (p_ ParameterDescription) NumericConstraint() NumericConstraint {
-	rv := objc.Call[NumericConstraint](p_, objc.Sel("numericConstraint"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlparameterdescription/3180069-key?language=objc
+func (p_ ParameterDescription) Key() ParameterKey {
+	rv := objc.Call[ParameterKey](p_, objc.Sel("key"))
 	return rv
 }
 
@@ -72,10 +72,10 @@ func (p_ ParameterDescription) DefaultValue() objc.Object {
 	return rv
 }
 
-// The key for this parameter description value. [Full Topic]
+// The constraints of this paramter description value, if and only if the value is numerical. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlparameterdescription/3180069-key?language=objc
-func (p_ ParameterDescription) Key() ParameterKey {
-	rv := objc.Call[ParameterKey](p_, objc.Sel("key"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlparameterdescription/3180070-numericconstraint?language=objc
+func (p_ ParameterDescription) NumericConstraint() NumericConstraint {
+	rv := objc.Call[NumericConstraint](p_, objc.Sel("numericConstraint"))
 	return rv
 }

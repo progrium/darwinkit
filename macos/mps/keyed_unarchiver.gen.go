@@ -87,6 +87,37 @@ func NewKeyedUnarchiverForReadingFromDataError(data []byte, error unsafe.Pointer
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
+func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataDeviceError(cls objc.IClass, data []byte, device metal.PDevice, error unsafe.Pointer) objc.Object {
+	po2 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:device:error:"), cls, data, po2, error)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
+func KeyedUnarchiver_UnarchivedObjectOfClassFromDataDeviceError(cls objc.IClass, data []byte, device metal.PDevice, error unsafe.Pointer) objc.Object {
+	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataDeviceError(cls, data, device, error)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
+func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataDeviceObjectError(cls objc.IClass, data []byte, deviceObject objc.IObject, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:device:error:"), cls, data, deviceObject, error)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
+func KeyedUnarchiver_UnarchivedObjectOfClassFromDataDeviceObjectError(cls objc.IClass, data []byte, deviceObject objc.IObject, error unsafe.Pointer) objc.Object {
+	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataDeviceObjectError(cls, data, deviceObject, error)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976454-unarchivedobjectofclasses?language=objc
 func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassesFromDataDeviceError(classes foundation.ISet, data []byte, device metal.PDevice, error unsafe.Pointer) objc.Object {
 	po2 := objc.WrapAsProtocol("MTLDevice", device)
@@ -122,35 +153,4 @@ func KeyedUnarchiver_UnarchivedObjectOfClassesFromDataDeviceObjectError(classes 
 func (k_ KeyedUnarchiver) MpsMTLDevice() metal.DeviceObject {
 	rv := objc.Call[metal.DeviceObject](k_, objc.Sel("mpsMTLDevice"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
-func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataDeviceError(cls objc.IClass, data []byte, device metal.PDevice, error unsafe.Pointer) objc.Object {
-	po2 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:device:error:"), cls, data, po2, error)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
-func KeyedUnarchiver_UnarchivedObjectOfClassFromDataDeviceError(cls objc.IClass, data []byte, device metal.PDevice, error unsafe.Pointer) objc.Object {
-	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataDeviceError(cls, data, device, error)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
-func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataDeviceObjectError(cls objc.IClass, data []byte, deviceObject objc.IObject, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:device:error:"), cls, data, deviceObject, error)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskeyedunarchiver/2976453-unarchivedobjectofclass?language=objc
-func KeyedUnarchiver_UnarchivedObjectOfClassFromDataDeviceObjectError(cls objc.IClass, data []byte, deviceObject objc.IObject, error unsafe.Pointer) objc.Object {
-	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataDeviceObjectError(cls, data, deviceObject, error)
 }

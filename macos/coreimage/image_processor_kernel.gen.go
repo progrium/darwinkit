@@ -69,36 +69,6 @@ func ImageProcessorKernel_RoiForInputArgumentsOutputRect(input int, arguments ma
 	return ImageProcessorKernelClass.RoiForInputArgumentsOutputRect(input, arguments, outputRect)
 }
 
-// Method to override for returning the image processing kernel's input pixel format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138289-formatforinputatindex?language=objc
-func (ic _ImageProcessorKernelClass) FormatForInputAtIndex(input int) Format {
-	rv := objc.Call[Format](ic, objc.Sel("formatForInputAtIndex:"), input)
-	return rv
-}
-
-// Method to override for returning the image processing kernel's input pixel format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138289-formatforinputatindex?language=objc
-func ImageProcessorKernel_FormatForInputAtIndex(input int) Format {
-	return ImageProcessorKernelClass.FormatForInputAtIndex(input)
-}
-
-// Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
-func (ic _ImageProcessorKernelClass) ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
-	rv := objc.Call[Image](ic, objc.Sel("applyWithExtent:inputs:arguments:error:"), extent, inputs, args, error)
-	return rv
-}
-
-// Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
-func ImageProcessorKernel_ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
-	return ImageProcessorKernelClass.ApplyWithExtentInputsArgumentsError(extent, inputs, args, error)
-}
-
 // Method to override for customizing the kernel's image processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
@@ -128,6 +98,36 @@ func (ic _ImageProcessorKernelClass) ProcessWithInputsArgumentsOutputObjectError
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
 func ImageProcessorKernel_ProcessWithInputsArgumentsOutputObjectError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, outputObject objc.IObject, error unsafe.Pointer) bool {
 	return ImageProcessorKernelClass.ProcessWithInputsArgumentsOutputObjectError(inputs, arguments, outputObject, error)
+}
+
+// Method to override for returning the image processing kernel's input pixel format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138289-formatforinputatindex?language=objc
+func (ic _ImageProcessorKernelClass) FormatForInputAtIndex(input int) Format {
+	rv := objc.Call[Format](ic, objc.Sel("formatForInputAtIndex:"), input)
+	return rv
+}
+
+// Method to override for returning the image processing kernel's input pixel format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138289-formatforinputatindex?language=objc
+func ImageProcessorKernel_FormatForInputAtIndex(input int) Format {
+	return ImageProcessorKernelClass.FormatForInputAtIndex(input)
+}
+
+// Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
+func (ic _ImageProcessorKernelClass) ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
+	rv := objc.Call[Image](ic, objc.Sel("applyWithExtent:inputs:arguments:error:"), extent, inputs, args, error)
+	return rv
+}
+
+// Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
+func ImageProcessorKernel_ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
+	return ImageProcessorKernelClass.ApplyWithExtentInputsArgumentsError(extent, inputs, args, error)
 }
 
 // The processor's output pixel format. [Full Topic]

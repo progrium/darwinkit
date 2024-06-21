@@ -12,52 +12,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate?language=objc
 type PCaptureFileOutputRecordingDelegate interface {
 	// optional
-	CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error)
-	HasCaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError() bool
-
-	// optional
 	CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
 	HasCaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections() bool
-
-	// optional
-	CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
-	HasCaptureOutputDidStartRecordingToOutputFileAtURLFromConnections() bool
-
-	// optional
-	CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
-	HasCaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections() bool
-
-	// optional
-	CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error)
-	HasCaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError() bool
 }
 
 // A delegate implementation builder for the [PCaptureFileOutputRecordingDelegate] protocol.
 type CaptureFileOutputRecordingDelegate struct {
-	_CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error)
-	_CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections        func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
-	_CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections        func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
-	_CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections       func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
-	_CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError  func(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error)
+	_CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)
 }
 
-func (di *CaptureFileOutputRecordingDelegate) HasCaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError() bool {
-	return di._CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError != nil
-}
-
-// Informs the delegate when the output will stop writing new samples to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390625-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) SetCaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(f func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error)) {
-	di._CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError = f
-}
-
-// Informs the delegate when the output will stop writing new samples to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390625-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	di._CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(output, fileURL, connections, error)
-}
 func (di *CaptureFileOutputRecordingDelegate) HasCaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections() bool {
 	return di._CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections != nil
 }
@@ -75,57 +38,6 @@ func (di *CaptureFileOutputRecordingDelegate) SetCaptureOutputDidPauseRecordingT
 func (di *CaptureFileOutputRecordingDelegate) CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
 	di._CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections(output, fileURL, connections)
 }
-func (di *CaptureFileOutputRecordingDelegate) HasCaptureOutputDidStartRecordingToOutputFileAtURLFromConnections() bool {
-	return di._CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections != nil
-}
-
-// Informs the delegate when the output has started writing to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387301-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) SetCaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(f func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)) {
-	di._CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections = f
-}
-
-// Informs the delegate when the output has started writing to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387301-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	di._CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(output, fileURL, connections)
-}
-func (di *CaptureFileOutputRecordingDelegate) HasCaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections() bool {
-	return di._CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections != nil
-}
-
-// Called whenever the output, at the request of the client, successfully resumes a file recording that was paused. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387653-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) SetCaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(f func(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection)) {
-	di._CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections = f
-}
-
-// Called whenever the output, at the request of the client, successfully resumes a file recording that was paused. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387653-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	di._CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(output, fileURL, connections)
-}
-func (di *CaptureFileOutputRecordingDelegate) HasCaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError() bool {
-	return di._CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError != nil
-}
-
-// Informs the delegate when all pending data has been written to an output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390612-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) SetCaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(f func(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error)) {
-	di._CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError = f
-}
-
-// Informs the delegate when all pending data has been written to an output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390612-captureoutput?language=objc
-func (di *CaptureFileOutputRecordingDelegate) CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	di._CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(output, outputFileURL, connections, error)
-}
 
 // ensure impl type implements protocol interface
 var _ PCaptureFileOutputRecordingDelegate = (*CaptureFileOutputRecordingDelegateObject)(nil)
@@ -133,17 +45,6 @@ var _ PCaptureFileOutputRecordingDelegate = (*CaptureFileOutputRecordingDelegate
 // A concrete type for the [PCaptureFileOutputRecordingDelegate] protocol.
 type CaptureFileOutputRecordingDelegateObject struct {
 	objc.Object
-}
-
-func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:willFinishRecordingToOutputFileAtURL:fromConnections:error:"))
-}
-
-// Informs the delegate when the output will stop writing new samples to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390625-captureoutput?language=objc
-func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willFinishRecordingToOutputFileAtURL:fromConnections:error:"), output, fileURL, connections, error)
 }
 
 func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections() bool {
@@ -155,37 +56,4 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidPauseRecor
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1388838-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
 	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didPauseRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
-}
-
-func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidStartRecordingToOutputFileAtURLFromConnections() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didStartRecordingToOutputFileAtURL:fromConnections:"))
-}
-
-// Informs the delegate when the output has started writing to a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387301-captureoutput?language=objc
-func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didStartRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
-}
-
-func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didResumeRecordingToOutputFileAtURL:fromConnections:"))
-}
-
-// Called whenever the output, at the request of the client, successfully resumes a file recording that was paused. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387653-captureoutput?language=objc
-func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didResumeRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
-}
-
-func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:"))
-}
-
-// Informs the delegate when all pending data has been written to an output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390612-captureoutput?language=objc
-func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:"), output, outputFileURL, connections, error)
 }

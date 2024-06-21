@@ -9,7 +9,6 @@ import (
 	"github.com/progrium/darwinkit/macos/corevideo"
 	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/macos/imageio"
-	"github.com/progrium/darwinkit/macos/iosurface"
 	"github.com/progrium/darwinkit/macos/metal"
 	"github.com/progrium/darwinkit/objc"
 )
@@ -24,38 +23,28 @@ type _ContextClass struct {
 // An interface definition for the [Context] class.
 type IContext interface {
 	objc.IObject
-	RenderToIOSurfaceBoundsColorSpace(image IImage, surface iosurface.Ref, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef)
-	ReclaimResources()
-	DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter
-	RenderToMTLTextureCommandBufferBoundsColorSpace(image IImage, texture metal.PTexture, commandBuffer metal.PCommandBuffer, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef)
-	RenderToMTLTextureObjectCommandBufferObjectBoundsColorSpace(image IImage, textureObject objc.IObject, commandBufferObject objc.IObject, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef)
-	DepthBlurEffectFilterForImageURLOptions(url foundation.IURL, options foundation.Dictionary) Filter
-	WriteTIFFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
-	DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationGlassesMatteGainMapOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, glassesMatte IImage, gainMap IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter
-	WritePNGRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
 	WriteJPEGRepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
-	StartTaskToRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) RenderTask
-	CreateCGImageFromRectFormatColorSpace(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) coregraphics.ImageRef
-	DepthBlurEffectFilterForImageDataOptions(data []byte, options foundation.Dictionary) Filter
-	StartTaskToClearError(destination IRenderDestination, error unsafe.Pointer) RenderTask
-	HEIFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
-	DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter
-	JPEGRepresentationOfImageColorSpaceOptions(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
-	TIFFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
-	CreateCGImageFromRect(image IImage, fromRect coregraphics.Rect) coregraphics.ImageRef
-	CreateCGImageFromRectFormatColorSpaceDeferred(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef, deferred bool) coregraphics.ImageRef
+	DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationGlassesMatteGainMapOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, glassesMatte IImage, gainMap IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter
 	RenderToCVPixelBuffer(image IImage, buffer corevideo.PixelBufferRef)
-	PrepareRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) bool
-	WriteHEIFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
+	JPEGRepresentationOfImageColorSpaceOptions(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
+	ReclaimResources()
+	StartTaskToClearError(destination IRenderDestination, error unsafe.Pointer) RenderTask
+	WritePNGRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
+	DepthBlurEffectFilterForImageDataOptions(data []byte, options foundation.Dictionary) Filter
+	DepthBlurEffectFilterForImageURLOptions(url foundation.IURL, options foundation.Dictionary) Filter
 	PNGRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
-	RenderToCVPixelBufferBoundsColorSpace(image IImage, buffer corevideo.PixelBufferRef, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef)
-	StartTaskToRenderToDestinationError(image IImage, destination IRenderDestination, error unsafe.Pointer) RenderTask
-	ClearCaches()
+	CreateCGImageFromRectFormatColorSpaceDeferred(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef, deferred bool) coregraphics.ImageRef
 	WriteHEIF10RepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
+	PrepareRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) bool
+	ClearCaches()
 	HEIF10RepresentationOfImageColorSpaceOptionsError(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) []byte
-	DrawImageInRectFromRect(image IImage, inRect coregraphics.Rect, fromRect coregraphics.Rect)
-	WorkingFormat() Format
+	HEIFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
+	StartTaskToRenderToDestinationError(image IImage, destination IRenderDestination, error unsafe.Pointer) RenderTask
+	WriteHEIFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
+	TIFFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte
+	WriteTIFFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool
 	WorkingColorSpace() coregraphics.ColorSpaceRef
+	WorkingFormat() Format
 }
 
 // An evaluation context for rendering image processing results and performing image analysis. [Full Topic]
@@ -76,20 +65,6 @@ func (c_ Context) Init() Context {
 	return rv
 }
 
-func (c_ Context) InitWithOptions(options map[ContextOption]objc.IObject) Context {
-	rv := objc.Call[Context](c_, objc.Sel("initWithOptions:"), options)
-	return rv
-}
-
-// Initializes a context without a specific rendering destination, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438261-initwithoptions?language=objc
-func NewContextWithOptions(options map[ContextOption]objc.IObject) Context {
-	instance := ContextClass.Alloc().InitWithOptions(options)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _ContextClass) Alloc() Context {
 	rv := objc.Call[Context](cc, objc.Sel("alloc"))
 	return rv
@@ -105,11 +80,35 @@ func NewContext() Context {
 	return ContextClass.New()
 }
 
-// Renders a region of an image into an IOSurface object. [Full Topic]
+// Renders the image and exports the resulting image data as a file in JPEG format. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437778-render?language=objc
-func (c_ Context) RenderToIOSurfaceBoundsColorSpace(image IImage, surface iosurface.Ref, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef) {
-	objc.Call[objc.Void](c_, objc.Sel("render:toIOSurface:bounds:colorSpace:"), image, surface, bounds, colorSpace)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642218-writejpegrepresentationofimage?language=objc
+func (c_ Context) WriteJPEGRepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeJPEGRepresentationOfImage:toURL:colorSpace:options:error:"), image, url, colorSpace, options, errorPtr)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3600105-depthblureffectfilterforimage?language=objc
+func (c_ Context) DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationGlassesMatteGainMapOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, glassesMatte IImage, gainMap IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter {
+	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImage:disparityImage:portraitEffectsMatte:hairSemanticSegmentation:glassesMatte:gainMap:orientation:options:"), image, disparityImage, portraitEffectsMatte, hairSemanticSegmentation, glassesMatte, gainMap, orientation, options)
+	return rv
+}
+
+// Renders an image into a pixel buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437853-render?language=objc
+func (c_ Context) RenderToCVPixelBuffer(image IImage, buffer corevideo.PixelBufferRef) {
+	objc.Call[objc.Void](c_, objc.Sel("render:toCVPixelBuffer:"), image, buffer)
+}
+
+// Renders the image and exports the resulting image data in JPEG format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642214-jpegrepresentationofimage?language=objc
+func (c_ Context) JPEGRepresentationOfImageColorSpaceOptions(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("JPEGRepresentationOfImage:colorSpace:options:"), image, colorSpace, options)
+	return rv
 }
 
 // Runs the garbage collector to reclaim any resources that the context no longer requires. [Full Topic]
@@ -119,59 +118,28 @@ func (c_ Context) ReclaimResources() {
 	objc.Call[objc.Void](c_, objc.Sel("reclaimResources"))
 }
 
+// Fills the entire destination with black or clear depending on its alphaMode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875450-starttasktoclear?language=objc
+func (c_ Context) StartTaskToClearError(destination IRenderDestination, error unsafe.Pointer) RenderTask {
+	rv := objc.Call[RenderTask](c_, objc.Sel("startTaskToClear:error:"), destination, error)
+	return rv
+}
+
+// Renders the image and exports the resulting image data as a file in PNG format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2866197-writepngrepresentationofimage?language=objc
+func (c_ Context) WritePNGRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writePNGRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
+	return rv
+}
+
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3019315-depthblureffectfilterforimage?language=objc
-func (c_ Context) DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter {
-	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImage:disparityImage:portraitEffectsMatte:orientation:options:"), image, disparityImage, portraitEffectsMatte, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3020629-depthblureffectfilterforimagedat?language=objc
+func (c_ Context) DepthBlurEffectFilterForImageDataOptions(data []byte, options foundation.Dictionary) Filter {
+	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImageData:options:"), data, options)
 	return rv
-}
-
-// Creates a Core Image context from a Quartz context, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437864-contextwithcgcontext?language=objc
-func (cc _ContextClass) ContextWithCGContextOptions(cgctx coregraphics.ContextRef, options map[ContextOption]objc.IObject) Context {
-	rv := objc.Call[Context](cc, objc.Sel("contextWithCGContext:options:"), cgctx, options)
-	return rv
-}
-
-// Creates a Core Image context from a Quartz context, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437864-contextwithcgcontext?language=objc
-func Context_ContextWithCGContextOptions(cgctx coregraphics.ContextRef, options map[ContextOption]objc.IObject) Context {
-	return ContextClass.ContextWithCGContextOptions(cgctx, options)
-}
-
-// Renders a region of an image to a Metal texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438026-render?language=objc
-func (c_ Context) RenderToMTLTextureCommandBufferBoundsColorSpace(image IImage, texture metal.PTexture, commandBuffer metal.PCommandBuffer, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef) {
-	po1 := objc.WrapAsProtocol("MTLTexture", texture)
-	po2 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("render:toMTLTexture:commandBuffer:bounds:colorSpace:"), image, po1, po2, bounds, colorSpace)
-}
-
-// Renders a region of an image to a Metal texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438026-render?language=objc
-func (c_ Context) RenderToMTLTextureObjectCommandBufferObjectBoundsColorSpace(image IImage, textureObject objc.IObject, commandBufferObject objc.IObject, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef) {
-	objc.Call[objc.Void](c_, objc.Sel("render:toMTLTexture:commandBuffer:bounds:colorSpace:"), image, textureObject, commandBufferObject, bounds, colorSpace)
-}
-
-// Creates a Core Image context using the specified Metal device and options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437711-contextwithmtldevice?language=objc
-func (cc _ContextClass) ContextWithMTLDeviceOptions(device metal.PDevice, options map[ContextOption]objc.IObject) Context {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[Context](cc, objc.Sel("contextWithMTLDevice:options:"), po0, options)
-	return rv
-}
-
-// Creates a Core Image context using the specified Metal device and options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437711-contextwithmtldevice?language=objc
-func Context_ContextWithMTLDeviceOptions(device metal.PDevice, options map[ContextOption]objc.IObject) Context {
-	return ContextClass.ContextWithMTLDeviceOptions(device, options)
 }
 
 //	[Full Topic]
@@ -182,19 +150,97 @@ func (c_ Context) DepthBlurEffectFilterForImageURLOptions(url foundation.IURL, o
 	return rv
 }
 
-// Renders the image and exports the resulting image data as a file in TIFF format. [Full Topic]
+// Renders the image and exports the resulting image data in PNG format. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642213-writetiffrepresentationofimage?language=objc
-func (c_ Context) WriteTIFFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeTIFFRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2866196-pngrepresentationofimage?language=objc
+func (c_ Context) PNGRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("PNGRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
+	return rv
+}
+
+// Creates a Quartz 2D image from a region of a Core Image image object with deferred rendering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642211-createcgimage?language=objc
+func (c_ Context) CreateCGImageFromRectFormatColorSpaceDeferred(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef, deferred bool) coregraphics.ImageRef {
+	rv := objc.Call[coregraphics.ImageRef](c_, objc.Sel("createCGImage:fromRect:format:colorSpace:deferred:"), image, fromRect, format, colorSpace, deferred)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3600105-depthblureffectfilterforimage?language=objc
-func (c_ Context) DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationGlassesMatteGainMapOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, glassesMatte IImage, gainMap IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter {
-	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImage:disparityImage:portraitEffectsMatte:hairSemanticSegmentation:glassesMatte:gainMap:orientation:options:"), image, disparityImage, portraitEffectsMatte, hairSemanticSegmentation, glassesMatte, gainMap, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3762900-writeheif10representationofimage?language=objc
+func (c_ Context) WriteHEIF10RepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeHEIF10RepresentationOfImage:toURL:colorSpace:options:error:"), image, url, colorSpace, options, errorPtr)
+	return rv
+}
+
+// An optional call to warm up a CIContext so that subsequent calls to render with the same arguments run more efficiently. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875428-preparerender?language=objc
+func (c_ Context) PrepareRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("prepareRender:fromRect:toDestination:atPoint:error:"), image, fromRect, destination, atPoint, error)
+	return rv
+}
+
+// Frees any cached data, such as temporary images, associated with the context and runs the garbage collector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437790-clearcaches?language=objc
+func (c_ Context) ClearCaches() {
+	objc.Call[objc.Void](c_, objc.Sel("clearCaches"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3762899-heif10representationofimage?language=objc
+func (c_ Context) HEIF10RepresentationOfImageColorSpaceOptionsError(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("HEIF10RepresentationOfImage:colorSpace:options:error:"), image, colorSpace, options, errorPtr)
+	return rv
+}
+
+// Renders the image and exports the resulting image data in HEIF format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2902269-heifrepresentationofimage?language=objc
+func (c_ Context) HEIFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("HEIFRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
+	return rv
+}
+
+// Creates a context without a specific rendering destination, using default options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642219-context?language=objc
+func (cc _ContextClass) Context() Context {
+	rv := objc.Call[Context](cc, objc.Sel("context"))
+	return rv
+}
+
+// Creates a context without a specific rendering destination, using default options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642219-context?language=objc
+func Context_Context() Context {
+	return ContextClass.Context()
+}
+
+// Renders an image to a destination so that point (0, 0) of the image maps to point (0, 0) of the destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875429-starttasktorender?language=objc
+func (c_ Context) StartTaskToRenderToDestinationError(image IImage, destination IRenderDestination, error unsafe.Pointer) RenderTask {
+	rv := objc.Call[RenderTask](c_, objc.Sel("startTaskToRender:toDestination:error:"), image, destination, error)
+	return rv
+}
+
+// Renders the image and exports the resulting image data as a file in HEIF format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2902266-writeheifrepresentationofimage?language=objc
+func (c_ Context) WriteHEIFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeHEIFRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
+	return rv
+}
+
+// Renders the image and exports the resulting image data in TIFF format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642220-tiffrepresentationofimage?language=objc
+func (c_ Context) TIFFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("TIFFRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
 	return rv
 }
 
@@ -214,20 +260,57 @@ func Context_ContextWithMTLCommandQueue(commandQueue metal.PCommandQueue) Contex
 	return ContextClass.ContextWithMTLCommandQueue(commandQueue)
 }
 
-// Renders the image and exports the resulting image data as a file in PNG format. [Full Topic]
+// Returns the number of GPUs not currently driving a display. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2866197-writepngrepresentationofimage?language=objc
-func (c_ Context) WritePNGRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writePNGRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437817-offlinegpucount?language=objc
+func (cc _ContextClass) OfflineGPUCount() int {
+	rv := objc.Call[int](cc, objc.Sel("offlineGPUCount"))
 	return rv
 }
 
-// Renders the image and exports the resulting image data as a file in JPEG format. [Full Topic]
+// Returns the number of GPUs not currently driving a display. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642218-writejpegrepresentationofimage?language=objc
-func (c_ Context) WriteJPEGRepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeJPEGRepresentationOfImage:toURL:colorSpace:options:error:"), image, url, colorSpace, options, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437817-offlinegpucount?language=objc
+func Context_OfflineGPUCount() int {
+	return ContextClass.OfflineGPUCount()
+}
+
+// Renders the image and exports the resulting image data as a file in TIFF format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642213-writetiffrepresentationofimage?language=objc
+func (c_ Context) WriteTIFFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeTIFFRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
 	return rv
+}
+
+// Creates a Core Image context from a Quartz context, using the specified options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437864-contextwithcgcontext?language=objc
+func (cc _ContextClass) ContextWithCGContextOptions(cgctx coregraphics.ContextRef, options map[ContextOption]objc.IObject) Context {
+	rv := objc.Call[Context](cc, objc.Sel("contextWithCGContext:options:"), cgctx, options)
+	return rv
+}
+
+// Creates a Core Image context from a Quartz context, using the specified options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437864-contextwithcgcontext?language=objc
+func Context_ContextWithCGContextOptions(cgctx coregraphics.ContextRef, options map[ContextOption]objc.IObject) Context {
+	return ContextClass.ContextWithCGContextOptions(cgctx, options)
+}
+
+// Initializes a context without a specific rendering destination, using the specified options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438261-initwithoptions?language=objc
+func (cc _ContextClass) ContextWithOptions(options map[ContextOption]objc.IObject) Context {
+	rv := objc.Call[Context](cc, objc.Sel("contextWithOptions:"), options)
+	return rv
+}
+
+// Initializes a context without a specific rendering destination, using the specified options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438261-initwithoptions?language=objc
+func Context_ContextWithOptions(options map[ContextOption]objc.IObject) Context {
+	return ContextClass.ContextWithOptions(options)
 }
 
 // Creates a Core Image context using the specified Metal device. [Full Topic]
@@ -246,206 +329,12 @@ func Context_ContextWithMTLDevice(device metal.PDevice) Context {
 	return ContextClass.ContextWithMTLDevice(device)
 }
 
-// Renders a portion of an image to a point in the destination. [Full Topic]
+// The working color space of the Core Image context. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875448-starttasktorender?language=objc
-func (c_ Context) StartTaskToRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) RenderTask {
-	rv := objc.Call[RenderTask](c_, objc.Sel("startTaskToRender:fromRect:toDestination:atPoint:error:"), image, fromRect, destination, atPoint, error)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438061-workingcolorspace?language=objc
+func (c_ Context) WorkingColorSpace() coregraphics.ColorSpaceRef {
+	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("workingColorSpace"))
 	return rv
-}
-
-// Creates a Quartz 2D image from a region of a Core Image image object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437978-createcgimage?language=objc
-func (c_ Context) CreateCGImageFromRectFormatColorSpace(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](c_, objc.Sel("createCGImage:fromRect:format:colorSpace:"), image, fromRect, format, colorSpace)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3020629-depthblureffectfilterforimagedat?language=objc
-func (c_ Context) DepthBlurEffectFilterForImageDataOptions(data []byte, options foundation.Dictionary) Filter {
-	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImageData:options:"), data, options)
-	return rv
-}
-
-// Fills the entire destination with black or clear depending on its [coreimage/cirenderdestination/alphamode]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875450-starttasktoclear?language=objc
-func (c_ Context) StartTaskToClearError(destination IRenderDestination, error unsafe.Pointer) RenderTask {
-	rv := objc.Call[RenderTask](c_, objc.Sel("startTaskToClear:error:"), destination, error)
-	return rv
-}
-
-// Renders the image and exports the resulting image data in HEIF format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2902269-heifrepresentationofimage?language=objc
-func (c_ Context) HEIFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("HEIFRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3228045-depthblureffectfilterforimage?language=objc
-func (c_ Context) DepthBlurEffectFilterForImageDisparityImagePortraitEffectsMatteHairSemanticSegmentationOrientationOptions(image IImage, disparityImage IImage, portraitEffectsMatte IImage, hairSemanticSegmentation IImage, orientation imageio.ImagePropertyOrientation, options foundation.Dictionary) Filter {
-	rv := objc.Call[Filter](c_, objc.Sel("depthBlurEffectFilterForImage:disparityImage:portraitEffectsMatte:hairSemanticSegmentation:orientation:options:"), image, disparityImage, portraitEffectsMatte, hairSemanticSegmentation, orientation, options)
-	return rv
-}
-
-// Renders the image and exports the resulting image data in JPEG format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642214-jpegrepresentationofimage?language=objc
-func (c_ Context) JPEGRepresentationOfImageColorSpaceOptions(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("JPEGRepresentationOfImage:colorSpace:options:"), image, colorSpace, options)
-	return rv
-}
-
-// Renders the image and exports the resulting image data in TIFF format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642220-tiffrepresentationofimage?language=objc
-func (c_ Context) TIFFRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("TIFFRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
-	return rv
-}
-
-// Creates a Quartz 2D image from a region of a Core Image image object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437784-createcgimage?language=objc
-func (c_ Context) CreateCGImageFromRect(image IImage, fromRect coregraphics.Rect) coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](c_, objc.Sel("createCGImage:fromRect:"), image, fromRect)
-	return rv
-}
-
-// Creates a Quartz 2D image from a region of a Core Image image object with deferred rendering. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642211-createcgimage?language=objc
-func (c_ Context) CreateCGImageFromRectFormatColorSpaceDeferred(image IImage, fromRect coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef, deferred bool) coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](c_, objc.Sel("createCGImage:fromRect:format:colorSpace:deferred:"), image, fromRect, format, colorSpace, deferred)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3365985-contextwithmtlcommandqueue?language=objc
-func (cc _ContextClass) ContextWithMTLCommandQueueOptions(commandQueue metal.PCommandQueue, options map[ContextOption]objc.IObject) Context {
-	po0 := objc.WrapAsProtocol("MTLCommandQueue", commandQueue)
-	rv := objc.Call[Context](cc, objc.Sel("contextWithMTLCommandQueue:options:"), po0, options)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3365985-contextwithmtlcommandqueue?language=objc
-func Context_ContextWithMTLCommandQueueOptions(commandQueue metal.PCommandQueue, options map[ContextOption]objc.IObject) Context {
-	return ContextClass.ContextWithMTLCommandQueueOptions(commandQueue, options)
-}
-
-// Renders an image into a pixel buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437853-render?language=objc
-func (c_ Context) RenderToCVPixelBuffer(image IImage, buffer corevideo.PixelBufferRef) {
-	objc.Call[objc.Void](c_, objc.Sel("render:toCVPixelBuffer:"), image, buffer)
-}
-
-// An optional call to warm up a CIContext so that subsequent calls to render with the same arguments run more efficiently. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875428-preparerender?language=objc
-func (c_ Context) PrepareRenderFromRectToDestinationAtPointError(image IImage, fromRect coregraphics.Rect, destination IRenderDestination, atPoint coregraphics.Point, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("prepareRender:fromRect:toDestination:atPoint:error:"), image, fromRect, destination, atPoint, error)
-	return rv
-}
-
-// Renders the image and exports the resulting image data as a file in HEIF format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2902266-writeheifrepresentationofimage?language=objc
-func (c_ Context) WriteHEIFRepresentationOfImageToURLFormatColorSpaceOptionsError(image IImage, url foundation.IURL, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeHEIFRepresentationOfImage:toURL:format:colorSpace:options:error:"), image, url, format, colorSpace, options, errorPtr)
-	return rv
-}
-
-// Renders the image and exports the resulting image data in PNG format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2866196-pngrepresentationofimage?language=objc
-func (c_ Context) PNGRepresentationOfImageFormatColorSpaceOptions(image IImage, format Format, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject) []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("PNGRepresentationOfImage:format:colorSpace:options:"), image, format, colorSpace, options)
-	return rv
-}
-
-// Returns the number of GPUs not currently driving a display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437817-offlinegpucount?language=objc
-func (cc _ContextClass) OfflineGPUCount() int {
-	rv := objc.Call[int](cc, objc.Sel("offlineGPUCount"))
-	return rv
-}
-
-// Returns the number of GPUs not currently driving a display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437817-offlinegpucount?language=objc
-func Context_OfflineGPUCount() int {
-	return ContextClass.OfflineGPUCount()
-}
-
-// Renders a region of an image into a pixel buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437835-render?language=objc
-func (c_ Context) RenderToCVPixelBufferBoundsColorSpace(image IImage, buffer corevideo.PixelBufferRef, bounds coregraphics.Rect, colorSpace coregraphics.ColorSpaceRef) {
-	objc.Call[objc.Void](c_, objc.Sel("render:toCVPixelBuffer:bounds:colorSpace:"), image, buffer, bounds, colorSpace)
-}
-
-// Renders an image to a destination so that point (0, 0) of the image maps to point (0, 0) of the destination. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/2875429-starttasktorender?language=objc
-func (c_ Context) StartTaskToRenderToDestinationError(image IImage, destination IRenderDestination, error unsafe.Pointer) RenderTask {
-	rv := objc.Call[RenderTask](c_, objc.Sel("startTaskToRender:toDestination:error:"), image, destination, error)
-	return rv
-}
-
-// Frees any cached data, such as temporary images, associated with the context and runs the garbage collector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437790-clearcaches?language=objc
-func (c_ Context) ClearCaches() {
-	objc.Call[objc.Void](c_, objc.Sel("clearCaches"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3762900-writeheif10representationofimage?language=objc
-func (c_ Context) WriteHEIF10RepresentationOfImageToURLColorSpaceOptionsError(image IImage, url foundation.IURL, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeHEIF10RepresentationOfImage:toURL:colorSpace:options:error:"), image, url, colorSpace, options, errorPtr)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/3762899-heif10representationofimage?language=objc
-func (c_ Context) HEIF10RepresentationOfImageColorSpaceOptionsError(image IImage, colorSpace coregraphics.ColorSpaceRef, options map[ImageRepresentationOption]objc.IObject, errorPtr unsafe.Pointer) []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("HEIF10RepresentationOfImage:colorSpace:options:error:"), image, colorSpace, options, errorPtr)
-	return rv
-}
-
-// Creates a context without a specific rendering destination, using default options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642219-context?language=objc
-func (cc _ContextClass) Context() Context {
-	rv := objc.Call[Context](cc, objc.Sel("context"))
-	return rv
-}
-
-// Creates a context without a specific rendering destination, using default options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642219-context?language=objc
-func Context_Context() Context {
-	return ContextClass.Context()
-}
-
-// Renders a region of an image to a rectangle in the context destination. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1437786-drawimage?language=objc
-func (c_ Context) DrawImageInRectFromRect(image IImage, inRect coregraphics.Rect, fromRect coregraphics.Rect) {
-	objc.Call[objc.Void](c_, objc.Sel("drawImage:inRect:fromRect:"), image, inRect, fromRect)
 }
 
 // The working pixel format of the Core Image context. [Full Topic]
@@ -453,13 +342,5 @@ func (c_ Context) DrawImageInRectFromRect(image IImage, inRect coregraphics.Rect
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1642215-workingformat?language=objc
 func (c_ Context) WorkingFormat() Format {
 	rv := objc.Call[Format](c_, objc.Sel("workingFormat"))
-	return rv
-}
-
-// The working color space of the Core Image context. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicontext/1438061-workingcolorspace?language=objc
-func (c_ Context) WorkingColorSpace() coregraphics.ColorSpaceRef {
-	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("workingColorSpace"))
 	return rv
 }

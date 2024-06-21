@@ -20,31 +20,27 @@ type _NNGraphClass struct {
 // An interface definition for the [NNGraph] class.
 type INNGraph interface {
 	IKernel
-	EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image
-	EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image
 	EncodeBatchToCommandBufferSourceImagesSourceStates(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, sourceStates []*foundation.Array) *foundation.Array
 	EncodeBatchToCommandBufferObjectSourceImagesSourceStates(commandBufferObject objc.IObject, sourceImages []*foundation.Array, sourceStates []*foundation.Array) *foundation.Array
-	EncodeToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image
-	EncodeToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image
-	ReloadFromDataSources()
 	ReadCountForSourceStateAtIndex(index uint) uint
-	ExecuteAsyncWithSourceImagesCompletionHandler(sourceImages []IImage, handler NNGraphCompletionHandler) Image
 	ReadCountForSourceImageAtIndex(index uint) uint
-	EncodeBatchToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array
+	ExecuteAsyncWithSourceImagesCompletionHandler(sourceImages []IImage, handler NNGraphCompletionHandler) Image
+	EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image
+	EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image
+	ReloadFromDataSources()
+	IntermediateImageHandles() []HandleObject
+	SourceStateHandles() []HandleObject
 	ResultStateHandles() []HandleObject
+	SourceImageHandles() []HandleObject
+	ResultHandle() HandleObject
 	DestinationImageAllocator() ImageAllocatorObject
 	SetDestinationImageAllocator(value PImageAllocator)
 	SetDestinationImageAllocatorObject(valueObject objc.IObject)
-	SourceStateHandles() []HandleObject
-	OutputStateIsTemporary() bool
-	SetOutputStateIsTemporary(value bool)
-	IntermediateImageHandles() []HandleObject
-	ResultHandle() HandleObject
-	SourceImageHandles() []HandleObject
+	ResultImageIsNeeded() bool
 	Format() ImageFeatureChannelFormat
 	SetFormat(value ImageFeatureChannelFormat)
-	ResultImageIsNeeded() bool
+	OutputStateIsTemporary() bool
+	SetOutputStateIsTemporary(value bool)
 }
 
 // An optimized representation of a graph of neural network image and filter nodes. [Full Topic]
@@ -58,62 +54,6 @@ func NNGraphFrom(ptr unsafe.Pointer) NNGraph {
 	return NNGraph{
 		Kernel: KernelFrom(ptr),
 	}
-}
-
-func (n_ NNGraph) InitWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](n_, objc.Sel("initWithDevice:resultImage:resultImageIsNeeded:"), po0, resultImage, resultIsNeeded)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2953955-initwithdevice?language=objc
-func NewNNGraphWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
-	instance := NNGraphClass.Alloc().InitWithDeviceResultImageResultImageIsNeeded(device, resultImage, resultIsNeeded)
-	instance.Autorelease()
-	return instance
-}
-
-func (nc _NNGraphClass) GraphWithDeviceResultImagesResultsAreNeeded(device metal.PDevice, resultImages []INNImageNode, areResultsNeeded *bool) NNGraph {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](nc, objc.Sel("graphWithDevice:resultImages:resultsAreNeeded:"), po0, resultImages, areResultsNeeded)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/3037384-graphwithdevice?language=objc
-func NNGraph_GraphWithDeviceResultImagesResultsAreNeeded(device metal.PDevice, resultImages []INNImageNode, areResultsNeeded *bool) NNGraph {
-	return NNGraphClass.GraphWithDeviceResultImagesResultsAreNeeded(device, resultImages, areResultsNeeded)
-}
-
-func (nc _NNGraphClass) GraphWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](nc, objc.Sel("graphWithDevice:resultImage:resultImageIsNeeded:"), po0, resultImage, resultIsNeeded)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2953956-graphwithdevice?language=objc
-func NNGraph_GraphWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
-	return NNGraphClass.GraphWithDeviceResultImageResultImageIsNeeded(device, resultImage, resultIsNeeded)
-}
-
-func (n_ NNGraph) InitWithDeviceResultImagesResultsAreNeeded(device metal.PDevice, resultImages []INNImageNode, areResultsNeeded *bool) NNGraph {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](n_, objc.Sel("initWithDevice:resultImages:resultsAreNeeded:"), po0, resultImages, areResultsNeeded)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/3037385-initwithdevice?language=objc
-func NewNNGraphWithDeviceResultImagesResultsAreNeeded(device metal.PDevice, resultImages []INNImageNode, areResultsNeeded *bool) NNGraph {
-	instance := NNGraphClass.Alloc().InitWithDeviceResultImagesResultsAreNeeded(device, resultImages, areResultsNeeded)
-	instance.Autorelease()
-	return instance
 }
 
 func (nc _NNGraphClass) Alloc() NNGraph {
@@ -136,21 +76,6 @@ func (n_ NNGraph) Init() NNGraph {
 	return rv
 }
 
-func (n_ NNGraph) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNGraph {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](n_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func NNGraph_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNGraph {
-	instance := NNGraphClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (n_ NNGraph) InitWithDevice(device metal.PDevice) NNGraph {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNGraph](n_, objc.Sel("initWithDevice:"), po0)
@@ -166,21 +91,19 @@ func NewNNGraphWithDevice(device metal.PDevice) NNGraph {
 	return instance
 }
 
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867036-encodetocommandbuffer?language=objc
-func (n_ NNGraph) EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), po0, sourceImages)
+func (n_ NNGraph) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNGraph {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[NNGraph](n_, objc.Sel("copyWithZone:device:"), zone, po1)
 	return rv
 }
 
-//	[Full Topic]
+// Makes a copy of this kernel object for a new device. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867036-encodetocommandbuffer?language=objc
-func (n_ NNGraph) EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), commandBufferObject, sourceImages)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func NNGraph_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNGraph {
+	instance := NNGraphClass.Alloc().CopyWithZoneDevice(zone, device)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]
@@ -202,41 +125,9 @@ func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStates(comma
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867011-encodetocommandbuffer?language=objc
-func (n_ NNGraph) EncodeToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, intermediateImages, destinationStates)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867011-encodetocommandbuffer?language=objc
-func (n_ NNGraph) EncodeToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), commandBufferObject, sourceImages, sourceStates, intermediateImages, destinationStates)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2976512-reloadfromdatasources?language=objc
-func (n_ NNGraph) ReloadFromDataSources() {
-	objc.Call[objc.Void](n_, objc.Sel("reloadFromDataSources"))
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/3037387-readcountforsourcestateatindex?language=objc
 func (n_ NNGraph) ReadCountForSourceStateAtIndex(index uint) uint {
 	rv := objc.Call[uint](n_, objc.Sel("readCountForSourceStateAtIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2890826-executeasyncwithsourceimages?language=objc
-func (n_ NNGraph) ExecuteAsyncWithSourceImagesCompletionHandler(sourceImages []IImage, handler NNGraphCompletionHandler) Image {
-	rv := objc.Call[Image](n_, objc.Sel("executeAsyncWithSourceImages:completionHandler:"), sourceImages, handler)
 	return rv
 }
 
@@ -250,18 +141,49 @@ func (n_ NNGraph) ReadCountForSourceImageAtIndex(index uint) uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2942459-encodebatchtocommandbuffer?language=objc
-func (n_ NNGraph) EncodeBatchToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, intermediateImages, destinationStates)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2890826-executeasyncwithsourceimages?language=objc
+func (n_ NNGraph) ExecuteAsyncWithSourceImagesCompletionHandler(sourceImages []IImage, handler NNGraphCompletionHandler) Image {
+	rv := objc.Call[Image](n_, objc.Sel("executeAsyncWithSourceImages:completionHandler:"), sourceImages, handler)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2942459-encodebatchtocommandbuffer?language=objc
-func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), commandBufferObject, sourceImages, sourceStates, intermediateImages, destinationStates)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867036-encodetocommandbuffer?language=objc
+func (n_ NNGraph) EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), po0, sourceImages)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867036-encodetocommandbuffer?language=objc
+func (n_ NNGraph) EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image {
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), commandBufferObject, sourceImages)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2976512-reloadfromdatasources?language=objc
+func (n_ NNGraph) ReloadFromDataSources() {
+	objc.Call[objc.Void](n_, objc.Sel("reloadFromDataSources"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867000-intermediateimagehandles?language=objc
+func (n_ NNGraph) IntermediateImageHandles() []HandleObject {
+	rv := objc.Call[[]HandleObject](n_, objc.Sel("intermediateImageHandles"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867056-sourcestatehandles?language=objc
+func (n_ NNGraph) SourceStateHandles() []HandleObject {
+	rv := objc.Call[[]HandleObject](n_, objc.Sel("sourceStateHandles"))
 	return rv
 }
 
@@ -270,6 +192,22 @@ func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStatesInterm
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867149-resultstatehandles?language=objc
 func (n_ NNGraph) ResultStateHandles() []HandleObject {
 	rv := objc.Call[[]HandleObject](n_, objc.Sel("resultStateHandles"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867012-sourceimagehandles?language=objc
+func (n_ NNGraph) SourceImageHandles() []HandleObject {
+	rv := objc.Call[[]HandleObject](n_, objc.Sel("sourceImageHandles"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867123-resulthandle?language=objc
+func (n_ NNGraph) ResultHandle() HandleObject {
+	rv := objc.Call[HandleObject](n_, objc.Sel("resultHandle"))
 	return rv
 }
 
@@ -298,48 +236,9 @@ func (n_ NNGraph) SetDestinationImageAllocatorObject(valueObject objc.IObject) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867056-sourcestatehandles?language=objc
-func (n_ NNGraph) SourceStateHandles() []HandleObject {
-	rv := objc.Call[[]HandleObject](n_, objc.Sel("sourceStateHandles"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867094-outputstateistemporary?language=objc
-func (n_ NNGraph) OutputStateIsTemporary() bool {
-	rv := objc.Call[bool](n_, objc.Sel("outputStateIsTemporary"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867094-outputstateistemporary?language=objc
-func (n_ NNGraph) SetOutputStateIsTemporary(value bool) {
-	objc.Call[objc.Void](n_, objc.Sel("setOutputStateIsTemporary:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867000-intermediateimagehandles?language=objc
-func (n_ NNGraph) IntermediateImageHandles() []HandleObject {
-	rv := objc.Call[[]HandleObject](n_, objc.Sel("intermediateImageHandles"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867123-resulthandle?language=objc
-func (n_ NNGraph) ResultHandle() HandleObject {
-	rv := objc.Call[HandleObject](n_, objc.Sel("resultHandle"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867012-sourceimagehandles?language=objc
-func (n_ NNGraph) SourceImageHandles() []HandleObject {
-	rv := objc.Call[[]HandleObject](n_, objc.Sel("sourceImageHandles"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2953954-resultimageisneeded?language=objc
+func (n_ NNGraph) ResultImageIsNeeded() bool {
+	rv := objc.Call[bool](n_, objc.Sel("resultImageIsNeeded"))
 	return rv
 }
 
@@ -360,8 +259,15 @@ func (n_ NNGraph) SetFormat(value ImageFeatureChannelFormat) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2953954-resultimageisneeded?language=objc
-func (n_ NNGraph) ResultImageIsNeeded() bool {
-	rv := objc.Call[bool](n_, objc.Sel("resultImageIsNeeded"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867094-outputstateistemporary?language=objc
+func (n_ NNGraph) OutputStateIsTemporary() bool {
+	rv := objc.Call[bool](n_, objc.Sel("outputStateIsTemporary"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867094-outputstateistemporary?language=objc
+func (n_ NNGraph) SetOutputStateIsTemporary(value bool) {
+	objc.Call[objc.Void](n_, objc.Sel("setOutputStateIsTemporary:"), value)
 }

@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionhandle?language=objc
 type PFunctionHandle interface {
 	// optional
-	FunctionType() FunctionType
-	HasFunctionType() bool
+	Name() string
+	HasName() bool
 
 	// optional
 	Device() DeviceObject
 	HasDevice() bool
 
 	// optional
-	Name() string
-	HasName() bool
+	FunctionType() FunctionType
+	HasFunctionType() bool
 }
 
 // ensure impl type implements protocol interface
@@ -31,15 +31,15 @@ type FunctionHandleObject struct {
 	objc.Object
 }
 
-func (f_ FunctionHandleObject) HasFunctionType() bool {
-	return f_.RespondsToSelector(objc.Sel("functionType"))
+func (f_ FunctionHandleObject) HasName() bool {
+	return f_.RespondsToSelector(objc.Sel("name"))
 }
 
-// The shader function’s type. [Full Topic]
+// The function’s name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionhandle/3554003-functiontype?language=objc
-func (f_ FunctionHandleObject) FunctionType() FunctionType {
-	rv := objc.Call[FunctionType](f_, objc.Sel("functionType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionhandle/3554004-name?language=objc
+func (f_ FunctionHandleObject) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
 	return rv
 }
 
@@ -55,14 +55,14 @@ func (f_ FunctionHandleObject) Device() DeviceObject {
 	return rv
 }
 
-func (f_ FunctionHandleObject) HasName() bool {
-	return f_.RespondsToSelector(objc.Sel("name"))
+func (f_ FunctionHandleObject) HasFunctionType() bool {
+	return f_.RespondsToSelector(objc.Sel("functionType"))
 }
 
-// The function’s name. [Full Topic]
+// The shader function’s type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionhandle/3554004-name?language=objc
-func (f_ FunctionHandleObject) Name() string {
-	rv := objc.Call[string](f_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionhandle/3554003-functiontype?language=objc
+func (f_ FunctionHandleObject) FunctionType() FunctionType {
+	rv := objc.Call[FunctionType](f_, objc.Sel("functionType"))
 	return rv
 }

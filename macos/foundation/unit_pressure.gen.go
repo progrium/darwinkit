@@ -53,6 +53,18 @@ func (u_ UnitPressure) Init() UnitPressure {
 	return rv
 }
 
+func (uc _UnitPressureClass) BaseUnit() UnitPressure {
+	rv := objc.Call[UnitPressure](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitPressure_BaseUnit() UnitPressure {
+	return UnitPressureClass.BaseUnit()
+}
+
 func (u_ UnitPressure) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitPressure {
 	rv := objc.Call[UnitPressure](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitPressureWithSymbolConverter(symbol string, converter IUnitConverter)
 	instance := UnitPressureClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitPressureClass) BaseUnit() UnitPressure {
-	rv := objc.Call[UnitPressure](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitPressure_BaseUnit() UnitPressure {
-	return UnitPressureClass.BaseUnit()
 }
 
 func (u_ UnitPressure) InitWithSymbol(symbol string) UnitPressure {
@@ -108,6 +108,21 @@ func UnitPressure_Gigapascals() UnitPressure {
 	return UnitPressureClass.Gigapascals()
 }
 
+// The pounds per square inch unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856077-poundsforcepersquareinch?language=objc
+func (uc _UnitPressureClass) PoundsForcePerSquareInch() UnitPressure {
+	rv := objc.Call[UnitPressure](uc, objc.Sel("poundsForcePerSquareInch"))
+	return rv
+}
+
+// The pounds per square inch unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856077-poundsforcepersquareinch?language=objc
+func UnitPressure_PoundsForcePerSquareInch() UnitPressure {
+	return UnitPressureClass.PoundsForcePerSquareInch()
+}
+
 // The bars unit of pressure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856109-bars?language=objc
@@ -121,6 +136,21 @@ func (uc _UnitPressureClass) Bars() UnitPressure {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856109-bars?language=objc
 func UnitPressure_Bars() UnitPressure {
 	return UnitPressureClass.Bars()
+}
+
+// The newtons per square meter unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856096-newtonspermeterssquared?language=objc
+func (uc _UnitPressureClass) NewtonsPerMetersSquared() UnitPressure {
+	rv := objc.Call[UnitPressure](uc, objc.Sel("newtonsPerMetersSquared"))
+	return rv
+}
+
+// The newtons per square meter unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856096-newtonspermeterssquared?language=objc
+func UnitPressure_NewtonsPerMetersSquared() UnitPressure {
+	return UnitPressureClass.NewtonsPerMetersSquared()
 }
 
 // The millibars unit of pressure. [Full Topic]
@@ -138,21 +168,6 @@ func UnitPressure_Millibars() UnitPressure {
 	return UnitPressureClass.Millibars()
 }
 
-// The millimeters of mercury unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856052-millimetersofmercury?language=objc
-func (uc _UnitPressureClass) MillimetersOfMercury() UnitPressure {
-	rv := objc.Call[UnitPressure](uc, objc.Sel("millimetersOfMercury"))
-	return rv
-}
-
-// The millimeters of mercury unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856052-millimetersofmercury?language=objc
-func UnitPressure_MillimetersOfMercury() UnitPressure {
-	return UnitPressureClass.MillimetersOfMercury()
-}
-
 // The hectopascals unit of pressure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856111-hectopascals?language=objc
@@ -168,6 +183,21 @@ func UnitPressure_Hectopascals() UnitPressure {
 	return UnitPressureClass.Hectopascals()
 }
 
+// The millimeters of mercury unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856052-millimetersofmercury?language=objc
+func (uc _UnitPressureClass) MillimetersOfMercury() UnitPressure {
+	rv := objc.Call[UnitPressure](uc, objc.Sel("millimetersOfMercury"))
+	return rv
+}
+
+// The millimeters of mercury unit of pressure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856052-millimetersofmercury?language=objc
+func UnitPressure_MillimetersOfMercury() UnitPressure {
+	return UnitPressureClass.MillimetersOfMercury()
+}
+
 // The kilopascals unit of pressure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856057-kilopascals?language=objc
@@ -181,36 +211,6 @@ func (uc _UnitPressureClass) Kilopascals() UnitPressure {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856057-kilopascals?language=objc
 func UnitPressure_Kilopascals() UnitPressure {
 	return UnitPressureClass.Kilopascals()
-}
-
-// The pounds per square inch unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856077-poundsforcepersquareinch?language=objc
-func (uc _UnitPressureClass) PoundsForcePerSquareInch() UnitPressure {
-	rv := objc.Call[UnitPressure](uc, objc.Sel("poundsForcePerSquareInch"))
-	return rv
-}
-
-// The pounds per square inch unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856077-poundsforcepersquareinch?language=objc
-func UnitPressure_PoundsForcePerSquareInch() UnitPressure {
-	return UnitPressureClass.PoundsForcePerSquareInch()
-}
-
-// The newtons per square meter unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856096-newtonspermeterssquared?language=objc
-func (uc _UnitPressureClass) NewtonsPerMetersSquared() UnitPressure {
-	rv := objc.Call[UnitPressure](uc, objc.Sel("newtonsPerMetersSquared"))
-	return rv
-}
-
-// The newtons per square meter unit of pressure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitpressure/1856096-newtonspermeterssquared?language=objc
-func UnitPressure_NewtonsPerMetersSquared() UnitPressure {
-	return UnitPressureClass.NewtonsPerMetersSquared()
 }
 
 // The inches of mercury unit of pressure. [Full Topic]

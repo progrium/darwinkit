@@ -84,21 +84,6 @@ func NewCNNDilatedPoolingMaxWithDeviceKernelWidthKernelHeightStrideInPixelsXStri
 	return instance
 }
 
-func (c_ CNNDilatedPoolingMax) InitWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNDilatedPoolingMax {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNDilatedPoolingMax](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:"), po0, kernelWidth, kernelHeight)
-	return rv
-}
-
-// Initializes a pooling filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpooling/1648887-initwithdevice?language=objc
-func NewCNNDilatedPoolingMaxWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNDilatedPoolingMax {
-	instance := CNNDilatedPoolingMaxClass.Alloc().InitWithDeviceKernelWidthKernelHeight(device, kernelWidth, kernelHeight)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNDilatedPoolingMax) InitWithDevice(device metal.PDevice) CNNDilatedPoolingMax {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNDilatedPoolingMax](c_, objc.Sel("initWithDevice:"), po0)

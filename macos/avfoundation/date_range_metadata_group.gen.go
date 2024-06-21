@@ -19,8 +19,8 @@ type _DateRangeMetadataGroupClass struct {
 // An interface definition for the [DateRangeMetadataGroup] class.
 type IDateRangeMetadataGroup interface {
 	IMetadataGroup
-	EndDate() foundation.Date
 	StartDate() foundation.Date
+	EndDate() foundation.Date
 }
 
 // A collection of metadata items that are valid for use within a specific date range. [Full Topic]
@@ -70,18 +70,18 @@ func (d_ DateRangeMetadataGroup) Init() DateRangeMetadataGroup {
 	return rv
 }
 
-// The end date for the metadata date range group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdaterangemetadatagroup/1386255-enddate?language=objc
-func (d_ DateRangeMetadataGroup) EndDate() foundation.Date {
-	rv := objc.Call[foundation.Date](d_, objc.Sel("endDate"))
-	return rv
-}
-
 // The start date for the metadata date range group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdaterangemetadatagroup/1386420-startdate?language=objc
 func (d_ DateRangeMetadataGroup) StartDate() foundation.Date {
 	rv := objc.Call[foundation.Date](d_, objc.Sel("startDate"))
+	return rv
+}
+
+// The end date for the metadata date range group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdaterangemetadatagroup/1386255-enddate?language=objc
+func (d_ DateRangeMetadataGroup) EndDate() foundation.Date {
+	rv := objc.Call[foundation.Date](d_, objc.Sel("endDate"))
 	return rv
 }

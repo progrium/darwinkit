@@ -13,196 +13,47 @@ import (
 type PTextViewDelegate interface {
 	PTextDelegate
 	// optional
-	TextViewDoubleClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)
-	HasTextViewDoubleClickedOnCellInRectAtIndex() bool
-
-	// optional
-	TextViewShouldSetSpellingStateRange(textView TextView, value int, affectedCharRange foundation.Range) int
-	HasTextViewShouldSetSpellingStateRange() bool
-
-	// optional
-	TextViewShouldSelectCandidateAtIndex(textView TextView, index uint) bool
-	HasTextViewShouldSelectCandidateAtIndex() bool
+	TextViewDidChangeTypingAttributes(notification foundation.Notification)
+	HasTextViewDidChangeTypingAttributes() bool
 
 	// optional
 	UndoManagerForTextView(view TextView) foundation.UndoManager
 	HasUndoManagerForTextView() bool
 
 	// optional
-	TextViewCandidatesForSelectedRange_(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult
-	HasTextViewCandidatesForSelectedRange_() bool
-
-	// optional
-	TextViewWriteCellAtIndexToPasteboardType(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool
-	HasTextViewWriteCellAtIndexToPasteboardType() bool
-
-	// optional
-	TextViewDidChangeTypingAttributes(notification foundation.Notification)
-	HasTextViewDidChangeTypingAttributes() bool
-
-	// optional
-	TextViewDoCommandBySelector(textView TextView, commandSelector objc.Selector) bool
-	HasTextViewDoCommandBySelector() bool
-
-	// optional
-	TextViewCompletionsForPartialWordRangeIndexOfSelectedItem(textView TextView, words []string, charRange foundation.Range, index *int) []string
-	HasTextViewCompletionsForPartialWordRangeIndexOfSelectedItem() bool
+	TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object
+	HasTextViewCandidatesForSelectedRange() bool
 
 	// optional
 	TextViewDidChangeSelection(notification foundation.Notification)
 	HasTextViewDidChangeSelection() bool
-
-	// optional
-	TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value
-	HasTextViewWillChangeSelectionFromCharacterRangesToCharacterRanges() bool
-
-	// optional
-	TextViewWillCheckTextInRangeOptionsTypes(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object
-	HasTextViewWillCheckTextInRangeOptionsTypes() bool
-
-	// optional
-	TextViewWillChangeSelectionFromCharacterRangeToCharacterRange(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range
-	HasTextViewWillChangeSelectionFromCharacterRangeToCharacterRange() bool
-
-	// optional
-	TextViewClickedOnLinkAtIndex(textView TextView, link objc.Object, charIndex uint) bool
-	HasTextViewClickedOnLinkAtIndex() bool
-
-	// optional
-	TextViewWillShowSharingServicePickerForItems(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker
-	HasTextViewWillShowSharingServicePickerForItems() bool
-
-	// optional
-	TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult
-	HasTextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount() bool
-
-	// optional
-	TextViewURLForContentsOfTextAttachmentAtIndex(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL
-	HasTextViewURLForContentsOfTextAttachmentAtIndex() bool
-
-	// optional
-	TextViewWillDisplayToolTipForCharacterAtIndex(textView TextView, tooltip string, characterIndex uint) string
-	HasTextViewWillDisplayToolTipForCharacterAtIndex() bool
-
-	// optional
-	TextViewWritablePasteboardTypesForCellAtIndex(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType
-	HasTextViewWritablePasteboardTypesForCellAtIndex() bool
-
-	// optional
-	TextViewShouldChangeTypingAttributesToAttributes(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object
-	HasTextViewShouldChangeTypingAttributesToAttributes() bool
-
-	// optional
-	TextViewMenuForEventAtIndex(view TextView, menu Menu, event Event, charIndex uint) Menu
-	HasTextViewMenuForEventAtIndex() bool
-
-	// optional
-	TextViewShouldChangeTextInRangesReplacementStrings(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool
-	HasTextViewShouldChangeTextInRangesReplacementStrings() bool
-
-	// optional
-	TextViewShouldUpdateTouchBarItemIdentifiers(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier
-	HasTextViewShouldUpdateTouchBarItemIdentifiers() bool
-
-	// optional
-	TextViewClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)
-	HasTextViewClickedOnCellInRectAtIndex() bool
-
-	// optional
-	TextViewDraggedCellInRectEventAtIndex(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint)
-	HasTextViewDraggedCellInRectEventAtIndex() bool
-
-	// optional
-	TextViewShouldChangeTextInRangeReplacementString(textView TextView, affectedCharRange foundation.Range, replacementString string) bool
-	HasTextViewShouldChangeTextInRangeReplacementString() bool
-
-	// optional
-	TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object
-	HasTextViewCandidatesForSelectedRange() bool
 }
 
 // A delegate implementation builder for the [PTextViewDelegate] protocol.
 type TextViewDelegate struct {
 	TextDelegate
-	_TextViewDoubleClickedOnCellInRectAtIndex                           func(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)
-	_TextViewShouldSetSpellingStateRange                                func(textView TextView, value int, affectedCharRange foundation.Range) int
-	_TextViewShouldSelectCandidateAtIndex                               func(textView TextView, index uint) bool
-	_UndoManagerForTextView                                             func(view TextView) foundation.UndoManager
-	_TextViewCandidatesForSelectedRange_                                func(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult
-	_TextViewWriteCellAtIndexToPasteboardType                           func(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool
-	_TextViewDidChangeTypingAttributes                                  func(notification foundation.Notification)
-	_TextViewDoCommandBySelector                                        func(textView TextView, commandSelector objc.Selector) bool
-	_TextViewCompletionsForPartialWordRangeIndexOfSelectedItem          func(textView TextView, words []string, charRange foundation.Range, index *int) []string
-	_TextViewDidChangeSelection                                         func(notification foundation.Notification)
-	_TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges    func(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value
-	_TextViewWillCheckTextInRangeOptionsTypes                           func(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object
-	_TextViewWillChangeSelectionFromCharacterRangeToCharacterRange      func(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range
-	_TextViewClickedOnLinkAtIndex                                       func(textView TextView, link objc.Object, charIndex uint) bool
-	_TextViewWillShowSharingServicePickerForItems                       func(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker
-	_TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount func(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult
-	_TextViewURLForContentsOfTextAttachmentAtIndex                      func(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL
-	_TextViewWillDisplayToolTipForCharacterAtIndex                      func(textView TextView, tooltip string, characterIndex uint) string
-	_TextViewWritablePasteboardTypesForCellAtIndex                      func(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType
-	_TextViewShouldChangeTypingAttributesToAttributes                   func(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object
-	_TextViewMenuForEventAtIndex                                        func(view TextView, menu Menu, event Event, charIndex uint) Menu
-	_TextViewShouldChangeTextInRangesReplacementStrings                 func(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool
-	_TextViewShouldUpdateTouchBarItemIdentifiers                        func(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier
-	_TextViewClickedOnCellInRectAtIndex                                 func(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)
-	_TextViewDraggedCellInRectEventAtIndex                              func(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint)
-	_TextViewShouldChangeTextInRangeReplacementString                   func(textView TextView, affectedCharRange foundation.Range, replacementString string) bool
-	_TextViewCandidatesForSelectedRange                                 func(textView TextView, selectedRange foundation.Range) []objc.Object
+	_TextViewDidChangeTypingAttributes  func(notification foundation.Notification)
+	_UndoManagerForTextView             func(view TextView) foundation.UndoManager
+	_TextViewCandidatesForSelectedRange func(textView TextView, selectedRange foundation.Range) []objc.Object
+	_TextViewDidChangeSelection         func(notification foundation.Notification)
 }
 
-func (di *TextViewDelegate) HasTextViewDoubleClickedOnCellInRectAtIndex() bool {
-	return di._TextViewDoubleClickedOnCellInRectAtIndex != nil
+func (di *TextViewDelegate) HasTextViewDidChangeTypingAttributes() bool {
+	return di._TextViewDidChangeTypingAttributes != nil
 }
 
-// Sent when the user double-clicks a cell. [Full Topic]
+// Sent when a text view’s typing attributes change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449333-textview?language=objc
-func (di *TextViewDelegate) SetTextViewDoubleClickedOnCellInRectAtIndex(f func(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)) {
-	di._TextViewDoubleClickedOnCellInRectAtIndex = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
+func (di *TextViewDelegate) SetTextViewDidChangeTypingAttributes(f func(notification foundation.Notification)) {
+	di._TextViewDidChangeTypingAttributes = f
 }
 
-// Sent when the user double-clicks a cell. [Full Topic]
+// Sent when a text view’s typing attributes change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449333-textview?language=objc
-func (di *TextViewDelegate) TextViewDoubleClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
-	di._TextViewDoubleClickedOnCellInRectAtIndex(textView, cell, cellFrame, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewShouldSetSpellingStateRange() bool {
-	return di._TextViewShouldSetSpellingStateRange != nil
-}
-
-// Sent when the spelling state is changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449284-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldSetSpellingStateRange(f func(textView TextView, value int, affectedCharRange foundation.Range) int) {
-	di._TextViewShouldSetSpellingStateRange = f
-}
-
-// Sent when the spelling state is changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449284-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldSetSpellingStateRange(textView TextView, value int, affectedCharRange foundation.Range) int {
-	return di._TextViewShouldSetSpellingStateRange(textView, value, affectedCharRange)
-}
-func (di *TextViewDelegate) HasTextViewShouldSelectCandidateAtIndex() bool {
-	return di._TextViewShouldSelectCandidateAtIndex != nil
-}
-
-// Returns a Boolean value that indicates whether to select the text object at the index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544682-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldSelectCandidateAtIndex(f func(textView TextView, index uint) bool) {
-	di._TextViewShouldSelectCandidateAtIndex = f
-}
-
-// Returns a Boolean value that indicates whether to select the text object at the index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544682-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldSelectCandidateAtIndex(textView TextView, index uint) bool {
-	return di._TextViewShouldSelectCandidateAtIndex(textView, index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
+func (di *TextViewDelegate) TextViewDidChangeTypingAttributes(notification foundation.Notification) {
+	di._TextViewDidChangeTypingAttributes(notification)
 }
 func (di *TextViewDelegate) HasUndoManagerForTextView() bool {
 	return di._UndoManagerForTextView != nil
@@ -221,90 +72,22 @@ func (di *TextViewDelegate) SetUndoManagerForTextView(f func(view TextView) foun
 func (di *TextViewDelegate) UndoManagerForTextView(view TextView) foundation.UndoManager {
 	return di._UndoManagerForTextView(view)
 }
-func (di *TextViewDelegate) HasTextViewCandidatesForSelectedRange_() bool {
-	return di._TextViewCandidatesForSelectedRange_ != nil
+func (di *TextViewDelegate) HasTextViewCandidatesForSelectedRange() bool {
+	return di._TextViewCandidatesForSelectedRange != nil
 }
 
-// Returns an array of text objects to include in a text selection. [Full Topic]
+// Returns an array of objects that represent the elements of a selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544692-textview?language=objc
-func (di *TextViewDelegate) SetTextViewCandidatesForSelectedRange_(f func(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult) {
-	di._TextViewCandidatesForSelectedRange_ = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
+func (di *TextViewDelegate) SetTextViewCandidatesForSelectedRange(f func(textView TextView, selectedRange foundation.Range) []objc.Object) {
+	di._TextViewCandidatesForSelectedRange = f
 }
 
-// Returns an array of text objects to include in a text selection. [Full Topic]
+// Returns an array of objects that represent the elements of a selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544692-textview?language=objc
-func (di *TextViewDelegate) TextViewCandidatesForSelectedRange_(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	return di._TextViewCandidatesForSelectedRange_(textView, candidates, selectedRange)
-}
-func (di *TextViewDelegate) HasTextViewWriteCellAtIndexToPasteboardType() bool {
-	return di._TextViewWriteCellAtIndexToPasteboardType != nil
-}
-
-// Returns whether data of the specified type for the given cell could be written to the specified pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449294-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWriteCellAtIndexToPasteboardType(f func(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool) {
-	di._TextViewWriteCellAtIndexToPasteboardType = f
-}
-
-// Returns whether data of the specified type for the given cell could be written to the specified pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449294-textview?language=objc
-func (di *TextViewDelegate) TextViewWriteCellAtIndexToPasteboardType(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool {
-	return di._TextViewWriteCellAtIndexToPasteboardType(view, cell, charIndex, pboard, type_)
-}
-func (di *TextViewDelegate) HasTextViewDidChangeTypingAttributes() bool {
-	return di._TextViewDidChangeTypingAttributes != nil
-}
-
-// Sent when a text view’s typing attributes change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
-func (di *TextViewDelegate) SetTextViewDidChangeTypingAttributes(f func(notification foundation.Notification)) {
-	di._TextViewDidChangeTypingAttributes = f
-}
-
-// Sent when a text view’s typing attributes change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
-func (di *TextViewDelegate) TextViewDidChangeTypingAttributes(notification foundation.Notification) {
-	di._TextViewDidChangeTypingAttributes(notification)
-}
-func (di *TextViewDelegate) HasTextViewDoCommandBySelector() bool {
-	return di._TextViewDoCommandBySelector != nil
-}
-
-// Sent to allow the delegate to perform the command for the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449419-textview?language=objc
-func (di *TextViewDelegate) SetTextViewDoCommandBySelector(f func(textView TextView, commandSelector objc.Selector) bool) {
-	di._TextViewDoCommandBySelector = f
-}
-
-// Sent to allow the delegate to perform the command for the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449419-textview?language=objc
-func (di *TextViewDelegate) TextViewDoCommandBySelector(textView TextView, commandSelector objc.Selector) bool {
-	return di._TextViewDoCommandBySelector(textView, commandSelector)
-}
-func (di *TextViewDelegate) HasTextViewCompletionsForPartialWordRangeIndexOfSelectedItem() bool {
-	return di._TextViewCompletionsForPartialWordRangeIndexOfSelectedItem != nil
-}
-
-// Returns the actual completions for a partial word. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449260-textview?language=objc
-func (di *TextViewDelegate) SetTextViewCompletionsForPartialWordRangeIndexOfSelectedItem(f func(textView TextView, words []string, charRange foundation.Range, index *int) []string) {
-	di._TextViewCompletionsForPartialWordRangeIndexOfSelectedItem = f
-}
-
-// Returns the actual completions for a partial word. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449260-textview?language=objc
-func (di *TextViewDelegate) TextViewCompletionsForPartialWordRangeIndexOfSelectedItem(textView TextView, words []string, charRange foundation.Range, index *int) []string {
-	return di._TextViewCompletionsForPartialWordRangeIndexOfSelectedItem(textView, words, charRange, index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
+func (di *TextViewDelegate) TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object {
+	return di._TextViewCandidatesForSelectedRange(textView, selectedRange)
 }
 func (di *TextViewDelegate) HasTextViewDidChangeSelection() bool {
 	return di._TextViewDidChangeSelection != nil
@@ -323,295 +106,6 @@ func (di *TextViewDelegate) SetTextViewDidChangeSelection(f func(notification fo
 func (di *TextViewDelegate) TextViewDidChangeSelection(notification foundation.Notification) {
 	di._TextViewDidChangeSelection(notification)
 }
-func (di *TextViewDelegate) HasTextViewWillChangeSelectionFromCharacterRangesToCharacterRanges() bool {
-	return di._TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges != nil
-}
-
-// Returns the actual character ranges to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449264-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(f func(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value) {
-	di._TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges = f
-}
-
-// Returns the actual character ranges to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449264-textview?language=objc
-func (di *TextViewDelegate) TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value {
-	return di._TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView, oldSelectedCharRanges, newSelectedCharRanges)
-}
-func (di *TextViewDelegate) HasTextViewWillCheckTextInRangeOptionsTypes() bool {
-	return di._TextViewWillCheckTextInRangeOptionsTypes != nil
-}
-
-// Invoked to allow the delegate to modify the text checking process before it occurs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449307-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWillCheckTextInRangeOptionsTypes(f func(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object) {
-	di._TextViewWillCheckTextInRangeOptionsTypes = f
-}
-
-// Invoked to allow the delegate to modify the text checking process before it occurs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449307-textview?language=objc
-func (di *TextViewDelegate) TextViewWillCheckTextInRangeOptionsTypes(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object {
-	return di._TextViewWillCheckTextInRangeOptionsTypes(view, range_, options, checkingTypes)
-}
-func (di *TextViewDelegate) HasTextViewWillChangeSelectionFromCharacterRangeToCharacterRange() bool {
-	return di._TextViewWillChangeSelectionFromCharacterRangeToCharacterRange != nil
-}
-
-// Returns the actual range to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449227-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWillChangeSelectionFromCharacterRangeToCharacterRange(f func(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range) {
-	di._TextViewWillChangeSelectionFromCharacterRangeToCharacterRange = f
-}
-
-// Returns the actual range to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449227-textview?language=objc
-func (di *TextViewDelegate) TextViewWillChangeSelectionFromCharacterRangeToCharacterRange(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range {
-	return di._TextViewWillChangeSelectionFromCharacterRangeToCharacterRange(textView, oldSelectedCharRange, newSelectedCharRange)
-}
-func (di *TextViewDelegate) HasTextViewClickedOnLinkAtIndex() bool {
-	return di._TextViewClickedOnLinkAtIndex != nil
-}
-
-// Sent after the user clicks a link. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449527-textview?language=objc
-func (di *TextViewDelegate) SetTextViewClickedOnLinkAtIndex(f func(textView TextView, link objc.Object, charIndex uint) bool) {
-	di._TextViewClickedOnLinkAtIndex = f
-}
-
-// Sent after the user clicks a link. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449527-textview?language=objc
-func (di *TextViewDelegate) TextViewClickedOnLinkAtIndex(textView TextView, link objc.Object, charIndex uint) bool {
-	return di._TextViewClickedOnLinkAtIndex(textView, link, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewWillShowSharingServicePickerForItems() bool {
-	return di._TextViewWillShowSharingServicePickerForItems != nil
-}
-
-// Returns a sharing service picker for the current selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449339-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWillShowSharingServicePickerForItems(f func(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker) {
-	di._TextViewWillShowSharingServicePickerForItems = f
-}
-
-// Returns a sharing service picker for the current selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449339-textview?language=objc
-func (di *TextViewDelegate) TextViewWillShowSharingServicePickerForItems(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker {
-	return di._TextViewWillShowSharingServicePickerForItems(textView, servicePicker, items)
-}
-func (di *TextViewDelegate) HasTextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount() bool {
-	return di._TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount != nil
-}
-
-// Invoked to allow the delegate to modify the text checking results after checking has occurred. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449317-textview?language=objc
-func (di *TextViewDelegate) SetTextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(f func(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult) {
-	di._TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount = f
-}
-
-// Invoked to allow the delegate to modify the text checking results after checking has occurred. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449317-textview?language=objc
-func (di *TextViewDelegate) TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult {
-	return di._TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view, range_, checkingTypes, options, results, orthography, wordCount)
-}
-func (di *TextViewDelegate) HasTextViewURLForContentsOfTextAttachmentAtIndex() bool {
-	return di._TextViewURLForContentsOfTextAttachmentAtIndex != nil
-}
-
-// Returns a URL representing the document contents for a text attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449194-textview?language=objc
-func (di *TextViewDelegate) SetTextViewURLForContentsOfTextAttachmentAtIndex(f func(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL) {
-	di._TextViewURLForContentsOfTextAttachmentAtIndex = f
-}
-
-// Returns a URL representing the document contents for a text attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449194-textview?language=objc
-func (di *TextViewDelegate) TextViewURLForContentsOfTextAttachmentAtIndex(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL {
-	return di._TextViewURLForContentsOfTextAttachmentAtIndex(textView, textAttachment, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewWillDisplayToolTipForCharacterAtIndex() bool {
-	return di._TextViewWillDisplayToolTipForCharacterAtIndex != nil
-}
-
-// Returns the actual tooltip to display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449411-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWillDisplayToolTipForCharacterAtIndex(f func(textView TextView, tooltip string, characterIndex uint) string) {
-	di._TextViewWillDisplayToolTipForCharacterAtIndex = f
-}
-
-// Returns the actual tooltip to display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449411-textview?language=objc
-func (di *TextViewDelegate) TextViewWillDisplayToolTipForCharacterAtIndex(textView TextView, tooltip string, characterIndex uint) string {
-	return di._TextViewWillDisplayToolTipForCharacterAtIndex(textView, tooltip, characterIndex)
-}
-func (di *TextViewDelegate) HasTextViewWritablePasteboardTypesForCellAtIndex() bool {
-	return di._TextViewWritablePasteboardTypesForCellAtIndex != nil
-}
-
-// Returns the writable pasteboard types for a given cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449485-textview?language=objc
-func (di *TextViewDelegate) SetTextViewWritablePasteboardTypesForCellAtIndex(f func(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType) {
-	di._TextViewWritablePasteboardTypesForCellAtIndex = f
-}
-
-// Returns the writable pasteboard types for a given cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449485-textview?language=objc
-func (di *TextViewDelegate) TextViewWritablePasteboardTypesForCellAtIndex(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType {
-	return di._TextViewWritablePasteboardTypesForCellAtIndex(view, cell, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewShouldChangeTypingAttributesToAttributes() bool {
-	return di._TextViewShouldChangeTypingAttributesToAttributes != nil
-}
-
-// Sent when the typing attributes are changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449376-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldChangeTypingAttributesToAttributes(f func(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object) {
-	di._TextViewShouldChangeTypingAttributesToAttributes = f
-}
-
-// Sent when the typing attributes are changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449376-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldChangeTypingAttributesToAttributes(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
-	return di._TextViewShouldChangeTypingAttributesToAttributes(textView, oldTypingAttributes, newTypingAttributes)
-}
-func (di *TextViewDelegate) HasTextViewMenuForEventAtIndex() bool {
-	return di._TextViewMenuForEventAtIndex != nil
-}
-
-// Allows delegate to control the context menu returned by the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449341-textview?language=objc
-func (di *TextViewDelegate) SetTextViewMenuForEventAtIndex(f func(view TextView, menu Menu, event Event, charIndex uint) Menu) {
-	di._TextViewMenuForEventAtIndex = f
-}
-
-// Allows delegate to control the context menu returned by the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449341-textview?language=objc
-func (di *TextViewDelegate) TextViewMenuForEventAtIndex(view TextView, menu Menu, event Event, charIndex uint) Menu {
-	return di._TextViewMenuForEventAtIndex(view, menu, event, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewShouldChangeTextInRangesReplacementStrings() bool {
-	return di._TextViewShouldChangeTextInRangesReplacementStrings != nil
-}
-
-// Sent when a text view needs to determine if text in an array of specified ranges should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449206-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldChangeTextInRangesReplacementStrings(f func(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool) {
-	di._TextViewShouldChangeTextInRangesReplacementStrings = f
-}
-
-// Sent when a text view needs to determine if text in an array of specified ranges should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449206-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldChangeTextInRangesReplacementStrings(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool {
-	return di._TextViewShouldChangeTextInRangesReplacementStrings(textView, affectedRanges, replacementStrings)
-}
-func (di *TextViewDelegate) HasTextViewShouldUpdateTouchBarItemIdentifiers() bool {
-	return di._TextViewShouldUpdateTouchBarItemIdentifiers != nil
-}
-
-// Returns and array of touch bar elements for the framework to update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544799-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldUpdateTouchBarItemIdentifiers(f func(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier) {
-	di._TextViewShouldUpdateTouchBarItemIdentifiers = f
-}
-
-// Returns and array of touch bar elements for the framework to update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544799-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldUpdateTouchBarItemIdentifiers(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier {
-	return di._TextViewShouldUpdateTouchBarItemIdentifiers(textView, identifiers)
-}
-func (di *TextViewDelegate) HasTextViewClickedOnCellInRectAtIndex() bool {
-	return di._TextViewClickedOnCellInRectAtIndex != nil
-}
-
-// Sent when the user clicks a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449335-textview?language=objc
-func (di *TextViewDelegate) SetTextViewClickedOnCellInRectAtIndex(f func(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint)) {
-	di._TextViewClickedOnCellInRectAtIndex = f
-}
-
-// Sent when the user clicks a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449335-textview?language=objc
-func (di *TextViewDelegate) TextViewClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
-	di._TextViewClickedOnCellInRectAtIndex(textView, cell, cellFrame, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewDraggedCellInRectEventAtIndex() bool {
-	return di._TextViewDraggedCellInRectEventAtIndex != nil
-}
-
-// Sent when the user attempts to drag a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449154-textview?language=objc
-func (di *TextViewDelegate) SetTextViewDraggedCellInRectEventAtIndex(f func(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint)) {
-	di._TextViewDraggedCellInRectEventAtIndex = f
-}
-
-// Sent when the user attempts to drag a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449154-textview?language=objc
-func (di *TextViewDelegate) TextViewDraggedCellInRectEventAtIndex(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint) {
-	di._TextViewDraggedCellInRectEventAtIndex(view, cell, rect, event, charIndex)
-}
-func (di *TextViewDelegate) HasTextViewShouldChangeTextInRangeReplacementString() bool {
-	return di._TextViewShouldChangeTextInRangeReplacementString != nil
-}
-
-// Sent when a text view needs to determine if text in a specified range should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449325-textview?language=objc
-func (di *TextViewDelegate) SetTextViewShouldChangeTextInRangeReplacementString(f func(textView TextView, affectedCharRange foundation.Range, replacementString string) bool) {
-	di._TextViewShouldChangeTextInRangeReplacementString = f
-}
-
-// Sent when a text view needs to determine if text in a specified range should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449325-textview?language=objc
-func (di *TextViewDelegate) TextViewShouldChangeTextInRangeReplacementString(textView TextView, affectedCharRange foundation.Range, replacementString string) bool {
-	return di._TextViewShouldChangeTextInRangeReplacementString(textView, affectedCharRange, replacementString)
-}
-func (di *TextViewDelegate) HasTextViewCandidatesForSelectedRange() bool {
-	return di._TextViewCandidatesForSelectedRange != nil
-}
-
-// Returns an array of objects that represent the elements of a selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
-func (di *TextViewDelegate) SetTextViewCandidatesForSelectedRange(f func(textView TextView, selectedRange foundation.Range) []objc.Object) {
-	di._TextViewCandidatesForSelectedRange = f
-}
-
-// Returns an array of objects that represent the elements of a selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
-func (di *TextViewDelegate) TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object {
-	return di._TextViewCandidatesForSelectedRange(textView, selectedRange)
-}
 
 // ensure impl type implements protocol interface
 var _ PTextViewDelegate = (*TextViewDelegateObject)(nil)
@@ -621,40 +115,15 @@ type TextViewDelegateObject struct {
 	TextDelegateObject
 }
 
-func (t_ TextViewDelegateObject) HasTextViewDoubleClickedOnCellInRectAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:doubleClickedOnCell:inRect:atIndex:"))
+func (t_ TextViewDelegateObject) HasTextViewDidChangeTypingAttributes() bool {
+	return t_.RespondsToSelector(objc.Sel("textViewDidChangeTypingAttributes:"))
 }
 
-// Sent when the user double-clicks a cell. [Full Topic]
+// Sent when a text view’s typing attributes change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449333-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewDoubleClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
-	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:doubleClickedOnCell:inRect:atIndex:"), textView, po1, cellFrame, charIndex)
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldSetSpellingStateRange() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldSetSpellingState:range:"))
-}
-
-// Sent when the spelling state is changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449284-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldSetSpellingStateRange(textView TextView, value int, affectedCharRange foundation.Range) int {
-	rv := objc.Call[int](t_, objc.Sel("textView:shouldSetSpellingState:range:"), textView, value, affectedCharRange)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldSelectCandidateAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldSelectCandidateAtIndex:"))
-}
-
-// Returns a Boolean value that indicates whether to select the text object at the index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544682-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldSelectCandidateAtIndex(textView TextView, index uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldSelectCandidateAtIndex:"), textView, index)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
+func (t_ TextViewDelegateObject) TextViewDidChangeTypingAttributes(notification foundation.Notification) {
+	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeTypingAttributes:"), notification)
 }
 
 func (t_ TextViewDelegateObject) HasUndoManagerForTextView() bool {
@@ -669,63 +138,15 @@ func (t_ TextViewDelegateObject) UndoManagerForTextView(view TextView) foundatio
 	return rv
 }
 
-func (t_ TextViewDelegateObject) HasTextViewCandidatesForSelectedRange_() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:candidates:forSelectedRange:"))
+func (t_ TextViewDelegateObject) HasTextViewCandidatesForSelectedRange() bool {
+	return t_.RespondsToSelector(objc.Sel("textView:candidatesForSelectedRange:"))
 }
 
-// Returns an array of text objects to include in a text selection. [Full Topic]
+// Returns an array of objects that represent the elements of a selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544692-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewCandidatesForSelectedRange_(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:candidates:forSelectedRange:"), textView, candidates, selectedRange)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWriteCellAtIndexToPasteboardType() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:writeCell:atIndex:toPasteboard:type:"))
-}
-
-// Returns whether data of the specified type for the given cell could be written to the specified pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449294-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWriteCellAtIndexToPasteboardType(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool {
-	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	rv := objc.Call[bool](t_, objc.Sel("textView:writeCell:atIndex:toPasteboard:type:"), view, po1, charIndex, pboard, type_)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewDidChangeTypingAttributes() bool {
-	return t_.RespondsToSelector(objc.Sel("textViewDidChangeTypingAttributes:"))
-}
-
-// Sent when a text view’s typing attributes change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
-func (t_ TextViewDelegateObject) TextViewDidChangeTypingAttributes(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeTypingAttributes:"), notification)
-}
-
-func (t_ TextViewDelegateObject) HasTextViewDoCommandBySelector() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:doCommandBySelector:"))
-}
-
-// Sent to allow the delegate to perform the command for the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449419-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewDoCommandBySelector(textView TextView, commandSelector objc.Selector) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:doCommandBySelector:"), textView, commandSelector)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewCompletionsForPartialWordRangeIndexOfSelectedItem() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:completions:forPartialWordRange:indexOfSelectedItem:"))
-}
-
-// Returns the actual completions for a partial word. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449260-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewCompletionsForPartialWordRangeIndexOfSelectedItem(textView TextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := objc.Call[[]string](t_, objc.Sel("textView:completions:forPartialWordRange:indexOfSelectedItem:"), textView, words, charRange, index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
+func (t_ TextViewDelegateObject) TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object {
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("textView:candidatesForSelectedRange:"), textView, selectedRange)
 	return rv
 }
 
@@ -738,209 +159,4 @@ func (t_ TextViewDelegateObject) HasTextViewDidChangeSelection() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449363-textviewdidchangeselection?language=objc
 func (t_ TextViewDelegateObject) TextViewDidChangeSelection(notification foundation.Notification) {
 	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeSelection:"), notification)
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWillChangeSelectionFromCharacterRangesToCharacterRanges() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"))
-}
-
-// Returns the actual character ranges to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449264-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value {
-	rv := objc.Call[[]foundation.Value](t_, objc.Sel("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), textView, oldSelectedCharRanges, newSelectedCharRanges)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWillCheckTextInRangeOptionsTypes() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:willCheckTextInRange:options:types:"))
-}
-
-// Invoked to allow the delegate to modify the text checking process before it occurs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449307-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWillCheckTextInRangeOptionsTypes(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object {
-	rv := objc.Call[map[TextCheckingOptionKey]objc.Object](t_, objc.Sel("textView:willCheckTextInRange:options:types:"), view, range_, options, checkingTypes)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWillChangeSelectionFromCharacterRangeToCharacterRange() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"))
-}
-
-// Returns the actual range to select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449227-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWillChangeSelectionFromCharacterRangeToCharacterRange(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range {
-	rv := objc.Call[foundation.Range](t_, objc.Sel("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), textView, oldSelectedCharRange, newSelectedCharRange)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewClickedOnLinkAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:clickedOnLink:atIndex:"))
-}
-
-// Sent after the user clicks a link. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449527-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewClickedOnLinkAtIndex(textView TextView, link objc.Object, charIndex uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:clickedOnLink:atIndex:"), textView, link, charIndex)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWillShowSharingServicePickerForItems() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:willShowSharingServicePicker:forItems:"))
-}
-
-// Returns a sharing service picker for the current selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449339-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWillShowSharingServicePickerForItems(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker {
-	rv := objc.Call[SharingServicePicker](t_, objc.Sel("textView:willShowSharingServicePicker:forItems:"), textView, servicePicker, items)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"))
-}
-
-// Invoked to allow the delegate to modify the text checking results after checking has occurred. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449317-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), view, range_, checkingTypes, options, results, orthography, wordCount)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewURLForContentsOfTextAttachmentAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:URLForContentsOfTextAttachment:atIndex:"))
-}
-
-// Returns a URL representing the document contents for a text attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449194-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewURLForContentsOfTextAttachmentAtIndex(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL {
-	rv := objc.Call[foundation.URL](t_, objc.Sel("textView:URLForContentsOfTextAttachment:atIndex:"), textView, textAttachment, charIndex)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWillDisplayToolTipForCharacterAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:willDisplayToolTip:forCharacterAtIndex:"))
-}
-
-// Returns the actual tooltip to display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449411-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWillDisplayToolTipForCharacterAtIndex(textView TextView, tooltip string, characterIndex uint) string {
-	rv := objc.Call[string](t_, objc.Sel("textView:willDisplayToolTip:forCharacterAtIndex:"), textView, tooltip, characterIndex)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewWritablePasteboardTypesForCellAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:writablePasteboardTypesForCell:atIndex:"))
-}
-
-// Returns the writable pasteboard types for a given cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449485-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewWritablePasteboardTypesForCellAtIndex(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType {
-	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	rv := objc.Call[[]PasteboardType](t_, objc.Sel("textView:writablePasteboardTypesForCell:atIndex:"), view, po1, charIndex)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldChangeTypingAttributesToAttributes() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldChangeTypingAttributes:toAttributes:"))
-}
-
-// Sent when the typing attributes are changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449376-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldChangeTypingAttributesToAttributes(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textView:shouldChangeTypingAttributes:toAttributes:"), textView, oldTypingAttributes, newTypingAttributes)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewMenuForEventAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:menu:forEvent:atIndex:"))
-}
-
-// Allows delegate to control the context menu returned by the text view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449341-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewMenuForEventAtIndex(view TextView, menu Menu, event Event, charIndex uint) Menu {
-	rv := objc.Call[Menu](t_, objc.Sel("textView:menu:forEvent:atIndex:"), view, menu, event, charIndex)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldChangeTextInRangesReplacementStrings() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldChangeTextInRanges:replacementStrings:"))
-}
-
-// Sent when a text view needs to determine if text in an array of specified ranges should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449206-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldChangeTextInRangesReplacementStrings(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRanges:replacementStrings:"), textView, affectedRanges, replacementStrings)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldUpdateTouchBarItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldUpdateTouchBarItemIdentifiers:"))
-}
-
-// Returns and array of touch bar elements for the framework to update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544799-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldUpdateTouchBarItemIdentifiers(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier {
-	rv := objc.Call[[]TouchBarItemIdentifier](t_, objc.Sel("textView:shouldUpdateTouchBarItemIdentifiers:"), textView, identifiers)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewClickedOnCellInRectAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:clickedOnCell:inRect:atIndex:"))
-}
-
-// Sent when the user clicks a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449335-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
-	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:clickedOnCell:inRect:atIndex:"), textView, po1, cellFrame, charIndex)
-}
-
-func (t_ TextViewDelegateObject) HasTextViewDraggedCellInRectEventAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:draggedCell:inRect:event:atIndex:"))
-}
-
-// Sent when the user attempts to drag a cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449154-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewDraggedCellInRectEventAtIndex(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint) {
-	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:draggedCell:inRect:event:atIndex:"), view, po1, rect, event, charIndex)
-}
-
-func (t_ TextViewDelegateObject) HasTextViewShouldChangeTextInRangeReplacementString() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:shouldChangeTextInRange:replacementString:"))
-}
-
-// Sent when a text view needs to determine if text in a specified range should be changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449325-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewShouldChangeTextInRangeReplacementString(textView TextView, affectedCharRange foundation.Range, replacementString string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRange:replacementString:"), textView, affectedCharRange, replacementString)
-	return rv
-}
-
-func (t_ TextViewDelegateObject) HasTextViewCandidatesForSelectedRange() bool {
-	return t_.RespondsToSelector(objc.Sel("textView:candidatesForSelectedRange:"))
-}
-
-// Returns an array of objects that represent the elements of a selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
-func (t_ TextViewDelegateObject) TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("textView:candidatesForSelectedRange:"), textView, selectedRange)
-	return rv
 }

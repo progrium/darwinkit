@@ -54,21 +54,6 @@ func (q_ QuadrilateralAccelerationStructure) Init() QuadrilateralAccelerationStr
 	return rv
 }
 
-func (q_ QuadrilateralAccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) QuadrilateralAccelerationStructure {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[QuadrilateralAccelerationStructure](q_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func QuadrilateralAccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) QuadrilateralAccelerationStructure {
-	instance := QuadrilateralAccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (q_ QuadrilateralAccelerationStructure) InitWithDevice(device metal.PDevice) QuadrilateralAccelerationStructure {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[QuadrilateralAccelerationStructure](q_, objc.Sel("initWithDevice:"), po0)
@@ -80,6 +65,21 @@ func (q_ QuadrilateralAccelerationStructure) InitWithDevice(device metal.PDevice
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewQuadrilateralAccelerationStructureWithDevice(device metal.PDevice) QuadrilateralAccelerationStructure {
 	instance := QuadrilateralAccelerationStructureClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (q_ QuadrilateralAccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) QuadrilateralAccelerationStructure {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[QuadrilateralAccelerationStructure](q_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func QuadrilateralAccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) QuadrilateralAccelerationStructure {
+	instance := QuadrilateralAccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

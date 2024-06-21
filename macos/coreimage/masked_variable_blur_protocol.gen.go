@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur?language=objc
 type PMaskedVariableBlur interface {
 	// optional
-	SetMask(value Image)
-	HasSetMask() bool
-
-	// optional
-	Mask() Image
-	HasMask() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -33,6 +25,14 @@ type PMaskedVariableBlur interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetMask(value Image)
+	HasSetMask() bool
+
+	// optional
+	Mask() Image
+	HasMask() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,29 +41,6 @@ var _ PMaskedVariableBlur = (*MaskedVariableBlurObject)(nil)
 // A concrete type for the [PMaskedVariableBlur] protocol.
 type MaskedVariableBlurObject struct {
 	objc.Object
-}
-
-func (m_ MaskedVariableBlurObject) HasSetMask() bool {
-	return m_.RespondsToSelector(objc.Sel("setMask:"))
-}
-
-// A grayscale mask that defines the blur amount. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228552-mask?language=objc
-func (m_ MaskedVariableBlurObject) SetMask(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setMask:"), value)
-}
-
-func (m_ MaskedVariableBlurObject) HasMask() bool {
-	return m_.RespondsToSelector(objc.Sel("mask"))
-}
-
-// A grayscale mask that defines the blur amount. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228552-mask?language=objc
-func (m_ MaskedVariableBlurObject) Mask() Image {
-	rv := objc.Call[Image](m_, objc.Sel("mask"))
-	return rv
 }
 
 func (m_ MaskedVariableBlurObject) HasSetInputImage() bool {
@@ -109,5 +86,28 @@ func (m_ MaskedVariableBlurObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228553-radius?language=objc
 func (m_ MaskedVariableBlurObject) Radius() float32 {
 	rv := objc.Call[float32](m_, objc.Sel("radius"))
+	return rv
+}
+
+func (m_ MaskedVariableBlurObject) HasSetMask() bool {
+	return m_.RespondsToSelector(objc.Sel("setMask:"))
+}
+
+// A grayscale mask that defines the blur amount. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228552-mask?language=objc
+func (m_ MaskedVariableBlurObject) SetMask(value Image) {
+	objc.Call[objc.Void](m_, objc.Sel("setMask:"), value)
+}
+
+func (m_ MaskedVariableBlurObject) HasMask() bool {
+	return m_.RespondsToSelector(objc.Sel("mask"))
+}
+
+// A grayscale mask that defines the blur amount. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228552-mask?language=objc
+func (m_ MaskedVariableBlurObject) Mask() Image {
+	rv := objc.Call[Image](m_, objc.Sel("mask"))
 	return rv
 }

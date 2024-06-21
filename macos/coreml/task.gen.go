@@ -19,8 +19,8 @@ type _TaskClass struct {
 // An interface definition for the [Task] class.
 type ITask interface {
 	objc.IObject
-	Cancel()
 	Resume()
+	Cancel()
 	Error() foundation.Error
 	State() TaskState
 	TaskIdentifier() string
@@ -59,18 +59,18 @@ func (t_ Task) Init() Task {
 	return rv
 }
 
-// Cancels a machine learning task before it completes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mltask/3180078-cancel?language=objc
-func (t_ Task) Cancel() {
-	objc.Call[objc.Void](t_, objc.Sel("cancel"))
-}
-
 // Begins or resumes a machine learning task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mltask/3180080-resume?language=objc
 func (t_ Task) Resume() {
 	objc.Call[objc.Void](t_, objc.Sel("resume"))
+}
+
+// Cancels a machine learning task before it completes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mltask/3180078-cancel?language=objc
+func (t_ Task) Cancel() {
+	objc.Call[objc.Void](t_, objc.Sel("cancel"))
 }
 
 // The underlying error if the task is in a failed state. [Full Topic]

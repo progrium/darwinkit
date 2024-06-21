@@ -18,14 +18,14 @@ type _FunctionStitchingGraphClass struct {
 // An interface definition for the [FunctionStitchingGraph] class.
 type IFunctionStitchingGraph interface {
 	objc.IObject
-	Attributes() []FunctionStitchingAttributeObject
-	SetAttributes(value []PFunctionStitchingAttribute)
 	FunctionName() string
 	SetFunctionName(value string)
-	Nodes() []FunctionStitchingFunctionNode
-	SetNodes(value []IFunctionStitchingFunctionNode)
 	OutputNode() FunctionStitchingFunctionNode
 	SetOutputNode(value IFunctionStitchingFunctionNode)
+	Nodes() []FunctionStitchingFunctionNode
+	SetNodes(value []IFunctionStitchingFunctionNode)
+	Attributes() []FunctionStitchingAttributeObject
+	SetAttributes(value []PFunctionStitchingAttribute)
 }
 
 // A description of a new stitched function. [Full Topic]
@@ -75,21 +75,6 @@ func (f_ FunctionStitchingGraph) Init() FunctionStitchingGraph {
 	return rv
 }
 
-// A list of attributes to configure how the Metal device object generates the new stitched function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750539-attributes?language=objc
-func (f_ FunctionStitchingGraph) Attributes() []FunctionStitchingAttributeObject {
-	rv := objc.Call[[]FunctionStitchingAttributeObject](f_, objc.Sel("attributes"))
-	return rv
-}
-
-// A list of attributes to configure how the Metal device object generates the new stitched function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750539-attributes?language=objc
-func (f_ FunctionStitchingGraph) SetAttributes(value []PFunctionStitchingAttribute) {
-	objc.Call[objc.Void](f_, objc.Sel("setAttributes:"), value)
-}
-
 // The name of the new stitched function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750540-functionname?language=objc
@@ -103,6 +88,21 @@ func (f_ FunctionStitchingGraph) FunctionName() string {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750540-functionname?language=objc
 func (f_ FunctionStitchingGraph) SetFunctionName(value string) {
 	objc.Call[objc.Void](f_, objc.Sel("setFunctionName:"), value)
+}
+
+// The node with the output that’s the output of the new stitched function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750543-outputnode?language=objc
+func (f_ FunctionStitchingGraph) OutputNode() FunctionStitchingFunctionNode {
+	rv := objc.Call[FunctionStitchingFunctionNode](f_, objc.Sel("outputNode"))
+	return rv
+}
+
+// The node with the output that’s the output of the new stitched function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750543-outputnode?language=objc
+func (f_ FunctionStitchingGraph) SetOutputNode(value IFunctionStitchingFunctionNode) {
+	objc.Call[objc.Void](f_, objc.Sel("setOutputNode:"), value)
 }
 
 // The nodes in the function’s call graph. [Full Topic]
@@ -120,17 +120,17 @@ func (f_ FunctionStitchingGraph) SetNodes(value []IFunctionStitchingFunctionNode
 	objc.Call[objc.Void](f_, objc.Sel("setNodes:"), value)
 }
 
-// The node with the output that’s the output of the new stitched function. [Full Topic]
+// A list of attributes to configure how the Metal device object generates the new stitched function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750543-outputnode?language=objc
-func (f_ FunctionStitchingGraph) OutputNode() FunctionStitchingFunctionNode {
-	rv := objc.Call[FunctionStitchingFunctionNode](f_, objc.Sel("outputNode"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750539-attributes?language=objc
+func (f_ FunctionStitchingGraph) Attributes() []FunctionStitchingAttributeObject {
+	rv := objc.Call[[]FunctionStitchingAttributeObject](f_, objc.Sel("attributes"))
 	return rv
 }
 
-// The node with the output that’s the output of the new stitched function. [Full Topic]
+// A list of attributes to configure how the Metal device object generates the new stitched function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750543-outputnode?language=objc
-func (f_ FunctionStitchingGraph) SetOutputNode(value IFunctionStitchingFunctionNode) {
-	objc.Call[objc.Void](f_, objc.Sel("setOutputNode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750539-attributes?language=objc
+func (f_ FunctionStitchingGraph) SetAttributes(value []PFunctionStitchingAttribute) {
+	objc.Call[objc.Void](f_, objc.Sel("setAttributes:"), value)
 }

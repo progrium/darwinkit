@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor?language=objc
 type PFalseColor interface {
 	// optional
-	SetColor1(value Color)
-	HasSetColor1() bool
-
-	// optional
-	Color1() Color
-	HasColor1() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -33,6 +25,14 @@ type PFalseColor interface {
 	// optional
 	Color0() Color
 	HasColor0() bool
+
+	// optional
+	SetColor1(value Color)
+	HasSetColor1() bool
+
+	// optional
+	Color1() Color
+	HasColor1() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,29 +41,6 @@ var _ PFalseColor = (*FalseColorObject)(nil)
 // A concrete type for the [PFalseColor] protocol.
 type FalseColorObject struct {
 	objc.Object
-}
-
-func (f_ FalseColorObject) HasSetColor1() bool {
-	return f_.RespondsToSelector(objc.Sel("setColor1:"))
-}
-
-// The second color to use for the color ramp. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228257-color1?language=objc
-func (f_ FalseColorObject) SetColor1(value Color) {
-	objc.Call[objc.Void](f_, objc.Sel("setColor1:"), value)
-}
-
-func (f_ FalseColorObject) HasColor1() bool {
-	return f_.RespondsToSelector(objc.Sel("color1"))
-}
-
-// The second color to use for the color ramp. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228257-color1?language=objc
-func (f_ FalseColorObject) Color1() Color {
-	rv := objc.Call[Color](f_, objc.Sel("color1"))
-	return rv
 }
 
 func (f_ FalseColorObject) HasSetInputImage() bool {
@@ -109,5 +86,28 @@ func (f_ FalseColorObject) HasColor0() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228256-color0?language=objc
 func (f_ FalseColorObject) Color0() Color {
 	rv := objc.Call[Color](f_, objc.Sel("color0"))
+	return rv
+}
+
+func (f_ FalseColorObject) HasSetColor1() bool {
+	return f_.RespondsToSelector(objc.Sel("setColor1:"))
+}
+
+// The second color to use for the color ramp. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228257-color1?language=objc
+func (f_ FalseColorObject) SetColor1(value Color) {
+	objc.Call[objc.Void](f_, objc.Sel("setColor1:"), value)
+}
+
+func (f_ FalseColorObject) HasColor1() bool {
+	return f_.RespondsToSelector(objc.Sel("color1"))
+}
+
+// The second color to use for the color ramp. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228257-color1?language=objc
+func (f_ FalseColorObject) Color1() Color {
+	rv := objc.Call[Color](f_, objc.Sel("color1"))
 	return rv
 }

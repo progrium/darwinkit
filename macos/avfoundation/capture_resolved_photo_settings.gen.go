@@ -19,8 +19,8 @@ type _CaptureResolvedPhotoSettingsClass struct {
 // An interface definition for the [CaptureResolvedPhotoSettings] class.
 type ICaptureResolvedPhotoSettings interface {
 	objc.IObject
-	ExpectedPhotoCount() uint
 	PhotoDimensions() coremedia.VideoDimensions
+	ExpectedPhotoCount() uint
 	UniqueID() int64
 }
 
@@ -57,19 +57,19 @@ func (c_ CaptureResolvedPhotoSettings) Init() CaptureResolvedPhotoSettings {
 	return rv
 }
 
-// The number of photo capture results in the capture request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureresolvedphotosettings/2873973-expectedphotocount?language=objc
-func (c_ CaptureResolvedPhotoSettings) ExpectedPhotoCount() uint {
-	rv := objc.Call[uint](c_, objc.Sel("expectedPhotoCount"))
-	return rv
-}
-
 // The size, in pixels, of the photo image (in a processed format, such as JPEG) that the capture delivers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureresolvedphotosettings/1648782-photodimensions?language=objc
 func (c_ CaptureResolvedPhotoSettings) PhotoDimensions() coremedia.VideoDimensions {
 	rv := objc.Call[coremedia.VideoDimensions](c_, objc.Sel("photoDimensions"))
+	return rv
+}
+
+// The number of photo capture results in the capture request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureresolvedphotosettings/2873973-expectedphotocount?language=objc
+func (c_ CaptureResolvedPhotoSettings) ExpectedPhotoCount() uint {
+	rv := objc.Call[uint](c_, objc.Sel("expectedPhotoCount"))
 	return rv
 }
 

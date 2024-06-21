@@ -11,36 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient?language=objc
 type PURLProtocolClient interface {
 	// optional
-	URLProtocolCachedResponseIsValid(protocol URLProtocol, cachedResponse CachedURLResponse)
-	HasURLProtocolCachedResponseIsValid() bool
-
-	// optional
 	URLProtocolDidFailWithError(protocol URLProtocol, error Error)
 	HasURLProtocolDidFailWithError() bool
 
 	// optional
-	URLProtocolDidReceiveResponseCacheStoragePolicy(protocol URLProtocol, response URLResponse, policy URLCacheStoragePolicy)
-	HasURLProtocolDidReceiveResponseCacheStoragePolicy() bool
-
-	// optional
-	URLProtocolDidReceiveAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge)
-	HasURLProtocolDidReceiveAuthenticationChallenge() bool
-
-	// optional
 	URLProtocolDidFinishLoading(protocol URLProtocol)
 	HasURLProtocolDidFinishLoading() bool
-
-	// optional
-	URLProtocolDidCancelAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge)
-	HasURLProtocolDidCancelAuthenticationChallenge() bool
-
-	// optional
-	URLProtocolWasRedirectedToRequestRedirectResponse(protocol URLProtocol, request URLRequest, redirectResponse URLResponse)
-	HasURLProtocolWasRedirectedToRequestRedirectResponse() bool
-
-	// optional
-	URLProtocolDidLoadData(protocol URLProtocol, data []byte)
-	HasURLProtocolDidLoadData() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,17 +25,6 @@ var _ PURLProtocolClient = (*URLProtocolClientObject)(nil)
 // A concrete type for the [PURLProtocolClient] protocol.
 type URLProtocolClientObject struct {
 	objc.Object
-}
-
-func (u_ URLProtocolClientObject) HasURLProtocolCachedResponseIsValid() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:cachedResponseIsValid:"))
-}
-
-// Tells the client that a cached response is valid. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1412327-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolCachedResponseIsValid(protocol URLProtocol, cachedResponse CachedURLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:cachedResponseIsValid:"), protocol, cachedResponse)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidFailWithError() bool {
@@ -73,28 +38,6 @@ func (u_ URLProtocolClientObject) URLProtocolDidFailWithError(protocol URLProtoc
 	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didFailWithError:"), protocol, error)
 }
 
-func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveResponseCacheStoragePolicy() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:didReceiveResponse:cacheStoragePolicy:"))
-}
-
-// Tells the client that the protocol implementation has created a response object for the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1416347-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolDidReceiveResponseCacheStoragePolicy(protocol URLProtocol, response URLResponse, policy URLCacheStoragePolicy) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveResponse:cacheStoragePolicy:"), protocol, response, policy)
-}
-
-func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:didReceiveAuthenticationChallenge:"))
-}
-
-// Tells the client that the URL Loading System received an authentication challenge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1413387-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolDidReceiveAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveAuthenticationChallenge:"), protocol, challenge)
-}
-
 func (u_ URLProtocolClientObject) HasURLProtocolDidFinishLoading() bool {
 	return u_.RespondsToSelector(objc.Sel("URLProtocolDidFinishLoading:"))
 }
@@ -104,37 +47,4 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidFinishLoading() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1411543-urlprotocoldidfinishloading?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidFinishLoading(protocol URLProtocol) {
 	objc.Call[objc.Void](u_, objc.Sel("URLProtocolDidFinishLoading:"), protocol)
-}
-
-func (u_ URLProtocolClientObject) HasURLProtocolDidCancelAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:didCancelAuthenticationChallenge:"))
-}
-
-// Tells the client that an authentication challenge has been canceled. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1410932-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolDidCancelAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didCancelAuthenticationChallenge:"), protocol, challenge)
-}
-
-func (u_ URLProtocolClientObject) HasURLProtocolWasRedirectedToRequestRedirectResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:wasRedirectedToRequest:redirectResponse:"))
-}
-
-// Tells the client that the protocol implementation has been redirected. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1415800-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolWasRedirectedToRequestRedirectResponse(protocol URLProtocol, request URLRequest, redirectResponse URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:wasRedirectedToRequest:redirectResponse:"), protocol, request, redirectResponse)
-}
-
-func (u_ URLProtocolClientObject) HasURLProtocolDidLoadData() bool {
-	return u_.RespondsToSelector(objc.Sel("URLProtocol:didLoadData:"))
-}
-
-// Tells the client that the protocol implementation has loaded some data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1411370-urlprotocol?language=objc
-func (u_ URLProtocolClientObject) URLProtocolDidLoadData(protocol URLProtocol, data []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didLoadData:"), protocol, data)
 }

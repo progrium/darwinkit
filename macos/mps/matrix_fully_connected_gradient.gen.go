@@ -23,14 +23,14 @@ type IMatrixFullyConnectedGradient interface {
 	EncodeGradientForWeightsAndBiasToCommandBufferObjectGradientMatrixInputMatrixResultGradientForWeightMatrixResultGradientForBiasVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, resultGradientForWeightMatrix IMatrix, resultGradientForBiasVector IVector)
 	EncodeGradientForDataToCommandBufferGradientMatrixWeightMatrixResultGradientForDataMatrix(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, weightMatrix IMatrix, resultGradientForDataMatrix IMatrix)
 	EncodeGradientForDataToCommandBufferObjectGradientMatrixWeightMatrixResultGradientForDataMatrix(commandBufferObject objc.IObject, gradientMatrix IMatrix, weightMatrix IMatrix, resultGradientForDataMatrix IMatrix)
-	SourceInputFeatureChannels() uint
-	SetSourceInputFeatureChannels(value uint)
-	SourceNumberOfFeatureVectors() uint
-	SetSourceNumberOfFeatureVectors(value uint)
 	SourceOutputFeatureChannels() uint
 	SetSourceOutputFeatureChannels(value uint)
 	Alpha() float64
 	SetAlpha(value float64)
+	SourceNumberOfFeatureVectors() uint
+	SetSourceNumberOfFeatureVectors(value uint)
+	SourceInputFeatureChannels() uint
+	SetSourceInputFeatureChannels(value uint)
 }
 
 // A kernel for applying a fully gradient connected neural network layer. [Full Topic]
@@ -128,36 +128,6 @@ func (m_ MatrixFullyConnectedGradient) EncodeGradientForDataToCommandBufferObjec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966669-sourceinputfeaturechannels?language=objc
-func (m_ MatrixFullyConnectedGradient) SourceInputFeatureChannels() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceInputFeatureChannels"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966669-sourceinputfeaturechannels?language=objc
-func (m_ MatrixFullyConnectedGradient) SetSourceInputFeatureChannels(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceInputFeatureChannels:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966670-sourcenumberoffeaturevectors?language=objc
-func (m_ MatrixFullyConnectedGradient) SourceNumberOfFeatureVectors() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceNumberOfFeatureVectors"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966670-sourcenumberoffeaturevectors?language=objc
-func (m_ MatrixFullyConnectedGradient) SetSourceNumberOfFeatureVectors(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceNumberOfFeatureVectors:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966671-sourceoutputfeaturechannels?language=objc
 func (m_ MatrixFullyConnectedGradient) SourceOutputFeatureChannels() uint {
 	rv := objc.Call[uint](m_, objc.Sel("sourceOutputFeatureChannels"))
@@ -184,4 +154,34 @@ func (m_ MatrixFullyConnectedGradient) Alpha() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966663-alpha?language=objc
 func (m_ MatrixFullyConnectedGradient) SetAlpha(value float64) {
 	objc.Call[objc.Void](m_, objc.Sel("setAlpha:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966670-sourcenumberoffeaturevectors?language=objc
+func (m_ MatrixFullyConnectedGradient) SourceNumberOfFeatureVectors() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceNumberOfFeatureVectors"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966670-sourcenumberoffeaturevectors?language=objc
+func (m_ MatrixFullyConnectedGradient) SetSourceNumberOfFeatureVectors(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceNumberOfFeatureVectors:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966669-sourceinputfeaturechannels?language=objc
+func (m_ MatrixFullyConnectedGradient) SourceInputFeatureChannels() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceInputFeatureChannels"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966669-sourceinputfeaturechannels?language=objc
+func (m_ MatrixFullyConnectedGradient) SetSourceInputFeatureChannels(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceInputFeatureChannels:"), value)
 }

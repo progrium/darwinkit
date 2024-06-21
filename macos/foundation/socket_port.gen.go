@@ -18,11 +18,11 @@ type _SocketPortClass struct {
 // An interface definition for the [SocketPort] class.
 type ISocketPort interface {
 	IPort
-	ProtocolFamily() int
-	Protocol() int
-	Address() []byte
-	SocketType() int
 	Socket() SocketNativeHandle
+	Address() []byte
+	ProtocolFamily() int
+	SocketType() int
+	Protocol() int
 }
 
 // A port that represents a BSD socket. [Full Topic]
@@ -36,6 +36,34 @@ func SocketPortFrom(ptr unsafe.Pointer) SocketPort {
 	return SocketPort{
 		Port: PortFrom(ptr),
 	}
+}
+
+func (s_ SocketPort) InitWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
+	rv := objc.Call[SocketPort](s_, objc.Sel("initWithProtocolFamily:socketType:protocol:socket:"), family, type_, protocol, sock)
+	return rv
+}
+
+// Initializes the receiver with a previously created local socket. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399484-initwithprotocolfamily?language=objc
+func NewSocketPortWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
+	instance := SocketPortClass.Alloc().InitWithProtocolFamilySocketTypeProtocolSocket(family, type_, protocol, sock)
+	instance.Autorelease()
+	return instance
+}
+
+func (s_ SocketPort) InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
+	rv := objc.Call[SocketPort](s_, objc.Sel("initRemoteWithProtocolFamily:socketType:protocol:address:"), family, type_, protocol, address)
+	return rv
+}
+
+// Initializes the receiver as a remote socket with the provided arguments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399535-initremotewithprotocolfamily?language=objc
+func NewSocketPortRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
+	instance := SocketPortClass.Alloc().InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family, type_, protocol, address)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SocketPort) InitWithTCPPort(port int) SocketPort {
@@ -71,48 +99,6 @@ func NewSocketPortRemoteWithTCPPortHost(port int, hostName string) SocketPort {
 	return instance
 }
 
-func (s_ SocketPort) InitWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
-	rv := objc.Call[SocketPort](s_, objc.Sel("initWithProtocolFamily:socketType:protocol:socket:"), family, type_, protocol, sock)
-	return rv
-}
-
-// Initializes the receiver with a previously created local socket. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399484-initwithprotocolfamily?language=objc
-func NewSocketPortWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
-	instance := SocketPortClass.Alloc().InitWithProtocolFamilySocketTypeProtocolSocket(family, type_, protocol, sock)
-	instance.Autorelease()
-	return instance
-}
-
-func (s_ SocketPort) InitWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
-	rv := objc.Call[SocketPort](s_, objc.Sel("initWithProtocolFamily:socketType:protocol:address:"), family, type_, protocol, address)
-	return rv
-}
-
-// Initializes the receiver as a local socket with the provided arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399497-initwithprotocolfamily?language=objc
-func NewSocketPortWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
-	instance := SocketPortClass.Alloc().InitWithProtocolFamilySocketTypeProtocolAddress(family, type_, protocol, address)
-	instance.Autorelease()
-	return instance
-}
-
-func (s_ SocketPort) InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
-	rv := objc.Call[SocketPort](s_, objc.Sel("initRemoteWithProtocolFamily:socketType:protocol:address:"), family, type_, protocol, address)
-	return rv
-}
-
-// Initializes the receiver as a remote socket with the provided arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399535-initremotewithprotocolfamily?language=objc
-func NewSocketPortRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
-	instance := SocketPortClass.Alloc().InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family, type_, protocol, address)
-	instance.Autorelease()
-	return instance
-}
-
 func (sc _SocketPortClass) Alloc() SocketPort {
 	rv := objc.Call[SocketPort](sc, objc.Sel("alloc"))
 	return rv
@@ -128,19 +114,11 @@ func NewSocketPort() SocketPort {
 	return SocketPortClass.New()
 }
 
-// The protocol family that the receiver uses for communication. [Full Topic]
+// The receiver’s native socket identifier on the platform. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399543-protocolfamily?language=objc
-func (s_ SocketPort) ProtocolFamily() int {
-	rv := objc.Call[int](s_, objc.Sel("protocolFamily"))
-	return rv
-}
-
-// The protocol that the receiver uses for communication. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399557-protocol?language=objc
-func (s_ SocketPort) Protocol() int {
-	rv := objc.Call[int](s_, objc.Sel("protocol"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399492-socket?language=objc
+func (s_ SocketPort) Socket() SocketNativeHandle {
+	rv := objc.Call[SocketNativeHandle](s_, objc.Sel("socket"))
 	return rv
 }
 
@@ -152,6 +130,14 @@ func (s_ SocketPort) Address() []byte {
 	return rv
 }
 
+// The protocol family that the receiver uses for communication. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399543-protocolfamily?language=objc
+func (s_ SocketPort) ProtocolFamily() int {
+	rv := objc.Call[int](s_, objc.Sel("protocolFamily"))
+	return rv
+}
+
 // The receiver’s socket type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399565-sockettype?language=objc
@@ -160,10 +146,10 @@ func (s_ SocketPort) SocketType() int {
 	return rv
 }
 
-// The receiver’s native socket identifier on the platform. [Full Topic]
+// The protocol that the receiver uses for communication. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399492-socket?language=objc
-func (s_ SocketPort) Socket() SocketNativeHandle {
-	rv := objc.Call[SocketNativeHandle](s_, objc.Sel("socket"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399557-protocol?language=objc
+func (s_ SocketPort) Protocol() int {
+	rv := objc.Call[int](s_, objc.Sel("protocol"))
 	return rv
 }

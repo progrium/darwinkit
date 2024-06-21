@@ -19,13 +19,13 @@ type _FeatureDescriptionClass struct {
 type IFeatureDescription interface {
 	objc.IObject
 	IsAllowedValue(value IFeatureValue) bool
-	ImageConstraint() ImageConstraint
-	Name() string
-	Type() FeatureType
-	IsOptional() bool
-	MultiArrayConstraint() MultiArrayConstraint
-	SequenceConstraint() SequenceConstraint
 	DictionaryConstraint() DictionaryConstraint
+	MultiArrayConstraint() MultiArrayConstraint
+	Name() string
+	SequenceConstraint() SequenceConstraint
+	ImageConstraint() ImageConstraint
+	IsOptional() bool
+	Type() FeatureType
 }
 
 // The name, type, and constraints of an input or output feature. [Full Topic]
@@ -69,35 +69,11 @@ func (f_ FeatureDescription) IsAllowedValue(value IFeatureValue) bool {
 	return rv
 }
 
-// The size and format constraints for an image feature. [Full Topic]
+// The constraint for a dictionary feature. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2873067-imageconstraint?language=objc
-func (f_ FeatureDescription) ImageConstraint() ImageConstraint {
-	rv := objc.Call[ImageConstraint](f_, objc.Sel("imageConstraint"))
-	return rv
-}
-
-// The name of this feature. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879359-name?language=objc
-func (f_ FeatureDescription) Name() string {
-	rv := objc.Call[string](f_, objc.Sel("name"))
-	return rv
-}
-
-// The type of this feature. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879374-type?language=objc
-func (f_ FeatureDescription) Type() FeatureType {
-	rv := objc.Call[FeatureType](f_, objc.Sel("type"))
-	return rv
-}
-
-// A Boolean value that indicates whether this feature is optional. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879384-optional?language=objc
-func (f_ FeatureDescription) IsOptional() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isOptional"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2921263-dictionaryconstraint?language=objc
+func (f_ FeatureDescription) DictionaryConstraint() DictionaryConstraint {
+	rv := objc.Call[DictionaryConstraint](f_, objc.Sel("dictionaryConstraint"))
 	return rv
 }
 
@@ -109,6 +85,14 @@ func (f_ FeatureDescription) MultiArrayConstraint() MultiArrayConstraint {
 	return rv
 }
 
+// The name of this feature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879359-name?language=objc
+func (f_ FeatureDescription) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
+	return rv
+}
+
 // The constraints for a sequence feature. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2962858-sequenceconstraint?language=objc
@@ -117,10 +101,26 @@ func (f_ FeatureDescription) SequenceConstraint() SequenceConstraint {
 	return rv
 }
 
-// The constraint for a dictionary feature. [Full Topic]
+// The size and format constraints for an image feature. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2921263-dictionaryconstraint?language=objc
-func (f_ FeatureDescription) DictionaryConstraint() DictionaryConstraint {
-	rv := objc.Call[DictionaryConstraint](f_, objc.Sel("dictionaryConstraint"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2873067-imageconstraint?language=objc
+func (f_ FeatureDescription) ImageConstraint() ImageConstraint {
+	rv := objc.Call[ImageConstraint](f_, objc.Sel("imageConstraint"))
+	return rv
+}
+
+// A Boolean value that indicates whether this feature is optional. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879384-optional?language=objc
+func (f_ FeatureDescription) IsOptional() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isOptional"))
+	return rv
+}
+
+// The type of this feature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879374-type?language=objc
+func (f_ FeatureDescription) Type() FeatureType {
+	rv := objc.Call[FeatureType](f_, objc.Sel("type"))
 	return rv
 }

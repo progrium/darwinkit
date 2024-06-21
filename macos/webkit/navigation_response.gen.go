@@ -19,8 +19,8 @@ type _NavigationResponseClass struct {
 // An interface definition for the [NavigationResponse] class.
 type INavigationResponse interface {
 	objc.IObject
-	Response() foundation.URLResponse
 	IsForMainFrame() bool
+	Response() foundation.URLResponse
 	CanShowMIMEType() bool
 }
 
@@ -57,19 +57,19 @@ func (n_ NavigationResponse) Init() NavigationResponse {
 	return rv
 }
 
-// The frame’s response. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459484-response?language=objc
-func (n_ NavigationResponse) Response() foundation.URLResponse {
-	rv := objc.Call[foundation.URLResponse](n_, objc.Sel("response"))
-	return rv
-}
-
 // A Boolean value that indicates whether the response targets the web view’s main frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459482-formainframe?language=objc
 func (n_ NavigationResponse) IsForMainFrame() bool {
 	rv := objc.Call[bool](n_, objc.Sel("isForMainFrame"))
+	return rv
+}
+
+// The frame’s response. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459484-response?language=objc
+func (n_ NavigationResponse) Response() foundation.URLResponse {
+	rv := objc.Call[foundation.URLResponse](n_, objc.Sel("response"))
 	return rv
 }
 

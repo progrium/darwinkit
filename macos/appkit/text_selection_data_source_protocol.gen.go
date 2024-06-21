@@ -13,40 +13,40 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource?language=objc
 type PTextSelectionDataSource interface {
 	// optional
-	EnumerateContainerBoundariesFromLocationReverseUsingBlock(location TextLocationObject, reverse bool, block func(boundaryLocation TextLocationObject, stop *bool))
-	HasEnumerateContainerBoundariesFromLocationReverseUsingBlock() bool
-
-	// optional
-	TextRangeForSelectionGranularityEnclosingLocation(selectionGranularity TextSelectionGranularity, location TextLocationObject) TextRange
-	HasTextRangeForSelectionGranularityEnclosingLocation() bool
-
-	// optional
-	EnumerateSubstringsFromLocationOptionsUsingBlock(location TextLocationObject, options foundation.StringEnumerationOptions, block func(substring string, substringRange TextRange, enclosingRange TextRange, stop *bool))
-	HasEnumerateSubstringsFromLocationOptionsUsingBlock() bool
-
-	// optional
-	TextLayoutOrientationAtLocation(location TextLocationObject) TextSelectionNavigationLayoutOrientation
-	HasTextLayoutOrientationAtLocation() bool
-
-	// optional
 	BaseWritingDirectionAtLocation(location TextLocationObject) TextSelectionNavigationWritingDirection
 	HasBaseWritingDirectionAtLocation() bool
-
-	// optional
-	OffsetFromLocationToLocation(from TextLocationObject, to TextLocationObject) int
-	HasOffsetFromLocationToLocation() bool
 
 	// optional
 	LineFragmentRangeForPointInContainerAtLocation(point coregraphics.Point, location TextLocationObject) TextRange
 	HasLineFragmentRangeForPointInContainerAtLocation() bool
 
 	// optional
-	LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject
-	HasLocationFromLocationWithOffset() bool
+	EnumerateContainerBoundariesFromLocationReverseUsingBlock(location TextLocationObject, reverse bool, block func(boundaryLocation TextLocationObject, stop *bool))
+	HasEnumerateContainerBoundariesFromLocationReverseUsingBlock() bool
+
+	// optional
+	EnumerateSubstringsFromLocationOptionsUsingBlock(location TextLocationObject, options foundation.StringEnumerationOptions, block func(substring string, substringRange TextRange, enclosingRange TextRange, stop *bool))
+	HasEnumerateSubstringsFromLocationOptionsUsingBlock() bool
 
 	// optional
 	EnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock(location TextLocationObject, block func(caretOffset float64, location TextLocationObject, leadingEdge bool, stop *bool))
 	HasEnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock() bool
+
+	// optional
+	TextRangeForSelectionGranularityEnclosingLocation(selectionGranularity TextSelectionGranularity, location TextLocationObject) TextRange
+	HasTextRangeForSelectionGranularityEnclosingLocation() bool
+
+	// optional
+	OffsetFromLocationToLocation(from TextLocationObject, to TextLocationObject) int
+	HasOffsetFromLocationToLocation() bool
+
+	// optional
+	LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject
+	HasLocationFromLocationWithOffset() bool
+
+	// optional
+	TextLayoutOrientationAtLocation(location TextLocationObject) TextSelectionNavigationLayoutOrientation
+	HasTextLayoutOrientationAtLocation() bool
 
 	// optional
 	DocumentRange() TextRange
@@ -61,6 +61,32 @@ type TextSelectionDataSourceObject struct {
 	objc.Object
 }
 
+func (t_ TextSelectionDataSourceObject) HasBaseWritingDirectionAtLocation() bool {
+	return t_.RespondsToSelector(objc.Sel("baseWritingDirectionAtLocation:"))
+}
+
+// Returns the base writing direction at the location you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801839-basewritingdirectionatlocation?language=objc
+func (t_ TextSelectionDataSourceObject) BaseWritingDirectionAtLocation(location TextLocationObject) TextSelectionNavigationWritingDirection {
+	po0 := objc.WrapAsProtocol("NSTextLocation", location)
+	rv := objc.Call[TextSelectionNavigationWritingDirection](t_, objc.Sel("baseWritingDirectionAtLocation:"), po0)
+	return rv
+}
+
+func (t_ TextSelectionDataSourceObject) HasLineFragmentRangeForPointInContainerAtLocation() bool {
+	return t_.RespondsToSelector(objc.Sel("lineFragmentRangeForPoint:inContainerAtLocation:"))
+}
+
+// Returns the range of the line fragment that contains the point you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801845-linefragmentrangeforpoint?language=objc
+func (t_ TextSelectionDataSourceObject) LineFragmentRangeForPointInContainerAtLocation(point coregraphics.Point, location TextLocationObject) TextRange {
+	po1 := objc.WrapAsProtocol("NSTextLocation", location)
+	rv := objc.Call[TextRange](t_, objc.Sel("lineFragmentRangeForPoint:inContainerAtLocation:"), point, po1)
+	return rv
+}
+
 func (t_ TextSelectionDataSourceObject) HasEnumerateContainerBoundariesFromLocationReverseUsingBlock() bool {
 	return t_.RespondsToSelector(objc.Sel("enumerateContainerBoundariesFromLocation:reverse:usingBlock:"))
 }
@@ -71,19 +97,6 @@ func (t_ TextSelectionDataSourceObject) HasEnumerateContainerBoundariesFromLocat
 func (t_ TextSelectionDataSourceObject) EnumerateContainerBoundariesFromLocationReverseUsingBlock(location TextLocationObject, reverse bool, block func(boundaryLocation TextLocationObject, stop *bool)) {
 	po0 := objc.WrapAsProtocol("NSTextLocation", location)
 	objc.Call[objc.Void](t_, objc.Sel("enumerateContainerBoundariesFromLocation:reverse:usingBlock:"), po0, reverse, block)
-}
-
-func (t_ TextSelectionDataSourceObject) HasTextRangeForSelectionGranularityEnclosingLocation() bool {
-	return t_.RespondsToSelector(objc.Sel("textRangeForSelectionGranularity:enclosingLocation:"))
-}
-
-// Returns a text range that corresponds to selection granularity of the enclosing location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801848-textrangeforselectiongranularity?language=objc
-func (t_ TextSelectionDataSourceObject) TextRangeForSelectionGranularityEnclosingLocation(selectionGranularity TextSelectionGranularity, location TextLocationObject) TextRange {
-	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextRange](t_, objc.Sel("textRangeForSelectionGranularity:enclosingLocation:"), selectionGranularity, po1)
-	return rv
 }
 
 func (t_ TextSelectionDataSourceObject) HasEnumerateSubstringsFromLocationOptionsUsingBlock() bool {
@@ -98,29 +111,28 @@ func (t_ TextSelectionDataSourceObject) EnumerateSubstringsFromLocationOptionsUs
 	objc.Call[objc.Void](t_, objc.Sel("enumerateSubstringsFromLocation:options:usingBlock:"), po0, options, block)
 }
 
-func (t_ TextSelectionDataSourceObject) HasTextLayoutOrientationAtLocation() bool {
-	return t_.RespondsToSelector(objc.Sel("textLayoutOrientationAtLocation:"))
+func (t_ TextSelectionDataSourceObject) HasEnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock() bool {
+	return t_.RespondsToSelector(objc.Sel("enumerateCaretOffsetsInLineFragmentAtLocation:usingBlock:"))
 }
 
-// Returns the layout orientation at the location you specify. [Full Topic]
+// Enumerates all the insertion point caret offsets from left to right in visual order. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3852580-textlayoutorientationatlocation?language=objc
-func (t_ TextSelectionDataSourceObject) TextLayoutOrientationAtLocation(location TextLocationObject) TextSelectionNavigationLayoutOrientation {
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801841-enumeratecaretoffsetsinlinefragm?language=objc
+func (t_ TextSelectionDataSourceObject) EnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock(location TextLocationObject, block func(caretOffset float64, location TextLocationObject, leadingEdge bool, stop *bool)) {
 	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextSelectionNavigationLayoutOrientation](t_, objc.Sel("textLayoutOrientationAtLocation:"), po0)
-	return rv
+	objc.Call[objc.Void](t_, objc.Sel("enumerateCaretOffsetsInLineFragmentAtLocation:usingBlock:"), po0, block)
 }
 
-func (t_ TextSelectionDataSourceObject) HasBaseWritingDirectionAtLocation() bool {
-	return t_.RespondsToSelector(objc.Sel("baseWritingDirectionAtLocation:"))
+func (t_ TextSelectionDataSourceObject) HasTextRangeForSelectionGranularityEnclosingLocation() bool {
+	return t_.RespondsToSelector(objc.Sel("textRangeForSelectionGranularity:enclosingLocation:"))
 }
 
-// Returns the base writing direction at the location you specify. [Full Topic]
+// Returns a text range that corresponds to selection granularity of the enclosing location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801839-basewritingdirectionatlocation?language=objc
-func (t_ TextSelectionDataSourceObject) BaseWritingDirectionAtLocation(location TextLocationObject) TextSelectionNavigationWritingDirection {
-	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextSelectionNavigationWritingDirection](t_, objc.Sel("baseWritingDirectionAtLocation:"), po0)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801848-textrangeforselectiongranularity?language=objc
+func (t_ TextSelectionDataSourceObject) TextRangeForSelectionGranularityEnclosingLocation(selectionGranularity TextSelectionGranularity, location TextLocationObject) TextRange {
+	po1 := objc.WrapAsProtocol("NSTextLocation", location)
+	rv := objc.Call[TextRange](t_, objc.Sel("textRangeForSelectionGranularity:enclosingLocation:"), selectionGranularity, po1)
 	return rv
 }
 
@@ -138,19 +150,6 @@ func (t_ TextSelectionDataSourceObject) OffsetFromLocationToLocation(from TextLo
 	return rv
 }
 
-func (t_ TextSelectionDataSourceObject) HasLineFragmentRangeForPointInContainerAtLocation() bool {
-	return t_.RespondsToSelector(objc.Sel("lineFragmentRangeForPoint:inContainerAtLocation:"))
-}
-
-// Returns the range of the line fragment that contains the point you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801845-linefragmentrangeforpoint?language=objc
-func (t_ TextSelectionDataSourceObject) LineFragmentRangeForPointInContainerAtLocation(point coregraphics.Point, location TextLocationObject) TextRange {
-	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextRange](t_, objc.Sel("lineFragmentRangeForPoint:inContainerAtLocation:"), point, po1)
-	return rv
-}
-
 func (t_ TextSelectionDataSourceObject) HasLocationFromLocationWithOffset() bool {
 	return t_.RespondsToSelector(objc.Sel("locationFromLocation:withOffset:"))
 }
@@ -164,16 +163,17 @@ func (t_ TextSelectionDataSourceObject) LocationFromLocationWithOffset(location 
 	return rv
 }
 
-func (t_ TextSelectionDataSourceObject) HasEnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock() bool {
-	return t_.RespondsToSelector(objc.Sel("enumerateCaretOffsetsInLineFragmentAtLocation:usingBlock:"))
+func (t_ TextSelectionDataSourceObject) HasTextLayoutOrientationAtLocation() bool {
+	return t_.RespondsToSelector(objc.Sel("textLayoutOrientationAtLocation:"))
 }
 
-// Enumerates all the insertion point caret offsets from left to right in visual order. [Full Topic]
+// Returns the layout orientation at the location you specify. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3801841-enumeratecaretoffsetsinlinefragm?language=objc
-func (t_ TextSelectionDataSourceObject) EnumerateCaretOffsetsInLineFragmentAtLocationUsingBlock(location TextLocationObject, block func(caretOffset float64, location TextLocationObject, leadingEdge bool, stop *bool)) {
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiondatasource/3852580-textlayoutorientationatlocation?language=objc
+func (t_ TextSelectionDataSourceObject) TextLayoutOrientationAtLocation(location TextLocationObject) TextSelectionNavigationLayoutOrientation {
 	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	objc.Call[objc.Void](t_, objc.Sel("enumerateCaretOffsetsInLineFragmentAtLocation:usingBlock:"), po0, block)
+	rv := objc.Call[TextSelectionNavigationLayoutOrientation](t_, objc.Sel("textLayoutOrientationAtLocation:"), po0)
+	return rv
 }
 
 func (t_ TextSelectionDataSourceObject) HasDocumentRange() bool {

@@ -18,8 +18,8 @@ type _LocationSourceInformationClass struct {
 // An interface definition for the [LocationSourceInformation] class.
 type ILocationSourceInformation interface {
 	objc.IObject
-	IsSimulatedBySoftware() bool
 	IsProducedByAccessory() bool
+	IsSimulatedBySoftware() bool
 }
 
 // Information about the source that provides a location. [Full Topic]
@@ -69,18 +69,18 @@ func (l_ LocationSourceInformation) Init() LocationSourceInformation {
 	return rv
 }
 
-// A Boolean value that indicates whether the system generates the location using on-device software simulation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationsourceinformation/3861807-issimulatedbysoftware?language=objc
-func (l_ LocationSourceInformation) IsSimulatedBySoftware() bool {
-	rv := objc.Call[bool](l_, objc.Sel("isSimulatedBySoftware"))
-	return rv
-}
-
 // A Boolean value that indicates whether the system receives the location from an external accessory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationsourceinformation/3861806-isproducedbyaccessory?language=objc
 func (l_ LocationSourceInformation) IsProducedByAccessory() bool {
 	rv := objc.Call[bool](l_, objc.Sel("isProducedByAccessory"))
+	return rv
+}
+
+// A Boolean value that indicates whether the system generates the location using on-device software simulation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationsourceinformation/3861807-issimulatedbysoftware?language=objc
+func (l_ LocationSourceInformation) IsSimulatedBySoftware() bool {
+	rv := objc.Call[bool](l_, objc.Sel("isSimulatedBySoftware"))
 	return rv
 }

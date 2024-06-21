@@ -18,9 +18,9 @@ type _QRCodeDescriptorClass struct {
 // An interface definition for the [QRCodeDescriptor] class.
 type IQRCodeDescriptor interface {
 	IBarcodeDescriptor
-	ErrorCorrectionLevel() QRCodeErrorCorrectionLevel
-	MaskPattern() uint8
 	SymbolVersion() int
+	MaskPattern() uint8
+	ErrorCorrectionLevel() QRCodeErrorCorrectionLevel
 	ErrorCorrectedPayload() []byte
 }
 
@@ -37,18 +37,6 @@ func QRCodeDescriptorFrom(ptr unsafe.Pointer) QRCodeDescriptor {
 	}
 }
 
-func (qc _QRCodeDescriptorClass) DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
-	rv := objc.Call[QRCodeDescriptor](qc, objc.Sel("descriptorWithPayload:symbolVersion:maskPattern:errorCorrectionLevel:"), errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
-	return rv
-}
-
-// Creates a QR code descriptor encoding the given payload and parameters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875169-descriptorwithpayload?language=objc
-func QRCodeDescriptor_DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
-	return QRCodeDescriptorClass.DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
-}
-
 func (q_ QRCodeDescriptor) InitWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
 	rv := objc.Call[QRCodeDescriptor](q_, objc.Sel("initWithPayload:symbolVersion:maskPattern:errorCorrectionLevel:"), errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
 	return rv
@@ -61,6 +49,18 @@ func NewQRCodeDescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(
 	instance := QRCodeDescriptorClass.Alloc().InitWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
 	instance.Autorelease()
 	return instance
+}
+
+func (qc _QRCodeDescriptorClass) DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
+	rv := objc.Call[QRCodeDescriptor](qc, objc.Sel("descriptorWithPayload:symbolVersion:maskPattern:errorCorrectionLevel:"), errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
+	return rv
+}
+
+// Creates a QR code descriptor encoding the given payload and parameters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875169-descriptorwithpayload?language=objc
+func QRCodeDescriptor_DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
+	return QRCodeDescriptorClass.DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
 }
 
 func (qc _QRCodeDescriptorClass) Alloc() QRCodeDescriptor {
@@ -83,11 +83,11 @@ func (q_ QRCodeDescriptor) Init() QRCodeDescriptor {
 	return rv
 }
 
-// The QR code error correction level. [Full Topic]
+// The version of the QR code. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875196-errorcorrectionlevel?language=objc
-func (q_ QRCodeDescriptor) ErrorCorrectionLevel() QRCodeErrorCorrectionLevel {
-	rv := objc.Call[QRCodeErrorCorrectionLevel](q_, objc.Sel("errorCorrectionLevel"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875193-symbolversion?language=objc
+func (q_ QRCodeDescriptor) SymbolVersion() int {
+	rv := objc.Call[int](q_, objc.Sel("symbolVersion"))
 	return rv
 }
 
@@ -99,11 +99,11 @@ func (q_ QRCodeDescriptor) MaskPattern() uint8 {
 	return rv
 }
 
-// The version of the QR code. [Full Topic]
+// The QR code error correction level. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875193-symbolversion?language=objc
-func (q_ QRCodeDescriptor) SymbolVersion() int {
-	rv := objc.Call[int](q_, objc.Sel("symbolVersion"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875196-errorcorrectionlevel?language=objc
+func (q_ QRCodeDescriptor) ErrorCorrectionLevel() QRCodeErrorCorrectionLevel {
+	rv := objc.Call[QRCodeErrorCorrectionLevel](q_, objc.Sel("errorCorrectionLevel"))
 	return rv
 }
 

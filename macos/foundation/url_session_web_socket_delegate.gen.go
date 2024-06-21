@@ -13,16 +13,11 @@ type PURLSessionWebSocketDelegate interface {
 	// optional
 	URLSessionWebSocketTaskDidOpenWithProtocol(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string)
 	HasURLSessionWebSocketTaskDidOpenWithProtocol() bool
-
-	// optional
-	URLSessionWebSocketTaskDidCloseWithCodeReason(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte)
-	HasURLSessionWebSocketTaskDidCloseWithCodeReason() bool
 }
 
 // A delegate implementation builder for the [PURLSessionWebSocketDelegate] protocol.
 type URLSessionWebSocketDelegate struct {
-	_URLSessionWebSocketTaskDidOpenWithProtocol    func(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string)
-	_URLSessionWebSocketTaskDidCloseWithCodeReason func(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte)
+	_URLSessionWebSocketTaskDidOpenWithProtocol func(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string)
 }
 
 func (di *URLSessionWebSocketDelegate) HasURLSessionWebSocketTaskDidOpenWithProtocol() bool {
@@ -42,23 +37,6 @@ func (di *URLSessionWebSocketDelegate) SetURLSessionWebSocketTaskDidOpenWithProt
 func (di *URLSessionWebSocketDelegate) URLSessionWebSocketTaskDidOpenWithProtocol(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string) {
 	di._URLSessionWebSocketTaskDidOpenWithProtocol(session, webSocketTask, protocol)
 }
-func (di *URLSessionWebSocketDelegate) HasURLSessionWebSocketTaskDidCloseWithCodeReason() bool {
-	return di._URLSessionWebSocketTaskDidCloseWithCodeReason != nil
-}
-
-// Tells the delegate that the WebSocket task received a close frame from the server endpoint, optionally including a close code and reason from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181188-urlsession?language=objc
-func (di *URLSessionWebSocketDelegate) SetURLSessionWebSocketTaskDidCloseWithCodeReason(f func(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte)) {
-	di._URLSessionWebSocketTaskDidCloseWithCodeReason = f
-}
-
-// Tells the delegate that the WebSocket task received a close frame from the server endpoint, optionally including a close code and reason from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181188-urlsession?language=objc
-func (di *URLSessionWebSocketDelegate) URLSessionWebSocketTaskDidCloseWithCodeReason(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte) {
-	di._URLSessionWebSocketTaskDidCloseWithCodeReason(session, webSocketTask, closeCode, reason)
-}
 
 // ensure impl type implements protocol interface
 var _ PURLSessionWebSocketDelegate = (*URLSessionWebSocketDelegateObject)(nil)
@@ -77,15 +55,4 @@ func (u_ URLSessionWebSocketDelegateObject) HasURLSessionWebSocketTaskDidOpenWit
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181189-urlsession?language=objc
 func (u_ URLSessionWebSocketDelegateObject) URLSessionWebSocketTaskDidOpenWithProtocol(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string) {
 	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didOpenWithProtocol:"), session, webSocketTask, protocol)
-}
-
-func (u_ URLSessionWebSocketDelegateObject) HasURLSessionWebSocketTaskDidCloseWithCodeReason() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:webSocketTask:didCloseWithCode:reason:"))
-}
-
-// Tells the delegate that the WebSocket task received a close frame from the server endpoint, optionally including a close code and reason from the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181188-urlsession?language=objc
-func (u_ URLSessionWebSocketDelegateObject) URLSessionWebSocketTaskDidCloseWithCodeReason(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didCloseWithCode:reason:"), session, webSocketTask, closeCode, reason)
 }

@@ -19,23 +19,23 @@ type _LayoutConstraintClass struct {
 type ILayoutConstraint interface {
 	objc.IObject
 	Relation() LayoutRelation
-	FirstAnchor() LayoutAnchor
-	SecondAttribute() LayoutAttribute
 	Priority() LayoutPriority
 	SetPriority(value LayoutPriority)
-	Identifier() string
-	SetIdentifier(value string)
-	SecondAnchor() LayoutAnchor
 	Multiplier() float64
-	SecondItem() objc.Object
-	ShouldBeArchived() bool
-	SetShouldBeArchived(value bool)
 	IsActive() bool
 	SetActive(value bool)
+	SecondItem() objc.Object
 	FirstItem() objc.Object
 	FirstAttribute() LayoutAttribute
+	FirstAnchor() LayoutAnchor
+	SecondAttribute() LayoutAttribute
 	Constant() float64
 	SetConstant(value float64)
+	ShouldBeArchived() bool
+	SetShouldBeArchived(value bool)
+	SecondAnchor() LayoutAnchor
+	Identifier() string
+	SetIdentifier(value string)
 }
 
 // The relationship between two user interface objects that must be satisfied by the constraint-based layout system. [Full Topic]
@@ -134,22 +134,6 @@ func (l_ LayoutConstraint) Relation() LayoutRelation {
 	return rv
 }
 
-// The first anchor that defines the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1644261-firstanchor?language=objc
-func (l_ LayoutConstraint) FirstAnchor() LayoutAnchor {
-	rv := objc.Call[LayoutAnchor](l_, objc.Sel("firstAnchor"))
-	return rv
-}
-
-// The attribute of the second object participating in the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526941-secondattribute?language=objc
-func (l_ LayoutConstraint) SecondAttribute() LayoutAttribute {
-	rv := objc.Call[LayoutAttribute](l_, objc.Sel("secondAttribute"))
-	return rv
-}
-
 // The priority of the constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526946-priority?language=objc
@@ -165,58 +149,12 @@ func (l_ LayoutConstraint) SetPriority(value LayoutPriority) {
 	objc.Call[objc.Void](l_, objc.Sel("setPriority:"), value)
 }
 
-// The name that identifies the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526879-identifier?language=objc
-func (l_ LayoutConstraint) Identifier() string {
-	rv := objc.Call[string](l_, objc.Sel("identifier"))
-	return rv
-}
-
-// The name that identifies the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526879-identifier?language=objc
-func (l_ LayoutConstraint) SetIdentifier(value string) {
-	objc.Call[objc.Void](l_, objc.Sel("setIdentifier:"), value)
-}
-
-// The second anchor that defines the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1644260-secondanchor?language=objc
-func (l_ LayoutConstraint) SecondAnchor() LayoutAnchor {
-	rv := objc.Call[LayoutAnchor](l_, objc.Sel("secondAnchor"))
-	return rv
-}
-
 // The multiplier applied to the second attribute participating in the constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526920-multiplier?language=objc
 func (l_ LayoutConstraint) Multiplier() float64 {
 	rv := objc.Call[float64](l_, objc.Sel("multiplier"))
 	return rv
-}
-
-// The second object participating in the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526868-seconditem?language=objc
-func (l_ LayoutConstraint) SecondItem() objc.Object {
-	rv := objc.Call[objc.Object](l_, objc.Sel("secondItem"))
-	return rv
-}
-
-// A Boolean value that determines whether the constraint should be archived by its owning view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1525647-shouldbearchived?language=objc
-func (l_ LayoutConstraint) ShouldBeArchived() bool {
-	rv := objc.Call[bool](l_, objc.Sel("shouldBeArchived"))
-	return rv
-}
-
-// A Boolean value that determines whether the constraint should be archived by its owning view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1525647-shouldbearchived?language=objc
-func (l_ LayoutConstraint) SetShouldBeArchived(value bool) {
-	objc.Call[objc.Void](l_, objc.Sel("setShouldBeArchived:"), value)
 }
 
 // The active state of the constraint. [Full Topic]
@@ -232,6 +170,14 @@ func (l_ LayoutConstraint) IsActive() bool {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1527000-active?language=objc
 func (l_ LayoutConstraint) SetActive(value bool) {
 	objc.Call[objc.Void](l_, objc.Sel("setActive:"), value)
+}
+
+// The second object participating in the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526868-seconditem?language=objc
+func (l_ LayoutConstraint) SecondItem() objc.Object {
+	rv := objc.Call[objc.Object](l_, objc.Sel("secondItem"))
+	return rv
 }
 
 // The first object participating in the constraint. [Full Topic]
@@ -250,6 +196,22 @@ func (l_ LayoutConstraint) FirstAttribute() LayoutAttribute {
 	return rv
 }
 
+// The first anchor that defines the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1644261-firstanchor?language=objc
+func (l_ LayoutConstraint) FirstAnchor() LayoutAnchor {
+	rv := objc.Call[LayoutAnchor](l_, objc.Sel("firstAnchor"))
+	return rv
+}
+
+// The attribute of the second object participating in the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526941-secondattribute?language=objc
+func (l_ LayoutConstraint) SecondAttribute() LayoutAttribute {
+	rv := objc.Call[LayoutAttribute](l_, objc.Sel("secondAttribute"))
+	return rv
+}
+
 // The constant added to the multiplied second attribute participating in the constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526928-constant?language=objc
@@ -263,4 +225,42 @@ func (l_ LayoutConstraint) Constant() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526928-constant?language=objc
 func (l_ LayoutConstraint) SetConstant(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setConstant:"), value)
+}
+
+// A Boolean value that determines whether the constraint should be archived by its owning view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1525647-shouldbearchived?language=objc
+func (l_ LayoutConstraint) ShouldBeArchived() bool {
+	rv := objc.Call[bool](l_, objc.Sel("shouldBeArchived"))
+	return rv
+}
+
+// A Boolean value that determines whether the constraint should be archived by its owning view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1525647-shouldbearchived?language=objc
+func (l_ LayoutConstraint) SetShouldBeArchived(value bool) {
+	objc.Call[objc.Void](l_, objc.Sel("setShouldBeArchived:"), value)
+}
+
+// The second anchor that defines the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1644260-secondanchor?language=objc
+func (l_ LayoutConstraint) SecondAnchor() LayoutAnchor {
+	rv := objc.Call[LayoutAnchor](l_, objc.Sel("secondAnchor"))
+	return rv
+}
+
+// The name that identifies the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526879-identifier?language=objc
+func (l_ LayoutConstraint) Identifier() string {
+	rv := objc.Call[string](l_, objc.Sel("identifier"))
+	return rv
+}
+
+// The name that identifies the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutconstraint/1526879-identifier?language=objc
+func (l_ LayoutConstraint) SetIdentifier(value string) {
+	objc.Call[objc.Void](l_, objc.Sel("setIdentifier:"), value)
 }

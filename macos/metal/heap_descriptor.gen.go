@@ -18,16 +18,16 @@ type _HeapDescriptorClass struct {
 // An interface definition for the [HeapDescriptor] class.
 type IHeapDescriptor interface {
 	objc.IObject
-	ResourceOptions() ResourceOptions
-	SetResourceOptions(value ResourceOptions)
-	Size() uint
-	SetSize(value uint)
 	CpuCacheMode() CPUCacheMode
 	SetCpuCacheMode(value CPUCacheMode)
 	StorageMode() StorageMode
 	SetStorageMode(value StorageMode)
+	ResourceOptions() ResourceOptions
+	SetResourceOptions(value ResourceOptions)
 	Type() HeapType
 	SetType(value HeapType)
+	Size() uint
+	SetSize(value uint)
 	HazardTrackingMode() HazardTrackingMode
 	SetHazardTrackingMode(value HazardTrackingMode)
 }
@@ -65,36 +65,6 @@ func (h_ HeapDescriptor) Init() HeapDescriptor {
 	return rv
 }
 
-// The combined behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3131687-resourceoptions?language=objc
-func (h_ HeapDescriptor) ResourceOptions() ResourceOptions {
-	rv := objc.Call[ResourceOptions](h_, objc.Sel("resourceOptions"))
-	return rv
-}
-
-// The combined behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3131687-resourceoptions?language=objc
-func (h_ HeapDescriptor) SetResourceOptions(value ResourceOptions) {
-	objc.Call[objc.Void](h_, objc.Sel("setResourceOptions:"), value)
-}
-
-// The total amount of memory, in bytes, for the heaps you create with this descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/1649568-size?language=objc
-func (h_ HeapDescriptor) Size() uint {
-	rv := objc.Call[uint](h_, objc.Sel("size"))
-	return rv
-}
-
-// The total amount of memory, in bytes, for the heaps you create with this descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/1649568-size?language=objc
-func (h_ HeapDescriptor) SetSize(value uint) {
-	objc.Call[objc.Void](h_, objc.Sel("setSize:"), value)
-}
-
 // The CPU cache behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/1649573-cpucachemode?language=objc
@@ -125,6 +95,21 @@ func (h_ HeapDescriptor) SetStorageMode(value StorageMode) {
 	objc.Call[objc.Void](h_, objc.Sel("setStorageMode:"), value)
 }
 
+// The combined behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3131687-resourceoptions?language=objc
+func (h_ HeapDescriptor) ResourceOptions() ResourceOptions {
+	rv := objc.Call[ResourceOptions](h_, objc.Sel("resourceOptions"))
+	return rv
+}
+
+// The combined behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3131687-resourceoptions?language=objc
+func (h_ HeapDescriptor) SetResourceOptions(value ResourceOptions) {
+	objc.Call[objc.Void](h_, objc.Sel("setResourceOptions:"), value)
+}
+
 // The memory placement strategy for any resources you allocate from the heaps you create with this descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3043389-type?language=objc
@@ -138,6 +123,21 @@ func (h_ HeapDescriptor) Type() HeapType {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/3043389-type?language=objc
 func (h_ HeapDescriptor) SetType(value HeapType) {
 	objc.Call[objc.Void](h_, objc.Sel("setType:"), value)
+}
+
+// The total amount of memory, in bytes, for the heaps you create with this descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/1649568-size?language=objc
+func (h_ HeapDescriptor) Size() uint {
+	rv := objc.Call[uint](h_, objc.Sel("size"))
+	return rv
+}
+
+// The total amount of memory, in bytes, for the heaps you create with this descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheapdescriptor/1649568-size?language=objc
+func (h_ HeapDescriptor) SetSize(value uint) {
+	objc.Call[objc.Void](h_, objc.Sel("setSize:"), value)
 }
 
 // The hazard tracking behavior for any resources you allocate from the heaps you create with this descriptor. [Full Topic]

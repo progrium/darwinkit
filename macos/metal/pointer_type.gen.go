@@ -20,11 +20,11 @@ type IPointerType interface {
 	IType
 	ElementArrayType() ArrayType
 	ElementStructType() StructType
-	ElementIsArgumentBuffer() bool
-	DataSize() uint
-	Access() objc.Object
 	Alignment() uint
+	DataSize() uint
 	ElementType() DataType
+	Access() objc.Object
+	ElementIsArgumentBuffer() bool
 }
 
 // A description of a pointer. [Full Topic]
@@ -76,11 +76,11 @@ func (p_ PointerType) ElementStructType() StructType {
 	return rv
 }
 
-// A Boolean value that indicates whether the element is an argument buffer. [Full Topic]
+// The required byte alignment in memory for the element data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2915756-elementisargumentbuffer?language=objc
-func (p_ PointerType) ElementIsArgumentBuffer() bool {
-	rv := objc.Call[bool](p_, objc.Sel("elementIsArgumentBuffer"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2877458-alignment?language=objc
+func (p_ PointerType) Alignment() uint {
+	rv := objc.Call[uint](p_, objc.Sel("alignment"))
 	return rv
 }
 
@@ -92,6 +92,14 @@ func (p_ PointerType) DataSize() uint {
 	return rv
 }
 
+// The data type of the element data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2877457-elementtype?language=objc
+func (p_ PointerType) ElementType() DataType {
+	rv := objc.Call[DataType](p_, objc.Sel("elementType"))
+	return rv
+}
+
 // The function’s read/write access to the element data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2877452-access?language=objc
@@ -100,18 +108,10 @@ func (p_ PointerType) Access() objc.Object {
 	return rv
 }
 
-// The required byte alignment in memory for the element data. [Full Topic]
+// A Boolean value that indicates whether the element is an argument buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2877458-alignment?language=objc
-func (p_ PointerType) Alignment() uint {
-	rv := objc.Call[uint](p_, objc.Sel("alignment"))
-	return rv
-}
-
-// The data type of the element data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2877457-elementtype?language=objc
-func (p_ PointerType) ElementType() DataType {
-	rv := objc.Call[DataType](p_, objc.Sel("elementType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpointertype/2915756-elementisargumentbuffer?language=objc
+func (p_ PointerType) ElementIsArgumentBuffer() bool {
+	rv := objc.Call[bool](p_, objc.Sel("elementIsArgumentBuffer"))
 	return rv
 }

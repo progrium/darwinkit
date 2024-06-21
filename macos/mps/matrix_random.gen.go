@@ -21,12 +21,10 @@ type IMatrixRandom interface {
 	IKernel
 	EncodeToCommandBufferDestinationMatrix(commandBuffer metal.PCommandBuffer, destinationMatrix IMatrix)
 	EncodeToCommandBufferObjectDestinationMatrix(commandBufferObject objc.IObject, destinationMatrix IMatrix)
-	EncodeToCommandBufferDestinationVector(commandBuffer metal.PCommandBuffer, destinationVector IVector)
-	EncodeToCommandBufferObjectDestinationVector(commandBufferObject objc.IObject, destinationVector IVector)
-	BatchStart() uint
-	SetBatchStart(value uint)
 	DistributionType() MatrixRandomDistribution
 	DestinationDataType() DataType
+	BatchStart() uint
+	SetBatchStart(value uint)
 	BatchSize() uint
 	SetBatchSize(value uint)
 }
@@ -64,21 +62,6 @@ func (m_ MatrixRandom) Init() MatrixRandom {
 	return rv
 }
 
-func (m_ MatrixRandom) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixRandom {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandom](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixRandom_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixRandom {
-	instance := MatrixRandomClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixRandom) InitWithDevice(device metal.PDevice) MatrixRandom {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixRandom](m_, objc.Sel("initWithDevice:"), po0)
@@ -90,6 +73,21 @@ func (m_ MatrixRandom) InitWithDevice(device metal.PDevice) MatrixRandom {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixRandomWithDevice(device metal.PDevice) MatrixRandom {
 	instance := MatrixRandomClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixRandom) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixRandom {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixRandom](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixRandom_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixRandom {
+	instance := MatrixRandomClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -111,17 +109,18 @@ func (m_ MatrixRandom) EncodeToCommandBufferObjectDestinationMatrix(commandBuffe
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242851-encodetocommandbuffer?language=objc
-func (m_ MatrixRandom) EncodeToCommandBufferDestinationVector(commandBuffer metal.PCommandBuffer, destinationVector IVector) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), po0, destinationVector)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242850-distributiontype?language=objc
+func (m_ MatrixRandom) DistributionType() MatrixRandomDistribution {
+	rv := objc.Call[MatrixRandomDistribution](m_, objc.Sel("distributionType"))
+	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242851-encodetocommandbuffer?language=objc
-func (m_ MatrixRandom) EncodeToCommandBufferObjectDestinationVector(commandBufferObject objc.IObject, destinationVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), commandBufferObject, destinationVector)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242849-destinationdatatype?language=objc
+func (m_ MatrixRandom) DestinationDataType() DataType {
+	rv := objc.Call[DataType](m_, objc.Sel("destinationDataType"))
+	return rv
 }
 
 //	[Full Topic]
@@ -137,22 +136,6 @@ func (m_ MatrixRandom) BatchStart() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242848-batchstart?language=objc
 func (m_ MatrixRandom) SetBatchStart(value uint) {
 	objc.Call[objc.Void](m_, objc.Sel("setBatchStart:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242850-distributiontype?language=objc
-func (m_ MatrixRandom) DistributionType() MatrixRandomDistribution {
-	rv := objc.Call[MatrixRandomDistribution](m_, objc.Sel("distributionType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242849-destinationdatatype?language=objc
-func (m_ MatrixRandom) DestinationDataType() DataType {
-	rv := objc.Call[DataType](m_, objc.Sel("destinationDataType"))
-	return rv
 }
 
 //	[Full Topic]

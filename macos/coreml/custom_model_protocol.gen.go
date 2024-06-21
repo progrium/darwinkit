@@ -13,16 +13,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel?language=objc
 type PCustomModel interface {
 	// optional
+	InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object
+	HasInitWithModelDescriptionParameterDictionaryError() bool
+
+	// optional
 	PredictionsFromBatchOptionsError(inputBatch BatchProviderObject, options PredictionOptions, error unsafe.Pointer) BatchProviderObject
 	HasPredictionsFromBatchOptionsError() bool
 
 	// optional
 	PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error unsafe.Pointer) FeatureProviderObject
 	HasPredictionFromFeaturesOptionsError() bool
-
-	// optional
-	InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object
-	HasInitWithModelDescriptionParameterDictionaryError() bool
 }
 
 // ensure impl type implements protocol interface
@@ -31,6 +31,18 @@ var _ PCustomModel = (*CustomModelObject)(nil)
 // A concrete type for the [PCustomModel] protocol.
 type CustomModelObject struct {
 	objc.Object
+}
+
+func (c_ CustomModelObject) HasInitWithModelDescriptionParameterDictionaryError() bool {
+	return c_.RespondsToSelector(objc.Sel("initWithModelDescription:parameterDictionary:error:"))
+}
+
+// Creates a custom model with the given description and parameters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel/2994296-initwithmodeldescription?language=objc
+func (c_ CustomModelObject) InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithModelDescription:parameterDictionary:error:"), modelDescription, parameters, error)
+	return rv
 }
 
 func (c_ CustomModelObject) HasPredictionsFromBatchOptionsError() bool {
@@ -56,17 +68,5 @@ func (c_ CustomModelObject) HasPredictionFromFeaturesOptionsError() bool {
 func (c_ CustomModelObject) PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error unsafe.Pointer) FeatureProviderObject {
 	po0 := objc.WrapAsProtocol("MLFeatureProvider", input)
 	rv := objc.Call[FeatureProviderObject](c_, objc.Sel("predictionFromFeatures:options:error:"), po0, options, error)
-	return rv
-}
-
-func (c_ CustomModelObject) HasInitWithModelDescriptionParameterDictionaryError() bool {
-	return c_.RespondsToSelector(objc.Sel("initWithModelDescription:parameterDictionary:error:"))
-}
-
-// Creates a custom model with the given description and parameters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel/2994296-initwithmodeldescription?language=objc
-func (c_ CustomModelObject) InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithModelDescription:parameterDictionary:error:"), modelDescription, parameters, error)
 	return rv
 }

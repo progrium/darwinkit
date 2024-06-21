@@ -19,9 +19,9 @@ type _ContainerClass struct {
 // An interface definition for the [Container] class.
 type IContainer interface {
 	objc.IObject
+	Name() string
 	Type() ContainerType
 	Identifier() string
-	Name() string
 }
 
 // An immutable object that represents a collection of contacts. [Full Topic]
@@ -72,21 +72,6 @@ func Container_PredicateForContainersWithIdentifiers(identifiers []string) found
 	return ContainerClass.PredicateForContainersWithIdentifiers(identifiers)
 }
 
-// Returns a predicate to find the container of the specified group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403086-predicateforcontainerofgroupwith?language=objc
-func (cc _ContainerClass) PredicateForContainerOfGroupWithIdentifier(groupIdentifier string) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](cc, objc.Sel("predicateForContainerOfGroupWithIdentifier:"), groupIdentifier)
-	return rv
-}
-
-// Returns a predicate to find the container of the specified group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403086-predicateforcontainerofgroupwith?language=objc
-func Container_PredicateForContainerOfGroupWithIdentifier(groupIdentifier string) foundation.Predicate {
-	return ContainerClass.PredicateForContainerOfGroupWithIdentifier(groupIdentifier)
-}
-
 // Returns a predicate to find the container of the specified contact. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1402785-predicateforcontainerofcontactwi?language=objc
@@ -102,6 +87,29 @@ func Container_PredicateForContainerOfContactWithIdentifier(contactIdentifier st
 	return ContainerClass.PredicateForContainerOfContactWithIdentifier(contactIdentifier)
 }
 
+// Returns a predicate to find the container of the specified group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403086-predicateforcontainerofgroupwith?language=objc
+func (cc _ContainerClass) PredicateForContainerOfGroupWithIdentifier(groupIdentifier string) foundation.Predicate {
+	rv := objc.Call[foundation.Predicate](cc, objc.Sel("predicateForContainerOfGroupWithIdentifier:"), groupIdentifier)
+	return rv
+}
+
+// Returns a predicate to find the container of the specified group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403086-predicateforcontainerofgroupwith?language=objc
+func Container_PredicateForContainerOfGroupWithIdentifier(groupIdentifier string) foundation.Predicate {
+	return ContainerClass.PredicateForContainerOfGroupWithIdentifier(groupIdentifier)
+}
+
+// The name of the container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403082-name?language=objc
+func (c_ Container) Name() string {
+	rv := objc.Call[string](c_, objc.Sel("name"))
+	return rv
+}
+
 // The type of the container. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403412-type?language=objc
@@ -115,13 +123,5 @@ func (c_ Container) Type() ContainerType {
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403107-identifier?language=objc
 func (c_ Container) Identifier() string {
 	rv := objc.Call[string](c_, objc.Sel("identifier"))
-	return rv
-}
-
-// The name of the container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontainer/1403082-name?language=objc
-func (c_ Container) Name() string {
-	rv := objc.Call[string](c_, objc.Sel("name"))
 	return rv
 }

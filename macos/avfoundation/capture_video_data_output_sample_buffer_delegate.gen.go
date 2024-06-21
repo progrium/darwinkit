@@ -14,16 +14,11 @@ type PCaptureVideoDataOutputSampleBufferDelegate interface {
 	// optional
 	CaptureOutputDidOutputSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection)
 	HasCaptureOutputDidOutputSampleBufferFromConnection() bool
-
-	// optional
-	CaptureOutputDidDropSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection)
-	HasCaptureOutputDidDropSampleBufferFromConnection() bool
 }
 
 // A delegate implementation builder for the [PCaptureVideoDataOutputSampleBufferDelegate] protocol.
 type CaptureVideoDataOutputSampleBufferDelegate struct {
 	_CaptureOutputDidOutputSampleBufferFromConnection func(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection)
-	_CaptureOutputDidDropSampleBufferFromConnection   func(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection)
 }
 
 func (di *CaptureVideoDataOutputSampleBufferDelegate) HasCaptureOutputDidOutputSampleBufferFromConnection() bool {
@@ -43,23 +38,6 @@ func (di *CaptureVideoDataOutputSampleBufferDelegate) SetCaptureOutputDidOutputS
 func (di *CaptureVideoDataOutputSampleBufferDelegate) CaptureOutputDidOutputSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
 	di._CaptureOutputDidOutputSampleBufferFromConnection(output, sampleBuffer, connection)
 }
-func (di *CaptureVideoDataOutputSampleBufferDelegate) HasCaptureOutputDidDropSampleBufferFromConnection() bool {
-	return di._CaptureOutputDidDropSampleBufferFromConnection != nil
-}
-
-// Notifies the delegate that a video frame was discarded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1388468-captureoutput?language=objc
-func (di *CaptureVideoDataOutputSampleBufferDelegate) SetCaptureOutputDidDropSampleBufferFromConnection(f func(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection)) {
-	di._CaptureOutputDidDropSampleBufferFromConnection = f
-}
-
-// Notifies the delegate that a video frame was discarded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1388468-captureoutput?language=objc
-func (di *CaptureVideoDataOutputSampleBufferDelegate) CaptureOutputDidDropSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	di._CaptureOutputDidDropSampleBufferFromConnection(output, sampleBuffer, connection)
-}
 
 // ensure impl type implements protocol interface
 var _ PCaptureVideoDataOutputSampleBufferDelegate = (*CaptureVideoDataOutputSampleBufferDelegateObject)(nil)
@@ -78,15 +56,4 @@ func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) HasCaptureOutputDidOu
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput?language=objc
 func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) CaptureOutputDidOutputSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
 	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
-}
-
-func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) HasCaptureOutputDidDropSampleBufferFromConnection() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didDropSampleBuffer:fromConnection:"))
-}
-
-// Notifies the delegate that a video frame was discarded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1388468-captureoutput?language=objc
-func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) CaptureOutputDidDropSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didDropSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
 }

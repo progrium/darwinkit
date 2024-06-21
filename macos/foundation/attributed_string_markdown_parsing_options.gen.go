@@ -18,12 +18,12 @@ type _AttributedStringMarkdownParsingOptionsClass struct {
 // An interface definition for the [AttributedStringMarkdownParsingOptions] class.
 type IAttributedStringMarkdownParsingOptions interface {
 	objc.IObject
-	LanguageCode() string
-	SetLanguageCode(value string)
 	FailurePolicy() AttributedStringMarkdownParsingFailurePolicy
 	SetFailurePolicy(value AttributedStringMarkdownParsingFailurePolicy)
 	InterpretedSyntax() AttributedStringMarkdownInterpretedSyntax
 	SetInterpretedSyntax(value AttributedStringMarkdownInterpretedSyntax)
+	LanguageCode() string
+	SetLanguageCode(value string)
 	AllowsExtendedAttributes() bool
 	SetAllowsExtendedAttributes(value bool)
 }
@@ -61,21 +61,6 @@ func NewAttributedStringMarkdownParsingOptions() AttributedStringMarkdownParsing
 	return AttributedStringMarkdownParsingOptionsClass.New()
 }
 
-// The BCP-47 language code for this document. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3746889-languagecode?language=objc
-func (a_ AttributedStringMarkdownParsingOptions) LanguageCode() string {
-	rv := objc.Call[string](a_, objc.Sel("languageCode"))
-	return rv
-}
-
-// The BCP-47 language code for this document. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3746889-languagecode?language=objc
-func (a_ AttributedStringMarkdownParsingOptions) SetLanguageCode(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setLanguageCode:"), value)
-}
-
 // The policy for handling a parsing failure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3746887-failurepolicy?language=objc
@@ -104,6 +89,21 @@ func (a_ AttributedStringMarkdownParsingOptions) InterpretedSyntax() AttributedS
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3787562-interpretedsyntax?language=objc
 func (a_ AttributedStringMarkdownParsingOptions) SetInterpretedSyntax(value AttributedStringMarkdownInterpretedSyntax) {
 	objc.Call[objc.Void](a_, objc.Sel("setInterpretedSyntax:"), value)
+}
+
+// The BCP-47 language code for this document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3746889-languagecode?language=objc
+func (a_ AttributedStringMarkdownParsingOptions) LanguageCode() string {
+	rv := objc.Call[string](a_, objc.Sel("languageCode"))
+	return rv
+}
+
+// The BCP-47 language code for this document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstringmarkdownparsingoptions/3746889-languagecode?language=objc
+func (a_ AttributedStringMarkdownParsingOptions) SetLanguageCode(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setLanguageCode:"), value)
 }
 
 // A Boolean value that indicates whether parsing allows extensions to Markdown that specify extended attributes. [Full Topic]

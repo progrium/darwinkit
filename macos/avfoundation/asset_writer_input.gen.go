@@ -22,47 +22,47 @@ type _AssetWriterInputClass struct {
 // An interface definition for the [AssetWriterInput] class.
 type IAssetWriterInput interface {
 	objc.IObject
-	RequestMediaDataWhenReadyOnQueueUsingBlock(queue dispatch.Queue, block func())
-	CanAddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) bool
 	AddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string)
-	AppendSampleBuffer(sampleBuffer coremedia.SampleBufferRef) bool
-	RespondToEachPassDescriptionOnQueueUsingBlock(queue dispatch.Queue, block func())
-	MarkAsFinished()
 	MarkCurrentPassAsFinished()
-	CanPerformMultiplePasses() bool
-	NaturalSize() coregraphics.Size
-	SetNaturalSize(value coregraphics.Size)
-	ExpectsMediaDataInRealTime() bool
-	SetExpectsMediaDataInRealTime(value bool)
-	Metadata() []MetadataItem
-	SetMetadata(value []IMetadataItem)
-	ExtendedLanguageTag() string
-	SetExtendedLanguageTag(value string)
-	SourceFormatHint() coremedia.FormatDescriptionRef
-	PreferredMediaChunkAlignment() int
-	SetPreferredMediaChunkAlignment(value int)
+	RespondToEachPassDescriptionOnQueueUsingBlock(queue dispatch.Queue, block func())
+	RequestMediaDataWhenReadyOnQueueUsingBlock(queue dispatch.Queue, block func())
+	AppendSampleBuffer(sampleBuffer coremedia.SampleBufferRef) bool
+	CanAddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) bool
+	MarkAsFinished()
 	CurrentPassDescription() AssetWriterInputPassDescription
 	IsReadyForMoreMediaData() bool
+	ExtendedLanguageTag() string
+	SetExtendedLanguageTag(value string)
+	PerformsMultiPassEncodingIfSupported() bool
+	SetPerformsMultiPassEncodingIfSupported(value bool)
 	OutputSettings() map[string]objc.Object
-	MarksOutputTrackAsEnabled() bool
-	SetMarksOutputTrackAsEnabled(value bool)
+	PreferredMediaChunkAlignment() int
+	SetPreferredMediaChunkAlignment(value int)
+	PreferredVolume() float32
+	SetPreferredVolume(value float32)
+	Metadata() []MetadataItem
+	SetMetadata(value []IMetadataItem)
+	ExpectsMediaDataInRealTime() bool
+	SetExpectsMediaDataInRealTime(value bool)
+	MediaType() MediaType
 	SampleReferenceBaseURL() foundation.URL
 	SetSampleReferenceBaseURL(value foundation.IURL)
+	MarksOutputTrackAsEnabled() bool
+	SetMarksOutputTrackAsEnabled(value bool)
+	NaturalSize() coregraphics.Size
+	SetNaturalSize(value coregraphics.Size)
+	CanPerformMultiplePasses() bool
 	MediaTimeScale() coremedia.TimeScale
 	SetMediaTimeScale(value coremedia.TimeScale)
+	PreferredMediaChunkDuration() coremedia.Time
+	SetPreferredMediaChunkDuration(value coremedia.Time)
 	Transform() coregraphics.AffineTransform
 	SetTransform(value coregraphics.AffineTransform)
 	LanguageCode() string
 	SetLanguageCode(value string)
-	PreferredVolume() float32
-	SetPreferredVolume(value float32)
-	MediaType() MediaType
-	PerformsMultiPassEncodingIfSupported() bool
-	SetPerformsMultiPassEncodingIfSupported(value bool)
+	SourceFormatHint() coremedia.FormatDescriptionRef
 	MediaDataLocation() AssetWriterInputMediaDataLocation
 	SetMediaDataLocation(value AssetWriterInputMediaDataLocation)
-	PreferredMediaChunkDuration() coremedia.Time
-	SetPreferredMediaChunkDuration(value coremedia.Time)
 }
 
 // An object that appends media samples to a track in an asset writer’s output file. [Full Topic]
@@ -88,32 +88,6 @@ func (ac _AssetWriterInputClass) AssetWriterInputWithMediaTypeOutputSettingsSour
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1449091-assetwriterinputwithmediatype?language=objc
 func AssetWriterInput_AssetWriterInputWithMediaTypeOutputSettingsSourceFormatHint(mediaType MediaType, outputSettings map[string]objc.IObject, sourceFormatHint coremedia.FormatDescriptionRef) AssetWriterInput {
 	return AssetWriterInputClass.AssetWriterInputWithMediaTypeOutputSettingsSourceFormatHint(mediaType, outputSettings, sourceFormatHint)
-}
-
-func (a_ AssetWriterInput) InitWithMediaTypeOutputSettings(mediaType MediaType, outputSettings map[string]objc.IObject) AssetWriterInput {
-	rv := objc.Call[AssetWriterInput](a_, objc.Sel("initWithMediaType:outputSettings:"), mediaType, outputSettings)
-	return rv
-}
-
-// Creates an input to append sample buffers of the specified type to the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1385912-initwithmediatype?language=objc
-func NewAssetWriterInputWithMediaTypeOutputSettings(mediaType MediaType, outputSettings map[string]objc.IObject) AssetWriterInput {
-	instance := AssetWriterInputClass.Alloc().InitWithMediaTypeOutputSettings(mediaType, outputSettings)
-	instance.Autorelease()
-	return instance
-}
-
-func (ac _AssetWriterInputClass) AssetWriterInputWithMediaTypeOutputSettings(mediaType MediaType, outputSettings map[string]objc.IObject) AssetWriterInput {
-	rv := objc.Call[AssetWriterInput](ac, objc.Sel("assetWriterInputWithMediaType:outputSettings:"), mediaType, outputSettings)
-	return rv
-}
-
-// Returns a new input to append sample buffers of the specified type to the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1449070-assetwriterinputwithmediatype?language=objc
-func AssetWriterInput_AssetWriterInputWithMediaTypeOutputSettings(mediaType MediaType, outputSettings map[string]objc.IObject) AssetWriterInput {
-	return AssetWriterInputClass.AssetWriterInputWithMediaTypeOutputSettings(mediaType, outputSettings)
 }
 
 func (a_ AssetWriterInput) InitWithMediaTypeOutputSettingsSourceFormatHint(mediaType MediaType, outputSettings map[string]objc.IObject, sourceFormatHint coremedia.FormatDescriptionRef) AssetWriterInput {
@@ -150,26 +124,32 @@ func (a_ AssetWriterInput) Init() AssetWriterInput {
 	return rv
 }
 
-// Tells the input to request media data, at its convenience, to write to the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387508-requestmediadatawhenreadyonqueue?language=objc
-func (a_ AssetWriterInput) RequestMediaDataWhenReadyOnQueueUsingBlock(queue dispatch.Queue, block func()) {
-	objc.Call[objc.Void](a_, objc.Sel("requestMediaDataWhenReadyOnQueue:usingBlock:"), queue, block)
-}
-
-// Determines whether it’s valid to associate another input’s track with this input’s track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388292-canaddtrackassociationwithtracko?language=objc
-func (a_ AssetWriterInput) CanAddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("canAddTrackAssociationWithTrackOfInput:type:"), input, trackAssociationType)
-	return rv
-}
-
 // Adds an association between input tracks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388347-addtrackassociationwithtrackofin?language=objc
 func (a_ AssetWriterInput) AddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) {
 	objc.Call[objc.Void](a_, objc.Sel("addTrackAssociationWithTrackOfInput:type:"), input, trackAssociationType)
+}
+
+// Tells the input to analyze the appended media to determine whether it can improve the results by reencoding certain segments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389652-markcurrentpassasfinished?language=objc
+func (a_ AssetWriterInput) MarkCurrentPassAsFinished() {
+	objc.Call[objc.Void](a_, objc.Sel("markCurrentPassAsFinished"))
+}
+
+// Tells the input to invoke a callback whenever it begins a new pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388489-respondtoeachpassdescriptiononqu?language=objc
+func (a_ AssetWriterInput) RespondToEachPassDescriptionOnQueueUsingBlock(queue dispatch.Queue, block func()) {
+	objc.Call[objc.Void](a_, objc.Sel("respondToEachPassDescriptionOnQueue:usingBlock:"), queue, block)
+}
+
+// Tells the input to request media data, at its convenience, to write to the output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387508-requestmediadatawhenreadyonqueue?language=objc
+func (a_ AssetWriterInput) RequestMediaDataWhenReadyOnQueueUsingBlock(queue dispatch.Queue, block func()) {
+	objc.Call[objc.Void](a_, objc.Sel("requestMediaDataWhenReadyOnQueue:usingBlock:"), queue, block)
 }
 
 // Appends a sample buffer to an input to write to the output file. [Full Topic]
@@ -180,11 +160,12 @@ func (a_ AssetWriterInput) AppendSampleBuffer(sampleBuffer coremedia.SampleBuffe
 	return rv
 }
 
-// Tells the input to invoke a callback whenever it begins a new pass. [Full Topic]
+// Determines whether it’s valid to associate another input’s track with this input’s track. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388489-respondtoeachpassdescriptiononqu?language=objc
-func (a_ AssetWriterInput) RespondToEachPassDescriptionOnQueueUsingBlock(queue dispatch.Queue, block func()) {
-	objc.Call[objc.Void](a_, objc.Sel("respondToEachPassDescriptionOnQueue:usingBlock:"), queue, block)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388292-canaddtrackassociationwithtracko?language=objc
+func (a_ AssetWriterInput) CanAddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) bool {
+	rv := objc.Call[bool](a_, objc.Sel("canAddTrackAssociationWithTrackOfInput:type:"), input, trackAssociationType)
+	return rv
 }
 
 // Marks the input as finished to indicate that you’re done appending samples to it. [Full Topic]
@@ -192,104 +173,6 @@ func (a_ AssetWriterInput) RespondToEachPassDescriptionOnQueueUsingBlock(queue d
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390122-markasfinished?language=objc
 func (a_ AssetWriterInput) MarkAsFinished() {
 	objc.Call[objc.Void](a_, objc.Sel("markAsFinished"))
-}
-
-// Tells the input to analyze the appended media to determine whether it can improve the results by reencoding certain segments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389652-markcurrentpassasfinished?language=objc
-func (a_ AssetWriterInput) MarkCurrentPassAsFinished() {
-	objc.Call[objc.Void](a_, objc.Sel("markCurrentPassAsFinished"))
-}
-
-// A Boolean value that indicates whether the input may perform multiple passes over appended media data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388284-canperformmultiplepasses?language=objc
-func (a_ AssetWriterInput) CanPerformMultiplePasses() bool {
-	rv := objc.Call[bool](a_, objc.Sel("canPerformMultiplePasses"))
-	return rv
-}
-
-// The natural display dimensions of the output’s visual media. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387437-naturalsize?language=objc
-func (a_ AssetWriterInput) NaturalSize() coregraphics.Size {
-	rv := objc.Call[coregraphics.Size](a_, objc.Sel("naturalSize"))
-	return rv
-}
-
-// The natural display dimensions of the output’s visual media. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387437-naturalsize?language=objc
-func (a_ AssetWriterInput) SetNaturalSize(value coregraphics.Size) {
-	objc.Call[objc.Void](a_, objc.Sel("setNaturalSize:"), value)
-}
-
-// A Boolean value that indicates whether the input tailors its processing for real-time sources. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387827-expectsmediadatainrealtime?language=objc
-func (a_ AssetWriterInput) ExpectsMediaDataInRealTime() bool {
-	rv := objc.Call[bool](a_, objc.Sel("expectsMediaDataInRealTime"))
-	return rv
-}
-
-// A Boolean value that indicates whether the input tailors its processing for real-time sources. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387827-expectsmediadatainrealtime?language=objc
-func (a_ AssetWriterInput) SetExpectsMediaDataInRealTime(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setExpectsMediaDataInRealTime:"), value)
-}
-
-// The track-level metadata to write to the output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386328-metadata?language=objc
-func (a_ AssetWriterInput) Metadata() []MetadataItem {
-	rv := objc.Call[[]MetadataItem](a_, objc.Sel("metadata"))
-	return rv
-}
-
-// The track-level metadata to write to the output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386328-metadata?language=objc
-func (a_ AssetWriterInput) SetMetadata(value []IMetadataItem) {
-	objc.Call[objc.Void](a_, objc.Sel("setMetadata:"), value)
-}
-
-// The extended language for the input’s track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390768-extendedlanguagetag?language=objc
-func (a_ AssetWriterInput) ExtendedLanguageTag() string {
-	rv := objc.Call[string](a_, objc.Sel("extendedLanguageTag"))
-	return rv
-}
-
-// The extended language for the input’s track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390768-extendedlanguagetag?language=objc
-func (a_ AssetWriterInput) SetExtendedLanguageTag(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setExtendedLanguageTag:"), value)
-}
-
-// A hint about the format of the sample buffers to append to the input. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387647-sourceformathint?language=objc
-func (a_ AssetWriterInput) SourceFormatHint() coremedia.FormatDescriptionRef {
-	rv := objc.Call[coremedia.FormatDescriptionRef](a_, objc.Sel("sourceFormatHint"))
-	return rv
-}
-
-// The boundary, in bytes, for aligning media chunks. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388163-preferredmediachunkalignment?language=objc
-func (a_ AssetWriterInput) PreferredMediaChunkAlignment() int {
-	rv := objc.Call[int](a_, objc.Sel("preferredMediaChunkAlignment"))
-	return rv
-}
-
-// The boundary, in bytes, for aligning media chunks. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388163-preferredmediachunkalignment?language=objc
-func (a_ AssetWriterInput) SetPreferredMediaChunkAlignment(value int) {
-	objc.Call[objc.Void](a_, objc.Sel("setPreferredMediaChunkAlignment:"), value)
 }
 
 // An object that describes the requirements for the current pass. [Full Topic]
@@ -308,6 +191,36 @@ func (a_ AssetWriterInput) IsReadyForMoreMediaData() bool {
 	return rv
 }
 
+// The extended language for the input’s track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390768-extendedlanguagetag?language=objc
+func (a_ AssetWriterInput) ExtendedLanguageTag() string {
+	rv := objc.Call[string](a_, objc.Sel("extendedLanguageTag"))
+	return rv
+}
+
+// The extended language for the input’s track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390768-extendedlanguagetag?language=objc
+func (a_ AssetWriterInput) SetExtendedLanguageTag(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setExtendedLanguageTag:"), value)
+}
+
+// A Boolean value that indicates whether the input attempts to encode the source media data using multiple passes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386570-performsmultipassencodingifsuppo?language=objc
+func (a_ AssetWriterInput) PerformsMultiPassEncodingIfSupported() bool {
+	rv := objc.Call[bool](a_, objc.Sel("performsMultiPassEncodingIfSupported"))
+	return rv
+}
+
+// A Boolean value that indicates whether the input attempts to encode the source media data using multiple passes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386570-performsmultipassencodingifsuppo?language=objc
+func (a_ AssetWriterInput) SetPerformsMultiPassEncodingIfSupported(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setPerformsMultiPassEncodingIfSupported:"), value)
+}
+
 // The settings to use for encoding media data you append to the output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388406-outputsettings?language=objc
@@ -316,19 +229,72 @@ func (a_ AssetWriterInput) OutputSettings() map[string]objc.Object {
 	return rv
 }
 
-// A Boolean value that indicates whether to enable a track in the output for playback and processing. [Full Topic]
+// The boundary, in bytes, for aligning media chunks. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386764-marksoutputtrackasenabled?language=objc
-func (a_ AssetWriterInput) MarksOutputTrackAsEnabled() bool {
-	rv := objc.Call[bool](a_, objc.Sel("marksOutputTrackAsEnabled"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388163-preferredmediachunkalignment?language=objc
+func (a_ AssetWriterInput) PreferredMediaChunkAlignment() int {
+	rv := objc.Call[int](a_, objc.Sel("preferredMediaChunkAlignment"))
 	return rv
 }
 
-// A Boolean value that indicates whether to enable a track in the output for playback and processing. [Full Topic]
+// The boundary, in bytes, for aligning media chunks. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386764-marksoutputtrackasenabled?language=objc
-func (a_ AssetWriterInput) SetMarksOutputTrackAsEnabled(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setMarksOutputTrackAsEnabled:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388163-preferredmediachunkalignment?language=objc
+func (a_ AssetWriterInput) SetPreferredMediaChunkAlignment(value int) {
+	objc.Call[objc.Void](a_, objc.Sel("setPreferredMediaChunkAlignment:"), value)
+}
+
+// The volume to prefer for playback of the output’s audio data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
+func (a_ AssetWriterInput) PreferredVolume() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("preferredVolume"))
+	return rv
+}
+
+// The volume to prefer for playback of the output’s audio data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
+func (a_ AssetWriterInput) SetPreferredVolume(value float32) {
+	objc.Call[objc.Void](a_, objc.Sel("setPreferredVolume:"), value)
+}
+
+// The track-level metadata to write to the output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386328-metadata?language=objc
+func (a_ AssetWriterInput) Metadata() []MetadataItem {
+	rv := objc.Call[[]MetadataItem](a_, objc.Sel("metadata"))
+	return rv
+}
+
+// The track-level metadata to write to the output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386328-metadata?language=objc
+func (a_ AssetWriterInput) SetMetadata(value []IMetadataItem) {
+	objc.Call[objc.Void](a_, objc.Sel("setMetadata:"), value)
+}
+
+// A Boolean value that indicates whether the input tailors its processing for real-time sources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387827-expectsmediadatainrealtime?language=objc
+func (a_ AssetWriterInput) ExpectsMediaDataInRealTime() bool {
+	rv := objc.Call[bool](a_, objc.Sel("expectsMediaDataInRealTime"))
+	return rv
+}
+
+// A Boolean value that indicates whether the input tailors its processing for real-time sources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387827-expectsmediadatainrealtime?language=objc
+func (a_ AssetWriterInput) SetExpectsMediaDataInRealTime(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setExpectsMediaDataInRealTime:"), value)
+}
+
+// The media type of the samples that the input accepts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1385565-mediatype?language=objc
+func (a_ AssetWriterInput) MediaType() MediaType {
+	rv := objc.Call[MediaType](a_, objc.Sel("mediaType"))
+	return rv
 }
 
 // The base URL sample references are relative to. [Full Topic]
@@ -346,6 +312,44 @@ func (a_ AssetWriterInput) SetSampleReferenceBaseURL(value foundation.IURL) {
 	objc.Call[objc.Void](a_, objc.Sel("setSampleReferenceBaseURL:"), value)
 }
 
+// A Boolean value that indicates whether to enable a track in the output for playback and processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386764-marksoutputtrackasenabled?language=objc
+func (a_ AssetWriterInput) MarksOutputTrackAsEnabled() bool {
+	rv := objc.Call[bool](a_, objc.Sel("marksOutputTrackAsEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether to enable a track in the output for playback and processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386764-marksoutputtrackasenabled?language=objc
+func (a_ AssetWriterInput) SetMarksOutputTrackAsEnabled(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setMarksOutputTrackAsEnabled:"), value)
+}
+
+// The natural display dimensions of the output’s visual media. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387437-naturalsize?language=objc
+func (a_ AssetWriterInput) NaturalSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](a_, objc.Sel("naturalSize"))
+	return rv
+}
+
+// The natural display dimensions of the output’s visual media. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387437-naturalsize?language=objc
+func (a_ AssetWriterInput) SetNaturalSize(value coregraphics.Size) {
+	objc.Call[objc.Void](a_, objc.Sel("setNaturalSize:"), value)
+}
+
+// A Boolean value that indicates whether the input may perform multiple passes over appended media data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388284-canperformmultiplepasses?language=objc
+func (a_ AssetWriterInput) CanPerformMultiplePasses() bool {
+	rv := objc.Call[bool](a_, objc.Sel("canPerformMultiplePasses"))
+	return rv
+}
+
 // The time scale of the track in the output file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386902-mediatimescale?language=objc
@@ -359,6 +363,21 @@ func (a_ AssetWriterInput) MediaTimeScale() coremedia.TimeScale {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386902-mediatimescale?language=objc
 func (a_ AssetWriterInput) SetMediaTimeScale(value coremedia.TimeScale) {
 	objc.Call[objc.Void](a_, objc.Sel("setMediaTimeScale:"), value)
+}
+
+// The duration to use for each chunk of sample data in the output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390463-preferredmediachunkduration?language=objc
+func (a_ AssetWriterInput) PreferredMediaChunkDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](a_, objc.Sel("preferredMediaChunkDuration"))
+	return rv
+}
+
+// The duration to use for each chunk of sample data in the output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390463-preferredmediachunkduration?language=objc
+func (a_ AssetWriterInput) SetPreferredMediaChunkDuration(value coremedia.Time) {
+	objc.Call[objc.Void](a_, objc.Sel("setPreferredMediaChunkDuration:"), value)
 }
 
 // The transform to use for display of the output’s visual media. [Full Topic]
@@ -391,42 +410,12 @@ func (a_ AssetWriterInput) SetLanguageCode(value string) {
 	objc.Call[objc.Void](a_, objc.Sel("setLanguageCode:"), value)
 }
 
-// The volume to prefer for playback of the output’s audio data. [Full Topic]
+// A hint about the format of the sample buffers to append to the input. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
-func (a_ AssetWriterInput) PreferredVolume() float32 {
-	rv := objc.Call[float32](a_, objc.Sel("preferredVolume"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1387647-sourceformathint?language=objc
+func (a_ AssetWriterInput) SourceFormatHint() coremedia.FormatDescriptionRef {
+	rv := objc.Call[coremedia.FormatDescriptionRef](a_, objc.Sel("sourceFormatHint"))
 	return rv
-}
-
-// The volume to prefer for playback of the output’s audio data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
-func (a_ AssetWriterInput) SetPreferredVolume(value float32) {
-	objc.Call[objc.Void](a_, objc.Sel("setPreferredVolume:"), value)
-}
-
-// The media type of the samples that the input accepts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1385565-mediatype?language=objc
-func (a_ AssetWriterInput) MediaType() MediaType {
-	rv := objc.Call[MediaType](a_, objc.Sel("mediaType"))
-	return rv
-}
-
-// A Boolean value that indicates whether the input attempts to encode the source media data using multiple passes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386570-performsmultipassencodingifsuppo?language=objc
-func (a_ AssetWriterInput) PerformsMultiPassEncodingIfSupported() bool {
-	rv := objc.Call[bool](a_, objc.Sel("performsMultiPassEncodingIfSupported"))
-	return rv
-}
-
-// A Boolean value that indicates whether the input attempts to encode the source media data using multiple passes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386570-performsmultipassencodingifsuppo?language=objc
-func (a_ AssetWriterInput) SetPerformsMultiPassEncodingIfSupported(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setPerformsMultiPassEncodingIfSupported:"), value)
 }
 
 // Specifies how the input lays out and interleaves media data. [Full Topic]
@@ -442,19 +431,4 @@ func (a_ AssetWriterInput) MediaDataLocation() AssetWriterInputMediaDataLocation
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/2867633-mediadatalocation?language=objc
 func (a_ AssetWriterInput) SetMediaDataLocation(value AssetWriterInputMediaDataLocation) {
 	objc.Call[objc.Void](a_, objc.Sel("setMediaDataLocation:"), value)
-}
-
-// The duration to use for each chunk of sample data in the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390463-preferredmediachunkduration?language=objc
-func (a_ AssetWriterInput) PreferredMediaChunkDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](a_, objc.Sel("preferredMediaChunkDuration"))
-	return rv
-}
-
-// The duration to use for each chunk of sample data in the output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1390463-preferredmediachunkduration?language=objc
-func (a_ AssetWriterInput) SetPreferredMediaChunkDuration(value coremedia.Time) {
-	objc.Call[objc.Void](a_, objc.Sel("setPreferredMediaChunkDuration:"), value)
 }

@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial?language=objc
 type PShadedMaterial interface {
 	// optional
-	SetShadingImage(value Image)
-	HasSetShadingImage() bool
+	SetScale(value float32)
+	HasSetScale() bool
 
 	// optional
-	ShadingImage() Image
-	HasShadingImage() bool
+	Scale() float32
+	HasScale() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -27,12 +27,12 @@ type PShadedMaterial interface {
 	HasInputImage() bool
 
 	// optional
-	SetScale(value float32)
-	HasSetScale() bool
+	SetShadingImage(value Image)
+	HasSetShadingImage() bool
 
 	// optional
-	Scale() float32
-	HasScale() bool
+	ShadingImage() Image
+	HasShadingImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type ShadedMaterialObject struct {
 	objc.Object
 }
 
-func (s_ ShadedMaterialObject) HasSetShadingImage() bool {
-	return s_.RespondsToSelector(objc.Sel("setShadingImage:"))
+func (s_ ShadedMaterialObject) HasSetScale() bool {
+	return s_.RespondsToSelector(objc.Sel("setScale:"))
 }
 
-// The image to use as the height field. [Full Topic]
+// The scale of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228707-shadingimage?language=objc
-func (s_ ShadedMaterialObject) SetShadingImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setShadingImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
+func (s_ ShadedMaterialObject) SetScale(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setScale:"), value)
 }
 
-func (s_ ShadedMaterialObject) HasShadingImage() bool {
-	return s_.RespondsToSelector(objc.Sel("shadingImage"))
+func (s_ ShadedMaterialObject) HasScale() bool {
+	return s_.RespondsToSelector(objc.Sel("scale"))
 }
 
-// The image to use as the height field. [Full Topic]
+// The scale of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228707-shadingimage?language=objc
-func (s_ ShadedMaterialObject) ShadingImage() Image {
-	rv := objc.Call[Image](s_, objc.Sel("shadingImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
+func (s_ ShadedMaterialObject) Scale() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("scale"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (s_ ShadedMaterialObject) InputImage() Image {
 	return rv
 }
 
-func (s_ ShadedMaterialObject) HasSetScale() bool {
-	return s_.RespondsToSelector(objc.Sel("setScale:"))
+func (s_ ShadedMaterialObject) HasSetShadingImage() bool {
+	return s_.RespondsToSelector(objc.Sel("setShadingImage:"))
 }
 
-// The scale of the effect. [Full Topic]
+// The image to use as the height field. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
-func (s_ ShadedMaterialObject) SetScale(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setScale:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228707-shadingimage?language=objc
+func (s_ ShadedMaterialObject) SetShadingImage(value Image) {
+	objc.Call[objc.Void](s_, objc.Sel("setShadingImage:"), value)
 }
 
-func (s_ ShadedMaterialObject) HasScale() bool {
-	return s_.RespondsToSelector(objc.Sel("scale"))
+func (s_ ShadedMaterialObject) HasShadingImage() bool {
+	return s_.RespondsToSelector(objc.Sel("shadingImage"))
 }
 
-// The scale of the effect. [Full Topic]
+// The image to use as the height field. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
-func (s_ ShadedMaterialObject) Scale() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("scale"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228707-shadingimage?language=objc
+func (s_ ShadedMaterialObject) ShadingImage() Image {
+	rv := objc.Call[Image](s_, objc.Sel("shadingImage"))
 	return rv
 }

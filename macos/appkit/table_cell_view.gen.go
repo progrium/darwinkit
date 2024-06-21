@@ -19,17 +19,17 @@ type _TableCellViewClass struct {
 // An interface definition for the [TableCellView] class.
 type ITableCellView interface {
 	IView
-	ObjectValue() objc.Object
-	SetObjectValue(value objc.IObject)
 	BackgroundStyle() BackgroundStyle
 	SetBackgroundStyle(value BackgroundStyle)
-	DraggingImageComponents() []DraggingImageComponent
-	ImageView() ImageView
-	SetImageView(value IImageView)
 	RowSizeStyle() TableViewRowSizeStyle
 	SetRowSizeStyle(value TableViewRowSizeStyle)
 	TextField() TextField
 	SetTextField(value ITextField)
+	ObjectValue() objc.Object
+	SetObjectValue(value objc.IObject)
+	DraggingImageComponents() []DraggingImageComponent
+	ImageView() ImageView
+	SetImageView(value IImageView)
 }
 
 // A reusable container view shown for a particular cell in a table view that uses rows for content. [Full Topic]
@@ -79,21 +79,6 @@ func NewTableCellViewWithFrame(frameRect foundation.Rect) TableCellView {
 	return instance
 }
 
-// The object that represents the cell data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483204-objectvalue?language=objc
-func (t_ TableCellView) ObjectValue() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("objectValue"))
-	return rv
-}
-
-// The object that represents the cell data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483204-objectvalue?language=objc
-func (t_ TableCellView) SetObjectValue(value objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setObjectValue:"), value)
-}
-
 // This property is automatically set by the enclosing row view to let this view know what its background looks like. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483206-backgroundstyle?language=objc
@@ -107,29 +92,6 @@ func (t_ TableCellView) BackgroundStyle() BackgroundStyle {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483206-backgroundstyle?language=objc
 func (t_ TableCellView) SetBackgroundStyle(value BackgroundStyle) {
 	objc.Call[objc.Void](t_, objc.Sel("setBackgroundStyle:"), value)
-}
-
-// Returns dragging images for the cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483199-draggingimagecomponents?language=objc
-func (t_ TableCellView) DraggingImageComponents() []DraggingImageComponent {
-	rv := objc.Call[[]DraggingImageComponent](t_, objc.Sel("draggingImageComponents"))
-	return rv
-}
-
-// Image displayed by the cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483213-imageview?language=objc
-func (t_ TableCellView) ImageView() ImageView {
-	rv := objc.Call[ImageView](t_, objc.Sel("imageView"))
-	return rv
-}
-
-// Image displayed by the cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483213-imageview?language=objc
-func (t_ TableCellView) SetImageView(value IImageView) {
-	objc.Call[objc.Void](t_, objc.Sel("setImageView:"), value)
 }
 
 // Returns the row size style. [Full Topic]
@@ -160,4 +122,42 @@ func (t_ TableCellView) TextField() TextField {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483202-textfield?language=objc
 func (t_ TableCellView) SetTextField(value ITextField) {
 	objc.Call[objc.Void](t_, objc.Sel("setTextField:"), value)
+}
+
+// The object that represents the cell data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483204-objectvalue?language=objc
+func (t_ TableCellView) ObjectValue() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("objectValue"))
+	return rv
+}
+
+// The object that represents the cell data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483204-objectvalue?language=objc
+func (t_ TableCellView) SetObjectValue(value objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("setObjectValue:"), value)
+}
+
+// Returns dragging images for the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483199-draggingimagecomponents?language=objc
+func (t_ TableCellView) DraggingImageComponents() []DraggingImageComponent {
+	rv := objc.Call[[]DraggingImageComponent](t_, objc.Sel("draggingImageComponents"))
+	return rv
+}
+
+// Image displayed by the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483213-imageview?language=objc
+func (t_ TableCellView) ImageView() ImageView {
+	rv := objc.Call[ImageView](t_, objc.Sel("imageView"))
+	return rv
+}
+
+// Image displayed by the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483213-imageview?language=objc
+func (t_ TableCellView) SetImageView(value IImageView) {
+	objc.Call[objc.Void](t_, objc.Sel("setImageView:"), value)
 }

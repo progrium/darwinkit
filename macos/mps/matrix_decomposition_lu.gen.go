@@ -71,21 +71,6 @@ func (m_ MatrixDecompositionLU) Init() MatrixDecompositionLU {
 	return rv
 }
 
-func (m_ MatrixDecompositionLU) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionLU {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixDecompositionLU](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixDecompositionLU_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionLU {
-	instance := MatrixDecompositionLUClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixDecompositionLU) InitWithDevice(device metal.PDevice) MatrixDecompositionLU {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixDecompositionLU](m_, objc.Sel("initWithDevice:"), po0)
@@ -97,6 +82,21 @@ func (m_ MatrixDecompositionLU) InitWithDevice(device metal.PDevice) MatrixDecom
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixDecompositionLUWithDevice(device metal.PDevice) MatrixDecompositionLU {
 	instance := MatrixDecompositionLUClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixDecompositionLU) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionLU {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixDecompositionLU](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixDecompositionLU_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionLU {
+	instance := MatrixDecompositionLUClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

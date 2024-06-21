@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette?language=objc
 type PVignette interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Radius() float32
-	HasRadius() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetIntensity(value float32)
@@ -27,12 +27,12 @@ type PVignette interface {
 	HasIntensity() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetRadius(value float32)
+	HasSetRadius() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Radius() float32
+	HasRadius() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type VignetteObject struct {
 	objc.Object
 }
 
-func (v_ VignetteObject) HasSetRadius() bool {
-	return v_.RespondsToSelector(objc.Sel("setRadius:"))
+func (v_ VignetteObject) HasSetInputImage() bool {
+	return v_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// The distance from the center of the effect. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
-func (v_ VignetteObject) SetRadius(value float32) {
-	objc.Call[objc.Void](v_, objc.Sel("setRadius:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228826-inputimage?language=objc
+func (v_ VignetteObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
 }
 
-func (v_ VignetteObject) HasRadius() bool {
-	return v_.RespondsToSelector(objc.Sel("radius"))
+func (v_ VignetteObject) HasInputImage() bool {
+	return v_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// The distance from the center of the effect. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
-func (v_ VignetteObject) Radius() float32 {
-	rv := objc.Call[float32](v_, objc.Sel("radius"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228826-inputimage?language=objc
+func (v_ VignetteObject) InputImage() Image {
+	rv := objc.Call[Image](v_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (v_ VignetteObject) Intensity() float32 {
 	return rv
 }
 
-func (v_ VignetteObject) HasSetInputImage() bool {
-	return v_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (v_ VignetteObject) HasSetRadius() bool {
+	return v_.RespondsToSelector(objc.Sel("setRadius:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The distance from the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228826-inputimage?language=objc
-func (v_ VignetteObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
+func (v_ VignetteObject) SetRadius(value float32) {
+	objc.Call[objc.Void](v_, objc.Sel("setRadius:"), value)
 }
 
-func (v_ VignetteObject) HasInputImage() bool {
-	return v_.RespondsToSelector(objc.Sel("inputImage"))
+func (v_ VignetteObject) HasRadius() bool {
+	return v_.RespondsToSelector(objc.Sel("radius"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The distance from the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228826-inputimage?language=objc
-func (v_ VignetteObject) InputImage() Image {
-	rv := objc.Call[Image](v_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
+func (v_ VignetteObject) Radius() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("radius"))
 	return rv
 }

@@ -53,6 +53,18 @@ func (u_ UnitMass) Init() UnitMass {
 	return rv
 }
 
+func (uc _UnitMassClass) BaseUnit() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitMass_BaseUnit() UnitMass {
+	return UnitMassClass.BaseUnit()
+}
+
 func (u_ UnitMass) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitMass {
 	rv := objc.Call[UnitMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitMassWithSymbolConverter(symbol string, converter IUnitConverter) Uni
 	return instance
 }
 
-func (uc _UnitMassClass) BaseUnit() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitMass_BaseUnit() UnitMass {
-	return UnitMassClass.BaseUnit()
-}
-
 func (u_ UnitMass) InitWithSymbol(symbol string) UnitMass {
 	rv := objc.Call[UnitMass](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,51 +91,6 @@ func NewUnitMassWithSymbol(symbol string) UnitMass {
 	instance := UnitMassClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
-}
-
-// The kilograms unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855996-kilograms?language=objc
-func (uc _UnitMassClass) Kilograms() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("kilograms"))
-	return rv
-}
-
-// The kilograms unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855996-kilograms?language=objc
-func UnitMass_Kilograms() UnitMass {
-	return UnitMassClass.Kilograms()
-}
-
-// The centigrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856116-centigrams?language=objc
-func (uc _UnitMassClass) Centigrams() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("centigrams"))
-	return rv
-}
-
-// The centigrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856116-centigrams?language=objc
-func UnitMass_Centigrams() UnitMass {
-	return UnitMassClass.Centigrams()
-}
-
-// The metric tons unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856076-metrictons?language=objc
-func (uc _UnitMassClass) MetricTons() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("metricTons"))
-	return rv
-}
-
-// The metric tons unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856076-metrictons?language=objc
-func UnitMass_MetricTons() UnitMass {
-	return UnitMassClass.MetricTons()
 }
 
 // The micrograms unit of mass. [Full Topic]
@@ -153,49 +108,34 @@ func UnitMass_Micrograms() UnitMass {
 	return UnitMassClass.Micrograms()
 }
 
-// The stone unit of mass. [Full Topic]
+// The milligrams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856033-stones?language=objc
-func (uc _UnitMassClass) Stones() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("stones"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856060-milligrams?language=objc
+func (uc _UnitMassClass) Milligrams() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("milligrams"))
 	return rv
 }
 
-// The stone unit of mass. [Full Topic]
+// The milligrams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856033-stones?language=objc
-func UnitMass_Stones() UnitMass {
-	return UnitMassClass.Stones()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856060-milligrams?language=objc
+func UnitMass_Milligrams() UnitMass {
+	return UnitMassClass.Milligrams()
 }
 
-// The ounces unit of mass. [Full Topic]
+// The grams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856056-ounces?language=objc
-func (uc _UnitMassClass) Ounces() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("ounces"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855976-grams?language=objc
+func (uc _UnitMassClass) Grams() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("grams"))
 	return rv
 }
 
-// The ounces unit of mass. [Full Topic]
+// The grams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856056-ounces?language=objc
-func UnitMass_Ounces() UnitMass {
-	return UnitMassClass.Ounces()
-}
-
-// The decigrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856063-decigrams?language=objc
-func (uc _UnitMassClass) Decigrams() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("decigrams"))
-	return rv
-}
-
-// The decigrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856063-decigrams?language=objc
-func UnitMass_Decigrams() UnitMass {
-	return UnitMassClass.Decigrams()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855976-grams?language=objc
+func UnitMass_Grams() UnitMass {
+	return UnitMassClass.Grams()
 }
 
 // The carats unit of mass. [Full Topic]
@@ -213,64 +153,19 @@ func UnitMass_Carats() UnitMass {
 	return UnitMassClass.Carats()
 }
 
-// The slugs unit of mass. [Full Topic]
+// The short tons unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856027-slugs?language=objc
-func (uc _UnitMassClass) Slugs() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("slugs"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856081-shorttons?language=objc
+func (uc _UnitMassClass) ShortTons() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("shortTons"))
 	return rv
 }
 
-// The slugs unit of mass. [Full Topic]
+// The short tons unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856027-slugs?language=objc
-func UnitMass_Slugs() UnitMass {
-	return UnitMassClass.Slugs()
-}
-
-// The ounces troy unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856003-ouncestroy?language=objc
-func (uc _UnitMassClass) OuncesTroy() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("ouncesTroy"))
-	return rv
-}
-
-// The ounces troy unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856003-ouncestroy?language=objc
-func UnitMass_OuncesTroy() UnitMass {
-	return UnitMassClass.OuncesTroy()
-}
-
-// The milligrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856060-milligrams?language=objc
-func (uc _UnitMassClass) Milligrams() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("milligrams"))
-	return rv
-}
-
-// The milligrams unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856060-milligrams?language=objc
-func UnitMass_Milligrams() UnitMass {
-	return UnitMassClass.Milligrams()
-}
-
-// The pounds unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856023-poundsmass?language=objc
-func (uc _UnitMassClass) PoundsMass() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("poundsMass"))
-	return rv
-}
-
-// The pounds unit of mass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856023-poundsmass?language=objc
-func UnitMass_PoundsMass() UnitMass {
-	return UnitMassClass.PoundsMass()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856081-shorttons?language=objc
+func UnitMass_ShortTons() UnitMass {
+	return UnitMassClass.ShortTons()
 }
 
 // The nanograms unit of mass. [Full Topic]
@@ -288,34 +183,139 @@ func UnitMass_Nanograms() UnitMass {
 	return UnitMassClass.Nanograms()
 }
 
-// The short tons unit of mass. [Full Topic]
+// The centigrams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856081-shorttons?language=objc
-func (uc _UnitMassClass) ShortTons() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("shortTons"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856116-centigrams?language=objc
+func (uc _UnitMassClass) Centigrams() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("centigrams"))
 	return rv
 }
 
-// The short tons unit of mass. [Full Topic]
+// The centigrams unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856081-shorttons?language=objc
-func UnitMass_ShortTons() UnitMass {
-	return UnitMassClass.ShortTons()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856116-centigrams?language=objc
+func UnitMass_Centigrams() UnitMass {
+	return UnitMassClass.Centigrams()
 }
 
-// The grams unit of mass. [Full Topic]
+// The kilograms unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855976-grams?language=objc
-func (uc _UnitMassClass) Grams() UnitMass {
-	rv := objc.Call[UnitMass](uc, objc.Sel("grams"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855996-kilograms?language=objc
+func (uc _UnitMassClass) Kilograms() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("kilograms"))
 	return rv
 }
 
-// The grams unit of mass. [Full Topic]
+// The kilograms unit of mass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855976-grams?language=objc
-func UnitMass_Grams() UnitMass {
-	return UnitMassClass.Grams()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1855996-kilograms?language=objc
+func UnitMass_Kilograms() UnitMass {
+	return UnitMassClass.Kilograms()
+}
+
+// The ounces troy unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856003-ouncestroy?language=objc
+func (uc _UnitMassClass) OuncesTroy() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("ouncesTroy"))
+	return rv
+}
+
+// The ounces troy unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856003-ouncestroy?language=objc
+func UnitMass_OuncesTroy() UnitMass {
+	return UnitMassClass.OuncesTroy()
+}
+
+// The decigrams unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856063-decigrams?language=objc
+func (uc _UnitMassClass) Decigrams() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("decigrams"))
+	return rv
+}
+
+// The decigrams unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856063-decigrams?language=objc
+func UnitMass_Decigrams() UnitMass {
+	return UnitMassClass.Decigrams()
+}
+
+// The slugs unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856027-slugs?language=objc
+func (uc _UnitMassClass) Slugs() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("slugs"))
+	return rv
+}
+
+// The slugs unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856027-slugs?language=objc
+func UnitMass_Slugs() UnitMass {
+	return UnitMassClass.Slugs()
+}
+
+// The pounds unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856023-poundsmass?language=objc
+func (uc _UnitMassClass) PoundsMass() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("poundsMass"))
+	return rv
+}
+
+// The pounds unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856023-poundsmass?language=objc
+func UnitMass_PoundsMass() UnitMass {
+	return UnitMassClass.PoundsMass()
+}
+
+// The ounces unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856056-ounces?language=objc
+func (uc _UnitMassClass) Ounces() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("ounces"))
+	return rv
+}
+
+// The ounces unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856056-ounces?language=objc
+func UnitMass_Ounces() UnitMass {
+	return UnitMassClass.Ounces()
+}
+
+// The stone unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856033-stones?language=objc
+func (uc _UnitMassClass) Stones() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("stones"))
+	return rv
+}
+
+// The stone unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856033-stones?language=objc
+func UnitMass_Stones() UnitMass {
+	return UnitMassClass.Stones()
+}
+
+// The metric tons unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856076-metrictons?language=objc
+func (uc _UnitMassClass) MetricTons() UnitMass {
+	rv := objc.Call[UnitMass](uc, objc.Sel("metricTons"))
+	return rv
+}
+
+// The metric tons unit of mass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitmass/1856076-metrictons?language=objc
+func UnitMass_MetricTons() UnitMass {
+	return UnitMassClass.MetricTons()
 }
 
 // The picograms unit of mass. [Full Topic]

@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation?language=objc
 type PFunctionLogDebugLocation interface {
 	// optional
-	FunctionName() string
-	HasFunctionName() bool
-
-	// optional
 	Line() uint
 	HasLine() bool
 
 	// optional
-	URL() foundation.URL
-	HasURL() bool
+	FunctionName() string
+	HasFunctionName() bool
 
 	// optional
 	Column() uint
 	HasColumn() bool
+
+	// optional
+	URL() foundation.URL
+	HasURL() bool
 }
 
 // ensure impl type implements protocol interface
@@ -34,18 +34,6 @@ var _ PFunctionLogDebugLocation = (*FunctionLogDebugLocationObject)(nil)
 // A concrete type for the [PFunctionLogDebugLocation] protocol.
 type FunctionLogDebugLocationObject struct {
 	objc.Object
-}
-
-func (f_ FunctionLogDebugLocationObject) HasFunctionName() bool {
-	return f_.RespondsToSelector(objc.Sel("functionName"))
-}
-
-// The name of the shader function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation/3554020-functionname?language=objc
-func (f_ FunctionLogDebugLocationObject) FunctionName() string {
-	rv := objc.Call[string](f_, objc.Sel("functionName"))
-	return rv
 }
 
 func (f_ FunctionLogDebugLocationObject) HasLine() bool {
@@ -60,15 +48,15 @@ func (f_ FunctionLogDebugLocationObject) Line() uint {
 	return rv
 }
 
-func (f_ FunctionLogDebugLocationObject) HasURL() bool {
-	return f_.RespondsToSelector(objc.Sel("URL"))
+func (f_ FunctionLogDebugLocationObject) HasFunctionName() bool {
+	return f_.RespondsToSelector(objc.Sel("functionName"))
 }
 
-// The URL of the file that contains the shader function. [Full Topic]
+// The name of the shader function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation/3554018-url?language=objc
-func (f_ FunctionLogDebugLocationObject) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](f_, objc.Sel("URL"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation/3554020-functionname?language=objc
+func (f_ FunctionLogDebugLocationObject) FunctionName() string {
+	rv := objc.Call[string](f_, objc.Sel("functionName"))
 	return rv
 }
 
@@ -81,5 +69,17 @@ func (f_ FunctionLogDebugLocationObject) HasColumn() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation/3554019-column?language=objc
 func (f_ FunctionLogDebugLocationObject) Column() uint {
 	rv := objc.Call[uint](f_, objc.Sel("column"))
+	return rv
+}
+
+func (f_ FunctionLogDebugLocationObject) HasURL() bool {
+	return f_.RespondsToSelector(objc.Sel("URL"))
+}
+
+// The URL of the file that contains the shader function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlogdebuglocation/3554018-url?language=objc
+func (f_ FunctionLogDebugLocationObject) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](f_, objc.Sel("URL"))
 	return rv
 }

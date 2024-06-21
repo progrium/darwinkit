@@ -18,10 +18,10 @@ type _IncrementalStoreNodeClass struct {
 // An interface definition for the [IncrementalStoreNode] class.
 type IIncrementalStoreNode interface {
 	objc.IObject
-	UpdateWithValuesVersion(values map[string]objc.IObject, version uint64)
 	ValueForPropertyDescription(prop IPropertyDescription) objc.Object
-	ObjectID() ManagedObjectID
+	UpdateWithValuesVersion(values map[string]objc.IObject, version uint64)
 	Version() uint64
+	ObjectID() ManagedObjectID
 }
 
 // A concrete class used to represent basic nodes in a Core Data incremental store. [Full Topic]
@@ -71,13 +71,6 @@ func (i_ IncrementalStoreNode) Init() IncrementalStoreNode {
 	return rv
 }
 
-// Update the values and version to reflect new data being saved to or loaded from the external store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506721-updatewithvalues?language=objc
-func (i_ IncrementalStoreNode) UpdateWithValuesVersion(values map[string]objc.IObject, version uint64) {
-	objc.Call[objc.Void](i_, objc.Sel("updateWithValues:version:"), values, version)
-}
-
 // Returns the value for the given property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506442-valueforpropertydescription?language=objc
@@ -86,12 +79,11 @@ func (i_ IncrementalStoreNode) ValueForPropertyDescription(prop IPropertyDescrip
 	return rv
 }
 
-// The object ID that identifies the data stored by the receiver. [Full Topic]
+// Update the values and version to reflect new data being saved to or loaded from the external store. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506827-objectid?language=objc
-func (i_ IncrementalStoreNode) ObjectID() ManagedObjectID {
-	rv := objc.Call[ManagedObjectID](i_, objc.Sel("objectID"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506721-updatewithvalues?language=objc
+func (i_ IncrementalStoreNode) UpdateWithValuesVersion(values map[string]objc.IObject, version uint64) {
+	objc.Call[objc.Void](i_, objc.Sel("updateWithValues:version:"), values, version)
 }
 
 // The version of data in the receiver. [Full Topic]
@@ -99,5 +91,13 @@ func (i_ IncrementalStoreNode) ObjectID() ManagedObjectID {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506769-version?language=objc
 func (i_ IncrementalStoreNode) Version() uint64 {
 	rv := objc.Call[uint64](i_, objc.Sel("version"))
+	return rv
+}
+
+// The object ID that identifies the data stored by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506827-objectid?language=objc
+func (i_ IncrementalStoreNode) ObjectID() ManagedObjectID {
+	rv := objc.Call[ManagedObjectID](i_, objc.Sel("objectID"))
 	return rv
 }

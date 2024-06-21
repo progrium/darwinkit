@@ -18,12 +18,12 @@ type _PointerArrayClass struct {
 // An interface definition for the [PointerArray] class.
 type IPointerArray interface {
 	objc.IObject
-	AddPointer(pointer unsafe.Pointer)
-	ReplacePointerAtIndexWithPointer(index uint, item unsafe.Pointer)
-	PointerAtIndex(index uint) unsafe.Pointer
-	InsertPointerAtIndex(item unsafe.Pointer, index uint)
 	RemovePointerAtIndex(index uint)
+	PointerAtIndex(index uint) unsafe.Pointer
 	Compact()
+	InsertPointerAtIndex(item unsafe.Pointer, index uint)
+	ReplacePointerAtIndexWithPointer(index uint, item unsafe.Pointer)
+	AddPointer(pointer unsafe.Pointer)
 	PointerFunctions() PointerFunctions
 	Count() uint
 	SetCount(value uint)
@@ -91,18 +91,11 @@ func (p_ PointerArray) Init() PointerArray {
 	return rv
 }
 
-// Adds a given pointer to the receiver. [Full Topic]
+// Removes the pointer at a given index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1411636-addpointer?language=objc
-func (p_ PointerArray) AddPointer(pointer unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("addPointer:"), pointer)
-}
-
-// Replaces the pointer at a given index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1412654-replacepointeratindex?language=objc
-func (p_ PointerArray) ReplacePointerAtIndexWithPointer(index uint, item unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("replacePointerAtIndex:withPointer:"), index, item)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1407403-removepointeratindex?language=objc
+func (p_ PointerArray) RemovePointerAtIndex(index uint) {
+	objc.Call[objc.Void](p_, objc.Sel("removePointerAtIndex:"), index)
 }
 
 // Returns a new pointer array initialized to use the given options. [Full Topic]
@@ -128,6 +121,13 @@ func (p_ PointerArray) PointerAtIndex(index uint) unsafe.Pointer {
 	return rv
 }
 
+// Removes NULL values from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1413659-compact?language=objc
+func (p_ PointerArray) Compact() {
+	objc.Call[objc.Void](p_, objc.Sel("compact"))
+}
+
 // A new pointer array initialized to use the given functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1564844-pointerarraywithpointerfunctions?language=objc
@@ -150,11 +150,11 @@ func (p_ PointerArray) InsertPointerAtIndex(item unsafe.Pointer, index uint) {
 	objc.Call[objc.Void](p_, objc.Sel("insertPointer:atIndex:"), item, index)
 }
 
-// Removes the pointer at a given index. [Full Topic]
+// Replaces the pointer at a given index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1407403-removepointeratindex?language=objc
-func (p_ PointerArray) RemovePointerAtIndex(index uint) {
-	objc.Call[objc.Void](p_, objc.Sel("removePointerAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1412654-replacepointeratindex?language=objc
+func (p_ PointerArray) ReplacePointerAtIndexWithPointer(index uint, item unsafe.Pointer) {
+	objc.Call[objc.Void](p_, objc.Sel("replacePointerAtIndex:withPointer:"), index, item)
 }
 
 // Returns a new pointer array that maintains weak references to its elements. [Full Topic]
@@ -187,11 +187,11 @@ func PointerArray_StrongObjectsPointerArray() PointerArray {
 	return PointerArrayClass.StrongObjectsPointerArray()
 }
 
-// Removes NULL values from the receiver. [Full Topic]
+// Adds a given pointer to the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1413659-compact?language=objc
-func (p_ PointerArray) Compact() {
-	objc.Call[objc.Void](p_, objc.Sel("compact"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1411636-addpointer?language=objc
+func (p_ PointerArray) AddPointer(pointer unsafe.Pointer) {
+	objc.Call[objc.Void](p_, objc.Sel("addPointer:"), pointer)
 }
 
 // The functions in use by the receiver. [Full Topic]

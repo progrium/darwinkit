@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslocking?language=objc
 type PLocking interface {
 	// optional
-	Unlock()
-	HasUnlock() bool
-
-	// optional
 	Lock()
 	HasLock() bool
+
+	// optional
+	Unlock()
+	HasUnlock() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,17 +25,6 @@ var _ PLocking = (*LockingObject)(nil)
 // A concrete type for the [PLocking] protocol.
 type LockingObject struct {
 	objc.Object
-}
-
-func (l_ LockingObject) HasUnlock() bool {
-	return l_.RespondsToSelector(objc.Sel("unlock"))
-}
-
-// Relinquishes a previously acquired lock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslocking/1418241-unlock?language=objc
-func (l_ LockingObject) Unlock() {
-	objc.Call[objc.Void](l_, objc.Sel("unlock"))
 }
 
 func (l_ LockingObject) HasLock() bool {
@@ -47,4 +36,15 @@ func (l_ LockingObject) HasLock() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslocking/1416318-lock?language=objc
 func (l_ LockingObject) Lock() {
 	objc.Call[objc.Void](l_, objc.Sel("lock"))
+}
+
+func (l_ LockingObject) HasUnlock() bool {
+	return l_.RespondsToSelector(objc.Sel("unlock"))
+}
+
+// Relinquishes a previously acquired lock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslocking/1418241-unlock?language=objc
+func (l_ LockingObject) Unlock() {
+	objc.Call[objc.Void](l_, objc.Sel("unlock"))
 }

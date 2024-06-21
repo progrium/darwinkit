@@ -22,7 +22,6 @@ type _ContactViewControllerClass struct {
 type IContactViewController interface {
 	appkit.IViewController
 	Contact() contacts.Contact
-	SetContact(value contacts.IContact)
 }
 
 // A view controller that displays a new, unknown, or existing contact. [Full Topic]
@@ -93,11 +92,4 @@ func ContactViewController_DescriptorForRequiredKeys() objc.Object {
 func (c_ ContactViewController) Contact() contacts.Contact {
 	rv := objc.Call[contacts.Contact](c_, objc.Sel("contact"))
 	return rv
-}
-
-// The contact being displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactviewcontroller/1522596-contact?language=objc
-func (c_ ContactViewController) SetContact(value contacts.IContact) {
-	objc.Call[objc.Void](c_, objc.Sel("setContact:"), value)
 }

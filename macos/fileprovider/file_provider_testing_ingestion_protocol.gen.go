@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingingestion?language=objc
 type PFileProviderTestingIngestion interface {
 	// optional
+	Item() objc.Object
+	HasItem() bool
+
+	// optional
 	ItemIdentifier() FileProviderItemIdentifier
 	HasItemIdentifier() bool
 
 	// optional
 	Side() FileProviderTestingOperationSide
 	HasSide() bool
-
-	// optional
-	Item() objc.Object
-	HasItem() bool
 }
 
 // ensure impl type implements protocol interface
@@ -29,6 +29,18 @@ var _ PFileProviderTestingIngestion = (*FileProviderTestingIngestionObject)(nil)
 // A concrete type for the [PFileProviderTestingIngestion] protocol.
 type FileProviderTestingIngestionObject struct {
 	objc.Object
+}
+
+func (f_ FileProviderTestingIngestionObject) HasItem() bool {
+	return f_.RespondsToSelector(objc.Sel("item"))
+}
+
+// A description of the item that changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingingestion/3727835-item?language=objc
+func (f_ FileProviderTestingIngestionObject) Item() objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("item"))
+	return rv
 }
 
 func (f_ FileProviderTestingIngestionObject) HasItemIdentifier() bool {
@@ -52,17 +64,5 @@ func (f_ FileProviderTestingIngestionObject) HasSide() bool {
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingingestion/3727837-side?language=objc
 func (f_ FileProviderTestingIngestionObject) Side() FileProviderTestingOperationSide {
 	rv := objc.Call[FileProviderTestingOperationSide](f_, objc.Sel("side"))
-	return rv
-}
-
-func (f_ FileProviderTestingIngestionObject) HasItem() bool {
-	return f_.RespondsToSelector(objc.Sel("item"))
-}
-
-// A description of the item that changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingingestion/3727835-item?language=objc
-func (f_ FileProviderTestingIngestionObject) Item() objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("item"))
 	return rv
 }

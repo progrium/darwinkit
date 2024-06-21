@@ -20,8 +20,8 @@ type _FrameInfoClass struct {
 type IFrameInfo interface {
 	objc.IObject
 	Request() foundation.URLRequest
-	SecurityOrigin() SecurityOrigin
 	IsMainFrame() bool
+	SecurityOrigin() SecurityOrigin
 }
 
 // An object that contains information about a frame on a webpage. [Full Topic]
@@ -65,18 +65,18 @@ func (f_ FrameInfo) Request() foundation.URLRequest {
 	return rv
 }
 
-// The frame’s security origin. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503089-securityorigin?language=objc
-func (f_ FrameInfo) SecurityOrigin() SecurityOrigin {
-	rv := objc.Call[SecurityOrigin](f_, objc.Sel("securityOrigin"))
-	return rv
-}
-
 // A Boolean value indicating whether the frame is the web site's main frame or a subframe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503096-mainframe?language=objc
 func (f_ FrameInfo) IsMainFrame() bool {
 	rv := objc.Call[bool](f_, objc.Sel("isMainFrame"))
+	return rv
+}
+
+// The frame’s security origin. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503089-securityorigin?language=objc
+func (f_ FrameInfo) SecurityOrigin() SecurityOrigin {
+	rv := objc.Call[SecurityOrigin](f_, objc.Sel("securityOrigin"))
 	return rv
 }

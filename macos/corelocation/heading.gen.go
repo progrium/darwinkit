@@ -19,13 +19,16 @@ type _HeadingClass struct {
 // An interface definition for the [Heading] class.
 type IHeading interface {
 	objc.IObject
-	Timestamp() foundation.Date
+	MagneticHeading() LocationDirection
 	X() HeadingComponentValue
+	SetX(value HeadingComponentValue)
 	Y() HeadingComponentValue
+	SetY(value HeadingComponentValue)
 	TrueHeading() LocationDirection
 	HeadingAccuracy() LocationDirection
-	MagneticHeading() LocationDirection
+	Timestamp() foundation.Date
 	Z() HeadingComponentValue
+	SetZ(value HeadingComponentValue)
 }
 
 // The azimuth (orientation) of the user’s device, relative to true or magnetic north. [Full Topic]
@@ -61,11 +64,11 @@ func (h_ Heading) Init() Heading {
 	return rv
 }
 
-// The time at which this heading was determined. [Full Topic]
+// The heading (measured in degrees) relative to magnetic north. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423525-timestamp?language=objc
-func (h_ Heading) Timestamp() foundation.Date {
-	rv := objc.Call[foundation.Date](h_, objc.Sel("timestamp"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423763-magneticheading?language=objc
+func (h_ Heading) MagneticHeading() LocationDirection {
+	rv := objc.Call[LocationDirection](h_, objc.Sel("magneticHeading"))
 	return rv
 }
 
@@ -77,12 +80,26 @@ func (h_ Heading) X() HeadingComponentValue {
 	return rv
 }
 
+// The geomagnetic data (measured in microteslas) for the x-axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423685-x?language=objc
+func (h_ Heading) SetX(value HeadingComponentValue) {
+	objc.Call[objc.Void](h_, objc.Sel("setX:"), value)
+}
+
 // The geomagnetic data (measured in microteslas) for the y-axis. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423617-y?language=objc
 func (h_ Heading) Y() HeadingComponentValue {
 	rv := objc.Call[HeadingComponentValue](h_, objc.Sel("y"))
 	return rv
+}
+
+// The geomagnetic data (measured in microteslas) for the y-axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423617-y?language=objc
+func (h_ Heading) SetY(value HeadingComponentValue) {
+	objc.Call[objc.Void](h_, objc.Sel("setY:"), value)
 }
 
 // The heading (measured in degrees) relative to true north. [Full Topic]
@@ -101,11 +118,11 @@ func (h_ Heading) HeadingAccuracy() LocationDirection {
 	return rv
 }
 
-// The heading (measured in degrees) relative to magnetic north. [Full Topic]
+// The time at which this heading was determined. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423763-magneticheading?language=objc
-func (h_ Heading) MagneticHeading() LocationDirection {
-	rv := objc.Call[LocationDirection](h_, objc.Sel("magneticHeading"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423525-timestamp?language=objc
+func (h_ Heading) Timestamp() foundation.Date {
+	rv := objc.Call[foundation.Date](h_, objc.Sel("timestamp"))
 	return rv
 }
 
@@ -115,4 +132,11 @@ func (h_ Heading) MagneticHeading() LocationDirection {
 func (h_ Heading) Z() HeadingComponentValue {
 	rv := objc.Call[HeadingComponentValue](h_, objc.Sel("z"))
 	return rv
+}
+
+// The geomagnetic data (measured in microteslas) for the z-axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clheading/1423609-z?language=objc
+func (h_ Heading) SetZ(value HeadingComponentValue) {
+	objc.Call[objc.Void](h_, objc.Sel("setZ:"), value)
 }

@@ -19,20 +19,20 @@ type PColorMonochrome interface {
 	HasColor() bool
 
 	// optional
-	SetIntensity(value float32)
-	HasSetIntensity() bool
-
-	// optional
-	Intensity() float32
-	HasIntensity() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetIntensity(value float32)
+	HasSetIntensity() bool
+
+	// optional
+	Intensity() float32
+	HasIntensity() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,29 +66,6 @@ func (c_ ColorMonochromeObject) Color() Color {
 	return rv
 }
 
-func (c_ ColorMonochromeObject) HasSetIntensity() bool {
-	return c_.RespondsToSelector(objc.Sel("setIntensity:"))
-}
-
-// The intensity of the monochrome effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
-func (c_ ColorMonochromeObject) SetIntensity(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setIntensity:"), value)
-}
-
-func (c_ ColorMonochromeObject) HasIntensity() bool {
-	return c_.RespondsToSelector(objc.Sel("intensity"))
-}
-
-// The intensity of the monochrome effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
-func (c_ ColorMonochromeObject) Intensity() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("intensity"))
-	return rv
-}
-
 func (c_ ColorMonochromeObject) HasSetInputImage() bool {
 	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -109,5 +86,28 @@ func (c_ ColorMonochromeObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228168-inputimage?language=objc
 func (c_ ColorMonochromeObject) InputImage() Image {
 	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (c_ ColorMonochromeObject) HasSetIntensity() bool {
+	return c_.RespondsToSelector(objc.Sel("setIntensity:"))
+}
+
+// The intensity of the monochrome effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
+func (c_ ColorMonochromeObject) SetIntensity(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setIntensity:"), value)
+}
+
+func (c_ ColorMonochromeObject) HasIntensity() bool {
+	return c_.RespondsToSelector(objc.Sel("intensity"))
+}
+
+// The intensity of the monochrome effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
+func (c_ ColorMonochromeObject) Intensity() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("intensity"))
 	return rv
 }

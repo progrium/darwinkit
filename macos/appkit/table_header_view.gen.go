@@ -21,11 +21,11 @@ type ITableHeaderView interface {
 	IView
 	ColumnAtPoint(point foundation.Point) int
 	HeaderRectOfColumn(column int) foundation.Rect
+	DraggedDistance() float64
+	DraggedColumn() int
+	ResizedColumn() int
 	TableView() TableView
 	SetTableView(value ITableView)
-	DraggedDistance() float64
-	ResizedColumn() int
-	DraggedColumn() int
 }
 
 // An object that draws headers over a table view's columns and handles mouse events in those headers. [Full Topic]
@@ -91,6 +91,30 @@ func (t_ TableHeaderView) HeaderRectOfColumn(column int) foundation.Rect {
 	return rv
 }
 
+// The horizontal distance that the user has dragged a column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1527836-draggeddistance?language=objc
+func (t_ TableHeaderView) DraggedDistance() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("draggedDistance"))
+	return rv
+}
+
+// The index of the column that the user is dragging. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1534458-draggedcolumn?language=objc
+func (t_ TableHeaderView) DraggedColumn() int {
+	rv := objc.Call[int](t_, objc.Sel("draggedColumn"))
+	return rv
+}
+
+// The index of the column that the user is resizing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1528247-resizedcolumn?language=objc
+func (t_ TableHeaderView) ResizedColumn() int {
+	rv := objc.Call[int](t_, objc.Sel("resizedColumn"))
+	return rv
+}
+
 // The NSTableView instance that this table header view belongs to. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1535730-tableview?language=objc
@@ -104,28 +128,4 @@ func (t_ TableHeaderView) TableView() TableView {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1535730-tableview?language=objc
 func (t_ TableHeaderView) SetTableView(value ITableView) {
 	objc.Call[objc.Void](t_, objc.Sel("setTableView:"), value)
-}
-
-// The horizontal distance that the user has dragged a column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1527836-draggeddistance?language=objc
-func (t_ TableHeaderView) DraggedDistance() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("draggedDistance"))
-	return rv
-}
-
-// The index of the column that the user is resizing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1528247-resizedcolumn?language=objc
-func (t_ TableHeaderView) ResizedColumn() int {
-	rv := objc.Call[int](t_, objc.Sel("resizedColumn"))
-	return rv
-}
-
-// The index of the column that the user is dragging. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1534458-draggedcolumn?language=objc
-func (t_ TableHeaderView) DraggedColumn() int {
-	rv := objc.Call[int](t_, objc.Sel("draggedColumn"))
-	return rv
 }

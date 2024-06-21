@@ -33,18 +33,6 @@ func CNNNeuronExponentialNodeFrom(ptr unsafe.Pointer) CNNNeuronExponentialNode {
 	}
 }
 
-func (cc _CNNNeuronExponentialNodeClass) NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:a:b:c:"), sourceNode, a, b, c)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronexponentialnode/2951959-nodewithsource?language=objc
-func CNNNeuronExponentialNode_NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
-	return CNNNeuronExponentialNodeClass.NodeWithSourceABC(sourceNode, a, b, c)
-}
-
 func (cc _CNNNeuronExponentialNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronExponentialNode {
 	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
@@ -67,20 +55,6 @@ func (c_ CNNNeuronExponentialNode) InitWithSource(sourceNode INNImageNode) CNNNe
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronexponentialnode/2951936-initwithsource?language=objc
 func NewCNNNeuronExponentialNodeWithSource(sourceNode INNImageNode) CNNNeuronExponentialNode {
 	instance := CNNNeuronExponentialNodeClass.Alloc().InitWithSource(sourceNode)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNNeuronExponentialNode) InitWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](c_, objc.Sel("initWithSource:a:b:c:"), sourceNode, a, b, c)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronexponentialnode/2951933-initwithsource?language=objc
-func NewCNNNeuronExponentialNodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
-	instance := CNNNeuronExponentialNodeClass.Alloc().InitWithSourceABC(sourceNode, a, b, c)
 	instance.Autorelease()
 	return instance
 }

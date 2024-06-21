@@ -18,13 +18,13 @@ type _PersonNameComponentsFormatterClass struct {
 // An interface definition for the [PersonNameComponentsFormatter] class.
 type IPersonNameComponentsFormatter interface {
 	IFormatter
+	AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString
 	StringFromPersonNameComponents(components IPersonNameComponents) string
 	PersonNameComponentsFromString(string_ string) PersonNameComponents
-	AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString
-	Locale() Locale
-	SetLocale(value ILocale)
 	Style() PersonNameComponentsFormatterStyle
 	SetStyle(value PersonNameComponentsFormatterStyle)
+	Locale() Locale
+	SetLocale(value ILocale)
 	IsPhonetic() bool
 	SetPhonetic(value bool)
 }
@@ -62,6 +62,14 @@ func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
 	return rv
 }
 
+// Returns an attributed string formatted for a given NSPersonNameComponents object, with attribute annotations for each component. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408241-annotatedstringfrompersonnamecom?language=objc
+func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
+	rv := objc.Call[AttributedString](p_, objc.Sel("annotatedStringFromPersonNameComponents:"), components)
+	return rv
+}
+
 // Returns a string formatted for a given NSPersonNameComponents object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408243-stringfrompersonnamecomponents?language=objc
@@ -93,12 +101,19 @@ func (p_ PersonNameComponentsFormatter) PersonNameComponentsFromString(string_ s
 	return rv
 }
 
-// Returns an attributed string formatted for a given NSPersonNameComponents object, with attribute annotations for each component. [Full Topic]
+// The formatting style of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408241-annotatedstringfrompersonnamecom?language=objc
-func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
-	rv := objc.Call[AttributedString](p_, objc.Sel("annotatedStringFromPersonNameComponents:"), components)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408260-style?language=objc
+func (p_ PersonNameComponentsFormatter) Style() PersonNameComponentsFormatterStyle {
+	rv := objc.Call[PersonNameComponentsFormatterStyle](p_, objc.Sel("style"))
 	return rv
+}
+
+// The formatting style of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408260-style?language=objc
+func (p_ PersonNameComponentsFormatter) SetStyle(value PersonNameComponentsFormatterStyle) {
+	objc.Call[objc.Void](p_, objc.Sel("setStyle:"), value)
 }
 
 //	[Full Topic]
@@ -114,21 +129,6 @@ func (p_ PersonNameComponentsFormatter) Locale() Locale {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/3850507-locale?language=objc
 func (p_ PersonNameComponentsFormatter) SetLocale(value ILocale) {
 	objc.Call[objc.Void](p_, objc.Sel("setLocale:"), value)
-}
-
-// The formatting style of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408260-style?language=objc
-func (p_ PersonNameComponentsFormatter) Style() PersonNameComponentsFormatterStyle {
-	rv := objc.Call[PersonNameComponentsFormatterStyle](p_, objc.Sel("style"))
-	return rv
-}
-
-// The formatting style of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408260-style?language=objc
-func (p_ PersonNameComponentsFormatter) SetStyle(value PersonNameComponentsFormatterStyle) {
-	objc.Call[objc.Void](p_, objc.Sel("setStyle:"), value)
 }
 
 // A Boolean value that specifies whether the receiver should use only the phonetic representations of name components. NO by default. [Full Topic]

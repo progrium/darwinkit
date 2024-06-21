@@ -12,20 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone?language=objc
 type PCMYKHalftone interface {
 	// optional
-	SetGrayComponentReplacement(value float32)
-	HasSetGrayComponentReplacement() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	GrayComponentReplacement() float32
-	HasGrayComponentReplacement() bool
-
-	// optional
-	SetUnderColorRemoval(value float32)
-	HasSetUnderColorRemoval() bool
-
-	// optional
-	UnderColorRemoval() float32
-	HasUnderColorRemoval() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -36,20 +28,12 @@ type PCMYKHalftone interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
+	SetGrayComponentReplacement(value float32)
+	HasSetGrayComponentReplacement() bool
 
 	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	GrayComponentReplacement() float32
+	HasGrayComponentReplacement() bool
 
 	// optional
 	SetSharpness(value float32)
@@ -60,12 +44,28 @@ type PCMYKHalftone interface {
 	HasSharpness() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
+	SetAngle(value float32)
+	HasSetAngle() bool
 
 	// optional
-	Width() float32
-	HasWidth() bool
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetUnderColorRemoval(value float32)
+	HasSetUnderColorRemoval() bool
+
+	// optional
+	UnderColorRemoval() float32
+	HasUnderColorRemoval() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -76,49 +76,26 @@ type CMYKHalftoneObject struct {
 	objc.Object
 }
 
-func (c_ CMYKHalftoneObject) HasSetGrayComponentReplacement() bool {
-	return c_.RespondsToSelector(objc.Sel("setGrayComponentReplacement:"))
+func (c_ CMYKHalftoneObject) HasSetWidth() bool {
+	return c_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// The gray component replacement value. [Full Topic]
+// The distance between dots in the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228099-graycomponentreplacement?language=objc
-func (c_ CMYKHalftoneObject) SetGrayComponentReplacement(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setGrayComponentReplacement:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228103-width?language=objc
+func (c_ CMYKHalftoneObject) SetWidth(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
 }
 
-func (c_ CMYKHalftoneObject) HasGrayComponentReplacement() bool {
-	return c_.RespondsToSelector(objc.Sel("grayComponentReplacement"))
+func (c_ CMYKHalftoneObject) HasWidth() bool {
+	return c_.RespondsToSelector(objc.Sel("width"))
 }
 
-// The gray component replacement value. [Full Topic]
+// The distance between dots in the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228099-graycomponentreplacement?language=objc
-func (c_ CMYKHalftoneObject) GrayComponentReplacement() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("grayComponentReplacement"))
-	return rv
-}
-
-func (c_ CMYKHalftoneObject) HasSetUnderColorRemoval() bool {
-	return c_.RespondsToSelector(objc.Sel("setUnderColorRemoval:"))
-}
-
-// The under color removal value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228102-undercolorremoval?language=objc
-func (c_ CMYKHalftoneObject) SetUnderColorRemoval(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setUnderColorRemoval:"), value)
-}
-
-func (c_ CMYKHalftoneObject) HasUnderColorRemoval() bool {
-	return c_.RespondsToSelector(objc.Sel("underColorRemoval"))
-}
-
-// The under color removal value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228102-undercolorremoval?language=objc
-func (c_ CMYKHalftoneObject) UnderColorRemoval() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("underColorRemoval"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228103-width?language=objc
+func (c_ CMYKHalftoneObject) Width() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("width"))
 	return rv
 }
 
@@ -145,49 +122,26 @@ func (c_ CMYKHalftoneObject) InputImage() Image {
 	return rv
 }
 
-func (c_ CMYKHalftoneObject) HasSetAngle() bool {
-	return c_.RespondsToSelector(objc.Sel("setAngle:"))
+func (c_ CMYKHalftoneObject) HasSetGrayComponentReplacement() bool {
+	return c_.RespondsToSelector(objc.Sel("setGrayComponentReplacement:"))
 }
 
-// The angle of the pattern. [Full Topic]
+// The gray component replacement value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228097-angle?language=objc
-func (c_ CMYKHalftoneObject) SetAngle(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228099-graycomponentreplacement?language=objc
+func (c_ CMYKHalftoneObject) SetGrayComponentReplacement(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setGrayComponentReplacement:"), value)
 }
 
-func (c_ CMYKHalftoneObject) HasAngle() bool {
-	return c_.RespondsToSelector(objc.Sel("angle"))
+func (c_ CMYKHalftoneObject) HasGrayComponentReplacement() bool {
+	return c_.RespondsToSelector(objc.Sel("grayComponentReplacement"))
 }
 
-// The angle of the pattern. [Full Topic]
+// The gray component replacement value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228097-angle?language=objc
-func (c_ CMYKHalftoneObject) Angle() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("angle"))
-	return rv
-}
-
-func (c_ CMYKHalftoneObject) HasSetCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the halftone pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228098-center?language=objc
-func (c_ CMYKHalftoneObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
-}
-
-func (c_ CMYKHalftoneObject) HasCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the halftone pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228098-center?language=objc
-func (c_ CMYKHalftoneObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228099-graycomponentreplacement?language=objc
+func (c_ CMYKHalftoneObject) GrayComponentReplacement() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("grayComponentReplacement"))
 	return rv
 }
 
@@ -214,25 +168,71 @@ func (c_ CMYKHalftoneObject) Sharpness() float32 {
 	return rv
 }
 
-func (c_ CMYKHalftoneObject) HasSetWidth() bool {
-	return c_.RespondsToSelector(objc.Sel("setWidth:"))
+func (c_ CMYKHalftoneObject) HasSetAngle() bool {
+	return c_.RespondsToSelector(objc.Sel("setAngle:"))
 }
 
-// The distance between dots in the pattern. [Full Topic]
+// The angle of the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228103-width?language=objc
-func (c_ CMYKHalftoneObject) SetWidth(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228097-angle?language=objc
+func (c_ CMYKHalftoneObject) SetAngle(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
 }
 
-func (c_ CMYKHalftoneObject) HasWidth() bool {
-	return c_.RespondsToSelector(objc.Sel("width"))
+func (c_ CMYKHalftoneObject) HasAngle() bool {
+	return c_.RespondsToSelector(objc.Sel("angle"))
 }
 
-// The distance between dots in the pattern. [Full Topic]
+// The angle of the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228103-width?language=objc
-func (c_ CMYKHalftoneObject) Width() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228097-angle?language=objc
+func (c_ CMYKHalftoneObject) Angle() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("angle"))
+	return rv
+}
+
+func (c_ CMYKHalftoneObject) HasSetUnderColorRemoval() bool {
+	return c_.RespondsToSelector(objc.Sel("setUnderColorRemoval:"))
+}
+
+// The under color removal value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228102-undercolorremoval?language=objc
+func (c_ CMYKHalftoneObject) SetUnderColorRemoval(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setUnderColorRemoval:"), value)
+}
+
+func (c_ CMYKHalftoneObject) HasUnderColorRemoval() bool {
+	return c_.RespondsToSelector(objc.Sel("underColorRemoval"))
+}
+
+// The under color removal value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228102-undercolorremoval?language=objc
+func (c_ CMYKHalftoneObject) UnderColorRemoval() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("underColorRemoval"))
+	return rv
+}
+
+func (c_ CMYKHalftoneObject) HasSetCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the halftone pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228098-center?language=objc
+func (c_ CMYKHalftoneObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
+}
+
+func (c_ CMYKHalftoneObject) HasCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the halftone pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicmykhalftone/3228098-center?language=objc
+func (c_ CMYKHalftoneObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

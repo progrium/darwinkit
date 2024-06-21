@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope?language=objc
 type PCaptureScope interface {
 	// optional
-	EndScope()
-	HasEndScope() bool
-
-	// optional
 	BeginScope()
 	HasBeginScope() bool
 
 	// optional
-	Device() DeviceObject
-	HasDevice() bool
+	EndScope()
+	HasEndScope() bool
 
 	// optional
 	CommandQueue() CommandQueueObject
 	HasCommandQueue() bool
+
+	// optional
+	Device() DeviceObject
+	HasDevice() bool
 
 	// optional
 	SetLabel(value string)
@@ -43,17 +43,6 @@ type CaptureScopeObject struct {
 	objc.Object
 }
 
-func (c_ CaptureScopeObject) HasEndScope() bool {
-	return c_.RespondsToSelector(objc.Sel("endScope"))
-}
-
-// Tells Metal to stop recording command information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope/2869574-endscope?language=objc
-func (c_ CaptureScopeObject) EndScope() {
-	objc.Call[objc.Void](c_, objc.Sel("endScope"))
-}
-
 func (c_ CaptureScopeObject) HasBeginScope() bool {
 	return c_.RespondsToSelector(objc.Sel("beginScope"))
 }
@@ -65,16 +54,15 @@ func (c_ CaptureScopeObject) BeginScope() {
 	objc.Call[objc.Void](c_, objc.Sel("beginScope"))
 }
 
-func (c_ CaptureScopeObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
+func (c_ CaptureScopeObject) HasEndScope() bool {
+	return c_.RespondsToSelector(objc.Sel("endScope"))
 }
 
-// The device object from which you created the capture scope. [Full Topic]
+// Tells Metal to stop recording command information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope/2869575-device?language=objc
-func (c_ CaptureScopeObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope/2869574-endscope?language=objc
+func (c_ CaptureScopeObject) EndScope() {
+	objc.Call[objc.Void](c_, objc.Sel("endScope"))
 }
 
 func (c_ CaptureScopeObject) HasCommandQueue() bool {
@@ -86,6 +74,18 @@ func (c_ CaptureScopeObject) HasCommandQueue() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope/2869573-commandqueue?language=objc
 func (c_ CaptureScopeObject) CommandQueue() CommandQueueObject {
 	rv := objc.Call[CommandQueueObject](c_, objc.Sel("commandQueue"))
+	return rv
+}
+
+func (c_ CaptureScopeObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The device object from which you created the capture scope. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturescope/2869575-device?language=objc
+func (c_ CaptureScopeObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }
 

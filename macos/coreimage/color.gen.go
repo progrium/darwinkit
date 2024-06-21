@@ -19,12 +19,12 @@ type _ColorClass struct {
 // An interface definition for the [Color] class.
 type IColor interface {
 	objc.IObject
-	Alpha() float64
-	Blue() float64
-	Green() float64
 	Red() float64
-	Components() *float64
+	Green() float64
 	ColorSpace() coregraphics.ColorSpaceRef
+	Blue() float64
+	Alpha() float64
+	Components() *float64
 	NumberOfComponents() uint
 	StringRepresentation() string
 }
@@ -42,30 +42,6 @@ func ColorFrom(ptr unsafe.Pointer) Color {
 	}
 }
 
-func (cc _ColorClass) ColorWithString(representation string) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithString:"), representation)
-	return rv
-}
-
-// Creates a color object using the RGBA color component values specified by a string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438059-colorwithstring?language=objc
-func Color_ColorWithString(representation string) Color {
-	return ColorClass.ColorWithString(representation)
-}
-
-func (cc _ColorClass) ColorWithRedGreenBlueAlphaColorSpace(r float64, g float64, b float64, a float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithRed:green:blue:alpha:colorSpace:"), r, g, b, a, colorSpace)
-	return rv
-}
-
-// Creates a Core Image color object with the specified red, green, blue, and alpha component values as measured in the specified color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643575-colorwithred?language=objc
-func Color_ColorWithRedGreenBlueAlphaColorSpace(r float64, g float64, b float64, a float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	return ColorClass.ColorWithRedGreenBlueAlphaColorSpace(r, g, b, a, colorSpace)
-}
-
 func (cc _ColorClass) ColorWithCGColor(c coregraphics.ColorRef) Color {
 	rv := objc.Call[Color](cc, objc.Sel("colorWithCGColor:"), c)
 	return rv
@@ -78,16 +54,18 @@ func Color_ColorWithCGColor(c coregraphics.ColorRef) Color {
 	return ColorClass.ColorWithCGColor(c)
 }
 
-func (cc _ColorClass) ColorWithRedGreenBlueAlpha(r float64, g float64, b float64, a float64) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithRed:green:blue:alpha:"), r, g, b, a)
+func (c_ Color) InitWithColor(color objc.IObject) Color {
+	rv := objc.Call[Color](c_, objc.Sel("initWithColor:"), color)
 	return rv
 }
 
-// Creates a color object using the specified RGBA color component values. [Full Topic]
+// Initializes a Core Image color object using a UIKit (or AppKit) color object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1502111-colorwithred?language=objc
-func Color_ColorWithRedGreenBlueAlpha(r float64, g float64, b float64, a float64) Color {
-	return ColorClass.ColorWithRedGreenBlueAlpha(r, g, b, a)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1528762-initwithcolor?language=objc
+func NewColorWithColor(color objc.IObject) Color {
+	instance := ColorClass.Alloc().InitWithColor(color)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ Color) InitWithCGColor(c coregraphics.ColorRef) Color {
@@ -104,18 +82,16 @@ func NewColorWithCGColor(c coregraphics.ColorRef) Color {
 	return instance
 }
 
-func (c_ Color) InitWithRedGreenBlueAlpha(r float64, g float64, b float64, a float64) Color {
-	rv := objc.Call[Color](c_, objc.Sel("initWithRed:green:blue:alpha:"), r, g, b, a)
+func (cc _ColorClass) ColorWithString(representation string) Color {
+	rv := objc.Call[Color](cc, objc.Sel("colorWithString:"), representation)
 	return rv
 }
 
-// Initializes a Core Image color object with the specified red, green, blue, and alpha component values. [Full Topic]
+// Creates a color object using the RGBA color component values specified by a string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438084-initwithred?language=objc
-func NewColorWithRedGreenBlueAlpha(r float64, g float64, b float64, a float64) Color {
-	instance := ColorClass.Alloc().InitWithRedGreenBlueAlpha(r, g, b, a)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438059-colorwithstring?language=objc
+func Color_ColorWithString(representation string) Color {
+	return ColorClass.ColorWithString(representation)
 }
 
 func (cc _ColorClass) ColorWithRedGreenBlue(r float64, g float64, b float64) Color {
@@ -144,60 +120,6 @@ func NewColorWithRedGreenBlue(r float64, g float64, b float64) Color {
 	return instance
 }
 
-func (c_ Color) InitWithColor(color objc.IObject) Color {
-	rv := objc.Call[Color](c_, objc.Sel("initWithColor:"), color)
-	return rv
-}
-
-// Initializes a Core Image color object using a UIKit (or AppKit) color object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1528762-initwithcolor?language=objc
-func NewColorWithColor(color objc.IObject) Color {
-	instance := ColorClass.Alloc().InitWithColor(color)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ Color) InitWithRedGreenBlueAlphaColorSpace(r float64, g float64, b float64, a float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	rv := objc.Call[Color](c_, objc.Sel("initWithRed:green:blue:alpha:colorSpace:"), r, g, b, a, colorSpace)
-	return rv
-}
-
-// Initializes a Core Image color object with the specified red, green, blue, and alpha component values as measured in the specified color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643572-initwithred?language=objc
-func NewColorWithRedGreenBlueAlphaColorSpace(r float64, g float64, b float64, a float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	instance := ColorClass.Alloc().InitWithRedGreenBlueAlphaColorSpace(r, g, b, a, colorSpace)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _ColorClass) ColorWithRedGreenBlueColorSpace(r float64, g float64, b float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithRed:green:blue:colorSpace:"), r, g, b, colorSpace)
-	return rv
-}
-
-// Initializes a Core Image color object with the specified red, green, and blue component values as measured in the specified color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643579-colorwithred?language=objc
-func Color_ColorWithRedGreenBlueColorSpace(r float64, g float64, b float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	return ColorClass.ColorWithRedGreenBlueColorSpace(r, g, b, colorSpace)
-}
-
-func (c_ Color) InitWithRedGreenBlueColorSpace(r float64, g float64, b float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	rv := objc.Call[Color](c_, objc.Sel("initWithRed:green:blue:colorSpace:"), r, g, b, colorSpace)
-	return rv
-}
-
-// Initializes a Core Image color object with the specified red, green, and blue component values as measured in the specified color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643576-initwithred?language=objc
-func NewColorWithRedGreenBlueColorSpace(r float64, g float64, b float64, colorSpace coregraphics.ColorSpaceRef) Color {
-	instance := ColorClass.Alloc().InitWithRedGreenBlueColorSpace(r, g, b, colorSpace)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _ColorClass) Alloc() Color {
 	rv := objc.Call[Color](cc, objc.Sel("alloc"))
 	return rv
@@ -218,20 +140,57 @@ func (c_ Color) Init() Color {
 	return rv
 }
 
-// The alpha value of the color. [Full Topic]
+// Returns a color object whose RGB values are all 1.0 and whose alpha value is 1.0. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437981-alpha?language=objc
-func (c_ Color) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643571-whitecolor?language=objc
+func (cc _ColorClass) WhiteColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("whiteColor"))
 	return rv
 }
 
-// The unpremultiplied blue component of the color. [Full Topic]
+// Returns a color object whose RGB values are all 1.0 and whose alpha value is 1.0. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438033-blue?language=objc
-func (c_ Color) Blue() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("blue"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643571-whitecolor?language=objc
+func Color_WhiteColor() Color {
+	return ColorClass.WhiteColor()
+}
+
+// Returns a color object whose RGB values are 1.0, 0.0, and 1.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643574-magentacolor?language=objc
+func (cc _ColorClass) MagentaColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("magentaColor"))
 	return rv
+}
+
+// Returns a color object whose RGB values are 1.0, 0.0, and 1.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643574-magentacolor?language=objc
+func Color_MagentaColor() Color {
+	return ColorClass.MagentaColor()
+}
+
+// The unpremultiplied red component of the color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437969-red?language=objc
+func (c_ Color) Red() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("red"))
+	return rv
+}
+
+// Returns a color object whose RGB values are all 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643578-blackcolor?language=objc
+func (cc _ColorClass) BlackColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("blackColor"))
+	return rv
+}
+
+// Returns a color object whose RGB values are all 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643578-blackcolor?language=objc
+func Color_BlackColor() Color {
+	return ColorClass.BlackColor()
 }
 
 // Returns a color object whose RGB values are all 0.5 and whose alpha value is 1.0. [Full Topic]
@@ -249,6 +208,51 @@ func Color_GrayColor() Color {
 	return ColorClass.GrayColor()
 }
 
+// Returns a color object whose RGB and alpha values are all 0.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643577-clearcolor?language=objc
+func (cc _ColorClass) ClearColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("clearColor"))
+	return rv
+}
+
+// Returns a color object whose RGB and alpha values are all 0.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643577-clearcolor?language=objc
+func Color_ClearColor() Color {
+	return ColorClass.ClearColor()
+}
+
+// Returns a color object whose RGB values are 0.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643580-greencolor?language=objc
+func (cc _ColorClass) GreenColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("greenColor"))
+	return rv
+}
+
+// Returns a color object whose RGB values are 0.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643580-greencolor?language=objc
+func Color_GreenColor() Color {
+	return ColorClass.GreenColor()
+}
+
+// Returns a color object whose RGB values are 1.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643582-yellowcolor?language=objc
+func (cc _ColorClass) YellowColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("yellowColor"))
+	return rv
+}
+
+// Returns a color object whose RGB values are 1.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643582-yellowcolor?language=objc
+func Color_YellowColor() Color {
+	return ColorClass.YellowColor()
+}
+
 // The unpremultiplied green component of the color. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437607-green?language=objc
@@ -257,27 +261,42 @@ func (c_ Color) Green() float64 {
 	return rv
 }
 
-// The unpremultiplied red component of the color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437969-red?language=objc
-func (c_ Color) Red() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("red"))
-	return rv
-}
-
-// The color components of the color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437862-components?language=objc
-func (c_ Color) Components() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("components"))
-	return rv
-}
-
 // The Quartz 2D color space associated with the color. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437917-colorspace?language=objc
 func (c_ Color) ColorSpace() coregraphics.ColorSpaceRef {
 	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("colorSpace"))
+	return rv
+}
+
+// The unpremultiplied blue component of the color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438033-blue?language=objc
+func (c_ Color) Blue() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("blue"))
+	return rv
+}
+
+// Returns a color object whose RGB values are 1.0, 0.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643570-redcolor?language=objc
+func (cc _ColorClass) RedColor() Color {
+	rv := objc.Call[Color](cc, objc.Sel("redColor"))
+	return rv
+}
+
+// Returns a color object whose RGB values are 1.0, 0.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643570-redcolor?language=objc
+func Color_RedColor() Color {
+	return ColorClass.RedColor()
+}
+
+// The alpha value of the color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437981-alpha?language=objc
+func (c_ Color) Alpha() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("alpha"))
 	return rv
 }
 
@@ -296,59 +315,6 @@ func Color_CyanColor() Color {
 	return ColorClass.CyanColor()
 }
 
-// Returns a color object whose RGB values are all 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643578-blackcolor?language=objc
-func (cc _ColorClass) BlackColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("blackColor"))
-	return rv
-}
-
-// Returns a color object whose RGB values are all 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643578-blackcolor?language=objc
-func Color_BlackColor() Color {
-	return ColorClass.BlackColor()
-}
-
-// Returns a color object whose RGB values are 1.0, 0.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643570-redcolor?language=objc
-func (cc _ColorClass) RedColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("redColor"))
-	return rv
-}
-
-// Returns a color object whose RGB values are 1.0, 0.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643570-redcolor?language=objc
-func Color_RedColor() Color {
-	return ColorClass.RedColor()
-}
-
-// Returns a color object whose RGB values are 1.0, 0.0, and 1.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643574-magentacolor?language=objc
-func (cc _ColorClass) MagentaColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("magentaColor"))
-	return rv
-}
-
-// Returns a color object whose RGB values are 1.0, 0.0, and 1.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643574-magentacolor?language=objc
-func Color_MagentaColor() Color {
-	return ColorClass.MagentaColor()
-}
-
-// Returns the number of color components in the color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438151-numberofcomponents?language=objc
-func (c_ Color) NumberOfComponents() uint {
-	rv := objc.Call[uint](c_, objc.Sel("numberOfComponents"))
-	return rv
-}
-
 // Returns a color object whose RGB values are 0.0, 0.0, and 1.0 and whose alpha value is 1.0. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643569-bluecolor?language=objc
@@ -364,49 +330,20 @@ func Color_BlueColor() Color {
 	return ColorClass.BlueColor()
 }
 
-// Returns a color object whose RGB values are 0.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+// The color components of the color. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643580-greencolor?language=objc
-func (cc _ColorClass) GreenColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("greenColor"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437862-components?language=objc
+func (c_ Color) Components() *float64 {
+	rv := objc.Call[*float64](c_, objc.Sel("components"))
 	return rv
 }
 
-// Returns a color object whose RGB values are 0.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
+// Returns the number of color components in the color. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643580-greencolor?language=objc
-func Color_GreenColor() Color {
-	return ColorClass.GreenColor()
-}
-
-// Returns a color object whose RGB and alpha values are all 0.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643577-clearcolor?language=objc
-func (cc _ColorClass) ClearColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("clearColor"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1438151-numberofcomponents?language=objc
+func (c_ Color) NumberOfComponents() uint {
+	rv := objc.Call[uint](c_, objc.Sel("numberOfComponents"))
 	return rv
-}
-
-// Returns a color object whose RGB and alpha values are all 0.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643577-clearcolor?language=objc
-func Color_ClearColor() Color {
-	return ColorClass.ClearColor()
-}
-
-// Returns a color object whose RGB values are all 1.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643571-whitecolor?language=objc
-func (cc _ColorClass) WhiteColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("whiteColor"))
-	return rv
-}
-
-// Returns a color object whose RGB values are all 1.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643571-whitecolor?language=objc
-func Color_WhiteColor() Color {
-	return ColorClass.WhiteColor()
 }
 
 // A formatted string that specifies the components of the color. [Full Topic]
@@ -415,19 +352,4 @@ func Color_WhiteColor() Color {
 func (c_ Color) StringRepresentation() string {
 	rv := objc.Call[string](c_, objc.Sel("stringRepresentation"))
 	return rv
-}
-
-// Returns a color object whose RGB values are 1.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643582-yellowcolor?language=objc
-func (cc _ColorClass) YellowColor() Color {
-	rv := objc.Call[Color](cc, objc.Sel("yellowColor"))
-	return rv
-}
-
-// Returns a color object whose RGB values are 1.0, 1.0, and 0.0 and whose alpha value is 1.0. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1643582-yellowcolor?language=objc
-func Color_YellowColor() Color {
-	return ColorClass.YellowColor()
 }

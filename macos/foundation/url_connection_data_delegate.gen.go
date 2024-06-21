@@ -11,96 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate?language=objc
 type PURLConnectionDataDelegate interface {
 	// optional
-	ConnectionDidFinishLoading(connection URLConnection)
-	HasConnectionDidFinishLoading() bool
-
-	// optional
-	ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int)
-	HasConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite() bool
-
-	// optional
-	ConnectionWillCacheResponse(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse
-	HasConnectionWillCacheResponse() bool
-
-	// optional
 	ConnectionDidReceiveData(connection URLConnection, data []byte)
 	HasConnectionDidReceiveData() bool
 
 	// optional
-	ConnectionDidReceiveResponse(connection URLConnection, response URLResponse)
-	HasConnectionDidReceiveResponse() bool
-
-	// optional
-	ConnectionWillSendRequestRedirectResponse(connection URLConnection, request URLRequest, response URLResponse) URLRequest
-	HasConnectionWillSendRequestRedirectResponse() bool
-
-	// optional
-	ConnectionNeedNewBodyStream(connection URLConnection, request URLRequest) InputStream
-	HasConnectionNeedNewBodyStream() bool
+	ConnectionDidFinishLoading(connection URLConnection)
+	HasConnectionDidFinishLoading() bool
 }
 
 // A delegate implementation builder for the [PURLConnectionDataDelegate] protocol.
 type URLConnectionDataDelegate struct {
-	_ConnectionDidFinishLoading                                          func(connection URLConnection)
-	_ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite func(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int)
-	_ConnectionWillCacheResponse                                         func(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse
-	_ConnectionDidReceiveData                                            func(connection URLConnection, data []byte)
-	_ConnectionDidReceiveResponse                                        func(connection URLConnection, response URLResponse)
-	_ConnectionWillSendRequestRedirectResponse                           func(connection URLConnection, request URLRequest, response URLResponse) URLRequest
-	_ConnectionNeedNewBodyStream                                         func(connection URLConnection, request URLRequest) InputStream
+	_ConnectionDidReceiveData   func(connection URLConnection, data []byte)
+	_ConnectionDidFinishLoading func(connection URLConnection)
 }
 
-func (di *URLConnectionDataDelegate) HasConnectionDidFinishLoading() bool {
-	return di._ConnectionDidFinishLoading != nil
-}
-
-// Sent when a connection has finished loading successfully. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionDidFinishLoading(f func(connection URLConnection)) {
-	di._ConnectionDidFinishLoading = f
-}
-
-// Sent when a connection has finished loading successfully. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
-func (di *URLConnectionDataDelegate) ConnectionDidFinishLoading(connection URLConnection) {
-	di._ConnectionDidFinishLoading(connection)
-}
-func (di *URLConnectionDataDelegate) HasConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite() bool {
-	return di._ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite != nil
-}
-
-// Sent as the body (message data) of a request is transmitted (such as in an HTTP POST request). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1418264-connection?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(f func(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int)) {
-	di._ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite = f
-}
-
-// Sent as the body (message data) of a request is transmitted (such as in an HTTP POST request). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1418264-connection?language=objc
-func (di *URLConnectionDataDelegate) ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int) {
-	di._ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(connection, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
-}
-func (di *URLConnectionDataDelegate) HasConnectionWillCacheResponse() bool {
-	return di._ConnectionWillCacheResponse != nil
-}
-
-// Sent before the connection stores a cached response in the cache, to give the delegate an opportunity to alter it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1414834-connection?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionWillCacheResponse(f func(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse) {
-	di._ConnectionWillCacheResponse = f
-}
-
-// Sent before the connection stores a cached response in the cache, to give the delegate an opportunity to alter it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1414834-connection?language=objc
-func (di *URLConnectionDataDelegate) ConnectionWillCacheResponse(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse {
-	return di._ConnectionWillCacheResponse(connection, cachedResponse)
-}
 func (di *URLConnectionDataDelegate) HasConnectionDidReceiveData() bool {
 	return di._ConnectionDidReceiveData != nil
 }
@@ -118,56 +42,22 @@ func (di *URLConnectionDataDelegate) SetConnectionDidReceiveData(f func(connecti
 func (di *URLConnectionDataDelegate) ConnectionDidReceiveData(connection URLConnection, data []byte) {
 	di._ConnectionDidReceiveData(connection, data)
 }
-func (di *URLConnectionDataDelegate) HasConnectionDidReceiveResponse() bool {
-	return di._ConnectionDidReceiveResponse != nil
+func (di *URLConnectionDataDelegate) HasConnectionDidFinishLoading() bool {
+	return di._ConnectionDidFinishLoading != nil
 }
 
-// Sent when the connection has received sufficient data to construct the URL response for its request. [Full Topic]
+// Sent when a connection has finished loading successfully. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1407728-connection?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionDidReceiveResponse(f func(connection URLConnection, response URLResponse)) {
-	di._ConnectionDidReceiveResponse = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
+func (di *URLConnectionDataDelegate) SetConnectionDidFinishLoading(f func(connection URLConnection)) {
+	di._ConnectionDidFinishLoading = f
 }
 
-// Sent when the connection has received sufficient data to construct the URL response for its request. [Full Topic]
+// Sent when a connection has finished loading successfully. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1407728-connection?language=objc
-func (di *URLConnectionDataDelegate) ConnectionDidReceiveResponse(connection URLConnection, response URLResponse) {
-	di._ConnectionDidReceiveResponse(connection, response)
-}
-func (di *URLConnectionDataDelegate) HasConnectionWillSendRequestRedirectResponse() bool {
-	return di._ConnectionWillSendRequestRedirectResponse != nil
-}
-
-// Sent when the connection determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1415830-connection?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionWillSendRequestRedirectResponse(f func(connection URLConnection, request URLRequest, response URLResponse) URLRequest) {
-	di._ConnectionWillSendRequestRedirectResponse = f
-}
-
-// Sent when the connection determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1415830-connection?language=objc
-func (di *URLConnectionDataDelegate) ConnectionWillSendRequestRedirectResponse(connection URLConnection, request URLRequest, response URLResponse) URLRequest {
-	return di._ConnectionWillSendRequestRedirectResponse(connection, request, response)
-}
-func (di *URLConnectionDataDelegate) HasConnectionNeedNewBodyStream() bool {
-	return di._ConnectionNeedNewBodyStream != nil
-}
-
-// Called when an NSURLConnection needs to retransmit a request that has a body stream to provide a new, unopened stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1412892-connection?language=objc
-func (di *URLConnectionDataDelegate) SetConnectionNeedNewBodyStream(f func(connection URLConnection, request URLRequest) InputStream) {
-	di._ConnectionNeedNewBodyStream = f
-}
-
-// Called when an NSURLConnection needs to retransmit a request that has a body stream to provide a new, unopened stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1412892-connection?language=objc
-func (di *URLConnectionDataDelegate) ConnectionNeedNewBodyStream(connection URLConnection, request URLRequest) InputStream {
-	return di._ConnectionNeedNewBodyStream(connection, request)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
+func (di *URLConnectionDataDelegate) ConnectionDidFinishLoading(connection URLConnection) {
+	di._ConnectionDidFinishLoading(connection)
 }
 
 // ensure impl type implements protocol interface
@@ -176,40 +66,6 @@ var _ PURLConnectionDataDelegate = (*URLConnectionDataDelegateObject)(nil)
 // A concrete type for the [PURLConnectionDataDelegate] protocol.
 type URLConnectionDataDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLConnectionDataDelegateObject) HasConnectionDidFinishLoading() bool {
-	return u_.RespondsToSelector(objc.Sel("connectionDidFinishLoading:"))
-}
-
-// Sent when a connection has finished loading successfully. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionDidFinishLoading(connection URLConnection) {
-	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishLoading:"), connection)
-}
-
-func (u_ URLConnectionDataDelegateObject) HasConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:"))
-}
-
-// Sent as the body (message data) of a request is transmitted (such as in an HTTP POST request). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1418264-connection?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:"), connection, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
-}
-
-func (u_ URLConnectionDataDelegateObject) HasConnectionWillCacheResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:willCacheResponse:"))
-}
-
-// Sent before the connection stores a cached response in the cache, to give the delegate an opportunity to alter it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1414834-connection?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionWillCacheResponse(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](u_, objc.Sel("connection:willCacheResponse:"), connection, cachedResponse)
-	return rv
 }
 
 func (u_ URLConnectionDataDelegateObject) HasConnectionDidReceiveData() bool {
@@ -223,37 +79,13 @@ func (u_ URLConnectionDataDelegateObject) ConnectionDidReceiveData(connection UR
 	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveData:"), connection, data)
 }
 
-func (u_ URLConnectionDataDelegateObject) HasConnectionDidReceiveResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:didReceiveResponse:"))
+func (u_ URLConnectionDataDelegateObject) HasConnectionDidFinishLoading() bool {
+	return u_.RespondsToSelector(objc.Sel("connectionDidFinishLoading:"))
 }
 
-// Sent when the connection has received sufficient data to construct the URL response for its request. [Full Topic]
+// Sent when a connection has finished loading successfully. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1407728-connection?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionDidReceiveResponse(connection URLConnection, response URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveResponse:"), connection, response)
-}
-
-func (u_ URLConnectionDataDelegateObject) HasConnectionWillSendRequestRedirectResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:willSendRequest:redirectResponse:"))
-}
-
-// Sent when the connection determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1415830-connection?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionWillSendRequestRedirectResponse(connection URLConnection, request URLRequest, response URLResponse) URLRequest {
-	rv := objc.Call[URLRequest](u_, objc.Sel("connection:willSendRequest:redirectResponse:"), connection, request, response)
-	return rv
-}
-
-func (u_ URLConnectionDataDelegateObject) HasConnectionNeedNewBodyStream() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:needNewBodyStream:"))
-}
-
-// Called when an NSURLConnection needs to retransmit a request that has a body stream to provide a new, unopened stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1412892-connection?language=objc
-func (u_ URLConnectionDataDelegateObject) ConnectionNeedNewBodyStream(connection URLConnection, request URLRequest) InputStream {
-	rv := objc.Call[InputStream](u_, objc.Sel("connection:needNewBodyStream:"), connection, request)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
+func (u_ URLConnectionDataDelegateObject) ConnectionDidFinishLoading(connection URLConnection) {
+	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishLoading:"), connection)
 }

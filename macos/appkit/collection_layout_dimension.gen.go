@@ -18,11 +18,11 @@ type _CollectionLayoutDimensionClass struct {
 // An interface definition for the [CollectionLayoutDimension] class.
 type ICollectionLayoutDimension interface {
 	objc.IObject
-	IsFractionalHeight() bool
-	IsFractionalWidth() bool
 	IsEstimated() bool
 	Dimension() float64
+	IsFractionalWidth() bool
 	IsAbsolute() bool
+	IsFractionalHeight() bool
 }
 
 // An individual dimension representing an item’s width or height in a collection view. [Full Topic]
@@ -38,30 +38,6 @@ func CollectionLayoutDimensionFrom(ptr unsafe.Pointer) CollectionLayoutDimension
 	}
 }
 
-func (cc _CollectionLayoutDimensionClass) AbsoluteDimension(absoluteDimension float64) CollectionLayoutDimension {
-	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("absoluteDimension:"), absoluteDimension)
-	return rv
-}
-
-// Creates a dimension with an absolute point value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199055-absolutedimension?language=objc
-func CollectionLayoutDimension_AbsoluteDimension(absoluteDimension float64) CollectionLayoutDimension {
-	return CollectionLayoutDimensionClass.AbsoluteDimension(absoluteDimension)
-}
-
-func (cc _CollectionLayoutDimensionClass) EstimatedDimension(estimatedDimension float64) CollectionLayoutDimension {
-	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("estimatedDimension:"), estimatedDimension)
-	return rv
-}
-
-// Creates a dimension with an estimated point value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199057-estimateddimension?language=objc
-func CollectionLayoutDimension_EstimatedDimension(estimatedDimension float64) CollectionLayoutDimension {
-	return CollectionLayoutDimensionClass.EstimatedDimension(estimatedDimension)
-}
-
 func (cc _CollectionLayoutDimensionClass) FractionalHeightDimension(fractionalHeight float64) CollectionLayoutDimension {
 	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("fractionalHeightDimension:"), fractionalHeight)
 	return rv
@@ -74,6 +50,18 @@ func CollectionLayoutDimension_FractionalHeightDimension(fractionalHeight float6
 	return CollectionLayoutDimensionClass.FractionalHeightDimension(fractionalHeight)
 }
 
+func (cc _CollectionLayoutDimensionClass) AbsoluteDimension(absoluteDimension float64) CollectionLayoutDimension {
+	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("absoluteDimension:"), absoluteDimension)
+	return rv
+}
+
+// Creates a dimension with an absolute point value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199055-absolutedimension?language=objc
+func CollectionLayoutDimension_AbsoluteDimension(absoluteDimension float64) CollectionLayoutDimension {
+	return CollectionLayoutDimensionClass.AbsoluteDimension(absoluteDimension)
+}
+
 func (cc _CollectionLayoutDimensionClass) FractionalWidthDimension(fractionalWidth float64) CollectionLayoutDimension {
 	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("fractionalWidthDimension:"), fractionalWidth)
 	return rv
@@ -84,6 +72,18 @@ func (cc _CollectionLayoutDimensionClass) FractionalWidthDimension(fractionalWid
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199059-fractionalwidthdimension?language=objc
 func CollectionLayoutDimension_FractionalWidthDimension(fractionalWidth float64) CollectionLayoutDimension {
 	return CollectionLayoutDimensionClass.FractionalWidthDimension(fractionalWidth)
+}
+
+func (cc _CollectionLayoutDimensionClass) EstimatedDimension(estimatedDimension float64) CollectionLayoutDimension {
+	rv := objc.Call[CollectionLayoutDimension](cc, objc.Sel("estimatedDimension:"), estimatedDimension)
+	return rv
+}
+
+// Creates a dimension with an estimated point value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199057-estimateddimension?language=objc
+func CollectionLayoutDimension_EstimatedDimension(estimatedDimension float64) CollectionLayoutDimension {
+	return CollectionLayoutDimensionClass.EstimatedDimension(estimatedDimension)
 }
 
 func (cc _CollectionLayoutDimensionClass) Alloc() CollectionLayoutDimension {
@@ -106,22 +106,6 @@ func (c_ CollectionLayoutDimension) Init() CollectionLayoutDimension {
 	return rv
 }
 
-// A Boolean value that indicates whether the dimension is expressed as a fraction of its container’s height. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199062-isfractionalheight?language=objc
-func (c_ CollectionLayoutDimension) IsFractionalHeight() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isFractionalHeight"))
-	return rv
-}
-
-// A Boolean value that indicates whether the dimension is expressed as a fraction of its container’s width. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199063-isfractionalwidth?language=objc
-func (c_ CollectionLayoutDimension) IsFractionalWidth() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isFractionalWidth"))
-	return rv
-}
-
 // A Boolean value that indicates whether the dimension is expressed as an estimated value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199061-isestimated?language=objc
@@ -138,10 +122,26 @@ func (c_ CollectionLayoutDimension) Dimension() float64 {
 	return rv
 }
 
+// A Boolean value that indicates whether the dimension is expressed as a fraction of its container’s width. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199063-isfractionalwidth?language=objc
+func (c_ CollectionLayoutDimension) IsFractionalWidth() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isFractionalWidth"))
+	return rv
+}
+
 // A Boolean value that indicates whether the dimension is expressed as an absolute value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199060-isabsolute?language=objc
 func (c_ CollectionLayoutDimension) IsAbsolute() bool {
 	rv := objc.Call[bool](c_, objc.Sel("isAbsolute"))
+	return rv
+}
+
+// A Boolean value that indicates whether the dimension is expressed as a fraction of its container’s height. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdimension/3199062-isfractionalheight?language=objc
+func (c_ CollectionLayoutDimension) IsFractionalHeight() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isFractionalHeight"))
 	return rv
 }

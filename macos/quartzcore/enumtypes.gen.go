@@ -25,7 +25,7 @@ const (
 	KAnimationRotateAutoReverse AnimationRotationMode = "autoReverse"
 )
 
-// These constants are used by the [quartzcore/calayer/autoresizingmask] property. [Full Topic]
+// These constants are used by the autoresizingMask property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caautoresizingmask?language=objc
 type AutoresizingMask int
@@ -68,7 +68,7 @@ const (
 	KLayerMinXMinYCorner CornerMask = 1
 )
 
-// This mask is used by the [quartzcore/calayer/edgeantialiasingmask] property. [Full Topic]
+// This mask is used by the edgeAntialiasingMask property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedgeantialiasingmask?language=objc
 type EdgeAntialiasingMask int

@@ -20,9 +20,9 @@ type _ObservationClass struct {
 // An interface definition for the [Observation] class.
 type IObservation interface {
 	objc.IObject
-	Confidence() Confidence
 	TimeRange() coremedia.TimeRange
 	Uuid() foundation.UUID
+	Confidence() Confidence
 }
 
 // The abstract superclass for analysis results. [Full Topic]
@@ -58,14 +58,6 @@ func (o_ Observation) Init() Observation {
 	return rv
 }
 
-// The level of confidence in the observation’s accuracy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnobservation/2867220-confidence?language=objc
-func (o_ Observation) Confidence() Confidence {
-	rv := objc.Call[Confidence](o_, objc.Sel("confidence"))
-	return rv
-}
-
 // The time range of the reported observation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnobservation/3548370-timerange?language=objc
@@ -79,5 +71,13 @@ func (o_ Observation) TimeRange() coremedia.TimeRange {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnobservation/2879296-uuid?language=objc
 func (o_ Observation) Uuid() foundation.UUID {
 	rv := objc.Call[foundation.UUID](o_, objc.Sel("uuid"))
+	return rv
+}
+
+// The level of confidence in the observation’s accuracy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnobservation/2867220-confidence?language=objc
+func (o_ Observation) Confidence() Confidence {
+	rv := objc.Call[Confidence](o_, objc.Sel("confidence"))
 	return rv
 }

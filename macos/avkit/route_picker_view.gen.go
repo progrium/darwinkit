@@ -23,13 +23,13 @@ type IRoutePickerView interface {
 	appkit.IView
 	SetRoutePickerButtonColorForState(color appkit.IColor, state RoutePickerViewButtonState)
 	RoutePickerButtonColorForState(state RoutePickerViewButtonState) appkit.Color
-	IsRoutePickerButtonBordered() bool
-	SetRoutePickerButtonBordered(value bool)
 	Player() avfoundation.Player
 	SetPlayer(value avfoundation.IPlayer)
 	Delegate() RoutePickerViewDelegateObject
 	SetDelegate(value PRoutePickerViewDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	IsRoutePickerButtonBordered() bool
+	SetRoutePickerButtonBordered(value bool)
 }
 
 // A view that presents a list of nearby media receivers. [Full Topic]
@@ -94,21 +94,6 @@ func (r_ RoutePickerView) RoutePickerButtonColorForState(state RoutePickerViewBu
 	return rv
 }
 
-// A Boolean value that indicates whether the route picker button has a border. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915795-routepickerbuttonbordered?language=objc
-func (r_ RoutePickerView) IsRoutePickerButtonBordered() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isRoutePickerButtonBordered"))
-	return rv
-}
-
-// A Boolean value that indicates whether the route picker button has a border. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915795-routepickerbuttonbordered?language=objc
-func (r_ RoutePickerView) SetRoutePickerButtonBordered(value bool) {
-	objc.Call[objc.Void](r_, objc.Sel("setRoutePickerButtonBordered:"), value)
-}
-
 // The player object to perform routing operations for. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/3201361-player?language=objc
@@ -146,4 +131,19 @@ func (r_ RoutePickerView) SetDelegate(value PRoutePickerViewDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915799-delegate?language=objc
 func (r_ RoutePickerView) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](r_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// A Boolean value that indicates whether the route picker button has a border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915795-routepickerbuttonbordered?language=objc
+func (r_ RoutePickerView) IsRoutePickerButtonBordered() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isRoutePickerButtonBordered"))
+	return rv
+}
+
+// A Boolean value that indicates whether the route picker button has a border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915795-routepickerbuttonbordered?language=objc
+func (r_ RoutePickerView) SetRoutePickerButtonBordered(value bool) {
+	objc.Call[objc.Void](r_, objc.Sel("setRoutePickerButtonBordered:"), value)
 }

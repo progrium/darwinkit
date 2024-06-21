@@ -19,8 +19,8 @@ type _GroupClass struct {
 // An interface definition for the [Group] class.
 type IGroup interface {
 	objc.IObject
-	Identifier() string
 	Name() string
+	Identifier() string
 }
 
 // An immutable object that represents a group of contacts. [Full Topic]
@@ -56,19 +56,19 @@ func (g_ Group) Init() Group {
 	return rv
 }
 
-// Returns a predicate to find groups in the specified container. [Full Topic]
+// Returns a predicate to find subgroups in the specified parent group. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1402794-predicateforgroupsincontainerwit?language=objc
-func (gc _GroupClass) PredicateForGroupsInContainerWithIdentifier(containerIdentifier string) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](gc, objc.Sel("predicateForGroupsInContainerWithIdentifier:"), containerIdentifier)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403176-predicateforsubgroupsingroupwith?language=objc
+func (gc _GroupClass) PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier string) foundation.Predicate {
+	rv := objc.Call[foundation.Predicate](gc, objc.Sel("predicateForSubgroupsInGroupWithIdentifier:"), parentGroupIdentifier)
 	return rv
 }
 
-// Returns a predicate to find groups in the specified container. [Full Topic]
+// Returns a predicate to find subgroups in the specified parent group. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1402794-predicateforgroupsincontainerwit?language=objc
-func Group_PredicateForGroupsInContainerWithIdentifier(containerIdentifier string) foundation.Predicate {
-	return GroupClass.PredicateForGroupsInContainerWithIdentifier(containerIdentifier)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403176-predicateforsubgroupsingroupwith?language=objc
+func Group_PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier string) foundation.Predicate {
+	return GroupClass.PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier)
 }
 
 // Returns a predicate to find groups with the specified identifiers. [Full Topic]
@@ -86,27 +86,19 @@ func Group_PredicateForGroupsWithIdentifiers(identifiers []string) foundation.Pr
 	return GroupClass.PredicateForGroupsWithIdentifiers(identifiers)
 }
 
-// Returns a predicate to find subgroups in the specified parent group. [Full Topic]
+// Returns a predicate to find groups in the specified container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403176-predicateforsubgroupsingroupwith?language=objc
-func (gc _GroupClass) PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier string) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](gc, objc.Sel("predicateForSubgroupsInGroupWithIdentifier:"), parentGroupIdentifier)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1402794-predicateforgroupsincontainerwit?language=objc
+func (gc _GroupClass) PredicateForGroupsInContainerWithIdentifier(containerIdentifier string) foundation.Predicate {
+	rv := objc.Call[foundation.Predicate](gc, objc.Sel("predicateForGroupsInContainerWithIdentifier:"), containerIdentifier)
 	return rv
 }
 
-// Returns a predicate to find subgroups in the specified parent group. [Full Topic]
+// Returns a predicate to find groups in the specified container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403176-predicateforsubgroupsingroupwith?language=objc
-func Group_PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier string) foundation.Predicate {
-	return GroupClass.PredicateForSubgroupsInGroupWithIdentifier(parentGroupIdentifier)
-}
-
-// The unique identifier for a group on the device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403172-identifier?language=objc
-func (g_ Group) Identifier() string {
-	rv := objc.Call[string](g_, objc.Sel("identifier"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1402794-predicateforgroupsincontainerwit?language=objc
+func Group_PredicateForGroupsInContainerWithIdentifier(containerIdentifier string) foundation.Predicate {
+	return GroupClass.PredicateForGroupsInContainerWithIdentifier(containerIdentifier)
 }
 
 // The name of the group. [Full Topic]
@@ -114,5 +106,13 @@ func (g_ Group) Identifier() string {
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403371-name?language=objc
 func (g_ Group) Name() string {
 	rv := objc.Call[string](g_, objc.Sel("name"))
+	return rv
+}
+
+// The unique identifier for a group on the device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cngroup/1403172-identifier?language=objc
+func (g_ Group) Identifier() string {
+	rv := objc.Call[string](g_, objc.Sel("identifier"))
 	return rv
 }

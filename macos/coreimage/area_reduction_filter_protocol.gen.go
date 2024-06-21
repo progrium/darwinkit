@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter?language=objc
 type PAreaReductionFilter interface {
 	// optional
-	SetExtent(value coregraphics.Rect)
-	HasSetExtent() bool
-
-	// optional
-	Extent() coregraphics.Rect
-	HasExtent() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetExtent(value coregraphics.Rect)
+	HasSetExtent() bool
+
+	// optional
+	Extent() coregraphics.Rect
+	HasExtent() bool
 }
 
 // ensure impl type implements protocol interface
@@ -34,29 +34,6 @@ var _ PAreaReductionFilter = (*AreaReductionFilterObject)(nil)
 // A concrete type for the [PAreaReductionFilter] protocol.
 type AreaReductionFilterObject struct {
 	objc.Object
-}
-
-func (a_ AreaReductionFilterObject) HasSetExtent() bool {
-	return a_.RespondsToSelector(objc.Sel("setExtent:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547101-extent?language=objc
-func (a_ AreaReductionFilterObject) SetExtent(value coregraphics.Rect) {
-	objc.Call[objc.Void](a_, objc.Sel("setExtent:"), value)
-}
-
-func (a_ AreaReductionFilterObject) HasExtent() bool {
-	return a_.RespondsToSelector(objc.Sel("extent"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547101-extent?language=objc
-func (a_ AreaReductionFilterObject) Extent() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](a_, objc.Sel("extent"))
-	return rv
 }
 
 func (a_ AreaReductionFilterObject) HasSetInputImage() bool {
@@ -79,5 +56,28 @@ func (a_ AreaReductionFilterObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547102-inputimage?language=objc
 func (a_ AreaReductionFilterObject) InputImage() Image {
 	rv := objc.Call[Image](a_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (a_ AreaReductionFilterObject) HasSetExtent() bool {
+	return a_.RespondsToSelector(objc.Sel("setExtent:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547101-extent?language=objc
+func (a_ AreaReductionFilterObject) SetExtent(value coregraphics.Rect) {
+	objc.Call[objc.Void](a_, objc.Sel("setExtent:"), value)
+}
+
+func (a_ AreaReductionFilterObject) HasExtent() bool {
+	return a_.RespondsToSelector(objc.Sel("extent"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547101-extent?language=objc
+func (a_ AreaReductionFilterObject) Extent() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](a_, objc.Sel("extent"))
 	return rv
 }

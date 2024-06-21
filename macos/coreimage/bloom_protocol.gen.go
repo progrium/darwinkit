@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom?language=objc
 type PBloom interface {
 	// optional
-	SetIntensity(value float32)
-	HasSetIntensity() bool
-
-	// optional
-	Intensity() float32
-	HasIntensity() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetIntensity(value float32)
+	HasSetIntensity() bool
+
+	// optional
+	Intensity() float32
+	HasIntensity() bool
 
 	// optional
 	SetRadius(value float32)
@@ -41,29 +41,6 @@ var _ PBloom = (*BloomObject)(nil)
 // A concrete type for the [PBloom] protocol.
 type BloomObject struct {
 	objc.Object
-}
-
-func (b_ BloomObject) HasSetIntensity() bool {
-	return b_.RespondsToSelector(objc.Sel("setIntensity:"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
-func (b_ BloomObject) SetIntensity(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setIntensity:"), value)
-}
-
-func (b_ BloomObject) HasIntensity() bool {
-	return b_.RespondsToSelector(objc.Sel("intensity"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
-func (b_ BloomObject) Intensity() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("intensity"))
-	return rv
 }
 
 func (b_ BloomObject) HasSetInputImage() bool {
@@ -86,6 +63,29 @@ func (b_ BloomObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228084-inputimage?language=objc
 func (b_ BloomObject) InputImage() Image {
 	rv := objc.Call[Image](b_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (b_ BloomObject) HasSetIntensity() bool {
+	return b_.RespondsToSelector(objc.Sel("setIntensity:"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
+func (b_ BloomObject) SetIntensity(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setIntensity:"), value)
+}
+
+func (b_ BloomObject) HasIntensity() bool {
+	return b_.RespondsToSelector(objc.Sel("intensity"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
+func (b_ BloomObject) Intensity() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("intensity"))
 	return rv
 }
 

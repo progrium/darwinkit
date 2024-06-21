@@ -53,6 +53,18 @@ func (u_ UnitEnergy) Init() UnitEnergy {
 	return rv
 }
 
+func (uc _UnitEnergyClass) BaseUnit() UnitEnergy {
+	rv := objc.Call[UnitEnergy](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitEnergy_BaseUnit() UnitEnergy {
+	return UnitEnergyClass.BaseUnit()
+}
+
 func (u_ UnitEnergy) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitEnergy {
 	rv := objc.Call[UnitEnergy](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitEnergyWithSymbolConverter(symbol string, converter IUnitConverter) U
 	instance := UnitEnergyClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitEnergyClass) BaseUnit() UnitEnergy {
-	rv := objc.Call[UnitEnergy](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitEnergy_BaseUnit() UnitEnergy {
-	return UnitEnergyClass.BaseUnit()
 }
 
 func (u_ UnitEnergy) InitWithSymbol(symbol string) UnitEnergy {
@@ -93,19 +93,19 @@ func NewUnitEnergyWithSymbol(symbol string) UnitEnergy {
 	return instance
 }
 
-// The kilocalories unit of energy. [Full Topic]
+// The kilowatt hours unit of energy. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856028-kilocalories?language=objc
-func (uc _UnitEnergyClass) Kilocalories() UnitEnergy {
-	rv := objc.Call[UnitEnergy](uc, objc.Sel("kilocalories"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856092-kilowatthours?language=objc
+func (uc _UnitEnergyClass) KilowattHours() UnitEnergy {
+	rv := objc.Call[UnitEnergy](uc, objc.Sel("kilowattHours"))
 	return rv
 }
 
-// The kilocalories unit of energy. [Full Topic]
+// The kilowatt hours unit of energy. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856028-kilocalories?language=objc
-func UnitEnergy_Kilocalories() UnitEnergy {
-	return UnitEnergyClass.Kilocalories()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856092-kilowatthours?language=objc
+func UnitEnergy_KilowattHours() UnitEnergy {
+	return UnitEnergyClass.KilowattHours()
 }
 
 // The calories unit of energy. [Full Topic]
@@ -123,6 +123,21 @@ func UnitEnergy_Calories() UnitEnergy {
 	return UnitEnergyClass.Calories()
 }
 
+// The kilocalories unit of energy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856028-kilocalories?language=objc
+func (uc _UnitEnergyClass) Kilocalories() UnitEnergy {
+	rv := objc.Call[UnitEnergy](uc, objc.Sel("kilocalories"))
+	return rv
+}
+
+// The kilocalories unit of energy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856028-kilocalories?language=objc
+func UnitEnergy_Kilocalories() UnitEnergy {
+	return UnitEnergyClass.Kilocalories()
+}
+
 // The kilojoules unit of energy. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856113-kilojoules?language=objc
@@ -136,21 +151,6 @@ func (uc _UnitEnergyClass) Kilojoules() UnitEnergy {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856113-kilojoules?language=objc
 func UnitEnergy_Kilojoules() UnitEnergy {
 	return UnitEnergyClass.Kilojoules()
-}
-
-// The kilowatt hours unit of energy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856092-kilowatthours?language=objc
-func (uc _UnitEnergyClass) KilowattHours() UnitEnergy {
-	rv := objc.Call[UnitEnergy](uc, objc.Sel("kilowattHours"))
-	return rv
-}
-
-// The kilowatt hours unit of energy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitenergy/1856092-kilowatthours?language=objc
-func UnitEnergy_KilowattHours() UnitEnergy {
-	return UnitEnergyClass.KilowattHours()
 }
 
 // The joules unit of energy. [Full Topic]

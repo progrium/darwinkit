@@ -53,6 +53,18 @@ func (u_ UnitIlluminance) Init() UnitIlluminance {
 	return rv
 }
 
+func (uc _UnitIlluminanceClass) BaseUnit() UnitIlluminance {
+	rv := objc.Call[UnitIlluminance](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitIlluminance_BaseUnit() UnitIlluminance {
+	return UnitIlluminanceClass.BaseUnit()
+}
+
 func (u_ UnitIlluminance) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitIlluminance {
 	rv := objc.Call[UnitIlluminance](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitIlluminanceWithSymbolConverter(symbol string, converter IUnitConvert
 	instance := UnitIlluminanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitIlluminanceClass) BaseUnit() UnitIlluminance {
-	rv := objc.Call[UnitIlluminance](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitIlluminance_BaseUnit() UnitIlluminance {
-	return UnitIlluminanceClass.BaseUnit()
 }
 
 func (u_ UnitIlluminance) InitWithSymbol(symbol string) UnitIlluminance {

@@ -18,10 +18,10 @@ type _FeedbackCommandClass struct {
 // An interface definition for the [FeedbackCommand] class.
 type IFeedbackCommand interface {
 	IRemoteCommand
-	LocalizedTitle() string
-	SetLocalizedTitle(value string)
 	IsActive() bool
 	SetActive(value bool)
+	LocalizedTitle() string
+	SetLocalizedTitle(value string)
 	LocalizedShortTitle() string
 	SetLocalizedShortTitle(value string)
 }
@@ -59,21 +59,6 @@ func (f_ FeedbackCommand) Init() FeedbackCommand {
 	return rv
 }
 
-// A localized string used to describe the context of a command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622905-localizedtitle?language=objc
-func (f_ FeedbackCommand) LocalizedTitle() string {
-	rv := objc.Call[string](f_, objc.Sel("localizedTitle"))
-	return rv
-}
-
-// A localized string used to describe the context of a command. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622905-localizedtitle?language=objc
-func (f_ FeedbackCommand) SetLocalizedTitle(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setLocalizedTitle:"), value)
-}
-
 // A Boolean value that indicates whether the feedback’s action is on or off. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622900-active?language=objc
@@ -87,6 +72,21 @@ func (f_ FeedbackCommand) IsActive() bool {
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622900-active?language=objc
 func (f_ FeedbackCommand) SetActive(value bool) {
 	objc.Call[objc.Void](f_, objc.Sel("setActive:"), value)
+}
+
+// A localized string used to describe the context of a command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622905-localizedtitle?language=objc
+func (f_ FeedbackCommand) LocalizedTitle() string {
+	rv := objc.Call[string](f_, objc.Sel("localizedTitle"))
+	return rv
+}
+
+// A localized string used to describe the context of a command. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpfeedbackcommand/1622905-localizedtitle?language=objc
+func (f_ FeedbackCommand) SetLocalizedTitle(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setLocalizedTitle:"), value)
 }
 
 // A shortened version of the string used to describe the context of a command. [Full Topic]

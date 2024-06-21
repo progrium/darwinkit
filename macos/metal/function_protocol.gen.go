@@ -15,36 +15,8 @@ type PFunction interface {
 	HasNewArgumentEncoderWithBufferIndex() bool
 
 	// optional
-	VertexAttributes() []VertexAttribute
-	HasVertexAttributes() bool
-
-	// optional
-	SetLabel(value string)
-	HasSetLabel() bool
-
-	// optional
-	Label() string
-	HasLabel() bool
-
-	// optional
-	FunctionType() FunctionType
-	HasFunctionType() bool
-
-	// optional
-	Name() string
-	HasName() bool
-
-	// optional
-	FunctionConstantsDictionary() map[string]FunctionConstant
-	HasFunctionConstantsDictionary() bool
-
-	// optional
 	PatchControlPointCount() int
 	HasPatchControlPointCount() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
 
 	// optional
 	PatchType() PatchType
@@ -55,8 +27,36 @@ type PFunction interface {
 	HasOptions() bool
 
 	// optional
+	Name() string
+	HasName() bool
+
+	// optional
+	Device() DeviceObject
+	HasDevice() bool
+
+	// optional
 	StageInputAttributes() []Attribute
 	HasStageInputAttributes() bool
+
+	// optional
+	VertexAttributes() []VertexAttribute
+	HasVertexAttributes() bool
+
+	// optional
+	FunctionConstantsDictionary() map[string]FunctionConstant
+	HasFunctionConstantsDictionary() bool
+
+	// optional
+	FunctionType() FunctionType
+	HasFunctionType() bool
+
+	// optional
+	SetLabel(value string)
+	HasSetLabel() bool
+
+	// optional
+	Label() string
+	HasLabel() bool
 }
 
 // ensure impl type implements protocol interface
@@ -79,77 +79,6 @@ func (f_ FunctionObject) NewArgumentEncoderWithBufferIndex(bufferIndex uint) Arg
 	return rv
 }
 
-func (f_ FunctionObject) HasVertexAttributes() bool {
-	return f_.RespondsToSelector(objc.Sel("vertexAttributes"))
-}
-
-// An array that describes the vertex input attributes to a vertex function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515944-vertexattributes?language=objc
-func (f_ FunctionObject) VertexAttributes() []VertexAttribute {
-	rv := objc.Call[[]VertexAttribute](f_, objc.Sel("vertexAttributes"))
-	return rv
-}
-
-func (f_ FunctionObject) HasSetLabel() bool {
-	return f_.RespondsToSelector(objc.Sel("setLabel:"))
-}
-
-// A string that identifies the shader function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1640034-label?language=objc
-func (f_ FunctionObject) SetLabel(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setLabel:"), value)
-}
-
-func (f_ FunctionObject) HasLabel() bool {
-	return f_.RespondsToSelector(objc.Sel("label"))
-}
-
-// A string that identifies the shader function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1640034-label?language=objc
-func (f_ FunctionObject) Label() string {
-	rv := objc.Call[string](f_, objc.Sel("label"))
-	return rv
-}
-
-func (f_ FunctionObject) HasFunctionType() bool {
-	return f_.RespondsToSelector(objc.Sel("functionType"))
-}
-
-// The shader function’s type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1516042-functiontype?language=objc
-func (f_ FunctionObject) FunctionType() FunctionType {
-	rv := objc.Call[FunctionType](f_, objc.Sel("functionType"))
-	return rv
-}
-
-func (f_ FunctionObject) HasName() bool {
-	return f_.RespondsToSelector(objc.Sel("name"))
-}
-
-// The function’s name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515424-name?language=objc
-func (f_ FunctionObject) Name() string {
-	rv := objc.Call[string](f_, objc.Sel("name"))
-	return rv
-}
-
-func (f_ FunctionObject) HasFunctionConstantsDictionary() bool {
-	return f_.RespondsToSelector(objc.Sel("functionConstantsDictionary"))
-}
-
-// A dictionary of function constants for a specialized function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/2314777-functionconstantsdictionary?language=objc
-func (f_ FunctionObject) FunctionConstantsDictionary() map[string]FunctionConstant {
-	rv := objc.Call[map[string]FunctionConstant](f_, objc.Sel("functionConstantsDictionary"))
-	return rv
-}
-
 func (f_ FunctionObject) HasPatchControlPointCount() bool {
 	return f_.RespondsToSelector(objc.Sel("patchControlPointCount"))
 }
@@ -159,18 +88,6 @@ func (f_ FunctionObject) HasPatchControlPointCount() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1639890-patchcontrolpointcount?language=objc
 func (f_ FunctionObject) PatchControlPointCount() int {
 	rv := objc.Call[int](f_, objc.Sel("patchControlPointCount"))
-	return rv
-}
-
-func (f_ FunctionObject) HasDevice() bool {
-	return f_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The device object that created the shader function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515496-device?language=objc
-func (f_ FunctionObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](f_, objc.Sel("device"))
 	return rv
 }
 
@@ -198,6 +115,30 @@ func (f_ FunctionObject) Options() FunctionOptions {
 	return rv
 }
 
+func (f_ FunctionObject) HasName() bool {
+	return f_.RespondsToSelector(objc.Sel("name"))
+}
+
+// The function’s name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515424-name?language=objc
+func (f_ FunctionObject) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
+	return rv
+}
+
+func (f_ FunctionObject) HasDevice() bool {
+	return f_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The device object that created the shader function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515496-device?language=objc
+func (f_ FunctionObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](f_, objc.Sel("device"))
+	return rv
+}
+
 func (f_ FunctionObject) HasStageInputAttributes() bool {
 	return f_.RespondsToSelector(objc.Sel("stageInputAttributes"))
 }
@@ -207,5 +148,64 @@ func (f_ FunctionObject) HasStageInputAttributes() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/2097159-stageinputattributes?language=objc
 func (f_ FunctionObject) StageInputAttributes() []Attribute {
 	rv := objc.Call[[]Attribute](f_, objc.Sel("stageInputAttributes"))
+	return rv
+}
+
+func (f_ FunctionObject) HasVertexAttributes() bool {
+	return f_.RespondsToSelector(objc.Sel("vertexAttributes"))
+}
+
+// An array that describes the vertex input attributes to a vertex function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1515944-vertexattributes?language=objc
+func (f_ FunctionObject) VertexAttributes() []VertexAttribute {
+	rv := objc.Call[[]VertexAttribute](f_, objc.Sel("vertexAttributes"))
+	return rv
+}
+
+func (f_ FunctionObject) HasFunctionConstantsDictionary() bool {
+	return f_.RespondsToSelector(objc.Sel("functionConstantsDictionary"))
+}
+
+// A dictionary of function constants for a specialized function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/2314777-functionconstantsdictionary?language=objc
+func (f_ FunctionObject) FunctionConstantsDictionary() map[string]FunctionConstant {
+	rv := objc.Call[map[string]FunctionConstant](f_, objc.Sel("functionConstantsDictionary"))
+	return rv
+}
+
+func (f_ FunctionObject) HasFunctionType() bool {
+	return f_.RespondsToSelector(objc.Sel("functionType"))
+}
+
+// The shader function’s type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1516042-functiontype?language=objc
+func (f_ FunctionObject) FunctionType() FunctionType {
+	rv := objc.Call[FunctionType](f_, objc.Sel("functionType"))
+	return rv
+}
+
+func (f_ FunctionObject) HasSetLabel() bool {
+	return f_.RespondsToSelector(objc.Sel("setLabel:"))
+}
+
+// A string that identifies the shader function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1640034-label?language=objc
+func (f_ FunctionObject) SetLabel(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setLabel:"), value)
+}
+
+func (f_ FunctionObject) HasLabel() bool {
+	return f_.RespondsToSelector(objc.Sel("label"))
+}
+
+// A string that identifies the shader function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunction/1640034-label?language=objc
+func (f_ FunctionObject) Label() string {
+	rv := objc.Call[string](f_, objc.Sel("label"))
 	return rv
 }

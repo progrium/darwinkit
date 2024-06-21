@@ -19,23 +19,19 @@ type _SplitViewControllerClass struct {
 // An interface definition for the [SplitViewController] class.
 type ISplitViewController interface {
 	IViewController
-	SplitViewCanCollapseSubview(splitView ISplitView, subview IView) bool
-	ValidateUserInterfaceItem(item PValidatedUserInterfaceItem) bool
-	ValidateUserInterfaceItemObject(itemObject objc.IObject) bool
-	SplitViewShouldHideDividerAtIndex(splitView ISplitView, dividerIndex int) bool
-	SplitViewEffectiveRectForDrawnRectOfDividerAtIndex(splitView ISplitView, proposedEffectiveRect foundation.Rect, drawnRect foundation.Rect, dividerIndex int) foundation.Rect
-	SplitViewItemForViewController(viewController IViewController) SplitViewItem
-	SplitViewAdditionalEffectiveRectOfDividerAtIndex(splitView ISplitView, dividerIndex int) foundation.Rect
+	RemoveSplitViewItem(splitViewItem ISplitViewItem)
+	ToggleSidebar(sender objc.IObject) objc.Object
 	AddSplitViewItem(splitViewItem ISplitViewItem)
 	InsertSplitViewItemAtIndex(splitViewItem ISplitViewItem, index int)
-	ToggleSidebar(sender objc.IObject) objc.Object
-	RemoveSplitViewItem(splitViewItem ISplitViewItem)
+	ValidateUserInterfaceItem(item PValidatedUserInterfaceItem) bool
+	ValidateUserInterfaceItemObject(itemObject objc.IObject) bool
+	SplitViewItemForViewController(viewController IViewController) SplitViewItem
+	SplitViewItems() []SplitViewItem
+	SetSplitViewItems(value []ISplitViewItem)
 	SplitView() SplitView
 	SetSplitView(value ISplitView)
 	MinimumThicknessForInlineSidebars() float64
 	SetMinimumThicknessForInlineSidebars(value float64)
-	SplitViewItems() []SplitViewItem
-	SetSplitViewItems(value []ISplitViewItem)
 }
 
 // An object that manages an array of adjacent child views, and has a split view object for managing dividers between those views. [Full Topic]
@@ -85,12 +81,33 @@ func NewSplitViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNi
 	return instance
 }
 
-// Allows the split view controller to determine whether the user can collapse and expand the specified subview. [Full Topic]
+// Removes a specified split view item from the split view controller. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388861-splitview?language=objc
-func (s_ SplitViewController) SplitViewCanCollapseSubview(splitView ISplitView, subview IView) bool {
-	rv := objc.Call[bool](s_, objc.Sel("splitView:canCollapseSubview:"), splitView, subview)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388903-removesplitviewitem?language=objc
+func (s_ SplitViewController) RemoveSplitViewItem(splitViewItem ISplitViewItem) {
+	objc.Call[objc.Void](s_, objc.Sel("removeSplitViewItem:"), splitViewItem)
+}
+
+// Collapses or expands the first sidebar in the split view controller using an animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388905-togglesidebar?language=objc
+func (s_ SplitViewController) ToggleSidebar(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("toggleSidebar:"), sender)
 	return rv
+}
+
+// Adds a split view item to the end of the array of split view items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388928-addsplitviewitem?language=objc
+func (s_ SplitViewController) AddSplitViewItem(splitViewItem ISplitViewItem) {
+	objc.Call[objc.Void](s_, objc.Sel("addSplitViewItem:"), splitViewItem)
+}
+
+// Adds a split view item to the array of split view items at the specified index position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388886-insertsplitviewitem?language=objc
+func (s_ SplitViewController) InsertSplitViewItemAtIndex(splitViewItem ISplitViewItem, index int) {
+	objc.Call[objc.Void](s_, objc.Sel("insertSplitViewItem:atIndex:"), splitViewItem, index)
 }
 
 // Returns a Boolean value that indicates whether to enable the specified item. [Full Topic]
@@ -110,22 +127,6 @@ func (s_ SplitViewController) ValidateUserInterfaceItemObject(itemObject objc.IO
 	return rv
 }
 
-// Allows the split view controller to determine whether the user can drag a divider or adjust it off the edge of the split view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388882-splitview?language=objc
-func (s_ SplitViewController) SplitViewShouldHideDividerAtIndex(splitView ISplitView, dividerIndex int) bool {
-	rv := objc.Call[bool](s_, objc.Sel("splitView:shouldHideDividerAtIndex:"), splitView, dividerIndex)
-	return rv
-}
-
-// Allows the split view controller to modify the rectangle where mouse clicks initiate divider dragging. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388897-splitview?language=objc
-func (s_ SplitViewController) SplitViewEffectiveRectForDrawnRectOfDividerAtIndex(splitView ISplitView, proposedEffectiveRect foundation.Rect, drawnRect foundation.Rect, dividerIndex int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), splitView, proposedEffectiveRect, drawnRect, dividerIndex)
-	return rv
-}
-
 // Returns the corresponding split view item for the specified child view controller of the split view controller. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388857-splitviewitemforviewcontroller?language=objc
@@ -134,41 +135,19 @@ func (s_ SplitViewController) SplitViewItemForViewController(viewController IVie
 	return rv
 }
 
-// Allows the split view controller to return an additional rectangle where mouse clicks can initiate divider dragging. [Full Topic]
+// The array of split view items that correspond to the split view controller’s child view controllers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388922-splitview?language=objc
-func (s_ SplitViewController) SplitViewAdditionalEffectiveRectOfDividerAtIndex(splitView ISplitView, dividerIndex int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:additionalEffectiveRectOfDividerAtIndex:"), splitView, dividerIndex)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388876-splitviewitems?language=objc
+func (s_ SplitViewController) SplitViewItems() []SplitViewItem {
+	rv := objc.Call[[]SplitViewItem](s_, objc.Sel("splitViewItems"))
 	return rv
 }
 
-// Adds a split view item to the end of the array of split view items. [Full Topic]
+// The array of split view items that correspond to the split view controller’s child view controllers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388928-addsplitviewitem?language=objc
-func (s_ SplitViewController) AddSplitViewItem(splitViewItem ISplitViewItem) {
-	objc.Call[objc.Void](s_, objc.Sel("addSplitViewItem:"), splitViewItem)
-}
-
-// Adds a split view item to the array of split view items at the specified index position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388886-insertsplitviewitem?language=objc
-func (s_ SplitViewController) InsertSplitViewItemAtIndex(splitViewItem ISplitViewItem, index int) {
-	objc.Call[objc.Void](s_, objc.Sel("insertSplitViewItem:atIndex:"), splitViewItem, index)
-}
-
-// Collapses or expands the first sidebar in the split view controller using an animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388905-togglesidebar?language=objc
-func (s_ SplitViewController) ToggleSidebar(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("toggleSidebar:"), sender)
-	return rv
-}
-
-// Removes a specified split view item from the split view controller. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388903-removesplitviewitem?language=objc
-func (s_ SplitViewController) RemoveSplitViewItem(splitViewItem ISplitViewItem) {
-	objc.Call[objc.Void](s_, objc.Sel("removeSplitViewItem:"), splitViewItem)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388876-splitviewitems?language=objc
+func (s_ SplitViewController) SetSplitViewItems(value []ISplitViewItem) {
+	objc.Call[objc.Void](s_, objc.Sel("setSplitViewItems:"), value)
 }
 
 // The split view that the split view controller manages. [Full Topic]
@@ -199,19 +178,4 @@ func (s_ SplitViewController) MinimumThicknessForInlineSidebars() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388863-minimumthicknessforinlinesidebar?language=objc
 func (s_ SplitViewController) SetMinimumThicknessForInlineSidebars(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMinimumThicknessForInlineSidebars:"), value)
-}
-
-// The array of split view items that correspond to the split view controller’s child view controllers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388876-splitviewitems?language=objc
-func (s_ SplitViewController) SplitViewItems() []SplitViewItem {
-	rv := objc.Call[[]SplitViewItem](s_, objc.Sel("splitViewItems"))
-	return rv
-}
-
-// The array of split view items that correspond to the split view controller’s child view controllers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388876-splitviewitems?language=objc
-func (s_ SplitViewController) SetSplitViewItems(value []ISplitViewItem) {
-	objc.Call[objc.Void](s_, objc.Sel("setSplitViewItems:"), value)
 }

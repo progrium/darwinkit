@@ -11,10 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder?language=objc
 type PCommandEncoder interface {
 	// optional
-	EndEncoding()
-	HasEndEncoding() bool
-
-	// optional
 	PushDebugGroup(string_ string)
 	HasPushDebugGroup() bool
 
@@ -27,16 +23,20 @@ type PCommandEncoder interface {
 	HasInsertDebugSignpost() bool
 
 	// optional
+	EndEncoding()
+	HasEndEncoding() bool
+
+	// optional
+	Device() DeviceObject
+	HasDevice() bool
+
+	// optional
 	SetLabel(value string)
 	HasSetLabel() bool
 
 	// optional
 	Label() string
 	HasLabel() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
 }
 
 // ensure impl type implements protocol interface
@@ -45,17 +45,6 @@ var _ PCommandEncoder = (*CommandEncoderObject)(nil)
 // A concrete type for the [PCommandEncoder] protocol.
 type CommandEncoderObject struct {
 	objc.Object
-}
-
-func (c_ CommandEncoderObject) HasEndEncoding() bool {
-	return c_.RespondsToSelector(objc.Sel("endEncoding"))
-}
-
-// Declares that all command generation from the encoder is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder/1458038-endencoding?language=objc
-func (c_ CommandEncoderObject) EndEncoding() {
-	objc.Call[objc.Void](c_, objc.Sel("endEncoding"))
 }
 
 func (c_ CommandEncoderObject) HasPushDebugGroup() bool {
@@ -91,6 +80,29 @@ func (c_ CommandEncoderObject) InsertDebugSignpost(string_ string) {
 	objc.Call[objc.Void](c_, objc.Sel("insertDebugSignpost:"), string_)
 }
 
+func (c_ CommandEncoderObject) HasEndEncoding() bool {
+	return c_.RespondsToSelector(objc.Sel("endEncoding"))
+}
+
+// Declares that all command generation from the encoder is completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder/1458038-endencoding?language=objc
+func (c_ CommandEncoderObject) EndEncoding() {
+	objc.Call[objc.Void](c_, objc.Sel("endEncoding"))
+}
+
+func (c_ CommandEncoderObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The Metal device from which the command encoder was created. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder/1458032-device?language=objc
+func (c_ CommandEncoderObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
+	return rv
+}
+
 func (c_ CommandEncoderObject) HasSetLabel() bool {
 	return c_.RespondsToSelector(objc.Sel("setLabel:"))
 }
@@ -111,17 +123,5 @@ func (c_ CommandEncoderObject) HasLabel() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder/1458036-label?language=objc
 func (c_ CommandEncoderObject) Label() string {
 	rv := objc.Call[string](c_, objc.Sel("label"))
-	return rv
-}
-
-func (c_ CommandEncoderObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The Metal device from which the command encoder was created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandencoder/1458032-device?language=objc
-func (c_ CommandEncoderObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }

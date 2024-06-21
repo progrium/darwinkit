@@ -21,10 +21,10 @@ type _ShapedTypeClass struct {
 type IShapedType interface {
 	IType
 	IsEqualTo(object IShapedType) bool
-	DataType() mps.DataType
-	SetDataType(value mps.DataType)
 	Shape() *foundation.Array
 	SetShape(value *foundation.Array)
+	DataType() mps.DataType
+	SetDataType(value mps.DataType)
 }
 
 //	[Full Topic]
@@ -84,21 +84,6 @@ func (s_ ShapedType) IsEqualTo(object IShapedType) bool {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600279-datatype?language=objc
-func (s_ ShapedType) DataType() mps.DataType {
-	rv := objc.Call[mps.DataType](s_, objc.Sel("dataType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600279-datatype?language=objc
-func (s_ ShapedType) SetDataType(value mps.DataType) {
-	objc.Call[objc.Void](s_, objc.Sel("setDataType:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600282-shape?language=objc
 func (s_ ShapedType) Shape() *foundation.Array {
 	rv := objc.Call[*foundation.Array](s_, objc.Sel("shape"))
@@ -110,4 +95,19 @@ func (s_ ShapedType) Shape() *foundation.Array {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600282-shape?language=objc
 func (s_ ShapedType) SetShape(value *foundation.Array) {
 	objc.Call[objc.Void](s_, objc.Sel("setShape:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600279-datatype?language=objc
+func (s_ ShapedType) DataType() mps.DataType {
+	rv := objc.Call[mps.DataType](s_, objc.Sel("dataType"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600279-datatype?language=objc
+func (s_ ShapedType) SetDataType(value mps.DataType) {
+	objc.Call[objc.Void](s_, objc.Sel("setDataType:"), value)
 }

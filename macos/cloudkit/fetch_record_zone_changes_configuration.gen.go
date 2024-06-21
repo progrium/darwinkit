@@ -18,12 +18,12 @@ type _FetchRecordZoneChangesConfigurationClass struct {
 // An interface definition for the [FetchRecordZoneChangesConfiguration] class.
 type IFetchRecordZoneChangesConfiguration interface {
 	objc.IObject
-	DesiredKeys() []RecordFieldKey
-	SetDesiredKeys(value []RecordFieldKey)
-	ResultsLimit() uint
-	SetResultsLimit(value uint)
 	PreviousServerChangeToken() ServerChangeToken
 	SetPreviousServerChangeToken(value IServerChangeToken)
+	ResultsLimit() uint
+	SetResultsLimit(value uint)
+	DesiredKeys() []RecordFieldKey
+	SetDesiredKeys(value []RecordFieldKey)
 }
 
 // A configuration object that describes the information to fetch from a record zone. [Full Topic]
@@ -59,19 +59,19 @@ func (f_ FetchRecordZoneChangesConfiguration) Init() FetchRecordZoneChangesConfi
 	return rv
 }
 
-// An array of the record keys to retrieve. [Full Topic]
+// The server change token. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980661-desiredkeys?language=objc
-func (f_ FetchRecordZoneChangesConfiguration) DesiredKeys() []RecordFieldKey {
-	rv := objc.Call[[]RecordFieldKey](f_, objc.Sel("desiredKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980662-previousserverchangetoken?language=objc
+func (f_ FetchRecordZoneChangesConfiguration) PreviousServerChangeToken() ServerChangeToken {
+	rv := objc.Call[ServerChangeToken](f_, objc.Sel("previousServerChangeToken"))
 	return rv
 }
 
-// An array of the record keys to retrieve. [Full Topic]
+// The server change token. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980661-desiredkeys?language=objc
-func (f_ FetchRecordZoneChangesConfiguration) SetDesiredKeys(value []RecordFieldKey) {
-	objc.Call[objc.Void](f_, objc.Sel("setDesiredKeys:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980662-previousserverchangetoken?language=objc
+func (f_ FetchRecordZoneChangesConfiguration) SetPreviousServerChangeToken(value IServerChangeToken) {
+	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
 }
 
 // The maximum number of records that CloudKit retrieves when fetching zone changes. [Full Topic]
@@ -89,17 +89,17 @@ func (f_ FetchRecordZoneChangesConfiguration) SetResultsLimit(value uint) {
 	objc.Call[objc.Void](f_, objc.Sel("setResultsLimit:"), value)
 }
 
-// The server change token. [Full Topic]
+// An array of the record keys to retrieve. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980662-previousserverchangetoken?language=objc
-func (f_ FetchRecordZoneChangesConfiguration) PreviousServerChangeToken() ServerChangeToken {
-	rv := objc.Call[ServerChangeToken](f_, objc.Sel("previousServerChangeToken"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980661-desiredkeys?language=objc
+func (f_ FetchRecordZoneChangesConfiguration) DesiredKeys() []RecordFieldKey {
+	rv := objc.Call[[]RecordFieldKey](f_, objc.Sel("desiredKeys"))
 	return rv
 }
 
-// The server change token. [Full Topic]
+// An array of the record keys to retrieve. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980662-previousserverchangetoken?language=objc
-func (f_ FetchRecordZoneChangesConfiguration) SetPreviousServerChangeToken(value IServerChangeToken) {
-	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980661-desiredkeys?language=objc
+func (f_ FetchRecordZoneChangesConfiguration) SetDesiredKeys(value []RecordFieldKey) {
+	objc.Call[objc.Void](f_, objc.Sel("setDesiredKeys:"), value)
 }

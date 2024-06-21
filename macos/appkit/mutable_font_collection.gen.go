@@ -20,8 +20,8 @@ type IMutableFontCollection interface {
 	IFontCollection
 	AddQueryForDescriptors(descriptors []IFontDescriptor)
 	RemoveQueryForDescriptors(descriptors []IFontDescriptor)
-	SetQueryDescriptors(value []IFontDescriptor)
 	SetExclusionDescriptors(value []IFontDescriptor)
+	SetQueryDescriptors(value []IFontDescriptor)
 }
 
 // A mutable collection of font descriptors taken together as a single object. [Full Topic]
@@ -71,16 +71,16 @@ func (m_ MutableFontCollection) RemoveQueryForDescriptors(descriptors []IFontDes
 	objc.Call[objc.Void](m_, objc.Sel("removeQueryForDescriptors:"), descriptors)
 }
 
-// The font descriptors to include in query results. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmutablefontcollection/1497457-querydescriptors?language=objc
-func (m_ MutableFontCollection) SetQueryDescriptors(value []IFontDescriptor) {
-	objc.Call[objc.Void](m_, objc.Sel("setQueryDescriptors:"), value)
-}
-
 // The font descriptors to exclude from query results. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmutablefontcollection/1497442-exclusiondescriptors?language=objc
 func (m_ MutableFontCollection) SetExclusionDescriptors(value []IFontDescriptor) {
 	objc.Call[objc.Void](m_, objc.Sel("setExclusionDescriptors:"), value)
+}
+
+// The font descriptors to include in query results. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmutablefontcollection/1497457-querydescriptors?language=objc
+func (m_ MutableFontCollection) SetQueryDescriptors(value []IFontDescriptor) {
+	objc.Call[objc.Void](m_, objc.Sel("setQueryDescriptors:"), value)
 }

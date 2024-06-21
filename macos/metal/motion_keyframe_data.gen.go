@@ -18,11 +18,11 @@ type _MotionKeyframeDataClass struct {
 // An interface definition for the [MotionKeyframeData] class.
 type IMotionKeyframeData interface {
 	objc.IObject
-	Offset() uint
-	SetOffset(value uint)
 	Buffer() BufferObject
 	SetBuffer(value PBuffer)
 	SetBufferObject(valueObject objc.IObject)
+	Offset() uint
+	SetOffset(value uint)
 }
 
 // Geometry data for a specific keyframe to use in a moving object. [Full Topic]
@@ -70,21 +70,6 @@ func (m_ MotionKeyframeData) Init() MotionKeyframeData {
 	return rv
 }
 
-// The offset, in bytes, to the keyframe data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750508-offset?language=objc
-func (m_ MotionKeyframeData) Offset() uint {
-	rv := objc.Call[uint](m_, objc.Sel("offset"))
-	return rv
-}
-
-// The offset, in bytes, to the keyframe data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750508-offset?language=objc
-func (m_ MotionKeyframeData) SetOffset(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setOffset:"), value)
-}
-
 // The buffer that holds the geometry data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750506-buffer?language=objc
@@ -106,4 +91,19 @@ func (m_ MotionKeyframeData) SetBuffer(value PBuffer) {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750506-buffer?language=objc
 func (m_ MotionKeyframeData) SetBufferObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("setBuffer:"), valueObject)
+}
+
+// The offset, in bytes, to the keyframe data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750508-offset?language=objc
+func (m_ MotionKeyframeData) Offset() uint {
+	rv := objc.Call[uint](m_, objc.Sel("offset"))
+	return rv
+}
+
+// The offset, in bytes, to the keyframe data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750508-offset?language=objc
+func (m_ MotionKeyframeData) SetOffset(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setOffset:"), value)
 }

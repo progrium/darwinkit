@@ -19,6 +19,14 @@ type PColorMatrix interface {
 	HasInputImage() bool
 
 	// optional
+	SetGVector(value Vector)
+	HasSetGVector() bool
+
+	// optional
+	GVector() Vector
+	HasGVector() bool
+
+	// optional
 	SetBiasVector(value Vector)
 	HasSetBiasVector() bool
 
@@ -41,14 +49,6 @@ type PColorMatrix interface {
 	// optional
 	RVector() Vector
 	HasRVector() bool
-
-	// optional
-	SetGVector(value Vector)
-	HasSetGVector() bool
-
-	// optional
-	GVector() Vector
-	HasGVector() bool
 
 	// optional
 	SetAVector(value Vector)
@@ -87,6 +87,29 @@ func (c_ ColorMatrixObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228165-inputimage?language=objc
 func (c_ ColorMatrixObject) InputImage() Image {
 	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (c_ ColorMatrixObject) HasSetGVector() bool {
+	return c_.RespondsToSelector(objc.Sel("setGVector:"))
+}
+
+// The amount of green to multiply the source color values by. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228162-gvector?language=objc
+func (c_ ColorMatrixObject) SetGVector(value Vector) {
+	objc.Call[objc.Void](c_, objc.Sel("setGVector:"), value)
+}
+
+func (c_ ColorMatrixObject) HasGVector() bool {
+	return c_.RespondsToSelector(objc.Sel("GVector"))
+}
+
+// The amount of green to multiply the source color values by. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228162-gvector?language=objc
+func (c_ ColorMatrixObject) GVector() Vector {
+	rv := objc.Call[Vector](c_, objc.Sel("GVector"))
 	return rv
 }
 
@@ -156,29 +179,6 @@ func (c_ ColorMatrixObject) HasRVector() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228163-rvector?language=objc
 func (c_ ColorMatrixObject) RVector() Vector {
 	rv := objc.Call[Vector](c_, objc.Sel("RVector"))
-	return rv
-}
-
-func (c_ ColorMatrixObject) HasSetGVector() bool {
-	return c_.RespondsToSelector(objc.Sel("setGVector:"))
-}
-
-// The amount of green to multiply the source color values by. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228162-gvector?language=objc
-func (c_ ColorMatrixObject) SetGVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setGVector:"), value)
-}
-
-func (c_ ColorMatrixObject) HasGVector() bool {
-	return c_.RespondsToSelector(objc.Sel("GVector"))
-}
-
-// The amount of green to multiply the source color values by. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228162-gvector?language=objc
-func (c_ ColorMatrixObject) GVector() Vector {
-	rv := objc.Call[Vector](c_, objc.Sel("GVector"))
 	return rv
 }
 

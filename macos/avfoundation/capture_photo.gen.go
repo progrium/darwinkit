@@ -23,10 +23,10 @@ type ICapturePhoto interface {
 	objc.IObject
 	FileDataRepresentation() []byte
 	CGImageRepresentation() coregraphics.ImageRef
-	ResolvedSettings() CaptureResolvedPhotoSettings
-	PhotoCount() int
-	Timestamp() coremedia.Time
 	PixelBuffer() corevideo.PixelBufferRef
+	PhotoCount() int
+	ResolvedSettings() CaptureResolvedPhotoSettings
+	Timestamp() coremedia.Time
 }
 
 // A container for image data from a photo capture output. [Full Topic]
@@ -78,11 +78,11 @@ func (c_ CapturePhoto) CGImageRepresentation() coregraphics.ImageRef {
 	return rv
 }
 
-// The settings object that was used to request this photo capture. [Full Topic]
+// The uncompressed or RAW image sample buffer for the photo, if requested. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephoto/2873898-resolvedsettings?language=objc
-func (c_ CapturePhoto) ResolvedSettings() CaptureResolvedPhotoSettings {
-	rv := objc.Call[CaptureResolvedPhotoSettings](c_, objc.Sel("resolvedSettings"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephoto/2873914-pixelbuffer?language=objc
+func (c_ CapturePhoto) PixelBuffer() corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](c_, objc.Sel("pixelBuffer"))
 	return rv
 }
 
@@ -94,18 +94,18 @@ func (c_ CapturePhoto) PhotoCount() int {
 	return rv
 }
 
+// The settings object that was used to request this photo capture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephoto/2873898-resolvedsettings?language=objc
+func (c_ CapturePhoto) ResolvedSettings() CaptureResolvedPhotoSettings {
+	rv := objc.Call[CaptureResolvedPhotoSettings](c_, objc.Sel("resolvedSettings"))
+	return rv
+}
+
 // The time at which the image was captured. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephoto/2873981-timestamp?language=objc
 func (c_ CapturePhoto) Timestamp() coremedia.Time {
 	rv := objc.Call[coremedia.Time](c_, objc.Sel("timestamp"))
-	return rv
-}
-
-// The uncompressed or RAW image sample buffer for the photo, if requested. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephoto/2873914-pixelbuffer?language=objc
-func (c_ CapturePhoto) PixelBuffer() corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](c_, objc.Sel("pixelBuffer"))
 	return rv
 }

@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial?language=objc
 type PColorCrossPolynomial interface {
 	// optional
-	SetBlueCoefficients(value Vector)
-	HasSetBlueCoefficients() bool
-
-	// optional
-	BlueCoefficients() Vector
-	HasBlueCoefficients() bool
-
-	// optional
 	SetRedCoefficients(value Vector)
 	HasSetRedCoefficients() bool
 
 	// optional
 	RedCoefficients() Vector
 	HasRedCoefficients() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetGreenCoefficients(value Vector)
@@ -35,12 +35,12 @@ type PColorCrossPolynomial interface {
 	HasGreenCoefficients() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetBlueCoefficients(value Vector)
+	HasSetBlueCoefficients() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	BlueCoefficients() Vector
+	HasBlueCoefficients() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,29 +49,6 @@ var _ PColorCrossPolynomial = (*ColorCrossPolynomialObject)(nil)
 // A concrete type for the [PColorCrossPolynomial] protocol.
 type ColorCrossPolynomialObject struct {
 	objc.Object
-}
-
-func (c_ ColorCrossPolynomialObject) HasSetBlueCoefficients() bool {
-	return c_.RespondsToSelector(objc.Sel("setBlueCoefficients:"))
-}
-
-// Polynomial coefficients for the blue channel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228129-bluecoefficients?language=objc
-func (c_ ColorCrossPolynomialObject) SetBlueCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), value)
-}
-
-func (c_ ColorCrossPolynomialObject) HasBlueCoefficients() bool {
-	return c_.RespondsToSelector(objc.Sel("blueCoefficients"))
-}
-
-// Polynomial coefficients for the blue channel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228129-bluecoefficients?language=objc
-func (c_ ColorCrossPolynomialObject) BlueCoefficients() Vector {
-	rv := objc.Call[Vector](c_, objc.Sel("blueCoefficients"))
-	return rv
 }
 
 func (c_ ColorCrossPolynomialObject) HasSetRedCoefficients() bool {
@@ -94,6 +71,29 @@ func (c_ ColorCrossPolynomialObject) HasRedCoefficients() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228132-redcoefficients?language=objc
 func (c_ ColorCrossPolynomialObject) RedCoefficients() Vector {
 	rv := objc.Call[Vector](c_, objc.Sel("redCoefficients"))
+	return rv
+}
+
+func (c_ ColorCrossPolynomialObject) HasSetInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228131-inputimage?language=objc
+func (c_ ColorCrossPolynomialObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+}
+
+func (c_ ColorCrossPolynomialObject) HasInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228131-inputimage?language=objc
+func (c_ ColorCrossPolynomialObject) InputImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -120,25 +120,25 @@ func (c_ ColorCrossPolynomialObject) GreenCoefficients() Vector {
 	return rv
 }
 
-func (c_ ColorCrossPolynomialObject) HasSetInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (c_ ColorCrossPolynomialObject) HasSetBlueCoefficients() bool {
+	return c_.RespondsToSelector(objc.Sel("setBlueCoefficients:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// Polynomial coefficients for the blue channel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228131-inputimage?language=objc
-func (c_ ColorCrossPolynomialObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228129-bluecoefficients?language=objc
+func (c_ ColorCrossPolynomialObject) SetBlueCoefficients(value Vector) {
+	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), value)
 }
 
-func (c_ ColorCrossPolynomialObject) HasInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("inputImage"))
+func (c_ ColorCrossPolynomialObject) HasBlueCoefficients() bool {
+	return c_.RespondsToSelector(objc.Sel("blueCoefficients"))
 }
 
-// The image to use as an input image. [Full Topic]
+// Polynomial coefficients for the blue channel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228131-inputimage?language=objc
-func (c_ ColorCrossPolynomialObject) InputImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228129-bluecoefficients?language=objc
+func (c_ ColorCrossPolynomialObject) BlueCoefficients() Vector {
+	rv := objc.Call[Vector](c_, objc.Sel("blueCoefficients"))
 	return rv
 }

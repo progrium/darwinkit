@@ -19,26 +19,24 @@ type _TextBlockClass struct {
 // An interface definition for the [TextBlock] class.
 type ITextBlock interface {
 	objc.IObject
+	ValueForDimension(dimension TextBlockDimension) float64
+	RectForLayoutAtPointInRectTextContainerCharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
 	BorderColorForEdge(edge foundation.RectEdge) Color
 	DrawBackgroundWithFrameInViewCharacterRangeLayoutManager(frameRect foundation.Rect, controlView IView, charRange foundation.Range, layoutManager ILayoutManager)
-	ValueForDimension(dimension TextBlockDimension) float64
-	SetBorderColorForEdge(color IColor, edge foundation.RectEdge)
-	WidthValueTypeForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) TextBlockValueType
-	SetValueTypeForDimension(val float64, type_ TextBlockValueType, dimension TextBlockDimension)
-	WidthForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) float64
 	SetBorderColor(color IColor)
-	RectForLayoutAtPointInRectTextContainerCharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
-	SetContentWidthType(val float64, type_ TextBlockValueType)
-	SetWidthTypeForLayerEdge(val float64, type_ TextBlockValueType, layer TextBlockLayer, edge foundation.RectEdge)
-	ValueTypeForDimension(dimension TextBlockDimension) TextBlockValueType
 	BoundsRectForContentRectInRectTextContainerCharacterRange(contentRect foundation.Rect, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
+	WidthValueTypeForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) TextBlockValueType
 	SetWidthTypeForLayer(val float64, type_ TextBlockValueType, layer TextBlockLayer)
-	ContentWidth() float64
-	ContentWidthValueType() TextBlockValueType
-	BackgroundColor() Color
-	SetBackgroundColor(value IColor)
+	WidthForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) float64
+	SetValueTypeForDimension(val float64, type_ TextBlockValueType, dimension TextBlockDimension)
+	ValueTypeForDimension(dimension TextBlockDimension) TextBlockValueType
+	SetContentWidthType(val float64, type_ TextBlockValueType)
 	VerticalAlignment() TextBlockVerticalAlignment
 	SetVerticalAlignment(value TextBlockVerticalAlignment)
+	BackgroundColor() Color
+	SetBackgroundColor(value IColor)
+	ContentWidthValueType() TextBlockValueType
+	ContentWidth() float64
 }
 
 // A block of text laid out in a subregion of the text container. [Full Topic]
@@ -74,6 +72,22 @@ func NewTextBlock() TextBlock {
 	return TextBlockClass.New()
 }
 
+// Returns the value of the specified text block dimension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1526445-valuefordimension?language=objc
+func (t_ TextBlock) ValueForDimension(dimension TextBlockDimension) float64 {
+	rv := objc.Call[float64](t_, objc.Sel("valueForDimension:"), dimension)
+	return rv
+}
+
+// Returns the rectangle within which glyphs should be laid out for the specified arguments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1527965-rectforlayoutatpoint?language=objc
+func (t_ TextBlock) RectForLayoutAtPointInRectTextContainerCharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, textContainer, charRange)
+	return rv
+}
+
 // Returns the border color of the specified text block edge. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1534711-bordercolorforedge?language=objc
@@ -89,79 +103,11 @@ func (t_ TextBlock) DrawBackgroundWithFrameInViewCharacterRangeLayoutManager(fra
 	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundWithFrame:inView:characterRange:layoutManager:"), frameRect, controlView, charRange, layoutManager)
 }
 
-// Returns the value of the specified text block dimension. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1526445-valuefordimension?language=objc
-func (t_ TextBlock) ValueForDimension(dimension TextBlockDimension) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("valueForDimension:"), dimension)
-	return rv
-}
-
-// Sets the border color of the specified edge of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1529881-setbordercolor?language=objc
-func (t_ TextBlock) SetBorderColorForEdge(color IColor, edge foundation.RectEdge) {
-	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:forEdge:"), color, edge)
-}
-
-// Returns the value type of an edge of a specified layer of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533551-widthvaluetypeforlayer?language=objc
-func (t_ TextBlock) WidthValueTypeForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) TextBlockValueType {
-	rv := objc.Call[TextBlockValueType](t_, objc.Sel("widthValueTypeForLayer:edge:"), layer, edge)
-	return rv
-}
-
-// Sets a dimension of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533000-setvalue?language=objc
-func (t_ TextBlock) SetValueTypeForDimension(val float64, type_ TextBlockValueType, dimension TextBlockDimension) {
-	objc.Call[objc.Void](t_, objc.Sel("setValue:type:forDimension:"), val, type_, dimension)
-}
-
-// Returns the width of an edge of a specified layer of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533532-widthforlayer?language=objc
-func (t_ TextBlock) WidthForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("widthForLayer:edge:"), layer, edge)
-	return rv
-}
-
 // Sets the color of all borders of the text block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1531850-setbordercolor?language=objc
 func (t_ TextBlock) SetBorderColor(color IColor) {
 	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:"), color)
-}
-
-// Returns the rectangle within which glyphs should be laid out for the specified arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1527965-rectforlayoutatpoint?language=objc
-func (t_ TextBlock) RectForLayoutAtPointInRectTextContainerCharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, textContainer, charRange)
-	return rv
-}
-
-// Sets the width of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1528308-setcontentwidth?language=objc
-func (t_ TextBlock) SetContentWidthType(val float64, type_ TextBlockValueType) {
-	objc.Call[objc.Void](t_, objc.Sel("setContentWidth:type:"), val, type_)
-}
-
-// Sets the width of a specified edge of a specified layer of the text block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533792-setwidth?language=objc
-func (t_ TextBlock) SetWidthTypeForLayerEdge(val float64, type_ TextBlockValueType, layer TextBlockLayer, edge foundation.RectEdge) {
-	objc.Call[objc.Void](t_, objc.Sel("setWidth:type:forLayer:edge:"), val, type_, layer, edge)
-}
-
-// Returns the value type of the specified text block dimension. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1530561-valuetypefordimension?language=objc
-func (t_ TextBlock) ValueTypeForDimension(dimension TextBlockDimension) TextBlockValueType {
-	rv := objc.Call[TextBlockValueType](t_, objc.Sel("valueTypeForDimension:"), dimension)
-	return rv
 }
 
 // Returns the rectangle the text in the block actually occupies, including padding, borders, and margins. [Full Topic]
@@ -172,6 +118,14 @@ func (t_ TextBlock) BoundsRectForContentRectInRectTextContainerCharacterRange(co
 	return rv
 }
 
+// Returns the value type of an edge of a specified layer of the text block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533551-widthvaluetypeforlayer?language=objc
+func (t_ TextBlock) WidthValueTypeForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) TextBlockValueType {
+	rv := objc.Call[TextBlockValueType](t_, objc.Sel("widthValueTypeForLayer:edge:"), layer, edge)
+	return rv
+}
+
 // Sets the width of all edges of a specified layer of the text block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1535325-setwidth?language=objc
@@ -179,20 +133,49 @@ func (t_ TextBlock) SetWidthTypeForLayer(val float64, type_ TextBlockValueType, 
 	objc.Call[objc.Void](t_, objc.Sel("setWidth:type:forLayer:"), val, type_, layer)
 }
 
-// The width of the text block. [Full Topic]
+// Returns the width of an edge of a specified layer of the text block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1532506-contentwidth?language=objc
-func (t_ TextBlock) ContentWidth() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("contentWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533532-widthforlayer?language=objc
+func (t_ TextBlock) WidthForLayerEdge(layer TextBlockLayer, edge foundation.RectEdge) float64 {
+	rv := objc.Call[float64](t_, objc.Sel("widthForLayer:edge:"), layer, edge)
 	return rv
 }
 
-// The type of value stored for the text block width. [Full Topic]
+// Sets a dimension of the text block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1525975-contentwidthvaluetype?language=objc
-func (t_ TextBlock) ContentWidthValueType() TextBlockValueType {
-	rv := objc.Call[TextBlockValueType](t_, objc.Sel("contentWidthValueType"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533000-setvalue?language=objc
+func (t_ TextBlock) SetValueTypeForDimension(val float64, type_ TextBlockValueType, dimension TextBlockDimension) {
+	objc.Call[objc.Void](t_, objc.Sel("setValue:type:forDimension:"), val, type_, dimension)
+}
+
+// Returns the value type of the specified text block dimension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1530561-valuetypefordimension?language=objc
+func (t_ TextBlock) ValueTypeForDimension(dimension TextBlockDimension) TextBlockValueType {
+	rv := objc.Call[TextBlockValueType](t_, objc.Sel("valueTypeForDimension:"), dimension)
 	return rv
+}
+
+// Sets the width of the text block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1528308-setcontentwidth?language=objc
+func (t_ TextBlock) SetContentWidthType(val float64, type_ TextBlockValueType) {
+	objc.Call[objc.Void](t_, objc.Sel("setContentWidth:type:"), val, type_)
+}
+
+// The vertical alignment of the text block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533097-verticalalignment?language=objc
+func (t_ TextBlock) VerticalAlignment() TextBlockVerticalAlignment {
+	rv := objc.Call[TextBlockVerticalAlignment](t_, objc.Sel("verticalAlignment"))
+	return rv
+}
+
+// The vertical alignment of the text block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533097-verticalalignment?language=objc
+func (t_ TextBlock) SetVerticalAlignment(value TextBlockVerticalAlignment) {
+	objc.Call[objc.Void](t_, objc.Sel("setVerticalAlignment:"), value)
 }
 
 // The background color of the text block. [Full Topic]
@@ -210,17 +193,18 @@ func (t_ TextBlock) SetBackgroundColor(value IColor) {
 	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
-// The vertical alignment of the text block. [Full Topic]
+// The type of value stored for the text block width. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533097-verticalalignment?language=objc
-func (t_ TextBlock) VerticalAlignment() TextBlockVerticalAlignment {
-	rv := objc.Call[TextBlockVerticalAlignment](t_, objc.Sel("verticalAlignment"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1525975-contentwidthvaluetype?language=objc
+func (t_ TextBlock) ContentWidthValueType() TextBlockValueType {
+	rv := objc.Call[TextBlockValueType](t_, objc.Sel("contentWidthValueType"))
 	return rv
 }
 
-// The vertical alignment of the text block. [Full Topic]
+// The width of the text block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1533097-verticalalignment?language=objc
-func (t_ TextBlock) SetVerticalAlignment(value TextBlockVerticalAlignment) {
-	objc.Call[objc.Void](t_, objc.Sel("setVerticalAlignment:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1532506-contentwidth?language=objc
+func (t_ TextBlock) ContentWidth() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("contentWidth"))
+	return rv
 }

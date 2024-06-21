@@ -18,22 +18,21 @@ type _CacheClass struct {
 // An interface definition for the [Cache] class.
 type ICache interface {
 	objc.IObject
-	SetObjectForKey(obj objc.IObject, key objc.IObject)
-	RemoveAllObjects()
-	RemoveObjectForKey(key objc.IObject)
 	ObjectForKey(key objc.IObject) objc.Object
-	SetObjectForKeyCost(obj objc.IObject, key objc.IObject, g uint)
-	TotalCostLimit() uint
-	SetTotalCostLimit(value uint)
+	SetObjectForKey(obj objc.IObject, key objc.IObject)
+	RemoveObjectForKey(key objc.IObject)
+	RemoveAllObjects()
+	EvictsObjectsWithDiscardedContent() bool
+	SetEvictsObjectsWithDiscardedContent(value bool)
 	CountLimit() uint
 	SetCountLimit(value uint)
 	Name() string
 	SetName(value string)
-	EvictsObjectsWithDiscardedContent() bool
-	SetEvictsObjectsWithDiscardedContent(value bool)
 	Delegate() CacheDelegateObject
 	SetDelegate(value PCacheDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	TotalCostLimit() uint
+	SetTotalCostLimit(value uint)
 }
 
 // A mutable collection you use to temporarily store transient key-value pairs that are subject to eviction when resources are low. [Full Topic]
@@ -69,18 +68,19 @@ func (c_ Cache) Init() Cache {
 	return rv
 }
 
+// Returns the value associated with a given key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1415458-objectforkey?language=objc
+func (c_ Cache) ObjectForKey(key objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("objectForKey:"), key)
+	return rv
+}
+
 // Sets the value of the specified key in the cache. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408223-setobject?language=objc
 func (c_ Cache) SetObjectForKey(obj objc.IObject, key objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:"), obj, key)
-}
-
-// Empties the cache. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1411382-removeallobjects?language=objc
-func (c_ Cache) RemoveAllObjects() {
-	objc.Call[objc.Void](c_, objc.Sel("removeAllObjects"))
 }
 
 // Removes the value of the specified key in the cache. [Full Topic]
@@ -90,34 +90,26 @@ func (c_ Cache) RemoveObjectForKey(key objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("removeObjectForKey:"), key)
 }
 
-// Returns the value associated with a given key. [Full Topic]
+// Empties the cache. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1415458-objectforkey?language=objc
-func (c_ Cache) ObjectForKey(key objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("objectForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1411382-removeallobjects?language=objc
+func (c_ Cache) RemoveAllObjects() {
+	objc.Call[objc.Void](c_, objc.Sel("removeAllObjects"))
+}
+
+// Whether the cache will automatically evict discardable-content objects whose content has been discarded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408469-evictsobjectswithdiscardedconten?language=objc
+func (c_ Cache) EvictsObjectsWithDiscardedContent() bool {
+	rv := objc.Call[bool](c_, objc.Sel("evictsObjectsWithDiscardedContent"))
 	return rv
 }
 
-// Sets the value of the specified key in the cache, and associates the key-value pair with the specified cost. [Full Topic]
+// Whether the cache will automatically evict discardable-content objects whose content has been discarded. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1416399-setobject?language=objc
-func (c_ Cache) SetObjectForKeyCost(obj objc.IObject, key objc.IObject, g uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:cost:"), obj, key, g)
-}
-
-// The maximum total cost that the cache can hold before it starts evicting objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1407672-totalcostlimit?language=objc
-func (c_ Cache) TotalCostLimit() uint {
-	rv := objc.Call[uint](c_, objc.Sel("totalCostLimit"))
-	return rv
-}
-
-// The maximum total cost that the cache can hold before it starts evicting objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1407672-totalcostlimit?language=objc
-func (c_ Cache) SetTotalCostLimit(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setTotalCostLimit:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408469-evictsobjectswithdiscardedconten?language=objc
+func (c_ Cache) SetEvictsObjectsWithDiscardedContent(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setEvictsObjectsWithDiscardedContent:"), value)
 }
 
 // The maximum number of objects the cache should hold. [Full Topic]
@@ -150,21 +142,6 @@ func (c_ Cache) SetName(value string) {
 	objc.Call[objc.Void](c_, objc.Sel("setName:"), value)
 }
 
-// Whether the cache will automatically evict discardable-content objects whose content has been discarded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408469-evictsobjectswithdiscardedconten?language=objc
-func (c_ Cache) EvictsObjectsWithDiscardedContent() bool {
-	rv := objc.Call[bool](c_, objc.Sel("evictsObjectsWithDiscardedContent"))
-	return rv
-}
-
-// Whether the cache will automatically evict discardable-content objects whose content has been discarded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408469-evictsobjectswithdiscardedconten?language=objc
-func (c_ Cache) SetEvictsObjectsWithDiscardedContent(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setEvictsObjectsWithDiscardedContent:"), value)
-}
-
 // The cache’s delegate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1413061-delegate?language=objc
@@ -186,4 +163,19 @@ func (c_ Cache) SetDelegate(value PCacheDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1413061-delegate?language=objc
 func (c_ Cache) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// The maximum total cost that the cache can hold before it starts evicting objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1407672-totalcostlimit?language=objc
+func (c_ Cache) TotalCostLimit() uint {
+	rv := objc.Call[uint](c_, objc.Sel("totalCostLimit"))
+	return rv
+}
+
+// The maximum total cost that the cache can hold before it starts evicting objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1407672-totalcostlimit?language=objc
+func (c_ Cache) SetTotalCostLimit(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setTotalCostLimit:"), value)
 }

@@ -53,6 +53,18 @@ func (u_ UnitDuration) Init() UnitDuration {
 	return rv
 }
 
+func (uc _UnitDurationClass) BaseUnit() UnitDuration {
+	rv := objc.Call[UnitDuration](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitDuration_BaseUnit() UnitDuration {
+	return UnitDurationClass.BaseUnit()
+}
+
 func (u_ UnitDuration) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitDuration {
 	rv := objc.Call[UnitDuration](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitDurationWithSymbolConverter(symbol string, converter IUnitConverter)
 	instance := UnitDurationClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitDurationClass) BaseUnit() UnitDuration {
-	rv := objc.Call[UnitDuration](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitDuration_BaseUnit() UnitDuration {
-	return UnitDurationClass.BaseUnit()
 }
 
 func (u_ UnitDuration) InitWithSymbol(symbol string) UnitDuration {
@@ -93,49 +93,19 @@ func NewUnitDurationWithSymbol(symbol string) UnitDuration {
 	return instance
 }
 
-// The nanosecond unit of duration. [Full Topic]
+// The second unit of duration. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172540-nanoseconds?language=objc
-func (uc _UnitDurationClass) Nanoseconds() UnitDuration {
-	rv := objc.Call[UnitDuration](uc, objc.Sel("nanoseconds"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856005-seconds?language=objc
+func (uc _UnitDurationClass) Seconds() UnitDuration {
+	rv := objc.Call[UnitDuration](uc, objc.Sel("seconds"))
 	return rv
 }
 
-// The nanosecond unit of duration. [Full Topic]
+// The second unit of duration. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172540-nanoseconds?language=objc
-func UnitDuration_Nanoseconds() UnitDuration {
-	return UnitDurationClass.Nanoseconds()
-}
-
-// The picosecond unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172541-picoseconds?language=objc
-func (uc _UnitDurationClass) Picoseconds() UnitDuration {
-	rv := objc.Call[UnitDuration](uc, objc.Sel("picoseconds"))
-	return rv
-}
-
-// The picosecond unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172541-picoseconds?language=objc
-func UnitDuration_Picoseconds() UnitDuration {
-	return UnitDurationClass.Picoseconds()
-}
-
-// The millisecond unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172539-milliseconds?language=objc
-func (uc _UnitDurationClass) Milliseconds() UnitDuration {
-	rv := objc.Call[UnitDuration](uc, objc.Sel("milliseconds"))
-	return rv
-}
-
-// The millisecond unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172539-milliseconds?language=objc
-func UnitDuration_Milliseconds() UnitDuration {
-	return UnitDurationClass.Milliseconds()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856005-seconds?language=objc
+func UnitDuration_Seconds() UnitDuration {
+	return UnitDurationClass.Seconds()
 }
 
 // The microsecond unit of duration. [Full Topic]
@@ -153,6 +123,21 @@ func UnitDuration_Microseconds() UnitDuration {
 	return UnitDurationClass.Microseconds()
 }
 
+// The picosecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172541-picoseconds?language=objc
+func (uc _UnitDurationClass) Picoseconds() UnitDuration {
+	rv := objc.Call[UnitDuration](uc, objc.Sel("picoseconds"))
+	return rv
+}
+
+// The picosecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172541-picoseconds?language=objc
+func UnitDuration_Picoseconds() UnitDuration {
+	return UnitDurationClass.Picoseconds()
+}
+
 // The hour unit of duration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1855994-hours?language=objc
@@ -168,6 +153,36 @@ func UnitDuration_Hours() UnitDuration {
 	return UnitDurationClass.Hours()
 }
 
+// The millisecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172539-milliseconds?language=objc
+func (uc _UnitDurationClass) Milliseconds() UnitDuration {
+	rv := objc.Call[UnitDuration](uc, objc.Sel("milliseconds"))
+	return rv
+}
+
+// The millisecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172539-milliseconds?language=objc
+func UnitDuration_Milliseconds() UnitDuration {
+	return UnitDurationClass.Milliseconds()
+}
+
+// The nanosecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172540-nanoseconds?language=objc
+func (uc _UnitDurationClass) Nanoseconds() UnitDuration {
+	rv := objc.Call[UnitDuration](uc, objc.Sel("nanoseconds"))
+	return rv
+}
+
+// The nanosecond unit of duration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/3172540-nanoseconds?language=objc
+func UnitDuration_Nanoseconds() UnitDuration {
+	return UnitDurationClass.Nanoseconds()
+}
+
 // The minute unit of duration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856088-minutes?language=objc
@@ -181,19 +196,4 @@ func (uc _UnitDurationClass) Minutes() UnitDuration {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856088-minutes?language=objc
 func UnitDuration_Minutes() UnitDuration {
 	return UnitDurationClass.Minutes()
-}
-
-// The second unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856005-seconds?language=objc
-func (uc _UnitDurationClass) Seconds() UnitDuration {
-	rv := objc.Call[UnitDuration](uc, objc.Sel("seconds"))
-	return rv
-}
-
-// The second unit of duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitduration/1856005-seconds?language=objc
-func UnitDuration_Seconds() UnitDuration {
-	return UnitDurationClass.Seconds()
 }

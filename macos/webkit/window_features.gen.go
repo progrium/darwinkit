@@ -19,14 +19,16 @@ type _WindowFeaturesClass struct {
 // An interface definition for the [WindowFeatures] class.
 type IWindowFeatures interface {
 	objc.IObject
-	MenuBarVisibility() foundation.Number
-	ToolbarsVisibility() foundation.Number
-	StatusBarVisibility() foundation.Number
 	AllowsResizing() foundation.Number
-	Height() foundation.Number
-	X() foundation.Number
-	Y() foundation.Number
 	Width() foundation.Number
+	X() foundation.Number
+	SetX(value foundation.INumber)
+	Y() foundation.Number
+	SetY(value foundation.INumber)
+	StatusBarVisibility() foundation.Number
+	Height() foundation.Number
+	ToolbarsVisibility() foundation.Number
+	MenuBarVisibility() foundation.Number
 }
 
 // Display-related attributes that a webpage requests for its window. [Full Topic]
@@ -62,30 +64,6 @@ func (w_ WindowFeatures) Init() WindowFeatures {
 	return rv
 }
 
-// A Boolean value that indicates whether the webpage requests a visible menu bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1538001-menubarvisibility?language=objc
-func (w_ WindowFeatures) MenuBarVisibility() foundation.Number {
-	rv := objc.Call[foundation.Number](w_, objc.Sel("menuBarVisibility"))
-	return rv
-}
-
-// A Boolean value that indicates whether the webpage requested a visible toolbar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536218-toolbarsvisibility?language=objc
-func (w_ WindowFeatures) ToolbarsVisibility() foundation.Number {
-	rv := objc.Call[foundation.Number](w_, objc.Sel("toolbarsVisibility"))
-	return rv
-}
-
-// A Boolean value that indicates whether the webpage requested a visible status bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536638-statusbarvisibility?language=objc
-func (w_ WindowFeatures) StatusBarVisibility() foundation.Number {
-	rv := objc.Call[foundation.Number](w_, objc.Sel("statusBarVisibility"))
-	return rv
-}
-
 // A Boolean value that indicates whether to make the containing window window resizable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536871-allowsresizing?language=objc
@@ -94,11 +72,11 @@ func (w_ WindowFeatures) AllowsResizing() foundation.Number {
 	return rv
 }
 
-// The requested height of the containing window. [Full Topic]
+// The requested width of the containing window. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536826-height?language=objc
-func (w_ WindowFeatures) Height() foundation.Number {
-	rv := objc.Call[foundation.Number](w_, objc.Sel("height"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1537562-width?language=objc
+func (w_ WindowFeatures) Width() foundation.Number {
+	rv := objc.Call[foundation.Number](w_, objc.Sel("width"))
 	return rv
 }
 
@@ -110,6 +88,13 @@ func (w_ WindowFeatures) X() foundation.Number {
 	return rv
 }
 
+// The requested x-coordinate of the containing window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1537705-x?language=objc
+func (w_ WindowFeatures) SetX(value foundation.INumber) {
+	objc.Call[objc.Void](w_, objc.Sel("setX:"), value)
+}
+
 // The requested y-coordinate of the containing window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1537052-y?language=objc
@@ -118,10 +103,41 @@ func (w_ WindowFeatures) Y() foundation.Number {
 	return rv
 }
 
-// The requested width of the containing window. [Full Topic]
+// The requested y-coordinate of the containing window. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1537562-width?language=objc
-func (w_ WindowFeatures) Width() foundation.Number {
-	rv := objc.Call[foundation.Number](w_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1537052-y?language=objc
+func (w_ WindowFeatures) SetY(value foundation.INumber) {
+	objc.Call[objc.Void](w_, objc.Sel("setY:"), value)
+}
+
+// A Boolean value that indicates whether the webpage requested a visible status bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536638-statusbarvisibility?language=objc
+func (w_ WindowFeatures) StatusBarVisibility() foundation.Number {
+	rv := objc.Call[foundation.Number](w_, objc.Sel("statusBarVisibility"))
+	return rv
+}
+
+// The requested height of the containing window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536826-height?language=objc
+func (w_ WindowFeatures) Height() foundation.Number {
+	rv := objc.Call[foundation.Number](w_, objc.Sel("height"))
+	return rv
+}
+
+// A Boolean value that indicates whether the webpage requested a visible toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1536218-toolbarsvisibility?language=objc
+func (w_ WindowFeatures) ToolbarsVisibility() foundation.Number {
+	rv := objc.Call[foundation.Number](w_, objc.Sel("toolbarsVisibility"))
+	return rv
+}
+
+// A Boolean value that indicates whether the webpage requests a visible menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwindowfeatures/1538001-menubarvisibility?language=objc
+func (w_ WindowFeatures) MenuBarVisibility() foundation.Number {
+	rv := objc.Call[foundation.Number](w_, objc.Sel("menuBarVisibility"))
 	return rv
 }

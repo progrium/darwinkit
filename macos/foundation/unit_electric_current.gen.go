@@ -53,6 +53,18 @@ func (u_ UnitElectricCurrent) Init() UnitElectricCurrent {
 	return rv
 }
 
+func (uc _UnitElectricCurrentClass) BaseUnit() UnitElectricCurrent {
+	rv := objc.Call[UnitElectricCurrent](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitElectricCurrent_BaseUnit() UnitElectricCurrent {
+	return UnitElectricCurrentClass.BaseUnit()
+}
+
 func (u_ UnitElectricCurrent) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCurrent {
 	rv := objc.Call[UnitElectricCurrent](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitElectricCurrentWithSymbolConverter(symbol string, converter IUnitCon
 	return instance
 }
 
-func (uc _UnitElectricCurrentClass) BaseUnit() UnitElectricCurrent {
-	rv := objc.Call[UnitElectricCurrent](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitElectricCurrent_BaseUnit() UnitElectricCurrent {
-	return UnitElectricCurrentClass.BaseUnit()
-}
-
 func (u_ UnitElectricCurrent) InitWithSymbol(symbol string) UnitElectricCurrent {
 	rv := objc.Call[UnitElectricCurrent](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,6 +91,21 @@ func NewUnitElectricCurrentWithSymbol(symbol string) UnitElectricCurrent {
 	instance := UnitElectricCurrentClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
+}
+
+// The microamperes unit of electric current. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccurrent/1856047-microamperes?language=objc
+func (uc _UnitElectricCurrentClass) Microamperes() UnitElectricCurrent {
+	rv := objc.Call[UnitElectricCurrent](uc, objc.Sel("microamperes"))
+	return rv
+}
+
+// The microamperes unit of electric current. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccurrent/1856047-microamperes?language=objc
+func UnitElectricCurrent_Microamperes() UnitElectricCurrent {
+	return UnitElectricCurrentClass.Microamperes()
 }
 
 // The amperes unit of electric current. [Full Topic]
@@ -121,21 +136,6 @@ func (uc _UnitElectricCurrentClass) Kiloamperes() UnitElectricCurrent {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccurrent/1856001-kiloamperes?language=objc
 func UnitElectricCurrent_Kiloamperes() UnitElectricCurrent {
 	return UnitElectricCurrentClass.Kiloamperes()
-}
-
-// The microamperes unit of electric current. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccurrent/1856047-microamperes?language=objc
-func (uc _UnitElectricCurrentClass) Microamperes() UnitElectricCurrent {
-	rv := objc.Call[UnitElectricCurrent](uc, objc.Sel("microamperes"))
-	return rv
-}
-
-// The microamperes unit of electric current. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectriccurrent/1856047-microamperes?language=objc
-func UnitElectricCurrent_Microamperes() UnitElectricCurrent {
-	return UnitElectricCurrentClass.Microamperes()
 }
 
 // The megaamperes unit of electric current. [Full Topic]

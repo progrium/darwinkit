@@ -19,15 +19,15 @@ type _CNNConvolutionTransposeGradientClass struct {
 // An interface definition for the [CNNConvolutionTransposeGradient] class.
 type ICNNConvolutionTransposeGradient interface {
 	ICNNGradientKernel
+	ReloadWeightsAndBiasesFromDataSource()
 	ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState)
 	ReloadWeightsAndBiasesWithCommandBufferObjectState(commandBufferObject objc.IObject, state ICNNConvolutionWeightsAndBiasesState)
-	ReloadWeightsAndBiasesFromDataSource()
+	DataSource() CNNConvolutionDataSourceObject
 	SourceImageFeatureChannels() uint
 	GradientOption() CNNConvolutionGradientOption
 	SetGradientOption(value CNNConvolutionGradientOption)
 	SourceGradientFeatureChannels() uint
 	Groups() uint
-	DataSource() CNNConvolutionDataSourceObject
 }
 
 //	[Full Topic]
@@ -111,6 +111,13 @@ func CNNConvolutionTransposeGradient_CopyWithZoneDevice(zone unsafe.Pointer, dev
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131785-reloadweightsandbiasesfromdataso?language=objc
+func (c_ CNNConvolutionTransposeGradient) ReloadWeightsAndBiasesFromDataSource() {
+	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesFromDataSource"))
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131786-reloadweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolutionTransposeGradient) ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -126,9 +133,10 @@ func (c_ CNNConvolutionTransposeGradient) ReloadWeightsAndBiasesWithCommandBuffe
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131785-reloadweightsandbiasesfromdataso?language=objc
-func (c_ CNNConvolutionTransposeGradient) ReloadWeightsAndBiasesFromDataSource() {
-	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesFromDataSource"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131780-datasource?language=objc
+func (c_ CNNConvolutionTransposeGradient) DataSource() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](c_, objc.Sel("dataSource"))
+	return rv
 }
 
 //	[Full Topic]
@@ -167,13 +175,5 @@ func (c_ CNNConvolutionTransposeGradient) SourceGradientFeatureChannels() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131782-groups?language=objc
 func (c_ CNNConvolutionTransposeGradient) Groups() uint {
 	rv := objc.Call[uint](c_, objc.Sel("groups"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontransposegradient/3131780-datasource?language=objc
-func (c_ CNNConvolutionTransposeGradient) DataSource() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](c_, objc.Sel("dataSource"))
 	return rv
 }

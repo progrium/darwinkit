@@ -53,6 +53,21 @@ func (c_ ContactVCardSerialization) Init() ContactVCardSerialization {
 	return rv
 }
 
+// Use to fetch all contact keys required to create vCard data from a contact. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403155-descriptorforrequiredkeys?language=objc
+func (cc _ContactVCardSerializationClass) DescriptorForRequiredKeys() objc.Object {
+	rv := objc.Call[objc.Object](cc, objc.Sel("descriptorForRequiredKeys"))
+	return rv
+}
+
+// Use to fetch all contact keys required to create vCard data from a contact. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403155-descriptorforrequiredkeys?language=objc
+func ContactVCardSerialization_DescriptorForRequiredKeys() objc.Object {
+	return ContactVCardSerializationClass.DescriptorForRequiredKeys()
+}
+
 // Returns the vCard representation of the specified contacts. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403357-datawithcontacts?language=objc
@@ -81,19 +96,4 @@ func (cc _ContactVCardSerializationClass) ContactsWithDataError(data []byte, err
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403090-contactswithdata?language=objc
 func ContactVCardSerialization_ContactsWithDataError(data []byte, error unsafe.Pointer) []Contact {
 	return ContactVCardSerializationClass.ContactsWithDataError(data, error)
-}
-
-// Use to fetch all contact keys required to create vCard data from a contact. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403155-descriptorforrequiredkeys?language=objc
-func (cc _ContactVCardSerializationClass) DescriptorForRequiredKeys() objc.Object {
-	rv := objc.Call[objc.Object](cc, objc.Sel("descriptorForRequiredKeys"))
-	return rv
-}
-
-// Use to fetch all contact keys required to create vCard data from a contact. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403155-descriptorforrequiredkeys?language=objc
-func ContactVCardSerialization_DescriptorForRequiredKeys() objc.Object {
-	return ContactVCardSerializationClass.DescriptorForRequiredKeys()
 }

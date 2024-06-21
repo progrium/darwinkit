@@ -11,20 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer?language=objc
 type PTextFinderBarContainer interface {
 	// optional
-	FindBarViewDidChangeHeight()
-	HasFindBarViewDidChangeHeight() bool
-
-	// optional
 	ContentView() View
 	HasContentView() bool
 
 	// optional
-	SetFindBarView(value View)
-	HasSetFindBarView() bool
-
-	// optional
-	FindBarView() View
-	HasFindBarView() bool
+	FindBarViewDidChangeHeight()
+	HasFindBarViewDidChangeHeight() bool
 
 	// optional
 	SetFindBarVisible(value bool)
@@ -33,6 +25,14 @@ type PTextFinderBarContainer interface {
 	// optional
 	IsFindBarVisible() bool
 	HasIsFindBarVisible() bool
+
+	// optional
+	SetFindBarView(value View)
+	HasSetFindBarView() bool
+
+	// optional
+	FindBarView() View
+	HasFindBarView() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,18 @@ var _ PTextFinderBarContainer = (*TextFinderBarContainerObject)(nil)
 // A concrete type for the [PTextFinderBarContainer] protocol.
 type TextFinderBarContainerObject struct {
 	objc.Object
+}
+
+func (t_ TextFinderBarContainerObject) HasContentView() bool {
+	return t_.RespondsToSelector(objc.Sel("contentView"))
+}
+
+// A view hierarchy that contains all the views which display the contents being searched. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1532766-contentview?language=objc
+func (t_ TextFinderBarContainerObject) ContentView() View {
+	rv := objc.Call[View](t_, objc.Sel("contentView"))
+	return rv
 }
 
 func (t_ TextFinderBarContainerObject) HasFindBarViewDidChangeHeight() bool {
@@ -54,15 +66,26 @@ func (t_ TextFinderBarContainerObject) FindBarViewDidChangeHeight() {
 	objc.Call[objc.Void](t_, objc.Sel("findBarViewDidChangeHeight"))
 }
 
-func (t_ TextFinderBarContainerObject) HasContentView() bool {
-	return t_.RespondsToSelector(objc.Sel("contentView"))
+func (t_ TextFinderBarContainerObject) HasSetFindBarVisible() bool {
+	return t_.RespondsToSelector(objc.Sel("setFindBarVisible:"))
 }
 
-// A view hierarchy that contains all the views which display the contents being searched. [Full Topic]
+// Returns whether the container should display its find bar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1532766-contentview?language=objc
-func (t_ TextFinderBarContainerObject) ContentView() View {
-	rv := objc.Call[View](t_, objc.Sel("contentView"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1528587-findbarvisible?language=objc
+func (t_ TextFinderBarContainerObject) SetFindBarVisible(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setFindBarVisible:"), value)
+}
+
+func (t_ TextFinderBarContainerObject) HasIsFindBarVisible() bool {
+	return t_.RespondsToSelector(objc.Sel("isFindBarVisible"))
+}
+
+// Returns whether the container should display its find bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1528587-findbarvisible?language=objc
+func (t_ TextFinderBarContainerObject) IsFindBarVisible() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isFindBarVisible"))
 	return rv
 }
 
@@ -86,28 +109,5 @@ func (t_ TextFinderBarContainerObject) HasFindBarView() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1531692-findbarview?language=objc
 func (t_ TextFinderBarContainerObject) FindBarView() View {
 	rv := objc.Call[View](t_, objc.Sel("findBarView"))
-	return rv
-}
-
-func (t_ TextFinderBarContainerObject) HasSetFindBarVisible() bool {
-	return t_.RespondsToSelector(objc.Sel("setFindBarVisible:"))
-}
-
-// Returns whether the container should display its find bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1528587-findbarvisible?language=objc
-func (t_ TextFinderBarContainerObject) SetFindBarVisible(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setFindBarVisible:"), value)
-}
-
-func (t_ TextFinderBarContainerObject) HasIsFindBarVisible() bool {
-	return t_.RespondsToSelector(objc.Sel("isFindBarVisible"))
-}
-
-// Returns whether the container should display its find bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1528587-findbarvisible?language=objc
-func (t_ TextFinderBarContainerObject) IsFindBarVisible() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isFindBarVisible"))
 	return rv
 }

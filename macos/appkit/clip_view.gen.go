@@ -20,23 +20,23 @@ type _ClipViewClass struct {
 type IClipView interface {
 	IView
 	ViewBoundsChanged(notification foundation.INotification)
-	ViewFrameChanged(notification foundation.INotification)
 	ScrollToPoint(newOrigin foundation.Point)
 	ConstrainBoundsRect(proposedBounds foundation.Rect) foundation.Rect
+	ViewFrameChanged(notification foundation.INotification)
 	DocumentCursor() Cursor
 	SetDocumentCursor(value ICursor)
-	DocumentView() View
-	SetDocumentView(value IView)
-	DocumentVisibleRect() foundation.Rect
-	DrawsBackground() bool
-	SetDrawsBackground(value bool)
-	DocumentRect() foundation.Rect
-	AutomaticallyAdjustsContentInsets() bool
-	SetAutomaticallyAdjustsContentInsets(value bool)
 	ContentInsets() foundation.EdgeInsets
 	SetContentInsets(value foundation.EdgeInsets)
 	BackgroundColor() Color
 	SetBackgroundColor(value IColor)
+	DrawsBackground() bool
+	SetDrawsBackground(value bool)
+	DocumentVisibleRect() foundation.Rect
+	DocumentRect() foundation.Rect
+	DocumentView() View
+	SetDocumentView(value IView)
+	AutomaticallyAdjustsContentInsets() bool
+	SetAutomaticallyAdjustsContentInsets(value bool)
 }
 
 // An object that clips a document view to a scroll view's frame. [Full Topic]
@@ -93,13 +93,6 @@ func (c_ ClipView) ViewBoundsChanged(notification foundation.INotification) {
 	objc.Call[objc.Void](c_, objc.Sel("viewBoundsChanged:"), notification)
 }
 
-// Handles an NSViewFrameDidChangeNotification, passed in the aNotification argument, by updating a containing NSScrollView based on the new frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1526364-viewframechanged?language=objc
-func (c_ ClipView) ViewFrameChanged(notification foundation.INotification) {
-	objc.Call[objc.Void](c_, objc.Sel("viewFrameChanged:"), notification)
-}
-
 // Changes the origin of the clip view’s bounds rectangle to newOrigin. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1528826-scrolltopoint?language=objc
@@ -115,6 +108,13 @@ func (c_ ClipView) ConstrainBoundsRect(proposedBounds foundation.Rect) foundatio
 	return rv
 }
 
+// Handles an NSViewFrameDidChangeNotification, passed in the aNotification argument, by updating a containing NSScrollView based on the new frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1526364-viewframechanged?language=objc
+func (c_ ClipView) ViewFrameChanged(notification foundation.INotification) {
+	objc.Call[objc.Void](c_, objc.Sel("viewFrameChanged:"), notification)
+}
+
 // The cursor object used when the pointer lies over the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1535377-documentcursor?language=objc
@@ -128,67 +128,6 @@ func (c_ ClipView) DocumentCursor() Cursor {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1535377-documentcursor?language=objc
 func (c_ ClipView) SetDocumentCursor(value ICursor) {
 	objc.Call[objc.Void](c_, objc.Sel("setDocumentCursor:"), value)
-}
-
-// The clip view’s document view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1524587-documentview?language=objc
-func (c_ ClipView) DocumentView() View {
-	rv := objc.Call[View](c_, objc.Sel("documentView"))
-	return rv
-}
-
-// The clip view’s document view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1524587-documentview?language=objc
-func (c_ ClipView) SetDocumentView(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setDocumentView:"), value)
-}
-
-// The exposed rectangle of the clip view’s document view, in the document view’s own coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527958-documentvisiblerect?language=objc
-func (c_ ClipView) DocumentVisibleRect() foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("documentVisibleRect"))
-	return rv
-}
-
-// A Boolean value that indicates if the clip view draws its background color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1534684-drawsbackground?language=objc
-func (c_ ClipView) DrawsBackground() bool {
-	rv := objc.Call[bool](c_, objc.Sel("drawsBackground"))
-	return rv
-}
-
-// A Boolean value that indicates if the clip view draws its background color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1534684-drawsbackground?language=objc
-func (c_ ClipView) SetDrawsBackground(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setDrawsBackground:"), value)
-}
-
-// The rectangle defining the document view’s frame, adjusted to the size of the clip view if the document view is smaller. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1533338-documentrect?language=objc
-func (c_ ClipView) DocumentRect() foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("documentRect"))
-	return rv
-}
-
-// A Boolean value that indicates if the clip view automatically accounts for other scroll view subviews. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527540-automaticallyadjustscontentinset?language=objc
-func (c_ ClipView) AutomaticallyAdjustsContentInsets() bool {
-	rv := objc.Call[bool](c_, objc.Sel("automaticallyAdjustsContentInsets"))
-	return rv
-}
-
-// A Boolean value that indicates if the clip view automatically accounts for other scroll view subviews. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527540-automaticallyadjustscontentinset?language=objc
-func (c_ ClipView) SetAutomaticallyAdjustsContentInsets(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setAutomaticallyAdjustsContentInsets:"), value)
 }
 
 // The distance that the content view is inset from the enclosing scroll view. [Full Topic]
@@ -219,4 +158,65 @@ func (c_ ClipView) BackgroundColor() Color {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1525469-backgroundcolor?language=objc
 func (c_ ClipView) SetBackgroundColor(value IColor) {
 	objc.Call[objc.Void](c_, objc.Sel("setBackgroundColor:"), value)
+}
+
+// A Boolean value that indicates if the clip view draws its background color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1534684-drawsbackground?language=objc
+func (c_ ClipView) DrawsBackground() bool {
+	rv := objc.Call[bool](c_, objc.Sel("drawsBackground"))
+	return rv
+}
+
+// A Boolean value that indicates if the clip view draws its background color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1534684-drawsbackground?language=objc
+func (c_ ClipView) SetDrawsBackground(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setDrawsBackground:"), value)
+}
+
+// The exposed rectangle of the clip view’s document view, in the document view’s own coordinate system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527958-documentvisiblerect?language=objc
+func (c_ ClipView) DocumentVisibleRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](c_, objc.Sel("documentVisibleRect"))
+	return rv
+}
+
+// The rectangle defining the document view’s frame, adjusted to the size of the clip view if the document view is smaller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1533338-documentrect?language=objc
+func (c_ ClipView) DocumentRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](c_, objc.Sel("documentRect"))
+	return rv
+}
+
+// The clip view’s document view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1524587-documentview?language=objc
+func (c_ ClipView) DocumentView() View {
+	rv := objc.Call[View](c_, objc.Sel("documentView"))
+	return rv
+}
+
+// The clip view’s document view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1524587-documentview?language=objc
+func (c_ ClipView) SetDocumentView(value IView) {
+	objc.Call[objc.Void](c_, objc.Sel("setDocumentView:"), value)
+}
+
+// A Boolean value that indicates if the clip view automatically accounts for other scroll view subviews. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527540-automaticallyadjustscontentinset?language=objc
+func (c_ ClipView) AutomaticallyAdjustsContentInsets() bool {
+	rv := objc.Call[bool](c_, objc.Sel("automaticallyAdjustsContentInsets"))
+	return rv
+}
+
+// A Boolean value that indicates if the clip view automatically accounts for other scroll view subviews. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1527540-automaticallyadjustscontentinset?language=objc
+func (c_ ClipView) SetAutomaticallyAdjustsContentInsets(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setAutomaticallyAdjustsContentInsets:"), value)
 }

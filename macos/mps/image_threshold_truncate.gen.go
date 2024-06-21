@@ -19,8 +19,8 @@ type _ImageThresholdTruncateClass struct {
 // An interface definition for the [ImageThresholdTruncate] class.
 type IImageThresholdTruncate interface {
 	IUnaryImageKernel
-	ThresholdValue() float32
 	Transform() *float32
+	ThresholdValue() float32
 }
 
 // A filter that clamps the return value to an upper specified value. [Full Topic]
@@ -101,18 +101,18 @@ func ImageThresholdTruncate_CopyWithZoneDevice(zone unsafe.Pointer, device metal
 	return instance
 }
 
-// The threshold value used to initialize the threshold filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618882-thresholdvalue?language=objc
-func (i_ ImageThresholdTruncate) ThresholdValue() float32 {
-	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
-	return rv
-}
-
 // The color transform used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618787-transform?language=objc
 func (i_ ImageThresholdTruncate) Transform() *float32 {
 	rv := objc.Call[*float32](i_, objc.Sel("transform"))
+	return rv
+}
+
+// The threshold value used to initialize the threshold filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618882-thresholdvalue?language=objc
+func (i_ ImageThresholdTruncate) ThresholdValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
 	return rv
 }

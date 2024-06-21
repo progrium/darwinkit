@@ -20,11 +20,11 @@ type _NetworkHostClass struct {
 type INetworkHost interface {
 	objc.IObject
 	HasSameAddressAs(other INetworkHost) bool
+	Name() string
 	NetServiceName() string
 	Address() string
-	Port() uint
 	NetServiceDomain() string
-	Name() string
+	Port() uint
 }
 
 // An object that represents the host’s network address. [Full Topic]
@@ -50,30 +50,6 @@ func (nc _NetworkHostClass) HostWithNameNetService(name string, netService found
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619371-hostwithname?language=objc
 func NetworkHost_HostWithNameNetService(name string, netService foundation.INetService) NetworkHost {
 	return NetworkHostClass.HostWithNameNetService(name, netService)
-}
-
-func (nc _NetworkHostClass) HostWithNameNetServiceNameNetServiceDomain(name string, netServiceName string, netServiceDomain string) NetworkHost {
-	rv := objc.Call[NetworkHost](nc, objc.Sel("hostWithName:netServiceName:netServiceDomain:"), name, netServiceName, netServiceDomain)
-	return rv
-}
-
-// Creates a host with the specified name, net service name, and domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619338-hostwithname?language=objc
-func NetworkHost_HostWithNameNetServiceNameNetServiceDomain(name string, netServiceName string, netServiceDomain string) NetworkHost {
-	return NetworkHostClass.HostWithNameNetServiceNameNetServiceDomain(name, netServiceName, netServiceDomain)
-}
-
-func (nc _NetworkHostClass) HostWithNameAddressPort(name string, address string, port uint) NetworkHost {
-	rv := objc.Call[NetworkHost](nc, objc.Sel("hostWithName:address:port:"), name, address, port)
-	return rv
-}
-
-// Creates a host with the specified name, adress, and port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619365-hostwithname?language=objc
-func NetworkHost_HostWithNameAddressPort(name string, address string, port uint) NetworkHost {
-	return NetworkHostClass.HostWithNameAddressPort(name, address, port)
 }
 
 func (nc _NetworkHostClass) Alloc() NetworkHost {
@@ -104,6 +80,14 @@ func (n_ NetworkHost) HasSameAddressAs(other INetworkHost) bool {
 	return rv
 }
 
+// The host name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619339-name?language=objc
+func (n_ NetworkHost) Name() string {
+	rv := objc.Call[string](n_, objc.Sel("name"))
+	return rv
+}
+
 // The net service name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619362-netservicename?language=objc
@@ -120,14 +104,6 @@ func (n_ NetworkHost) Address() string {
 	return rv
 }
 
-// The host port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619333-port?language=objc
-func (n_ NetworkHost) Port() uint {
-	rv := objc.Call[uint](n_, objc.Sel("port"))
-	return rv
-}
-
 // The net service domain. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619344-netservicedomain?language=objc
@@ -136,10 +112,10 @@ func (n_ NetworkHost) NetServiceDomain() string {
 	return rv
 }
 
-// The host name. [Full Topic]
+// The host port. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619339-name?language=objc
-func (n_ NetworkHost) Name() string {
-	rv := objc.Call[string](n_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619333-port?language=objc
+func (n_ NetworkHost) Port() uint {
+	rv := objc.Call[uint](n_, objc.Sel("port"))
 	return rv
 }

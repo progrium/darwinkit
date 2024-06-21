@@ -18,10 +18,10 @@ type _FunctionConstantClass struct {
 // An interface definition for the [FunctionConstant] class.
 type IFunctionConstant interface {
 	objc.IObject
-	Type() DataType
-	Index() uint
 	Name() string
 	Required() bool
+	Type() DataType
+	Index() uint
 }
 
 // A constant used to specialize the behavior of a shader. [Full Topic]
@@ -57,22 +57,6 @@ func (f_ FunctionConstant) Init() FunctionConstant {
 	return rv
 }
 
-// The data type of the function constant. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639950-type?language=objc
-func (f_ FunctionConstant) Type() DataType {
-	rv := objc.Call[DataType](f_, objc.Sel("type"))
-	return rv
-}
-
-// The index of the function constant. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639905-index?language=objc
-func (f_ FunctionConstant) Index() uint {
-	rv := objc.Call[uint](f_, objc.Sel("index"))
-	return rv
-}
-
 // The name of the function constant. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639955-name?language=objc
@@ -86,5 +70,21 @@ func (f_ FunctionConstant) Name() string {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639988-required?language=objc
 func (f_ FunctionConstant) Required() bool {
 	rv := objc.Call[bool](f_, objc.Sel("required"))
+	return rv
+}
+
+// The data type of the function constant. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639950-type?language=objc
+func (f_ FunctionConstant) Type() DataType {
+	rv := objc.Call[DataType](f_, objc.Sel("type"))
+	return rv
+}
+
+// The index of the function constant. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstant/1639905-index?language=objc
+func (f_ FunctionConstant) Index() uint {
+	rv := objc.Call[uint](f_, objc.Sel("index"))
 	return rv
 }

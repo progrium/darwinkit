@@ -18,8 +18,8 @@ type _DistributedLockClass struct {
 // An interface definition for the [DistributedLock] class.
 type IDistributedLock interface {
 	objc.IObject
-	Unlock()
 	TryLock() bool
+	Unlock()
 	BreakLock()
 	LockDate() Date
 }
@@ -71,28 +71,6 @@ func (d_ DistributedLock) Init() DistributedLock {
 	return rv
 }
 
-// Relinquishes the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1417238-unlock?language=objc
-func (d_ DistributedLock) Unlock() {
-	objc.Call[objc.Void](d_, objc.Sel("unlock"))
-}
-
-// Attempts to acquire the receiver and immediately returns a Boolean value that indicates whether the attempt was successful. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1412293-trylock?language=objc
-func (d_ DistributedLock) TryLock() bool {
-	rv := objc.Call[bool](d_, objc.Sel("tryLock"))
-	return rv
-}
-
-// Forces the lock to be relinquished. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1413425-breaklock?language=objc
-func (d_ DistributedLock) BreakLock() {
-	objc.Call[objc.Void](d_, objc.Sel("breakLock"))
-}
-
 // Returns an NSDistributedLock object initialized to use as the locking object the file-system entry specified by a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1552203-lockwithpath?language=objc
@@ -106,6 +84,28 @@ func (dc _DistributedLockClass) LockWithPath(path string) DistributedLock {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1552203-lockwithpath?language=objc
 func DistributedLock_LockWithPath(path string) DistributedLock {
 	return DistributedLockClass.LockWithPath(path)
+}
+
+// Attempts to acquire the receiver and immediately returns a Boolean value that indicates whether the attempt was successful. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1412293-trylock?language=objc
+func (d_ DistributedLock) TryLock() bool {
+	rv := objc.Call[bool](d_, objc.Sel("tryLock"))
+	return rv
+}
+
+// Relinquishes the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1417238-unlock?language=objc
+func (d_ DistributedLock) Unlock() {
+	objc.Call[objc.Void](d_, objc.Sel("unlock"))
+}
+
+// Forces the lock to be relinquished. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1413425-breaklock?language=objc
+func (d_ DistributedLock) BreakLock() {
+	objc.Call[objc.Void](d_, objc.Sel("breakLock"))
 }
 
 // Returns the time the receiver was acquired by any of the NSDistributedLock objects using the same path. [Full Topic]

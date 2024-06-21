@@ -18,17 +18,17 @@ type _AccelerationStructureMotionTriangleGeometryDescriptorClass struct {
 // An interface definition for the [AccelerationStructureMotionTriangleGeometryDescriptor] class.
 type IAccelerationStructureMotionTriangleGeometryDescriptor interface {
 	IAccelerationStructureGeometryDescriptor
-	IndexType() IndexType
-	SetIndexType(value IndexType)
+	VertexBuffers() []MotionKeyframeData
+	SetVertexBuffers(value []IMotionKeyframeData)
+	TriangleCount() uint
+	SetTriangleCount(value uint)
 	IndexBuffer() BufferObject
 	SetIndexBuffer(value PBuffer)
 	SetIndexBufferObject(valueObject objc.IObject)
-	TriangleCount() uint
-	SetTriangleCount(value uint)
 	IndexBufferOffset() uint
 	SetIndexBufferOffset(value uint)
-	VertexBuffers() []MotionKeyframeData
-	SetVertexBuffers(value []IMotionKeyframeData)
+	IndexType() IndexType
+	SetIndexType(value IndexType)
 	VertexStride() uint
 	SetVertexStride(value uint)
 }
@@ -78,19 +78,34 @@ func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) Init() Accelerat
 	return rv
 }
 
-// The data type of indices in the index buffer. [Full Topic]
+// An array of motion keyframes, each containing triangle data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750486-indextype?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) IndexType() IndexType {
-	rv := objc.Call[IndexType](a_, objc.Sel("indexType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750488-vertexbuffers?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) VertexBuffers() []MotionKeyframeData {
+	rv := objc.Call[[]MotionKeyframeData](a_, objc.Sel("vertexBuffers"))
 	return rv
 }
 
-// The data type of indices in the index buffer. [Full Topic]
+// An array of motion keyframes, each containing triangle data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750486-indextype?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexType(value IndexType) {
-	objc.Call[objc.Void](a_, objc.Sel("setIndexType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750488-vertexbuffers?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetVertexBuffers(value []IMotionKeyframeData) {
+	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffers:"), value)
+}
+
+// The number of triangles in the buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750487-trianglecount?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) TriangleCount() uint {
+	rv := objc.Call[uint](a_, objc.Sel("triangleCount"))
+	return rv
+}
+
+// The number of triangles in the buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750487-trianglecount?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetTriangleCount(value uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setTriangleCount:"), value)
 }
 
 // A buffer that contains indices for the vertices that compose the triangle list. [Full Topic]
@@ -116,21 +131,6 @@ func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexBufferOb
 	objc.Call[objc.Void](a_, objc.Sel("setIndexBuffer:"), valueObject)
 }
 
-// The number of triangles in the buffers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750487-trianglecount?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) TriangleCount() uint {
-	rv := objc.Call[uint](a_, objc.Sel("triangleCount"))
-	return rv
-}
-
-// The number of triangles in the buffers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750487-trianglecount?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetTriangleCount(value uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setTriangleCount:"), value)
-}
-
 // The offset, in bytes, to the first index in the buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750485-indexbufferoffset?language=objc
@@ -146,19 +146,19 @@ func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexBufferOf
 	objc.Call[objc.Void](a_, objc.Sel("setIndexBufferOffset:"), value)
 }
 
-// An array of motion keyframes, each containing triangle data. [Full Topic]
+// The data type of indices in the index buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750488-vertexbuffers?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) VertexBuffers() []MotionKeyframeData {
-	rv := objc.Call[[]MotionKeyframeData](a_, objc.Sel("vertexBuffers"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750486-indextype?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) IndexType() IndexType {
+	rv := objc.Call[IndexType](a_, objc.Sel("indexType"))
 	return rv
 }
 
-// An array of motion keyframes, each containing triangle data. [Full Topic]
+// The data type of indices in the index buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750488-vertexbuffers?language=objc
-func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetVertexBuffers(value []IMotionKeyframeData) {
-	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffers:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750486-indextype?language=objc
+func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexType(value IndexType) {
+	objc.Call[objc.Void](a_, objc.Sel("setIndexType:"), value)
 }
 
 // The stride, in bytes, between vertices in each vertex buffer. [Full Topic]

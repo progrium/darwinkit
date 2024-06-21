@@ -66,18 +66,6 @@ func CNNDepthWiseConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKe
 	return CNNDepthWiseConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannels(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels)
 }
 
-func (cc _CNNDepthWiseConvolutionDescriptorClass) CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNDepthWiseConvolutionDescriptor {
-	rv := objc.Call[CNNDepthWiseConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-	return rv
-}
-
-// Creates a convolution descriptor with an optional neuron filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648876-cnnconvolutiondescriptorwithkern?language=objc
-func CNNDepthWiseConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNDepthWiseConvolutionDescriptor {
-	return CNNDepthWiseConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndepthwiseconvolutiondescriptor/2919731-channelmultiplier?language=objc

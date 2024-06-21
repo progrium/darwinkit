@@ -21,18 +21,18 @@ type IQueryOperation interface {
 	IDatabaseOperation
 	Cursor() QueryCursor
 	SetCursor(value IQueryCursor)
-	QueryCompletionBlock() func(cursor QueryCursor, operationError foundation.Error)
-	SetQueryCompletionBlock(value func(cursor QueryCursor, operationError foundation.Error))
-	RecordMatchedBlock() func(recordID RecordID, record Record, error foundation.Error)
-	SetRecordMatchedBlock(value func(recordID RecordID, record Record, error foundation.Error))
+	ZoneID() RecordZoneID
+	SetZoneID(value IRecordZoneID)
 	Query() Query
 	SetQuery(value IQuery)
+	RecordMatchedBlock() func(recordID RecordID, record Record, error foundation.Error)
+	SetRecordMatchedBlock(value func(recordID RecordID, record Record, error foundation.Error))
+	QueryCompletionBlock() func(cursor QueryCursor, operationError foundation.Error)
+	SetQueryCompletionBlock(value func(cursor QueryCursor, operationError foundation.Error))
 	ResultsLimit() uint
 	SetResultsLimit(value uint)
 	DesiredKeys() []RecordFieldKey
 	SetDesiredKeys(value []RecordFieldKey)
-	ZoneID() RecordZoneID
-	SetZoneID(value IRecordZoneID)
 }
 
 // An operation for executing queries in a database. [Full Topic]
@@ -62,11 +62,6 @@ func NewQueryOperationWithQuery(query IQuery) QueryOperation {
 	return instance
 }
 
-func (q_ QueryOperation) Init() QueryOperation {
-	rv := objc.Call[QueryOperation](q_, objc.Sel("init"))
-	return rv
-}
-
 func (q_ QueryOperation) InitWithCursor(cursor IQueryCursor) QueryOperation {
 	rv := objc.Call[QueryOperation](q_, objc.Sel("initWithCursor:"), cursor)
 	return rv
@@ -79,6 +74,11 @@ func NewQueryOperationWithCursor(cursor IQueryCursor) QueryOperation {
 	instance := QueryOperationClass.Alloc().InitWithCursor(cursor)
 	instance.Autorelease()
 	return instance
+}
+
+func (q_ QueryOperation) Init() QueryOperation {
+	rv := objc.Call[QueryOperation](q_, objc.Sel("init"))
+	return rv
 }
 
 func (qc _QueryOperationClass) Alloc() QueryOperation {
@@ -111,19 +111,34 @@ func (q_ QueryOperation) SetCursor(value IQueryCursor) {
 	objc.Call[objc.Void](q_, objc.Sel("setCursor:"), value)
 }
 
-// The block to execute after CloudKit retrieves all of the records. [Full Topic]
+// The ID of the record zone that contains the records to search. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515067-querycompletionblock?language=objc
-func (q_ QueryOperation) QueryCompletionBlock() func(cursor QueryCursor, operationError foundation.Error) {
-	rv := objc.Call[func(cursor QueryCursor, operationError foundation.Error)](q_, objc.Sel("queryCompletionBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515269-zoneid?language=objc
+func (q_ QueryOperation) ZoneID() RecordZoneID {
+	rv := objc.Call[RecordZoneID](q_, objc.Sel("zoneID"))
 	return rv
 }
 
-// The block to execute after CloudKit retrieves all of the records. [Full Topic]
+// The ID of the record zone that contains the records to search. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515067-querycompletionblock?language=objc
-func (q_ QueryOperation) SetQueryCompletionBlock(value func(cursor QueryCursor, operationError foundation.Error)) {
-	objc.Call[objc.Void](q_, objc.Sel("setQueryCompletionBlock:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515269-zoneid?language=objc
+func (q_ QueryOperation) SetZoneID(value IRecordZoneID) {
+	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), value)
+}
+
+// The query for the search. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515127-query?language=objc
+func (q_ QueryOperation) Query() Query {
+	rv := objc.Call[Query](q_, objc.Sel("query"))
+	return rv
+}
+
+// The query for the search. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515127-query?language=objc
+func (q_ QueryOperation) SetQuery(value IQuery) {
+	objc.Call[objc.Void](q_, objc.Sel("setQuery:"), value)
 }
 
 //	[Full Topic]
@@ -141,19 +156,19 @@ func (q_ QueryOperation) SetRecordMatchedBlock(value func(recordID RecordID, rec
 	objc.Call[objc.Void](q_, objc.Sel("setRecordMatchedBlock:"), value)
 }
 
-// The query for the search. [Full Topic]
+// The block to execute after CloudKit retrieves all of the records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515127-query?language=objc
-func (q_ QueryOperation) Query() Query {
-	rv := objc.Call[Query](q_, objc.Sel("query"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515067-querycompletionblock?language=objc
+func (q_ QueryOperation) QueryCompletionBlock() func(cursor QueryCursor, operationError foundation.Error) {
+	rv := objc.Call[func(cursor QueryCursor, operationError foundation.Error)](q_, objc.Sel("queryCompletionBlock"))
 	return rv
 }
 
-// The query for the search. [Full Topic]
+// The block to execute after CloudKit retrieves all of the records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515127-query?language=objc
-func (q_ QueryOperation) SetQuery(value IQuery) {
-	objc.Call[objc.Void](q_, objc.Sel("setQuery:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515067-querycompletionblock?language=objc
+func (q_ QueryOperation) SetQueryCompletionBlock(value func(cursor QueryCursor, operationError foundation.Error)) {
+	objc.Call[objc.Void](q_, objc.Sel("setQueryCompletionBlock:"), value)
 }
 
 // The maximum number of records to return at one time. [Full Topic]
@@ -184,19 +199,4 @@ func (q_ QueryOperation) DesiredKeys() []RecordFieldKey {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515268-desiredkeys?language=objc
 func (q_ QueryOperation) SetDesiredKeys(value []RecordFieldKey) {
 	objc.Call[objc.Void](q_, objc.Sel("setDesiredKeys:"), value)
-}
-
-// The ID of the record zone that contains the records to search. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515269-zoneid?language=objc
-func (q_ QueryOperation) ZoneID() RecordZoneID {
-	rv := objc.Call[RecordZoneID](q_, objc.Sel("zoneID"))
-	return rv
-}
-
-// The ID of the record zone that contains the records to search. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515269-zoneid?language=objc
-func (q_ QueryOperation) SetZoneID(value IRecordZoneID) {
-	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), value)
 }

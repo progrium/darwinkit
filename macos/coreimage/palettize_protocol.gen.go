@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize?language=objc
 type PPalettize interface {
 	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
+
+	// optional
 	SetPerceptual(value bool)
 	HasSetPerceptual() bool
 
@@ -25,14 +33,6 @@ type PPalettize interface {
 	// optional
 	PaletteImage() Image
 	HasPaletteImage() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PPalettize = (*PalettizeObject)(nil)
 // A concrete type for the [PPalettize] protocol.
 type PalettizeObject struct {
 	objc.Object
+}
+
+func (p_ PalettizeObject) HasSetInputImage() bool {
+	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228636-inputimage?language=objc
+func (p_ PalettizeObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
+}
+
+func (p_ PalettizeObject) HasInputImage() bool {
+	return p_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228636-inputimage?language=objc
+func (p_ PalettizeObject) InputImage() Image {
+	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
+	return rv
 }
 
 func (p_ PalettizeObject) HasSetPerceptual() bool {
@@ -86,28 +109,5 @@ func (p_ PalettizeObject) HasPaletteImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228637-paletteimage?language=objc
 func (p_ PalettizeObject) PaletteImage() Image {
 	rv := objc.Call[Image](p_, objc.Sel("paletteImage"))
-	return rv
-}
-
-func (p_ PalettizeObject) HasSetInputImage() bool {
-	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228636-inputimage?language=objc
-func (p_ PalettizeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
-}
-
-func (p_ PalettizeObject) HasInputImage() bool {
-	return p_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228636-inputimage?language=objc
-func (p_ PalettizeObject) InputImage() Image {
-	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
 	return rv
 }

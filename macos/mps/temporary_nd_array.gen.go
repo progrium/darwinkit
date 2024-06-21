@@ -84,21 +84,6 @@ func NewTemporaryNDArrayWithDeviceScalar(device metal.PDevice, value float64) Te
 	return instance
 }
 
-func (t_ TemporaryNDArray) InitWithDeviceDescriptor(device metal.PDevice, descriptor INDArrayDescriptor) TemporaryNDArray {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporaryNDArray](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3114049-initwithdevice?language=objc
-func NewTemporaryNDArrayWithDeviceDescriptor(device metal.PDevice, descriptor INDArrayDescriptor) TemporaryNDArray {
-	instance := TemporaryNDArrayClass.Alloc().InitWithDeviceDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporaryndarray/3114074-readcount?language=objc

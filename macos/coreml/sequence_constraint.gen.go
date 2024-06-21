@@ -19,8 +19,8 @@ type _SequenceConstraintClass struct {
 // An interface definition for the [SequenceConstraint] class.
 type ISequenceConstraint interface {
 	objc.IObject
-	CountRange() foundation.Range
 	ValueDescription() FeatureDescription
+	CountRange() foundation.Range
 }
 
 // The constraints for a sequence feature. [Full Topic]
@@ -56,18 +56,18 @@ func (s_ SequenceConstraint) Init() SequenceConstraint {
 	return rv
 }
 
-// The range of values allowed for the sequence's length. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequenceconstraint/2994319-countrange?language=objc
-func (s_ SequenceConstraint) CountRange() foundation.Range {
-	rv := objc.Call[foundation.Range](s_, objc.Sel("countRange"))
-	return rv
-}
-
 // The description that all sequence elements must match. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequenceconstraint/2962878-valuedescription?language=objc
 func (s_ SequenceConstraint) ValueDescription() FeatureDescription {
 	rv := objc.Call[FeatureDescription](s_, objc.Sel("valueDescription"))
+	return rv
+}
+
+// The range of values allowed for the sequence's length. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequenceconstraint/2994319-countrange?language=objc
+func (s_ SequenceConstraint) CountRange() foundation.Range {
+	rv := objc.Call[foundation.Range](s_, objc.Sel("countRange"))
 	return rv
 }

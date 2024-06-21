@@ -61,20 +61,6 @@ func NewCNNCrossChannelNormalizationNodeWithSource(sourceNode INNImageNode) CNNC
 	return instance
 }
 
-func (c_ CNNCrossChannelNormalizationNode) InitWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNCrossChannelNormalizationNode {
-	rv := objc.Call[CNNCrossChannelNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), sourceNode, kernelSize)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationnode/2866456-initwithsource?language=objc
-func NewCNNCrossChannelNormalizationNodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNCrossChannelNormalizationNode {
-	instance := CNNCrossChannelNormalizationNodeClass.Alloc().InitWithSourceKernelSize(sourceNode, kernelSize)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CNNCrossChannelNormalizationNodeClass) Alloc() CNNCrossChannelNormalizationNode {
 	rv := objc.Call[CNNCrossChannelNormalizationNode](cc, objc.Sel("alloc"))
 	return rv

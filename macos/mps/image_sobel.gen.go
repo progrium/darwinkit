@@ -35,21 +35,6 @@ func ImageSobelFrom(ptr unsafe.Pointer) ImageSobel {
 	}
 }
 
-func (i_ ImageSobel) InitWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float32) ImageSobel {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageSobel](i_, objc.Sel("initWithDevice:linearGrayColorTransform:"), po0, transform)
-	return rv
-}
-
-// Initializes a Sobel filter on a given device using a specific color transform. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagesobel/1618899-initwithdevice?language=objc
-func NewImageSobelWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float32) ImageSobel {
-	instance := ImageSobelClass.Alloc().InitWithDeviceLinearGrayColorTransform(device, transform)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ ImageSobel) InitWithDevice(device metal.PDevice) ImageSobel {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageSobel](i_, objc.Sel("initWithDevice:"), po0)

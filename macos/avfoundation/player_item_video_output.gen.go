@@ -22,13 +22,13 @@ type _PlayerItemVideoOutputClass struct {
 // An interface definition for the [PlayerItemVideoOutput] class.
 type IPlayerItemVideoOutput interface {
 	IPlayerItemOutput
-	CopyPixelBufferForItemTimeItemTimeForDisplay(itemTime coremedia.Time, outItemTimeForDisplay *coremedia.Time) corevideo.PixelBufferRef
-	HasNewPixelBufferForItemTime(itemTime coremedia.Time) bool
-	RequestNotificationOfMediaDataChangeWithAdvanceInterval(interval foundation.TimeInterval)
 	SetDelegateQueue(delegate PPlayerItemOutputPullDelegate, delegateQueue dispatch.Queue)
 	SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue)
-	DelegateQueue() dispatch.Queue
+	CopyPixelBufferForItemTimeItemTimeForDisplay(itemTime coremedia.Time, outItemTimeForDisplay *coremedia.Time) corevideo.PixelBufferRef
+	RequestNotificationOfMediaDataChangeWithAdvanceInterval(interval foundation.TimeInterval)
+	HasNewPixelBufferForItemTime(itemTime coremedia.Time) bool
 	Delegate() PlayerItemOutputPullDelegateObject
+	DelegateQueue() dispatch.Queue
 }
 
 // An object that outputs video frames from a player item. [Full Topic]
@@ -44,20 +44,6 @@ func PlayerItemVideoOutputFrom(ptr unsafe.Pointer) PlayerItemVideoOutput {
 	}
 }
 
-func (p_ PlayerItemVideoOutput) InitWithPixelBufferAttributes(pixelBufferAttributes map[string]objc.IObject) PlayerItemVideoOutput {
-	rv := objc.Call[PlayerItemVideoOutput](p_, objc.Sel("initWithPixelBufferAttributes:"), pixelBufferAttributes)
-	return rv
-}
-
-// Creates a video output object using the specified pixel buffer attributes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1389231-initwithpixelbufferattributes?language=objc
-func NewPlayerItemVideoOutputWithPixelBufferAttributes(pixelBufferAttributes map[string]objc.IObject) PlayerItemVideoOutput {
-	instance := PlayerItemVideoOutputClass.Alloc().InitWithPixelBufferAttributes(pixelBufferAttributes)
-	instance.Autorelease()
-	return instance
-}
-
 func (p_ PlayerItemVideoOutput) InitWithOutputSettings(outputSettings map[string]objc.IObject) PlayerItemVideoOutput {
 	rv := objc.Call[PlayerItemVideoOutput](p_, objc.Sel("initWithOutputSettings:"), outputSettings)
 	return rv
@@ -68,6 +54,20 @@ func (p_ PlayerItemVideoOutput) InitWithOutputSettings(outputSettings map[string
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1643270-initwithoutputsettings?language=objc
 func NewPlayerItemVideoOutputWithOutputSettings(outputSettings map[string]objc.IObject) PlayerItemVideoOutput {
 	instance := PlayerItemVideoOutputClass.Alloc().InitWithOutputSettings(outputSettings)
+	instance.Autorelease()
+	return instance
+}
+
+func (p_ PlayerItemVideoOutput) InitWithPixelBufferAttributes(pixelBufferAttributes map[string]objc.IObject) PlayerItemVideoOutput {
+	rv := objc.Call[PlayerItemVideoOutput](p_, objc.Sel("initWithPixelBufferAttributes:"), pixelBufferAttributes)
+	return rv
+}
+
+// Creates a video output object using the specified pixel buffer attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1389231-initwithpixelbufferattributes?language=objc
+func NewPlayerItemVideoOutputWithPixelBufferAttributes(pixelBufferAttributes map[string]objc.IObject) PlayerItemVideoOutput {
+	instance := PlayerItemVideoOutputClass.Alloc().InitWithPixelBufferAttributes(pixelBufferAttributes)
 	instance.Autorelease()
 	return instance
 }
@@ -92,29 +92,6 @@ func (p_ PlayerItemVideoOutput) Init() PlayerItemVideoOutput {
 	return rv
 }
 
-// Retrieves an image that is appropriate for display at the specified item time, and marks the image as acquired. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386148-copypixelbufferforitemtime?language=objc
-func (p_ PlayerItemVideoOutput) CopyPixelBufferForItemTimeItemTimeForDisplay(itemTime coremedia.Time, outItemTimeForDisplay *coremedia.Time) corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](p_, objc.Sel("copyPixelBufferForItemTime:itemTimeForDisplay:"), itemTime, outItemTimeForDisplay)
-	return rv
-}
-
-// Returns a Boolean value that indicates whether video output is available for the specified item time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386444-hasnewpixelbufferforitemtime?language=objc
-func (p_ PlayerItemVideoOutput) HasNewPixelBufferForItemTime(itemTime coremedia.Time) bool {
-	rv := objc.Call[bool](p_, objc.Sel("hasNewPixelBufferForItemTime:"), itemTime)
-	return rv
-}
-
-// Tells the receiver that the video out put client is entering a quiescent state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386046-requestnotificationofmediadatach?language=objc
-func (p_ PlayerItemVideoOutput) RequestNotificationOfMediaDataChangeWithAdvanceInterval(interval foundation.TimeInterval) {
-	objc.Call[objc.Void](p_, objc.Sel("requestNotificationOfMediaDataChangeWithAdvanceInterval:"), interval)
-}
-
 // Sets the delegate and dispatch queue for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386824-setdelegate?language=objc
@@ -130,11 +107,26 @@ func (p_ PlayerItemVideoOutput) SetDelegateObjectQueue(delegateObject objc.IObje
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
-// The dispatch queue on which to call delegate methods. [Full Topic]
+// Retrieves an image that is appropriate for display at the specified item time, and marks the image as acquired. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1388108-delegatequeue?language=objc
-func (p_ PlayerItemVideoOutput) DelegateQueue() dispatch.Queue {
-	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386148-copypixelbufferforitemtime?language=objc
+func (p_ PlayerItemVideoOutput) CopyPixelBufferForItemTimeItemTimeForDisplay(itemTime coremedia.Time, outItemTimeForDisplay *coremedia.Time) corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](p_, objc.Sel("copyPixelBufferForItemTime:itemTimeForDisplay:"), itemTime, outItemTimeForDisplay)
+	return rv
+}
+
+// Tells the receiver that the video out put client is entering a quiescent state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386046-requestnotificationofmediadatach?language=objc
+func (p_ PlayerItemVideoOutput) RequestNotificationOfMediaDataChangeWithAdvanceInterval(interval foundation.TimeInterval) {
+	objc.Call[objc.Void](p_, objc.Sel("requestNotificationOfMediaDataChangeWithAdvanceInterval:"), interval)
+}
+
+// Returns a Boolean value that indicates whether video output is available for the specified item time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386444-hasnewpixelbufferforitemtime?language=objc
+func (p_ PlayerItemVideoOutput) HasNewPixelBufferForItemTime(itemTime coremedia.Time) bool {
+	rv := objc.Call[bool](p_, objc.Sel("hasNewPixelBufferForItemTime:"), itemTime)
 	return rv
 }
 
@@ -143,5 +135,13 @@ func (p_ PlayerItemVideoOutput) DelegateQueue() dispatch.Queue {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1385827-delegate?language=objc
 func (p_ PlayerItemVideoOutput) Delegate() PlayerItemOutputPullDelegateObject {
 	rv := objc.Call[PlayerItemOutputPullDelegateObject](p_, objc.Sel("delegate"))
+	return rv
+}
+
+// The dispatch queue on which to call delegate methods. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1388108-delegatequeue?language=objc
+func (p_ PlayerItemVideoOutput) DelegateQueue() dispatch.Queue {
+	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
 	return rv
 }

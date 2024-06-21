@@ -18,13 +18,13 @@ type _MutableCharacterSetClass struct {
 // An interface definition for the [MutableCharacterSet] class.
 type IMutableCharacterSet interface {
 	ICharacterSet
-	RemoveCharactersInRange(aRange Range)
 	AddCharactersInRange(aRange Range)
-	AddCharactersInString(aString string)
-	RemoveCharactersInString(aString string)
 	Invert()
 	FormUnionWithCharacterSet(otherSet ICharacterSet)
+	AddCharactersInString(aString string)
+	RemoveCharactersInString(aString string)
 	FormIntersectionWithCharacterSet(otherSet ICharacterSet)
+	RemoveCharactersInRange(aRange Range)
 }
 
 // An object representing a mutable set of Unicode character values for use in search operations. [Full Topic]
@@ -60,32 +60,11 @@ func (m_ MutableCharacterSet) Init() MutableCharacterSet {
 	return rv
 }
 
-// Removes from the receiver the characters whose Unicode values are in a given range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1416987-removecharactersinrange?language=objc
-func (m_ MutableCharacterSet) RemoveCharactersInRange(aRange Range) {
-	objc.Call[objc.Void](m_, objc.Sel("removeCharactersInRange:"), aRange)
-}
-
 // Adds to the receiver the characters whose Unicode values are in a given range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1412225-addcharactersinrange?language=objc
 func (m_ MutableCharacterSet) AddCharactersInRange(aRange Range) {
 	objc.Call[objc.Void](m_, objc.Sel("addCharactersInRange:"), aRange)
-}
-
-// Adds to the receiver the characters in a given string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1413999-addcharactersinstring?language=objc
-func (m_ MutableCharacterSet) AddCharactersInString(aString string) {
-	objc.Call[objc.Void](m_, objc.Sel("addCharactersInString:"), aString)
-}
-
-// Removes from the receiver the characters in a given string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1414812-removecharactersinstring?language=objc
-func (m_ MutableCharacterSet) RemoveCharactersInString(aString string) {
-	objc.Call[objc.Void](m_, objc.Sel("removeCharactersInString:"), aString)
 }
 
 // Replaces all the characters in the receiver with all the characters it didn’t previously contain. [Full Topic]
@@ -102,9 +81,30 @@ func (m_ MutableCharacterSet) FormUnionWithCharacterSet(otherSet ICharacterSet) 
 	objc.Call[objc.Void](m_, objc.Sel("formUnionWithCharacterSet:"), otherSet)
 }
 
+// Adds to the receiver the characters in a given string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1413999-addcharactersinstring?language=objc
+func (m_ MutableCharacterSet) AddCharactersInString(aString string) {
+	objc.Call[objc.Void](m_, objc.Sel("addCharactersInString:"), aString)
+}
+
+// Removes from the receiver the characters in a given string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1414812-removecharactersinstring?language=objc
+func (m_ MutableCharacterSet) RemoveCharactersInString(aString string) {
+	objc.Call[objc.Void](m_, objc.Sel("removeCharactersInString:"), aString)
+}
+
 // Modifies the receiver so it contains only characters that exist in both the receiver and another set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1412512-formintersectionwithcharacterset?language=objc
 func (m_ MutableCharacterSet) FormIntersectionWithCharacterSet(otherSet ICharacterSet) {
 	objc.Call[objc.Void](m_, objc.Sel("formIntersectionWithCharacterSet:"), otherSet)
+}
+
+// Removes from the receiver the characters whose Unicode values are in a given range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1416987-removecharactersinrange?language=objc
+func (m_ MutableCharacterSet) RemoveCharactersInRange(aRange Range) {
+	objc.Call[objc.Void](m_, objc.Sel("removeCharactersInRange:"), aRange)
 }

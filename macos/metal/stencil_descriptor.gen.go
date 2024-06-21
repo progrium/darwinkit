@@ -24,10 +24,10 @@ type IStencilDescriptor interface {
 	SetDepthFailureOperation(value StencilOperation)
 	WriteMask() uint32
 	SetWriteMask(value uint32)
-	StencilCompareFunction() CompareFunction
-	SetStencilCompareFunction(value CompareFunction)
 	ReadMask() uint32
 	SetReadMask(value uint32)
+	StencilCompareFunction() CompareFunction
+	SetStencilCompareFunction(value CompareFunction)
 	DepthStencilPassOperation() StencilOperation
 	SetDepthStencilPassOperation(value StencilOperation)
 }
@@ -110,21 +110,6 @@ func (s_ StencilDescriptor) SetWriteMask(value uint32) {
 	objc.Call[objc.Void](s_, objc.Sel("setWriteMask:"), value)
 }
 
-// The comparison that is performed between the masked reference value and a masked value in the stencil attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462455-stencilcomparefunction?language=objc
-func (s_ StencilDescriptor) StencilCompareFunction() CompareFunction {
-	rv := objc.Call[CompareFunction](s_, objc.Sel("stencilCompareFunction"))
-	return rv
-}
-
-// The comparison that is performed between the masked reference value and a masked value in the stencil attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462455-stencilcomparefunction?language=objc
-func (s_ StencilDescriptor) SetStencilCompareFunction(value CompareFunction) {
-	objc.Call[objc.Void](s_, objc.Sel("setStencilCompareFunction:"), value)
-}
-
 // A bitmask that determines from which bits that stencil comparison tests can read. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462465-readmask?language=objc
@@ -138,6 +123,21 @@ func (s_ StencilDescriptor) ReadMask() uint32 {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462465-readmask?language=objc
 func (s_ StencilDescriptor) SetReadMask(value uint32) {
 	objc.Call[objc.Void](s_, objc.Sel("setReadMask:"), value)
+}
+
+// The comparison that is performed between the masked reference value and a masked value in the stencil attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462455-stencilcomparefunction?language=objc
+func (s_ StencilDescriptor) StencilCompareFunction() CompareFunction {
+	rv := objc.Call[CompareFunction](s_, objc.Sel("stencilCompareFunction"))
+	return rv
+}
+
+// The comparison that is performed between the masked reference value and a masked value in the stencil attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlstencildescriptor/1462455-stencilcomparefunction?language=objc
+func (s_ StencilDescriptor) SetStencilCompareFunction(value CompareFunction) {
+	objc.Call[objc.Void](s_, objc.Sel("setStencilCompareFunction:"), value)
 }
 
 // The operation that is performed to update the values in the stencil attachment when both the stencil test and the depth test pass. [Full Topic]

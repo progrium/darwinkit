@@ -18,16 +18,16 @@ type _CNNSpatialNormalizationGradientNodeClass struct {
 // An interface definition for the [CNNSpatialNormalizationGradientNode] class.
 type ICNNSpatialNormalizationGradientNode interface {
 	INNGradientFilterNode
-	KernelWidth() uint
-	SetKernelWidth(value uint)
-	KernelHeight() uint
-	SetKernelHeight(value uint)
 	Beta() float32
 	SetBeta(value float32)
-	Alpha() float32
-	SetAlpha(value float32)
 	Delta() float32
 	SetDelta(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
+	KernelHeight() uint
+	SetKernelHeight(value uint)
+	KernelWidth() uint
+	SetKernelWidth(value uint)
 }
 
 // A representation of a gradient spatial normalization kernel. [Full Topic]
@@ -91,36 +91,6 @@ func (c_ CNNSpatialNormalizationGradientNode) Init() CNNSpatialNormalizationGrad
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948013-kernelwidth?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) KernelWidth() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948013-kernelwidth?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetKernelWidth(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948020-kernelheight?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) KernelHeight() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948020-kernelheight?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetKernelHeight(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948006-beta?language=objc
 func (c_ CNNSpatialNormalizationGradientNode) Beta() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("beta"))
@@ -132,6 +102,21 @@ func (c_ CNNSpatialNormalizationGradientNode) Beta() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948006-beta?language=objc
 func (c_ CNNSpatialNormalizationGradientNode) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) SetDelta(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }
 
 //	[Full Topic]
@@ -151,15 +136,30 @@ func (c_ CNNSpatialNormalizationGradientNode) SetAlpha(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) Delta() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("delta"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948020-kernelheight?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) KernelHeight() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetDelta(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948020-kernelheight?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) SetKernelHeight(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948013-kernelwidth?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) KernelWidth() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948013-kernelwidth?language=objc
+func (c_ CNNSpatialNormalizationGradientNode) SetKernelWidth(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
 }

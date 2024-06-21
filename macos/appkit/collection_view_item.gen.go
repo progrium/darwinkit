@@ -19,16 +19,16 @@ type _CollectionViewItemClass struct {
 // An interface definition for the [CollectionViewItem] class.
 type ICollectionViewItem interface {
 	IViewController
-	TextField() TextField
-	SetTextField(value ITextField)
-	IsSelected() bool
-	SetSelected(value bool)
-	ImageView() ImageView
-	SetImageView(value IImageView)
 	HighlightState() CollectionViewItemHighlightState
 	SetHighlightState(value CollectionViewItemHighlightState)
+	IsSelected() bool
+	SetSelected(value bool)
+	TextField() TextField
+	SetTextField(value ITextField)
 	CollectionView() CollectionView
 	DraggingImageComponents() []DraggingImageComponent
+	ImageView() ImageView
+	SetImageView(value IImageView)
 }
 
 // The visual representation for a single data element in a collection view. [Full Topic]
@@ -78,19 +78,19 @@ func NewCollectionViewItemWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil
 	return instance
 }
 
-// A text field outlet that you can use to display a string. [Full Topic]
+// The highlight state currently applied to the item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527126-textfield?language=objc
-func (c_ CollectionViewItem) TextField() TextField {
-	rv := objc.Call[TextField](c_, objc.Sel("textField"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527689-highlightstate?language=objc
+func (c_ CollectionViewItem) HighlightState() CollectionViewItemHighlightState {
+	rv := objc.Call[CollectionViewItemHighlightState](c_, objc.Sel("highlightState"))
 	return rv
 }
 
-// A text field outlet that you can use to display a string. [Full Topic]
+// The highlight state currently applied to the item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527126-textfield?language=objc
-func (c_ CollectionViewItem) SetTextField(value ITextField) {
-	objc.Call[objc.Void](c_, objc.Sel("setTextField:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527689-highlightstate?language=objc
+func (c_ CollectionViewItem) SetHighlightState(value CollectionViewItemHighlightState) {
+	objc.Call[objc.Void](c_, objc.Sel("setHighlightState:"), value)
 }
 
 // A Boolean indicating whether the item is currently selected. [Full Topic]
@@ -108,34 +108,19 @@ func (c_ CollectionViewItem) SetSelected(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setSelected:"), value)
 }
 
-// An image view outlet that you can use to display images. [Full Topic]
+// A text field outlet that you can use to display a string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1525366-imageview?language=objc
-func (c_ CollectionViewItem) ImageView() ImageView {
-	rv := objc.Call[ImageView](c_, objc.Sel("imageView"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527126-textfield?language=objc
+func (c_ CollectionViewItem) TextField() TextField {
+	rv := objc.Call[TextField](c_, objc.Sel("textField"))
 	return rv
 }
 
-// An image view outlet that you can use to display images. [Full Topic]
+// A text field outlet that you can use to display a string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1525366-imageview?language=objc
-func (c_ CollectionViewItem) SetImageView(value IImageView) {
-	objc.Call[objc.Void](c_, objc.Sel("setImageView:"), value)
-}
-
-// The highlight state currently applied to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527689-highlightstate?language=objc
-func (c_ CollectionViewItem) HighlightState() CollectionViewItemHighlightState {
-	rv := objc.Call[CollectionViewItemHighlightState](c_, objc.Sel("highlightState"))
-	return rv
-}
-
-// The highlight state currently applied to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527689-highlightstate?language=objc
-func (c_ CollectionViewItem) SetHighlightState(value CollectionViewItemHighlightState) {
-	objc.Call[objc.Void](c_, objc.Sel("setHighlightState:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527126-textfield?language=objc
+func (c_ CollectionViewItem) SetTextField(value ITextField) {
+	objc.Call[objc.Void](c_, objc.Sel("setTextField:"), value)
 }
 
 // The collection view that owns the item. [Full Topic]
@@ -152,4 +137,19 @@ func (c_ CollectionViewItem) CollectionView() CollectionView {
 func (c_ CollectionViewItem) DraggingImageComponents() []DraggingImageComponent {
 	rv := objc.Call[[]DraggingImageComponent](c_, objc.Sel("draggingImageComponents"))
 	return rv
+}
+
+// An image view outlet that you can use to display images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1525366-imageview?language=objc
+func (c_ CollectionViewItem) ImageView() ImageView {
+	rv := objc.Call[ImageView](c_, objc.Sel("imageView"))
+	return rv
+}
+
+// An image view outlet that you can use to display images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1525366-imageview?language=objc
+func (c_ CollectionViewItem) SetImageView(value IImageView) {
+	objc.Call[objc.Void](c_, objc.Sel("setImageView:"), value)
 }

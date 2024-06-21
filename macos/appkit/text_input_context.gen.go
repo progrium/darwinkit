@@ -18,19 +18,19 @@ type _TextInputContextClass struct {
 // An interface definition for the [TextInputContext] class.
 type ITextInputContext interface {
 	objc.IObject
-	HandleEvent(event IEvent) bool
 	Activate()
+	DiscardMarkedText()
+	HandleEvent(event IEvent) bool
 	Deactivate()
 	InvalidateCharacterCoordinates()
-	DiscardMarkedText()
-	Client() TextInputClientObject
+	KeyboardInputSources() []TextInputSourceIdentifier
 	AllowedInputSourceLocales() []string
 	SetAllowedInputSourceLocales(value []string)
-	SelectedKeyboardInputSource() TextInputSourceIdentifier
-	SetSelectedKeyboardInputSource(value TextInputSourceIdentifier)
 	AcceptsGlyphInfo() bool
 	SetAcceptsGlyphInfo(value bool)
-	KeyboardInputSources() []TextInputSourceIdentifier
+	SelectedKeyboardInputSource() TextInputSourceIdentifier
+	SetSelectedKeyboardInputSource(value TextInputSourceIdentifier)
+	Client() TextInputClientObject
 }
 
 // An object that represents the Cocoa text input system. [Full Topic]
@@ -81,19 +81,26 @@ func (t_ TextInputContext) Init() TextInputContext {
 	return rv
 }
 
+// Activates the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534378-activate?language=objc
+func (t_ TextInputContext) Activate() {
+	objc.Call[objc.Void](t_, objc.Sel("activate"))
+}
+
+// Tells the Cocoa text input system to discard the current conversion session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1528752-discardmarkedtext?language=objc
+func (t_ TextInputContext) DiscardMarkedText() {
+	objc.Call[objc.Void](t_, objc.Sel("discardMarkedText"))
+}
+
 // Tells the Cocoa text input system to handle mouse or key events. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1528602-handleevent?language=objc
 func (t_ TextInputContext) HandleEvent(event IEvent) bool {
 	rv := objc.Call[bool](t_, objc.Sel("handleEvent:"), event)
 	return rv
-}
-
-// Activates the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534378-activate?language=objc
-func (t_ TextInputContext) Activate() {
-	objc.Call[objc.Void](t_, objc.Sel("activate"))
 }
 
 // Returns the display name for the given text input source identifier. [Full Topic]
@@ -125,11 +132,57 @@ func (t_ TextInputContext) InvalidateCharacterCoordinates() {
 	objc.Call[objc.Void](t_, objc.Sel("invalidateCharacterCoordinates"))
 }
 
-// Tells the Cocoa text input system to discard the current conversion session. [Full Topic]
+// The array of keyboard text input source identifier strings available to the receiver. (read-only) [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1528752-discardmarkedtext?language=objc
-func (t_ TextInputContext) DiscardMarkedText() {
-	objc.Call[objc.Void](t_, objc.Sel("discardMarkedText"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1529156-keyboardinputsources?language=objc
+func (t_ TextInputContext) KeyboardInputSources() []TextInputSourceIdentifier {
+	rv := objc.Call[[]TextInputSourceIdentifier](t_, objc.Sel("keyboardInputSources"))
+	return rv
+}
+
+// The set of keyboard input source locales allowed when this input context is active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1532284-allowedinputsourcelocales?language=objc
+func (t_ TextInputContext) AllowedInputSourceLocales() []string {
+	rv := objc.Call[[]string](t_, objc.Sel("allowedInputSourceLocales"))
+	return rv
+}
+
+// The set of keyboard input source locales allowed when this input context is active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1532284-allowedinputsourcelocales?language=objc
+func (t_ TextInputContext) SetAllowedInputSourceLocales(value []string) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowedInputSourceLocales:"), value)
+}
+
+// A Boolean value that indicates whether the client handles NSGlyphInfoAttributeName or not. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534420-acceptsglyphinfo?language=objc
+func (t_ TextInputContext) AcceptsGlyphInfo() bool {
+	rv := objc.Call[bool](t_, objc.Sel("acceptsGlyphInfo"))
+	return rv
+}
+
+// A Boolean value that indicates whether the client handles NSGlyphInfoAttributeName or not. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534420-acceptsglyphinfo?language=objc
+func (t_ TextInputContext) SetAcceptsGlyphInfo(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAcceptsGlyphInfo:"), value)
+}
+
+// The identifier string for the selected keyboard text input source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1533970-selectedkeyboardinputsource?language=objc
+func (t_ TextInputContext) SelectedKeyboardInputSource() TextInputSourceIdentifier {
+	rv := objc.Call[TextInputSourceIdentifier](t_, objc.Sel("selectedKeyboardInputSource"))
+	return rv
+}
+
+// The identifier string for the selected keyboard text input source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1533970-selectedkeyboardinputsource?language=objc
+func (t_ TextInputContext) SetSelectedKeyboardInputSource(value TextInputSourceIdentifier) {
+	objc.Call[objc.Void](t_, objc.Sel("setSelectedKeyboardInputSource:"), value)
 }
 
 // Returns the current, activated, text input context object. [Full Topic]
@@ -152,58 +205,5 @@ func TextInputContext_CurrentInputContext() TextInputContext {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1533583-client?language=objc
 func (t_ TextInputContext) Client() TextInputClientObject {
 	rv := objc.Call[TextInputClientObject](t_, objc.Sel("client"))
-	return rv
-}
-
-// The set of keyboard input source locales allowed when this input context is active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1532284-allowedinputsourcelocales?language=objc
-func (t_ TextInputContext) AllowedInputSourceLocales() []string {
-	rv := objc.Call[[]string](t_, objc.Sel("allowedInputSourceLocales"))
-	return rv
-}
-
-// The set of keyboard input source locales allowed when this input context is active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1532284-allowedinputsourcelocales?language=objc
-func (t_ TextInputContext) SetAllowedInputSourceLocales(value []string) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowedInputSourceLocales:"), value)
-}
-
-// The identifier string for the selected keyboard text input source. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1533970-selectedkeyboardinputsource?language=objc
-func (t_ TextInputContext) SelectedKeyboardInputSource() TextInputSourceIdentifier {
-	rv := objc.Call[TextInputSourceIdentifier](t_, objc.Sel("selectedKeyboardInputSource"))
-	return rv
-}
-
-// The identifier string for the selected keyboard text input source. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1533970-selectedkeyboardinputsource?language=objc
-func (t_ TextInputContext) SetSelectedKeyboardInputSource(value TextInputSourceIdentifier) {
-	objc.Call[objc.Void](t_, objc.Sel("setSelectedKeyboardInputSource:"), value)
-}
-
-// A Boolean value that indicates whether the client handles NSGlyphInfoAttributeName or not. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534420-acceptsglyphinfo?language=objc
-func (t_ TextInputContext) AcceptsGlyphInfo() bool {
-	rv := objc.Call[bool](t_, objc.Sel("acceptsGlyphInfo"))
-	return rv
-}
-
-// A Boolean value that indicates whether the client handles NSGlyphInfoAttributeName or not. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1534420-acceptsglyphinfo?language=objc
-func (t_ TextInputContext) SetAcceptsGlyphInfo(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAcceptsGlyphInfo:"), value)
-}
-
-// The array of keyboard text input source identifier strings available to the receiver. (read-only) [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1529156-keyboardinputsources?language=objc
-func (t_ TextInputContext) KeyboardInputSources() []TextInputSourceIdentifier {
-	rv := objc.Call[[]TextInputSourceIdentifier](t_, objc.Sel("keyboardInputSources"))
 	return rv
 }

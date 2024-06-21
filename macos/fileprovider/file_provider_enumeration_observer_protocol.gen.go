@@ -12,16 +12,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerationobserver?language=objc
 type PFileProviderEnumerationObserver interface {
 	// optional
+	FinishEnumeratingWithError(error foundation.Error)
+	HasFinishEnumeratingWithError() bool
+
+	// optional
 	DidEnumerateItems(updatedItems []objc.Object)
 	HasDidEnumerateItems() bool
 
 	// optional
 	FinishEnumeratingUpToPage(nextPage FileProviderPage)
 	HasFinishEnumeratingUpToPage() bool
-
-	// optional
-	FinishEnumeratingWithError(error foundation.Error)
-	HasFinishEnumeratingWithError() bool
 
 	// optional
 	SuggestedPageSize() int
@@ -34,6 +34,17 @@ var _ PFileProviderEnumerationObserver = (*FileProviderEnumerationObserverObject
 // A concrete type for the [PFileProviderEnumerationObserver] protocol.
 type FileProviderEnumerationObserverObject struct {
 	objc.Object
+}
+
+func (f_ FileProviderEnumerationObserverObject) HasFinishEnumeratingWithError() bool {
+	return f_.RespondsToSelector(objc.Sel("finishEnumeratingWithError:"))
+}
+
+// Tells the observer that an error occurred during item enumeration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerationobserver/2879612-finishenumeratingwitherror?language=objc
+func (f_ FileProviderEnumerationObserverObject) FinishEnumeratingWithError(error foundation.Error) {
+	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
 }
 
 func (f_ FileProviderEnumerationObserverObject) HasDidEnumerateItems() bool {
@@ -56,17 +67,6 @@ func (f_ FileProviderEnumerationObserverObject) HasFinishEnumeratingUpToPage() b
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerationobserver/2879602-finishenumeratinguptopage?language=objc
 func (f_ FileProviderEnumerationObserverObject) FinishEnumeratingUpToPage(nextPage FileProviderPage) {
 	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingUpToPage:"), nextPage)
-}
-
-func (f_ FileProviderEnumerationObserverObject) HasFinishEnumeratingWithError() bool {
-	return f_.RespondsToSelector(objc.Sel("finishEnumeratingWithError:"))
-}
-
-// Tells the observer that an error occurred during item enumeration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerationobserver/2879612-finishenumeratingwitherror?language=objc
-func (f_ FileProviderEnumerationObserverObject) FinishEnumeratingWithError(error foundation.Error) {
-	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
 }
 
 func (f_ FileProviderEnumerationObserverObject) HasSuggestedPageSize() bool {

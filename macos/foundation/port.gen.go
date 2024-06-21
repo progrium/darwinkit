@@ -18,13 +18,12 @@ type _PortClass struct {
 // An interface definition for the [Port] class.
 type IPort interface {
 	objc.IObject
-	Delegate() PortDelegateObject
-	SetDelegate(anObject PPortDelegate)
-	SetDelegateObject(anObjectObject objc.IObject)
 	ScheduleInRunLoopForMode(runLoop IRunLoop, mode RunLoopMode)
 	RemoveFromRunLoopForMode(runLoop IRunLoop, mode RunLoopMode)
+	SetDelegate(anObject PPortDelegate)
+	SetDelegateObject(anObjectObject objc.IObject)
 	SendBeforeDateComponentsFromReserved(limitDate IDate, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool
-	SendBeforeDateMsgidComponentsFromReserved(limitDate IDate, msgID uint, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool
+	Delegate() PortDelegateObject
 	Invalidate()
 	IsValid() bool
 	ReservedSpaceLength() uint
@@ -63,12 +62,18 @@ func (p_ Port) Init() Port {
 	return rv
 }
 
-// Returns the receiver’s delegate. [Full Topic]
+// This method should be implemented by a subclass to set up monitoring of a port when added to a given run loop in a given input mode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399545-delegate?language=objc
-func (p_ Port) Delegate() PortDelegateObject {
-	rv := objc.Call[PortDelegateObject](p_, objc.Sel("delegate"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399517-scheduleinrunloop?language=objc
+func (p_ Port) ScheduleInRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
+	objc.Call[objc.Void](p_, objc.Sel("scheduleInRunLoop:forMode:"), runLoop, mode)
+}
+
+// This method should be implemented by a subclass to stop monitoring of a port when removed from a give run loop in a given input mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399525-removefromrunloop?language=objc
+func (p_ Port) RemoveFromRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
+	objc.Call[objc.Void](p_, objc.Sel("removeFromRunLoop:forMode:"), runLoop, mode)
 }
 
 // Sets the receiver’s delegate to a given object. [Full Topic]
@@ -86,20 +91,6 @@ func (p_ Port) SetDelegateObject(anObjectObject objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), anObjectObject)
 }
 
-// This method should be implemented by a subclass to set up monitoring of a port when added to a given run loop in a given input mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399517-scheduleinrunloop?language=objc
-func (p_ Port) ScheduleInRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](p_, objc.Sel("scheduleInRunLoop:forMode:"), runLoop, mode)
-}
-
-// This method should be implemented by a subclass to stop monitoring of a port when removed from a give run loop in a given input mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399525-removefromrunloop?language=objc
-func (p_ Port) RemoveFromRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](p_, objc.Sel("removeFromRunLoop:forMode:"), runLoop, mode)
-}
-
 // This method is provided for subclasses that have custom types of NSPort. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399537-sendbeforedate?language=objc
@@ -108,11 +99,11 @@ func (p_ Port) SendBeforeDateComponentsFromReserved(limitDate IDate, components 
 	return rv
 }
 
-// This method is provided for subclasses that have custom types of NSPort. [Full Topic]
+// Returns the receiver’s delegate. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399482-sendbeforedate?language=objc
-func (p_ Port) SendBeforeDateMsgidComponentsFromReserved(limitDate IDate, msgID uint, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool {
-	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:msgid:components:from:reserved:"), limitDate, msgID, components, receivePort, headerSpaceReserved)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399545-delegate?language=objc
+func (p_ Port) Delegate() PortDelegateObject {
+	rv := objc.Call[PortDelegateObject](p_, objc.Sel("delegate"))
 	return rv
 }
 

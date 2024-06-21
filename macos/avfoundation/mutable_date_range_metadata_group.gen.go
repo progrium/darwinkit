@@ -20,8 +20,8 @@ type _MutableDateRangeMetadataGroupClass struct {
 type IMutableDateRangeMetadataGroup interface {
 	IDateRangeMetadataGroup
 	SetItems(value []IMetadataItem)
-	SetEndDate(value foundation.IDate)
 	SetStartDate(value foundation.IDate)
+	SetEndDate(value foundation.IDate)
 }
 
 // A mutable collection of metadata items that are valid for use within a specific range of dates. [Full Topic]
@@ -78,16 +78,16 @@ func (m_ MutableDateRangeMetadataGroup) SetItems(value []IMetadataItem) {
 	objc.Call[objc.Void](m_, objc.Sel("setItems:"), value)
 }
 
-// The end date for the metadata date range group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutabledaterangemetadatagroup/1387651-enddate?language=objc
-func (m_ MutableDateRangeMetadataGroup) SetEndDate(value foundation.IDate) {
-	objc.Call[objc.Void](m_, objc.Sel("setEndDate:"), value)
-}
-
 // The start date for the metadata date range group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutabledaterangemetadatagroup/1390555-startdate?language=objc
 func (m_ MutableDateRangeMetadataGroup) SetStartDate(value foundation.IDate) {
 	objc.Call[objc.Void](m_, objc.Sel("setStartDate:"), value)
+}
+
+// The end date for the metadata date range group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutabledaterangemetadatagroup/1387651-enddate?language=objc
+func (m_ MutableDateRangeMetadataGroup) SetEndDate(value foundation.IDate) {
+	objc.Call[objc.Void](m_, objc.Sel("setEndDate:"), value)
 }

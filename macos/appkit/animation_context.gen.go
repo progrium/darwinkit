@@ -20,14 +20,14 @@ type _AnimationContextClass struct {
 // An interface definition for the [AnimationContext] class.
 type IAnimationContext interface {
 	objc.IObject
-	Duration() foundation.TimeInterval
-	SetDuration(value foundation.TimeInterval)
-	TimingFunction() quartzcore.MediaTimingFunction
-	SetTimingFunction(value quartzcore.IMediaTimingFunction)
 	AllowsImplicitAnimation() bool
 	SetAllowsImplicitAnimation(value bool)
 	CompletionHandler() func()
 	SetCompletionHandler(value func())
+	TimingFunction() quartzcore.MediaTimingFunction
+	SetTimingFunction(value quartzcore.IMediaTimingFunction)
+	Duration() foundation.TimeInterval
+	SetDuration(value foundation.TimeInterval)
 }
 
 // An animation context, which contains information about environment and state. [Full Topic]
@@ -63,32 +63,18 @@ func (a_ AnimationContext) Init() AnimationContext {
 	return rv
 }
 
-// Ends the current animation grouping. [Full Topic]
+// Creates a new animation grouping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526927-endgrouping?language=objc
-func (ac _AnimationContextClass) EndGrouping() {
-	objc.Call[objc.Void](ac, objc.Sel("endGrouping"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1530234-begingrouping?language=objc
+func (ac _AnimationContextClass) BeginGrouping() {
+	objc.Call[objc.Void](ac, objc.Sel("beginGrouping"))
 }
 
-// Ends the current animation grouping. [Full Topic]
+// Creates a new animation grouping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526927-endgrouping?language=objc
-func AnimationContext_EndGrouping() {
-	AnimationContextClass.EndGrouping()
-}
-
-// Allows you to specify a completion block body after the set of animation actions whose completion will trigger the completion block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1529847-runanimationgroup?language=objc
-func (ac _AnimationContextClass) RunAnimationGroupCompletionHandler(changes func(context AnimationContext), completionHandler func()) {
-	objc.Call[objc.Void](ac, objc.Sel("runAnimationGroup:completionHandler:"), changes, completionHandler)
-}
-
-// Allows you to specify a completion block body after the set of animation actions whose completion will trigger the completion block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1529847-runanimationgroup?language=objc
-func AnimationContext_RunAnimationGroupCompletionHandler(changes func(context AnimationContext), completionHandler func()) {
-	AnimationContextClass.RunAnimationGroupCompletionHandler(changes, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1530234-begingrouping?language=objc
+func AnimationContext_BeginGrouping() {
+	AnimationContextClass.BeginGrouping()
 }
 
 //	[Full Topic]
@@ -105,48 +91,18 @@ func AnimationContext_RunAnimationGroup(changes func(context AnimationContext)) 
 	AnimationContextClass.RunAnimationGroup(changes)
 }
 
-// Creates a new animation grouping. [Full Topic]
+// Ends the current animation grouping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1530234-begingrouping?language=objc
-func (ac _AnimationContextClass) BeginGrouping() {
-	objc.Call[objc.Void](ac, objc.Sel("beginGrouping"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526927-endgrouping?language=objc
+func (ac _AnimationContextClass) EndGrouping() {
+	objc.Call[objc.Void](ac, objc.Sel("endGrouping"))
 }
 
-// Creates a new animation grouping. [Full Topic]
+// Ends the current animation grouping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1530234-begingrouping?language=objc
-func AnimationContext_BeginGrouping() {
-	AnimationContextClass.BeginGrouping()
-}
-
-// The duration used by animations created as a result of setting new values for an animatable property. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526780-duration?language=objc
-func (a_ AnimationContext) Duration() foundation.TimeInterval {
-	rv := objc.Call[foundation.TimeInterval](a_, objc.Sel("duration"))
-	return rv
-}
-
-// The duration used by animations created as a result of setting new values for an animatable property. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526780-duration?language=objc
-func (a_ AnimationContext) SetDuration(value foundation.TimeInterval) {
-	objc.Call[objc.Void](a_, objc.Sel("setDuration:"), value)
-}
-
-// The timing function used for all animations within this animation proxy group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1524985-timingfunction?language=objc
-func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
-	rv := objc.Call[quartzcore.MediaTimingFunction](a_, objc.Sel("timingFunction"))
-	return rv
-}
-
-// The timing function used for all animations within this animation proxy group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1524985-timingfunction?language=objc
-func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
-	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526927-endgrouping?language=objc
+func AnimationContext_EndGrouping() {
+	AnimationContextClass.EndGrouping()
 }
 
 // Returns the current animation context. [Full Topic]
@@ -192,4 +148,34 @@ func (a_ AnimationContext) CompletionHandler() func() {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1531132-completionhandler?language=objc
 func (a_ AnimationContext) SetCompletionHandler(value func()) {
 	objc.Call[objc.Void](a_, objc.Sel("setCompletionHandler:"), value)
+}
+
+// The timing function used for all animations within this animation proxy group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1524985-timingfunction?language=objc
+func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
+	rv := objc.Call[quartzcore.MediaTimingFunction](a_, objc.Sel("timingFunction"))
+	return rv
+}
+
+// The timing function used for all animations within this animation proxy group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1524985-timingfunction?language=objc
+func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
+	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
+}
+
+// The duration used by animations created as a result of setting new values for an animatable property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526780-duration?language=objc
+func (a_ AnimationContext) Duration() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](a_, objc.Sel("duration"))
+	return rv
+}
+
+// The duration used by animations created as a result of setting new values for an animatable property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1526780-duration?language=objc
+func (a_ AnimationContext) SetDuration(value foundation.TimeInterval) {
+	objc.Call[objc.Void](a_, objc.Sel("setDuration:"), value)
 }

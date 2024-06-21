@@ -53,32 +53,6 @@ func (c_ CNNPoolingMaxNode) Init() CNNPoolingMaxNode {
 	return rv
 }
 
-func (c_ CNNPoolingMaxNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingMaxNode {
-	rv := objc.Call[CNNPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
-func NewCNNPoolingMaxNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingMaxNode {
-	instance := CNNPoolingMaxNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNPoolingMaxNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingMaxNode {
-	rv := objc.Call[CNNPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2890831-nodewithsource?language=objc
-func CNNPoolingMaxNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingMaxNode {
-	return CNNPoolingMaxNodeClass.NodeWithSourceFilterSizeStride(sourceNode, size, stride)
-}
-
 func (cc _CNNPoolingMaxNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingMaxNode {
 	rv := objc.Call[CNNPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
@@ -91,30 +65,16 @@ func CNNPoolingMaxNode_NodeWithSourceFilterSize(sourceNode INNImageNode, size ui
 	return CNNPoolingMaxNodeClass.NodeWithSourceFilterSize(sourceNode, size)
 }
 
-func (c_ CNNPoolingMaxNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingMaxNode {
-	rv := objc.Call[CNNPoolingMaxNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+func (c_ CNNPoolingMaxNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingMaxNode {
+	rv := objc.Call[CNNPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866471-initwithsource?language=objc
-func NewCNNPoolingMaxNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingMaxNode {
-	instance := CNNPoolingMaxNodeClass.Alloc().InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNPoolingMaxNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingMaxNode {
-	rv := objc.Call[CNNPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866444-initwithsource?language=objc
-func NewCNNPoolingMaxNodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingMaxNode {
-	instance := CNNPoolingMaxNodeClass.Alloc().InitWithSourceFilterSizeStride(sourceNode, size, stride)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
+func NewCNNPoolingMaxNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingMaxNode {
+	instance := CNNPoolingMaxNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
 	instance.Autorelease()
 	return instance
 }

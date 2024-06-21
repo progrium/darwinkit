@@ -20,10 +20,10 @@ type _DownloadClass struct {
 type IDownload interface {
 	objc.IObject
 	Cancel(completionHandler func(resumeData []byte))
-	OriginalRequest() foundation.URLRequest
 	Delegate() DownloadDelegateObject
 	SetDelegate(value PDownloadDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	OriginalRequest() foundation.URLRequest
 }
 
 // An object that represents the download of a web resource. [Full Topic]
@@ -66,14 +66,6 @@ func (d_ Download) Cancel(completionHandler func(resumeData []byte)) {
 	objc.Call[objc.Void](d_, objc.Sel("cancel:"), completionHandler)
 }
 
-// An object that represents the request that initiated the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownload/3727341-originalrequest?language=objc
-func (d_ Download) OriginalRequest() foundation.URLRequest {
-	rv := objc.Call[foundation.URLRequest](d_, objc.Sel("originalRequest"))
-	return rv
-}
-
 // An object you use to track download progress and handle redirects, authentication challenges, and failures. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownload/3727340-delegate?language=objc
@@ -96,4 +88,12 @@ func (d_ Download) SetDelegate(value PDownloadDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownload/3727340-delegate?language=objc
 func (d_ Download) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// An object that represents the request that initiated the download. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownload/3727341-originalrequest?language=objc
+func (d_ Download) OriginalRequest() foundation.URLRequest {
+	rv := objc.Call[foundation.URLRequest](d_, objc.Sel("originalRequest"))
+	return rv
 }

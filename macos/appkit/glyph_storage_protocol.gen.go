@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphstorage?language=objc
 type PGlyphStorage interface {
 	// optional
-	AttributedString() foundation.AttributedString
-	HasAttributedString() bool
+	SetIntAttributeValueForGlyphAtIndex(attributeTag int, val int, glyphIndex uint)
+	HasSetIntAttributeValueForGlyphAtIndex() bool
 
 	// optional
-	InsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex(glyphs *Glyph, length uint, glyphIndex uint, charIndex uint)
-	HasInsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex() bool
+	AttributedString() foundation.AttributedString
+	HasAttributedString() bool
 
 	// optional
 	LayoutOptions() uint
 	HasLayoutOptions() bool
 
 	// optional
-	SetIntAttributeValueForGlyphAtIndex(attributeTag int, val int, glyphIndex uint)
-	HasSetIntAttributeValueForGlyphAtIndex() bool
+	InsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex(glyphs *Glyph, length uint, glyphIndex uint, charIndex uint)
+	HasInsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex() bool
 }
 
 // ensure impl type implements protocol interface
@@ -34,6 +34,17 @@ var _ PGlyphStorage = (*GlyphStorageObject)(nil)
 // A concrete type for the [PGlyphStorage] protocol.
 type GlyphStorageObject struct {
 	objc.Object
+}
+
+func (g_ GlyphStorageObject) HasSetIntAttributeValueForGlyphAtIndex() bool {
+	return g_.RespondsToSelector(objc.Sel("setIntAttribute:value:forGlyphAtIndex:"))
+}
+
+// Sets a custom attribute value for a given glyph. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphstorage/1425141-setintattribute?language=objc
+func (g_ GlyphStorageObject) SetIntAttributeValueForGlyphAtIndex(attributeTag int, val int, glyphIndex uint) {
+	objc.Call[objc.Void](g_, objc.Sel("setIntAttribute:value:forGlyphAtIndex:"), attributeTag, val, glyphIndex)
 }
 
 func (g_ GlyphStorageObject) HasAttributedString() bool {
@@ -48,17 +59,6 @@ func (g_ GlyphStorageObject) AttributedString() foundation.AttributedString {
 	return rv
 }
 
-func (g_ GlyphStorageObject) HasInsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex() bool {
-	return g_.RespondsToSelector(objc.Sel("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:"))
-}
-
-// Inserts the given glyphs into the glyph cache and maps them to the specified characters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphstorage/1425153-insertglyphs?language=objc
-func (g_ GlyphStorageObject) InsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex(glyphs *Glyph, length uint, glyphIndex uint, charIndex uint) {
-	objc.Call[objc.Void](g_, objc.Sel("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:"), glyphs, length, glyphIndex, charIndex)
-}
-
 func (g_ GlyphStorageObject) HasLayoutOptions() bool {
 	return g_.RespondsToSelector(objc.Sel("layoutOptions"))
 }
@@ -71,13 +71,13 @@ func (g_ GlyphStorageObject) LayoutOptions() uint {
 	return rv
 }
 
-func (g_ GlyphStorageObject) HasSetIntAttributeValueForGlyphAtIndex() bool {
-	return g_.RespondsToSelector(objc.Sel("setIntAttribute:value:forGlyphAtIndex:"))
+func (g_ GlyphStorageObject) HasInsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex() bool {
+	return g_.RespondsToSelector(objc.Sel("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:"))
 }
 
-// Sets a custom attribute value for a given glyph. [Full Topic]
+// Inserts the given glyphs into the glyph cache and maps them to the specified characters. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphstorage/1425141-setintattribute?language=objc
-func (g_ GlyphStorageObject) SetIntAttributeValueForGlyphAtIndex(attributeTag int, val int, glyphIndex uint) {
-	objc.Call[objc.Void](g_, objc.Sel("setIntAttribute:value:forGlyphAtIndex:"), attributeTag, val, glyphIndex)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphstorage/1425153-insertglyphs?language=objc
+func (g_ GlyphStorageObject) InsertGlyphsLengthForStartingGlyphAtIndexCharacterIndex(glyphs *Glyph, length uint, glyphIndex uint, charIndex uint) {
+	objc.Call[objc.Void](g_, objc.Sel("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:"), glyphs, length, glyphIndex, charIndex)
 }

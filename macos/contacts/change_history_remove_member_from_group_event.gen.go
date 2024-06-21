@@ -18,8 +18,8 @@ type _ChangeHistoryRemoveMemberFromGroupEventClass struct {
 // An interface definition for the [ChangeHistoryRemoveMemberFromGroupEvent] class.
 type IChangeHistoryRemoveMemberFromGroupEvent interface {
 	IChangeHistoryEvent
-	Group() Group
 	Member() Contact
+	Group() Group
 }
 
 //	[Full Topic]
@@ -57,16 +57,16 @@ func (c_ ChangeHistoryRemoveMemberFromGroupEvent) Init() ChangeHistoryRemoveMemb
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryremovememberfromgroupevent/3113281-group?language=objc
-func (c_ ChangeHistoryRemoveMemberFromGroupEvent) Group() Group {
-	rv := objc.Call[Group](c_, objc.Sel("group"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryremovememberfromgroupevent/3113282-member?language=objc
+func (c_ ChangeHistoryRemoveMemberFromGroupEvent) Member() Contact {
+	rv := objc.Call[Contact](c_, objc.Sel("member"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryremovememberfromgroupevent/3113282-member?language=objc
-func (c_ ChangeHistoryRemoveMemberFromGroupEvent) Member() Contact {
-	rv := objc.Call[Contact](c_, objc.Sel("member"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryremovememberfromgroupevent/3113281-group?language=objc
+func (c_ ChangeHistoryRemoveMemberFromGroupEvent) Group() Group {
+	rv := objc.Call[Group](c_, objc.Sel("group"))
 	return rv
 }

@@ -18,9 +18,9 @@ type _CNNConvolutionNodeClass struct {
 // An interface definition for the [CNNConvolutionNode] class.
 type ICNNConvolutionNode interface {
 	INNFilterNode
+	ConvolutionGradientState() CNNConvolutionGradientStateNode
 	TrainingStyle() NNTrainingStyle
 	SetTrainingStyle(value NNTrainingStyle)
-	ConvolutionGradientState() CNNConvolutionGradientStateNode
 	AccumulatorPrecision() NNConvolutionAccumulatorPrecisionOption
 	SetAccumulatorPrecision(value NNConvolutionAccumulatorPrecisionOption)
 }
@@ -88,6 +88,14 @@ func (c_ CNNConvolutionNode) Init() CNNConvolutionNode {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutionnode/2942634-convolutiongradientstate?language=objc
+func (c_ CNNConvolutionNode) ConvolutionGradientState() CNNConvolutionGradientStateNode {
+	rv := objc.Call[CNNConvolutionGradientStateNode](c_, objc.Sel("convolutionGradientState"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutionnode/3197822-trainingstyle?language=objc
 func (c_ CNNConvolutionNode) TrainingStyle() NNTrainingStyle {
 	rv := objc.Call[NNTrainingStyle](c_, objc.Sel("trainingStyle"))
@@ -99,14 +107,6 @@ func (c_ CNNConvolutionNode) TrainingStyle() NNTrainingStyle {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutionnode/3197822-trainingstyle?language=objc
 func (c_ CNNConvolutionNode) SetTrainingStyle(value NNTrainingStyle) {
 	objc.Call[objc.Void](c_, objc.Sel("setTrainingStyle:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutionnode/2942634-convolutiongradientstate?language=objc
-func (c_ CNNConvolutionNode) ConvolutionGradientState() CNNConvolutionGradientStateNode {
-	rv := objc.Call[CNNConvolutionGradientStateNode](c_, objc.Sel("convolutionGradientState"))
-	return rv
 }
 
 //	[Full Topic]

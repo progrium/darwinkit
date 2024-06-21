@@ -15,12 +15,12 @@ type PAccessibilityLayoutArea interface {
 	HasAccessibilityChildren() bool
 
 	// optional
-	AccessibilitySelectedChildren() []objc.Object
-	HasAccessibilitySelectedChildren() bool
-
-	// optional
 	AccessibilityLabel() string
 	HasAccessibilityLabel() bool
+
+	// optional
+	AccessibilitySelectedChildren() []objc.Object
+	HasAccessibilitySelectedChildren() bool
 
 	// optional
 	AccessibilityFocusedUIElement() objc.Object
@@ -47,18 +47,6 @@ func (a_ AccessibilityLayoutAreaObject) AccessibilityChildren() []objc.Object {
 	return rv
 }
 
-func (a_ AccessibilityLayoutAreaObject) HasAccessibilitySelectedChildren() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedChildren"))
-}
-
-// Returns the layout area’s currently selected children. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitylayoutarea/1528883-accessibilityselectedchildren?language=objc
-func (a_ AccessibilityLayoutAreaObject) AccessibilitySelectedChildren() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilitySelectedChildren"))
-	return rv
-}
-
 func (a_ AccessibilityLayoutAreaObject) HasAccessibilityLabel() bool {
 	return a_.RespondsToSelector(objc.Sel("accessibilityLabel"))
 }
@@ -68,6 +56,18 @@ func (a_ AccessibilityLayoutAreaObject) HasAccessibilityLabel() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitylayoutarea/1527051-accessibilitylabel?language=objc
 func (a_ AccessibilityLayoutAreaObject) AccessibilityLabel() string {
 	rv := objc.Call[string](a_, objc.Sel("accessibilityLabel"))
+	return rv
+}
+
+func (a_ AccessibilityLayoutAreaObject) HasAccessibilitySelectedChildren() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedChildren"))
+}
+
+// Returns the layout area’s currently selected children. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitylayoutarea/1528883-accessibilityselectedchildren?language=objc
+func (a_ AccessibilityLayoutAreaObject) AccessibilitySelectedChildren() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilitySelectedChildren"))
 	return rv
 }
 

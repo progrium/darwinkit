@@ -20,9 +20,9 @@ type IContactProperty interface {
 	objc.IObject
 	Key() string
 	Value() objc.Object
-	Identifier() string
-	Label() string
 	Contact() Contact
+	Label() string
+	Identifier() string
 }
 
 // An object that represents a property of a contact. [Full Topic]
@@ -74,11 +74,11 @@ func (c_ ContactProperty) Value() objc.Object {
 	return rv
 }
 
-// The identifier of the labeled value in the array of labeled. [Full Topic]
+// The associated contact. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactproperty/1403307-identifier?language=objc
-func (c_ ContactProperty) Identifier() string {
-	rv := objc.Call[string](c_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactproperty/1403022-contact?language=objc
+func (c_ ContactProperty) Contact() Contact {
+	rv := objc.Call[Contact](c_, objc.Sel("contact"))
 	return rv
 }
 
@@ -90,10 +90,10 @@ func (c_ ContactProperty) Label() string {
 	return rv
 }
 
-// The associated contact. [Full Topic]
+// The identifier of the labeled value in the array of labeled. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactproperty/1403022-contact?language=objc
-func (c_ ContactProperty) Contact() Contact {
-	rv := objc.Call[Contact](c_, objc.Sel("contact"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactproperty/1403307-identifier?language=objc
+func (c_ ContactProperty) Identifier() string {
+	rv := objc.Call[string](c_, objc.Sel("identifier"))
 	return rv
 }

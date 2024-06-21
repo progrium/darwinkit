@@ -20,15 +20,15 @@ type _TextViewportLayoutControllerClass struct {
 type ITextViewportLayoutController interface {
 	objc.IObject
 	AdjustViewportByVerticalOffset(verticalOffset float64)
+	LayoutViewport()
 	RelocateViewportToTextLocation(textLocation PTextLocation) float64
 	RelocateViewportToTextLocationObject(textLocationObject objc.IObject) float64
-	LayoutViewport()
-	ViewportBounds() coregraphics.Rect
+	TextLayoutManager() TextLayoutManager
+	ViewportRange() TextRange
 	Delegate() TextViewportLayoutControllerDelegateObject
 	SetDelegate(value PTextViewportLayoutControllerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	ViewportRange() TextRange
-	TextLayoutManager() TextLayoutManager
+	ViewportBounds() coregraphics.Rect
 }
 
 // Manages the layout process inside the viewport interacting with its delegate. [Full Topic]
@@ -85,6 +85,13 @@ func (t_ TextViewportLayoutController) AdjustViewportByVerticalOffset(verticalOf
 	objc.Call[objc.Void](t_, objc.Sel("adjustViewportByVerticalOffset:"), verticalOffset)
 }
 
+// Performs layout in the viewport. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824770-layoutviewport?language=objc
+func (t_ TextViewportLayoutController) LayoutViewport() {
+	objc.Call[objc.Void](t_, objc.Sel("layoutViewport"))
+}
+
 // Relocates the viewport to the location you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3852590-relocateviewporttotextlocation?language=objc
@@ -102,18 +109,19 @@ func (t_ TextViewportLayoutController) RelocateViewportToTextLocationObject(text
 	return rv
 }
 
-// Performs layout in the viewport. [Full Topic]
+// Returns the text layout manager for this viewport layout controller. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824770-layoutviewport?language=objc
-func (t_ TextViewportLayoutController) LayoutViewport() {
-	objc.Call[objc.Void](t_, objc.Sel("layoutViewport"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824772-textlayoutmanager?language=objc
+func (t_ TextViewportLayoutController) TextLayoutManager() TextLayoutManager {
+	rv := objc.Call[TextLayoutManager](t_, objc.Sel("textLayoutManager"))
+	return rv
 }
 
-// Returns the visible bounds of the view, plus the overdraw area. [Full Topic]
+// Returns the text range of the current viewport layout. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824773-viewportbounds?language=objc
-func (t_ TextViewportLayoutController) ViewportBounds() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBounds"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824774-viewportrange?language=objc
+func (t_ TextViewportLayoutController) ViewportRange() TextRange {
+	rv := objc.Call[TextRange](t_, objc.Sel("viewportRange"))
 	return rv
 }
 
@@ -141,18 +149,10 @@ func (t_ TextViewportLayoutController) SetDelegateObject(valueObject objc.IObjec
 	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// Returns the text range of the current viewport layout. [Full Topic]
+// Returns the visible bounds of the view, plus the overdraw area. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824774-viewportrange?language=objc
-func (t_ TextViewportLayoutController) ViewportRange() TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("viewportRange"))
-	return rv
-}
-
-// Returns the text layout manager for this viewport layout controller. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824772-textlayoutmanager?language=objc
-func (t_ TextViewportLayoutController) TextLayoutManager() TextLayoutManager {
-	rv := objc.Call[TextLayoutManager](t_, objc.Sel("textLayoutManager"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824773-viewportbounds?language=objc
+func (t_ TextViewportLayoutController) ViewportBounds() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBounds"))
 	return rv
 }

@@ -3,7 +3,6 @@
 package appkit
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,42 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate?language=objc
 type PTextLayoutManagerDelegate interface {
 	// optional
-	TextLayoutManagerTextLayoutFragmentForLocationInTextElement(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment
-	HasTextLayoutManagerTextLayoutFragmentForLocationInTextElement() bool
-
-	// optional
 	TextLayoutManagerShouldBreakLineBeforeLocationHyphenating(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool
 	HasTextLayoutManagerShouldBreakLineBeforeLocationHyphenating() bool
-
-	// optional
-	TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object
-	HasTextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes() bool
 }
 
 // A delegate implementation builder for the [PTextLayoutManagerDelegate] protocol.
 type TextLayoutManagerDelegate struct {
-	_TextLayoutManagerTextLayoutFragmentForLocationInTextElement            func(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment
-	_TextLayoutManagerShouldBreakLineBeforeLocationHyphenating              func(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool
-	_TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes func(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object
+	_TextLayoutManagerShouldBreakLineBeforeLocationHyphenating func(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool
 }
 
-func (di *TextLayoutManagerDelegate) HasTextLayoutManagerTextLayoutFragmentForLocationInTextElement() bool {
-	return di._TextLayoutManagerTextLayoutFragmentForLocationInTextElement != nil
-}
-
-// The method the framework calls to give the delegate an opportunity to return a custom text layout fragment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3810024-textlayoutmanager?language=objc
-func (di *TextLayoutManagerDelegate) SetTextLayoutManagerTextLayoutFragmentForLocationInTextElement(f func(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment) {
-	di._TextLayoutManagerTextLayoutFragmentForLocationInTextElement = f
-}
-
-// The method the framework calls to give the delegate an opportunity to return a custom text layout fragment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3810024-textlayoutmanager?language=objc
-func (di *TextLayoutManagerDelegate) TextLayoutManagerTextLayoutFragmentForLocationInTextElement(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment {
-	return di._TextLayoutManagerTextLayoutFragmentForLocationInTextElement(textLayoutManager, location, textElement)
-}
 func (di *TextLayoutManagerDelegate) HasTextLayoutManagerShouldBreakLineBeforeLocationHyphenating() bool {
 	return di._TextLayoutManagerShouldBreakLineBeforeLocationHyphenating != nil
 }
@@ -65,23 +37,6 @@ func (di *TextLayoutManagerDelegate) SetTextLayoutManagerShouldBreakLineBeforeLo
 func (di *TextLayoutManagerDelegate) TextLayoutManagerShouldBreakLineBeforeLocationHyphenating(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool {
 	return di._TextLayoutManagerShouldBreakLineBeforeLocationHyphenating(textLayoutManager, location, hyphenating)
 }
-func (di *TextLayoutManagerDelegate) HasTextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes() bool {
-	return di._TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes != nil
-}
-
-// The method the framework calls to return a dictionary of attributes for rendering a link attribute name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3824749-textlayoutmanager?language=objc
-func (di *TextLayoutManagerDelegate) SetTextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(f func(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object) {
-	di._TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes = f
-}
-
-// The method the framework calls to return a dictionary of attributes for rendering a link attribute name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3824749-textlayoutmanager?language=objc
-func (di *TextLayoutManagerDelegate) TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
-	return di._TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(textLayoutManager, link, location, renderingAttributes)
-}
 
 // ensure impl type implements protocol interface
 var _ PTextLayoutManagerDelegate = (*TextLayoutManagerDelegateObject)(nil)
@@ -89,19 +44,6 @@ var _ PTextLayoutManagerDelegate = (*TextLayoutManagerDelegateObject)(nil)
 // A concrete type for the [PTextLayoutManagerDelegate] protocol.
 type TextLayoutManagerDelegateObject struct {
 	objc.Object
-}
-
-func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerTextLayoutFragmentForLocationInTextElement() bool {
-	return t_.RespondsToSelector(objc.Sel("textLayoutManager:textLayoutFragmentForLocation:inTextElement:"))
-}
-
-// The method the framework calls to give the delegate an opportunity to return a custom text layout fragment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3810024-textlayoutmanager?language=objc
-func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerTextLayoutFragmentForLocationInTextElement(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment {
-	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("textLayoutManager:textLayoutFragmentForLocation:inTextElement:"), textLayoutManager, po1, textElement)
-	return rv
 }
 
 func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerShouldBreakLineBeforeLocationHyphenating() bool {
@@ -114,18 +56,5 @@ func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerShouldBreakLineBef
 func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerShouldBreakLineBeforeLocationHyphenating(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
 	rv := objc.Call[bool](t_, objc.Sel("textLayoutManager:shouldBreakLineBeforeLocation:hyphenating:"), textLayoutManager, po1, hyphenating)
-	return rv
-}
-
-func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes() bool {
-	return t_.RespondsToSelector(objc.Sel("textLayoutManager:renderingAttributesForLink:atLocation:defaultAttributes:"))
-}
-
-// The method the framework calls to return a dictionary of attributes for rendering a link attribute name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3824749-textlayoutmanager?language=objc
-func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
-	po2 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textLayoutManager:renderingAttributesForLink:atLocation:defaultAttributes:"), textLayoutManager, link, po2, renderingAttributes)
 	return rv
 }

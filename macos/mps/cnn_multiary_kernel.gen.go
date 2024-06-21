@@ -20,58 +20,50 @@ type _CNNMultiaryKernelClass struct {
 // An interface definition for the [CNNMultiaryKernel] class.
 type ICNNMultiaryKernel interface {
 	IKernel
-	SetKernelHeightAtIndex(height uint, index uint)
-	StrideInPixelsYatIndex(index uint) uint
-	DestinationImageDescriptorForSourceImagesSourceStates(sourceImages []IImage, sourceStates []IState) ImageDescriptor
-	SetSourceFeatureChannelOffsetAtIndex(offset uint, index uint)
-	EncodeBatchToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array) *foundation.Array
-	OffsetAtIndex(index uint) Offset
-	SetOffsetAtIndex(offset Offset, index uint)
-	ResultStateForSourceImagesSourceStatesDestinationImage(sourceImages []IImage, sourceStates []IState, destinationImage IImage) State
-	SetKernelWidthAtIndex(width uint, index uint)
-	EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array, outState unsafe.Pointer, isTemporary bool) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array, outState unsafe.Pointer, isTemporary bool) *foundation.Array
-	SetEdgeModeAtIndex(edgeMode ImageEdgeMode, index uint)
-	SourceFeatureChannelOffsetAtIndex(index uint) uint
-	SetDilationRateYAtIndex(dilationRate uint, index uint)
-	SetStrideInPixelsXAtIndex(stride uint, index uint)
-	SetSourceFeatureChannelMaxCountAtIndex(count uint, index uint)
-	ResultStateBatchForSourceImagesSourceStatesDestinationImage(sourceImages []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
-	EncodeBatchToCommandBufferSourceImagesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, destinationImages *foundation.Array)
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationImages(commandBufferObject objc.IObject, sourceImages []*foundation.Array, destinationImages *foundation.Array)
-	StrideInPixelsXatIndex(index uint) uint
-	DilationRateXatIndex(index uint) uint
-	SourceFeatureChannelMaxCountAtIndex(index uint) uint
-	KernelHeightAtIndex(index uint) uint
 	EdgeModeAtIndex(index uint) ImageEdgeMode
-	EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image
-	EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image
+	StrideInPixelsXatIndex(index uint) uint
+	TemporaryResultStateForCommandBufferSourceImagesSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State
+	TemporaryResultStateForCommandBufferObjectSourceImagesSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State
+	ResultStateForSourceImagesSourceStatesDestinationImage(sourceImages []IImage, sourceStates []IState, destinationImage IImage) State
 	AppendBatchBarrier() bool
 	TemporaryResultStateBatchForCommandBufferSourceImagesSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
 	TemporaryResultStateBatchForCommandBufferObjectSourceImagesSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
-	IsResultStateReusedAcrossBatch() bool
-	TemporaryResultStateForCommandBufferSourceImagesSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State
-	TemporaryResultStateForCommandBufferObjectSourceImagesSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State
-	EncodeToCommandBufferSourceImagesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImages []IImage, destinationImage IImage)
-	EncodeToCommandBufferObjectSourceImagesDestinationImage(commandBufferObject objc.IObject, sourceImages []IImage, destinationImage IImage)
-	SetDilationRateXAtIndex(dilationRate uint, index uint)
-	DilationRateYatIndex(index uint) uint
-	EncodeToCommandBufferSourceImagesDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages []IImage, outState unsafe.Pointer, isTemporary bool) Image
-	EncodeToCommandBufferObjectSourceImagesDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages []IImage, outState unsafe.Pointer, isTemporary bool) Image
+	DestinationImageDescriptorForSourceImagesSourceStates(sourceImages []IImage, sourceStates []IState) ImageDescriptor
+	EncodeBatchToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array) *foundation.Array
+	EncodeBatchToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array) *foundation.Array
 	SetStrideInPixelsYAtIndex(stride uint, index uint)
+	SetKernelWidthAtIndex(width uint, index uint)
+	ResultStateBatchForSourceImagesSourceStatesDestinationImage(sourceImages []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
+	SetOffsetAtIndex(offset Offset, index uint)
+	SetSourceFeatureChannelMaxCountAtIndex(count uint, index uint)
+	SetStrideInPixelsXAtIndex(stride uint, index uint)
+	DilationRateXatIndex(index uint) uint
+	SetDilationRateXAtIndex(dilationRate uint, index uint)
+	OffsetAtIndex(index uint) Offset
+	StrideInPixelsYatIndex(index uint) uint
+	SetDilationRateYAtIndex(dilationRate uint, index uint)
+	SourceFeatureChannelMaxCountAtIndex(index uint) uint
+	DilationRateYatIndex(index uint) uint
 	KernelWidthAtIndex(index uint) uint
-	ClipRect() metal.Region
-	SetClipRect(value metal.Region)
-	SourceCount() uint
-	IsBackwards() bool
+	EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image
+	EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image
+	SetKernelHeightAtIndex(height uint, index uint)
+	IsResultStateReusedAcrossBatch() bool
+	SetEdgeModeAtIndex(edgeMode ImageEdgeMode, index uint)
+	KernelHeightAtIndex(index uint) uint
+	SetSourceFeatureChannelOffsetAtIndex(offset uint, index uint)
+	SourceFeatureChannelOffsetAtIndex(index uint) uint
+	IsStateModified() bool
 	Padding() NNPaddingObject
 	SetPadding(value PNNPadding)
 	SetPaddingObject(valueObject objc.IObject)
+	SourceCount() uint
+	IsBackwards() bool
+	ClipRect() metal.Region
+	SetClipRect(value metal.Region)
 	DestinationImageAllocator() ImageAllocatorObject
 	SetDestinationImageAllocator(value PImageAllocator)
 	SetDestinationImageAllocatorObject(valueObject objc.IObject)
-	IsStateModified() bool
 	DestinationFeatureChannelOffset() uint
 	SetDestinationFeatureChannelOffset(value uint)
 }
@@ -124,21 +116,6 @@ func (c_ CNNMultiaryKernel) Init() CNNMultiaryKernel {
 	return rv
 }
 
-func (c_ CNNMultiaryKernel) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNNMultiaryKernel {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNMultiaryKernel](c_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func CNNMultiaryKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNNMultiaryKernel {
-	instance := CNNMultiaryKernelClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNMultiaryKernel) InitWithDevice(device metal.PDevice) CNNMultiaryKernel {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNMultiaryKernel](c_, objc.Sel("initWithDevice:"), po0)
@@ -154,189 +131,19 @@ func NewCNNMultiaryKernelWithDevice(device metal.PDevice) CNNMultiaryKernel {
 	return instance
 }
 
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043439-setkernelheight?language=objc
-func (c_ CNNMultiaryKernel) SetKernelHeightAtIndex(height uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:atIndex:"), height, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043450-strideinpixelsyatindex?language=objc
-func (c_ CNNMultiaryKernel) StrideInPixelsYatIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsYatIndex:"), index)
+func (c_ CNNMultiaryKernel) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNNMultiaryKernel {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[CNNMultiaryKernel](c_, objc.Sel("copyWithZone:device:"), zone, po1)
 	return rv
 }
 
-//	[Full Topic]
+// Makes a copy of this kernel object for a new device. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043415-destinationimagedescriptorforsou?language=objc
-func (c_ CNNMultiaryKernel) DestinationImageDescriptorForSourceImagesSourceStates(sourceImages []IImage, sourceStates []IState) ImageDescriptor {
-	rv := objc.Call[ImageDescriptor](c_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:"), sourceImages, sourceStates)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043443-setsourcefeaturechanneloffset?language=objc
-func (c_ CNNMultiaryKernel) SetSourceFeatureChannelOffsetAtIndex(offset uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelOffset:atIndex:"), offset, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043419-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array) *foundation.Array {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:"), po0, sourceImageBatches)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043419-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:"), commandBufferObject, sourceImageBatches)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043432-offsetatindex?language=objc
-func (c_ CNNMultiaryKernel) OffsetAtIndex(index uint) Offset {
-	rv := objc.Call[Offset](c_, objc.Sel("offsetAtIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043441-setoffset?language=objc
-func (c_ CNNMultiaryKernel) SetOffsetAtIndex(offset Offset, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setOffset:atIndex:"), offset, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043435-resultstateforsourceimages?language=objc
-func (c_ CNNMultiaryKernel) ResultStateForSourceImagesSourceStatesDestinationImage(sourceImages []IImage, sourceStates []IState, destinationImage IImage) State {
-	rv := objc.Call[State](c_, objc.Sel("resultStateForSourceImages:sourceStates:destinationImage:"), sourceImages, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043440-setkernelwidth?language=objc
-func (c_ CNNMultiaryKernel) SetKernelWidthAtIndex(width uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:atIndex:"), width, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043421-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array, outState unsafe.Pointer, isTemporary bool) *foundation.Array {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:"), po0, sourceImageBatches, outState, isTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043421-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array, outState unsafe.Pointer, isTemporary bool) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:"), commandBufferObject, sourceImageBatches, outState, isTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043438-setedgemode?language=objc
-func (c_ CNNMultiaryKernel) SetEdgeModeAtIndex(edgeMode ImageEdgeMode, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setEdgeMode:atIndex:"), edgeMode, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043448-sourcefeaturechanneloffsetatinde?language=objc
-func (c_ CNNMultiaryKernel) SourceFeatureChannelOffsetAtIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelOffsetAtIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043437-setdilationratey?language=objc
-func (c_ CNNMultiaryKernel) SetDilationRateYAtIndex(dilationRate uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDilationRateY:atIndex:"), dilationRate, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043444-setstrideinpixelsx?language=objc
-func (c_ CNNMultiaryKernel) SetStrideInPixelsXAtIndex(stride uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setStrideInPixelsX:atIndex:"), stride, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043442-setsourcefeaturechannelmaxcount?language=objc
-func (c_ CNNMultiaryKernel) SetSourceFeatureChannelMaxCountAtIndex(count uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelMaxCount:atIndex:"), count, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043434-resultstatebatchforsourceimages?language=objc
-func (c_ CNNMultiaryKernel) ResultStateBatchForSourceImagesSourceStatesDestinationImage(sourceImages []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("resultStateBatchForSourceImages:sourceStates:destinationImage:"), sourceImages, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043420-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferSourceImagesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, destinationImages *foundation.Array) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationImages:"), po0, sourceImages, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043420-encodebatchtocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferObjectSourceImagesDestinationImages(commandBufferObject objc.IObject, sourceImages []*foundation.Array, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationImages:"), commandBufferObject, sourceImages, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043449-strideinpixelsxatindex?language=objc
-func (c_ CNNMultiaryKernel) StrideInPixelsXatIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsXatIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043416-dilationratexatindex?language=objc
-func (c_ CNNMultiaryKernel) DilationRateXatIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateXatIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043447-sourcefeaturechannelmaxcountatin?language=objc
-func (c_ CNNMultiaryKernel) SourceFeatureChannelMaxCountAtIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelMaxCountAtIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043430-kernelheightatindex?language=objc
-func (c_ CNNMultiaryKernel) KernelHeightAtIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelHeightAtIndex:"), index)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func CNNMultiaryKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNNMultiaryKernel {
+	instance := CNNMultiaryKernelClass.Alloc().CopyWithZoneDevice(zone, device)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]
@@ -349,18 +156,34 @@ func (c_ CNNMultiaryKernel) EdgeModeAtIndex(index uint) ImageEdgeMode {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043422-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:"), po0, sourceImages)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043449-strideinpixelsxatindex?language=objc
+func (c_ CNNMultiaryKernel) StrideInPixelsXatIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsXatIndex:"), index)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043422-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:"), commandBufferObject, sourceImages)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043452-temporaryresultstateforcommandbu?language=objc
+func (c_ CNNMultiaryKernel) TemporaryResultStateForCommandBufferSourceImagesSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[State](c_, objc.Sel("temporaryResultStateForCommandBuffer:sourceImages:sourceStates:destinationImage:"), po0, sourceImage, sourceStates, destinationImage)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043452-temporaryresultstateforcommandbu?language=objc
+func (c_ CNNMultiaryKernel) TemporaryResultStateForCommandBufferObjectSourceImagesSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State {
+	rv := objc.Call[State](c_, objc.Sel("temporaryResultStateForCommandBuffer:sourceImages:sourceStates:destinationImage:"), commandBufferObject, sourceImage, sourceStates, destinationImage)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043435-resultstateforsourceimages?language=objc
+func (c_ CNNMultiaryKernel) ResultStateForSourceImagesSourceStatesDestinationImage(sourceImages []IImage, sourceStates []IState, destinationImage IImage) State {
+	rv := objc.Call[State](c_, objc.Sel("resultStateForSourceImages:sourceStates:destinationImage:"), sourceImages, sourceStates, destinationImage)
 	return rv
 }
 
@@ -391,73 +214,26 @@ func (c_ CNNMultiaryKernel) TemporaryResultStateBatchForCommandBufferObjectSourc
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043428-isresultstatereusedacrossbatch?language=objc
-func (c_ CNNMultiaryKernel) IsResultStateReusedAcrossBatch() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isResultStateReusedAcrossBatch"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043415-destinationimagedescriptorforsou?language=objc
+func (c_ CNNMultiaryKernel) DestinationImageDescriptorForSourceImagesSourceStates(sourceImages []IImage, sourceStates []IState) ImageDescriptor {
+	rv := objc.Call[ImageDescriptor](c_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:"), sourceImages, sourceStates)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043452-temporaryresultstateforcommandbu?language=objc
-func (c_ CNNMultiaryKernel) TemporaryResultStateForCommandBufferSourceImagesSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State {
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043419-encodebatchtocommandbuffer?language=objc
+func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImageBatches []*foundation.Array) *foundation.Array {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[State](c_, objc.Sel("temporaryResultStateForCommandBuffer:sourceImages:sourceStates:destinationImage:"), po0, sourceImage, sourceStates, destinationImage)
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:"), po0, sourceImageBatches)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043452-temporaryresultstateforcommandbu?language=objc
-func (c_ CNNMultiaryKernel) TemporaryResultStateForCommandBufferObjectSourceImagesSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage []IImage, sourceStates []IState, destinationImage IImage) State {
-	rv := objc.Call[State](c_, objc.Sel("temporaryResultStateForCommandBuffer:sourceImages:sourceStates:destinationImage:"), commandBufferObject, sourceImage, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043423-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferSourceImagesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImages []IImage, destinationImage IImage) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImages:destinationImage:"), po0, sourceImages, destinationImage)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043423-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferObjectSourceImagesDestinationImage(commandBufferObject objc.IObject, sourceImages []IImage, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImages:destinationImage:"), commandBufferObject, sourceImages, destinationImage)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043436-setdilationratex?language=objc
-func (c_ CNNMultiaryKernel) SetDilationRateXAtIndex(dilationRate uint, index uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDilationRateX:atIndex:"), dilationRate, index)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043417-dilationrateyatindex?language=objc
-func (c_ CNNMultiaryKernel) DilationRateYatIndex(index uint) uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateYatIndex:"), index)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043424-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferSourceImagesDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages []IImage, outState unsafe.Pointer, isTemporary bool) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:destinationState:destinationStateIsTemporary:"), po0, sourceImages, outState, isTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043424-encodetocommandbuffer?language=objc
-func (c_ CNNMultiaryKernel) EncodeToCommandBufferObjectSourceImagesDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages []IImage, outState unsafe.Pointer, isTemporary bool) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:destinationState:destinationStateIsTemporary:"), commandBufferObject, sourceImages, outState, isTemporary)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043419-encodebatchtocommandbuffer?language=objc
+func (c_ CNNMultiaryKernel) EncodeBatchToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImageBatches []*foundation.Array) *foundation.Array {
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:"), commandBufferObject, sourceImageBatches)
 	return rv
 }
 
@@ -470,6 +246,96 @@ func (c_ CNNMultiaryKernel) SetStrideInPixelsYAtIndex(stride uint, index uint) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043440-setkernelwidth?language=objc
+func (c_ CNNMultiaryKernel) SetKernelWidthAtIndex(width uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:atIndex:"), width, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043434-resultstatebatchforsourceimages?language=objc
+func (c_ CNNMultiaryKernel) ResultStateBatchForSourceImagesSourceStatesDestinationImage(sourceImages []*foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array {
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("resultStateBatchForSourceImages:sourceStates:destinationImage:"), sourceImages, sourceStates, destinationImage)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043441-setoffset?language=objc
+func (c_ CNNMultiaryKernel) SetOffsetAtIndex(offset Offset, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setOffset:atIndex:"), offset, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043442-setsourcefeaturechannelmaxcount?language=objc
+func (c_ CNNMultiaryKernel) SetSourceFeatureChannelMaxCountAtIndex(count uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelMaxCount:atIndex:"), count, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043444-setstrideinpixelsx?language=objc
+func (c_ CNNMultiaryKernel) SetStrideInPixelsXAtIndex(stride uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setStrideInPixelsX:atIndex:"), stride, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043416-dilationratexatindex?language=objc
+func (c_ CNNMultiaryKernel) DilationRateXatIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateXatIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043436-setdilationratex?language=objc
+func (c_ CNNMultiaryKernel) SetDilationRateXAtIndex(dilationRate uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDilationRateX:atIndex:"), dilationRate, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043432-offsetatindex?language=objc
+func (c_ CNNMultiaryKernel) OffsetAtIndex(index uint) Offset {
+	rv := objc.Call[Offset](c_, objc.Sel("offsetAtIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043450-strideinpixelsyatindex?language=objc
+func (c_ CNNMultiaryKernel) StrideInPixelsYatIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsYatIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043437-setdilationratey?language=objc
+func (c_ CNNMultiaryKernel) SetDilationRateYAtIndex(dilationRate uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDilationRateY:atIndex:"), dilationRate, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043447-sourcefeaturechannelmaxcountatin?language=objc
+func (c_ CNNMultiaryKernel) SourceFeatureChannelMaxCountAtIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelMaxCountAtIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043417-dilationrateyatindex?language=objc
+func (c_ CNNMultiaryKernel) DilationRateYatIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateYatIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043431-kernelwidthatindex?language=objc
 func (c_ CNNMultiaryKernel) KernelWidthAtIndex(index uint) uint {
 	rv := objc.Call[uint](c_, objc.Sel("kernelWidthAtIndex:"), index)
@@ -478,32 +344,71 @@ func (c_ CNNMultiaryKernel) KernelWidthAtIndex(index uint) uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043412-cliprect?language=objc
-func (c_ CNNMultiaryKernel) ClipRect() metal.Region {
-	rv := objc.Call[metal.Region](c_, objc.Sel("clipRect"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043422-encodetocommandbuffer?language=objc
+func (c_ CNNMultiaryKernel) EncodeToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages []IImage) Image {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:"), po0, sourceImages)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043412-cliprect?language=objc
-func (c_ CNNMultiaryKernel) SetClipRect(value metal.Region) {
-	objc.Call[objc.Void](c_, objc.Sel("setClipRect:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043446-sourcecount?language=objc
-func (c_ CNNMultiaryKernel) SourceCount() uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceCount"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043422-encodetocommandbuffer?language=objc
+func (c_ CNNMultiaryKernel) EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image {
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImages:"), commandBufferObject, sourceImages)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043427-isbackwards?language=objc
-func (c_ CNNMultiaryKernel) IsBackwards() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isBackwards"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043439-setkernelheight?language=objc
+func (c_ CNNMultiaryKernel) SetKernelHeightAtIndex(height uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:atIndex:"), height, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043428-isresultstatereusedacrossbatch?language=objc
+func (c_ CNNMultiaryKernel) IsResultStateReusedAcrossBatch() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isResultStateReusedAcrossBatch"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043438-setedgemode?language=objc
+func (c_ CNNMultiaryKernel) SetEdgeModeAtIndex(edgeMode ImageEdgeMode, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setEdgeMode:atIndex:"), edgeMode, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043430-kernelheightatindex?language=objc
+func (c_ CNNMultiaryKernel) KernelHeightAtIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelHeightAtIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043443-setsourcefeaturechanneloffset?language=objc
+func (c_ CNNMultiaryKernel) SetSourceFeatureChannelOffsetAtIndex(offset uint, index uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelOffset:atIndex:"), offset, index)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043448-sourcefeaturechanneloffsetatinde?language=objc
+func (c_ CNNMultiaryKernel) SourceFeatureChannelOffsetAtIndex(index uint) uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelOffsetAtIndex:"), index)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043429-isstatemodified?language=objc
+func (c_ CNNMultiaryKernel) IsStateModified() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isStateModified"))
 	return rv
 }
 
@@ -532,6 +437,37 @@ func (c_ CNNMultiaryKernel) SetPaddingObject(valueObject objc.IObject) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043446-sourcecount?language=objc
+func (c_ CNNMultiaryKernel) SourceCount() uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceCount"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043427-isbackwards?language=objc
+func (c_ CNNMultiaryKernel) IsBackwards() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isBackwards"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043412-cliprect?language=objc
+func (c_ CNNMultiaryKernel) ClipRect() metal.Region {
+	rv := objc.Call[metal.Region](c_, objc.Sel("clipRect"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043412-cliprect?language=objc
+func (c_ CNNMultiaryKernel) SetClipRect(value metal.Region) {
+	objc.Call[objc.Void](c_, objc.Sel("setClipRect:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043414-destinationimageallocator?language=objc
 func (c_ CNNMultiaryKernel) DestinationImageAllocator() ImageAllocatorObject {
 	rv := objc.Call[ImageAllocatorObject](c_, objc.Sel("destinationImageAllocator"))
@@ -551,14 +487,6 @@ func (c_ CNNMultiaryKernel) SetDestinationImageAllocator(value PImageAllocator) 
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043414-destinationimageallocator?language=objc
 func (c_ CNNMultiaryKernel) SetDestinationImageAllocatorObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setDestinationImageAllocator:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnmultiarykernel/3043429-isstatemodified?language=objc
-func (c_ CNNMultiaryKernel) IsStateModified() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isStateModified"))
-	return rv
 }
 
 //	[Full Topic]

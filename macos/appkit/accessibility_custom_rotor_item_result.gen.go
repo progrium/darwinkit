@@ -19,12 +19,12 @@ type _AccessibilityCustomRotorItemResultClass struct {
 // An interface definition for the [AccessibilityCustomRotorItemResult] class.
 type IAccessibilityCustomRotorItemResult interface {
 	objc.IObject
-	CustomLabel() string
-	SetCustomLabel(value string)
-	TargetElement() AccessibilityElementObject
+	TargetElement() objc.Object
 	TargetRange() foundation.Range
 	SetTargetRange(value foundation.Range)
 	ItemLoadingToken() AccessibilityLoadingToken
+	CustomLabel() string
+	SetCustomLabel(value string)
 }
 
 // A target accessibility element that a custom rotor references. [Full Topic]
@@ -40,21 +40,6 @@ func AccessibilityCustomRotorItemResultFrom(ptr unsafe.Pointer) AccessibilityCus
 	}
 }
 
-func (a_ AccessibilityCustomRotorItemResult) InitWithTargetElement(targetElement PAccessibilityElement) AccessibilityCustomRotorItemResult {
-	po0 := objc.WrapAsProtocol("NSAccessibilityElement", targetElement)
-	rv := objc.Call[AccessibilityCustomRotorItemResult](a_, objc.Sel("initWithTargetElement:"), po0)
-	return rv
-}
-
-// Creates an item result with the specified target element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876308-initwithtargetelement?language=objc
-func NewAccessibilityCustomRotorItemResultWithTargetElement(targetElement PAccessibilityElement) AccessibilityCustomRotorItemResult {
-	instance := AccessibilityCustomRotorItemResultClass.Alloc().InitWithTargetElement(targetElement)
-	instance.Autorelease()
-	return instance
-}
-
 func (a_ AccessibilityCustomRotorItemResult) InitWithItemLoadingTokenCustomLabel(itemLoadingToken AccessibilityLoadingToken, customLabel string) AccessibilityCustomRotorItemResult {
 	rv := objc.Call[AccessibilityCustomRotorItemResult](a_, objc.Sel("initWithItemLoadingToken:customLabel:"), itemLoadingToken, customLabel)
 	return rv
@@ -65,6 +50,20 @@ func (a_ AccessibilityCustomRotorItemResult) InitWithItemLoadingTokenCustomLabel
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2890782-initwithitemloadingtoken?language=objc
 func NewAccessibilityCustomRotorItemResultWithItemLoadingTokenCustomLabel(itemLoadingToken AccessibilityLoadingToken, customLabel string) AccessibilityCustomRotorItemResult {
 	instance := AccessibilityCustomRotorItemResultClass.Alloc().InitWithItemLoadingTokenCustomLabel(itemLoadingToken, customLabel)
+	instance.Autorelease()
+	return instance
+}
+
+func (a_ AccessibilityCustomRotorItemResult) InitWithTargetElement(targetElement objc.IObject) AccessibilityCustomRotorItemResult {
+	rv := objc.Call[AccessibilityCustomRotorItemResult](a_, objc.Sel("initWithTargetElement:"), targetElement)
+	return rv
+}
+
+// Creates an item result with the specified target element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876308-initwithtargetelement?language=objc
+func NewAccessibilityCustomRotorItemResultWithTargetElement(targetElement objc.IObject) AccessibilityCustomRotorItemResult {
+	instance := AccessibilityCustomRotorItemResultClass.Alloc().InitWithTargetElement(targetElement)
 	instance.Autorelease()
 	return instance
 }
@@ -89,26 +88,11 @@ func (a_ AccessibilityCustomRotorItemResult) Init() AccessibilityCustomRotorItem
 	return rv
 }
 
-// A localized label to use instead of the default item label to describe the item result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876298-customlabel?language=objc
-func (a_ AccessibilityCustomRotorItemResult) CustomLabel() string {
-	rv := objc.Call[string](a_, objc.Sel("customLabel"))
-	return rv
-}
-
-// A localized label to use instead of the default item label to describe the item result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876298-customlabel?language=objc
-func (a_ AccessibilityCustomRotorItemResult) SetCustomLabel(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setCustomLabel:"), value)
-}
-
 // A target element that references an element to message for accessibility properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876335-targetelement?language=objc
-func (a_ AccessibilityCustomRotorItemResult) TargetElement() AccessibilityElementObject {
-	rv := objc.Call[AccessibilityElementObject](a_, objc.Sel("targetElement"))
+func (a_ AccessibilityCustomRotorItemResult) TargetElement() objc.Object {
+	rv := objc.Call[objc.Object](a_, objc.Sel("targetElement"))
 	return rv
 }
 
@@ -133,4 +117,19 @@ func (a_ AccessibilityCustomRotorItemResult) SetTargetRange(value foundation.Ran
 func (a_ AccessibilityCustomRotorItemResult) ItemLoadingToken() AccessibilityLoadingToken {
 	rv := objc.Call[AccessibilityLoadingToken](a_, objc.Sel("itemLoadingToken"))
 	return rv
+}
+
+// A localized label to use instead of the default item label to describe the item result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876298-customlabel?language=objc
+func (a_ AccessibilityCustomRotorItemResult) CustomLabel() string {
+	rv := objc.Call[string](a_, objc.Sel("customLabel"))
+	return rv
+}
+
+// A localized label to use instead of the default item label to describe the item result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876298-customlabel?language=objc
+func (a_ AccessibilityCustomRotorItemResult) SetCustomLabel(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setCustomLabel:"), value)
 }

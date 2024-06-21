@@ -18,8 +18,8 @@ type _FetchResultClass struct {
 // An interface definition for the [FetchResult] class.
 type IFetchResult interface {
 	objc.IObject
-	CurrentHistoryToken() []byte
 	Value() objc.Object
+	CurrentHistoryToken() []byte
 }
 
 //	[Full Topic]
@@ -57,16 +57,16 @@ func (f_ FetchResult) Init() FetchResult {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnfetchresult/3294193-currenthistorytoken?language=objc
-func (f_ FetchResult) CurrentHistoryToken() []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("currentHistoryToken"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnfetchresult/3294194-value?language=objc
+func (f_ FetchResult) Value() objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("value"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnfetchresult/3294194-value?language=objc
-func (f_ FetchResult) Value() objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("value"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnfetchresult/3294193-currenthistorytoken?language=objc
+func (f_ FetchResult) CurrentHistoryToken() []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("currentHistoryToken"))
 	return rv
 }

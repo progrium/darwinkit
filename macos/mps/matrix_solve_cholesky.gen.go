@@ -71,21 +71,6 @@ func (m_ MatrixSolveCholesky) Init() MatrixSolveCholesky {
 	return rv
 }
 
-func (m_ MatrixSolveCholesky) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveCholesky {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixSolveCholesky](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixSolveCholesky_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveCholesky {
-	instance := MatrixSolveCholeskyClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixSolveCholesky) InitWithDevice(device metal.PDevice) MatrixSolveCholesky {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixSolveCholesky](m_, objc.Sel("initWithDevice:"), po0)
@@ -97,6 +82,21 @@ func (m_ MatrixSolveCholesky) InitWithDevice(device metal.PDevice) MatrixSolveCh
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixSolveCholeskyWithDevice(device metal.PDevice) MatrixSolveCholesky {
 	instance := MatrixSolveCholeskyClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixSolveCholesky) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveCholesky {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixSolveCholesky](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixSolveCholesky_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveCholesky {
+	instance := MatrixSolveCholeskyClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

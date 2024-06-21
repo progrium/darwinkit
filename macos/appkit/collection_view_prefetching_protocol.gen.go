@@ -14,10 +14,6 @@ type PCollectionViewPrefetching interface {
 	// optional
 	CollectionViewPrefetchItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath)
 	HasCollectionViewPrefetchItemsAtIndexPaths() bool
-
-	// optional
-	CollectionViewCancelPrefetchingForItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath)
-	HasCollectionViewCancelPrefetchingForItemsAtIndexPaths() bool
 }
 
 // ensure impl type implements protocol interface
@@ -37,15 +33,4 @@ func (c_ CollectionViewPrefetchingObject) HasCollectionViewPrefetchItemsAtIndexP
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewprefetching/2879293-collectionview?language=objc
 func (c_ CollectionViewPrefetchingObject) CollectionViewPrefetchItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath) {
 	objc.Call[objc.Void](c_, objc.Sel("collectionView:prefetchItemsAtIndexPaths:"), collectionView, indexPaths)
-}
-
-func (c_ CollectionViewPrefetchingObject) HasCollectionViewCancelPrefetchingForItemsAtIndexPaths() bool {
-	return c_.RespondsToSelector(objc.Sel("collectionView:cancelPrefetchingForItemsAtIndexPaths:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewprefetching/2879295-collectionview?language=objc
-func (c_ CollectionViewPrefetchingObject) CollectionViewCancelPrefetchingForItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:cancelPrefetchingForItemsAtIndexPaths:"), collectionView, indexPaths)
 }

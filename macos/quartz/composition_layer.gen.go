@@ -54,6 +54,32 @@ func (c_ CompositionLayer) Init() CompositionLayer {
 	return rv
 }
 
+func (cc _CompositionLayerClass) Layer() CompositionLayer {
+	rv := objc.Call[CompositionLayer](cc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func CompositionLayer_Layer() CompositionLayer {
+	return CompositionLayerClass.Layer()
+}
+
+func (c_ CompositionLayer) InitWithLayer(layer objc.IObject) CompositionLayer {
+	rv := objc.Call[CompositionLayer](c_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewCompositionLayerWithLayer(layer objc.IObject) CompositionLayer {
+	instance := CompositionLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (c_ CompositionLayer) ModelLayer() CompositionLayer {
 	rv := objc.Call[CompositionLayer](c_, objc.Sel("modelLayer"))
 	return rv
@@ -80,30 +106,4 @@ func CompositionLayer_PresentationLayer() CompositionLayer {
 	instance := CompositionLayerClass.Alloc().PresentationLayer()
 	instance.Autorelease()
 	return instance
-}
-
-func (c_ CompositionLayer) InitWithLayer(layer objc.IObject) CompositionLayer {
-	rv := objc.Call[CompositionLayer](c_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewCompositionLayerWithLayer(layer objc.IObject) CompositionLayer {
-	instance := CompositionLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CompositionLayerClass) Layer() CompositionLayer {
-	rv := objc.Call[CompositionLayer](cc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func CompositionLayer_Layer() CompositionLayer {
-	return CompositionLayerClass.Layer()
 }

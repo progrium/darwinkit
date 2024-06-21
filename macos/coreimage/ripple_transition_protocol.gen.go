@@ -12,20 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition?language=objc
 type PRippleTransition interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
-	SetShadingImage(value Image)
-	HasSetShadingImage() bool
-
-	// optional
-	ShadingImage() Image
-	HasShadingImage() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetScale(value float32)
@@ -36,20 +28,28 @@ type PRippleTransition interface {
 	HasScale() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
-
-	// optional
-	Width() float32
-	HasWidth() bool
-
-	// optional
 	SetExtent(value coregraphics.Rect)
 	HasSetExtent() bool
 
 	// optional
 	Extent() coregraphics.Rect
 	HasExtent() bool
+
+	// optional
+	SetShadingImage(value Image)
+	HasSetShadingImage() bool
+
+	// optional
+	ShadingImage() Image
+	HasShadingImage() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -60,49 +60,26 @@ type RippleTransitionObject struct {
 	objc.Object
 }
 
-func (r_ RippleTransitionObject) HasSetCenter() bool {
-	return r_.RespondsToSelector(objc.Sel("setCenter:"))
+func (r_ RippleTransitionObject) HasSetWidth() bool {
+	return r_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The width of the ripple. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228692-center?language=objc
-func (r_ RippleTransitionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](r_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
+func (r_ RippleTransitionObject) SetWidth(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setWidth:"), value)
 }
 
-func (r_ RippleTransitionObject) HasCenter() bool {
-	return r_.RespondsToSelector(objc.Sel("center"))
+func (r_ RippleTransitionObject) HasWidth() bool {
+	return r_.RespondsToSelector(objc.Sel("width"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The width of the ripple. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228692-center?language=objc
-func (r_ RippleTransitionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](r_, objc.Sel("center"))
-	return rv
-}
-
-func (r_ RippleTransitionObject) HasSetShadingImage() bool {
-	return r_.RespondsToSelector(objc.Sel("setShadingImage:"))
-}
-
-// An image that looks like a shaded sphere enclosed in a square. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228695-shadingimage?language=objc
-func (r_ RippleTransitionObject) SetShadingImage(value Image) {
-	objc.Call[objc.Void](r_, objc.Sel("setShadingImage:"), value)
-}
-
-func (r_ RippleTransitionObject) HasShadingImage() bool {
-	return r_.RespondsToSelector(objc.Sel("shadingImage"))
-}
-
-// An image that looks like a shaded sphere enclosed in a square. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228695-shadingimage?language=objc
-func (r_ RippleTransitionObject) ShadingImage() Image {
-	rv := objc.Call[Image](r_, objc.Sel("shadingImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
+func (r_ RippleTransitionObject) Width() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("width"))
 	return rv
 }
 
@@ -129,29 +106,6 @@ func (r_ RippleTransitionObject) Scale() float32 {
 	return rv
 }
 
-func (r_ RippleTransitionObject) HasSetWidth() bool {
-	return r_.RespondsToSelector(objc.Sel("setWidth:"))
-}
-
-// The width of the ripple. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
-func (r_ RippleTransitionObject) SetWidth(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setWidth:"), value)
-}
-
-func (r_ RippleTransitionObject) HasWidth() bool {
-	return r_.RespondsToSelector(objc.Sel("width"))
-}
-
-// The width of the ripple. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
-func (r_ RippleTransitionObject) Width() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("width"))
-	return rv
-}
-
 func (r_ RippleTransitionObject) HasSetExtent() bool {
 	return r_.RespondsToSelector(objc.Sel("setExtent:"))
 }
@@ -172,5 +126,51 @@ func (r_ RippleTransitionObject) HasExtent() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228693-extent?language=objc
 func (r_ RippleTransitionObject) Extent() coregraphics.Rect {
 	rv := objc.Call[coregraphics.Rect](r_, objc.Sel("extent"))
+	return rv
+}
+
+func (r_ RippleTransitionObject) HasSetShadingImage() bool {
+	return r_.RespondsToSelector(objc.Sel("setShadingImage:"))
+}
+
+// An image that looks like a shaded sphere enclosed in a square. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228695-shadingimage?language=objc
+func (r_ RippleTransitionObject) SetShadingImage(value Image) {
+	objc.Call[objc.Void](r_, objc.Sel("setShadingImage:"), value)
+}
+
+func (r_ RippleTransitionObject) HasShadingImage() bool {
+	return r_.RespondsToSelector(objc.Sel("shadingImage"))
+}
+
+// An image that looks like a shaded sphere enclosed in a square. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228695-shadingimage?language=objc
+func (r_ RippleTransitionObject) ShadingImage() Image {
+	rv := objc.Call[Image](r_, objc.Sel("shadingImage"))
+	return rv
+}
+
+func (r_ RippleTransitionObject) HasSetCenter() bool {
+	return r_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228692-center?language=objc
+func (r_ RippleTransitionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](r_, objc.Sel("setCenter:"), value)
+}
+
+func (r_ RippleTransitionObject) HasCenter() bool {
+	return r_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228692-center?language=objc
+func (r_ RippleTransitionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](r_, objc.Sel("center"))
 	return rv
 }

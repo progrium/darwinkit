@@ -20,9 +20,9 @@ type _PointClass struct {
 type IPoint interface {
 	objc.IObject
 	DistanceToPoint(point IPoint) float64
+	X() float64
 	Y() float64
 	Location() coregraphics.Point
-	X() float64
 }
 
 // An immutable object that represents a single, two-dimensional point in an image. [Full Topic]
@@ -38,20 +38,6 @@ func PointFrom(ptr unsafe.Pointer) Point {
 	}
 }
 
-func (p_ Point) InitWithLocation(location coregraphics.Point) Point {
-	rv := objc.Call[Point](p_, objc.Sel("initWithLocation:"), location)
-	return rv
-}
-
-// Creates a point object from the specified Core Graphics point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548330-initwithlocation?language=objc
-func NewPointWithLocation(location coregraphics.Point) Point {
-	instance := PointClass.Alloc().InitWithLocation(location)
-	instance.Autorelease()
-	return instance
-}
-
 func (p_ Point) InitWithXY(x float64, y float64) Point {
 	rv := objc.Call[Point](p_, objc.Sel("initWithX:y:"), x, y)
 	return rv
@@ -62,6 +48,20 @@ func (p_ Point) InitWithXY(x float64, y float64) Point {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548331-initwithx?language=objc
 func NewPointWithXY(x float64, y float64) Point {
 	instance := PointClass.Alloc().InitWithXY(x, y)
+	instance.Autorelease()
+	return instance
+}
+
+func (p_ Point) InitWithLocation(location coregraphics.Point) Point {
+	rv := objc.Call[Point](p_, objc.Sel("initWithLocation:"), location)
+	return rv
+}
+
+// Creates a point object from the specified Core Graphics point. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548330-initwithlocation?language=objc
+func NewPointWithLocation(location coregraphics.Point) Point {
+	instance := PointClass.Alloc().InitWithLocation(location)
 	instance.Autorelease()
 	return instance
 }
@@ -109,14 +109,6 @@ func (p_ Point) DistanceToPoint(point IPoint) float64 {
 	return rv
 }
 
-// The y-coordinate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548335-y?language=objc
-func (p_ Point) Y() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("y"))
-	return rv
-}
-
 // A point object that represents the origin. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548336-zeropoint?language=objc
@@ -132,18 +124,26 @@ func Point_ZeroPoint() Point {
 	return PointClass.ZeroPoint()
 }
 
-// The Core Graphics point for this point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548332-location?language=objc
-func (p_ Point) Location() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("location"))
-	return rv
-}
-
 // The x-coordinate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548334-x?language=objc
 func (p_ Point) X() float64 {
 	rv := objc.Call[float64](p_, objc.Sel("x"))
+	return rv
+}
+
+// The y-coordinate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548335-y?language=objc
+func (p_ Point) Y() float64 {
+	rv := objc.Call[float64](p_, objc.Sel("y"))
+	return rv
+}
+
+// The Core Graphics point for this point. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548332-location?language=objc
+func (p_ Point) Location() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("location"))
 	return rv
 }

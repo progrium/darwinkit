@@ -18,16 +18,16 @@ type _TransitionClass struct {
 // An interface definition for the [Transition] class.
 type ITransition interface {
 	IAnimation
-	StartProgress() float32
-	SetStartProgress(value float32)
+	Filter() objc.Object
+	SetFilter(value objc.IObject)
 	EndProgress() float32
 	SetEndProgress(value float32)
 	Subtype() TransitionSubtype
 	SetSubtype(value TransitionSubtype)
-	Filter() objc.Object
-	SetFilter(value objc.IObject)
 	Type() TransitionType
 	SetType(value TransitionType)
+	StartProgress() float32
+	SetStartProgress(value float32)
 }
 
 // An object that provides an animated transition between a layer's states. [Full Topic]
@@ -75,19 +75,19 @@ func Transition_Animation() Transition {
 	return TransitionClass.Animation()
 }
 
-// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+// An optional Core Image filter object that provides the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
-func (t_ Transition) StartProgress() float32 {
-	rv := objc.Call[float32](t_, objc.Sel("startProgress"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
+func (t_ Transition) Filter() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("filter"))
 	return rv
 }
 
-// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+// An optional Core Image filter object that provides the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
-func (t_ Transition) SetStartProgress(value float32) {
-	objc.Call[objc.Void](t_, objc.Sel("setStartProgress:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
+func (t_ Transition) SetFilter(value objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("setFilter:"), value)
 }
 
 // Indicates the end point of the receiver as a fraction of the entire transition. [Full Topic]
@@ -120,21 +120,6 @@ func (t_ Transition) SetSubtype(value TransitionSubtype) {
 	objc.Call[objc.Void](t_, objc.Sel("setSubtype:"), value)
 }
 
-// An optional Core Image filter object that provides the transition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
-func (t_ Transition) Filter() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("filter"))
-	return rv
-}
-
-// An optional Core Image filter object that provides the transition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
-func (t_ Transition) SetFilter(value objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setFilter:"), value)
-}
-
 // Specifies the predefined transition type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412502-type?language=objc
@@ -148,4 +133,19 @@ func (t_ Transition) Type() TransitionType {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412502-type?language=objc
 func (t_ Transition) SetType(value TransitionType) {
 	objc.Call[objc.Void](t_, objc.Sel("setType:"), value)
+}
+
+// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
+func (t_ Transition) StartProgress() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("startProgress"))
+	return rv
+}
+
+// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
+func (t_ Transition) SetStartProgress(value float32) {
+	objc.Call[objc.Void](t_, objc.Sel("setStartProgress:"), value)
 }

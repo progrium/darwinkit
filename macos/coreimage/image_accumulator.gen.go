@@ -19,12 +19,11 @@ type _ImageAccumulatorClass struct {
 // An interface definition for the [ImageAccumulator] class.
 type IImageAccumulator interface {
 	objc.IObject
-	Image() Image
 	SetImage(image IImage)
-	SetImageDirtyRect(image IImage, dirtyRect coregraphics.Rect)
 	Clear()
-	Format() Format
+	Image() Image
 	Extent() coregraphics.Rect
+	Format() Format
 }
 
 // An object that manages feedback-based image processing for tasks such as painting or fluid simulation. [Full Topic]
@@ -40,44 +39,6 @@ func ImageAccumulatorFrom(ptr unsafe.Pointer) ImageAccumulator {
 	}
 }
 
-func (i_ ImageAccumulator) InitWithExtentFormatColorSpace(extent coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) ImageAccumulator {
-	rv := objc.Call[ImageAccumulator](i_, objc.Sel("initWithExtent:format:colorSpace:"), extent, format, colorSpace)
-	return rv
-}
-
-// Initializes an image accumulator with the specified extent, pixel format, and color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427710-initwithextent?language=objc
-func NewImageAccumulatorWithExtentFormatColorSpace(extent coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) ImageAccumulator {
-	instance := ImageAccumulatorClass.Alloc().InitWithExtentFormatColorSpace(extent, format, colorSpace)
-	instance.Autorelease()
-	return instance
-}
-
-func (ic _ImageAccumulatorClass) ImageAccumulatorWithExtentFormatColorSpace(extent coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) ImageAccumulator {
-	rv := objc.Call[ImageAccumulator](ic, objc.Sel("imageAccumulatorWithExtent:format:colorSpace:"), extent, format, colorSpace)
-	return rv
-}
-
-// Creates an image accumulator with the specified extent, pixel format, and color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427712-imageaccumulatorwithextent?language=objc
-func ImageAccumulator_ImageAccumulatorWithExtentFormatColorSpace(extent coregraphics.Rect, format Format, colorSpace coregraphics.ColorSpaceRef) ImageAccumulator {
-	return ImageAccumulatorClass.ImageAccumulatorWithExtentFormatColorSpace(extent, format, colorSpace)
-}
-
-func (ic _ImageAccumulatorClass) ImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
-	rv := objc.Call[ImageAccumulator](ic, objc.Sel("imageAccumulatorWithExtent:format:"), extent, format)
-	return rv
-}
-
-// Creates an image accumulator with the specified extent and pixel format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427722-imageaccumulatorwithextent?language=objc
-func ImageAccumulator_ImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
-	return ImageAccumulatorClass.ImageAccumulatorWithExtentFormat(extent, format)
-}
-
 func (i_ ImageAccumulator) InitWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
 	rv := objc.Call[ImageAccumulator](i_, objc.Sel("initWithExtent:format:"), extent, format)
 	return rv
@@ -90,6 +51,18 @@ func NewImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format
 	instance := ImageAccumulatorClass.Alloc().InitWithExtentFormat(extent, format)
 	instance.Autorelease()
 	return instance
+}
+
+func (ic _ImageAccumulatorClass) ImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
+	rv := objc.Call[ImageAccumulator](ic, objc.Sel("imageAccumulatorWithExtent:format:"), extent, format)
+	return rv
+}
+
+// Creates an image accumulator with the specified extent and pixel format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427722-imageaccumulatorwithextent?language=objc
+func ImageAccumulator_ImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
+	return ImageAccumulatorClass.ImageAccumulatorWithExtentFormat(extent, format)
 }
 
 func (ic _ImageAccumulatorClass) Alloc() ImageAccumulator {
@@ -112,26 +85,11 @@ func (i_ ImageAccumulator) Init() ImageAccumulator {
 	return rv
 }
 
-// Returns the current contents of the image accumulator. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427704-image?language=objc
-func (i_ ImageAccumulator) Image() Image {
-	rv := objc.Call[Image](i_, objc.Sel("image"))
-	return rv
-}
-
 // Sets the contents of the image accumulator to the contents of the specified image object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427702-setimage?language=objc
 func (i_ ImageAccumulator) SetImage(image IImage) {
 	objc.Call[objc.Void](i_, objc.Sel("setImage:"), image)
-}
-
-// Updates an image accumulator with a subregion of an image object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427706-setimage?language=objc
-func (i_ ImageAccumulator) SetImageDirtyRect(image IImage, dirtyRect coregraphics.Rect) {
-	objc.Call[objc.Void](i_, objc.Sel("setImage:dirtyRect:"), image, dirtyRect)
 }
 
 // Resets the accumulator, discarding any pending updates and the current content. [Full Topic]
@@ -141,11 +99,11 @@ func (i_ ImageAccumulator) Clear() {
 	objc.Call[objc.Void](i_, objc.Sel("clear"))
 }
 
-// The pixel format of the image accumulator. [Full Topic]
+// Returns the current contents of the image accumulator. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427716-format?language=objc
-func (i_ ImageAccumulator) Format() Format {
-	rv := objc.Call[Format](i_, objc.Sel("format"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427704-image?language=objc
+func (i_ ImageAccumulator) Image() Image {
+	rv := objc.Call[Image](i_, objc.Sel("image"))
 	return rv
 }
 
@@ -154,5 +112,13 @@ func (i_ ImageAccumulator) Format() Format {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427714-extent?language=objc
 func (i_ ImageAccumulator) Extent() coregraphics.Rect {
 	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("extent"))
+	return rv
+}
+
+// The pixel format of the image accumulator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427716-format?language=objc
+func (i_ ImageAccumulator) Format() Format {
+	rv := objc.Call[Format](i_, objc.Sel("format"))
 	return rv
 }

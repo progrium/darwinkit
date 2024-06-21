@@ -17,7 +17,7 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/corevideo/cvoptionflags?language=objc
 type OptionFlags uint64
 
-// The flags to pass to [corevideo/cvpixelbufferlockbaseaddress] and [corevideo/cvpixelbufferunlockbaseaddress]. [Full Topic]
+// The flags to pass to CVPixelBufferLockBaseAddress and CVPixelBufferUnlockBaseAddress. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corevideo/cvpixelbufferlockflags?language=objc
 type PixelBufferLockFlags OptionFlags

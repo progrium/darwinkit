@@ -19,6 +19,14 @@ type PColorControls interface {
 	HasInputImage() bool
 
 	// optional
+	SetSaturation(value float32)
+	HasSetSaturation() bool
+
+	// optional
+	Saturation() float32
+	HasSaturation() bool
+
+	// optional
 	SetContrast(value float32)
 	HasSetContrast() bool
 
@@ -33,14 +41,6 @@ type PColorControls interface {
 	// optional
 	Brightness() float32
 	HasBrightness() bool
-
-	// optional
-	SetSaturation(value float32)
-	HasSetSaturation() bool
-
-	// optional
-	Saturation() float32
-	HasSaturation() bool
 }
 
 // ensure impl type implements protocol interface
@@ -71,6 +71,29 @@ func (c_ ColorControlsObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228126-inputimage?language=objc
 func (c_ ColorControlsObject) InputImage() Image {
 	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (c_ ColorControlsObject) HasSetSaturation() bool {
+	return c_.RespondsToSelector(objc.Sel("setSaturation:"))
+}
+
+// The amount of saturation to apply. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
+func (c_ ColorControlsObject) SetSaturation(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setSaturation:"), value)
+}
+
+func (c_ ColorControlsObject) HasSaturation() bool {
+	return c_.RespondsToSelector(objc.Sel("saturation"))
+}
+
+// The amount of saturation to apply. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
+func (c_ ColorControlsObject) Saturation() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("saturation"))
 	return rv
 }
 
@@ -117,28 +140,5 @@ func (c_ ColorControlsObject) HasBrightness() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228124-brightness?language=objc
 func (c_ ColorControlsObject) Brightness() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("brightness"))
-	return rv
-}
-
-func (c_ ColorControlsObject) HasSetSaturation() bool {
-	return c_.RespondsToSelector(objc.Sel("setSaturation:"))
-}
-
-// The amount of saturation to apply. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
-func (c_ ColorControlsObject) SetSaturation(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setSaturation:"), value)
-}
-
-func (c_ ColorControlsObject) HasSaturation() bool {
-	return c_.RespondsToSelector(objc.Sel("saturation"))
-}
-
-// The amount of saturation to apply. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
-func (c_ ColorControlsObject) Saturation() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("saturation"))
 	return rv
 }

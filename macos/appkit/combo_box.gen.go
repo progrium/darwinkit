@@ -19,42 +19,42 @@ type _ComboBoxClass struct {
 // An interface definition for the [ComboBox] class.
 type IComboBox interface {
 	ITextField
-	RemoveItemAtIndex(index int)
-	ReloadData()
-	RemoveAllItems()
-	AddItemsWithObjectValues(objects []objc.IObject)
-	SelectItemAtIndex(index int)
-	IndexOfItemWithObjectValue(object objc.IObject) int
 	RemoveItemWithObjectValue(object objc.IObject)
-	AddItemWithObjectValue(object objc.IObject)
 	NoteNumberOfItemsChanged()
-	ScrollItemAtIndexToTop(index int)
-	ScrollItemAtIndexToVisible(index int)
-	SelectItemWithObjectValue(object objc.IObject)
-	ItemObjectValueAtIndex(index int) objc.Object
-	DeselectItemAtIndex(index int)
+	IndexOfItemWithObjectValue(object objc.IObject) int
 	InsertItemWithObjectValueAtIndex(object objc.IObject, index int)
-	NumberOfVisibleItems() int
-	SetNumberOfVisibleItems(value int)
-	ObjectValues() []objc.Object
+	ScrollItemAtIndexToVisible(index int)
+	RemoveAllItems()
+	RemoveItemAtIndex(index int)
+	AddItemWithObjectValue(object objc.IObject)
+	AddItemsWithObjectValues(objects []objc.IObject)
+	DeselectItemAtIndex(index int)
+	ScrollItemAtIndexToTop(index int)
+	SelectItemWithObjectValue(object objc.IObject)
+	SelectItemAtIndex(index int)
+	ItemObjectValueAtIndex(index int) objc.Object
+	ReloadData()
 	DataSource() ComboBoxDataSourceObject
 	SetDataSource(value PComboBoxDataSource)
 	SetDataSourceObject(valueObject objc.IObject)
-	IsButtonBordered() bool
-	SetButtonBordered(value bool)
-	ObjectValueOfSelectedItem() objc.Object
-	IntercellSpacing() foundation.Size
-	SetIntercellSpacing(value foundation.Size)
-	UsesDataSource() bool
-	SetUsesDataSource(value bool)
+	IndexOfSelectedItem() int
 	ItemHeight() float64
 	SetItemHeight(value float64)
-	NumberOfItems() int
+	ObjectValueOfSelectedItem() objc.Object
 	HasVerticalScroller() bool
 	SetHasVerticalScroller(value bool)
-	IndexOfSelectedItem() int
 	Completes() bool
 	SetCompletes(value bool)
+	UsesDataSource() bool
+	SetUsesDataSource(value bool)
+	ObjectValues() []objc.Object
+	NumberOfItems() int
+	NumberOfVisibleItems() int
+	SetNumberOfVisibleItems(value int)
+	IsButtonBordered() bool
+	SetButtonBordered(value bool)
+	IntercellSpacing() foundation.Size
+	SetIntercellSpacing(value foundation.Size)
 }
 
 // A view that displays a list of values in a pop-up menu where the user selects a value or types in a custom value. [Full Topic]
@@ -90,18 +90,6 @@ func (c_ ComboBox) Init() ComboBox {
 	return rv
 }
 
-func (cc _ComboBoxClass) LabelWithString(stringValue string) ComboBox {
-	rv := objc.Call[ComboBox](cc, objc.Sel("labelWithString:"), stringValue)
-	return rv
-}
-
-// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
-func ComboBox_LabelWithString(stringValue string) ComboBox {
-	return ComboBoxClass.LabelWithString(stringValue)
-}
-
 func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
 	rv := objc.Call[ComboBox](cc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
@@ -112,6 +100,18 @@ func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundat
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
 func ComboBox_LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
 	return ComboBoxClass.LabelWithAttributedString(attributedStringValue)
+}
+
+func (cc _ComboBoxClass) LabelWithString(stringValue string) ComboBox {
+	rv := objc.Call[ComboBox](cc, objc.Sel("labelWithString:"), stringValue)
+	return rv
+}
+
+// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func ComboBox_LabelWithString(stringValue string) ComboBox {
+	return ComboBoxClass.LabelWithString(stringValue)
 }
 
 func (cc _ComboBoxClass) WrappingLabelWithString(stringValue string) ComboBox {
@@ -152,39 +152,18 @@ func NewComboBoxWithFrame(frameRect foundation.Rect) ComboBox {
 	return instance
 }
 
-// Removes the object at the specified location from the receiver’s internal item list. [Full Topic]
+// Removes all occurrences of the given object from the receiver’s internal item list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436761-removeitematindex?language=objc
-func (c_ ComboBox) RemoveItemAtIndex(index int) {
-	objc.Call[objc.Void](c_, objc.Sel("removeItemAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436759-removeitemwithobjectvalue?language=objc
+func (c_ ComboBox) RemoveItemWithObjectValue(object objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("removeItemWithObjectValue:"), object)
 }
 
-// Marks the receiver as needing redisplay, so that it will reload the data for visible pop-up items and draw the new values. [Full Topic]
+// Informs the receiver that the number of items in its data source has changed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436717-reloaddata?language=objc
-func (c_ ComboBox) ReloadData() {
-	objc.Call[objc.Void](c_, objc.Sel("reloadData"))
-}
-
-// Removes all items from the receiver’s internal item list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436721-removeallitems?language=objc
-func (c_ ComboBox) RemoveAllItems() {
-	objc.Call[objc.Void](c_, objc.Sel("removeAllItems"))
-}
-
-// Adds multiple objects to the end of the receiver’s internal item list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436751-additemswithobjectvalues?language=objc
-func (c_ ComboBox) AddItemsWithObjectValues(objects []objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("addItemsWithObjectValues:"), objects)
-}
-
-// Selects the pop-up list row at the given index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436735-selectitematindex?language=objc
-func (c_ ComboBox) SelectItemAtIndex(index int) {
-	objc.Call[objc.Void](c_, objc.Sel("selectItemAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436723-notenumberofitemschanged?language=objc
+func (c_ ComboBox) NoteNumberOfItemsChanged() {
+	objc.Call[objc.Void](c_, objc.Sel("noteNumberOfItemsChanged"))
 }
 
 // Searches the receiver’s internal item list for the specified object and returns the lowest matching index. [Full Topic]
@@ -195,32 +174,11 @@ func (c_ ComboBox) IndexOfItemWithObjectValue(object objc.IObject) int {
 	return rv
 }
 
-// Removes all occurrences of the given object from the receiver’s internal item list. [Full Topic]
+// Inserts an object at the specified location in the receiver’s internal item list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436759-removeitemwithobjectvalue?language=objc
-func (c_ ComboBox) RemoveItemWithObjectValue(object objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("removeItemWithObjectValue:"), object)
-}
-
-// Adds an object to the end of the receiver’s internal item list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436739-additemwithobjectvalue?language=objc
-func (c_ ComboBox) AddItemWithObjectValue(object objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("addItemWithObjectValue:"), object)
-}
-
-// Informs the receiver that the number of items in its data source has changed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436723-notenumberofitemschanged?language=objc
-func (c_ ComboBox) NoteNumberOfItemsChanged() {
-	objc.Call[objc.Void](c_, objc.Sel("noteNumberOfItemsChanged"))
-}
-
-// Scrolls the receiver’s pop-up list vertically so that the item at the specified index is as close to the top as possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436778-scrollitematindextotop?language=objc
-func (c_ ComboBox) ScrollItemAtIndexToTop(index int) {
-	objc.Call[objc.Void](c_, objc.Sel("scrollItemAtIndexToTop:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436703-insertitemwithobjectvalue?language=objc
+func (c_ ComboBox) InsertItemWithObjectValueAtIndex(object objc.IObject, index int) {
+	objc.Call[objc.Void](c_, objc.Sel("insertItemWithObjectValue:atIndex:"), object, index)
 }
 
 // Scrolls the receiver’s pop-up list vertically so that the item at the specified index is visible. [Full Topic]
@@ -230,11 +188,60 @@ func (c_ ComboBox) ScrollItemAtIndexToVisible(index int) {
 	objc.Call[objc.Void](c_, objc.Sel("scrollItemAtIndexToVisible:"), index)
 }
 
+// Removes all items from the receiver’s internal item list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436721-removeallitems?language=objc
+func (c_ ComboBox) RemoveAllItems() {
+	objc.Call[objc.Void](c_, objc.Sel("removeAllItems"))
+}
+
+// Removes the object at the specified location from the receiver’s internal item list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436761-removeitematindex?language=objc
+func (c_ ComboBox) RemoveItemAtIndex(index int) {
+	objc.Call[objc.Void](c_, objc.Sel("removeItemAtIndex:"), index)
+}
+
+// Adds an object to the end of the receiver’s internal item list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436739-additemwithobjectvalue?language=objc
+func (c_ ComboBox) AddItemWithObjectValue(object objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("addItemWithObjectValue:"), object)
+}
+
+// Adds multiple objects to the end of the receiver’s internal item list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436751-additemswithobjectvalues?language=objc
+func (c_ ComboBox) AddItemsWithObjectValues(objects []objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("addItemsWithObjectValues:"), objects)
+}
+
+// Deselects the pop-up list item at the specified index if it’s selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436699-deselectitematindex?language=objc
+func (c_ ComboBox) DeselectItemAtIndex(index int) {
+	objc.Call[objc.Void](c_, objc.Sel("deselectItemAtIndex:"), index)
+}
+
+// Scrolls the receiver’s pop-up list vertically so that the item at the specified index is as close to the top as possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436778-scrollitematindextotop?language=objc
+func (c_ ComboBox) ScrollItemAtIndexToTop(index int) {
+	objc.Call[objc.Void](c_, objc.Sel("scrollItemAtIndexToTop:"), index)
+}
+
 // Selects the first pop-up list item that corresponds to the given object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436737-selectitemwithobjectvalue?language=objc
 func (c_ ComboBox) SelectItemWithObjectValue(object objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("selectItemWithObjectValue:"), object)
+}
+
+// Selects the pop-up list row at the given index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436735-selectitematindex?language=objc
+func (c_ ComboBox) SelectItemAtIndex(index int) {
+	objc.Call[objc.Void](c_, objc.Sel("selectItemAtIndex:"), index)
 }
 
 // Returns the object located at the given index within the receiver’s internal item list. [Full Topic]
@@ -245,41 +252,11 @@ func (c_ ComboBox) ItemObjectValueAtIndex(index int) objc.Object {
 	return rv
 }
 
-// Deselects the pop-up list item at the specified index if it’s selected. [Full Topic]
+// Marks the receiver as needing redisplay, so that it will reload the data for visible pop-up items and draw the new values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436699-deselectitematindex?language=objc
-func (c_ ComboBox) DeselectItemAtIndex(index int) {
-	objc.Call[objc.Void](c_, objc.Sel("deselectItemAtIndex:"), index)
-}
-
-// Inserts an object at the specified location in the receiver’s internal item list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436703-insertitemwithobjectvalue?language=objc
-func (c_ ComboBox) InsertItemWithObjectValueAtIndex(object objc.IObject, index int) {
-	objc.Call[objc.Void](c_, objc.Sel("insertItemWithObjectValue:atIndex:"), object, index)
-}
-
-// The maximum number of visible items to display in the pop-up list at one time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc
-func (c_ ComboBox) NumberOfVisibleItems() int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfVisibleItems"))
-	return rv
-}
-
-// The maximum number of visible items to display in the pop-up list at one time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc
-func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
-	objc.Call[objc.Void](c_, objc.Sel("setNumberOfVisibleItems:"), value)
-}
-
-// An array of the items from the combo box’s internal list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436709-objectvalues?language=objc
-func (c_ ComboBox) ObjectValues() []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("objectValues"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436717-reloaddata?language=objc
+func (c_ ComboBox) ReloadData() {
+	objc.Call[objc.Void](c_, objc.Sel("reloadData"))
 }
 
 // The object that provides the item data for the combo box. [Full Topic]
@@ -305,57 +282,12 @@ func (c_ ComboBox) SetDataSourceObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), valueObject)
 }
 
-// A Boolean value indicating whether the combo box displays a border. [Full Topic]
+// The index of the last item selected from the pop-up list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc
-func (c_ ComboBox) IsButtonBordered() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isButtonBordered"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436701-indexofselecteditem?language=objc
+func (c_ ComboBox) IndexOfSelectedItem() int {
+	rv := objc.Call[int](c_, objc.Sel("indexOfSelectedItem"))
 	return rv
-}
-
-// A Boolean value indicating whether the combo box displays a border. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc
-func (c_ ComboBox) SetButtonBordered(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setButtonBordered:"), value)
-}
-
-// The object corresponding to the last item selected from the pop-up list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436743-objectvalueofselecteditem?language=objc
-func (c_ ComboBox) ObjectValueOfSelectedItem() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("objectValueOfSelectedItem"))
-	return rv
-}
-
-// The horizontal and vertical spacing between cells in the pop-up list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc
-func (c_ ComboBox) IntercellSpacing() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("intercellSpacing"))
-	return rv
-}
-
-// The horizontal and vertical spacing between cells in the pop-up list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc
-func (c_ ComboBox) SetIntercellSpacing(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setIntercellSpacing:"), value)
-}
-
-// A Boolean value indicating whether the combo box retrieves its items from a data source object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc
-func (c_ ComboBox) UsesDataSource() bool {
-	rv := objc.Call[bool](c_, objc.Sel("usesDataSource"))
-	return rv
-}
-
-// A Boolean value indicating whether the combo box retrieves its items from a data source object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc
-func (c_ ComboBox) SetUsesDataSource(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setUsesDataSource:"), value)
 }
 
 // The height of each item in the pop-up list. [Full Topic]
@@ -373,11 +305,11 @@ func (c_ ComboBox) SetItemHeight(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setItemHeight:"), value)
 }
 
-// The total number of items in the pop-up list. [Full Topic]
+// The object corresponding to the last item selected from the pop-up list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436747-numberofitems?language=objc
-func (c_ ComboBox) NumberOfItems() int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfItems"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436743-objectvalueofselecteditem?language=objc
+func (c_ ComboBox) ObjectValueOfSelectedItem() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("objectValueOfSelectedItem"))
 	return rv
 }
 
@@ -396,14 +328,6 @@ func (c_ ComboBox) SetHasVerticalScroller(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setHasVerticalScroller:"), value)
 }
 
-// The index of the last item selected from the pop-up list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436701-indexofselecteditem?language=objc
-func (c_ ComboBox) IndexOfSelectedItem() int {
-	rv := objc.Call[int](c_, objc.Sel("indexOfSelectedItem"))
-	return rv
-}
-
 // A Boolean value indicating whether the combo box tries to complete what the user types. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436749-completes?language=objc
@@ -417,4 +341,80 @@ func (c_ ComboBox) Completes() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436749-completes?language=objc
 func (c_ ComboBox) SetCompletes(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setCompletes:"), value)
+}
+
+// A Boolean value indicating whether the combo box retrieves its items from a data source object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc
+func (c_ ComboBox) UsesDataSource() bool {
+	rv := objc.Call[bool](c_, objc.Sel("usesDataSource"))
+	return rv
+}
+
+// A Boolean value indicating whether the combo box retrieves its items from a data source object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc
+func (c_ ComboBox) SetUsesDataSource(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setUsesDataSource:"), value)
+}
+
+// An array of the items from the combo box’s internal list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436709-objectvalues?language=objc
+func (c_ ComboBox) ObjectValues() []objc.Object {
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("objectValues"))
+	return rv
+}
+
+// The total number of items in the pop-up list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436747-numberofitems?language=objc
+func (c_ ComboBox) NumberOfItems() int {
+	rv := objc.Call[int](c_, objc.Sel("numberOfItems"))
+	return rv
+}
+
+// The maximum number of visible items to display in the pop-up list at one time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc
+func (c_ ComboBox) NumberOfVisibleItems() int {
+	rv := objc.Call[int](c_, objc.Sel("numberOfVisibleItems"))
+	return rv
+}
+
+// The maximum number of visible items to display in the pop-up list at one time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc
+func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
+	objc.Call[objc.Void](c_, objc.Sel("setNumberOfVisibleItems:"), value)
+}
+
+// A Boolean value indicating whether the combo box displays a border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc
+func (c_ ComboBox) IsButtonBordered() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isButtonBordered"))
+	return rv
+}
+
+// A Boolean value indicating whether the combo box displays a border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc
+func (c_ ComboBox) SetButtonBordered(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setButtonBordered:"), value)
+}
+
+// The horizontal and vertical spacing between cells in the pop-up list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc
+func (c_ ComboBox) IntercellSpacing() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("intercellSpacing"))
+	return rv
+}
+
+// The horizontal and vertical spacing between cells in the pop-up list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc
+func (c_ ComboBox) SetIntercellSpacing(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setIntercellSpacing:"), value)
 }

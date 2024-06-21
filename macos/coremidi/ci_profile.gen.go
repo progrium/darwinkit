@@ -49,20 +49,6 @@ func NewCIProfileWithData(data []byte) CIProfile {
 	return instance
 }
 
-func (c_ CIProfile) InitWithDataName(data []byte, inName string) CIProfile {
-	rv := objc.Call[CIProfile](c_, objc.Sel("initWithData:name:"), data, inName)
-	return rv
-}
-
-// Creates a named MIDI profile for the specified data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofile/2977104-initwithdata?language=objc
-func NewCIProfileWithDataName(data []byte, inName string) CIProfile {
-	instance := CIProfileClass.Alloc().InitWithDataName(data, inName)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CIProfileClass) Alloc() CIProfile {
 	rv := objc.Call[CIProfile](cc, objc.Sel("alloc"))
 	return rv

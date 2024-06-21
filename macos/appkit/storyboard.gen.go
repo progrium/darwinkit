@@ -19,10 +19,9 @@ type _StoryboardClass struct {
 // An interface definition for the [Storyboard] class.
 type IStoryboard interface {
 	objc.IObject
-	InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object
-	InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object
 	InstantiateControllerWithIdentifierCreator(identifier StoryboardSceneIdentifier, block StoryboardControllerCreator) objc.Object
 	InstantiateInitialController() objc.Object
+	InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object
 }
 
 // An encapsulation of the design-time view controller and window controller graph represented in an Interface Builder storyboard resource file. [Full Topic]
@@ -70,22 +69,6 @@ func (s_ Storyboard) Init() Storyboard {
 	return rv
 }
 
-// Instantiates a specified view controller or window controller from a storyboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/1426549-instantiatecontrollerwithidentif?language=objc
-func (s_ Storyboard) InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateControllerWithIdentifier:"), identifier)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/3174923-instantiateinitialcontrollerwith?language=objc
-func (s_ Storyboard) InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateInitialControllerWithCreator:"), block)
-	return rv
-}
-
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/3174922-instantiatecontrollerwithidentif?language=objc
@@ -99,6 +82,14 @@ func (s_ Storyboard) InstantiateControllerWithIdentifierCreator(identifier Story
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/1426545-instantiateinitialcontroller?language=objc
 func (s_ Storyboard) InstantiateInitialController() objc.Object {
 	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateInitialController"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/3174923-instantiateinitialcontrollerwith?language=objc
+func (s_ Storyboard) InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateInitialControllerWithCreator:"), block)
 	return rv
 }
 

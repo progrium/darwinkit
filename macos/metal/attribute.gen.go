@@ -18,12 +18,12 @@ type _AttributeClass struct {
 // An interface definition for the [Attribute] class.
 type IAttribute interface {
 	objc.IObject
-	AttributeIndex() uint
-	IsPatchData() bool
-	IsPatchControlPointData() bool
 	Name() string
 	IsActive() bool
+	IsPatchControlPointData() bool
+	IsPatchData() bool
 	AttributeType() DataType
+	AttributeIndex() uint
 }
 
 // An object that describes an attribute defined in the stage-in argument for a shader. [Full Topic]
@@ -59,30 +59,6 @@ func (a_ Attribute) Init() Attribute {
 	return rv
 }
 
-// The index of the attribute, as declared in Metal shader source code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097158-attributeindex?language=objc
-func (a_ Attribute) AttributeIndex() uint {
-	rv := objc.Call[uint](a_, objc.Sel("attributeIndex"))
-	return rv
-}
-
-// A Boolean value that indicates whether the attribute represents tessellation patch data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097157-patchdata?language=objc
-func (a_ Attribute) IsPatchData() bool {
-	rv := objc.Call[bool](a_, objc.Sel("isPatchData"))
-	return rv
-}
-
-// A Boolean value that indicates whether the attribute represents control point data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097156-patchcontrolpointdata?language=objc
-func (a_ Attribute) IsPatchControlPointData() bool {
-	rv := objc.Call[bool](a_, objc.Sel("isPatchControlPointData"))
-	return rv
-}
-
 // The name of the attribute. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097161-name?language=objc
@@ -99,10 +75,34 @@ func (a_ Attribute) IsActive() bool {
 	return rv
 }
 
+// A Boolean value that indicates whether the attribute represents control point data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097156-patchcontrolpointdata?language=objc
+func (a_ Attribute) IsPatchControlPointData() bool {
+	rv := objc.Call[bool](a_, objc.Sel("isPatchControlPointData"))
+	return rv
+}
+
+// A Boolean value that indicates whether the attribute represents tessellation patch data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097157-patchdata?language=objc
+func (a_ Attribute) IsPatchData() bool {
+	rv := objc.Call[bool](a_, objc.Sel("isPatchData"))
+	return rv
+}
+
 // The data type for the attribute, as declared in Metal shader source code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097155-attributetype?language=objc
 func (a_ Attribute) AttributeType() DataType {
 	rv := objc.Call[DataType](a_, objc.Sel("attributeType"))
+	return rv
+}
+
+// The index of the attribute, as declared in Metal shader source code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlattribute/2097158-attributeindex?language=objc
+func (a_ Attribute) AttributeIndex() uint {
+	rv := objc.Call[uint](a_, objc.Sel("attributeIndex"))
 	return rv
 }

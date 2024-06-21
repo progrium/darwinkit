@@ -18,8 +18,8 @@ type _ResourceStatePassSampleBufferAttachmentDescriptorArrayClass struct {
 // An interface definition for the [ResourceStatePassSampleBufferAttachmentDescriptorArray] class.
 type IResourceStatePassSampleBufferAttachmentDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(attachment IResourceStatePassSampleBufferAttachmentDescriptor, attachmentIndex uint)
 	ObjectAtIndexedSubscript(attachmentIndex uint) ResourceStatePassSampleBufferAttachmentDescriptor
+	SetObjectAtIndexedSubscript(attachment IResourceStatePassSampleBufferAttachmentDescriptor, attachmentIndex uint)
 }
 
 // An array of sample buffer attachments for a resource state pass. [Full Topic]
@@ -55,17 +55,17 @@ func (r_ ResourceStatePassSampleBufferAttachmentDescriptorArray) Init() Resource
 	return rv
 }
 
-// Sets the descriptor object for the specified sample buffer attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatepasssamplebufferattachmentdescriptorarray/3566571-setobject?language=objc
-func (r_ ResourceStatePassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IResourceStatePassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
-}
-
 // Returns the descriptor object for the specified sample buffer attachment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatepasssamplebufferattachmentdescriptorarray/3566570-objectatindexedsubscript?language=objc
 func (r_ ResourceStatePassSampleBufferAttachmentDescriptorArray) ObjectAtIndexedSubscript(attachmentIndex uint) ResourceStatePassSampleBufferAttachmentDescriptor {
 	rv := objc.Call[ResourceStatePassSampleBufferAttachmentDescriptor](r_, objc.Sel("objectAtIndexedSubscript:"), attachmentIndex)
 	return rv
+}
+
+// Sets the descriptor object for the specified sample buffer attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatepasssamplebufferattachmentdescriptorarray/3566571-setobject?language=objc
+func (r_ ResourceStatePassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IResourceStatePassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

@@ -19,12 +19,11 @@ type _AccessibilityElementClass struct {
 // An interface definition for the [AccessibilityElement] class.
 type IAccessibilityElement interface {
 	objc.IObject
-	AccessibilityIdentifier() string
+	AccessibilityAddChildElement(childElement IAccessibilityElement)
 	AccessibilityParent() objc.Object
 	AccessibilityFrame() foundation.Rect
 	IsAccessibilityFocused() bool
-	AccessibilityAddChildElement(childElement PAccessibilityElement)
-	AccessibilityAddChildElementObject(childElementObject objc.IObject)
+	AccessibilityIdentifier() string
 	AccessibilityFrameInParentSpace() foundation.Rect
 	SetAccessibilityFrameInParentSpace(value foundation.Rect)
 }
@@ -62,12 +61,11 @@ func (a_ AccessibilityElement) Init() AccessibilityElement {
 	return rv
 }
 
-// Returns the accessibility element’s identity. [Full Topic]
+// Adds a child to the accessibility element in the accessibility hierarchy. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1534023-nsaccessibilityelement/1533707-accessibilityidentifier?language=objc
-func (a_ AccessibilityElement) AccessibilityIdentifier() string {
-	rv := objc.Call[string](a_, objc.Sel("accessibilityIdentifier"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1533717-accessibilityaddchildelement?language=objc
+func (a_ AccessibilityElement) AccessibilityAddChildElement(childElement IAccessibilityElement) {
+	objc.Call[objc.Void](a_, objc.Sel("accessibilityAddChildElement:"), childElement)
 }
 
 // Returns the accessibility element’s parent in the accessibility hierarchy. [Full Topic]
@@ -94,21 +92,6 @@ func (a_ AccessibilityElement) IsAccessibilityFocused() bool {
 	return rv
 }
 
-// Adds a child to the accessibility element in the accessibility hierarchy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1533717-accessibilityaddchildelement?language=objc
-func (a_ AccessibilityElement) AccessibilityAddChildElement(childElement PAccessibilityElement) {
-	po0 := objc.WrapAsProtocol("NSAccessibilityElement", childElement)
-	objc.Call[objc.Void](a_, objc.Sel("accessibilityAddChildElement:"), po0)
-}
-
-// Adds a child to the accessibility element in the accessibility hierarchy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1533717-accessibilityaddchildelement?language=objc
-func (a_ AccessibilityElement) AccessibilityAddChildElementObject(childElementObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("accessibilityAddChildElement:"), childElementObject)
-}
-
 // Instantiates and configures a new accessibility element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1531178-accessibilityelementwithrole?language=objc
@@ -122,6 +105,14 @@ func (ac _AccessibilityElementClass) AccessibilityElementWithRoleFrameLabelParen
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1531178-accessibilityelementwithrole?language=objc
 func AccessibilityElement_AccessibilityElementWithRoleFrameLabelParent(role AccessibilityRole, frame foundation.Rect, label string, parent objc.IObject) objc.Object {
 	return AccessibilityElementClass.AccessibilityElementWithRoleFrameLabelParent(role, frame, label, parent)
+}
+
+// Returns the accessibility element’s identity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/1534023-nsaccessibilityelement/1533707-accessibilityidentifier?language=objc
+func (a_ AccessibilityElement) AccessibilityIdentifier() string {
+	rv := objc.Call[string](a_, objc.Sel("accessibilityIdentifier"))
+	return rv
 }
 
 // The accessibility element’s frame in its parent’s coordinate system. [Full Topic]

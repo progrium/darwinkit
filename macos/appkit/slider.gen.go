@@ -19,29 +19,29 @@ type _SliderClass struct {
 // An interface definition for the [Slider] class.
 type ISlider interface {
 	IControl
-	TickMarkValueAtIndex(index int) float64
-	ClosestTickMarkValueToValue(value float64) float64
-	IndexOfTickMarkAtPoint(point foundation.Point) int
 	RectOfTickMarkAtIndex(index int) foundation.Rect
-	TickMarkPosition() TickMarkPosition
-	SetTickMarkPosition(value TickMarkPosition)
-	AllowsTickMarkValuesOnly() bool
-	SetAllowsTickMarkValuesOnly(value bool)
-	MaxValue() float64
-	SetMaxValue(value float64)
-	KnobThickness() float64
-	MinValue() float64
-	SetMinValue(value float64)
-	NumberOfTickMarks() int
-	SetNumberOfTickMarks(value int)
-	SliderType() SliderType
-	SetSliderType(value SliderType)
+	ClosestTickMarkValueToValue(value float64) float64
+	TickMarkValueAtIndex(index int) float64
+	IndexOfTickMarkAtPoint(point foundation.Point) int
 	AltIncrementValue() float64
 	SetAltIncrementValue(value float64)
+	TickMarkPosition() TickMarkPosition
+	SetTickMarkPosition(value TickMarkPosition)
+	KnobThickness() float64
+	SliderType() SliderType
+	SetSliderType(value SliderType)
+	MinValue() float64
+	SetMinValue(value float64)
+	MaxValue() float64
+	SetMaxValue(value float64)
 	TrackFillColor() Color
 	SetTrackFillColor(value IColor)
 	IsVertical() bool
 	SetVertical(value bool)
+	AllowsTickMarkValuesOnly() bool
+	SetAllowsTickMarkValuesOnly(value bool)
+	NumberOfTickMarks() int
+	SetNumberOfTickMarks(value int)
 }
 
 // A display of a bar representing a continuous range of numerical values and a knob representing the currently selected value. [Full Topic]
@@ -115,11 +115,11 @@ func NewSliderWithFrame(frameRect foundation.Rect) Slider {
 	return instance
 }
 
-// Returns the slider’s value represented by the tick mark at the specified index. [Full Topic]
+// Returns the bounding rectangle of the tick mark at the given index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1527230-tickmarkvalueatindex?language=objc
-func (s_ Slider) TickMarkValueAtIndex(index int) float64 {
-	rv := objc.Call[float64](s_, objc.Sel("tickMarkValueAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532922-rectoftickmarkatindex?language=objc
+func (s_ Slider) RectOfTickMarkAtIndex(index int) foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("rectOfTickMarkAtIndex:"), index)
 	return rv
 }
 
@@ -131,6 +131,14 @@ func (s_ Slider) ClosestTickMarkValueToValue(value float64) float64 {
 	return rv
 }
 
+// Returns the slider’s value represented by the tick mark at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1527230-tickmarkvalueatindex?language=objc
+func (s_ Slider) TickMarkValueAtIndex(index int) float64 {
+	rv := objc.Call[float64](s_, objc.Sel("tickMarkValueAtIndex:"), index)
+	return rv
+}
+
 // Returns the index of the tick mark closest to the location of the slider represented by the given point. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1526763-indexoftickmarkatpoint?language=objc
@@ -139,12 +147,19 @@ func (s_ Slider) IndexOfTickMarkAtPoint(point foundation.Point) int {
 	return rv
 }
 
-// Returns the bounding rectangle of the tick mark at the given index. [Full Topic]
+// The amount by which the slider changes its value when the user Option-drags the slider knob. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532922-rectoftickmarkatindex?language=objc
-func (s_ Slider) RectOfTickMarkAtIndex(index int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("rectOfTickMarkAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc
+func (s_ Slider) AltIncrementValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("altIncrementValue"))
 	return rv
+}
+
+// The amount by which the slider changes its value when the user Option-drags the slider knob. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc
+func (s_ Slider) SetAltIncrementValue(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setAltIncrementValue:"), value)
 }
 
 // Determines where the slider’s tick marks are displayed. [Full Topic]
@@ -162,72 +177,12 @@ func (s_ Slider) SetTickMarkPosition(value TickMarkPosition) {
 	objc.Call[objc.Void](s_, objc.Sel("setTickMarkPosition:"), value)
 }
 
-// A Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc
-func (s_ Slider) AllowsTickMarkValuesOnly() bool {
-	rv := objc.Call[bool](s_, objc.Sel("allowsTickMarkValuesOnly"))
-	return rv
-}
-
-// A Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc
-func (s_ Slider) SetAllowsTickMarkValuesOnly(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setAllowsTickMarkValuesOnly:"), value)
-}
-
-// The maximum value the slider can send to its target. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc
-func (s_ Slider) MaxValue() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("maxValue"))
-	return rv
-}
-
-// The maximum value the slider can send to its target. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc
-func (s_ Slider) SetMaxValue(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setMaxValue:"), value)
-}
-
 // The knob’s thickness, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532909-knobthickness?language=objc
 func (s_ Slider) KnobThickness() float64 {
 	rv := objc.Call[float64](s_, objc.Sel("knobThickness"))
 	return rv
-}
-
-// The minimum value the slider can send to its target. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc
-func (s_ Slider) MinValue() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("minValue"))
-	return rv
-}
-
-// The minimum value the slider can send to its target. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc
-func (s_ Slider) SetMinValue(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setMinValue:"), value)
-}
-
-// The number of tick marks associated with the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc
-func (s_ Slider) NumberOfTickMarks() int {
-	rv := objc.Call[int](s_, objc.Sel("numberOfTickMarks"))
-	return rv
-}
-
-// The number of tick marks associated with the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc
-func (s_ Slider) SetNumberOfTickMarks(value int) {
-	objc.Call[objc.Void](s_, objc.Sel("setNumberOfTickMarks:"), value)
 }
 
 // The type of the slider, such as vertical or circular. [Full Topic]
@@ -245,19 +200,34 @@ func (s_ Slider) SetSliderType(value SliderType) {
 	objc.Call[objc.Void](s_, objc.Sel("setSliderType:"), value)
 }
 
-// The amount by which the slider changes its value when the user Option-drags the slider knob. [Full Topic]
+// The minimum value the slider can send to its target. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc
-func (s_ Slider) AltIncrementValue() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("altIncrementValue"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc
+func (s_ Slider) MinValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("minValue"))
 	return rv
 }
 
-// The amount by which the slider changes its value when the user Option-drags the slider knob. [Full Topic]
+// The minimum value the slider can send to its target. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc
-func (s_ Slider) SetAltIncrementValue(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setAltIncrementValue:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc
+func (s_ Slider) SetMinValue(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setMinValue:"), value)
+}
+
+// The maximum value the slider can send to its target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc
+func (s_ Slider) MaxValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("maxValue"))
+	return rv
+}
+
+// The maximum value the slider can send to its target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc
+func (s_ Slider) SetMaxValue(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setMaxValue:"), value)
 }
 
 // The color of the filled portion of the slider track, in appearances that support it. [Full Topic]
@@ -288,4 +258,34 @@ func (s_ Slider) IsVertical() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1527901-vertical?language=objc
 func (s_ Slider) SetVertical(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setVertical:"), value)
+}
+
+// A Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc
+func (s_ Slider) AllowsTickMarkValuesOnly() bool {
+	rv := objc.Call[bool](s_, objc.Sel("allowsTickMarkValuesOnly"))
+	return rv
+}
+
+// A Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc
+func (s_ Slider) SetAllowsTickMarkValuesOnly(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setAllowsTickMarkValuesOnly:"), value)
+}
+
+// The number of tick marks associated with the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc
+func (s_ Slider) NumberOfTickMarks() int {
+	rv := objc.Call[int](s_, objc.Sel("numberOfTickMarks"))
+	return rv
+}
+
+// The number of tick marks associated with the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc
+func (s_ Slider) SetNumberOfTickMarks(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setNumberOfTickMarks:"), value)
 }

@@ -36,9 +36,18 @@ func NotificationFrom(ptr unsafe.Pointer) Notification {
 	}
 }
 
-func (n_ Notification) Init() Notification {
-	rv := objc.Call[Notification](n_, objc.Sel("init"))
+func (n_ Notification) InitWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
+	rv := objc.Call[Notification](n_, objc.Sel("initWithName:object:userInfo:"), name, object, userInfo)
 	return rv
+}
+
+// Initializes a notification with a specified name, object, and user information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotification/1415764-initwithname?language=objc
+func NewNotificationWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
+	instance := NotificationClass.Alloc().InitWithNameObjectUserInfo(name, object, userInfo)
+	instance.Autorelease()
+	return instance
 }
 
 func (nc _NotificationClass) NotificationWithNameObject(aName NotificationName, anObject objc.IObject) Notification {
@@ -53,30 +62,9 @@ func Notification_NotificationWithNameObject(aName NotificationName, anObject ob
 	return NotificationClass.NotificationWithNameObject(aName, anObject)
 }
 
-func (nc _NotificationClass) NotificationWithNameObjectUserInfo(aName NotificationName, anObject objc.IObject, aUserInfo Dictionary) Notification {
-	rv := objc.Call[Notification](nc, objc.Sel("notificationWithName:object:userInfo:"), aName, anObject, aUserInfo)
+func (n_ Notification) Init() Notification {
+	rv := objc.Call[Notification](n_, objc.Sel("init"))
 	return rv
-}
-
-// Returns a notification object with a specified name, object, and user information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotification/1574705-notificationwithname?language=objc
-func Notification_NotificationWithNameObjectUserInfo(aName NotificationName, anObject objc.IObject, aUserInfo Dictionary) Notification {
-	return NotificationClass.NotificationWithNameObjectUserInfo(aName, anObject, aUserInfo)
-}
-
-func (n_ Notification) InitWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
-	rv := objc.Call[Notification](n_, objc.Sel("initWithName:object:userInfo:"), name, object, userInfo)
-	return rv
-}
-
-// Initializes a notification with a specified name, object, and user information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotification/1415764-initwithname?language=objc
-func NewNotificationWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
-	instance := NotificationClass.Alloc().InitWithNameObjectUserInfo(name, object, userInfo)
-	instance.Autorelease()
-	return instance
 }
 
 func (nc _NotificationClass) Alloc() Notification {

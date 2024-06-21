@@ -19,8 +19,8 @@ type _StateResourceListClass struct {
 // An interface definition for the [StateResourceList] class.
 type IStateResourceList interface {
 	objc.IObject
-	AppendBuffer(size uint)
 	AppendTexture(descriptor metal.ITextureDescriptor)
+	AppendBuffer(size uint)
 }
 
 // An interface for objects that define resources for Metal Performance Shaders state containers. [Full Topic]
@@ -48,23 +48,6 @@ func StateResourceList_ResourceList() StateResourceList {
 	return StateResourceListClass.ResourceList()
 }
 
-func (sc _StateResourceListClass) ResourceListWithBufferSizes(firstSize uint, args ...any) StateResourceList {
-	rv := objc.Call[StateResourceList](sc, objc.Sel("resourceListWithBufferSizes:"), append([]any{firstSize}, args...)...)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947903-resourcelistwithbuffersizes?language=objc
-func StateResourceList_ResourceListWithBufferSizes(firstSize uint, args ...any) StateResourceList {
-	return StateResourceListClass.ResourceListWithBufferSizes(firstSize, args...)
-}
-
-func (s_ StateResourceList) Init() StateResourceList {
-	rv := objc.Call[StateResourceList](s_, objc.Sel("init"))
-	return rv
-}
-
 func (sc _StateResourceListClass) ResourceListWithTextureDescriptors(d metal.ITextureDescriptor, args ...any) StateResourceList {
 	rv := objc.Call[StateResourceList](sc, objc.Sel("resourceListWithTextureDescriptors:"), append([]any{d}, args...)...)
 	return rv
@@ -75,6 +58,23 @@ func (sc _StateResourceListClass) ResourceListWithTextureDescriptors(d metal.ITe
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947890-resourcelistwithtexturedescripto?language=objc
 func StateResourceList_ResourceListWithTextureDescriptors(d metal.ITextureDescriptor, args ...any) StateResourceList {
 	return StateResourceListClass.ResourceListWithTextureDescriptors(d, args...)
+}
+
+func (s_ StateResourceList) Init() StateResourceList {
+	rv := objc.Call[StateResourceList](s_, objc.Sel("init"))
+	return rv
+}
+
+func (sc _StateResourceListClass) ResourceListWithBufferSizes(firstSize uint, args ...any) StateResourceList {
+	rv := objc.Call[StateResourceList](sc, objc.Sel("resourceListWithBufferSizes:"), append([]any{firstSize}, args...)...)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947903-resourcelistwithbuffersizes?language=objc
+func StateResourceList_ResourceListWithBufferSizes(firstSize uint, args ...any) StateResourceList {
+	return StateResourceListClass.ResourceListWithBufferSizes(firstSize, args...)
 }
 
 func (sc _StateResourceListClass) Alloc() StateResourceList {
@@ -94,14 +94,14 @@ func NewStateResourceList() StateResourceList {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947905-appendbuffer?language=objc
-func (s_ StateResourceList) AppendBuffer(size uint) {
-	objc.Call[objc.Void](s_, objc.Sel("appendBuffer:"), size)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947894-appendtexture?language=objc
+func (s_ StateResourceList) AppendTexture(descriptor metal.ITextureDescriptor) {
+	objc.Call[objc.Void](s_, objc.Sel("appendTexture:"), descriptor)
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947894-appendtexture?language=objc
-func (s_ StateResourceList) AppendTexture(descriptor metal.ITextureDescriptor) {
-	objc.Call[objc.Void](s_, objc.Sel("appendTexture:"), descriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947905-appendbuffer?language=objc
+func (s_ StateResourceList) AppendBuffer(size uint) {
+	objc.Call[objc.Void](s_, objc.Sel("appendBuffer:"), size)
 }

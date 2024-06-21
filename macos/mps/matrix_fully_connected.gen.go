@@ -19,21 +19,21 @@ type _MatrixFullyConnectedClass struct {
 // An interface definition for the [MatrixFullyConnected] class.
 type IMatrixFullyConnected interface {
 	IMatrixBinaryKernel
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
-	NeuronParameterC() float32
-	NeuronParameterB() float32
 	NeuronParameterA() float32
 	NeuronType() CNNNeuronType
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterB() float32
 	EncodeToCommandBufferInputMatrixWeightMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixWeightMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
+	NeuronParameterC() float32
+	SourceOutputFeatureChannels() uint
+	SetSourceOutputFeatureChannels(value uint)
 	Alpha() float64
 	SetAlpha(value float64)
 	SourceNumberOfFeatureVectors() uint
 	SetSourceNumberOfFeatureVectors(value uint)
 	SourceInputFeatureChannels() uint
 	SetSourceInputFeatureChannels(value uint)
-	SourceOutputFeatureChannels() uint
-	SetSourceOutputFeatureChannels(value uint)
 }
 
 // A kernel for applying a fully connected neural network layer. [Full Topic]
@@ -49,21 +49,6 @@ func MatrixFullyConnectedFrom(ptr unsafe.Pointer) MatrixFullyConnected {
 	}
 }
 
-func (m_ MatrixFullyConnected) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixFullyConnected {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixFullyConnected](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935595-copywithzone?language=objc
-func MatrixFullyConnected_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixFullyConnected {
-	instance := MatrixFullyConnectedClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixFullyConnected) InitWithDevice(device metal.PDevice) MatrixFullyConnected {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixFullyConnected](m_, objc.Sel("initWithDevice:"), po0)
@@ -75,6 +60,21 @@ func (m_ MatrixFullyConnected) InitWithDevice(device metal.PDevice) MatrixFullyC
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935584-initwithdevice?language=objc
 func NewMatrixFullyConnectedWithDevice(device metal.PDevice) MatrixFullyConnected {
 	instance := MatrixFullyConnectedClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixFullyConnected) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixFullyConnected {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixFullyConnected](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935595-copywithzone?language=objc
+func MatrixFullyConnected_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixFullyConnected {
+	instance := MatrixFullyConnectedClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -101,29 +101,6 @@ func (m_ MatrixFullyConnected) Init() MatrixFullyConnected {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935593-setneurontype?language=objc
-func (m_ MatrixFullyConnected) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935594-neuronparameterc?language=objc
-func (m_ MatrixFullyConnected) NeuronParameterC() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935591-neuronparameterb?language=objc
-func (m_ MatrixFullyConnected) NeuronParameterB() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935602-neuronparametera?language=objc
 func (m_ MatrixFullyConnected) NeuronParameterA() float32 {
 	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
@@ -140,6 +117,21 @@ func (m_ MatrixFullyConnected) NeuronType() CNNNeuronType {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935593-setneurontype?language=objc
+func (m_ MatrixFullyConnected) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935591-neuronparameterb?language=objc
+func (m_ MatrixFullyConnected) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935596-encodetocommandbuffer?language=objc
 func (m_ MatrixFullyConnected) EncodeToCommandBufferInputMatrixWeightMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -151,6 +143,29 @@ func (m_ MatrixFullyConnected) EncodeToCommandBufferInputMatrixWeightMatrixBiasV
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935596-encodetocommandbuffer?language=objc
 func (m_ MatrixFullyConnected) EncodeToCommandBufferObjectInputMatrixWeightMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
 	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:weightMatrix:biasVector:resultMatrix:"), commandBufferObject, inputMatrix, weightMatrix, biasVector, resultMatrix)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935594-neuronparameterc?language=objc
+func (m_ MatrixFullyConnected) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935592-sourceoutputfeaturechannels?language=objc
+func (m_ MatrixFullyConnected) SourceOutputFeatureChannels() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceOutputFeatureChannels"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935592-sourceoutputfeaturechannels?language=objc
+func (m_ MatrixFullyConnected) SetSourceOutputFeatureChannels(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceOutputFeatureChannels:"), value)
 }
 
 //	[Full Topic]
@@ -196,19 +211,4 @@ func (m_ MatrixFullyConnected) SourceInputFeatureChannels() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935597-sourceinputfeaturechannels?language=objc
 func (m_ MatrixFullyConnected) SetSourceInputFeatureChannels(value uint) {
 	objc.Call[objc.Void](m_, objc.Sel("setSourceInputFeatureChannels:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935592-sourceoutputfeaturechannels?language=objc
-func (m_ MatrixFullyConnected) SourceOutputFeatureChannels() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceOutputFeatureChannels"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935592-sourceoutputfeaturechannels?language=objc
-func (m_ MatrixFullyConnected) SetSourceOutputFeatureChannels(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceOutputFeatureChannels:"), value)
 }

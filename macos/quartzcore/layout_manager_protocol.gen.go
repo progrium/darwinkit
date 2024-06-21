@@ -16,12 +16,12 @@ type PLayoutManager interface {
 	HasLayoutSublayersOfLayer() bool
 
 	// optional
-	PreferredSizeOfLayer(layer Layer) coregraphics.Size
-	HasPreferredSizeOfLayer() bool
-
-	// optional
 	InvalidateLayoutOfLayer(layer Layer)
 	HasInvalidateLayoutOfLayer() bool
+
+	// optional
+	PreferredSizeOfLayer(layer Layer) coregraphics.Size
+	HasPreferredSizeOfLayer() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,6 +43,17 @@ func (l_ LayoutManagerObject) LayoutSublayersOfLayer(layer Layer) {
 	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), layer)
 }
 
+func (l_ LayoutManagerObject) HasInvalidateLayoutOfLayer() bool {
+	return l_.RespondsToSelector(objc.Sel("invalidateLayoutOfLayer:"))
+}
+
+// Invalidates the layout of a layer so it knows to refresh its content on the next frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097258-invalidatelayoutoflayer?language=objc
+func (l_ LayoutManagerObject) InvalidateLayoutOfLayer(layer Layer) {
+	objc.Call[objc.Void](l_, objc.Sel("invalidateLayoutOfLayer:"), layer)
+}
+
 func (l_ LayoutManagerObject) HasPreferredSizeOfLayer() bool {
 	return l_.RespondsToSelector(objc.Sel("preferredSizeOfLayer:"))
 }
@@ -53,15 +64,4 @@ func (l_ LayoutManagerObject) HasPreferredSizeOfLayer() bool {
 func (l_ LayoutManagerObject) PreferredSizeOfLayer(layer Layer) coregraphics.Size {
 	rv := objc.Call[coregraphics.Size](l_, objc.Sel("preferredSizeOfLayer:"), layer)
 	return rv
-}
-
-func (l_ LayoutManagerObject) HasInvalidateLayoutOfLayer() bool {
-	return l_.RespondsToSelector(objc.Sel("invalidateLayoutOfLayer:"))
-}
-
-// Invalidates the layout of a layer so it knows to refresh its content on the next frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097258-invalidatelayoutoflayer?language=objc
-func (l_ LayoutManagerObject) InvalidateLayoutOfLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("invalidateLayoutOfLayer:"), layer)
 }

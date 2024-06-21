@@ -18,9 +18,9 @@ type _LabeledValueClass struct {
 // An interface definition for the [LabeledValue] class.
 type ILabeledValue interface {
 	objc.IObject
-	Identifier() string
-	Label() string
 	Value() objc.Object
+	Label() string
+	Identifier() string
 }
 
 // An immutable object that combines a contact property value with a label that describes that property. [Full Topic]
@@ -50,18 +50,6 @@ func LabeledValue_LabeledValueBySettingLabel(label string) LabeledValue {
 	return instance
 }
 
-func (lc _LabeledValueClass) LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](lc, objc.Sel("labeledValueWithLabel:value:"), label, value)
-	return rv
-}
-
-// Returns a new labeled value identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1586531-labeledvaluewithlabel?language=objc
-func LabeledValue_LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
-	return LabeledValueClass.LabeledValueWithLabelValue(label, value)
-}
-
 func (l_ LabeledValue) LabeledValueBySettingValue(value objc.IObject) LabeledValue {
 	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingValue:"), value)
 	return rv
@@ -76,18 +64,16 @@ func LabeledValue_LabeledValueBySettingValue(value objc.IObject) LabeledValue {
 	return instance
 }
 
-func (l_ LabeledValue) LabeledValueBySettingLabelValue(label string, value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingLabel:value:"), label, value)
+func (lc _LabeledValueClass) LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
+	rv := objc.Call[LabeledValue](lc, objc.Sel("labeledValueWithLabel:value:"), label, value)
 	return rv
 }
 
-// Returns a labeled value object with the specified label and value with the existing identifier. [Full Topic]
+// Returns a new labeled value identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1402901-labeledvaluebysettinglabel?language=objc
-func LabeledValue_LabeledValueBySettingLabelValue(label string, value objc.IObject) LabeledValue {
-	instance := LabeledValueClass.Alloc().LabeledValueBySettingLabelValue(label, value)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1586531-labeledvaluewithlabel?language=objc
+func LabeledValue_LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
+	return LabeledValueClass.LabeledValueWithLabelValue(label, value)
 }
 
 func (l_ LabeledValue) InitWithLabelValue(label string, value objc.IObject) LabeledValue {
@@ -139,11 +125,11 @@ func LabeledValue_LocalizedStringForLabel(label string) string {
 	return LabeledValueClass.LocalizedStringForLabel(label)
 }
 
-// A unique identifier for the labeled value object. [Full Topic]
+// A contact property value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403408-identifier?language=objc
-func (l_ LabeledValue) Identifier() string {
-	rv := objc.Call[string](l_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403088-value?language=objc
+func (l_ LabeledValue) Value() objc.Object {
+	rv := objc.Call[objc.Object](l_, objc.Sel("value"))
 	return rv
 }
 
@@ -155,10 +141,10 @@ func (l_ LabeledValue) Label() string {
 	return rv
 }
 
-// A contact property value. [Full Topic]
+// A unique identifier for the labeled value object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403088-value?language=objc
-func (l_ LabeledValue) Value() objc.Object {
-	rv := objc.Call[objc.Object](l_, objc.Sel("value"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403408-identifier?language=objc
+func (l_ LabeledValue) Identifier() string {
+	rv := objc.Call[string](l_, objc.Sel("identifier"))
 	return rv
 }

@@ -19,12 +19,12 @@ type _TouchBarItemClass struct {
 type ITouchBarItem interface {
 	objc.IObject
 	IsVisible() bool
-	Identifier() TouchBarItemIdentifier
-	View() View
 	CustomizationLabel() string
 	VisibilityPriority() TouchBarItemPriority
 	SetVisibilityPriority(value TouchBarItemPriority)
+	View() View
 	ViewController() ViewController
+	Identifier() TouchBarItemIdentifier
 }
 
 // A UI control shown in the Touch Bar on supported models of MacBook Pro. [Full Topic]
@@ -82,22 +82,6 @@ func (t_ TouchBarItem) IsVisible() bool {
 	return rv
 }
 
-// The identifier for this item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544812-identifier?language=objc
-func (t_ TouchBarItem) Identifier() TouchBarItemIdentifier {
-	rv := objc.Call[TouchBarItemIdentifier](t_, objc.Sel("identifier"))
-	return rv
-}
-
-// The view associated with this item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544719-view?language=objc
-func (t_ TouchBarItem) View() View {
-	rv := objc.Call[View](t_, objc.Sel("view"))
-	return rv
-}
-
 // The user-visible string identifying this item during bar customization. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544693-customizationlabel?language=objc
@@ -121,10 +105,26 @@ func (t_ TouchBarItem) SetVisibilityPriority(value TouchBarItemPriority) {
 	objc.Call[objc.Void](t_, objc.Sel("setVisibilityPriority:"), value)
 }
 
+// The view associated with this item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544719-view?language=objc
+func (t_ TouchBarItem) View() View {
+	rv := objc.Call[View](t_, objc.Sel("view"))
+	return rv
+}
+
 // The view controller associated with this item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544843-viewcontroller?language=objc
 func (t_ TouchBarItem) ViewController() ViewController {
 	rv := objc.Call[ViewController](t_, objc.Sel("viewController"))
+	return rv
+}
+
+// The identifier for this item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544812-identifier?language=objc
+func (t_ TouchBarItem) Identifier() TouchBarItemIdentifier {
+	rv := objc.Call[TouchBarItemIdentifier](t_, objc.Sel("identifier"))
 	return rv
 }

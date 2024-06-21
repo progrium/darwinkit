@@ -18,8 +18,8 @@ type _CNNUpsamplingNearestNodeClass struct {
 // An interface definition for the [CNNUpsamplingNearestNode] class.
 type ICNNUpsamplingNearestNode interface {
 	INNFilterNode
-	ScaleFactorX() float64
 	ScaleFactorY() float64
+	ScaleFactorX() float64
 }
 
 // A representation of a nearest spatial upsampling filter. [Full Topic]
@@ -83,16 +83,16 @@ func (c_ CNNUpsamplingNearestNode) Init() CNNUpsamplingNearestNode {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingnearestnode/2875209-scalefactorx?language=objc
-func (c_ CNNUpsamplingNearestNode) ScaleFactorX() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingnearestnode/2875155-scalefactory?language=objc
+func (c_ CNNUpsamplingNearestNode) ScaleFactorY() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingnearestnode/2875155-scalefactory?language=objc
-func (c_ CNNUpsamplingNearestNode) ScaleFactorY() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingnearestnode/2875209-scalefactorx?language=objc
+func (c_ CNNUpsamplingNearestNode) ScaleFactorX() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
 	return rv
 }

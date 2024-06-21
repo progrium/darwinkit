@@ -39,18 +39,6 @@ func PortraitEffectsMatteFrom(ptr unsafe.Pointer) PortraitEffectsMatte {
 	}
 }
 
-func (pc _PortraitEffectsMatteClass) PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
-	rv := objc.Call[PortraitEffectsMatte](pc, objc.Sel("portraitEffectsMatteFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, outError)
-	return rv
-}
-
-// Initializes a portrait effects matte instance from auxiliary image information in an image file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avportraiteffectsmatte/2976125-portraiteffectsmattefromdictiona?language=objc
-func PortraitEffectsMatte_PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
-	return PortraitEffectsMatteClass.PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary, outError)
-}
-
 func (p_ PortraitEffectsMatte) PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) PortraitEffectsMatte {
 	rv := objc.Call[PortraitEffectsMatte](p_, objc.Sel("portraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBuffer:error:"), pixelBuffer, outError)
 	return rv
@@ -77,6 +65,18 @@ func PortraitEffectsMatte_PortraitEffectsMatteByApplyingExifOrientation(exifOrie
 	instance := PortraitEffectsMatteClass.Alloc().PortraitEffectsMatteByApplyingExifOrientation(exifOrientation)
 	instance.Autorelease()
 	return instance
+}
+
+func (pc _PortraitEffectsMatteClass) PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
+	rv := objc.Call[PortraitEffectsMatte](pc, objc.Sel("portraitEffectsMatteFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, outError)
+	return rv
+}
+
+// Initializes a portrait effects matte instance from auxiliary image information in an image file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avportraiteffectsmatte/2976125-portraiteffectsmattefromdictiona?language=objc
+func PortraitEffectsMatte_PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
+	return PortraitEffectsMatteClass.PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary, outError)
 }
 
 func (pc _PortraitEffectsMatteClass) Alloc() PortraitEffectsMatte {

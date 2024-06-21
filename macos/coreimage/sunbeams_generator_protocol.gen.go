@@ -20,36 +20,12 @@ type PSunbeamsGenerator interface {
 	HasStriationContrast() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
-	SetSunRadius(value float32)
-	HasSetSunRadius() bool
-
-	// optional
-	SunRadius() float32
-	HasSunRadius() bool
-
-	// optional
 	SetColor(value Color)
 	HasSetColor() bool
 
 	// optional
 	Color() Color
 	HasColor() bool
-
-	// optional
-	SetTime(value float32)
-	HasSetTime() bool
-
-	// optional
-	Time() float32
-	HasTime() bool
 
 	// optional
 	SetMaxStriationRadius(value float32)
@@ -60,12 +36,36 @@ type PSunbeamsGenerator interface {
 	HasMaxStriationRadius() bool
 
 	// optional
+	SetTime(value float32)
+	HasSetTime() bool
+
+	// optional
+	Time() float32
+	HasTime() bool
+
+	// optional
 	SetStriationStrength(value float32)
 	HasSetStriationStrength() bool
 
 	// optional
 	StriationStrength() float32
 	HasStriationStrength() bool
+
+	// optional
+	SetSunRadius(value float32)
+	HasSetSunRadius() bool
+
+	// optional
+	SunRadius() float32
+	HasSunRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -99,52 +99,6 @@ func (s_ SunbeamsGeneratorObject) StriationContrast() float32 {
 	return rv
 }
 
-func (s_ SunbeamsGeneratorObject) HasSetCenter() bool {
-	return s_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the sunbeam pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228767-center?language=objc
-func (s_ SunbeamsGeneratorObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](s_, objc.Sel("setCenter:"), value)
-}
-
-func (s_ SunbeamsGeneratorObject) HasCenter() bool {
-	return s_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the sunbeam pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228767-center?language=objc
-func (s_ SunbeamsGeneratorObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](s_, objc.Sel("center"))
-	return rv
-}
-
-func (s_ SunbeamsGeneratorObject) HasSetSunRadius() bool {
-	return s_.RespondsToSelector(objc.Sel("setSunRadius:"))
-}
-
-// The radius of the sun. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228772-sunradius?language=objc
-func (s_ SunbeamsGeneratorObject) SetSunRadius(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setSunRadius:"), value)
-}
-
-func (s_ SunbeamsGeneratorObject) HasSunRadius() bool {
-	return s_.RespondsToSelector(objc.Sel("sunRadius"))
-}
-
-// The radius of the sun. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228772-sunradius?language=objc
-func (s_ SunbeamsGeneratorObject) SunRadius() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("sunRadius"))
-	return rv
-}
-
 func (s_ SunbeamsGeneratorObject) HasSetColor() bool {
 	return s_.RespondsToSelector(objc.Sel("setColor:"))
 }
@@ -165,29 +119,6 @@ func (s_ SunbeamsGeneratorObject) HasColor() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228768-color?language=objc
 func (s_ SunbeamsGeneratorObject) Color() Color {
 	rv := objc.Call[Color](s_, objc.Sel("color"))
-	return rv
-}
-
-func (s_ SunbeamsGeneratorObject) HasSetTime() bool {
-	return s_.RespondsToSelector(objc.Sel("setTime:"))
-}
-
-// The duration of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228773-time?language=objc
-func (s_ SunbeamsGeneratorObject) SetTime(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setTime:"), value)
-}
-
-func (s_ SunbeamsGeneratorObject) HasTime() bool {
-	return s_.RespondsToSelector(objc.Sel("time"))
-}
-
-// The duration of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228773-time?language=objc
-func (s_ SunbeamsGeneratorObject) Time() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("time"))
 	return rv
 }
 
@@ -214,6 +145,29 @@ func (s_ SunbeamsGeneratorObject) MaxStriationRadius() float32 {
 	return rv
 }
 
+func (s_ SunbeamsGeneratorObject) HasSetTime() bool {
+	return s_.RespondsToSelector(objc.Sel("setTime:"))
+}
+
+// The duration of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228773-time?language=objc
+func (s_ SunbeamsGeneratorObject) SetTime(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setTime:"), value)
+}
+
+func (s_ SunbeamsGeneratorObject) HasTime() bool {
+	return s_.RespondsToSelector(objc.Sel("time"))
+}
+
+// The duration of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228773-time?language=objc
+func (s_ SunbeamsGeneratorObject) Time() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("time"))
+	return rv
+}
+
 func (s_ SunbeamsGeneratorObject) HasSetStriationStrength() bool {
 	return s_.RespondsToSelector(objc.Sel("setStriationStrength:"))
 }
@@ -234,5 +188,51 @@ func (s_ SunbeamsGeneratorObject) HasStriationStrength() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228771-striationstrength?language=objc
 func (s_ SunbeamsGeneratorObject) StriationStrength() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("striationStrength"))
+	return rv
+}
+
+func (s_ SunbeamsGeneratorObject) HasSetSunRadius() bool {
+	return s_.RespondsToSelector(objc.Sel("setSunRadius:"))
+}
+
+// The radius of the sun. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228772-sunradius?language=objc
+func (s_ SunbeamsGeneratorObject) SetSunRadius(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setSunRadius:"), value)
+}
+
+func (s_ SunbeamsGeneratorObject) HasSunRadius() bool {
+	return s_.RespondsToSelector(objc.Sel("sunRadius"))
+}
+
+// The radius of the sun. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228772-sunradius?language=objc
+func (s_ SunbeamsGeneratorObject) SunRadius() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("sunRadius"))
+	return rv
+}
+
+func (s_ SunbeamsGeneratorObject) HasSetCenter() bool {
+	return s_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the sunbeam pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228767-center?language=objc
+func (s_ SunbeamsGeneratorObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](s_, objc.Sel("setCenter:"), value)
+}
+
+func (s_ SunbeamsGeneratorObject) HasCenter() bool {
+	return s_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the sunbeam pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisunbeamsgenerator/3228767-center?language=objc
+func (s_ SunbeamsGeneratorObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](s_, objc.Sel("center"))
 	return rv
 }

@@ -19,12 +19,12 @@ type _TokenFieldClass struct {
 // An interface definition for the [TokenField] class.
 type ITokenField interface {
 	ITextField
-	TokenStyle() TokenStyle
-	SetTokenStyle(value TokenStyle)
-	CompletionDelay() foundation.TimeInterval
-	SetCompletionDelay(value foundation.TimeInterval)
 	TokenizingCharacterSet() foundation.CharacterSet
 	SetTokenizingCharacterSet(value foundation.ICharacterSet)
+	CompletionDelay() foundation.TimeInterval
+	SetCompletionDelay(value foundation.TimeInterval)
+	TokenStyle() TokenStyle
+	SetTokenStyle(value TokenStyle)
 }
 
 // A text field that converts text into visually distinct tokens. [Full Topic]
@@ -60,18 +60,6 @@ func (t_ TokenField) Init() TokenField {
 	return rv
 }
 
-func (tc _TokenFieldClass) LabelWithString(stringValue string) TokenField {
-	rv := objc.Call[TokenField](tc, objc.Sel("labelWithString:"), stringValue)
-	return rv
-}
-
-// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
-func TokenField_LabelWithString(stringValue string) TokenField {
-	return TokenFieldClass.LabelWithString(stringValue)
-}
-
 func (tc _TokenFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TokenField {
 	rv := objc.Call[TokenField](tc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
@@ -82,6 +70,18 @@ func (tc _TokenFieldClass) LabelWithAttributedString(attributedStringValue found
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
 func TokenField_LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TokenField {
 	return TokenFieldClass.LabelWithAttributedString(attributedStringValue)
+}
+
+func (tc _TokenFieldClass) LabelWithString(stringValue string) TokenField {
+	rv := objc.Call[TokenField](tc, objc.Sel("labelWithString:"), stringValue)
+	return rv
+}
+
+// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func TokenField_LabelWithString(stringValue string) TokenField {
+	return TokenFieldClass.LabelWithString(stringValue)
 }
 
 func (tc _TokenFieldClass) WrappingLabelWithString(stringValue string) TokenField {
@@ -122,6 +122,21 @@ func NewTokenFieldWithFrame(frameRect foundation.Rect) TokenField {
 	return instance
 }
 
+// The recevier’s tokenizing character set to characterSet. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534230-tokenizingcharacterset?language=objc
+func (t_ TokenField) TokenizingCharacterSet() foundation.CharacterSet {
+	rv := objc.Call[foundation.CharacterSet](t_, objc.Sel("tokenizingCharacterSet"))
+	return rv
+}
+
+// The recevier’s tokenizing character set to characterSet. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534230-tokenizingcharacterset?language=objc
+func (t_ TokenField) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
+	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), value)
+}
+
 // Returns the default completion delay. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1529243-defaultcompletiondelay?language=objc
@@ -135,36 +150,6 @@ func (tc _TokenFieldClass) DefaultCompletionDelay() foundation.TimeInterval {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1529243-defaultcompletiondelay?language=objc
 func TokenField_DefaultCompletionDelay() foundation.TimeInterval {
 	return TokenFieldClass.DefaultCompletionDelay()
-}
-
-// The token style of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534077-tokenstyle?language=objc
-func (t_ TokenField) TokenStyle() TokenStyle {
-	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenStyle"))
-	return rv
-}
-
-// The token style of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534077-tokenstyle?language=objc
-func (t_ TokenField) SetTokenStyle(value TokenStyle) {
-	objc.Call[objc.Void](t_, objc.Sel("setTokenStyle:"), value)
-}
-
-// Returns the default tokenizing character set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1530131-defaulttokenizingcharacterset?language=objc
-func (tc _TokenFieldClass) DefaultTokenizingCharacterSet() foundation.CharacterSet {
-	rv := objc.Call[foundation.CharacterSet](tc, objc.Sel("defaultTokenizingCharacterSet"))
-	return rv
-}
-
-// Returns the default tokenizing character set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1530131-defaulttokenizingcharacterset?language=objc
-func TokenField_DefaultTokenizingCharacterSet() foundation.CharacterSet {
-	return TokenFieldClass.DefaultTokenizingCharacterSet()
 }
 
 // The receiver’s completion delay. [Full Topic]
@@ -182,17 +167,32 @@ func (t_ TokenField) SetCompletionDelay(value foundation.TimeInterval) {
 	objc.Call[objc.Void](t_, objc.Sel("setCompletionDelay:"), value)
 }
 
-// The recevier’s tokenizing character set to characterSet. [Full Topic]
+// Returns the default tokenizing character set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534230-tokenizingcharacterset?language=objc
-func (t_ TokenField) TokenizingCharacterSet() foundation.CharacterSet {
-	rv := objc.Call[foundation.CharacterSet](t_, objc.Sel("tokenizingCharacterSet"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1530131-defaulttokenizingcharacterset?language=objc
+func (tc _TokenFieldClass) DefaultTokenizingCharacterSet() foundation.CharacterSet {
+	rv := objc.Call[foundation.CharacterSet](tc, objc.Sel("defaultTokenizingCharacterSet"))
 	return rv
 }
 
-// The recevier’s tokenizing character set to characterSet. [Full Topic]
+// Returns the default tokenizing character set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534230-tokenizingcharacterset?language=objc
-func (t_ TokenField) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1530131-defaulttokenizingcharacterset?language=objc
+func TokenField_DefaultTokenizingCharacterSet() foundation.CharacterSet {
+	return TokenFieldClass.DefaultTokenizingCharacterSet()
+}
+
+// The token style of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534077-tokenstyle?language=objc
+func (t_ TokenField) TokenStyle() TokenStyle {
+	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenStyle"))
+	return rv
+}
+
+// The token style of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534077-tokenstyle?language=objc
+func (t_ TokenField) SetTokenStyle(value TokenStyle) {
+	objc.Call[objc.Void](t_, objc.Sel("setTokenStyle:"), value)
 }

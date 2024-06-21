@@ -20,9 +20,9 @@ type _ManagedObjectIDClass struct {
 type IManagedObjectID interface {
 	objc.IObject
 	URIRepresentation() foundation.URL
+	Entity() EntityDescription
 	PersistentStore() PersistentStore
 	IsTemporaryID() bool
-	Entity() EntityDescription
 }
 
 // A compact, universal identifier for a managed object. [Full Topic]
@@ -66,6 +66,14 @@ func (m_ ManagedObjectID) URIRepresentation() foundation.URL {
 	return rv
 }
 
+// The entity description associated with the object ID. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectid/1391684-entity?language=objc
+func (m_ ManagedObjectID) Entity() EntityDescription {
+	rv := objc.Call[EntityDescription](m_, objc.Sel("entity"))
+	return rv
+}
+
 // The persistent store that fetched the object for the object ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectid/1391693-persistentstore?language=objc
@@ -79,13 +87,5 @@ func (m_ ManagedObjectID) PersistentStore() PersistentStore {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectid/1391691-temporaryid?language=objc
 func (m_ ManagedObjectID) IsTemporaryID() bool {
 	rv := objc.Call[bool](m_, objc.Sel("isTemporaryID"))
-	return rv
-}
-
-// The entity description associated with the object ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectid/1391684-entity?language=objc
-func (m_ ManagedObjectID) Entity() EntityDescription {
-	rv := objc.Call[EntityDescription](m_, objc.Sel("entity"))
 	return rv
 }

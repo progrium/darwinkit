@@ -19,25 +19,25 @@ type _RulerMarkerClass struct {
 // An interface definition for the [RulerMarker] class.
 type IRulerMarker interface {
 	objc.IObject
-	TrackMouseAdding(mouseDownEvent IEvent, isAdding bool) bool
 	DrawRect(rect foundation.Rect)
-	ThicknessRequiredInRuler() float64
-	Ruler() RulerView
+	TrackMouseAdding(mouseDownEvent IEvent, isAdding bool) bool
 	ImageRectInRuler() foundation.Rect
+	ThicknessRequiredInRuler() float64
+	MarkerLocation() float64
+	SetMarkerLocation(value float64)
+	ImageOrigin() foundation.Point
+	SetImageOrigin(value foundation.Point)
+	Ruler() RulerView
+	IsRemovable() bool
+	SetRemovable(value bool)
+	IsDragging() bool
 	RepresentedObject() foundation.CopyingObject
 	SetRepresentedObject(value foundation.PCopying)
 	SetRepresentedObjectObject(valueObject objc.IObject)
 	Image() Image
 	SetImage(value IImage)
-	IsDragging() bool
 	IsMovable() bool
 	SetMovable(value bool)
-	ImageOrigin() foundation.Point
-	SetImageOrigin(value foundation.Point)
-	MarkerLocation() float64
-	SetMarkerLocation(value float64)
-	IsRemovable() bool
-	SetRemovable(value bool)
 }
 
 // A symbol on a ruler view, indicating a location for the graphics element it represents in the client of the ruler view. [Full Topic]
@@ -87,6 +87,13 @@ func (r_ RulerMarker) Init() RulerMarker {
 	return rv
 }
 
+// Draws the receiver’s image that appears in the supplied rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496234-drawrect?language=objc
+func (r_ RulerMarker) DrawRect(rect foundation.Rect) {
+	objc.Call[objc.Void](r_, objc.Sel("drawRect:"), rect)
+}
+
 // Handles user manipulation of the receiver in its ruler view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496248-trackmouse?language=objc
@@ -95,11 +102,12 @@ func (r_ RulerMarker) TrackMouseAdding(mouseDownEvent IEvent, isAdding bool) boo
 	return rv
 }
 
-// Draws the receiver’s image that appears in the supplied rectangle. [Full Topic]
+// The rectangle occupied by the receiver’s image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496234-drawrect?language=objc
-func (r_ RulerMarker) DrawRect(rect foundation.Rect) {
-	objc.Call[objc.Void](r_, objc.Sel("drawRect:"), rect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496249-imagerectinruler?language=objc
+func (r_ RulerMarker) ImageRectInRuler() foundation.Rect {
+	rv := objc.Call[foundation.Rect](r_, objc.Sel("imageRectInRuler"))
+	return rv
 }
 
 // The amount of the receiver’s image that’s displayed above or to the left of the ruler view's baseline. [Full Topic]
@@ -110,6 +118,36 @@ func (r_ RulerMarker) ThicknessRequiredInRuler() float64 {
 	return rv
 }
 
+// The location of the receiver in the coordinate system of the ruler view's client view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496255-markerlocation?language=objc
+func (r_ RulerMarker) MarkerLocation() float64 {
+	rv := objc.Call[float64](r_, objc.Sel("markerLocation"))
+	return rv
+}
+
+// The location of the receiver in the coordinate system of the ruler view's client view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496255-markerlocation?language=objc
+func (r_ RulerMarker) SetMarkerLocation(value float64) {
+	objc.Call[objc.Void](r_, objc.Sel("setMarkerLocation:"), value)
+}
+
+// The point in the receiver’s image that is positioned at the receiver’s location on the ruler view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496236-imageorigin?language=objc
+func (r_ RulerMarker) ImageOrigin() foundation.Point {
+	rv := objc.Call[foundation.Point](r_, objc.Sel("imageOrigin"))
+	return rv
+}
+
+// The point in the receiver’s image that is positioned at the receiver’s location on the ruler view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496236-imageorigin?language=objc
+func (r_ RulerMarker) SetImageOrigin(value foundation.Point) {
+	objc.Call[objc.Void](r_, objc.Sel("setImageOrigin:"), value)
+}
+
 // The receiver's ruler view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496239-ruler?language=objc
@@ -118,11 +156,26 @@ func (r_ RulerMarker) Ruler() RulerView {
 	return rv
 }
 
-// The rectangle occupied by the receiver’s image. [Full Topic]
+// A Boolean that indicates whether the user can remove the receiver from its ruler view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496249-imagerectinruler?language=objc
-func (r_ RulerMarker) ImageRectInRuler() foundation.Rect {
-	rv := objc.Call[foundation.Rect](r_, objc.Sel("imageRectInRuler"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496238-removable?language=objc
+func (r_ RulerMarker) IsRemovable() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isRemovable"))
+	return rv
+}
+
+// A Boolean that indicates whether the user can remove the receiver from its ruler view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496238-removable?language=objc
+func (r_ RulerMarker) SetRemovable(value bool) {
+	objc.Call[objc.Void](r_, objc.Sel("setRemovable:"), value)
+}
+
+// A Boolean that indicates whether the receiver is being dragged. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496253-dragging?language=objc
+func (r_ RulerMarker) IsDragging() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isDragging"))
 	return rv
 }
 
@@ -164,14 +217,6 @@ func (r_ RulerMarker) SetImage(value IImage) {
 	objc.Call[objc.Void](r_, objc.Sel("setImage:"), value)
 }
 
-// A Boolean that indicates whether the receiver is being dragged. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496253-dragging?language=objc
-func (r_ RulerMarker) IsDragging() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isDragging"))
-	return rv
-}
-
 // A Boolean that indicates whether the user can move the receiver in its ruler view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496247-movable?language=objc
@@ -185,49 +230,4 @@ func (r_ RulerMarker) IsMovable() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496247-movable?language=objc
 func (r_ RulerMarker) SetMovable(value bool) {
 	objc.Call[objc.Void](r_, objc.Sel("setMovable:"), value)
-}
-
-// The point in the receiver’s image that is positioned at the receiver’s location on the ruler view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496236-imageorigin?language=objc
-func (r_ RulerMarker) ImageOrigin() foundation.Point {
-	rv := objc.Call[foundation.Point](r_, objc.Sel("imageOrigin"))
-	return rv
-}
-
-// The point in the receiver’s image that is positioned at the receiver’s location on the ruler view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496236-imageorigin?language=objc
-func (r_ RulerMarker) SetImageOrigin(value foundation.Point) {
-	objc.Call[objc.Void](r_, objc.Sel("setImageOrigin:"), value)
-}
-
-// The location of the receiver in the coordinate system of the ruler view's client view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496255-markerlocation?language=objc
-func (r_ RulerMarker) MarkerLocation() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("markerLocation"))
-	return rv
-}
-
-// The location of the receiver in the coordinate system of the ruler view's client view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496255-markerlocation?language=objc
-func (r_ RulerMarker) SetMarkerLocation(value float64) {
-	objc.Call[objc.Void](r_, objc.Sel("setMarkerLocation:"), value)
-}
-
-// A Boolean that indicates whether the user can remove the receiver from its ruler view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496238-removable?language=objc
-func (r_ RulerMarker) IsRemovable() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isRemovable"))
-	return rv
-}
-
-// A Boolean that indicates whether the user can remove the receiver from its ruler view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496238-removable?language=objc
-func (r_ RulerMarker) SetRemovable(value bool) {
-	objc.Call[objc.Void](r_, objc.Sel("setRemovable:"), value)
 }

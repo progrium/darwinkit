@@ -49,21 +49,6 @@ func NewCNNPoolingWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixels
 	return instance
 }
 
-func (c_ CNNPooling) InitWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPooling {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNPooling](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:"), po0, kernelWidth, kernelHeight)
-	return rv
-}
-
-// Initializes a pooling filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpooling/1648887-initwithdevice?language=objc
-func NewCNNPoolingWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPooling {
-	instance := CNNPoolingClass.Alloc().InitWithDeviceKernelWidthKernelHeight(device, kernelWidth, kernelHeight)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CNNPoolingClass) Alloc() CNNPooling {
 	rv := objc.Call[CNNPooling](cc, objc.Sel("alloc"))
 	return rv

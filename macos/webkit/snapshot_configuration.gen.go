@@ -20,10 +20,10 @@ type _SnapshotConfigurationClass struct {
 // An interface definition for the [SnapshotConfiguration] class.
 type ISnapshotConfiguration interface {
 	objc.IObject
-	Rect() coregraphics.Rect
-	SetRect(value coregraphics.Rect)
 	AfterScreenUpdates() bool
 	SetAfterScreenUpdates(value bool)
+	Rect() coregraphics.Rect
+	SetRect(value coregraphics.Rect)
 	SnapshotWidth() foundation.Number
 	SetSnapshotWidth(value foundation.INumber)
 }
@@ -61,21 +61,6 @@ func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
 	return rv
 }
 
-// The portion of your web view to capture, specified as a rectangle in the view’s coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/2873250-rect?language=objc
-func (s_ SnapshotConfiguration) Rect() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](s_, objc.Sel("rect"))
-	return rv
-}
-
-// The portion of your web view to capture, specified as a rectangle in the view’s coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/2873250-rect?language=objc
-func (s_ SnapshotConfiguration) SetRect(value coregraphics.Rect) {
-	objc.Call[objc.Void](s_, objc.Sel("setRect:"), value)
-}
-
 // A Boolean value that indicates whether to take the snapshot after incorporating any pending screen updates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/3172739-afterscreenupdates?language=objc
@@ -89,6 +74,21 @@ func (s_ SnapshotConfiguration) AfterScreenUpdates() bool {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/3172739-afterscreenupdates?language=objc
 func (s_ SnapshotConfiguration) SetAfterScreenUpdates(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setAfterScreenUpdates:"), value)
+}
+
+// The portion of your web view to capture, specified as a rectangle in the view’s coordinate system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/2873250-rect?language=objc
+func (s_ SnapshotConfiguration) Rect() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](s_, objc.Sel("rect"))
+	return rv
+}
+
+// The portion of your web view to capture, specified as a rectangle in the view’s coordinate system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/2873250-rect?language=objc
+func (s_ SnapshotConfiguration) SetRect(value coregraphics.Rect) {
+	objc.Call[objc.Void](s_, objc.Sel("setRect:"), value)
 }
 
 // The width of the captured image, in points. [Full Topic]

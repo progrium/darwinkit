@@ -18,8 +18,8 @@ type _AssetSegmentReportClass struct {
 // An interface definition for the [AssetSegmentReport] class.
 type IAssetSegmentReport interface {
 	objc.IObject
-	TrackReports() []AssetSegmentTrackReport
 	SegmentType() AssetSegmentType
+	TrackReports() []AssetSegmentTrackReport
 }
 
 // An object that provides information about segment data. [Full Topic]
@@ -55,18 +55,18 @@ func (a_ AssetSegmentReport) Init() AssetSegmentReport {
 	return rv
 }
 
-// The reports for the segment’s track data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreport/3546571-trackreports?language=objc
-func (a_ AssetSegmentReport) TrackReports() []AssetSegmentTrackReport {
-	rv := objc.Call[[]AssetSegmentTrackReport](a_, objc.Sel("trackReports"))
-	return rv
-}
-
 // The type of segment data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreport/3546570-segmenttype?language=objc
 func (a_ AssetSegmentReport) SegmentType() AssetSegmentType {
 	rv := objc.Call[AssetSegmentType](a_, objc.Sel("segmentType"))
+	return rv
+}
+
+// The reports for the segment’s track data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetsegmentreport/3546571-trackreports?language=objc
+func (a_ AssetSegmentReport) TrackReports() []AssetSegmentTrackReport {
+	rv := objc.Call[[]AssetSegmentTrackReport](a_, objc.Sel("trackReports"))
 	return rv
 }

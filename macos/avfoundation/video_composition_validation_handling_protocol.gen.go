@@ -12,18 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling?language=objc
 type PVideoCompositionValidationHandling interface {
 	// optional
-	VideoCompositionShouldContinueValidatingAfterFindingInvalidValueForKey(videoComposition VideoComposition, key string) bool
-	HasVideoCompositionShouldContinueValidatingAfterFindingInvalidValueForKey() bool
-
-	// optional
-	VideoCompositionShouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction(videoComposition VideoComposition, videoCompositionInstruction objc.Object) bool
-	HasVideoCompositionShouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction() bool
-
-	// optional
-	VideoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstructionLayerInstructionAsset(videoComposition VideoComposition, videoCompositionInstruction objc.Object, layerInstruction VideoCompositionLayerInstruction, asset Asset) bool
-	HasVideoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstructionLayerInstructionAsset() bool
-
-	// optional
 	VideoCompositionShouldContinueValidatingAfterFindingEmptyTimeRange(videoComposition VideoComposition, timeRange coremedia.TimeRange) bool
 	HasVideoCompositionShouldContinueValidatingAfterFindingEmptyTimeRange() bool
 }
@@ -34,42 +22,6 @@ var _ PVideoCompositionValidationHandling = (*VideoCompositionValidationHandling
 // A concrete type for the [PVideoCompositionValidationHandling] protocol.
 type VideoCompositionValidationHandlingObject struct {
 	objc.Object
-}
-
-func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldContinueValidatingAfterFindingInvalidValueForKey() bool {
-	return v_.RespondsToSelector(objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidValueForKey:"))
-}
-
-// Reports that a key that has an invalid value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1389404-videocomposition?language=objc
-func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidValueForKey(videoComposition VideoComposition, key string) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidValueForKey:"), videoComposition, key)
-	return rv
-}
-
-func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction() bool {
-	return v_.RespondsToSelector(objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction:"))
-}
-
-// Reports a video composition instruction with a time range that is invalid. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1390721-videocomposition?language=objc
-func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction(videoComposition VideoComposition, videoCompositionInstruction objc.Object) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction:"), videoComposition, videoCompositionInstruction)
-	return rv
-}
-
-func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstructionLayerInstructionAsset() bool {
-	return v_.RespondsToSelector(objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTrackIDInInstruction:layerInstruction:asset:"))
-}
-
-// Reports a video composition layer instruction that does not correspond to the track ID used for the composition’s animation or to a track of the asset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1388452-videocomposition?language=objc
-func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstructionLayerInstructionAsset(videoComposition VideoComposition, videoCompositionInstruction objc.Object, layerInstruction VideoCompositionLayerInstruction, asset Asset) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTrackIDInInstruction:layerInstruction:asset:"), videoComposition, videoCompositionInstruction, layerInstruction, asset)
-	return rv
 }
 
 func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldContinueValidatingAfterFindingEmptyTimeRange() bool {

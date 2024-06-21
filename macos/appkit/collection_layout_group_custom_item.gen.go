@@ -5,7 +5,7 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -19,7 +19,7 @@ type _CollectionLayoutGroupCustomItemClass struct {
 // An interface definition for the [CollectionLayoutGroupCustomItem] class.
 type ICollectionLayoutGroupCustomItem interface {
 	objc.IObject
-	Frame() foundation.Rect
+	Frame() coregraphics.Rect
 	ZIndex() int
 }
 
@@ -36,19 +36,7 @@ func CollectionLayoutGroupCustomItemFrom(ptr unsafe.Pointer) CollectionLayoutGro
 	}
 }
 
-func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrameZIndex(frame foundation.Rect, zIndex int) CollectionLayoutGroupCustomItem {
-	rv := objc.Call[CollectionLayoutGroupCustomItem](cc, objc.Sel("customItemWithFrame:zIndex:"), frame, zIndex)
-	return rv
-}
-
-// Creates a custom item with the specified frame and vertical stacking order in relation to other items in the group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroupcustomitem/3213864-customitemwithframe?language=objc
-func CollectionLayoutGroupCustomItem_CustomItemWithFrameZIndex(frame foundation.Rect, zIndex int) CollectionLayoutGroupCustomItem {
-	return CollectionLayoutGroupCustomItemClass.CustomItemWithFrameZIndex(frame, zIndex)
-}
-
-func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame(frame foundation.Rect) CollectionLayoutGroupCustomItem {
+func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame(frame coregraphics.Rect) CollectionLayoutGroupCustomItem {
 	rv := objc.Call[CollectionLayoutGroupCustomItem](cc, objc.Sel("customItemWithFrame:"), frame)
 	return rv
 }
@@ -56,7 +44,7 @@ func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame(frame founda
 // Creates a custom item with the specified frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroupcustomitem/3213863-customitemwithframe?language=objc
-func CollectionLayoutGroupCustomItem_CustomItemWithFrame(frame foundation.Rect) CollectionLayoutGroupCustomItem {
+func CollectionLayoutGroupCustomItem_CustomItemWithFrame(frame coregraphics.Rect) CollectionLayoutGroupCustomItem {
 	return CollectionLayoutGroupCustomItemClass.CustomItemWithFrame(frame)
 }
 
@@ -83,8 +71,8 @@ func (c_ CollectionLayoutGroupCustomItem) Init() CollectionLayoutGroupCustomItem
 // The frame of the custom item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroupcustomitem/3213865-frame?language=objc
-func (c_ CollectionLayoutGroupCustomItem) Frame() foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("frame"))
+func (c_ CollectionLayoutGroupCustomItem) Frame() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("frame"))
 	return rv
 }
 

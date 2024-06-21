@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched?language=objc
 type PNinePartStretched interface {
 	// optional
-	SetBreakpoint1(value coregraphics.Point)
-	HasSetBreakpoint1() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Breakpoint1() coregraphics.Point
-	HasBreakpoint1() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetGrowAmount(value coregraphics.Point)
@@ -28,20 +28,20 @@ type PNinePartStretched interface {
 	HasGrowAmount() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetBreakpoint0(value coregraphics.Point)
 	HasSetBreakpoint0() bool
 
 	// optional
 	Breakpoint0() coregraphics.Point
 	HasBreakpoint0() bool
+
+	// optional
+	SetBreakpoint1(value coregraphics.Point)
+	HasSetBreakpoint1() bool
+
+	// optional
+	Breakpoint1() coregraphics.Point
+	HasBreakpoint1() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,26 +52,26 @@ type NinePartStretchedObject struct {
 	objc.Object
 }
 
-func (n_ NinePartStretchedObject) HasSetBreakpoint1() bool {
-	return n_.RespondsToSelector(objc.Sel("setBreakpoint1:"))
+func (n_ NinePartStretchedObject) HasSetInputImage() bool {
+	return n_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600177-breakpoint1?language=objc
-func (n_ NinePartStretchedObject) SetBreakpoint1(value coregraphics.Point) {
-	objc.Call[objc.Void](n_, objc.Sel("setBreakpoint1:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600179-inputimage?language=objc
+func (n_ NinePartStretchedObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), value)
 }
 
-func (n_ NinePartStretchedObject) HasBreakpoint1() bool {
-	return n_.RespondsToSelector(objc.Sel("breakpoint1"))
+func (n_ NinePartStretchedObject) HasInputImage() bool {
+	return n_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600177-breakpoint1?language=objc
-func (n_ NinePartStretchedObject) Breakpoint1() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](n_, objc.Sel("breakpoint1"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600179-inputimage?language=objc
+func (n_ NinePartStretchedObject) InputImage() Image {
+	rv := objc.Call[Image](n_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -98,29 +98,6 @@ func (n_ NinePartStretchedObject) GrowAmount() coregraphics.Point {
 	return rv
 }
 
-func (n_ NinePartStretchedObject) HasSetInputImage() bool {
-	return n_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600179-inputimage?language=objc
-func (n_ NinePartStretchedObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), value)
-}
-
-func (n_ NinePartStretchedObject) HasInputImage() bool {
-	return n_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600179-inputimage?language=objc
-func (n_ NinePartStretchedObject) InputImage() Image {
-	rv := objc.Call[Image](n_, objc.Sel("inputImage"))
-	return rv
-}
-
 func (n_ NinePartStretchedObject) HasSetBreakpoint0() bool {
 	return n_.RespondsToSelector(objc.Sel("setBreakpoint0:"))
 }
@@ -141,5 +118,28 @@ func (n_ NinePartStretchedObject) HasBreakpoint0() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600176-breakpoint0?language=objc
 func (n_ NinePartStretchedObject) Breakpoint0() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](n_, objc.Sel("breakpoint0"))
+	return rv
+}
+
+func (n_ NinePartStretchedObject) HasSetBreakpoint1() bool {
+	return n_.RespondsToSelector(objc.Sel("setBreakpoint1:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600177-breakpoint1?language=objc
+func (n_ NinePartStretchedObject) SetBreakpoint1(value coregraphics.Point) {
+	objc.Call[objc.Void](n_, objc.Sel("setBreakpoint1:"), value)
+}
+
+func (n_ NinePartStretchedObject) HasBreakpoint1() bool {
+	return n_.RespondsToSelector(objc.Sel("breakpoint1"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600177-breakpoint1?language=objc
+func (n_ NinePartStretchedObject) Breakpoint1() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](n_, objc.Sel("breakpoint1"))
 	return rv
 }

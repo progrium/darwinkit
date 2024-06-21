@@ -7,7 +7,6 @@ import (
 
 	"github.com/progrium/darwinkit/dispatch"
 	"github.com/progrium/darwinkit/macos/foundation"
-	"github.com/progrium/darwinkit/macos/iosurface"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -16,200 +15,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice?language=objc
 type PDevice interface {
 	// optional
-	NewDefaultLibrary() LibraryObject
-	HasNewDefaultLibrary() bool
-
-	// optional
-	NewBufferWithBytesLengthOptions(pointer unsafe.Pointer, length uint, options ResourceOptions) BufferObject
-	HasNewBufferWithBytesLengthOptions() bool
-
-	// optional
-	SupportsVertexAmplificationCount(count uint) bool
-	HasSupportsVertexAmplificationCount() bool
-
-	// optional
-	NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject
-	HasNewLibraryWithSourceOptionsError() bool
-
-	// optional
-	NewSharedEventWithHandle(sharedEventHandle SharedEventHandle) SharedEventObject
-	HasNewSharedEventWithHandle() bool
-
-	// optional
-	NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject
-	HasNewBinaryArchiveWithDescriptorError() bool
-
-	// optional
-	NewIndirectCommandBufferWithDescriptorMaxCommandCountOptions(descriptor IndirectCommandBufferDescriptor, maxCount uint, options ResourceOptions) IndirectCommandBufferObject
-	HasNewIndirectCommandBufferWithDescriptorMaxCommandCountOptions() bool
-
-	// optional
-	NewSharedTextureWithHandle(sharedHandle SharedTextureHandle) TextureObject
-	HasNewSharedTextureWithHandle() bool
-
-	// optional
-	NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error unsafe.Pointer) ComputePipelineStateObject
-	HasNewComputePipelineStateWithFunctionError() bool
-
-	// optional
-	SparseTileSizeWithTextureTypePixelFormatSampleCount(textureType TextureType, pixelFormat PixelFormat, sampleCount uint) Size
-	HasSparseTileSizeWithTextureTypePixelFormatSampleCount() bool
-
-	// optional
-	NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject
-	HasNewLibraryWithURLError() bool
-
-	// optional
-	NewAccelerationStructureWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureObject
-	HasNewAccelerationStructureWithDescriptor() bool
-
-	// optional
-	ConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions(tileRegions *Region, pixelRegions *Region, tileSize Size, numRegions uint)
-	HasConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions() bool
-
-	// optional
-	NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject
-	HasNewComputePipelineStateWithFunctionOptionsReflectionError() bool
-
-	// optional
-	NewHeapWithDescriptor(descriptor HeapDescriptor) HeapObject
-	HasNewHeapWithDescriptor() bool
-
-	// optional
-	NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
-	HasNewTextureWithDescriptor() bool
-
-	// optional
-	GetDefaultSamplePositionsCount(positions *SamplePosition, count uint)
-	HasGetDefaultSamplePositionsCount() bool
-
-	// optional
-	NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject
-	HasNewCounterSampleBufferWithDescriptorError() bool
-
-	// optional
-	HeapTextureSizeAndAlignWithDescriptor(desc TextureDescriptor) SizeAndAlign
-	HasHeapTextureSizeAndAlignWithDescriptor() bool
-
-	// optional
-	NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject
-	HasNewDynamicLibraryWithURLError() bool
-
-	// optional
-	SupportsTextureSampleCount(sampleCount uint) bool
-	HasSupportsTextureSampleCount() bool
-
-	// optional
-	NewBufferWithBytesNoCopyLengthOptionsDeallocator(pointer unsafe.Pointer, length uint, options ResourceOptions, deallocator func(pointer unsafe.Pointer, length uint)) BufferObject
-	HasNewBufferWithBytesNoCopyLengthOptionsDeallocator() bool
-
-	// optional
-	NewRenderPipelineStateWithDescriptorCompletionHandler(descriptor RenderPipelineDescriptor, completionHandler NewRenderPipelineStateCompletionHandler)
-	HasNewRenderPipelineStateWithDescriptorCompletionHandler() bool
-
-	// optional
-	NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject
-	HasNewRenderPipelineStateWithDescriptorOptionsReflectionError() bool
-
-	// optional
-	NewSharedTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
-	HasNewSharedTextureWithDescriptor() bool
-
-	// optional
-	NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject
-	HasNewDefaultLibraryWithBundleError() bool
-
-	// optional
-	AccelerationStructureSizesWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureSizes
-	HasAccelerationStructureSizesWithDescriptor() bool
-
-	// optional
-	MinimumTextureBufferAlignmentForPixelFormat(format PixelFormat) uint
-	HasMinimumTextureBufferAlignmentForPixelFormat() bool
-
-	// optional
-	NewRenderPipelineStateWithDescriptorOptionsCompletionHandler(descriptor RenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler)
-	HasNewRenderPipelineStateWithDescriptorOptionsCompletionHandler() bool
-
-	// optional
-	NewCommandQueueWithMaxCommandBufferCount(maxCommandBufferCount uint) CommandQueueObject
-	HasNewCommandQueueWithMaxCommandBufferCount() bool
-
-	// optional
-	NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error unsafe.Pointer) LibraryObject
-	HasNewLibraryWithStitchedDescriptorError() bool
-
-	// optional
-	NewLibraryWithStitchedDescriptorCompletionHandler(descriptor StitchedLibraryDescriptor, completionHandler NewLibraryCompletionHandler)
-	HasNewLibraryWithStitchedDescriptorCompletionHandler() bool
-
-	// optional
-	NewCommandQueue() CommandQueueObject
-	HasNewCommandQueue() bool
-
-	// optional
-	NewAccelerationStructureWithSize(size uint) AccelerationStructureObject
-	HasNewAccelerationStructureWithSize() bool
-
-	// optional
-	NewTextureWithDescriptorIosurfacePlane(descriptor TextureDescriptor, iosurface iosurface.Ref, plane uint) TextureObject
-	HasNewTextureWithDescriptorIosurfacePlane() bool
-
-	// optional
 	SupportsFamily(gpuFamily GPUFamily) bool
 	HasSupportsFamily() bool
-
-	// optional
-	NewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler(descriptor TileRenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler)
-	HasNewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler() bool
-
-	// optional
-	NewSamplerStateWithDescriptor(descriptor SamplerDescriptor) SamplerStateObject
-	HasNewSamplerStateWithDescriptor() bool
-
-	// optional
-	SupportsCounterSampling(samplingPoint CounterSamplingPoint) bool
-	HasSupportsCounterSampling() bool
-
-	// optional
-	NewSharedEvent() SharedEventObject
-	HasNewSharedEvent() bool
-
-	// optional
-	NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject
-	HasNewComputePipelineStateWithDescriptorOptionsReflectionError() bool
-
-	// optional
-	HeapBufferSizeAndAlignWithLengthOptions(length uint, options ResourceOptions) SizeAndAlign
-	HasHeapBufferSizeAndAlignWithLengthOptions() bool
-
-	// optional
-	NewRasterizationRateMapWithDescriptor(descriptor RasterizationRateMapDescriptor) RasterizationRateMapObject
-	HasNewRasterizationRateMapWithDescriptor() bool
-
-	// optional
-	NewEvent() EventObject
-	HasNewEvent() bool
-
-	// optional
-	NewFence() FenceObject
-	HasNewFence() bool
-
-	// optional
-	NewComputePipelineStateWithDescriptorOptionsCompletionHandler(descriptor ComputePipelineDescriptor, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler)
-	HasNewComputePipelineStateWithDescriptorOptionsCompletionHandler() bool
-
-	// optional
-	SampleTimestampsGpuTimestamp(cpuTimestamp *Timestamp, gpuTimestamp *Timestamp)
-	HasSampleTimestampsGpuTimestamp() bool
-
-	// optional
-	SupportsRasterizationRateMapWithLayerCount(layerCount uint) bool
-	HasSupportsRasterizationRateMapWithLayerCount() bool
-
-	// optional
-	NewArgumentEncoderWithArguments(arguments []ArgumentDescriptor) ArgumentEncoderObject
-	HasNewArgumentEncoderWithArguments() bool
 
 	// optional
 	MinimumLinearTextureAlignmentForPixelFormat(format PixelFormat) uint
@@ -220,192 +27,340 @@ type PDevice interface {
 	HasNewDynamicLibraryError() bool
 
 	// optional
+	SampleTimestampsGpuTimestamp(cpuTimestamp *Timestamp, gpuTimestamp *Timestamp)
+	HasSampleTimestampsGpuTimestamp() bool
+
+	// optional
+	NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
+	HasNewTextureWithDescriptor() bool
+
+	// optional
+	NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject
+	HasNewBinaryArchiveWithDescriptorError() bool
+
+	// optional
+	NewAccelerationStructureWithSize(size uint) AccelerationStructureObject
+	HasNewAccelerationStructureWithSize() bool
+
+	// optional
+	SupportsRasterizationRateMapWithLayerCount(layerCount uint) bool
+	HasSupportsRasterizationRateMapWithLayerCount() bool
+
+	// optional
+	NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject
+	HasNewLibraryWithSourceOptionsError() bool
+
+	// optional
+	NewArgumentEncoderWithArguments(arguments []ArgumentDescriptor) ArgumentEncoderObject
+	HasNewArgumentEncoderWithArguments() bool
+
+	// optional
+	NewComputePipelineStateWithDescriptorOptionsCompletionHandler(descriptor ComputePipelineDescriptor, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler)
+	HasNewComputePipelineStateWithDescriptorOptionsCompletionHandler() bool
+
+	// optional
+	NewCommandQueue() CommandQueueObject
+	HasNewCommandQueue() bool
+
+	// optional
+	SupportsTextureSampleCount(sampleCount uint) bool
+	HasSupportsTextureSampleCount() bool
+
+	// optional
+	MinimumTextureBufferAlignmentForPixelFormat(format PixelFormat) uint
+	HasMinimumTextureBufferAlignmentForPixelFormat() bool
+
+	// optional
+	NewFence() FenceObject
+	HasNewFence() bool
+
+	// optional
+	GetDefaultSamplePositionsCount(positions *SamplePosition, count uint)
+	HasGetDefaultSamplePositionsCount() bool
+
+	// optional
+	NewRasterizationRateMapWithDescriptor(descriptor RasterizationRateMapDescriptor) RasterizationRateMapObject
+	HasNewRasterizationRateMapWithDescriptor() bool
+
+	// optional
+	NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject
+	HasNewCounterSampleBufferWithDescriptorError() bool
+
+	// optional
+	NewCommandQueueWithMaxCommandBufferCount(maxCommandBufferCount uint) CommandQueueObject
+	HasNewCommandQueueWithMaxCommandBufferCount() bool
+
+	// optional
+	NewHeapWithDescriptor(descriptor HeapDescriptor) HeapObject
+	HasNewHeapWithDescriptor() bool
+
+	// optional
+	NewSharedTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
+	HasNewSharedTextureWithDescriptor() bool
+
+	// optional
 	ConvertSparsePixelRegionsToTileRegionsWithTileSizeAlignmentModeNumRegions(pixelRegions *Region, tileRegions *Region, tileSize Size, mode SparseTextureRegionAlignmentMode, numRegions uint)
 	HasConvertSparsePixelRegionsToTileRegionsWithTileSizeAlignmentModeNumRegions() bool
 
 	// optional
-	NewComputePipelineStateWithFunctionOptionsCompletionHandler(computeFunction FunctionObject, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler)
-	HasNewComputePipelineStateWithFunctionOptionsCompletionHandler() bool
+	HeapBufferSizeAndAlignWithLengthOptions(length uint, options ResourceOptions) SizeAndAlign
+	HasHeapBufferSizeAndAlignWithLengthOptions() bool
 
 	// optional
-	NewComputePipelineStateWithFunctionCompletionHandler(computeFunction FunctionObject, completionHandler NewComputePipelineStateCompletionHandler)
-	HasNewComputePipelineStateWithFunctionCompletionHandler() bool
+	NewIndirectCommandBufferWithDescriptorMaxCommandCountOptions(descriptor IndirectCommandBufferDescriptor, maxCount uint, options ResourceOptions) IndirectCommandBufferObject
+	HasNewIndirectCommandBufferWithDescriptorMaxCommandCountOptions() bool
 
 	// optional
-	NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject
-	HasNewRenderPipelineStateWithTileDescriptorOptionsReflectionError() bool
-
-	// optional
-	NewDepthStencilStateWithDescriptor(descriptor DepthStencilDescriptor) DepthStencilStateObject
-	HasNewDepthStencilStateWithDescriptor() bool
+	HeapTextureSizeAndAlignWithDescriptor(desc TextureDescriptor) SizeAndAlign
+	HasHeapTextureSizeAndAlignWithDescriptor() bool
 
 	// optional
 	NewLibraryWithDataError(data dispatch.Data, error unsafe.Pointer) LibraryObject
 	HasNewLibraryWithDataError() bool
 
 	// optional
-	NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) RenderPipelineStateObject
-	HasNewRenderPipelineStateWithDescriptorError() bool
+	NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject
+	HasNewDefaultLibraryWithBundleError() bool
+
+	// optional
+	NewLibraryWithStitchedDescriptorCompletionHandler(descriptor StitchedLibraryDescriptor, completionHandler NewLibraryCompletionHandler)
+	HasNewLibraryWithStitchedDescriptorCompletionHandler() bool
+
+	// optional
+	NewAccelerationStructureWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureObject
+	HasNewAccelerationStructureWithDescriptor() bool
+
+	// optional
+	NewBufferWithBytesNoCopyLengthOptionsDeallocator(pointer unsafe.Pointer, length uint, options ResourceOptions, deallocator func(pointer unsafe.Pointer, length uint)) BufferObject
+	HasNewBufferWithBytesNoCopyLengthOptionsDeallocator() bool
+
+	// optional
+	NewEvent() EventObject
+	HasNewEvent() bool
 
 	// optional
 	NewBufferWithLengthOptions(length uint, options ResourceOptions) BufferObject
 	HasNewBufferWithLengthOptions() bool
 
 	// optional
-	NewLibraryWithSourceOptionsCompletionHandler(source string, options CompileOptions, completionHandler NewLibraryCompletionHandler)
-	HasNewLibraryWithSourceOptionsCompletionHandler() bool
+	NewBufferWithBytesLengthOptions(pointer unsafe.Pointer, length uint, options ResourceOptions) BufferObject
+	HasNewBufferWithBytesLengthOptions() bool
 
 	// optional
-	Location() DeviceLocation
-	HasLocation() bool
+	NewSharedEvent() SharedEventObject
+	HasNewSharedEvent() bool
 
 	// optional
-	IsHeadless() bool
-	HasIsHeadless() bool
+	SparseTileSizeWithTextureTypePixelFormatSampleCount(textureType TextureType, pixelFormat PixelFormat, sampleCount uint) Size
+	HasSparseTileSizeWithTextureTypePixelFormatSampleCount() bool
+
+	// optional
+	NewSamplerStateWithDescriptor(descriptor SamplerDescriptor) SamplerStateObject
+	HasNewSamplerStateWithDescriptor() bool
+
+	// optional
+	NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject
+	HasNewDynamicLibraryWithURLError() bool
+
+	// optional
+	NewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler(descriptor TileRenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler)
+	HasNewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler() bool
+
+	// optional
+	SupportsCounterSampling(samplingPoint CounterSamplingPoint) bool
+	HasSupportsCounterSampling() bool
+
+	// optional
+	SupportsVertexAmplificationCount(count uint) bool
+	HasSupportsVertexAmplificationCount() bool
+
+	// optional
+	NewComputePipelineStateWithFunctionCompletionHandler(computeFunction FunctionObject, completionHandler NewComputePipelineStateCompletionHandler)
+	HasNewComputePipelineStateWithFunctionCompletionHandler() bool
+
+	// optional
+	AccelerationStructureSizesWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureSizes
+	HasAccelerationStructureSizesWithDescriptor() bool
+
+	// optional
+	NewDefaultLibrary() LibraryObject
+	HasNewDefaultLibrary() bool
+
+	// optional
+	NewDepthStencilStateWithDescriptor(descriptor DepthStencilDescriptor) DepthStencilStateObject
+	HasNewDepthStencilStateWithDescriptor() bool
+
+	// optional
+	ConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions(tileRegions *Region, pixelRegions *Region, tileSize Size, numRegions uint)
+	HasConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions() bool
+
+	// optional
+	NewRenderPipelineStateWithDescriptorCompletionHandler(descriptor RenderPipelineDescriptor, completionHandler NewRenderPipelineStateCompletionHandler)
+	HasNewRenderPipelineStateWithDescriptorCompletionHandler() bool
+
+	// optional
+	NewSharedTextureWithHandle(sharedHandle SharedTextureHandle) TextureObject
+	HasNewSharedTextureWithHandle() bool
+
+	// optional
+	NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject
+	HasNewLibraryWithURLError() bool
+
+	// optional
+	NewSharedEventWithHandle(sharedEventHandle SharedEventHandle) SharedEventObject
+	HasNewSharedEventWithHandle() bool
 
 	// optional
 	SupportsPrimitiveMotionBlur() bool
 	HasSupportsPrimitiveMotionBlur() bool
 
 	// optional
-	RecommendedMaxWorkingSetSize() uint64
-	HasRecommendedMaxWorkingSetSize() bool
-
-	// optional
-	IsRemovable() bool
-	HasIsRemovable() bool
-
-	// optional
-	MaxTransferRate() uint64
-	HasMaxTransferRate() bool
-
-	// optional
-	ArgumentBuffersSupport() ArgumentBuffersTier
-	HasArgumentBuffersSupport() bool
-
-	// optional
-	SupportsShaderBarycentricCoordinates() bool
-	HasSupportsShaderBarycentricCoordinates() bool
-
-	// optional
-	ReadWriteTextureSupport() ReadWriteTextureTier
-	HasReadWriteTextureSupport() bool
-
-	// optional
-	SupportsRenderDynamicLibraries() bool
-	HasSupportsRenderDynamicLibraries() bool
-
-	// optional
-	SupportsFunctionPointers() bool
-	HasSupportsFunctionPointers() bool
-
-	// optional
-	LocationNumber() uint
-	HasLocationNumber() bool
+	SupportsPullModelInterpolation() bool
+	HasSupportsPullModelInterpolation() bool
 
 	// optional
 	SparseTileSizeInBytes() uint
 	HasSparseTileSizeInBytes() bool
 
 	// optional
-	MaxBufferLength() uint
-	HasMaxBufferLength() bool
-
-	// optional
-	AreProgrammableSamplePositionsSupported() bool
-	HasAreProgrammableSamplePositionsSupported() bool
-
-	// optional
-	SupportsPullModelInterpolation() bool
-	HasSupportsPullModelInterpolation() bool
-
-	// optional
-	CurrentAllocatedSize() uint
-	HasCurrentAllocatedSize() bool
-
-	// optional
-	CounterSets() []CounterSetObject
-	HasCounterSets() bool
+	ReadWriteTextureSupport() ReadWriteTextureTier
+	HasReadWriteTextureSupport() bool
 
 	// optional
 	Supports32BitFloatFiltering() bool
 	HasSupports32BitFloatFiltering() bool
 
 	// optional
-	SupportsFunctionPointersFromRender() bool
-	HasSupportsFunctionPointersFromRender() bool
-
-	// optional
-	MaxThreadsPerThreadgroup() Size
-	HasMaxThreadsPerThreadgroup() bool
-
-	// optional
 	PeerCount() uint32
 	HasPeerCount() bool
-
-	// optional
-	HasUnifiedMemory() bool
-	HasHasUnifiedMemory() bool
-
-	// optional
-	SupportsBCTextureCompression() bool
-	HasSupportsBCTextureCompression() bool
-
-	// optional
-	RegistryID() uint64
-	HasRegistryID() bool
-
-	// optional
-	SupportsRaytracing() bool
-	HasSupportsRaytracing() bool
-
-	// optional
-	IsDepth24Stencil8PixelFormatSupported() bool
-	HasIsDepth24Stencil8PixelFormatSupported() bool
-
-	// optional
-	IsLowPower() bool
-	HasIsLowPower() bool
-
-	// optional
-	MaxThreadgroupMemoryLength() uint
-	HasMaxThreadgroupMemoryLength() bool
-
-	// optional
-	SupportsDynamicLibraries() bool
-	HasSupportsDynamicLibraries() bool
-
-	// optional
-	MaxArgumentBufferSamplerCount() uint
-	HasMaxArgumentBufferSamplerCount() bool
-
-	// optional
-	PeerIndex() uint32
-	HasPeerIndex() bool
-
-	// optional
-	Supports32BitMSAA() bool
-	HasSupports32BitMSAA() bool
-
-	// optional
-	Name() string
-	HasName() bool
-
-	// optional
-	SupportsQueryTextureLOD() bool
-	HasSupportsQueryTextureLOD() bool
 
 	// optional
 	AreRasterOrderGroupsSupported() bool
 	HasAreRasterOrderGroupsSupported() bool
 
 	// optional
-	SupportsRaytracingFromRender() bool
-	HasSupportsRaytracingFromRender() bool
+	Name() string
+	HasName() bool
+
+	// optional
+	Location() DeviceLocation
+	HasLocation() bool
+
+	// optional
+	IsLowPower() bool
+	HasIsLowPower() bool
+
+	// optional
+	SupportsBCTextureCompression() bool
+	HasSupportsBCTextureCompression() bool
+
+	// optional
+	SupportsRaytracing() bool
+	HasSupportsRaytracing() bool
+
+	// optional
+	SupportsShaderBarycentricCoordinates() bool
+	HasSupportsShaderBarycentricCoordinates() bool
+
+	// optional
+	RecommendedMaxWorkingSetSize() uint64
+	HasRecommendedMaxWorkingSetSize() bool
+
+	// optional
+	MaxThreadsPerThreadgroup() Size
+	HasMaxThreadsPerThreadgroup() bool
+
+	// optional
+	PeerIndex() uint32
+	HasPeerIndex() bool
+
+	// optional
+	SupportsFunctionPointersFromRender() bool
+	HasSupportsFunctionPointersFromRender() bool
+
+	// optional
+	SupportsFunctionPointers() bool
+	HasSupportsFunctionPointers() bool
+
+	// optional
+	CounterSets() []CounterSetObject
+	HasCounterSets() bool
+
+	// optional
+	IsRemovable() bool
+	HasIsRemovable() bool
+
+	// optional
+	AreProgrammableSamplePositionsSupported() bool
+	HasAreProgrammableSamplePositionsSupported() bool
+
+	// optional
+	IsDepth24Stencil8PixelFormatSupported() bool
+	HasIsDepth24Stencil8PixelFormatSupported() bool
+
+	// optional
+	LocationNumber() uint
+	HasLocationNumber() bool
+
+	// optional
+	RegistryID() uint64
+	HasRegistryID() bool
+
+	// optional
+	Supports32BitMSAA() bool
+	HasSupports32BitMSAA() bool
+
+	// optional
+	MaxBufferLength() uint
+	HasMaxBufferLength() bool
+
+	// optional
+	SupportsRenderDynamicLibraries() bool
+	HasSupportsRenderDynamicLibraries() bool
 
 	// optional
 	PeerGroupID() uint64
 	HasPeerGroupID() bool
+
+	// optional
+	MaxArgumentBufferSamplerCount() uint
+	HasMaxArgumentBufferSamplerCount() bool
+
+	// optional
+	IsHeadless() bool
+	HasIsHeadless() bool
+
+	// optional
+	SupportsRaytracingFromRender() bool
+	HasSupportsRaytracingFromRender() bool
+
+	// optional
+	SupportsQueryTextureLOD() bool
+	HasSupportsQueryTextureLOD() bool
+
+	// optional
+	MaxTransferRate() uint64
+	HasMaxTransferRate() bool
+
+	// optional
+	MaxThreadgroupMemoryLength() uint
+	HasMaxThreadgroupMemoryLength() bool
+
+	// optional
+	HasUnifiedMemory() bool
+	HasHasUnifiedMemory() bool
+
+	// optional
+	SupportsDynamicLibraries() bool
+	HasSupportsDynamicLibraries() bool
+
+	// optional
+	CurrentAllocatedSize() uint
+	HasCurrentAllocatedSize() bool
+
+	// optional
+	ArgumentBuffersSupport() ArgumentBuffersTier
+	HasArgumentBuffersSupport() bool
 }
 
 // ensure impl type implements protocol interface
@@ -414,423 +369,6 @@ var _ PDevice = (*DeviceObject)(nil)
 // A concrete type for the [PDevice] protocol.
 type DeviceObject struct {
 	objc.Object
-}
-
-func (d_ DeviceObject) HasNewDefaultLibrary() bool {
-	return d_.RespondsToSelector(objc.Sel("newDefaultLibrary"))
-}
-
-// Creates a Metal library instance that contains the functions from your app’s default Metal library. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433380-newdefaultlibrary?language=objc
-func (d_ DeviceObject) NewDefaultLibrary() LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibrary"))
-	return rv
-}
-
-func (d_ DeviceObject) HasNewBufferWithBytesLengthOptions() bool {
-	return d_.RespondsToSelector(objc.Sel("newBufferWithBytes:length:options:"))
-}
-
-// Allocates a new buffer of a given length and initializes its contents by copying existing data into it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433429-newbufferwithbytes?language=objc
-func (d_ DeviceObject) NewBufferWithBytesLengthOptions(pointer unsafe.Pointer, length uint, options ResourceOptions) BufferObject {
-	rv := objc.Call[BufferObject](d_, objc.Sel("newBufferWithBytes:length:options:"), pointer, length, options)
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsVertexAmplificationCount() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsVertexAmplificationCount:"))
-}
-
-// Returns a Boolean value that indicates whether the GPU supports an amplification factor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3197984-supportsvertexamplificationcount?language=objc
-func (d_ DeviceObject) SupportsVertexAmplificationCount(count uint) bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsVertexAmplificationCount:"), count)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewLibraryWithSourceOptionsError() bool {
-	return d_.RespondsToSelector(objc.Sel("newLibraryWithSource:options:error:"))
-}
-
-// Synchronously creates a Metal library instance by compiling the functions in a source string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433431-newlibrarywithsource?language=objc
-func (d_ DeviceObject) NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithSource:options:error:"), source, options, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewSharedEventWithHandle() bool {
-	return d_.RespondsToSelector(objc.Sel("newSharedEventWithHandle:"))
-}
-
-// Recreates a shared event from a handle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2981024-newsharedeventwithhandle?language=objc
-func (d_ DeviceObject) NewSharedEventWithHandle(sharedEventHandle SharedEventHandle) SharedEventObject {
-	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEventWithHandle:"), sharedEventHandle)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewBinaryArchiveWithDescriptorError() bool {
-	return d_.RespondsToSelector(objc.Sel("newBinaryArchiveWithDescriptor:error:"))
-}
-
-// Creates a Metal binary archive instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553973-newbinaryarchivewithdescriptor?language=objc
-func (d_ DeviceObject) NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject {
-	rv := objc.Call[BinaryArchiveObject](d_, objc.Sel("newBinaryArchiveWithDescriptor:error:"), descriptor, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewIndirectCommandBufferWithDescriptorMaxCommandCountOptions() bool {
-	return d_.RespondsToSelector(objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"))
-}
-
-// Creates an indirect command buffer instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967420-newindirectcommandbufferwithdesc?language=objc
-func (d_ DeviceObject) NewIndirectCommandBufferWithDescriptorMaxCommandCountOptions(descriptor IndirectCommandBufferDescriptor, maxCount uint, options ResourceOptions) IndirectCommandBufferObject {
-	rv := objc.Call[IndirectCommandBufferObject](d_, objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"), descriptor, maxCount, options)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewSharedTextureWithHandle() bool {
-	return d_.RespondsToSelector(objc.Sel("newSharedTextureWithHandle:"))
-}
-
-// Creates a texture that references a shared texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967422-newsharedtexturewithhandle?language=objc
-func (d_ DeviceObject) NewSharedTextureWithHandle(sharedHandle SharedTextureHandle) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithHandle:"), sharedHandle)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionError() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithFunction:error:"))
-}
-
-// Synchronously creates a new compute pipeline state with a function instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433395-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error unsafe.Pointer) ComputePipelineStateObject {
-	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:error:"), po0, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasSparseTileSizeWithTextureTypePixelFormatSampleCount() bool {
-	return d_.RespondsToSelector(objc.Sel("sparseTileSizeWithTextureType:pixelFormat:sampleCount:"))
-}
-
-// Returns the dimensions of a sparse tile for a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3377856-sparsetilesizewithtexturetype?language=objc
-func (d_ DeviceObject) SparseTileSizeWithTextureTypePixelFormatSampleCount(textureType TextureType, pixelFormat PixelFormat, sampleCount uint) Size {
-	rv := objc.Call[Size](d_, objc.Sel("sparseTileSizeWithTextureType:pixelFormat:sampleCount:"), textureType, pixelFormat, sampleCount)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewLibraryWithURLError() bool {
-	return d_.RespondsToSelector(objc.Sel("newLibraryWithURL:error:"))
-}
-
-// Creates a Metal library instance that contains the functions in the Metal library file at a URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2877432-newlibrarywithurl?language=objc
-func (d_ DeviceObject) NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithURL:error:"), url, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewAccelerationStructureWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newAccelerationStructureWithDescriptor:"))
-}
-
-// Creates a new ray-tracing acceleration structure from a descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553971-newaccelerationstructurewithdesc?language=objc
-func (d_ DeviceObject) NewAccelerationStructureWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureObject {
-	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions() bool {
-	return d_.RespondsToSelector(objc.Sel("convertSparseTileRegions:toPixelRegions:withTileSize:numRegions:"))
-}
-
-// Converts a list of sparse tile regions to pixel regions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3197983-convertsparsetileregions?language=objc
-func (d_ DeviceObject) ConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions(tileRegions *Region, pixelRegions *Region, tileSize Size, numRegions uint) {
-	objc.Call[objc.Void](d_, objc.Sel("convertSparseTileRegions:toPixelRegions:withTileSize:numRegions:"), tileRegions, pixelRegions, tileSize, numRegions)
-}
-
-func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionOptionsReflectionError() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithFunction:options:reflection:error:"))
-}
-
-// Synchronously creates a compute pipeline state and reflection with a function instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433419-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject {
-	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:options:reflection:error:"), po0, options, reflection, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewHeapWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newHeapWithDescriptor:"))
-}
-
-// Creates a new GPU heap instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649928-newheapwithdescriptor?language=objc
-func (d_ DeviceObject) NewHeapWithDescriptor(descriptor HeapDescriptor) HeapObject {
-	rv := objc.Call[HeapObject](d_, objc.Sel("newHeapWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewTextureWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:"))
-}
-
-// Creates a new texture instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433425-newtexturewithdescriptor?language=objc
-func (d_ DeviceObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasGetDefaultSamplePositionsCount() bool {
-	return d_.RespondsToSelector(objc.Sel("getDefaultSamplePositions:count:"))
-}
-
-// Retrieves the default sample positions for a specific sample count. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866120-getdefaultsamplepositions?language=objc
-func (d_ DeviceObject) GetDefaultSamplePositionsCount(positions *SamplePosition, count uint) {
-	objc.Call[objc.Void](d_, objc.Sel("getDefaultSamplePositions:count:"), positions, count)
-}
-
-func (d_ DeviceObject) HasNewCounterSampleBufferWithDescriptorError() bool {
-	return d_.RespondsToSelector(objc.Sel("newCounterSampleBufferWithDescriptor:error:"))
-}
-
-// Creates a counter sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3081741-newcountersamplebufferwithdescri?language=objc
-func (d_ DeviceObject) NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject {
-	rv := objc.Call[CounterSampleBufferObject](d_, objc.Sel("newCounterSampleBufferWithDescriptor:error:"), descriptor, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasHeapTextureSizeAndAlignWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("heapTextureSizeAndAlignWithDescriptor:"))
-}
-
-// Returns the size and alignment, in bytes, of a texture if you create it from a heap. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649927-heaptexturesizeandalignwithdescr?language=objc
-func (d_ DeviceObject) HeapTextureSizeAndAlignWithDescriptor(desc TextureDescriptor) SizeAndAlign {
-	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapTextureSizeAndAlignWithDescriptor:"), desc)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewDynamicLibraryWithURLError() bool {
-	return d_.RespondsToSelector(objc.Sel("newDynamicLibraryWithURL:error:"))
-}
-
-// Creates a Metal dynamic library instance that contains the functions in the Metal library file at a URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564458-newdynamiclibrarywithurl?language=objc
-func (d_ DeviceObject) NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject {
-	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibraryWithURL:error:"), url, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsTextureSampleCount() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsTextureSampleCount:"))
-}
-
-// Returns a Boolean value that indicates whether the GPU can sample a texture with a specific number of sample points. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433355-supportstexturesamplecount?language=objc
-func (d_ DeviceObject) SupportsTextureSampleCount(sampleCount uint) bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsTextureSampleCount:"), sampleCount)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewBufferWithBytesNoCopyLengthOptionsDeallocator() bool {
-	return d_.RespondsToSelector(objc.Sel("newBufferWithBytesNoCopy:length:options:deallocator:"))
-}
-
-// Creates a buffer that wraps an existing contiguous memory allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433382-newbufferwithbytesnocopy?language=objc
-func (d_ DeviceObject) NewBufferWithBytesNoCopyLengthOptionsDeallocator(pointer unsafe.Pointer, length uint, options ResourceOptions, deallocator func(pointer unsafe.Pointer, length uint)) BufferObject {
-	rv := objc.Call[BufferObject](d_, objc.Sel("newBufferWithBytesNoCopy:length:options:deallocator:"), pointer, length, options, deallocator)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"))
-}
-
-// Asynchronously creates a render pipeline state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433363-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorCompletionHandler(descriptor RenderPipelineDescriptor, completionHandler NewRenderPipelineStateCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"), descriptor, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorOptionsReflectionError() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithDescriptor:options:reflection:error:"))
-}
-
-// Synchronously creates a render pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433361-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewSharedTextureWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newSharedTextureWithDescriptor:"))
-}
-
-// Creates a texture that you can share across process boundaries. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967421-newsharedtexturewithdescriptor?language=objc
-func (d_ DeviceObject) NewSharedTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewDefaultLibraryWithBundleError() bool {
-	return d_.RespondsToSelector(objc.Sel("newDefaultLibraryWithBundle:error:"))
-}
-
-// Creates a Metal library instance that contains the functions in a bundle’s default Metal library. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2177054-newdefaultlibrarywithbundle?language=objc
-func (d_ DeviceObject) NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibraryWithBundle:error:"), bundle, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasAccelerationStructureSizesWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("accelerationStructureSizesWithDescriptor:"))
-}
-
-// Returns the buffer sizes the GPU device needs to build, refit, and store an acceleration structure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553970-accelerationstructuresizeswithde?language=objc
-func (d_ DeviceObject) AccelerationStructureSizesWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureSizes {
-	rv := objc.Call[AccelerationStructureSizes](d_, objc.Sel("accelerationStructureSizesWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasMinimumTextureBufferAlignmentForPixelFormat() bool {
-	return d_.RespondsToSelector(objc.Sel("minimumTextureBufferAlignmentForPixelFormat:"))
-}
-
-// Returns the minimum alignment the GPU device requires to create a texture buffer from a buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966564-minimumtexturebufferalignmentfor?language=objc
-func (d_ DeviceObject) MinimumTextureBufferAlignmentForPixelFormat(format PixelFormat) uint {
-	rv := objc.Call[uint](d_, objc.Sel("minimumTextureBufferAlignmentForPixelFormat:"), format)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorOptionsCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithDescriptor:options:completionHandler:"))
-}
-
-// Asynchronously creates a render pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433365-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorOptionsCompletionHandler(descriptor RenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewCommandQueueWithMaxCommandBufferCount() bool {
-	return d_.RespondsToSelector(objc.Sel("newCommandQueueWithMaxCommandBufferCount:"))
-}
-
-// Creates a queue you use to submit rendering and computation commands to a GPU that has a fixed number of uncompleted command buffers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433433-newcommandqueuewithmaxcommandbuf?language=objc
-func (d_ DeviceObject) NewCommandQueueWithMaxCommandBufferCount(maxCommandBufferCount uint) CommandQueueObject {
-	rv := objc.Call[CommandQueueObject](d_, objc.Sel("newCommandQueueWithMaxCommandBufferCount:"), maxCommandBufferCount)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewLibraryWithStitchedDescriptorError() bool {
-	return d_.RespondsToSelector(objc.Sel("newLibraryWithStitchedDescriptor:error:"))
-}
-
-// Synchronously creates a Metal library from the function stitching graphs in a descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3857572-newlibrarywithstitcheddescriptor?language=objc
-func (d_ DeviceObject) NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error unsafe.Pointer) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithStitchedDescriptor:error:"), descriptor, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewLibraryWithStitchedDescriptorCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"))
-}
-
-// Asynchronously creates a Metal library from the function stitching graphs in a descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3857571-newlibrarywithstitcheddescriptor?language=objc
-func (d_ DeviceObject) NewLibraryWithStitchedDescriptorCompletionHandler(descriptor StitchedLibraryDescriptor, completionHandler NewLibraryCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"), descriptor, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewCommandQueue() bool {
-	return d_.RespondsToSelector(objc.Sel("newCommandQueue"))
-}
-
-// Creates a queue you use to submit rendering and computation commands to a GPU. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433388-newcommandqueue?language=objc
-func (d_ DeviceObject) NewCommandQueue() CommandQueueObject {
-	rv := objc.Call[CommandQueueObject](d_, objc.Sel("newCommandQueue"))
-	return rv
-}
-
-func (d_ DeviceObject) HasNewAccelerationStructureWithSize() bool {
-	return d_.RespondsToSelector(objc.Sel("newAccelerationStructureWithSize:"))
-}
-
-// Creates a new acceleration structure with a specific size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553972-newaccelerationstructurewithsize?language=objc
-func (d_ DeviceObject) NewAccelerationStructureWithSize(size uint) AccelerationStructureObject {
-	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithSize:"), size)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewTextureWithDescriptorIosurfacePlane() bool {
-	return d_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:iosurface:plane:"))
-}
-
-// Creates a texture instance that uses I/O surface to store its underlying data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433378-newtexturewithdescriptor?language=objc
-func (d_ DeviceObject) NewTextureWithDescriptorIosurfacePlane(descriptor TextureDescriptor, iosurface iosurface.Ref, plane uint) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:iosurface:plane:"), descriptor, iosurface, plane)
-	return rv
 }
 
 func (d_ DeviceObject) HasSupportsFamily() bool {
@@ -842,159 +380,6 @@ func (d_ DeviceObject) HasSupportsFamily() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3143473-supportsfamily?language=objc
 func (d_ DeviceObject) SupportsFamily(gpuFamily GPUFamily) bool {
 	rv := objc.Call[bool](d_, objc.Sel("supportsFamily:"), gpuFamily)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"))
-}
-
-// Asynchronously creates a tile shader’s render pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866129-newrenderpipelinestatewithtilede?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler(descriptor TileRenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewSamplerStateWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newSamplerStateWithDescriptor:"))
-}
-
-// Creates a sampler state instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433408-newsamplerstatewithdescriptor?language=objc
-func (d_ DeviceObject) NewSamplerStateWithDescriptor(descriptor SamplerDescriptor) SamplerStateObject {
-	rv := objc.Call[SamplerStateObject](d_, objc.Sel("newSamplerStateWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsCounterSampling() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsCounterSampling:"))
-}
-
-// Returns a Boolean value that indicates whether you can read GPU counters at the specified command boundary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564459-supportscountersampling?language=objc
-func (d_ DeviceObject) SupportsCounterSampling(samplingPoint CounterSamplingPoint) bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsCounterSampling:"), samplingPoint)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewSharedEvent() bool {
-	return d_.RespondsToSelector(objc.Sel("newSharedEvent"))
-}
-
-// Creates a new shared event instance that you can use to synchronize commands and resources across different GPU devices. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966569-newsharedevent?language=objc
-func (d_ DeviceObject) NewSharedEvent() SharedEventObject {
-	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEvent"))
-	return rv
-}
-
-func (d_ DeviceObject) HasNewComputePipelineStateWithDescriptorOptionsReflectionError() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithDescriptor:options:reflection:error:"))
-}
-
-// Synchronously creates a compute pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433353-newcomputepipelinestatewithdescr?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject {
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
-	return rv
-}
-
-func (d_ DeviceObject) HasHeapBufferSizeAndAlignWithLengthOptions() bool {
-	return d_.RespondsToSelector(objc.Sel("heapBufferSizeAndAlignWithLength:options:"))
-}
-
-// Returns the size and alignment, in bytes, of a buffer if you create it from a heap. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649922-heapbuffersizeandalignwithlength?language=objc
-func (d_ DeviceObject) HeapBufferSizeAndAlignWithLengthOptions(length uint, options ResourceOptions) SizeAndAlign {
-	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapBufferSizeAndAlignWithLength:options:"), length, options)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewRasterizationRateMapWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newRasterizationRateMapWithDescriptor:"))
-}
-
-// Creates a rasterization rate map instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3131681-newrasterizationratemapwithdescr?language=objc
-func (d_ DeviceObject) NewRasterizationRateMapWithDescriptor(descriptor RasterizationRateMapDescriptor) RasterizationRateMapObject {
-	rv := objc.Call[RasterizationRateMapObject](d_, objc.Sel("newRasterizationRateMapWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewEvent() bool {
-	return d_.RespondsToSelector(objc.Sel("newEvent"))
-}
-
-// Creates a new event instance that you can use to synchronize commands and resources within the same GPU device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966565-newevent?language=objc
-func (d_ DeviceObject) NewEvent() EventObject {
-	rv := objc.Call[EventObject](d_, objc.Sel("newEvent"))
-	return rv
-}
-
-func (d_ DeviceObject) HasNewFence() bool {
-	return d_.RespondsToSelector(objc.Sel("newFence"))
-}
-
-// Creates a new memory fence instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649923-newfence?language=objc
-func (d_ DeviceObject) NewFence() FenceObject {
-	rv := objc.Call[FenceObject](d_, objc.Sel("newFence"))
-	return rv
-}
-
-func (d_ DeviceObject) HasNewComputePipelineStateWithDescriptorOptionsCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"))
-}
-
-// Asynchronously creates a compute pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433403-newcomputepipelinestatewithdescr?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsCompletionHandler(descriptor ComputePipelineDescriptor, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
-}
-
-func (d_ DeviceObject) HasSampleTimestampsGpuTimestamp() bool {
-	return d_.RespondsToSelector(objc.Sel("sampleTimestamps:gpuTimestamp:"))
-}
-
-// Captures and returns a CPU timestamp and a GPU timestamp from the same moment in time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3194378-sampletimestamps?language=objc
-func (d_ DeviceObject) SampleTimestampsGpuTimestamp(cpuTimestamp *Timestamp, gpuTimestamp *Timestamp) {
-	objc.Call[objc.Void](d_, objc.Sel("sampleTimestamps:gpuTimestamp:"), cpuTimestamp, gpuTimestamp)
-}
-
-func (d_ DeviceObject) HasSupportsRasterizationRateMapWithLayerCount() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsRasterizationRateMapWithLayerCount:"))
-}
-
-// Returns a Boolean value that indicates whether the GPU can create a rasterization rate map with a specific number of layers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3131682-supportsrasterizationratemapwith?language=objc
-func (d_ DeviceObject) SupportsRasterizationRateMapWithLayerCount(layerCount uint) bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsRasterizationRateMapWithLayerCount:"), layerCount)
-	return rv
-}
-
-func (d_ DeviceObject) HasNewArgumentEncoderWithArguments() bool {
-	return d_.RespondsToSelector(objc.Sel("newArgumentEncoderWithArguments:"))
-}
-
-// Creates a new argument encoder for an array of arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915744-newargumentencoderwitharguments?language=objc
-func (d_ DeviceObject) NewArgumentEncoderWithArguments(arguments []ArgumentDescriptor) ArgumentEncoderObject {
-	rv := objc.Call[ArgumentEncoderObject](d_, objc.Sel("newArgumentEncoderWithArguments:"), arguments)
 	return rv
 }
 
@@ -1023,6 +408,219 @@ func (d_ DeviceObject) NewDynamicLibraryError(library LibraryObject, error unsaf
 	return rv
 }
 
+func (d_ DeviceObject) HasSampleTimestampsGpuTimestamp() bool {
+	return d_.RespondsToSelector(objc.Sel("sampleTimestamps:gpuTimestamp:"))
+}
+
+// Captures and returns a CPU timestamp and a GPU timestamp from the same moment in time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3194378-sampletimestamps?language=objc
+func (d_ DeviceObject) SampleTimestampsGpuTimestamp(cpuTimestamp *Timestamp, gpuTimestamp *Timestamp) {
+	objc.Call[objc.Void](d_, objc.Sel("sampleTimestamps:gpuTimestamp:"), cpuTimestamp, gpuTimestamp)
+}
+
+func (d_ DeviceObject) HasNewTextureWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:"))
+}
+
+// Creates a new texture instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433425-newtexturewithdescriptor?language=objc
+func (d_ DeviceObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
+	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewBinaryArchiveWithDescriptorError() bool {
+	return d_.RespondsToSelector(objc.Sel("newBinaryArchiveWithDescriptor:error:"))
+}
+
+// Creates a Metal binary archive instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553973-newbinaryarchivewithdescriptor?language=objc
+func (d_ DeviceObject) NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject {
+	rv := objc.Call[BinaryArchiveObject](d_, objc.Sel("newBinaryArchiveWithDescriptor:error:"), descriptor, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewAccelerationStructureWithSize() bool {
+	return d_.RespondsToSelector(objc.Sel("newAccelerationStructureWithSize:"))
+}
+
+// Creates a new acceleration structure with a specific size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553972-newaccelerationstructurewithsize?language=objc
+func (d_ DeviceObject) NewAccelerationStructureWithSize(size uint) AccelerationStructureObject {
+	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithSize:"), size)
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsRasterizationRateMapWithLayerCount() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsRasterizationRateMapWithLayerCount:"))
+}
+
+// Returns a Boolean value that indicates whether the GPU can create a rasterization rate map with a specific number of layers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3131682-supportsrasterizationratemapwith?language=objc
+func (d_ DeviceObject) SupportsRasterizationRateMapWithLayerCount(layerCount uint) bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsRasterizationRateMapWithLayerCount:"), layerCount)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewLibraryWithSourceOptionsError() bool {
+	return d_.RespondsToSelector(objc.Sel("newLibraryWithSource:options:error:"))
+}
+
+// Synchronously creates a Metal library instance by compiling the functions in a source string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433431-newlibrarywithsource?language=objc
+func (d_ DeviceObject) NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithSource:options:error:"), source, options, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewArgumentEncoderWithArguments() bool {
+	return d_.RespondsToSelector(objc.Sel("newArgumentEncoderWithArguments:"))
+}
+
+// Creates a new argument encoder for an array of arguments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915744-newargumentencoderwitharguments?language=objc
+func (d_ DeviceObject) NewArgumentEncoderWithArguments(arguments []ArgumentDescriptor) ArgumentEncoderObject {
+	rv := objc.Call[ArgumentEncoderObject](d_, objc.Sel("newArgumentEncoderWithArguments:"), arguments)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewComputePipelineStateWithDescriptorOptionsCompletionHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"))
+}
+
+// Asynchronously creates a compute pipeline state and reflection information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433403-newcomputepipelinestatewithdescr?language=objc
+func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsCompletionHandler(descriptor ComputePipelineDescriptor, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler) {
+	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
+}
+
+func (d_ DeviceObject) HasNewCommandQueue() bool {
+	return d_.RespondsToSelector(objc.Sel("newCommandQueue"))
+}
+
+// Creates a queue you use to submit rendering and computation commands to a GPU. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433388-newcommandqueue?language=objc
+func (d_ DeviceObject) NewCommandQueue() CommandQueueObject {
+	rv := objc.Call[CommandQueueObject](d_, objc.Sel("newCommandQueue"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsTextureSampleCount() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsTextureSampleCount:"))
+}
+
+// Returns a Boolean value that indicates whether the GPU can sample a texture with a specific number of sample points. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433355-supportstexturesamplecount?language=objc
+func (d_ DeviceObject) SupportsTextureSampleCount(sampleCount uint) bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsTextureSampleCount:"), sampleCount)
+	return rv
+}
+
+func (d_ DeviceObject) HasMinimumTextureBufferAlignmentForPixelFormat() bool {
+	return d_.RespondsToSelector(objc.Sel("minimumTextureBufferAlignmentForPixelFormat:"))
+}
+
+// Returns the minimum alignment the GPU device requires to create a texture buffer from a buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966564-minimumtexturebufferalignmentfor?language=objc
+func (d_ DeviceObject) MinimumTextureBufferAlignmentForPixelFormat(format PixelFormat) uint {
+	rv := objc.Call[uint](d_, objc.Sel("minimumTextureBufferAlignmentForPixelFormat:"), format)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewFence() bool {
+	return d_.RespondsToSelector(objc.Sel("newFence"))
+}
+
+// Creates a new memory fence instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649923-newfence?language=objc
+func (d_ DeviceObject) NewFence() FenceObject {
+	rv := objc.Call[FenceObject](d_, objc.Sel("newFence"))
+	return rv
+}
+
+func (d_ DeviceObject) HasGetDefaultSamplePositionsCount() bool {
+	return d_.RespondsToSelector(objc.Sel("getDefaultSamplePositions:count:"))
+}
+
+// Retrieves the default sample positions for a specific sample count. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866120-getdefaultsamplepositions?language=objc
+func (d_ DeviceObject) GetDefaultSamplePositionsCount(positions *SamplePosition, count uint) {
+	objc.Call[objc.Void](d_, objc.Sel("getDefaultSamplePositions:count:"), positions, count)
+}
+
+func (d_ DeviceObject) HasNewRasterizationRateMapWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newRasterizationRateMapWithDescriptor:"))
+}
+
+// Creates a rasterization rate map instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3131681-newrasterizationratemapwithdescr?language=objc
+func (d_ DeviceObject) NewRasterizationRateMapWithDescriptor(descriptor RasterizationRateMapDescriptor) RasterizationRateMapObject {
+	rv := objc.Call[RasterizationRateMapObject](d_, objc.Sel("newRasterizationRateMapWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewCounterSampleBufferWithDescriptorError() bool {
+	return d_.RespondsToSelector(objc.Sel("newCounterSampleBufferWithDescriptor:error:"))
+}
+
+// Creates a counter sample buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3081741-newcountersamplebufferwithdescri?language=objc
+func (d_ DeviceObject) NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject {
+	rv := objc.Call[CounterSampleBufferObject](d_, objc.Sel("newCounterSampleBufferWithDescriptor:error:"), descriptor, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewCommandQueueWithMaxCommandBufferCount() bool {
+	return d_.RespondsToSelector(objc.Sel("newCommandQueueWithMaxCommandBufferCount:"))
+}
+
+// Creates a queue you use to submit rendering and computation commands to a GPU that has a fixed number of uncompleted command buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433433-newcommandqueuewithmaxcommandbuf?language=objc
+func (d_ DeviceObject) NewCommandQueueWithMaxCommandBufferCount(maxCommandBufferCount uint) CommandQueueObject {
+	rv := objc.Call[CommandQueueObject](d_, objc.Sel("newCommandQueueWithMaxCommandBufferCount:"), maxCommandBufferCount)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewHeapWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newHeapWithDescriptor:"))
+}
+
+// Creates a new GPU heap instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649928-newheapwithdescriptor?language=objc
+func (d_ DeviceObject) NewHeapWithDescriptor(descriptor HeapDescriptor) HeapObject {
+	rv := objc.Call[HeapObject](d_, objc.Sel("newHeapWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewSharedTextureWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newSharedTextureWithDescriptor:"))
+}
+
+// Creates a texture that you can share across process boundaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967421-newsharedtexturewithdescriptor?language=objc
+func (d_ DeviceObject) NewSharedTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
+	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithDescriptor:"), descriptor)
+	return rv
+}
+
 func (d_ DeviceObject) HasConvertSparsePixelRegionsToTileRegionsWithTileSizeAlignmentModeNumRegions() bool {
 	return d_.RespondsToSelector(objc.Sel("convertSparsePixelRegions:toTileRegions:withTileSize:alignmentMode:numRegions:"))
 }
@@ -1034,51 +632,39 @@ func (d_ DeviceObject) ConvertSparsePixelRegionsToTileRegionsWithTileSizeAlignme
 	objc.Call[objc.Void](d_, objc.Sel("convertSparsePixelRegions:toTileRegions:withTileSize:alignmentMode:numRegions:"), pixelRegions, tileRegions, tileSize, mode, numRegions)
 }
 
-func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionOptionsCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithFunction:options:completionHandler:"))
+func (d_ DeviceObject) HasHeapBufferSizeAndAlignWithLengthOptions() bool {
+	return d_.RespondsToSelector(objc.Sel("heapBufferSizeAndAlignWithLength:options:"))
 }
 
-// Asynchronously creates a compute pipeline state and reflection with a function instance. [Full Topic]
+// Returns the size and alignment, in bytes, of a buffer if you create it from a heap. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433410-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionOptionsCompletionHandler(computeFunction FunctionObject, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler) {
-	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithFunction:options:completionHandler:"), po0, options, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithFunction:completionHandler:"))
-}
-
-// Asynchronously creates a new compute pipeline state with a function instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433427-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionCompletionHandler(computeFunction FunctionObject, completionHandler NewComputePipelineStateCompletionHandler) {
-	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithFunction:completionHandler:"), po0, completionHandler)
-}
-
-func (d_ DeviceObject) HasNewRenderPipelineStateWithTileDescriptorOptionsReflectionError() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithTileDescriptor:options:reflection:error:"))
-}
-
-// Synchronously creates a tile shader’s render pipeline state and reflection information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866134-newrenderpipelinestatewithtilede?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649922-heapbuffersizeandalignwithlength?language=objc
+func (d_ DeviceObject) HeapBufferSizeAndAlignWithLengthOptions(length uint, options ResourceOptions) SizeAndAlign {
+	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapBufferSizeAndAlignWithLength:options:"), length, options)
 	return rv
 }
 
-func (d_ DeviceObject) HasNewDepthStencilStateWithDescriptor() bool {
-	return d_.RespondsToSelector(objc.Sel("newDepthStencilStateWithDescriptor:"))
+func (d_ DeviceObject) HasNewIndirectCommandBufferWithDescriptorMaxCommandCountOptions() bool {
+	return d_.RespondsToSelector(objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"))
 }
 
-// Creates a depth-stencil state instance. [Full Topic]
+// Creates an indirect command buffer instance. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433412-newdepthstencilstatewithdescript?language=objc
-func (d_ DeviceObject) NewDepthStencilStateWithDescriptor(descriptor DepthStencilDescriptor) DepthStencilStateObject {
-	rv := objc.Call[DepthStencilStateObject](d_, objc.Sel("newDepthStencilStateWithDescriptor:"), descriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967420-newindirectcommandbufferwithdesc?language=objc
+func (d_ DeviceObject) NewIndirectCommandBufferWithDescriptorMaxCommandCountOptions(descriptor IndirectCommandBufferDescriptor, maxCount uint, options ResourceOptions) IndirectCommandBufferObject {
+	rv := objc.Call[IndirectCommandBufferObject](d_, objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"), descriptor, maxCount, options)
+	return rv
+}
+
+func (d_ DeviceObject) HasHeapTextureSizeAndAlignWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("heapTextureSizeAndAlignWithDescriptor:"))
+}
+
+// Returns the size and alignment, in bytes, of a texture if you create it from a heap. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649927-heaptexturesizeandalignwithdescr?language=objc
+func (d_ DeviceObject) HeapTextureSizeAndAlignWithDescriptor(desc TextureDescriptor) SizeAndAlign {
+	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapTextureSizeAndAlignWithDescriptor:"), desc)
 	return rv
 }
 
@@ -1094,15 +680,62 @@ func (d_ DeviceObject) NewLibraryWithDataError(data dispatch.Data, error unsafe.
 	return rv
 }
 
-func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorError() bool {
-	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithDescriptor:error:"))
+func (d_ DeviceObject) HasNewDefaultLibraryWithBundleError() bool {
+	return d_.RespondsToSelector(objc.Sel("newDefaultLibraryWithBundle:error:"))
 }
 
-// Synchronously creates a render pipeline state. [Full Topic]
+// Creates a Metal library instance that contains the functions in a bundle’s default Metal library. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433369-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:error:"), descriptor, error)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2177054-newdefaultlibrarywithbundle?language=objc
+func (d_ DeviceObject) NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibraryWithBundle:error:"), bundle, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewLibraryWithStitchedDescriptorCompletionHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"))
+}
+
+// Asynchronously creates a Metal library from the function stitching graphs in a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3857571-newlibrarywithstitcheddescriptor?language=objc
+func (d_ DeviceObject) NewLibraryWithStitchedDescriptorCompletionHandler(descriptor StitchedLibraryDescriptor, completionHandler NewLibraryCompletionHandler) {
+	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"), descriptor, completionHandler)
+}
+
+func (d_ DeviceObject) HasNewAccelerationStructureWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newAccelerationStructureWithDescriptor:"))
+}
+
+// Creates a new ray-tracing acceleration structure from a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553971-newaccelerationstructurewithdesc?language=objc
+func (d_ DeviceObject) NewAccelerationStructureWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureObject {
+	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewBufferWithBytesNoCopyLengthOptionsDeallocator() bool {
+	return d_.RespondsToSelector(objc.Sel("newBufferWithBytesNoCopy:length:options:deallocator:"))
+}
+
+// Creates a buffer that wraps an existing contiguous memory allocation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433382-newbufferwithbytesnocopy?language=objc
+func (d_ DeviceObject) NewBufferWithBytesNoCopyLengthOptionsDeallocator(pointer unsafe.Pointer, length uint, options ResourceOptions, deallocator func(pointer unsafe.Pointer, length uint)) BufferObject {
+	rv := objc.Call[BufferObject](d_, objc.Sel("newBufferWithBytesNoCopy:length:options:deallocator:"), pointer, length, options, deallocator)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewEvent() bool {
+	return d_.RespondsToSelector(objc.Sel("newEvent"))
+}
+
+// Creates a new event instance that you can use to synchronize commands and resources within the same GPU device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966565-newevent?language=objc
+func (d_ DeviceObject) NewEvent() EventObject {
+	rv := objc.Call[EventObject](d_, objc.Sel("newEvent"))
 	return rv
 }
 
@@ -1118,38 +751,204 @@ func (d_ DeviceObject) NewBufferWithLengthOptions(length uint, options ResourceO
 	return rv
 }
 
-func (d_ DeviceObject) HasNewLibraryWithSourceOptionsCompletionHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("newLibraryWithSource:options:completionHandler:"))
+func (d_ DeviceObject) HasNewBufferWithBytesLengthOptions() bool {
+	return d_.RespondsToSelector(objc.Sel("newBufferWithBytes:length:options:"))
 }
 
-// Asynchronously creates a Metal library instance by compiling the functions in a source string. [Full Topic]
+// Allocates a new buffer of a given length and initializes its contents by copying existing data into it. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433351-newlibrarywithsource?language=objc
-func (d_ DeviceObject) NewLibraryWithSourceOptionsCompletionHandler(source string, options CompileOptions, completionHandler NewLibraryCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithSource:options:completionHandler:"), source, options, completionHandler)
-}
-
-func (d_ DeviceObject) HasLocation() bool {
-	return d_.RespondsToSelector(objc.Sel("location"))
-}
-
-// The physical location of the GPU relative to system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114005-location?language=objc
-func (d_ DeviceObject) Location() DeviceLocation {
-	rv := objc.Call[DeviceLocation](d_, objc.Sel("location"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433429-newbufferwithbytes?language=objc
+func (d_ DeviceObject) NewBufferWithBytesLengthOptions(pointer unsafe.Pointer, length uint, options ResourceOptions) BufferObject {
+	rv := objc.Call[BufferObject](d_, objc.Sel("newBufferWithBytes:length:options:"), pointer, length, options)
 	return rv
 }
 
-func (d_ DeviceObject) HasIsHeadless() bool {
-	return d_.RespondsToSelector(objc.Sel("isHeadless"))
+func (d_ DeviceObject) HasNewSharedEvent() bool {
+	return d_.RespondsToSelector(objc.Sel("newSharedEvent"))
 }
 
-// A Boolean value that indicates whether a GPU device doesn’t have a connection to a display. [Full Topic]
+// Creates a new shared event instance that you can use to synchronize commands and resources across different GPU devices. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433377-headless?language=objc
-func (d_ DeviceObject) IsHeadless() bool {
-	rv := objc.Call[bool](d_, objc.Sel("isHeadless"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966569-newsharedevent?language=objc
+func (d_ DeviceObject) NewSharedEvent() SharedEventObject {
+	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEvent"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSparseTileSizeWithTextureTypePixelFormatSampleCount() bool {
+	return d_.RespondsToSelector(objc.Sel("sparseTileSizeWithTextureType:pixelFormat:sampleCount:"))
+}
+
+// Returns the dimensions of a sparse tile for a texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3377856-sparsetilesizewithtexturetype?language=objc
+func (d_ DeviceObject) SparseTileSizeWithTextureTypePixelFormatSampleCount(textureType TextureType, pixelFormat PixelFormat, sampleCount uint) Size {
+	rv := objc.Call[Size](d_, objc.Sel("sparseTileSizeWithTextureType:pixelFormat:sampleCount:"), textureType, pixelFormat, sampleCount)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewSamplerStateWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newSamplerStateWithDescriptor:"))
+}
+
+// Creates a sampler state instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433408-newsamplerstatewithdescriptor?language=objc
+func (d_ DeviceObject) NewSamplerStateWithDescriptor(descriptor SamplerDescriptor) SamplerStateObject {
+	rv := objc.Call[SamplerStateObject](d_, objc.Sel("newSamplerStateWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewDynamicLibraryWithURLError() bool {
+	return d_.RespondsToSelector(objc.Sel("newDynamicLibraryWithURL:error:"))
+}
+
+// Creates a Metal dynamic library instance that contains the functions in the Metal library file at a URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564458-newdynamiclibrarywithurl?language=objc
+func (d_ DeviceObject) NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject {
+	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibraryWithURL:error:"), url, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"))
+}
+
+// Asynchronously creates a tile shader’s render pipeline state and reflection information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866129-newrenderpipelinestatewithtilede?language=objc
+func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler(descriptor TileRenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler) {
+	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
+}
+
+func (d_ DeviceObject) HasSupportsCounterSampling() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsCounterSampling:"))
+}
+
+// Returns a Boolean value that indicates whether you can read GPU counters at the specified command boundary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564459-supportscountersampling?language=objc
+func (d_ DeviceObject) SupportsCounterSampling(samplingPoint CounterSamplingPoint) bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsCounterSampling:"), samplingPoint)
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsVertexAmplificationCount() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsVertexAmplificationCount:"))
+}
+
+// Returns a Boolean value that indicates whether the GPU supports an amplification factor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3197984-supportsvertexamplificationcount?language=objc
+func (d_ DeviceObject) SupportsVertexAmplificationCount(count uint) bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsVertexAmplificationCount:"), count)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionCompletionHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("newComputePipelineStateWithFunction:completionHandler:"))
+}
+
+// Asynchronously creates a new compute pipeline state with a function instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433427-newcomputepipelinestatewithfunct?language=objc
+func (d_ DeviceObject) NewComputePipelineStateWithFunctionCompletionHandler(computeFunction FunctionObject, completionHandler NewComputePipelineStateCompletionHandler) {
+	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
+	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithFunction:completionHandler:"), po0, completionHandler)
+}
+
+func (d_ DeviceObject) HasAccelerationStructureSizesWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("accelerationStructureSizesWithDescriptor:"))
+}
+
+// Returns the buffer sizes the GPU device needs to build, refit, and store an acceleration structure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553970-accelerationstructuresizeswithde?language=objc
+func (d_ DeviceObject) AccelerationStructureSizesWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureSizes {
+	rv := objc.Call[AccelerationStructureSizes](d_, objc.Sel("accelerationStructureSizesWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewDefaultLibrary() bool {
+	return d_.RespondsToSelector(objc.Sel("newDefaultLibrary"))
+}
+
+// Creates a Metal library instance that contains the functions from your app’s default Metal library. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433380-newdefaultlibrary?language=objc
+func (d_ DeviceObject) NewDefaultLibrary() LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibrary"))
+	return rv
+}
+
+func (d_ DeviceObject) HasNewDepthStencilStateWithDescriptor() bool {
+	return d_.RespondsToSelector(objc.Sel("newDepthStencilStateWithDescriptor:"))
+}
+
+// Creates a depth-stencil state instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433412-newdepthstencilstatewithdescript?language=objc
+func (d_ DeviceObject) NewDepthStencilStateWithDescriptor(descriptor DepthStencilDescriptor) DepthStencilStateObject {
+	rv := objc.Call[DepthStencilStateObject](d_, objc.Sel("newDepthStencilStateWithDescriptor:"), descriptor)
+	return rv
+}
+
+func (d_ DeviceObject) HasConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions() bool {
+	return d_.RespondsToSelector(objc.Sel("convertSparseTileRegions:toPixelRegions:withTileSize:numRegions:"))
+}
+
+// Converts a list of sparse tile regions to pixel regions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3197983-convertsparsetileregions?language=objc
+func (d_ DeviceObject) ConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions(tileRegions *Region, pixelRegions *Region, tileSize Size, numRegions uint) {
+	objc.Call[objc.Void](d_, objc.Sel("convertSparseTileRegions:toPixelRegions:withTileSize:numRegions:"), tileRegions, pixelRegions, tileSize, numRegions)
+}
+
+func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorCompletionHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"))
+}
+
+// Asynchronously creates a render pipeline state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433363-newrenderpipelinestatewithdescri?language=objc
+func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorCompletionHandler(descriptor RenderPipelineDescriptor, completionHandler NewRenderPipelineStateCompletionHandler) {
+	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"), descriptor, completionHandler)
+}
+
+func (d_ DeviceObject) HasNewSharedTextureWithHandle() bool {
+	return d_.RespondsToSelector(objc.Sel("newSharedTextureWithHandle:"))
+}
+
+// Creates a texture that references a shared texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967422-newsharedtexturewithhandle?language=objc
+func (d_ DeviceObject) NewSharedTextureWithHandle(sharedHandle SharedTextureHandle) TextureObject {
+	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithHandle:"), sharedHandle)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewLibraryWithURLError() bool {
+	return d_.RespondsToSelector(objc.Sel("newLibraryWithURL:error:"))
+}
+
+// Creates a Metal library instance that contains the functions in the Metal library file at a URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2877432-newlibrarywithurl?language=objc
+func (d_ DeviceObject) NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithURL:error:"), url, error)
+	return rv
+}
+
+func (d_ DeviceObject) HasNewSharedEventWithHandle() bool {
+	return d_.RespondsToSelector(objc.Sel("newSharedEventWithHandle:"))
+}
+
+// Recreates a shared event from a handle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2981024-newsharedeventwithhandle?language=objc
+func (d_ DeviceObject) NewSharedEventWithHandle(sharedEventHandle SharedEventHandle) SharedEventObject {
+	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEventWithHandle:"), sharedEventHandle)
 	return rv
 }
 
@@ -1165,111 +964,15 @@ func (d_ DeviceObject) SupportsPrimitiveMotionBlur() bool {
 	return rv
 }
 
-func (d_ DeviceObject) HasRecommendedMaxWorkingSetSize() bool {
-	return d_.RespondsToSelector(objc.Sel("recommendedMaxWorkingSetSize"))
+func (d_ DeviceObject) HasSupportsPullModelInterpolation() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsPullModelInterpolation"))
 }
 
-// An approximation of how much memory, in bytes, this GPU device can allocate without affecting its runtime performance. [Full Topic]
+// A Boolean value that indicates whether the GPU can compute multiple interpolations of a fragment function’s input. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2369280-recommendedmaxworkingsetsize?language=objc
-func (d_ DeviceObject) RecommendedMaxWorkingSetSize() uint64 {
-	rv := objc.Call[uint64](d_, objc.Sel("recommendedMaxWorkingSetSize"))
-	return rv
-}
-
-func (d_ DeviceObject) HasIsRemovable() bool {
-	return d_.RespondsToSelector(objc.Sel("isRemovable"))
-}
-
-// A Boolean value that indicates whether the GPU is removable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2889851-removable?language=objc
-func (d_ DeviceObject) IsRemovable() bool {
-	rv := objc.Call[bool](d_, objc.Sel("isRemovable"))
-	return rv
-}
-
-func (d_ DeviceObject) HasMaxTransferRate() bool {
-	return d_.RespondsToSelector(objc.Sel("maxTransferRate"))
-}
-
-// The highest theoretical rate, in bytes per second, the system can copy between system memory and the GPU’s dedicated memory (VRAM). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114007-maxtransferrate?language=objc
-func (d_ DeviceObject) MaxTransferRate() uint64 {
-	rv := objc.Call[uint64](d_, objc.Sel("maxTransferRate"))
-	return rv
-}
-
-func (d_ DeviceObject) HasArgumentBuffersSupport() bool {
-	return d_.RespondsToSelector(objc.Sel("argumentBuffersSupport"))
-}
-
-// Returns the GPU device’s support tier for argument buffers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915742-argumentbufferssupport?language=objc
-func (d_ DeviceObject) ArgumentBuffersSupport() ArgumentBuffersTier {
-	rv := objc.Call[ArgumentBuffersTier](d_, objc.Sel("argumentBuffersSupport"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsShaderBarycentricCoordinates() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsShaderBarycentricCoordinates"))
-}
-
-// A Boolean value that indicates whether the GPU supports barycentric coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3325837-supportsshaderbarycentriccoordin?language=objc
-func (d_ DeviceObject) SupportsShaderBarycentricCoordinates() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsShaderBarycentricCoordinates"))
-	return rv
-}
-
-func (d_ DeviceObject) HasReadWriteTextureSupport() bool {
-	return d_.RespondsToSelector(objc.Sel("readWriteTextureSupport"))
-}
-
-// The GPU device’s texture support tier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2887289-readwritetexturesupport?language=objc
-func (d_ DeviceObject) ReadWriteTextureSupport() ReadWriteTextureTier {
-	rv := objc.Call[ReadWriteTextureTier](d_, objc.Sel("readWriteTextureSupport"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsRenderDynamicLibraries() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsRenderDynamicLibraries"))
-}
-
-// A Boolean value that indicates whether the GPU device can create and use dynamic libraries in render pipelines. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3816767-supportsrenderdynamiclibraries?language=objc
-func (d_ DeviceObject) SupportsRenderDynamicLibraries() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsRenderDynamicLibraries"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsFunctionPointers() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsFunctionPointers"))
-}
-
-// A Boolean value that indicates whether the GPU device supports pointers to compute kernel functions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3589487-supportsfunctionpointers?language=objc
-func (d_ DeviceObject) SupportsFunctionPointers() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsFunctionPointers"))
-	return rv
-}
-
-func (d_ DeviceObject) HasLocationNumber() bool {
-	return d_.RespondsToSelector(objc.Sel("locationNumber"))
-}
-
-// A specific GPU position based on its general location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114006-locationnumber?language=objc
-func (d_ DeviceObject) LocationNumber() uint {
-	rv := objc.Call[uint](d_, objc.Sel("locationNumber"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564460-supportspullmodelinterpolation?language=objc
+func (d_ DeviceObject) SupportsPullModelInterpolation() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsPullModelInterpolation"))
 	return rv
 }
 
@@ -1285,63 +988,15 @@ func (d_ DeviceObject) SparseTileSizeInBytes() uint {
 	return rv
 }
 
-func (d_ DeviceObject) HasMaxBufferLength() bool {
-	return d_.RespondsToSelector(objc.Sel("maxBufferLength"))
+func (d_ DeviceObject) HasReadWriteTextureSupport() bool {
+	return d_.RespondsToSelector(objc.Sel("readWriteTextureSupport"))
 }
 
-// The largest amount of memory, in bytes, that a GPU device can allocate to a buffer instance. [Full Topic]
+// The GPU device’s texture support tier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966563-maxbufferlength?language=objc
-func (d_ DeviceObject) MaxBufferLength() uint {
-	rv := objc.Call[uint](d_, objc.Sel("maxBufferLength"))
-	return rv
-}
-
-func (d_ DeviceObject) HasAreProgrammableSamplePositionsSupported() bool {
-	return d_.RespondsToSelector(objc.Sel("areProgrammableSamplePositionsSupported"))
-}
-
-// A Boolean value that indicates whether the GPU supports programmable sample positions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866117-programmablesamplepositionssuppo?language=objc
-func (d_ DeviceObject) AreProgrammableSamplePositionsSupported() bool {
-	rv := objc.Call[bool](d_, objc.Sel("areProgrammableSamplePositionsSupported"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsPullModelInterpolation() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsPullModelInterpolation"))
-}
-
-// A Boolean value that indicates whether the GPU can compute multiple interpolations of a fragment function’s input. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564460-supportspullmodelinterpolation?language=objc
-func (d_ DeviceObject) SupportsPullModelInterpolation() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsPullModelInterpolation"))
-	return rv
-}
-
-func (d_ DeviceObject) HasCurrentAllocatedSize() bool {
-	return d_.RespondsToSelector(objc.Sel("currentAllocatedSize"))
-}
-
-// The total amount of memory, in bytes, the GPU device is using for all of its resources. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915745-currentallocatedsize?language=objc
-func (d_ DeviceObject) CurrentAllocatedSize() uint {
-	rv := objc.Call[uint](d_, objc.Sel("currentAllocatedSize"))
-	return rv
-}
-
-func (d_ DeviceObject) HasCounterSets() bool {
-	return d_.RespondsToSelector(objc.Sel("counterSets"))
-}
-
-// The counter sets supported by the device object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3081739-countersets?language=objc
-func (d_ DeviceObject) CounterSets() []CounterSetObject {
-	rv := objc.Call[[]CounterSetObject](d_, objc.Sel("counterSets"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2887289-readwritetexturesupport?language=objc
+func (d_ DeviceObject) ReadWriteTextureSupport() ReadWriteTextureTier {
+	rv := objc.Call[ReadWriteTextureTier](d_, objc.Sel("readWriteTextureSupport"))
 	return rv
 }
 
@@ -1357,30 +1012,6 @@ func (d_ DeviceObject) Supports32BitFloatFiltering() bool {
 	return rv
 }
 
-func (d_ DeviceObject) HasSupportsFunctionPointersFromRender() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsFunctionPointersFromRender"))
-}
-
-// A Boolean value that indicates whether the GPU device supports pointers to render functions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3750527-supportsfunctionpointersfromrend?language=objc
-func (d_ DeviceObject) SupportsFunctionPointersFromRender() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsFunctionPointersFromRender"))
-	return rv
-}
-
-func (d_ DeviceObject) HasMaxThreadsPerThreadgroup() bool {
-	return d_.RespondsToSelector(objc.Sel("maxThreadsPerThreadgroup"))
-}
-
-// The maximum number of threads along each dimension of a threadgroup. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433393-maxthreadsperthreadgroup?language=objc
-func (d_ DeviceObject) MaxThreadsPerThreadgroup() Size {
-	rv := objc.Call[Size](d_, objc.Sel("maxThreadsPerThreadgroup"))
-	return rv
-}
-
 func (d_ DeviceObject) HasPeerCount() bool {
 	return d_.RespondsToSelector(objc.Sel("peerCount"))
 }
@@ -1390,162 +1021,6 @@ func (d_ DeviceObject) HasPeerCount() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967423-peercount?language=objc
 func (d_ DeviceObject) PeerCount() uint32 {
 	rv := objc.Call[uint32](d_, objc.Sel("peerCount"))
-	return rv
-}
-
-func (d_ DeviceObject) HasHasUnifiedMemory() bool {
-	return d_.RespondsToSelector(objc.Sel("hasUnifiedMemory"))
-}
-
-// A Boolean value that indicates whether the GPU shares all of its memory with the CPU. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3229025-hasunifiedmemory?language=objc
-func (d_ DeviceObject) HasUnifiedMemory() bool {
-	rv := objc.Call[bool](d_, objc.Sel("hasUnifiedMemory"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsBCTextureCompression() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsBCTextureCompression"))
-}
-
-// A Boolean value that indicates whether you can use textures that use BC compression. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566547-supportsbctexturecompression?language=objc
-func (d_ DeviceObject) SupportsBCTextureCompression() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsBCTextureCompression"))
-	return rv
-}
-
-func (d_ DeviceObject) HasRegistryID() bool {
-	return d_.RespondsToSelector(objc.Sel("registryID"))
-}
-
-// The GPU device’s registry identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915737-registryid?language=objc
-func (d_ DeviceObject) RegistryID() uint64 {
-	rv := objc.Call[uint64](d_, objc.Sel("registryID"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsRaytracing() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsRaytracing"))
-}
-
-// A Boolean value that indicates whether the GPU device supports ray tracing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3580382-supportsraytracing?language=objc
-func (d_ DeviceObject) SupportsRaytracing() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsRaytracing"))
-	return rv
-}
-
-func (d_ DeviceObject) HasIsDepth24Stencil8PixelFormatSupported() bool {
-	return d_.RespondsToSelector(objc.Sel("isDepth24Stencil8PixelFormatSupported"))
-}
-
-// A Boolean value that indicates whether a device supports a packed depth-and-stencil pixel format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433371-depth24stencil8pixelformatsuppor?language=objc
-func (d_ DeviceObject) IsDepth24Stencil8PixelFormatSupported() bool {
-	rv := objc.Call[bool](d_, objc.Sel("isDepth24Stencil8PixelFormatSupported"))
-	return rv
-}
-
-func (d_ DeviceObject) HasIsLowPower() bool {
-	return d_.RespondsToSelector(objc.Sel("isLowPower"))
-}
-
-// A Boolean value that indicates whether the GPU lowers its performance to conserve energy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433409-lowpower?language=objc
-func (d_ DeviceObject) IsLowPower() bool {
-	rv := objc.Call[bool](d_, objc.Sel("isLowPower"))
-	return rv
-}
-
-func (d_ DeviceObject) HasMaxThreadgroupMemoryLength() bool {
-	return d_.RespondsToSelector(objc.Sel("maxThreadgroupMemoryLength"))
-}
-
-// The maximum threadgroup memory available to a compute kernel, in bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2877429-maxthreadgroupmemorylength?language=objc
-func (d_ DeviceObject) MaxThreadgroupMemoryLength() uint {
-	rv := objc.Call[uint](d_, objc.Sel("maxThreadgroupMemoryLength"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsDynamicLibraries() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsDynamicLibraries"))
-}
-
-// A Boolean value that indicates whether the GPU device can create and use dynamic libraries in compute pipelines. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553977-supportsdynamiclibraries?language=objc
-func (d_ DeviceObject) SupportsDynamicLibraries() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsDynamicLibraries"))
-	return rv
-}
-
-func (d_ DeviceObject) HasMaxArgumentBufferSamplerCount() bool {
-	return d_.RespondsToSelector(objc.Sel("maxArgumentBufferSamplerCount"))
-}
-
-// The maximum number of unique argument buffer samplers per app. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2977322-maxargumentbuffersamplercount?language=objc
-func (d_ DeviceObject) MaxArgumentBufferSamplerCount() uint {
-	rv := objc.Call[uint](d_, objc.Sel("maxArgumentBufferSamplerCount"))
-	return rv
-}
-
-func (d_ DeviceObject) HasPeerIndex() bool {
-	return d_.RespondsToSelector(objc.Sel("peerIndex"))
-}
-
-// The unique identifier for a GPU in a peer group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967425-peerindex?language=objc
-func (d_ DeviceObject) PeerIndex() uint32 {
-	rv := objc.Call[uint32](d_, objc.Sel("peerIndex"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupports32BitMSAA() bool {
-	return d_.RespondsToSelector(objc.Sel("supports32BitMSAA"))
-}
-
-// A Boolean value that indicates whether the GPU can allocate 32-bit integer texture formats and resolve to 32-bit floating-point texture formats. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566546-supports32bitmsaa?language=objc
-func (d_ DeviceObject) Supports32BitMSAA() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supports32BitMSAA"))
-	return rv
-}
-
-func (d_ DeviceObject) HasName() bool {
-	return d_.RespondsToSelector(objc.Sel("name"))
-}
-
-// The full name of the GPU device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433359-name?language=objc
-func (d_ DeviceObject) Name() string {
-	rv := objc.Call[string](d_, objc.Sel("name"))
-	return rv
-}
-
-func (d_ DeviceObject) HasSupportsQueryTextureLOD() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsQueryTextureLOD"))
-}
-
-// A Boolean value that indicates whether you can query the texture level of detail from within a shader. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566548-supportsquerytexturelod?language=objc
-func (d_ DeviceObject) SupportsQueryTextureLOD() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsQueryTextureLOD"))
 	return rv
 }
 
@@ -1561,15 +1036,243 @@ func (d_ DeviceObject) AreRasterOrderGroupsSupported() bool {
 	return rv
 }
 
-func (d_ DeviceObject) HasSupportsRaytracingFromRender() bool {
-	return d_.RespondsToSelector(objc.Sel("supportsRaytracingFromRender"))
+func (d_ DeviceObject) HasName() bool {
+	return d_.RespondsToSelector(objc.Sel("name"))
 }
 
-// A Boolean value that indicates whether you can call ray-tracing functions from a vertex or fragment shader. [Full Topic]
+// The full name of the GPU device. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3750528-supportsraytracingfromrender?language=objc
-func (d_ DeviceObject) SupportsRaytracingFromRender() bool {
-	rv := objc.Call[bool](d_, objc.Sel("supportsRaytracingFromRender"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433359-name?language=objc
+func (d_ DeviceObject) Name() string {
+	rv := objc.Call[string](d_, objc.Sel("name"))
+	return rv
+}
+
+func (d_ DeviceObject) HasLocation() bool {
+	return d_.RespondsToSelector(objc.Sel("location"))
+}
+
+// The physical location of the GPU relative to system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114005-location?language=objc
+func (d_ DeviceObject) Location() DeviceLocation {
+	rv := objc.Call[DeviceLocation](d_, objc.Sel("location"))
+	return rv
+}
+
+func (d_ DeviceObject) HasIsLowPower() bool {
+	return d_.RespondsToSelector(objc.Sel("isLowPower"))
+}
+
+// A Boolean value that indicates whether the GPU lowers its performance to conserve energy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433409-lowpower?language=objc
+func (d_ DeviceObject) IsLowPower() bool {
+	rv := objc.Call[bool](d_, objc.Sel("isLowPower"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsBCTextureCompression() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsBCTextureCompression"))
+}
+
+// A Boolean value that indicates whether you can use textures that use BC compression. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566547-supportsbctexturecompression?language=objc
+func (d_ DeviceObject) SupportsBCTextureCompression() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsBCTextureCompression"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsRaytracing() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsRaytracing"))
+}
+
+// A Boolean value that indicates whether the GPU device supports ray tracing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3580382-supportsraytracing?language=objc
+func (d_ DeviceObject) SupportsRaytracing() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsRaytracing"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsShaderBarycentricCoordinates() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsShaderBarycentricCoordinates"))
+}
+
+// A Boolean value that indicates whether the GPU supports barycentric coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3325837-supportsshaderbarycentriccoordin?language=objc
+func (d_ DeviceObject) SupportsShaderBarycentricCoordinates() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsShaderBarycentricCoordinates"))
+	return rv
+}
+
+func (d_ DeviceObject) HasRecommendedMaxWorkingSetSize() bool {
+	return d_.RespondsToSelector(objc.Sel("recommendedMaxWorkingSetSize"))
+}
+
+// An approximation of how much memory, in bytes, this GPU device can allocate without affecting its runtime performance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2369280-recommendedmaxworkingsetsize?language=objc
+func (d_ DeviceObject) RecommendedMaxWorkingSetSize() uint64 {
+	rv := objc.Call[uint64](d_, objc.Sel("recommendedMaxWorkingSetSize"))
+	return rv
+}
+
+func (d_ DeviceObject) HasMaxThreadsPerThreadgroup() bool {
+	return d_.RespondsToSelector(objc.Sel("maxThreadsPerThreadgroup"))
+}
+
+// The maximum number of threads along each dimension of a threadgroup. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433393-maxthreadsperthreadgroup?language=objc
+func (d_ DeviceObject) MaxThreadsPerThreadgroup() Size {
+	rv := objc.Call[Size](d_, objc.Sel("maxThreadsPerThreadgroup"))
+	return rv
+}
+
+func (d_ DeviceObject) HasPeerIndex() bool {
+	return d_.RespondsToSelector(objc.Sel("peerIndex"))
+}
+
+// The unique identifier for a GPU in a peer group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967425-peerindex?language=objc
+func (d_ DeviceObject) PeerIndex() uint32 {
+	rv := objc.Call[uint32](d_, objc.Sel("peerIndex"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsFunctionPointersFromRender() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsFunctionPointersFromRender"))
+}
+
+// A Boolean value that indicates whether the GPU device supports pointers to render functions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3750527-supportsfunctionpointersfromrend?language=objc
+func (d_ DeviceObject) SupportsFunctionPointersFromRender() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsFunctionPointersFromRender"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsFunctionPointers() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsFunctionPointers"))
+}
+
+// A Boolean value that indicates whether the GPU device supports pointers to compute kernel functions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3589487-supportsfunctionpointers?language=objc
+func (d_ DeviceObject) SupportsFunctionPointers() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsFunctionPointers"))
+	return rv
+}
+
+func (d_ DeviceObject) HasCounterSets() bool {
+	return d_.RespondsToSelector(objc.Sel("counterSets"))
+}
+
+// The counter sets supported by the device object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3081739-countersets?language=objc
+func (d_ DeviceObject) CounterSets() []CounterSetObject {
+	rv := objc.Call[[]CounterSetObject](d_, objc.Sel("counterSets"))
+	return rv
+}
+
+func (d_ DeviceObject) HasIsRemovable() bool {
+	return d_.RespondsToSelector(objc.Sel("isRemovable"))
+}
+
+// A Boolean value that indicates whether the GPU is removable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2889851-removable?language=objc
+func (d_ DeviceObject) IsRemovable() bool {
+	rv := objc.Call[bool](d_, objc.Sel("isRemovable"))
+	return rv
+}
+
+func (d_ DeviceObject) HasAreProgrammableSamplePositionsSupported() bool {
+	return d_.RespondsToSelector(objc.Sel("areProgrammableSamplePositionsSupported"))
+}
+
+// A Boolean value that indicates whether the GPU supports programmable sample positions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866117-programmablesamplepositionssuppo?language=objc
+func (d_ DeviceObject) AreProgrammableSamplePositionsSupported() bool {
+	rv := objc.Call[bool](d_, objc.Sel("areProgrammableSamplePositionsSupported"))
+	return rv
+}
+
+func (d_ DeviceObject) HasIsDepth24Stencil8PixelFormatSupported() bool {
+	return d_.RespondsToSelector(objc.Sel("isDepth24Stencil8PixelFormatSupported"))
+}
+
+// A Boolean value that indicates whether a device supports a packed depth-and-stencil pixel format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433371-depth24stencil8pixelformatsuppor?language=objc
+func (d_ DeviceObject) IsDepth24Stencil8PixelFormatSupported() bool {
+	rv := objc.Call[bool](d_, objc.Sel("isDepth24Stencil8PixelFormatSupported"))
+	return rv
+}
+
+func (d_ DeviceObject) HasLocationNumber() bool {
+	return d_.RespondsToSelector(objc.Sel("locationNumber"))
+}
+
+// A specific GPU position based on its general location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114006-locationnumber?language=objc
+func (d_ DeviceObject) LocationNumber() uint {
+	rv := objc.Call[uint](d_, objc.Sel("locationNumber"))
+	return rv
+}
+
+func (d_ DeviceObject) HasRegistryID() bool {
+	return d_.RespondsToSelector(objc.Sel("registryID"))
+}
+
+// The GPU device’s registry identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915737-registryid?language=objc
+func (d_ DeviceObject) RegistryID() uint64 {
+	rv := objc.Call[uint64](d_, objc.Sel("registryID"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupports32BitMSAA() bool {
+	return d_.RespondsToSelector(objc.Sel("supports32BitMSAA"))
+}
+
+// A Boolean value that indicates whether the GPU can allocate 32-bit integer texture formats and resolve to 32-bit floating-point texture formats. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566546-supports32bitmsaa?language=objc
+func (d_ DeviceObject) Supports32BitMSAA() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supports32BitMSAA"))
+	return rv
+}
+
+func (d_ DeviceObject) HasMaxBufferLength() bool {
+	return d_.RespondsToSelector(objc.Sel("maxBufferLength"))
+}
+
+// The largest amount of memory, in bytes, that a GPU device can allocate to a buffer instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2966563-maxbufferlength?language=objc
+func (d_ DeviceObject) MaxBufferLength() uint {
+	rv := objc.Call[uint](d_, objc.Sel("maxBufferLength"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsRenderDynamicLibraries() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsRenderDynamicLibraries"))
+}
+
+// A Boolean value that indicates whether the GPU device can create and use dynamic libraries in render pipelines. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3816767-supportsrenderdynamiclibraries?language=objc
+func (d_ DeviceObject) SupportsRenderDynamicLibraries() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsRenderDynamicLibraries"))
 	return rv
 }
 
@@ -1582,5 +1285,125 @@ func (d_ DeviceObject) HasPeerGroupID() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967424-peergroupid?language=objc
 func (d_ DeviceObject) PeerGroupID() uint64 {
 	rv := objc.Call[uint64](d_, objc.Sel("peerGroupID"))
+	return rv
+}
+
+func (d_ DeviceObject) HasMaxArgumentBufferSamplerCount() bool {
+	return d_.RespondsToSelector(objc.Sel("maxArgumentBufferSamplerCount"))
+}
+
+// The maximum number of unique argument buffer samplers per app. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2977322-maxargumentbuffersamplercount?language=objc
+func (d_ DeviceObject) MaxArgumentBufferSamplerCount() uint {
+	rv := objc.Call[uint](d_, objc.Sel("maxArgumentBufferSamplerCount"))
+	return rv
+}
+
+func (d_ DeviceObject) HasIsHeadless() bool {
+	return d_.RespondsToSelector(objc.Sel("isHeadless"))
+}
+
+// A Boolean value that indicates whether a GPU device doesn’t have a connection to a display. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433377-headless?language=objc
+func (d_ DeviceObject) IsHeadless() bool {
+	rv := objc.Call[bool](d_, objc.Sel("isHeadless"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsRaytracingFromRender() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsRaytracingFromRender"))
+}
+
+// A Boolean value that indicates whether you can call ray-tracing functions from a vertex or fragment shader. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3750528-supportsraytracingfromrender?language=objc
+func (d_ DeviceObject) SupportsRaytracingFromRender() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsRaytracingFromRender"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsQueryTextureLOD() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsQueryTextureLOD"))
+}
+
+// A Boolean value that indicates whether you can query the texture level of detail from within a shader. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3566548-supportsquerytexturelod?language=objc
+func (d_ DeviceObject) SupportsQueryTextureLOD() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsQueryTextureLOD"))
+	return rv
+}
+
+func (d_ DeviceObject) HasMaxTransferRate() bool {
+	return d_.RespondsToSelector(objc.Sel("maxTransferRate"))
+}
+
+// The highest theoretical rate, in bytes per second, the system can copy between system memory and the GPU’s dedicated memory (VRAM). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3114007-maxtransferrate?language=objc
+func (d_ DeviceObject) MaxTransferRate() uint64 {
+	rv := objc.Call[uint64](d_, objc.Sel("maxTransferRate"))
+	return rv
+}
+
+func (d_ DeviceObject) HasMaxThreadgroupMemoryLength() bool {
+	return d_.RespondsToSelector(objc.Sel("maxThreadgroupMemoryLength"))
+}
+
+// The maximum threadgroup memory available to a compute kernel, in bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2877429-maxthreadgroupmemorylength?language=objc
+func (d_ DeviceObject) MaxThreadgroupMemoryLength() uint {
+	rv := objc.Call[uint](d_, objc.Sel("maxThreadgroupMemoryLength"))
+	return rv
+}
+
+func (d_ DeviceObject) HasHasUnifiedMemory() bool {
+	return d_.RespondsToSelector(objc.Sel("hasUnifiedMemory"))
+}
+
+// A Boolean value that indicates whether the GPU shares all of its memory with the CPU. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3229025-hasunifiedmemory?language=objc
+func (d_ DeviceObject) HasUnifiedMemory() bool {
+	rv := objc.Call[bool](d_, objc.Sel("hasUnifiedMemory"))
+	return rv
+}
+
+func (d_ DeviceObject) HasSupportsDynamicLibraries() bool {
+	return d_.RespondsToSelector(objc.Sel("supportsDynamicLibraries"))
+}
+
+// A Boolean value that indicates whether the GPU device can create and use dynamic libraries in compute pipelines. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553977-supportsdynamiclibraries?language=objc
+func (d_ DeviceObject) SupportsDynamicLibraries() bool {
+	rv := objc.Call[bool](d_, objc.Sel("supportsDynamicLibraries"))
+	return rv
+}
+
+func (d_ DeviceObject) HasCurrentAllocatedSize() bool {
+	return d_.RespondsToSelector(objc.Sel("currentAllocatedSize"))
+}
+
+// The total amount of memory, in bytes, the GPU device is using for all of its resources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915745-currentallocatedsize?language=objc
+func (d_ DeviceObject) CurrentAllocatedSize() uint {
+	rv := objc.Call[uint](d_, objc.Sel("currentAllocatedSize"))
+	return rv
+}
+
+func (d_ DeviceObject) HasArgumentBuffersSupport() bool {
+	return d_.RespondsToSelector(objc.Sel("argumentBuffersSupport"))
+}
+
+// Returns the GPU device’s support tier for argument buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2915742-argumentbufferssupport?language=objc
+func (d_ DeviceObject) ArgumentBuffersSupport() ArgumentBuffersTier {
+	rv := objc.Call[ArgumentBuffersTier](d_, objc.Sel("argumentBuffersSupport"))
 	return rv
 }

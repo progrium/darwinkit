@@ -18,31 +18,31 @@ type _GRUDescriptorClass struct {
 // An interface definition for the [GRUDescriptor] class.
 type IGRUDescriptor interface {
 	IRNNDescriptor
-	FlipOutputGates() bool
-	SetFlipOutputGates(value bool)
-	OutputGateRecurrentWeights() CNNConvolutionDataSourceObject
-	SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource)
-	SetOutputGateRecurrentWeightsObject(valueObject objc.IObject)
-	OutputGateInputGateWeights() CNNConvolutionDataSourceObject
-	SetOutputGateInputGateWeights(value PCNNConvolutionDataSource)
-	SetOutputGateInputGateWeightsObject(valueObject objc.IObject)
-	OutputGateInputWeights() CNNConvolutionDataSourceObject
-	SetOutputGateInputWeights(value PCNNConvolutionDataSource)
-	SetOutputGateInputWeightsObject(valueObject objc.IObject)
 	InputGateInputWeights() CNNConvolutionDataSourceObject
 	SetInputGateInputWeights(value PCNNConvolutionDataSource)
 	SetInputGateInputWeightsObject(valueObject objc.IObject)
 	RecurrentGateRecurrentWeights() CNNConvolutionDataSourceObject
 	SetRecurrentGateRecurrentWeights(value PCNNConvolutionDataSource)
 	SetRecurrentGateRecurrentWeightsObject(valueObject objc.IObject)
+	OutputGateInputGateWeights() CNNConvolutionDataSourceObject
+	SetOutputGateInputGateWeights(value PCNNConvolutionDataSource)
+	SetOutputGateInputGateWeightsObject(valueObject objc.IObject)
+	GatePnormValue() float32
+	SetGatePnormValue(value float32)
+	OutputGateRecurrentWeights() CNNConvolutionDataSourceObject
+	SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource)
+	SetOutputGateRecurrentWeightsObject(valueObject objc.IObject)
+	FlipOutputGates() bool
+	SetFlipOutputGates(value bool)
 	RecurrentGateInputWeights() CNNConvolutionDataSourceObject
 	SetRecurrentGateInputWeights(value PCNNConvolutionDataSource)
 	SetRecurrentGateInputWeightsObject(valueObject objc.IObject)
-	GatePnormValue() float32
-	SetGatePnormValue(value float32)
 	InputGateRecurrentWeights() CNNConvolutionDataSourceObject
 	SetInputGateRecurrentWeights(value PCNNConvolutionDataSource)
 	SetInputGateRecurrentWeightsObject(valueObject objc.IObject)
+	OutputGateInputWeights() CNNConvolutionDataSourceObject
+	SetOutputGateInputWeights(value PCNNConvolutionDataSource)
+	SetOutputGateInputWeightsObject(valueObject objc.IObject)
 }
 
 // A description of a gated recurrent unit block or layer. [Full Topic]
@@ -88,90 +88,6 @@ func NewGRUDescriptor() GRUDescriptor {
 func (g_ GRUDescriptor) Init() GRUDescriptor {
 	rv := objc.Call[GRUDescriptor](g_, objc.Sel("init"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878271-flipoutputgates?language=objc
-func (g_ GRUDescriptor) FlipOutputGates() bool {
-	rv := objc.Call[bool](g_, objc.Sel("flipOutputGates"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878271-flipoutputgates?language=objc
-func (g_ GRUDescriptor) SetFlipOutputGates(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setFlipOutputGates:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
-func (g_ GRUDescriptor) OutputGateRecurrentWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateRecurrentWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateRecurrentWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateRecurrentWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
-func (g_ GRUDescriptor) OutputGateInputGateWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateInputGateWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateInputGateWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputGateWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateInputGateWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputGateWeights:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
-func (g_ GRUDescriptor) OutputGateInputWeights() CNNConvolutionDataSourceObject {
-	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateInputWeights"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateInputWeights(value PCNNConvolutionDataSource) {
-	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputWeights:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
-func (g_ GRUDescriptor) SetOutputGateInputWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -222,6 +138,82 @@ func (g_ GRUDescriptor) SetRecurrentGateRecurrentWeightsObject(valueObject objc.
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
+func (g_ GRUDescriptor) OutputGateInputGateWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateInputGateWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateInputGateWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputGateWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878270-outputgateinputgateweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateInputGateWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputGateWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2873332-gatepnormvalue?language=objc
+func (g_ GRUDescriptor) GatePnormValue() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("gatePnormValue"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2873332-gatepnormvalue?language=objc
+func (g_ GRUDescriptor) SetGatePnormValue(value float32) {
+	objc.Call[objc.Void](g_, objc.Sel("setGatePnormValue:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
+func (g_ GRUDescriptor) OutputGateRecurrentWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateRecurrentWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateRecurrentWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateRecurrentWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865699-outputgaterecurrentweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateRecurrentWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateRecurrentWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878271-flipoutputgates?language=objc
+func (g_ GRUDescriptor) FlipOutputGates() bool {
+	rv := objc.Call[bool](g_, objc.Sel("flipOutputGates"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2878271-flipoutputgates?language=objc
+func (g_ GRUDescriptor) SetFlipOutputGates(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setFlipOutputGates:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865719-recurrentgateinputweights?language=objc
 func (g_ GRUDescriptor) RecurrentGateInputWeights() CNNConvolutionDataSourceObject {
 	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("recurrentGateInputWeights"))
@@ -245,21 +237,6 @@ func (g_ GRUDescriptor) SetRecurrentGateInputWeightsObject(valueObject objc.IObj
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2873332-gatepnormvalue?language=objc
-func (g_ GRUDescriptor) GatePnormValue() float32 {
-	rv := objc.Call[float32](g_, objc.Sel("gatePnormValue"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2873332-gatepnormvalue?language=objc
-func (g_ GRUDescriptor) SetGatePnormValue(value float32) {
-	objc.Call[objc.Void](g_, objc.Sel("setGatePnormValue:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865724-inputgaterecurrentweights?language=objc
 func (g_ GRUDescriptor) InputGateRecurrentWeights() CNNConvolutionDataSourceObject {
 	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("inputGateRecurrentWeights"))
@@ -279,4 +256,27 @@ func (g_ GRUDescriptor) SetInputGateRecurrentWeights(value PCNNConvolutionDataSo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865724-inputgaterecurrentweights?language=objc
 func (g_ GRUDescriptor) SetInputGateRecurrentWeightsObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](g_, objc.Sel("setInputGateRecurrentWeights:"), valueObject)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
+func (g_ GRUDescriptor) OutputGateInputWeights() CNNConvolutionDataSourceObject {
+	rv := objc.Call[CNNConvolutionDataSourceObject](g_, objc.Sel("outputGateInputWeights"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateInputWeights(value PCNNConvolutionDataSource) {
+	po0 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", value)
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputWeights:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsgrudescriptor/2865722-outputgateinputweights?language=objc
+func (g_ GRUDescriptor) SetOutputGateInputWeightsObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](g_, objc.Sel("setOutputGateInputWeights:"), valueObject)
 }

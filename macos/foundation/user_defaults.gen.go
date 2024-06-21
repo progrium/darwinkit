@@ -18,37 +18,36 @@ type _UserDefaultsClass struct {
 // An interface definition for the [UserDefaults] class.
 type IUserDefaults interface {
 	objc.IObject
-	Synchronize() bool
-	StringArrayForKey(defaultName string) []string
-	ObjectIsForcedForKey(key string) bool
-	SetBoolForKey(value bool, defaultName string)
-	DictionaryRepresentation() map[string]objc.Object
 	URLForKey(defaultName string) URL
-	SetObjectForKey(value objc.IObject, defaultName string)
-	FloatForKey(defaultName string) float32
-	SetURLForKey(url IURL, defaultName string)
-	DataForKey(defaultName string) []byte
-	RemoveSuiteNamed(suiteName string)
-	PersistentDomainForName(domainName string) map[string]objc.Object
-	RegisterDefaults(registrationDictionary map[string]objc.IObject)
-	SetVolatileDomainForName(domain map[string]objc.IObject, domainName string)
-	BoolForKey(defaultName string) bool
-	ObjectIsForcedForKeyInDomain(key string, domain string) bool
-	VolatileDomainForName(domainName string) map[string]objc.Object
-	ArrayForKey(defaultName string) []objc.Object
-	DoubleForKey(defaultName string) float64
-	SetFloatForKey(value float32, defaultName string)
-	RemoveObjectForKey(defaultName string)
-	AddSuiteNamed(suiteName string)
-	RemoveVolatileDomainForName(domainName string)
-	RemovePersistentDomainForName(domainName string)
-	SetPersistentDomainForName(domain map[string]objc.IObject, domainName string)
-	DictionaryForKey(defaultName string) map[string]objc.Object
-	StringForKey(defaultName string) string
-	IntegerForKey(defaultName string) int
-	SetIntegerForKey(value int, defaultName string)
-	SetDoubleForKey(value float64, defaultName string)
 	ObjectForKey(defaultName string) objc.Object
+	SetBoolForKey(value bool, defaultName string)
+	ArrayForKey(defaultName string) []objc.Object
+	StringArrayForKey(defaultName string) []string
+	SetFloatForKey(value float32, defaultName string)
+	StringForKey(defaultName string) string
+	FloatForKey(defaultName string) float32
+	BoolForKey(defaultName string) bool
+	RemovePersistentDomainForName(domainName string)
+	SetObjectForKey(value objc.IObject, defaultName string)
+	IntegerForKey(defaultName string) int
+	VolatileDomainForName(domainName string) map[string]objc.Object
+	ObjectIsForcedForKey(key string) bool
+	SetPersistentDomainForName(domain map[string]objc.IObject, domainName string)
+	SetDoubleForKey(value float64, defaultName string)
+	DataForKey(defaultName string) []byte
+	DoubleForKey(defaultName string) float64
+	DictionaryForKey(defaultName string) map[string]objc.Object
+	RegisterDefaults(registrationDictionary map[string]objc.IObject)
+	SetIntegerForKey(value int, defaultName string)
+	RemoveSuiteNamed(suiteName string)
+	SetURLForKey(url IURL, defaultName string)
+	RemoveVolatileDomainForName(domainName string)
+	DictionaryRepresentation() map[string]objc.Object
+	Synchronize() bool
+	RemoveObjectForKey(defaultName string)
+	SetVolatileDomainForName(domain map[string]objc.IObject, domainName string)
+	PersistentDomainForName(domainName string) map[string]objc.Object
+	AddSuiteNamed(suiteName string)
 	VolatileDomainNames() []string
 }
 
@@ -65,11 +64,6 @@ func UserDefaultsFrom(ptr unsafe.Pointer) UserDefaults {
 	}
 }
 
-func (u_ UserDefaults) Init() UserDefaults {
-	rv := objc.Call[UserDefaults](u_, objc.Sel("init"))
-	return rv
-}
-
 func (u_ UserDefaults) InitWithSuiteName(suitename string) UserDefaults {
 	rv := objc.Call[UserDefaults](u_, objc.Sel("initWithSuiteName:"), suitename)
 	return rv
@@ -82,6 +76,11 @@ func NewUserDefaultsWithSuiteName(suitename string) UserDefaults {
 	instance := UserDefaultsClass.Alloc().InitWithSuiteName(suitename)
 	instance.Autorelease()
 	return instance
+}
+
+func (u_ UserDefaults) Init() UserDefaults {
+	rv := objc.Call[UserDefaults](u_, objc.Sel("init"))
+	return rv
 }
 
 func (uc _UserDefaultsClass) Alloc() UserDefaults {
@@ -99,11 +98,34 @@ func NewUserDefaults() UserDefaults {
 	return UserDefaultsClass.New()
 }
 
-// Waits for any pending asynchronous updates to the defaults database and returns; this method is unnecessary and shouldn't be used. [Full Topic]
+// Returns the URL associated with the specified key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414005-synchronize?language=objc
-func (u_ UserDefaults) Synchronize() bool {
-	rv := objc.Call[bool](u_, objc.Sel("synchronize"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408648-urlforkey?language=objc
+func (u_ UserDefaults) URLForKey(defaultName string) URL {
+	rv := objc.Call[URL](u_, objc.Sel("URLForKey:"), defaultName)
+	return rv
+}
+
+// Returns the object associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1410095-objectforkey?language=objc
+func (u_ UserDefaults) ObjectForKey(defaultName string) objc.Object {
+	rv := objc.Call[objc.Object](u_, objc.Sel("objectForKey:"), defaultName)
+	return rv
+}
+
+// Sets the value of the specified default key to the specified Boolean value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408905-setbool?language=objc
+func (u_ UserDefaults) SetBoolForKey(value bool, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setBool:forKey:"), value, defaultName)
+}
+
+// Returns the array associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414792-arrayforkey?language=objc
+func (u_ UserDefaults) ArrayForKey(defaultName string) []objc.Object {
+	rv := objc.Call[[]objc.Object](u_, objc.Sel("arrayForKey:"), defaultName)
 	return rv
 }
 
@@ -115,42 +137,19 @@ func (u_ UserDefaults) StringArrayForKey(defaultName string) []string {
 	return rv
 }
 
-// Returns a Boolean value indicating whether the specified key is managed by an administrator. [Full Topic]
+// Sets the value of the specified default key to the specified float value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408635-objectisforcedforkey?language=objc
-func (u_ UserDefaults) ObjectIsForcedForKey(key string) bool {
-	rv := objc.Call[bool](u_, objc.Sel("objectIsForcedForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413320-setfloat?language=objc
+func (u_ UserDefaults) SetFloatForKey(value float32, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setFloat:forKey:"), value, defaultName)
+}
+
+// Returns the string associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1416700-stringforkey?language=objc
+func (u_ UserDefaults) StringForKey(defaultName string) string {
+	rv := objc.Call[string](u_, objc.Sel("stringForKey:"), defaultName)
 	return rv
-}
-
-// Sets the value of the specified default key to the specified Boolean value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408905-setbool?language=objc
-func (u_ UserDefaults) SetBoolForKey(value bool, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setBool:forKey:"), value, defaultName)
-}
-
-// Returns a dictionary that contains a union of all key-value pairs in the domains in the search list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1415919-dictionaryrepresentation?language=objc
-func (u_ UserDefaults) DictionaryRepresentation() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("dictionaryRepresentation"))
-	return rv
-}
-
-// Returns the URL associated with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408648-urlforkey?language=objc
-func (u_ UserDefaults) URLForKey(defaultName string) URL {
-	rv := objc.Call[URL](u_, objc.Sel("URLForKey:"), defaultName)
-	return rv
-}
-
-// Sets the value of the specified default key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414067-setobject?language=objc
-func (u_ UserDefaults) SetObjectForKey(value objc.IObject, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setObject:forKey:"), value, defaultName)
 }
 
 // Returns the float value associated with the specified key. [Full Topic]
@@ -161,50 +160,6 @@ func (u_ UserDefaults) FloatForKey(defaultName string) float32 {
 	return rv
 }
 
-// Sets the value of the specified default key to the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc
-func (u_ UserDefaults) SetURLForKey(url IURL, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setURL:forKey:"), url, defaultName)
-}
-
-// Returns the data object associated with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1409590-dataforkey?language=objc
-func (u_ UserDefaults) DataForKey(defaultName string) []byte {
-	rv := objc.Call[[]byte](u_, objc.Sel("dataForKey:"), defaultName)
-	return rv
-}
-
-// Removes the specified domain name from the receiver’s search list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408047-removesuitenamed?language=objc
-func (u_ UserDefaults) RemoveSuiteNamed(suiteName string) {
-	objc.Call[objc.Void](u_, objc.Sel("removeSuiteNamed:"), suiteName)
-}
-
-// Returns a dictionary representation of the defaults for the specified domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1412197-persistentdomainforname?language=objc
-func (u_ UserDefaults) PersistentDomainForName(domainName string) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("persistentDomainForName:"), domainName)
-	return rv
-}
-
-// Adds the contents of the specified dictionary to the registration domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1417065-registerdefaults?language=objc
-func (u_ UserDefaults) RegisterDefaults(registrationDictionary map[string]objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("registerDefaults:"), registrationDictionary)
-}
-
-// Sets the dictionary for the specified volatile domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413720-setvolatiledomain?language=objc
-func (u_ UserDefaults) SetVolatileDomainForName(domain map[string]objc.IObject, domainName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setVolatileDomain:forName:"), domain, domainName)
-}
-
 // Returns the Boolean value associated with the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1416388-boolforkey?language=objc
@@ -213,11 +168,25 @@ func (u_ UserDefaults) BoolForKey(defaultName string) bool {
 	return rv
 }
 
-// Returns a Boolean value indicating whether the key in the specified domain is managed by an administrator. [Full Topic]
+// Removes the contents of the specified persistent domain from the user’s defaults. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1416306-objectisforcedforkey?language=objc
-func (u_ UserDefaults) ObjectIsForcedForKeyInDomain(key string, domain string) bool {
-	rv := objc.Call[bool](u_, objc.Sel("objectIsForcedForKey:inDomain:"), key, domain)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1417339-removepersistentdomainforname?language=objc
+func (u_ UserDefaults) RemovePersistentDomainForName(domainName string) {
+	objc.Call[objc.Void](u_, objc.Sel("removePersistentDomainForName:"), domainName)
+}
+
+// Sets the value of the specified default key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414067-setobject?language=objc
+func (u_ UserDefaults) SetObjectForKey(value objc.IObject, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setObject:forKey:"), value, defaultName)
+}
+
+// Returns the integer value associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1407405-integerforkey?language=objc
+func (u_ UserDefaults) IntegerForKey(defaultName string) int {
+	rv := objc.Call[int](u_, objc.Sel("integerForKey:"), defaultName)
 	return rv
 }
 
@@ -229,11 +198,33 @@ func (u_ UserDefaults) VolatileDomainForName(domainName string) map[string]objc.
 	return rv
 }
 
-// Returns the array associated with the specified key. [Full Topic]
+// Returns a Boolean value indicating whether the specified key is managed by an administrator. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414792-arrayforkey?language=objc
-func (u_ UserDefaults) ArrayForKey(defaultName string) []objc.Object {
-	rv := objc.Call[[]objc.Object](u_, objc.Sel("arrayForKey:"), defaultName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408635-objectisforcedforkey?language=objc
+func (u_ UserDefaults) ObjectIsForcedForKey(key string) bool {
+	rv := objc.Call[bool](u_, objc.Sel("objectIsForcedForKey:"), key)
+	return rv
+}
+
+// Sets a dictionary for the specified persistent domain. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408187-setpersistentdomain?language=objc
+func (u_ UserDefaults) SetPersistentDomainForName(domain map[string]objc.IObject, domainName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setPersistentDomain:forName:"), domain, domainName)
+}
+
+// Sets the value of the specified default key to the double value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408646-setdouble?language=objc
+func (u_ UserDefaults) SetDoubleForKey(value float64, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setDouble:forKey:"), value, defaultName)
+}
+
+// Returns the data object associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1409590-dataforkey?language=objc
+func (u_ UserDefaults) DataForKey(defaultName string) []byte {
+	rv := objc.Call[[]byte](u_, objc.Sel("dataForKey:"), defaultName)
 	return rv
 }
 
@@ -245,25 +236,40 @@ func (u_ UserDefaults) DoubleForKey(defaultName string) float64 {
 	return rv
 }
 
-// Sets the value of the specified default key to the specified float value. [Full Topic]
+// Returns the dictionary object associated with the specified key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413320-setfloat?language=objc
-func (u_ UserDefaults) SetFloatForKey(value float32, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setFloat:forKey:"), value, defaultName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408563-dictionaryforkey?language=objc
+func (u_ UserDefaults) DictionaryForKey(defaultName string) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("dictionaryForKey:"), defaultName)
+	return rv
 }
 
-// Removes the value of the specified default key. [Full Topic]
+// Adds the contents of the specified dictionary to the registration domain. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1411182-removeobjectforkey?language=objc
-func (u_ UserDefaults) RemoveObjectForKey(defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("removeObjectForKey:"), defaultName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1417065-registerdefaults?language=objc
+func (u_ UserDefaults) RegisterDefaults(registrationDictionary map[string]objc.IObject) {
+	objc.Call[objc.Void](u_, objc.Sel("registerDefaults:"), registrationDictionary)
 }
 
-// Inserts the specified domain name into the receiver’s search list. [Full Topic]
+// Sets the value of the specified default key to the specified integer value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1410294-addsuitenamed?language=objc
-func (u_ UserDefaults) AddSuiteNamed(suiteName string) {
-	objc.Call[objc.Void](u_, objc.Sel("addSuiteNamed:"), suiteName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413614-setinteger?language=objc
+func (u_ UserDefaults) SetIntegerForKey(value int, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setInteger:forKey:"), value, defaultName)
+}
+
+// Removes the specified domain name from the receiver’s search list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408047-removesuitenamed?language=objc
+func (u_ UserDefaults) RemoveSuiteNamed(suiteName string) {
+	objc.Call[objc.Void](u_, objc.Sel("removeSuiteNamed:"), suiteName)
+}
+
+// Sets the value of the specified default key to the specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc
+func (u_ UserDefaults) SetURLForKey(url IURL, defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setURL:forKey:"), url, defaultName)
 }
 
 // Removes the specified volatile domain from the user’s defaults. [Full Topic]
@@ -273,11 +279,20 @@ func (u_ UserDefaults) RemoveVolatileDomainForName(domainName string) {
 	objc.Call[objc.Void](u_, objc.Sel("removeVolatileDomainForName:"), domainName)
 }
 
-// Removes the contents of the specified persistent domain from the user’s defaults. [Full Topic]
+// Returns a dictionary that contains a union of all key-value pairs in the domains in the search list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1417339-removepersistentdomainforname?language=objc
-func (u_ UserDefaults) RemovePersistentDomainForName(domainName string) {
-	objc.Call[objc.Void](u_, objc.Sel("removePersistentDomainForName:"), domainName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1415919-dictionaryrepresentation?language=objc
+func (u_ UserDefaults) DictionaryRepresentation() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("dictionaryRepresentation"))
+	return rv
+}
+
+// Waits for any pending asynchronous updates to the defaults database and returns; this method is unnecessary and shouldn't be used. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414005-synchronize?language=objc
+func (u_ UserDefaults) Synchronize() bool {
+	rv := objc.Call[bool](u_, objc.Sel("synchronize"))
+	return rv
 }
 
 // This method has no effect and shouldn't be used. [Full Topic]
@@ -294,65 +309,33 @@ func UserDefaults_ResetStandardUserDefaults() {
 	UserDefaultsClass.ResetStandardUserDefaults()
 }
 
-// Sets a dictionary for the specified persistent domain. [Full Topic]
+// Removes the value of the specified default key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408187-setpersistentdomain?language=objc
-func (u_ UserDefaults) SetPersistentDomainForName(domain map[string]objc.IObject, domainName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setPersistentDomain:forName:"), domain, domainName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1411182-removeobjectforkey?language=objc
+func (u_ UserDefaults) RemoveObjectForKey(defaultName string) {
+	objc.Call[objc.Void](u_, objc.Sel("removeObjectForKey:"), defaultName)
 }
 
-// Returns the dictionary object associated with the specified key. [Full Topic]
+// Sets the dictionary for the specified volatile domain. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408563-dictionaryforkey?language=objc
-func (u_ UserDefaults) DictionaryForKey(defaultName string) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("dictionaryForKey:"), defaultName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413720-setvolatiledomain?language=objc
+func (u_ UserDefaults) SetVolatileDomainForName(domain map[string]objc.IObject, domainName string) {
+	objc.Call[objc.Void](u_, objc.Sel("setVolatileDomain:forName:"), domain, domainName)
+}
+
+// Returns a dictionary representation of the defaults for the specified domain. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1412197-persistentdomainforname?language=objc
+func (u_ UserDefaults) PersistentDomainForName(domainName string) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](u_, objc.Sel("persistentDomainForName:"), domainName)
 	return rv
 }
 
-// Returns the string associated with the specified key. [Full Topic]
+// Inserts the specified domain name into the receiver’s search list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1416700-stringforkey?language=objc
-func (u_ UserDefaults) StringForKey(defaultName string) string {
-	rv := objc.Call[string](u_, objc.Sel("stringForKey:"), defaultName)
-	return rv
-}
-
-// Returns the integer value associated with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1407405-integerforkey?language=objc
-func (u_ UserDefaults) IntegerForKey(defaultName string) int {
-	rv := objc.Call[int](u_, objc.Sel("integerForKey:"), defaultName)
-	return rv
-}
-
-// Sets the value of the specified default key to the specified integer value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413614-setinteger?language=objc
-func (u_ UserDefaults) SetIntegerForKey(value int, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setInteger:forKey:"), value, defaultName)
-}
-
-// Sets the value of the specified default key to the double value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1408646-setdouble?language=objc
-func (u_ UserDefaults) SetDoubleForKey(value float64, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setDouble:forKey:"), value, defaultName)
-}
-
-// Returns the object associated with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1410095-objectforkey?language=objc
-func (u_ UserDefaults) ObjectForKey(defaultName string) objc.Object {
-	rv := objc.Call[objc.Object](u_, objc.Sel("objectForKey:"), defaultName)
-	return rv
-}
-
-// The current volatile domain names. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414231-volatiledomainnames?language=objc
-func (u_ UserDefaults) VolatileDomainNames() []string {
-	rv := objc.Call[[]string](u_, objc.Sel("volatileDomainNames"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1410294-addsuitenamed?language=objc
+func (u_ UserDefaults) AddSuiteNamed(suiteName string) {
+	objc.Call[objc.Void](u_, objc.Sel("addSuiteNamed:"), suiteName)
 }
 
 // Returns the shared defaults object. [Full Topic]
@@ -368,4 +351,12 @@ func (uc _UserDefaultsClass) StandardUserDefaults() UserDefaults {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1416603-standarduserdefaults?language=objc
 func UserDefaults_StandardUserDefaults() UserDefaults {
 	return UserDefaultsClass.StandardUserDefaults()
+}
+
+// The current volatile domain names. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414231-volatiledomainnames?language=objc
+func (u_ UserDefaults) VolatileDomainNames() []string {
+	rv := objc.Call[[]string](u_, objc.Sel("volatileDomainNames"))
+	return rv
 }

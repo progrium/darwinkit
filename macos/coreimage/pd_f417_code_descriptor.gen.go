@@ -18,10 +18,10 @@ type _PDF417CodeDescriptorClass struct {
 // An interface definition for the [PDF417CodeDescriptor] class.
 type IPDF417CodeDescriptor interface {
 	IBarcodeDescriptor
-	ErrorCorrectedPayload() []byte
-	RowCount() int
 	IsCompact() bool
 	ColumnCount() int
+	RowCount() int
+	ErrorCorrectedPayload() []byte
 }
 
 // A concrete subclass of CIBarcodeDescriptor that represents a PDF 417 symbol. [Full Topic]
@@ -83,22 +83,6 @@ func (p_ PDF417CodeDescriptor) Init() PDF417CodeDescriptor {
 	return rv
 }
 
-// The error-corrected payload containing the data encoded in the PDF417 code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875204-errorcorrectedpayload?language=objc
-func (p_ PDF417CodeDescriptor) ErrorCorrectedPayload() []byte {
-	rv := objc.Call[[]byte](p_, objc.Sel("errorCorrectedPayload"))
-	return rv
-}
-
-// The number of rows in the PDF417 code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875199-rowcount?language=objc
-func (p_ PDF417CodeDescriptor) RowCount() int {
-	rv := objc.Call[int](p_, objc.Sel("rowCount"))
-	return rv
-}
-
 // A boolean value telling if the PDF417 code is compact. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875194-iscompact?language=objc
@@ -112,5 +96,21 @@ func (p_ PDF417CodeDescriptor) IsCompact() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875171-columncount?language=objc
 func (p_ PDF417CodeDescriptor) ColumnCount() int {
 	rv := objc.Call[int](p_, objc.Sel("columnCount"))
+	return rv
+}
+
+// The number of rows in the PDF417 code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875199-rowcount?language=objc
+func (p_ PDF417CodeDescriptor) RowCount() int {
+	rv := objc.Call[int](p_, objc.Sel("rowCount"))
+	return rv
+}
+
+// The error-corrected payload containing the data encoded in the PDF417 code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875204-errorcorrectedpayload?language=objc
+func (p_ PDF417CodeDescriptor) ErrorCorrectedPayload() []byte {
+	rv := objc.Call[[]byte](p_, objc.Sel("errorCorrectedPayload"))
 	return rv
 }

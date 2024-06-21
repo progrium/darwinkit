@@ -19,14 +19,14 @@ type _MovieClass struct {
 // An interface definition for the [Movie] class.
 type IMovie interface {
 	IAsset
-	MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte
-	IsCompatibleWithFileType(fileType FileType) bool
 	WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError unsafe.Pointer) bool
+	IsCompatibleWithFileType(fileType FileType) bool
+	MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte
 	DefaultMediaDataStorage() MediaDataStorage
-	URL() foundation.URL
 	ContainsMovieFragments() bool
-	CanContainMovieFragments() bool
 	Data() []byte
+	URL() foundation.URL
+	CanContainMovieFragments() bool
 }
 
 // An object that represents an audiovisual container that conforms to the QuickTime movie file format or a related format like MPEG-4. [Full Topic]
@@ -40,30 +40,6 @@ func MovieFrom(ptr unsafe.Pointer) Movie {
 	return Movie{
 		Asset: AssetFrom(ptr),
 	}
-}
-
-func (mc _MovieClass) MovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie {
-	rv := objc.Call[Movie](mc, objc.Sel("movieWithData:options:"), data, options)
-	return rv
-}
-
-// Returns a new movie object from a movie file’s data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458261-moviewithdata?language=objc
-func Movie_MovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie {
-	return MovieClass.MovieWithDataOptions(data, options)
-}
-
-func (mc _MovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
-	rv := objc.Call[Movie](mc, objc.Sel("movieWithURL:options:"), URL, options)
-	return rv
-}
-
-// Returns a new movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458223-moviewithurl?language=objc
-func Movie_MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
-	return MovieClass.MovieWithURLOptions(URL, options)
 }
 
 func (m_ Movie) InitWithDataOptions(data []byte, options map[string]objc.IObject) Movie {
@@ -80,6 +56,18 @@ func NewMovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie
 	return instance
 }
 
+func (mc _MovieClass) MovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie {
+	rv := objc.Call[Movie](mc, objc.Sel("movieWithData:options:"), data, options)
+	return rv
+}
+
+// Returns a new movie object from a movie file’s data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458261-moviewithdata?language=objc
+func Movie_MovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie {
+	return MovieClass.MovieWithDataOptions(data, options)
+}
+
 func (m_ Movie) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
 	rv := objc.Call[Movie](m_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
@@ -92,6 +80,18 @@ func NewMovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject
 	instance := MovieClass.Alloc().InitWithURLOptions(URL, options)
 	instance.Autorelease()
 	return instance
+}
+
+func (mc _MovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
+	rv := objc.Call[Movie](mc, objc.Sel("movieWithURL:options:"), URL, options)
+	return rv
+}
+
+// Returns a new movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458223-moviewithurl?language=objc
+func Movie_MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
+	return MovieClass.MovieWithURLOptions(URL, options)
 }
 
 func (mc _MovieClass) Alloc() Movie {
@@ -126,14 +126,6 @@ func Movie_AssetWithURL(URL foundation.IURL) Movie {
 	return MovieClass.AssetWithURL(URL)
 }
 
-// Creates a header for a movie for the specified file type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386686-movieheaderwithfiletype?language=objc
-func (m_ Movie) MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte {
-	rv := objc.Call[[]byte](m_, objc.Sel("movieHeaderWithFileType:error:"), fileType, outError)
-	return rv
-}
-
 // Returns the file types that a movie supports. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1388690-movietypes?language=objc
@@ -149,6 +141,14 @@ func Movie_MovieTypes() []FileType {
 	return MovieClass.MovieTypes()
 }
 
+// Writes the movie header to the specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386682-writemovieheadertourl?language=objc
+func (m_ Movie) WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("writeMovieHeaderToURL:fileType:options:error:"), URL, fileType, options, outError)
+	return rv
+}
+
 // Returns a Boolean value that indicates whether the system can create a movie header of the specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1385982-iscompatiblewithfiletype?language=objc
@@ -157,11 +157,11 @@ func (m_ Movie) IsCompatibleWithFileType(fileType FileType) bool {
 	return rv
 }
 
-// Writes the movie header to the specified URL. [Full Topic]
+// Creates a header for a movie for the specified file type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386682-writemovieheadertourl?language=objc
-func (m_ Movie) WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](m_, objc.Sel("writeMovieHeaderToURL:fileType:options:error:"), URL, fileType, options, outError)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386686-movieheaderwithfiletype?language=objc
+func (m_ Movie) MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](m_, objc.Sel("movieHeaderWithFileType:error:"), fileType, outError)
 	return rv
 }
 
@@ -173,14 +173,6 @@ func (m_ Movie) DefaultMediaDataStorage() MediaDataStorage {
 	return rv
 }
 
-// A URL to a QuickTime or ISO base media file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386990-url?language=objc
-func (m_ Movie) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](m_, objc.Sel("URL"))
-	return rv
-}
-
 // A Boolean value that indicates whether at least one movie fragment extends the movie file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1388597-containsmoviefragments?language=objc
@@ -189,18 +181,26 @@ func (m_ Movie) ContainsMovieFragments() bool {
 	return rv
 }
 
-// A Boolean value that indicates whether fragments can extend the movie file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1387333-cancontainmoviefragments?language=objc
-func (m_ Movie) CanContainMovieFragments() bool {
-	rv := objc.Call[bool](m_, objc.Sel("canContainMovieFragments"))
-	return rv
-}
-
 // A data object that contains the movie file’s data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1388017-data?language=objc
 func (m_ Movie) Data() []byte {
 	rv := objc.Call[[]byte](m_, objc.Sel("data"))
+	return rv
+}
+
+// A URL to a QuickTime or ISO base media file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386990-url?language=objc
+func (m_ Movie) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](m_, objc.Sel("URL"))
+	return rv
+}
+
+// A Boolean value that indicates whether fragments can extend the movie file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1387333-cancontainmoviefragments?language=objc
+func (m_ Movie) CanContainMovieFragments() bool {
+	rv := objc.Call[bool](m_, objc.Sel("canContainMovieFragments"))
 	return rv
 }

@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanelaccessorizing?language=objc
 type PPrintPanelAccessorizing interface {
 	// optional
-	LocalizedSummaryItems() []map[PrintPanelAccessorySummaryKey]string
-	HasLocalizedSummaryItems() bool
-
-	// optional
 	KeyPathsForValuesAffectingPreview() foundation.Set
 	HasKeyPathsForValuesAffectingPreview() bool
+
+	// optional
+	LocalizedSummaryItems() []map[PrintPanelAccessorySummaryKey]string
+	HasLocalizedSummaryItems() bool
 }
 
 // ensure impl type implements protocol interface
@@ -26,18 +26,6 @@ var _ PPrintPanelAccessorizing = (*PrintPanelAccessorizingObject)(nil)
 // A concrete type for the [PPrintPanelAccessorizing] protocol.
 type PrintPanelAccessorizingObject struct {
 	objc.Object
-}
-
-func (p_ PrintPanelAccessorizingObject) HasLocalizedSummaryItems() bool {
-	return p_.RespondsToSelector(objc.Sel("localizedSummaryItems"))
-}
-
-// Returns an array of dictionaries containing the localized user setting summary strings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanelaccessorizing/1490521-localizedsummaryitems?language=objc
-func (p_ PrintPanelAccessorizingObject) LocalizedSummaryItems() []map[PrintPanelAccessorySummaryKey]string {
-	rv := objc.Call[[]map[PrintPanelAccessorySummaryKey]string](p_, objc.Sel("localizedSummaryItems"))
-	return rv
 }
 
 func (p_ PrintPanelAccessorizingObject) HasKeyPathsForValuesAffectingPreview() bool {
@@ -49,5 +37,17 @@ func (p_ PrintPanelAccessorizingObject) HasKeyPathsForValuesAffectingPreview() b
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanelaccessorizing/1490516-keypathsforvaluesaffectingprevie?language=objc
 func (p_ PrintPanelAccessorizingObject) KeyPathsForValuesAffectingPreview() foundation.Set {
 	rv := objc.Call[foundation.Set](p_, objc.Sel("keyPathsForValuesAffectingPreview"))
+	return rv
+}
+
+func (p_ PrintPanelAccessorizingObject) HasLocalizedSummaryItems() bool {
+	return p_.RespondsToSelector(objc.Sel("localizedSummaryItems"))
+}
+
+// Returns an array of dictionaries containing the localized user setting summary strings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanelaccessorizing/1490521-localizedsummaryitems?language=objc
+func (p_ PrintPanelAccessorizingObject) LocalizedSummaryItems() []map[PrintPanelAccessorySummaryKey]string {
+	rv := objc.Call[[]map[PrintPanelAccessorySummaryKey]string](p_, objc.Sel("localizedSummaryItems"))
 	return rv
 }

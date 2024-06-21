@@ -21,77 +21,70 @@ type _WebViewClass struct {
 // An interface definition for the [WebView] class.
 type IWebView interface {
 	appkit.IView
-	LoadDataMIMETypeCharacterEncodingNameBaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation
-	Reload() Navigation
-	CreatePDFWithConfigurationCompletionHandler(pdfConfiguration IPDFConfiguration, completionHandler func(pdfDocumentData []byte, error foundation.Error))
-	CreateWebArchiveDataWithCompletionHandler(completionHandler func(arg0 []byte, arg1 foundation.Error))
-	TakeSnapshotWithConfigurationCompletionHandler(snapshotConfiguration ISnapshotConfiguration, completionHandler func(snapshotImage appkit.Image, error foundation.Error))
+	SetMagnificationCenteredAtPoint(magnification float64, point coregraphics.Point)
+	GoBack(sender objc.IObject) objc.Object
+	PrintOperationWithPrintInfo(printInfo appkit.IPrintInfo) appkit.PrintOperation
+	StopLoading(sender objc.IObject) objc.Object
+	PauseAllMediaPlaybackWithCompletionHandler(completionHandler func())
+	GoForward() Navigation
 	GoToBackForwardListItem(item IBackForwardListItem) Navigation
-	ResumeDownloadFromResumeDataCompletionHandler(resumeData []byte, completionHandler func(arg0 Download))
+	RequestMediaPlaybackStateWithCompletionHandler(completionHandler func(arg0 MediaPlaybackState))
+	Reload(sender objc.IObject) objc.Object
+	TakeSnapshotWithConfigurationCompletionHandler(snapshotConfiguration ISnapshotConfiguration, completionHandler func(snapshotImage appkit.Image, error foundation.Error))
+	SetMicrophoneCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func())
+	LoadDataMIMETypeCharacterEncodingNameBaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation
+	CloseAllMediaPresentationsWithCompletionHandler(completionHandler func())
+	ReloadFromOrigin(sender objc.IObject) objc.Object
+	SetAllMediaPlaybackSuspendedCompletionHandler(suspended bool, completionHandler func())
 	LoadSimulatedRequestResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation
-	Reload_(sender objc.IObject) objc.Object
-	GoBack_(sender objc.IObject) objc.Object
-	StopLoading_(sender objc.IObject) objc.Object
+	LoadFileRequestAllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation
+	LoadRequest(request foundation.IURLRequest) Navigation
+	StartDownloadUsingRequestCompletionHandler(request foundation.IURLRequest, completionHandler func(arg0 Download))
+	EvaluateJavaScriptCompletionHandler(javaScriptString string, completionHandler func(arg0 objc.Object, error foundation.Error))
+	ResumeDownloadFromResumeDataCompletionHandler(resumeData []byte, completionHandler func(arg0 Download))
 	LoadFileURLAllowingReadAccessToURL(URL foundation.IURL, readAccessURL foundation.IURL) Navigation
 	LoadHTMLStringBaseURL(string_ string, baseURL foundation.IURL) Navigation
-	GoBack() Navigation
-	EvaluateJavaScriptCompletionHandler(javaScriptString string, completionHandler func(arg0 objc.Object, error foundation.Error))
-	PauseAllMediaPlaybackWithCompletionHandler(completionHandler func())
-	SetMagnificationCenteredAtPoint(magnification float64, point coregraphics.Point)
-	FindStringWithConfigurationCompletionHandler(string_ string, configuration IFindConfiguration, completionHandler func(result FindResult))
-	ReloadFromOrigin() Navigation
-	RequestMediaPlaybackStateWithCompletionHandler(completionHandler func(arg0 MediaPlaybackState))
-	StopLoading()
-	LoadFileRequestAllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation
-	ReloadFromOrigin_(sender objc.IObject) objc.Object
-	GoForward_(sender objc.IObject) objc.Object
-	CallAsyncJavaScriptArgumentsInFrameInContentWorldCompletionHandler(functionBody string, arguments map[string]objc.IObject, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(arg0 objc.Object, error foundation.Error))
-	PrintOperationWithPrintInfo(printInfo appkit.IPrintInfo) appkit.PrintOperation
 	SetCameraCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func())
-	LoadRequest(request foundation.IURLRequest) Navigation
-	SetMicrophoneCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func())
-	LoadSimulatedRequestResponseResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation
-	GoForward() Navigation
-	EvaluateJavaScriptInFrameInContentWorldCompletionHandler(javaScriptString string, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(arg0 objc.Object, error foundation.Error))
-	StartDownloadUsingRequestCompletionHandler(request foundation.IURLRequest, completionHandler func(arg0 Download))
-	CloseAllMediaPresentationsWithCompletionHandler(completionHandler func())
-	SetAllMediaPlaybackSuspendedCompletionHandler(suspended bool, completionHandler func())
-	IsLoading() bool
-	BackForwardList() BackForwardList
-	CanGoForward() bool
-	AllowsBackForwardNavigationGestures() bool
-	SetAllowsBackForwardNavigationGestures(value bool)
-	URL() foundation.URL
-	EstimatedProgress() float64
-	MicrophoneCaptureState() MediaCaptureState
-	PageZoom() float64
-	SetPageZoom(value float64)
-	CustomUserAgent() string
-	SetCustomUserAgent(value string)
-	CameraCaptureState() MediaCaptureState
-	UIDelegate() UIDelegateObject
-	SetUIDelegate(value PUIDelegate)
-	SetUIDelegateObject(valueObject objc.IObject)
+	CreatePDFWithConfigurationCompletionHandler(pdfConfiguration IPDFConfiguration, completionHandler func(pdfDocumentData []byte, error foundation.Error))
+	CreateWebArchiveDataWithCompletionHandler(completionHandler func(arg0 []byte, arg1 foundation.Error))
+	FindStringWithConfigurationCompletionHandler(string_ string, configuration IFindConfiguration, completionHandler func(result FindResult))
+	CallAsyncJavaScriptArgumentsInFrameInContentWorldCompletionHandler(functionBody string, arguments map[string]objc.IObject, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(arg0 objc.Object, error foundation.Error))
 	AllowsMagnification() bool
 	SetAllowsMagnification(value bool)
-	UnderPageBackgroundColor() appkit.Color
-	SetUnderPageBackgroundColor(value appkit.IColor)
+	EstimatedProgress() float64
+	IsLoading() bool
+	AllowsBackForwardNavigationGestures() bool
+	SetAllowsBackForwardNavigationGestures(value bool)
+	HasOnlySecureContent() bool
+	CanGoBack() bool
+	CustomUserAgent() string
+	SetCustomUserAgent(value string)
 	MediaType() string
 	SetMediaType(value string)
 	ThemeColor() appkit.Color
+	Magnification() float64
+	SetMagnification(value float64)
+	CanGoForward() bool
+	UIDelegate() UIDelegateObject
+	SetUIDelegate(value PUIDelegate)
+	SetUIDelegateObject(valueObject objc.IObject)
+	PageZoom() float64
+	SetPageZoom(value float64)
+	URL() foundation.URL
 	Configuration() WebViewConfiguration
-	Title() string
-	HasOnlySecureContent() bool
+	BackForwardList() BackForwardList
+	MicrophoneCaptureState() MediaCaptureState
 	NavigationDelegate() NavigationDelegateObject
 	SetNavigationDelegate(value PNavigationDelegate)
 	SetNavigationDelegateObject(valueObject objc.IObject)
-	Magnification() float64
-	SetMagnification(value float64)
-	InteractionState() objc.Object
-	SetInteractionState(value objc.IObject)
+	Title() string
+	CameraCaptureState() MediaCaptureState
+	UnderPageBackgroundColor() appkit.Color
+	SetUnderPageBackgroundColor(value appkit.IColor)
 	AllowsLinkPreview() bool
 	SetAllowsLinkPreview(value bool)
-	CanGoBack() bool
+	InteractionState() objc.Object
+	SetInteractionState(value objc.IObject)
 }
 
 // An object that displays interactive web content, such as for an in-app browser. [Full Topic]
@@ -155,41 +148,50 @@ func NewWebViewWithFrame(frameRect foundation.Rect) WebView {
 	return instance
 }
 
-// Loads the content of the specified data object and navigates to it. [Full Topic]
+// Scales the page content and centers the result on the specified point. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415011-loaddata?language=objc
-func (w_ WebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("loadData:MIMEType:characterEncodingName:baseURL:"), data, MIMEType, characterEncodingName, baseURL)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414996-setmagnification?language=objc
+func (w_ WebView) SetMagnificationCenteredAtPoint(magnification float64, point coregraphics.Point) {
+	objc.Call[objc.Void](w_, objc.Sel("setMagnification:centeredAtPoint:"), magnification, point)
+}
+
+// Navigates to the back item in the back-forward list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414975-goback?language=objc
+func (w_ WebView) GoBack(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](w_, objc.Sel("goBack:"), sender)
 	return rv
 }
 
-// Reloads the current webpage. [Full Topic]
+// Returns the print operation object to use when printing the contents of the web view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414969-reload?language=objc
-func (w_ WebView) Reload() Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("reload"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516861-printoperationwithprintinfo?language=objc
+func (w_ WebView) PrintOperationWithPrintInfo(printInfo appkit.IPrintInfo) appkit.PrintOperation {
+	rv := objc.Call[appkit.PrintOperation](w_, objc.Sel("printOperationWithPrintInfo:"), printInfo)
 	return rv
 }
 
-// Generates PDF data from the web view’s contents asynchronously. [Full Topic]
+// Stops loading all resources on the current page. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516407-createpdfwithconfiguration?language=objc
-func (w_ WebView) CreatePDFWithConfigurationCompletionHandler(pdfConfiguration IPDFConfiguration, completionHandler func(pdfDocumentData []byte, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("createPDFWithConfiguration:completionHandler:"), pdfConfiguration, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415013-stoploading?language=objc
+func (w_ WebView) StopLoading(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](w_, objc.Sel("stopLoading:"), sender)
+	return rv
 }
 
-// Creates a web archive of the web view’s contents asynchronously. [Full Topic]
+// Pauses playback of all media in the web view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516408-createwebarchivedatawithcompleti?language=objc
-func (w_ WebView) CreateWebArchiveDataWithCompletionHandler(completionHandler func(arg0 []byte, arg1 foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("createWebArchiveDataWithCompletionHandler:"), completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752240-pauseallmediaplaybackwithcomplet?language=objc
+func (w_ WebView) PauseAllMediaPlaybackWithCompletionHandler(completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("pauseAllMediaPlaybackWithCompletionHandler:"), completionHandler)
 }
 
-// Generates a platform-native image from the web view’s contents asynchronously. [Full Topic]
+// Navigates to the forward item in the back-forward list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2873260-takesnapshotwithconfiguration?language=objc
-func (w_ WebView) TakeSnapshotWithConfigurationCompletionHandler(snapshotConfiguration ISnapshotConfiguration, completionHandler func(snapshotImage appkit.Image, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("takeSnapshotWithConfiguration:completionHandler:"), snapshotConfiguration, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414993-goforward?language=objc
+func (w_ WebView) GoForward() Navigation {
+	rv := objc.Call[Navigation](w_, objc.Sel("goForward"))
+	return rv
 }
 
 // Navigates to an item from the back-forward list and sets it as the current item. [Full Topic]
@@ -200,11 +202,78 @@ func (w_ WebView) GoToBackForwardListItem(item IBackForwardListItem) Navigation 
 	return rv
 }
 
-// Resumes a failed or canceled download. [Full Topic]
+// Requests the playback status of media in the web view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3727367-resumedownloadfromresumedata?language=objc
-func (w_ WebView) ResumeDownloadFromResumeDataCompletionHandler(resumeData []byte, completionHandler func(arg0 Download)) {
-	objc.Call[objc.Void](w_, objc.Sel("resumeDownloadFromResumeData:completionHandler:"), resumeData, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752241-requestmediaplaybackstatewithcom?language=objc
+func (w_ WebView) RequestMediaPlaybackStateWithCompletionHandler(completionHandler func(arg0 MediaPlaybackState)) {
+	objc.Call[objc.Void](w_, objc.Sel("requestMediaPlaybackStateWithCompletionHandler:"), completionHandler)
+}
+
+// Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc
+func (wc _WebViewClass) HandlesURLScheme(urlScheme string) bool {
+	rv := objc.Call[bool](wc, objc.Sel("handlesURLScheme:"), urlScheme)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc
+func WebView_HandlesURLScheme(urlScheme string) bool {
+	return WebViewClass.HandlesURLScheme(urlScheme)
+}
+
+// Reloads the current webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414987-reload?language=objc
+func (w_ WebView) Reload(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](w_, objc.Sel("reload:"), sender)
+	return rv
+}
+
+// Generates a platform-native image from the web view’s contents asynchronously. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2873260-takesnapshotwithconfiguration?language=objc
+func (w_ WebView) TakeSnapshotWithConfigurationCompletionHandler(snapshotConfiguration ISnapshotConfiguration, completionHandler func(snapshotImage appkit.Image, error foundation.Error)) {
+	objc.Call[objc.Void](w_, objc.Sel("takeSnapshotWithConfiguration:completionHandler:"), snapshotConfiguration, completionHandler)
+}
+
+// Changes whether the webpage is using the microphone to capture audio. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763098-setmicrophonecapturestate?language=objc
+func (w_ WebView) SetMicrophoneCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("setMicrophoneCaptureState:completionHandler:"), state, completionHandler)
+}
+
+// Loads the content of the specified data object and navigates to it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415011-loaddata?language=objc
+func (w_ WebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation {
+	rv := objc.Call[Navigation](w_, objc.Sel("loadData:MIMEType:characterEncodingName:baseURL:"), data, MIMEType, characterEncodingName, baseURL)
+	return rv
+}
+
+// Closes all media the web view is presenting, including picture-in-picture video and fullscreen video. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752235-closeallmediapresentationswithco?language=objc
+func (w_ WebView) CloseAllMediaPresentationsWithCompletionHandler(completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("closeAllMediaPresentationsWithCompletionHandler:"), completionHandler)
+}
+
+// Reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414989-reloadfromorigin?language=objc
+func (w_ WebView) ReloadFromOrigin(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](w_, objc.Sel("reloadFromOrigin:"), sender)
+	return rv
+}
+
+// Changes whether the webpage is suspending playback of all media in the page. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752242-setallmediaplaybacksuspended?language=objc
+func (w_ WebView) SetAllMediaPlaybackSuspendedCompletionHandler(suspended bool, completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("setAllMediaPlaybackSuspended:completionHandler:"), suspended, completionHandler)
 }
 
 // Loads the web content from the HTML you provide as if the HTML were the response to the request. [Full Topic]
@@ -215,28 +284,41 @@ func (w_ WebView) LoadSimulatedRequestResponseHTMLString(request foundation.IURL
 	return rv
 }
 
-// Reloads the current webpage. [Full Topic]
+// Loads the web content from the file the URL request object specifies and navigates to that content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414987-reload?language=objc
-func (w_ WebView) Reload_(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("reload:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752237-loadfilerequest?language=objc
+func (w_ WebView) LoadFileRequestAllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation {
+	rv := objc.Call[Navigation](w_, objc.Sel("loadFileRequest:allowingReadAccessToURL:"), request, readAccessURL)
 	return rv
 }
 
-// Navigates to the back item in the back-forward list. [Full Topic]
+// Loads the web content that the specified URL request object references and navigates to that content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414975-goback?language=objc
-func (w_ WebView) GoBack_(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("goBack:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414954-loadrequest?language=objc
+func (w_ WebView) LoadRequest(request foundation.IURLRequest) Navigation {
+	rv := objc.Call[Navigation](w_, objc.Sel("loadRequest:"), request)
 	return rv
 }
 
-// Stops loading all resources on the current page. [Full Topic]
+// Starts to download the resource at the URL in the request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415013-stoploading?language=objc
-func (w_ WebView) StopLoading_(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("stopLoading:"), sender)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3727368-startdownloadusingrequest?language=objc
+func (w_ WebView) StartDownloadUsingRequestCompletionHandler(request foundation.IURLRequest, completionHandler func(arg0 Download)) {
+	objc.Call[objc.Void](w_, objc.Sel("startDownloadUsingRequest:completionHandler:"), request, completionHandler)
+}
+
+// Evaluates the specified JavaScript string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript?language=objc
+func (w_ WebView) EvaluateJavaScriptCompletionHandler(javaScriptString string, completionHandler func(arg0 objc.Object, error foundation.Error)) {
+	objc.Call[objc.Void](w_, objc.Sel("evaluateJavaScript:completionHandler:"), javaScriptString, completionHandler)
+}
+
+// Resumes a failed or canceled download. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3727367-resumedownloadfromresumedata?language=objc
+func (w_ WebView) ResumeDownloadFromResumeDataCompletionHandler(resumeData []byte, completionHandler func(arg0 Download)) {
+	objc.Call[objc.Void](w_, objc.Sel("resumeDownloadFromResumeData:completionHandler:"), resumeData, completionHandler)
 }
 
 // Loads the web content from the specified file and navigates to it. [Full Topic]
@@ -255,33 +337,25 @@ func (w_ WebView) LoadHTMLStringBaseURL(string_ string, baseURL foundation.IURL)
 	return rv
 }
 
-// Navigates to the back item in the back-forward list. [Full Topic]
+// Changes whether the webpage is using the camera to capture images or video. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414952-goback?language=objc
-func (w_ WebView) GoBack() Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("goBack"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763097-setcameracapturestate?language=objc
+func (w_ WebView) SetCameraCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("setCameraCaptureState:completionHandler:"), state, completionHandler)
 }
 
-// Evaluates the specified JavaScript string. [Full Topic]
+// Generates PDF data from the web view’s contents asynchronously. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript?language=objc
-func (w_ WebView) EvaluateJavaScriptCompletionHandler(javaScriptString string, completionHandler func(arg0 objc.Object, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("evaluateJavaScript:completionHandler:"), javaScriptString, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516407-createpdfwithconfiguration?language=objc
+func (w_ WebView) CreatePDFWithConfigurationCompletionHandler(pdfConfiguration IPDFConfiguration, completionHandler func(pdfDocumentData []byte, error foundation.Error)) {
+	objc.Call[objc.Void](w_, objc.Sel("createPDFWithConfiguration:completionHandler:"), pdfConfiguration, completionHandler)
 }
 
-// Pauses playback of all media in the web view. [Full Topic]
+// Creates a web archive of the web view’s contents asynchronously. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752240-pauseallmediaplaybackwithcomplet?language=objc
-func (w_ WebView) PauseAllMediaPlaybackWithCompletionHandler(completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("pauseAllMediaPlaybackWithCompletionHandler:"), completionHandler)
-}
-
-// Scales the page content and centers the result on the specified point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414996-setmagnification?language=objc
-func (w_ WebView) SetMagnificationCenteredAtPoint(magnification float64, point coregraphics.Point) {
-	objc.Call[objc.Void](w_, objc.Sel("setMagnification:centeredAtPoint:"), magnification, point)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516408-createwebarchivedatawithcompleti?language=objc
+func (w_ WebView) CreateWebArchiveDataWithCompletionHandler(completionHandler func(arg0 []byte, arg1 foundation.Error)) {
+	objc.Call[objc.Void](w_, objc.Sel("createWebArchiveDataWithCompletionHandler:"), completionHandler)
 }
 
 // Searches for the specified string in the web view’s content. [Full Topic]
@@ -291,52 +365,6 @@ func (w_ WebView) FindStringWithConfigurationCompletionHandler(string_ string, c
 	objc.Call[objc.Void](w_, objc.Sel("findString:withConfiguration:completionHandler:"), string_, configuration, completionHandler)
 }
 
-// Reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414956-reloadfromorigin?language=objc
-func (w_ WebView) ReloadFromOrigin() Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("reloadFromOrigin"))
-	return rv
-}
-
-// Requests the playback status of media in the web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752241-requestmediaplaybackstatewithcom?language=objc
-func (w_ WebView) RequestMediaPlaybackStateWithCompletionHandler(completionHandler func(arg0 MediaPlaybackState)) {
-	objc.Call[objc.Void](w_, objc.Sel("requestMediaPlaybackStateWithCompletionHandler:"), completionHandler)
-}
-
-// Stops loading all resources on the current page. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414981-stoploading?language=objc
-func (w_ WebView) StopLoading() {
-	objc.Call[objc.Void](w_, objc.Sel("stopLoading"))
-}
-
-// Loads the web content from the file the URL request object specifies and navigates to that content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752237-loadfilerequest?language=objc
-func (w_ WebView) LoadFileRequestAllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("loadFileRequest:allowingReadAccessToURL:"), request, readAccessURL)
-	return rv
-}
-
-// Reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414989-reloadfromorigin?language=objc
-func (w_ WebView) ReloadFromOrigin_(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("reloadFromOrigin:"), sender)
-	return rv
-}
-
-// Navigates to the forward item in the back-forward list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414960-goforward?language=objc
-func (w_ WebView) GoForward_(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("goForward:"), sender)
-	return rv
-}
-
 // Executes the specified string as an asynchronous JavaScript function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3656355-callasyncjavascript?language=objc
@@ -344,93 +372,27 @@ func (w_ WebView) CallAsyncJavaScriptArgumentsInFrameInContentWorldCompletionHan
 	objc.Call[objc.Void](w_, objc.Sel("callAsyncJavaScript:arguments:inFrame:inContentWorld:completionHandler:"), functionBody, arguments, frame, contentWorld, completionHandler)
 }
 
-// Returns the print operation object to use when printing the contents of the web view. [Full Topic]
+// A Boolean value that indicates whether magnify gestures change the web view’s magnification. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516861-printoperationwithprintinfo?language=objc
-func (w_ WebView) PrintOperationWithPrintInfo(printInfo appkit.IPrintInfo) appkit.PrintOperation {
-	rv := objc.Call[appkit.PrintOperation](w_, objc.Sel("printOperationWithPrintInfo:"), printInfo)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc
+func (w_ WebView) AllowsMagnification() bool {
+	rv := objc.Call[bool](w_, objc.Sel("allowsMagnification"))
 	return rv
 }
 
-// Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme. [Full Topic]
+// A Boolean value that indicates whether magnify gestures change the web view’s magnification. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc
-func (wc _WebViewClass) HandlesURLScheme(urlScheme string) bool {
-	rv := objc.Call[bool](wc, objc.Sel("handlesURLScheme:"), urlScheme)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc
+func (w_ WebView) SetAllowsMagnification(value bool) {
+	objc.Call[objc.Void](w_, objc.Sel("setAllowsMagnification:"), value)
+}
+
+// An estimate of what fraction of the current navigation has been loaded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415007-estimatedprogress?language=objc
+func (w_ WebView) EstimatedProgress() float64 {
+	rv := objc.Call[float64](w_, objc.Sel("estimatedProgress"))
 	return rv
-}
-
-// Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc
-func WebView_HandlesURLScheme(urlScheme string) bool {
-	return WebViewClass.HandlesURLScheme(urlScheme)
-}
-
-// Changes whether the webpage is using the camera to capture images or video. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763097-setcameracapturestate?language=objc
-func (w_ WebView) SetCameraCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("setCameraCaptureState:completionHandler:"), state, completionHandler)
-}
-
-// Loads the web content that the specified URL request object references and navigates to that content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414954-loadrequest?language=objc
-func (w_ WebView) LoadRequest(request foundation.IURLRequest) Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("loadRequest:"), request)
-	return rv
-}
-
-// Changes whether the webpage is using the microphone to capture audio. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763098-setmicrophonecapturestate?language=objc
-func (w_ WebView) SetMicrophoneCaptureStateCompletionHandler(state MediaCaptureState, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("setMicrophoneCaptureState:completionHandler:"), state, completionHandler)
-}
-
-// Loads the web content from the data you provide as if the data were the response to the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763094-loadsimulatedrequest?language=objc
-func (w_ WebView) LoadSimulatedRequestResponseResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("loadSimulatedRequest:response:responseData:"), request, response, data)
-	return rv
-}
-
-// Navigates to the forward item in the back-forward list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414993-goforward?language=objc
-func (w_ WebView) GoForward() Navigation {
-	rv := objc.Call[Navigation](w_, objc.Sel("goForward"))
-	return rv
-}
-
-// Evaluates the specified JavaScript string in the specified frame and content world. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3656356-evaluatejavascript?language=objc
-func (w_ WebView) EvaluateJavaScriptInFrameInContentWorldCompletionHandler(javaScriptString string, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(arg0 objc.Object, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("evaluateJavaScript:inFrame:inContentWorld:completionHandler:"), javaScriptString, frame, contentWorld, completionHandler)
-}
-
-// Starts to download the resource at the URL in the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3727368-startdownloadusingrequest?language=objc
-func (w_ WebView) StartDownloadUsingRequestCompletionHandler(request foundation.IURLRequest, completionHandler func(arg0 Download)) {
-	objc.Call[objc.Void](w_, objc.Sel("startDownloadUsingRequest:completionHandler:"), request, completionHandler)
-}
-
-// Closes all media the web view is presenting, including picture-in-picture video and fullscreen video. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752235-closeallmediapresentationswithco?language=objc
-func (w_ WebView) CloseAllMediaPresentationsWithCompletionHandler(completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("closeAllMediaPresentationsWithCompletionHandler:"), completionHandler)
-}
-
-// Changes whether the webpage is suspending playback of all media in the page. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752242-setallmediaplaybacksuspended?language=objc
-func (w_ WebView) SetAllMediaPlaybackSuspendedCompletionHandler(suspended bool, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("setAllMediaPlaybackSuspended:completionHandler:"), suspended, completionHandler)
 }
 
 // A Boolean value that indicates whether the view is currently loading content. [Full Topic]
@@ -438,22 +400,6 @@ func (w_ WebView) SetAllMediaPlaybackSuspendedCompletionHandler(suspended bool, 
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414964-loading?language=objc
 func (w_ WebView) IsLoading() bool {
 	rv := objc.Call[bool](w_, objc.Sel("isLoading"))
-	return rv
-}
-
-// The web view's back-forward list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414977-backforwardlist?language=objc
-func (w_ WebView) BackForwardList() BackForwardList {
-	rv := objc.Call[BackForwardList](w_, objc.Sel("backForwardList"))
-	return rv
-}
-
-// A Boolean value that indicates whether there is a valid forward item in the back-forward list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414962-cangoforward?language=objc
-func (w_ WebView) CanGoForward() bool {
-	rv := objc.Call[bool](w_, objc.Sel("canGoForward"))
 	return rv
 }
 
@@ -472,43 +418,20 @@ func (w_ WebView) SetAllowsBackForwardNavigationGestures(value bool) {
 	objc.Call[objc.Void](w_, objc.Sel("setAllowsBackForwardNavigationGestures:"), value)
 }
 
-// The URL for the current webpage. [Full Topic]
+// A Boolean value that indicates whether the web view loaded all resources on the page through securely encrypted connections. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415005-url?language=objc
-func (w_ WebView) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](w_, objc.Sel("URL"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent?language=objc
+func (w_ WebView) HasOnlySecureContent() bool {
+	rv := objc.Call[bool](w_, objc.Sel("hasOnlySecureContent"))
 	return rv
 }
 
-// An estimate of what fraction of the current navigation has been loaded. [Full Topic]
+// A Boolean value that indicates whether there is a valid back item in the back-forward list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415007-estimatedprogress?language=objc
-func (w_ WebView) EstimatedProgress() float64 {
-	rv := objc.Call[float64](w_, objc.Sel("estimatedProgress"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414966-cangoback?language=objc
+func (w_ WebView) CanGoBack() bool {
+	rv := objc.Call[bool](w_, objc.Sel("canGoBack"))
 	return rv
-}
-
-// An enumeration case that indicates whether the webpage is using the microphone to capture audio. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763096-microphonecapturestate?language=objc
-func (w_ WebView) MicrophoneCaptureState() MediaCaptureState {
-	rv := objc.Call[MediaCaptureState](w_, objc.Sel("microphoneCaptureState"))
-	return rv
-}
-
-// The scale factor by which the web view scales content relative to its bounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom?language=objc
-func (w_ WebView) PageZoom() float64 {
-	rv := objc.Call[float64](w_, objc.Sel("pageZoom"))
-	return rv
-}
-
-// The scale factor by which the web view scales content relative to its bounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom?language=objc
-func (w_ WebView) SetPageZoom(value float64) {
-	objc.Call[objc.Void](w_, objc.Sel("setPageZoom:"), value)
 }
 
 // The custom user agent string. [Full Topic]
@@ -526,11 +449,49 @@ func (w_ WebView) SetCustomUserAgent(value string) {
 	objc.Call[objc.Void](w_, objc.Sel("setCustomUserAgent:"), value)
 }
 
-// An enumeration case that indicates whether the webpage is using the camera to capture images or video. [Full Topic]
+// The media type for the contents of the web view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763093-cameracapturestate?language=objc
-func (w_ WebView) CameraCaptureState() MediaCaptureState {
-	rv := objc.Call[MediaCaptureState](w_, objc.Sel("cameraCaptureState"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc
+func (w_ WebView) MediaType() string {
+	rv := objc.Call[string](w_, objc.Sel("mediaType"))
+	return rv
+}
+
+// The media type for the contents of the web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc
+func (w_ WebView) SetMediaType(value string) {
+	objc.Call[objc.Void](w_, objc.Sel("setMediaType:"), value)
+}
+
+// The theme color that the system gets from the first valid meta tag in the webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3794258-themecolor?language=objc
+func (w_ WebView) ThemeColor() appkit.Color {
+	rv := objc.Call[appkit.Color](w_, objc.Sel("themeColor"))
+	return rv
+}
+
+// The factor by which the page content is currently scaled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414985-magnification?language=objc
+func (w_ WebView) Magnification() float64 {
+	rv := objc.Call[float64](w_, objc.Sel("magnification"))
+	return rv
+}
+
+// The factor by which the page content is currently scaled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414985-magnification?language=objc
+func (w_ WebView) SetMagnification(value float64) {
+	objc.Call[objc.Void](w_, objc.Sel("setMagnification:"), value)
+}
+
+// A Boolean value that indicates whether there is a valid forward item in the back-forward list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414962-cangoforward?language=objc
+func (w_ WebView) CanGoForward() bool {
+	rv := objc.Call[bool](w_, objc.Sel("canGoForward"))
 	return rv
 }
 
@@ -558,56 +519,26 @@ func (w_ WebView) SetUIDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](w_, objc.Sel("setUIDelegate:"), valueObject)
 }
 
-// A Boolean value that indicates whether magnify gestures change the web view’s magnification. [Full Topic]
+// The scale factor by which the web view scales content relative to its bounds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc
-func (w_ WebView) AllowsMagnification() bool {
-	rv := objc.Call[bool](w_, objc.Sel("allowsMagnification"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom?language=objc
+func (w_ WebView) PageZoom() float64 {
+	rv := objc.Call[float64](w_, objc.Sel("pageZoom"))
 	return rv
 }
 
-// A Boolean value that indicates whether magnify gestures change the web view’s magnification. [Full Topic]
+// The scale factor by which the web view scales content relative to its bounds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc
-func (w_ WebView) SetAllowsMagnification(value bool) {
-	objc.Call[objc.Void](w_, objc.Sel("setAllowsMagnification:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516411-pagezoom?language=objc
+func (w_ WebView) SetPageZoom(value float64) {
+	objc.Call[objc.Void](w_, objc.Sel("setPageZoom:"), value)
 }
 
-// The color the web view displays behind the active page, visible when the user scrolls beyond the bounds of the page. [Full Topic]
+// The URL for the current webpage. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor?language=objc
-func (w_ WebView) UnderPageBackgroundColor() appkit.Color {
-	rv := objc.Call[appkit.Color](w_, objc.Sel("underPageBackgroundColor"))
-	return rv
-}
-
-// The color the web view displays behind the active page, visible when the user scrolls beyond the bounds of the page. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor?language=objc
-func (w_ WebView) SetUnderPageBackgroundColor(value appkit.IColor) {
-	objc.Call[objc.Void](w_, objc.Sel("setUnderPageBackgroundColor:"), value)
-}
-
-// The media type for the contents of the web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc
-func (w_ WebView) MediaType() string {
-	rv := objc.Call[string](w_, objc.Sel("mediaType"))
-	return rv
-}
-
-// The media type for the contents of the web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc
-func (w_ WebView) SetMediaType(value string) {
-	objc.Call[objc.Void](w_, objc.Sel("setMediaType:"), value)
-}
-
-// The theme color that the system gets from the first valid meta tag in the webpage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3794258-themecolor?language=objc
-func (w_ WebView) ThemeColor() appkit.Color {
-	rv := objc.Call[appkit.Color](w_, objc.Sel("themeColor"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415005-url?language=objc
+func (w_ WebView) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](w_, objc.Sel("URL"))
 	return rv
 }
 
@@ -619,19 +550,19 @@ func (w_ WebView) Configuration() WebViewConfiguration {
 	return rv
 }
 
-// The page title. [Full Topic]
+// The web view's back-forward list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415015-title?language=objc
-func (w_ WebView) Title() string {
-	rv := objc.Call[string](w_, objc.Sel("title"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414977-backforwardlist?language=objc
+func (w_ WebView) BackForwardList() BackForwardList {
+	rv := objc.Call[BackForwardList](w_, objc.Sel("backForwardList"))
 	return rv
 }
 
-// A Boolean value that indicates whether the web view loaded all resources on the page through securely encrypted connections. [Full Topic]
+// An enumeration case that indicates whether the webpage is using the microphone to capture audio. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent?language=objc
-func (w_ WebView) HasOnlySecureContent() bool {
-	rv := objc.Call[bool](w_, objc.Sel("hasOnlySecureContent"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763096-microphonecapturestate?language=objc
+func (w_ WebView) MicrophoneCaptureState() MediaCaptureState {
+	rv := objc.Call[MediaCaptureState](w_, objc.Sel("microphoneCaptureState"))
 	return rv
 }
 
@@ -659,34 +590,35 @@ func (w_ WebView) SetNavigationDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](w_, objc.Sel("setNavigationDelegate:"), valueObject)
 }
 
-// The factor by which the page content is currently scaled. [Full Topic]
+// The page title. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414985-magnification?language=objc
-func (w_ WebView) Magnification() float64 {
-	rv := objc.Call[float64](w_, objc.Sel("magnification"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1415015-title?language=objc
+func (w_ WebView) Title() string {
+	rv := objc.Call[string](w_, objc.Sel("title"))
 	return rv
 }
 
-// The factor by which the page content is currently scaled. [Full Topic]
+// An enumeration case that indicates whether the webpage is using the camera to capture images or video. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414985-magnification?language=objc
-func (w_ WebView) SetMagnification(value float64) {
-	objc.Call[objc.Void](w_, objc.Sel("setMagnification:"), value)
-}
-
-// An object you use to capture the current state of interaction in a web view so that you can restore that state later to another web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc
-func (w_ WebView) InteractionState() objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("interactionState"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3763093-cameracapturestate?language=objc
+func (w_ WebView) CameraCaptureState() MediaCaptureState {
+	rv := objc.Call[MediaCaptureState](w_, objc.Sel("cameraCaptureState"))
 	return rv
 }
 
-// An object you use to capture the current state of interaction in a web view so that you can restore that state later to another web view. [Full Topic]
+// The color the web view displays behind the active page, visible when the user scrolls beyond the bounds of the page. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc
-func (w_ WebView) SetInteractionState(value objc.IObject) {
-	objc.Call[objc.Void](w_, objc.Sel("setInteractionState:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor?language=objc
+func (w_ WebView) UnderPageBackgroundColor() appkit.Color {
+	rv := objc.Call[appkit.Color](w_, objc.Sel("underPageBackgroundColor"))
+	return rv
+}
+
+// The color the web view displays behind the active page, visible when the user scrolls beyond the bounds of the page. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3850574-underpagebackgroundcolor?language=objc
+func (w_ WebView) SetUnderPageBackgroundColor(value appkit.IColor) {
+	objc.Call[objc.Void](w_, objc.Sel("setUnderPageBackgroundColor:"), value)
 }
 
 // A Boolean value that determines whether pressing a link displays a preview of the destination for the link. [Full Topic]
@@ -704,10 +636,17 @@ func (w_ WebView) SetAllowsLinkPreview(value bool) {
 	objc.Call[objc.Void](w_, objc.Sel("setAllowsLinkPreview:"), value)
 }
 
-// A Boolean value that indicates whether there is a valid back item in the back-forward list. [Full Topic]
+// An object you use to capture the current state of interaction in a web view so that you can restore that state later to another web view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414966-cangoback?language=objc
-func (w_ WebView) CanGoBack() bool {
-	rv := objc.Call[bool](w_, objc.Sel("canGoBack"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc
+func (w_ WebView) InteractionState() objc.Object {
+	rv := objc.Call[objc.Object](w_, objc.Sel("interactionState"))
 	return rv
+}
+
+// An object you use to capture the current state of interaction in a web view so that you can restore that state later to another web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc
+func (w_ WebView) SetInteractionState(value objc.IObject) {
+	objc.Call[objc.Void](w_, objc.Sel("setInteractionState:"), value)
 }

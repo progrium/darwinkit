@@ -18,19 +18,19 @@ type _InvocationClass struct {
 // An interface definition for the [Invocation] class.
 type IInvocation interface {
 	objc.IObject
-	GetReturnValue(retLoc unsafe.Pointer)
-	Invoke()
-	RetainArguments()
 	GetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int)
 	SetReturnValue(retLoc unsafe.Pointer)
+	RetainArguments()
 	SetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int)
+	GetReturnValue(retLoc unsafe.Pointer)
+	Invoke()
 	InvokeWithTarget(target objc.IObject)
 	Target() objc.Object
 	SetTarget(value objc.IObject)
-	MethodSignature() MethodSignature
-	ArgumentsRetained() bool
 	Selector() objc.Selector
 	SetSelector(value objc.Selector)
+	ArgumentsRetained() bool
+	MethodSignature() MethodSignature
 }
 
 // An Objective-C message rendered as an object. [Full Topic]
@@ -66,18 +66,18 @@ func (i_ Invocation) Init() Invocation {
 	return rv
 }
 
-// Gets the receiver's return value. [Full Topic]
+// Returns by indirection the receiver's argument at a specified index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437832-getreturnvalue?language=objc
-func (i_ Invocation) GetReturnValue(retLoc unsafe.Pointer) {
-	objc.Call[objc.Void](i_, objc.Sel("getReturnValue:"), retLoc)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437830-getargument?language=objc
+func (i_ Invocation) GetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int) {
+	objc.Call[objc.Void](i_, objc.Sel("getArgument:atIndex:"), argumentLocation, idx)
 }
 
-// Sends the receiver’s message (with arguments) to its target and sets the return value. [Full Topic]
+// Sets the receiver’s return value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437850-invoke?language=objc
-func (i_ Invocation) Invoke() {
-	objc.Call[objc.Void](i_, objc.Sel("invoke"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437848-setreturnvalue?language=objc
+func (i_ Invocation) SetReturnValue(retLoc unsafe.Pointer) {
+	objc.Call[objc.Void](i_, objc.Sel("setReturnValue:"), retLoc)
 }
 
 // If the receiver hasn’t already done so, retains the target and all object arguments of the receiver and copies all of its C-string arguments and blocks. If a returnvalue has been set, this is also retained or copied. [Full Topic]
@@ -87,11 +87,11 @@ func (i_ Invocation) RetainArguments() {
 	objc.Call[objc.Void](i_, objc.Sel("retainArguments"))
 }
 
-// Returns by indirection the receiver's argument at a specified index. [Full Topic]
+// Sets an argument of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437830-getargument?language=objc
-func (i_ Invocation) GetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int) {
-	objc.Call[objc.Void](i_, objc.Sel("getArgument:atIndex:"), argumentLocation, idx)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437834-setargument?language=objc
+func (i_ Invocation) SetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int) {
+	objc.Call[objc.Void](i_, objc.Sel("setArgument:atIndex:"), argumentLocation, idx)
 }
 
 // Returns an NSInvocation object able to construct messages using a given method signature. [Full Topic]
@@ -109,18 +109,18 @@ func Invocation_InvocationWithMethodSignature(sig IMethodSignature) Invocation {
 	return InvocationClass.InvocationWithMethodSignature(sig)
 }
 
-// Sets the receiver’s return value. [Full Topic]
+// Gets the receiver's return value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437848-setreturnvalue?language=objc
-func (i_ Invocation) SetReturnValue(retLoc unsafe.Pointer) {
-	objc.Call[objc.Void](i_, objc.Sel("setReturnValue:"), retLoc)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437832-getreturnvalue?language=objc
+func (i_ Invocation) GetReturnValue(retLoc unsafe.Pointer) {
+	objc.Call[objc.Void](i_, objc.Sel("getReturnValue:"), retLoc)
 }
 
-// Sets an argument of the receiver. [Full Topic]
+// Sends the receiver’s message (with arguments) to its target and sets the return value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437834-setargument?language=objc
-func (i_ Invocation) SetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int) {
-	objc.Call[objc.Void](i_, objc.Sel("setArgument:atIndex:"), argumentLocation, idx)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437850-invoke?language=objc
+func (i_ Invocation) Invoke() {
+	objc.Call[objc.Void](i_, objc.Sel("invoke"))
 }
 
 // Sets the receiver’s target, sends the receiver’s message (with arguments) to that target, and sets the return value. [Full Topic]
@@ -145,22 +145,6 @@ func (i_ Invocation) SetTarget(value objc.IObject) {
 	objc.Call[objc.Void](i_, objc.Sel("setTarget:"), value)
 }
 
-// The receiver’s method signature. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437846-methodsignature?language=objc
-func (i_ Invocation) MethodSignature() MethodSignature {
-	rv := objc.Call[MethodSignature](i_, objc.Sel("methodSignature"))
-	return rv
-}
-
-// YES if the receiver has retained its arguments, NO otherwise. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437842-argumentsretained?language=objc
-func (i_ Invocation) ArgumentsRetained() bool {
-	rv := objc.Call[bool](i_, objc.Sel("argumentsRetained"))
-	return rv
-}
-
 // The receiver’s selector, or 0 if it hasn’t been set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437836-selector?language=objc
@@ -174,4 +158,20 @@ func (i_ Invocation) Selector() objc.Selector {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437836-selector?language=objc
 func (i_ Invocation) SetSelector(value objc.Selector) {
 	objc.Call[objc.Void](i_, objc.Sel("setSelector:"), value)
+}
+
+// YES if the receiver has retained its arguments, NO otherwise. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437842-argumentsretained?language=objc
+func (i_ Invocation) ArgumentsRetained() bool {
+	rv := objc.Call[bool](i_, objc.Sel("argumentsRetained"))
+	return rv
+}
+
+// The receiver’s method signature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437846-methodsignature?language=objc
+func (i_ Invocation) MethodSignature() MethodSignature {
+	rv := objc.Call[MethodSignature](i_, objc.Sel("methodSignature"))
+	return rv
 }

@@ -18,12 +18,12 @@ type _VertexAttributeDescriptorClass struct {
 // An interface definition for the [VertexAttributeDescriptor] class.
 type IVertexAttributeDescriptor interface {
 	objc.IObject
+	BufferIndex() uint
+	SetBufferIndex(value uint)
 	Offset() uint
 	SetOffset(value uint)
 	Format() VertexFormat
 	SetFormat(value VertexFormat)
-	BufferIndex() uint
-	SetBufferIndex(value uint)
 }
 
 // An object that determines how to store attribute data in memory and map it to the arguments of a vertex function. [Full Topic]
@@ -59,6 +59,21 @@ func (v_ VertexAttributeDescriptor) Init() VertexAttributeDescriptor {
 	return rv
 }
 
+// The index in the argument table for the associated vertex buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1515502-bufferindex?language=objc
+func (v_ VertexAttributeDescriptor) BufferIndex() uint {
+	rv := objc.Call[uint](v_, objc.Sel("bufferIndex"))
+	return rv
+}
+
+// The index in the argument table for the associated vertex buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1515502-bufferindex?language=objc
+func (v_ VertexAttributeDescriptor) SetBufferIndex(value uint) {
+	objc.Call[objc.Void](v_, objc.Sel("setBufferIndex:"), value)
+}
+
 // The location of an attribute in vertex data, determined by the byte offset from the start of the vertex data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1515785-offset?language=objc
@@ -87,19 +102,4 @@ func (v_ VertexAttributeDescriptor) Format() VertexFormat {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1516081-format?language=objc
 func (v_ VertexAttributeDescriptor) SetFormat(value VertexFormat) {
 	objc.Call[objc.Void](v_, objc.Sel("setFormat:"), value)
-}
-
-// The index in the argument table for the associated vertex buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1515502-bufferindex?language=objc
-func (v_ VertexAttributeDescriptor) BufferIndex() uint {
-	rv := objc.Call[uint](v_, objc.Sel("bufferIndex"))
-	return rv
-}
-
-// The index in the argument table for the associated vertex buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptor/1515502-bufferindex?language=objc
-func (v_ VertexAttributeDescriptor) SetBufferIndex(value uint) {
-	objc.Call[objc.Void](v_, objc.Sel("setBufferIndex:"), value)
 }

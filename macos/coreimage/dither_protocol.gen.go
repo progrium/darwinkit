@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither?language=objc
 type PDither interface {
 	// optional
-	SetIntensity(value float32)
-	HasSetIntensity() bool
-
-	// optional
-	Intensity() float32
-	HasIntensity() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetIntensity(value float32)
+	HasSetIntensity() bool
+
+	// optional
+	Intensity() float32
+	HasIntensity() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PDither = (*DitherObject)(nil)
 // A concrete type for the [PDither] protocol.
 type DitherObject struct {
 	objc.Object
-}
-
-func (d_ DitherObject) HasSetIntensity() bool {
-	return d_.RespondsToSelector(objc.Sel("setIntensity:"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
-func (d_ DitherObject) SetIntensity(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setIntensity:"), value)
-}
-
-func (d_ DitherObject) HasIntensity() bool {
-	return d_.RespondsToSelector(objc.Sel("intensity"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
-func (d_ DitherObject) Intensity() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("intensity"))
-	return rv
 }
 
 func (d_ DitherObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (d_ DitherObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228225-inputimage?language=objc
 func (d_ DitherObject) InputImage() Image {
 	rv := objc.Call[Image](d_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (d_ DitherObject) HasSetIntensity() bool {
+	return d_.RespondsToSelector(objc.Sel("setIntensity:"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
+func (d_ DitherObject) SetIntensity(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setIntensity:"), value)
+}
+
+func (d_ DitherObject) HasIntensity() bool {
+	return d_.RespondsToSelector(objc.Sel("intensity"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
+func (d_ DitherObject) Intensity() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("intensity"))
 	return rv
 }

@@ -80,18 +80,6 @@ func CollectionLayoutDecorationItem_ItemWithLayoutSize(layoutSize ICollectionLay
 	return CollectionLayoutDecorationItemClass.ItemWithLayoutSize(layoutSize)
 }
 
-func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	rv := objc.Call[CollectionLayoutDecorationItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
-	return rv
-}
-
-// Creates an item of the specified size with an array of supplementary items to attach to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213872-itemwithlayoutsize?language=objc
-func CollectionLayoutDecorationItem_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	return CollectionLayoutDecorationItemClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 // A string that identifies the type of decoration item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutdecorationitem/3213831-elementkind?language=objc

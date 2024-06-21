@@ -19,8 +19,8 @@ type _CaptionGrouperClass struct {
 // An interface definition for the [CaptionGrouper] class.
 type ICaptionGrouper interface {
 	objc.IObject
-	FlushAddedCaptionsIntoGroupsUpToTime(upToTime coremedia.Time) []CaptionGroup
 	AddCaption(input ICaption)
+	FlushAddedCaptionsIntoGroupsUpToTime(upToTime coremedia.Time) []CaptionGroup
 }
 
 // An object that analyzes the temporal overlaps of caption objects to create caption groups for each span of concurrent captions. [Full Topic]
@@ -56,17 +56,17 @@ func (c_ CaptionGrouper) Init() CaptionGrouper {
 	return rv
 }
 
+// Adds a caption to the pending group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongrouper/3752965-addcaption?language=objc
+func (c_ CaptionGrouper) AddCaption(input ICaption) {
+	objc.Call[objc.Void](c_, objc.Sel("addCaption:"), input)
+}
+
 // Creates caption groups for the captions you enqueue up to the time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongrouper/3752966-flushaddedcaptionsintogroupsupto?language=objc
 func (c_ CaptionGrouper) FlushAddedCaptionsIntoGroupsUpToTime(upToTime coremedia.Time) []CaptionGroup {
 	rv := objc.Call[[]CaptionGroup](c_, objc.Sel("flushAddedCaptionsIntoGroupsUpToTime:"), upToTime)
 	return rv
-}
-
-// Adds a caption to the pending group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongrouper/3752965-addcaption?language=objc
-func (c_ CaptionGrouper) AddCaption(input ICaption) {
-	objc.Call[objc.Void](c_, objc.Sel("addCaption:"), input)
 }

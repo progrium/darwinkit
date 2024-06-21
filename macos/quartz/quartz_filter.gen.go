@@ -20,11 +20,11 @@ type _QuartzFilterClass struct {
 // An interface definition for the [QuartzFilter] class.
 type IQuartzFilter interface {
 	objc.IObject
-	Properties() foundation.Dictionary
-	Url() foundation.URL
+	ApplyToContext(aContext coregraphics.ContextRef) bool
 	RemoveFromContext(aContext coregraphics.ContextRef)
 	LocalizedName() string
-	ApplyToContext(aContext coregraphics.ContextRef) bool
+	Properties() foundation.Dictionary
+	Url() foundation.URL
 }
 
 //	[Full Topic]
@@ -62,48 +62,17 @@ func (q_ QuartzFilter) Init() QuartzFilter {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433673-quartzfilterwithproperties?language=objc
-func (qc _QuartzFilterClass) QuartzFilterWithProperties(properties foundation.Dictionary) QuartzFilter {
-	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithProperties:"), properties)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433684-applytocontext?language=objc
+func (q_ QuartzFilter) ApplyToContext(aContext coregraphics.ContextRef) bool {
+	rv := objc.Call[bool](q_, objc.Sel("applyToContext:"), aContext)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433673-quartzfilterwithproperties?language=objc
-func QuartzFilter_QuartzFilterWithProperties(properties foundation.Dictionary) QuartzFilter {
-	return QuartzFilterClass.QuartzFilterWithProperties(properties)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433675-quartzfilterwithoutputintents?language=objc
-func (qc _QuartzFilterClass) QuartzFilterWithOutputIntents(outputIntents []objc.IObject) QuartzFilter {
-	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithOutputIntents:"), outputIntents)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433675-quartzfilterwithoutputintents?language=objc
-func QuartzFilter_QuartzFilterWithOutputIntents(outputIntents []objc.IObject) QuartzFilter {
-	return QuartzFilterClass.QuartzFilterWithOutputIntents(outputIntents)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433686-properties?language=objc
-func (q_ QuartzFilter) Properties() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](q_, objc.Sel("properties"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433677-url?language=objc
-func (q_ QuartzFilter) Url() foundation.URL {
-	rv := objc.Call[foundation.URL](q_, objc.Sel("url"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433679-removefromcontext?language=objc
+func (q_ QuartzFilter) RemoveFromContext(aContext coregraphics.ContextRef) {
+	objc.Call[objc.Void](q_, objc.Sel("removeFromContext:"), aContext)
 }
 
 //	[Full Topic]
@@ -123,9 +92,32 @@ func QuartzFilter_QuartzFilterWithURL(aURL foundation.IURL) QuartzFilter {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433679-removefromcontext?language=objc
-func (q_ QuartzFilter) RemoveFromContext(aContext coregraphics.ContextRef) {
-	objc.Call[objc.Void](q_, objc.Sel("removeFromContext:"), aContext)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433675-quartzfilterwithoutputintents?language=objc
+func (qc _QuartzFilterClass) QuartzFilterWithOutputIntents(outputIntents []objc.IObject) QuartzFilter {
+	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithOutputIntents:"), outputIntents)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433675-quartzfilterwithoutputintents?language=objc
+func QuartzFilter_QuartzFilterWithOutputIntents(outputIntents []objc.IObject) QuartzFilter {
+	return QuartzFilterClass.QuartzFilterWithOutputIntents(outputIntents)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433673-quartzfilterwithproperties?language=objc
+func (qc _QuartzFilterClass) QuartzFilterWithProperties(properties foundation.Dictionary) QuartzFilter {
+	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithProperties:"), properties)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433673-quartzfilterwithproperties?language=objc
+func QuartzFilter_QuartzFilterWithProperties(properties foundation.Dictionary) QuartzFilter {
+	return QuartzFilterClass.QuartzFilterWithProperties(properties)
 }
 
 //	[Full Topic]
@@ -138,8 +130,16 @@ func (q_ QuartzFilter) LocalizedName() string {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433684-applytocontext?language=objc
-func (q_ QuartzFilter) ApplyToContext(aContext coregraphics.ContextRef) bool {
-	rv := objc.Call[bool](q_, objc.Sel("applyToContext:"), aContext)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433686-properties?language=objc
+func (q_ QuartzFilter) Properties() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](q_, objc.Sel("properties"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433677-url?language=objc
+func (q_ QuartzFilter) Url() foundation.URL {
+	rv := objc.Call[foundation.URL](q_, objc.Sel("url"))
 	return rv
 }

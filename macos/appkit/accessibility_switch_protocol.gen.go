@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityswitch?language=objc
 type PAccessibilitySwitch interface {
 	// optional
-	AccessibilityValue() string
-	HasAccessibilityValue() bool
+	AccessibilityPerformDecrement() bool
+	HasAccessibilityPerformDecrement() bool
 
 	// optional
 	AccessibilityPerformIncrement() bool
 	HasAccessibilityPerformIncrement() bool
 
 	// optional
-	AccessibilityPerformDecrement() bool
-	HasAccessibilityPerformDecrement() bool
+	AccessibilityValue() string
+	HasAccessibilityValue() bool
 }
 
 // ensure impl type implements protocol interface
@@ -31,15 +31,15 @@ type AccessibilitySwitchObject struct {
 	objc.Object
 }
 
-func (a_ AccessibilitySwitchObject) HasAccessibilityValue() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityValue"))
+func (a_ AccessibilitySwitchObject) HasAccessibilityPerformDecrement() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityPerformDecrement"))
 }
 
-// Returns the switch’s value. [Full Topic]
+// Decrements the switch’s value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityswitch/1533946-accessibilityvalue?language=objc
-func (a_ AccessibilitySwitchObject) AccessibilityValue() string {
-	rv := objc.Call[string](a_, objc.Sel("accessibilityValue"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityswitch/1528290-accessibilityperformdecrement?language=objc
+func (a_ AccessibilitySwitchObject) AccessibilityPerformDecrement() bool {
+	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformDecrement"))
 	return rv
 }
 
@@ -55,14 +55,14 @@ func (a_ AccessibilitySwitchObject) AccessibilityPerformIncrement() bool {
 	return rv
 }
 
-func (a_ AccessibilitySwitchObject) HasAccessibilityPerformDecrement() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityPerformDecrement"))
+func (a_ AccessibilitySwitchObject) HasAccessibilityValue() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityValue"))
 }
 
-// Decrements the switch’s value. [Full Topic]
+// Returns the switch’s value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityswitch/1528290-accessibilityperformdecrement?language=objc
-func (a_ AccessibilitySwitchObject) AccessibilityPerformDecrement() bool {
-	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformDecrement"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityswitch/1533946-accessibilityvalue?language=objc
+func (a_ AccessibilitySwitchObject) AccessibilityValue() string {
+	rv := objc.Call[string](a_, objc.Sel("accessibilityValue"))
 	return rv
 }

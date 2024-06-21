@@ -11,68 +11,41 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate?language=objc
 type PKeyedArchiverDelegate interface {
 	// optional
-	ArchiverDidEncodeObject(archiver KeyedArchiver, object objc.Object)
-	HasArchiverDidEncodeObject() bool
-
-	// optional
-	ArchiverWillFinish(archiver KeyedArchiver)
-	HasArchiverWillFinish() bool
+	ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object)
+	HasArchiverWillReplaceObjectWithObject() bool
 
 	// optional
 	ArchiverDidFinish(archiver KeyedArchiver)
 	HasArchiverDidFinish() bool
 
 	// optional
-	ArchiverWillEncodeObject(archiver KeyedArchiver, object objc.Object) objc.Object
-	HasArchiverWillEncodeObject() bool
-
-	// optional
-	ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object)
-	HasArchiverWillReplaceObjectWithObject() bool
+	ArchiverWillFinish(archiver KeyedArchiver)
+	HasArchiverWillFinish() bool
 }
 
 // A delegate implementation builder for the [PKeyedArchiverDelegate] protocol.
 type KeyedArchiverDelegate struct {
-	_ArchiverDidEncodeObject             func(archiver KeyedArchiver, object objc.Object)
-	_ArchiverWillFinish                  func(archiver KeyedArchiver)
-	_ArchiverDidFinish                   func(archiver KeyedArchiver)
-	_ArchiverWillEncodeObject            func(archiver KeyedArchiver, object objc.Object) objc.Object
 	_ArchiverWillReplaceObjectWithObject func(archiver KeyedArchiver, object objc.Object, newObject objc.Object)
+	_ArchiverDidFinish                   func(archiver KeyedArchiver)
+	_ArchiverWillFinish                  func(archiver KeyedArchiver)
 }
 
-func (di *KeyedArchiverDelegate) HasArchiverDidEncodeObject() bool {
-	return di._ArchiverDidEncodeObject != nil
+func (di *KeyedArchiverDelegate) HasArchiverWillReplaceObjectWithObject() bool {
+	return di._ArchiverWillReplaceObjectWithObject != nil
 }
 
-// Informs the delegate that a given object has been encoded. [Full Topic]
+// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1416193-archiver?language=objc
-func (di *KeyedArchiverDelegate) SetArchiverDidEncodeObject(f func(archiver KeyedArchiver, object objc.Object)) {
-	di._ArchiverDidEncodeObject = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
+func (di *KeyedArchiverDelegate) SetArchiverWillReplaceObjectWithObject(f func(archiver KeyedArchiver, object objc.Object, newObject objc.Object)) {
+	di._ArchiverWillReplaceObjectWithObject = f
 }
 
-// Informs the delegate that a given object has been encoded. [Full Topic]
+// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1416193-archiver?language=objc
-func (di *KeyedArchiverDelegate) ArchiverDidEncodeObject(archiver KeyedArchiver, object objc.Object) {
-	di._ArchiverDidEncodeObject(archiver, object)
-}
-func (di *KeyedArchiverDelegate) HasArchiverWillFinish() bool {
-	return di._ArchiverWillFinish != nil
-}
-
-// Notifies the delegate that encoding is about to finish. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
-func (di *KeyedArchiverDelegate) SetArchiverWillFinish(f func(archiver KeyedArchiver)) {
-	di._ArchiverWillFinish = f
-}
-
-// Notifies the delegate that encoding is about to finish. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
-func (di *KeyedArchiverDelegate) ArchiverWillFinish(archiver KeyedArchiver) {
-	di._ArchiverWillFinish(archiver)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
+func (di *KeyedArchiverDelegate) ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object) {
+	di._ArchiverWillReplaceObjectWithObject(archiver, object, newObject)
 }
 func (di *KeyedArchiverDelegate) HasArchiverDidFinish() bool {
 	return di._ArchiverDidFinish != nil
@@ -91,39 +64,22 @@ func (di *KeyedArchiverDelegate) SetArchiverDidFinish(f func(archiver KeyedArchi
 func (di *KeyedArchiverDelegate) ArchiverDidFinish(archiver KeyedArchiver) {
 	di._ArchiverDidFinish(archiver)
 }
-func (di *KeyedArchiverDelegate) HasArchiverWillEncodeObject() bool {
-	return di._ArchiverWillEncodeObject != nil
+func (di *KeyedArchiverDelegate) HasArchiverWillFinish() bool {
+	return di._ArchiverWillFinish != nil
 }
 
-// Informs the delegate that object is about to be encoded. [Full Topic]
+// Notifies the delegate that encoding is about to finish. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409228-archiver?language=objc
-func (di *KeyedArchiverDelegate) SetArchiverWillEncodeObject(f func(archiver KeyedArchiver, object objc.Object) objc.Object) {
-	di._ArchiverWillEncodeObject = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
+func (di *KeyedArchiverDelegate) SetArchiverWillFinish(f func(archiver KeyedArchiver)) {
+	di._ArchiverWillFinish = f
 }
 
-// Informs the delegate that object is about to be encoded. [Full Topic]
+// Notifies the delegate that encoding is about to finish. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409228-archiver?language=objc
-func (di *KeyedArchiverDelegate) ArchiverWillEncodeObject(archiver KeyedArchiver, object objc.Object) objc.Object {
-	return di._ArchiverWillEncodeObject(archiver, object)
-}
-func (di *KeyedArchiverDelegate) HasArchiverWillReplaceObjectWithObject() bool {
-	return di._ArchiverWillReplaceObjectWithObject != nil
-}
-
-// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
-func (di *KeyedArchiverDelegate) SetArchiverWillReplaceObjectWithObject(f func(archiver KeyedArchiver, object objc.Object, newObject objc.Object)) {
-	di._ArchiverWillReplaceObjectWithObject = f
-}
-
-// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
-func (di *KeyedArchiverDelegate) ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object) {
-	di._ArchiverWillReplaceObjectWithObject(archiver, object, newObject)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
+func (di *KeyedArchiverDelegate) ArchiverWillFinish(archiver KeyedArchiver) {
+	di._ArchiverWillFinish(archiver)
 }
 
 // ensure impl type implements protocol interface
@@ -134,26 +90,15 @@ type KeyedArchiverDelegateObject struct {
 	objc.Object
 }
 
-func (k_ KeyedArchiverDelegateObject) HasArchiverDidEncodeObject() bool {
-	return k_.RespondsToSelector(objc.Sel("archiver:didEncodeObject:"))
+func (k_ KeyedArchiverDelegateObject) HasArchiverWillReplaceObjectWithObject() bool {
+	return k_.RespondsToSelector(objc.Sel("archiver:willReplaceObject:withObject:"))
 }
 
-// Informs the delegate that a given object has been encoded. [Full Topic]
+// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1416193-archiver?language=objc
-func (k_ KeyedArchiverDelegateObject) ArchiverDidEncodeObject(archiver KeyedArchiver, object objc.Object) {
-	objc.Call[objc.Void](k_, objc.Sel("archiver:didEncodeObject:"), archiver, object)
-}
-
-func (k_ KeyedArchiverDelegateObject) HasArchiverWillFinish() bool {
-	return k_.RespondsToSelector(objc.Sel("archiverWillFinish:"))
-}
-
-// Notifies the delegate that encoding is about to finish. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
-func (k_ KeyedArchiverDelegateObject) ArchiverWillFinish(archiver KeyedArchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("archiverWillFinish:"), archiver)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
+func (k_ KeyedArchiverDelegateObject) ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object) {
+	objc.Call[objc.Void](k_, objc.Sel("archiver:willReplaceObject:withObject:"), archiver, object, newObject)
 }
 
 func (k_ KeyedArchiverDelegateObject) HasArchiverDidFinish() bool {
@@ -167,25 +112,13 @@ func (k_ KeyedArchiverDelegateObject) ArchiverDidFinish(archiver KeyedArchiver) 
 	objc.Call[objc.Void](k_, objc.Sel("archiverDidFinish:"), archiver)
 }
 
-func (k_ KeyedArchiverDelegateObject) HasArchiverWillEncodeObject() bool {
-	return k_.RespondsToSelector(objc.Sel("archiver:willEncodeObject:"))
+func (k_ KeyedArchiverDelegateObject) HasArchiverWillFinish() bool {
+	return k_.RespondsToSelector(objc.Sel("archiverWillFinish:"))
 }
 
-// Informs the delegate that object is about to be encoded. [Full Topic]
+// Notifies the delegate that encoding is about to finish. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409228-archiver?language=objc
-func (k_ KeyedArchiverDelegateObject) ArchiverWillEncodeObject(archiver KeyedArchiver, object objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](k_, objc.Sel("archiver:willEncodeObject:"), archiver, object)
-	return rv
-}
-
-func (k_ KeyedArchiverDelegateObject) HasArchiverWillReplaceObjectWithObject() bool {
-	return k_.RespondsToSelector(objc.Sel("archiver:willReplaceObject:withObject:"))
-}
-
-// Informs the delegate that one given object is being substituted for another given object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
-func (k_ KeyedArchiverDelegateObject) ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object) {
-	objc.Call[objc.Void](k_, objc.Sel("archiver:willReplaceObject:withObject:"), archiver, object, newObject)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
+func (k_ KeyedArchiverDelegateObject) ArchiverWillFinish(archiver KeyedArchiver) {
+	objc.Call[objc.Void](k_, objc.Sel("archiverWillFinish:"), archiver)
 }

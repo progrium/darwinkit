@@ -18,20 +18,20 @@ type _PersonNameComponentsClass struct {
 // An interface definition for the [PersonNameComponents] class.
 type IPersonNameComponents interface {
 	objc.IObject
-	GivenName() string
-	SetGivenName(value string)
 	PhoneticRepresentation() PersonNameComponents
 	SetPhoneticRepresentation(value IPersonNameComponents)
+	NamePrefix() string
+	SetNamePrefix(value string)
 	MiddleName() string
 	SetMiddleName(value string)
+	GivenName() string
+	SetGivenName(value string)
 	NameSuffix() string
 	SetNameSuffix(value string)
 	FamilyName() string
 	SetFamilyName(value string)
 	Nickname() string
 	SetNickname(value string)
-	NamePrefix() string
-	SetNamePrefix(value string)
 }
 
 // An object that manages the separate parts of a person's name to allow locale-aware formatting. [Full Topic]
@@ -67,21 +67,6 @@ func (p_ PersonNameComponents) Init() PersonNameComponents {
 	return rv
 }
 
-// Name bestowed upon an individual to differentiate them from other members of a group that share a family name (for example, “Johnathan”). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1407259-givenname?language=objc
-func (p_ PersonNameComponents) GivenName() string {
-	rv := objc.Call[string](p_, objc.Sel("givenName"))
-	return rv
-}
-
-// Name bestowed upon an individual to differentiate them from other members of a group that share a family name (for example, “Johnathan”). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1407259-givenname?language=objc
-func (p_ PersonNameComponents) SetGivenName(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setGivenName:"), value)
-}
-
 // The phonetic representation name components of the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1412193-phoneticrepresentation?language=objc
@@ -97,6 +82,21 @@ func (p_ PersonNameComponents) SetPhoneticRepresentation(value IPersonNameCompon
 	objc.Call[objc.Void](p_, objc.Sel("setPhoneticRepresentation:"), value)
 }
 
+// The portion of a name’s full form of address that precedes the name itself (for example, “Dr.,” “Mr.,” “Ms.”). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1410275-nameprefix?language=objc
+func (p_ PersonNameComponents) NamePrefix() string {
+	rv := objc.Call[string](p_, objc.Sel("namePrefix"))
+	return rv
+}
+
+// The portion of a name’s full form of address that precedes the name itself (for example, “Dr.,” “Mr.,” “Ms.”). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1410275-nameprefix?language=objc
+func (p_ PersonNameComponents) SetNamePrefix(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setNamePrefix:"), value)
+}
+
 // Secondary name bestowed upon an individual to differentiate them from others that have the same given name (for example, “Maple”). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1418183-middlename?language=objc
@@ -110,6 +110,21 @@ func (p_ PersonNameComponents) MiddleName() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1418183-middlename?language=objc
 func (p_ PersonNameComponents) SetMiddleName(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setMiddleName:"), value)
+}
+
+// Name bestowed upon an individual to differentiate them from other members of a group that share a family name (for example, “Johnathan”). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1407259-givenname?language=objc
+func (p_ PersonNameComponents) GivenName() string {
+	rv := objc.Call[string](p_, objc.Sel("givenName"))
+	return rv
+}
+
+// Name bestowed upon an individual to differentiate them from other members of a group that share a family name (for example, “Johnathan”). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1407259-givenname?language=objc
+func (p_ PersonNameComponents) SetGivenName(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setGivenName:"), value)
 }
 
 // The portion of a name’s full form of address that follows the name itself (for example, “Esq.,” “Jr.,” “Ph.D.”). [Full Topic]
@@ -155,19 +170,4 @@ func (p_ PersonNameComponents) Nickname() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1414892-nickname?language=objc
 func (p_ PersonNameComponents) SetNickname(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setNickname:"), value)
-}
-
-// The portion of a name’s full form of address that precedes the name itself (for example, “Dr.,” “Mr.,” “Ms.”). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1410275-nameprefix?language=objc
-func (p_ PersonNameComponents) NamePrefix() string {
-	rv := objc.Call[string](p_, objc.Sel("namePrefix"))
-	return rv
-}
-
-// The portion of a name’s full form of address that precedes the name itself (for example, “Dr.,” “Mr.,” “Ms.”). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1410275-nameprefix?language=objc
-func (p_ PersonNameComponents) SetNamePrefix(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setNamePrefix:"), value)
 }

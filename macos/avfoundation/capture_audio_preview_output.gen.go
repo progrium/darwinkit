@@ -18,10 +18,10 @@ type _CaptureAudioPreviewOutputClass struct {
 // An interface definition for the [CaptureAudioPreviewOutput] class.
 type ICaptureAudioPreviewOutput interface {
 	ICaptureOutput
-	OutputDeviceUniqueID() string
-	SetOutputDeviceUniqueID(value string)
 	Volume() float32
 	SetVolume(value float32)
+	OutputDeviceUniqueID() string
+	SetOutputDeviceUniqueID(value string)
 }
 
 // A capture output that provides a preview of the captured audio. [Full Topic]
@@ -57,21 +57,6 @@ func (cc _CaptureAudioPreviewOutputClass) Alloc() CaptureAudioPreviewOutput {
 	return rv
 }
 
-// The unique identifier of the Core Audio output device to use for audio preview. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390610-outputdeviceuniqueid?language=objc
-func (c_ CaptureAudioPreviewOutput) OutputDeviceUniqueID() string {
-	rv := objc.Call[string](c_, objc.Sel("outputDeviceUniqueID"))
-	return rv
-}
-
-// The unique identifier of the Core Audio output device to use for audio preview. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390610-outputdeviceuniqueid?language=objc
-func (c_ CaptureAudioPreviewOutput) SetOutputDeviceUniqueID(value string) {
-	objc.Call[objc.Void](c_, objc.Sel("setOutputDeviceUniqueID:"), value)
-}
-
 // The output volume of the audio preview. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390510-volume?language=objc
@@ -85,4 +70,19 @@ func (c_ CaptureAudioPreviewOutput) Volume() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390510-volume?language=objc
 func (c_ CaptureAudioPreviewOutput) SetVolume(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setVolume:"), value)
+}
+
+// The unique identifier of the Core Audio output device to use for audio preview. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390610-outputdeviceuniqueid?language=objc
+func (c_ CaptureAudioPreviewOutput) OutputDeviceUniqueID() string {
+	rv := objc.Call[string](c_, objc.Sel("outputDeviceUniqueID"))
+	return rv
+}
+
+// The unique identifier of the Core Audio output device to use for audio preview. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390610-outputdeviceuniqueid?language=objc
+func (c_ CaptureAudioPreviewOutput) SetOutputDeviceUniqueID(value string) {
+	objc.Call[objc.Void](c_, objc.Sel("setOutputDeviceUniqueID:"), value)
 }

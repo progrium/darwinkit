@@ -18,17 +18,13 @@ type _URLCredentialStorageClass struct {
 // An interface definition for the [URLCredentialStorage] class.
 type IURLCredentialStorage interface {
 	objc.IObject
-	GetCredentialsForProtectionSpaceTaskCompletionHandler(protectionSpace IURLProtectionSpace, task IURLSessionTask, completionHandler func(credentials map[string]URLCredential))
-	SetDefaultCredentialForProtectionSpaceTask(credential IURLCredential, protectionSpace IURLProtectionSpace, task IURLSessionTask)
-	SetDefaultCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
-	RemoveCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
 	DefaultCredentialForProtectionSpace(space IURLProtectionSpace) URLCredential
-	RemoveCredentialForProtectionSpaceOptionsTask(credential IURLCredential, protectionSpace IURLProtectionSpace, options map[string]objc.IObject, task IURLSessionTask)
-	RemoveCredentialForProtectionSpaceOptions(credential IURLCredential, space IURLProtectionSpace, options map[string]objc.IObject)
-	CredentialsForProtectionSpace(space IURLProtectionSpace) map[string]URLCredential
-	SetCredentialForProtectionSpaceTask(credential IURLCredential, protectionSpace IURLProtectionSpace, task IURLSessionTask)
-	SetCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
+	SetDefaultCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
 	GetDefaultCredentialForProtectionSpaceTaskCompletionHandler(space IURLProtectionSpace, task IURLSessionTask, completionHandler func(credential URLCredential))
+	RemoveCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
+	CredentialsForProtectionSpace(space IURLProtectionSpace) map[string]URLCredential
+	SetCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace)
+	GetCredentialsForProtectionSpaceTaskCompletionHandler(protectionSpace IURLProtectionSpace, task IURLSessionTask, completionHandler func(credentials map[string]URLCredential))
 	AllCredentials() Dictionary
 }
 
@@ -65,18 +61,12 @@ func (u_ URLCredentialStorage) Init() URLCredentialStorage {
 	return rv
 }
 
-// Gets a dictionary containing the credentials for the specified protection space, on behalf of the given task, and passes the dictionary to the provided completion handler. [Full Topic]
+// Returns the default credential for the specified protection space. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1418119-getcredentialsforprotectionspace?language=objc
-func (u_ URLCredentialStorage) GetCredentialsForProtectionSpaceTaskCompletionHandler(protectionSpace IURLProtectionSpace, task IURLSessionTask, completionHandler func(credentials map[string]URLCredential)) {
-	objc.Call[objc.Void](u_, objc.Sel("getCredentialsForProtectionSpace:task:completionHandler:"), protectionSpace, task, completionHandler)
-}
-
-// Sets the default credential for a given protection space, which is being accessed by the given task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1416429-setdefaultcredential?language=objc
-func (u_ URLCredentialStorage) SetDefaultCredentialForProtectionSpaceTask(credential IURLCredential, protectionSpace IURLProtectionSpace, task IURLSessionTask) {
-	objc.Call[objc.Void](u_, objc.Sel("setDefaultCredential:forProtectionSpace:task:"), credential, protectionSpace, task)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1412650-defaultcredentialforprotectionsp?language=objc
+func (u_ URLCredentialStorage) DefaultCredentialForProtectionSpace(space IURLProtectionSpace) URLCredential {
+	rv := objc.Call[URLCredential](u_, objc.Sel("defaultCredentialForProtectionSpace:"), space)
+	return rv
 }
 
 // Sets the default credential for a specified protection space. [Full Topic]
@@ -86,33 +76,18 @@ func (u_ URLCredentialStorage) SetDefaultCredentialForProtectionSpace(credential
 	objc.Call[objc.Void](u_, objc.Sel("setDefaultCredential:forProtectionSpace:"), credential, space)
 }
 
+// Gets the default credential for the specified protection space, which is being accessed by the given task, and passes it to the provided completion handler. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1411794-getdefaultcredentialforprotectio?language=objc
+func (u_ URLCredentialStorage) GetDefaultCredentialForProtectionSpaceTaskCompletionHandler(space IURLProtectionSpace, task IURLSessionTask, completionHandler func(credential URLCredential)) {
+	objc.Call[objc.Void](u_, objc.Sel("getDefaultCredentialForProtectionSpace:task:completionHandler:"), space, task, completionHandler)
+}
+
 // Removes the specified credential from the credential storage for the specified protection space. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1408664-removecredential?language=objc
 func (u_ URLCredentialStorage) RemoveCredentialForProtectionSpace(credential IURLCredential, space IURLProtectionSpace) {
 	objc.Call[objc.Void](u_, objc.Sel("removeCredential:forProtectionSpace:"), credential, space)
-}
-
-// Returns the default credential for the specified protection space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1412650-defaultcredentialforprotectionsp?language=objc
-func (u_ URLCredentialStorage) DefaultCredentialForProtectionSpace(space IURLProtectionSpace) URLCredential {
-	rv := objc.Call[URLCredential](u_, objc.Sel("defaultCredentialForProtectionSpace:"), space)
-	return rv
-}
-
-// Removes the specified credential from the credential storage for the specified protection space, on behalf of the given task and using the given options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1407237-removecredential?language=objc
-func (u_ URLCredentialStorage) RemoveCredentialForProtectionSpaceOptionsTask(credential IURLCredential, protectionSpace IURLProtectionSpace, options map[string]objc.IObject, task IURLSessionTask) {
-	objc.Call[objc.Void](u_, objc.Sel("removeCredential:forProtectionSpace:options:task:"), credential, protectionSpace, options, task)
-}
-
-// Removes the specified credential from the credential storage for the specified protection space using the given options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1407695-removecredential?language=objc
-func (u_ URLCredentialStorage) RemoveCredentialForProtectionSpaceOptions(credential IURLCredential, space IURLProtectionSpace, options map[string]objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("removeCredential:forProtectionSpace:options:"), credential, space, options)
 }
 
 // Returns a dictionary containing the credentials for the specified protection space. [Full Topic]
@@ -123,13 +98,6 @@ func (u_ URLCredentialStorage) CredentialsForProtectionSpace(space IURLProtectio
 	return rv
 }
 
-// Adds a credential to the credential storage for the specified protection space, on behalf of the specified task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1412703-setcredential?language=objc
-func (u_ URLCredentialStorage) SetCredentialForProtectionSpaceTask(credential IURLCredential, protectionSpace IURLProtectionSpace, task IURLSessionTask) {
-	objc.Call[objc.Void](u_, objc.Sel("setCredential:forProtectionSpace:task:"), credential, protectionSpace, task)
-}
-
 // Adds a credential to the credential storage for the specified protection space. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1407227-setcredential?language=objc
@@ -137,19 +105,11 @@ func (u_ URLCredentialStorage) SetCredentialForProtectionSpace(credential IURLCr
 	objc.Call[objc.Void](u_, objc.Sel("setCredential:forProtectionSpace:"), credential, space)
 }
 
-// Gets the default credential for the specified protection space, which is being accessed by the given task, and passes it to the provided completion handler. [Full Topic]
+// Gets a dictionary containing the credentials for the specified protection space, on behalf of the given task, and passes the dictionary to the provided completion handler. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1411794-getdefaultcredentialforprotectio?language=objc
-func (u_ URLCredentialStorage) GetDefaultCredentialForProtectionSpaceTaskCompletionHandler(space IURLProtectionSpace, task IURLSessionTask, completionHandler func(credential URLCredential)) {
-	objc.Call[objc.Void](u_, objc.Sel("getDefaultCredentialForProtectionSpace:task:completionHandler:"), space, task, completionHandler)
-}
-
-// The credentials for all available protection spaces. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1413859-allcredentials?language=objc
-func (u_ URLCredentialStorage) AllCredentials() Dictionary {
-	rv := objc.Call[Dictionary](u_, objc.Sel("allCredentials"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1418119-getcredentialsforprotectionspace?language=objc
+func (u_ URLCredentialStorage) GetCredentialsForProtectionSpaceTaskCompletionHandler(protectionSpace IURLProtectionSpace, task IURLSessionTask, completionHandler func(credentials map[string]URLCredential)) {
+	objc.Call[objc.Void](u_, objc.Sel("getCredentialsForProtectionSpace:task:completionHandler:"), protectionSpace, task, completionHandler)
 }
 
 // The shared URL credential storage instance. [Full Topic]
@@ -165,4 +125,12 @@ func (uc _URLCredentialStorageClass) SharedCredentialStorage() URLCredentialStor
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1412355-sharedcredentialstorage?language=objc
 func URLCredentialStorage_SharedCredentialStorage() URLCredentialStorage {
 	return URLCredentialStorageClass.SharedCredentialStorage()
+}
+
+// The credentials for all available protection spaces. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredentialstorage/1413859-allcredentials?language=objc
+func (u_ URLCredentialStorage) AllCredentials() Dictionary {
+	rv := objc.Call[Dictionary](u_, objc.Sel("allCredentials"))
+	return rv
 }

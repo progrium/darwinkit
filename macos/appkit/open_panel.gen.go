@@ -19,21 +19,21 @@ type _OpenPanelClass struct {
 // An interface definition for the [OpenPanel] class.
 type IOpenPanel interface {
 	ISavePanel
-	URLs() []foundation.URL
-	AllowsMultipleSelection() bool
-	SetAllowsMultipleSelection(value bool)
-	CanDownloadUbiquitousContents() bool
-	SetCanDownloadUbiquitousContents(value bool)
 	IsAccessoryViewDisclosed() bool
 	SetAccessoryViewDisclosed(value bool)
-	CanResolveUbiquitousConflicts() bool
-	SetCanResolveUbiquitousConflicts(value bool)
-	CanChooseDirectories() bool
-	SetCanChooseDirectories(value bool)
-	CanChooseFiles() bool
-	SetCanChooseFiles(value bool)
 	ResolvesAliases() bool
 	SetResolvesAliases(value bool)
+	CanResolveUbiquitousConflicts() bool
+	SetCanResolveUbiquitousConflicts(value bool)
+	CanDownloadUbiquitousContents() bool
+	SetCanDownloadUbiquitousContents(value bool)
+	AllowsMultipleSelection() bool
+	SetAllowsMultipleSelection(value bool)
+	URLs() []foundation.URL
+	CanChooseFiles() bool
+	SetCanChooseFiles(value bool)
+	CanChooseDirectories() bool
+	SetCanChooseDirectories(value bool)
 }
 
 // A panel that prompts the user to select a file to open. [Full Topic]
@@ -95,20 +95,6 @@ func NewOpenPanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundati
 	return instance
 }
 
-func (o_ OpenPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) OpenPanel {
-	rv := objc.Call[OpenPanel](o_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewOpenPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) OpenPanel {
-	instance := OpenPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
 // Creates a new Open panel and initializes it with a default configuration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1584365-openpanel?language=objc
@@ -122,44 +108,6 @@ func (oc _OpenPanelClass) OpenPanel() OpenPanel {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1584365-openpanel?language=objc
 func OpenPanel_OpenPanel() OpenPanel {
 	return OpenPanelClass.OpenPanel()
-}
-
-// An array of URLs, each of which contains the fully specified location of a selected file or directory. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1529845-urls?language=objc
-func (o_ OpenPanel) URLs() []foundation.URL {
-	rv := objc.Call[[]foundation.URL](o_, objc.Sel("URLs"))
-	return rv
-}
-
-// A Boolean that indicates whether the user may select multiple files and directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc
-func (o_ OpenPanel) AllowsMultipleSelection() bool {
-	rv := objc.Call[bool](o_, objc.Sel("allowsMultipleSelection"))
-	return rv
-}
-
-// A Boolean that indicates whether the user may select multiple files and directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc
-func (o_ OpenPanel) SetAllowsMultipleSelection(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setAllowsMultipleSelection:"), value)
-}
-
-// A Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc
-func (o_ OpenPanel) CanDownloadUbiquitousContents() bool {
-	rv := objc.Call[bool](o_, objc.Sel("canDownloadUbiquitousContents"))
-	return rv
-}
-
-// A Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc
-func (o_ OpenPanel) SetCanDownloadUbiquitousContents(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setCanDownloadUbiquitousContents:"), value)
 }
 
 // A Boolean value that indicates whether the panel's accessory view is visible. [Full Topic]
@@ -177,6 +125,21 @@ func (o_ OpenPanel) SetAccessoryViewDisclosed(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setAccessoryViewDisclosed:"), value)
 }
 
+// A Boolean that indicates whether the panel resolves aliases. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc
+func (o_ OpenPanel) ResolvesAliases() bool {
+	rv := objc.Call[bool](o_, objc.Sel("resolvesAliases"))
+	return rv
+}
+
+// A Boolean that indicates whether the panel resolves aliases. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc
+func (o_ OpenPanel) SetResolvesAliases(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setResolvesAliases:"), value)
+}
+
 // A Boolean value that indicates how the panel responds to iCloud documents that have conflicting versions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533261-canresolveubiquitousconflicts?language=objc
@@ -192,19 +155,42 @@ func (o_ OpenPanel) SetCanResolveUbiquitousConflicts(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setCanResolveUbiquitousConflicts:"), value)
 }
 
-// A Boolean that indicates whether the user can choose directories in the panel. [Full Topic]
+// A Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc
-func (o_ OpenPanel) CanChooseDirectories() bool {
-	rv := objc.Call[bool](o_, objc.Sel("canChooseDirectories"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc
+func (o_ OpenPanel) CanDownloadUbiquitousContents() bool {
+	rv := objc.Call[bool](o_, objc.Sel("canDownloadUbiquitousContents"))
 	return rv
 }
 
-// A Boolean that indicates whether the user can choose directories in the panel. [Full Topic]
+// A Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc
-func (o_ OpenPanel) SetCanChooseDirectories(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setCanChooseDirectories:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc
+func (o_ OpenPanel) SetCanDownloadUbiquitousContents(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setCanDownloadUbiquitousContents:"), value)
+}
+
+// A Boolean that indicates whether the user may select multiple files and directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc
+func (o_ OpenPanel) AllowsMultipleSelection() bool {
+	rv := objc.Call[bool](o_, objc.Sel("allowsMultipleSelection"))
+	return rv
+}
+
+// A Boolean that indicates whether the user may select multiple files and directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc
+func (o_ OpenPanel) SetAllowsMultipleSelection(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setAllowsMultipleSelection:"), value)
+}
+
+// An array of URLs, each of which contains the fully specified location of a selected file or directory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1529845-urls?language=objc
+func (o_ OpenPanel) URLs() []foundation.URL {
+	rv := objc.Call[[]foundation.URL](o_, objc.Sel("URLs"))
+	return rv
 }
 
 // A Boolean that indicates whether the user can choose files in the panel. [Full Topic]
@@ -222,17 +208,17 @@ func (o_ OpenPanel) SetCanChooseFiles(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setCanChooseFiles:"), value)
 }
 
-// A Boolean that indicates whether the panel resolves aliases. [Full Topic]
+// A Boolean that indicates whether the user can choose directories in the panel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc
-func (o_ OpenPanel) ResolvesAliases() bool {
-	rv := objc.Call[bool](o_, objc.Sel("resolvesAliases"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc
+func (o_ OpenPanel) CanChooseDirectories() bool {
+	rv := objc.Call[bool](o_, objc.Sel("canChooseDirectories"))
 	return rv
 }
 
-// A Boolean that indicates whether the panel resolves aliases. [Full Topic]
+// A Boolean that indicates whether the user can choose directories in the panel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc
-func (o_ OpenPanel) SetResolvesAliases(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setResolvesAliases:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc
+func (o_ OpenPanel) SetCanChooseDirectories(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setCanChooseDirectories:"), value)
 }

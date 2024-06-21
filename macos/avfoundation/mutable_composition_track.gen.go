@@ -21,22 +21,22 @@ type _MutableCompositionTrackClass struct {
 // An interface definition for the [MutableCompositionTrack] class.
 type IMutableCompositionTrack interface {
 	ICompositionTrack
+	RemoveTrackAssociationToTrackType(compositionTrack ICompositionTrack, trackAssociationType TrackAssociationType)
 	AddTrackAssociationToTrackType(compositionTrack ICompositionTrack, trackAssociationType TrackAssociationType)
+	RemoveTimeRange(timeRange coremedia.TimeRange)
 	ValidateTrackSegmentsError(trackSegments []ICompositionTrackSegment, outError unsafe.Pointer) bool
+	InsertTimeRangesOfTracksAtTimeError(timeRanges []foundation.IValue, tracks []IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool
+	InsertTimeRangeOfTrackAtTimeError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool
 	ReplaceFormatDescriptionWithFormatDescription(originalFormatDescription coremedia.FormatDescriptionRef, replacementFormatDescription coremedia.FormatDescriptionRef)
 	ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time)
 	InsertEmptyTimeRange(timeRange coremedia.TimeRange)
-	RemoveTimeRange(timeRange coremedia.TimeRange)
-	RemoveTrackAssociationToTrackType(compositionTrack ICompositionTrack, trackAssociationType TrackAssociationType)
-	InsertTimeRangesOfTracksAtTimeError(timeRanges []foundation.IValue, tracks []IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool
-	InsertTimeRangeOfTrackAtTimeError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool
-	SetPreferredVolume(value float32)
-	SetEnabled(value bool)
 	SetExtendedLanguageTag(value string)
+	SetPreferredVolume(value float32)
+	SetSegments(value []ICompositionTrackSegment)
 	SetLanguageCode(value string)
+	SetEnabled(value bool)
 	SetNaturalTimeScale(value coremedia.TimeScale)
 	SetPreferredTransform(value coregraphics.AffineTransform)
-	SetSegments(value []ICompositionTrackSegment)
 }
 
 // A mutable track in a composition that you use to insert, remove, and scale track segments without affecting their low-level representation. [Full Topic]
@@ -72,6 +72,13 @@ func (m_ MutableCompositionTrack) Init() MutableCompositionTrack {
 	return rv
 }
 
+// Removes an association from a composition track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/3013765-removetrackassociationtotrack?language=objc
+func (m_ MutableCompositionTrack) RemoveTrackAssociationToTrackType(compositionTrack ICompositionTrack, trackAssociationType TrackAssociationType) {
+	objc.Call[objc.Void](m_, objc.Sel("removeTrackAssociationToTrack:type:"), compositionTrack, trackAssociationType)
+}
+
 // Establishes a track association of a specific type between two tracks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/3013764-addtrackassociationtotrack?language=objc
@@ -79,11 +86,34 @@ func (m_ MutableCompositionTrack) AddTrackAssociationToTrackType(compositionTrac
 	objc.Call[objc.Void](m_, objc.Sel("addTrackAssociationToTrack:type:"), compositionTrack, trackAssociationType)
 }
 
+// Removes a time range of media from a composition track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1386048-removetimerange?language=objc
+func (m_ MutableCompositionTrack) RemoveTimeRange(timeRange coremedia.TimeRange) {
+	objc.Call[objc.Void](m_, objc.Sel("removeTimeRange:"), timeRange)
+}
+
 // Returns a Boolean value that indicates whether a given array of track segments conform to the timing rules for a composition track. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388746-validatetracksegments?language=objc
 func (m_ MutableCompositionTrack) ValidateTrackSegmentsError(trackSegments []ICompositionTrackSegment, outError unsafe.Pointer) bool {
 	rv := objc.Call[bool](m_, objc.Sel("validateTrackSegments:error:"), trackSegments, outError)
+	return rv
+}
+
+// Inserts the time ranges of multiple source tracks into a track of a composition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388629-inserttimeranges?language=objc
+func (m_ MutableCompositionTrack) InsertTimeRangesOfTracksAtTimeError(timeRanges []foundation.IValue, tracks []IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("insertTimeRanges:ofTracks:atTime:error:"), timeRanges, tracks, startTime, outError)
+	return rv
+}
+
+// Inserts a time range of media from a source track into a composition track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1390691-inserttimerange?language=objc
+func (m_ MutableCompositionTrack) InsertTimeRangeOfTrackAtTimeError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofTrack:atTime:error:"), timeRange, track, startTime, outError)
 	return rv
 }
 
@@ -108,34 +138,11 @@ func (m_ MutableCompositionTrack) InsertEmptyTimeRange(timeRange coremedia.TimeR
 	objc.Call[objc.Void](m_, objc.Sel("insertEmptyTimeRange:"), timeRange)
 }
 
-// Removes a time range of media from a composition track. [Full Topic]
+// The language tag associated with the track, as an RFC 4646 language tag. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1386048-removetimerange?language=objc
-func (m_ MutableCompositionTrack) RemoveTimeRange(timeRange coremedia.TimeRange) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTimeRange:"), timeRange)
-}
-
-// Removes an association from a composition track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/3013765-removetrackassociationtotrack?language=objc
-func (m_ MutableCompositionTrack) RemoveTrackAssociationToTrackType(compositionTrack ICompositionTrack, trackAssociationType TrackAssociationType) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTrackAssociationToTrack:type:"), compositionTrack, trackAssociationType)
-}
-
-// Inserts the time ranges of multiple source tracks into a track of a composition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388629-inserttimeranges?language=objc
-func (m_ MutableCompositionTrack) InsertTimeRangesOfTracksAtTimeError(timeRanges []foundation.IValue, tracks []IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](m_, objc.Sel("insertTimeRanges:ofTracks:atTime:error:"), timeRanges, tracks, startTime, outError)
-	return rv
-}
-
-// Inserts a time range of media from a source track into a composition track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1390691-inserttimerange?language=objc
-func (m_ MutableCompositionTrack) InsertTimeRangeOfTrackAtTimeError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofTrack:atTime:error:"), timeRange, track, startTime, outError)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388866-extendedlanguagetag?language=objc
+func (m_ MutableCompositionTrack) SetExtendedLanguageTag(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setExtendedLanguageTag:"), value)
 }
 
 // The volume the track prefers for its audible media data. [Full Topic]
@@ -145,18 +152,11 @@ func (m_ MutableCompositionTrack) SetPreferredVolume(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setPreferredVolume:"), value)
 }
 
-// A Boolean value that indicates whether the tracks is in an enabled state. [Full Topic]
+// The track segments that a composition track contains. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/3334926-enabled?language=objc
-func (m_ MutableCompositionTrack) SetEnabled(value bool) {
-	objc.Call[objc.Void](m_, objc.Sel("setEnabled:"), value)
-}
-
-// The language tag associated with the track, as an RFC 4646 language tag. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388866-extendedlanguagetag?language=objc
-func (m_ MutableCompositionTrack) SetExtendedLanguageTag(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setExtendedLanguageTag:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1390321-segments?language=objc
+func (m_ MutableCompositionTrack) SetSegments(value []ICompositionTrackSegment) {
+	objc.Call[objc.Void](m_, objc.Sel("setSegments:"), value)
 }
 
 // The language associated with the track, as an ISO 639-2/T language code. [Full Topic]
@@ -164,6 +164,13 @@ func (m_ MutableCompositionTrack) SetExtendedLanguageTag(value string) {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1387192-languagecode?language=objc
 func (m_ MutableCompositionTrack) SetLanguageCode(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setLanguageCode:"), value)
+}
+
+// A Boolean value that indicates whether the tracks is in an enabled state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/3334926-enabled?language=objc
+func (m_ MutableCompositionTrack) SetEnabled(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setEnabled:"), value)
 }
 
 // The time scale in which you can perform time-based operations without extra numerical conversion. [Full Topic]
@@ -178,11 +185,4 @@ func (m_ MutableCompositionTrack) SetNaturalTimeScale(value coremedia.TimeScale)
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1388304-preferredtransform?language=objc
 func (m_ MutableCompositionTrack) SetPreferredTransform(value coregraphics.AffineTransform) {
 	objc.Call[objc.Void](m_, objc.Sel("setPreferredTransform:"), value)
-}
-
-// The track segments that a composition track contains. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecompositiontrack/1390321-segments?language=objc
-func (m_ MutableCompositionTrack) SetSegments(value []ICompositionTrackSegment) {
-	objc.Call[objc.Void](m_, objc.Sel("setSegments:"), value)
 }

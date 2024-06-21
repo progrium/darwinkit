@@ -20,12 +20,12 @@ type PCopyMachineTransition interface {
 	HasColor() bool
 
 	// optional
-	SetExtent(value coregraphics.Rect)
-	HasSetExtent() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	Extent() coregraphics.Rect
-	HasExtent() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetOpacity(value float32)
@@ -36,12 +36,12 @@ type PCopyMachineTransition interface {
 	HasOpacity() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
+	SetExtent(value coregraphics.Rect)
+	HasSetExtent() bool
 
 	// optional
-	Width() float32
-	HasWidth() bool
+	Extent() coregraphics.Rect
+	HasExtent() bool
 
 	// optional
 	SetAngle(value float32)
@@ -83,26 +83,26 @@ func (c_ CopyMachineTransitionObject) Color() Color {
 	return rv
 }
 
-func (c_ CopyMachineTransitionObject) HasSetExtent() bool {
-	return c_.RespondsToSelector(objc.Sel("setExtent:"))
+func (c_ CopyMachineTransitionObject) HasSetWidth() bool {
+	return c_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// A rectangle that defines the extent of the effect. [Full Topic]
+// The width of the copier light. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228191-extent?language=objc
-func (c_ CopyMachineTransitionObject) SetExtent(value coregraphics.Rect) {
-	objc.Call[objc.Void](c_, objc.Sel("setExtent:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
+func (c_ CopyMachineTransitionObject) SetWidth(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
 }
 
-func (c_ CopyMachineTransitionObject) HasExtent() bool {
-	return c_.RespondsToSelector(objc.Sel("extent"))
+func (c_ CopyMachineTransitionObject) HasWidth() bool {
+	return c_.RespondsToSelector(objc.Sel("width"))
 }
 
-// A rectangle that defines the extent of the effect. [Full Topic]
+// The width of the copier light. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228191-extent?language=objc
-func (c_ CopyMachineTransitionObject) Extent() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("extent"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
+func (c_ CopyMachineTransitionObject) Width() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("width"))
 	return rv
 }
 
@@ -129,26 +129,26 @@ func (c_ CopyMachineTransitionObject) Opacity() float32 {
 	return rv
 }
 
-func (c_ CopyMachineTransitionObject) HasSetWidth() bool {
-	return c_.RespondsToSelector(objc.Sel("setWidth:"))
+func (c_ CopyMachineTransitionObject) HasSetExtent() bool {
+	return c_.RespondsToSelector(objc.Sel("setExtent:"))
 }
 
-// The width of the copier light. [Full Topic]
+// A rectangle that defines the extent of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
-func (c_ CopyMachineTransitionObject) SetWidth(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228191-extent?language=objc
+func (c_ CopyMachineTransitionObject) SetExtent(value coregraphics.Rect) {
+	objc.Call[objc.Void](c_, objc.Sel("setExtent:"), value)
 }
 
-func (c_ CopyMachineTransitionObject) HasWidth() bool {
-	return c_.RespondsToSelector(objc.Sel("width"))
+func (c_ CopyMachineTransitionObject) HasExtent() bool {
+	return c_.RespondsToSelector(objc.Sel("extent"))
 }
 
-// The width of the copier light. [Full Topic]
+// A rectangle that defines the extent of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
-func (c_ CopyMachineTransitionObject) Width() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228191-extent?language=objc
+func (c_ CopyMachineTransitionObject) Extent() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("extent"))
 	return rv
 }
 

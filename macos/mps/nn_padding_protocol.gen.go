@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding?language=objc
 type PNNPadding interface {
 	// optional
-	PaddingMethod() NNPaddingMethod
-	HasPaddingMethod() bool
-
-	// optional
 	DestinationImageDescriptorForSourceImagesSourceStatesForKernelSuggestedDescriptor(sourceImages []Image, sourceStates []State, kernel Kernel, inDescriptor ImageDescriptor) ImageDescriptor
 	HasDestinationImageDescriptorForSourceImagesSourceStatesForKernelSuggestedDescriptor() bool
 
 	// optional
-	Label() string
-	HasLabel() bool
+	PaddingMethod() NNPaddingMethod
+	HasPaddingMethod() bool
 
 	// optional
 	Inverse() objc.Object
 	HasInverse() bool
+
+	// optional
+	Label() string
+	HasLabel() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,18 +33,6 @@ var _ PNNPadding = (*NNPaddingObject)(nil)
 // A concrete type for the [PNNPadding] protocol.
 type NNPaddingObject struct {
 	objc.Object
-}
-
-func (n_ NNPaddingObject) HasPaddingMethod() bool {
-	return n_.RespondsToSelector(objc.Sel("paddingMethod"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2866950-paddingmethod?language=objc
-func (n_ NNPaddingObject) PaddingMethod() NNPaddingMethod {
-	rv := objc.Call[NNPaddingMethod](n_, objc.Sel("paddingMethod"))
-	return rv
 }
 
 func (n_ NNPaddingObject) HasDestinationImageDescriptorForSourceImagesSourceStatesForKernelSuggestedDescriptor() bool {
@@ -59,15 +47,15 @@ func (n_ NNPaddingObject) DestinationImageDescriptorForSourceImagesSourceStatesF
 	return rv
 }
 
-func (n_ NNPaddingObject) HasLabel() bool {
-	return n_.RespondsToSelector(objc.Sel("label"))
+func (n_ NNPaddingObject) HasPaddingMethod() bool {
+	return n_.RespondsToSelector(objc.Sel("paddingMethod"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2889870-label?language=objc
-func (n_ NNPaddingObject) Label() string {
-	rv := objc.Call[string](n_, objc.Sel("label"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2866950-paddingmethod?language=objc
+func (n_ NNPaddingObject) PaddingMethod() NNPaddingMethod {
+	rv := objc.Call[NNPaddingMethod](n_, objc.Sel("paddingMethod"))
 	return rv
 }
 
@@ -80,5 +68,17 @@ func (n_ NNPaddingObject) HasInverse() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2942456-inverse?language=objc
 func (n_ NNPaddingObject) Inverse() objc.Object {
 	rv := objc.Call[objc.Object](n_, objc.Sel("inverse"))
+	return rv
+}
+
+func (n_ NNPaddingObject) HasLabel() bool {
+	return n_.RespondsToSelector(objc.Sel("label"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2889870-label?language=objc
+func (n_ NNPaddingObject) Label() string {
+	rv := objc.Call[string](n_, objc.Sel("label"))
 	return rv
 }

@@ -13,88 +13,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer?language=objc
 type PCommandBuffer interface {
 	// optional
-	PresentDrawable(drawable DrawableObject)
-	HasPresentDrawable() bool
-
-	// optional
-	WaitUntilScheduled()
-	HasWaitUntilScheduled() bool
-
-	// optional
 	Enqueue()
 	HasEnqueue() bool
-
-	// optional
-	ComputeCommandEncoderWithDispatchType(dispatchType DispatchType) ComputeCommandEncoderObject
-	HasComputeCommandEncoderWithDispatchType() bool
-
-	// optional
-	ComputeCommandEncoder() ComputeCommandEncoderObject
-	HasComputeCommandEncoder() bool
 
 	// optional
 	EncodeSignalEventValue(event EventObject, value uint64)
 	HasEncodeSignalEventValue() bool
 
 	// optional
-	Commit()
-	HasCommit() bool
-
-	// optional
-	PopDebugGroup()
-	HasPopDebugGroup() bool
-
-	// optional
-	ComputeCommandEncoderWithDescriptor(computePassDescriptor ComputePassDescriptor) ComputeCommandEncoderObject
-	HasComputeCommandEncoderWithDescriptor() bool
-
-	// optional
-	ParallelRenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) ParallelRenderCommandEncoderObject
-	HasParallelRenderCommandEncoderWithDescriptor() bool
-
-	// optional
-	EncodeWaitForEventValue(event EventObject, value uint64)
-	HasEncodeWaitForEventValue() bool
-
-	// optional
-	BlitCommandEncoder() BlitCommandEncoderObject
-	HasBlitCommandEncoder() bool
-
-	// optional
-	ResourceStateCommandEncoder() ResourceStateCommandEncoderObject
-	HasResourceStateCommandEncoder() bool
-
-	// optional
-	RenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) RenderCommandEncoderObject
-	HasRenderCommandEncoderWithDescriptor() bool
-
-	// optional
-	AddCompletedHandler(block CommandBufferHandler)
-	HasAddCompletedHandler() bool
-
-	// optional
-	PresentDrawableAfterMinimumDuration(drawable DrawableObject, duration corefoundation.TimeInterval)
-	HasPresentDrawableAfterMinimumDuration() bool
-
-	// optional
-	PresentDrawableAtTime(drawable DrawableObject, presentationTime corefoundation.TimeInterval)
-	HasPresentDrawableAtTime() bool
-
-	// optional
-	ResourceStateCommandEncoderWithDescriptor(resourceStatePassDescriptor ResourceStatePassDescriptor) ResourceStateCommandEncoderObject
-	HasResourceStateCommandEncoderWithDescriptor() bool
-
-	// optional
-	AccelerationStructureCommandEncoder() AccelerationStructureCommandEncoderObject
-	HasAccelerationStructureCommandEncoder() bool
-
-	// optional
-	AddScheduledHandler(block CommandBufferHandler)
-	HasAddScheduledHandler() bool
-
-	// optional
 	WaitUntilCompleted()
 	HasWaitUntilCompleted() bool
+
+	// optional
+	PresentDrawable(drawable DrawableObject)
+	HasPresentDrawable() bool
 
 	// optional
 	PushDebugGroup(string_ string)
@@ -105,8 +37,104 @@ type PCommandBuffer interface {
 	HasBlitCommandEncoderWithDescriptor() bool
 
 	// optional
+	BlitCommandEncoder() BlitCommandEncoderObject
+	HasBlitCommandEncoder() bool
+
+	// optional
+	ComputeCommandEncoder() ComputeCommandEncoderObject
+	HasComputeCommandEncoder() bool
+
+	// optional
+	ParallelRenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) ParallelRenderCommandEncoderObject
+	HasParallelRenderCommandEncoderWithDescriptor() bool
+
+	// optional
+	EncodeWaitForEventValue(event EventObject, value uint64)
+	HasEncodeWaitForEventValue() bool
+
+	// optional
+	Commit()
+	HasCommit() bool
+
+	// optional
+	ComputeCommandEncoderWithDescriptor(computePassDescriptor ComputePassDescriptor) ComputeCommandEncoderObject
+	HasComputeCommandEncoderWithDescriptor() bool
+
+	// optional
+	ResourceStateCommandEncoder() ResourceStateCommandEncoderObject
+	HasResourceStateCommandEncoder() bool
+
+	// optional
+	AddCompletedHandler(block CommandBufferHandler)
+	HasAddCompletedHandler() bool
+
+	// optional
+	AccelerationStructureCommandEncoder() AccelerationStructureCommandEncoderObject
+	HasAccelerationStructureCommandEncoder() bool
+
+	// optional
+	PopDebugGroup()
+	HasPopDebugGroup() bool
+
+	// optional
+	ResourceStateCommandEncoderWithDescriptor(resourceStatePassDescriptor ResourceStatePassDescriptor) ResourceStateCommandEncoderObject
+	HasResourceStateCommandEncoderWithDescriptor() bool
+
+	// optional
+	RenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) RenderCommandEncoderObject
+	HasRenderCommandEncoderWithDescriptor() bool
+
+	// optional
+	AddScheduledHandler(block CommandBufferHandler)
+	HasAddScheduledHandler() bool
+
+	// optional
+	ComputeCommandEncoderWithDispatchType(dispatchType DispatchType) ComputeCommandEncoderObject
+	HasComputeCommandEncoderWithDispatchType() bool
+
+	// optional
+	WaitUntilScheduled()
+	HasWaitUntilScheduled() bool
+
+	// optional
+	RetainedReferences() bool
+	HasRetainedReferences() bool
+
+	// optional
+	GPUStartTime() corefoundation.TimeInterval
+	HasGPUStartTime() bool
+
+	// optional
+	CommandQueue() CommandQueueObject
+	HasCommandQueue() bool
+
+	// optional
+	Error() foundation.Error
+	HasError() bool
+
+	// optional
+	GPUEndTime() corefoundation.TimeInterval
+	HasGPUEndTime() bool
+
+	// optional
 	Logs() LogContainerObject
 	HasLogs() bool
+
+	// optional
+	KernelStartTime() corefoundation.TimeInterval
+	HasKernelStartTime() bool
+
+	// optional
+	Device() DeviceObject
+	HasDevice() bool
+
+	// optional
+	ErrorOptions() CommandBufferErrorOption
+	HasErrorOptions() bool
+
+	// optional
+	KernelEndTime() corefoundation.TimeInterval
+	HasKernelEndTime() bool
 
 	// optional
 	SetLabel(value string)
@@ -119,42 +147,6 @@ type PCommandBuffer interface {
 	// optional
 	Status() CommandBufferStatus
 	HasStatus() bool
-
-	// optional
-	ErrorOptions() CommandBufferErrorOption
-	HasErrorOptions() bool
-
-	// optional
-	RetainedReferences() bool
-	HasRetainedReferences() bool
-
-	// optional
-	GPUStartTime() corefoundation.TimeInterval
-	HasGPUStartTime() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
-
-	// optional
-	KernelEndTime() corefoundation.TimeInterval
-	HasKernelEndTime() bool
-
-	// optional
-	CommandQueue() CommandQueueObject
-	HasCommandQueue() bool
-
-	// optional
-	KernelStartTime() corefoundation.TimeInterval
-	HasKernelStartTime() bool
-
-	// optional
-	Error() foundation.Error
-	HasError() bool
-
-	// optional
-	GPUEndTime() corefoundation.TimeInterval
-	HasGPUEndTime() bool
 }
 
 // ensure impl type implements protocol interface
@@ -163,29 +155,6 @@ var _ PCommandBuffer = (*CommandBufferObject)(nil)
 // A concrete type for the [PCommandBuffer] protocol.
 type CommandBufferObject struct {
 	objc.Object
-}
-
-func (c_ CommandBufferObject) HasPresentDrawable() bool {
-	return c_.RespondsToSelector(objc.Sel("presentDrawable:"))
-}
-
-// Presents a drawable as early as possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443029-presentdrawable?language=objc
-func (c_ CommandBufferObject) PresentDrawable(drawable DrawableObject) {
-	po0 := objc.WrapAsProtocol("MTLDrawable", drawable)
-	objc.Call[objc.Void](c_, objc.Sel("presentDrawable:"), po0)
-}
-
-func (c_ CommandBufferObject) HasWaitUntilScheduled() bool {
-	return c_.RespondsToSelector(objc.Sel("waitUntilScheduled"))
-}
-
-// Blocks the current thread until the command queue schedules the buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443036-waituntilscheduled?language=objc
-func (c_ CommandBufferObject) WaitUntilScheduled() {
-	objc.Call[objc.Void](c_, objc.Sel("waitUntilScheduled"))
 }
 
 func (c_ CommandBufferObject) HasEnqueue() bool {
@@ -197,30 +166,6 @@ func (c_ CommandBufferObject) HasEnqueue() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443019-enqueue?language=objc
 func (c_ CommandBufferObject) Enqueue() {
 	objc.Call[objc.Void](c_, objc.Sel("enqueue"))
-}
-
-func (c_ CommandBufferObject) HasComputeCommandEncoderWithDispatchType() bool {
-	return c_.RespondsToSelector(objc.Sel("computeCommandEncoderWithDispatchType:"))
-}
-
-// Creates a compute command encoder with a dispatch type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2966541-computecommandencoderwithdispatc?language=objc
-func (c_ CommandBufferObject) ComputeCommandEncoderWithDispatchType(dispatchType DispatchType) ComputeCommandEncoderObject {
-	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDispatchType:"), dispatchType)
-	return rv
-}
-
-func (c_ CommandBufferObject) HasComputeCommandEncoder() bool {
-	return c_.RespondsToSelector(objc.Sel("computeCommandEncoder"))
-}
-
-// Creates a compute command encoder that uses default settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443044-computecommandencoder?language=objc
-func (c_ CommandBufferObject) ComputeCommandEncoder() ComputeCommandEncoderObject {
-	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoder"))
-	return rv
 }
 
 func (c_ CommandBufferObject) HasEncodeSignalEventValue() bool {
@@ -235,37 +180,73 @@ func (c_ CommandBufferObject) EncodeSignalEventValue(event EventObject, value ui
 	objc.Call[objc.Void](c_, objc.Sel("encodeSignalEvent:value:"), po0, value)
 }
 
-func (c_ CommandBufferObject) HasCommit() bool {
-	return c_.RespondsToSelector(objc.Sel("commit"))
+func (c_ CommandBufferObject) HasWaitUntilCompleted() bool {
+	return c_.RespondsToSelector(objc.Sel("waitUntilCompleted"))
 }
 
-// Submits the command buffer to run on the GPU. [Full Topic]
+// Blocks the current thread until the GPU finishes executing the command buffer and all of its completion handlers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443003-commit?language=objc
-func (c_ CommandBufferObject) Commit() {
-	objc.Call[objc.Void](c_, objc.Sel("commit"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443039-waituntilcompleted?language=objc
+func (c_ CommandBufferObject) WaitUntilCompleted() {
+	objc.Call[objc.Void](c_, objc.Sel("waitUntilCompleted"))
 }
 
-func (c_ CommandBufferObject) HasPopDebugGroup() bool {
-	return c_.RespondsToSelector(objc.Sel("popDebugGroup"))
+func (c_ CommandBufferObject) HasPresentDrawable() bool {
+	return c_.RespondsToSelector(objc.Sel("presentDrawable:"))
 }
 
-// Marks the end of a debug group and, if applicable, restores the previous group from a stack. [Full Topic]
+// Presents a drawable as early as possible. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2869549-popdebuggroup?language=objc
-func (c_ CommandBufferObject) PopDebugGroup() {
-	objc.Call[objc.Void](c_, objc.Sel("popDebugGroup"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443029-presentdrawable?language=objc
+func (c_ CommandBufferObject) PresentDrawable(drawable DrawableObject) {
+	po0 := objc.WrapAsProtocol("MTLDrawable", drawable)
+	objc.Call[objc.Void](c_, objc.Sel("presentDrawable:"), po0)
 }
 
-func (c_ CommandBufferObject) HasComputeCommandEncoderWithDescriptor() bool {
-	return c_.RespondsToSelector(objc.Sel("computeCommandEncoderWithDescriptor:"))
+func (c_ CommandBufferObject) HasPushDebugGroup() bool {
+	return c_.RespondsToSelector(objc.Sel("pushDebugGroup:"))
 }
 
-// Creates a compute command encoder from a descriptor. [Full Topic]
+// Marks the beginning of a debug group and gives it an identifying label, which temporarily replaces the previous group, if applicable. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564432-computecommandencoderwithdescrip?language=objc
-func (c_ CommandBufferObject) ComputeCommandEncoderWithDescriptor(computePassDescriptor ComputePassDescriptor) ComputeCommandEncoderObject {
-	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDescriptor:"), computePassDescriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2869550-pushdebuggroup?language=objc
+func (c_ CommandBufferObject) PushDebugGroup(string_ string) {
+	objc.Call[objc.Void](c_, objc.Sel("pushDebugGroup:"), string_)
+}
+
+func (c_ CommandBufferObject) HasBlitCommandEncoderWithDescriptor() bool {
+	return c_.RespondsToSelector(objc.Sel("blitCommandEncoderWithDescriptor:"))
+}
+
+// Creates a block information transfer (blit) encoder from a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564431-blitcommandencoderwithdescriptor?language=objc
+func (c_ CommandBufferObject) BlitCommandEncoderWithDescriptor(blitPassDescriptor BlitPassDescriptor) BlitCommandEncoderObject {
+	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoderWithDescriptor:"), blitPassDescriptor)
+	return rv
+}
+
+func (c_ CommandBufferObject) HasBlitCommandEncoder() bool {
+	return c_.RespondsToSelector(objc.Sel("blitCommandEncoder"))
+}
+
+// Creates a block information transfer (blit) encoder. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443001-blitcommandencoder?language=objc
+func (c_ CommandBufferObject) BlitCommandEncoder() BlitCommandEncoderObject {
+	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoder"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasComputeCommandEncoder() bool {
+	return c_.RespondsToSelector(objc.Sel("computeCommandEncoder"))
+}
+
+// Creates a compute command encoder that uses default settings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443044-computecommandencoder?language=objc
+func (c_ CommandBufferObject) ComputeCommandEncoder() ComputeCommandEncoderObject {
+	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoder"))
 	return rv
 }
 
@@ -293,15 +274,26 @@ func (c_ CommandBufferObject) EncodeWaitForEventValue(event EventObject, value u
 	objc.Call[objc.Void](c_, objc.Sel("encodeWaitForEvent:value:"), po0, value)
 }
 
-func (c_ CommandBufferObject) HasBlitCommandEncoder() bool {
-	return c_.RespondsToSelector(objc.Sel("blitCommandEncoder"))
+func (c_ CommandBufferObject) HasCommit() bool {
+	return c_.RespondsToSelector(objc.Sel("commit"))
 }
 
-// Creates a block information transfer (blit) encoder. [Full Topic]
+// Submits the command buffer to run on the GPU. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443001-blitcommandencoder?language=objc
-func (c_ CommandBufferObject) BlitCommandEncoder() BlitCommandEncoderObject {
-	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoder"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443003-commit?language=objc
+func (c_ CommandBufferObject) Commit() {
+	objc.Call[objc.Void](c_, objc.Sel("commit"))
+}
+
+func (c_ CommandBufferObject) HasComputeCommandEncoderWithDescriptor() bool {
+	return c_.RespondsToSelector(objc.Sel("computeCommandEncoderWithDescriptor:"))
+}
+
+// Creates a compute command encoder from a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564432-computecommandencoderwithdescrip?language=objc
+func (c_ CommandBufferObject) ComputeCommandEncoderWithDescriptor(computePassDescriptor ComputePassDescriptor) ComputeCommandEncoderObject {
+	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDescriptor:"), computePassDescriptor)
 	return rv
 }
 
@@ -317,18 +309,6 @@ func (c_ CommandBufferObject) ResourceStateCommandEncoder() ResourceStateCommand
 	return rv
 }
 
-func (c_ CommandBufferObject) HasRenderCommandEncoderWithDescriptor() bool {
-	return c_.RespondsToSelector(objc.Sel("renderCommandEncoderWithDescriptor:"))
-}
-
-// Creates a render command encoder from a descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442999-rendercommandencoderwithdescript?language=objc
-func (c_ CommandBufferObject) RenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) RenderCommandEncoderObject {
-	rv := objc.Call[RenderCommandEncoderObject](c_, objc.Sel("renderCommandEncoderWithDescriptor:"), renderPassDescriptor)
-	return rv
-}
-
 func (c_ CommandBufferObject) HasAddCompletedHandler() bool {
 	return c_.RespondsToSelector(objc.Sel("addCompletedHandler:"))
 }
@@ -338,42 +318,6 @@ func (c_ CommandBufferObject) HasAddCompletedHandler() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442997-addcompletedhandler?language=objc
 func (c_ CommandBufferObject) AddCompletedHandler(block CommandBufferHandler) {
 	objc.Call[objc.Void](c_, objc.Sel("addCompletedHandler:"), block)
-}
-
-func (c_ CommandBufferObject) HasPresentDrawableAfterMinimumDuration() bool {
-	return c_.RespondsToSelector(objc.Sel("presentDrawable:afterMinimumDuration:"))
-}
-
-// Presents a drawable after the system presents the previous drawable for an amount of time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2806849-presentdrawable?language=objc
-func (c_ CommandBufferObject) PresentDrawableAfterMinimumDuration(drawable DrawableObject, duration corefoundation.TimeInterval) {
-	po0 := objc.WrapAsProtocol("MTLDrawable", drawable)
-	objc.Call[objc.Void](c_, objc.Sel("presentDrawable:afterMinimumDuration:"), po0, duration)
-}
-
-func (c_ CommandBufferObject) HasPresentDrawableAtTime() bool {
-	return c_.RespondsToSelector(objc.Sel("presentDrawable:atTime:"))
-}
-
-// Presents a drawable at a specific time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442989-presentdrawable?language=objc
-func (c_ CommandBufferObject) PresentDrawableAtTime(drawable DrawableObject, presentationTime corefoundation.TimeInterval) {
-	po0 := objc.WrapAsProtocol("MTLDrawable", drawable)
-	objc.Call[objc.Void](c_, objc.Sel("presentDrawable:atTime:"), po0, presentationTime)
-}
-
-func (c_ CommandBufferObject) HasResourceStateCommandEncoderWithDescriptor() bool {
-	return c_.RespondsToSelector(objc.Sel("resourceStateCommandEncoderWithDescriptor:"))
-}
-
-// Creates a resource state command encoder from a descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3566536-resourcestatecommandencoderwithd?language=objc
-func (c_ CommandBufferObject) ResourceStateCommandEncoderWithDescriptor(resourceStatePassDescriptor ResourceStatePassDescriptor) ResourceStateCommandEncoderObject {
-	rv := objc.Call[ResourceStateCommandEncoderObject](c_, objc.Sel("resourceStateCommandEncoderWithDescriptor:"), resourceStatePassDescriptor)
-	return rv
 }
 
 func (c_ CommandBufferObject) HasAccelerationStructureCommandEncoder() bool {
@@ -388,6 +332,41 @@ func (c_ CommandBufferObject) AccelerationStructureCommandEncoder() Acceleration
 	return rv
 }
 
+func (c_ CommandBufferObject) HasPopDebugGroup() bool {
+	return c_.RespondsToSelector(objc.Sel("popDebugGroup"))
+}
+
+// Marks the end of a debug group and, if applicable, restores the previous group from a stack. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2869549-popdebuggroup?language=objc
+func (c_ CommandBufferObject) PopDebugGroup() {
+	objc.Call[objc.Void](c_, objc.Sel("popDebugGroup"))
+}
+
+func (c_ CommandBufferObject) HasResourceStateCommandEncoderWithDescriptor() bool {
+	return c_.RespondsToSelector(objc.Sel("resourceStateCommandEncoderWithDescriptor:"))
+}
+
+// Creates a resource state command encoder from a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3566536-resourcestatecommandencoderwithd?language=objc
+func (c_ CommandBufferObject) ResourceStateCommandEncoderWithDescriptor(resourceStatePassDescriptor ResourceStatePassDescriptor) ResourceStateCommandEncoderObject {
+	rv := objc.Call[ResourceStateCommandEncoderObject](c_, objc.Sel("resourceStateCommandEncoderWithDescriptor:"), resourceStatePassDescriptor)
+	return rv
+}
+
+func (c_ CommandBufferObject) HasRenderCommandEncoderWithDescriptor() bool {
+	return c_.RespondsToSelector(objc.Sel("renderCommandEncoderWithDescriptor:"))
+}
+
+// Creates a render command encoder from a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442999-rendercommandencoderwithdescript?language=objc
+func (c_ CommandBufferObject) RenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) RenderCommandEncoderObject {
+	rv := objc.Call[RenderCommandEncoderObject](c_, objc.Sel("renderCommandEncoderWithDescriptor:"), renderPassDescriptor)
+	return rv
+}
+
 func (c_ CommandBufferObject) HasAddScheduledHandler() bool {
 	return c_.RespondsToSelector(objc.Sel("addScheduledHandler:"))
 }
@@ -399,37 +378,86 @@ func (c_ CommandBufferObject) AddScheduledHandler(block CommandBufferHandler) {
 	objc.Call[objc.Void](c_, objc.Sel("addScheduledHandler:"), block)
 }
 
-func (c_ CommandBufferObject) HasWaitUntilCompleted() bool {
-	return c_.RespondsToSelector(objc.Sel("waitUntilCompleted"))
+func (c_ CommandBufferObject) HasComputeCommandEncoderWithDispatchType() bool {
+	return c_.RespondsToSelector(objc.Sel("computeCommandEncoderWithDispatchType:"))
 }
 
-// Blocks the current thread until the GPU finishes executing the command buffer and all of its completion handlers. [Full Topic]
+// Creates a compute command encoder with a dispatch type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443039-waituntilcompleted?language=objc
-func (c_ CommandBufferObject) WaitUntilCompleted() {
-	objc.Call[objc.Void](c_, objc.Sel("waitUntilCompleted"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2966541-computecommandencoderwithdispatc?language=objc
+func (c_ CommandBufferObject) ComputeCommandEncoderWithDispatchType(dispatchType DispatchType) ComputeCommandEncoderObject {
+	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDispatchType:"), dispatchType)
+	return rv
 }
 
-func (c_ CommandBufferObject) HasPushDebugGroup() bool {
-	return c_.RespondsToSelector(objc.Sel("pushDebugGroup:"))
+func (c_ CommandBufferObject) HasWaitUntilScheduled() bool {
+	return c_.RespondsToSelector(objc.Sel("waitUntilScheduled"))
 }
 
-// Marks the beginning of a debug group and gives it an identifying label, which temporarily replaces the previous group, if applicable. [Full Topic]
+// Blocks the current thread until the command queue schedules the buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/2869550-pushdebuggroup?language=objc
-func (c_ CommandBufferObject) PushDebugGroup(string_ string) {
-	objc.Call[objc.Void](c_, objc.Sel("pushDebugGroup:"), string_)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443036-waituntilscheduled?language=objc
+func (c_ CommandBufferObject) WaitUntilScheduled() {
+	objc.Call[objc.Void](c_, objc.Sel("waitUntilScheduled"))
 }
 
-func (c_ CommandBufferObject) HasBlitCommandEncoderWithDescriptor() bool {
-	return c_.RespondsToSelector(objc.Sel("blitCommandEncoderWithDescriptor:"))
+func (c_ CommandBufferObject) HasRetainedReferences() bool {
+	return c_.RespondsToSelector(objc.Sel("retainedReferences"))
 }
 
-// Creates a block information transfer (blit) encoder from a descriptor. [Full Topic]
+// A Boolean value that indicates whether the command buffer maintains strong references to the resources it uses. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564431-blitcommandencoderwithdescriptor?language=objc
-func (c_ CommandBufferObject) BlitCommandEncoderWithDescriptor(blitPassDescriptor BlitPassDescriptor) BlitCommandEncoderObject {
-	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoderWithDescriptor:"), blitPassDescriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443011-retainedreferences?language=objc
+func (c_ CommandBufferObject) RetainedReferences() bool {
+	rv := objc.Call[bool](c_, objc.Sel("retainedReferences"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasGPUStartTime() bool {
+	return c_.RespondsToSelector(objc.Sel("GPUStartTime"))
+}
+
+// The host time, in seconds, when the GPU starts command buffer execution. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639924-gpustarttime?language=objc
+func (c_ CommandBufferObject) GPUStartTime() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("GPUStartTime"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasCommandQueue() bool {
+	return c_.RespondsToSelector(objc.Sel("commandQueue"))
+}
+
+// The command queue that creates the command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443015-commandqueue?language=objc
+func (c_ CommandBufferObject) CommandQueue() CommandQueueObject {
+	rv := objc.Call[CommandQueueObject](c_, objc.Sel("commandQueue"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasError() bool {
+	return c_.RespondsToSelector(objc.Sel("error"))
+}
+
+// A description of an error when the GPU encounters an issue as it runs the command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443040-error?language=objc
+func (c_ CommandBufferObject) Error() foundation.Error {
+	rv := objc.Call[foundation.Error](c_, objc.Sel("error"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasGPUEndTime() bool {
+	return c_.RespondsToSelector(objc.Sel("GPUEndTime"))
+}
+
+// The host time, in seconds, when the GPU finishes execution of the command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639926-gpuendtime?language=objc
+func (c_ CommandBufferObject) GPUEndTime() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("GPUEndTime"))
 	return rv
 }
 
@@ -442,6 +470,54 @@ func (c_ CommandBufferObject) HasLogs() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3553939-logs?language=objc
 func (c_ CommandBufferObject) Logs() LogContainerObject {
 	rv := objc.Call[LogContainerObject](c_, objc.Sel("logs"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasKernelStartTime() bool {
+	return c_.RespondsToSelector(objc.Sel("kernelStartTime"))
+}
+
+// The host time, in seconds, when the CPU begins to schedule the command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639925-kernelstarttime?language=objc
+func (c_ CommandBufferObject) KernelStartTime() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("kernelStartTime"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The GPU device that indirectly owns the command buffer because you create it from a command queue the device also owns. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442995-device?language=objc
+func (c_ CommandBufferObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasErrorOptions() bool {
+	return c_.RespondsToSelector(objc.Sel("errorOptions"))
+}
+
+// Settings that determine which information the command buffer records about execution errors, and how it does it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3553938-erroroptions?language=objc
+func (c_ CommandBufferObject) ErrorOptions() CommandBufferErrorOption {
+	rv := objc.Call[CommandBufferErrorOption](c_, objc.Sel("errorOptions"))
+	return rv
+}
+
+func (c_ CommandBufferObject) HasKernelEndTime() bool {
+	return c_.RespondsToSelector(objc.Sel("kernelEndTime"))
+}
+
+// The host time, in seconds, when the CPU finishes scheduling the command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1640027-kernelendtime?language=objc
+func (c_ CommandBufferObject) KernelEndTime() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("kernelEndTime"))
 	return rv
 }
 
@@ -477,113 +553,5 @@ func (c_ CommandBufferObject) HasStatus() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443048-status?language=objc
 func (c_ CommandBufferObject) Status() CommandBufferStatus {
 	rv := objc.Call[CommandBufferStatus](c_, objc.Sel("status"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasErrorOptions() bool {
-	return c_.RespondsToSelector(objc.Sel("errorOptions"))
-}
-
-// Settings that determine which information the command buffer records about execution errors, and how it does it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3553938-erroroptions?language=objc
-func (c_ CommandBufferObject) ErrorOptions() CommandBufferErrorOption {
-	rv := objc.Call[CommandBufferErrorOption](c_, objc.Sel("errorOptions"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasRetainedReferences() bool {
-	return c_.RespondsToSelector(objc.Sel("retainedReferences"))
-}
-
-// A Boolean value that indicates whether the command buffer maintains strong references to the resources it uses. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443011-retainedreferences?language=objc
-func (c_ CommandBufferObject) RetainedReferences() bool {
-	rv := objc.Call[bool](c_, objc.Sel("retainedReferences"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasGPUStartTime() bool {
-	return c_.RespondsToSelector(objc.Sel("GPUStartTime"))
-}
-
-// The host time, in seconds, when the GPU starts command buffer execution. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639924-gpustarttime?language=objc
-func (c_ CommandBufferObject) GPUStartTime() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("GPUStartTime"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The GPU device that indirectly owns the command buffer because you create it from a command queue the device also owns. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442995-device?language=objc
-func (c_ CommandBufferObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasKernelEndTime() bool {
-	return c_.RespondsToSelector(objc.Sel("kernelEndTime"))
-}
-
-// The host time, in seconds, when the CPU finishes scheduling the command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1640027-kernelendtime?language=objc
-func (c_ CommandBufferObject) KernelEndTime() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("kernelEndTime"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasCommandQueue() bool {
-	return c_.RespondsToSelector(objc.Sel("commandQueue"))
-}
-
-// The command queue that creates the command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443015-commandqueue?language=objc
-func (c_ CommandBufferObject) CommandQueue() CommandQueueObject {
-	rv := objc.Call[CommandQueueObject](c_, objc.Sel("commandQueue"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasKernelStartTime() bool {
-	return c_.RespondsToSelector(objc.Sel("kernelStartTime"))
-}
-
-// The host time, in seconds, when the CPU begins to schedule the command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639925-kernelstarttime?language=objc
-func (c_ CommandBufferObject) KernelStartTime() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("kernelStartTime"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasError() bool {
-	return c_.RespondsToSelector(objc.Sel("error"))
-}
-
-// A description of an error when the GPU encounters an issue as it runs the command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443040-error?language=objc
-func (c_ CommandBufferObject) Error() foundation.Error {
-	rv := objc.Call[foundation.Error](c_, objc.Sel("error"))
-	return rv
-}
-
-func (c_ CommandBufferObject) HasGPUEndTime() bool {
-	return c_.RespondsToSelector(objc.Sel("GPUEndTime"))
-}
-
-// The host time, in seconds, when the GPU finishes execution of the command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1639926-gpuendtime?language=objc
-func (c_ CommandBufferObject) GPUEndTime() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](c_, objc.Sel("GPUEndTime"))
 	return rv
 }

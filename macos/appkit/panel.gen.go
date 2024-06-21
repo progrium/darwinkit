@@ -19,10 +19,10 @@ type _PanelClass struct {
 // An interface definition for the [Panel] class.
 type IPanel interface {
 	IWindow
-	SetFloatingPanel(value bool)
-	SetWorksWhenModal(value bool)
 	BecomesKeyOnlyIfNeeded() bool
 	SetBecomesKeyOnlyIfNeeded(value bool)
+	SetWorksWhenModal(value bool)
+	SetFloatingPanel(value bool)
 }
 
 // A special kind of window that typically performs a function that is auxiliary to the main window. [Full Topic]
@@ -84,34 +84,6 @@ func NewPanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.R
 	return instance
 }
 
-func (p_ Panel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Panel {
-	rv := objc.Call[Panel](p_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Panel {
-	instance := PanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
-// A Boolean value that indicates whether the receiver is a floating panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1531901-floatingpanel?language=objc
-func (p_ Panel) SetFloatingPanel(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setFloatingPanel:"), value)
-}
-
-// A Boolean value that indicates whether the panel receives keyboard and mouse events even when some other window is being run modally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1525549-workswhenmodal?language=objc
-func (p_ Panel) SetWorksWhenModal(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setWorksWhenModal:"), value)
-}
-
 // A Boolean value that indicates whether the receiver becomes the key window only when needed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1528836-becomeskeyonlyifneeded?language=objc
@@ -125,4 +97,18 @@ func (p_ Panel) BecomesKeyOnlyIfNeeded() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1528836-becomeskeyonlyifneeded?language=objc
 func (p_ Panel) SetBecomesKeyOnlyIfNeeded(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setBecomesKeyOnlyIfNeeded:"), value)
+}
+
+// A Boolean value that indicates whether the panel receives keyboard and mouse events even when some other window is being run modally. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1525549-workswhenmodal?language=objc
+func (p_ Panel) SetWorksWhenModal(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setWorksWhenModal:"), value)
+}
+
+// A Boolean value that indicates whether the receiver is a floating panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspanel/1531901-floatingpanel?language=objc
+func (p_ Panel) SetFloatingPanel(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setFloatingPanel:"), value)
 }

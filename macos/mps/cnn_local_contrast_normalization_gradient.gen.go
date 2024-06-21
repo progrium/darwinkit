@@ -19,18 +19,18 @@ type _CNNLocalContrastNormalizationGradientClass struct {
 // An interface definition for the [CNNLocalContrastNormalizationGradient] class.
 type ICNNLocalContrastNormalizationGradient interface {
 	ICNNGradientKernel
-	Pm() float32
-	SetPm(value float32)
-	P0() float32
-	SetP0(value float32)
-	Alpha() float32
-	SetAlpha(value float32)
-	Beta() float32
-	SetBeta(value float32)
 	Ps() float32
 	SetPs(value float32)
+	P0() float32
+	SetP0(value float32)
+	Beta() float32
+	SetBeta(value float32)
 	Delta() float32
 	SetDelta(value float32)
+	Pm() float32
+	SetPm(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
 }
 
 // A gradient local-contrast normalization kernel. [Full Topic]
@@ -113,17 +113,17 @@ func CNNLocalContrastNormalizationGradient_CopyWithZoneDevice(zone unsafe.Pointe
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942485-pm?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) Pm() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("pm"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942466-ps?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) Ps() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("ps"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942485-pm?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) SetPm(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942466-ps?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) SetPs(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
 }
 
 //	[Full Topic]
@@ -143,21 +143,6 @@ func (c_ CNNLocalContrastNormalizationGradient) SetP0(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942471-alpha?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) Alpha() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("alpha"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942471-alpha?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) SetAlpha(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942484-beta?language=objc
 func (c_ CNNLocalContrastNormalizationGradient) Beta() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("beta"))
@@ -173,21 +158,6 @@ func (c_ CNNLocalContrastNormalizationGradient) SetBeta(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942466-ps?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) Ps() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("ps"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942466-ps?language=objc
-func (c_ CNNLocalContrastNormalizationGradient) SetPs(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942482-delta?language=objc
 func (c_ CNNLocalContrastNormalizationGradient) Delta() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("delta"))
@@ -199,4 +169,34 @@ func (c_ CNNLocalContrastNormalizationGradient) Delta() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942482-delta?language=objc
 func (c_ CNNLocalContrastNormalizationGradient) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942485-pm?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) Pm() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pm"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942485-pm?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) SetPm(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942471-alpha?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradient/2942471-alpha?language=objc
+func (c_ CNNLocalContrastNormalizationGradient) SetAlpha(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }

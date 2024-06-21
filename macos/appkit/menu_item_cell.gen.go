@@ -20,22 +20,22 @@ type _MenuItemCellClass struct {
 type IMenuItemCell interface {
 	IButtonCell
 	KeyEquivalentRectForBounds(cellFrame foundation.Rect) foundation.Rect
-	DrawBorderAndBackgroundWithFrameInView(cellFrame foundation.Rect, controlView IView)
 	StateImageRectForBounds(cellFrame foundation.Rect) foundation.Rect
 	DrawSeparatorItemWithFrameInView(cellFrame foundation.Rect, controlView IView)
-	DrawKeyEquivalentWithFrameInView(cellFrame foundation.Rect, controlView IView)
 	CalcSize()
+	DrawBorderAndBackgroundWithFrameInView(cellFrame foundation.Rect, controlView IView)
 	DrawStateImageWithFrameInView(cellFrame foundation.Rect, controlView IView)
-	NeedsDisplay() bool
-	SetNeedsDisplay(value bool)
-	ImageWidth() float64
+	DrawKeyEquivalentWithFrameInView(cellFrame foundation.Rect, controlView IView)
+	KeyEquivalentWidth() float64
+	TitleWidth() float64
+	StateImageWidth() float64
 	MenuItem() MenuItem
 	SetMenuItem(value IMenuItem)
-	TitleWidth() float64
 	NeedsSizing() bool
 	SetNeedsSizing(value bool)
-	KeyEquivalentWidth() float64
-	StateImageWidth() float64
+	ImageWidth() float64
+	NeedsDisplay() bool
+	SetNeedsDisplay(value bool)
 }
 
 // An object that handles the measurement and display of a single menu item in its encompassing frame. [Full Topic]
@@ -107,13 +107,6 @@ func (m_ MenuItemCell) KeyEquivalentRectForBounds(cellFrame foundation.Rect) fou
 	return rv
 }
 
-// Draws the borders and background associated with the receiver’s menu item (if any). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498863-drawborderandbackgroundwithframe?language=objc
-func (m_ MenuItemCell) DrawBorderAndBackgroundWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawBorderAndBackgroundWithFrame:inView:"), cellFrame, controlView)
-}
-
 // Returns the rectangle into which the menu item’s state image should be drawn. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498855-stateimagerectforbounds?language=objc
@@ -129,18 +122,18 @@ func (m_ MenuItemCell) DrawSeparatorItemWithFrameInView(cellFrame foundation.Rec
 	objc.Call[objc.Void](m_, objc.Sel("drawSeparatorItemWithFrame:inView:"), cellFrame, controlView)
 }
 
-// Draws the key equivalent associated with the menu item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498851-drawkeyequivalentwithframe?language=objc
-func (m_ MenuItemCell) DrawKeyEquivalentWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawKeyEquivalentWithFrame:inView:"), cellFrame, controlView)
-}
-
 // Calculates the minimum required width and height of the receiver’s menu item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498862-calcsize?language=objc
 func (m_ MenuItemCell) CalcSize() {
 	objc.Call[objc.Void](m_, objc.Sel("calcSize"))
+}
+
+// Draws the borders and background associated with the receiver’s menu item (if any). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498863-drawborderandbackgroundwithframe?language=objc
+func (m_ MenuItemCell) DrawBorderAndBackgroundWithFrameInView(cellFrame foundation.Rect, controlView IView) {
+	objc.Call[objc.Void](m_, objc.Sel("drawBorderAndBackgroundWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Draws the state image associated with the menu item. [Full Topic]
@@ -150,26 +143,34 @@ func (m_ MenuItemCell) DrawStateImageWithFrameInView(cellFrame foundation.Rect, 
 	objc.Call[objc.Void](m_, objc.Sel("drawStateImageWithFrame:inView:"), cellFrame, controlView)
 }
 
-// A Boolean value indicating whether the menu item needs to be displayed. [Full Topic]
+// Draws the key equivalent associated with the menu item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498861-needsdisplay?language=objc
-func (m_ MenuItemCell) NeedsDisplay() bool {
-	rv := objc.Call[bool](m_, objc.Sel("needsDisplay"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498851-drawkeyequivalentwithframe?language=objc
+func (m_ MenuItemCell) DrawKeyEquivalentWithFrameInView(cellFrame foundation.Rect, controlView IView) {
+	objc.Call[objc.Void](m_, objc.Sel("drawKeyEquivalentWithFrame:inView:"), cellFrame, controlView)
+}
+
+// The width of the menu item’s key equivalent string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498874-keyequivalentwidth?language=objc
+func (m_ MenuItemCell) KeyEquivalentWidth() float64 {
+	rv := objc.Call[float64](m_, objc.Sel("keyEquivalentWidth"))
 	return rv
 }
 
-// A Boolean value indicating whether the menu item needs to be displayed. [Full Topic]
+// The width of the menu item’s text, measured in points. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498861-needsdisplay?language=objc
-func (m_ MenuItemCell) SetNeedsDisplay(value bool) {
-	objc.Call[objc.Void](m_, objc.Sel("setNeedsDisplay:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498865-titlewidth?language=objc
+func (m_ MenuItemCell) TitleWidth() float64 {
+	rv := objc.Call[float64](m_, objc.Sel("titleWidth"))
+	return rv
 }
 
-// The width of the image associated with the menu item. [Full Topic]
+// The width of the image used to indicate the state of the menu item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498877-imagewidth?language=objc
-func (m_ MenuItemCell) ImageWidth() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("imageWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498879-stateimagewidth?language=objc
+func (m_ MenuItemCell) StateImageWidth() float64 {
+	rv := objc.Call[float64](m_, objc.Sel("stateImageWidth"))
 	return rv
 }
 
@@ -188,14 +189,6 @@ func (m_ MenuItemCell) SetMenuItem(value IMenuItem) {
 	objc.Call[objc.Void](m_, objc.Sel("setMenuItem:"), value)
 }
 
-// The width of the menu item’s text, measured in points. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498865-titlewidth?language=objc
-func (m_ MenuItemCell) TitleWidth() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("titleWidth"))
-	return rv
-}
-
 // A Boolean value indicating whether the size of the menu needs to be calculated. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498869-needssizing?language=objc
@@ -211,18 +204,25 @@ func (m_ MenuItemCell) SetNeedsSizing(value bool) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeedsSizing:"), value)
 }
 
-// The width of the menu item’s key equivalent string. [Full Topic]
+// The width of the image associated with the menu item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498874-keyequivalentwidth?language=objc
-func (m_ MenuItemCell) KeyEquivalentWidth() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("keyEquivalentWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498877-imagewidth?language=objc
+func (m_ MenuItemCell) ImageWidth() float64 {
+	rv := objc.Call[float64](m_, objc.Sel("imageWidth"))
 	return rv
 }
 
-// The width of the image used to indicate the state of the menu item. [Full Topic]
+// A Boolean value indicating whether the menu item needs to be displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498879-stateimagewidth?language=objc
-func (m_ MenuItemCell) StateImageWidth() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("stateImageWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498861-needsdisplay?language=objc
+func (m_ MenuItemCell) NeedsDisplay() bool {
+	rv := objc.Call[bool](m_, objc.Sel("needsDisplay"))
 	return rv
+}
+
+// A Boolean value indicating whether the menu item needs to be displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498861-needsdisplay?language=objc
+func (m_ MenuItemCell) SetNeedsDisplay(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setNeedsDisplay:"), value)
 }

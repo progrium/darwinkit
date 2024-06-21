@@ -18,12 +18,12 @@ type _URLAuthenticationChallengeClass struct {
 // An interface definition for the [URLAuthenticationChallenge] class.
 type IURLAuthenticationChallenge interface {
 	objc.IObject
-	ProtectionSpace() URLProtectionSpace
-	Sender() URLAuthenticationChallengeSenderObject
-	ProposedCredential() URLCredential
 	Error() Error
-	PreviousFailureCount() int
 	FailureResponse() URLResponse
+	ProposedCredential() URLCredential
+	Sender() URLAuthenticationChallengeSenderObject
+	ProtectionSpace() URLProtectionSpace
+	PreviousFailureCount() int
 }
 
 // A challenge from a server requiring authentication from the client. [Full Topic]
@@ -89,19 +89,19 @@ func (u_ URLAuthenticationChallenge) Init() URLAuthenticationChallenge {
 	return rv
 }
 
-// The receiver’s protection space. [Full Topic]
+// The error object representing the last authentication failure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1410012-protectionspace?language=objc
-func (u_ URLAuthenticationChallenge) ProtectionSpace() URLProtectionSpace {
-	rv := objc.Call[URLProtectionSpace](u_, objc.Sel("protectionSpace"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1413033-error?language=objc
+func (u_ URLAuthenticationChallenge) Error() Error {
+	rv := objc.Call[Error](u_, objc.Sel("error"))
 	return rv
 }
 
-// The sender of the challenge. [Full Topic]
+// The URL response object representing the last authentication failure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1407533-sender?language=objc
-func (u_ URLAuthenticationChallenge) Sender() URLAuthenticationChallengeSenderObject {
-	rv := objc.Call[URLAuthenticationChallengeSenderObject](u_, objc.Sel("sender"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1414978-failureresponse?language=objc
+func (u_ URLAuthenticationChallenge) FailureResponse() URLResponse {
+	rv := objc.Call[URLResponse](u_, objc.Sel("failureResponse"))
 	return rv
 }
 
@@ -113,11 +113,19 @@ func (u_ URLAuthenticationChallenge) ProposedCredential() URLCredential {
 	return rv
 }
 
-// The error object representing the last authentication failure. [Full Topic]
+// The sender of the challenge. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1413033-error?language=objc
-func (u_ URLAuthenticationChallenge) Error() Error {
-	rv := objc.Call[Error](u_, objc.Sel("error"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1407533-sender?language=objc
+func (u_ URLAuthenticationChallenge) Sender() URLAuthenticationChallengeSenderObject {
+	rv := objc.Call[URLAuthenticationChallengeSenderObject](u_, objc.Sel("sender"))
+	return rv
+}
+
+// The receiver’s protection space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1410012-protectionspace?language=objc
+func (u_ URLAuthenticationChallenge) ProtectionSpace() URLProtectionSpace {
+	rv := objc.Call[URLProtectionSpace](u_, objc.Sel("protectionSpace"))
 	return rv
 }
 
@@ -126,13 +134,5 @@ func (u_ URLAuthenticationChallenge) Error() Error {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1416522-previousfailurecount?language=objc
 func (u_ URLAuthenticationChallenge) PreviousFailureCount() int {
 	rv := objc.Call[int](u_, objc.Sel("previousFailureCount"))
-	return rv
-}
-
-// The URL response object representing the last authentication failure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1414978-failureresponse?language=objc
-func (u_ URLAuthenticationChallenge) FailureResponse() URLResponse {
-	rv := objc.Call[URLResponse](u_, objc.Sel("failureResponse"))
 	return rv
 }

@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize?language=objc
 type PCrystallize interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -34,6 +26,14 @@ type PCrystallize interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -42,29 +42,6 @@ var _ PCrystallize = (*CrystallizeObject)(nil)
 // A concrete type for the [PCrystallize] protocol.
 type CrystallizeObject struct {
 	objc.Object
-}
-
-func (c_ CrystallizeObject) HasSetCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The center of the effect as x and y coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228200-center?language=objc
-func (c_ CrystallizeObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
-}
-
-func (c_ CrystallizeObject) HasCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The center of the effect as x and y coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228200-center?language=objc
-func (c_ CrystallizeObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
-	return rv
 }
 
 func (c_ CrystallizeObject) HasSetInputImage() bool {
@@ -110,5 +87,28 @@ func (c_ CrystallizeObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228202-radius?language=objc
 func (c_ CrystallizeObject) Radius() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("radius"))
+	return rv
+}
+
+func (c_ CrystallizeObject) HasSetCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The center of the effect as x and y coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228200-center?language=objc
+func (c_ CrystallizeObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
+}
+
+func (c_ CrystallizeObject) HasCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The center of the effect as x and y coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228200-center?language=objc
+func (c_ CrystallizeObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

@@ -23,12 +23,12 @@ type ICNNConvolutionGradient interface {
 	ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState)
 	ReloadWeightsAndBiasesWithCommandBufferObjectState(commandBufferObject objc.IObject, state ICNNConvolutionWeightsAndBiasesState)
 	DataSource() CNNConvolutionDataSourceObject
+	SourceImageFeatureChannels() uint
 	ChannelMultiplier() uint
-	Groups() uint
 	GradientOption() CNNConvolutionGradientOption
 	SetGradientOption(value CNNConvolutionGradientOption)
-	SourceImageFeatureChannels() uint
 	SourceGradientFeatureChannels() uint
+	Groups() uint
 }
 
 // A gradient convolution kernel. [Full Topic]
@@ -142,17 +142,17 @@ func (c_ CNNConvolutionGradient) DataSource() CNNConvolutionDataSourceObject {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2966658-channelmultiplier?language=objc
-func (c_ CNNConvolutionGradient) ChannelMultiplier() uint {
-	rv := objc.Call[uint](c_, objc.Sel("channelMultiplier"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2947882-sourceimagefeaturechannels?language=objc
+func (c_ CNNConvolutionGradient) SourceImageFeatureChannels() uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceImageFeatureChannels"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2942430-groups?language=objc
-func (c_ CNNConvolutionGradient) Groups() uint {
-	rv := objc.Call[uint](c_, objc.Sel("groups"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2966658-channelmultiplier?language=objc
+func (c_ CNNConvolutionGradient) ChannelMultiplier() uint {
+	rv := objc.Call[uint](c_, objc.Sel("channelMultiplier"))
 	return rv
 }
 
@@ -173,16 +173,16 @@ func (c_ CNNConvolutionGradient) SetGradientOption(value CNNConvolutionGradientO
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2947882-sourceimagefeaturechannels?language=objc
-func (c_ CNNConvolutionGradient) SourceImageFeatureChannels() uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceImageFeatureChannels"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2947880-sourcegradientfeaturechannels?language=objc
+func (c_ CNNConvolutionGradient) SourceGradientFeatureChannels() uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceGradientFeatureChannels"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2947880-sourcegradientfeaturechannels?language=objc
-func (c_ CNNConvolutionGradient) SourceGradientFeatureChannels() uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceGradientFeatureChannels"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiongradient/2942430-groups?language=objc
+func (c_ CNNConvolutionGradient) Groups() uint {
+	rv := objc.Call[uint](c_, objc.Sel("groups"))
 	return rv
 }

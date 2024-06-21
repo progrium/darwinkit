@@ -21,18 +21,18 @@ type _SampleBufferAudioRendererClass struct {
 type ISampleBufferAudioRenderer interface {
 	objc.IObject
 	FlushFromSourceTimeCompletionHandler(time coremedia.Time, completionHandler func(flushSucceeded bool))
+	AllowedAudioSpatializationFormats() AudioSpatializationFormats
+	SetAllowedAudioSpatializationFormats(value AudioSpatializationFormats)
 	Volume() float32
 	SetVolume(value float32)
-	Status() QueuedSampleBufferRenderingStatus
-	IsMuted() bool
-	SetMuted(value bool)
 	Error() foundation.Error
 	AudioTimePitchAlgorithm() AudioTimePitchAlgorithm
 	SetAudioTimePitchAlgorithm(value AudioTimePitchAlgorithm)
+	IsMuted() bool
+	SetMuted(value bool)
 	AudioOutputDeviceUniqueID() string
 	SetAudioOutputDeviceUniqueID(value string)
-	AllowedAudioSpatializationFormats() AudioSpatializationFormats
-	SetAllowedAudioSpatializationFormats(value AudioSpatializationFormats)
+	Status() QueuedSampleBufferRenderingStatus
 }
 
 // An object used to decompress audio and play compressed or uncompressed audio. [Full Topic]
@@ -75,6 +75,21 @@ func (s_ SampleBufferAudioRenderer) FlushFromSourceTimeCompletionHandler(time co
 	objc.Call[objc.Void](s_, objc.Sel("flushFromSourceTime:completionHandler:"), time, completionHandler)
 }
 
+// The source audio channel layouts the audio renderer supports for spatialization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/3750310-allowedaudiospatializationformat?language=objc
+func (s_ SampleBufferAudioRenderer) AllowedAudioSpatializationFormats() AudioSpatializationFormats {
+	rv := objc.Call[AudioSpatializationFormats](s_, objc.Sel("allowedAudioSpatializationFormats"))
+	return rv
+}
+
+// The source audio channel layouts the audio renderer supports for spatialization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/3750310-allowedaudiospatializationformat?language=objc
+func (s_ SampleBufferAudioRenderer) SetAllowedAudioSpatializationFormats(value AudioSpatializationFormats) {
+	objc.Call[objc.Void](s_, objc.Sel("setAllowedAudioSpatializationFormats:"), value)
+}
+
 // The current audio volume for the audio renderer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866179-volume?language=objc
@@ -88,29 +103,6 @@ func (s_ SampleBufferAudioRenderer) Volume() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866179-volume?language=objc
 func (s_ SampleBufferAudioRenderer) SetVolume(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setVolume:"), value)
-}
-
-// The status of the audio renderer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866183-status?language=objc
-func (s_ SampleBufferAudioRenderer) Status() QueuedSampleBufferRenderingStatus {
-	rv := objc.Call[QueuedSampleBufferRenderingStatus](s_, objc.Sel("status"))
-	return rv
-}
-
-// A Boolean value that indicates whether audio for the renderer is in a muted state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866177-muted?language=objc
-func (s_ SampleBufferAudioRenderer) IsMuted() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isMuted"))
-	return rv
-}
-
-// A Boolean value that indicates whether audio for the renderer is in a muted state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866177-muted?language=objc
-func (s_ SampleBufferAudioRenderer) SetMuted(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setMuted:"), value)
 }
 
 // The error that caused the renderer to no longer render sample buffers. [Full Topic]
@@ -136,6 +128,21 @@ func (s_ SampleBufferAudioRenderer) SetAudioTimePitchAlgorithm(value AudioTimePi
 	objc.Call[objc.Void](s_, objc.Sel("setAudioTimePitchAlgorithm:"), value)
 }
 
+// A Boolean value that indicates whether audio for the renderer is in a muted state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866177-muted?language=objc
+func (s_ SampleBufferAudioRenderer) IsMuted() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isMuted"))
+	return rv
+}
+
+// A Boolean value that indicates whether audio for the renderer is in a muted state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866177-muted?language=objc
+func (s_ SampleBufferAudioRenderer) SetMuted(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setMuted:"), value)
+}
+
 // The unique identifier of the output device used to play audio. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866182-audiooutputdeviceuniqueid?language=objc
@@ -151,17 +158,10 @@ func (s_ SampleBufferAudioRenderer) SetAudioOutputDeviceUniqueID(value string) {
 	objc.Call[objc.Void](s_, objc.Sel("setAudioOutputDeviceUniqueID:"), value)
 }
 
-// The source audio channel layouts the audio renderer supports for spatialization. [Full Topic]
+// The status of the audio renderer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/3750310-allowedaudiospatializationformat?language=objc
-func (s_ SampleBufferAudioRenderer) AllowedAudioSpatializationFormats() AudioSpatializationFormats {
-	rv := objc.Call[AudioSpatializationFormats](s_, objc.Sel("allowedAudioSpatializationFormats"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866183-status?language=objc
+func (s_ SampleBufferAudioRenderer) Status() QueuedSampleBufferRenderingStatus {
+	rv := objc.Call[QueuedSampleBufferRenderingStatus](s_, objc.Sel("status"))
 	return rv
-}
-
-// The source audio channel layouts the audio renderer supports for spatialization. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/3750310-allowedaudiospatializationformat?language=objc
-func (s_ SampleBufferAudioRenderer) SetAllowedAudioSpatializationFormats(value AudioSpatializationFormats) {
-	objc.Call[objc.Void](s_, objc.Sel("setAllowedAudioSpatializationFormats:"), value)
 }

@@ -21,21 +21,20 @@ type _SampleBufferRenderSynchronizerClass struct {
 // An interface definition for the [SampleBufferRenderSynchronizer] class.
 type ISampleBufferRenderSynchronizer interface {
 	objc.IObject
-	AddRenderer(renderer PQueuedSampleBufferRendering)
-	AddRendererObject(rendererObject objc.IObject)
+	RemoveTimeObserver(observer objc.IObject)
 	SetRateTimeAtHostTime(rate float32, time coremedia.Time, hostTime coremedia.Time)
+	AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object
+	AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object
 	RemoveRendererAtTimeCompletionHandler(renderer PQueuedSampleBufferRendering, time coremedia.Time, completionHandler func(didRemoveRenderer bool))
 	RemoveRendererObjectAtTimeCompletionHandler(rendererObject objc.IObject, time coremedia.Time, completionHandler func(didRemoveRenderer bool))
-	SetRateTime(rate float32, time coremedia.Time)
-	AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object
+	AddRenderer(renderer PQueuedSampleBufferRendering)
+	AddRendererObject(rendererObject objc.IObject)
 	CurrentTime() coremedia.Time
-	AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object
-	RemoveTimeObserver(observer objc.IObject)
-	Timebase() coremedia.TimebaseRef
 	DelaysRateChangeUntilHasSufficientMediaData() bool
 	SetDelaysRateChangeUntilHasSufficientMediaData(value bool)
 	Rate() float32
 	SetRate(value float32)
+	Timebase() coremedia.TimebaseRef
 	Renderers() []QueuedSampleBufferRenderingObject
 }
 
@@ -72,19 +71,11 @@ func (s_ SampleBufferRenderSynchronizer) Init() SampleBufferRenderSynchronizer {
 	return rv
 }
 
-// Adds a renderer to the list of renderers under the synchronizer's control. [Full Topic]
+// Cancels the specified time observer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867828-addrenderer?language=objc
-func (s_ SampleBufferRenderSynchronizer) AddRenderer(renderer PQueuedSampleBufferRendering) {
-	po0 := objc.WrapAsProtocol("AVQueuedSampleBufferRendering", renderer)
-	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), po0)
-}
-
-// Adds a renderer to the list of renderers under the synchronizer's control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867828-addrenderer?language=objc
-func (s_ SampleBufferRenderSynchronizer) AddRendererObject(rendererObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), rendererObject)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867829-removetimeobserver?language=objc
+func (s_ SampleBufferRenderSynchronizer) RemoveTimeObserver(observer objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("removeTimeObserver:"), observer)
 }
 
 // Sets the playback rate and the relationship between the current time and host time. [Full Topic]
@@ -92,6 +83,22 @@ func (s_ SampleBufferRenderSynchronizer) AddRendererObject(rendererObject objc.I
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/3726157-setrate?language=objc
 func (s_ SampleBufferRenderSynchronizer) SetRateTimeAtHostTime(rate float32, time coremedia.Time, hostTime coremedia.Time) {
 	objc.Call[objc.Void](s_, objc.Sel("setRate:time:atHostTime:"), rate, time, hostTime)
+}
+
+// Requests invocation of a block when specified times are traversed during normal rendering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867824-addboundarytimeobserverfortimes?language=objc
+func (s_ SampleBufferRenderSynchronizer) AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("addBoundaryTimeObserverForTimes:queue:usingBlock:"), times, queue, block)
+	return rv
+}
+
+// Requests invocation of a block during rendering at specified time intervals. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867825-addperiodictimeobserverforinterv?language=objc
+func (s_ SampleBufferRenderSynchronizer) AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("addPeriodicTimeObserverForInterval:queue:usingBlock:"), interval, queue, block)
+	return rv
 }
 
 // Removes a renderer from the synchronizer. [Full Topic]
@@ -109,19 +116,19 @@ func (s_ SampleBufferRenderSynchronizer) RemoveRendererObjectAtTimeCompletionHan
 	objc.Call[objc.Void](s_, objc.Sel("removeRenderer:atTime:completionHandler:"), rendererObject, time, completionHandler)
 }
 
-// Sets the renderer’s time and rate. [Full Topic]
+// Adds a renderer to the list of renderers under the synchronizer's control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867821-setrate?language=objc
-func (s_ SampleBufferRenderSynchronizer) SetRateTime(rate float32, time coremedia.Time) {
-	objc.Call[objc.Void](s_, objc.Sel("setRate:time:"), rate, time)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867828-addrenderer?language=objc
+func (s_ SampleBufferRenderSynchronizer) AddRenderer(renderer PQueuedSampleBufferRendering) {
+	po0 := objc.WrapAsProtocol("AVQueuedSampleBufferRendering", renderer)
+	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), po0)
 }
 
-// Requests invocation of a block when specified times are traversed during normal rendering. [Full Topic]
+// Adds a renderer to the list of renderers under the synchronizer's control. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867824-addboundarytimeobserverfortimes?language=objc
-func (s_ SampleBufferRenderSynchronizer) AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("addBoundaryTimeObserverForTimes:queue:usingBlock:"), times, queue, block)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867828-addrenderer?language=objc
+func (s_ SampleBufferRenderSynchronizer) AddRendererObject(rendererObject objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), rendererObject)
 }
 
 // Returns the current time of the synchronizer. [Full Topic]
@@ -129,29 +136,6 @@ func (s_ SampleBufferRenderSynchronizer) AddBoundaryTimeObserverForTimesQueueUsi
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/3022467-currenttime?language=objc
 func (s_ SampleBufferRenderSynchronizer) CurrentTime() coremedia.Time {
 	rv := objc.Call[coremedia.Time](s_, objc.Sel("currentTime"))
-	return rv
-}
-
-// Requests invocation of a block during rendering at specified time intervals. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867825-addperiodictimeobserverforinterv?language=objc
-func (s_ SampleBufferRenderSynchronizer) AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("addPeriodicTimeObserverForInterval:queue:usingBlock:"), interval, queue, block)
-	return rv
-}
-
-// Cancels the specified time observer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867829-removetimeobserver?language=objc
-func (s_ SampleBufferRenderSynchronizer) RemoveTimeObserver(observer objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("removeTimeObserver:"), observer)
-}
-
-// The synchronizer’s rendering timebase which determines how it interprets timestamps. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867822-timebase?language=objc
-func (s_ SampleBufferRenderSynchronizer) Timebase() coremedia.TimebaseRef {
-	rv := objc.Call[coremedia.TimebaseRef](s_, objc.Sel("timebase"))
 	return rv
 }
 
@@ -183,6 +167,14 @@ func (s_ SampleBufferRenderSynchronizer) Rate() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867823-rate?language=objc
 func (s_ SampleBufferRenderSynchronizer) SetRate(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setRate:"), value)
+}
+
+// The synchronizer’s rendering timebase which determines how it interprets timestamps. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867822-timebase?language=objc
+func (s_ SampleBufferRenderSynchronizer) Timebase() coremedia.TimebaseRef {
+	rv := objc.Call[coremedia.TimebaseRef](s_, objc.Sel("timebase"))
+	return rv
 }
 
 // An array of queued sample buffer renderers currently attached to the synchronizer. [Full Topic]

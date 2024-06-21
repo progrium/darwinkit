@@ -18,8 +18,8 @@ type _FileProviderItemVersionClass struct {
 // An interface definition for the [FileProviderItemVersion] class.
 type IFileProviderItemVersion interface {
 	objc.IObject
-	ContentVersion() []byte
 	MetadataVersion() []byte
+	ContentVersion() []byte
 }
 
 // The version of the item’s content and its metadata. [Full Topic]
@@ -69,14 +69,6 @@ func (f_ FileProviderItemVersion) Init() FileProviderItemVersion {
 	return rv
 }
 
-// An opaque object used to track versions of the item’s content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovideritemversion/3043898-contentversion?language=objc
-func (f_ FileProviderItemVersion) ContentVersion() []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("contentVersion"))
-	return rv
-}
-
 // An opaque object used to track versions of the item’s metadata. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovideritemversion/3043900-metadataversion?language=objc
@@ -98,4 +90,12 @@ func (fc _FileProviderItemVersionClass) BeforeFirstSyncComponent() []byte {
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovideritemversion/3869739-beforefirstsynccomponent?language=objc
 func FileProviderItemVersion_BeforeFirstSyncComponent() []byte {
 	return FileProviderItemVersionClass.BeforeFirstSyncComponent()
+}
+
+// An opaque object used to track versions of the item’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovideritemversion/3043898-contentversion?language=objc
+func (f_ FileProviderItemVersion) ContentVersion() []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("contentVersion"))
+	return rv
 }

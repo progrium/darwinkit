@@ -19,12 +19,11 @@ type _TextAttachmentCellClass struct {
 // An interface definition for the [TextAttachmentCell] class.
 type ITextAttachmentCell interface {
 	ICell
-	CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer ITextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect
-	DrawWithFrameInViewCharacterIndex(cellFrame foundation.Rect, controlView IView, charIndex uint)
-	CellBaselineOffset() foundation.Point
-	DrawWithFrameInViewCharacterIndexLayoutManager(cellFrame foundation.Rect, controlView IView, charIndex uint, layoutManager ILayoutManager)
 	WantsToTrackMouseForEventInRectOfViewAtCharacterIndex(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint) bool
 	WantsToTrackMouse() bool
+	DrawWithFrameInViewCharacterIndex(cellFrame foundation.Rect, controlView IView, charIndex uint)
+	CellBaselineOffset() foundation.Point
+	CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer ITextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect
 	TrackMouseInRectOfViewAtCharacterIndexUntilMouseUp(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint, flag bool) bool
 	Attachment() TextAttachment
 	SetAttachment(value ITextAttachment)
@@ -91,11 +90,19 @@ func NewTextAttachmentCellTextCell(string_ string) TextAttachmentCell {
 	return instance
 }
 
-// Returns the frame of the cell to draw at the specified position in a text container. [Full Topic]
+// Allows an attachment to specify the events for which it tracks the mouse. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508402-cellframefortextcontainer?language=objc
-func (t_ TextAttachmentCell) CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer ITextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), textContainer, lineFrag, position, charIndex)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508399-wantstotrackmouseforevent?language=objc
+func (t_ TextAttachmentCell) WantsToTrackMouseForEventInRectOfViewAtCharacterIndex(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint) bool {
+	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), theEvent, cellFrame, controlView, charIndex)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether the attachment handles mouse events occurring over its image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508415-wantstotrackmouse?language=objc
+func (t_ TextAttachmentCell) WantsToTrackMouse() bool {
+	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouse"))
 	return rv
 }
 
@@ -114,26 +121,11 @@ func (t_ TextAttachmentCell) CellBaselineOffset() foundation.Point {
 	return rv
 }
 
-// Draws the cell's image using the specified layout manager. [Full Topic]
+// Returns the frame of the cell to draw at the specified position in a text container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508385-drawwithframe?language=objc
-func (t_ TextAttachmentCell) DrawWithFrameInViewCharacterIndexLayoutManager(cellFrame foundation.Rect, controlView IView, charIndex uint, layoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:layoutManager:"), cellFrame, controlView, charIndex, layoutManager)
-}
-
-// Allows an attachment to specify the events for which it tracks the mouse. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508399-wantstotrackmouseforevent?language=objc
-func (t_ TextAttachmentCell) WantsToTrackMouseForEventInRectOfViewAtCharacterIndex(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), theEvent, cellFrame, controlView, charIndex)
-	return rv
-}
-
-// Returns a Boolean value that indicates whether the attachment handles mouse events occurring over its image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508415-wantstotrackmouse?language=objc
-func (t_ TextAttachmentCell) WantsToTrackMouse() bool {
-	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouse"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508402-cellframefortextcontainer?language=objc
+func (t_ TextAttachmentCell) CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer ITextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect {
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), textContainer, lineFrag, position, charIndex)
 	return rv
 }
 

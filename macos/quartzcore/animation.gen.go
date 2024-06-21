@@ -19,21 +19,21 @@ type _AnimationClass struct {
 type IAnimation interface {
 	objc.IObject
 	ShouldArchiveValueForKey(key string) bool
-	TimingFunction() MediaTimingFunction
-	SetTimingFunction(value IMediaTimingFunction)
-	FadeInDuration() float64
-	SetFadeInDuration(value float64)
-	Delegate() AnimationDelegateObject
-	SetDelegate(value PAnimationDelegate)
-	SetDelegateObject(valueObject objc.IObject)
-	PreferredFrameRateRange() FrameRateRange
-	SetPreferredFrameRateRange(value FrameRateRange)
-	FadeOutDuration() float64
-	SetFadeOutDuration(value float64)
 	IsRemovedOnCompletion() bool
 	SetRemovedOnCompletion(value bool)
 	UsesSceneTimeBase() bool
 	SetUsesSceneTimeBase(value bool)
+	Delegate() AnimationDelegateObject
+	SetDelegate(value PAnimationDelegate)
+	SetDelegateObject(valueObject objc.IObject)
+	FadeInDuration() float64
+	SetFadeInDuration(value float64)
+	FadeOutDuration() float64
+	SetFadeOutDuration(value float64)
+	TimingFunction() MediaTimingFunction
+	SetTimingFunction(value IMediaTimingFunction)
+	PreferredFrameRateRange() FrameRateRange
+	SetPreferredFrameRateRange(value FrameRateRange)
 }
 
 // The abstract superclass for animations in Core Animation. [Full Topic]
@@ -104,89 +104,6 @@ func (a_ Animation) ShouldArchiveValueForKey(key string) bool {
 	return rv
 }
 
-// An optional timing function defining the pacing of the animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412456-timingfunction?language=objc
-func (a_ Animation) TimingFunction() MediaTimingFunction {
-	rv := objc.Call[MediaTimingFunction](a_, objc.Sel("timingFunction"))
-	return rv
-}
-
-// An optional timing function defining the pacing of the animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412456-timingfunction?language=objc
-func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
-	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
-}
-
-// For animations attached to SceneKit objects, the duration for transitioning into the animation’s effect as it begins. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1523370-fadeinduration?language=objc
-func (a_ Animation) FadeInDuration() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("fadeInDuration"))
-	return rv
-}
-
-// For animations attached to SceneKit objects, the duration for transitioning into the animation’s effect as it begins. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1523370-fadeinduration?language=objc
-func (a_ Animation) SetFadeInDuration(value float64) {
-	objc.Call[objc.Void](a_, objc.Sel("setFadeInDuration:"), value)
-}
-
-// Specifies the receiver’s delegate object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
-func (a_ Animation) Delegate() AnimationDelegateObject {
-	rv := objc.Call[AnimationDelegateObject](a_, objc.Sel("delegate"))
-	return rv
-}
-
-// Specifies the receiver’s delegate object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
-func (a_ Animation) SetDelegate(value PAnimationDelegate) {
-	po0 := objc.WrapAsProtocol("CAAnimationDelegate", value)
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), po0)
-}
-
-// Specifies the receiver’s delegate object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
-func (a_ Animation) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/3875342-preferredframeraterange?language=objc
-func (a_ Animation) PreferredFrameRateRange() FrameRateRange {
-	rv := objc.Call[FrameRateRange](a_, objc.Sel("preferredFrameRateRange"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/3875342-preferredframeraterange?language=objc
-func (a_ Animation) SetPreferredFrameRateRange(value FrameRateRange) {
-	objc.Call[objc.Void](a_, objc.Sel("setPreferredFrameRateRange:"), value)
-}
-
-// For animations attached to SceneKit objects, the duration for transitioning out of the animation’s effect as it ends. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1522959-fadeoutduration?language=objc
-func (a_ Animation) FadeOutDuration() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("fadeOutDuration"))
-	return rv
-}
-
-// For animations attached to SceneKit objects, the duration for transitioning out of the animation’s effect as it ends. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1522959-fadeoutduration?language=objc
-func (a_ Animation) SetFadeOutDuration(value float64) {
-	objc.Call[objc.Void](a_, objc.Sel("setFadeOutDuration:"), value)
-}
-
 // Determines if the animation is removed from the target layer’s animations upon completion. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412458-removedoncompletion?language=objc
@@ -215,4 +132,87 @@ func (a_ Animation) UsesSceneTimeBase() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1523819-usesscenetimebase?language=objc
 func (a_ Animation) SetUsesSceneTimeBase(value bool) {
 	objc.Call[objc.Void](a_, objc.Sel("setUsesSceneTimeBase:"), value)
+}
+
+// Specifies the receiver’s delegate object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
+func (a_ Animation) Delegate() AnimationDelegateObject {
+	rv := objc.Call[AnimationDelegateObject](a_, objc.Sel("delegate"))
+	return rv
+}
+
+// Specifies the receiver’s delegate object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
+func (a_ Animation) SetDelegate(value PAnimationDelegate) {
+	po0 := objc.WrapAsProtocol("CAAnimationDelegate", value)
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), po0)
+}
+
+// Specifies the receiver’s delegate object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
+func (a_ Animation) SetDelegateObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// For animations attached to SceneKit objects, the duration for transitioning into the animation’s effect as it begins. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1523370-fadeinduration?language=objc
+func (a_ Animation) FadeInDuration() float64 {
+	rv := objc.Call[float64](a_, objc.Sel("fadeInDuration"))
+	return rv
+}
+
+// For animations attached to SceneKit objects, the duration for transitioning into the animation’s effect as it begins. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1523370-fadeinduration?language=objc
+func (a_ Animation) SetFadeInDuration(value float64) {
+	objc.Call[objc.Void](a_, objc.Sel("setFadeInDuration:"), value)
+}
+
+// For animations attached to SceneKit objects, the duration for transitioning out of the animation’s effect as it ends. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1522959-fadeoutduration?language=objc
+func (a_ Animation) FadeOutDuration() float64 {
+	rv := objc.Call[float64](a_, objc.Sel("fadeOutDuration"))
+	return rv
+}
+
+// For animations attached to SceneKit objects, the duration for transitioning out of the animation’s effect as it ends. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1522959-fadeoutduration?language=objc
+func (a_ Animation) SetFadeOutDuration(value float64) {
+	objc.Call[objc.Void](a_, objc.Sel("setFadeOutDuration:"), value)
+}
+
+// An optional timing function defining the pacing of the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412456-timingfunction?language=objc
+func (a_ Animation) TimingFunction() MediaTimingFunction {
+	rv := objc.Call[MediaTimingFunction](a_, objc.Sel("timingFunction"))
+	return rv
+}
+
+// An optional timing function defining the pacing of the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412456-timingfunction?language=objc
+func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
+	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/3875342-preferredframeraterange?language=objc
+func (a_ Animation) PreferredFrameRateRange() FrameRateRange {
+	rv := objc.Call[FrameRateRange](a_, objc.Sel("preferredFrameRateRange"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/3875342-preferredframeraterange?language=objc
+func (a_ Animation) SetPreferredFrameRateRange(value FrameRateRange) {
+	objc.Call[objc.Void](a_, objc.Sel("setPreferredFrameRateRange:"), value)
 }

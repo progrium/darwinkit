@@ -19,23 +19,23 @@ type _TextContentManagerClass struct {
 // An interface definition for the [TextContentManager] class.
 type ITextContentManager interface {
 	objc.IObject
+	RemoveTextLayoutManager(textLayoutManager ITextLayoutManager)
 	PerformEditingTransactionUsingBlock(transaction func())
-	TextElementsForRange(range_ ITextRange) []TextElement
-	AddTextLayoutManager(textLayoutManager ITextLayoutManager)
 	SynchronizeTextLayoutManagers(completionHandler func(error foundation.Error))
 	RecordEditActionInRangeNewTextRange(originalTextRange ITextRange, newTextRange ITextRange)
-	RemoveTextLayoutManager(textLayoutManager ITextLayoutManager)
-	HasEditingTransaction() bool
-	AutomaticallySynchronizesTextLayoutManagers() bool
-	SetAutomaticallySynchronizesTextLayoutManagers(value bool)
+	TextElementsForRange(range_ ITextRange) []TextElement
+	AddTextLayoutManager(textLayoutManager ITextLayoutManager)
 	AutomaticallySynchronizesToBackingStore() bool
 	SetAutomaticallySynchronizesToBackingStore(value bool)
+	AutomaticallySynchronizesTextLayoutManagers() bool
+	SetAutomaticallySynchronizesTextLayoutManagers(value bool)
 	Delegate() TextContentManagerDelegateObject
 	SetDelegate(value PTextContentManagerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	TextLayoutManagers() []TextLayoutManager
 	PrimaryTextLayoutManager() TextLayoutManager
 	SetPrimaryTextLayoutManager(value ITextLayoutManager)
+	TextLayoutManagers() []TextLayoutManager
+	HasEditingTransaction() bool
 }
 
 // An abstract class that defines the interface and a default implementation for managing the text document contents. [Full Topic]
@@ -71,11 +71,32 @@ func NewTextContentManager() TextContentManager {
 	return TextContentManagerClass.New()
 }
 
+// Removes the layout manager you specifiy from the list of layout managers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809924-removetextlayoutmanager?language=objc
+func (t_ TextContentManager) RemoveTextLayoutManager(textLayoutManager ITextLayoutManager) {
+	objc.Call[objc.Void](t_, objc.Sel("removeTextLayoutManager:"), textLayoutManager)
+}
+
 // Performs an editing transaction and invokes a block upon completion. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809921-performeditingtransactionusingbl?language=objc
 func (t_ TextContentManager) PerformEditingTransactionUsingBlock(transaction func()) {
 	objc.Call[objc.Void](t_, objc.Sel("performEditingTransactionUsingBlock:"), transaction)
+}
+
+// Synchronizes changes to all nonprimary text layout managers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809925-synchronizetextlayoutmanagers?language=objc
+func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler func(error foundation.Error)) {
+	objc.Call[objc.Void](t_, objc.Sel("synchronizeTextLayoutManagers:"), completionHandler)
+}
+
+// Records information about an edit action to the transaction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809923-recordeditactioninrange?language=objc
+func (t_ TextContentManager) RecordEditActionInRangeNewTextRange(originalTextRange ITextRange, newTextRange ITextRange) {
+	objc.Call[objc.Void](t_, objc.Sel("recordEditActionInRange:newTextRange:"), originalTextRange, newTextRange)
 }
 
 // Returns an array of text elements that intersect with the range you specify. [Full Topic]
@@ -93,33 +114,19 @@ func (t_ TextContentManager) AddTextLayoutManager(textLayoutManager ITextLayoutM
 	objc.Call[objc.Void](t_, objc.Sel("addTextLayoutManager:"), textLayoutManager)
 }
 
-// Synchronizes changes to all nonprimary text layout managers. [Full Topic]
+// Determines whether to automatically synchronize with the backing store when an editing transaction finishes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809925-synchronizetextlayoutmanagers?language=objc
-func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](t_, objc.Sel("synchronizeTextLayoutManagers:"), completionHandler)
-}
-
-// Records information about an edit action to the transaction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809923-recordeditactioninrange?language=objc
-func (t_ TextContentManager) RecordEditActionInRangeNewTextRange(originalTextRange ITextRange, newTextRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("recordEditActionInRange:newTextRange:"), originalTextRange, newTextRange)
-}
-
-// Removes the layout manager you specifiy from the list of layout managers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809924-removetextlayoutmanager?language=objc
-func (t_ TextContentManager) RemoveTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTextLayoutManager:"), textLayoutManager)
-}
-
-// Indicates there’s an active editing transaction from the primary text layout manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809918-haseditingtransaction?language=objc
-func (t_ TextContentManager) HasEditingTransaction() bool {
-	rv := objc.Call[bool](t_, objc.Sel("hasEditingTransaction"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3852565-automaticallysynchronizestobacki?language=objc
+func (t_ TextContentManager) AutomaticallySynchronizesToBackingStore() bool {
+	rv := objc.Call[bool](t_, objc.Sel("automaticallySynchronizesToBackingStore"))
 	return rv
+}
+
+// Determines whether to automatically synchronize with the backing store when an editing transaction finishes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3852565-automaticallysynchronizestobacki?language=objc
+func (t_ TextContentManager) SetAutomaticallySynchronizesToBackingStore(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAutomaticallySynchronizesToBackingStore:"), value)
 }
 
 // Determines if the framework should automatically synchronize all text layout managers when exiting an editing transaction. [Full Topic]
@@ -135,21 +142,6 @@ func (t_ TextContentManager) AutomaticallySynchronizesTextLayoutManagers() bool 
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3852564-automaticallysynchronizestextlay?language=objc
 func (t_ TextContentManager) SetAutomaticallySynchronizesTextLayoutManagers(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setAutomaticallySynchronizesTextLayoutManagers:"), value)
-}
-
-// Determines whether to automatically synchronize with the backing store when an editing transaction finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3852565-automaticallysynchronizestobacki?language=objc
-func (t_ TextContentManager) AutomaticallySynchronizesToBackingStore() bool {
-	rv := objc.Call[bool](t_, objc.Sel("automaticallySynchronizesToBackingStore"))
-	return rv
-}
-
-// Determines whether to automatically synchronize with the backing store when an editing transaction finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3852565-automaticallysynchronizestobacki?language=objc
-func (t_ TextContentManager) SetAutomaticallySynchronizesToBackingStore(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAutomaticallySynchronizesToBackingStore:"), value)
 }
 
 // The delegate for the content manager object. [Full Topic]
@@ -176,14 +168,6 @@ func (t_ TextContentManager) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The array of text layout managers associated with this text content manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809929-textlayoutmanagers?language=objc
-func (t_ TextContentManager) TextLayoutManagers() []TextLayoutManager {
-	rv := objc.Call[[]TextLayoutManager](t_, objc.Sel("textLayoutManagers"))
-	return rv
-}
-
 // The primary text layout manager for this content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809922-primarytextlayoutmanager?language=objc
@@ -197,4 +181,20 @@ func (t_ TextContentManager) PrimaryTextLayoutManager() TextLayoutManager {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809922-primarytextlayoutmanager?language=objc
 func (t_ TextContentManager) SetPrimaryTextLayoutManager(value ITextLayoutManager) {
 	objc.Call[objc.Void](t_, objc.Sel("setPrimaryTextLayoutManager:"), value)
+}
+
+// The array of text layout managers associated with this text content manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809929-textlayoutmanagers?language=objc
+func (t_ TextContentManager) TextLayoutManagers() []TextLayoutManager {
+	rv := objc.Call[[]TextLayoutManager](t_, objc.Sel("textLayoutManagers"))
+	return rv
+}
+
+// Indicates there’s an active editing transaction from the primary text layout manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809918-haseditingtransaction?language=objc
+func (t_ TextContentManager) HasEditingTransaction() bool {
+	rv := objc.Call[bool](t_, objc.Sel("hasEditingTransaction"))
+	return rv
 }

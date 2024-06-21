@@ -19,9 +19,9 @@ type _CaptureAudioDataOutputClass struct {
 // An interface definition for the [CaptureAudioDataOutput] class.
 type ICaptureAudioDataOutput interface {
 	ICaptureOutput
+	RecommendedAudioSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object
 	SetSampleBufferDelegateQueue(sampleBufferDelegate PCaptureAudioDataOutputSampleBufferDelegate, sampleBufferCallbackQueue dispatch.Queue)
 	SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue)
-	RecommendedAudioSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object
 	AudioSettings() map[string]objc.Object
 	SetAudioSettings(value map[string]objc.IObject)
 	SampleBufferCallbackQueue() dispatch.Queue
@@ -41,11 +41,6 @@ func CaptureAudioDataOutputFrom(ptr unsafe.Pointer) CaptureAudioDataOutput {
 	}
 }
 
-func (c_ CaptureAudioDataOutput) Init() CaptureAudioDataOutput {
-	rv := objc.Call[CaptureAudioDataOutput](c_, objc.Sel("init"))
-	return rv
-}
-
 func (cc _CaptureAudioDataOutputClass) New() CaptureAudioDataOutput {
 	rv := objc.Call[CaptureAudioDataOutput](cc, objc.Sel("new"))
 	rv.Autorelease()
@@ -56,8 +51,21 @@ func NewCaptureAudioDataOutput() CaptureAudioDataOutput {
 	return CaptureAudioDataOutputClass.New()
 }
 
+func (c_ CaptureAudioDataOutput) Init() CaptureAudioDataOutput {
+	rv := objc.Call[CaptureAudioDataOutput](c_, objc.Sel("init"))
+	return rv
+}
+
 func (cc _CaptureAudioDataOutputClass) Alloc() CaptureAudioDataOutput {
 	rv := objc.Call[CaptureAudioDataOutput](cc, objc.Sel("alloc"))
+	return rv
+}
+
+// Specifies the recommended settings for use with an AVAssetWriterInput. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiodataoutput/1616308-recommendedaudiosettingsforasset?language=objc
+func (c_ CaptureAudioDataOutput) RecommendedAudioSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("recommendedAudioSettingsForAssetWriterWithOutputFileType:"), outputFileType)
 	return rv
 }
 
@@ -74,14 +82,6 @@ func (c_ CaptureAudioDataOutput) SetSampleBufferDelegateQueue(sampleBufferDelega
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiodataoutput/1390651-setsamplebufferdelegate?language=objc
 func (c_ CaptureAudioDataOutput) SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue) {
 	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), sampleBufferDelegateObject, sampleBufferCallbackQueue)
-}
-
-// Specifies the recommended settings for use with an AVAssetWriterInput. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiodataoutput/1616308-recommendedaudiosettingsforasset?language=objc
-func (c_ CaptureAudioDataOutput) RecommendedAudioSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("recommendedAudioSettingsForAssetWriterWithOutputFileType:"), outputFileType)
-	return rv
 }
 
 // The settings used to decode or re-encode audio before it’s output. [Full Topic]

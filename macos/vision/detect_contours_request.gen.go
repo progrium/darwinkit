@@ -19,14 +19,14 @@ type _DetectContoursRequestClass struct {
 // An interface definition for the [DetectContoursRequest] class.
 type IDetectContoursRequest interface {
 	IImageBasedRequest
-	ContrastAdjustment() float32
-	SetContrastAdjustment(value float32)
-	DetectsDarkOnLight() bool
-	SetDetectsDarkOnLight(value bool)
-	MaximumImageDimension() uint
-	SetMaximumImageDimension(value uint)
 	ContrastPivot() foundation.Number
 	SetContrastPivot(value foundation.INumber)
+	DetectsDarkOnLight() bool
+	SetDetectsDarkOnLight(value bool)
+	ContrastAdjustment() float32
+	SetContrastAdjustment(value float32)
+	MaximumImageDimension() uint
+	SetMaximumImageDimension(value uint)
 }
 
 // A request that detects the contours of the edges of an image. [Full Topic]
@@ -76,19 +76,19 @@ func NewDetectContoursRequestWithCompletionHandler(completionHandler RequestComp
 	return instance
 }
 
-// The amount by which to adjust the image contrast. [Full Topic]
+// The pixel value to use as a pivot for the contrast. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
-func (d_ DetectContoursRequest) ContrastAdjustment() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("contrastAdjustment"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3750961-contrastpivot?language=objc
+func (d_ DetectContoursRequest) ContrastPivot() foundation.Number {
+	rv := objc.Call[foundation.Number](d_, objc.Sel("contrastPivot"))
 	return rv
 }
 
-// The amount by which to adjust the image contrast. [Full Topic]
+// The pixel value to use as a pivot for the contrast. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
-func (d_ DetectContoursRequest) SetContrastAdjustment(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setContrastAdjustment:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3750961-contrastpivot?language=objc
+func (d_ DetectContoursRequest) SetContrastPivot(value foundation.INumber) {
+	objc.Call[objc.Void](d_, objc.Sel("setContrastPivot:"), value)
 }
 
 // A Boolean value that indicates whether the request detects a dark object on a light background to aid in detection. [Full Topic]
@@ -106,6 +106,21 @@ func (d_ DetectContoursRequest) SetDetectsDarkOnLight(value bool) {
 	objc.Call[objc.Void](d_, objc.Sel("setDetectsDarkOnLight:"), value)
 }
 
+// The amount by which to adjust the image contrast. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
+func (d_ DetectContoursRequest) ContrastAdjustment() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("contrastAdjustment"))
+	return rv
+}
+
+// The amount by which to adjust the image contrast. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
+func (d_ DetectContoursRequest) SetContrastAdjustment(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setContrastAdjustment:"), value)
+}
+
 // The maximum image dimension to use for contour detection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548238-maximumimagedimension?language=objc
@@ -119,19 +134,4 @@ func (d_ DetectContoursRequest) MaximumImageDimension() uint {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548238-maximumimagedimension?language=objc
 func (d_ DetectContoursRequest) SetMaximumImageDimension(value uint) {
 	objc.Call[objc.Void](d_, objc.Sel("setMaximumImageDimension:"), value)
-}
-
-// The pixel value to use as a pivot for the contrast. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3750961-contrastpivot?language=objc
-func (d_ DetectContoursRequest) ContrastPivot() foundation.Number {
-	rv := objc.Call[foundation.Number](d_, objc.Sel("contrastPivot"))
-	return rv
-}
-
-// The pixel value to use as a pivot for the contrast. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3750961-contrastpivot?language=objc
-func (d_ DetectContoursRequest) SetContrastPivot(value foundation.INumber) {
-	objc.Call[objc.Void](d_, objc.Sel("setContrastPivot:"), value)
 }

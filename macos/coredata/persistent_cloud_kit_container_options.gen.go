@@ -19,9 +19,9 @@ type _PersistentCloudKitContainerOptionsClass struct {
 // An interface definition for the [PersistentCloudKitContainerOptions] class.
 type IPersistentCloudKitContainerOptions interface {
 	objc.IObject
-	ContainerIdentifier() string
 	DatabaseScope() cloudkit.DatabaseScope
 	SetDatabaseScope(value cloudkit.DatabaseScope)
+	ContainerIdentifier() string
 }
 
 // An object that customizes how a store description aligns with a CloudKit database. [Full Topic]
@@ -71,14 +71,6 @@ func (p_ PersistentCloudKitContainerOptions) Init() PersistentCloudKitContainerO
 	return rv
 }
 
-// The identifier of the CloudKit container associated with a given store description. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontaineroptions/3141674-containeridentifier?language=objc
-func (p_ PersistentCloudKitContainerOptions) ContainerIdentifier() string {
-	rv := objc.Call[string](p_, objc.Sel("containerIdentifier"))
-	return rv
-}
-
 // The database scope — public, private, or shared — to use for a specified store in a persistent CloudKit container. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontaineroptions/3580372-databasescope?language=objc
@@ -92,4 +84,12 @@ func (p_ PersistentCloudKitContainerOptions) DatabaseScope() cloudkit.DatabaseSc
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontaineroptions/3580372-databasescope?language=objc
 func (p_ PersistentCloudKitContainerOptions) SetDatabaseScope(value cloudkit.DatabaseScope) {
 	objc.Call[objc.Void](p_, objc.Sel("setDatabaseScope:"), value)
+}
+
+// The identifier of the CloudKit container associated with a given store description. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontaineroptions/3141674-containeridentifier?language=objc
+func (p_ PersistentCloudKitContainerOptions) ContainerIdentifier() string {
+	rv := objc.Call[string](p_, objc.Sel("containerIdentifier"))
+	return rv
 }

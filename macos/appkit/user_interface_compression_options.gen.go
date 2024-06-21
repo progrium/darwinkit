@@ -19,10 +19,10 @@ type _UserInterfaceCompressionOptionsClass struct {
 // An interface definition for the [UserInterfaceCompressionOptions] class.
 type IUserInterfaceCompressionOptions interface {
 	objc.IObject
-	ContainsOptions(options IUserInterfaceCompressionOptions) bool
-	IntersectsOptions(options IUserInterfaceCompressionOptions) bool
-	OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions
 	OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions
+	ContainsOptions(options IUserInterfaceCompressionOptions) bool
+	OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions
+	IntersectsOptions(options IUserInterfaceCompressionOptions) bool
 	IsEmpty() bool
 }
 
@@ -53,11 +53,6 @@ func NewUserInterfaceCompressionOptionsWithCompressionOptions(options foundation
 	return instance
 }
 
-func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("init"))
-	return rv
-}
-
 func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
 	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("initWithIdentifier:"), identifier)
 	return rv
@@ -70,6 +65,11 @@ func NewUserInterfaceCompressionOptionsWithIdentifier(identifier string) UserInt
 	instance := UserInterfaceCompressionOptionsClass.Alloc().InitWithIdentifier(identifier)
 	instance.Autorelease()
 	return instance
+}
+
+func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("init"))
+	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) Alloc() UserInterfaceCompressionOptions {
@@ -87,19 +87,19 @@ func NewUserInterfaceCompressionOptions() UserInterfaceCompressionOptions {
 	return UserInterfaceCompressionOptionsClass.New()
 }
 
+// Creates a new compression options object with the supplied options removed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909969-optionsbyremovingoptions?language=objc
+func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByRemovingOptions:"), options)
+	return rv
+}
+
 // Determines whether the supplied compression options are all present in the current instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909983-containsoptions?language=objc
 func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterfaceCompressionOptions) bool {
 	rv := objc.Call[bool](u_, objc.Sel("containsOptions:"), options)
-	return rv
-}
-
-// Determines whether the supplied compression options intersect with the current instance's options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909977-intersectsoptions?language=objc
-func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.Call[bool](u_, objc.Sel("intersectsOptions:"), options)
 	return rv
 }
 
@@ -111,64 +111,11 @@ func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserIn
 	return rv
 }
 
-// Creates a new compression options object with the supplied options removed. [Full Topic]
+// Determines whether the supplied compression options intersect with the current instance's options. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909969-optionsbyremovingoptions?language=objc
-func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByRemovingOptions:"), options)
-	return rv
-}
-
-// An option specifying that views should hide their text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909971-hidetextoption?language=objc
-func (uc _UserInterfaceCompressionOptionsClass) HideTextOption() UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("hideTextOption"))
-	return rv
-}
-
-// An option specifying that views should hide their text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909971-hidetextoption?language=objc
-func UserInterfaceCompressionOptions_HideTextOption() UserInterfaceCompressionOptions {
-	return UserInterfaceCompressionOptionsClass.HideTextOption()
-}
-
-// An option that represents the union of all standard compression options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909974-standardoptions?language=objc
-func (uc _UserInterfaceCompressionOptionsClass) StandardOptions() UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("standardOptions"))
-	return rv
-}
-
-// An option that represents the union of all standard compression options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909974-standardoptions?language=objc
-func UserInterfaceCompressionOptions_StandardOptions() UserInterfaceCompressionOptions {
-	return UserInterfaceCompressionOptionsClass.StandardOptions()
-}
-
-// An option specifying that views should hide their images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909980-hideimagesoption?language=objc
-func (uc _UserInterfaceCompressionOptionsClass) HideImagesOption() UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("hideImagesOption"))
-	return rv
-}
-
-// An option specifying that views should hide their images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909980-hideimagesoption?language=objc
-func UserInterfaceCompressionOptions_HideImagesOption() UserInterfaceCompressionOptions {
-	return UserInterfaceCompressionOptionsClass.HideImagesOption()
-}
-
-// A Boolean value that denotes whether the option is empty. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909986-empty?language=objc
-func (u_ UserInterfaceCompressionOptions) IsEmpty() bool {
-	rv := objc.Call[bool](u_, objc.Sel("isEmpty"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909977-intersectsoptions?language=objc
+func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
+	rv := objc.Call[bool](u_, objc.Sel("intersectsOptions:"), options)
 	return rv
 }
 
@@ -187,6 +134,14 @@ func UserInterfaceCompressionOptions_ReduceMetricsOption() UserInterfaceCompress
 	return UserInterfaceCompressionOptionsClass.ReduceMetricsOption()
 }
 
+// A Boolean value that denotes whether the option is empty. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909986-empty?language=objc
+func (u_ UserInterfaceCompressionOptions) IsEmpty() bool {
+	rv := objc.Call[bool](u_, objc.Sel("isEmpty"))
+	return rv
+}
+
 // An option specifying that views should no longer maintain equal width constraints. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909966-breakequalwidthsoption?language=objc
@@ -200,4 +155,49 @@ func (uc _UserInterfaceCompressionOptionsClass) BreakEqualWidthsOption() UserInt
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909966-breakequalwidthsoption?language=objc
 func UserInterfaceCompressionOptions_BreakEqualWidthsOption() UserInterfaceCompressionOptions {
 	return UserInterfaceCompressionOptionsClass.BreakEqualWidthsOption()
+}
+
+// An option that represents the union of all standard compression options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909974-standardoptions?language=objc
+func (uc _UserInterfaceCompressionOptionsClass) StandardOptions() UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("standardOptions"))
+	return rv
+}
+
+// An option that represents the union of all standard compression options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909974-standardoptions?language=objc
+func UserInterfaceCompressionOptions_StandardOptions() UserInterfaceCompressionOptions {
+	return UserInterfaceCompressionOptionsClass.StandardOptions()
+}
+
+// An option specifying that views should hide their text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909971-hidetextoption?language=objc
+func (uc _UserInterfaceCompressionOptionsClass) HideTextOption() UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("hideTextOption"))
+	return rv
+}
+
+// An option specifying that views should hide their text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909971-hidetextoption?language=objc
+func UserInterfaceCompressionOptions_HideTextOption() UserInterfaceCompressionOptions {
+	return UserInterfaceCompressionOptionsClass.HideTextOption()
+}
+
+// An option specifying that views should hide their images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909980-hideimagesoption?language=objc
+func (uc _UserInterfaceCompressionOptionsClass) HideImagesOption() UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](uc, objc.Sel("hideImagesOption"))
+	return rv
+}
+
+// An option specifying that views should hide their images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909980-hideimagesoption?language=objc
+func UserInterfaceCompressionOptions_HideImagesOption() UserInterfaceCompressionOptions {
+	return UserInterfaceCompressionOptionsClass.HideImagesOption()
 }

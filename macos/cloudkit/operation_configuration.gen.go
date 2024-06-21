@@ -19,18 +19,18 @@ type _OperationConfigurationClass struct {
 // An interface definition for the [OperationConfiguration] class.
 type IOperationConfiguration interface {
 	objc.IObject
-	AllowsCellularAccess() bool
-	SetAllowsCellularAccess(value bool)
-	IsLongLived() bool
-	SetLongLived(value bool)
-	TimeoutIntervalForRequest() foundation.TimeInterval
-	SetTimeoutIntervalForRequest(value foundation.TimeInterval)
 	QualityOfService() foundation.QualityOfService
 	SetQualityOfService(value foundation.QualityOfService)
-	TimeoutIntervalForResource() foundation.TimeInterval
-	SetTimeoutIntervalForResource(value foundation.TimeInterval)
+	AllowsCellularAccess() bool
+	SetAllowsCellularAccess(value bool)
 	Container() Container
 	SetContainer(value IContainer)
+	TimeoutIntervalForRequest() foundation.TimeInterval
+	SetTimeoutIntervalForRequest(value foundation.TimeInterval)
+	IsLongLived() bool
+	SetLongLived(value bool)
+	TimeoutIntervalForResource() foundation.TimeInterval
+	SetTimeoutIntervalForResource(value foundation.TimeInterval)
 }
 
 // An object that describes how a CloudKit operation behaves. [Full Topic]
@@ -66,6 +66,21 @@ func (o_ OperationConfiguration) Init() OperationConfiguration {
 	return rv
 }
 
+// The priority that the system uses when it allocates resources to the operations that use this configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866201-qualityofservice?language=objc
+func (o_ OperationConfiguration) QualityOfService() foundation.QualityOfService {
+	rv := objc.Call[foundation.QualityOfService](o_, objc.Sel("qualityOfService"))
+	return rv
+}
+
+// The priority that the system uses when it allocates resources to the operations that use this configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866201-qualityofservice?language=objc
+func (o_ OperationConfiguration) SetQualityOfService(value foundation.QualityOfService) {
+	objc.Call[objc.Void](o_, objc.Sel("setQualityOfService:"), value)
+}
+
 // A Boolean value that indicates whether operations that use this configuration can send data over the cellular network. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866217-allowscellularaccess?language=objc
@@ -81,19 +96,19 @@ func (o_ OperationConfiguration) SetAllowsCellularAccess(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setAllowsCellularAccess:"), value)
 }
 
-// A Boolean value that indicates whether the operations that use this configuration are long-lived. [Full Topic]
+// The configuration’s container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866225-longlived?language=objc
-func (o_ OperationConfiguration) IsLongLived() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isLongLived"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866232-container?language=objc
+func (o_ OperationConfiguration) Container() Container {
+	rv := objc.Call[Container](o_, objc.Sel("container"))
 	return rv
 }
 
-// A Boolean value that indicates whether the operations that use this configuration are long-lived. [Full Topic]
+// The configuration’s container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866225-longlived?language=objc
-func (o_ OperationConfiguration) SetLongLived(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setLongLived:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866232-container?language=objc
+func (o_ OperationConfiguration) SetContainer(value IContainer) {
+	objc.Call[objc.Void](o_, objc.Sel("setContainer:"), value)
 }
 
 // The maximum amount of time that a request can take. [Full Topic]
@@ -111,19 +126,19 @@ func (o_ OperationConfiguration) SetTimeoutIntervalForRequest(value foundation.T
 	objc.Call[objc.Void](o_, objc.Sel("setTimeoutIntervalForRequest:"), value)
 }
 
-// The priority that the system uses when it allocates resources to the operations that use this configuration. [Full Topic]
+// A Boolean value that indicates whether the operations that use this configuration are long-lived. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866201-qualityofservice?language=objc
-func (o_ OperationConfiguration) QualityOfService() foundation.QualityOfService {
-	rv := objc.Call[foundation.QualityOfService](o_, objc.Sel("qualityOfService"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866225-longlived?language=objc
+func (o_ OperationConfiguration) IsLongLived() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isLongLived"))
 	return rv
 }
 
-// The priority that the system uses when it allocates resources to the operations that use this configuration. [Full Topic]
+// A Boolean value that indicates whether the operations that use this configuration are long-lived. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866201-qualityofservice?language=objc
-func (o_ OperationConfiguration) SetQualityOfService(value foundation.QualityOfService) {
-	objc.Call[objc.Void](o_, objc.Sel("setQualityOfService:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866225-longlived?language=objc
+func (o_ OperationConfiguration) SetLongLived(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setLongLived:"), value)
 }
 
 // The maximum amount of time that a resource request can take. [Full Topic]
@@ -139,19 +154,4 @@ func (o_ OperationConfiguration) TimeoutIntervalForResource() foundation.TimeInt
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866221-timeoutintervalforresource?language=objc
 func (o_ OperationConfiguration) SetTimeoutIntervalForResource(value foundation.TimeInterval) {
 	objc.Call[objc.Void](o_, objc.Sel("setTimeoutIntervalForResource:"), value)
-}
-
-// The configuration’s container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866232-container?language=objc
-func (o_ OperationConfiguration) Container() Container {
-	rv := objc.Call[Container](o_, objc.Sel("container"))
-	return rv
-}
-
-// The configuration’s container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866232-container?language=objc
-func (o_ OperationConfiguration) SetContainer(value IContainer) {
-	objc.Call[objc.Void](o_, objc.Sel("setContainer:"), value)
 }

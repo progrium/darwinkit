@@ -12,172 +12,68 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate?language=objc
 type PApplicationDelegate interface {
 	// optional
-	ApplicationWillResignActive(notification foundation.Notification)
-	HasApplicationWillResignActive() bool
-
-	// optional
-	ApplicationWillHide(notification foundation.Notification)
-	HasApplicationWillHide() bool
-
-	// optional
-	ApplicationDockMenu(sender Application) Menu
-	HasApplicationDockMenu() bool
-
-	// optional
-	ApplicationDidChangeOcclusionState(notification foundation.Notification)
-	HasApplicationDidChangeOcclusionState() bool
-
-	// optional
-	ApplicationShouldTerminate(sender Application) ApplicationTerminateReply
-	HasApplicationShouldTerminate() bool
-
-	// optional
-	ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool
-	HasApplicationShouldTerminateAfterLastWindowClosed() bool
-
-	// optional
-	ApplicationSupportsSecureRestorableState(app Application) bool
-	HasApplicationSupportsSecureRestorableState() bool
-
-	// optional
-	ApplicationDidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object)
-	HasApplicationDidReceiveRemoteNotification() bool
-
-	// optional
-	ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification)
-	HasApplicationProtectedDataDidBecomeAvailable() bool
-
-	// optional
-	ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool
-	HasApplicationShouldHandleReopenHasVisibleWindows() bool
-
-	// optional
-	ApplicationOpenURLs(application Application, urls []foundation.URL)
-	HasApplicationOpenURLs() bool
-
-	// optional
-	ApplicationOpenFile(sender Application, filename string) bool
-	HasApplicationOpenFile() bool
-
-	// optional
-	ApplicationWillUpdate(notification foundation.Notification)
-	HasApplicationWillUpdate() bool
-
-	// optional
-	ApplicationContinueUserActivityRestorationHandler(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool
-	HasApplicationContinueUserActivityRestorationHandler() bool
-
-	// optional
-	ApplicationWillEncodeRestorableState(app Application, coder foundation.Coder)
-	HasApplicationWillEncodeRestorableState() bool
-
-	// optional
-	ApplicationDelegateHandlesKey(sender Application, key string) bool
-	HasApplicationDelegateHandlesKey() bool
-
-	// optional
-	ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool
-	HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool
-
-	// optional
-	ApplicationWillPresentError(application Application, error foundation.Error) foundation.Error
-	HasApplicationWillPresentError() bool
-
-	// optional
-	ApplicationWillTerminate(notification foundation.Notification)
-	HasApplicationWillTerminate() bool
-
-	// optional
-	ApplicationDidFailToContinueUserActivityWithTypeError(application Application, userActivityType string, error foundation.Error)
-	HasApplicationDidFailToContinueUserActivityWithTypeError() bool
-
-	// optional
-	ApplicationWillContinueUserActivityWithType(application Application, userActivityType string) bool
-	HasApplicationWillContinueUserActivityWithType() bool
-
-	// optional
-	ApplicationWillFinishLaunching(notification foundation.Notification)
-	HasApplicationWillFinishLaunching() bool
-
-	// optional
-	ApplicationDidBecomeActive(notification foundation.Notification)
-	HasApplicationDidBecomeActive() bool
-
-	// optional
-	ApplicationDidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error)
-	HasApplicationDidFailToRegisterForRemoteNotificationsWithError() bool
-
-	// optional
-	ApplicationDidUpdate(notification foundation.Notification)
-	HasApplicationDidUpdate() bool
-
-	// optional
-	ApplicationDidChangeScreenParameters(notification foundation.Notification)
-	HasApplicationDidChangeScreenParameters() bool
-
-	// optional
-	ApplicationPrintFilesWithSettingsShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply
-	HasApplicationPrintFilesWithSettingsShowPrintPanels() bool
-
-	// optional
-	ApplicationHandlerForIntent(application Application, intent objc.Object) objc.Object
-	HasApplicationHandlerForIntent() bool
-
-	// optional
-	ApplicationUserDidAcceptCloudKitShareWithMetadata(application Application, metadata objc.Object)
-	HasApplicationUserDidAcceptCloudKitShareWithMetadata() bool
-
-	// optional
-	ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder)
-	HasApplicationDidDecodeRestorableState() bool
-
-	// optional
-	ApplicationDidUpdateUserActivity(application Application, userActivity foundation.UserActivity)
-	HasApplicationDidUpdateUserActivity() bool
-
-	// optional
 	ApplicationDidResignActive(notification foundation.Notification)
 	HasApplicationDidResignActive() bool
-
-	// optional
-	ApplicationDidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte)
-	HasApplicationDidRegisterForRemoteNotificationsWithDeviceToken() bool
-
-	// optional
-	ApplicationOpenFiles(sender Application, filenames []string)
-	HasApplicationOpenFiles() bool
-
-	// optional
-	ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification)
-	HasApplicationProtectedDataWillBecomeUnavailable() bool
-
-	// optional
-	ApplicationOpenFileWithoutUI(sender objc.Object, filename string) bool
-	HasApplicationOpenFileWithoutUI() bool
-
-	// optional
-	ApplicationOpenTempFile(sender Application, filename string) bool
-	HasApplicationOpenTempFile() bool
-
-	// optional
-	ApplicationDidHide(notification foundation.Notification)
-	HasApplicationDidHide() bool
-
-	// optional
-	ApplicationShouldOpenUntitledFile(sender Application) bool
-	HasApplicationShouldOpenUntitledFile() bool
-
-	// optional
-	ApplicationWillBecomeActive(notification foundation.Notification)
-	HasApplicationWillBecomeActive() bool
 
 	// optional
 	ApplicationDidFinishLaunching(notification foundation.Notification)
 	HasApplicationDidFinishLaunching() bool
 
 	// optional
-	ApplicationDidUnhide(notification foundation.Notification)
-	HasApplicationDidUnhide() bool
+	ApplicationShouldTerminate(sender Application) ApplicationTerminateReply
+	HasApplicationShouldTerminate() bool
+
+	// optional
+	ApplicationWillBecomeActive(notification foundation.Notification)
+	HasApplicationWillBecomeActive() bool
+
+	// optional
+	ApplicationDockMenu(sender Application) Menu
+	HasApplicationDockMenu() bool
+
+	// optional
+	ApplicationWillFinishLaunching(notification foundation.Notification)
+	HasApplicationWillFinishLaunching() bool
+
+	// optional
+	ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool
+	HasApplicationShouldTerminateAfterLastWindowClosed() bool
+
+	// optional
+	ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification)
+	HasApplicationProtectedDataWillBecomeUnavailable() bool
+
+	// optional
+	ApplicationDidHide(notification foundation.Notification)
+	HasApplicationDidHide() bool
+
+	// optional
+	ApplicationWillResignActive(notification foundation.Notification)
+	HasApplicationWillResignActive() bool
+
+	// optional
+	ApplicationDidBecomeActive(notification foundation.Notification)
+	HasApplicationDidBecomeActive() bool
+
+	// optional
+	ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification)
+	HasApplicationProtectedDataDidBecomeAvailable() bool
+
+	// optional
+	ApplicationWillHide(notification foundation.Notification)
+	HasApplicationWillHide() bool
+
+	// optional
+	ApplicationWillUpdate(notification foundation.Notification)
+	HasApplicationWillUpdate() bool
+
+	// optional
+	ApplicationShouldOpenUntitledFile(sender Application) bool
+	HasApplicationShouldOpenUntitledFile() bool
+
+	// optional
+	ApplicationSupportsSecureRestorableState(app Application) bool
+	HasApplicationSupportsSecureRestorableState() bool
 
 	// optional
 	ApplicationWillUnhide(notification foundation.Notification)
@@ -188,586 +84,68 @@ type PApplicationDelegate interface {
 	HasApplicationOpenUntitledFile() bool
 
 	// optional
-	ApplicationPrintFile(sender Application, filename string) bool
-	HasApplicationPrintFile() bool
+	ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool
+	HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool
+
+	// optional
+	ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder)
+	HasApplicationDidDecodeRestorableState() bool
+
+	// optional
+	ApplicationDidUpdate(notification foundation.Notification)
+	HasApplicationDidUpdate() bool
+
+	// optional
+	ApplicationDidChangeOcclusionState(notification foundation.Notification)
+	HasApplicationDidChangeOcclusionState() bool
+
+	// optional
+	ApplicationDidChangeScreenParameters(notification foundation.Notification)
+	HasApplicationDidChangeScreenParameters() bool
+
+	// optional
+	ApplicationWillTerminate(notification foundation.Notification)
+	HasApplicationWillTerminate() bool
+
+	// optional
+	ApplicationDidUnhide(notification foundation.Notification)
+	HasApplicationDidUnhide() bool
+
+	// optional
+	ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool
+	HasApplicationShouldHandleReopenHasVisibleWindows() bool
 }
 
 // A delegate implementation builder for the [PApplicationDelegate] protocol.
 type ApplicationDelegate struct {
-	_ApplicationWillResignActive                                 func(notification foundation.Notification)
-	_ApplicationWillHide                                         func(notification foundation.Notification)
-	_ApplicationDockMenu                                         func(sender Application) Menu
-	_ApplicationDidChangeOcclusionState                          func(notification foundation.Notification)
-	_ApplicationShouldTerminate                                  func(sender Application) ApplicationTerminateReply
-	_ApplicationShouldTerminateAfterLastWindowClosed             func(sender Application) bool
-	_ApplicationSupportsSecureRestorableState                    func(app Application) bool
-	_ApplicationDidReceiveRemoteNotification                     func(application Application, userInfo map[string]objc.Object)
-	_ApplicationProtectedDataDidBecomeAvailable                  func(notification foundation.Notification)
-	_ApplicationShouldHandleReopenHasVisibleWindows              func(sender Application, flag bool) bool
-	_ApplicationOpenURLs                                         func(application Application, urls []foundation.URL)
-	_ApplicationOpenFile                                         func(sender Application, filename string) bool
-	_ApplicationWillUpdate                                       func(notification foundation.Notification)
-	_ApplicationContinueUserActivityRestorationHandler           func(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool
-	_ApplicationWillEncodeRestorableState                        func(app Application, coder foundation.Coder)
-	_ApplicationDelegateHandlesKey                               func(sender Application, key string) bool
-	_ApplicationShouldAutomaticallyLocalizeKeyEquivalents        func(application Application) bool
-	_ApplicationWillPresentError                                 func(application Application, error foundation.Error) foundation.Error
-	_ApplicationWillTerminate                                    func(notification foundation.Notification)
-	_ApplicationDidFailToContinueUserActivityWithTypeError       func(application Application, userActivityType string, error foundation.Error)
-	_ApplicationWillContinueUserActivityWithType                 func(application Application, userActivityType string) bool
-	_ApplicationWillFinishLaunching                              func(notification foundation.Notification)
-	_ApplicationDidBecomeActive                                  func(notification foundation.Notification)
-	_ApplicationDidFailToRegisterForRemoteNotificationsWithError func(application Application, error foundation.Error)
-	_ApplicationDidUpdate                                        func(notification foundation.Notification)
-	_ApplicationDidChangeScreenParameters                        func(notification foundation.Notification)
-	_ApplicationPrintFilesWithSettingsShowPrintPanels            func(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply
-	_ApplicationHandlerForIntent                                 func(application Application, intent objc.Object) objc.Object
-	_ApplicationUserDidAcceptCloudKitShareWithMetadata           func(application Application, metadata objc.Object)
-	_ApplicationDidDecodeRestorableState                         func(app Application, coder foundation.Coder)
-	_ApplicationDidUpdateUserActivity                            func(application Application, userActivity foundation.UserActivity)
-	_ApplicationDidResignActive                                  func(notification foundation.Notification)
-	_ApplicationDidRegisterForRemoteNotificationsWithDeviceToken func(application Application, deviceToken []byte)
-	_ApplicationOpenFiles                                        func(sender Application, filenames []string)
-	_ApplicationProtectedDataWillBecomeUnavailable               func(notification foundation.Notification)
-	_ApplicationOpenFileWithoutUI                                func(sender objc.Object, filename string) bool
-	_ApplicationOpenTempFile                                     func(sender Application, filename string) bool
-	_ApplicationDidHide                                          func(notification foundation.Notification)
-	_ApplicationShouldOpenUntitledFile                           func(sender Application) bool
-	_ApplicationWillBecomeActive                                 func(notification foundation.Notification)
-	_ApplicationDidFinishLaunching                               func(notification foundation.Notification)
-	_ApplicationDidUnhide                                        func(notification foundation.Notification)
-	_ApplicationWillUnhide                                       func(notification foundation.Notification)
-	_ApplicationOpenUntitledFile                                 func(sender Application) bool
-	_ApplicationPrintFile                                        func(sender Application, filename string) bool
+	_ApplicationDidResignActive                           func(notification foundation.Notification)
+	_ApplicationDidFinishLaunching                        func(notification foundation.Notification)
+	_ApplicationShouldTerminate                           func(sender Application) ApplicationTerminateReply
+	_ApplicationWillBecomeActive                          func(notification foundation.Notification)
+	_ApplicationDockMenu                                  func(sender Application) Menu
+	_ApplicationWillFinishLaunching                       func(notification foundation.Notification)
+	_ApplicationShouldTerminateAfterLastWindowClosed      func(sender Application) bool
+	_ApplicationProtectedDataWillBecomeUnavailable        func(notification foundation.Notification)
+	_ApplicationDidHide                                   func(notification foundation.Notification)
+	_ApplicationWillResignActive                          func(notification foundation.Notification)
+	_ApplicationDidBecomeActive                           func(notification foundation.Notification)
+	_ApplicationProtectedDataDidBecomeAvailable           func(notification foundation.Notification)
+	_ApplicationWillHide                                  func(notification foundation.Notification)
+	_ApplicationWillUpdate                                func(notification foundation.Notification)
+	_ApplicationShouldOpenUntitledFile                    func(sender Application) bool
+	_ApplicationSupportsSecureRestorableState             func(app Application) bool
+	_ApplicationWillUnhide                                func(notification foundation.Notification)
+	_ApplicationOpenUntitledFile                          func(sender Application) bool
+	_ApplicationShouldAutomaticallyLocalizeKeyEquivalents func(application Application) bool
+	_ApplicationDidDecodeRestorableState                  func(app Application, coder foundation.Coder)
+	_ApplicationDidUpdate                                 func(notification foundation.Notification)
+	_ApplicationDidChangeOcclusionState                   func(notification foundation.Notification)
+	_ApplicationDidChangeScreenParameters                 func(notification foundation.Notification)
+	_ApplicationWillTerminate                             func(notification foundation.Notification)
+	_ApplicationDidUnhide                                 func(notification foundation.Notification)
+	_ApplicationShouldHandleReopenHasVisibleWindows       func(sender Application, flag bool) bool
 }
 
-func (di *ApplicationDelegate) HasApplicationWillResignActive() bool {
-	return di._ApplicationWillResignActive != nil
-}
-
-// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
-func (di *ApplicationDelegate) SetApplicationWillResignActive(f func(notification foundation.Notification)) {
-	di._ApplicationWillResignActive = f
-}
-
-// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
-func (di *ApplicationDelegate) ApplicationWillResignActive(notification foundation.Notification) {
-	di._ApplicationWillResignActive(notification)
-}
-func (di *ApplicationDelegate) HasApplicationWillHide() bool {
-	return di._ApplicationWillHide != nil
-}
-
-// Tells the delegate that the app is about to be hidden. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
-func (di *ApplicationDelegate) SetApplicationWillHide(f func(notification foundation.Notification)) {
-	di._ApplicationWillHide = f
-}
-
-// Tells the delegate that the app is about to be hidden. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
-func (di *ApplicationDelegate) ApplicationWillHide(notification foundation.Notification) {
-	di._ApplicationWillHide(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDockMenu() bool {
-	return di._ApplicationDockMenu != nil
-}
-
-// Returns the app’s dock menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
-func (di *ApplicationDelegate) SetApplicationDockMenu(f func(sender Application) Menu) {
-	di._ApplicationDockMenu = f
-}
-
-// Returns the app’s dock menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
-func (di *ApplicationDelegate) ApplicationDockMenu(sender Application) Menu {
-	return di._ApplicationDockMenu(sender)
-}
-func (di *ApplicationDelegate) HasApplicationDidChangeOcclusionState() bool {
-	return di._ApplicationDidChangeOcclusionState != nil
-}
-
-// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
-func (di *ApplicationDelegate) SetApplicationDidChangeOcclusionState(f func(notification foundation.Notification)) {
-	di._ApplicationDidChangeOcclusionState = f
-}
-
-// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
-func (di *ApplicationDelegate) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
-	di._ApplicationDidChangeOcclusionState(notification)
-}
-func (di *ApplicationDelegate) HasApplicationShouldTerminate() bool {
-	return di._ApplicationShouldTerminate != nil
-}
-
-// Returns a value that indicates if the app should terminate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428642-applicationshouldterminate?language=objc
-func (di *ApplicationDelegate) SetApplicationShouldTerminate(f func(sender Application) ApplicationTerminateReply) {
-	di._ApplicationShouldTerminate = f
-}
-
-// Returns a value that indicates if the app should terminate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428642-applicationshouldterminate?language=objc
-func (di *ApplicationDelegate) ApplicationShouldTerminate(sender Application) ApplicationTerminateReply {
-	return di._ApplicationShouldTerminate(sender)
-}
-func (di *ApplicationDelegate) HasApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return di._ApplicationShouldTerminateAfterLastWindowClosed != nil
-}
-
-// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
-func (di *ApplicationDelegate) SetApplicationShouldTerminateAfterLastWindowClosed(f func(sender Application) bool) {
-	di._ApplicationShouldTerminateAfterLastWindowClosed = f
-}
-
-// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
-func (di *ApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
-	return di._ApplicationShouldTerminateAfterLastWindowClosed(sender)
-}
-func (di *ApplicationDelegate) HasApplicationSupportsSecureRestorableState() bool {
-	return di._ApplicationSupportsSecureRestorableState != nil
-}
-
-// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
-func (di *ApplicationDelegate) SetApplicationSupportsSecureRestorableState(f func(app Application) bool) {
-	di._ApplicationSupportsSecureRestorableState = f
-}
-
-// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
-func (di *ApplicationDelegate) ApplicationSupportsSecureRestorableState(app Application) bool {
-	return di._ApplicationSupportsSecureRestorableState(app)
-}
-func (di *ApplicationDelegate) HasApplicationDidReceiveRemoteNotification() bool {
-	return di._ApplicationDidReceiveRemoteNotification != nil
-}
-
-// Tells the delegate when the app receives a remote notification. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428430-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidReceiveRemoteNotification(f func(application Application, userInfo map[string]objc.Object)) {
-	di._ApplicationDidReceiveRemoteNotification = f
-}
-
-// Tells the delegate when the app receives a remote notification. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428430-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object) {
-	di._ApplicationDidReceiveRemoteNotification(application, userInfo)
-}
-func (di *ApplicationDelegate) HasApplicationProtectedDataDidBecomeAvailable() bool {
-	return di._ApplicationProtectedDataDidBecomeAvailable != nil
-}
-
-// Tells the delegate that protected data is now available. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
-func (di *ApplicationDelegate) SetApplicationProtectedDataDidBecomeAvailable(f func(notification foundation.Notification)) {
-	di._ApplicationProtectedDataDidBecomeAvailable = f
-}
-
-// Tells the delegate that protected data is now available. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
-func (di *ApplicationDelegate) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
-	di._ApplicationProtectedDataDidBecomeAvailable(notification)
-}
-func (di *ApplicationDelegate) HasApplicationShouldHandleReopenHasVisibleWindows() bool {
-	return di._ApplicationShouldHandleReopenHasVisibleWindows != nil
-}
-
-// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
-func (di *ApplicationDelegate) SetApplicationShouldHandleReopenHasVisibleWindows(f func(sender Application, flag bool) bool) {
-	di._ApplicationShouldHandleReopenHasVisibleWindows = f
-}
-
-// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
-func (di *ApplicationDelegate) ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool {
-	return di._ApplicationShouldHandleReopenHasVisibleWindows(sender, flag)
-}
-func (di *ApplicationDelegate) HasApplicationOpenURLs() bool {
-	return di._ApplicationOpenURLs != nil
-}
-
-// Tells the delegate to open the resource at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2887193-application?language=objc
-func (di *ApplicationDelegate) SetApplicationOpenURLs(f func(application Application, urls []foundation.URL)) {
-	di._ApplicationOpenURLs = f
-}
-
-// Tells the delegate to open the resource at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2887193-application?language=objc
-func (di *ApplicationDelegate) ApplicationOpenURLs(application Application, urls []foundation.URL) {
-	di._ApplicationOpenURLs(application, urls)
-}
-func (di *ApplicationDelegate) HasApplicationOpenFile() bool {
-	return di._ApplicationOpenFile != nil
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428612-application?language=objc
-func (di *ApplicationDelegate) SetApplicationOpenFile(f func(sender Application, filename string) bool) {
-	di._ApplicationOpenFile = f
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428612-application?language=objc
-func (di *ApplicationDelegate) ApplicationOpenFile(sender Application, filename string) bool {
-	return di._ApplicationOpenFile(sender, filename)
-}
-func (di *ApplicationDelegate) HasApplicationWillUpdate() bool {
-	return di._ApplicationWillUpdate != nil
-}
-
-// Tells the delegate that the app is about to update its windows. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
-func (di *ApplicationDelegate) SetApplicationWillUpdate(f func(notification foundation.Notification)) {
-	di._ApplicationWillUpdate = f
-}
-
-// Tells the delegate that the app is about to update its windows. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
-func (di *ApplicationDelegate) ApplicationWillUpdate(notification foundation.Notification) {
-	di._ApplicationWillUpdate(notification)
-}
-func (di *ApplicationDelegate) HasApplicationContinueUserActivityRestorationHandler() bool {
-	return di._ApplicationContinueUserActivityRestorationHandler != nil
-}
-
-// Returns a Boolean value that indicates if the app successfully recreates the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428471-application?language=objc
-func (di *ApplicationDelegate) SetApplicationContinueUserActivityRestorationHandler(f func(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool) {
-	di._ApplicationContinueUserActivityRestorationHandler = f
-}
-
-// Returns a Boolean value that indicates if the app successfully recreates the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428471-application?language=objc
-func (di *ApplicationDelegate) ApplicationContinueUserActivityRestorationHandler(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool {
-	return di._ApplicationContinueUserActivityRestorationHandler(application, userActivity, restorationHandler)
-}
-func (di *ApplicationDelegate) HasApplicationWillEncodeRestorableState() bool {
-	return di._ApplicationWillEncodeRestorableState != nil
-}
-
-// Tells the delegate that the app is about to encode its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428400-application?language=objc
-func (di *ApplicationDelegate) SetApplicationWillEncodeRestorableState(f func(app Application, coder foundation.Coder)) {
-	di._ApplicationWillEncodeRestorableState = f
-}
-
-// Tells the delegate that the app is about to encode its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428400-application?language=objc
-func (di *ApplicationDelegate) ApplicationWillEncodeRestorableState(app Application, coder foundation.Coder) {
-	di._ApplicationWillEncodeRestorableState(app, coder)
-}
-func (di *ApplicationDelegate) HasApplicationDelegateHandlesKey() bool {
-	return di._ApplicationDelegateHandlesKey != nil
-}
-
-// Returns a Boolean value that indicates if the app supports the specified scripting key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3005173-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDelegateHandlesKey(f func(sender Application, key string) bool) {
-	di._ApplicationDelegateHandlesKey = f
-}
-
-// Returns a Boolean value that indicates if the app supports the specified scripting key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3005173-application?language=objc
-func (di *ApplicationDelegate) ApplicationDelegateHandlesKey(sender Application, key string) bool {
-	return di._ApplicationDelegateHandlesKey(sender, key)
-}
-func (di *ApplicationDelegate) HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
-	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents != nil
-}
-
-// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
-func (di *ApplicationDelegate) SetApplicationShouldAutomaticallyLocalizeKeyEquivalents(f func(application Application) bool) {
-	di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents = f
-}
-
-// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
-func (di *ApplicationDelegate) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
-	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application)
-}
-func (di *ApplicationDelegate) HasApplicationWillPresentError() bool {
-	return di._ApplicationWillPresentError != nil
-}
-
-// Returns an error for the app to display to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428721-application?language=objc
-func (di *ApplicationDelegate) SetApplicationWillPresentError(f func(application Application, error foundation.Error) foundation.Error) {
-	di._ApplicationWillPresentError = f
-}
-
-// Returns an error for the app to display to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428721-application?language=objc
-func (di *ApplicationDelegate) ApplicationWillPresentError(application Application, error foundation.Error) foundation.Error {
-	return di._ApplicationWillPresentError(application, error)
-}
-func (di *ApplicationDelegate) HasApplicationWillTerminate() bool {
-	return di._ApplicationWillTerminate != nil
-}
-
-// Tells the delegate that the app is about to terminate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
-func (di *ApplicationDelegate) SetApplicationWillTerminate(f func(notification foundation.Notification)) {
-	di._ApplicationWillTerminate = f
-}
-
-// Tells the delegate that the app is about to terminate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
-func (di *ApplicationDelegate) ApplicationWillTerminate(notification foundation.Notification) {
-	di._ApplicationWillTerminate(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDidFailToContinueUserActivityWithTypeError() bool {
-	return di._ApplicationDidFailToContinueUserActivityWithTypeError != nil
-}
-
-// Tells the delegate that the app couldn’t continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428613-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidFailToContinueUserActivityWithTypeError(f func(application Application, userActivityType string, error foundation.Error)) {
-	di._ApplicationDidFailToContinueUserActivityWithTypeError = f
-}
-
-// Tells the delegate that the app couldn’t continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428613-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidFailToContinueUserActivityWithTypeError(application Application, userActivityType string, error foundation.Error) {
-	di._ApplicationDidFailToContinueUserActivityWithTypeError(application, userActivityType, error)
-}
-func (di *ApplicationDelegate) HasApplicationWillContinueUserActivityWithType() bool {
-	return di._ApplicationWillContinueUserActivityWithType != nil
-}
-
-// Returns a Boolean value that indicates if the app can continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428364-application?language=objc
-func (di *ApplicationDelegate) SetApplicationWillContinueUserActivityWithType(f func(application Application, userActivityType string) bool) {
-	di._ApplicationWillContinueUserActivityWithType = f
-}
-
-// Returns a Boolean value that indicates if the app can continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428364-application?language=objc
-func (di *ApplicationDelegate) ApplicationWillContinueUserActivityWithType(application Application, userActivityType string) bool {
-	return di._ApplicationWillContinueUserActivityWithType(application, userActivityType)
-}
-func (di *ApplicationDelegate) HasApplicationWillFinishLaunching() bool {
-	return di._ApplicationWillFinishLaunching != nil
-}
-
-// Tells the delegate that the app’s initialization is about to complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428623-applicationwillfinishlaunching?language=objc
-func (di *ApplicationDelegate) SetApplicationWillFinishLaunching(f func(notification foundation.Notification)) {
-	di._ApplicationWillFinishLaunching = f
-}
-
-// Tells the delegate that the app’s initialization is about to complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428623-applicationwillfinishlaunching?language=objc
-func (di *ApplicationDelegate) ApplicationWillFinishLaunching(notification foundation.Notification) {
-	di._ApplicationWillFinishLaunching(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDidBecomeActive() bool {
-	return di._ApplicationDidBecomeActive != nil
-}
-
-// Tells the delegate that the app is now active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
-func (di *ApplicationDelegate) SetApplicationDidBecomeActive(f func(notification foundation.Notification)) {
-	di._ApplicationDidBecomeActive = f
-}
-
-// Tells the delegate that the app is now active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
-func (di *ApplicationDelegate) ApplicationDidBecomeActive(notification foundation.Notification) {
-	di._ApplicationDidBecomeActive(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDidFailToRegisterForRemoteNotificationsWithError() bool {
-	return di._ApplicationDidFailToRegisterForRemoteNotificationsWithError != nil
-}
-
-// Tells the delegate that the app was unable to register for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428554-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidFailToRegisterForRemoteNotificationsWithError(f func(application Application, error foundation.Error)) {
-	di._ApplicationDidFailToRegisterForRemoteNotificationsWithError = f
-}
-
-// Tells the delegate that the app was unable to register for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428554-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error) {
-	di._ApplicationDidFailToRegisterForRemoteNotificationsWithError(application, error)
-}
-func (di *ApplicationDelegate) HasApplicationDidUpdate() bool {
-	return di._ApplicationDidUpdate != nil
-}
-
-// Tells the delegate that the app’s windows did update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
-func (di *ApplicationDelegate) SetApplicationDidUpdate(f func(notification foundation.Notification)) {
-	di._ApplicationDidUpdate = f
-}
-
-// Tells the delegate that the app’s windows did update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
-func (di *ApplicationDelegate) ApplicationDidUpdate(notification foundation.Notification) {
-	di._ApplicationDidUpdate(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDidChangeScreenParameters() bool {
-	return di._ApplicationDidChangeScreenParameters != nil
-}
-
-// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
-func (di *ApplicationDelegate) SetApplicationDidChangeScreenParameters(f func(notification foundation.Notification)) {
-	di._ApplicationDidChangeScreenParameters = f
-}
-
-// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
-func (di *ApplicationDelegate) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
-	di._ApplicationDidChangeScreenParameters(notification)
-}
-func (di *ApplicationDelegate) HasApplicationPrintFilesWithSettingsShowPrintPanels() bool {
-	return di._ApplicationPrintFilesWithSettingsShowPrintPanels != nil
-}
-
-// Returns a value that indicates if the app prints the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428713-application?language=objc
-func (di *ApplicationDelegate) SetApplicationPrintFilesWithSettingsShowPrintPanels(f func(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply) {
-	di._ApplicationPrintFilesWithSettingsShowPrintPanels = f
-}
-
-// Returns a value that indicates if the app prints the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428713-application?language=objc
-func (di *ApplicationDelegate) ApplicationPrintFilesWithSettingsShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply {
-	return di._ApplicationPrintFilesWithSettingsShowPrintPanels(application, fileNames, printSettings, showPrintPanels)
-}
-func (di *ApplicationDelegate) HasApplicationHandlerForIntent() bool {
-	return di._ApplicationHandlerForIntent != nil
-}
-
-// Returns an intent handler that’s capable of handling the specified intent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3786062-application?language=objc
-func (di *ApplicationDelegate) SetApplicationHandlerForIntent(f func(application Application, intent objc.Object) objc.Object) {
-	di._ApplicationHandlerForIntent = f
-}
-
-// Returns an intent handler that’s capable of handling the specified intent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3786062-application?language=objc
-func (di *ApplicationDelegate) ApplicationHandlerForIntent(application Application, intent objc.Object) objc.Object {
-	return di._ApplicationHandlerForIntent(application, intent)
-}
-func (di *ApplicationDelegate) HasApplicationUserDidAcceptCloudKitShareWithMetadata() bool {
-	return di._ApplicationUserDidAcceptCloudKitShareWithMetadata != nil
-}
-
-// Tells the delegate when the user accepts a CloudKit sharing invitation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2138329-application?language=objc
-func (di *ApplicationDelegate) SetApplicationUserDidAcceptCloudKitShareWithMetadata(f func(application Application, metadata objc.Object)) {
-	di._ApplicationUserDidAcceptCloudKitShareWithMetadata = f
-}
-
-// Tells the delegate when the user accepts a CloudKit sharing invitation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2138329-application?language=objc
-func (di *ApplicationDelegate) ApplicationUserDidAcceptCloudKitShareWithMetadata(application Application, metadata objc.Object) {
-	di._ApplicationUserDidAcceptCloudKitShareWithMetadata(application, metadata)
-}
-func (di *ApplicationDelegate) HasApplicationDidDecodeRestorableState() bool {
-	return di._ApplicationDidDecodeRestorableState != nil
-}
-
-// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidDecodeRestorableState(f func(app Application, coder foundation.Coder)) {
-	di._ApplicationDidDecodeRestorableState = f
-}
-
-// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder) {
-	di._ApplicationDidDecodeRestorableState(app, coder)
-}
-func (di *ApplicationDelegate) HasApplicationDidUpdateUserActivity() bool {
-	return di._ApplicationDidUpdateUserActivity != nil
-}
-
-// Tells the delegate that there are changes to the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428457-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidUpdateUserActivity(f func(application Application, userActivity foundation.UserActivity)) {
-	di._ApplicationDidUpdateUserActivity = f
-}
-
-// Tells the delegate that there are changes to the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428457-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidUpdateUserActivity(application Application, userActivity foundation.UserActivity) {
-	di._ApplicationDidUpdateUserActivity(application, userActivity)
-}
 func (di *ApplicationDelegate) HasApplicationDidResignActive() bool {
 	return di._ApplicationDidResignActive != nil
 }
@@ -784,142 +162,6 @@ func (di *ApplicationDelegate) SetApplicationDidResignActive(f func(notification
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428636-applicationdidresignactive?language=objc
 func (di *ApplicationDelegate) ApplicationDidResignActive(notification foundation.Notification) {
 	di._ApplicationDidResignActive(notification)
-}
-func (di *ApplicationDelegate) HasApplicationDidRegisterForRemoteNotificationsWithDeviceToken() bool {
-	return di._ApplicationDidRegisterForRemoteNotificationsWithDeviceToken != nil
-}
-
-// Tells the delegate that the app registered for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428766-application?language=objc
-func (di *ApplicationDelegate) SetApplicationDidRegisterForRemoteNotificationsWithDeviceToken(f func(application Application, deviceToken []byte)) {
-	di._ApplicationDidRegisterForRemoteNotificationsWithDeviceToken = f
-}
-
-// Tells the delegate that the app registered for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428766-application?language=objc
-func (di *ApplicationDelegate) ApplicationDidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte) {
-	di._ApplicationDidRegisterForRemoteNotificationsWithDeviceToken(application, deviceToken)
-}
-func (di *ApplicationDelegate) HasApplicationOpenFiles() bool {
-	return di._ApplicationOpenFiles != nil
-}
-
-// Tells the delegate to open the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428742-application?language=objc
-func (di *ApplicationDelegate) SetApplicationOpenFiles(f func(sender Application, filenames []string)) {
-	di._ApplicationOpenFiles = f
-}
-
-// Tells the delegate to open the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428742-application?language=objc
-func (di *ApplicationDelegate) ApplicationOpenFiles(sender Application, filenames []string) {
-	di._ApplicationOpenFiles(sender, filenames)
-}
-func (di *ApplicationDelegate) HasApplicationProtectedDataWillBecomeUnavailable() bool {
-	return di._ApplicationProtectedDataWillBecomeUnavailable != nil
-}
-
-// Tells the delegate that protected data is about to become unavailable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752994-applicationprotecteddatawillbeco?language=objc
-func (di *ApplicationDelegate) SetApplicationProtectedDataWillBecomeUnavailable(f func(notification foundation.Notification)) {
-	di._ApplicationProtectedDataWillBecomeUnavailable = f
-}
-
-// Tells the delegate that protected data is about to become unavailable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752994-applicationprotecteddatawillbeco?language=objc
-func (di *ApplicationDelegate) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification) {
-	di._ApplicationProtectedDataWillBecomeUnavailable(notification)
-}
-func (di *ApplicationDelegate) HasApplicationOpenFileWithoutUI() bool {
-	return di._ApplicationOpenFileWithoutUI != nil
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file without showing its user interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428459-application?language=objc
-func (di *ApplicationDelegate) SetApplicationOpenFileWithoutUI(f func(sender objc.Object, filename string) bool) {
-	di._ApplicationOpenFileWithoutUI = f
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file without showing its user interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428459-application?language=objc
-func (di *ApplicationDelegate) ApplicationOpenFileWithoutUI(sender objc.Object, filename string) bool {
-	return di._ApplicationOpenFileWithoutUI(sender, filename)
-}
-func (di *ApplicationDelegate) HasApplicationOpenTempFile() bool {
-	return di._ApplicationOpenTempFile != nil
-}
-
-// Returns a Boolean value that indicates if the app opens the specified temporary file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428495-application?language=objc
-func (di *ApplicationDelegate) SetApplicationOpenTempFile(f func(sender Application, filename string) bool) {
-	di._ApplicationOpenTempFile = f
-}
-
-// Returns a Boolean value that indicates if the app opens the specified temporary file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428495-application?language=objc
-func (di *ApplicationDelegate) ApplicationOpenTempFile(sender Application, filename string) bool {
-	return di._ApplicationOpenTempFile(sender, filename)
-}
-func (di *ApplicationDelegate) HasApplicationDidHide() bool {
-	return di._ApplicationDidHide != nil
-}
-
-// Tells the delegate that the app is now hidden. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
-func (di *ApplicationDelegate) SetApplicationDidHide(f func(notification foundation.Notification)) {
-	di._ApplicationDidHide = f
-}
-
-// Tells the delegate that the app is now hidden. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
-func (di *ApplicationDelegate) ApplicationDidHide(notification foundation.Notification) {
-	di._ApplicationDidHide(notification)
-}
-func (di *ApplicationDelegate) HasApplicationShouldOpenUntitledFile() bool {
-	return di._ApplicationShouldOpenUntitledFile != nil
-}
-
-// Returns a Boolean value that indicates if the app can open an untitled file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428444-applicationshouldopenuntitledfil?language=objc
-func (di *ApplicationDelegate) SetApplicationShouldOpenUntitledFile(f func(sender Application) bool) {
-	di._ApplicationShouldOpenUntitledFile = f
-}
-
-// Returns a Boolean value that indicates if the app can open an untitled file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428444-applicationshouldopenuntitledfil?language=objc
-func (di *ApplicationDelegate) ApplicationShouldOpenUntitledFile(sender Application) bool {
-	return di._ApplicationShouldOpenUntitledFile(sender)
-}
-func (di *ApplicationDelegate) HasApplicationWillBecomeActive() bool {
-	return di._ApplicationWillBecomeActive != nil
-}
-
-// Tells the delegate that the app is about to become active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
-func (di *ApplicationDelegate) SetApplicationWillBecomeActive(f func(notification foundation.Notification)) {
-	di._ApplicationWillBecomeActive = f
-}
-
-// Tells the delegate that the app is about to become active. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
-func (di *ApplicationDelegate) ApplicationWillBecomeActive(notification foundation.Notification) {
-	di._ApplicationWillBecomeActive(notification)
 }
 func (di *ApplicationDelegate) HasApplicationDidFinishLaunching() bool {
 	return di._ApplicationDidFinishLaunching != nil
@@ -938,22 +180,243 @@ func (di *ApplicationDelegate) SetApplicationDidFinishLaunching(f func(notificat
 func (di *ApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
 	di._ApplicationDidFinishLaunching(notification)
 }
-func (di *ApplicationDelegate) HasApplicationDidUnhide() bool {
-	return di._ApplicationDidUnhide != nil
+func (di *ApplicationDelegate) HasApplicationShouldTerminate() bool {
+	return di._ApplicationShouldTerminate != nil
 }
 
-// Tells the delegate that the app is now visible. [Full Topic]
+// Returns a value that indicates if the app should terminate. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
-func (di *ApplicationDelegate) SetApplicationDidUnhide(f func(notification foundation.Notification)) {
-	di._ApplicationDidUnhide = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428642-applicationshouldterminate?language=objc
+func (di *ApplicationDelegate) SetApplicationShouldTerminate(f func(sender Application) ApplicationTerminateReply) {
+	di._ApplicationShouldTerminate = f
 }
 
-// Tells the delegate that the app is now visible. [Full Topic]
+// Returns a value that indicates if the app should terminate. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
-func (di *ApplicationDelegate) ApplicationDidUnhide(notification foundation.Notification) {
-	di._ApplicationDidUnhide(notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428642-applicationshouldterminate?language=objc
+func (di *ApplicationDelegate) ApplicationShouldTerminate(sender Application) ApplicationTerminateReply {
+	return di._ApplicationShouldTerminate(sender)
+}
+func (di *ApplicationDelegate) HasApplicationWillBecomeActive() bool {
+	return di._ApplicationWillBecomeActive != nil
+}
+
+// Tells the delegate that the app is about to become active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
+func (di *ApplicationDelegate) SetApplicationWillBecomeActive(f func(notification foundation.Notification)) {
+	di._ApplicationWillBecomeActive = f
+}
+
+// Tells the delegate that the app is about to become active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
+func (di *ApplicationDelegate) ApplicationWillBecomeActive(notification foundation.Notification) {
+	di._ApplicationWillBecomeActive(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDockMenu() bool {
+	return di._ApplicationDockMenu != nil
+}
+
+// Returns the app’s dock menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
+func (di *ApplicationDelegate) SetApplicationDockMenu(f func(sender Application) Menu) {
+	di._ApplicationDockMenu = f
+}
+
+// Returns the app’s dock menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
+func (di *ApplicationDelegate) ApplicationDockMenu(sender Application) Menu {
+	return di._ApplicationDockMenu(sender)
+}
+func (di *ApplicationDelegate) HasApplicationWillFinishLaunching() bool {
+	return di._ApplicationWillFinishLaunching != nil
+}
+
+// Tells the delegate that the app’s initialization is about to complete. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428623-applicationwillfinishlaunching?language=objc
+func (di *ApplicationDelegate) SetApplicationWillFinishLaunching(f func(notification foundation.Notification)) {
+	di._ApplicationWillFinishLaunching = f
+}
+
+// Tells the delegate that the app’s initialization is about to complete. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428623-applicationwillfinishlaunching?language=objc
+func (di *ApplicationDelegate) ApplicationWillFinishLaunching(notification foundation.Notification) {
+	di._ApplicationWillFinishLaunching(notification)
+}
+func (di *ApplicationDelegate) HasApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return di._ApplicationShouldTerminateAfterLastWindowClosed != nil
+}
+
+// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
+func (di *ApplicationDelegate) SetApplicationShouldTerminateAfterLastWindowClosed(f func(sender Application) bool) {
+	di._ApplicationShouldTerminateAfterLastWindowClosed = f
+}
+
+// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
+func (di *ApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
+	return di._ApplicationShouldTerminateAfterLastWindowClosed(sender)
+}
+func (di *ApplicationDelegate) HasApplicationProtectedDataWillBecomeUnavailable() bool {
+	return di._ApplicationProtectedDataWillBecomeUnavailable != nil
+}
+
+// Tells the delegate that protected data is about to become unavailable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752994-applicationprotecteddatawillbeco?language=objc
+func (di *ApplicationDelegate) SetApplicationProtectedDataWillBecomeUnavailable(f func(notification foundation.Notification)) {
+	di._ApplicationProtectedDataWillBecomeUnavailable = f
+}
+
+// Tells the delegate that protected data is about to become unavailable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752994-applicationprotecteddatawillbeco?language=objc
+func (di *ApplicationDelegate) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification) {
+	di._ApplicationProtectedDataWillBecomeUnavailable(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDidHide() bool {
+	return di._ApplicationDidHide != nil
+}
+
+// Tells the delegate that the app is now hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
+func (di *ApplicationDelegate) SetApplicationDidHide(f func(notification foundation.Notification)) {
+	di._ApplicationDidHide = f
+}
+
+// Tells the delegate that the app is now hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
+func (di *ApplicationDelegate) ApplicationDidHide(notification foundation.Notification) {
+	di._ApplicationDidHide(notification)
+}
+func (di *ApplicationDelegate) HasApplicationWillResignActive() bool {
+	return di._ApplicationWillResignActive != nil
+}
+
+// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
+func (di *ApplicationDelegate) SetApplicationWillResignActive(f func(notification foundation.Notification)) {
+	di._ApplicationWillResignActive = f
+}
+
+// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
+func (di *ApplicationDelegate) ApplicationWillResignActive(notification foundation.Notification) {
+	di._ApplicationWillResignActive(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDidBecomeActive() bool {
+	return di._ApplicationDidBecomeActive != nil
+}
+
+// Tells the delegate that the app is now active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
+func (di *ApplicationDelegate) SetApplicationDidBecomeActive(f func(notification foundation.Notification)) {
+	di._ApplicationDidBecomeActive = f
+}
+
+// Tells the delegate that the app is now active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
+func (di *ApplicationDelegate) ApplicationDidBecomeActive(notification foundation.Notification) {
+	di._ApplicationDidBecomeActive(notification)
+}
+func (di *ApplicationDelegate) HasApplicationProtectedDataDidBecomeAvailable() bool {
+	return di._ApplicationProtectedDataDidBecomeAvailable != nil
+}
+
+// Tells the delegate that protected data is now available. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
+func (di *ApplicationDelegate) SetApplicationProtectedDataDidBecomeAvailable(f func(notification foundation.Notification)) {
+	di._ApplicationProtectedDataDidBecomeAvailable = f
+}
+
+// Tells the delegate that protected data is now available. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
+func (di *ApplicationDelegate) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
+	di._ApplicationProtectedDataDidBecomeAvailable(notification)
+}
+func (di *ApplicationDelegate) HasApplicationWillHide() bool {
+	return di._ApplicationWillHide != nil
+}
+
+// Tells the delegate that the app is about to be hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
+func (di *ApplicationDelegate) SetApplicationWillHide(f func(notification foundation.Notification)) {
+	di._ApplicationWillHide = f
+}
+
+// Tells the delegate that the app is about to be hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
+func (di *ApplicationDelegate) ApplicationWillHide(notification foundation.Notification) {
+	di._ApplicationWillHide(notification)
+}
+func (di *ApplicationDelegate) HasApplicationWillUpdate() bool {
+	return di._ApplicationWillUpdate != nil
+}
+
+// Tells the delegate that the app is about to update its windows. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
+func (di *ApplicationDelegate) SetApplicationWillUpdate(f func(notification foundation.Notification)) {
+	di._ApplicationWillUpdate = f
+}
+
+// Tells the delegate that the app is about to update its windows. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
+func (di *ApplicationDelegate) ApplicationWillUpdate(notification foundation.Notification) {
+	di._ApplicationWillUpdate(notification)
+}
+func (di *ApplicationDelegate) HasApplicationShouldOpenUntitledFile() bool {
+	return di._ApplicationShouldOpenUntitledFile != nil
+}
+
+// Returns a Boolean value that indicates if the app can open an untitled file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428444-applicationshouldopenuntitledfil?language=objc
+func (di *ApplicationDelegate) SetApplicationShouldOpenUntitledFile(f func(sender Application) bool) {
+	di._ApplicationShouldOpenUntitledFile = f
+}
+
+// Returns a Boolean value that indicates if the app can open an untitled file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428444-applicationshouldopenuntitledfil?language=objc
+func (di *ApplicationDelegate) ApplicationShouldOpenUntitledFile(sender Application) bool {
+	return di._ApplicationShouldOpenUntitledFile(sender)
+}
+func (di *ApplicationDelegate) HasApplicationSupportsSecureRestorableState() bool {
+	return di._ApplicationSupportsSecureRestorableState != nil
+}
+
+// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
+func (di *ApplicationDelegate) SetApplicationSupportsSecureRestorableState(f func(app Application) bool) {
+	di._ApplicationSupportsSecureRestorableState = f
+}
+
+// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
+func (di *ApplicationDelegate) ApplicationSupportsSecureRestorableState(app Application) bool {
+	return di._ApplicationSupportsSecureRestorableState(app)
 }
 func (di *ApplicationDelegate) HasApplicationWillUnhide() bool {
 	return di._ApplicationWillUnhide != nil
@@ -989,22 +452,141 @@ func (di *ApplicationDelegate) SetApplicationOpenUntitledFile(f func(sender Appl
 func (di *ApplicationDelegate) ApplicationOpenUntitledFile(sender Application) bool {
 	return di._ApplicationOpenUntitledFile(sender)
 }
-func (di *ApplicationDelegate) HasApplicationPrintFile() bool {
-	return di._ApplicationPrintFile != nil
+func (di *ApplicationDelegate) HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
+	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents != nil
 }
 
-// Returns a Boolean value that indicates if the app prints the specified file in its entirety. [Full Topic]
+// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428520-application?language=objc
-func (di *ApplicationDelegate) SetApplicationPrintFile(f func(sender Application, filename string) bool) {
-	di._ApplicationPrintFile = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
+func (di *ApplicationDelegate) SetApplicationShouldAutomaticallyLocalizeKeyEquivalents(f func(application Application) bool) {
+	di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents = f
 }
 
-// Returns a Boolean value that indicates if the app prints the specified file in its entirety. [Full Topic]
+// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428520-application?language=objc
-func (di *ApplicationDelegate) ApplicationPrintFile(sender Application, filename string) bool {
-	return di._ApplicationPrintFile(sender, filename)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
+func (di *ApplicationDelegate) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
+	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application)
+}
+func (di *ApplicationDelegate) HasApplicationDidDecodeRestorableState() bool {
+	return di._ApplicationDidDecodeRestorableState != nil
+}
+
+// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
+func (di *ApplicationDelegate) SetApplicationDidDecodeRestorableState(f func(app Application, coder foundation.Coder)) {
+	di._ApplicationDidDecodeRestorableState = f
+}
+
+// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
+func (di *ApplicationDelegate) ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder) {
+	di._ApplicationDidDecodeRestorableState(app, coder)
+}
+func (di *ApplicationDelegate) HasApplicationDidUpdate() bool {
+	return di._ApplicationDidUpdate != nil
+}
+
+// Tells the delegate that the app’s windows did update. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
+func (di *ApplicationDelegate) SetApplicationDidUpdate(f func(notification foundation.Notification)) {
+	di._ApplicationDidUpdate = f
+}
+
+// Tells the delegate that the app’s windows did update. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
+func (di *ApplicationDelegate) ApplicationDidUpdate(notification foundation.Notification) {
+	di._ApplicationDidUpdate(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDidChangeOcclusionState() bool {
+	return di._ApplicationDidChangeOcclusionState != nil
+}
+
+// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
+func (di *ApplicationDelegate) SetApplicationDidChangeOcclusionState(f func(notification foundation.Notification)) {
+	di._ApplicationDidChangeOcclusionState = f
+}
+
+// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
+func (di *ApplicationDelegate) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
+	di._ApplicationDidChangeOcclusionState(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDidChangeScreenParameters() bool {
+	return di._ApplicationDidChangeScreenParameters != nil
+}
+
+// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
+func (di *ApplicationDelegate) SetApplicationDidChangeScreenParameters(f func(notification foundation.Notification)) {
+	di._ApplicationDidChangeScreenParameters = f
+}
+
+// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
+func (di *ApplicationDelegate) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
+	di._ApplicationDidChangeScreenParameters(notification)
+}
+func (di *ApplicationDelegate) HasApplicationWillTerminate() bool {
+	return di._ApplicationWillTerminate != nil
+}
+
+// Tells the delegate that the app is about to terminate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
+func (di *ApplicationDelegate) SetApplicationWillTerminate(f func(notification foundation.Notification)) {
+	di._ApplicationWillTerminate = f
+}
+
+// Tells the delegate that the app is about to terminate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
+func (di *ApplicationDelegate) ApplicationWillTerminate(notification foundation.Notification) {
+	di._ApplicationWillTerminate(notification)
+}
+func (di *ApplicationDelegate) HasApplicationDidUnhide() bool {
+	return di._ApplicationDidUnhide != nil
+}
+
+// Tells the delegate that the app is now visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
+func (di *ApplicationDelegate) SetApplicationDidUnhide(f func(notification foundation.Notification)) {
+	di._ApplicationDidUnhide = f
+}
+
+// Tells the delegate that the app is now visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
+func (di *ApplicationDelegate) ApplicationDidUnhide(notification foundation.Notification) {
+	di._ApplicationDidUnhide(notification)
+}
+func (di *ApplicationDelegate) HasApplicationShouldHandleReopenHasVisibleWindows() bool {
+	return di._ApplicationShouldHandleReopenHasVisibleWindows != nil
+}
+
+// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
+func (di *ApplicationDelegate) SetApplicationShouldHandleReopenHasVisibleWindows(f func(sender Application, flag bool) bool) {
+	di._ApplicationShouldHandleReopenHasVisibleWindows = f
+}
+
+// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
+func (di *ApplicationDelegate) ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool {
+	return di._ApplicationShouldHandleReopenHasVisibleWindows(sender, flag)
 }
 
 // ensure impl type implements protocol interface
@@ -1015,49 +597,26 @@ type ApplicationDelegateObject struct {
 	objc.Object
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationWillResignActive() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationWillResignActive:"))
+func (a_ ApplicationDelegateObject) HasApplicationDidResignActive() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidResignActive:"))
 }
 
-// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
+// Tells the delegate that the app is no longer active and doesn’t have focus. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillResignActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillResignActive:"), notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428636-applicationdidresignactive?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidResignActive(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidResignActive:"), notification)
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationWillHide() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationWillHide:"))
+func (a_ ApplicationDelegateObject) HasApplicationDidFinishLaunching() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidFinishLaunching:"))
 }
 
-// Tells the delegate that the app is about to be hidden. [Full Topic]
+// Tells the delegate that the app’s initialization is complete but it hasn’t received its first event. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillHide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillHide:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDockMenu() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDockMenu:"))
-}
-
-// Returns the app’s dock menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDockMenu(sender Application) Menu {
-	rv := objc.Call[Menu](a_, objc.Sel("applicationDockMenu:"), sender)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidChangeOcclusionState() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidChangeOcclusionState:"))
-}
-
-// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeOcclusionState:"), notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428385-applicationdidfinishlaunching?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidFinishLaunching:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationShouldTerminate() bool {
@@ -1072,188 +631,26 @@ func (a_ ApplicationDelegateObject) ApplicationShouldTerminate(sender Applicatio
 	return rv
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"))
+func (a_ ApplicationDelegateObject) HasApplicationWillBecomeActive() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationWillBecomeActive:"))
 }
 
-// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
+// Tells the delegate that the app is about to become active. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
-func (a_ ApplicationDelegateObject) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"), sender)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
+func (a_ ApplicationDelegateObject) ApplicationWillBecomeActive(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillBecomeActive:"), notification)
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationSupportsSecureRestorableState() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationSupportsSecureRestorableState:"))
+func (a_ ApplicationDelegateObject) HasApplicationDockMenu() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDockMenu:"))
 }
 
-// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
+// Returns the app’s dock menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
-func (a_ ApplicationDelegateObject) ApplicationSupportsSecureRestorableState(app Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationSupportsSecureRestorableState:"), app)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidReceiveRemoteNotification() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didReceiveRemoteNotification:"))
-}
-
-// Tells the delegate when the app receives a remote notification. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428430-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didReceiveRemoteNotification:"), application, userInfo)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationProtectedDataDidBecomeAvailable() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationProtectedDataDidBecomeAvailable:"))
-}
-
-// Tells the delegate that protected data is now available. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
-func (a_ ApplicationDelegateObject) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataDidBecomeAvailable:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationShouldHandleReopenHasVisibleWindows() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"))
-}
-
-// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
-func (a_ ApplicationDelegateObject) ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"), sender, flag)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationOpenURLs() bool {
-	return a_.RespondsToSelector(objc.Sel("application:openURLs:"))
-}
-
-// Tells the delegate to open the resource at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2887193-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationOpenURLs(application Application, urls []foundation.URL) {
-	objc.Call[objc.Void](a_, objc.Sel("application:openURLs:"), application, urls)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationOpenFile() bool {
-	return a_.RespondsToSelector(objc.Sel("application:openFile:"))
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428612-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationOpenFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:openFile:"), sender, filename)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationWillUpdate() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationWillUpdate:"))
-}
-
-// Tells the delegate that the app is about to update its windows. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillUpdate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillUpdate:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationContinueUserActivityRestorationHandler() bool {
-	return a_.RespondsToSelector(objc.Sel("application:continueUserActivity:restorationHandler:"))
-}
-
-// Returns a Boolean value that indicates if the app successfully recreates the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428471-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationContinueUserActivityRestorationHandler(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:continueUserActivity:restorationHandler:"), application, userActivity, restorationHandler)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationWillEncodeRestorableState() bool {
-	return a_.RespondsToSelector(objc.Sel("application:willEncodeRestorableState:"))
-}
-
-// Tells the delegate that the app is about to encode its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428400-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillEncodeRestorableState(app Application, coder foundation.Coder) {
-	objc.Call[objc.Void](a_, objc.Sel("application:willEncodeRestorableState:"), app, coder)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDelegateHandlesKey() bool {
-	return a_.RespondsToSelector(objc.Sel("application:delegateHandlesKey:"))
-}
-
-// Returns a Boolean value that indicates if the app supports the specified scripting key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3005173-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDelegateHandlesKey(sender Application, key string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:delegateHandlesKey:"), sender, key)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"))
-}
-
-// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
-func (a_ ApplicationDelegateObject) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), application)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationWillPresentError() bool {
-	return a_.RespondsToSelector(objc.Sel("application:willPresentError:"))
-}
-
-// Returns an error for the app to display to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428721-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillPresentError(application Application, error foundation.Error) foundation.Error {
-	rv := objc.Call[foundation.Error](a_, objc.Sel("application:willPresentError:"), application, error)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationWillTerminate() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationWillTerminate:"))
-}
-
-// Tells the delegate that the app is about to terminate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillTerminate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillTerminate:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidFailToContinueUserActivityWithTypeError() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didFailToContinueUserActivityWithType:error:"))
-}
-
-// Tells the delegate that the app couldn’t continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428613-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidFailToContinueUserActivityWithTypeError(application Application, userActivityType string, error foundation.Error) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didFailToContinueUserActivityWithType:error:"), application, userActivityType, error)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationWillContinueUserActivityWithType() bool {
-	return a_.RespondsToSelector(objc.Sel("application:willContinueUserActivityWithType:"))
-}
-
-// Returns a Boolean value that indicates if the app can continue the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428364-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillContinueUserActivityWithType(application Application, userActivityType string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:willContinueUserActivityWithType:"), application, userActivityType)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDockMenu(sender Application) Menu {
+	rv := objc.Call[Menu](a_, objc.Sel("applicationDockMenu:"), sender)
 	return rv
 }
 
@@ -1268,138 +665,16 @@ func (a_ ApplicationDelegateObject) ApplicationWillFinishLaunching(notification 
 	objc.Call[objc.Void](a_, objc.Sel("applicationWillFinishLaunching:"), notification)
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationDidBecomeActive() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidBecomeActive:"))
+func (a_ ApplicationDelegateObject) HasApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"))
 }
 
-// Tells the delegate that the app is now active. [Full Topic]
+// Returns a Boolean value that indicates if the app terminates once the last window closes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidBecomeActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidBecomeActive:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidFailToRegisterForRemoteNotificationsWithError() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didFailToRegisterForRemoteNotificationsWithError:"))
-}
-
-// Tells the delegate that the app was unable to register for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428554-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didFailToRegisterForRemoteNotificationsWithError:"), application, error)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidUpdate() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidUpdate:"))
-}
-
-// Tells the delegate that the app’s windows did update. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidUpdate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidUpdate:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidChangeScreenParameters() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidChangeScreenParameters:"))
-}
-
-// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeScreenParameters:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationPrintFilesWithSettingsShowPrintPanels() bool {
-	return a_.RespondsToSelector(objc.Sel("application:printFiles:withSettings:showPrintPanels:"))
-}
-
-// Returns a value that indicates if the app prints the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428713-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationPrintFilesWithSettingsShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply {
-	rv := objc.Call[ApplicationPrintReply](a_, objc.Sel("application:printFiles:withSettings:showPrintPanels:"), application, fileNames, printSettings, showPrintPanels)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
+func (a_ ApplicationDelegateObject) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"), sender)
 	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationHandlerForIntent() bool {
-	return a_.RespondsToSelector(objc.Sel("application:handlerForIntent:"))
-}
-
-// Returns an intent handler that’s capable of handling the specified intent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3786062-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationHandlerForIntent(application Application, intent objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("application:handlerForIntent:"), application, intent)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationUserDidAcceptCloudKitShareWithMetadata() bool {
-	return a_.RespondsToSelector(objc.Sel("application:userDidAcceptCloudKitShareWithMetadata:"))
-}
-
-// Tells the delegate when the user accepts a CloudKit sharing invitation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2138329-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationUserDidAcceptCloudKitShareWithMetadata(application Application, metadata objc.Object) {
-	objc.Call[objc.Void](a_, objc.Sel("application:userDidAcceptCloudKitShareWithMetadata:"), application, metadata)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidDecodeRestorableState() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didDecodeRestorableState:"))
-}
-
-// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didDecodeRestorableState:"), app, coder)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidUpdateUserActivity() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didUpdateUserActivity:"))
-}
-
-// Tells the delegate that there are changes to the specified activity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428457-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidUpdateUserActivity(application Application, userActivity foundation.UserActivity) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didUpdateUserActivity:"), application, userActivity)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidResignActive() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidResignActive:"))
-}
-
-// Tells the delegate that the app is no longer active and doesn’t have focus. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428636-applicationdidresignactive?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidResignActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidResignActive:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidRegisterForRemoteNotificationsWithDeviceToken() bool {
-	return a_.RespondsToSelector(objc.Sel("application:didRegisterForRemoteNotificationsWithDeviceToken:"))
-}
-
-// Tells the delegate that the app registered for Apple Push Services. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428766-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didRegisterForRemoteNotificationsWithDeviceToken:"), application, deviceToken)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationOpenFiles() bool {
-	return a_.RespondsToSelector(objc.Sel("application:openFiles:"))
-}
-
-// Tells the delegate to open the specified files. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428742-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationOpenFiles(sender Application, filenames []string) {
-	objc.Call[objc.Void](a_, objc.Sel("application:openFiles:"), sender, filenames)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationProtectedDataWillBecomeUnavailable() bool {
@@ -1413,30 +688,6 @@ func (a_ ApplicationDelegateObject) ApplicationProtectedDataWillBecomeUnavailabl
 	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataWillBecomeUnavailable:"), notification)
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationOpenFileWithoutUI() bool {
-	return a_.RespondsToSelector(objc.Sel("application:openFileWithoutUI:"))
-}
-
-// Returns a Boolean value that indicates if the app opens the specified file without showing its user interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428459-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationOpenFileWithoutUI(sender objc.Object, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:openFileWithoutUI:"), sender, filename)
-	return rv
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationOpenTempFile() bool {
-	return a_.RespondsToSelector(objc.Sel("application:openTempFile:"))
-}
-
-// Returns a Boolean value that indicates if the app opens the specified temporary file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428495-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationOpenTempFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:openTempFile:"), sender, filename)
-	return rv
-}
-
 func (a_ ApplicationDelegateObject) HasApplicationDidHide() bool {
 	return a_.RespondsToSelector(objc.Sel("applicationDidHide:"))
 }
@@ -1446,6 +697,61 @@ func (a_ ApplicationDelegateObject) HasApplicationDidHide() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidHide(notification foundation.Notification) {
 	objc.Call[objc.Void](a_, objc.Sel("applicationDidHide:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationWillResignActive() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationWillResignActive:"))
+}
+
+// Tells the delegate that the app is about to become inactive and will lose focus. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
+func (a_ ApplicationDelegateObject) ApplicationWillResignActive(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillResignActive:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidBecomeActive() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidBecomeActive:"))
+}
+
+// Tells the delegate that the app is now active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidBecomeActive(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidBecomeActive:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationProtectedDataDidBecomeAvailable() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationProtectedDataDidBecomeAvailable:"))
+}
+
+// Tells the delegate that protected data is now available. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
+func (a_ ApplicationDelegateObject) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataDidBecomeAvailable:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationWillHide() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationWillHide:"))
+}
+
+// Tells the delegate that the app is about to be hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
+func (a_ ApplicationDelegateObject) ApplicationWillHide(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillHide:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationWillUpdate() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationWillUpdate:"))
+}
+
+// Tells the delegate that the app is about to update its windows. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
+func (a_ ApplicationDelegateObject) ApplicationWillUpdate(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillUpdate:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationShouldOpenUntitledFile() bool {
@@ -1460,37 +766,16 @@ func (a_ ApplicationDelegateObject) ApplicationShouldOpenUntitledFile(sender App
 	return rv
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationWillBecomeActive() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationWillBecomeActive:"))
+func (a_ ApplicationDelegateObject) HasApplicationSupportsSecureRestorableState() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationSupportsSecureRestorableState:"))
 }
 
-// Tells the delegate that the app is about to become active. [Full Topic]
+// Returns a Boolean value that indicates if the app supports secure state restoration. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
-func (a_ ApplicationDelegateObject) ApplicationWillBecomeActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillBecomeActive:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidFinishLaunching() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidFinishLaunching:"))
-}
-
-// Tells the delegate that the app’s initialization is complete but it hasn’t received its first event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428385-applicationdidfinishlaunching?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidFinishLaunching:"), notification)
-}
-
-func (a_ ApplicationDelegateObject) HasApplicationDidUnhide() bool {
-	return a_.RespondsToSelector(objc.Sel("applicationDidUnhide:"))
-}
-
-// Tells the delegate that the app is now visible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
-func (a_ ApplicationDelegateObject) ApplicationDidUnhide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidUnhide:"), notification)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
+func (a_ ApplicationDelegateObject) ApplicationSupportsSecureRestorableState(app Application) bool {
+	rv := objc.Call[bool](a_, objc.Sel("applicationSupportsSecureRestorableState:"), app)
+	return rv
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationWillUnhide() bool {
@@ -1516,14 +801,92 @@ func (a_ ApplicationDelegateObject) ApplicationOpenUntitledFile(sender Applicati
 	return rv
 }
 
-func (a_ ApplicationDelegateObject) HasApplicationPrintFile() bool {
-	return a_.RespondsToSelector(objc.Sel("application:printFile:"))
+func (a_ ApplicationDelegateObject) HasApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"))
 }
 
-// Returns a Boolean value that indicates if the app prints the specified file in its entirety. [Full Topic]
+// Returns a Boolean value that tells the system whether to remap menu shortcuts to support localized keyboards. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428520-application?language=objc
-func (a_ ApplicationDelegateObject) ApplicationPrintFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:printFile:"), sender, filename)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
+func (a_ ApplicationDelegateObject) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), application)
+	return rv
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidDecodeRestorableState() bool {
+	return a_.RespondsToSelector(objc.Sel("application:didDecodeRestorableState:"))
+}
+
+// Tells the delegate when the app finished decoding its restorable state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder) {
+	objc.Call[objc.Void](a_, objc.Sel("application:didDecodeRestorableState:"), app, coder)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidUpdate() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidUpdate:"))
+}
+
+// Tells the delegate that the app’s windows did update. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidUpdate(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidUpdate:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidChangeOcclusionState() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidChangeOcclusionState:"))
+}
+
+// Tells the delegate about changes to the app’s occlusion state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeOcclusionState:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidChangeScreenParameters() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidChangeScreenParameters:"))
+}
+
+// Tells the delegate about changes to the configuration of any attached displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeScreenParameters:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationWillTerminate() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationWillTerminate:"))
+}
+
+// Tells the delegate that the app is about to terminate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
+func (a_ ApplicationDelegateObject) ApplicationWillTerminate(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillTerminate:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationDidUnhide() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationDidUnhide:"))
+}
+
+// Tells the delegate that the app is now visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
+func (a_ ApplicationDelegateObject) ApplicationDidUnhide(notification foundation.Notification) {
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidUnhide:"), notification)
+}
+
+func (a_ ApplicationDelegateObject) HasApplicationShouldHandleReopenHasVisibleWindows() bool {
+	return a_.RespondsToSelector(objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"))
+}
+
+// Returns a Boolean value that indicates if the app responds to reopen AppleEvents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
+func (a_ ApplicationDelegateObject) ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool {
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"), sender, flag)
 	return rv
 }

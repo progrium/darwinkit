@@ -15,12 +15,16 @@ type PCommandQueue interface {
 	HasCommandBuffer() bool
 
 	// optional
+	CommandBufferWithDescriptor(descriptor CommandBufferDescriptor) CommandBufferObject
+	HasCommandBufferWithDescriptor() bool
+
+	// optional
 	CommandBufferWithUnretainedReferences() CommandBufferObject
 	HasCommandBufferWithUnretainedReferences() bool
 
 	// optional
-	CommandBufferWithDescriptor(descriptor CommandBufferDescriptor) CommandBufferObject
-	HasCommandBufferWithDescriptor() bool
+	Device() DeviceObject
+	HasDevice() bool
 
 	// optional
 	SetLabel(value string)
@@ -29,10 +33,6 @@ type PCommandQueue interface {
 	// optional
 	Label() string
 	HasLabel() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
 }
 
 // ensure impl type implements protocol interface
@@ -55,6 +55,18 @@ func (c_ CommandQueueObject) CommandBuffer() CommandBufferObject {
 	return rv
 }
 
+func (c_ CommandQueueObject) HasCommandBufferWithDescriptor() bool {
+	return c_.RespondsToSelector(objc.Sel("commandBufferWithDescriptor:"))
+}
+
+// Returns a command buffer from the command queue that you configure with a descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/3553957-commandbufferwithdescriptor?language=objc
+func (c_ CommandQueueObject) CommandBufferWithDescriptor(descriptor CommandBufferDescriptor) CommandBufferObject {
+	rv := objc.Call[CommandBufferObject](c_, objc.Sel("commandBufferWithDescriptor:"), descriptor)
+	return rv
+}
+
 func (c_ CommandQueueObject) HasCommandBufferWithUnretainedReferences() bool {
 	return c_.RespondsToSelector(objc.Sel("commandBufferWithUnretainedReferences"))
 }
@@ -67,15 +79,15 @@ func (c_ CommandQueueObject) CommandBufferWithUnretainedReferences() CommandBuff
 	return rv
 }
 
-func (c_ CommandQueueObject) HasCommandBufferWithDescriptor() bool {
-	return c_.RespondsToSelector(objc.Sel("commandBufferWithDescriptor:"))
+func (c_ CommandQueueObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
 }
 
-// Returns a command buffer from the command queue that you configure with a descriptor. [Full Topic]
+// The GPU device that creates the command queue. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/3553957-commandbufferwithdescriptor?language=objc
-func (c_ CommandQueueObject) CommandBufferWithDescriptor(descriptor CommandBufferDescriptor) CommandBufferObject {
-	rv := objc.Call[CommandBufferObject](c_, objc.Sel("commandBufferWithDescriptor:"), descriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/1508687-device?language=objc
+func (c_ CommandQueueObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }
 
@@ -99,17 +111,5 @@ func (c_ CommandQueueObject) HasLabel() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/1508690-label?language=objc
 func (c_ CommandQueueObject) Label() string {
 	rv := objc.Call[string](c_, objc.Sel("label"))
-	return rv
-}
-
-func (c_ CommandQueueObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The GPU device that creates the command queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/1508687-device?language=objc
-func (c_ CommandQueueObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }

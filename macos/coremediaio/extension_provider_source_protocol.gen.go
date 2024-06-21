@@ -18,16 +18,16 @@ type PExtensionProviderSource interface {
 	HasSetProviderPropertiesError() bool
 
 	// optional
+	ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties
+	HasProviderPropertiesForPropertiesError() bool
+
+	// optional
 	ConnectClientError(client ExtensionClient, outError unsafe.Pointer) bool
 	HasConnectClientError() bool
 
 	// optional
 	DisconnectClient(client ExtensionClient)
 	HasDisconnectClient() bool
-
-	// optional
-	ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties
-	HasProviderPropertiesForPropertiesError() bool
 
 	// optional
 	AvailableProperties() foundation.Set
@@ -54,6 +54,18 @@ func (e_ ExtensionProviderSourceObject) SetProviderPropertiesError(providerPrope
 	return rv
 }
 
+func (e_ ExtensionProviderSourceObject) HasProviderPropertiesForPropertiesError() bool {
+	return e_.RespondsToSelector(objc.Sel("providerPropertiesForProperties:error:"))
+}
+
+// Gets the state of provider properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915927-providerpropertiesforproperties?language=objc
+func (e_ ExtensionProviderSourceObject) ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties {
+	rv := objc.Call[ExtensionProviderProperties](e_, objc.Sel("providerPropertiesForProperties:error:"), properties, outError)
+	return rv
+}
+
 func (e_ ExtensionProviderSourceObject) HasConnectClientError() bool {
 	return e_.RespondsToSelector(objc.Sel("connectClient:error:"))
 }
@@ -75,18 +87,6 @@ func (e_ ExtensionProviderSourceObject) HasDisconnectClient() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915926-disconnectclient?language=objc
 func (e_ ExtensionProviderSourceObject) DisconnectClient(client ExtensionClient) {
 	objc.Call[objc.Void](e_, objc.Sel("disconnectClient:"), client)
-}
-
-func (e_ ExtensionProviderSourceObject) HasProviderPropertiesForPropertiesError() bool {
-	return e_.RespondsToSelector(objc.Sel("providerPropertiesForProperties:error:"))
-}
-
-// Gets the state of provider properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915927-providerpropertiesforproperties?language=objc
-func (e_ ExtensionProviderSourceObject) ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties {
-	rv := objc.Call[ExtensionProviderProperties](e_, objc.Sel("providerPropertiesForProperties:error:"), properties, outError)
-	return rv
 }
 
 func (e_ ExtensionProviderSourceObject) HasAvailableProperties() bool {

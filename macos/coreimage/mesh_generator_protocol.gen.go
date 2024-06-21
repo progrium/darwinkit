@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator?language=objc
 type PMeshGenerator interface {
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
-
-	// optional
-	Width() float32
-	HasWidth() bool
-
-	// optional
 	SetColor(value Color)
 	HasSetColor() bool
 
 	// optional
 	Color() Color
 	HasColor() bool
+
+	// optional
+	SetWidth(value float32)
+	HasSetWidth() bool
+
+	// optional
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetMesh(value []objc.Object)
@@ -41,29 +41,6 @@ var _ PMeshGenerator = (*MeshGeneratorObject)(nil)
 // A concrete type for the [PMeshGenerator] protocol.
 type MeshGeneratorObject struct {
 	objc.Object
-}
-
-func (m_ MeshGeneratorObject) HasSetWidth() bool {
-	return m_.RespondsToSelector(objc.Sel("setWidth:"))
-}
-
-// The width of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator/3228561-width?language=objc
-func (m_ MeshGeneratorObject) SetWidth(value float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setWidth:"), value)
-}
-
-func (m_ MeshGeneratorObject) HasWidth() bool {
-	return m_.RespondsToSelector(objc.Sel("width"))
-}
-
-// The width of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator/3228561-width?language=objc
-func (m_ MeshGeneratorObject) Width() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("width"))
-	return rv
 }
 
 func (m_ MeshGeneratorObject) HasSetColor() bool {
@@ -86,6 +63,29 @@ func (m_ MeshGeneratorObject) HasColor() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator/3228559-color?language=objc
 func (m_ MeshGeneratorObject) Color() Color {
 	rv := objc.Call[Color](m_, objc.Sel("color"))
+	return rv
+}
+
+func (m_ MeshGeneratorObject) HasSetWidth() bool {
+	return m_.RespondsToSelector(objc.Sel("setWidth:"))
+}
+
+// The width of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator/3228561-width?language=objc
+func (m_ MeshGeneratorObject) SetWidth(value float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setWidth:"), value)
+}
+
+func (m_ MeshGeneratorObject) HasWidth() bool {
+	return m_.RespondsToSelector(objc.Sel("width"))
+}
+
+// The width of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimeshgenerator/3228561-width?language=objc
+func (m_ MeshGeneratorObject) Width() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("width"))
 	return rv
 }
 

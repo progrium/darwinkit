@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion?language=objc
 type PGlassDistortion interface {
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetScale(value float32)
 	HasSetScale() bool
 
@@ -28,12 +20,12 @@ type PGlassDistortion interface {
 	HasScale() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetTextureImage(value Image)
@@ -42,6 +34,14 @@ type PGlassDistortion interface {
 	// optional
 	TextureImage() Image
 	HasTextureImage() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PGlassDistortion = (*GlassDistortionObject)(nil)
 // A concrete type for the [PGlassDistortion] protocol.
 type GlassDistortionObject struct {
 	objc.Object
-}
-
-func (g_ GlassDistortionObject) HasSetInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600157-inputimage?language=objc
-func (g_ GlassDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
-}
-
-func (g_ GlassDistortionObject) HasInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600157-inputimage?language=objc
-func (g_ GlassDistortionObject) InputImage() Image {
-	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
-	return rv
 }
 
 func (g_ GlassDistortionObject) HasSetScale() bool {
@@ -98,26 +75,26 @@ func (g_ GlassDistortionObject) Scale() float32 {
 	return rv
 }
 
-func (g_ GlassDistortionObject) HasSetCenter() bool {
-	return g_.RespondsToSelector(objc.Sel("setCenter:"))
+func (g_ GlassDistortionObject) HasSetInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600156-center?language=objc
-func (g_ GlassDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](g_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600157-inputimage?language=objc
+func (g_ GlassDistortionObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
-func (g_ GlassDistortionObject) HasCenter() bool {
-	return g_.RespondsToSelector(objc.Sel("center"))
+func (g_ GlassDistortionObject) HasInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600156-center?language=objc
-func (g_ GlassDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](g_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600157-inputimage?language=objc
+func (g_ GlassDistortionObject) InputImage() Image {
+	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -141,5 +118,28 @@ func (g_ GlassDistortionObject) HasTextureImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600159-textureimage?language=objc
 func (g_ GlassDistortionObject) TextureImage() Image {
 	rv := objc.Call[Image](g_, objc.Sel("textureImage"))
+	return rv
+}
+
+func (g_ GlassDistortionObject) HasSetCenter() bool {
+	return g_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600156-center?language=objc
+func (g_ GlassDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](g_, objc.Sel("setCenter:"), value)
+}
+
+func (g_ GlassDistortionObject) HasCenter() bool {
+	return g_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600156-center?language=objc
+func (g_ GlassDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](g_, objc.Sel("center"))
 	return rv
 }

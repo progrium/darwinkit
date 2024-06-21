@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion?language=objc
 type PBumpDistortion interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetScale(value float32)
+	HasSetScale() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	Scale() float32
+	HasScale() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -36,12 +36,12 @@ type PBumpDistortion interface {
 	HasRadius() bool
 
 	// optional
-	SetScale(value float32)
-	HasSetScale() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	Scale() float32
-	HasScale() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,26 +52,26 @@ type BumpDistortionObject struct {
 	objc.Object
 }
 
-func (b_ BumpDistortionObject) HasSetCenter() bool {
-	return b_.RespondsToSelector(objc.Sel("setCenter:"))
+func (b_ BumpDistortionObject) HasSetScale() bool {
+	return b_.RespondsToSelector(objc.Sel("setScale:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600107-center?language=objc
-func (b_ BumpDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](b_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
+func (b_ BumpDistortionObject) SetScale(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
 }
 
-func (b_ BumpDistortionObject) HasCenter() bool {
-	return b_.RespondsToSelector(objc.Sel("center"))
+func (b_ BumpDistortionObject) HasScale() bool {
+	return b_.RespondsToSelector(objc.Sel("scale"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600107-center?language=objc
-func (b_ BumpDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](b_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
+func (b_ BumpDistortionObject) Scale() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("scale"))
 	return rv
 }
 
@@ -121,25 +121,25 @@ func (b_ BumpDistortionObject) Radius() float32 {
 	return rv
 }
 
-func (b_ BumpDistortionObject) HasSetScale() bool {
-	return b_.RespondsToSelector(objc.Sel("setScale:"))
+func (b_ BumpDistortionObject) HasSetCenter() bool {
+	return b_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
-func (b_ BumpDistortionObject) SetScale(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600107-center?language=objc
+func (b_ BumpDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](b_, objc.Sel("setCenter:"), value)
 }
 
-func (b_ BumpDistortionObject) HasScale() bool {
-	return b_.RespondsToSelector(objc.Sel("scale"))
+func (b_ BumpDistortionObject) HasCenter() bool {
+	return b_.RespondsToSelector(objc.Sel("center"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
-func (b_ BumpDistortionObject) Scale() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("scale"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600107-center?language=objc
+func (b_ BumpDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](b_, objc.Sel("center"))
 	return rv
 }

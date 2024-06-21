@@ -24,15 +24,15 @@ type IRNNImageInferenceLayer interface {
 	EncodeBidirectionalSequenceToCommandBufferObjectSourceSequenceDestinationForwardImagesDestinationBackwardImages(commandBufferObject objc.IObject, sourceSequence []IImage, destinationForwardImages []IImage, destinationBackwardImages []IImage)
 	EncodeSequenceToCommandBufferSourceImagesDestinationImagesRecurrentInputStateRecurrentOutputStates(commandBuffer metal.PCommandBuffer, sourceImages []IImage, destinationImages []IImage, recurrentInputState IRNNRecurrentImageState, recurrentOutputStates foundation.IMutableArray)
 	EncodeSequenceToCommandBufferObjectSourceImagesDestinationImagesRecurrentInputStateRecurrentOutputStates(commandBufferObject objc.IObject, sourceImages []IImage, destinationImages []IImage, recurrentInputState IRNNRecurrentImageState, recurrentOutputStates foundation.IMutableArray)
-	NumberOfLayers() uint
-	BidirectionalCombineMode() RNNBidirectionalCombineMode
-	SetBidirectionalCombineMode(value RNNBidirectionalCombineMode)
-	OutputFeatureChannels() uint
-	InputFeatureChannels() uint
-	StoreAllIntermediateStates() bool
-	SetStoreAllIntermediateStates(value bool)
 	RecurrentOutputIsTemporary() bool
 	SetRecurrentOutputIsTemporary(value bool)
+	OutputFeatureChannels() uint
+	InputFeatureChannels() uint
+	BidirectionalCombineMode() RNNBidirectionalCombineMode
+	SetBidirectionalCombineMode(value RNNBidirectionalCombineMode)
+	StoreAllIntermediateStates() bool
+	SetStoreAllIntermediateStates(value bool)
+	NumberOfLayers() uint
 }
 
 // A recurrent neural network layer for inference on Metal Performance Shaders images. [Full Topic]
@@ -48,17 +48,17 @@ func RNNImageInferenceLayerFrom(ptr unsafe.Pointer) RNNImageInferenceLayer {
 	}
 }
 
-func (r_ RNNImageInferenceLayer) InitWithDeviceRnnDescriptors(device metal.PDevice, rnnDescriptors []IRNNDescriptor) RNNImageInferenceLayer {
+func (r_ RNNImageInferenceLayer) InitWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNImageInferenceLayer {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNImageInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptors:"), po0, rnnDescriptors)
+	rv := objc.Call[RNNImageInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, rnnDescriptor)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865682-initwithdevice?language=objc
-func NewRNNImageInferenceLayerWithDeviceRnnDescriptors(device metal.PDevice, rnnDescriptors []IRNNDescriptor) RNNImageInferenceLayer {
-	instance := RNNImageInferenceLayerClass.Alloc().InitWithDeviceRnnDescriptors(device, rnnDescriptors)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865691-initwithdevice?language=objc
+func NewRNNImageInferenceLayerWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNImageInferenceLayer {
+	instance := RNNImageInferenceLayerClass.Alloc().InitWithDeviceRnnDescriptor(device, rnnDescriptor)
 	instance.Autorelease()
 	return instance
 }
@@ -74,21 +74,6 @@ func (r_ RNNImageInferenceLayer) CopyWithZoneDevice(zone unsafe.Pointer, device 
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865728-copywithzone?language=objc
 func RNNImageInferenceLayer_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) RNNImageInferenceLayer {
 	instance := RNNImageInferenceLayerClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
-func (r_ RNNImageInferenceLayer) InitWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNImageInferenceLayer {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNImageInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, rnnDescriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865691-initwithdevice?language=objc
-func NewRNNImageInferenceLayerWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNImageInferenceLayer {
-	instance := RNNImageInferenceLayerClass.Alloc().InitWithDeviceRnnDescriptor(device, rnnDescriptor)
 	instance.Autorelease()
 	return instance
 }
@@ -160,25 +145,17 @@ func (r_ RNNImageInferenceLayer) EncodeSequenceToCommandBufferObjectSourceImages
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865697-numberoflayers?language=objc
-func (r_ RNNImageInferenceLayer) NumberOfLayers() uint {
-	rv := objc.Call[uint](r_, objc.Sel("numberOfLayers"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865749-recurrentoutputistemporary?language=objc
+func (r_ RNNImageInferenceLayer) RecurrentOutputIsTemporary() bool {
+	rv := objc.Call[bool](r_, objc.Sel("recurrentOutputIsTemporary"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865737-bidirectionalcombinemode?language=objc
-func (r_ RNNImageInferenceLayer) BidirectionalCombineMode() RNNBidirectionalCombineMode {
-	rv := objc.Call[RNNBidirectionalCombineMode](r_, objc.Sel("bidirectionalCombineMode"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865737-bidirectionalcombinemode?language=objc
-func (r_ RNNImageInferenceLayer) SetBidirectionalCombineMode(value RNNBidirectionalCombineMode) {
-	objc.Call[objc.Void](r_, objc.Sel("setBidirectionalCombineMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865749-recurrentoutputistemporary?language=objc
+func (r_ RNNImageInferenceLayer) SetRecurrentOutputIsTemporary(value bool) {
+	objc.Call[objc.Void](r_, objc.Sel("setRecurrentOutputIsTemporary:"), value)
 }
 
 //	[Full Topic]
@@ -199,6 +176,21 @@ func (r_ RNNImageInferenceLayer) InputFeatureChannels() uint {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865737-bidirectionalcombinemode?language=objc
+func (r_ RNNImageInferenceLayer) BidirectionalCombineMode() RNNBidirectionalCombineMode {
+	rv := objc.Call[RNNBidirectionalCombineMode](r_, objc.Sel("bidirectionalCombineMode"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865737-bidirectionalcombinemode?language=objc
+func (r_ RNNImageInferenceLayer) SetBidirectionalCombineMode(value RNNBidirectionalCombineMode) {
+	objc.Call[objc.Void](r_, objc.Sel("setBidirectionalCombineMode:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865706-storeallintermediatestates?language=objc
 func (r_ RNNImageInferenceLayer) StoreAllIntermediateStates() bool {
 	rv := objc.Call[bool](r_, objc.Sel("storeAllIntermediateStates"))
@@ -214,15 +206,8 @@ func (r_ RNNImageInferenceLayer) SetStoreAllIntermediateStates(value bool) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865749-recurrentoutputistemporary?language=objc
-func (r_ RNNImageInferenceLayer) RecurrentOutputIsTemporary() bool {
-	rv := objc.Call[bool](r_, objc.Sel("recurrentOutputIsTemporary"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865697-numberoflayers?language=objc
+func (r_ RNNImageInferenceLayer) NumberOfLayers() uint {
+	rv := objc.Call[uint](r_, objc.Sel("numberOfLayers"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865749-recurrentoutputistemporary?language=objc
-func (r_ RNNImageInferenceLayer) SetRecurrentOutputIsTemporary(value bool) {
-	objc.Call[objc.Void](r_, objc.Sel("setRecurrentOutputIsTemporary:"), value)
 }

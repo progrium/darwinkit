@@ -19,18 +19,18 @@ type _CNNLocalContrastNormalizationClass struct {
 // An interface definition for the [CNNLocalContrastNormalization] class.
 type ICNNLocalContrastNormalization interface {
 	ICNNKernel
-	Delta() float32
-	SetDelta(value float32)
-	Alpha() float32
-	SetAlpha(value float32)
-	Pm() float32
-	SetPm(value float32)
-	P0() float32
-	SetP0(value float32)
 	Ps() float32
 	SetPs(value float32)
+	P0() float32
+	SetP0(value float32)
 	Beta() float32
 	SetBeta(value float32)
+	Delta() float32
+	SetDelta(value float32)
+	Pm() float32
+	SetPm(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
 }
 
 // A local-contrast normalization kernel. [Full Topic]
@@ -111,49 +111,19 @@ func CNNLocalContrastNormalization_CopyWithZoneDevice(zone unsafe.Pointer, devic
 	return instance
 }
 
-// The "delta" variable of the kernel function. [Full Topic]
+// The "ps" variable of the kernel function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648812-delta?language=objc
-func (c_ CNNLocalContrastNormalization) Delta() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("delta"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648942-ps?language=objc
+func (c_ CNNLocalContrastNormalization) Ps() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("ps"))
 	return rv
 }
 
-// The "delta" variable of the kernel function. [Full Topic]
+// The "ps" variable of the kernel function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648812-delta?language=objc
-func (c_ CNNLocalContrastNormalization) SetDelta(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
-}
-
-// The "alpha" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648923-alpha?language=objc
-func (c_ CNNLocalContrastNormalization) Alpha() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("alpha"))
-	return rv
-}
-
-// The "alpha" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648923-alpha?language=objc
-func (c_ CNNLocalContrastNormalization) SetAlpha(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
-}
-
-// The "pm" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648907-pm?language=objc
-func (c_ CNNLocalContrastNormalization) Pm() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("pm"))
-	return rv
-}
-
-// The "pm" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648907-pm?language=objc
-func (c_ CNNLocalContrastNormalization) SetPm(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648942-ps?language=objc
+func (c_ CNNLocalContrastNormalization) SetPs(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
 }
 
 // The "p0" variable of the kernel function. [Full Topic]
@@ -171,21 +141,6 @@ func (c_ CNNLocalContrastNormalization) SetP0(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setP0:"), value)
 }
 
-// The "ps" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648942-ps?language=objc
-func (c_ CNNLocalContrastNormalization) Ps() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("ps"))
-	return rv
-}
-
-// The "ps" variable of the kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648942-ps?language=objc
-func (c_ CNNLocalContrastNormalization) SetPs(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
-}
-
 // The "beta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648905-beta?language=objc
@@ -199,4 +154,49 @@ func (c_ CNNLocalContrastNormalization) Beta() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648905-beta?language=objc
 func (c_ CNNLocalContrastNormalization) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
+}
+
+// The "delta" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648812-delta?language=objc
+func (c_ CNNLocalContrastNormalization) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
+	return rv
+}
+
+// The "delta" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648812-delta?language=objc
+func (c_ CNNLocalContrastNormalization) SetDelta(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
+}
+
+// The "pm" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648907-pm?language=objc
+func (c_ CNNLocalContrastNormalization) Pm() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pm"))
+	return rv
+}
+
+// The "pm" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648907-pm?language=objc
+func (c_ CNNLocalContrastNormalization) SetPm(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
+}
+
+// The "alpha" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648923-alpha?language=objc
+func (c_ CNNLocalContrastNormalization) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
+	return rv
+}
+
+// The "alpha" variable of the kernel function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalization/1648923-alpha?language=objc
+func (c_ CNNLocalContrastNormalization) SetAlpha(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }

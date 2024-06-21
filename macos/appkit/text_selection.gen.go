@@ -20,19 +20,19 @@ type _TextSelectionClass struct {
 type ITextSelection interface {
 	objc.IObject
 	TextSelectionWithTextRanges(textRanges []ITextRange) TextSelection
+	IsLogical() bool
+	SetLogical(value bool)
 	IsTransient() bool
+	Affinity() TextSelectionAffinity
 	AnchorPositionOffset() float64
 	SetAnchorPositionOffset(value float64)
 	SecondarySelectionLocation() TextLocationObject
 	SetSecondarySelectionLocation(value PTextLocation)
 	SetSecondarySelectionLocationObject(valueObject objc.IObject)
+	TextRanges() []TextRange
 	TypingAttributes() map[foundation.AttributedStringKey]objc.Object
 	SetTypingAttributes(value map[foundation.AttributedStringKey]objc.IObject)
 	Granularity() TextSelectionGranularity
-	IsLogical() bool
-	SetLogical(value bool)
-	TextRanges() []TextRange
-	Affinity() TextSelectionAffinity
 }
 
 // A class that represents a single logical selection context that corresponds to an insertion point. [Full Topic]
@@ -62,20 +62,6 @@ func NewTextSelectionWithRangeAffinityGranularity(range_ ITextRange, affinity Te
 	return instance
 }
 
-func (t_ TextSelection) InitWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("initWithRanges:affinity:granularity:"), textRanges, affinity, granularity)
-	return rv
-}
-
-// Creates a new text selection with the ranges, selection affinity, and granularity you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801822-initwithranges?language=objc
-func NewTextSelectionWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	instance := TextSelectionClass.Alloc().InitWithRangesAffinityGranularity(textRanges, affinity, granularity)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TextSelection) InitWithLocationAffinity(location PTextLocation, affinity TextSelectionAffinity) TextSelection {
 	po0 := objc.WrapAsProtocol("NSTextLocation", location)
 	rv := objc.Call[TextSelection](t_, objc.Sel("initWithLocation:affinity:"), po0, affinity)
@@ -87,6 +73,20 @@ func (t_ TextSelection) InitWithLocationAffinity(location PTextLocation, affinit
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801820-initwithlocation?language=objc
 func NewTextSelectionWithLocationAffinity(location PTextLocation, affinity TextSelectionAffinity) TextSelection {
 	instance := TextSelectionClass.Alloc().InitWithLocationAffinity(location, affinity)
+	instance.Autorelease()
+	return instance
+}
+
+func (t_ TextSelection) InitWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
+	rv := objc.Call[TextSelection](t_, objc.Sel("initWithRanges:affinity:granularity:"), textRanges, affinity, granularity)
+	return rv
+}
+
+// Creates a new text selection with the ranges, selection affinity, and granularity you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801822-initwithranges?language=objc
+func NewTextSelectionWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
+	instance := TextSelectionClass.Alloc().InitWithRangesAffinityGranularity(textRanges, affinity, granularity)
 	instance.Autorelease()
 	return instance
 }
@@ -119,11 +119,34 @@ func (t_ TextSelection) TextSelectionWithTextRanges(textRanges []ITextRange) Tex
 	return rv
 }
 
+// A Boolean value that indicates whether the framework interprets the selection as logical or visual. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801823-logical?language=objc
+func (t_ TextSelection) IsLogical() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isLogical"))
+	return rv
+}
+
+// A Boolean value that indicates whether the framework interprets the selection as logical or visual. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801823-logical?language=objc
+func (t_ TextSelection) SetLogical(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setLogical:"), value)
+}
+
 // A Boolean value that indicates transient text selection during drag handling. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801827-transient?language=objc
 func (t_ TextSelection) IsTransient() bool {
 	rv := objc.Call[bool](t_, objc.Sel("isTransient"))
+	return rv
+}
+
+// Returns the selection affinity of the text selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801816-affinity?language=objc
+func (t_ TextSelection) Affinity() TextSelectionAffinity {
+	rv := objc.Call[TextSelectionAffinity](t_, objc.Sel("affinity"))
 	return rv
 }
 
@@ -165,6 +188,14 @@ func (t_ TextSelection) SetSecondarySelectionLocationObject(valueObject objc.IOb
 	objc.Call[objc.Void](t_, objc.Sel("setSecondarySelectionLocation:"), valueObject)
 }
 
+// Represents an array of noncontiguous logical ranges in the selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801825-textranges?language=objc
+func (t_ TextSelection) TextRanges() []TextRange {
+	rv := objc.Call[[]TextRange](t_, objc.Sel("textRanges"))
+	return rv
+}
+
 // The template attributes the framework uses for characters that replace the contents of this selection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801828-typingattributes?language=objc
@@ -185,36 +216,5 @@ func (t_ TextSelection) SetTypingAttributes(value map[foundation.AttributedStrin
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801818-granularity?language=objc
 func (t_ TextSelection) Granularity() TextSelectionGranularity {
 	rv := objc.Call[TextSelectionGranularity](t_, objc.Sel("granularity"))
-	return rv
-}
-
-// A Boolean value that indicates whether the framework interprets the selection as logical or visual. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801823-logical?language=objc
-func (t_ TextSelection) IsLogical() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isLogical"))
-	return rv
-}
-
-// A Boolean value that indicates whether the framework interprets the selection as logical or visual. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801823-logical?language=objc
-func (t_ TextSelection) SetLogical(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setLogical:"), value)
-}
-
-// Represents an array of noncontiguous logical ranges in the selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801825-textranges?language=objc
-func (t_ TextSelection) TextRanges() []TextRange {
-	rv := objc.Call[[]TextRange](t_, objc.Sel("textRanges"))
-	return rv
-}
-
-// Returns the selection affinity of the text selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801816-affinity?language=objc
-func (t_ TextSelection) Affinity() TextSelectionAffinity {
-	rv := objc.Call[TextSelectionAffinity](t_, objc.Sel("affinity"))
 	return rv
 }

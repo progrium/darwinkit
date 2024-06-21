@@ -19,26 +19,26 @@ type _TabViewItemClass struct {
 // An interface definition for the [TabViewItem] class.
 type ITabViewItem interface {
 	objc.IObject
-	DrawLabelInRect(shouldTruncateLabel bool, labelRect foundation.Rect)
 	SizeOfLabel(computeMin bool) foundation.Size
-	ViewController() ViewController
-	SetViewController(value IViewController)
+	DrawLabelInRect(shouldTruncateLabel bool, labelRect foundation.Rect)
 	Color() Color
 	SetColor(value IColor)
+	TabView() TabView
 	ToolTip() string
 	SetToolTip(value string)
-	InitialFirstResponder() View
-	SetInitialFirstResponder(value IView)
-	Identifier() objc.Object
-	SetIdentifier(value objc.IObject)
 	View() View
 	SetView(value IView)
-	TabView() TabView
-	Image() Image
-	SetImage(value IImage)
 	TabState() TabState
+	ViewController() ViewController
+	SetViewController(value IViewController)
+	InitialFirstResponder() View
+	SetInitialFirstResponder(value IView)
 	Label() string
 	SetLabel(value string)
+	Image() Image
+	SetImage(value IImage)
+	Identifier() objc.Object
+	SetIdentifier(value objc.IObject)
 }
 
 // An item in a tab view. [Full Topic]
@@ -54,18 +54,6 @@ func TabViewItemFrom(ptr unsafe.Pointer) TabViewItem {
 	}
 }
 
-func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := objc.Call[TabViewItem](tc, objc.Sel("tabViewItemWithViewController:"), viewController)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477509-tabviewitemwithviewcontroller?language=objc
-func TabViewItem_TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	return TabViewItemClass.TabViewItemWithViewController(viewController)
-}
-
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
 	rv := objc.Call[TabViewItem](t_, objc.Sel("initWithIdentifier:"), identifier)
 	return rv
@@ -78,6 +66,18 @@ func NewTabViewItemWithIdentifier(identifier objc.IObject) TabViewItem {
 	instance := TabViewItemClass.Alloc().InitWithIdentifier(identifier)
 	instance.Autorelease()
 	return instance
+}
+
+func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
+	rv := objc.Call[TabViewItem](tc, objc.Sel("tabViewItemWithViewController:"), viewController)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477509-tabviewitemwithviewcontroller?language=objc
+func TabViewItem_TabViewItemWithViewController(viewController IViewController) TabViewItem {
+	return TabViewItemClass.TabViewItemWithViewController(viewController)
 }
 
 func (tc _TabViewItemClass) Alloc() TabViewItem {
@@ -100,6 +100,14 @@ func (t_ TabViewItem) Init() TabViewItem {
 	return rv
 }
 
+// Calculates the size of the receiver’s label. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477513-sizeoflabel?language=objc
+func (t_ TabViewItem) SizeOfLabel(computeMin bool) foundation.Size {
+	rv := objc.Call[foundation.Size](t_, objc.Sel("sizeOfLabel:"), computeMin)
+	return rv
+}
+
 // Draws the receiver’s label in tabRect, which is the area between the curved end caps. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477523-drawlabel?language=objc
@@ -107,11 +115,64 @@ func (t_ TabViewItem) DrawLabelInRect(shouldTruncateLabel bool, labelRect founda
 	objc.Call[objc.Void](t_, objc.Sel("drawLabel:inRect:"), shouldTruncateLabel, labelRect)
 }
 
-// Calculates the size of the receiver’s label. [Full Topic]
+// Sets the background color for content in the view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477513-sizeoflabel?language=objc
-func (t_ TabViewItem) SizeOfLabel(computeMin bool) foundation.Size {
-	rv := objc.Call[foundation.Size](t_, objc.Sel("sizeOfLabel:"), computeMin)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477525-color?language=objc
+func (t_ TabViewItem) Color() Color {
+	rv := objc.Call[Color](t_, objc.Sel("color"))
+	return rv
+}
+
+// Sets the background color for content in the view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477525-color?language=objc
+func (t_ TabViewItem) SetColor(value IColor) {
+	objc.Call[objc.Void](t_, objc.Sel("setColor:"), value)
+}
+
+// Returns the parent tab view for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477535-tabview?language=objc
+func (t_ TabViewItem) TabView() TabView {
+	rv := objc.Call[TabView](t_, objc.Sel("tabView"))
+	return rv
+}
+
+// Sets the tooltip displayed for the tab view item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477515-tooltip?language=objc
+func (t_ TabViewItem) ToolTip() string {
+	rv := objc.Call[string](t_, objc.Sel("toolTip"))
+	return rv
+}
+
+// Sets the tooltip displayed for the tab view item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477515-tooltip?language=objc
+func (t_ TabViewItem) SetToolTip(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setToolTip:"), value)
+}
+
+// Sets the view associated with the receiver to view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477537-view?language=objc
+func (t_ TabViewItem) View() View {
+	rv := objc.Call[View](t_, objc.Sel("view"))
+	return rv
+}
+
+// Sets the view associated with the receiver to view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477537-view?language=objc
+func (t_ TabViewItem) SetView(value IView) {
+	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
+}
+
+// Returns the current display state of the tab associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477539-tabstate?language=objc
+func (t_ TabViewItem) TabState() TabState {
+	rv := objc.Call[TabState](t_, objc.Sel("tabState"))
 	return rv
 }
 
@@ -130,36 +191,6 @@ func (t_ TabViewItem) SetViewController(value IViewController) {
 	objc.Call[objc.Void](t_, objc.Sel("setViewController:"), value)
 }
 
-// Sets the background color for content in the view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477525-color?language=objc
-func (t_ TabViewItem) Color() Color {
-	rv := objc.Call[Color](t_, objc.Sel("color"))
-	return rv
-}
-
-// Sets the background color for content in the view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477525-color?language=objc
-func (t_ TabViewItem) SetColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setColor:"), value)
-}
-
-// Sets the tooltip displayed for the tab view item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477515-tooltip?language=objc
-func (t_ TabViewItem) ToolTip() string {
-	rv := objc.Call[string](t_, objc.Sel("toolTip"))
-	return rv
-}
-
-// Sets the tooltip displayed for the tab view item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477515-tooltip?language=objc
-func (t_ TabViewItem) SetToolTip(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setToolTip:"), value)
-}
-
 // Sets the initial first responder for the view associated with the receiver (the view that is displayed when a user clicks on the tab) to view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477541-initialfirstresponder?language=objc
@@ -175,42 +206,19 @@ func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
 	objc.Call[objc.Void](t_, objc.Sel("setInitialFirstResponder:"), value)
 }
 
-// Sets the receiver’s optional identifier object to identifier. [Full Topic]
+// Sets the label text for the receiver to label. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477529-identifier?language=objc
-func (t_ TabViewItem) Identifier() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477542-label?language=objc
+func (t_ TabViewItem) Label() string {
+	rv := objc.Call[string](t_, objc.Sel("label"))
 	return rv
 }
 
-// Sets the receiver’s optional identifier object to identifier. [Full Topic]
+// Sets the label text for the receiver to label. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477529-identifier?language=objc
-func (t_ TabViewItem) SetIdentifier(value objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setIdentifier:"), value)
-}
-
-// Sets the view associated with the receiver to view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477537-view?language=objc
-func (t_ TabViewItem) View() View {
-	rv := objc.Call[View](t_, objc.Sel("view"))
-	return rv
-}
-
-// Sets the view associated with the receiver to view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477537-view?language=objc
-func (t_ TabViewItem) SetView(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
-}
-
-// Returns the parent tab view for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477535-tabview?language=objc
-func (t_ TabViewItem) TabView() TabView {
-	rv := objc.Call[TabView](t_, objc.Sel("tabView"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477542-label?language=objc
+func (t_ TabViewItem) SetLabel(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setLabel:"), value)
 }
 
 //	[Full Topic]
@@ -228,25 +236,17 @@ func (t_ TabViewItem) SetImage(value IImage) {
 	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }
 
-// Returns the current display state of the tab associated with the receiver. [Full Topic]
+// Sets the receiver’s optional identifier object to identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477539-tabstate?language=objc
-func (t_ TabViewItem) TabState() TabState {
-	rv := objc.Call[TabState](t_, objc.Sel("tabState"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477529-identifier?language=objc
+func (t_ TabViewItem) Identifier() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("identifier"))
 	return rv
 }
 
-// Sets the label text for the receiver to label. [Full Topic]
+// Sets the receiver’s optional identifier object to identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477542-label?language=objc
-func (t_ TabViewItem) Label() string {
-	rv := objc.Call[string](t_, objc.Sel("label"))
-	return rv
-}
-
-// Sets the label text for the receiver to label. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477542-label?language=objc
-func (t_ TabViewItem) SetLabel(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setLabel:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477529-identifier?language=objc
+func (t_ TabViewItem) SetIdentifier(value objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("setIdentifier:"), value)
 }

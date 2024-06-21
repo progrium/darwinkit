@@ -19,14 +19,14 @@ type _ShareClass struct {
 // An interface definition for the [Share] class.
 type IShare interface {
 	IRecord
-	RemoveParticipant(participant IShareParticipant)
 	AddParticipant(participant IShareParticipant)
+	RemoveParticipant(participant IShareParticipant)
 	CurrentUserParticipant() ShareParticipant
-	Participants() []ShareParticipant
+	Owner() ShareParticipant
 	PublicPermission() ShareParticipantPermission
 	SetPublicPermission(value ShareParticipantPermission)
 	URL() foundation.URL
-	Owner() ShareParticipant
+	Participants() []ShareParticipant
 }
 
 // A specialized record type that manages a collection of shared records. [Full Topic]
@@ -70,20 +70,6 @@ func NewShareWithRecordZoneID(recordZoneID IRecordZoneID) Share {
 	return instance
 }
 
-func (s_ Share) InitWithRootRecordShareID(rootRecord IRecord, shareID IRecordID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRootRecord:shareID:"), rootRecord, shareID)
-	return rv
-}
-
-// Creates a new share for the specified record and record ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640381-initwithrootrecord?language=objc
-func NewShareWithRootRecordShareID(rootRecord IRecord, shareID IRecordID) Share {
-	instance := ShareClass.Alloc().InitWithRootRecordShareID(rootRecord, shareID)
-	instance.Autorelease()
-	return instance
-}
-
 func (sc _ShareClass) Alloc() Share {
 	rv := objc.Call[Share](sc, objc.Sel("alloc"))
 	return rv
@@ -104,34 +90,6 @@ func (s_ Share) Init() Share {
 	return rv
 }
 
-func (s_ Share) InitWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:recordID:"), recordType, recordID)
-	return rv
-}
-
-// Creates a record using an ID that you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462204-initwithrecordtype?language=objc
-func NewShareWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Share {
-	instance := ShareClass.Alloc().InitWithRecordTypeRecordID(recordType, recordID)
-	instance.Autorelease()
-	return instance
-}
-
-func (s_ Share) InitWithRecordType(recordType RecordType) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:"), recordType)
-	return rv
-}
-
-// Creates a new record of the specified type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462225-initwithrecordtype?language=objc
-func NewShareWithRecordType(recordType RecordType) Share {
-	instance := ShareClass.Alloc().InitWithRecordType(recordType)
-	instance.Autorelease()
-	return instance
-}
-
 func (s_ Share) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Share {
 	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:zoneID:"), recordType, zoneID)
 	return rv
@@ -146,18 +104,18 @@ func NewShareWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) S
 	return instance
 }
 
-// Removes a participant from the share. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640523-removeparticipant?language=objc
-func (s_ Share) RemoveParticipant(participant IShareParticipant) {
-	objc.Call[objc.Void](s_, objc.Sel("removeParticipant:"), participant)
-}
-
 // Adds a participant to the share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640443-addparticipant?language=objc
 func (s_ Share) AddParticipant(participant IShareParticipant) {
 	objc.Call[objc.Void](s_, objc.Sel("addParticipant:"), participant)
+}
+
+// Removes a participant from the share. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640523-removeparticipant?language=objc
+func (s_ Share) RemoveParticipant(participant IShareParticipant) {
+	objc.Call[objc.Void](s_, objc.Sel("removeParticipant:"), participant)
 }
 
 // The participant that represents the current user. [Full Topic]
@@ -168,11 +126,11 @@ func (s_ Share) CurrentUserParticipant() ShareParticipant {
 	return rv
 }
 
-// An array that contains the share’s participants. [Full Topic]
+// The participant that represents the share’s owner. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640453-participants?language=objc
-func (s_ Share) Participants() []ShareParticipant {
-	rv := objc.Call[[]ShareParticipant](s_, objc.Sel("participants"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640503-owner?language=objc
+func (s_ Share) Owner() ShareParticipant {
+	rv := objc.Call[ShareParticipant](s_, objc.Sel("owner"))
 	return rv
 }
 
@@ -199,10 +157,10 @@ func (s_ Share) URL() foundation.URL {
 	return rv
 }
 
-// The participant that represents the share’s owner. [Full Topic]
+// An array that contains the share’s participants. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640503-owner?language=objc
-func (s_ Share) Owner() ShareParticipant {
-	rv := objc.Call[ShareParticipant](s_, objc.Sel("owner"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640453-participants?language=objc
+func (s_ Share) Participants() []ShareParticipant {
+	rv := objc.Call[[]ShareParticipant](s_, objc.Sel("participants"))
 	return rv
 }

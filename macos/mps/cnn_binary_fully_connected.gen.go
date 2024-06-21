@@ -50,22 +50,6 @@ func NewCNNBinaryFullyConnectedWithDeviceConvolutionDataScaleValueTypeFlags(devi
 	return instance
 }
 
-func (c_ CNNBinaryFullyConnected) InitWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float32, outputScaleTerms *float32, inputBiasTerms *float32, inputScaleTerms *float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryFullyConnected {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", convolutionData)
-	rv := objc.Call[CNNBinaryFullyConnected](c_, objc.Sel("initWithDevice:convolutionData:outputBiasTerms:outputScaleTerms:inputBiasTerms:inputScaleTerms:type:flags:"), po0, po1, outputBiasTerms, outputScaleTerms, inputBiasTerms, inputScaleTerms, type_, flags)
-	return rv
-}
-
-// Initializes a fully connected convolution layer with binary weights. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbinaryfullyconnected/2867059-initwithdevice?language=objc
-func NewCNNBinaryFullyConnectedWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float32, outputScaleTerms *float32, inputBiasTerms *float32, inputScaleTerms *float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryFullyConnected {
-	instance := CNNBinaryFullyConnectedClass.Alloc().InitWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device, convolutionData, outputBiasTerms, outputScaleTerms, inputBiasTerms, inputScaleTerms, type_, flags)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CNNBinaryFullyConnectedClass) Alloc() CNNBinaryFullyConnected {
 	rv := objc.Call[CNNBinaryFullyConnected](cc, objc.Sel("alloc"))
 	return rv

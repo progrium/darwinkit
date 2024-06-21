@@ -23,12 +23,12 @@ type PCollectionViewElement interface {
 	HasDidTransitionFromLayoutToLayout() bool
 
 	// optional
-	PreferredLayoutAttributesFittingAttributes(layoutAttributes CollectionViewLayoutAttributes) CollectionViewLayoutAttributes
-	HasPreferredLayoutAttributesFittingAttributes() bool
-
-	// optional
 	PrepareForReuse()
 	HasPrepareForReuse() bool
+
+	// optional
+	PreferredLayoutAttributesFittingAttributes(layoutAttributes CollectionViewLayoutAttributes) CollectionViewLayoutAttributes
+	HasPreferredLayoutAttributesFittingAttributes() bool
 }
 
 // ensure impl type implements protocol interface
@@ -72,6 +72,17 @@ func (c_ CollectionViewElementObject) DidTransitionFromLayoutToLayout(oldLayout 
 	objc.Call[objc.Void](c_, objc.Sel("didTransitionFromLayout:toLayout:"), oldLayout, newLayout)
 }
 
+func (c_ CollectionViewElementObject) HasPrepareForReuse() bool {
+	return c_.RespondsToSelector(objc.Sel("prepareForReuse"))
+}
+
+// Performs any necessary cleanup to prepare the element for use again. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1528248-prepareforreuse?language=objc
+func (c_ CollectionViewElementObject) PrepareForReuse() {
+	objc.Call[objc.Void](c_, objc.Sel("prepareForReuse"))
+}
+
 func (c_ CollectionViewElementObject) HasPreferredLayoutAttributesFittingAttributes() bool {
 	return c_.RespondsToSelector(objc.Sel("preferredLayoutAttributesFittingAttributes:"))
 }
@@ -82,15 +93,4 @@ func (c_ CollectionViewElementObject) HasPreferredLayoutAttributesFittingAttribu
 func (c_ CollectionViewElementObject) PreferredLayoutAttributesFittingAttributes(layoutAttributes CollectionViewLayoutAttributes) CollectionViewLayoutAttributes {
 	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("preferredLayoutAttributesFittingAttributes:"), layoutAttributes)
 	return rv
-}
-
-func (c_ CollectionViewElementObject) HasPrepareForReuse() bool {
-	return c_.RespondsToSelector(objc.Sel("prepareForReuse"))
-}
-
-// Performs any necessary cleanup to prepare the element for use again. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1528248-prepareforreuse?language=objc
-func (c_ CollectionViewElementObject) PrepareForReuse() {
-	objc.Call[objc.Void](c_, objc.Sel("prepareForReuse"))
 }

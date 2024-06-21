@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop?language=objc
 type PStretchCrop interface {
 	// optional
-	SetSize(value coregraphics.Point)
-	HasSetSize() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Size() coregraphics.Point
-	HasSize() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetCropAmount(value float32)
@@ -28,20 +28,20 @@ type PStretchCrop interface {
 	HasCropAmount() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetCenterStretchAmount(value float32)
 	HasSetCenterStretchAmount() bool
 
 	// optional
 	CenterStretchAmount() float32
 	HasCenterStretchAmount() bool
+
+	// optional
+	SetSize(value coregraphics.Point)
+	HasSetSize() bool
+
+	// optional
+	Size() coregraphics.Point
+	HasSize() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,26 +52,26 @@ type StretchCropObject struct {
 	objc.Object
 }
 
-func (s_ StretchCropObject) HasSetSize() bool {
-	return s_.RespondsToSelector(objc.Sel("setSize:"))
+func (s_ StretchCropObject) HasSetInputImage() bool {
+	return s_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600195-size?language=objc
-func (s_ StretchCropObject) SetSize(value coregraphics.Point) {
-	objc.Call[objc.Void](s_, objc.Sel("setSize:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600194-inputimage?language=objc
+func (s_ StretchCropObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
-func (s_ StretchCropObject) HasSize() bool {
-	return s_.RespondsToSelector(objc.Sel("size"))
+func (s_ StretchCropObject) HasInputImage() bool {
+	return s_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600195-size?language=objc
-func (s_ StretchCropObject) Size() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](s_, objc.Sel("size"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600194-inputimage?language=objc
+func (s_ StretchCropObject) InputImage() Image {
+	rv := objc.Call[Image](s_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -98,29 +98,6 @@ func (s_ StretchCropObject) CropAmount() float32 {
 	return rv
 }
 
-func (s_ StretchCropObject) HasSetInputImage() bool {
-	return s_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600194-inputimage?language=objc
-func (s_ StretchCropObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
-}
-
-func (s_ StretchCropObject) HasInputImage() bool {
-	return s_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600194-inputimage?language=objc
-func (s_ StretchCropObject) InputImage() Image {
-	rv := objc.Call[Image](s_, objc.Sel("inputImage"))
-	return rv
-}
-
 func (s_ StretchCropObject) HasSetCenterStretchAmount() bool {
 	return s_.RespondsToSelector(objc.Sel("setCenterStretchAmount:"))
 }
@@ -141,5 +118,28 @@ func (s_ StretchCropObject) HasCenterStretchAmount() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600192-centerstretchamount?language=objc
 func (s_ StretchCropObject) CenterStretchAmount() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("centerStretchAmount"))
+	return rv
+}
+
+func (s_ StretchCropObject) HasSetSize() bool {
+	return s_.RespondsToSelector(objc.Sel("setSize:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600195-size?language=objc
+func (s_ StretchCropObject) SetSize(value coregraphics.Point) {
+	objc.Call[objc.Void](s_, objc.Sel("setSize:"), value)
+}
+
+func (s_ StretchCropObject) HasSize() bool {
+	return s_.RespondsToSelector(objc.Sel("size"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600195-size?language=objc
+func (s_ StretchCropObject) Size() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](s_, objc.Sel("size"))
 	return rv
 }

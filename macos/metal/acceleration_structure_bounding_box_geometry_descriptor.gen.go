@@ -20,10 +20,10 @@ type IAccelerationStructureBoundingBoxGeometryDescriptor interface {
 	IAccelerationStructureGeometryDescriptor
 	BoundingBoxBufferOffset() uint
 	SetBoundingBoxBufferOffset(value uint)
-	BoundingBoxCount() uint
-	SetBoundingBoxCount(value uint)
 	BoundingBoxStride() uint
 	SetBoundingBoxStride(value uint)
+	BoundingBoxCount() uint
+	SetBoundingBoxCount(value uint)
 	BoundingBoxBuffer() BufferObject
 	SetBoundingBoxBuffer(value PBuffer)
 	SetBoundingBoxBufferObject(valueObject objc.IObject)
@@ -89,21 +89,6 @@ func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxBuffe
 	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxBufferOffset:"), value)
 }
 
-// The number of bounding boxes in the bounding box buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553862-boundingboxcount?language=objc
-func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) BoundingBoxCount() uint {
-	rv := objc.Call[uint](a_, objc.Sel("boundingBoxCount"))
-	return rv
-}
-
-// The number of bounding boxes in the bounding box buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553862-boundingboxcount?language=objc
-func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxCount(value uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxCount:"), value)
-}
-
 // The stride, in bytes, between bounding boxes in the buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553863-boundingboxstride?language=objc
@@ -117,6 +102,21 @@ func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) BoundingBoxStride()
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553863-boundingboxstride?language=objc
 func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxStride(value uint) {
 	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxStride:"), value)
+}
+
+// The number of bounding boxes in the bounding box buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553862-boundingboxcount?language=objc
+func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) BoundingBoxCount() uint {
+	rv := objc.Call[uint](a_, objc.Sel("boundingBoxCount"))
+	return rv
+}
+
+// The number of bounding boxes in the bounding box buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553862-boundingboxcount?language=objc
+func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxCount(value uint) {
+	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxCount:"), value)
 }
 
 // A buffer that contains bounding box data. [Full Topic]

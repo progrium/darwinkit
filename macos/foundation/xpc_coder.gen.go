@@ -18,9 +18,9 @@ type _XPCCoderClass struct {
 // An interface definition for the [XPCCoder] class.
 type IXPCCoder interface {
 	ICoder
+	Connection() XPCConnection
 	UserInfo() objc.Object
 	SetUserInfo(value objc.IObject)
-	Connection() XPCConnection
 }
 
 // A coder that encodes and decodes objects that your app sends over an XPC connection. [Full Topic]
@@ -56,6 +56,14 @@ func (x_ XPCCoder) Init() XPCCoder {
 	return rv
 }
 
+// The connection currently performing encoding or decoding. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpccoder/3172580-connection?language=objc
+func (x_ XPCCoder) Connection() XPCConnection {
+	rv := objc.Call[XPCConnection](x_, objc.Sel("connection"))
+	return rv
+}
+
 // An optional user information object associated with the coder. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpccoder/3172581-userinfo?language=objc
@@ -69,12 +77,4 @@ func (x_ XPCCoder) UserInfo() objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpccoder/3172581-userinfo?language=objc
 func (x_ XPCCoder) SetUserInfo(value objc.IObject) {
 	objc.Call[objc.Void](x_, objc.Sel("setUserInfo:"), value)
-}
-
-// The connection currently performing encoding or decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpccoder/3172580-connection?language=objc
-func (x_ XPCCoder) Connection() XPCConnection {
-	rv := objc.Call[XPCConnection](x_, objc.Sel("connection"))
-	return rv
 }

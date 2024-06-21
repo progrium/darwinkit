@@ -19,12 +19,12 @@ type _FetchShareParticipantsOperationClass struct {
 // An interface definition for the [FetchShareParticipantsOperation] class.
 type IFetchShareParticipantsOperation interface {
 	IOperation
+	UserIdentityLookupInfos() []UserIdentityLookupInfo
+	SetUserIdentityLookupInfos(value []IUserIdentityLookupInfo)
 	FetchShareParticipantsCompletionBlock() func(operationError foundation.Error)
 	SetFetchShareParticipantsCompletionBlock(value func(operationError foundation.Error))
 	PerShareParticipantCompletionBlock() func(lookupInfo UserIdentityLookupInfo, participant ShareParticipant, error foundation.Error)
 	SetPerShareParticipantCompletionBlock(value func(lookupInfo UserIdentityLookupInfo, participant ShareParticipant, error foundation.Error))
-	UserIdentityLookupInfos() []UserIdentityLookupInfo
-	SetUserIdentityLookupInfos(value []IUserIdentityLookupInfo)
 }
 
 // An operation that converts user identities into share participants. [Full Topic]
@@ -38,11 +38,6 @@ func FetchShareParticipantsOperationFrom(ptr unsafe.Pointer) FetchShareParticipa
 	return FetchShareParticipantsOperation{
 		Operation: OperationFrom(ptr),
 	}
-}
-
-func (f_ FetchShareParticipantsOperation) Init() FetchShareParticipantsOperation {
-	rv := objc.Call[FetchShareParticipantsOperation](f_, objc.Sel("init"))
-	return rv
 }
 
 func (f_ FetchShareParticipantsOperation) InitWithUserIdentityLookupInfos(userIdentityLookupInfos []IUserIdentityLookupInfo) FetchShareParticipantsOperation {
@@ -59,6 +54,11 @@ func NewFetchShareParticipantsOperationWithUserIdentityLookupInfos(userIdentityL
 	return instance
 }
 
+func (f_ FetchShareParticipantsOperation) Init() FetchShareParticipantsOperation {
+	rv := objc.Call[FetchShareParticipantsOperation](f_, objc.Sel("init"))
+	return rv
+}
+
 func (fc _FetchShareParticipantsOperationClass) Alloc() FetchShareParticipantsOperation {
 	rv := objc.Call[FetchShareParticipantsOperation](fc, objc.Sel("alloc"))
 	return rv
@@ -72,6 +72,21 @@ func (fc _FetchShareParticipantsOperationClass) New() FetchShareParticipantsOper
 
 func NewFetchShareParticipantsOperation() FetchShareParticipantsOperation {
 	return FetchShareParticipantsOperationClass.New()
+}
+
+// The user data for the participants. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/1640380-useridentitylookupinfos?language=objc
+func (f_ FetchShareParticipantsOperation) UserIdentityLookupInfos() []UserIdentityLookupInfo {
+	rv := objc.Call[[]UserIdentityLookupInfo](f_, objc.Sel("userIdentityLookupInfos"))
+	return rv
+}
+
+// The user data for the participants. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/1640380-useridentitylookupinfos?language=objc
+func (f_ FetchShareParticipantsOperation) SetUserIdentityLookupInfos(value []IUserIdentityLookupInfo) {
+	objc.Call[objc.Void](f_, objc.Sel("setUserIdentityLookupInfos:"), value)
 }
 
 // The block to execute when the operation finishes. [Full Topic]
@@ -102,19 +117,4 @@ func (f_ FetchShareParticipantsOperation) PerShareParticipantCompletionBlock() f
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/3793700-pershareparticipantcompletionblo?language=objc
 func (f_ FetchShareParticipantsOperation) SetPerShareParticipantCompletionBlock(value func(lookupInfo UserIdentityLookupInfo, participant ShareParticipant, error foundation.Error)) {
 	objc.Call[objc.Void](f_, objc.Sel("setPerShareParticipantCompletionBlock:"), value)
-}
-
-// The user data for the participants. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/1640380-useridentitylookupinfos?language=objc
-func (f_ FetchShareParticipantsOperation) UserIdentityLookupInfos() []UserIdentityLookupInfo {
-	rv := objc.Call[[]UserIdentityLookupInfo](f_, objc.Sel("userIdentityLookupInfos"))
-	return rv
-}
-
-// The user data for the participants. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/1640380-useridentitylookupinfos?language=objc
-func (f_ FetchShareParticipantsOperation) SetUserIdentityLookupInfos(value []IUserIdentityLookupInfo) {
-	objc.Call[objc.Void](f_, objc.Sel("setUserIdentityLookupInfos:"), value)
 }

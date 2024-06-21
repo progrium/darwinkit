@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate?language=objc
 type PHexagonalPixellate interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetScale(value float32)
 	HasSetScale() bool
 
@@ -34,6 +26,14 @@ type PHexagonalPixellate interface {
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -42,29 +42,6 @@ var _ PHexagonalPixellate = (*HexagonalPixellateObject)(nil)
 // A concrete type for the [PHexagonalPixellate] protocol.
 type HexagonalPixellateObject struct {
 	objc.Object
-}
-
-func (h_ HexagonalPixellateObject) HasSetCenter() bool {
-	return h_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228490-center?language=objc
-func (h_ HexagonalPixellateObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](h_, objc.Sel("setCenter:"), value)
-}
-
-func (h_ HexagonalPixellateObject) HasCenter() bool {
-	return h_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228490-center?language=objc
-func (h_ HexagonalPixellateObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](h_, objc.Sel("center"))
-	return rv
 }
 
 func (h_ HexagonalPixellateObject) HasSetScale() bool {
@@ -110,5 +87,28 @@ func (h_ HexagonalPixellateObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228491-inputimage?language=objc
 func (h_ HexagonalPixellateObject) InputImage() Image {
 	rv := objc.Call[Image](h_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (h_ HexagonalPixellateObject) HasSetCenter() bool {
+	return h_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228490-center?language=objc
+func (h_ HexagonalPixellateObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](h_, objc.Sel("setCenter:"), value)
+}
+
+func (h_ HexagonalPixellateObject) HasCenter() bool {
+	return h_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228490-center?language=objc
+func (h_ HexagonalPixellateObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](h_, objc.Sel("center"))
 	return rv
 }

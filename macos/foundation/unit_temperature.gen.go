@@ -53,6 +53,18 @@ func (u_ UnitTemperature) Init() UnitTemperature {
 	return rv
 }
 
+func (uc _UnitTemperatureClass) BaseUnit() UnitTemperature {
+	rv := objc.Call[UnitTemperature](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitTemperature_BaseUnit() UnitTemperature {
+	return UnitTemperatureClass.BaseUnit()
+}
+
 func (u_ UnitTemperature) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitTemperature {
 	rv := objc.Call[UnitTemperature](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitTemperatureWithSymbolConverter(symbol string, converter IUnitConvert
 	instance := UnitTemperatureClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitTemperatureClass) BaseUnit() UnitTemperature {
-	rv := objc.Call[UnitTemperature](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitTemperature_BaseUnit() UnitTemperature {
-	return UnitTemperatureClass.BaseUnit()
 }
 
 func (u_ UnitTemperature) InitWithSymbol(symbol string) UnitTemperature {
@@ -108,21 +108,6 @@ func UnitTemperature_Kelvin() UnitTemperature {
 	return UnitTemperatureClass.Kelvin()
 }
 
-// The degree Fahrenheit unit of temperature. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690842-fahrenheit?language=objc
-func (uc _UnitTemperatureClass) Fahrenheit() UnitTemperature {
-	rv := objc.Call[UnitTemperature](uc, objc.Sel("fahrenheit"))
-	return rv
-}
-
-// The degree Fahrenheit unit of temperature. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690842-fahrenheit?language=objc
-func UnitTemperature_Fahrenheit() UnitTemperature {
-	return UnitTemperatureClass.Fahrenheit()
-}
-
 // The degree Celsius unit of temperature. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690835-celsius?language=objc
@@ -136,4 +121,19 @@ func (uc _UnitTemperatureClass) Celsius() UnitTemperature {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690835-celsius?language=objc
 func UnitTemperature_Celsius() UnitTemperature {
 	return UnitTemperatureClass.Celsius()
+}
+
+// The degree Fahrenheit unit of temperature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690842-fahrenheit?language=objc
+func (uc _UnitTemperatureClass) Fahrenheit() UnitTemperature {
+	rv := objc.Call[UnitTemperature](uc, objc.Sel("fahrenheit"))
+	return rv
+}
+
+// The degree Fahrenheit unit of temperature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunittemperature/1690842-fahrenheit?language=objc
+func UnitTemperature_Fahrenheit() UnitTemperature {
+	return UnitTemperatureClass.Fahrenheit()
 }

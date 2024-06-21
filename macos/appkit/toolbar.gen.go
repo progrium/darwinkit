@@ -18,33 +18,33 @@ type _ToolbarClass struct {
 // An interface definition for the [Toolbar] class.
 type IToolbar interface {
 	objc.IObject
-	RunCustomizationPalette(sender objc.IObject)
+	SetConfigurationFromDictionary(configDict map[string]objc.IObject)
 	InsertItemWithItemIdentifierAtIndex(itemIdentifier ToolbarItemIdentifier, index int)
 	RemoveItemAtIndex(index int)
 	ValidateVisibleItems()
-	SetConfigurationFromDictionary(configDict map[string]objc.IObject)
-	Items() []ToolbarItem
-	Identifier() ToolbarIdentifier
-	DisplayMode() ToolbarDisplayMode
-	SetDisplayMode(value ToolbarDisplayMode)
+	RunCustomizationPalette(sender objc.IObject)
 	IsVisible() bool
 	SetVisible(value bool)
-	CustomizationPaletteIsRunning() bool
-	VisibleItems() []ToolbarItem
-	ShowsBaselineSeparator() bool
-	SetShowsBaselineSeparator(value bool)
-	SelectedItemIdentifier() ToolbarItemIdentifier
-	SetSelectedItemIdentifier(value ToolbarItemIdentifier)
+	DisplayMode() ToolbarDisplayMode
+	SetDisplayMode(value ToolbarDisplayMode)
+	AllowsUserCustomization() bool
+	SetAllowsUserCustomization(value bool)
+	Items() []ToolbarItem
+	ConfigurationDictionary() map[string]objc.Object
 	Delegate() ToolbarDelegateObject
 	SetDelegate(value PToolbarDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	AutosavesConfiguration() bool
-	SetAutosavesConfiguration(value bool)
+	ShowsBaselineSeparator() bool
+	SetShowsBaselineSeparator(value bool)
+	VisibleItems() []ToolbarItem
 	AllowsExtensionItems() bool
 	SetAllowsExtensionItems(value bool)
-	ConfigurationDictionary() map[string]objc.Object
-	AllowsUserCustomization() bool
-	SetAllowsUserCustomization(value bool)
+	CustomizationPaletteIsRunning() bool
+	Identifier() ToolbarIdentifier
+	SelectedItemIdentifier() ToolbarItemIdentifier
+	SetSelectedItemIdentifier(value ToolbarItemIdentifier)
+	AutosavesConfiguration() bool
+	SetAutosavesConfiguration(value bool)
 }
 
 // An object that manages the space above your app’s custom content and either below or integrated with the window’s title bar. [Full Topic]
@@ -60,11 +60,6 @@ func ToolbarFrom(ptr unsafe.Pointer) Toolbar {
 	}
 }
 
-func (t_ Toolbar) Init() Toolbar {
-	rv := objc.Call[Toolbar](t_, objc.Sel("init"))
-	return rv
-}
-
 func (t_ Toolbar) InitWithIdentifier(identifier ToolbarIdentifier) Toolbar {
 	rv := objc.Call[Toolbar](t_, objc.Sel("initWithIdentifier:"), identifier)
 	return rv
@@ -77,6 +72,11 @@ func NewToolbarWithIdentifier(identifier ToolbarIdentifier) Toolbar {
 	instance := ToolbarClass.Alloc().InitWithIdentifier(identifier)
 	instance.Autorelease()
 	return instance
+}
+
+func (t_ Toolbar) Init() Toolbar {
+	rv := objc.Call[Toolbar](t_, objc.Sel("init"))
+	return rv
 }
 
 func (tc _ToolbarClass) Alloc() Toolbar {
@@ -94,11 +94,11 @@ func NewToolbar() Toolbar {
 	return ToolbarClass.New()
 }
 
-// Displays the toolbar’s customization palette and handles any user-initiated customizations. [Full Topic]
+// Specifies the new configuration details for the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516979-runcustomizationpalette?language=objc
-func (t_ Toolbar) RunCustomizationPalette(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("runCustomizationPalette:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516951-setconfigurationfromdictionary?language=objc
+func (t_ Toolbar) SetConfigurationFromDictionary(configDict map[string]objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("setConfigurationFromDictionary:"), configDict)
 }
 
 // Inserts an item into the toolbar at the specified index. [Full Topic]
@@ -122,42 +122,11 @@ func (t_ Toolbar) ValidateVisibleItems() {
 	objc.Call[objc.Void](t_, objc.Sel("validateVisibleItems"))
 }
 
-// Specifies the new configuration details for the toolbar. [Full Topic]
+// Displays the toolbar’s customization palette and handles any user-initiated customizations. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516951-setconfigurationfromdictionary?language=objc
-func (t_ Toolbar) SetConfigurationFromDictionary(configDict map[string]objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setConfigurationFromDictionary:"), configDict)
-}
-
-// An array containing the toolbar’s current items, in order. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516946-items?language=objc
-func (t_ Toolbar) Items() []ToolbarItem {
-	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("items"))
-	return rv
-}
-
-// The value you use to identify the toolbar in your app. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516953-identifier?language=objc
-func (t_ Toolbar) Identifier() ToolbarIdentifier {
-	rv := objc.Call[ToolbarIdentifier](t_, objc.Sel("identifier"))
-	return rv
-}
-
-// A value that indicates whether the toolbar displays items using a name, icon, or combination of elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516937-displaymode?language=objc
-func (t_ Toolbar) DisplayMode() ToolbarDisplayMode {
-	rv := objc.Call[ToolbarDisplayMode](t_, objc.Sel("displayMode"))
-	return rv
-}
-
-// A value that indicates whether the toolbar displays items using a name, icon, or combination of elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516937-displaymode?language=objc
-func (t_ Toolbar) SetDisplayMode(value ToolbarDisplayMode) {
-	objc.Call[objc.Void](t_, objc.Sel("setDisplayMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516979-runcustomizationpalette?language=objc
+func (t_ Toolbar) RunCustomizationPalette(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("runCustomizationPalette:"), sender)
 }
 
 // A Boolean value that indicates whether the toolbar is visible. [Full Topic]
@@ -175,50 +144,50 @@ func (t_ Toolbar) SetVisible(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setVisible:"), value)
 }
 
-// A Boolean value that indicates whether the toolbar’s customization palette is in use. [Full Topic]
+// A value that indicates whether the toolbar displays items using a name, icon, or combination of elements. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516987-customizationpaletteisrunning?language=objc
-func (t_ Toolbar) CustomizationPaletteIsRunning() bool {
-	rv := objc.Call[bool](t_, objc.Sel("customizationPaletteIsRunning"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516937-displaymode?language=objc
+func (t_ Toolbar) DisplayMode() ToolbarDisplayMode {
+	rv := objc.Call[ToolbarDisplayMode](t_, objc.Sel("displayMode"))
 	return rv
 }
 
-// An array containing the toolbar’s currently visible items. [Full Topic]
+// A value that indicates whether the toolbar displays items using a name, icon, or combination of elements. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516993-visibleitems?language=objc
-func (t_ Toolbar) VisibleItems() []ToolbarItem {
-	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("visibleItems"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516937-displaymode?language=objc
+func (t_ Toolbar) SetDisplayMode(value ToolbarDisplayMode) {
+	objc.Call[objc.Void](t_, objc.Sel("setDisplayMode:"), value)
+}
+
+// A Boolean value that indicates whether users can modify the contents of the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516962-allowsusercustomization?language=objc
+func (t_ Toolbar) AllowsUserCustomization() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsUserCustomization"))
 	return rv
 }
 
-// A Boolean value that indicates whether the toolbar shows the separator between the toolbar and the main window contents. [Full Topic]
+// A Boolean value that indicates whether users can modify the contents of the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516954-showsbaselineseparator?language=objc
-func (t_ Toolbar) ShowsBaselineSeparator() bool {
-	rv := objc.Call[bool](t_, objc.Sel("showsBaselineSeparator"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516962-allowsusercustomization?language=objc
+func (t_ Toolbar) SetAllowsUserCustomization(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowsUserCustomization:"), value)
+}
+
+// An array containing the toolbar’s current items, in order. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516946-items?language=objc
+func (t_ Toolbar) Items() []ToolbarItem {
+	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("items"))
 	return rv
 }
 
-// A Boolean value that indicates whether the toolbar shows the separator between the toolbar and the main window contents. [Full Topic]
+// A dictionary containing the current configuration details for the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516954-showsbaselineseparator?language=objc
-func (t_ Toolbar) SetShowsBaselineSeparator(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setShowsBaselineSeparator:"), value)
-}
-
-// The identifier of the toolbar’s currently selected item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516999-selecteditemidentifier?language=objc
-func (t_ Toolbar) SelectedItemIdentifier() ToolbarItemIdentifier {
-	rv := objc.Call[ToolbarItemIdentifier](t_, objc.Sel("selectedItemIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516956-configurationdictionary?language=objc
+func (t_ Toolbar) ConfigurationDictionary() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](t_, objc.Sel("configurationDictionary"))
 	return rv
-}
-
-// The identifier of the toolbar’s currently selected item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516999-selecteditemidentifier?language=objc
-func (t_ Toolbar) SetSelectedItemIdentifier(value ToolbarItemIdentifier) {
-	objc.Call[objc.Void](t_, objc.Sel("setSelectedItemIdentifier:"), value)
 }
 
 // The object you use to customize the toolbar contents and configuration. [Full Topic]
@@ -245,19 +214,27 @@ func (t_ Toolbar) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// A Boolean value that indicates whether the toolbar autosaves its configuration. [Full Topic]
+// A Boolean value that indicates whether the toolbar shows the separator between the toolbar and the main window contents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516992-autosavesconfiguration?language=objc
-func (t_ Toolbar) AutosavesConfiguration() bool {
-	rv := objc.Call[bool](t_, objc.Sel("autosavesConfiguration"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516954-showsbaselineseparator?language=objc
+func (t_ Toolbar) ShowsBaselineSeparator() bool {
+	rv := objc.Call[bool](t_, objc.Sel("showsBaselineSeparator"))
 	return rv
 }
 
-// A Boolean value that indicates whether the toolbar autosaves its configuration. [Full Topic]
+// A Boolean value that indicates whether the toolbar shows the separator between the toolbar and the main window contents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516992-autosavesconfiguration?language=objc
-func (t_ Toolbar) SetAutosavesConfiguration(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAutosavesConfiguration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516954-showsbaselineseparator?language=objc
+func (t_ Toolbar) SetShowsBaselineSeparator(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setShowsBaselineSeparator:"), value)
+}
+
+// An array containing the toolbar’s currently visible items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516993-visibleitems?language=objc
+func (t_ Toolbar) VisibleItems() []ToolbarItem {
+	rv := objc.Call[[]ToolbarItem](t_, objc.Sel("visibleItems"))
+	return rv
 }
 
 // A Boolean value that indicates whether the toolbar can add items for Action extensions. [Full Topic]
@@ -275,25 +252,48 @@ func (t_ Toolbar) SetAllowsExtensionItems(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setAllowsExtensionItems:"), value)
 }
 
-// A dictionary containing the current configuration details for the toolbar. [Full Topic]
+// A Boolean value that indicates whether the toolbar’s customization palette is in use. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516956-configurationdictionary?language=objc
-func (t_ Toolbar) ConfigurationDictionary() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](t_, objc.Sel("configurationDictionary"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516987-customizationpaletteisrunning?language=objc
+func (t_ Toolbar) CustomizationPaletteIsRunning() bool {
+	rv := objc.Call[bool](t_, objc.Sel("customizationPaletteIsRunning"))
 	return rv
 }
 
-// A Boolean value that indicates whether users can modify the contents of the toolbar. [Full Topic]
+// The value you use to identify the toolbar in your app. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516962-allowsusercustomization?language=objc
-func (t_ Toolbar) AllowsUserCustomization() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsUserCustomization"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516953-identifier?language=objc
+func (t_ Toolbar) Identifier() ToolbarIdentifier {
+	rv := objc.Call[ToolbarIdentifier](t_, objc.Sel("identifier"))
 	return rv
 }
 
-// A Boolean value that indicates whether users can modify the contents of the toolbar. [Full Topic]
+// The identifier of the toolbar’s currently selected item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516962-allowsusercustomization?language=objc
-func (t_ Toolbar) SetAllowsUserCustomization(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowsUserCustomization:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516999-selecteditemidentifier?language=objc
+func (t_ Toolbar) SelectedItemIdentifier() ToolbarItemIdentifier {
+	rv := objc.Call[ToolbarItemIdentifier](t_, objc.Sel("selectedItemIdentifier"))
+	return rv
+}
+
+// The identifier of the toolbar’s currently selected item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516999-selecteditemidentifier?language=objc
+func (t_ Toolbar) SetSelectedItemIdentifier(value ToolbarItemIdentifier) {
+	objc.Call[objc.Void](t_, objc.Sel("setSelectedItemIdentifier:"), value)
+}
+
+// A Boolean value that indicates whether the toolbar autosaves its configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516992-autosavesconfiguration?language=objc
+func (t_ Toolbar) AutosavesConfiguration() bool {
+	rv := objc.Call[bool](t_, objc.Sel("autosavesConfiguration"))
+	return rv
+}
+
+// A Boolean value that indicates whether the toolbar autosaves its configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516992-autosavesconfiguration?language=objc
+func (t_ Toolbar) SetAutosavesConfiguration(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAutosavesConfiguration:"), value)
 }

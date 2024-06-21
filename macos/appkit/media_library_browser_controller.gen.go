@@ -84,6 +84,21 @@ func (m_ MediaLibraryBrowserController) SetVisible(value bool) {
 	objc.Call[objc.Void](m_, objc.Sel("setVisible:"), value)
 }
 
+// Returns the shared Media Library Browser instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423485-sharedmedialibrarybrowsercontrol?language=objc
+func (mc _MediaLibraryBrowserControllerClass) SharedMediaLibraryBrowserController() MediaLibraryBrowserController {
+	rv := objc.Call[MediaLibraryBrowserController](mc, objc.Sel("sharedMediaLibraryBrowserController"))
+	return rv
+}
+
+// Returns the shared Media Library Browser instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423485-sharedmedialibrarybrowsercontrol?language=objc
+func MediaLibraryBrowserController_SharedMediaLibraryBrowserController() MediaLibraryBrowserController {
+	return MediaLibraryBrowserControllerClass.SharedMediaLibraryBrowserController()
+}
+
 // The frame, in global coordinates, used to display the Media Library Browser panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423477-frame?language=objc
@@ -112,19 +127,4 @@ func (m_ MediaLibraryBrowserController) MediaLibraries() MediaLibrary {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423481-medialibraries?language=objc
 func (m_ MediaLibraryBrowserController) SetMediaLibraries(value MediaLibrary) {
 	objc.Call[objc.Void](m_, objc.Sel("setMediaLibraries:"), value)
-}
-
-// Returns the shared Media Library Browser instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423485-sharedmedialibrarybrowsercontrol?language=objc
-func (mc _MediaLibraryBrowserControllerClass) SharedMediaLibraryBrowserController() MediaLibraryBrowserController {
-	rv := objc.Call[MediaLibraryBrowserController](mc, objc.Sel("sharedMediaLibraryBrowserController"))
-	return rv
-}
-
-// Returns the shared Media Library Browser instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrarybrowsercontroller/1423485-sharedmedialibrarybrowsercontrol?language=objc
-func MediaLibraryBrowserController_SharedMediaLibraryBrowserController() MediaLibraryBrowserController {
-	return MediaLibraryBrowserControllerClass.SharedMediaLibraryBrowserController()
 }

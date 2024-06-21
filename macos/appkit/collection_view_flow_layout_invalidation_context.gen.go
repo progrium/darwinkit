@@ -18,10 +18,10 @@ type _CollectionViewFlowLayoutInvalidationContextClass struct {
 // An interface definition for the [CollectionViewFlowLayoutInvalidationContext] class.
 type ICollectionViewFlowLayoutInvalidationContext interface {
 	ICollectionViewLayoutInvalidationContext
-	InvalidateFlowLayoutDelegateMetrics() bool
-	SetInvalidateFlowLayoutDelegateMetrics(value bool)
 	InvalidateFlowLayoutAttributes() bool
 	SetInvalidateFlowLayoutAttributes(value bool)
+	InvalidateFlowLayoutDelegateMetrics() bool
+	SetInvalidateFlowLayoutDelegateMetrics(value bool)
 }
 
 // An object that identifies the portions of a flow layout object that need to be updated. [Full Topic]
@@ -57,21 +57,6 @@ func (c_ CollectionViewFlowLayoutInvalidationContext) Init() CollectionViewFlowL
 	return rv
 }
 
-// A Boolean value indicating whether the flow layout object should fetch new size information from its delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402902-invalidateflowlayoutdelegatemetr?language=objc
-func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutDelegateMetrics() bool {
-	rv := objc.Call[bool](c_, objc.Sel("invalidateFlowLayoutDelegateMetrics"))
-	return rv
-}
-
-// A Boolean value indicating whether the flow layout object should fetch new size information from its delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402902-invalidateflowlayoutdelegatemetr?language=objc
-func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutDelegateMetrics(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setInvalidateFlowLayoutDelegateMetrics:"), value)
-}
-
 // A Boolean value indicating whether the flow layout object should invalidate its current attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402870-invalidateflowlayoutattributes?language=objc
@@ -85,4 +70,19 @@ func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutAttrib
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402870-invalidateflowlayoutattributes?language=objc
 func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutAttributes(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setInvalidateFlowLayoutAttributes:"), value)
+}
+
+// A Boolean value indicating whether the flow layout object should fetch new size information from its delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402902-invalidateflowlayoutdelegatemetr?language=objc
+func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutDelegateMetrics() bool {
+	rv := objc.Call[bool](c_, objc.Sel("invalidateFlowLayoutDelegateMetrics"))
+	return rv
+}
+
+// A Boolean value indicating whether the flow layout object should fetch new size information from its delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayoutinvalidationcontext/1402902-invalidateflowlayoutdelegatemetr?language=objc
+func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutDelegateMetrics(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setInvalidateFlowLayoutDelegateMetrics:"), value)
 }

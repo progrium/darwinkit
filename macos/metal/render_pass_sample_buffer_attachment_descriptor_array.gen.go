@@ -18,8 +18,8 @@ type _RenderPassSampleBufferAttachmentDescriptorArrayClass struct {
 // An interface definition for the [RenderPassSampleBufferAttachmentDescriptorArray] class.
 type IRenderPassSampleBufferAttachmentDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(attachment IRenderPassSampleBufferAttachmentDescriptor, attachmentIndex uint)
 	ObjectAtIndexedSubscript(attachmentIndex uint) RenderPassSampleBufferAttachmentDescriptor
+	SetObjectAtIndexedSubscript(attachment IRenderPassSampleBufferAttachmentDescriptor, attachmentIndex uint)
 }
 
 // An array of sample buffer attachments for a render pass. [Full Topic]
@@ -55,17 +55,17 @@ func (r_ RenderPassSampleBufferAttachmentDescriptorArray) Init() RenderPassSampl
 	return rv
 }
 
-// Sets the descriptor object for the specified sample buffer attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptorarray/3081755-setobject?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IRenderPassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
-}
-
 // Returns the descriptor object for the specified sample buffer attachment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptorarray/3081754-objectatindexedsubscript?language=objc
 func (r_ RenderPassSampleBufferAttachmentDescriptorArray) ObjectAtIndexedSubscript(attachmentIndex uint) RenderPassSampleBufferAttachmentDescriptor {
 	rv := objc.Call[RenderPassSampleBufferAttachmentDescriptor](r_, objc.Sel("objectAtIndexedSubscript:"), attachmentIndex)
 	return rv
+}
+
+// Sets the descriptor object for the specified sample buffer attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptorarray/3081755-setobject?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IRenderPassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

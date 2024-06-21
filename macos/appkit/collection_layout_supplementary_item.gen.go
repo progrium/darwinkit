@@ -20,9 +20,9 @@ type ICollectionLayoutSupplementaryItem interface {
 	ICollectionLayoutItem
 	ContainerAnchor() CollectionLayoutAnchor
 	ItemAnchor() CollectionLayoutAnchor
+	ElementKind() string
 	ZIndex() int
 	SetZIndex(value int)
-	ElementKind() string
 }
 
 // An object used to add an extra visual decoration to an item in a collection view. [Full Topic]
@@ -36,18 +36,6 @@ func CollectionLayoutSupplementaryItemFrom(ptr unsafe.Pointer) CollectionLayoutS
 	return CollectionLayoutSupplementaryItem{
 		CollectionLayoutItem: CollectionLayoutItemFrom(ptr),
 	}
-}
-
-func (cc _CollectionLayoutSupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutSupplementaryItem {
-	rv := objc.Call[CollectionLayoutSupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), layoutSize, elementKind, containerAnchor)
-	return rv
-}
-
-// Creates a supplementary item of the specified size and element kind, with an anchor relative to a container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3213899-supplementaryitemwithlayoutsize?language=objc
-func CollectionLayoutSupplementaryItem_SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutSupplementaryItem {
-	return CollectionLayoutSupplementaryItemClass.SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize, elementKind, containerAnchor)
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutSupplementaryItem {
@@ -94,18 +82,6 @@ func CollectionLayoutSupplementaryItem_ItemWithLayoutSize(layoutSize ICollection
 	return CollectionLayoutSupplementaryItemClass.ItemWithLayoutSize(layoutSize)
 }
 
-func (cc _CollectionLayoutSupplementaryItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutSupplementaryItem {
-	rv := objc.Call[CollectionLayoutSupplementaryItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
-	return rv
-}
-
-// Creates an item of the specified size with an array of supplementary items to attach to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213872-itemwithlayoutsize?language=objc
-func CollectionLayoutSupplementaryItem_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutSupplementaryItem {
-	return CollectionLayoutSupplementaryItemClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 // The anchor between the supplementary item and the container it's attached to. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3199109-containeranchor?language=objc
@@ -122,6 +98,14 @@ func (c_ CollectionLayoutSupplementaryItem) ItemAnchor() CollectionLayoutAnchor 
 	return rv
 }
 
+// A string that identifies the type of supplementary item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3199110-elementkind?language=objc
+func (c_ CollectionLayoutSupplementaryItem) ElementKind() string {
+	rv := objc.Call[string](c_, objc.Sel("elementKind"))
+	return rv
+}
+
 // The vertical stacking order of the supplementary item in relation to other items in the section. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3199114-zindex?language=objc
@@ -135,12 +119,4 @@ func (c_ CollectionLayoutSupplementaryItem) ZIndex() int {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3199114-zindex?language=objc
 func (c_ CollectionLayoutSupplementaryItem) SetZIndex(value int) {
 	objc.Call[objc.Void](c_, objc.Sel("setZIndex:"), value)
-}
-
-// A string that identifies the type of supplementary item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3199110-elementkind?language=objc
-func (c_ CollectionLayoutSupplementaryItem) ElementKind() string {
-	rv := objc.Call[string](c_, objc.Sel("elementKind"))
-	return rv
 }

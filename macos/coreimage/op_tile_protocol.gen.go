@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile?language=objc
 type POpTile interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetScale(value float32)
@@ -44,12 +44,12 @@ type POpTile interface {
 	HasAngle() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	Width() float32
-	HasWidth() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -60,26 +60,26 @@ type OpTileObject struct {
 	objc.Object
 }
 
-func (o_ OpTileObject) HasSetCenter() bool {
-	return o_.RespondsToSelector(objc.Sel("setCenter:"))
+func (o_ OpTileObject) HasSetWidth() bool {
+	return o_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The width of a tile. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228600-center?language=objc
-func (o_ OpTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](o_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
+func (o_ OpTileObject) SetWidth(value float32) {
+	objc.Call[objc.Void](o_, objc.Sel("setWidth:"), value)
 }
 
-func (o_ OpTileObject) HasCenter() bool {
-	return o_.RespondsToSelector(objc.Sel("center"))
+func (o_ OpTileObject) HasWidth() bool {
+	return o_.RespondsToSelector(objc.Sel("width"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The width of a tile. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228600-center?language=objc
-func (o_ OpTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](o_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
+func (o_ OpTileObject) Width() float32 {
+	rv := objc.Call[float32](o_, objc.Sel("width"))
 	return rv
 }
 
@@ -152,25 +152,25 @@ func (o_ OpTileObject) Angle() float32 {
 	return rv
 }
 
-func (o_ OpTileObject) HasSetWidth() bool {
-	return o_.RespondsToSelector(objc.Sel("setWidth:"))
+func (o_ OpTileObject) HasSetCenter() bool {
+	return o_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
-// The width of a tile. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
-func (o_ OpTileObject) SetWidth(value float32) {
-	objc.Call[objc.Void](o_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228600-center?language=objc
+func (o_ OpTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](o_, objc.Sel("setCenter:"), value)
 }
 
-func (o_ OpTileObject) HasWidth() bool {
-	return o_.RespondsToSelector(objc.Sel("width"))
+func (o_ OpTileObject) HasCenter() bool {
+	return o_.RespondsToSelector(objc.Sel("center"))
 }
 
-// The width of a tile. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
-func (o_ OpTileObject) Width() float32 {
-	rv := objc.Call[float32](o_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228600-center?language=objc
+func (o_ OpTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](o_, objc.Sel("center"))
 	return rv
 }

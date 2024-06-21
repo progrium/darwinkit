@@ -18,10 +18,10 @@ type _CIDeviceInfoClass struct {
 // An interface definition for the [CIDeviceInfo] class.
 type ICIDeviceInfo interface {
 	objc.IObject
-	Family() []byte
 	ManufacturerID() []byte
-	MidiDestination() EndpointRef
 	RevisionLevel() []byte
+	Family() []byte
+	MidiDestination() EndpointRef
 	ModelNumber() []byte
 }
 
@@ -72,14 +72,6 @@ func (c_ CIDeviceInfo) Init() CIDeviceInfo {
 	return rv
 }
 
-// The family to which the device belongs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3553235-family?language=objc
-func (c_ CIDeviceInfo) Family() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("family"))
-	return rv
-}
-
 // The MIDI System Exclusive (SysEx) ID of the device manufacturer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3553237-manufacturerid?language=objc
@@ -88,19 +80,27 @@ func (c_ CIDeviceInfo) ManufacturerID() []byte {
 	return rv
 }
 
-// The MIDI destination the device’s MIDI entity uses for capability inquiries. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3580318-mididestination?language=objc
-func (c_ CIDeviceInfo) MidiDestination() EndpointRef {
-	rv := objc.Call[EndpointRef](c_, objc.Sel("midiDestination"))
-	return rv
-}
-
 // The revision number of the device model number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3553239-revisionlevel?language=objc
 func (c_ CIDeviceInfo) RevisionLevel() []byte {
 	rv := objc.Call[[]byte](c_, objc.Sel("revisionLevel"))
+	return rv
+}
+
+// The family to which the device belongs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3553235-family?language=objc
+func (c_ CIDeviceInfo) Family() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("family"))
+	return rv
+}
+
+// The MIDI destination the device’s MIDI entity uses for capability inquiries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicideviceinfo/3580318-mididestination?language=objc
+func (c_ CIDeviceInfo) MidiDestination() EndpointRef {
+	rv := objc.Call[EndpointRef](c_, objc.Sel("midiDestination"))
 	return rv
 }
 

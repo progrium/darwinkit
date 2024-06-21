@@ -18,11 +18,11 @@ type _PlayerItemTrackClass struct {
 // An interface definition for the [PlayerItemTrack] class.
 type IPlayerItemTrack interface {
 	objc.IObject
-	IsEnabled() bool
-	SetEnabled(value bool)
-	CurrentVideoFrameRate() float32
 	VideoFieldMode() string
 	SetVideoFieldMode(value string)
+	CurrentVideoFrameRate() float32
+	IsEnabled() bool
+	SetEnabled(value bool)
 	AssetTrack() AssetTrack
 }
 
@@ -59,29 +59,6 @@ func (p_ PlayerItemTrack) Init() PlayerItemTrack {
 	return rv
 }
 
-// A Boolean value that indicates whether the player item presents the track’s media during playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1387062-enabled?language=objc
-func (p_ PlayerItemTrack) IsEnabled() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isEnabled"))
-	return rv
-}
-
-// A Boolean value that indicates whether the player item presents the track’s media during playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1387062-enabled?language=objc
-func (p_ PlayerItemTrack) SetEnabled(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setEnabled:"), value)
-}
-
-// The current frame rate of the video track as it plays. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1388956-currentvideoframerate?language=objc
-func (p_ PlayerItemTrack) CurrentVideoFrameRate() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("currentVideoFrameRate"))
-	return rv
-}
-
 // A mode that specifies the handling of video frames that contain multiple fields. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1388045-videofieldmode?language=objc
@@ -95,6 +72,29 @@ func (p_ PlayerItemTrack) VideoFieldMode() string {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1388045-videofieldmode?language=objc
 func (p_ PlayerItemTrack) SetVideoFieldMode(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setVideoFieldMode:"), value)
+}
+
+// The current frame rate of the video track as it plays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1388956-currentvideoframerate?language=objc
+func (p_ PlayerItemTrack) CurrentVideoFrameRate() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("currentVideoFrameRate"))
+	return rv
+}
+
+// A Boolean value that indicates whether the player item presents the track’s media during playback. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1387062-enabled?language=objc
+func (p_ PlayerItemTrack) IsEnabled() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether the player item presents the track’s media during playback. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1387062-enabled?language=objc
+func (p_ PlayerItemTrack) SetEnabled(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setEnabled:"), value)
 }
 
 // An asset track that provides the media for the player item track. [Full Topic]

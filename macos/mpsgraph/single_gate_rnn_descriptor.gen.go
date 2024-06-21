@@ -18,12 +18,12 @@ type _SingleGateRNNDescriptorClass struct {
 // An interface definition for the [SingleGateRNNDescriptor] class.
 type ISingleGateRNNDescriptor interface {
 	objc.IObject
-	Bidirectional() bool
-	SetBidirectional(value bool)
-	Training() bool
-	SetTraining(value bool)
 	Activation() RNNActivation
 	SetActivation(value RNNActivation)
+	Training() bool
+	SetTraining(value bool)
+	Bidirectional() bool
+	SetBidirectional(value bool)
 	Reverse() bool
 	SetReverse(value bool)
 }
@@ -75,17 +75,17 @@ func (s_ SingleGateRNNDescriptor) Init() SingleGateRNNDescriptor {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919773-bidirectional?language=objc
-func (s_ SingleGateRNNDescriptor) Bidirectional() bool {
-	rv := objc.Call[bool](s_, objc.Sel("bidirectional"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919772-activation?language=objc
+func (s_ SingleGateRNNDescriptor) Activation() RNNActivation {
+	rv := objc.Call[RNNActivation](s_, objc.Sel("activation"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919773-bidirectional?language=objc
-func (s_ SingleGateRNNDescriptor) SetBidirectional(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setBidirectional:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919772-activation?language=objc
+func (s_ SingleGateRNNDescriptor) SetActivation(value RNNActivation) {
+	objc.Call[objc.Void](s_, objc.Sel("setActivation:"), value)
 }
 
 //	[Full Topic]
@@ -105,17 +105,17 @@ func (s_ SingleGateRNNDescriptor) SetTraining(value bool) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919772-activation?language=objc
-func (s_ SingleGateRNNDescriptor) Activation() RNNActivation {
-	rv := objc.Call[RNNActivation](s_, objc.Sel("activation"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919773-bidirectional?language=objc
+func (s_ SingleGateRNNDescriptor) Bidirectional() bool {
+	rv := objc.Call[bool](s_, objc.Sel("bidirectional"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919772-activation?language=objc
-func (s_ SingleGateRNNDescriptor) SetActivation(value RNNActivation) {
-	objc.Call[objc.Void](s_, objc.Sel("setActivation:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphsinglegaternndescriptor/3919773-bidirectional?language=objc
+func (s_ SingleGateRNNDescriptor) SetBidirectional(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setBidirectional:"), value)
 }
 
 //	[Full Topic]

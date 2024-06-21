@@ -18,12 +18,12 @@ type _CollectionLayoutItemClass struct {
 // An interface definition for the [CollectionLayoutItem] class.
 type ICollectionLayoutItem interface {
 	objc.IObject
+	LayoutSize() CollectionLayoutSize
+	SupplementaryItems() []CollectionLayoutSupplementaryItem
 	ContentInsets() DirectionalEdgeInsets
 	SetContentInsets(value DirectionalEdgeInsets)
-	LayoutSize() CollectionLayoutSize
 	EdgeSpacing() CollectionLayoutEdgeSpacing
 	SetEdgeSpacing(value ICollectionLayoutEdgeSpacing)
-	SupplementaryItems() []CollectionLayoutSupplementaryItem
 }
 
 // The most basic component of a collection view’s layout. [Full Topic]
@@ -51,18 +51,6 @@ func CollectionLayoutItem_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) C
 	return CollectionLayoutItemClass.ItemWithLayoutSize(layoutSize)
 }
 
-func (cc _CollectionLayoutItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
-	return rv
-}
-
-// Creates an item of the specified size with an array of supplementary items to attach to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213872-itemwithlayoutsize?language=objc
-func CollectionLayoutItem_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	return CollectionLayoutItemClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 func (cc _CollectionLayoutItemClass) Alloc() CollectionLayoutItem {
 	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("alloc"))
 	return rv
@@ -83,6 +71,22 @@ func (c_ CollectionLayoutItem) Init() CollectionLayoutItem {
 	return rv
 }
 
+// The item's size expressed in width and height dimensions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213873-layoutsize?language=objc
+func (c_ CollectionLayoutItem) LayoutSize() CollectionLayoutSize {
+	rv := objc.Call[CollectionLayoutSize](c_, objc.Sel("layoutSize"))
+	return rv
+}
+
+// An array of the supplementary items attached to the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213874-supplementaryitems?language=objc
+func (c_ CollectionLayoutItem) SupplementaryItems() []CollectionLayoutSupplementaryItem {
+	rv := objc.Call[[]CollectionLayoutSupplementaryItem](c_, objc.Sel("supplementaryItems"))
+	return rv
+}
+
 // The amount of space added around the content of the item to adjust its final size after its position is computed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3199084-contentinsets?language=objc
@@ -98,14 +102,6 @@ func (c_ CollectionLayoutItem) SetContentInsets(value DirectionalEdgeInsets) {
 	objc.Call[objc.Void](c_, objc.Sel("setContentInsets:"), value)
 }
 
-// The item's size expressed in width and height dimensions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213873-layoutsize?language=objc
-func (c_ CollectionLayoutItem) LayoutSize() CollectionLayoutSize {
-	rv := objc.Call[CollectionLayoutSize](c_, objc.Sel("layoutSize"))
-	return rv
-}
-
 // The amount of space added around the boundaries of the item between other items and this item's container. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3199085-edgespacing?language=objc
@@ -119,12 +115,4 @@ func (c_ CollectionLayoutItem) EdgeSpacing() CollectionLayoutEdgeSpacing {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3199085-edgespacing?language=objc
 func (c_ CollectionLayoutItem) SetEdgeSpacing(value ICollectionLayoutEdgeSpacing) {
 	objc.Call[objc.Void](c_, objc.Sel("setEdgeSpacing:"), value)
-}
-
-// An array of the supplementary items attached to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213874-supplementaryitems?language=objc
-func (c_ CollectionLayoutItem) SupplementaryItems() []CollectionLayoutSupplementaryItem {
-	rv := objc.Call[[]CollectionLayoutSupplementaryItem](c_, objc.Sel("supplementaryItems"))
-	return rv
 }

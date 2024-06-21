@@ -21,8 +21,8 @@ type IURLProtocol interface {
 	StopLoading()
 	StartLoading()
 	Request() URLRequest
-	Task() URLSessionTask
 	CachedResponse() CachedURLResponse
+	Task() URLSessionTask
 	Client() URLProtocolClientObject
 }
 
@@ -89,6 +89,43 @@ func (u_ URLProtocol) Init() URLProtocol {
 	return rv
 }
 
+// Stops protocol-specific loading of the request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408666-stoploading?language=objc
+func (u_ URLProtocol) StopLoading() {
+	objc.Call[objc.Void](u_, objc.Sel("stopLoading"))
+}
+
+// Fetches the property associated with the specified key in the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416521-propertyforkey?language=objc
+func (uc _URLProtocolClass) PropertyForKeyInRequest(key string, request IURLRequest) objc.Object {
+	rv := objc.Call[objc.Object](uc, objc.Sel("propertyForKey:inRequest:"), key, request)
+	return rv
+}
+
+// Fetches the property associated with the specified key in the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416521-propertyforkey?language=objc
+func URLProtocol_PropertyForKeyInRequest(key string, request IURLRequest) objc.Object {
+	return URLProtocolClass.PropertyForKeyInRequest(key, request)
+}
+
+// Returns a canonical version of the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408650-canonicalrequestforrequest?language=objc
+func (uc _URLProtocolClass) CanonicalRequestForRequest(request IURLRequest) URLRequest {
+	rv := objc.Call[URLRequest](uc, objc.Sel("canonicalRequestForRequest:"), request)
+	return rv
+}
+
+// Returns a canonical version of the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408650-canonicalrequestforrequest?language=objc
+func URLProtocol_CanonicalRequestForRequest(request IURLRequest) URLRequest {
+	return URLProtocolClass.CanonicalRequestForRequest(request)
+}
+
 // Attempts to register a subclass of NSURLProtocol, making it visible to the URL loading system. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407208-registerclass?language=objc
@@ -104,27 +141,6 @@ func URLProtocol_RegisterClass(protocolClass objc.IClass) bool {
 	return URLProtocolClass.RegisterClass(protocolClass)
 }
 
-// Sets the property associated with the specified key in the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407897-setproperty?language=objc
-func (uc _URLProtocolClass) SetPropertyForKeyInRequest(value objc.IObject, key string, request IMutableURLRequest) {
-	objc.Call[objc.Void](uc, objc.Sel("setProperty:forKey:inRequest:"), value, key, request)
-}
-
-// Sets the property associated with the specified key in the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407897-setproperty?language=objc
-func URLProtocol_SetPropertyForKeyInRequest(value objc.IObject, key string, request IMutableURLRequest) {
-	URLProtocolClass.SetPropertyForKeyInRequest(value, key, request)
-}
-
-// Stops protocol-specific loading of the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408666-stoploading?language=objc
-func (u_ URLProtocol) StopLoading() {
-	objc.Call[objc.Void](u_, objc.Sel("stopLoading"))
-}
-
 // Determines whether the protocol subclass can handle the specified task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416997-caninitwithtask?language=objc
@@ -138,6 +154,56 @@ func (uc _URLProtocolClass) CanInitWithTask(task IURLSessionTask) bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416997-caninitwithtask?language=objc
 func URLProtocol_CanInitWithTask(task IURLSessionTask) bool {
 	return URLProtocolClass.CanInitWithTask(task)
+}
+
+// Starts protocol-specific loading of the request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408989-startloading?language=objc
+func (u_ URLProtocol) StartLoading() {
+	objc.Call[objc.Void](u_, objc.Sel("startLoading"))
+}
+
+// Unregisters the specified subclass of NSURLProtocol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1409131-unregisterclass?language=objc
+func (uc _URLProtocolClass) UnregisterClass(protocolClass objc.IClass) {
+	objc.Call[objc.Void](uc, objc.Sel("unregisterClass:"), protocolClass)
+}
+
+// Unregisters the specified subclass of NSURLProtocol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1409131-unregisterclass?language=objc
+func URLProtocol_UnregisterClass(protocolClass objc.IClass) {
+	URLProtocolClass.UnregisterClass(protocolClass)
+}
+
+// Determines whether the protocol subclass can handle the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1411389-caninitwithrequest?language=objc
+func (uc _URLProtocolClass) CanInitWithRequest(request IURLRequest) bool {
+	rv := objc.Call[bool](uc, objc.Sel("canInitWithRequest:"), request)
+	return rv
+}
+
+// Determines whether the protocol subclass can handle the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1411389-caninitwithrequest?language=objc
+func URLProtocol_CanInitWithRequest(request IURLRequest) bool {
+	return URLProtocolClass.CanInitWithRequest(request)
+}
+
+// Sets the property associated with the specified key in the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407897-setproperty?language=objc
+func (uc _URLProtocolClass) SetPropertyForKeyInRequest(value objc.IObject, key string, request IMutableURLRequest) {
+	objc.Call[objc.Void](uc, objc.Sel("setProperty:forKey:inRequest:"), value, key, request)
+}
+
+// Sets the property associated with the specified key in the specified request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407897-setproperty?language=objc
+func URLProtocol_SetPropertyForKeyInRequest(value objc.IObject, key string, request IMutableURLRequest) {
+	URLProtocolClass.SetPropertyForKeyInRequest(value, key, request)
 }
 
 // A Boolean value indicating whether two requests are equivalent for cache purposes. [Full Topic]
@@ -169,72 +235,6 @@ func URLProtocol_RemovePropertyForKeyInRequest(key string, request IMutableURLRe
 	URLProtocolClass.RemovePropertyForKeyInRequest(key, request)
 }
 
-// Unregisters the specified subclass of NSURLProtocol. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1409131-unregisterclass?language=objc
-func (uc _URLProtocolClass) UnregisterClass(protocolClass objc.IClass) {
-	objc.Call[objc.Void](uc, objc.Sel("unregisterClass:"), protocolClass)
-}
-
-// Unregisters the specified subclass of NSURLProtocol. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1409131-unregisterclass?language=objc
-func URLProtocol_UnregisterClass(protocolClass objc.IClass) {
-	URLProtocolClass.UnregisterClass(protocolClass)
-}
-
-// Fetches the property associated with the specified key in the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416521-propertyforkey?language=objc
-func (uc _URLProtocolClass) PropertyForKeyInRequest(key string, request IURLRequest) objc.Object {
-	rv := objc.Call[objc.Object](uc, objc.Sel("propertyForKey:inRequest:"), key, request)
-	return rv
-}
-
-// Fetches the property associated with the specified key in the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416521-propertyforkey?language=objc
-func URLProtocol_PropertyForKeyInRequest(key string, request IURLRequest) objc.Object {
-	return URLProtocolClass.PropertyForKeyInRequest(key, request)
-}
-
-// Determines whether the protocol subclass can handle the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1411389-caninitwithrequest?language=objc
-func (uc _URLProtocolClass) CanInitWithRequest(request IURLRequest) bool {
-	rv := objc.Call[bool](uc, objc.Sel("canInitWithRequest:"), request)
-	return rv
-}
-
-// Determines whether the protocol subclass can handle the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1411389-caninitwithrequest?language=objc
-func URLProtocol_CanInitWithRequest(request IURLRequest) bool {
-	return URLProtocolClass.CanInitWithRequest(request)
-}
-
-// Starts protocol-specific loading of the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408989-startloading?language=objc
-func (u_ URLProtocol) StartLoading() {
-	objc.Call[objc.Void](u_, objc.Sel("startLoading"))
-}
-
-// Returns a canonical version of the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408650-canonicalrequestforrequest?language=objc
-func (uc _URLProtocolClass) CanonicalRequestForRequest(request IURLRequest) URLRequest {
-	rv := objc.Call[URLRequest](uc, objc.Sel("canonicalRequestForRequest:"), request)
-	return rv
-}
-
-// Returns a canonical version of the specified request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408650-canonicalrequestforrequest?language=objc
-func URLProtocol_CanonicalRequestForRequest(request IURLRequest) URLRequest {
-	return URLProtocolClass.CanonicalRequestForRequest(request)
-}
-
 // The protocol’s request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1412383-request?language=objc
@@ -243,19 +243,19 @@ func (u_ URLProtocol) Request() URLRequest {
 	return rv
 }
 
-// The protocol’s task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407649-task?language=objc
-func (u_ URLProtocol) Task() URLSessionTask {
-	rv := objc.Call[URLSessionTask](u_, objc.Sel("task"))
-	return rv
-}
-
 // The protocol’s cached response. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1418409-cachedresponse?language=objc
 func (u_ URLProtocol) CachedResponse() CachedURLResponse {
 	rv := objc.Call[CachedURLResponse](u_, objc.Sel("cachedResponse"))
+	return rv
+}
+
+// The protocol’s task. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407649-task?language=objc
+func (u_ URLProtocol) Task() URLSessionTask {
+	rv := objc.Call[URLSessionTask](u_, objc.Sel("task"))
 	return rv
 }
 

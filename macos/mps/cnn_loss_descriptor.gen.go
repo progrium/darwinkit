@@ -20,20 +20,20 @@ type ICNNLossDescriptor interface {
 	objc.IObject
 	NumberOfClasses() uint
 	SetNumberOfClasses(value uint)
-	LabelSmoothing() float32
-	SetLabelSmoothing(value float32)
-	ReductionType() CNNReductionType
-	SetReductionType(value CNNReductionType)
-	Delta() float32
-	SetDelta(value float32)
 	Weight() float32
 	SetWeight(value float32)
+	Epsilon() float32
+	SetEpsilon(value float32)
+	Delta() float32
+	SetDelta(value float32)
+	ReductionType() CNNReductionType
+	SetReductionType(value CNNReductionType)
 	ReduceAcrossBatch() bool
 	SetReduceAcrossBatch(value bool)
 	LossType() CNNLossType
 	SetLossType(value CNNLossType)
-	Epsilon() float32
-	SetEpsilon(value float32)
+	LabelSmoothing() float32
+	SetLabelSmoothing(value float32)
 }
 
 // An object that specifies properties used by a loss kernel. [Full Topic]
@@ -101,32 +101,32 @@ func (c_ CNNLossDescriptor) SetNumberOfClasses(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942369-labelsmoothing?language=objc
-func (c_ CNNLossDescriptor) LabelSmoothing() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("labelSmoothing"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942367-weight?language=objc
+func (c_ CNNLossDescriptor) Weight() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942369-labelsmoothing?language=objc
-func (c_ CNNLossDescriptor) SetLabelSmoothing(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setLabelSmoothing:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942367-weight?language=objc
+func (c_ CNNLossDescriptor) SetWeight(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setWeight:"), value)
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942388-reductiontype?language=objc
-func (c_ CNNLossDescriptor) ReductionType() CNNReductionType {
-	rv := objc.Call[CNNReductionType](c_, objc.Sel("reductionType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942362-epsilon?language=objc
+func (c_ CNNLossDescriptor) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942388-reductiontype?language=objc
-func (c_ CNNLossDescriptor) SetReductionType(value CNNReductionType) {
-	objc.Call[objc.Void](c_, objc.Sel("setReductionType:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942362-epsilon?language=objc
+func (c_ CNNLossDescriptor) SetEpsilon(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
 }
 
 //	[Full Topic]
@@ -146,17 +146,17 @@ func (c_ CNNLossDescriptor) SetDelta(value float32) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942367-weight?language=objc
-func (c_ CNNLossDescriptor) Weight() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("weight"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942388-reductiontype?language=objc
+func (c_ CNNLossDescriptor) ReductionType() CNNReductionType {
+	rv := objc.Call[CNNReductionType](c_, objc.Sel("reductionType"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942367-weight?language=objc
-func (c_ CNNLossDescriptor) SetWeight(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setWeight:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942388-reductiontype?language=objc
+func (c_ CNNLossDescriptor) SetReductionType(value CNNReductionType) {
+	objc.Call[objc.Void](c_, objc.Sel("setReductionType:"), value)
 }
 
 //	[Full Topic]
@@ -191,15 +191,15 @@ func (c_ CNNLossDescriptor) SetLossType(value CNNLossType) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942362-epsilon?language=objc
-func (c_ CNNLossDescriptor) Epsilon() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942369-labelsmoothing?language=objc
+func (c_ CNNLossDescriptor) LabelSmoothing() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("labelSmoothing"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942362-epsilon?language=objc
-func (c_ CNNLossDescriptor) SetEpsilon(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlossdescriptor/2942369-labelsmoothing?language=objc
+func (c_ CNNLossDescriptor) SetLabelSmoothing(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setLabelSmoothing:"), value)
 }

@@ -18,12 +18,12 @@ type _VertexAttributeClass struct {
 // An interface definition for the [VertexAttribute] class.
 type IVertexAttribute interface {
 	objc.IObject
-	IsPatchData() bool
-	IsPatchControlPointData() bool
-	IsActive() bool
-	AttributeIndex() uint
 	Name() string
+	IsActive() bool
+	IsPatchControlPointData() bool
+	IsPatchData() bool
 	AttributeType() DataType
+	AttributeIndex() uint
 }
 
 // An object that represents an attribute of a vertex function. [Full Topic]
@@ -59,19 +59,11 @@ func (v_ VertexAttribute) Init() VertexAttribute {
 	return rv
 }
 
-// A Boolean value that indicates whether this vertex attribute represents patch data. [Full Topic]
+// The name of the attribute. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1640002-patchdata?language=objc
-func (v_ VertexAttribute) IsPatchData() bool {
-	rv := objc.Call[bool](v_, objc.Sel("isPatchData"))
-	return rv
-}
-
-// A Boolean value that indicates whether this vertex attribute represents control point data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1640013-patchcontrolpointdata?language=objc
-func (v_ VertexAttribute) IsPatchControlPointData() bool {
-	rv := objc.Call[bool](v_, objc.Sel("isPatchControlPointData"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1515447-name?language=objc
+func (v_ VertexAttribute) Name() string {
+	rv := objc.Call[string](v_, objc.Sel("name"))
 	return rv
 }
 
@@ -83,19 +75,19 @@ func (v_ VertexAttribute) IsActive() bool {
 	return rv
 }
 
-// The index of the attribute, as declared in Metal shader source code. [Full Topic]
+// A Boolean value that indicates whether this vertex attribute represents control point data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1516285-attributeindex?language=objc
-func (v_ VertexAttribute) AttributeIndex() uint {
-	rv := objc.Call[uint](v_, objc.Sel("attributeIndex"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1640013-patchcontrolpointdata?language=objc
+func (v_ VertexAttribute) IsPatchControlPointData() bool {
+	rv := objc.Call[bool](v_, objc.Sel("isPatchControlPointData"))
 	return rv
 }
 
-// The name of the attribute. [Full Topic]
+// A Boolean value that indicates whether this vertex attribute represents patch data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1515447-name?language=objc
-func (v_ VertexAttribute) Name() string {
-	rv := objc.Call[string](v_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1640002-patchdata?language=objc
+func (v_ VertexAttribute) IsPatchData() bool {
+	rv := objc.Call[bool](v_, objc.Sel("isPatchData"))
 	return rv
 }
 
@@ -104,5 +96,13 @@ func (v_ VertexAttribute) Name() string {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1516002-attributetype?language=objc
 func (v_ VertexAttribute) AttributeType() DataType {
 	rv := objc.Call[DataType](v_, objc.Sel("attributeType"))
+	return rv
+}
+
+// The index of the attribute, as declared in Metal shader source code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattribute/1516285-attributeindex?language=objc
+func (v_ VertexAttribute) AttributeIndex() uint {
+	rv := objc.Call[uint](v_, objc.Sel("attributeIndex"))
 	return rv
 }

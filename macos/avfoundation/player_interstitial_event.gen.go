@@ -20,15 +20,15 @@ type _PlayerInterstitialEventClass struct {
 // An interface definition for the [PlayerInterstitialEvent] class.
 type IPlayerInterstitialEvent interface {
 	objc.IObject
-	TemplateItems() []PlayerItem
-	Time() coremedia.Time
+	Restrictions() PlayerInterstitialEventRestrictions
 	Date() foundation.Date
 	PrimaryItem() PlayerItem
-	Identifier() string
-	ResumptionOffset() coremedia.Time
-	PlayoutLimit() coremedia.Time
-	Restrictions() PlayerInterstitialEventRestrictions
+	TemplateItems() []PlayerItem
 	UserDefinedAttributes() foundation.Dictionary
+	Time() coremedia.Time
+	PlayoutLimit() coremedia.Time
+	ResumptionOffset() coremedia.Time
+	Identifier() string
 }
 
 // An object that provides instructions for how a player presents interstitial content. [Full Topic]
@@ -64,19 +64,11 @@ func (p_ PlayerInterstitialEvent) Init() PlayerInterstitialEvent {
 	return rv
 }
 
-// An array of player item configurations to use as templates for player items that play interstitial content. [Full Topic]
+// The restrictions the event imposes on the playback of interstitial content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726121-templateitems?language=objc
-func (p_ PlayerInterstitialEvent) TemplateItems() []PlayerItem {
-	rv := objc.Call[[]PlayerItem](p_, objc.Sel("templateItems"))
-	return rv
-}
-
-// A time within the timeline of the primary content that playback of interstitial content begins. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726122-time?language=objc
-func (p_ PlayerInterstitialEvent) Time() coremedia.Time {
-	rv := objc.Call[coremedia.Time](p_, objc.Sel("time"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726119-restrictions?language=objc
+func (p_ PlayerInterstitialEvent) Restrictions() PlayerInterstitialEventRestrictions {
+	rv := objc.Call[PlayerInterstitialEventRestrictions](p_, objc.Sel("restrictions"))
 	return rv
 }
 
@@ -96,19 +88,27 @@ func (p_ PlayerInterstitialEvent) PrimaryItem() PlayerItem {
 	return rv
 }
 
-// An identifier for the event. [Full Topic]
+// An array of player item configurations to use as templates for player items that play interstitial content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3746585-identifier?language=objc
-func (p_ PlayerInterstitialEvent) Identifier() string {
-	rv := objc.Call[string](p_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726121-templateitems?language=objc
+func (p_ PlayerInterstitialEvent) TemplateItems() []PlayerItem {
+	rv := objc.Call[[]PlayerItem](p_, objc.Sel("templateItems"))
 	return rv
 }
 
-// A time offset at which playback of primary content resumes after interstitial content finishes. [Full Topic]
+// Attributes of the event that the vendor or app defines. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726120-resumptionoffset?language=objc
-func (p_ PlayerInterstitialEvent) ResumptionOffset() coremedia.Time {
-	rv := objc.Call[coremedia.Time](p_, objc.Sel("resumptionOffset"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3820994-userdefinedattributes?language=objc
+func (p_ PlayerInterstitialEvent) UserDefinedAttributes() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("userDefinedAttributes"))
+	return rv
+}
+
+// A time within the timeline of the primary content that playback of interstitial content begins. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726122-time?language=objc
+func (p_ PlayerInterstitialEvent) Time() coremedia.Time {
+	rv := objc.Call[coremedia.Time](p_, objc.Sel("time"))
 	return rv
 }
 
@@ -120,18 +120,18 @@ func (p_ PlayerInterstitialEvent) PlayoutLimit() coremedia.Time {
 	return rv
 }
 
-// The restrictions the event imposes on the playback of interstitial content. [Full Topic]
+// A time offset at which playback of primary content resumes after interstitial content finishes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726119-restrictions?language=objc
-func (p_ PlayerInterstitialEvent) Restrictions() PlayerInterstitialEventRestrictions {
-	rv := objc.Call[PlayerInterstitialEventRestrictions](p_, objc.Sel("restrictions"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3726120-resumptionoffset?language=objc
+func (p_ PlayerInterstitialEvent) ResumptionOffset() coremedia.Time {
+	rv := objc.Call[coremedia.Time](p_, objc.Sel("resumptionOffset"))
 	return rv
 }
 
-// Attributes of the event that the vendor or app defines. [Full Topic]
+// An identifier for the event. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3820994-userdefinedattributes?language=objc
-func (p_ PlayerInterstitialEvent) UserDefinedAttributes() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("userDefinedAttributes"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent/3746585-identifier?language=objc
+func (p_ PlayerInterstitialEvent) Identifier() string {
+	rv := objc.Call[string](p_, objc.Sel("identifier"))
 	return rv
 }

@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion?language=objc
 type PCircleSplashDistortion interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -34,6 +26,14 @@ type PCircleSplashDistortion interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -42,29 +42,6 @@ var _ PCircleSplashDistortion = (*CircleSplashDistortionObject)(nil)
 // A concrete type for the [PCircleSplashDistortion] protocol.
 type CircleSplashDistortionObject struct {
 	objc.Object
-}
-
-func (c_ CircleSplashDistortionObject) HasSetCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600118-center?language=objc
-func (c_ CircleSplashDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
-}
-
-func (c_ CircleSplashDistortionObject) HasCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("center"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600118-center?language=objc
-func (c_ CircleSplashDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
-	return rv
 }
 
 func (c_ CircleSplashDistortionObject) HasSetInputImage() bool {
@@ -110,5 +87,28 @@ func (c_ CircleSplashDistortionObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600120-radius?language=objc
 func (c_ CircleSplashDistortionObject) Radius() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("radius"))
+	return rv
+}
+
+func (c_ CircleSplashDistortionObject) HasSetCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600118-center?language=objc
+func (c_ CircleSplashDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
+}
+
+func (c_ CircleSplashDistortionObject) HasCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600118-center?language=objc
+func (c_ CircleSplashDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

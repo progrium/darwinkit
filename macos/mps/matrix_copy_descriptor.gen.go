@@ -47,20 +47,6 @@ func MatrixCopyDescriptor_DescriptorWithSourceMatrixDestinationMatrixOffsets(sou
 	return MatrixCopyDescriptorClass.DescriptorWithSourceMatrixDestinationMatrixOffsets(sourceMatrix, destinationMatrix, offsets)
 }
 
-func (m_ MatrixCopyDescriptor) InitWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices []IMatrix, destinationMatrices []IMatrix, offsets IVector, byteOffset uint) MatrixCopyDescriptor {
-	rv := objc.Call[MatrixCopyDescriptor](m_, objc.Sel("initWithSourceMatrices:destinationMatrices:offsetVector:offset:"), sourceMatrices, destinationMatrices, offsets, byteOffset)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopydescriptor/2915344-initwithsourcematrices?language=objc
-func NewMatrixCopyDescriptorWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices []IMatrix, destinationMatrices []IMatrix, offsets IVector, byteOffset uint) MatrixCopyDescriptor {
-	instance := MatrixCopyDescriptorClass.Alloc().InitWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices, destinationMatrices, offsets, byteOffset)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixCopyDescriptor) InitWithDeviceCount(device metal.PDevice, count uint) MatrixCopyDescriptor {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixCopyDescriptor](m_, objc.Sel("initWithDevice:count:"), po0, count)
@@ -72,6 +58,20 @@ func (m_ MatrixCopyDescriptor) InitWithDeviceCount(device metal.PDevice, count u
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopydescriptor/2915324-initwithdevice?language=objc
 func NewMatrixCopyDescriptorWithDeviceCount(device metal.PDevice, count uint) MatrixCopyDescriptor {
 	instance := MatrixCopyDescriptorClass.Alloc().InitWithDeviceCount(device, count)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixCopyDescriptor) InitWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices []IMatrix, destinationMatrices []IMatrix, offsets IVector, byteOffset uint) MatrixCopyDescriptor {
+	rv := objc.Call[MatrixCopyDescriptor](m_, objc.Sel("initWithSourceMatrices:destinationMatrices:offsetVector:offset:"), sourceMatrices, destinationMatrices, offsets, byteOffset)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopydescriptor/2915344-initwithsourcematrices?language=objc
+func NewMatrixCopyDescriptorWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices []IMatrix, destinationMatrices []IMatrix, offsets IVector, byteOffset uint) MatrixCopyDescriptor {
+	instance := MatrixCopyDescriptorClass.Alloc().InitWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices, destinationMatrices, offsets, byteOffset)
 	instance.Autorelease()
 	return instance
 }

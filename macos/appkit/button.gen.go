@@ -19,62 +19,62 @@ type _ButtonClass struct {
 // An interface definition for the [Button] class.
 type IButton interface {
 	IControl
-	MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size
-	GetPeriodicDelayInterval(delay *float32, interval *float32)
-	SetButtonType(type_ ButtonType)
-	CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions)
 	SetNextState()
+	MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size
+	CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions)
 	SetPeriodicDelayInterval(delay float32, interval float32)
 	Highlight(flag bool)
-	IsBordered() bool
-	SetBordered(value bool)
-	Title() string
-	SetTitle(value string)
-	SymbolConfiguration() ImageSymbolConfiguration
-	SetSymbolConfiguration(value IImageSymbolConfiguration)
-	IsSpringLoaded() bool
-	SetSpringLoaded(value bool)
-	ImagePosition() CellImagePosition
-	SetImagePosition(value CellImagePosition)
-	IsTransparent() bool
-	SetTransparent(value bool)
-	ShowsBorderOnlyWhileMouseInside() bool
-	SetShowsBorderOnlyWhileMouseInside(value bool)
-	Image() Image
-	SetImage(value IImage)
+	GetPeriodicDelayInterval(delay *float32, interval *float32)
+	SetButtonType(type_ ButtonType)
 	ImageHugsTitle() bool
 	SetImageHugsTitle(value bool)
-	AlternateImage() Image
-	SetAlternateImage(value IImage)
-	State() ControlStateValue
-	SetState(value ControlStateValue)
-	BezelColor() Color
-	SetBezelColor(value IColor)
-	ImageScaling() ImageScaling
-	SetImageScaling(value ImageScaling)
+	AllowsMixedState() bool
+	SetAllowsMixedState(value bool)
+	AttributedAlternateTitle() foundation.AttributedString
+	SetAttributedAlternateTitle(value foundation.IAttributedString)
+	KeyEquivalent() string
+	SetKeyEquivalent(value string)
+	ActiveCompressionOptions() UserInterfaceCompressionOptions
+	IsTransparent() bool
+	SetTransparent(value bool)
+	AlternateTitle() string
+	SetAlternateTitle(value string)
 	ContentTintColor() Color
 	SetContentTintColor(value IColor)
-	BezelStyle() BezelStyle
-	SetBezelStyle(value BezelStyle)
-	ActiveCompressionOptions() UserInterfaceCompressionOptions
-	Sound() Sound
-	SetSound(value ISound)
-	HasDestructiveAction() bool
-	SetHasDestructiveAction(value bool)
+	State() ControlStateValue
+	SetState(value ControlStateValue)
+	IsBordered() bool
+	SetBordered(value bool)
+	ImagePosition() CellImagePosition
+	SetImagePosition(value CellImagePosition)
+	AlternateImage() Image
+	SetAlternateImage(value IImage)
 	MaxAcceleratorLevel() int
 	SetMaxAcceleratorLevel(value int)
 	AttributedTitle() foundation.AttributedString
 	SetAttributedTitle(value foundation.IAttributedString)
-	AttributedAlternateTitle() foundation.AttributedString
-	SetAttributedAlternateTitle(value foundation.IAttributedString)
-	AlternateTitle() string
-	SetAlternateTitle(value string)
+	ImageScaling() ImageScaling
+	SetImageScaling(value ImageScaling)
+	HasDestructiveAction() bool
+	SetHasDestructiveAction(value bool)
+	SymbolConfiguration() ImageSymbolConfiguration
+	SetSymbolConfiguration(value IImageSymbolConfiguration)
+	BezelColor() Color
+	SetBezelColor(value IColor)
+	Title() string
+	SetTitle(value string)
+	Sound() Sound
+	SetSound(value ISound)
 	KeyEquivalentModifierMask() EventModifierFlags
 	SetKeyEquivalentModifierMask(value EventModifierFlags)
-	KeyEquivalent() string
-	SetKeyEquivalent(value string)
-	AllowsMixedState() bool
-	SetAllowsMixedState(value bool)
+	BezelStyle() BezelStyle
+	SetBezelStyle(value BezelStyle)
+	Image() Image
+	SetImage(value IImage)
+	IsSpringLoaded() bool
+	SetSpringLoaded(value bool)
+	ShowsBorderOnlyWhileMouseInside() bool
+	SetShowsBorderOnlyWhileMouseInside(value bool)
 }
 
 // A control that defines an area on the screen that a user clicks to trigger an action. [Full Topic]
@@ -90,16 +90,16 @@ func ButtonFrom(ptr unsafe.Pointer) Button {
 	}
 }
 
-func (bc _ButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.Call[Button](bc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
+func (bc _ButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
+	rv := objc.Call[Button](bc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
-// Creates a standard push button with a title and image. [Full Topic]
+// Creates a standard checkbox with the title you specify. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc
-func Button_ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	return ButtonClass.ButtonWithTitleImageTargetAction(title, image, target, action)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
+func Button_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
+	return ButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (bc _ButtonClass) ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
@@ -112,18 +112,6 @@ func (bc _ButtonClass) ButtonWithTitleTargetAction(title string, target objc.IOb
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc
 func Button_ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
 	return ButtonClass.ButtonWithTitleTargetAction(title, target, action)
-}
-
-func (bc _ButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.Call[Button](bc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
-	return rv
-}
-
-// Creates a standard checkbox with the title you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
-func Button_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) Button {
-	return ButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (bc _ButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) Button {
@@ -184,6 +172,13 @@ func NewButtonWithFrame(frameRect foundation.Rect) Button {
 	return instance
 }
 
+// Sets the button to its next state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530594-setnextstate?language=objc
+func (b_ Button) SetNextState() {
+	objc.Call[objc.Void](b_, objc.Sel("setNextState"))
+}
+
 // Returns the minimum size of the button by using the compression options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2952059-minimumsizewithprioritizedcompre?language=objc
@@ -192,32 +187,11 @@ func (b_ Button) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions
 	return rv
 }
 
-// Returns by reference the delay and interval periods for a continuous button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524817-getperiodicdelay?language=objc
-func (b_ Button) GetPeriodicDelayInterval(delay *float32, interval *float32) {
-	objc.Call[objc.Void](b_, objc.Sel("getPeriodicDelay:interval:"), delay, interval)
-}
-
-// Sets the button’s type, which affects its user interface and behavior when clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524983-setbuttontype?language=objc
-func (b_ Button) SetButtonType(type_ ButtonType) {
-	objc.Call[objc.Void](b_, objc.Sel("setButtonType:"), type_)
-}
-
 // Sets the priority compression options for this button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2952060-compresswithprioritizedcompressi?language=objc
 func (b_ Button) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
 	objc.Call[objc.Void](b_, objc.Sel("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
-}
-
-// Sets the button to its next state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530594-setnextstate?language=objc
-func (b_ Button) SetNextState() {
-	objc.Call[objc.Void](b_, objc.Sel("setNextState"))
 }
 
 // Sets the message delay and interval periods for a continuous button. [Full Topic]
@@ -234,124 +208,18 @@ func (b_ Button) Highlight(flag bool) {
 	objc.Call[objc.Void](b_, objc.Sel("highlight:"), flag)
 }
 
-// A Boolean value that determines whether the button has a border. [Full Topic]
+// Returns by reference the delay and interval periods for a continuous button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525565-bordered?language=objc
-func (b_ Button) IsBordered() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isBordered"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524817-getperiodicdelay?language=objc
+func (b_ Button) GetPeriodicDelayInterval(delay *float32, interval *float32) {
+	objc.Call[objc.Void](b_, objc.Sel("getPeriodicDelay:interval:"), delay, interval)
 }
 
-// A Boolean value that determines whether the button has a border. [Full Topic]
+// Sets the button’s type, which affects its user interface and behavior when clicked. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525565-bordered?language=objc
-func (b_ Button) SetBordered(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setBordered:"), value)
-}
-
-// The title displayed on the button when it’s in an off state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc
-func (b_ Button) Title() string {
-	rv := objc.Call[string](b_, objc.Sel("title"))
-	return rv
-}
-
-// The title displayed on the button when it’s in an off state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc
-func (b_ Button) SetTitle(value string) {
-	objc.Call[objc.Void](b_, objc.Sel("setTitle:"), value)
-}
-
-// The combination of point size, weight, and scale to use when sizing and displaying symbol images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3667453-symbolconfiguration?language=objc
-func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := objc.Call[ImageSymbolConfiguration](b_, objc.Sel("symbolConfiguration"))
-	return rv
-}
-
-// The combination of point size, weight, and scale to use when sizing and displaying symbol images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3667453-symbolconfiguration?language=objc
-func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.Call[objc.Void](b_, objc.Sel("setSymbolConfiguration:"), value)
-}
-
-// A Boolean value that indicates whether spring loading is enabled for the button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532300-springloaded?language=objc
-func (b_ Button) IsSpringLoaded() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isSpringLoaded"))
-	return rv
-}
-
-// A Boolean value that indicates whether spring loading is enabled for the button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532300-springloaded?language=objc
-func (b_ Button) SetSpringLoaded(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setSpringLoaded:"), value)
-}
-
-// The position of the button’s image relative to its title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526778-imageposition?language=objc
-func (b_ Button) ImagePosition() CellImagePosition {
-	rv := objc.Call[CellImagePosition](b_, objc.Sel("imagePosition"))
-	return rv
-}
-
-// The position of the button’s image relative to its title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526778-imageposition?language=objc
-func (b_ Button) SetImagePosition(value CellImagePosition) {
-	objc.Call[objc.Void](b_, objc.Sel("setImagePosition:"), value)
-}
-
-// A Boolean value that indicates whether the button is transparent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529659-transparent?language=objc
-func (b_ Button) IsTransparent() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isTransparent"))
-	return rv
-}
-
-// A Boolean value that indicates whether the button is transparent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529659-transparent?language=objc
-func (b_ Button) SetTransparent(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setTransparent:"), value)
-}
-
-// A Boolean value that determines whether the button displays its border only when the pointer is over it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532248-showsborderonlywhilemouseinside?language=objc
-func (b_ Button) ShowsBorderOnlyWhileMouseInside() bool {
-	rv := objc.Call[bool](b_, objc.Sel("showsBorderOnlyWhileMouseInside"))
-	return rv
-}
-
-// A Boolean value that determines whether the button displays its border only when the pointer is over it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532248-showsborderonlywhilemouseinside?language=objc
-func (b_ Button) SetShowsBorderOnlyWhileMouseInside(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setShowsBorderOnlyWhileMouseInside:"), value)
-}
-
-// The image that appears on the button when it’s in an off state, or nil if there is no such image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc
-func (b_ Button) Image() Image {
-	rv := objc.Call[Image](b_, objc.Sel("image"))
-	return rv
-}
-
-// The image that appears on the button when it’s in an off state, or nil if there is no such image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc
-func (b_ Button) SetImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524983-setbuttontype?language=objc
+func (b_ Button) SetButtonType(type_ ButtonType) {
+	objc.Call[objc.Void](b_, objc.Sel("setButtonType:"), type_)
 }
 
 // A Boolean value that determines how the button’s image and title are positioned together within the button bezel. [Full Topic]
@@ -369,64 +237,87 @@ func (b_ Button) SetImageHugsTitle(value bool) {
 	objc.Call[objc.Void](b_, objc.Sel("setImageHugsTitle:"), value)
 }
 
-// An alternate image that appears on the button when the button is in an on state. [Full Topic]
+// A Boolean value that indicates whether the button allows a mixed state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc
-func (b_ Button) AlternateImage() Image {
-	rv := objc.Call[Image](b_, objc.Sel("alternateImage"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528670-allowsmixedstate?language=objc
+func (b_ Button) AllowsMixedState() bool {
+	rv := objc.Call[bool](b_, objc.Sel("allowsMixedState"))
 	return rv
 }
 
-// An alternate image that appears on the button when the button is in an on state. [Full Topic]
+// A Boolean value that indicates whether the button allows a mixed state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc
-func (b_ Button) SetAlternateImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528670-allowsmixedstate?language=objc
+func (b_ Button) SetAllowsMixedState(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setAllowsMixedState:"), value)
 }
 
-// The button’s state. [Full Topic]
+// The title that the button displays as an attributed string when the button is in an on state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528907-state?language=objc
-func (b_ Button) State() ControlStateValue {
-	rv := objc.Call[ControlStateValue](b_, objc.Sel("state"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc
+func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](b_, objc.Sel("attributedAlternateTitle"))
 	return rv
 }
 
-// The button’s state. [Full Topic]
+// The title that the button displays as an attributed string when the button is in an on state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528907-state?language=objc
-func (b_ Button) SetState(value ControlStateValue) {
-	objc.Call[objc.Void](b_, objc.Sel("setState:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc
+func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
+	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), value)
 }
 
-// The color of the button's bezel, in appearances that support it. [Full Topic]
+// The key-equivalent character of the button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc
-func (b_ Button) BezelColor() Color {
-	rv := objc.Call[Color](b_, objc.Sel("bezelColor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc
+func (b_ Button) KeyEquivalent() string {
+	rv := objc.Call[string](b_, objc.Sel("keyEquivalent"))
 	return rv
 }
 
-// The color of the button's bezel, in appearances that support it. [Full Topic]
+// The key-equivalent character of the button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc
-func (b_ Button) SetBezelColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc
+func (b_ Button) SetKeyEquivalent(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setKeyEquivalent:"), value)
 }
 
-// The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
+// The compression options active for this button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2202284-imagescaling?language=objc
-func (b_ Button) ImageScaling() ImageScaling {
-	rv := objc.Call[ImageScaling](b_, objc.Sel("imageScaling"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2952061-activecompressionoptions?language=objc
+func (b_ Button) ActiveCompressionOptions() UserInterfaceCompressionOptions {
+	rv := objc.Call[UserInterfaceCompressionOptions](b_, objc.Sel("activeCompressionOptions"))
 	return rv
 }
 
-// The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
+// A Boolean value that indicates whether the button is transparent. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2202284-imagescaling?language=objc
-func (b_ Button) SetImageScaling(value ImageScaling) {
-	objc.Call[objc.Void](b_, objc.Sel("setImageScaling:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529659-transparent?language=objc
+func (b_ Button) IsTransparent() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isTransparent"))
+	return rv
+}
+
+// A Boolean value that indicates whether the button is transparent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529659-transparent?language=objc
+func (b_ Button) SetTransparent(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setTransparent:"), value)
+}
+
+// The title that the button displays when the button is in an on state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc
+func (b_ Button) AlternateTitle() string {
+	rv := objc.Call[string](b_, objc.Sel("alternateTitle"))
+	return rv
+}
+
+// The title that the button displays when the button is in an on state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc
+func (b_ Button) SetAlternateTitle(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setAlternateTitle:"), value)
 }
 
 // A tint color to use for the template image and text content. [Full Topic]
@@ -444,57 +335,64 @@ func (b_ Button) SetContentTintColor(value IColor) {
 	objc.Call[objc.Void](b_, objc.Sel("setContentTintColor:"), value)
 }
 
-// The appearance of the button’s border. [Full Topic]
+// The button’s state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1527022-bezelstyle?language=objc
-func (b_ Button) BezelStyle() BezelStyle {
-	rv := objc.Call[BezelStyle](b_, objc.Sel("bezelStyle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528907-state?language=objc
+func (b_ Button) State() ControlStateValue {
+	rv := objc.Call[ControlStateValue](b_, objc.Sel("state"))
 	return rv
 }
 
-// The appearance of the button’s border. [Full Topic]
+// The button’s state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1527022-bezelstyle?language=objc
-func (b_ Button) SetBezelStyle(value BezelStyle) {
-	objc.Call[objc.Void](b_, objc.Sel("setBezelStyle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528907-state?language=objc
+func (b_ Button) SetState(value ControlStateValue) {
+	objc.Call[objc.Void](b_, objc.Sel("setState:"), value)
 }
 
-// The compression options active for this button. [Full Topic]
+// A Boolean value that determines whether the button has a border. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2952061-activecompressionoptions?language=objc
-func (b_ Button) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](b_, objc.Sel("activeCompressionOptions"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525565-bordered?language=objc
+func (b_ Button) IsBordered() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isBordered"))
 	return rv
 }
 
-// The sound that plays when the user clicks the button. [Full Topic]
+// A Boolean value that determines whether the button has a border. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc
-func (b_ Button) Sound() Sound {
-	rv := objc.Call[Sound](b_, objc.Sel("sound"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525565-bordered?language=objc
+func (b_ Button) SetBordered(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setBordered:"), value)
+}
+
+// The position of the button’s image relative to its title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526778-imageposition?language=objc
+func (b_ Button) ImagePosition() CellImagePosition {
+	rv := objc.Call[CellImagePosition](b_, objc.Sel("imagePosition"))
 	return rv
 }
 
-// The sound that plays when the user clicks the button. [Full Topic]
+// The position of the button’s image relative to its title. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc
-func (b_ Button) SetSound(value ISound) {
-	objc.Call[objc.Void](b_, objc.Sel("setSound:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526778-imageposition?language=objc
+func (b_ Button) SetImagePosition(value CellImagePosition) {
+	objc.Call[objc.Void](b_, objc.Sel("setImagePosition:"), value)
 }
 
-// A Boolean value that defines whether a button’s action has a destructive effect. [Full Topic]
+// An alternate image that appears on the button when the button is in an on state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3622469-hasdestructiveaction?language=objc
-func (b_ Button) HasDestructiveAction() bool {
-	rv := objc.Call[bool](b_, objc.Sel("hasDestructiveAction"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc
+func (b_ Button) AlternateImage() Image {
+	rv := objc.Call[Image](b_, objc.Sel("alternateImage"))
 	return rv
 }
 
-// A Boolean value that defines whether a button’s action has a destructive effect. [Full Topic]
+// An alternate image that appears on the button when the button is in an on state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3622469-hasdestructiveaction?language=objc
-func (b_ Button) SetHasDestructiveAction(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setHasDestructiveAction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc
+func (b_ Button) SetAlternateImage(value IImage) {
+	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
 }
 
 // An integer value indicating the maximum pressure level for a button of type NSMultiLevelAcceleratorButton. [Full Topic]
@@ -527,34 +425,94 @@ func (b_ Button) SetAttributedTitle(value foundation.IAttributedString) {
 	objc.Call[objc.Void](b_, objc.Sel("setAttributedTitle:"), value)
 }
 
-// The title that the button displays as an attributed string when the button is in an on state. [Full Topic]
+// The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc
-func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](b_, objc.Sel("attributedAlternateTitle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2202284-imagescaling?language=objc
+func (b_ Button) ImageScaling() ImageScaling {
+	rv := objc.Call[ImageScaling](b_, objc.Sel("imageScaling"))
 	return rv
 }
 
-// The title that the button displays as an attributed string when the button is in an on state. [Full Topic]
+// The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc
-func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2202284-imagescaling?language=objc
+func (b_ Button) SetImageScaling(value ImageScaling) {
+	objc.Call[objc.Void](b_, objc.Sel("setImageScaling:"), value)
 }
 
-// The title that the button displays when the button is in an on state. [Full Topic]
+// A Boolean value that defines whether a button’s action has a destructive effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc
-func (b_ Button) AlternateTitle() string {
-	rv := objc.Call[string](b_, objc.Sel("alternateTitle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3622469-hasdestructiveaction?language=objc
+func (b_ Button) HasDestructiveAction() bool {
+	rv := objc.Call[bool](b_, objc.Sel("hasDestructiveAction"))
 	return rv
 }
 
-// The title that the button displays when the button is in an on state. [Full Topic]
+// A Boolean value that defines whether a button’s action has a destructive effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc
-func (b_ Button) SetAlternateTitle(value string) {
-	objc.Call[objc.Void](b_, objc.Sel("setAlternateTitle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3622469-hasdestructiveaction?language=objc
+func (b_ Button) SetHasDestructiveAction(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setHasDestructiveAction:"), value)
+}
+
+// The combination of point size, weight, and scale to use when sizing and displaying symbol images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3667453-symbolconfiguration?language=objc
+func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
+	rv := objc.Call[ImageSymbolConfiguration](b_, objc.Sel("symbolConfiguration"))
+	return rv
+}
+
+// The combination of point size, weight, and scale to use when sizing and displaying symbol images. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3667453-symbolconfiguration?language=objc
+func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
+	objc.Call[objc.Void](b_, objc.Sel("setSymbolConfiguration:"), value)
+}
+
+// The color of the button's bezel, in appearances that support it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc
+func (b_ Button) BezelColor() Color {
+	rv := objc.Call[Color](b_, objc.Sel("bezelColor"))
+	return rv
+}
+
+// The color of the button's bezel, in appearances that support it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc
+func (b_ Button) SetBezelColor(value IColor) {
+	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), value)
+}
+
+// The title displayed on the button when it’s in an off state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc
+func (b_ Button) Title() string {
+	rv := objc.Call[string](b_, objc.Sel("title"))
+	return rv
+}
+
+// The title displayed on the button when it’s in an off state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc
+func (b_ Button) SetTitle(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setTitle:"), value)
+}
+
+// The sound that plays when the user clicks the button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc
+func (b_ Button) Sound() Sound {
+	rv := objc.Call[Sound](b_, objc.Sel("sound"))
+	return rv
+}
+
+// The sound that plays when the user clicks the button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc
+func (b_ Button) SetSound(value ISound) {
+	objc.Call[objc.Void](b_, objc.Sel("setSound:"), value)
 }
 
 // The mask specifying the modifier keys for the button’s key equivalent. [Full Topic]
@@ -572,32 +530,62 @@ func (b_ Button) SetKeyEquivalentModifierMask(value EventModifierFlags) {
 	objc.Call[objc.Void](b_, objc.Sel("setKeyEquivalentModifierMask:"), value)
 }
 
-// The key-equivalent character of the button. [Full Topic]
+// The appearance of the button’s border. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc
-func (b_ Button) KeyEquivalent() string {
-	rv := objc.Call[string](b_, objc.Sel("keyEquivalent"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1527022-bezelstyle?language=objc
+func (b_ Button) BezelStyle() BezelStyle {
+	rv := objc.Call[BezelStyle](b_, objc.Sel("bezelStyle"))
 	return rv
 }
 
-// The key-equivalent character of the button. [Full Topic]
+// The appearance of the button’s border. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc
-func (b_ Button) SetKeyEquivalent(value string) {
-	objc.Call[objc.Void](b_, objc.Sel("setKeyEquivalent:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1527022-bezelstyle?language=objc
+func (b_ Button) SetBezelStyle(value BezelStyle) {
+	objc.Call[objc.Void](b_, objc.Sel("setBezelStyle:"), value)
 }
 
-// A Boolean value that indicates whether the button allows a mixed state. [Full Topic]
+// The image that appears on the button when it’s in an off state, or nil if there is no such image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528670-allowsmixedstate?language=objc
-func (b_ Button) AllowsMixedState() bool {
-	rv := objc.Call[bool](b_, objc.Sel("allowsMixedState"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc
+func (b_ Button) Image() Image {
+	rv := objc.Call[Image](b_, objc.Sel("image"))
 	return rv
 }
 
-// A Boolean value that indicates whether the button allows a mixed state. [Full Topic]
+// The image that appears on the button when it’s in an off state, or nil if there is no such image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1528670-allowsmixedstate?language=objc
-func (b_ Button) SetAllowsMixedState(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setAllowsMixedState:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc
+func (b_ Button) SetImage(value IImage) {
+	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
+}
+
+// A Boolean value that indicates whether spring loading is enabled for the button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532300-springloaded?language=objc
+func (b_ Button) IsSpringLoaded() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isSpringLoaded"))
+	return rv
+}
+
+// A Boolean value that indicates whether spring loading is enabled for the button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532300-springloaded?language=objc
+func (b_ Button) SetSpringLoaded(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setSpringLoaded:"), value)
+}
+
+// A Boolean value that determines whether the button displays its border only when the pointer is over it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532248-showsborderonlywhilemouseinside?language=objc
+func (b_ Button) ShowsBorderOnlyWhileMouseInside() bool {
+	rv := objc.Call[bool](b_, objc.Sel("showsBorderOnlyWhileMouseInside"))
+	return rv
+}
+
+// A Boolean value that determines whether the button displays its border only when the pointer is over it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1532248-showsborderonlywhilemouseinside?language=objc
+func (b_ Button) SetShowsBorderOnlyWhileMouseInside(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setShowsBorderOnlyWhileMouseInside:"), value)
 }

@@ -18,14 +18,14 @@ type _ExtensionItemClass struct {
 // An interface definition for the [ExtensionItem] class.
 type IExtensionItem interface {
 	objc.IObject
-	AttributedTitle() AttributedString
-	SetAttributedTitle(value IAttributedString)
 	Attachments() []ItemProvider
 	SetAttachments(value []IItemProvider)
-	AttributedContentText() AttributedString
-	SetAttributedContentText(value IAttributedString)
 	UserInfo() Dictionary
 	SetUserInfo(value Dictionary)
+	AttributedTitle() AttributedString
+	SetAttributedTitle(value IAttributedString)
+	AttributedContentText() AttributedString
+	SetAttributedContentText(value IAttributedString)
 }
 
 // An immutable collection of values representing different aspects of an item for an extension to act upon. [Full Topic]
@@ -61,21 +61,6 @@ func (e_ ExtensionItem) Init() ExtensionItem {
 	return rv
 }
 
-// An optional title for the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416592-attributedtitle?language=objc
-func (e_ ExtensionItem) AttributedTitle() AttributedString {
-	rv := objc.Call[AttributedString](e_, objc.Sel("attributedTitle"))
-	return rv
-}
-
-// An optional title for the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416592-attributedtitle?language=objc
-func (e_ ExtensionItem) SetAttributedTitle(value IAttributedString) {
-	objc.Call[objc.Void](e_, objc.Sel("setAttributedTitle:"), value)
-}
-
 // An optional array of media data associated with the extension item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416690-attachments?language=objc
@@ -91,21 +76,6 @@ func (e_ ExtensionItem) SetAttachments(value []IItemProvider) {
 	objc.Call[objc.Void](e_, objc.Sel("setAttachments:"), value)
 }
 
-// An optional string describing the extension item content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1408297-attributedcontenttext?language=objc
-func (e_ ExtensionItem) AttributedContentText() AttributedString {
-	rv := objc.Call[AttributedString](e_, objc.Sel("attributedContentText"))
-	return rv
-}
-
-// An optional string describing the extension item content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1408297-attributedcontenttext?language=objc
-func (e_ ExtensionItem) SetAttributedContentText(value IAttributedString) {
-	objc.Call[objc.Void](e_, objc.Sel("setAttributedContentText:"), value)
-}
-
 // An optional dictionary of keys and values corresponding to the extension item’s properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1414953-userinfo?language=objc
@@ -119,4 +89,34 @@ func (e_ ExtensionItem) UserInfo() Dictionary {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1414953-userinfo?language=objc
 func (e_ ExtensionItem) SetUserInfo(value Dictionary) {
 	objc.Call[objc.Void](e_, objc.Sel("setUserInfo:"), value)
+}
+
+// An optional title for the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416592-attributedtitle?language=objc
+func (e_ ExtensionItem) AttributedTitle() AttributedString {
+	rv := objc.Call[AttributedString](e_, objc.Sel("attributedTitle"))
+	return rv
+}
+
+// An optional title for the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416592-attributedtitle?language=objc
+func (e_ ExtensionItem) SetAttributedTitle(value IAttributedString) {
+	objc.Call[objc.Void](e_, objc.Sel("setAttributedTitle:"), value)
+}
+
+// An optional string describing the extension item content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1408297-attributedcontenttext?language=objc
+func (e_ ExtensionItem) AttributedContentText() AttributedString {
+	rv := objc.Call[AttributedString](e_, objc.Sel("attributedContentText"))
+	return rv
+}
+
+// An optional string describing the extension item content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1408297-attributedcontenttext?language=objc
+func (e_ ExtensionItem) SetAttributedContentText(value IAttributedString) {
+	objc.Call[objc.Void](e_, objc.Sel("setAttributedContentText:"), value)
 }

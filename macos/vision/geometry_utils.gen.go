@@ -68,21 +68,6 @@ func GeometryUtils_CalculateAreaForContourOrientedAreaError(area *float64, conto
 	return GeometryUtilsClass.CalculateAreaForContourOrientedAreaError(area, contour, orientedArea, error)
 }
 
-// Calculates a bounding circle for the specified contour object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548354-boundingcircleforcontour?language=objc
-func (gc _GeometryUtilsClass) BoundingCircleForContourError(contour IContour, error unsafe.Pointer) Circle {
-	rv := objc.Call[Circle](gc, objc.Sel("boundingCircleForContour:error:"), contour, error)
-	return rv
-}
-
-// Calculates a bounding circle for the specified contour object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548354-boundingcircleforcontour?language=objc
-func GeometryUtils_BoundingCircleForContourError(contour IContour, error unsafe.Pointer) Circle {
-	return GeometryUtilsClass.BoundingCircleForContourError(contour, error)
-}
-
 // Calculates a bounding circle for the specified array of points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548355-boundingcircleforpoints?language=objc
@@ -111,6 +96,21 @@ func (gc _GeometryUtilsClass) BoundingCircleForSIMDPointsPointCountError(points 
 // [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548356-boundingcircleforsimdpoints?language=objc
 func GeometryUtils_BoundingCircleForSIMDPointsPointCountError(points objc.IObject, pointCount int, error unsafe.Pointer) Circle {
 	return GeometryUtilsClass.BoundingCircleForSIMDPointsPointCountError(points, pointCount, error)
+}
+
+// Calculates a bounding circle for the specified contour object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548354-boundingcircleforcontour?language=objc
+func (gc _GeometryUtilsClass) BoundingCircleForContourError(contour IContour, error unsafe.Pointer) Circle {
+	rv := objc.Call[Circle](gc, objc.Sel("boundingCircleForContour:error:"), contour, error)
+	return rv
+}
+
+// Calculates a bounding circle for the specified contour object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vngeometryutils/3548354-boundingcircleforcontour?language=objc
+func GeometryUtils_BoundingCircleForContourError(contour IContour, error unsafe.Pointer) Circle {
+	return GeometryUtilsClass.BoundingCircleForContourError(contour, error)
 }
 
 // Calculates the perimeter of a closed contour. [Full Topic]

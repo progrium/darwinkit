@@ -11,28 +11,28 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination?language=objc
 type PSpringLoadingDestination interface {
 	// optional
-	SpringLoadingExited(draggingInfo DraggingInfoObject)
-	HasSpringLoadingExited() bool
-
-	// optional
-	DraggingEnded(draggingInfo DraggingInfoObject)
-	HasDraggingEnded() bool
+	SpringLoadingUpdated(draggingInfo DraggingInfoObject) SpringLoadingOptions
+	HasSpringLoadingUpdated() bool
 
 	// optional
 	SpringLoadingEntered(draggingInfo DraggingInfoObject) SpringLoadingOptions
 	HasSpringLoadingEntered() bool
 
 	// optional
-	SpringLoadingActivatedDraggingInfo(activated bool, draggingInfo DraggingInfoObject)
-	HasSpringLoadingActivatedDraggingInfo() bool
+	DraggingEnded(draggingInfo DraggingInfoObject)
+	HasDraggingEnded() bool
 
 	// optional
 	SpringLoadingHighlightChanged(draggingInfo DraggingInfoObject)
 	HasSpringLoadingHighlightChanged() bool
 
 	// optional
-	SpringLoadingUpdated(draggingInfo DraggingInfoObject) SpringLoadingOptions
-	HasSpringLoadingUpdated() bool
+	SpringLoadingActivatedDraggingInfo(activated bool, draggingInfo DraggingInfoObject)
+	HasSpringLoadingActivatedDraggingInfo() bool
+
+	// optional
+	SpringLoadingExited(draggingInfo DraggingInfoObject)
+	HasSpringLoadingExited() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,28 +43,17 @@ type SpringLoadingDestinationObject struct {
 	objc.Object
 }
 
-func (s_ SpringLoadingDestinationObject) HasSpringLoadingExited() bool {
-	return s_.RespondsToSelector(objc.Sel("springLoadingExited:"))
+func (s_ SpringLoadingDestinationObject) HasSpringLoadingUpdated() bool {
+	return s_.RespondsToSelector(objc.Sel("springLoadingUpdated:"))
 }
 
-// Responds when a drag exits the bounds of the spring-loading destination. [Full Topic]
+// Returns whether to enable or disable spring-loading as a drag moves within the bounds of the spring-loading destination or draggingInfo changes during the drag. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1415972-springloadingexited?language=objc
-func (s_ SpringLoadingDestinationObject) SpringLoadingExited(draggingInfo DraggingInfoObject) {
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1415976-springloadingupdated?language=objc
+func (s_ SpringLoadingDestinationObject) SpringLoadingUpdated(draggingInfo DraggingInfoObject) SpringLoadingOptions {
 	po0 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](s_, objc.Sel("springLoadingExited:"), po0)
-}
-
-func (s_ SpringLoadingDestinationObject) HasDraggingEnded() bool {
-	return s_.RespondsToSelector(objc.Sel("draggingEnded:"))
-}
-
-// Responds to the end of a drag operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1416047-draggingended?language=objc
-func (s_ SpringLoadingDestinationObject) DraggingEnded(draggingInfo DraggingInfoObject) {
-	po0 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](s_, objc.Sel("draggingEnded:"), po0)
+	rv := objc.Call[SpringLoadingOptions](s_, objc.Sel("springLoadingUpdated:"), po0)
+	return rv
 }
 
 func (s_ SpringLoadingDestinationObject) HasSpringLoadingEntered() bool {
@@ -80,16 +69,16 @@ func (s_ SpringLoadingDestinationObject) SpringLoadingEntered(draggingInfo Dragg
 	return rv
 }
 
-func (s_ SpringLoadingDestinationObject) HasSpringLoadingActivatedDraggingInfo() bool {
-	return s_.RespondsToSelector(objc.Sel("springLoadingActivated:draggingInfo:"))
+func (s_ SpringLoadingDestinationObject) HasDraggingEnded() bool {
+	return s_.RespondsToSelector(objc.Sel("draggingEnded:"))
 }
 
-// Responds to the activation or deactivation of spring-loading on a destination. [Full Topic]
+// Responds to the end of a drag operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1416106-springloadingactivated?language=objc
-func (s_ SpringLoadingDestinationObject) SpringLoadingActivatedDraggingInfo(activated bool, draggingInfo DraggingInfoObject) {
-	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](s_, objc.Sel("springLoadingActivated:draggingInfo:"), activated, po1)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1416047-draggingended?language=objc
+func (s_ SpringLoadingDestinationObject) DraggingEnded(draggingInfo DraggingInfoObject) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
+	objc.Call[objc.Void](s_, objc.Sel("draggingEnded:"), po0)
 }
 
 func (s_ SpringLoadingDestinationObject) HasSpringLoadingHighlightChanged() bool {
@@ -104,15 +93,26 @@ func (s_ SpringLoadingDestinationObject) SpringLoadingHighlightChanged(draggingI
 	objc.Call[objc.Void](s_, objc.Sel("springLoadingHighlightChanged:"), po0)
 }
 
-func (s_ SpringLoadingDestinationObject) HasSpringLoadingUpdated() bool {
-	return s_.RespondsToSelector(objc.Sel("springLoadingUpdated:"))
+func (s_ SpringLoadingDestinationObject) HasSpringLoadingActivatedDraggingInfo() bool {
+	return s_.RespondsToSelector(objc.Sel("springLoadingActivated:draggingInfo:"))
 }
 
-// Returns whether to enable or disable spring-loading as a drag moves within the bounds of the spring-loading destination or draggingInfo changes during the drag. [Full Topic]
+// Responds to the activation or deactivation of spring-loading on a destination. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1415976-springloadingupdated?language=objc
-func (s_ SpringLoadingDestinationObject) SpringLoadingUpdated(draggingInfo DraggingInfoObject) SpringLoadingOptions {
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1416106-springloadingactivated?language=objc
+func (s_ SpringLoadingDestinationObject) SpringLoadingActivatedDraggingInfo(activated bool, draggingInfo DraggingInfoObject) {
+	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
+	objc.Call[objc.Void](s_, objc.Sel("springLoadingActivated:draggingInfo:"), activated, po1)
+}
+
+func (s_ SpringLoadingDestinationObject) HasSpringLoadingExited() bool {
+	return s_.RespondsToSelector(objc.Sel("springLoadingExited:"))
+}
+
+// Responds when a drag exits the bounds of the spring-loading destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingdestination/1415972-springloadingexited?language=objc
+func (s_ SpringLoadingDestinationObject) SpringLoadingExited(draggingInfo DraggingInfoObject) {
 	po0 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.Call[SpringLoadingOptions](s_, objc.Sel("springLoadingUpdated:"), po0)
-	return rv
+	objc.Call[objc.Void](s_, objc.Sel("springLoadingExited:"), po0)
 }

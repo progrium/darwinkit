@@ -3,7 +3,6 @@
 package appkit
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,62 +11,25 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate?language=objc
 type PPageControllerDelegate interface {
 	// optional
-	PageControllerDidTransitionToObject(pageController PageController, object objc.Object)
-	HasPageControllerDidTransitionToObject() bool
-
-	// optional
 	PageControllerDidEndLiveTransition(pageController PageController)
 	HasPageControllerDidEndLiveTransition() bool
-
-	// optional
-	PageControllerIdentifierForObject(pageController PageController, object objc.Object) PageControllerObjectIdentifier
-	HasPageControllerIdentifierForObject() bool
 
 	// optional
 	PageControllerWillStartLiveTransition(pageController PageController)
 	HasPageControllerWillStartLiveTransition() bool
 
 	// optional
-	PageControllerFrameForObject(pageController PageController, object objc.Object) foundation.Rect
-	HasPageControllerFrameForObject() bool
-
-	// optional
-	PageControllerViewControllerForIdentifier(pageController PageController, identifier PageControllerObjectIdentifier) ViewController
-	HasPageControllerViewControllerForIdentifier() bool
-
-	// optional
-	PageControllerPrepareViewControllerWithObject(pageController PageController, viewController ViewController, object objc.Object)
-	HasPageControllerPrepareViewControllerWithObject() bool
+	PageControllerDidTransitionToObject(pageController PageController, object objc.Object)
+	HasPageControllerDidTransitionToObject() bool
 }
 
 // A delegate implementation builder for the [PPageControllerDelegate] protocol.
 type PageControllerDelegate struct {
-	_PageControllerDidTransitionToObject           func(pageController PageController, object objc.Object)
-	_PageControllerDidEndLiveTransition            func(pageController PageController)
-	_PageControllerIdentifierForObject             func(pageController PageController, object objc.Object) PageControllerObjectIdentifier
-	_PageControllerWillStartLiveTransition         func(pageController PageController)
-	_PageControllerFrameForObject                  func(pageController PageController, object objc.Object) foundation.Rect
-	_PageControllerViewControllerForIdentifier     func(pageController PageController, identifier PageControllerObjectIdentifier) ViewController
-	_PageControllerPrepareViewControllerWithObject func(pageController PageController, viewController ViewController, object objc.Object)
+	_PageControllerDidEndLiveTransition    func(pageController PageController)
+	_PageControllerWillStartLiveTransition func(pageController PageController)
+	_PageControllerDidTransitionToObject   func(pageController PageController, object objc.Object)
 }
 
-func (di *PageControllerDelegate) HasPageControllerDidTransitionToObject() bool {
-	return di._PageControllerDidTransitionToObject != nil
-}
-
-// This message is sent when any page transition is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
-func (di *PageControllerDelegate) SetPageControllerDidTransitionToObject(f func(pageController PageController, object objc.Object)) {
-	di._PageControllerDidTransitionToObject = f
-}
-
-// This message is sent when any page transition is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
-func (di *PageControllerDelegate) PageControllerDidTransitionToObject(pageController PageController, object objc.Object) {
-	di._PageControllerDidTransitionToObject(pageController, object)
-}
 func (di *PageControllerDelegate) HasPageControllerDidEndLiveTransition() bool {
 	return di._PageControllerDidEndLiveTransition != nil
 }
@@ -84,23 +46,6 @@ func (di *PageControllerDelegate) SetPageControllerDidEndLiveTransition(f func(p
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434985-pagecontrollerdidendlivetransiti?language=objc
 func (di *PageControllerDelegate) PageControllerDidEndLiveTransition(pageController PageController) {
 	di._PageControllerDidEndLiveTransition(pageController)
-}
-func (di *PageControllerDelegate) HasPageControllerIdentifierForObject() bool {
-	return di._PageControllerIdentifierForObject != nil
-}
-
-// Return the identifier of the view controller that owns a view to display the object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435007-pagecontroller?language=objc
-func (di *PageControllerDelegate) SetPageControllerIdentifierForObject(f func(pageController PageController, object objc.Object) PageControllerObjectIdentifier) {
-	di._PageControllerIdentifierForObject = f
-}
-
-// Return the identifier of the view controller that owns a view to display the object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435007-pagecontroller?language=objc
-func (di *PageControllerDelegate) PageControllerIdentifierForObject(pageController PageController, object objc.Object) PageControllerObjectIdentifier {
-	return di._PageControllerIdentifierForObject(pageController, object)
 }
 func (di *PageControllerDelegate) HasPageControllerWillStartLiveTransition() bool {
 	return di._PageControllerWillStartLiveTransition != nil
@@ -119,56 +64,22 @@ func (di *PageControllerDelegate) SetPageControllerWillStartLiveTransition(f fun
 func (di *PageControllerDelegate) PageControllerWillStartLiveTransition(pageController PageController) {
 	di._PageControllerWillStartLiveTransition(pageController)
 }
-func (di *PageControllerDelegate) HasPageControllerFrameForObject() bool {
-	return di._PageControllerFrameForObject != nil
+func (di *PageControllerDelegate) HasPageControllerDidTransitionToObject() bool {
+	return di._PageControllerDidTransitionToObject != nil
 }
 
-// Returns the frame appropriate for displaying the specified object. [Full Topic]
+// This message is sent when any page transition is completed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434992-pagecontroller?language=objc
-func (di *PageControllerDelegate) SetPageControllerFrameForObject(f func(pageController PageController, object objc.Object) foundation.Rect) {
-	di._PageControllerFrameForObject = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
+func (di *PageControllerDelegate) SetPageControllerDidTransitionToObject(f func(pageController PageController, object objc.Object)) {
+	di._PageControllerDidTransitionToObject = f
 }
 
-// Returns the frame appropriate for displaying the specified object. [Full Topic]
+// This message is sent when any page transition is completed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434992-pagecontroller?language=objc
-func (di *PageControllerDelegate) PageControllerFrameForObject(pageController PageController, object objc.Object) foundation.Rect {
-	return di._PageControllerFrameForObject(pageController, object)
-}
-func (di *PageControllerDelegate) HasPageControllerViewControllerForIdentifier() bool {
-	return di._PageControllerViewControllerForIdentifier != nil
-}
-
-// Returns a view controller the page controller uses for managing the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435015-pagecontroller?language=objc
-func (di *PageControllerDelegate) SetPageControllerViewControllerForIdentifier(f func(pageController PageController, identifier PageControllerObjectIdentifier) ViewController) {
-	di._PageControllerViewControllerForIdentifier = f
-}
-
-// Returns a view controller the page controller uses for managing the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435015-pagecontroller?language=objc
-func (di *PageControllerDelegate) PageControllerViewControllerForIdentifier(pageController PageController, identifier PageControllerObjectIdentifier) ViewController {
-	return di._PageControllerViewControllerForIdentifier(pageController, identifier)
-}
-func (di *PageControllerDelegate) HasPageControllerPrepareViewControllerWithObject() bool {
-	return di._PageControllerPrepareViewControllerWithObject != nil
-}
-
-// Prepare the view controller and it’s view for drawing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434983-pagecontroller?language=objc
-func (di *PageControllerDelegate) SetPageControllerPrepareViewControllerWithObject(f func(pageController PageController, viewController ViewController, object objc.Object)) {
-	di._PageControllerPrepareViewControllerWithObject = f
-}
-
-// Prepare the view controller and it’s view for drawing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434983-pagecontroller?language=objc
-func (di *PageControllerDelegate) PageControllerPrepareViewControllerWithObject(pageController PageController, viewController ViewController, object objc.Object) {
-	di._PageControllerPrepareViewControllerWithObject(pageController, viewController, object)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
+func (di *PageControllerDelegate) PageControllerDidTransitionToObject(pageController PageController, object objc.Object) {
+	di._PageControllerDidTransitionToObject(pageController, object)
 }
 
 // ensure impl type implements protocol interface
@@ -177,17 +88,6 @@ var _ PPageControllerDelegate = (*PageControllerDelegateObject)(nil)
 // A concrete type for the [PPageControllerDelegate] protocol.
 type PageControllerDelegateObject struct {
 	objc.Object
-}
-
-func (p_ PageControllerDelegateObject) HasPageControllerDidTransitionToObject() bool {
-	return p_.RespondsToSelector(objc.Sel("pageController:didTransitionToObject:"))
-}
-
-// This message is sent when any page transition is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
-func (p_ PageControllerDelegateObject) PageControllerDidTransitionToObject(pageController PageController, object objc.Object) {
-	objc.Call[objc.Void](p_, objc.Sel("pageController:didTransitionToObject:"), pageController, object)
 }
 
 func (p_ PageControllerDelegateObject) HasPageControllerDidEndLiveTransition() bool {
@@ -201,18 +101,6 @@ func (p_ PageControllerDelegateObject) PageControllerDidEndLiveTransition(pageCo
 	objc.Call[objc.Void](p_, objc.Sel("pageControllerDidEndLiveTransition:"), pageController)
 }
 
-func (p_ PageControllerDelegateObject) HasPageControllerIdentifierForObject() bool {
-	return p_.RespondsToSelector(objc.Sel("pageController:identifierForObject:"))
-}
-
-// Return the identifier of the view controller that owns a view to display the object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435007-pagecontroller?language=objc
-func (p_ PageControllerDelegateObject) PageControllerIdentifierForObject(pageController PageController, object objc.Object) PageControllerObjectIdentifier {
-	rv := objc.Call[PageControllerObjectIdentifier](p_, objc.Sel("pageController:identifierForObject:"), pageController, object)
-	return rv
-}
-
 func (p_ PageControllerDelegateObject) HasPageControllerWillStartLiveTransition() bool {
 	return p_.RespondsToSelector(objc.Sel("pageControllerWillStartLiveTransition:"))
 }
@@ -224,37 +112,13 @@ func (p_ PageControllerDelegateObject) PageControllerWillStartLiveTransition(pag
 	objc.Call[objc.Void](p_, objc.Sel("pageControllerWillStartLiveTransition:"), pageController)
 }
 
-func (p_ PageControllerDelegateObject) HasPageControllerFrameForObject() bool {
-	return p_.RespondsToSelector(objc.Sel("pageController:frameForObject:"))
+func (p_ PageControllerDelegateObject) HasPageControllerDidTransitionToObject() bool {
+	return p_.RespondsToSelector(objc.Sel("pageController:didTransitionToObject:"))
 }
 
-// Returns the frame appropriate for displaying the specified object. [Full Topic]
+// This message is sent when any page transition is completed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434992-pagecontroller?language=objc
-func (p_ PageControllerDelegateObject) PageControllerFrameForObject(pageController PageController, object objc.Object) foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("pageController:frameForObject:"), pageController, object)
-	return rv
-}
-
-func (p_ PageControllerDelegateObject) HasPageControllerViewControllerForIdentifier() bool {
-	return p_.RespondsToSelector(objc.Sel("pageController:viewControllerForIdentifier:"))
-}
-
-// Returns a view controller the page controller uses for managing the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435015-pagecontroller?language=objc
-func (p_ PageControllerDelegateObject) PageControllerViewControllerForIdentifier(pageController PageController, identifier PageControllerObjectIdentifier) ViewController {
-	rv := objc.Call[ViewController](p_, objc.Sel("pageController:viewControllerForIdentifier:"), pageController, identifier)
-	return rv
-}
-
-func (p_ PageControllerDelegateObject) HasPageControllerPrepareViewControllerWithObject() bool {
-	return p_.RespondsToSelector(objc.Sel("pageController:prepareViewController:withObject:"))
-}
-
-// Prepare the view controller and it’s view for drawing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434983-pagecontroller?language=objc
-func (p_ PageControllerDelegateObject) PageControllerPrepareViewControllerWithObject(pageController PageController, viewController ViewController, object objc.Object) {
-	objc.Call[objc.Void](p_, objc.Sel("pageController:prepareViewController:withObject:"), pageController, viewController, object)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
+func (p_ PageControllerDelegateObject) PageControllerDidTransitionToObject(pageController PageController, object objc.Object) {
+	objc.Call[objc.Void](p_, objc.Sel("pageController:didTransitionToObject:"), pageController, object)
 }

@@ -15,12 +15,12 @@ type PDecimalNumberBehaviors interface {
 	HasScale() bool
 
 	// optional
-	RoundingMode() RoundingMode
-	HasRoundingMode() bool
-
-	// optional
 	ExceptionDuringOperationErrorLeftOperandRightOperand(operation objc.Selector, error CalculationError, leftOperand DecimalNumber, rightOperand DecimalNumber) DecimalNumber
 	HasExceptionDuringOperationErrorLeftOperandRightOperand() bool
+
+	// optional
+	RoundingMode() RoundingMode
+	HasRoundingMode() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,18 +43,6 @@ func (d_ DecimalNumberBehaviorsObject) Scale() int {
 	return rv
 }
 
-func (d_ DecimalNumberBehaviorsObject) HasRoundingMode() bool {
-	return d_.RespondsToSelector(objc.Sel("roundingMode"))
-}
-
-// Returns the way that NSDecimalNumber's decimalNumberBy... methods round their return values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumberbehaviors/1409414-roundingmode?language=objc
-func (d_ DecimalNumberBehaviorsObject) RoundingMode() RoundingMode {
-	rv := objc.Call[RoundingMode](d_, objc.Sel("roundingMode"))
-	return rv
-}
-
 func (d_ DecimalNumberBehaviorsObject) HasExceptionDuringOperationErrorLeftOperandRightOperand() bool {
 	return d_.RespondsToSelector(objc.Sel("exceptionDuringOperation:error:leftOperand:rightOperand:"))
 }
@@ -64,5 +52,17 @@ func (d_ DecimalNumberBehaviorsObject) HasExceptionDuringOperationErrorLeftOpera
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumberbehaviors/1411766-exceptionduringoperation?language=objc
 func (d_ DecimalNumberBehaviorsObject) ExceptionDuringOperationErrorLeftOperandRightOperand(operation objc.Selector, error CalculationError, leftOperand DecimalNumber, rightOperand DecimalNumber) DecimalNumber {
 	rv := objc.Call[DecimalNumber](d_, objc.Sel("exceptionDuringOperation:error:leftOperand:rightOperand:"), operation, error, leftOperand, rightOperand)
+	return rv
+}
+
+func (d_ DecimalNumberBehaviorsObject) HasRoundingMode() bool {
+	return d_.RespondsToSelector(objc.Sel("roundingMode"))
+}
+
+// Returns the way that NSDecimalNumber's decimalNumberBy... methods round their return values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumberbehaviors/1409414-roundingmode?language=objc
+func (d_ DecimalNumberBehaviorsObject) RoundingMode() RoundingMode {
+	rv := objc.Call[RoundingMode](d_, objc.Sel("roundingMode"))
 	return rv
 }

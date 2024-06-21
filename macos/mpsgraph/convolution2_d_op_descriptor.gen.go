@@ -19,30 +19,30 @@ type _Convolution2DOpDescriptorClass struct {
 type IConvolution2DOpDescriptor interface {
 	objc.IObject
 	SetExplicitPaddingWithPaddingLeftPaddingRightPaddingTopPaddingBottom(paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint)
-	Groups() uint
-	SetGroups(value uint)
-	DilationRateInY() uint
-	SetDilationRateInY(value uint)
-	DataLayout() TensorNamedDataLayout
-	SetDataLayout(value TensorNamedDataLayout)
+	StrideInX() uint
+	SetStrideInX(value uint)
 	PaddingStyle() PaddingStyle
 	SetPaddingStyle(value PaddingStyle)
 	PaddingBottom() uint
 	SetPaddingBottom(value uint)
-	WeightsLayout() TensorNamedDataLayout
-	SetWeightsLayout(value TensorNamedDataLayout)
 	PaddingTop() uint
 	SetPaddingTop(value uint)
-	StrideInX() uint
-	SetStrideInX(value uint)
 	StrideInY() uint
 	SetStrideInY(value uint)
+	WeightsLayout() TensorNamedDataLayout
+	SetWeightsLayout(value TensorNamedDataLayout)
 	PaddingLeft() uint
 	SetPaddingLeft(value uint)
-	PaddingRight() uint
-	SetPaddingRight(value uint)
 	DilationRateInX() uint
 	SetDilationRateInX(value uint)
+	DataLayout() TensorNamedDataLayout
+	SetDataLayout(value TensorNamedDataLayout)
+	Groups() uint
+	SetGroups(value uint)
+	DilationRateInY() uint
+	SetDilationRateInY(value uint)
+	PaddingRight() uint
+	SetPaddingRight(value uint)
 }
 
 //	[Full Topic]
@@ -68,18 +68,6 @@ func (cc _Convolution2DOpDescriptorClass) DescriptorWithStrideInXStrideInYDilati
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564600-descriptorwithstrideinx?language=objc
 func Convolution2DOpDescriptor_DescriptorWithStrideInXStrideInYDilationRateInXDilationRateInYGroupsPaddingStyleDataLayoutWeightsLayout(strideInX uint, strideInY uint, dilationRateInX uint, dilationRateInY uint, groups uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout, weightsLayout TensorNamedDataLayout) Convolution2DOpDescriptor {
 	return Convolution2DOpDescriptorClass.DescriptorWithStrideInXStrideInYDilationRateInXDilationRateInYGroupsPaddingStyleDataLayoutWeightsLayout(strideInX, strideInY, dilationRateInX, dilationRateInY, groups, paddingStyle, dataLayout, weightsLayout)
-}
-
-func (cc _Convolution2DOpDescriptorClass) DescriptorWithStrideInXStrideInYDilationRateInXDilationRateInYGroupsPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayoutWeightsLayout(strideInX uint, strideInY uint, dilationRateInX uint, dilationRateInY uint, groups uint, paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout, weightsLayout TensorNamedDataLayout) Convolution2DOpDescriptor {
-	rv := objc.Call[Convolution2DOpDescriptor](cc, objc.Sel("descriptorWithStrideInX:strideInY:dilationRateInX:dilationRateInY:groups:paddingLeft:paddingRight:paddingTop:paddingBottom:paddingStyle:dataLayout:weightsLayout:"), strideInX, strideInY, dilationRateInX, dilationRateInY, groups, paddingLeft, paddingRight, paddingTop, paddingBottom, paddingStyle, dataLayout, weightsLayout)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564599-descriptorwithstrideinx?language=objc
-func Convolution2DOpDescriptor_DescriptorWithStrideInXStrideInYDilationRateInXDilationRateInYGroupsPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayoutWeightsLayout(strideInX uint, strideInY uint, dilationRateInX uint, dilationRateInY uint, groups uint, paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout, weightsLayout TensorNamedDataLayout) Convolution2DOpDescriptor {
-	return Convolution2DOpDescriptorClass.DescriptorWithStrideInXStrideInYDilationRateInXDilationRateInYGroupsPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayoutWeightsLayout(strideInX, strideInY, dilationRateInX, dilationRateInY, groups, paddingLeft, paddingRight, paddingTop, paddingBottom, paddingStyle, dataLayout, weightsLayout)
 }
 
 func (cc _Convolution2DOpDescriptorClass) Alloc() Convolution2DOpDescriptor {
@@ -111,47 +99,17 @@ func (c_ Convolution2DOpDescriptor) SetExplicitPaddingWithPaddingLeftPaddingRigh
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564603-groups?language=objc
-func (c_ Convolution2DOpDescriptor) Groups() uint {
-	rv := objc.Call[uint](c_, objc.Sel("groups"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564610-strideinx?language=objc
+func (c_ Convolution2DOpDescriptor) StrideInX() uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInX"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564603-groups?language=objc
-func (c_ Convolution2DOpDescriptor) SetGroups(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setGroups:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564602-dilationrateiny?language=objc
-func (c_ Convolution2DOpDescriptor) DilationRateInY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateInY"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564602-dilationrateiny?language=objc
-func (c_ Convolution2DOpDescriptor) SetDilationRateInY(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDilationRateInY:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564598-datalayout?language=objc
-func (c_ Convolution2DOpDescriptor) DataLayout() TensorNamedDataLayout {
-	rv := objc.Call[TensorNamedDataLayout](c_, objc.Sel("dataLayout"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564598-datalayout?language=objc
-func (c_ Convolution2DOpDescriptor) SetDataLayout(value TensorNamedDataLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("setDataLayout:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564610-strideinx?language=objc
+func (c_ Convolution2DOpDescriptor) SetStrideInX(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setStrideInX:"), value)
 }
 
 //	[Full Topic]
@@ -186,21 +144,6 @@ func (c_ Convolution2DOpDescriptor) SetPaddingBottom(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564612-weightslayout?language=objc
-func (c_ Convolution2DOpDescriptor) WeightsLayout() TensorNamedDataLayout {
-	rv := objc.Call[TensorNamedDataLayout](c_, objc.Sel("weightsLayout"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564612-weightslayout?language=objc
-func (c_ Convolution2DOpDescriptor) SetWeightsLayout(value TensorNamedDataLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("setWeightsLayout:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564608-paddingtop?language=objc
 func (c_ Convolution2DOpDescriptor) PaddingTop() uint {
 	rv := objc.Call[uint](c_, objc.Sel("paddingTop"))
@@ -212,21 +155,6 @@ func (c_ Convolution2DOpDescriptor) PaddingTop() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564608-paddingtop?language=objc
 func (c_ Convolution2DOpDescriptor) SetPaddingTop(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setPaddingTop:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564610-strideinx?language=objc
-func (c_ Convolution2DOpDescriptor) StrideInX() uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInX"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564610-strideinx?language=objc
-func (c_ Convolution2DOpDescriptor) SetStrideInX(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setStrideInX:"), value)
 }
 
 //	[Full Topic]
@@ -246,6 +174,21 @@ func (c_ Convolution2DOpDescriptor) SetStrideInY(value uint) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564612-weightslayout?language=objc
+func (c_ Convolution2DOpDescriptor) WeightsLayout() TensorNamedDataLayout {
+	rv := objc.Call[TensorNamedDataLayout](c_, objc.Sel("weightsLayout"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564612-weightslayout?language=objc
+func (c_ Convolution2DOpDescriptor) SetWeightsLayout(value TensorNamedDataLayout) {
+	objc.Call[objc.Void](c_, objc.Sel("setWeightsLayout:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564605-paddingleft?language=objc
 func (c_ Convolution2DOpDescriptor) PaddingLeft() uint {
 	rv := objc.Call[uint](c_, objc.Sel("paddingLeft"))
@@ -261,21 +204,6 @@ func (c_ Convolution2DOpDescriptor) SetPaddingLeft(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564606-paddingright?language=objc
-func (c_ Convolution2DOpDescriptor) PaddingRight() uint {
-	rv := objc.Call[uint](c_, objc.Sel("paddingRight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564606-paddingright?language=objc
-func (c_ Convolution2DOpDescriptor) SetPaddingRight(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setPaddingRight:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564601-dilationrateinx?language=objc
 func (c_ Convolution2DOpDescriptor) DilationRateInX() uint {
 	rv := objc.Call[uint](c_, objc.Sel("dilationRateInX"))
@@ -287,4 +215,64 @@ func (c_ Convolution2DOpDescriptor) DilationRateInX() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564601-dilationrateinx?language=objc
 func (c_ Convolution2DOpDescriptor) SetDilationRateInX(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setDilationRateInX:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564598-datalayout?language=objc
+func (c_ Convolution2DOpDescriptor) DataLayout() TensorNamedDataLayout {
+	rv := objc.Call[TensorNamedDataLayout](c_, objc.Sel("dataLayout"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564598-datalayout?language=objc
+func (c_ Convolution2DOpDescriptor) SetDataLayout(value TensorNamedDataLayout) {
+	objc.Call[objc.Void](c_, objc.Sel("setDataLayout:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564603-groups?language=objc
+func (c_ Convolution2DOpDescriptor) Groups() uint {
+	rv := objc.Call[uint](c_, objc.Sel("groups"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564603-groups?language=objc
+func (c_ Convolution2DOpDescriptor) SetGroups(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setGroups:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564602-dilationrateiny?language=objc
+func (c_ Convolution2DOpDescriptor) DilationRateInY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateInY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564602-dilationrateiny?language=objc
+func (c_ Convolution2DOpDescriptor) SetDilationRateInY(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDilationRateInY:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564606-paddingright?language=objc
+func (c_ Convolution2DOpDescriptor) PaddingRight() uint {
+	rv := objc.Call[uint](c_, objc.Sel("paddingRight"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphconvolution2dopdescriptor/3564606-paddingright?language=objc
+func (c_ Convolution2DOpDescriptor) SetPaddingRight(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setPaddingRight:"), value)
 }

@@ -18,8 +18,8 @@ type _RecordZoneClass struct {
 // An interface definition for the [RecordZone] class.
 type IRecordZone interface {
 	objc.IObject
-	Capabilities() RecordZoneCapabilities
 	Share() Reference
+	Capabilities() RecordZoneCapabilities
 	ZoneID() RecordZoneID
 }
 
@@ -99,19 +99,19 @@ func RecordZone_DefaultRecordZone() RecordZone {
 	return RecordZoneClass.DefaultRecordZone()
 }
 
-// The capabilities that the zone supports. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzone/1515194-capabilities?language=objc
-func (r_ RecordZone) Capabilities() RecordZoneCapabilities {
-	rv := objc.Call[RecordZoneCapabilities](r_, objc.Sel("capabilities"))
-	return rv
-}
-
 // A reference to the record zone’s share record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzone/3746822-share?language=objc
 func (r_ RecordZone) Share() Reference {
 	rv := objc.Call[Reference](r_, objc.Sel("share"))
+	return rv
+}
+
+// The capabilities that the zone supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzone/1515194-capabilities?language=objc
+func (r_ RecordZone) Capabilities() RecordZoneCapabilities {
+	rv := objc.Call[RecordZoneCapabilities](r_, objc.Sel("capabilities"))
 	return rv
 }
 

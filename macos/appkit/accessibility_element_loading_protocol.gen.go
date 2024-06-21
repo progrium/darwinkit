@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelementloading?language=objc
 type PAccessibilityElementLoading interface {
 	// optional
-	AccessibilityRangeInTargetElementWithToken(token AccessibilityLoadingToken) foundation.Range
-	HasAccessibilityRangeInTargetElementWithToken() bool
+	AccessibilityElementWithToken(token AccessibilityLoadingToken) objc.Object
+	HasAccessibilityElementWithToken() bool
 
 	// optional
-	AccessibilityElementWithToken(token AccessibilityLoadingToken) AccessibilityElementObject
-	HasAccessibilityElementWithToken() bool
+	AccessibilityRangeInTargetElementWithToken(token AccessibilityLoadingToken) foundation.Range
+	HasAccessibilityRangeInTargetElementWithToken() bool
 }
 
 // ensure impl type implements protocol interface
@@ -26,6 +26,18 @@ var _ PAccessibilityElementLoading = (*AccessibilityElementLoadingObject)(nil)
 // A concrete type for the [PAccessibilityElementLoading] protocol.
 type AccessibilityElementLoadingObject struct {
 	objc.Object
+}
+
+func (a_ AccessibilityElementLoadingObject) HasAccessibilityElementWithToken() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityElementWithToken:"))
+}
+
+// Loads the target accessibility element with the specified load token. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelementloading/2890815-accessibilityelementwithtoken?language=objc
+func (a_ AccessibilityElementLoadingObject) AccessibilityElementWithToken(token AccessibilityLoadingToken) objc.Object {
+	rv := objc.Call[objc.Object](a_, objc.Sel("accessibilityElementWithToken:"), token)
+	return rv
 }
 
 func (a_ AccessibilityElementLoadingObject) HasAccessibilityRangeInTargetElementWithToken() bool {
@@ -37,17 +49,5 @@ func (a_ AccessibilityElementLoadingObject) HasAccessibilityRangeInTargetElement
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelementloading/2890818-accessibilityrangeintargetelemen?language=objc
 func (a_ AccessibilityElementLoadingObject) AccessibilityRangeInTargetElementWithToken(token AccessibilityLoadingToken) foundation.Range {
 	rv := objc.Call[foundation.Range](a_, objc.Sel("accessibilityRangeInTargetElementWithToken:"), token)
-	return rv
-}
-
-func (a_ AccessibilityElementLoadingObject) HasAccessibilityElementWithToken() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityElementWithToken:"))
-}
-
-// Loads the target accessibility element with the specified load token. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelementloading/2890815-accessibilityelementwithtoken?language=objc
-func (a_ AccessibilityElementLoadingObject) AccessibilityElementWithToken(token AccessibilityLoadingToken) AccessibilityElementObject {
-	rv := objc.Call[AccessibilityElementObject](a_, objc.Sel("accessibilityElementWithToken:"), token)
 	return rv
 }

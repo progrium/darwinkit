@@ -19,19 +19,19 @@ type _MediaSelectionOptionClass struct {
 // An interface definition for the [MediaSelectionOption] class.
 type IMediaSelectionOption interface {
 	objc.IObject
-	MetadataForFormat(format string) []MetadataItem
 	DisplayNameWithLocale(locale foundation.ILocale) string
+	AssociatedMediaSelectionOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption
 	HasMediaCharacteristic(mediaCharacteristic MediaCharacteristic) bool
 	PropertyList() objc.Object
-	AssociatedMediaSelectionOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption
+	MetadataForFormat(format string) []MetadataItem
+	ExtendedLanguageTag() string
 	MediaSubTypes() []foundation.Number
-	CommonMetadata() []MetadataItem
+	MediaType() MediaType
 	Locale() foundation.Locale
+	AvailableMetadataFormats() []string
 	DisplayName() string
 	IsPlayable() bool
-	ExtendedLanguageTag() string
-	AvailableMetadataFormats() []string
-	MediaType() MediaType
+	CommonMetadata() []MetadataItem
 }
 
 // An object that represents a specific option for the presentation of media within a group of options. [Full Topic]
@@ -67,19 +67,19 @@ func (m_ MediaSelectionOption) Init() MediaSelectionOption {
 	return rv
 }
 
-// Returns an array of metadata items—one for each metadata item in the container of a given format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1386666-metadataforformat?language=objc
-func (m_ MediaSelectionOption) MetadataForFormat(format string) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](m_, objc.Sel("metadataForFormat:"), format)
-	return rv
-}
-
 // Returns a string suitable for display using the specified locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388021-displaynamewithlocale?language=objc
 func (m_ MediaSelectionOption) DisplayNameWithLocale(locale foundation.ILocale) string {
 	rv := objc.Call[string](m_, objc.Sel("displayNameWithLocale:"), locale)
+	return rv
+}
+
+// Returns a media selection option associated with the receiver in a given group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388232-associatedmediaselectionoptionin?language=objc
+func (m_ MediaSelectionOption) AssociatedMediaSelectionOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
+	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("associatedMediaSelectionOptionInMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 
@@ -99,11 +99,19 @@ func (m_ MediaSelectionOption) PropertyList() objc.Object {
 	return rv
 }
 
-// Returns a media selection option associated with the receiver in a given group. [Full Topic]
+// Returns an array of metadata items—one for each metadata item in the container of a given format. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388232-associatedmediaselectionoptionin?language=objc
-func (m_ MediaSelectionOption) AssociatedMediaSelectionOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
-	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("associatedMediaSelectionOptionInMediaSelectionGroup:"), mediaSelectionGroup)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1386666-metadataforformat?language=objc
+func (m_ MediaSelectionOption) MetadataForFormat(format string) []MetadataItem {
+	rv := objc.Call[[]MetadataItem](m_, objc.Sel("metadataForFormat:"), format)
+	return rv
+}
+
+// The IETF BCP 47 language tag associated with the option [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1387619-extendedlanguagetag?language=objc
+func (m_ MediaSelectionOption) ExtendedLanguageTag() string {
+	rv := objc.Call[string](m_, objc.Sel("extendedLanguageTag"))
 	return rv
 }
 
@@ -115,11 +123,11 @@ func (m_ MediaSelectionOption) MediaSubTypes() []foundation.Number {
 	return rv
 }
 
-// An array of metadata items for each common metadata key for which a value is available. [Full Topic]
+// The media type of the media data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1387859-commonmetadata?language=objc
-func (m_ MediaSelectionOption) CommonMetadata() []MetadataItem {
-	rv := objc.Call[[]MetadataItem](m_, objc.Sel("commonMetadata"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1386322-mediatype?language=objc
+func (m_ MediaSelectionOption) MediaType() MediaType {
+	rv := objc.Call[MediaType](m_, objc.Sel("mediaType"))
 	return rv
 }
 
@@ -128,6 +136,14 @@ func (m_ MediaSelectionOption) CommonMetadata() []MetadataItem {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388436-locale?language=objc
 func (m_ MediaSelectionOption) Locale() foundation.Locale {
 	rv := objc.Call[foundation.Locale](m_, objc.Sel("locale"))
+	return rv
+}
+
+// The metadata formats that contain metadata associated with the option. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1389504-availablemetadataformats?language=objc
+func (m_ MediaSelectionOption) AvailableMetadataFormats() []string {
+	rv := objc.Call[[]string](m_, objc.Sel("availableMetadataFormats"))
 	return rv
 }
 
@@ -147,26 +163,10 @@ func (m_ MediaSelectionOption) IsPlayable() bool {
 	return rv
 }
 
-// The IETF BCP 47 language tag associated with the option [Full Topic]
+// An array of metadata items for each common metadata key for which a value is available. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1387619-extendedlanguagetag?language=objc
-func (m_ MediaSelectionOption) ExtendedLanguageTag() string {
-	rv := objc.Call[string](m_, objc.Sel("extendedLanguageTag"))
-	return rv
-}
-
-// The metadata formats that contain metadata associated with the option. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1389504-availablemetadataformats?language=objc
-func (m_ MediaSelectionOption) AvailableMetadataFormats() []string {
-	rv := objc.Call[[]string](m_, objc.Sel("availableMetadataFormats"))
-	return rv
-}
-
-// The media type of the media data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1386322-mediatype?language=objc
-func (m_ MediaSelectionOption) MediaType() MediaType {
-	rv := objc.Call[MediaType](m_, objc.Sel("mediaType"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1387859-commonmetadata?language=objc
+func (m_ MediaSelectionOption) CommonMetadata() []MetadataItem {
+	rv := objc.Call[[]MetadataItem](m_, objc.Sel("commonMetadata"))
 	return rv
 }

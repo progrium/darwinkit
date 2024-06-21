@@ -19,9 +19,9 @@ type _NNResizeBilinearClass struct {
 // An interface definition for the [NNResizeBilinear] class.
 type INNResizeBilinear interface {
 	ICNNKernel
+	ResizeHeight() uint
 	AlignCorners() bool
 	ResizeWidth() uint
-	ResizeHeight() uint
 }
 
 // A bilinear resizing filter. [Full Topic]
@@ -104,6 +104,14 @@ func NNResizeBilinear_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevi
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnresizebilinear/3012968-resizeheight?language=objc
+func (n_ NNResizeBilinear) ResizeHeight() uint {
+	rv := objc.Call[uint](n_, objc.Sel("resizeHeight"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnresizebilinear/3012965-aligncorners?language=objc
 func (n_ NNResizeBilinear) AlignCorners() bool {
 	rv := objc.Call[bool](n_, objc.Sel("alignCorners"))
@@ -115,13 +123,5 @@ func (n_ NNResizeBilinear) AlignCorners() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnresizebilinear/3012969-resizewidth?language=objc
 func (n_ NNResizeBilinear) ResizeWidth() uint {
 	rv := objc.Call[uint](n_, objc.Sel("resizeWidth"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnresizebilinear/3012968-resizeheight?language=objc
-func (n_ NNResizeBilinear) ResizeHeight() uint {
-	rv := objc.Call[uint](n_, objc.Sel("resizeHeight"))
 	return rv
 }

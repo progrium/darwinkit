@@ -19,14 +19,8 @@ type _NDArrayUnaryKernelClass struct {
 // An interface definition for the [NDArrayUnaryKernel] class.
 type INDArrayUnaryKernel interface {
 	INDArrayMultiaryKernel
-	EncodeToCommandBufferSourceArrayDestinationArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray, destination INDArray)
-	EncodeToCommandBufferObjectSourceArrayDestinationArray(cmdBufObject objc.IObject, sourceArray INDArray, destination INDArray)
-	EncodeToCommandBufferSourceArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray) NDArray
-	EncodeToCommandBufferObjectSourceArray(cmdBufObject objc.IObject, sourceArray INDArray) NDArray
 	EncodeToCommandBufferSourceArrayResultStateDestinationArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray, outGradientState IState, destination INDArray)
 	EncodeToCommandBufferObjectSourceArrayResultStateDestinationArray(cmdBufObject objc.IObject, sourceArray INDArray, outGradientState IState, destination INDArray)
-	EncodeToCommandBufferSourceArrayResultStateOutputStateIsTemporary(cmdBuf metal.PCommandBuffer, sourceArray INDArray, outGradientState unsafe.Pointer, outputStateIsTemporary bool) NDArray
-	EncodeToCommandBufferObjectSourceArrayResultStateOutputStateIsTemporary(cmdBufObject objc.IObject, sourceArray INDArray, outGradientState unsafe.Pointer, outputStateIsTemporary bool) NDArray
 }
 
 //	[Full Topic]
@@ -109,38 +103,6 @@ func NDArrayUnaryKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDe
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143537-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferSourceArrayDestinationArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray, destination INDArray) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArray:destinationArray:"), po0, sourceArray, destination)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143537-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferObjectSourceArrayDestinationArray(cmdBufObject objc.IObject, sourceArray INDArray, destination INDArray) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArray:destinationArray:"), cmdBufObject, sourceArray, destination)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143536-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferSourceArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray) NDArray {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArray:"), po0, sourceArray)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143536-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferObjectSourceArray(cmdBufObject objc.IObject, sourceArray INDArray) NDArray {
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArray:"), cmdBufObject, sourceArray)
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143538-encodetocommandbuffer?language=objc
 func (n_ NDArrayUnaryKernel) EncodeToCommandBufferSourceArrayResultStateDestinationArray(cmdBuf metal.PCommandBuffer, sourceArray INDArray, outGradientState IState, destination INDArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
@@ -152,21 +114,4 @@ func (n_ NDArrayUnaryKernel) EncodeToCommandBufferSourceArrayResultStateDestinat
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143538-encodetocommandbuffer?language=objc
 func (n_ NDArrayUnaryKernel) EncodeToCommandBufferObjectSourceArrayResultStateDestinationArray(cmdBufObject objc.IObject, sourceArray INDArray, outGradientState IState, destination INDArray) {
 	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArray:resultState:destinationArray:"), cmdBufObject, sourceArray, outGradientState, destination)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143539-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferSourceArrayResultStateOutputStateIsTemporary(cmdBuf metal.PCommandBuffer, sourceArray INDArray, outGradientState unsafe.Pointer, outputStateIsTemporary bool) NDArray {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArray:resultState:outputStateIsTemporary:"), po0, sourceArray, outGradientState, outputStateIsTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayunarykernel/3143539-encodetocommandbuffer?language=objc
-func (n_ NDArrayUnaryKernel) EncodeToCommandBufferObjectSourceArrayResultStateOutputStateIsTemporary(cmdBufObject objc.IObject, sourceArray INDArray, outGradientState unsafe.Pointer, outputStateIsTemporary bool) NDArray {
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArray:resultState:outputStateIsTemporary:"), cmdBufObject, sourceArray, outGradientState, outputStateIsTemporary)
-	return rv
 }

@@ -36,6 +36,18 @@ func InputStreamFrom(ptr unsafe.Pointer) InputStream {
 	}
 }
 
+func (ic _InputStreamClass) InputStreamWithFileAtPath(path string) InputStream {
+	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithFileAtPath:"), path)
+	return rv
+}
+
+// Creates and returns an initialized NSInputStream object that reads data from the file at a given path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1564839-inputstreamwithfileatpath?language=objc
+func InputStream_InputStreamWithFileAtPath(path string) InputStream {
+	return InputStreamClass.InputStreamWithFileAtPath(path)
+}
+
 func (i_ InputStream) InitWithData(data []byte) InputStream {
 	rv := objc.Call[InputStream](i_, objc.Sel("initWithData:"), data)
 	return rv
@@ -64,30 +76,6 @@ func NewInputStreamWithURL(url IURL) InputStream {
 	return instance
 }
 
-func (ic _InputStreamClass) InputStreamWithData(data []byte) InputStream {
-	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithData:"), data)
-	return rv
-}
-
-// Creates and returns an initialized NSInputStream object for reading from a given NSData object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1564842-inputstreamwithdata?language=objc
-func InputStream_InputStreamWithData(data []byte) InputStream {
-	return InputStreamClass.InputStreamWithData(data)
-}
-
-func (ic _InputStreamClass) InputStreamWithFileAtPath(path string) InputStream {
-	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithFileAtPath:"), path)
-	return rv
-}
-
-// Creates and returns an initialized NSInputStream object that reads data from the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1564839-inputstreamwithfileatpath?language=objc
-func InputStream_InputStreamWithFileAtPath(path string) InputStream {
-	return InputStreamClass.InputStreamWithFileAtPath(path)
-}
-
 func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
 	rv := objc.Call[InputStream](i_, objc.Sel("initWithFileAtPath:"), path)
 	return rv
@@ -100,6 +88,18 @@ func NewInputStreamWithFileAtPath(path string) InputStream {
 	instance := InputStreamClass.Alloc().InitWithFileAtPath(path)
 	instance.Autorelease()
 	return instance
+}
+
+func (ic _InputStreamClass) InputStreamWithData(data []byte) InputStream {
+	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithData:"), data)
+	return rv
+}
+
+// Creates and returns an initialized NSInputStream object for reading from a given NSData object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1564842-inputstreamwithdata?language=objc
+func InputStream_InputStreamWithData(data []byte) InputStream {
+	return InputStreamClass.InputStreamWithData(data)
 }
 
 func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {

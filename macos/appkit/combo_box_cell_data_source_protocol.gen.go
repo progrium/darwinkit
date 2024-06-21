@@ -17,14 +17,6 @@ type PComboBoxCellDataSource interface {
 	// optional
 	ComboBoxCellObjectValueForItemAtIndex(comboBoxCell ComboBoxCell, index int) objc.Object
 	HasComboBoxCellObjectValueForItemAtIndex() bool
-
-	// optional
-	ComboBoxCellIndexOfItemWithStringValue(comboBoxCell ComboBoxCell, string_ string) uint
-	HasComboBoxCellIndexOfItemWithStringValue() bool
-
-	// optional
-	ComboBoxCellCompletedString(comboBoxCell ComboBoxCell, uncompletedString string) string
-	HasComboBoxCellCompletedString() bool
 }
 
 // ensure impl type implements protocol interface
@@ -56,29 +48,5 @@ func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellObjectValueForItemAtIndex(
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410258-comboboxcell?language=objc
 func (c_ ComboBoxCellDataSourceObject) ComboBoxCellObjectValueForItemAtIndex(comboBoxCell ComboBoxCell, index int) objc.Object {
 	rv := objc.Call[objc.Object](c_, objc.Sel("comboBoxCell:objectValueForItemAtIndex:"), comboBoxCell, index)
-	return rv
-}
-
-func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellIndexOfItemWithStringValue() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBoxCell:indexOfItemWithStringValue:"))
-}
-
-// Invoked by an NSComboBoxCell object to synchronize the pop-up list’s selected item with the text field’s contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410285-comboboxcell?language=objc
-func (c_ ComboBoxCellDataSourceObject) ComboBoxCellIndexOfItemWithStringValue(comboBoxCell ComboBoxCell, string_ string) uint {
-	rv := objc.Call[uint](c_, objc.Sel("comboBoxCell:indexOfItemWithStringValue:"), comboBoxCell, string_)
-	return rv
-}
-
-func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellCompletedString() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBoxCell:completedString:"))
-}
-
-// Returns the item from the combo box's pop-up list that matches the text entered by the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410250-comboboxcell?language=objc
-func (c_ ComboBoxCellDataSourceObject) ComboBoxCellCompletedString(comboBoxCell ComboBoxCell, uncompletedString string) string {
-	rv := objc.Call[string](c_, objc.Sel("comboBoxCell:completedString:"), comboBoxCell, uncompletedString)
 	return rv
 }

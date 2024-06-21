@@ -20,8 +20,8 @@ type IClassificationObservation interface {
 	IObservation
 	HasMinimumRecallForPrecision(minimumRecall float32, precision float32) bool
 	HasMinimumPrecisionForRecall(minimumPrecision float32, recall float32) bool
-	Identifier() string
 	HasPrecisionRecallCurve() bool
+	Identifier() string
 }
 
 // An object that represents classification information that an image analysis request produces. [Full Topic]
@@ -73,18 +73,18 @@ func (c_ ClassificationObservation) HasMinimumPrecisionForRecall(minimumPrecisio
 	return rv
 }
 
-// Classification label identifying the type of observation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnclassificationobservation/2867259-identifier?language=objc
-func (c_ ClassificationObservation) Identifier() string {
-	rv := objc.Call[string](c_, objc.Sel("identifier"))
-	return rv
-}
-
 // A Boolean variable indicating whether the observation contains precision and recall curves. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnclassificationobservation/3152626-hasprecisionrecallcurve?language=objc
 func (c_ ClassificationObservation) HasPrecisionRecallCurve() bool {
 	rv := objc.Call[bool](c_, objc.Sel("hasPrecisionRecallCurve"))
+	return rv
+}
+
+// Classification label identifying the type of observation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnclassificationobservation/2867259-identifier?language=objc
+func (c_ ClassificationObservation) Identifier() string {
+	rv := objc.Call[string](c_, objc.Sel("identifier"))
 	return rv
 }

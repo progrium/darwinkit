@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom?language=objc
 type PColorPickingCustom interface {
 	// optional
-	SupportsMode(mode ColorPanelMode) bool
-	HasSupportsMode() bool
-
-	// optional
-	CurrentMode() ColorPanelMode
-	HasCurrentMode() bool
+	ProvideNewView(initialRequest bool) View
+	HasProvideNewView() bool
 
 	// optional
 	SetColor(newColor Color)
 	HasSetColor() bool
 
 	// optional
-	ProvideNewView(initialRequest bool) View
-	HasProvideNewView() bool
+	SupportsMode(mode ColorPanelMode) bool
+	HasSupportsMode() bool
+
+	// optional
+	CurrentMode() ColorPanelMode
+	HasCurrentMode() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,6 +33,29 @@ var _ PColorPickingCustom = (*ColorPickingCustomObject)(nil)
 // A concrete type for the [PColorPickingCustom] protocol.
 type ColorPickingCustomObject struct {
 	objc.Object
+}
+
+func (c_ ColorPickingCustomObject) HasProvideNewView() bool {
+	return c_.RespondsToSelector(objc.Sel("provideNewView:"))
+}
+
+// Returns the view containing the receiver’s user interface. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1525701-providenewview?language=objc
+func (c_ ColorPickingCustomObject) ProvideNewView(initialRequest bool) View {
+	rv := objc.Call[View](c_, objc.Sel("provideNewView:"), initialRequest)
+	return rv
+}
+
+func (c_ ColorPickingCustomObject) HasSetColor() bool {
+	return c_.RespondsToSelector(objc.Sel("setColor:"))
+}
+
+// Adjusts the receiver to make the specified color the currently selected color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1526545-setcolor?language=objc
+func (c_ ColorPickingCustomObject) SetColor(newColor Color) {
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), newColor)
 }
 
 func (c_ ColorPickingCustomObject) HasSupportsMode() bool {
@@ -56,28 +79,5 @@ func (c_ ColorPickingCustomObject) HasCurrentMode() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1524671-currentmode?language=objc
 func (c_ ColorPickingCustomObject) CurrentMode() ColorPanelMode {
 	rv := objc.Call[ColorPanelMode](c_, objc.Sel("currentMode"))
-	return rv
-}
-
-func (c_ ColorPickingCustomObject) HasSetColor() bool {
-	return c_.RespondsToSelector(objc.Sel("setColor:"))
-}
-
-// Adjusts the receiver to make the specified color the currently selected color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1526545-setcolor?language=objc
-func (c_ ColorPickingCustomObject) SetColor(newColor Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), newColor)
-}
-
-func (c_ ColorPickingCustomObject) HasProvideNewView() bool {
-	return c_.RespondsToSelector(objc.Sel("provideNewView:"))
-}
-
-// Returns the view containing the receiver’s user interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1525701-providenewview?language=objc
-func (c_ ColorPickingCustomObject) ProvideNewView(initialRequest bool) View {
-	rv := objc.Call[View](c_, objc.Sel("provideNewView:"), initialRequest)
 	return rv
 }

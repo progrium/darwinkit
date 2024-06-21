@@ -18,9 +18,8 @@ type _PredicateClass struct {
 // An interface definition for the [Predicate] class.
 type IPredicate interface {
 	objc.IObject
-	EvaluateWithObject(object objc.IObject) bool
 	AllowEvaluation()
-	EvaluateWithObjectSubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool
+	EvaluateWithObject(object objc.IObject) bool
 	PredicateFormat() string
 }
 
@@ -71,29 +70,6 @@ func (p_ Predicate) Init() Predicate {
 	return rv
 }
 
-// Creates and returns a new predicate formed by creating a new string with a specified format and parsing the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1587997-predicatewithformat?language=objc
-func (pc _PredicateClass) PredicateWithFormat(predicateFormat string, args ...any) Predicate {
-	rv := objc.Call[Predicate](pc, objc.Sel("predicateWithFormat:"), append([]any{predicateFormat}, args...)...)
-	return rv
-}
-
-// Creates and returns a new predicate formed by creating a new string with a specified format and parsing the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1587997-predicatewithformat?language=objc
-func Predicate_PredicateWithFormat(predicateFormat string, args ...any) Predicate {
-	return PredicateClass.PredicateWithFormat(predicateFormat, args...)
-}
-
-// Returns a Boolean value that indicates whether the specified object matches the conditions that the predicate specifies. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417924-evaluatewithobject?language=objc
-func (p_ Predicate) EvaluateWithObject(object objc.IObject) bool {
-	rv := objc.Call[bool](p_, objc.Sel("evaluateWithObject:"), object)
-	return rv
-}
-
 // Creates a predicate that evaluates using a specified block object and bindings dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1416182-predicatewithblock?language=objc
@@ -109,19 +85,11 @@ func Predicate_PredicateWithBlock(block func(evaluatedObject objc.Object, bindin
 	return PredicateClass.PredicateWithBlock(block)
 }
 
-// Creates a predicate with a metadata query string. [Full Topic]
+// Forces a securely decoded predicate to allow evaluation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417831-predicatefrommetadataquerystring?language=objc
-func (pc _PredicateClass) PredicateFromMetadataQueryString(queryString string) Predicate {
-	rv := objc.Call[Predicate](pc, objc.Sel("predicateFromMetadataQueryString:"), queryString)
-	return rv
-}
-
-// Creates a predicate with a metadata query string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417831-predicatefrommetadataquerystring?language=objc
-func Predicate_PredicateFromMetadataQueryString(queryString string) Predicate {
-	return PredicateClass.PredicateFromMetadataQueryString(queryString)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1416310-allowevaluation?language=objc
+func (p_ Predicate) AllowEvaluation() {
+	objc.Call[objc.Void](p_, objc.Sel("allowEvaluation"))
 }
 
 // Creates and returns a predicate that always evaluates to a specified Boolean value. [Full Topic]
@@ -139,34 +107,27 @@ func Predicate_PredicateWithValue(value bool) Predicate {
 	return PredicateClass.PredicateWithValue(value)
 }
 
-// Forces a securely decoded predicate to allow evaluation. [Full Topic]
+// Returns a Boolean value that indicates whether the specified object matches the conditions that the predicate specifies. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1416310-allowevaluation?language=objc
-func (p_ Predicate) AllowEvaluation() {
-	objc.Call[objc.Void](p_, objc.Sel("allowEvaluation"))
-}
-
-// Returns a Boolean value that indicates whether the specified object matches the conditions that the predicate specifies after substituting in the values from a specified variables dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1407759-evaluatewithobject?language=objc
-func (p_ Predicate) EvaluateWithObjectSubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool {
-	rv := objc.Call[bool](p_, objc.Sel("evaluateWithObject:substitutionVariables:"), object, bindings)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417924-evaluatewithobject?language=objc
+func (p_ Predicate) EvaluateWithObject(object objc.IObject) bool {
+	rv := objc.Call[bool](p_, objc.Sel("evaluateWithObject:"), object)
 	return rv
 }
 
-// Creates a predicate by substituting the values in a specified array into a format string and parsing the result. [Full Topic]
+// Creates a predicate with a metadata query string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1410334-predicatewithformat?language=objc
-func (pc _PredicateClass) PredicateWithFormatArgumentArray(predicateFormat string, arguments []objc.IObject) Predicate {
-	rv := objc.Call[Predicate](pc, objc.Sel("predicateWithFormat:argumentArray:"), predicateFormat, arguments)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417831-predicatefrommetadataquerystring?language=objc
+func (pc _PredicateClass) PredicateFromMetadataQueryString(queryString string) Predicate {
+	rv := objc.Call[Predicate](pc, objc.Sel("predicateFromMetadataQueryString:"), queryString)
 	return rv
 }
 
-// Creates a predicate by substituting the values in a specified array into a format string and parsing the result. [Full Topic]
+// Creates a predicate with a metadata query string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1410334-predicatewithformat?language=objc
-func Predicate_PredicateWithFormatArgumentArray(predicateFormat string, arguments []objc.IObject) Predicate {
-	return PredicateClass.PredicateWithFormatArgumentArray(predicateFormat, arguments)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1417831-predicatefrommetadataquerystring?language=objc
+func Predicate_PredicateFromMetadataQueryString(queryString string) Predicate {
+	return PredicateClass.PredicateFromMetadataQueryString(queryString)
 }
 
 // The predicate's format string. [Full Topic]

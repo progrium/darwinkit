@@ -19,29 +19,29 @@ type _CollectionViewFlowLayoutClass struct {
 // An interface definition for the [CollectionViewFlowLayout] class.
 type ICollectionViewFlowLayout interface {
 	ICollectionViewLayout
-	CollapseSectionAtIndex(sectionIndex uint)
-	SectionAtIndexIsCollapsed(sectionIndex uint) bool
 	ExpandSectionAtIndex(sectionIndex uint)
-	ScrollDirection() CollectionViewScrollDirection
-	SetScrollDirection(value CollectionViewScrollDirection)
-	MinimumLineSpacing() float64
-	SetMinimumLineSpacing(value float64)
-	HeaderReferenceSize() foundation.Size
-	SetHeaderReferenceSize(value foundation.Size)
-	FooterReferenceSize() foundation.Size
-	SetFooterReferenceSize(value foundation.Size)
+	SectionAtIndexIsCollapsed(sectionIndex uint) bool
+	CollapseSectionAtIndex(sectionIndex uint)
 	ItemSize() foundation.Size
 	SetItemSize(value foundation.Size)
-	EstimatedItemSize() foundation.Size
-	SetEstimatedItemSize(value foundation.Size)
-	SectionInset() foundation.EdgeInsets
-	SetSectionInset(value foundation.EdgeInsets)
-	SectionHeadersPinToVisibleBounds() bool
-	SetSectionHeadersPinToVisibleBounds(value bool)
+	HeaderReferenceSize() foundation.Size
+	SetHeaderReferenceSize(value foundation.Size)
 	MinimumInteritemSpacing() float64
 	SetMinimumInteritemSpacing(value float64)
+	FooterReferenceSize() foundation.Size
+	SetFooterReferenceSize(value foundation.Size)
+	SectionInset() foundation.EdgeInsets
+	SetSectionInset(value foundation.EdgeInsets)
+	ScrollDirection() CollectionViewScrollDirection
+	SetScrollDirection(value CollectionViewScrollDirection)
+	EstimatedItemSize() foundation.Size
+	SetEstimatedItemSize(value foundation.Size)
 	SectionFootersPinToVisibleBounds() bool
 	SetSectionFootersPinToVisibleBounds(value bool)
+	MinimumLineSpacing() float64
+	SetMinimumLineSpacing(value float64)
+	SectionHeadersPinToVisibleBounds() bool
+	SetSectionHeadersPinToVisibleBounds(value bool)
 }
 
 // A layout that organizes items into a flexible and configurable arrangement. [Full Topic]
@@ -79,9 +79,9 @@ func (c_ CollectionViewFlowLayout) Init() CollectionViewFlowLayout {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644723-collapsesectionatindex?language=objc
-func (c_ CollectionViewFlowLayout) CollapseSectionAtIndex(sectionIndex uint) {
-	objc.Call[objc.Void](c_, objc.Sel("collapseSectionAtIndex:"), sectionIndex)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644651-expandsectionatindex?language=objc
+func (c_ CollectionViewFlowLayout) ExpandSectionAtIndex(sectionIndex uint) {
+	objc.Call[objc.Void](c_, objc.Sel("expandSectionAtIndex:"), sectionIndex)
 }
 
 //	[Full Topic]
@@ -94,69 +94,9 @@ func (c_ CollectionViewFlowLayout) SectionAtIndexIsCollapsed(sectionIndex uint) 
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644651-expandsectionatindex?language=objc
-func (c_ CollectionViewFlowLayout) ExpandSectionAtIndex(sectionIndex uint) {
-	objc.Call[objc.Void](c_, objc.Sel("expandSectionAtIndex:"), sectionIndex)
-}
-
-// The scroll direction of the layout. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402869-scrolldirection?language=objc
-func (c_ CollectionViewFlowLayout) ScrollDirection() CollectionViewScrollDirection {
-	rv := objc.Call[CollectionViewScrollDirection](c_, objc.Sel("scrollDirection"))
-	return rv
-}
-
-// The scroll direction of the layout. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402869-scrolldirection?language=objc
-func (c_ CollectionViewFlowLayout) SetScrollDirection(value CollectionViewScrollDirection) {
-	objc.Call[objc.Void](c_, objc.Sel("setScrollDirection:"), value)
-}
-
-// The minimum spacing (in points) to use between rows or columns. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402898-minimumlinespacing?language=objc
-func (c_ CollectionViewFlowLayout) MinimumLineSpacing() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("minimumLineSpacing"))
-	return rv
-}
-
-// The minimum spacing (in points) to use between rows or columns. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402898-minimumlinespacing?language=objc
-func (c_ CollectionViewFlowLayout) SetMinimumLineSpacing(value float64) {
-	objc.Call[objc.Void](c_, objc.Sel("setMinimumLineSpacing:"), value)
-}
-
-// The default size to use for section headers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402893-headerreferencesize?language=objc
-func (c_ CollectionViewFlowLayout) HeaderReferenceSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("headerReferenceSize"))
-	return rv
-}
-
-// The default size to use for section headers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402893-headerreferencesize?language=objc
-func (c_ CollectionViewFlowLayout) SetHeaderReferenceSize(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setHeaderReferenceSize:"), value)
-}
-
-// The default size to use for section footers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402892-footerreferencesize?language=objc
-func (c_ CollectionViewFlowLayout) FooterReferenceSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("footerReferenceSize"))
-	return rv
-}
-
-// The default size to use for section footers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402892-footerreferencesize?language=objc
-func (c_ CollectionViewFlowLayout) SetFooterReferenceSize(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setFooterReferenceSize:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644723-collapsesectionatindex?language=objc
+func (c_ CollectionViewFlowLayout) CollapseSectionAtIndex(sectionIndex uint) {
+	objc.Call[objc.Void](c_, objc.Sel("collapseSectionAtIndex:"), sectionIndex)
 }
 
 // The default size to use for items. [Full Topic]
@@ -174,49 +114,19 @@ func (c_ CollectionViewFlowLayout) SetItemSize(value foundation.Size) {
 	objc.Call[objc.Void](c_, objc.Sel("setItemSize:"), value)
 }
 
-// The estimated size of items in the collection view. [Full Topic]
+// The default size to use for section headers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402896-estimateditemsize?language=objc
-func (c_ CollectionViewFlowLayout) EstimatedItemSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("estimatedItemSize"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402893-headerreferencesize?language=objc
+func (c_ CollectionViewFlowLayout) HeaderReferenceSize() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("headerReferenceSize"))
 	return rv
 }
 
-// The estimated size of items in the collection view. [Full Topic]
+// The default size to use for section headers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402896-estimateditemsize?language=objc
-func (c_ CollectionViewFlowLayout) SetEstimatedItemSize(value foundation.Size) {
-	objc.Call[objc.Void](c_, objc.Sel("setEstimatedItemSize:"), value)
-}
-
-// The margins used to lay out content in a section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402862-sectioninset?language=objc
-func (c_ CollectionViewFlowLayout) SectionInset() foundation.EdgeInsets {
-	rv := objc.Call[foundation.EdgeInsets](c_, objc.Sel("sectionInset"))
-	return rv
-}
-
-// The margins used to lay out content in a section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402862-sectioninset?language=objc
-func (c_ CollectionViewFlowLayout) SetSectionInset(value foundation.EdgeInsets) {
-	objc.Call[objc.Void](c_, objc.Sel("setSectionInset:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644640-sectionheaderspintovisiblebounds?language=objc
-func (c_ CollectionViewFlowLayout) SectionHeadersPinToVisibleBounds() bool {
-	rv := objc.Call[bool](c_, objc.Sel("sectionHeadersPinToVisibleBounds"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644640-sectionheaderspintovisiblebounds?language=objc
-func (c_ CollectionViewFlowLayout) SetSectionHeadersPinToVisibleBounds(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setSectionHeadersPinToVisibleBounds:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402893-headerreferencesize?language=objc
+func (c_ CollectionViewFlowLayout) SetHeaderReferenceSize(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setHeaderReferenceSize:"), value)
 }
 
 // The minimum spacing (in points) to use between items in the same row or column. [Full Topic]
@@ -234,6 +144,66 @@ func (c_ CollectionViewFlowLayout) SetMinimumInteritemSpacing(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setMinimumInteritemSpacing:"), value)
 }
 
+// The default size to use for section footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402892-footerreferencesize?language=objc
+func (c_ CollectionViewFlowLayout) FooterReferenceSize() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("footerReferenceSize"))
+	return rv
+}
+
+// The default size to use for section footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402892-footerreferencesize?language=objc
+func (c_ CollectionViewFlowLayout) SetFooterReferenceSize(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setFooterReferenceSize:"), value)
+}
+
+// The margins used to lay out content in a section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402862-sectioninset?language=objc
+func (c_ CollectionViewFlowLayout) SectionInset() foundation.EdgeInsets {
+	rv := objc.Call[foundation.EdgeInsets](c_, objc.Sel("sectionInset"))
+	return rv
+}
+
+// The margins used to lay out content in a section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402862-sectioninset?language=objc
+func (c_ CollectionViewFlowLayout) SetSectionInset(value foundation.EdgeInsets) {
+	objc.Call[objc.Void](c_, objc.Sel("setSectionInset:"), value)
+}
+
+// The scroll direction of the layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402869-scrolldirection?language=objc
+func (c_ CollectionViewFlowLayout) ScrollDirection() CollectionViewScrollDirection {
+	rv := objc.Call[CollectionViewScrollDirection](c_, objc.Sel("scrollDirection"))
+	return rv
+}
+
+// The scroll direction of the layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402869-scrolldirection?language=objc
+func (c_ CollectionViewFlowLayout) SetScrollDirection(value CollectionViewScrollDirection) {
+	objc.Call[objc.Void](c_, objc.Sel("setScrollDirection:"), value)
+}
+
+// The estimated size of items in the collection view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402896-estimateditemsize?language=objc
+func (c_ CollectionViewFlowLayout) EstimatedItemSize() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("estimatedItemSize"))
+	return rv
+}
+
+// The estimated size of items in the collection view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402896-estimateditemsize?language=objc
+func (c_ CollectionViewFlowLayout) SetEstimatedItemSize(value foundation.Size) {
+	objc.Call[objc.Void](c_, objc.Sel("setEstimatedItemSize:"), value)
+}
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644671-sectionfooterspintovisiblebounds?language=objc
@@ -247,4 +217,34 @@ func (c_ CollectionViewFlowLayout) SectionFootersPinToVisibleBounds() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644671-sectionfooterspintovisiblebounds?language=objc
 func (c_ CollectionViewFlowLayout) SetSectionFootersPinToVisibleBounds(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setSectionFootersPinToVisibleBounds:"), value)
+}
+
+// The minimum spacing (in points) to use between rows or columns. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402898-minimumlinespacing?language=objc
+func (c_ CollectionViewFlowLayout) MinimumLineSpacing() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("minimumLineSpacing"))
+	return rv
+}
+
+// The minimum spacing (in points) to use between rows or columns. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1402898-minimumlinespacing?language=objc
+func (c_ CollectionViewFlowLayout) SetMinimumLineSpacing(value float64) {
+	objc.Call[objc.Void](c_, objc.Sel("setMinimumLineSpacing:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644640-sectionheaderspintovisiblebounds?language=objc
+func (c_ CollectionViewFlowLayout) SectionHeadersPinToVisibleBounds() bool {
+	rv := objc.Call[bool](c_, objc.Sel("sectionHeadersPinToVisibleBounds"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewflowlayout/1644640-sectionheaderspintovisiblebounds?language=objc
+func (c_ CollectionViewFlowLayout) SetSectionHeadersPinToVisibleBounds(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setSectionHeadersPinToVisibleBounds:"), value)
 }

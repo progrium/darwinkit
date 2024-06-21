@@ -54,21 +54,6 @@ func (i_ InstanceAccelerationStructure) Init() InstanceAccelerationStructure {
 	return rv
 }
 
-func (i_ InstanceAccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) InstanceAccelerationStructure {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[InstanceAccelerationStructure](i_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func InstanceAccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) InstanceAccelerationStructure {
-	instance := InstanceAccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ InstanceAccelerationStructure) InitWithDevice(device metal.PDevice) InstanceAccelerationStructure {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[InstanceAccelerationStructure](i_, objc.Sel("initWithDevice:"), po0)
@@ -80,6 +65,21 @@ func (i_ InstanceAccelerationStructure) InitWithDevice(device metal.PDevice) Ins
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewInstanceAccelerationStructureWithDevice(device metal.PDevice) InstanceAccelerationStructure {
 	instance := InstanceAccelerationStructureClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ InstanceAccelerationStructure) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) InstanceAccelerationStructure {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[InstanceAccelerationStructure](i_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func InstanceAccelerationStructure_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) InstanceAccelerationStructure {
+	instance := InstanceAccelerationStructureClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

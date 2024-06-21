@@ -19,9 +19,9 @@ type _OrderedCollectionChangeClass struct {
 type IOrderedCollectionChange interface {
 	objc.IObject
 	AssociatedIndex() uint
-	ChangeType() CollectionChangeType
-	Index() uint
 	Object_() objc.Object
+	Index() uint
+	ChangeType() CollectionChangeType
 }
 
 // An object that represents an indexed change within an ordered collection. [Full Topic]
@@ -35,20 +35,6 @@ func OrderedCollectionChangeFrom(ptr unsafe.Pointer) OrderedCollectionChange {
 	return OrderedCollectionChange{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (o_ OrderedCollectionChange) InitWithObjectTypeIndex(anObject objc.IObject, type_ CollectionChangeType, index uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](o_, objc.Sel("initWithObject:type:index:"), anObject, type_, index)
-	return rv
-}
-
-// Creates a change object that represents inserting or removing an object from an ordered collection at a specific index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152179-initwithobject?language=objc
-func NewOrderedCollectionChangeWithObjectTypeIndex(anObject objc.IObject, type_ CollectionChangeType, index uint) OrderedCollectionChange {
-	instance := OrderedCollectionChangeClass.Alloc().InitWithObjectTypeIndex(anObject, type_, index)
-	instance.Autorelease()
-	return instance
 }
 
 func (o_ OrderedCollectionChange) InitWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
@@ -100,21 +86,6 @@ func OrderedCollectionChange_ChangeWithObjectTypeIndex(anObject objc.IObject, ty
 	return OrderedCollectionChangeClass.ChangeWithObjectTypeIndex(anObject, type_, index)
 }
 
-// Creates an change object that represents inserting or removing an object from an ordered collection at a specific index, matched with an associated location that infers a move within the collection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152177-changewithobject?language=objc
-func (oc _OrderedCollectionChangeClass) ChangeWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](oc, objc.Sel("changeWithObject:type:index:associatedIndex:"), anObject, type_, index, associatedIndex)
-	return rv
-}
-
-// Creates an change object that represents inserting or removing an object from an ordered collection at a specific index, matched with an associated location that infers a move within the collection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152177-changewithobject?language=objc
-func OrderedCollectionChange_ChangeWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
-	return OrderedCollectionChangeClass.ChangeWithObjectTypeIndexAssociatedIndex(anObject, type_, index, associatedIndex)
-}
-
 // When this property is set to a value other than [foundation/8f9], the receiver is one half of a move, and this value is the index of the change’s counterpart of the opposite type in the diff. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152174-associatedindex?language=objc
@@ -123,11 +94,11 @@ func (o_ OrderedCollectionChange) AssociatedIndex() uint {
 	return rv
 }
 
-// The type of change. [Full Topic]
+// An object the change inserts or removes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152175-changetype?language=objc
-func (o_ OrderedCollectionChange) ChangeType() CollectionChangeType {
-	rv := objc.Call[CollectionChangeType](o_, objc.Sel("changeType"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152181-object?language=objc
+func (o_ OrderedCollectionChange) Object_() objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("object"))
 	return rv
 }
 
@@ -139,10 +110,10 @@ func (o_ OrderedCollectionChange) Index() uint {
 	return rv
 }
 
-// An object the change inserts or removes. [Full Topic]
+// The type of change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152181-object?language=objc
-func (o_ OrderedCollectionChange) Object_() objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("object"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152175-changetype?language=objc
+func (o_ OrderedCollectionChange) ChangeType() CollectionChangeType {
+	rv := objc.Call[CollectionChangeType](o_, objc.Sel("changeType"))
 	return rv
 }

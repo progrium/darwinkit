@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom?language=objc
 type PGloom interface {
 	// optional
-	SetIntensity(value float32)
-	HasSetIntensity() bool
-
-	// optional
-	Intensity() float32
-	HasIntensity() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetIntensity(value float32)
+	HasSetIntensity() bool
+
+	// optional
+	Intensity() float32
+	HasIntensity() bool
 
 	// optional
 	SetRadius(value float32)
@@ -41,29 +41,6 @@ var _ PGloom = (*GloomObject)(nil)
 // A concrete type for the [PGloom] protocol.
 type GloomObject struct {
 	objc.Object
-}
-
-func (g_ GloomObject) HasSetIntensity() bool {
-	return g_.RespondsToSelector(objc.Sel("setIntensity:"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
-func (g_ GloomObject) SetIntensity(value float32) {
-	objc.Call[objc.Void](g_, objc.Sel("setIntensity:"), value)
-}
-
-func (g_ GloomObject) HasIntensity() bool {
-	return g_.RespondsToSelector(objc.Sel("intensity"))
-}
-
-// The intensity of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
-func (g_ GloomObject) Intensity() float32 {
-	rv := objc.Call[float32](g_, objc.Sel("intensity"))
-	return rv
 }
 
 func (g_ GloomObject) HasSetInputImage() bool {
@@ -86,6 +63,29 @@ func (g_ GloomObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228477-inputimage?language=objc
 func (g_ GloomObject) InputImage() Image {
 	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (g_ GloomObject) HasSetIntensity() bool {
+	return g_.RespondsToSelector(objc.Sel("setIntensity:"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
+func (g_ GloomObject) SetIntensity(value float32) {
+	objc.Call[objc.Void](g_, objc.Sel("setIntensity:"), value)
+}
+
+func (g_ GloomObject) HasIntensity() bool {
+	return g_.RespondsToSelector(objc.Sel("intensity"))
+}
+
+// The intensity of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
+func (g_ GloomObject) Intensity() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("intensity"))
 	return rv
 }
 

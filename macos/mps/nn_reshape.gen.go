@@ -20,14 +20,10 @@ type _NNReshapeClass struct {
 // An interface definition for the [NNReshape] class.
 type INNReshape interface {
 	ICNNKernel
-	EncodeToCommandBufferSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
-	EncodeToCommandBufferObjectSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
-	EncodeToCommandBufferSourceImageDestinationStateDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, outState unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
-	EncodeToCommandBufferObjectSourceImageDestinationStateDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, outState unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
 	EncodeBatchToCommandBufferSourceImagesReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array
 	EncodeBatchToCommandBufferObjectSourceImagesReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImages *foundation.Array, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array
-	EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array
+	EncodeToCommandBufferSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
+	EncodeToCommandBufferObjectSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image
 }
 
 // The base class for reshape operations. [Full Topic]
@@ -95,40 +91,6 @@ func NNReshape_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNR
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547992-encodetocommandbuffer?language=objc
-func (n_ NNReshape) EncodeToCommandBufferSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), po0, sourceImage, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547992-encodetocommandbuffer?language=objc
-func (n_ NNReshape) EncodeToCommandBufferObjectSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), commandBufferObject, sourceImage, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547991-encodetocommandbuffer?language=objc
-func (n_ NNReshape) EncodeToCommandBufferSourceImageDestinationStateDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, outState unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationStateIsTemporary:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), po0, sourceImage, outState, isTemporary, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547991-encodetocommandbuffer?language=objc
-func (n_ NNReshape) EncodeToCommandBufferObjectSourceImageDestinationStateDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, outState unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationStateIsTemporary:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), commandBufferObject, sourceImage, outState, isTemporary, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547990-encodebatchtocommandbuffer?language=objc
 func (n_ NNReshape) EncodeBatchToCommandBufferSourceImagesReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -146,17 +108,17 @@ func (n_ NNReshape) EncodeBatchToCommandBufferObjectSourceImagesReshapedWidthRes
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547989-encodebatchtocommandbuffer?language=objc
-func (n_ NNReshape) EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array {
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547992-encodetocommandbuffer?language=objc
+func (n_ NNReshape) EncodeToCommandBufferSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBuffer metal.PCommandBuffer, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), po0, sourceImages, outStates, isTemporary, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), po0, sourceImage, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547989-encodebatchtocommandbuffer?language=objc
-func (n_ NNReshape) EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporaryReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), commandBufferObject, sourceImages, outStates, isTemporary, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreshape/3547992-encodetocommandbuffer?language=objc
+func (n_ NNReshape) EncodeToCommandBufferObjectSourceImageReshapedWidthReshapedHeightReshapedFeatureChannels(commandBufferObject objc.IObject, sourceImage IImage, reshapedWidth uint, reshapedHeight uint, reshapedFeatureChannels uint) Image {
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImage:reshapedWidth:reshapedHeight:reshapedFeatureChannels:"), commandBufferObject, sourceImage, reshapedWidth, reshapedHeight, reshapedFeatureChannels)
 	return rv
 }

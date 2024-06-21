@@ -19,18 +19,18 @@ type _MatrixNeuronClass struct {
 // An interface definition for the [MatrixNeuron] class.
 type IMatrixNeuron interface {
 	IMatrixUnaryKernel
+	NeuronParameterA() float32
+	NeuronType() CNNNeuronType
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterB() float32
 	EncodeToCommandBufferInputMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
-	NeuronParameterC() float32
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
-	NeuronParameterA() float32
-	NeuronParameterB() float32
-	NeuronType() CNNNeuronType
 	SetNeuronToPReLUWithParametersA(A []byte)
-	SourceNumberOfFeatureVectors() uint
-	SetSourceNumberOfFeatureVectors(value uint)
+	NeuronParameterC() float32
 	Alpha() float64
 	SetAlpha(value float64)
+	SourceNumberOfFeatureVectors() uint
+	SetSourceNumberOfFeatureVectors(value uint)
 	SourceInputFeatureChannels() uint
 	SetSourceInputFeatureChannels(value uint)
 }
@@ -100,6 +100,37 @@ func (m_ MatrixNeuron) Init() MatrixNeuron {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935583-neuronparametera?language=objc
+func (m_ MatrixNeuron) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935587-neurontype?language=objc
+func (m_ MatrixNeuron) NeuronType() CNNNeuronType {
+	rv := objc.Call[CNNNeuronType](m_, objc.Sel("neuronType"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935590-setneurontype?language=objc
+func (m_ MatrixNeuron) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935585-neuronparameterb?language=objc
+func (m_ MatrixNeuron) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935606-encodetocommandbuffer?language=objc
 func (m_ MatrixNeuron) EncodeToCommandBufferInputMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
@@ -115,45 +146,6 @@ func (m_ MatrixNeuron) EncodeToCommandBufferObjectInputMatrixBiasVectorResultMat
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935598-neuronparameterc?language=objc
-func (m_ MatrixNeuron) NeuronParameterC() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935590-setneurontype?language=objc
-func (m_ MatrixNeuron) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935583-neuronparametera?language=objc
-func (m_ MatrixNeuron) NeuronParameterA() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935585-neuronparameterb?language=objc
-func (m_ MatrixNeuron) NeuronParameterB() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935587-neurontype?language=objc
-func (m_ MatrixNeuron) NeuronType() CNNNeuronType {
-	rv := objc.Call[CNNNeuronType](m_, objc.Sel("neuronType"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935610-setneurontopreluwithparametersa?language=objc
 func (m_ MatrixNeuron) SetNeuronToPReLUWithParametersA(A []byte) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronToPReLUWithParametersA:"), A)
@@ -161,17 +153,10 @@ func (m_ MatrixNeuron) SetNeuronToPReLUWithParametersA(A []byte) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935607-sourcenumberoffeaturevectors?language=objc
-func (m_ MatrixNeuron) SourceNumberOfFeatureVectors() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceNumberOfFeatureVectors"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935598-neuronparameterc?language=objc
+func (m_ MatrixNeuron) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935607-sourcenumberoffeaturevectors?language=objc
-func (m_ MatrixNeuron) SetSourceNumberOfFeatureVectors(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceNumberOfFeatureVectors:"), value)
 }
 
 //	[Full Topic]
@@ -187,6 +172,21 @@ func (m_ MatrixNeuron) Alpha() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935605-alpha?language=objc
 func (m_ MatrixNeuron) SetAlpha(value float64) {
 	objc.Call[objc.Void](m_, objc.Sel("setAlpha:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935607-sourcenumberoffeaturevectors?language=objc
+func (m_ MatrixNeuron) SourceNumberOfFeatureVectors() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceNumberOfFeatureVectors"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935607-sourcenumberoffeaturevectors?language=objc
+func (m_ MatrixNeuron) SetSourceNumberOfFeatureVectors(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceNumberOfFeatureVectors:"), value)
 }
 
 //	[Full Topic]

@@ -18,9 +18,9 @@ type _CoreMLRequestClass struct {
 // An interface definition for the [CoreMLRequest] class.
 type ICoreMLRequest interface {
 	IImageBasedRequest
+	Model() CoreMLModel
 	ImageCropAndScaleOption() ImageCropAndScaleOption
 	SetImageCropAndScaleOption(value ImageCropAndScaleOption)
-	Model() CoreMLModel
 }
 
 // An image analysis request that uses a Core ML model to process images. [Full Topic]
@@ -34,20 +34,6 @@ func CoreMLRequestFrom(ptr unsafe.Pointer) CoreMLRequest {
 	return CoreMLRequest{
 		ImageBasedRequest: ImageBasedRequestFrom(ptr),
 	}
-}
-
-func (c_ CoreMLRequest) InitWithModelCompletionHandler(model ICoreMLModel, completionHandler RequestCompletionHandler) CoreMLRequest {
-	rv := objc.Call[CoreMLRequest](c_, objc.Sel("initWithModel:completionHandler:"), model, completionHandler)
-	return rv
-}
-
-// Creates a model container to use with an image analysis request based on the model you provide, with an optional completion handler. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlrequest/2890152-initwithmodel?language=objc
-func NewCoreMLRequestWithModelCompletionHandler(model ICoreMLModel, completionHandler RequestCompletionHandler) CoreMLRequest {
-	instance := CoreMLRequestClass.Alloc().InitWithModelCompletionHandler(model, completionHandler)
-	instance.Autorelease()
-	return instance
 }
 
 func (c_ CoreMLRequest) InitWithModel(model ICoreMLModel) CoreMLRequest {
@@ -98,6 +84,14 @@ func NewCoreMLRequestWithCompletionHandler(completionHandler RequestCompletionHa
 	return instance
 }
 
+// The model to base the image analysis request on. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlrequest/2890150-model?language=objc
+func (c_ CoreMLRequest) Model() CoreMLModel {
+	rv := objc.Call[CoreMLModel](c_, objc.Sel("model"))
+	return rv
+}
+
 // An optional setting that tells the Vision algorithm how to scale an input image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlrequest/2890144-imagecropandscaleoption?language=objc
@@ -111,12 +105,4 @@ func (c_ CoreMLRequest) ImageCropAndScaleOption() ImageCropAndScaleOption {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlrequest/2890144-imagecropandscaleoption?language=objc
 func (c_ CoreMLRequest) SetImageCropAndScaleOption(value ImageCropAndScaleOption) {
 	objc.Call[objc.Void](c_, objc.Sel("setImageCropAndScaleOption:"), value)
-}
-
-// The model to base the image analysis request on. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlrequest/2890150-model?language=objc
-func (c_ CoreMLRequest) Model() CoreMLModel {
-	rv := objc.Call[CoreMLModel](c_, objc.Sel("model"))
-	return rv
 }

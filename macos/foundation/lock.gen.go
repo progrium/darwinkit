@@ -18,8 +18,8 @@ type _LockClass struct {
 // An interface definition for the [Lock] class.
 type ILock interface {
 	objc.IObject
-	LockBeforeDate(limit IDate) bool
 	TryLock() bool
+	LockBeforeDate(limit IDate) bool
 	Name() string
 	SetName(value string)
 }
@@ -57,19 +57,19 @@ func (l_ Lock) Init() Lock {
 	return rv
 }
 
-// Attempts to acquire a lock before a given time and returns a Boolean value indicating whether the attempt was successful. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslock/1411133-lockbeforedate?language=objc
-func (l_ Lock) LockBeforeDate(limit IDate) bool {
-	rv := objc.Call[bool](l_, objc.Sel("lockBeforeDate:"), limit)
-	return rv
-}
-
 // Attempts to acquire a lock and immediately returns a Boolean value that indicates whether the attempt was successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslock/1418105-trylock?language=objc
 func (l_ Lock) TryLock() bool {
 	rv := objc.Call[bool](l_, objc.Sel("tryLock"))
+	return rv
+}
+
+// Attempts to acquire a lock before a given time and returns a Boolean value indicating whether the attempt was successful. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslock/1411133-lockbeforedate?language=objc
+func (l_ Lock) LockBeforeDate(limit IDate) bool {
+	rv := objc.Call[bool](l_, objc.Sel("lockBeforeDate:"), limit)
 	return rv
 }
 

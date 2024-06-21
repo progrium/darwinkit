@@ -34,18 +34,6 @@ func VideoCompositionCoreAnimationToolFrom(ptr unsafe.Pointer) VideoCompositionC
 	}
 }
 
-func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayersInLayer(videoLayers []quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
-	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayers:inLayer:"), videoLayers, animationLayer)
-	return rv
-}
-
-// Composes the composited video frames with the Core Animation layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioncoreanimationtool/1389778-videocompositioncoreanimationtoo?language=objc
-func VideoCompositionCoreAnimationTool_VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayersInLayer(videoLayers []quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
-	return VideoCompositionCoreAnimationToolClass.VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayersInLayer(videoLayers, animationLayer)
-}
-
 func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayerInLayer(videoLayer quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
 	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:inLayer:"), videoLayer, animationLayer)
 	return rv
@@ -56,18 +44,6 @@ func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationT
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioncoreanimationtool/1389594-videocompositioncoreanimationtoo?language=objc
 func VideoCompositionCoreAnimationTool_VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayerInLayer(videoLayer quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
 	return VideoCompositionCoreAnimationToolClass.VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayerInLayer(videoLayer, animationLayer)
-}
-
-func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithAdditionalLayerAsTrackID(layer quartzcore.ILayer, trackID objc.IObject) VideoCompositionCoreAnimationTool {
-	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithAdditionalLayer:asTrackID:"), layer, trackID)
-	return rv
-}
-
-// Adds a Core Animation layer to the video composition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositioncoreanimationtool/1388345-videocompositioncoreanimationtoo?language=objc
-func VideoCompositionCoreAnimationTool_VideoCompositionCoreAnimationToolWithAdditionalLayerAsTrackID(layer quartzcore.ILayer, trackID objc.IObject) VideoCompositionCoreAnimationTool {
-	return VideoCompositionCoreAnimationToolClass.VideoCompositionCoreAnimationToolWithAdditionalLayerAsTrackID(layer, trackID)
 }
 
 func (vc _VideoCompositionCoreAnimationToolClass) Alloc() VideoCompositionCoreAnimationTool {

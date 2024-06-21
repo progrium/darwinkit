@@ -22,8 +22,8 @@ type IMetadataObject interface {
 	objc.IObject
 	Bounds() coregraphics.Rect
 	Time() coremedia.Time
-	Duration() coremedia.Time
 	Type() MetadataObjectType
+	Duration() coremedia.Time
 }
 
 // The abstract superclass for objects provided by a metadata capture output. [Full Topic]
@@ -75,18 +75,18 @@ func (m_ MetadataObject) Time() coremedia.Time {
 	return rv
 }
 
-// The duration of the media associated with this metadata object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataobject/1386827-duration?language=objc
-func (m_ MetadataObject) Duration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](m_, objc.Sel("duration"))
-	return rv
-}
-
 // The type of metadata that this object provides. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataobject/1387841-type?language=objc
 func (m_ MetadataObject) Type() MetadataObjectType {
 	rv := objc.Call[MetadataObjectType](m_, objc.Sel("type"))
+	return rv
+}
+
+// The duration of the media associated with this metadata object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataobject/1386827-duration?language=objc
+func (m_ MetadataObject) Duration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](m_, objc.Sel("duration"))
 	return rv
 }

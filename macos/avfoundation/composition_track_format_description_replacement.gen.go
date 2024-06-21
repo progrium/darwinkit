@@ -19,8 +19,8 @@ type _CompositionTrackFormatDescriptionReplacementClass struct {
 // An interface definition for the [CompositionTrackFormatDescriptionReplacement] class.
 type ICompositionTrackFormatDescriptionReplacement interface {
 	objc.IObject
-	ReplacementFormatDescription() coremedia.FormatDescriptionRef
 	OriginalFormatDescription() coremedia.FormatDescriptionRef
+	ReplacementFormatDescription() coremedia.FormatDescriptionRef
 }
 
 // An object that represents a format description and its replacement. [Full Topic]
@@ -56,18 +56,18 @@ func (c_ CompositionTrackFormatDescriptionReplacement) Init() CompositionTrackFo
 	return rv
 }
 
-// The replacement format description. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcompositiontrackformatdescriptionreplacement/3180003-replacementformatdescription?language=objc
-func (c_ CompositionTrackFormatDescriptionReplacement) ReplacementFormatDescription() coremedia.FormatDescriptionRef {
-	rv := objc.Call[coremedia.FormatDescriptionRef](c_, objc.Sel("replacementFormatDescription"))
-	return rv
-}
-
 // The format description to replace. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcompositiontrackformatdescriptionreplacement/3180002-originalformatdescription?language=objc
 func (c_ CompositionTrackFormatDescriptionReplacement) OriginalFormatDescription() coremedia.FormatDescriptionRef {
 	rv := objc.Call[coremedia.FormatDescriptionRef](c_, objc.Sel("originalFormatDescription"))
+	return rv
+}
+
+// The replacement format description. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcompositiontrackformatdescriptionreplacement/3180003-replacementformatdescription?language=objc
+func (c_ CompositionTrackFormatDescriptionReplacement) ReplacementFormatDescription() coremedia.FormatDescriptionRef {
+	rv := objc.Call[coremedia.FormatDescriptionRef](c_, objc.Sel("replacementFormatDescription"))
 	return rv
 }

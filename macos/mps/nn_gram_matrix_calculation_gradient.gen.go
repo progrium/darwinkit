@@ -51,21 +51,6 @@ func NewNNGramMatrixCalculationGradientWithDevice(device metal.PDevice) NNGramMa
 	return instance
 }
 
-func (n_ NNGramMatrixCalculationGradient) InitWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculationGradient {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGramMatrixCalculationGradient](n_, objc.Sel("initWithDevice:alpha:"), po0, alpha)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradient/3114085-initwithdevice?language=objc
-func NewNNGramMatrixCalculationGradientWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculationGradient {
-	instance := NNGramMatrixCalculationGradientClass.Alloc().InitWithDeviceAlpha(device, alpha)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNGramMatrixCalculationGradientClass) Alloc() NNGramMatrixCalculationGradient {
 	rv := objc.Call[NNGramMatrixCalculationGradient](nc, objc.Sel("alloc"))
 	return rv

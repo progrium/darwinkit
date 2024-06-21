@@ -20,17 +20,17 @@ type _CaptureVideoPreviewLayerClass struct {
 // An interface definition for the [CaptureVideoPreviewLayer] class.
 type ICaptureVideoPreviewLayer interface {
 	quartzcore.ILayer
-	CaptureDevicePointOfInterestForPoint(pointInLayer coregraphics.Point) coregraphics.Point
-	PointForCaptureDevicePointOfInterest(captureDevicePointOfInterest coregraphics.Point) coregraphics.Point
-	SetSessionWithNoConnection(session ICaptureSession)
-	RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect
 	TransformedMetadataObjectForMetadataObject(metadataObject IMetadataObject) MetadataObject
 	MetadataOutputRectOfInterestForRect(rectInLayerCoordinates coregraphics.Rect) coregraphics.Rect
-	Connection() CaptureConnection
+	CaptureDevicePointOfInterestForPoint(pointInLayer coregraphics.Point) coregraphics.Point
+	SetSessionWithNoConnection(session ICaptureSession)
+	RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect
+	PointForCaptureDevicePointOfInterest(captureDevicePointOfInterest coregraphics.Point) coregraphics.Point
 	VideoGravity() LayerVideoGravity
 	SetVideoGravity(value LayerVideoGravity)
 	Session() CaptureSession
 	SetSession(value ICaptureSession)
+	Connection() CaptureConnection
 }
 
 // A Core Animation layer that displays video from a camera device. [Full Topic]
@@ -44,18 +44,6 @@ func CaptureVideoPreviewLayerFrom(ptr unsafe.Pointer) CaptureVideoPreviewLayer {
 	return CaptureVideoPreviewLayer{
 		Layer: quartzcore.LayerFrom(ptr),
 	}
-}
-
-func (cc _CaptureVideoPreviewLayerClass) LayerWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSessionWithNoConnection:"), session)
-	return rv
-}
-
-// Returns a new layer to preview the visual output of a capture session, without making connections to eligible video inputs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1567197-layerwithsessionwithnoconnection?language=objc
-func CaptureVideoPreviewLayer_LayerWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
-	return CaptureVideoPreviewLayerClass.LayerWithSessionWithNoConnection(session)
 }
 
 func (c_ CaptureVideoPreviewLayer) InitWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
@@ -72,18 +60,16 @@ func NewCaptureVideoPreviewLayerWithSessionWithNoConnection(session ICaptureSess
 	return instance
 }
 
-func (c_ CaptureVideoPreviewLayer) InitWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSession:"), session)
+func (cc _CaptureVideoPreviewLayerClass) LayerWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
+	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSessionWithNoConnection:"), session)
 	return rv
 }
 
-// Creates a layer to preview the visual output of a capture session. [Full Topic]
+// Returns a new layer to preview the visual output of a capture session, without making connections to eligible video inputs. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1387766-initwithsession?language=objc
-func NewCaptureVideoPreviewLayerWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
-	instance := CaptureVideoPreviewLayerClass.Alloc().InitWithSession(session)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1567197-layerwithsessionwithnoconnection?language=objc
+func CaptureVideoPreviewLayer_LayerWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
+	return CaptureVideoPreviewLayerClass.LayerWithSessionWithNoConnection(session)
 }
 
 func (cc _CaptureVideoPreviewLayerClass) LayerWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
@@ -96,6 +82,20 @@ func (cc _CaptureVideoPreviewLayerClass) LayerWithSession(session ICaptureSessio
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1567198-layerwithsession?language=objc
 func CaptureVideoPreviewLayer_LayerWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
 	return CaptureVideoPreviewLayerClass.LayerWithSession(session)
+}
+
+func (c_ CaptureVideoPreviewLayer) InitWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
+	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSession:"), session)
+	return rv
+}
+
+// Creates a layer to preview the visual output of a capture session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1387766-initwithsession?language=objc
+func NewCaptureVideoPreviewLayerWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
+	instance := CaptureVideoPreviewLayerClass.Alloc().InitWithSession(session)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CaptureVideoPreviewLayerClass) Alloc() CaptureVideoPreviewLayer {
@@ -116,6 +116,32 @@ func NewCaptureVideoPreviewLayer() CaptureVideoPreviewLayer {
 func (c_ CaptureVideoPreviewLayer) Init() CaptureVideoPreviewLayer {
 	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("init"))
 	return rv
+}
+
+func (cc _CaptureVideoPreviewLayerClass) Layer() CaptureVideoPreviewLayer {
+	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func CaptureVideoPreviewLayer_Layer() CaptureVideoPreviewLayer {
+	return CaptureVideoPreviewLayerClass.Layer()
+}
+
+func (c_ CaptureVideoPreviewLayer) InitWithLayer(layer objc.IObject) CaptureVideoPreviewLayer {
+	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewCaptureVideoPreviewLayerWithLayer(layer objc.IObject) CaptureVideoPreviewLayer {
+	instance := CaptureVideoPreviewLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CaptureVideoPreviewLayer) ModelLayer() CaptureVideoPreviewLayer {
@@ -146,30 +172,20 @@ func CaptureVideoPreviewLayer_PresentationLayer() CaptureVideoPreviewLayer {
 	return instance
 }
 
-func (c_ CaptureVideoPreviewLayer) InitWithLayer(layer objc.IObject) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithLayer:"), layer)
+// Converts a metadata object’s visual properties to layer coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623501-transformedmetadataobjectformeta?language=objc
+func (c_ CaptureVideoPreviewLayer) TransformedMetadataObjectForMetadataObject(metadataObject IMetadataObject) MetadataObject {
+	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:"), metadataObject)
 	return rv
 }
 
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+// Converts a rectangle from layer coordinates to the coordinate space of the metadata output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewCaptureVideoPreviewLayerWithLayer(layer objc.IObject) CaptureVideoPreviewLayer {
-	instance := CaptureVideoPreviewLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CaptureVideoPreviewLayerClass) Layer() CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layer"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623495-metadataoutputrectofinterestforr?language=objc
+func (c_ CaptureVideoPreviewLayer) MetadataOutputRectOfInterestForRect(rectInLayerCoordinates coregraphics.Rect) coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("metadataOutputRectOfInterestForRect:"), rectInLayerCoordinates)
 	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func CaptureVideoPreviewLayer_Layer() CaptureVideoPreviewLayer {
-	return CaptureVideoPreviewLayerClass.Layer()
 }
 
 // Converts a point from layer coordinates to the coordinate space of the capture device. [Full Topic]
@@ -177,14 +193,6 @@ func CaptureVideoPreviewLayer_Layer() CaptureVideoPreviewLayer {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623497-capturedevicepointofinterestforp?language=objc
 func (c_ CaptureVideoPreviewLayer) CaptureDevicePointOfInterestForPoint(pointInLayer coregraphics.Point) coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](c_, objc.Sel("captureDevicePointOfInterestForPoint:"), pointInLayer)
-	return rv
-}
-
-// Converts a point from the coordinate space of the capture device to the coordinate space of the layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623502-pointforcapturedevicepointofinte?language=objc
-func (c_ CaptureVideoPreviewLayer) PointForCaptureDevicePointOfInterest(captureDevicePointOfInterest coregraphics.Point) coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("pointForCaptureDevicePointOfInterest:"), captureDevicePointOfInterest)
 	return rv
 }
 
@@ -203,27 +211,11 @@ func (c_ CaptureVideoPreviewLayer) RectForMetadataOutputRectOfInterest(rectInMet
 	return rv
 }
 
-// Converts a metadata object’s visual properties to layer coordinates. [Full Topic]
+// Converts a point from the coordinate space of the capture device to the coordinate space of the layer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623501-transformedmetadataobjectformeta?language=objc
-func (c_ CaptureVideoPreviewLayer) TransformedMetadataObjectForMetadataObject(metadataObject IMetadataObject) MetadataObject {
-	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:"), metadataObject)
-	return rv
-}
-
-// Converts a rectangle from layer coordinates to the coordinate space of the metadata output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623495-metadataoutputrectofinterestforr?language=objc
-func (c_ CaptureVideoPreviewLayer) MetadataOutputRectOfInterestForRect(rectInLayerCoordinates coregraphics.Rect) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("metadataOutputRectOfInterestForRect:"), rectInLayerCoordinates)
-	return rv
-}
-
-// An object that describes the connection from the layer to a particular input port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1390893-connection?language=objc
-func (c_ CaptureVideoPreviewLayer) Connection() CaptureConnection {
-	rv := objc.Call[CaptureConnection](c_, objc.Sel("connection"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623502-pointforcapturedevicepointofinte?language=objc
+func (c_ CaptureVideoPreviewLayer) PointForCaptureDevicePointOfInterest(captureDevicePointOfInterest coregraphics.Point) coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("pointForCaptureDevicePointOfInterest:"), captureDevicePointOfInterest)
 	return rv
 }
 
@@ -255,4 +247,12 @@ func (c_ CaptureVideoPreviewLayer) Session() CaptureSession {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1386157-session?language=objc
 func (c_ CaptureVideoPreviewLayer) SetSession(value ICaptureSession) {
 	objc.Call[objc.Void](c_, objc.Sel("setSession:"), value)
+}
+
+// An object that describes the connection from the layer to a particular input port. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1390893-connection?language=objc
+func (c_ CaptureVideoPreviewLayer) Connection() CaptureConnection {
+	rv := objc.Call[CaptureConnection](c_, objc.Sel("connection"))
+	return rv
 }

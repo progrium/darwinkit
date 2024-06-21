@@ -54,18 +54,6 @@ func (s_ SecureTextField) Init() SecureTextField {
 	return rv
 }
 
-func (sc _SecureTextFieldClass) LabelWithString(stringValue string) SecureTextField {
-	rv := objc.Call[SecureTextField](sc, objc.Sel("labelWithString:"), stringValue)
-	return rv
-}
-
-// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
-func SecureTextField_LabelWithString(stringValue string) SecureTextField {
-	return SecureTextFieldClass.LabelWithString(stringValue)
-}
-
 func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
 	rv := objc.Call[SecureTextField](sc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
@@ -76,6 +64,18 @@ func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue 
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
 func SecureTextField_LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
 	return SecureTextFieldClass.LabelWithAttributedString(attributedStringValue)
+}
+
+func (sc _SecureTextFieldClass) LabelWithString(stringValue string) SecureTextField {
+	rv := objc.Call[SecureTextField](sc, objc.Sel("labelWithString:"), stringValue)
+	return rv
+}
+
+// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func SecureTextField_LabelWithString(stringValue string) SecureTextField {
+	return SecureTextFieldClass.LabelWithString(stringValue)
 }
 
 func (sc _SecureTextFieldClass) WrappingLabelWithString(stringValue string) SecureTextField {

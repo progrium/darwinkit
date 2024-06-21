@@ -20,11 +20,11 @@ type IBlitPassSampleBufferAttachmentDescriptor interface {
 	objc.IObject
 	StartOfEncoderSampleIndex() uint
 	SetStartOfEncoderSampleIndex(value uint)
+	EndOfEncoderSampleIndex() uint
+	SetEndOfEncoderSampleIndex(value uint)
 	SampleBuffer() CounterSampleBufferObject
 	SetSampleBuffer(value PCounterSampleBuffer)
 	SetSampleBufferObject(valueObject objc.IObject)
-	EndOfEncoderSampleIndex() uint
-	SetEndOfEncoderSampleIndex(value uint)
 }
 
 // A configuration that instructs the GPU where to store counter data from the beginning and end of a blit pass. [Full Topic]
@@ -75,6 +75,21 @@ func (b_ BlitPassSampleBufferAttachmentDescriptor) SetStartOfEncoderSampleIndex(
 	objc.Call[objc.Void](b_, objc.Sel("setStartOfEncoderSampleIndex:"), value)
 }
 
+// An index within a counter sample buffer that tells the GPU where to store counter data from the end of a blit pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564424-endofencodersampleindex?language=objc
+func (b_ BlitPassSampleBufferAttachmentDescriptor) EndOfEncoderSampleIndex() uint {
+	rv := objc.Call[uint](b_, objc.Sel("endOfEncoderSampleIndex"))
+	return rv
+}
+
+// An index within a counter sample buffer that tells the GPU where to store counter data from the end of a blit pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564424-endofencodersampleindex?language=objc
+func (b_ BlitPassSampleBufferAttachmentDescriptor) SetEndOfEncoderSampleIndex(value uint) {
+	objc.Call[objc.Void](b_, objc.Sel("setEndOfEncoderSampleIndex:"), value)
+}
+
 // A specialized memory buffer that the GPU uses to store its counter data during the blit pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564425-samplebuffer?language=objc
@@ -96,19 +111,4 @@ func (b_ BlitPassSampleBufferAttachmentDescriptor) SetSampleBuffer(value PCounte
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564425-samplebuffer?language=objc
 func (b_ BlitPassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](b_, objc.Sel("setSampleBuffer:"), valueObject)
-}
-
-// An index within a counter sample buffer that tells the GPU where to store counter data from the end of a blit pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564424-endofencodersampleindex?language=objc
-func (b_ BlitPassSampleBufferAttachmentDescriptor) EndOfEncoderSampleIndex() uint {
-	rv := objc.Call[uint](b_, objc.Sel("endOfEncoderSampleIndex"))
-	return rv
-}
-
-// An index within a counter sample buffer that tells the GPU where to store counter data from the end of a blit pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564424-endofencodersampleindex?language=objc
-func (b_ BlitPassSampleBufferAttachmentDescriptor) SetEndOfEncoderSampleIndex(value uint) {
-	objc.Call[objc.Void](b_, objc.Sel("setEndOfEncoderSampleIndex:"), value)
 }

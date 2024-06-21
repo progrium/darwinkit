@@ -19,28 +19,28 @@ type _EntityMappingClass struct {
 // An interface definition for the [EntityMapping] class.
 type IEntityMapping interface {
 	objc.IObject
-	MappingType() EntityMappingType
-	SetMappingType(value EntityMappingType)
-	SourceExpression() foundation.Expression
-	SetSourceExpression(value foundation.IExpression)
-	UserInfo() foundation.Dictionary
-	SetUserInfo(value foundation.Dictionary)
-	DestinationEntityVersionHash() []byte
-	SetDestinationEntityVersionHash(value []byte)
-	Name() string
-	SetName(value string)
-	EntityMigrationPolicyClassName() string
-	SetEntityMigrationPolicyClassName(value string)
-	RelationshipMappings() []PropertyMapping
-	SetRelationshipMappings(value []IPropertyMapping)
-	SourceEntityVersionHash() []byte
-	SetSourceEntityVersionHash(value []byte)
-	SourceEntityName() string
-	SetSourceEntityName(value string)
 	AttributeMappings() []PropertyMapping
 	SetAttributeMappings(value []IPropertyMapping)
+	EntityMigrationPolicyClassName() string
+	SetEntityMigrationPolicyClassName(value string)
+	Name() string
+	SetName(value string)
 	DestinationEntityName() string
 	SetDestinationEntityName(value string)
+	UserInfo() foundation.Dictionary
+	SetUserInfo(value foundation.Dictionary)
+	SourceEntityName() string
+	SetSourceEntityName(value string)
+	SourceEntityVersionHash() []byte
+	SetSourceEntityVersionHash(value []byte)
+	MappingType() EntityMappingType
+	SetMappingType(value EntityMappingType)
+	RelationshipMappings() []PropertyMapping
+	SetRelationshipMappings(value []IPropertyMapping)
+	DestinationEntityVersionHash() []byte
+	SetDestinationEntityVersionHash(value []byte)
+	SourceExpression() foundation.Expression
+	SetSourceExpression(value foundation.IExpression)
 }
 
 // A mapping instance that specifies how to map an entity from a source to a destination managed object model. [Full Topic]
@@ -76,79 +76,19 @@ func (e_ EntityMapping) Init() EntityMapping {
 	return rv
 }
 
-// The mapping type for the entity mapping. [Full Topic]
+// The array of attribute mappings for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443194-mappingtype?language=objc
-func (e_ EntityMapping) MappingType() EntityMappingType {
-	rv := objc.Call[EntityMappingType](e_, objc.Sel("mappingType"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443193-attributemappings?language=objc
+func (e_ EntityMapping) AttributeMappings() []PropertyMapping {
+	rv := objc.Call[[]PropertyMapping](e_, objc.Sel("attributeMappings"))
 	return rv
 }
 
-// The mapping type for the entity mapping. [Full Topic]
+// The array of attribute mappings for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443194-mappingtype?language=objc
-func (e_ EntityMapping) SetMappingType(value EntityMappingType) {
-	objc.Call[objc.Void](e_, objc.Sel("setMappingType:"), value)
-}
-
-// The source expression for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443180-sourceexpression?language=objc
-func (e_ EntityMapping) SourceExpression() foundation.Expression {
-	rv := objc.Call[foundation.Expression](e_, objc.Sel("sourceExpression"))
-	return rv
-}
-
-// The source expression for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443180-sourceexpression?language=objc
-func (e_ EntityMapping) SetSourceExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](e_, objc.Sel("setSourceExpression:"), value)
-}
-
-// The user info dictionary for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443184-userinfo?language=objc
-func (e_ EntityMapping) UserInfo() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](e_, objc.Sel("userInfo"))
-	return rv
-}
-
-// The user info dictionary for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443184-userinfo?language=objc
-func (e_ EntityMapping) SetUserInfo(value foundation.Dictionary) {
-	objc.Call[objc.Void](e_, objc.Sel("setUserInfo:"), value)
-}
-
-// The version hash for the destination entity for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443169-destinationentityversionhash?language=objc
-func (e_ EntityMapping) DestinationEntityVersionHash() []byte {
-	rv := objc.Call[[]byte](e_, objc.Sel("destinationEntityVersionHash"))
-	return rv
-}
-
-// The version hash for the destination entity for the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443169-destinationentityversionhash?language=objc
-func (e_ EntityMapping) SetDestinationEntityVersionHash(value []byte) {
-	objc.Call[objc.Void](e_, objc.Sel("setDestinationEntityVersionHash:"), value)
-}
-
-// The name of the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443167-name?language=objc
-func (e_ EntityMapping) Name() string {
-	rv := objc.Call[string](e_, objc.Sel("name"))
-	return rv
-}
-
-// The name of the entity mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443167-name?language=objc
-func (e_ EntityMapping) SetName(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setName:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443193-attributemappings?language=objc
+func (e_ EntityMapping) SetAttributeMappings(value []IPropertyMapping) {
+	objc.Call[objc.Void](e_, objc.Sel("setAttributeMappings:"), value)
 }
 
 // The class name of the migration policy for the entity mapping. [Full Topic]
@@ -166,34 +106,49 @@ func (e_ EntityMapping) SetEntityMigrationPolicyClassName(value string) {
 	objc.Call[objc.Void](e_, objc.Sel("setEntityMigrationPolicyClassName:"), value)
 }
 
-// The array of relationship mappings for the entity mapping. [Full Topic]
+// The name of the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443163-relationshipmappings?language=objc
-func (e_ EntityMapping) RelationshipMappings() []PropertyMapping {
-	rv := objc.Call[[]PropertyMapping](e_, objc.Sel("relationshipMappings"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443167-name?language=objc
+func (e_ EntityMapping) Name() string {
+	rv := objc.Call[string](e_, objc.Sel("name"))
 	return rv
 }
 
-// The array of relationship mappings for the entity mapping. [Full Topic]
+// The name of the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443163-relationshipmappings?language=objc
-func (e_ EntityMapping) SetRelationshipMappings(value []IPropertyMapping) {
-	objc.Call[objc.Void](e_, objc.Sel("setRelationshipMappings:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443167-name?language=objc
+func (e_ EntityMapping) SetName(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setName:"), value)
 }
 
-// The version hash of the source entity for the entity mapping. [Full Topic]
+// The destination entity name for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443182-sourceentityversionhash?language=objc
-func (e_ EntityMapping) SourceEntityVersionHash() []byte {
-	rv := objc.Call[[]byte](e_, objc.Sel("sourceEntityVersionHash"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443176-destinationentityname?language=objc
+func (e_ EntityMapping) DestinationEntityName() string {
+	rv := objc.Call[string](e_, objc.Sel("destinationEntityName"))
 	return rv
 }
 
-// The version hash of the source entity for the entity mapping. [Full Topic]
+// The destination entity name for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443182-sourceentityversionhash?language=objc
-func (e_ EntityMapping) SetSourceEntityVersionHash(value []byte) {
-	objc.Call[objc.Void](e_, objc.Sel("setSourceEntityVersionHash:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443176-destinationentityname?language=objc
+func (e_ EntityMapping) SetDestinationEntityName(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setDestinationEntityName:"), value)
+}
+
+// The user info dictionary for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443184-userinfo?language=objc
+func (e_ EntityMapping) UserInfo() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](e_, objc.Sel("userInfo"))
+	return rv
+}
+
+// The user info dictionary for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443184-userinfo?language=objc
+func (e_ EntityMapping) SetUserInfo(value foundation.Dictionary) {
+	objc.Call[objc.Void](e_, objc.Sel("setUserInfo:"), value)
 }
 
 // The source entity name for the entity mapping. [Full Topic]
@@ -211,32 +166,77 @@ func (e_ EntityMapping) SetSourceEntityName(value string) {
 	objc.Call[objc.Void](e_, objc.Sel("setSourceEntityName:"), value)
 }
 
-// The array of attribute mappings for the entity mapping. [Full Topic]
+// The version hash of the source entity for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443193-attributemappings?language=objc
-func (e_ EntityMapping) AttributeMappings() []PropertyMapping {
-	rv := objc.Call[[]PropertyMapping](e_, objc.Sel("attributeMappings"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443182-sourceentityversionhash?language=objc
+func (e_ EntityMapping) SourceEntityVersionHash() []byte {
+	rv := objc.Call[[]byte](e_, objc.Sel("sourceEntityVersionHash"))
 	return rv
 }
 
-// The array of attribute mappings for the entity mapping. [Full Topic]
+// The version hash of the source entity for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443193-attributemappings?language=objc
-func (e_ EntityMapping) SetAttributeMappings(value []IPropertyMapping) {
-	objc.Call[objc.Void](e_, objc.Sel("setAttributeMappings:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443182-sourceentityversionhash?language=objc
+func (e_ EntityMapping) SetSourceEntityVersionHash(value []byte) {
+	objc.Call[objc.Void](e_, objc.Sel("setSourceEntityVersionHash:"), value)
 }
 
-// The destination entity name for the entity mapping. [Full Topic]
+// The mapping type for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443176-destinationentityname?language=objc
-func (e_ EntityMapping) DestinationEntityName() string {
-	rv := objc.Call[string](e_, objc.Sel("destinationEntityName"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443194-mappingtype?language=objc
+func (e_ EntityMapping) MappingType() EntityMappingType {
+	rv := objc.Call[EntityMappingType](e_, objc.Sel("mappingType"))
 	return rv
 }
 
-// The destination entity name for the entity mapping. [Full Topic]
+// The mapping type for the entity mapping. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443176-destinationentityname?language=objc
-func (e_ EntityMapping) SetDestinationEntityName(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setDestinationEntityName:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443194-mappingtype?language=objc
+func (e_ EntityMapping) SetMappingType(value EntityMappingType) {
+	objc.Call[objc.Void](e_, objc.Sel("setMappingType:"), value)
+}
+
+// The array of relationship mappings for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443163-relationshipmappings?language=objc
+func (e_ EntityMapping) RelationshipMappings() []PropertyMapping {
+	rv := objc.Call[[]PropertyMapping](e_, objc.Sel("relationshipMappings"))
+	return rv
+}
+
+// The array of relationship mappings for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443163-relationshipmappings?language=objc
+func (e_ EntityMapping) SetRelationshipMappings(value []IPropertyMapping) {
+	objc.Call[objc.Void](e_, objc.Sel("setRelationshipMappings:"), value)
+}
+
+// The version hash for the destination entity for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443169-destinationentityversionhash?language=objc
+func (e_ EntityMapping) DestinationEntityVersionHash() []byte {
+	rv := objc.Call[[]byte](e_, objc.Sel("destinationEntityVersionHash"))
+	return rv
+}
+
+// The version hash for the destination entity for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443169-destinationentityversionhash?language=objc
+func (e_ EntityMapping) SetDestinationEntityVersionHash(value []byte) {
+	objc.Call[objc.Void](e_, objc.Sel("setDestinationEntityVersionHash:"), value)
+}
+
+// The source expression for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443180-sourceexpression?language=objc
+func (e_ EntityMapping) SourceExpression() foundation.Expression {
+	rv := objc.Call[foundation.Expression](e_, objc.Sel("sourceExpression"))
+	return rv
+}
+
+// The source expression for the entity mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443180-sourceexpression?language=objc
+func (e_ EntityMapping) SetSourceExpression(value foundation.IExpression) {
+	objc.Call[objc.Void](e_, objc.Sel("setSourceExpression:"), value)
 }

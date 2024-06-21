@@ -18,11 +18,11 @@ type _CustomAttributeKeyClass struct {
 // An interface definition for the [CustomAttributeKey] class.
 type ICustomAttributeKey interface {
 	objc.IObject
-	IsMultiValued() bool
-	IsSearchableByDefault() bool
 	IsUnique() bool
 	IsSearchable() bool
+	IsMultiValued() bool
 	KeyName() string
+	IsSearchableByDefault() bool
 }
 
 // A key associated with a custom attribute for a searchable item. [Full Topic]
@@ -52,20 +52,6 @@ func NewCustomAttributeKeyWithKeyName(keyName string) CustomAttributeKey {
 	return instance
 }
 
-func (c_ CustomAttributeKey) InitWithKeyNameSearchableSearchableByDefaultUniqueMultiValued(keyName string, searchable bool, searchableByDefault bool, unique bool, multiValued bool) CustomAttributeKey {
-	rv := objc.Call[CustomAttributeKey](c_, objc.Sel("initWithKeyName:searchable:searchableByDefault:unique:multiValued:"), keyName, searchable, searchableByDefault, unique, multiValued)
-	return rv
-}
-
-// Returns a new custom attribute key with the specified name and properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616410-initwithkeyname?language=objc
-func NewCustomAttributeKeyWithKeyNameSearchableSearchableByDefaultUniqueMultiValued(keyName string, searchable bool, searchableByDefault bool, unique bool, multiValued bool) CustomAttributeKey {
-	instance := CustomAttributeKeyClass.Alloc().InitWithKeyNameSearchableSearchableByDefaultUniqueMultiValued(keyName, searchable, searchableByDefault, unique, multiValued)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CustomAttributeKeyClass) Alloc() CustomAttributeKey {
 	rv := objc.Call[CustomAttributeKey](cc, objc.Sel("alloc"))
 	return rv
@@ -86,22 +72,6 @@ func (c_ CustomAttributeKey) Init() CustomAttributeKey {
 	return rv
 }
 
-// A Boolean value that indicates if the custom attribute is likely to have multiple values, such as arrays, associated with it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616400-multivalued?language=objc
-func (c_ CustomAttributeKey) IsMultiValued() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isMultiValued"))
-	return rv
-}
-
-// A Boolean value that indicates if the custom attribute should be searchable by default. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616396-searchablebydefault?language=objc
-func (c_ CustomAttributeKey) IsSearchableByDefault() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isSearchableByDefault"))
-	return rv
-}
-
 // A Boolean value that indicates if duplicate custom attribute values should be treated as the same value to save storage space. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616409-unique?language=objc
@@ -118,10 +88,26 @@ func (c_ CustomAttributeKey) IsSearchable() bool {
 	return rv
 }
 
+// A Boolean value that indicates if the custom attribute is likely to have multiple values, such as arrays, associated with it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616400-multivalued?language=objc
+func (c_ CustomAttributeKey) IsMultiValued() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isMultiValued"))
+	return rv
+}
+
 // The name of the custom attribute key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616405-keyname?language=objc
 func (c_ CustomAttributeKey) KeyName() string {
 	rv := objc.Call[string](c_, objc.Sel("keyName"))
+	return rv
+}
+
+// A Boolean value that indicates if the custom attribute should be searchable by default. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616396-searchablebydefault?language=objc
+func (c_ CustomAttributeKey) IsSearchableByDefault() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isSearchableByDefault"))
 	return rv
 }

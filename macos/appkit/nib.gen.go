@@ -35,20 +35,6 @@ func NibFrom(ptr unsafe.Pointer) Nib {
 	}
 }
 
-func (n_ Nib) InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
-	rv := objc.Call[Nib](n_, objc.Sel("initWithNibData:bundle:"), nibData, bundle)
-	return rv
-}
-
-// Initializes an instance with nib data and specified bundle for locating resources. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc
-func NewNibWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
-	instance := NibClass.Alloc().InitWithNibDataBundle(nibData, bundle)
-	instance.Autorelease()
-	return instance
-}
-
 func (n_ Nib) InitWithNibNamedBundle(nibName NibName, bundle foundation.IBundle) Nib {
 	rv := objc.Call[Nib](n_, objc.Sel("initWithNibNamed:bundle:"), nibName, bundle)
 	return rv
@@ -59,6 +45,20 @@ func (n_ Nib) InitWithNibNamedBundle(nibName NibName, bundle foundation.IBundle)
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1533932-initwithnibnamed?language=objc
 func NewNibWithNibNamedBundle(nibName NibName, bundle foundation.IBundle) Nib {
 	instance := NibClass.Alloc().InitWithNibNamedBundle(nibName, bundle)
+	instance.Autorelease()
+	return instance
+}
+
+func (n_ Nib) InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
+	rv := objc.Call[Nib](n_, objc.Sel("initWithNibData:bundle:"), nibData, bundle)
+	return rv
+}
+
+// Initializes an instance with nib data and specified bundle for locating resources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc
+func NewNibWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
+	instance := NibClass.Alloc().InitWithNibDataBundle(nibData, bundle)
 	instance.Autorelease()
 	return instance
 }

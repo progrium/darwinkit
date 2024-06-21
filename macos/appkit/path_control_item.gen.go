@@ -19,13 +19,13 @@ type _PathControlItemClass struct {
 // An interface definition for the [PathControlItem] class.
 type IPathControlItem interface {
 	objc.IObject
-	Title() string
-	SetTitle(value string)
 	AttributedTitle() foundation.AttributedString
 	SetAttributedTitle(value foundation.IAttributedString)
+	URL() foundation.URL
+	Title() string
+	SetTitle(value string)
 	Image() Image
 	SetImage(value IImage)
-	URL() foundation.URL
 }
 
 //	[Full Topic]
@@ -63,21 +63,6 @@ func (p_ PathControlItem) Init() PathControlItem {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
-func (p_ PathControlItem) Title() string {
-	rv := objc.Call[string](p_, objc.Sel("title"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
-func (p_ PathControlItem) SetTitle(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setTitle:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388287-attributedtitle?language=objc
 func (p_ PathControlItem) AttributedTitle() foundation.AttributedString {
 	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedTitle"))
@@ -93,6 +78,29 @@ func (p_ PathControlItem) SetAttributedTitle(value foundation.IAttributedString)
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388289-url?language=objc
+func (p_ PathControlItem) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
+func (p_ PathControlItem) Title() string {
+	rv := objc.Call[string](p_, objc.Sel("title"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
+func (p_ PathControlItem) SetTitle(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setTitle:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388295-image?language=objc
 func (p_ PathControlItem) Image() Image {
 	rv := objc.Call[Image](p_, objc.Sel("image"))
@@ -104,12 +112,4 @@ func (p_ PathControlItem) Image() Image {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388295-image?language=objc
 func (p_ PathControlItem) SetImage(value IImage) {
 	objc.Call[objc.Void](p_, objc.Sel("setImage:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388289-url?language=objc
-func (p_ PathControlItem) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
-	return rv
 }

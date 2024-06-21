@@ -19,9 +19,9 @@ type _PictureInPictureControllerContentSourceClass struct {
 // An interface definition for the [PictureInPictureControllerContentSource] class.
 type IPictureInPictureControllerContentSource interface {
 	objc.IObject
+	SampleBufferDisplayLayer() avfoundation.SampleBufferDisplayLayer
 	PlayerLayer() avfoundation.PlayerLayer
 	SampleBufferPlaybackDelegate() PictureInPictureSampleBufferPlaybackDelegateObject
-	SampleBufferDisplayLayer() avfoundation.SampleBufferDisplayLayer
 }
 
 // An object that represents the source of the content to present in Picture in Picture. [Full Topic]
@@ -86,6 +86,14 @@ func (p_ PictureInPictureControllerContentSource) Init() PictureInPictureControl
 	return rv
 }
 
+// The presenting sample buffer display layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollercontentsource/3750330-samplebufferdisplaylayer?language=objc
+func (p_ PictureInPictureControllerContentSource) SampleBufferDisplayLayer() avfoundation.SampleBufferDisplayLayer {
+	rv := objc.Call[avfoundation.SampleBufferDisplayLayer](p_, objc.Sel("sampleBufferDisplayLayer"))
+	return rv
+}
+
 // The presenting player layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollercontentsource/3750327-playerlayer?language=objc
@@ -99,13 +107,5 @@ func (p_ PictureInPictureControllerContentSource) PlayerLayer() avfoundation.Pla
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollercontentsource/3750331-samplebufferplaybackdelegate?language=objc
 func (p_ PictureInPictureControllerContentSource) SampleBufferPlaybackDelegate() PictureInPictureSampleBufferPlaybackDelegateObject {
 	rv := objc.Call[PictureInPictureSampleBufferPlaybackDelegateObject](p_, objc.Sel("sampleBufferPlaybackDelegate"))
-	return rv
-}
-
-// The presenting sample buffer display layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollercontentsource/3750330-samplebufferdisplaylayer?language=objc
-func (p_ PictureInPictureControllerContentSource) SampleBufferDisplayLayer() avfoundation.SampleBufferDisplayLayer {
-	rv := objc.Call[avfoundation.SampleBufferDisplayLayer](p_, objc.Sel("sampleBufferDisplayLayer"))
 	return rv
 }

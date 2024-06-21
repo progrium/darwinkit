@@ -19,22 +19,22 @@ type _TextCheckingControllerClass struct {
 // An interface definition for the [TextCheckingController] class.
 type ITextCheckingController interface {
 	objc.IObject
-	UpdateCandidates()
-	DidChangeSelectedRange()
-	IgnoreSpelling(sender objc.IObject)
-	CheckTextInDocument(sender objc.IObject)
-	OrderFrontSubstitutionsPanel(sender objc.IObject)
-	DidChangeTextInRange(range_ foundation.Range)
-	MenuAtIndexClickedOnSelectionEffectiveRange(location uint, clickedOnSelection bool, effectiveRange foundation.RangePointer) Menu
-	ShowGuessPanel(sender objc.IObject)
-	ConsiderTextCheckingForRange(range_ foundation.Range)
-	CheckSpelling(sender objc.IObject)
-	CheckTextInSelection(sender objc.IObject)
 	InsertedTextInRange(range_ foundation.Range)
-	ValidAnnotations() []foundation.AttributedStringKey
-	ChangeSpelling(sender objc.IObject)
-	Invalidate()
+	OrderFrontSubstitutionsPanel(sender objc.IObject)
 	CheckTextInRangeTypesOptions(range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject)
+	ShowGuessPanel(sender objc.IObject)
+	CheckTextInDocument(sender objc.IObject)
+	IgnoreSpelling(sender objc.IObject)
+	CheckTextInSelection(sender objc.IObject)
+	UpdateCandidates()
+	ConsiderTextCheckingForRange(range_ foundation.Range)
+	DidChangeTextInRange(range_ foundation.Range)
+	DidChangeSelectedRange()
+	MenuAtIndexClickedOnSelectionEffectiveRange(location uint, clickedOnSelection bool, effectiveRange foundation.RangePointer) Menu
+	ValidAnnotations() []foundation.AttributedStringKey
+	Invalidate()
+	ChangeSpelling(sender objc.IObject)
+	CheckSpelling(sender objc.IObject)
 	SpellCheckerDocumentTag() int
 	SetSpellCheckerDocumentTag(value int)
 	Client() TextCheckingClientObject
@@ -90,30 +90,9 @@ func (t_ TextCheckingController) Init() TextCheckingController {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242760-updatecandidates?language=objc
-func (t_ TextCheckingController) UpdateCandidates() {
-	objc.Call[objc.Void](t_, objc.Sel("updateCandidates"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242750-didchangeselectedrange?language=objc
-func (t_ TextCheckingController) DidChangeSelectedRange() {
-	objc.Call[objc.Void](t_, objc.Sel("didChangeSelectedRange"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242752-ignorespelling?language=objc
-func (t_ TextCheckingController) IgnoreSpelling(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("ignoreSpelling:"), sender)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242745-checktextindocument?language=objc
-func (t_ TextCheckingController) CheckTextInDocument(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("checkTextInDocument:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242754-insertedtextinrange?language=objc
+func (t_ TextCheckingController) InsertedTextInRange(range_ foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("insertedTextInRange:"), range_)
 }
 
 //	[Full Topic]
@@ -125,9 +104,65 @@ func (t_ TextCheckingController) OrderFrontSubstitutionsPanel(sender objc.IObjec
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242746-checktextinrange?language=objc
+func (t_ TextCheckingController) CheckTextInRangeTypesOptions(range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("checkTextInRange:types:options:"), range_, checkingTypes, options)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242758-showguesspanel?language=objc
+func (t_ TextCheckingController) ShowGuessPanel(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("showGuessPanel:"), sender)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242745-checktextindocument?language=objc
+func (t_ TextCheckingController) CheckTextInDocument(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("checkTextInDocument:"), sender)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242752-ignorespelling?language=objc
+func (t_ TextCheckingController) IgnoreSpelling(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("ignoreSpelling:"), sender)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242747-checktextinselection?language=objc
+func (t_ TextCheckingController) CheckTextInSelection(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("checkTextInSelection:"), sender)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242760-updatecandidates?language=objc
+func (t_ TextCheckingController) UpdateCandidates() {
+	objc.Call[objc.Void](t_, objc.Sel("updateCandidates"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242749-considertextcheckingforrange?language=objc
+func (t_ TextCheckingController) ConsiderTextCheckingForRange(range_ foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("considerTextCheckingForRange:"), range_)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242751-didchangetextinrange?language=objc
 func (t_ TextCheckingController) DidChangeTextInRange(range_ foundation.Range) {
 	objc.Call[objc.Void](t_, objc.Sel("didChangeTextInRange:"), range_)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242750-didchangeselectedrange?language=objc
+func (t_ TextCheckingController) DidChangeSelectedRange() {
+	objc.Call[objc.Void](t_, objc.Sel("didChangeSelectedRange"))
 }
 
 //	[Full Topic]
@@ -140,52 +175,10 @@ func (t_ TextCheckingController) MenuAtIndexClickedOnSelectionEffectiveRange(loc
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242758-showguesspanel?language=objc
-func (t_ TextCheckingController) ShowGuessPanel(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("showGuessPanel:"), sender)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242749-considertextcheckingforrange?language=objc
-func (t_ TextCheckingController) ConsiderTextCheckingForRange(range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("considerTextCheckingForRange:"), range_)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242744-checkspelling?language=objc
-func (t_ TextCheckingController) CheckSpelling(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("checkSpelling:"), sender)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242747-checktextinselection?language=objc
-func (t_ TextCheckingController) CheckTextInSelection(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("checkTextInSelection:"), sender)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242754-insertedtextinrange?language=objc
-func (t_ TextCheckingController) InsertedTextInRange(range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("insertedTextInRange:"), range_)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242761-validannotations?language=objc
 func (t_ TextCheckingController) ValidAnnotations() []foundation.AttributedStringKey {
 	rv := objc.Call[[]foundation.AttributedStringKey](t_, objc.Sel("validAnnotations"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242743-changespelling?language=objc
-func (t_ TextCheckingController) ChangeSpelling(sender objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("changeSpelling:"), sender)
 }
 
 //	[Full Topic]
@@ -197,9 +190,16 @@ func (t_ TextCheckingController) Invalidate() {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242746-checktextinrange?language=objc
-func (t_ TextCheckingController) CheckTextInRangeTypesOptions(range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("checkTextInRange:types:options:"), range_, checkingTypes, options)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242743-changespelling?language=objc
+func (t_ TextCheckingController) ChangeSpelling(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("changeSpelling:"), sender)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242744-checkspelling?language=objc
+func (t_ TextCheckingController) CheckSpelling(sender objc.IObject) {
+	objc.Call[objc.Void](t_, objc.Sel("checkSpelling:"), sender)
 }
 
 //	[Full Topic]

@@ -21,10 +21,10 @@ type _FaceObservationClass struct {
 type IFaceObservation interface {
 	IDetectedObjectObservation
 	Roll() foundation.Number
-	Pitch() foundation.Number
 	Yaw() foundation.Number
-	Landmarks() FaceLandmarks2D
 	FaceCaptureQuality() foundation.Number
+	Pitch() foundation.Number
+	Landmarks() FaceLandmarks2D
 }
 
 // Face or facial-feature information that an image analysis request detects. [Full Topic]
@@ -104,14 +104,6 @@ func (f_ FaceObservation) Roll() foundation.Number {
 	return rv
 }
 
-// The pitch angle of a face in radians. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/3750998-pitch?language=objc
-func (f_ FaceObservation) Pitch() foundation.Number {
-	rv := objc.Call[foundation.Number](f_, objc.Sel("pitch"))
-	return rv
-}
-
 // The yaw angle of a face in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/2980940-yaw?language=objc
@@ -120,18 +112,26 @@ func (f_ FaceObservation) Yaw() foundation.Number {
 	return rv
 }
 
-// The facial features of the detected face. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/2867250-landmarks?language=objc
-func (f_ FaceObservation) Landmarks() FaceLandmarks2D {
-	rv := objc.Call[FaceLandmarks2D](f_, objc.Sel("landmarks"))
-	return rv
-}
-
 // A value that indicates the quality of the face capture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/3152627-facecapturequality?language=objc
 func (f_ FaceObservation) FaceCaptureQuality() foundation.Number {
 	rv := objc.Call[foundation.Number](f_, objc.Sel("faceCaptureQuality"))
+	return rv
+}
+
+// The pitch angle of a face in radians. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/3750998-pitch?language=objc
+func (f_ FaceObservation) Pitch() foundation.Number {
+	rv := objc.Call[foundation.Number](f_, objc.Sel("pitch"))
+	return rv
+}
+
+// The facial features of the detected face. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfaceobservation/2867250-landmarks?language=objc
+func (f_ FaceObservation) Landmarks() FaceLandmarks2D {
+	rv := objc.Call[FaceLandmarks2D](f_, objc.Sel("landmarks"))
 	return rv
 }

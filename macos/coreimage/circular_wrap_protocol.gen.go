@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap?language=objc
 type PCircularWrap interface {
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -28,20 +20,28 @@ type PCircularWrap interface {
 	HasInputImage() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PCircularWrap = (*CircularWrapObject)(nil)
 // A concrete type for the [PCircularWrap] protocol.
 type CircularWrapObject struct {
 	objc.Object
-}
-
-func (c_ CircularWrapObject) HasSetAngle() bool {
-	return c_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
-func (c_ CircularWrapObject) SetAngle(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
-}
-
-func (c_ CircularWrapObject) HasAngle() bool {
-	return c_.RespondsToSelector(objc.Sel("angle"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
-func (c_ CircularWrapObject) Angle() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("angle"))
-	return rv
 }
 
 func (c_ CircularWrapObject) HasSetInputImage() bool {
@@ -98,29 +75,6 @@ func (c_ CircularWrapObject) InputImage() Image {
 	return rv
 }
 
-func (c_ CircularWrapObject) HasSetCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600123-center?language=objc
-func (c_ CircularWrapObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
-}
-
-func (c_ CircularWrapObject) HasCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("center"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600123-center?language=objc
-func (c_ CircularWrapObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
-	return rv
-}
-
 func (c_ CircularWrapObject) HasSetRadius() bool {
 	return c_.RespondsToSelector(objc.Sel("setRadius:"))
 }
@@ -141,5 +95,51 @@ func (c_ CircularWrapObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600125-radius?language=objc
 func (c_ CircularWrapObject) Radius() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("radius"))
+	return rv
+}
+
+func (c_ CircularWrapObject) HasSetAngle() bool {
+	return c_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
+func (c_ CircularWrapObject) SetAngle(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
+}
+
+func (c_ CircularWrapObject) HasAngle() bool {
+	return c_.RespondsToSelector(objc.Sel("angle"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
+func (c_ CircularWrapObject) Angle() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("angle"))
+	return rv
+}
+
+func (c_ CircularWrapObject) HasSetCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600123-center?language=objc
+func (c_ CircularWrapObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
+}
+
+func (c_ CircularWrapObject) HasCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600123-center?language=objc
+func (c_ CircularWrapObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

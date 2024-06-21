@@ -18,8 +18,8 @@ type _TileRenderPipelineColorAttachmentDescriptorArrayClass struct {
 // An interface definition for the [TileRenderPipelineColorAttachmentDescriptorArray] class.
 type ITileRenderPipelineColorAttachmentDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(attachment ITileRenderPipelineColorAttachmentDescriptor, attachmentIndex uint)
 	ObjectAtIndexedSubscript(attachmentIndex uint) TileRenderPipelineColorAttachmentDescriptor
+	SetObjectAtIndexedSubscript(attachment ITileRenderPipelineColorAttachmentDescriptor, attachmentIndex uint)
 }
 
 // An array of color attachment descriptors for the tile render pipeline. [Full Topic]
@@ -55,17 +55,17 @@ func (t_ TileRenderPipelineColorAttachmentDescriptorArray) Init() TileRenderPipe
 	return rv
 }
 
-// Sets the render pipeline state for a specified color attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinecolorattachmentdescriptorarray/2867636-setobject?language=objc
-func (t_ TileRenderPipelineColorAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment ITileRenderPipelineColorAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
-}
-
 // Returns the render pipeline state for the specified color attachment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinecolorattachmentdescriptorarray/2866392-objectatindexedsubscript?language=objc
 func (t_ TileRenderPipelineColorAttachmentDescriptorArray) ObjectAtIndexedSubscript(attachmentIndex uint) TileRenderPipelineColorAttachmentDescriptor {
 	rv := objc.Call[TileRenderPipelineColorAttachmentDescriptor](t_, objc.Sel("objectAtIndexedSubscript:"), attachmentIndex)
 	return rv
+}
+
+// Sets the render pipeline state for a specified color attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinecolorattachmentdescriptorarray/2867636-setobject?language=objc
+func (t_ TileRenderPipelineColorAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment ITileRenderPipelineColorAttachmentDescriptor, attachmentIndex uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile?language=objc
 type PFourfoldRotatedTile interface {
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
@@ -28,20 +20,28 @@ type PFourfoldRotatedTile interface {
 	HasWidth() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PFourfoldRotatedTile = (*FourfoldRotatedTileObject)(nil)
 // A concrete type for the [PFourfoldRotatedTile] protocol.
 type FourfoldRotatedTileObject struct {
 	objc.Object
-}
-
-func (f_ FourfoldRotatedTileObject) HasSetAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
-func (f_ FourfoldRotatedTileObject) SetAngle(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
-}
-
-func (f_ FourfoldRotatedTileObject) HasAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("angle"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
-func (f_ FourfoldRotatedTileObject) Angle() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("angle"))
-	return rv
 }
 
 func (f_ FourfoldRotatedTileObject) HasSetWidth() bool {
@@ -98,29 +75,6 @@ func (f_ FourfoldRotatedTileObject) Width() float32 {
 	return rv
 }
 
-func (f_ FourfoldRotatedTileObject) HasSetCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228451-center?language=objc
-func (f_ FourfoldRotatedTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
-}
-
-func (f_ FourfoldRotatedTileObject) HasCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228451-center?language=objc
-func (f_ FourfoldRotatedTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
-	return rv
-}
-
 func (f_ FourfoldRotatedTileObject) HasSetInputImage() bool {
 	return f_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -141,5 +95,51 @@ func (f_ FourfoldRotatedTileObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228452-inputimage?language=objc
 func (f_ FourfoldRotatedTileObject) InputImage() Image {
 	rv := objc.Call[Image](f_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (f_ FourfoldRotatedTileObject) HasSetAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
+func (f_ FourfoldRotatedTileObject) SetAngle(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
+}
+
+func (f_ FourfoldRotatedTileObject) HasAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
+func (f_ FourfoldRotatedTileObject) Angle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("angle"))
+	return rv
+}
+
+func (f_ FourfoldRotatedTileObject) HasSetCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228451-center?language=objc
+func (f_ FourfoldRotatedTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
+}
+
+func (f_ FourfoldRotatedTileObject) HasCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228451-center?language=objc
+func (f_ FourfoldRotatedTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
 	return rv
 }

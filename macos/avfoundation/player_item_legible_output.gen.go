@@ -22,12 +22,12 @@ type IPlayerItemLegibleOutput interface {
 	IPlayerItemOutput
 	SetDelegateQueue(delegate PPlayerItemLegibleOutputPushDelegate, delegateQueue dispatch.Queue)
 	SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue)
-	TextStylingResolution() PlayerItemLegibleOutputTextStylingResolution
-	SetTextStylingResolution(value PlayerItemLegibleOutputTextStylingResolution)
 	AdvanceIntervalForDelegateInvocation() foundation.TimeInterval
 	SetAdvanceIntervalForDelegateInvocation(value foundation.TimeInterval)
-	DelegateQueue() dispatch.Queue
 	Delegate() PlayerItemLegibleOutputPushDelegateObject
+	TextStylingResolution() PlayerItemLegibleOutputTextStylingResolution
+	SetTextStylingResolution(value PlayerItemLegibleOutputTextStylingResolution)
+	DelegateQueue() dispatch.Queue
 }
 
 // An object that vends attributed strings for media with a legible characteristic. [Full Topic]
@@ -92,21 +92,6 @@ func (p_ PlayerItemLegibleOutput) SetDelegateObjectQueue(delegateObject objc.IOb
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
-// A string identifier indicating the degree of text styling to be applied to attributed strings vended by the  object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1385803-textstylingresolution?language=objc
-func (p_ PlayerItemLegibleOutput) TextStylingResolution() PlayerItemLegibleOutputTextStylingResolution {
-	rv := objc.Call[PlayerItemLegibleOutputTextStylingResolution](p_, objc.Sel("textStylingResolution"))
-	return rv
-}
-
-// A string identifier indicating the degree of text styling to be applied to attributed strings vended by the  object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1385803-textstylingresolution?language=objc
-func (p_ PlayerItemLegibleOutput) SetTextStylingResolution(value PlayerItemLegibleOutputTextStylingResolution) {
-	objc.Call[objc.Void](p_, objc.Sel("setTextStylingResolution:"), value)
-}
-
 // The time interval, in seconds, that a player item legible output object messages its delegate earlier than normal. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1388098-advanceintervalfordelegateinvoca?language=objc
@@ -122,18 +107,33 @@ func (p_ PlayerItemLegibleOutput) SetAdvanceIntervalForDelegateInvocation(value 
 	objc.Call[objc.Void](p_, objc.Sel("setAdvanceIntervalForDelegateInvocation:"), value)
 }
 
-// The dispatch queue on which the delegate is called. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1386275-delegatequeue?language=objc
-func (p_ PlayerItemLegibleOutput) DelegateQueue() dispatch.Queue {
-	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
-	return rv
-}
-
 // The delegate of the output class. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1387877-delegate?language=objc
 func (p_ PlayerItemLegibleOutput) Delegate() PlayerItemLegibleOutputPushDelegateObject {
 	rv := objc.Call[PlayerItemLegibleOutputPushDelegateObject](p_, objc.Sel("delegate"))
+	return rv
+}
+
+// A string identifier indicating the degree of text styling to be applied to attributed strings vended by the  object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1385803-textstylingresolution?language=objc
+func (p_ PlayerItemLegibleOutput) TextStylingResolution() PlayerItemLegibleOutputTextStylingResolution {
+	rv := objc.Call[PlayerItemLegibleOutputTextStylingResolution](p_, objc.Sel("textStylingResolution"))
+	return rv
+}
+
+// A string identifier indicating the degree of text styling to be applied to attributed strings vended by the  object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1385803-textstylingresolution?language=objc
+func (p_ PlayerItemLegibleOutput) SetTextStylingResolution(value PlayerItemLegibleOutputTextStylingResolution) {
+	objc.Call[objc.Void](p_, objc.Sel("setTextStylingResolution:"), value)
+}
+
+// The dispatch queue on which the delegate is called. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1386275-delegatequeue?language=objc
+func (p_ PlayerItemLegibleOutput) DelegateQueue() dispatch.Queue {
+	rv := objc.Call[dispatch.Queue](p_, objc.Sel("delegateQueue"))
 	return rv
 }

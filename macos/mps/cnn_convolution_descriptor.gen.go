@@ -19,30 +19,30 @@ type _CNNConvolutionDescriptorClass struct {
 // An interface definition for the [CNNConvolutionDescriptor] class.
 type ICNNConvolutionDescriptor interface {
 	objc.IObject
-	SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32)
 	EncodeWithCoder(aCoder foundation.ICoder)
-	KernelWidth() uint
-	SetKernelWidth(value uint)
+	SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32)
 	OutputFeatureChannels() uint
 	SetOutputFeatureChannels(value uint)
-	Neuron() CNNNeuron
-	SetNeuron(value ICNNNeuron)
 	InputFeatureChannels() uint
 	SetInputFeatureChannels(value uint)
+	Neuron() CNNNeuron
+	SetNeuron(value ICNNNeuron)
 	StrideInPixelsY() uint
 	SetStrideInPixelsY(value uint)
 	StrideInPixelsX() uint
 	SetStrideInPixelsX(value uint)
 	Groups() uint
 	SetGroups(value uint)
-	KernelHeight() uint
-	SetKernelHeight(value uint)
-	DilationRateX() uint
-	SetDilationRateX(value uint)
-	FusedNeuronDescriptor() NNNeuronDescriptor
-	SetFusedNeuronDescriptor(value INNNeuronDescriptor)
 	DilationRateY() uint
 	SetDilationRateY(value uint)
+	KernelHeight() uint
+	SetKernelHeight(value uint)
+	KernelWidth() uint
+	SetKernelWidth(value uint)
+	FusedNeuronDescriptor() NNNeuronDescriptor
+	SetFusedNeuronDescriptor(value INNNeuronDescriptor)
+	DilationRateX() uint
+	SetDilationRateX(value uint)
 }
 
 // A description of the attributes of a convolution kernel. [Full Topic]
@@ -70,18 +70,6 @@ func CNNConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKernelHeigh
 	return CNNConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannels(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels)
 }
 
-func (cc _CNNConvolutionDescriptorClass) CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNConvolutionDescriptor {
-	rv := objc.Call[CNNConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-	return rv
-}
-
-// Creates a convolution descriptor with an optional neuron filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648876-cnnconvolutiondescriptorwithkern?language=objc
-func CNNConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNConvolutionDescriptor {
-	return CNNConvolutionDescriptorClass.CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
-}
-
 func (cc _CNNConvolutionDescriptorClass) Alloc() CNNConvolutionDescriptor {
 	rv := objc.Call[CNNConvolutionDescriptor](cc, objc.Sel("alloc"))
 	return rv
@@ -104,31 +92,16 @@ func (c_ CNNConvolutionDescriptor) Init() CNNConvolutionDescriptor {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867057-setbatchnormalizationparametersf?language=objc
-func (c_ CNNConvolutionDescriptor) SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setBatchNormalizationParametersForInferenceWithMean:variance:gamma:beta:epsilon:"), mean, variance, gamma, beta, epsilon)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2866972-encodewithcoder?language=objc
 func (c_ CNNConvolutionDescriptor) EncodeWithCoder(aCoder foundation.ICoder) {
 	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), aCoder)
 }
 
-// The width of the kernel window. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648959-kernelwidth?language=objc
-func (c_ CNNConvolutionDescriptor) KernelWidth() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
-	return rv
-}
-
-// The width of the kernel window. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648959-kernelwidth?language=objc
-func (c_ CNNConvolutionDescriptor) SetKernelWidth(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867057-setbatchnormalizationparametersf?language=objc
+func (c_ CNNConvolutionDescriptor) SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setBatchNormalizationParametersForInferenceWithMean:variance:gamma:beta:epsilon:"), mean, variance, gamma, beta, epsilon)
 }
 
 // The number of feature channels per pixel in the output image. [Full Topic]
@@ -146,21 +119,6 @@ func (c_ CNNConvolutionDescriptor) SetOutputFeatureChannels(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setOutputFeatureChannels:"), value)
 }
 
-// The neuron filter to be applied as part of the convolution operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1829442-neuron?language=objc
-func (c_ CNNConvolutionDescriptor) Neuron() CNNNeuron {
-	rv := objc.Call[CNNNeuron](c_, objc.Sel("neuron"))
-	return rv
-}
-
-// The neuron filter to be applied as part of the convolution operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1829442-neuron?language=objc
-func (c_ CNNConvolutionDescriptor) SetNeuron(value ICNNNeuron) {
-	objc.Call[objc.Void](c_, objc.Sel("setNeuron:"), value)
-}
-
 // The number of feature channels per pixel in the input image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648934-inputfeaturechannels?language=objc
@@ -176,19 +134,19 @@ func (c_ CNNConvolutionDescriptor) SetInputFeatureChannels(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setInputFeatureChannels:"), value)
 }
 
-//	[Full Topic]
+// The neuron filter to be applied as part of the convolution operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867154-supportssecurecoding?language=objc
-func (cc _CNNConvolutionDescriptorClass) SupportsSecureCoding() bool {
-	rv := objc.Call[bool](cc, objc.Sel("supportsSecureCoding"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1829442-neuron?language=objc
+func (c_ CNNConvolutionDescriptor) Neuron() CNNNeuron {
+	rv := objc.Call[CNNNeuron](c_, objc.Sel("neuron"))
 	return rv
 }
 
-//	[Full Topic]
+// The neuron filter to be applied as part of the convolution operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867154-supportssecurecoding?language=objc
-func CNNConvolutionDescriptor_SupportsSecureCoding() bool {
-	return CNNConvolutionDescriptorClass.SupportsSecureCoding()
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1829442-neuron?language=objc
+func (c_ CNNConvolutionDescriptor) SetNeuron(value ICNNNeuron) {
+	objc.Call[objc.Void](c_, objc.Sel("setNeuron:"), value)
 }
 
 // The output stride (downsampling factor) in the y dimension. [Full Topic]
@@ -236,6 +194,36 @@ func (c_ CNNConvolutionDescriptor) SetGroups(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setGroups:"), value)
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881196-dilationratey?language=objc
+func (c_ CNNConvolutionDescriptor) DilationRateY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881196-dilationratey?language=objc
+func (c_ CNNConvolutionDescriptor) SetDilationRateY(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDilationRateY:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867154-supportssecurecoding?language=objc
+func (cc _CNNConvolutionDescriptorClass) SupportsSecureCoding() bool {
+	rv := objc.Call[bool](cc, objc.Sel("supportsSecureCoding"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867154-supportssecurecoding?language=objc
+func CNNConvolutionDescriptor_SupportsSecureCoding() bool {
+	return CNNConvolutionDescriptorClass.SupportsSecureCoding()
+}
+
 // The height of the kernel window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648904-kernelheight?language=objc
@@ -251,19 +239,19 @@ func (c_ CNNConvolutionDescriptor) SetKernelHeight(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setKernelHeight:"), value)
 }
 
-//	[Full Topic]
+// The width of the kernel window. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881195-dilationratex?language=objc
-func (c_ CNNConvolutionDescriptor) DilationRateX() uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateX"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648959-kernelwidth?language=objc
+func (c_ CNNConvolutionDescriptor) KernelWidth() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
 	return rv
 }
 
-//	[Full Topic]
+// The width of the kernel window. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881195-dilationratex?language=objc
-func (c_ CNNConvolutionDescriptor) SetDilationRateX(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDilationRateX:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1648959-kernelwidth?language=objc
+func (c_ CNNConvolutionDescriptor) SetKernelWidth(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setKernelWidth:"), value)
 }
 
 //	[Full Topic]
@@ -283,15 +271,15 @@ func (c_ CNNConvolutionDescriptor) SetFusedNeuronDescriptor(value INNNeuronDescr
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881196-dilationratey?language=objc
-func (c_ CNNConvolutionDescriptor) DilationRateY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881195-dilationratex?language=objc
+func (c_ CNNConvolutionDescriptor) DilationRateX() uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateX"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881196-dilationratey?language=objc
-func (c_ CNNConvolutionDescriptor) SetDilationRateY(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDilationRateY:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2881195-dilationratex?language=objc
+func (c_ CNNConvolutionDescriptor) SetDilationRateX(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDilationRateX:"), value)
 }

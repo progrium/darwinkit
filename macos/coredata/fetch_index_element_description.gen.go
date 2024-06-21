@@ -20,11 +20,11 @@ type IFetchIndexElementDescription interface {
 	objc.IObject
 	CollationType() FetchIndexElementType
 	SetCollationType(value FetchIndexElementType)
-	IsAscending() bool
-	SetAscending(value bool)
+	IndexDescription() FetchIndexDescription
 	PropertyName() string
 	Property() PropertyDescription
-	IndexDescription() FetchIndexDescription
+	IsAscending() bool
+	SetAscending(value bool)
 }
 
 // Description of an Index Element [Full Topic]
@@ -89,19 +89,12 @@ func (f_ FetchIndexElementDescription) SetCollationType(value FetchIndexElementT
 	objc.Call[objc.Void](f_, objc.Sel("setCollationType:"), value)
 }
 
-// A Boolean value that controls whether an index that supports direction is an ascending or descending index. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887051-ascending?language=objc
-func (f_ FetchIndexElementDescription) IsAscending() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isAscending"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887047-indexdescription?language=objc
+func (f_ FetchIndexElementDescription) IndexDescription() FetchIndexDescription {
+	rv := objc.Call[FetchIndexDescription](f_, objc.Sel("indexDescription"))
 	return rv
-}
-
-// A Boolean value that controls whether an index that supports direction is an ascending or descending index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887051-ascending?language=objc
-func (f_ FetchIndexElementDescription) SetAscending(value bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setAscending:"), value)
 }
 
 // The specified name in the property description. [Full Topic]
@@ -120,10 +113,17 @@ func (f_ FetchIndexElementDescription) Property() PropertyDescription {
 	return rv
 }
 
-//	[Full Topic]
+// A Boolean value that controls whether an index that supports direction is an ascending or descending index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887047-indexdescription?language=objc
-func (f_ FetchIndexElementDescription) IndexDescription() FetchIndexDescription {
-	rv := objc.Call[FetchIndexDescription](f_, objc.Sel("indexDescription"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887051-ascending?language=objc
+func (f_ FetchIndexElementDescription) IsAscending() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isAscending"))
 	return rv
+}
+
+// A Boolean value that controls whether an index that supports direction is an ascending or descending index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887051-ascending?language=objc
+func (f_ FetchIndexElementDescription) SetAscending(value bool) {
+	objc.Call[objc.Void](f_, objc.Sel("setAscending:"), value)
 }

@@ -53,32 +53,6 @@ func (c_ CNNPoolingL2NormNode) Init() CNNPoolingL2NormNode {
 	return rv
 }
 
-func (c_ CNNPoolingL2NormNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
-func NewCNNPoolingL2NormNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
-	instance := CNNPoolingL2NormNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNPoolingL2NormNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2890831-nodewithsource?language=objc
-func CNNPoolingL2NormNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	return CNNPoolingL2NormNodeClass.NodeWithSourceFilterSizeStride(sourceNode, size, stride)
-}
-
 func (cc _CNNPoolingL2NormNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
 	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
@@ -91,30 +65,16 @@ func CNNPoolingL2NormNode_NodeWithSourceFilterSize(sourceNode INNImageNode, size
 	return CNNPoolingL2NormNodeClass.NodeWithSourceFilterSize(sourceNode, size)
 }
 
-func (c_ CNNPoolingL2NormNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+func (c_ CNNPoolingL2NormNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
+	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866471-initwithsource?language=objc
-func NewCNNPoolingL2NormNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingL2NormNode {
-	instance := CNNPoolingL2NormNodeClass.Alloc().InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNPoolingL2NormNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866444-initwithsource?language=objc
-func NewCNNPoolingL2NormNodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	instance := CNNPoolingL2NormNodeClass.Alloc().InitWithSourceFilterSizeStride(sourceNode, size, stride)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolingnode/2866488-initwithsource?language=objc
+func NewCNNPoolingL2NormNodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
+	instance := CNNPoolingL2NormNodeClass.Alloc().InitWithSourceFilterSize(sourceNode, size)
 	instance.Autorelease()
 	return instance
 }

@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerator?language=objc
 type PFileProviderEnumerator interface {
 	// optional
-	EnumerateItemsForObserverStartingAtPage(observer FileProviderEnumerationObserverObject, page FileProviderPage)
-	HasEnumerateItemsForObserverStartingAtPage() bool
-
-	// optional
 	EnumerateChangesForObserverFromSyncAnchor(observer FileProviderChangeObserverObject, syncAnchor FileProviderSyncAnchor)
 	HasEnumerateChangesForObserverFromSyncAnchor() bool
+
+	// optional
+	EnumerateItemsForObserverStartingAtPage(observer FileProviderEnumerationObserverObject, page FileProviderPage)
+	HasEnumerateItemsForObserverStartingAtPage() bool
 
 	// optional
 	CurrentSyncAnchorWithCompletionHandler(completionHandler func(currentAnchor FileProviderSyncAnchor))
@@ -35,18 +35,6 @@ type FileProviderEnumeratorObject struct {
 	objc.Object
 }
 
-func (f_ FileProviderEnumeratorObject) HasEnumerateItemsForObserverStartingAtPage() bool {
-	return f_.RespondsToSelector(objc.Sel("enumerateItemsForObserver:startingAtPage:"))
-}
-
-// Requests the next batch of items, starting at the specified page. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerator/2879613-enumerateitemsforobserver?language=objc
-func (f_ FileProviderEnumeratorObject) EnumerateItemsForObserverStartingAtPage(observer FileProviderEnumerationObserverObject, page FileProviderPage) {
-	po0 := objc.WrapAsProtocol("NSFileProviderEnumerationObserver", observer)
-	objc.Call[objc.Void](f_, objc.Sel("enumerateItemsForObserver:startingAtPage:"), po0, page)
-}
-
 func (f_ FileProviderEnumeratorObject) HasEnumerateChangesForObserverFromSyncAnchor() bool {
 	return f_.RespondsToSelector(objc.Sel("enumerateChangesForObserver:fromSyncAnchor:"))
 }
@@ -57,6 +45,18 @@ func (f_ FileProviderEnumeratorObject) HasEnumerateChangesForObserverFromSyncAnc
 func (f_ FileProviderEnumeratorObject) EnumerateChangesForObserverFromSyncAnchor(observer FileProviderChangeObserverObject, syncAnchor FileProviderSyncAnchor) {
 	po0 := objc.WrapAsProtocol("NSFileProviderChangeObserver", observer)
 	objc.Call[objc.Void](f_, objc.Sel("enumerateChangesForObserver:fromSyncAnchor:"), po0, syncAnchor)
+}
+
+func (f_ FileProviderEnumeratorObject) HasEnumerateItemsForObserverStartingAtPage() bool {
+	return f_.RespondsToSelector(objc.Sel("enumerateItemsForObserver:startingAtPage:"))
+}
+
+// Requests the next batch of items, starting at the specified page. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerator/2879613-enumerateitemsforobserver?language=objc
+func (f_ FileProviderEnumeratorObject) EnumerateItemsForObserverStartingAtPage(observer FileProviderEnumerationObserverObject, page FileProviderPage) {
+	po0 := objc.WrapAsProtocol("NSFileProviderEnumerationObserver", observer)
+	objc.Call[objc.Void](f_, objc.Sel("enumerateItemsForObserver:startingAtPage:"), po0, page)
 }
 
 func (f_ FileProviderEnumeratorObject) HasCurrentSyncAnchorWithCompletionHandler() bool {

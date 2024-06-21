@@ -19,9 +19,9 @@ type _ImageSizeConstraintClass struct {
 // An interface definition for the [ImageSizeConstraint] class.
 type IImageSizeConstraint interface {
 	objc.IObject
+	PixelsWideRange() foundation.Range
 	Type() ImageSizeConstraintType
 	EnumeratedImageSizes() []ImageSize
-	PixelsWideRange() foundation.Range
 	PixelsHighRange() foundation.Range
 }
 
@@ -58,6 +58,14 @@ func (i_ ImageSizeConstraint) Init() ImageSizeConstraint {
 	return rv
 }
 
+// The range of widths a model's image feature accepts as input or produces as output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimagesizeconstraint/2994306-pixelswiderange?language=objc
+func (i_ ImageSizeConstraint) PixelsWideRange() foundation.Range {
+	rv := objc.Call[foundation.Range](i_, objc.Sel("pixelsWideRange"))
+	return rv
+}
+
 // Indicator of which properties to inspect for this image size constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlimagesizeconstraint/2994307-type?language=objc
@@ -71,14 +79,6 @@ func (i_ ImageSizeConstraint) Type() ImageSizeConstraintType {
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlimagesizeconstraint/2994304-enumeratedimagesizes?language=objc
 func (i_ ImageSizeConstraint) EnumeratedImageSizes() []ImageSize {
 	rv := objc.Call[[]ImageSize](i_, objc.Sel("enumeratedImageSizes"))
-	return rv
-}
-
-// The range of widths a model's image feature accepts as input or produces as output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimagesizeconstraint/2994306-pixelswiderange?language=objc
-func (i_ ImageSizeConstraint) PixelsWideRange() foundation.Range {
-	rv := objc.Call[foundation.Range](i_, objc.Sel("pixelsWideRange"))
 	return rv
 }
 

@@ -36,20 +36,6 @@ func TimedMetadataGroupFrom(ptr unsafe.Pointer) TimedMetadataGroup {
 	}
 }
 
-func (t_ TimedMetadataGroup) InitWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) TimedMetadataGroup {
-	rv := objc.Call[TimedMetadataGroup](t_, objc.Sel("initWithItems:timeRange:"), items, timeRange)
-	return rv
-}
-
-// Creates a timed metadata group initialized with the given metadata items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1389632-initwithitems?language=objc
-func NewTimedMetadataGroupWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) TimedMetadataGroup {
-	instance := TimedMetadataGroupClass.Alloc().InitWithItemsTimeRange(items, timeRange)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TimedMetadataGroup) InitWithSampleBuffer(sampleBuffer coremedia.SampleBufferRef) TimedMetadataGroup {
 	rv := objc.Call[TimedMetadataGroup](t_, objc.Sel("initWithSampleBuffer:"), sampleBuffer)
 	return rv
@@ -60,6 +46,20 @@ func (t_ TimedMetadataGroup) InitWithSampleBuffer(sampleBuffer coremedia.SampleB
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1387128-initwithsamplebuffer?language=objc
 func NewTimedMetadataGroupWithSampleBuffer(sampleBuffer coremedia.SampleBufferRef) TimedMetadataGroup {
 	instance := TimedMetadataGroupClass.Alloc().InitWithSampleBuffer(sampleBuffer)
+	instance.Autorelease()
+	return instance
+}
+
+func (t_ TimedMetadataGroup) InitWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) TimedMetadataGroup {
+	rv := objc.Call[TimedMetadataGroup](t_, objc.Sel("initWithItems:timeRange:"), items, timeRange)
+	return rv
+}
+
+// Creates a timed metadata group initialized with the given metadata items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1389632-initwithitems?language=objc
+func NewTimedMetadataGroupWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) TimedMetadataGroup {
+	instance := TimedMetadataGroupClass.Alloc().InitWithItemsTimeRange(items, timeRange)
 	instance.Autorelease()
 	return instance
 }

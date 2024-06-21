@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance?language=objc
 type PSharpenLuminance interface {
 	// optional
-	SetSharpness(value float32)
-	HasSetSharpness() bool
-
-	// optional
-	Sharpness() float32
-	HasSharpness() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -33,6 +25,14 @@ type PSharpenLuminance interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetSharpness(value float32)
+	HasSetSharpness() bool
+
+	// optional
+	Sharpness() float32
+	HasSharpness() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,29 +41,6 @@ var _ PSharpenLuminance = (*SharpenLuminanceObject)(nil)
 // A concrete type for the [PSharpenLuminance] protocol.
 type SharpenLuminanceObject struct {
 	objc.Object
-}
-
-func (s_ SharpenLuminanceObject) HasSetSharpness() bool {
-	return s_.RespondsToSelector(objc.Sel("setSharpness:"))
-}
-
-// The amount of sharpening to apply. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
-func (s_ SharpenLuminanceObject) SetSharpness(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setSharpness:"), value)
-}
-
-func (s_ SharpenLuminanceObject) HasSharpness() bool {
-	return s_.RespondsToSelector(objc.Sel("sharpness"))
-}
-
-// The amount of sharpening to apply. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
-func (s_ SharpenLuminanceObject) Sharpness() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("sharpness"))
-	return rv
 }
 
 func (s_ SharpenLuminanceObject) HasSetInputImage() bool {
@@ -109,5 +86,28 @@ func (s_ SharpenLuminanceObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228710-radius?language=objc
 func (s_ SharpenLuminanceObject) Radius() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("radius"))
+	return rv
+}
+
+func (s_ SharpenLuminanceObject) HasSetSharpness() bool {
+	return s_.RespondsToSelector(objc.Sel("setSharpness:"))
+}
+
+// The amount of sharpening to apply. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
+func (s_ SharpenLuminanceObject) SetSharpness(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setSharpness:"), value)
+}
+
+func (s_ SharpenLuminanceObject) HasSharpness() bool {
+	return s_.RespondsToSelector(objc.Sel("sharpness"))
+}
+
+// The amount of sharpening to apply. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
+func (s_ SharpenLuminanceObject) Sharpness() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("sharpness"))
 	return rv
 }

@@ -40,6 +40,21 @@ func TensorDataFrom(ptr unsafe.Pointer) TensorData {
 	}
 }
 
+func (t_ TensorData) InitWithMTLBufferShapeDataType(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType) TensorData {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMTLBuffer:shape:dataType:"), po0, shape, dataType)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564676-initwithmtlbuffer?language=objc
+func NewTensorDataWithMTLBufferShapeDataType(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType) TensorData {
+	instance := TensorDataClass.Alloc().InitWithMTLBufferShapeDataType(buffer, shape, dataType)
+	instance.Autorelease()
+	return instance
+}
+
 func (t_ TensorData) InitWithMPSImageBatch(imageBatch *foundation.Array) TensorData {
 	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSImageBatch:"), imageBatch)
 	return rv
@@ -50,20 +65,6 @@ func (t_ TensorData) InitWithMPSImageBatch(imageBatch *foundation.Array) TensorD
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564672-initwithmpsimagebatch?language=objc
 func NewTensorDataWithMPSImageBatch(imageBatch *foundation.Array) TensorData {
 	instance := TensorDataClass.Alloc().InitWithMPSImageBatch(imageBatch)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TensorData) InitWithMPSVector(vector mps.IVector) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:"), vector)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564675-initwithmpsvector?language=objc
-func NewTensorDataWithMPSVector(vector mps.IVector) TensorData {
-	instance := TensorDataClass.Alloc().InitWithMPSVector(vector)
 	instance.Autorelease()
 	return instance
 }
@@ -82,21 +83,6 @@ func NewTensorDataWithMPSMatrix(matrix mps.IMatrix) TensorData {
 	return instance
 }
 
-func (t_ TensorData) InitWithMTLBufferShapeDataType(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType) TensorData {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMTLBuffer:shape:dataType:"), po0, shape, dataType)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564676-initwithmtlbuffer?language=objc
-func NewTensorDataWithMTLBufferShapeDataType(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType) TensorData {
-	instance := TensorDataClass.Alloc().InitWithMTLBufferShapeDataType(buffer, shape, dataType)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TensorData) InitWithDeviceDataShapeDataType(device IDevice, data []byte, shape *foundation.Array, dataType mps.DataType) TensorData {
 	rv := objc.Call[TensorData](t_, objc.Sel("initWithDevice:data:shape:dataType:"), device, data, shape, dataType)
 	return rv
@@ -107,35 +93,6 @@ func (t_ TensorData) InitWithDeviceDataShapeDataType(device IDevice, data []byte
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564671-initwithdevice?language=objc
 func NewTensorDataWithDeviceDataShapeDataType(device IDevice, data []byte, shape *foundation.Array, dataType mps.DataType) TensorData {
 	instance := TensorDataClass.Alloc().InitWithDeviceDataShapeDataType(device, data, shape, dataType)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TensorData) InitWithMTLBufferShapeDataTypeRowBytes(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType, rowBytes uint) TensorData {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMTLBuffer:shape:dataType:rowBytes:"), po0, shape, dataType, rowBytes)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3925447-initwithmtlbuffer?language=objc
-func NewTensorDataWithMTLBufferShapeDataTypeRowBytes(buffer metal.PBuffer, shape *foundation.Array, dataType mps.DataType, rowBytes uint) TensorData {
-	instance := TensorDataClass.Alloc().InitWithMTLBufferShapeDataTypeRowBytes(buffer, shape, dataType, rowBytes)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TensorData) InitWithMPSMatrixRank(matrix mps.IMatrix, rank uint) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSMatrix:rank:"), matrix, rank)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3667507-initwithmpsmatrix?language=objc
-func NewTensorDataWithMPSMatrixRank(matrix mps.IMatrix, rank uint) TensorData {
-	instance := TensorDataClass.Alloc().InitWithMPSMatrixRank(matrix, rank)
 	instance.Autorelease()
 	return instance
 }
@@ -154,16 +111,16 @@ func NewTensorDataWithMPSNDArray(ndarray mps.INDArray) TensorData {
 	return instance
 }
 
-func (t_ TensorData) InitWithMPSVectorRank(vector mps.IVector, rank uint) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:rank:"), vector, rank)
+func (t_ TensorData) InitWithMPSVector(vector mps.IVector) TensorData {
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:"), vector)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3667508-initwithmpsvector?language=objc
-func NewTensorDataWithMPSVectorRank(vector mps.IVector, rank uint) TensorData {
-	instance := TensorDataClass.Alloc().InitWithMPSVectorRank(vector, rank)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphtensordata/3564675-initwithmpsvector?language=objc
+func NewTensorDataWithMPSVector(vector mps.IVector) TensorData {
+	instance := TensorDataClass.Alloc().InitWithMPSVector(vector)
 	instance.Autorelease()
 	return instance
 }

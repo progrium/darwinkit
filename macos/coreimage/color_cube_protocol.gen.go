@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube?language=objc
 type PColorCube interface {
 	// optional
-	SetCubeData(value []byte)
-	HasSetCubeData() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	CubeData() []byte
-	HasCubeData() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetCubeDimension(value float32)
@@ -27,12 +27,12 @@ type PColorCube interface {
 	HasCubeDimension() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetCubeData(value []byte)
+	HasSetCubeData() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	CubeData() []byte
+	HasCubeData() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type ColorCubeObject struct {
 	objc.Object
 }
 
-func (c_ ColorCubeObject) HasSetCubeData() bool {
-	return c_.RespondsToSelector(objc.Sel("setCubeData:"))
+func (c_ ColorCubeObject) HasSetInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// The cube texture data to use as a color lookup table. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228134-cubedata?language=objc
-func (c_ ColorCubeObject) SetCubeData(value []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("setCubeData:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228136-inputimage?language=objc
+func (c_ ColorCubeObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
-func (c_ ColorCubeObject) HasCubeData() bool {
-	return c_.RespondsToSelector(objc.Sel("cubeData"))
+func (c_ ColorCubeObject) HasInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// The cube texture data to use as a color lookup table. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228134-cubedata?language=objc
-func (c_ ColorCubeObject) CubeData() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("cubeData"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228136-inputimage?language=objc
+func (c_ ColorCubeObject) InputImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (c_ ColorCubeObject) CubeDimension() float32 {
 	return rv
 }
 
-func (c_ ColorCubeObject) HasSetInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (c_ ColorCubeObject) HasSetCubeData() bool {
+	return c_.RespondsToSelector(objc.Sel("setCubeData:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The cube texture data to use as a color lookup table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228136-inputimage?language=objc
-func (c_ ColorCubeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228134-cubedata?language=objc
+func (c_ ColorCubeObject) SetCubeData(value []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("setCubeData:"), value)
 }
 
-func (c_ ColorCubeObject) HasInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("inputImage"))
+func (c_ ColorCubeObject) HasCubeData() bool {
+	return c_.RespondsToSelector(objc.Sel("cubeData"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The cube texture data to use as a color lookup table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228136-inputimage?language=objc
-func (c_ ColorCubeObject) InputImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcube/3228134-cubedata?language=objc
+func (c_ ColorCubeObject) CubeData() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("cubeData"))
 	return rv
 }

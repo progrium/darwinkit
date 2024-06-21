@@ -11,216 +11,30 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate?language=objc
 type PURLDownloadDelegate interface {
 	// optional
-	DownloadDecideDestinationWithSuggestedFilename(download URLDownload, filename string)
-	HasDownloadDecideDestinationWithSuggestedFilename() bool
-
-	// optional
-	DownloadDidReceiveDataOfLength(download URLDownload, length uint)
-	HasDownloadDidReceiveDataOfLength() bool
-
-	// optional
-	DownloadShouldUseCredentialStorage(download URLDownload) bool
-	HasDownloadShouldUseCredentialStorage() bool
-
-	// optional
-	DownloadDidBegin(download URLDownload)
-	HasDownloadDidBegin() bool
-
-	// optional
-	DownloadShouldDecodeSourceDataOfMIMEType(download URLDownload, encodingType string) bool
-	HasDownloadShouldDecodeSourceDataOfMIMEType() bool
-
-	// optional
-	DownloadDidReceiveResponse(download URLDownload, response URLResponse)
-	HasDownloadDidReceiveResponse() bool
-
-	// optional
-	DownloadDidCancelAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge)
-	HasDownloadDidCancelAuthenticationChallenge() bool
-
-	// optional
-	DownloadWillSendRequestRedirectResponse(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest
-	HasDownloadWillSendRequestRedirectResponse() bool
-
-	// optional
 	DownloadCanAuthenticateAgainstProtectionSpace(connection URLDownload, protectionSpace URLProtectionSpace) bool
 	HasDownloadCanAuthenticateAgainstProtectionSpace() bool
-
-	// optional
-	DownloadDidFailWithError(download URLDownload, error Error)
-	HasDownloadDidFailWithError() bool
 
 	// optional
 	DownloadDidFinish(download URLDownload)
 	HasDownloadDidFinish() bool
 
 	// optional
-	DownloadDidReceiveAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge)
-	HasDownloadDidReceiveAuthenticationChallenge() bool
+	DownloadDidBegin(download URLDownload)
+	HasDownloadDidBegin() bool
 
 	// optional
-	DownloadWillResumeWithResponseFromByte(download URLDownload, response URLResponse, startingByte int64)
-	HasDownloadWillResumeWithResponseFromByte() bool
-
-	// optional
-	DownloadDidCreateDestination(download URLDownload, path string)
-	HasDownloadDidCreateDestination() bool
+	DownloadShouldUseCredentialStorage(download URLDownload) bool
+	HasDownloadShouldUseCredentialStorage() bool
 }
 
 // A delegate implementation builder for the [PURLDownloadDelegate] protocol.
 type URLDownloadDelegate struct {
-	_DownloadDecideDestinationWithSuggestedFilename func(download URLDownload, filename string)
-	_DownloadDidReceiveDataOfLength                 func(download URLDownload, length uint)
-	_DownloadShouldUseCredentialStorage             func(download URLDownload) bool
-	_DownloadDidBegin                               func(download URLDownload)
-	_DownloadShouldDecodeSourceDataOfMIMEType       func(download URLDownload, encodingType string) bool
-	_DownloadDidReceiveResponse                     func(download URLDownload, response URLResponse)
-	_DownloadDidCancelAuthenticationChallenge       func(download URLDownload, challenge URLAuthenticationChallenge)
-	_DownloadWillSendRequestRedirectResponse        func(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest
-	_DownloadCanAuthenticateAgainstProtectionSpace  func(connection URLDownload, protectionSpace URLProtectionSpace) bool
-	_DownloadDidFailWithError                       func(download URLDownload, error Error)
-	_DownloadDidFinish                              func(download URLDownload)
-	_DownloadDidReceiveAuthenticationChallenge      func(download URLDownload, challenge URLAuthenticationChallenge)
-	_DownloadWillResumeWithResponseFromByte         func(download URLDownload, response URLResponse, startingByte int64)
-	_DownloadDidCreateDestination                   func(download URLDownload, path string)
+	_DownloadCanAuthenticateAgainstProtectionSpace func(connection URLDownload, protectionSpace URLProtectionSpace) bool
+	_DownloadDidFinish                             func(download URLDownload)
+	_DownloadDidBegin                              func(download URLDownload)
+	_DownloadShouldUseCredentialStorage            func(download URLDownload) bool
 }
 
-func (di *URLDownloadDelegate) HasDownloadDecideDestinationWithSuggestedFilename() bool {
-	return di._DownloadDecideDestinationWithSuggestedFilename != nil
-}
-
-// The delegate receives this message when download has determined a suggested filename for the downloaded file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413588-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDecideDestinationWithSuggestedFilename(f func(download URLDownload, filename string)) {
-	di._DownloadDecideDestinationWithSuggestedFilename = f
-}
-
-// The delegate receives this message when download has determined a suggested filename for the downloaded file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413588-download?language=objc
-func (di *URLDownloadDelegate) DownloadDecideDestinationWithSuggestedFilename(download URLDownload, filename string) {
-	di._DownloadDecideDestinationWithSuggestedFilename(download, filename)
-}
-func (di *URLDownloadDelegate) HasDownloadDidReceiveDataOfLength() bool {
-	return di._DownloadDidReceiveDataOfLength != nil
-}
-
-// Sent as a download object receives data incrementally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413663-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidReceiveDataOfLength(f func(download URLDownload, length uint)) {
-	di._DownloadDidReceiveDataOfLength = f
-}
-
-// Sent as a download object receives data incrementally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413663-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidReceiveDataOfLength(download URLDownload, length uint) {
-	di._DownloadDidReceiveDataOfLength(download, length)
-}
-func (di *URLDownloadDelegate) HasDownloadShouldUseCredentialStorage() bool {
-	return di._DownloadShouldUseCredentialStorage != nil
-}
-
-// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
-func (di *URLDownloadDelegate) SetDownloadShouldUseCredentialStorage(f func(download URLDownload) bool) {
-	di._DownloadShouldUseCredentialStorage = f
-}
-
-// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
-func (di *URLDownloadDelegate) DownloadShouldUseCredentialStorage(download URLDownload) bool {
-	return di._DownloadShouldUseCredentialStorage(download)
-}
-func (di *URLDownloadDelegate) HasDownloadDidBegin() bool {
-	return di._DownloadDidBegin != nil
-}
-
-// Sent immediately after a download object begins a download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidBegin(f func(download URLDownload)) {
-	di._DownloadDidBegin = f
-}
-
-// Sent immediately after a download object begins a download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
-func (di *URLDownloadDelegate) DownloadDidBegin(download URLDownload) {
-	di._DownloadDidBegin(download)
-}
-func (di *URLDownloadDelegate) HasDownloadShouldDecodeSourceDataOfMIMEType() bool {
-	return di._DownloadShouldDecodeSourceDataOfMIMEType != nil
-}
-
-// Sent when a download object determines that the downloaded file is encoded to inquire whether the file should be automatically decoded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1408526-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadShouldDecodeSourceDataOfMIMEType(f func(download URLDownload, encodingType string) bool) {
-	di._DownloadShouldDecodeSourceDataOfMIMEType = f
-}
-
-// Sent when a download object determines that the downloaded file is encoded to inquire whether the file should be automatically decoded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1408526-download?language=objc
-func (di *URLDownloadDelegate) DownloadShouldDecodeSourceDataOfMIMEType(download URLDownload, encodingType string) bool {
-	return di._DownloadShouldDecodeSourceDataOfMIMEType(download, encodingType)
-}
-func (di *URLDownloadDelegate) HasDownloadDidReceiveResponse() bool {
-	return di._DownloadDidReceiveResponse != nil
-}
-
-// Sent when a download object has received sufficient load data to construct the NSURLResponse object for the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415460-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidReceiveResponse(f func(download URLDownload, response URLResponse)) {
-	di._DownloadDidReceiveResponse = f
-}
-
-// Sent when a download object has received sufficient load data to construct the NSURLResponse object for the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415460-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidReceiveResponse(download URLDownload, response URLResponse) {
-	di._DownloadDidReceiveResponse(download, response)
-}
-func (di *URLDownloadDelegate) HasDownloadDidCancelAuthenticationChallenge() bool {
-	return di._DownloadDidCancelAuthenticationChallenge != nil
-}
-
-// Sent if an authentication challenge is canceled due to the protocol implementation encountering an error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416233-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidCancelAuthenticationChallenge(f func(download URLDownload, challenge URLAuthenticationChallenge)) {
-	di._DownloadDidCancelAuthenticationChallenge = f
-}
-
-// Sent if an authentication challenge is canceled due to the protocol implementation encountering an error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416233-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidCancelAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	di._DownloadDidCancelAuthenticationChallenge(download, challenge)
-}
-func (di *URLDownloadDelegate) HasDownloadWillSendRequestRedirectResponse() bool {
-	return di._DownloadWillSendRequestRedirectResponse != nil
-}
-
-// Sent when the download object determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1412181-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadWillSendRequestRedirectResponse(f func(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest) {
-	di._DownloadWillSendRequestRedirectResponse = f
-}
-
-// Sent when the download object determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1412181-download?language=objc
-func (di *URLDownloadDelegate) DownloadWillSendRequestRedirectResponse(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest {
-	return di._DownloadWillSendRequestRedirectResponse(download, request, redirectResponse)
-}
 func (di *URLDownloadDelegate) HasDownloadCanAuthenticateAgainstProtectionSpace() bool {
 	return di._DownloadCanAuthenticateAgainstProtectionSpace != nil
 }
@@ -237,23 +51,6 @@ func (di *URLDownloadDelegate) SetDownloadCanAuthenticateAgainstProtectionSpace(
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1417213-download?language=objc
 func (di *URLDownloadDelegate) DownloadCanAuthenticateAgainstProtectionSpace(connection URLDownload, protectionSpace URLProtectionSpace) bool {
 	return di._DownloadCanAuthenticateAgainstProtectionSpace(connection, protectionSpace)
-}
-func (di *URLDownloadDelegate) HasDownloadDidFailWithError() bool {
-	return di._DownloadDidFailWithError != nil
-}
-
-// Sent if the download fails or if an I/O error occurs when the file is written to disk. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411640-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidFailWithError(f func(download URLDownload, error Error)) {
-	di._DownloadDidFailWithError = f
-}
-
-// Sent if the download fails or if an I/O error occurs when the file is written to disk. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411640-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidFailWithError(download URLDownload, error Error) {
-	di._DownloadDidFailWithError(download, error)
 }
 func (di *URLDownloadDelegate) HasDownloadDidFinish() bool {
 	return di._DownloadDidFinish != nil
@@ -272,56 +69,39 @@ func (di *URLDownloadDelegate) SetDownloadDidFinish(f func(download URLDownload)
 func (di *URLDownloadDelegate) DownloadDidFinish(download URLDownload) {
 	di._DownloadDidFinish(download)
 }
-func (di *URLDownloadDelegate) HasDownloadDidReceiveAuthenticationChallenge() bool {
-	return di._DownloadDidReceiveAuthenticationChallenge != nil
+func (di *URLDownloadDelegate) HasDownloadDidBegin() bool {
+	return di._DownloadDidBegin != nil
 }
 
-// Sent when the URL download must authenticate a challenge in order to download the request. [Full Topic]
+// Sent immediately after a download object begins a download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411969-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidReceiveAuthenticationChallenge(f func(download URLDownload, challenge URLAuthenticationChallenge)) {
-	di._DownloadDidReceiveAuthenticationChallenge = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
+func (di *URLDownloadDelegate) SetDownloadDidBegin(f func(download URLDownload)) {
+	di._DownloadDidBegin = f
 }
 
-// Sent when the URL download must authenticate a challenge in order to download the request. [Full Topic]
+// Sent immediately after a download object begins a download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411969-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidReceiveAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	di._DownloadDidReceiveAuthenticationChallenge(download, challenge)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
+func (di *URLDownloadDelegate) DownloadDidBegin(download URLDownload) {
+	di._DownloadDidBegin(download)
 }
-func (di *URLDownloadDelegate) HasDownloadWillResumeWithResponseFromByte() bool {
-	return di._DownloadWillResumeWithResponseFromByte != nil
+func (di *URLDownloadDelegate) HasDownloadShouldUseCredentialStorage() bool {
+	return di._DownloadShouldUseCredentialStorage != nil
 }
 
-// Sent when a download object has received a response from the server after attempting to resume a download. [Full Topic]
+// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409514-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadWillResumeWithResponseFromByte(f func(download URLDownload, response URLResponse, startingByte int64)) {
-	di._DownloadWillResumeWithResponseFromByte = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
+func (di *URLDownloadDelegate) SetDownloadShouldUseCredentialStorage(f func(download URLDownload) bool) {
+	di._DownloadShouldUseCredentialStorage = f
 }
 
-// Sent when a download object has received a response from the server after attempting to resume a download. [Full Topic]
+// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409514-download?language=objc
-func (di *URLDownloadDelegate) DownloadWillResumeWithResponseFromByte(download URLDownload, response URLResponse, startingByte int64) {
-	di._DownloadWillResumeWithResponseFromByte(download, response, startingByte)
-}
-func (di *URLDownloadDelegate) HasDownloadDidCreateDestination() bool {
-	return di._DownloadDidCreateDestination != nil
-}
-
-// Sent when the destination file is created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415265-download?language=objc
-func (di *URLDownloadDelegate) SetDownloadDidCreateDestination(f func(download URLDownload, path string)) {
-	di._DownloadDidCreateDestination = f
-}
-
-// Sent when the destination file is created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415265-download?language=objc
-func (di *URLDownloadDelegate) DownloadDidCreateDestination(download URLDownload, path string) {
-	di._DownloadDidCreateDestination(download, path)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
+func (di *URLDownloadDelegate) DownloadShouldUseCredentialStorage(download URLDownload) bool {
+	return di._DownloadShouldUseCredentialStorage(download)
 }
 
 // ensure impl type implements protocol interface
@@ -330,97 +110,6 @@ var _ PURLDownloadDelegate = (*URLDownloadDelegateObject)(nil)
 // A concrete type for the [PURLDownloadDelegate] protocol.
 type URLDownloadDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDecideDestinationWithSuggestedFilename() bool {
-	return u_.RespondsToSelector(objc.Sel("download:decideDestinationWithSuggestedFilename:"))
-}
-
-// The delegate receives this message when download has determined a suggested filename for the downloaded file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413588-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDecideDestinationWithSuggestedFilename(download URLDownload, filename string) {
-	objc.Call[objc.Void](u_, objc.Sel("download:decideDestinationWithSuggestedFilename:"), download, filename)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveDataOfLength() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didReceiveDataOfLength:"))
-}
-
-// Sent as a download object receives data incrementally. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413663-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidReceiveDataOfLength(download URLDownload, length uint) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveDataOfLength:"), download, length)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadShouldUseCredentialStorage() bool {
-	return u_.RespondsToSelector(objc.Sel("downloadShouldUseCredentialStorage:"))
-}
-
-// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
-func (u_ URLDownloadDelegateObject) DownloadShouldUseCredentialStorage(download URLDownload) bool {
-	rv := objc.Call[bool](u_, objc.Sel("downloadShouldUseCredentialStorage:"), download)
-	return rv
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDidBegin() bool {
-	return u_.RespondsToSelector(objc.Sel("downloadDidBegin:"))
-}
-
-// Sent immediately after a download object begins a download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidBegin(download URLDownload) {
-	objc.Call[objc.Void](u_, objc.Sel("downloadDidBegin:"), download)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadShouldDecodeSourceDataOfMIMEType() bool {
-	return u_.RespondsToSelector(objc.Sel("download:shouldDecodeSourceDataOfMIMEType:"))
-}
-
-// Sent when a download object determines that the downloaded file is encoded to inquire whether the file should be automatically decoded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1408526-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadShouldDecodeSourceDataOfMIMEType(download URLDownload, encodingType string) bool {
-	rv := objc.Call[bool](u_, objc.Sel("download:shouldDecodeSourceDataOfMIMEType:"), download, encodingType)
-	return rv
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didReceiveResponse:"))
-}
-
-// Sent when a download object has received sufficient load data to construct the NSURLResponse object for the download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415460-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidReceiveResponse(download URLDownload, response URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveResponse:"), download, response)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDidCancelAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didCancelAuthenticationChallenge:"))
-}
-
-// Sent if an authentication challenge is canceled due to the protocol implementation encountering an error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416233-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidCancelAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didCancelAuthenticationChallenge:"), download, challenge)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadWillSendRequestRedirectResponse() bool {
-	return u_.RespondsToSelector(objc.Sel("download:willSendRequest:redirectResponse:"))
-}
-
-// Sent when the download object determines that it must change URLs in order to continue loading a request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1412181-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadWillSendRequestRedirectResponse(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest {
-	rv := objc.Call[URLRequest](u_, objc.Sel("download:willSendRequest:redirectResponse:"), download, request, redirectResponse)
-	return rv
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadCanAuthenticateAgainstProtectionSpace() bool {
@@ -435,17 +124,6 @@ func (u_ URLDownloadDelegateObject) DownloadCanAuthenticateAgainstProtectionSpac
 	return rv
 }
 
-func (u_ URLDownloadDelegateObject) HasDownloadDidFailWithError() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didFailWithError:"))
-}
-
-// Sent if the download fails or if an I/O error occurs when the file is written to disk. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411640-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidFailWithError(download URLDownload, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didFailWithError:"), download, error)
-}
-
 func (u_ URLDownloadDelegateObject) HasDownloadDidFinish() bool {
 	return u_.RespondsToSelector(objc.Sel("downloadDidFinish:"))
 }
@@ -457,35 +135,25 @@ func (u_ URLDownloadDelegateObject) DownloadDidFinish(download URLDownload) {
 	objc.Call[objc.Void](u_, objc.Sel("downloadDidFinish:"), download)
 }
 
-func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didReceiveAuthenticationChallenge:"))
+func (u_ URLDownloadDelegateObject) HasDownloadDidBegin() bool {
+	return u_.RespondsToSelector(objc.Sel("downloadDidBegin:"))
 }
 
-// Sent when the URL download must authenticate a challenge in order to download the request. [Full Topic]
+// Sent immediately after a download object begins a download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411969-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidReceiveAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveAuthenticationChallenge:"), download, challenge)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
+func (u_ URLDownloadDelegateObject) DownloadDidBegin(download URLDownload) {
+	objc.Call[objc.Void](u_, objc.Sel("downloadDidBegin:"), download)
 }
 
-func (u_ URLDownloadDelegateObject) HasDownloadWillResumeWithResponseFromByte() bool {
-	return u_.RespondsToSelector(objc.Sel("download:willResumeWithResponse:fromByte:"))
+func (u_ URLDownloadDelegateObject) HasDownloadShouldUseCredentialStorage() bool {
+	return u_.RespondsToSelector(objc.Sel("downloadShouldUseCredentialStorage:"))
 }
 
-// Sent when a download object has received a response from the server after attempting to resume a download. [Full Topic]
+// Sent to determine whether the URL loader should consult the credential storage to authenticate the download. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409514-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadWillResumeWithResponseFromByte(download URLDownload, response URLResponse, startingByte int64) {
-	objc.Call[objc.Void](u_, objc.Sel("download:willResumeWithResponse:fromByte:"), download, response, startingByte)
-}
-
-func (u_ URLDownloadDelegateObject) HasDownloadDidCreateDestination() bool {
-	return u_.RespondsToSelector(objc.Sel("download:didCreateDestination:"))
-}
-
-// Sent when the destination file is created. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415265-download?language=objc
-func (u_ URLDownloadDelegateObject) DownloadDidCreateDestination(download URLDownload, path string) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didCreateDestination:"), download, path)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
+func (u_ URLDownloadDelegateObject) DownloadShouldUseCredentialStorage(download URLDownload) bool {
+	rv := objc.Call[bool](u_, objc.Sel("downloadShouldUseCredentialStorage:"), download)
+	return rv
 }

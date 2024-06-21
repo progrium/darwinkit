@@ -53,6 +53,51 @@ func (p_ PropertyListSerialization) Init() PropertyListSerialization {
 	return rv
 }
 
+// Returns an NSData object containing a given property list in a specified format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1418309-datawithpropertylist?language=objc
+func (pc _PropertyListSerializationClass) DataWithPropertyListFormatOptionsError(plist objc.IObject, format PropertyListFormat, opt PropertyListWriteOptions, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](pc, objc.Sel("dataWithPropertyList:format:options:error:"), plist, format, opt, error)
+	return rv
+}
+
+// Returns an NSData object containing a given property list in a specified format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1418309-datawithpropertylist?language=objc
+func PropertyListSerialization_DataWithPropertyListFormatOptionsError(plist objc.IObject, format PropertyListFormat, opt PropertyListWriteOptions, error unsafe.Pointer) []byte {
+	return PropertyListSerializationClass.DataWithPropertyListFormatOptionsError(plist, format, opt, error)
+}
+
+// Returns a Boolean value that indicates whether a given property list is valid for a given format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1411020-propertylist?language=objc
+func (pc _PropertyListSerializationClass) PropertyListIsValidForFormat(plist objc.IObject, format PropertyListFormat) bool {
+	rv := objc.Call[bool](pc, objc.Sel("propertyList:isValidForFormat:"), plist, format)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether a given property list is valid for a given format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1411020-propertylist?language=objc
+func PropertyListSerialization_PropertyListIsValidForFormat(plist objc.IObject, format PropertyListFormat) bool {
+	return PropertyListSerializationClass.PropertyListIsValidForFormat(plist, format)
+}
+
+// Creates and returns a property list by reading from the specified stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1415468-propertylistwithstream?language=objc
+func (pc _PropertyListSerializationClass) PropertyListWithStreamOptionsFormatError(stream IInputStream, opt PropertyListReadOptions, format *PropertyListFormat, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](pc, objc.Sel("propertyListWithStream:options:format:error:"), stream, opt, format, error)
+	return rv
+}
+
+// Creates and returns a property list by reading from the specified stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1415468-propertylistwithstream?language=objc
+func PropertyListSerialization_PropertyListWithStreamOptionsFormatError(stream IInputStream, opt PropertyListReadOptions, format *PropertyListFormat, error unsafe.Pointer) objc.Object {
+	return PropertyListSerializationClass.PropertyListWithStreamOptionsFormatError(stream, opt, format, error)
+}
+
 // Creates and returns a property list from the specified data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1409678-propertylistwithdata?language=objc
@@ -81,49 +126,4 @@ func (pc _PropertyListSerializationClass) WritePropertyListToStreamFormatOptions
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1407862-writepropertylist?language=objc
 func PropertyListSerialization_WritePropertyListToStreamFormatOptionsError(plist objc.IObject, stream IOutputStream, format PropertyListFormat, opt PropertyListWriteOptions, error unsafe.Pointer) int {
 	return PropertyListSerializationClass.WritePropertyListToStreamFormatOptionsError(plist, stream, format, opt, error)
-}
-
-// Returns an NSData object containing a given property list in a specified format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1418309-datawithpropertylist?language=objc
-func (pc _PropertyListSerializationClass) DataWithPropertyListFormatOptionsError(plist objc.IObject, format PropertyListFormat, opt PropertyListWriteOptions, error unsafe.Pointer) []byte {
-	rv := objc.Call[[]byte](pc, objc.Sel("dataWithPropertyList:format:options:error:"), plist, format, opt, error)
-	return rv
-}
-
-// Returns an NSData object containing a given property list in a specified format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1418309-datawithpropertylist?language=objc
-func PropertyListSerialization_DataWithPropertyListFormatOptionsError(plist objc.IObject, format PropertyListFormat, opt PropertyListWriteOptions, error unsafe.Pointer) []byte {
-	return PropertyListSerializationClass.DataWithPropertyListFormatOptionsError(plist, format, opt, error)
-}
-
-// Creates and returns a property list by reading from the specified stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1415468-propertylistwithstream?language=objc
-func (pc _PropertyListSerializationClass) PropertyListWithStreamOptionsFormatError(stream IInputStream, opt PropertyListReadOptions, format *PropertyListFormat, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](pc, objc.Sel("propertyListWithStream:options:format:error:"), stream, opt, format, error)
-	return rv
-}
-
-// Creates and returns a property list by reading from the specified stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1415468-propertylistwithstream?language=objc
-func PropertyListSerialization_PropertyListWithStreamOptionsFormatError(stream IInputStream, opt PropertyListReadOptions, format *PropertyListFormat, error unsafe.Pointer) objc.Object {
-	return PropertyListSerializationClass.PropertyListWithStreamOptionsFormatError(stream, opt, format, error)
-}
-
-// Returns a Boolean value that indicates whether a given property list is valid for a given format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1411020-propertylist?language=objc
-func (pc _PropertyListSerializationClass) PropertyListIsValidForFormat(plist objc.IObject, format PropertyListFormat) bool {
-	rv := objc.Call[bool](pc, objc.Sel("propertyList:isValidForFormat:"), plist, format)
-	return rv
-}
-
-// Returns a Boolean value that indicates whether a given property list is valid for a given format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspropertylistserialization/1411020-propertylist?language=objc
-func PropertyListSerialization_PropertyListIsValidForFormat(plist objc.IObject, format PropertyListFormat) bool {
-	return PropertyListSerializationClass.PropertyListIsValidForFormat(plist, format)
 }

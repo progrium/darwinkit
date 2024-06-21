@@ -12,28 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope?language=objc
 type PTriangleKaleidoscope interface {
 	// optional
-	SetPoint(value coregraphics.Point)
-	HasSetPoint() bool
-
-	// optional
-	Point() coregraphics.Point
-	HasPoint() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
-
-	// optional
-	SetSize(value float32)
-	HasSetSize() bool
-
-	// optional
-	Size() float32
-	HasSize() bool
 
 	// optional
 	SetDecay(value float32)
@@ -50,6 +34,22 @@ type PTriangleKaleidoscope interface {
 	// optional
 	Rotation() float32
 	HasRotation() bool
+
+	// optional
+	SetPoint(value coregraphics.Point)
+	HasSetPoint() bool
+
+	// optional
+	Point() coregraphics.Point
+	HasPoint() bool
+
+	// optional
+	SetSize(value float32)
+	HasSetSize() bool
+
+	// optional
+	Size() float32
+	HasSize() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,29 +58,6 @@ var _ PTriangleKaleidoscope = (*TriangleKaleidoscopeObject)(nil)
 // A concrete type for the [PTriangleKaleidoscope] protocol.
 type TriangleKaleidoscopeObject struct {
 	objc.Object
-}
-
-func (t_ TriangleKaleidoscopeObject) HasSetPoint() bool {
-	return t_.RespondsToSelector(objc.Sel("setPoint:"))
-}
-
-// The x and y position to use as the center of the triangular area in the input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228805-point?language=objc
-func (t_ TriangleKaleidoscopeObject) SetPoint(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setPoint:"), value)
-}
-
-func (t_ TriangleKaleidoscopeObject) HasPoint() bool {
-	return t_.RespondsToSelector(objc.Sel("point"))
-}
-
-// The x and y position to use as the center of the triangular area in the input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228805-point?language=objc
-func (t_ TriangleKaleidoscopeObject) Point() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point"))
-	return rv
 }
 
 func (t_ TriangleKaleidoscopeObject) HasSetInputImage() bool {
@@ -103,29 +80,6 @@ func (t_ TriangleKaleidoscopeObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228804-inputimage?language=objc
 func (t_ TriangleKaleidoscopeObject) InputImage() Image {
 	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
-	return rv
-}
-
-func (t_ TriangleKaleidoscopeObject) HasSetSize() bool {
-	return t_.RespondsToSelector(objc.Sel("setSize:"))
-}
-
-// The size, in pixels, of the triangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
-func (t_ TriangleKaleidoscopeObject) SetSize(value float32) {
-	objc.Call[objc.Void](t_, objc.Sel("setSize:"), value)
-}
-
-func (t_ TriangleKaleidoscopeObject) HasSize() bool {
-	return t_.RespondsToSelector(objc.Sel("size"))
-}
-
-// The size, in pixels, of the triangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
-func (t_ TriangleKaleidoscopeObject) Size() float32 {
-	rv := objc.Call[float32](t_, objc.Sel("size"))
 	return rv
 }
 
@@ -172,5 +126,51 @@ func (t_ TriangleKaleidoscopeObject) HasRotation() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228806-rotation?language=objc
 func (t_ TriangleKaleidoscopeObject) Rotation() float32 {
 	rv := objc.Call[float32](t_, objc.Sel("rotation"))
+	return rv
+}
+
+func (t_ TriangleKaleidoscopeObject) HasSetPoint() bool {
+	return t_.RespondsToSelector(objc.Sel("setPoint:"))
+}
+
+// The x and y position to use as the center of the triangular area in the input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228805-point?language=objc
+func (t_ TriangleKaleidoscopeObject) SetPoint(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setPoint:"), value)
+}
+
+func (t_ TriangleKaleidoscopeObject) HasPoint() bool {
+	return t_.RespondsToSelector(objc.Sel("point"))
+}
+
+// The x and y position to use as the center of the triangular area in the input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228805-point?language=objc
+func (t_ TriangleKaleidoscopeObject) Point() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("point"))
+	return rv
+}
+
+func (t_ TriangleKaleidoscopeObject) HasSetSize() bool {
+	return t_.RespondsToSelector(objc.Sel("setSize:"))
+}
+
+// The size, in pixels, of the triangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
+func (t_ TriangleKaleidoscopeObject) SetSize(value float32) {
+	objc.Call[objc.Void](t_, objc.Sel("setSize:"), value)
+}
+
+func (t_ TriangleKaleidoscopeObject) HasSize() bool {
+	return t_.RespondsToSelector(objc.Sel("size"))
+}
+
+// The size, in pixels, of the triangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
+func (t_ TriangleKaleidoscopeObject) Size() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("size"))
 	return rv
 }

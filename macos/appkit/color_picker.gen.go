@@ -19,15 +19,15 @@ type _ColorPickerClass struct {
 // An interface definition for the [ColorPicker] class.
 type IColorPicker interface {
 	objc.IObject
+	AttachColorList(colorList IColorList)
+	InsertNewButtonImageIn(newButtonImage IImage, buttonCell IButtonCell)
+	SetMode(mode ColorPanelMode)
 	DetachColorList(colorList IColorList)
 	ViewSizeChanged(sender objc.IObject)
-	SetMode(mode ColorPanelMode)
-	InsertNewButtonImageIn(newButtonImage IImage, buttonCell IButtonCell)
-	AttachColorList(colorList IColorList)
-	ProvideNewButtonImage() Image
-	MinContentSize() foundation.Size
-	ButtonToolTip() string
 	ColorPanel() ColorPanel
+	ProvideNewButtonImage() Image
+	ButtonToolTip() string
+	MinContentSize() foundation.Size
 }
 
 // An abstract superclass that implements the default color picking protocol. [Full Topic]
@@ -77,6 +77,27 @@ func (c_ ColorPicker) Init() ColorPicker {
 	return rv
 }
 
+// Overriden to attach a color list to a color picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492395-attachcolorlist?language=objc
+func (c_ ColorPicker) AttachColorList(colorList IColorList) {
+	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
+}
+
+// Sets the image used for the specified button cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492402-insertnewbuttonimage?language=objc
+func (c_ ColorPicker) InsertNewButtonImageIn(newButtonImage IImage, buttonCell IButtonCell) {
+	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
+}
+
+// Overriden to set the color picker’s mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492394-setmode?language=objc
+func (c_ ColorPicker) SetMode(mode ColorPanelMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setMode:"), mode)
+}
+
 // Overriden to detach a color list from a color picker. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492388-detachcolorlist?language=objc
@@ -91,25 +112,12 @@ func (c_ ColorPicker) ViewSizeChanged(sender objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("viewSizeChanged:"), sender)
 }
 
-// Overriden to set the color picker’s mode. [Full Topic]
+// The color panel instance that owns the color picker. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492394-setmode?language=objc
-func (c_ ColorPicker) SetMode(mode ColorPanelMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setMode:"), mode)
-}
-
-// Sets the image used for the specified button cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492402-insertnewbuttonimage?language=objc
-func (c_ ColorPicker) InsertNewButtonImageIn(newButtonImage IImage, buttonCell IButtonCell) {
-	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
-}
-
-// Overriden to attach a color list to a color picker. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492395-attachcolorlist?language=objc
-func (c_ ColorPicker) AttachColorList(colorList IColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492396-colorpanel?language=objc
+func (c_ ColorPicker) ColorPanel() ColorPanel {
+	rv := objc.Call[ColorPanel](c_, objc.Sel("colorPanel"))
+	return rv
 }
 
 // The button image used by the color picker. [Full Topic]
@@ -117,14 +125,6 @@ func (c_ ColorPicker) AttachColorList(colorList IColorList) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492393-providenewbuttonimage?language=objc
 func (c_ ColorPicker) ProvideNewButtonImage() Image {
 	rv := objc.Call[Image](c_, objc.Sel("provideNewButtonImage"))
-	return rv
-}
-
-// The minimum content size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492391-mincontentsize?language=objc
-func (c_ ColorPicker) MinContentSize() foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("minContentSize"))
 	return rv
 }
 
@@ -136,10 +136,10 @@ func (c_ ColorPicker) ButtonToolTip() string {
 	return rv
 }
 
-// The color panel instance that owns the color picker. [Full Topic]
+// The minimum content size. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492396-colorpanel?language=objc
-func (c_ ColorPicker) ColorPanel() ColorPanel {
-	rv := objc.Call[ColorPanel](c_, objc.Sel("colorPanel"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492391-mincontentsize?language=objc
+func (c_ ColorPicker) MinContentSize() foundation.Size {
+	rv := objc.Call[foundation.Size](c_, objc.Sel("minContentSize"))
 	return rv
 }

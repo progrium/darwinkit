@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator?language=objc
 type PViewControllerPresentationAnimator interface {
 	// optional
-	AnimateDismissalOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController)
-	HasAnimateDismissalOfViewControllerFromViewController() bool
-
-	// optional
 	AnimatePresentationOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController)
 	HasAnimatePresentationOfViewControllerFromViewController() bool
+
+	// optional
+	AnimateDismissalOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController)
+	HasAnimateDismissalOfViewControllerFromViewController() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,17 +25,6 @@ var _ PViewControllerPresentationAnimator = (*ViewControllerPresentationAnimator
 // A concrete type for the [PViewControllerPresentationAnimator] protocol.
 type ViewControllerPresentationAnimatorObject struct {
 	objc.Object
-}
-
-func (v_ ViewControllerPresentationAnimatorObject) HasAnimateDismissalOfViewControllerFromViewController() bool {
-	return v_.RespondsToSelector(objc.Sel("animateDismissalOfViewController:fromViewController:"))
-}
-
-// Called when a previously-presented view controller is about to be dismissed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator/1434458-animatedismissalofviewcontroller?language=objc
-func (v_ ViewControllerPresentationAnimatorObject) AnimateDismissalOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("animateDismissalOfViewController:fromViewController:"), viewController, fromViewController)
 }
 
 func (v_ ViewControllerPresentationAnimatorObject) HasAnimatePresentationOfViewControllerFromViewController() bool {
@@ -47,4 +36,15 @@ func (v_ ViewControllerPresentationAnimatorObject) HasAnimatePresentationOfViewC
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator/1434396-animatepresentationofviewcontrol?language=objc
 func (v_ ViewControllerPresentationAnimatorObject) AnimatePresentationOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController) {
 	objc.Call[objc.Void](v_, objc.Sel("animatePresentationOfViewController:fromViewController:"), viewController, fromViewController)
+}
+
+func (v_ ViewControllerPresentationAnimatorObject) HasAnimateDismissalOfViewControllerFromViewController() bool {
+	return v_.RespondsToSelector(objc.Sel("animateDismissalOfViewController:fromViewController:"))
+}
+
+// Called when a previously-presented view controller is about to be dismissed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator/1434458-animatedismissalofviewcontroller?language=objc
+func (v_ ViewControllerPresentationAnimatorObject) AnimateDismissalOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController) {
+	objc.Call[objc.Void](v_, objc.Sel("animateDismissalOfViewController:fromViewController:"), viewController, fromViewController)
 }

@@ -67,20 +67,6 @@ func NNComparisonNode_NodeWithSources(sourceNodes []INNImageNode) NNComparisonNo
 	return NNComparisonNodeClass.NodeWithSources(sourceNodes)
 }
 
-func (n_ NNComparisonNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
-	rv := objc.Call[NNComparisonNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
-func NewNNComparisonNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
-	instance := NNComparisonNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNComparisonNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
 	rv := objc.Call[NNComparisonNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
@@ -103,6 +89,20 @@ func (n_ NNComparisonNode) InitWithSources(sourceNodes []INNImageNode) NNCompari
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890820-initwithsources?language=objc
 func NewNNComparisonNodeWithSources(sourceNodes []INNImageNode) NNComparisonNode {
 	instance := NNComparisonNodeClass.Alloc().InitWithSources(sourceNodes)
+	instance.Autorelease()
+	return instance
+}
+
+func (n_ NNComparisonNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
+	rv := objc.Call[NNComparisonNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
+func NewNNComparisonNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
+	instance := NNComparisonNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
 	instance.Autorelease()
 	return instance
 }

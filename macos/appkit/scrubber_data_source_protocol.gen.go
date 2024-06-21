@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource?language=objc
 type PScrubberDataSource interface {
 	// optional
-	NumberOfItemsForScrubber(scrubber Scrubber) int
-	HasNumberOfItemsForScrubber() bool
-
-	// optional
 	ScrubberViewForItemAtIndex(scrubber Scrubber, index int) ScrubberItemView
 	HasScrubberViewForItemAtIndex() bool
+
+	// optional
+	NumberOfItemsForScrubber(scrubber Scrubber) int
+	HasNumberOfItemsForScrubber() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,18 +25,6 @@ var _ PScrubberDataSource = (*ScrubberDataSourceObject)(nil)
 // A concrete type for the [PScrubberDataSource] protocol.
 type ScrubberDataSourceObject struct {
 	objc.Object
-}
-
-func (s_ ScrubberDataSourceObject) HasNumberOfItemsForScrubber() bool {
-	return s_.RespondsToSelector(objc.Sel("numberOfItemsForScrubber:"))
-}
-
-// Asks the data source for the number of items in the scrubber. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource/2544845-numberofitemsforscrubber?language=objc
-func (s_ ScrubberDataSourceObject) NumberOfItemsForScrubber(scrubber Scrubber) int {
-	rv := objc.Call[int](s_, objc.Sel("numberOfItemsForScrubber:"), scrubber)
-	return rv
 }
 
 func (s_ ScrubberDataSourceObject) HasScrubberViewForItemAtIndex() bool {
@@ -48,5 +36,17 @@ func (s_ ScrubberDataSourceObject) HasScrubberViewForItemAtIndex() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource/2544709-scrubber?language=objc
 func (s_ ScrubberDataSourceObject) ScrubberViewForItemAtIndex(scrubber Scrubber, index int) ScrubberItemView {
 	rv := objc.Call[ScrubberItemView](s_, objc.Sel("scrubber:viewForItemAtIndex:"), scrubber, index)
+	return rv
+}
+
+func (s_ ScrubberDataSourceObject) HasNumberOfItemsForScrubber() bool {
+	return s_.RespondsToSelector(objc.Sel("numberOfItemsForScrubber:"))
+}
+
+// Asks the data source for the number of items in the scrubber. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource/2544845-numberofitemsforscrubber?language=objc
+func (s_ ScrubberDataSourceObject) NumberOfItemsForScrubber(scrubber Scrubber) int {
+	rv := objc.Call[int](s_, objc.Sel("numberOfItemsForScrubber:"), scrubber)
 	return rv
 }

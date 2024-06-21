@@ -19,13 +19,13 @@ type _FontPanelClass struct {
 // An interface definition for the [FontPanel] class.
 type IFontPanel interface {
 	IPanel
-	ReloadDefaultFontFamilies()
-	SetPanelFontIsMultiple(fontObj IFont, flag bool)
 	PanelConvertFont(fontObj IFont) Font
-	IsEnabled() bool
-	SetEnabled(value bool)
+	SetPanelFontIsMultiple(fontObj IFont, flag bool)
+	ReloadDefaultFontFamilies()
 	AccessoryView() View
 	SetAccessoryView(value IView)
+	IsEnabled() bool
+	SetEnabled(value bool)
 }
 
 // The Font panel—a user interface object that displays a list of available fonts, letting the user preview them and change the font used to display text. [Full Topic]
@@ -87,25 +87,12 @@ func NewFontPanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundati
 	return instance
 }
 
-func (f_ FontPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) FontPanel {
-	rv := objc.Call[FontPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
+// Converts the specified font using the settings in the receiver, with the aid of the shared NSFontManager if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535338-panelconvertfont?language=objc
+func (f_ FontPanel) PanelConvertFont(fontObj IFont) Font {
+	rv := objc.Call[Font](f_, objc.Sel("panelConvertFont:"), fontObj)
 	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewFontPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) FontPanel {
-	instance := FontPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
-// Triggers a reload to the default state, so that the delegate is called. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535396-reloaddefaultfontfamilies?language=objc
-func (f_ FontPanel) ReloadDefaultFontFamilies() {
-	objc.Call[objc.Void](f_, objc.Sel("reloadDefaultFontFamilies"))
 }
 
 // Sets the selected font in the receiver to the specified font. [Full Topic]
@@ -115,12 +102,41 @@ func (f_ FontPanel) SetPanelFontIsMultiple(fontObj IFont, flag bool) {
 	objc.Call[objc.Void](f_, objc.Sel("setPanelFont:isMultiple:"), fontObj, flag)
 }
 
-// Converts the specified font using the settings in the receiver, with the aid of the shared NSFontManager if necessary. [Full Topic]
+// Triggers a reload to the default state, so that the delegate is called. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535338-panelconvertfont?language=objc
-func (f_ FontPanel) PanelConvertFont(fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("panelConvertFont:"), fontObj)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535396-reloaddefaultfontfamilies?language=objc
+func (f_ FontPanel) ReloadDefaultFontFamilies() {
+	objc.Call[objc.Void](f_, objc.Sel("reloadDefaultFontFamilies"))
+}
+
+// The specified view as the receiver’s accessory view, allowing you to add custom controls to your application’s Font panel without having to create a subclass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535927-accessoryview?language=objc
+func (f_ FontPanel) AccessoryView() View {
+	rv := objc.Call[View](f_, objc.Sel("accessoryView"))
 	return rv
+}
+
+// The specified view as the receiver’s accessory view, allowing you to add custom controls to your application’s Font panel without having to create a subclass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535927-accessoryview?language=objc
+func (f_ FontPanel) SetAccessoryView(value IView) {
+	objc.Call[objc.Void](f_, objc.Sel("setAccessoryView:"), value)
+}
+
+// Returns the single NSFontPanel instance for the application, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1527046-sharedfontpanel?language=objc
+func (fc _FontPanelClass) SharedFontPanel() FontPanel {
+	rv := objc.Call[FontPanel](fc, objc.Sel("sharedFontPanel"))
+	return rv
+}
+
+// Returns the single NSFontPanel instance for the application, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1527046-sharedfontpanel?language=objc
+func FontPanel_SharedFontPanel() FontPanel {
+	return FontPanelClass.SharedFontPanel()
 }
 
 // Returns YES if the shared Font panel has been created, NO if it hasn’t. [Full Topic]
@@ -151,34 +167,4 @@ func (f_ FontPanel) IsEnabled() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1526041-enabled?language=objc
 func (f_ FontPanel) SetEnabled(value bool) {
 	objc.Call[objc.Void](f_, objc.Sel("setEnabled:"), value)
-}
-
-// Returns the single NSFontPanel instance for the application, creating it if necessary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1527046-sharedfontpanel?language=objc
-func (fc _FontPanelClass) SharedFontPanel() FontPanel {
-	rv := objc.Call[FontPanel](fc, objc.Sel("sharedFontPanel"))
-	return rv
-}
-
-// Returns the single NSFontPanel instance for the application, creating it if necessary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1527046-sharedfontpanel?language=objc
-func FontPanel_SharedFontPanel() FontPanel {
-	return FontPanelClass.SharedFontPanel()
-}
-
-// The specified view as the receiver’s accessory view, allowing you to add custom controls to your application’s Font panel without having to create a subclass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535927-accessoryview?language=objc
-func (f_ FontPanel) AccessoryView() View {
-	rv := objc.Call[View](f_, objc.Sel("accessoryView"))
-	return rv
-}
-
-// The specified view as the receiver’s accessory view, allowing you to add custom controls to your application’s Font panel without having to create a subclass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535927-accessoryview?language=objc
-func (f_ FontPanel) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](f_, objc.Sel("setAccessoryView:"), value)
 }

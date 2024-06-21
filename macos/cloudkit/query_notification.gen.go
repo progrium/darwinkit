@@ -20,9 +20,9 @@ type _QueryNotificationClass struct {
 type IQueryNotification interface {
 	INotification
 	RecordID() RecordID
-	RecordFields() map[string]objc.Object
-	QueryNotificationReason() QueryNotificationReason
 	DatabaseScope() DatabaseScope
+	QueryNotificationReason() QueryNotificationReason
+	RecordFields() map[string]objc.Object
 }
 
 // A notification that triggers when a record that matches the subscription’s predicate changes. [Full Topic]
@@ -78,11 +78,11 @@ func (q_ QueryNotification) RecordID() RecordID {
 	return rv
 }
 
-// A dictionary of fields that have changes. [Full Topic]
+// The type of database for the record zone. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerynotification/1428114-recordfields?language=objc
-func (q_ QueryNotification) RecordFields() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](q_, objc.Sel("recordFields"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerynotification/1640449-databasescope?language=objc
+func (q_ QueryNotification) DatabaseScope() DatabaseScope {
+	rv := objc.Call[DatabaseScope](q_, objc.Sel("databaseScope"))
 	return rv
 }
 
@@ -94,10 +94,10 @@ func (q_ QueryNotification) QueryNotificationReason() QueryNotificationReason {
 	return rv
 }
 
-// The type of database for the record zone. [Full Topic]
+// A dictionary of fields that have changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerynotification/1640449-databasescope?language=objc
-func (q_ QueryNotification) DatabaseScope() DatabaseScope {
-	rv := objc.Call[DatabaseScope](q_, objc.Sel("databaseScope"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerynotification/1428114-recordfields?language=objc
+func (q_ QueryNotification) RecordFields() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](q_, objc.Sel("recordFields"))
 	return rv
 }

@@ -21,10 +21,10 @@ type IPropertyMapping interface {
 	objc.IObject
 	Name() string
 	SetName(value string)
-	UserInfo() foundation.Dictionary
-	SetUserInfo(value foundation.Dictionary)
 	ValueExpression() foundation.Expression
 	SetValueExpression(value foundation.IExpression)
+	UserInfo() foundation.Dictionary
+	SetUserInfo(value foundation.Dictionary)
 }
 
 // A mapping instance that specifies in a model how to map from a property in a source entity to a property in a destination entity. [Full Topic]
@@ -75,21 +75,6 @@ func (p_ PropertyMapping) SetName(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setName:"), value)
 }
 
-// The user info for the property mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506516-userinfo?language=objc
-func (p_ PropertyMapping) UserInfo() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("userInfo"))
-	return rv
-}
-
-// The user info for the property mapping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506516-userinfo?language=objc
-func (p_ PropertyMapping) SetUserInfo(value foundation.Dictionary) {
-	objc.Call[objc.Void](p_, objc.Sel("setUserInfo:"), value)
-}
-
 // The value expression for the property mapping. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506819-valueexpression?language=objc
@@ -103,4 +88,19 @@ func (p_ PropertyMapping) ValueExpression() foundation.Expression {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506819-valueexpression?language=objc
 func (p_ PropertyMapping) SetValueExpression(value foundation.IExpression) {
 	objc.Call[objc.Void](p_, objc.Sel("setValueExpression:"), value)
+}
+
+// The user info for the property mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506516-userinfo?language=objc
+func (p_ PropertyMapping) UserInfo() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("userInfo"))
+	return rv
+}
+
+// The user info for the property mapping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506516-userinfo?language=objc
+func (p_ PropertyMapping) SetUserInfo(value foundation.Dictionary) {
+	objc.Call[objc.Void](p_, objc.Sel("setUserInfo:"), value)
 }

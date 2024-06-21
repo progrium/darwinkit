@@ -18,8 +18,8 @@ type _BatchUpdateResultClass struct {
 // An interface definition for the [BatchUpdateResult] class.
 type IBatchUpdateResult interface {
 	IPersistentStoreResult
-	ResultType() BatchUpdateRequestResultType
 	Result() objc.Object
+	ResultType() BatchUpdateRequestResultType
 }
 
 // The result returned when executing a batch update request. [Full Topic]
@@ -55,18 +55,18 @@ func (b_ BatchUpdateResult) Init() BatchUpdateResult {
 	return rv
 }
 
-// The type of result that Core Data returns from the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdateresult/1404900-resulttype?language=objc
-func (b_ BatchUpdateResult) ResultType() BatchUpdateRequestResultType {
-	rv := objc.Call[BatchUpdateRequestResultType](b_, objc.Sel("resultType"))
-	return rv
-}
-
 // The result of a batch-update request, either the number of updated objects, the identifiers of the updated objects, or a status value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdateresult/1404946-result?language=objc
 func (b_ BatchUpdateResult) Result() objc.Object {
 	rv := objc.Call[objc.Object](b_, objc.Sel("result"))
+	return rv
+}
+
+// The type of result that Core Data returns from the request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdateresult/1404900-resulttype?language=objc
+func (b_ BatchUpdateResult) ResultType() BatchUpdateRequestResultType {
+	rv := objc.Call[BatchUpdateRequestResultType](b_, objc.Sel("resultType"))
 	return rv
 }

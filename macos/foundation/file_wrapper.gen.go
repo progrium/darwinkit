@@ -18,28 +18,28 @@ type _FileWrapperClass struct {
 // An interface definition for the [FileWrapper] class.
 type IFileWrapper interface {
 	objc.IObject
-	MatchesContentsOfURL(url IURL) bool
-	KeyForFileWrapper(child IFileWrapper) string
-	WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool
-	RemoveFileWrapper(child IFileWrapper)
-	AddFileWrapper(child IFileWrapper) string
 	AddRegularFileWithContentsPreferredFilename(data []byte, fileName string) string
+	KeyForFileWrapper(child IFileWrapper) string
+	MatchesContentsOfURL(url IURL) bool
+	RemoveFileWrapper(child IFileWrapper)
 	ReadFromURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) bool
-	SerializedRepresentation() []byte
-	FileWrappers() map[string]FileWrapper
-	RegularFileContents() []byte
+	WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool
+	AddFileWrapper(child IFileWrapper) string
 	Filename() string
 	SetFilename(value string)
-	SymbolicLinkDestinationURL() URL
+	IsSymbolicLink() bool
+	FileWrappers() map[string]FileWrapper
 	Icon() objc.Object
 	SetIcon(value objc.IObject)
+	IsDirectory() bool
 	PreferredFilename() string
 	SetPreferredFilename(value string)
-	IsDirectory() bool
-	IsSymbolicLink() bool
 	IsRegularFile() bool
+	SymbolicLinkDestinationURL() URL
 	FileAttributes() map[string]objc.Object
 	SetFileAttributes(value map[string]objc.IObject)
+	SerializedRepresentation() []byte
+	RegularFileContents() []byte
 }
 
 // A representation of a node (a file, directory, or symbolic link) in the file system. [Full Topic]
@@ -53,20 +53,6 @@ func FileWrapperFrom(ptr unsafe.Pointer) FileWrapper {
 	return FileWrapper{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
-	rv := objc.Call[FileWrapper](f_, objc.Sel("initSymbolicLinkWithDestinationURL:"), url)
-	return rv
-}
-
-// Initializes the receiver as a symbolic-link file wrapper that links to a specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415098-initsymboliclinkwithdestinationu?language=objc
-func NewFileWrapperSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
-	instance := FileWrapperClass.Alloc().InitSymbolicLinkWithDestinationURL(url)
-	instance.Autorelease()
-	return instance
 }
 
 func (f_ FileWrapper) InitRegularFileWithContents(contents []byte) FileWrapper {
@@ -83,16 +69,30 @@ func NewFileWrapperRegularFileWithContents(contents []byte) FileWrapper {
 	return instance
 }
 
-func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
-	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithURL:options:error:"), url, options, outError)
+func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
+	rv := objc.Call[FileWrapper](f_, objc.Sel("initSymbolicLinkWithDestinationURL:"), url)
 	return rv
 }
 
-// Initializes a file wrapper instance whose kind is determined by the type of file-system node located by the URL. [Full Topic]
+// Initializes the receiver as a symbolic-link file wrapper that links to a specified file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415658-initwithurl?language=objc
-func NewFileWrapperWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
-	instance := FileWrapperClass.Alloc().InitWithURLOptionsError(url, options, outError)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415098-initsymboliclinkwithdestinationu?language=objc
+func NewFileWrapperSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitSymbolicLinkWithDestinationURL(url)
+	instance.Autorelease()
+	return instance
+}
+
+func (f_ FileWrapper) InitWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
+	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithSerializedRepresentation:"), serializeRepresentation)
+	return rv
+}
+
+// Initializes the receiver as a regular-file file wrapper from given serialized data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1407515-initwithserializedrepresentation?language=objc
+func NewFileWrapperWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitWithSerializedRepresentation(serializeRepresentation)
 	instance.Autorelease()
 	return instance
 }
@@ -111,16 +111,16 @@ func NewFileWrapperDirectoryWithFileWrappers(childrenByPreferredName map[string]
 	return instance
 }
 
-func (f_ FileWrapper) InitWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
-	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithSerializedRepresentation:"), serializeRepresentation)
+func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
+	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithURL:options:error:"), url, options, outError)
 	return rv
 }
 
-// Initializes the receiver as a regular-file file wrapper from given serialized data. [Full Topic]
+// Initializes a file wrapper instance whose kind is determined by the type of file-system node located by the URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1407515-initwithserializedrepresentation?language=objc
-func NewFileWrapperWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
-	instance := FileWrapperClass.Alloc().InitWithSerializedRepresentation(serializeRepresentation)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415658-initwithurl?language=objc
+func NewFileWrapperWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitWithURLOptionsError(url, options, outError)
 	instance.Autorelease()
 	return instance
 }
@@ -145,11 +145,11 @@ func (f_ FileWrapper) Init() FileWrapper {
 	return rv
 }
 
-// Indicates whether the contents of a file wrapper matches a directory, regular file, or symbolic link on disk. [Full Topic]
+// Creates a regular-file file wrapper with the given contents and adds it to the receiver, which must be a directory file wrapper. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408360-matchescontentsofurl?language=objc
-func (f_ FileWrapper) MatchesContentsOfURL(url IURL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("matchesContentsOfURL:"), url)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1418374-addregularfilewithcontents?language=objc
+func (f_ FileWrapper) AddRegularFileWithContentsPreferredFilename(data []byte, fileName string) string {
+	rv := objc.Call[string](f_, objc.Sel("addRegularFileWithContents:preferredFilename:"), data, fileName)
 	return rv
 }
 
@@ -161,11 +161,11 @@ func (f_ FileWrapper) KeyForFileWrapper(child IFileWrapper) string {
 	return rv
 }
 
-// Recursively writes the entire contents of a file wrapper to a given file-system URL. [Full Topic]
+// Indicates whether the contents of a file wrapper matches a directory, regular file, or symbolic link on disk. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415981-writetourl?language=objc
-func (f_ FileWrapper) WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](f_, objc.Sel("writeToURL:options:originalContentsURL:error:"), url, options, originalContentsURL, outError)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408360-matchescontentsofurl?language=objc
+func (f_ FileWrapper) MatchesContentsOfURL(url IURL) bool {
+	rv := objc.Call[bool](f_, objc.Sel("matchesContentsOfURL:"), url)
 	return rv
 }
 
@@ -176,22 +176,6 @@ func (f_ FileWrapper) RemoveFileWrapper(child IFileWrapper) {
 	objc.Call[objc.Void](f_, objc.Sel("removeFileWrapper:"), child)
 }
 
-// Adds a child file wrapper to the receiver, which must be a directory file wrapper. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415067-addfilewrapper?language=objc
-func (f_ FileWrapper) AddFileWrapper(child IFileWrapper) string {
-	rv := objc.Call[string](f_, objc.Sel("addFileWrapper:"), child)
-	return rv
-}
-
-// Creates a regular-file file wrapper with the given contents and adds it to the receiver, which must be a directory file wrapper. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1418374-addregularfilewithcontents?language=objc
-func (f_ FileWrapper) AddRegularFileWithContentsPreferredFilename(data []byte, fileName string) string {
-	rv := objc.Call[string](f_, objc.Sel("addRegularFileWithContents:preferredFilename:"), data, fileName)
-	return rv
-}
-
 // Recursively rereads the entire contents of a file wrapper from the specified location on disk. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1411645-readfromurl?language=objc
@@ -200,27 +184,19 @@ func (f_ FileWrapper) ReadFromURLOptionsError(url IURL, options FileWrapperReadi
 	return rv
 }
 
-// The contents of the file wrapper as an opaque data object. [Full Topic]
+// Recursively writes the entire contents of a file wrapper to a given file-system URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1412119-serializedrepresentation?language=objc
-func (f_ FileWrapper) SerializedRepresentation() []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("serializedRepresentation"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415981-writetourl?language=objc
+func (f_ FileWrapper) WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("writeToURL:options:originalContentsURL:error:"), url, options, originalContentsURL, outError)
 	return rv
 }
 
-// The file wrappers contained by a directory file wrapper. [Full Topic]
+// Adds a child file wrapper to the receiver, which must be a directory file wrapper. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409437-filewrappers?language=objc
-func (f_ FileWrapper) FileWrappers() map[string]FileWrapper {
-	rv := objc.Call[map[string]FileWrapper](f_, objc.Sel("fileWrappers"))
-	return rv
-}
-
-// The contents of the file-system node associated with a regular-file file wrapper. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1410178-regularfilecontents?language=objc
-func (f_ FileWrapper) RegularFileContents() []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("regularFileContents"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415067-addfilewrapper?language=objc
+func (f_ FileWrapper) AddFileWrapper(child IFileWrapper) string {
+	rv := objc.Call[string](f_, objc.Sel("addFileWrapper:"), child)
 	return rv
 }
 
@@ -239,11 +215,19 @@ func (f_ FileWrapper) SetFilename(value string) {
 	objc.Call[objc.Void](f_, objc.Sel("setFilename:"), value)
 }
 
-// The URL referenced by the file wrapper object, which must be a symbolic-link file wrapper. [Full Topic]
+// A boolean that indicates whether the file wrapper object is a symbolic-link file wrapper. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408364-symboliclinkdestinationurl?language=objc
-func (f_ FileWrapper) SymbolicLinkDestinationURL() URL {
-	rv := objc.Call[URL](f_, objc.Sel("symbolicLinkDestinationURL"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408125-symboliclink?language=objc
+func (f_ FileWrapper) IsSymbolicLink() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isSymbolicLink"))
+	return rv
+}
+
+// The file wrappers contained by a directory file wrapper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409437-filewrappers?language=objc
+func (f_ FileWrapper) FileWrappers() map[string]FileWrapper {
+	rv := objc.Call[map[string]FileWrapper](f_, objc.Sel("fileWrappers"))
 	return rv
 }
 
@@ -262,6 +246,14 @@ func (f_ FileWrapper) SetIcon(value objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("setIcon:"), value)
 }
 
+// This property contains a boolean value indicating whether the file wrapper is a directory file wrapper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409030-directory?language=objc
+func (f_ FileWrapper) IsDirectory() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isDirectory"))
+	return rv
+}
+
 // The preferred filename for the file wrapper object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409368-preferredfilename?language=objc
@@ -277,27 +269,19 @@ func (f_ FileWrapper) SetPreferredFilename(value string) {
 	objc.Call[objc.Void](f_, objc.Sel("setPreferredFilename:"), value)
 }
 
-// This property contains a boolean value indicating whether the file wrapper is a directory file wrapper. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409030-directory?language=objc
-func (f_ FileWrapper) IsDirectory() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isDirectory"))
-	return rv
-}
-
-// A boolean that indicates whether the file wrapper object is a symbolic-link file wrapper. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408125-symboliclink?language=objc
-func (f_ FileWrapper) IsSymbolicLink() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isSymbolicLink"))
-	return rv
-}
-
 // This property contains a boolean value that indicates whether the file wrapper object is a regular-file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415680-regularfile?language=objc
 func (f_ FileWrapper) IsRegularFile() bool {
 	rv := objc.Call[bool](f_, objc.Sel("isRegularFile"))
+	return rv
+}
+
+// The URL referenced by the file wrapper object, which must be a symbolic-link file wrapper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408364-symboliclinkdestinationurl?language=objc
+func (f_ FileWrapper) SymbolicLinkDestinationURL() URL {
+	rv := objc.Call[URL](f_, objc.Sel("symbolicLinkDestinationURL"))
 	return rv
 }
 
@@ -314,4 +298,20 @@ func (f_ FileWrapper) FileAttributes() map[string]objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1412745-fileattributes?language=objc
 func (f_ FileWrapper) SetFileAttributes(value map[string]objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("setFileAttributes:"), value)
+}
+
+// The contents of the file wrapper as an opaque data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1412119-serializedrepresentation?language=objc
+func (f_ FileWrapper) SerializedRepresentation() []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("serializedRepresentation"))
+	return rv
+}
+
+// The contents of the file-system node associated with a regular-file file wrapper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1410178-regularfilecontents?language=objc
+func (f_ FileWrapper) RegularFileContents() []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("regularFileContents"))
+	return rv
 }

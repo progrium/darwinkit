@@ -12,8 +12,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver?language=objc
 type PFileProviderChangeObserver interface {
 	// optional
-	DidDeleteItemsWithIdentifiers(deletedItemIdentifiers []FileProviderItemIdentifier)
-	HasDidDeleteItemsWithIdentifiers() bool
+	FinishEnumeratingWithError(error foundation.Error)
+	HasFinishEnumeratingWithError() bool
 
 	// optional
 	FinishEnumeratingChangesUpToSyncAnchorMoreComing(anchor FileProviderSyncAnchor, moreComing bool)
@@ -24,8 +24,8 @@ type PFileProviderChangeObserver interface {
 	HasDidUpdateItems() bool
 
 	// optional
-	FinishEnumeratingWithError(error foundation.Error)
-	HasFinishEnumeratingWithError() bool
+	DidDeleteItemsWithIdentifiers(deletedItemIdentifiers []FileProviderItemIdentifier)
+	HasDidDeleteItemsWithIdentifiers() bool
 
 	// optional
 	SuggestedBatchSize() int
@@ -40,15 +40,15 @@ type FileProviderChangeObserverObject struct {
 	objc.Object
 }
 
-func (f_ FileProviderChangeObserverObject) HasDidDeleteItemsWithIdentifiers() bool {
-	return f_.RespondsToSelector(objc.Sel("didDeleteItemsWithIdentifiers:"))
+func (f_ FileProviderChangeObserverObject) HasFinishEnumeratingWithError() bool {
+	return f_.RespondsToSelector(objc.Sel("finishEnumeratingWithError:"))
 }
 
-// Tells the observer that the specified items have been deleted. [Full Topic]
+// Tells the observer that an error occurred during change notification. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver/2879604-diddeleteitemswithidentifiers?language=objc
-func (f_ FileProviderChangeObserverObject) DidDeleteItemsWithIdentifiers(deletedItemIdentifiers []FileProviderItemIdentifier) {
-	objc.Call[objc.Void](f_, objc.Sel("didDeleteItemsWithIdentifiers:"), deletedItemIdentifiers)
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver/2879605-finishenumeratingwitherror?language=objc
+func (f_ FileProviderChangeObserverObject) FinishEnumeratingWithError(error foundation.Error) {
+	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
 }
 
 func (f_ FileProviderChangeObserverObject) HasFinishEnumeratingChangesUpToSyncAnchorMoreComing() bool {
@@ -73,15 +73,15 @@ func (f_ FileProviderChangeObserverObject) DidUpdateItems(updatedItems []objc.Ob
 	objc.Call[objc.Void](f_, objc.Sel("didUpdateItems:"), updatedItems)
 }
 
-func (f_ FileProviderChangeObserverObject) HasFinishEnumeratingWithError() bool {
-	return f_.RespondsToSelector(objc.Sel("finishEnumeratingWithError:"))
+func (f_ FileProviderChangeObserverObject) HasDidDeleteItemsWithIdentifiers() bool {
+	return f_.RespondsToSelector(objc.Sel("didDeleteItemsWithIdentifiers:"))
 }
 
-// Tells the observer that an error occurred during change notification. [Full Topic]
+// Tells the observer that the specified items have been deleted. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver/2879605-finishenumeratingwitherror?language=objc
-func (f_ FileProviderChangeObserverObject) FinishEnumeratingWithError(error foundation.Error) {
-	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver/2879604-diddeleteitemswithidentifiers?language=objc
+func (f_ FileProviderChangeObserverObject) DidDeleteItemsWithIdentifiers(deletedItemIdentifiers []FileProviderItemIdentifier) {
+	objc.Call[objc.Void](f_, objc.Sel("didDeleteItemsWithIdentifiers:"), deletedItemIdentifiers)
 }
 
 func (f_ FileProviderChangeObserverObject) HasSuggestedBatchSize() bool {

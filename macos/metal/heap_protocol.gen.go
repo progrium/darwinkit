@@ -11,12 +11,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap?language=objc
 type PHeap interface {
 	// optional
-	SetPurgeableState(state PurgeableState) PurgeableState
-	HasSetPurgeableState() bool
-
-	// optional
-	NewBufferWithLengthOptionsOffset(length uint, options ResourceOptions, offset uint) BufferObject
-	HasNewBufferWithLengthOptionsOffset() bool
+	NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
+	HasNewTextureWithDescriptor() bool
 
 	// optional
 	NewBufferWithLengthOptions(length uint, options ResourceOptions) BufferObject
@@ -27,16 +23,32 @@ type PHeap interface {
 	HasMaxAvailableSizeWithAlignment() bool
 
 	// optional
-	NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject
-	HasNewTextureWithDescriptor() bool
+	SetPurgeableState(state PurgeableState) PurgeableState
+	HasSetPurgeableState() bool
 
 	// optional
-	NewTextureWithDescriptorOffset(descriptor TextureDescriptor, offset uint) TextureObject
-	HasNewTextureWithDescriptorOffset() bool
+	Device() DeviceObject
+	HasDevice() bool
 
 	// optional
-	HazardTrackingMode() HazardTrackingMode
-	HasHazardTrackingMode() bool
+	CpuCacheMode() CPUCacheMode
+	HasCpuCacheMode() bool
+
+	// optional
+	StorageMode() StorageMode
+	HasStorageMode() bool
+
+	// optional
+	UsedSize() uint
+	HasUsedSize() bool
+
+	// optional
+	ResourceOptions() ResourceOptions
+	HasResourceOptions() bool
+
+	// optional
+	Type() HeapType
+	HasType() bool
 
 	// optional
 	SetLabel(value string)
@@ -47,36 +59,16 @@ type PHeap interface {
 	HasLabel() bool
 
 	// optional
-	CurrentAllocatedSize() uint
-	HasCurrentAllocatedSize() bool
-
-	// optional
-	Type() HeapType
-	HasType() bool
-
-	// optional
-	UsedSize() uint
-	HasUsedSize() bool
-
-	// optional
-	CpuCacheMode() CPUCacheMode
-	HasCpuCacheMode() bool
-
-	// optional
 	Size() uint
 	HasSize() bool
 
 	// optional
-	ResourceOptions() ResourceOptions
-	HasResourceOptions() bool
+	CurrentAllocatedSize() uint
+	HasCurrentAllocatedSize() bool
 
 	// optional
-	StorageMode() StorageMode
-	HasStorageMode() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
+	HazardTrackingMode() HazardTrackingMode
+	HasHazardTrackingMode() bool
 }
 
 // ensure impl type implements protocol interface
@@ -87,27 +79,15 @@ type HeapObject struct {
 	objc.Object
 }
 
-func (h_ HeapObject) HasSetPurgeableState() bool {
-	return h_.RespondsToSelector(objc.Sel("setPurgeableState:"))
+func (h_ HeapObject) HasNewTextureWithDescriptor() bool {
+	return h_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:"))
 }
 
-// Sets the purgeable state of the heap. [Full Topic]
+// Creates a texture on the heap. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771281-setpurgeablestate?language=objc
-func (h_ HeapObject) SetPurgeableState(state PurgeableState) PurgeableState {
-	rv := objc.Call[PurgeableState](h_, objc.Sel("setPurgeableState:"), state)
-	return rv
-}
-
-func (h_ HeapObject) HasNewBufferWithLengthOptionsOffset() bool {
-	return h_.RespondsToSelector(objc.Sel("newBufferWithLength:options:offset:"))
-}
-
-// Creates a buffer at a specified offset on the heap. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3152522-newbufferwithlength?language=objc
-func (h_ HeapObject) NewBufferWithLengthOptionsOffset(length uint, options ResourceOptions, offset uint) BufferObject {
-	rv := objc.Call[BufferObject](h_, objc.Sel("newBufferWithLength:options:offset:"), length, options, offset)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1649574-newtexturewithdescriptor?language=objc
+func (h_ HeapObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
+	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -135,39 +115,87 @@ func (h_ HeapObject) MaxAvailableSizeWithAlignment(alignment uint) uint {
 	return rv
 }
 
-func (h_ HeapObject) HasNewTextureWithDescriptor() bool {
-	return h_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:"))
+func (h_ HeapObject) HasSetPurgeableState() bool {
+	return h_.RespondsToSelector(objc.Sel("setPurgeableState:"))
 }
 
-// Creates a texture on the heap. [Full Topic]
+// Sets the purgeable state of the heap. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1649574-newtexturewithdescriptor?language=objc
-func (h_ HeapObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:"), descriptor)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771281-setpurgeablestate?language=objc
+func (h_ HeapObject) SetPurgeableState(state PurgeableState) PurgeableState {
+	rv := objc.Call[PurgeableState](h_, objc.Sel("setPurgeableState:"), state)
 	return rv
 }
 
-func (h_ HeapObject) HasNewTextureWithDescriptorOffset() bool {
-	return h_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:offset:"))
+func (h_ HeapObject) HasDevice() bool {
+	return h_.RespondsToSelector(objc.Sel("device"))
 }
 
-// Creates a texture at a specified offset on the heap. [Full Topic]
+// The device object that created the heap. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3152523-newtexturewithdescriptor?language=objc
-func (h_ HeapObject) NewTextureWithDescriptorOffset(descriptor TextureDescriptor, offset uint) TextureObject {
-	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:offset:"), descriptor, offset)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771285-device?language=objc
+func (h_ HeapObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](h_, objc.Sel("device"))
 	return rv
 }
 
-func (h_ HeapObject) HasHazardTrackingMode() bool {
-	return h_.RespondsToSelector(objc.Sel("hazardTrackingMode"))
+func (h_ HeapObject) HasCpuCacheMode() bool {
+	return h_.RespondsToSelector(objc.Sel("cpuCacheMode"))
 }
 
-// The heap's hazard tracking mode. [Full Topic]
+// The heap's CPU cache mode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3131684-hazardtrackingmode?language=objc
-func (h_ HeapObject) HazardTrackingMode() HazardTrackingMode {
-	rv := objc.Call[HazardTrackingMode](h_, objc.Sel("hazardTrackingMode"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771280-cpucachemode?language=objc
+func (h_ HeapObject) CpuCacheMode() CPUCacheMode {
+	rv := objc.Call[CPUCacheMode](h_, objc.Sel("cpuCacheMode"))
+	return rv
+}
+
+func (h_ HeapObject) HasStorageMode() bool {
+	return h_.RespondsToSelector(objc.Sel("storageMode"))
+}
+
+// The heap's storage mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771282-storagemode?language=objc
+func (h_ HeapObject) StorageMode() StorageMode {
+	rv := objc.Call[StorageMode](h_, objc.Sel("storageMode"))
+	return rv
+}
+
+func (h_ HeapObject) HasUsedSize() bool {
+	return h_.RespondsToSelector(objc.Sel("usedSize"))
+}
+
+// The size of all resources currently in the heap, in bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/2097557-usedsize?language=objc
+func (h_ HeapObject) UsedSize() uint {
+	rv := objc.Call[uint](h_, objc.Sel("usedSize"))
+	return rv
+}
+
+func (h_ HeapObject) HasResourceOptions() bool {
+	return h_.RespondsToSelector(objc.Sel("resourceOptions"))
+}
+
+// The options for resources created by the heap. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3131685-resourceoptions?language=objc
+func (h_ HeapObject) ResourceOptions() ResourceOptions {
+	rv := objc.Call[ResourceOptions](h_, objc.Sel("resourceOptions"))
+	return rv
+}
+
+func (h_ HeapObject) HasType() bool {
+	return h_.RespondsToSelector(objc.Sel("type"))
+}
+
+// The heap's type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3043386-type?language=objc
+func (h_ HeapObject) Type() HeapType {
+	rv := objc.Call[HeapType](h_, objc.Sel("type"))
 	return rv
 }
 
@@ -194,54 +222,6 @@ func (h_ HeapObject) Label() string {
 	return rv
 }
 
-func (h_ HeapObject) HasCurrentAllocatedSize() bool {
-	return h_.RespondsToSelector(objc.Sel("currentAllocatedSize"))
-}
-
-// The size, in bytes, of the current heap allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/2915348-currentallocatedsize?language=objc
-func (h_ HeapObject) CurrentAllocatedSize() uint {
-	rv := objc.Call[uint](h_, objc.Sel("currentAllocatedSize"))
-	return rv
-}
-
-func (h_ HeapObject) HasType() bool {
-	return h_.RespondsToSelector(objc.Sel("type"))
-}
-
-// The heap's type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3043386-type?language=objc
-func (h_ HeapObject) Type() HeapType {
-	rv := objc.Call[HeapType](h_, objc.Sel("type"))
-	return rv
-}
-
-func (h_ HeapObject) HasUsedSize() bool {
-	return h_.RespondsToSelector(objc.Sel("usedSize"))
-}
-
-// The size of all resources currently in the heap, in bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/2097557-usedsize?language=objc
-func (h_ HeapObject) UsedSize() uint {
-	rv := objc.Call[uint](h_, objc.Sel("usedSize"))
-	return rv
-}
-
-func (h_ HeapObject) HasCpuCacheMode() bool {
-	return h_.RespondsToSelector(objc.Sel("cpuCacheMode"))
-}
-
-// The heap's CPU cache mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771280-cpucachemode?language=objc
-func (h_ HeapObject) CpuCacheMode() CPUCacheMode {
-	rv := objc.Call[CPUCacheMode](h_, objc.Sel("cpuCacheMode"))
-	return rv
-}
-
 func (h_ HeapObject) HasSize() bool {
 	return h_.RespondsToSelector(objc.Sel("size"))
 }
@@ -254,38 +234,26 @@ func (h_ HeapObject) Size() uint {
 	return rv
 }
 
-func (h_ HeapObject) HasResourceOptions() bool {
-	return h_.RespondsToSelector(objc.Sel("resourceOptions"))
+func (h_ HeapObject) HasCurrentAllocatedSize() bool {
+	return h_.RespondsToSelector(objc.Sel("currentAllocatedSize"))
 }
 
-// The options for resources created by the heap. [Full Topic]
+// The size, in bytes, of the current heap allocation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3131685-resourceoptions?language=objc
-func (h_ HeapObject) ResourceOptions() ResourceOptions {
-	rv := objc.Call[ResourceOptions](h_, objc.Sel("resourceOptions"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/2915348-currentallocatedsize?language=objc
+func (h_ HeapObject) CurrentAllocatedSize() uint {
+	rv := objc.Call[uint](h_, objc.Sel("currentAllocatedSize"))
 	return rv
 }
 
-func (h_ HeapObject) HasStorageMode() bool {
-	return h_.RespondsToSelector(objc.Sel("storageMode"))
+func (h_ HeapObject) HasHazardTrackingMode() bool {
+	return h_.RespondsToSelector(objc.Sel("hazardTrackingMode"))
 }
 
-// The heap's storage mode. [Full Topic]
+// The heap's hazard tracking mode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771282-storagemode?language=objc
-func (h_ HeapObject) StorageMode() StorageMode {
-	rv := objc.Call[StorageMode](h_, objc.Sel("storageMode"))
-	return rv
-}
-
-func (h_ HeapObject) HasDevice() bool {
-	return h_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The device object that created the heap. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1771285-device?language=objc
-func (h_ HeapObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](h_, objc.Sel("device"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3131684-hazardtrackingmode?language=objc
+func (h_ HeapObject) HazardTrackingMode() HazardTrackingMode {
+	rv := objc.Call[HazardTrackingMode](h_, objc.Sel("hazardTrackingMode"))
 	return rv
 }

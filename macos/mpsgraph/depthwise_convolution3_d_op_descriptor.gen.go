@@ -19,16 +19,16 @@ type _DepthwiseConvolution3DOpDescriptorClass struct {
 // An interface definition for the [DepthwiseConvolution3DOpDescriptor] class.
 type IDepthwiseConvolution3DOpDescriptor interface {
 	objc.IObject
+	PaddingStyle() PaddingStyle
+	SetPaddingStyle(value PaddingStyle)
 	ChannelDimensionIndex() int
 	SetChannelDimensionIndex(value int)
+	PaddingValues() []foundation.Number
+	SetPaddingValues(value []foundation.INumber)
 	DilationRates() []foundation.Number
 	SetDilationRates(value []foundation.INumber)
 	Strides() []foundation.Number
 	SetStrides(value []foundation.INumber)
-	PaddingValues() []foundation.Number
-	SetPaddingValues(value []foundation.INumber)
-	PaddingStyle() PaddingStyle
-	SetPaddingStyle(value PaddingStyle)
 }
 
 //	[Full Topic]
@@ -90,6 +90,21 @@ func (d_ DepthwiseConvolution3DOpDescriptor) Init() DepthwiseConvolution3DOpDesc
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750686-paddingstyle?language=objc
+func (d_ DepthwiseConvolution3DOpDescriptor) PaddingStyle() PaddingStyle {
+	rv := objc.Call[PaddingStyle](d_, objc.Sel("paddingStyle"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750686-paddingstyle?language=objc
+func (d_ DepthwiseConvolution3DOpDescriptor) SetPaddingStyle(value PaddingStyle) {
+	objc.Call[objc.Void](d_, objc.Sel("setPaddingStyle:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3787589-channeldimensionindex?language=objc
 func (d_ DepthwiseConvolution3DOpDescriptor) ChannelDimensionIndex() int {
 	rv := objc.Call[int](d_, objc.Sel("channelDimensionIndex"))
@@ -101,6 +116,21 @@ func (d_ DepthwiseConvolution3DOpDescriptor) ChannelDimensionIndex() int {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3787589-channeldimensionindex?language=objc
 func (d_ DepthwiseConvolution3DOpDescriptor) SetChannelDimensionIndex(value int) {
 	objc.Call[objc.Void](d_, objc.Sel("setChannelDimensionIndex:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750687-paddingvalues?language=objc
+func (d_ DepthwiseConvolution3DOpDescriptor) PaddingValues() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](d_, objc.Sel("paddingValues"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750687-paddingvalues?language=objc
+func (d_ DepthwiseConvolution3DOpDescriptor) SetPaddingValues(value []foundation.INumber) {
+	objc.Call[objc.Void](d_, objc.Sel("setPaddingValues:"), value)
 }
 
 //	[Full Topic]
@@ -131,34 +161,4 @@ func (d_ DepthwiseConvolution3DOpDescriptor) Strides() []foundation.Number {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750688-strides?language=objc
 func (d_ DepthwiseConvolution3DOpDescriptor) SetStrides(value []foundation.INumber) {
 	objc.Call[objc.Void](d_, objc.Sel("setStrides:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750687-paddingvalues?language=objc
-func (d_ DepthwiseConvolution3DOpDescriptor) PaddingValues() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](d_, objc.Sel("paddingValues"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750687-paddingvalues?language=objc
-func (d_ DepthwiseConvolution3DOpDescriptor) SetPaddingValues(value []foundation.INumber) {
-	objc.Call[objc.Void](d_, objc.Sel("setPaddingValues:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750686-paddingstyle?language=objc
-func (d_ DepthwiseConvolution3DOpDescriptor) PaddingStyle() PaddingStyle {
-	rv := objc.Call[PaddingStyle](d_, objc.Sel("paddingStyle"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphdepthwiseconvolution3dopdescriptor/3750686-paddingstyle?language=objc
-func (d_ DepthwiseConvolution3DOpDescriptor) SetPaddingStyle(value PaddingStyle) {
-	objc.Call[objc.Void](d_, objc.Sel("setPaddingStyle:"), value)
 }

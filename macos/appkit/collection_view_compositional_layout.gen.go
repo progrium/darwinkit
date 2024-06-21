@@ -49,34 +49,6 @@ func NewCollectionViewCompositionalLayoutWithSection(section ICollectionLayoutSe
 	return instance
 }
 
-func (c_ CollectionViewCompositionalLayout) InitWithSectionProviderConfiguration(sectionProvider CollectionViewCompositionalLayoutSectionProvider, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSectionProvider:configuration:"), sectionProvider, configuration)
-	return rv
-}
-
-// Creates a compositional layout object with a section provider and an additional configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayout/3281809-initwithsectionprovider?language=objc
-func NewCollectionViewCompositionalLayoutWithSectionProviderConfiguration(sectionProvider CollectionViewCompositionalLayoutSectionProvider, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	instance := CollectionViewCompositionalLayoutClass.Alloc().InitWithSectionProviderConfiguration(sectionProvider, configuration)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CollectionViewCompositionalLayout) InitWithSectionConfiguration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSection:configuration:"), section, configuration)
-	return rv
-}
-
-// Creates a compositional layout object with a single section and an additional configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayout/3281807-initwithsection?language=objc
-func NewCollectionViewCompositionalLayoutWithSectionConfiguration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	instance := CollectionViewCompositionalLayoutClass.Alloc().InitWithSectionConfiguration(section, configuration)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider CollectionViewCompositionalLayoutSectionProvider) CollectionViewCompositionalLayout {
 	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSectionProvider:"), sectionProvider)
 	return rv

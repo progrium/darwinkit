@@ -18,19 +18,19 @@ type _ButtonTouchBarItemClass struct {
 // An interface definition for the [ButtonTouchBarItem] class.
 type IButtonTouchBarItem interface {
 	ITouchBarItem
-	SetCustomizationLabel(value string)
-	IsEnabled() bool
-	SetEnabled(value bool)
 	Target() objc.Object
 	SetTarget(value objc.IObject)
-	Title() string
-	SetTitle(value string)
-	Image() Image
-	SetImage(value IImage)
+	SetCustomizationLabel(value string)
 	Action() objc.Selector
 	SetAction(value objc.Selector)
 	BezelColor() Color
 	SetBezelColor(value IColor)
+	Title() string
+	SetTitle(value string)
+	IsEnabled() bool
+	SetEnabled(value bool)
+	Image() Image
+	SetImage(value IImage)
 }
 
 // A bar item that provides a button. [Full Topic]
@@ -56,30 +56,6 @@ func (bc _ButtonTouchBarItemClass) ButtonTouchBarItemWithIdentifierTitleTargetAc
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237180-buttontouchbaritemwithidentifier?language=objc
 func ButtonTouchBarItem_ButtonTouchBarItemWithIdentifierTitleTargetAction(identifier TouchBarItemIdentifier, title string, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
 	return ButtonTouchBarItemClass.ButtonTouchBarItemWithIdentifierTitleTargetAction(identifier, title, target, action)
-}
-
-func (bc _ButtonTouchBarItemClass) ButtonTouchBarItemWithIdentifierTitleImageTargetAction(identifier TouchBarItemIdentifier, title string, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:title:image:target:action:"), identifier, title, image, target, action)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237179-buttontouchbaritemwithidentifier?language=objc
-func ButtonTouchBarItem_ButtonTouchBarItemWithIdentifierTitleImageTargetAction(identifier TouchBarItemIdentifier, title string, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	return ButtonTouchBarItemClass.ButtonTouchBarItemWithIdentifierTitleImageTargetAction(identifier, title, image, target, action)
-}
-
-func (bc _ButtonTouchBarItemClass) ButtonTouchBarItemWithIdentifierImageTargetAction(identifier TouchBarItemIdentifier, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:image:target:action:"), identifier, image, target, action)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237178-buttontouchbaritemwithidentifier?language=objc
-func ButtonTouchBarItem_ButtonTouchBarItemWithIdentifierImageTargetAction(identifier TouchBarItemIdentifier, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	return ButtonTouchBarItemClass.ButtonTouchBarItemWithIdentifierImageTargetAction(identifier, image, target, action)
 }
 
 func (bc _ButtonTouchBarItemClass) Alloc() ButtonTouchBarItem {
@@ -118,28 +94,6 @@ func NewButtonTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) Butt
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237181-customizationlabel?language=objc
-func (b_ ButtonTouchBarItem) SetCustomizationLabel(value string) {
-	objc.Call[objc.Void](b_, objc.Sel("setCustomizationLabel:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3353052-enabled?language=objc
-func (b_ ButtonTouchBarItem) IsEnabled() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isEnabled"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3353052-enabled?language=objc
-func (b_ ButtonTouchBarItem) SetEnabled(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setEnabled:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237184-target?language=objc
 func (b_ ButtonTouchBarItem) Target() objc.Object {
 	rv := objc.Call[objc.Object](b_, objc.Sel("target"))
@@ -155,32 +109,9 @@ func (b_ ButtonTouchBarItem) SetTarget(value objc.IObject) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237185-title?language=objc
-func (b_ ButtonTouchBarItem) Title() string {
-	rv := objc.Call[string](b_, objc.Sel("title"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237185-title?language=objc
-func (b_ ButtonTouchBarItem) SetTitle(value string) {
-	objc.Call[objc.Void](b_, objc.Sel("setTitle:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237182-image?language=objc
-func (b_ ButtonTouchBarItem) Image() Image {
-	rv := objc.Call[Image](b_, objc.Sel("image"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237182-image?language=objc
-func (b_ ButtonTouchBarItem) SetImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237181-customizationlabel?language=objc
+func (b_ ButtonTouchBarItem) SetCustomizationLabel(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setCustomizationLabel:"), value)
 }
 
 //	[Full Topic]
@@ -211,4 +142,49 @@ func (b_ ButtonTouchBarItem) BezelColor() Color {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237177-bezelcolor?language=objc
 func (b_ ButtonTouchBarItem) SetBezelColor(value IColor) {
 	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237185-title?language=objc
+func (b_ ButtonTouchBarItem) Title() string {
+	rv := objc.Call[string](b_, objc.Sel("title"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237185-title?language=objc
+func (b_ ButtonTouchBarItem) SetTitle(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setTitle:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3353052-enabled?language=objc
+func (b_ ButtonTouchBarItem) IsEnabled() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isEnabled"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3353052-enabled?language=objc
+func (b_ ButtonTouchBarItem) SetEnabled(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setEnabled:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237182-image?language=objc
+func (b_ ButtonTouchBarItem) Image() Image {
+	rv := objc.Call[Image](b_, objc.Sel("image"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237182-image?language=objc
+func (b_ ButtonTouchBarItem) SetImage(value IImage) {
+	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
 }

@@ -19,14 +19,14 @@ type _SearchableItemClass struct {
 // An interface definition for the [SearchableItem] class.
 type ISearchableItem interface {
 	objc.IObject
-	DomainIdentifier() string
-	SetDomainIdentifier(value string)
+	AttributeSet() SearchableItemAttributeSet
+	SetAttributeSet(value ISearchableItemAttributeSet)
 	UniqueIdentifier() string
 	SetUniqueIdentifier(value string)
 	ExpirationDate() foundation.Date
 	SetExpirationDate(value foundation.IDate)
-	AttributeSet() SearchableItemAttributeSet
-	SetAttributeSet(value ISearchableItemAttributeSet)
+	DomainIdentifier() string
+	SetDomainIdentifier(value string)
 }
 
 // An item that can be indexed and made available to users when they search on their devices. [Full Topic]
@@ -76,19 +76,19 @@ func (s_ SearchableItem) Init() SearchableItem {
 	return rv
 }
 
-// An optional identifier that represents the domain or owner of the item. [Full Topic]
+// The set of attributes that contain metadata associated with the item in a CSSearchableItemAttributeSet object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621665-domainidentifier?language=objc
-func (s_ SearchableItem) DomainIdentifier() string {
-	rv := objc.Call[string](s_, objc.Sel("domainIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621649-attributeset?language=objc
+func (s_ SearchableItem) AttributeSet() SearchableItemAttributeSet {
+	rv := objc.Call[SearchableItemAttributeSet](s_, objc.Sel("attributeSet"))
 	return rv
 }
 
-// An optional identifier that represents the domain or owner of the item. [Full Topic]
+// The set of attributes that contain metadata associated with the item in a CSSearchableItemAttributeSet object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621665-domainidentifier?language=objc
-func (s_ SearchableItem) SetDomainIdentifier(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setDomainIdentifier:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621649-attributeset?language=objc
+func (s_ SearchableItem) SetAttributeSet(value ISearchableItemAttributeSet) {
+	objc.Call[objc.Void](s_, objc.Sel("setAttributeSet:"), value)
 }
 
 // The value that uniquely identifies the searchable item within your app. [Full Topic]
@@ -121,17 +121,17 @@ func (s_ SearchableItem) SetExpirationDate(value foundation.IDate) {
 	objc.Call[objc.Void](s_, objc.Sel("setExpirationDate:"), value)
 }
 
-// The set of attributes that contain metadata associated with the item in a CSSearchableItemAttributeSet object. [Full Topic]
+// An optional identifier that represents the domain or owner of the item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621649-attributeset?language=objc
-func (s_ SearchableItem) AttributeSet() SearchableItemAttributeSet {
-	rv := objc.Call[SearchableItemAttributeSet](s_, objc.Sel("attributeSet"))
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621665-domainidentifier?language=objc
+func (s_ SearchableItem) DomainIdentifier() string {
+	rv := objc.Call[string](s_, objc.Sel("domainIdentifier"))
 	return rv
 }
 
-// The set of attributes that contain metadata associated with the item in a CSSearchableItemAttributeSet object. [Full Topic]
+// An optional identifier that represents the domain or owner of the item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621649-attributeset?language=objc
-func (s_ SearchableItem) SetAttributeSet(value ISearchableItemAttributeSet) {
-	objc.Call[objc.Void](s_, objc.Sel("setAttributeSet:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621665-domainidentifier?language=objc
+func (s_ SearchableItem) SetDomainIdentifier(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setDomainIdentifier:"), value)
 }

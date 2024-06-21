@@ -36,19 +36,6 @@ func CNNNormalizationGammaAndBetaStateFrom(ptr unsafe.Pointer) CNNNormalizationG
 	}
 }
 
-func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer metal.PCommandBuffer, numberOfFeatureChannels uint) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:numberOfFeatureChannels:"), po0, numberOfFeatureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationgammaandbetastate/2953937-temporarystatewithcommandbuffer?language=objc
-func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer metal.PCommandBuffer, numberOfFeatureChannels uint) CNNNormalizationGammaAndBetaState {
-	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer, numberOfFeatureChannels)
-}
-
 func (c_ CNNNormalizationGammaAndBetaState) InitWithGammaBeta(gamma metal.PBuffer, beta metal.PBuffer) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLBuffer", gamma)
 	po1 := objc.WrapAsProtocol("MTLBuffer", beta)
@@ -63,6 +50,19 @@ func NewCNNNormalizationGammaAndBetaStateWithGammaBeta(gamma metal.PBuffer, beta
 	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithGammaBeta(gamma, beta)
 	instance.Autorelease()
 	return instance
+}
+
+func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer metal.PCommandBuffer, numberOfFeatureChannels uint) CNNNormalizationGammaAndBetaState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:numberOfFeatureChannels:"), po0, numberOfFeatureChannels)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationgammaandbetastate/2953937-temporarystatewithcommandbuffer?language=objc
+func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer metal.PCommandBuffer, numberOfFeatureChannels uint) CNNNormalizationGammaAndBetaState {
+	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferNumberOfFeatureChannels(commandBuffer, numberOfFeatureChannels)
 }
 
 func (cc _CNNNormalizationGammaAndBetaStateClass) Alloc() CNNNormalizationGammaAndBetaState {
@@ -85,45 +85,16 @@ func (c_ CNNNormalizationGammaAndBetaState) Init() CNNNormalizationGammaAndBetaS
 	return rv
 }
 
-func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (c_ CNNNormalizationGammaAndBetaState) InitWithResources(resources []metal.PResource) CNNNormalizationGammaAndBetaState {
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
-	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (c_ CNNNormalizationGammaAndBetaState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewCNNNormalizationGammaAndBetaStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
-	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNNormalizationGammaAndBetaState) InitWithResource(resource metal.PResource) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewCNNNormalizationGammaAndBetaStateWithResource(resource metal.PResource) CNNNormalizationGammaAndBetaState {
-	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewCNNNormalizationGammaAndBetaStateWithResources(resources []metal.PResource) CNNNormalizationGammaAndBetaState {
+	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -143,72 +114,32 @@ func NewCNNNormalizationGammaAndBetaStateWithDeviceBufferSize(device metal.PDevi
 	return instance
 }
 
-func (c_ CNNNormalizationGammaAndBetaState) InitWithResources(resources []metal.PResource) CNNNormalizationGammaAndBetaState {
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithResources:"), resources)
+func (c_ CNNNormalizationGammaAndBetaState) InitWithResource(resource metal.PResource) CNNNormalizationGammaAndBetaState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewCNNNormalizationGammaAndBetaStateWithResources(resources []metal.PResource) CNNNormalizationGammaAndBetaState {
-	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewCNNNormalizationGammaAndBetaStateWithResource(resource metal.PResource) CNNNormalizationGammaAndBetaState {
+	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) CNNNormalizationGammaAndBetaState {
-	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) CNNNormalizationGammaAndBetaState {
-	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
-	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (c_ CNNNormalizationGammaAndBetaState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewCNNNormalizationGammaAndBetaStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
-	instance := CNNNormalizationGammaAndBetaStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
+	return CNNNormalizationGammaAndBetaStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }
 
 //	[Full Topic]

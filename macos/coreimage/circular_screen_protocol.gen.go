@@ -20,14 +20,6 @@ type PCircularScreen interface {
 	HasWidth() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -42,6 +34,14 @@ type PCircularScreen interface {
 	// optional
 	Sharpness() float32
 	HasSharpness() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -72,29 +72,6 @@ func (c_ CircularScreenObject) HasWidth() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228114-width?language=objc
 func (c_ CircularScreenObject) Width() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("width"))
-	return rv
-}
-
-func (c_ CircularScreenObject) HasSetCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the circular screen pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228111-center?language=objc
-func (c_ CircularScreenObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
-}
-
-func (c_ CircularScreenObject) HasCenter() bool {
-	return c_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the circular screen pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228111-center?language=objc
-func (c_ CircularScreenObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }
 
@@ -141,5 +118,28 @@ func (c_ CircularScreenObject) HasSharpness() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228113-sharpness?language=objc
 func (c_ CircularScreenObject) Sharpness() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("sharpness"))
+	return rv
+}
+
+func (c_ CircularScreenObject) HasSetCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the circular screen pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228111-center?language=objc
+func (c_ CircularScreenObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
+}
+
+func (c_ CircularScreenObject) HasCenter() bool {
+	return c_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the circular screen pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228111-center?language=objc
+func (c_ CircularScreenObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

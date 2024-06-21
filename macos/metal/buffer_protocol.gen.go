@@ -14,6 +14,18 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer?language=objc
 type PBuffer interface {
 	// optional
+	DidModifyRange(range_ foundation.Range)
+	HasDidModifyRange() bool
+
+	// optional
+	NewTextureWithDescriptorOffsetBytesPerRow(descriptor TextureDescriptor, offset uint, bytesPerRow uint) TextureObject
+	HasNewTextureWithDescriptorOffsetBytesPerRow() bool
+
+	// optional
+	AddDebugMarkerRange(marker string, range_ foundation.Range)
+	HasAddDebugMarkerRange() bool
+
+	// optional
 	Contents() unsafe.Pointer
 	HasContents() bool
 
@@ -22,20 +34,8 @@ type PBuffer interface {
 	HasNewRemoteBufferViewForDevice() bool
 
 	// optional
-	AddDebugMarkerRange(marker string, range_ foundation.Range)
-	HasAddDebugMarkerRange() bool
-
-	// optional
-	NewTextureWithDescriptorOffsetBytesPerRow(descriptor TextureDescriptor, offset uint, bytesPerRow uint) TextureObject
-	HasNewTextureWithDescriptorOffsetBytesPerRow() bool
-
-	// optional
 	RemoveAllDebugMarkers()
 	HasRemoveAllDebugMarkers() bool
-
-	// optional
-	DidModifyRange(range_ foundation.Range)
-	HasDidModifyRange() bool
 
 	// optional
 	RemoteStorageBuffer() BufferObject
@@ -52,6 +52,40 @@ var _ PBuffer = (*BufferObject)(nil)
 // A concrete type for the [PBuffer] protocol.
 type BufferObject struct {
 	objc.Object
+}
+
+func (b_ BufferObject) HasDidModifyRange() bool {
+	return b_.RespondsToSelector(objc.Sel("didModifyRange:"))
+}
+
+// Informs the GPU that the CPU has modified a section of the buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1516121-didmodifyrange?language=objc
+func (b_ BufferObject) DidModifyRange(range_ foundation.Range) {
+	objc.Call[objc.Void](b_, objc.Sel("didModifyRange:"), range_)
+}
+
+func (b_ BufferObject) HasNewTextureWithDescriptorOffsetBytesPerRow() bool {
+	return b_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"))
+}
+
+// Creates a texture that shares its storage with the buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1613852-newtexturewithdescriptor?language=objc
+func (b_ BufferObject) NewTextureWithDescriptorOffsetBytesPerRow(descriptor TextureDescriptor, offset uint, bytesPerRow uint) TextureObject {
+	rv := objc.Call[TextureObject](b_, objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"), descriptor, offset, bytesPerRow)
+	return rv
+}
+
+func (b_ BufferObject) HasAddDebugMarkerRange() bool {
+	return b_.RespondsToSelector(objc.Sel("addDebugMarker:range:"))
+}
+
+// Adds a debug marker string to a specific buffer range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1779576-adddebugmarker?language=objc
+func (b_ BufferObject) AddDebugMarkerRange(marker string, range_ foundation.Range) {
+	objc.Call[objc.Void](b_, objc.Sel("addDebugMarker:range:"), marker, range_)
 }
 
 func (b_ BufferObject) HasContents() bool {
@@ -79,29 +113,6 @@ func (b_ BufferObject) NewRemoteBufferViewForDevice(device DeviceObject) BufferO
 	return rv
 }
 
-func (b_ BufferObject) HasAddDebugMarkerRange() bool {
-	return b_.RespondsToSelector(objc.Sel("addDebugMarker:range:"))
-}
-
-// Adds a debug marker string to a specific buffer range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1779576-adddebugmarker?language=objc
-func (b_ BufferObject) AddDebugMarkerRange(marker string, range_ foundation.Range) {
-	objc.Call[objc.Void](b_, objc.Sel("addDebugMarker:range:"), marker, range_)
-}
-
-func (b_ BufferObject) HasNewTextureWithDescriptorOffsetBytesPerRow() bool {
-	return b_.RespondsToSelector(objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"))
-}
-
-// Creates a texture that shares its storage with the buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1613852-newtexturewithdescriptor?language=objc
-func (b_ BufferObject) NewTextureWithDescriptorOffsetBytesPerRow(descriptor TextureDescriptor, offset uint, bytesPerRow uint) TextureObject {
-	rv := objc.Call[TextureObject](b_, objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"), descriptor, offset, bytesPerRow)
-	return rv
-}
-
 func (b_ BufferObject) HasRemoveAllDebugMarkers() bool {
 	return b_.RespondsToSelector(objc.Sel("removeAllDebugMarkers"))
 }
@@ -111,17 +122,6 @@ func (b_ BufferObject) HasRemoveAllDebugMarkers() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1779577-removealldebugmarkers?language=objc
 func (b_ BufferObject) RemoveAllDebugMarkers() {
 	objc.Call[objc.Void](b_, objc.Sel("removeAllDebugMarkers"))
-}
-
-func (b_ BufferObject) HasDidModifyRange() bool {
-	return b_.RespondsToSelector(objc.Sel("didModifyRange:"))
-}
-
-// Informs the GPU that the CPU has modified a section of the buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1516121-didmodifyrange?language=objc
-func (b_ BufferObject) DidModifyRange(range_ foundation.Range) {
-	objc.Call[objc.Void](b_, objc.Sel("didModifyRange:"), range_)
 }
 
 func (b_ BufferObject) HasRemoteStorageBuffer() bool {

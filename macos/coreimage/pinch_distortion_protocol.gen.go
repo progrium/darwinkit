@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion?language=objc
 type PPinchDistortion interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
-
-	// optional
-	Radius() float32
-	HasRadius() bool
-
-	// optional
 	SetScale(value float32)
 	HasSetScale() bool
 
@@ -28,20 +20,28 @@ type PPinchDistortion interface {
 	HasScale() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetRadius(value float32)
+	HasSetRadius() bool
+
+	// optional
+	Radius() float32
+	HasRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PPinchDistortion = (*PinchDistortionObject)(nil)
 // A concrete type for the [PPinchDistortion] protocol.
 type PinchDistortionObject struct {
 	objc.Object
-}
-
-func (p_ PinchDistortionObject) HasSetRadius() bool {
-	return p_.RespondsToSelector(objc.Sel("setRadius:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
-func (p_ PinchDistortionObject) SetRadius(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
-}
-
-func (p_ PinchDistortionObject) HasRadius() bool {
-	return p_.RespondsToSelector(objc.Sel("radius"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
-func (p_ PinchDistortionObject) Radius() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("radius"))
-	return rv
 }
 
 func (p_ PinchDistortionObject) HasSetScale() bool {
@@ -98,29 +75,6 @@ func (p_ PinchDistortionObject) Scale() float32 {
 	return rv
 }
 
-func (p_ PinchDistortionObject) HasSetCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600187-center?language=objc
-func (p_ PinchDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
-}
-
-func (p_ PinchDistortionObject) HasCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("center"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600187-center?language=objc
-func (p_ PinchDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
-	return rv
-}
-
 func (p_ PinchDistortionObject) HasSetInputImage() bool {
 	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -141,5 +95,51 @@ func (p_ PinchDistortionObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600188-inputimage?language=objc
 func (p_ PinchDistortionObject) InputImage() Image {
 	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (p_ PinchDistortionObject) HasSetRadius() bool {
+	return p_.RespondsToSelector(objc.Sel("setRadius:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
+func (p_ PinchDistortionObject) SetRadius(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
+}
+
+func (p_ PinchDistortionObject) HasRadius() bool {
+	return p_.RespondsToSelector(objc.Sel("radius"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
+func (p_ PinchDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("radius"))
+	return rv
+}
+
+func (p_ PinchDistortionObject) HasSetCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600187-center?language=objc
+func (p_ PinchDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
+}
+
+func (p_ PinchDistortionObject) HasCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600187-center?language=objc
+func (p_ PinchDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
 	return rv
 }

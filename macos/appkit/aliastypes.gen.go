@@ -3,6 +3,7 @@
 package appkit
 
 import (
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
@@ -45,7 +46,7 @@ type CollectionViewDiffableDataSourceItemProvider = func(arg0 CollectionView, ar
 // A closure called before each layout cycle to allow modification of items in a section immediately before they’re displayed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsectionvisibleitemsinvalidationhandler?language=objc
-type CollectionLayoutSectionVisibleItemsInvalidationHandler = func(visibleItems []CollectionLayoutVisibleItemObject, contentOffset foundation.Point, layoutEnvironment CollectionLayoutEnvironmentObject)
+type CollectionLayoutSectionVisibleItemsInvalidationHandler = func(visibleItems []CollectionLayoutVisibleItemObject, contentOffset coregraphics.Point, layoutEnvironment CollectionLayoutEnvironmentObject)
 
 // A closure that creates and returns each of the custom group’s items. [Full Topic]
 //

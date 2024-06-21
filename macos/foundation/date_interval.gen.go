@@ -18,14 +18,14 @@ type _DateIntervalClass struct {
 // An interface definition for the [DateInterval] class.
 type IDateInterval interface {
 	objc.IObject
-	Compare(dateInterval IDateInterval) ComparisonResult
-	ContainsDate(date IDate) bool
-	IntersectsDateInterval(dateInterval IDateInterval) bool
 	IsEqualToDateInterval(dateInterval IDateInterval) bool
 	IntersectionWithDateInterval(dateInterval IDateInterval) DateInterval
+	ContainsDate(date IDate) bool
+	IntersectsDateInterval(dateInterval IDateInterval) bool
+	Compare(dateInterval IDateInterval) ComparisonResult
+	StartDate() Date
 	Duration() TimeInterval
 	EndDate() Date
-	StartDate() Date
 }
 
 // An object representing the span of time between a specific start date and end date. [Full Topic]
@@ -60,20 +60,6 @@ func (d_ DateInterval) Init() DateInterval {
 	return rv
 }
 
-func (d_ DateInterval) InitWithStartDateDuration(startDate IDate, duration TimeInterval) DateInterval {
-	rv := objc.Call[DateInterval](d_, objc.Sel("initWithStartDate:duration:"), startDate, duration)
-	return rv
-}
-
-// Initializes a date interval with a given start date and duration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641653-initwithstartdate?language=objc
-func NewDateIntervalWithStartDateDuration(startDate IDate, duration TimeInterval) DateInterval {
-	instance := DateIntervalClass.Alloc().InitWithStartDateDuration(startDate, duration)
-	instance.Autorelease()
-	return instance
-}
-
 func (dc _DateIntervalClass) Alloc() DateInterval {
 	rv := objc.Call[DateInterval](dc, objc.Sel("alloc"))
 	return rv
@@ -89,11 +75,19 @@ func NewDateInterval() DateInterval {
 	return DateIntervalClass.New()
 }
 
-// Compares the receiver with the specified date interval. [Full Topic]
+// Indicates whether the receiver is equal to the specified date interval. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641636-compare?language=objc
-func (d_ DateInterval) Compare(dateInterval IDateInterval) ComparisonResult {
-	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), dateInterval)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641650-isequaltodateinterval?language=objc
+func (d_ DateInterval) IsEqualToDateInterval(dateInterval IDateInterval) bool {
+	rv := objc.Call[bool](d_, objc.Sel("isEqualToDateInterval:"), dateInterval)
+	return rv
+}
+
+// Returns the intersection between the receiver and the specified date interval. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641645-intersectionwithdateinterval?language=objc
+func (d_ DateInterval) IntersectionWithDateInterval(dateInterval IDateInterval) DateInterval {
+	rv := objc.Call[DateInterval](d_, objc.Sel("intersectionWithDateInterval:"), dateInterval)
 	return rv
 }
 
@@ -113,19 +107,19 @@ func (d_ DateInterval) IntersectsDateInterval(dateInterval IDateInterval) bool {
 	return rv
 }
 
-// Indicates whether the receiver is equal to the specified date interval. [Full Topic]
+// Compares the receiver with the specified date interval. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641650-isequaltodateinterval?language=objc
-func (d_ DateInterval) IsEqualToDateInterval(dateInterval IDateInterval) bool {
-	rv := objc.Call[bool](d_, objc.Sel("isEqualToDateInterval:"), dateInterval)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641636-compare?language=objc
+func (d_ DateInterval) Compare(dateInterval IDateInterval) ComparisonResult {
+	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), dateInterval)
 	return rv
 }
 
-// Returns the intersection between the receiver and the specified date interval. [Full Topic]
+// The start date of the date interval. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641645-intersectionwithdateinterval?language=objc
-func (d_ DateInterval) IntersectionWithDateInterval(dateInterval IDateInterval) DateInterval {
-	rv := objc.Call[DateInterval](d_, objc.Sel("intersectionWithDateInterval:"), dateInterval)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641656-startdate?language=objc
+func (d_ DateInterval) StartDate() Date {
+	rv := objc.Call[Date](d_, objc.Sel("startDate"))
 	return rv
 }
 
@@ -142,13 +136,5 @@ func (d_ DateInterval) Duration() TimeInterval {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641651-enddate?language=objc
 func (d_ DateInterval) EndDate() Date {
 	rv := objc.Call[Date](d_, objc.Sel("endDate"))
-	return rv
-}
-
-// The start date of the date interval. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641656-startdate?language=objc
-func (d_ DateInterval) StartDate() Date {
-	rv := objc.Call[Date](d_, objc.Sel("startDate"))
 	return rv
 }

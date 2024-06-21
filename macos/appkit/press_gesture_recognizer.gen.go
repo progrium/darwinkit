@@ -19,12 +19,12 @@ type _PressGestureRecognizerClass struct {
 // An interface definition for the [PressGestureRecognizer] class.
 type IPressGestureRecognizer interface {
 	IGestureRecognizer
-	NumberOfTouchesRequired() int
-	SetNumberOfTouchesRequired(value int)
-	ButtonMask() uint
-	SetButtonMask(value uint)
 	MinimumPressDuration() foundation.TimeInterval
 	SetMinimumPressDuration(value foundation.TimeInterval)
+	ButtonMask() uint
+	SetButtonMask(value uint)
+	NumberOfTouchesRequired() int
+	SetNumberOfTouchesRequired(value int)
 	AllowableMovement() float64
 	SetAllowableMovement(value float64)
 }
@@ -76,19 +76,19 @@ func NewPressGestureRecognizerWithTargetAction(target objc.IObject, action objc.
 	return instance
 }
 
-// The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]
+// The minimum time (in seconds) that the user must hold the mouse button in the view for a valid gesture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/2544818-numberoftouchesrequired?language=objc
-func (p_ PressGestureRecognizer) NumberOfTouchesRequired() int {
-	rv := objc.Call[int](p_, objc.Sel("numberOfTouchesRequired"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/1531726-minimumpressduration?language=objc
+func (p_ PressGestureRecognizer) MinimumPressDuration() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](p_, objc.Sel("minimumPressDuration"))
 	return rv
 }
 
-// The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]
+// The minimum time (in seconds) that the user must hold the mouse button in the view for a valid gesture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/2544818-numberoftouchesrequired?language=objc
-func (p_ PressGestureRecognizer) SetNumberOfTouchesRequired(value int) {
-	objc.Call[objc.Void](p_, objc.Sel("setNumberOfTouchesRequired:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/1531726-minimumpressduration?language=objc
+func (p_ PressGestureRecognizer) SetMinimumPressDuration(value foundation.TimeInterval) {
+	objc.Call[objc.Void](p_, objc.Sel("setMinimumPressDuration:"), value)
 }
 
 // A bit mask of the buttons required to recognize this press. [Full Topic]
@@ -106,19 +106,19 @@ func (p_ PressGestureRecognizer) SetButtonMask(value uint) {
 	objc.Call[objc.Void](p_, objc.Sel("setButtonMask:"), value)
 }
 
-// The minimum time (in seconds) that the user must hold the mouse button in the view for a valid gesture. [Full Topic]
+// The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/1531726-minimumpressduration?language=objc
-func (p_ PressGestureRecognizer) MinimumPressDuration() foundation.TimeInterval {
-	rv := objc.Call[foundation.TimeInterval](p_, objc.Sel("minimumPressDuration"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/2544818-numberoftouchesrequired?language=objc
+func (p_ PressGestureRecognizer) NumberOfTouchesRequired() int {
+	rv := objc.Call[int](p_, objc.Sel("numberOfTouchesRequired"))
 	return rv
 }
 
-// The minimum time (in seconds) that the user must hold the mouse button in the view for a valid gesture. [Full Topic]
+// The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/1531726-minimumpressduration?language=objc
-func (p_ PressGestureRecognizer) SetMinimumPressDuration(value foundation.TimeInterval) {
-	objc.Call[objc.Void](p_, objc.Sel("setMinimumPressDuration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressgesturerecognizer/2544818-numberoftouchesrequired?language=objc
+func (p_ PressGestureRecognizer) SetNumberOfTouchesRequired(value int) {
+	objc.Call[objc.Void](p_, objc.Sel("setNumberOfTouchesRequired:"), value)
 }
 
 // The maximum movement of the mouse in the view before the gesture fails. [Full Topic]

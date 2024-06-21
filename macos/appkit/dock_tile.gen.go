@@ -20,14 +20,14 @@ type _DockTileClass struct {
 type IDockTile interface {
 	objc.IObject
 	Display()
-	Size() foundation.Size
+	ContentView() View
+	SetContentView(value IView)
+	ShowsApplicationBadge() bool
+	SetShowsApplicationBadge(value bool)
 	Owner() objc.Object
 	BadgeLabel() string
 	SetBadgeLabel(value string)
-	ShowsApplicationBadge() bool
-	SetShowsApplicationBadge(value bool)
-	ContentView() View
-	SetContentView(value IView)
+	Size() foundation.Size
 }
 
 // The visual representation of your app’s miniaturized windows and app icon as they appear in the Dock. [Full Topic]
@@ -70,12 +70,34 @@ func (d_ DockTile) Display() {
 	objc.Call[objc.Void](d_, objc.Sel("display"))
 }
 
-// The size of the tile. [Full Topic]
+// The view to use for drawing the dock tile contents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1534239-size?language=objc
-func (d_ DockTile) Size() foundation.Size {
-	rv := objc.Call[foundation.Size](d_, objc.Sel("size"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
+func (d_ DockTile) ContentView() View {
+	rv := objc.Call[View](d_, objc.Sel("contentView"))
 	return rv
+}
+
+// The view to use for drawing the dock tile contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
+func (d_ DockTile) SetContentView(value IView) {
+	objc.Call[objc.Void](d_, objc.Sel("setContentView:"), value)
+}
+
+// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
+func (d_ DockTile) ShowsApplicationBadge() bool {
+	rv := objc.Call[bool](d_, objc.Sel("showsApplicationBadge"))
+	return rv
+}
+
+// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
+func (d_ DockTile) SetShowsApplicationBadge(value bool) {
+	objc.Call[objc.Void](d_, objc.Sel("setShowsApplicationBadge:"), value)
 }
 
 // The object represented by the dock tile. [Full Topic]
@@ -101,32 +123,10 @@ func (d_ DockTile) SetBadgeLabel(value string) {
 	objc.Call[objc.Void](d_, objc.Sel("setBadgeLabel:"), value)
 }
 
-// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
+// The size of the tile. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
-func (d_ DockTile) ShowsApplicationBadge() bool {
-	rv := objc.Call[bool](d_, objc.Sel("showsApplicationBadge"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1534239-size?language=objc
+func (d_ DockTile) Size() foundation.Size {
+	rv := objc.Call[foundation.Size](d_, objc.Sel("size"))
 	return rv
-}
-
-// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
-func (d_ DockTile) SetShowsApplicationBadge(value bool) {
-	objc.Call[objc.Void](d_, objc.Sel("setShowsApplicationBadge:"), value)
-}
-
-// The view to use for drawing the dock tile contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
-func (d_ DockTile) ContentView() View {
-	rv := objc.Call[View](d_, objc.Sel("contentView"))
-	return rv
-}
-
-// The view to use for drawing the dock tile contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
-func (d_ DockTile) SetContentView(value IView) {
-	objc.Call[objc.Void](d_, objc.Sel("setContentView:"), value)
 }

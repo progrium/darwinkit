@@ -30,14 +30,14 @@ func (di *CaptureFileOutputDelegate) HasCaptureOutputShouldProvideSampleAccurate
 	return di._CaptureOutputShouldProvideSampleAccurateRecordingStart != nil
 }
 
-// Allows a client to opt in to frame accurate recording in [avfoundation/avcapturefileoutputdelegate/captureoutput]. [Full Topic]
+// Allows a client to opt in to frame accurate recording in captureOutput:didOutputSampleBuffer:fromConnection:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputdelegate/1388760-captureoutputshouldprovidesample?language=objc
 func (di *CaptureFileOutputDelegate) SetCaptureOutputShouldProvideSampleAccurateRecordingStart(f func(output CaptureOutput) bool) {
 	di._CaptureOutputShouldProvideSampleAccurateRecordingStart = f
 }
 
-// Allows a client to opt in to frame accurate recording in [avfoundation/avcapturefileoutputdelegate/captureoutput]. [Full Topic]
+// Allows a client to opt in to frame accurate recording in captureOutput:didOutputSampleBuffer:fromConnection:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputdelegate/1388760-captureoutputshouldprovidesample?language=objc
 func (di *CaptureFileOutputDelegate) CaptureOutputShouldProvideSampleAccurateRecordingStart(output CaptureOutput) bool {
@@ -73,7 +73,7 @@ func (c_ CaptureFileOutputDelegateObject) HasCaptureOutputShouldProvideSampleAcc
 	return c_.RespondsToSelector(objc.Sel("captureOutputShouldProvideSampleAccurateRecordingStart:"))
 }
 
-// Allows a client to opt in to frame accurate recording in [avfoundation/avcapturefileoutputdelegate/captureoutput]. [Full Topic]
+// Allows a client to opt in to frame accurate recording in captureOutput:didOutputSampleBuffer:fromConnection:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputdelegate/1388760-captureoutputshouldprovidesample?language=objc
 func (c_ CaptureFileOutputDelegateObject) CaptureOutputShouldProvideSampleAccurateRecordingStart(output CaptureOutput) bool {

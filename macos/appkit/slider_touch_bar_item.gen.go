@@ -20,25 +20,25 @@ type ISliderTouchBarItem interface {
 	ITouchBarItem
 	MinimumSliderWidth() float64
 	SetMinimumSliderWidth(value float64)
-	Slider() Slider
-	SetSlider(value ISlider)
-	DoubleValue() float64
-	SetDoubleValue(value float64)
-	Label() string
-	SetLabel(value string)
-	MaximumValueAccessory() SliderAccessory
-	SetMaximumValueAccessory(value ISliderAccessory)
-	MinimumValueAccessory() SliderAccessory
-	SetMinimumValueAccessory(value ISliderAccessory)
-	SetCustomizationLabel(value string)
 	Target() objc.Object
 	SetTarget(value objc.IObject)
-	MaximumSliderWidth() float64
-	SetMaximumSliderWidth(value float64)
-	ValueAccessoryWidth() SliderAccessoryWidth
-	SetValueAccessoryWidth(value SliderAccessoryWidth)
+	SetCustomizationLabel(value string)
 	Action() objc.Selector
 	SetAction(value objc.Selector)
+	Slider() Slider
+	SetSlider(value ISlider)
+	MaximumValueAccessory() SliderAccessory
+	SetMaximumValueAccessory(value ISliderAccessory)
+	MaximumSliderWidth() float64
+	SetMaximumSliderWidth(value float64)
+	DoubleValue() float64
+	SetDoubleValue(value float64)
+	MinimumValueAccessory() SliderAccessory
+	SetMinimumValueAccessory(value ISliderAccessory)
+	Label() string
+	SetLabel(value string)
+	ValueAccessoryWidth() SliderAccessoryWidth
+	SetValueAccessoryWidth(value SliderAccessoryWidth)
 }
 
 // A bar item that provides a slider control for choosing a value in a range. [Full Topic]
@@ -103,6 +103,43 @@ func (s_ SliderTouchBarItem) SetMinimumSliderWidth(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMinimumSliderWidth:"), value)
 }
 
+// An object that is notified when a user interacts with the slider or either of the accessories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544814-target?language=objc
+func (s_ SliderTouchBarItem) Target() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("target"))
+	return rv
+}
+
+// An object that is notified when a user interacts with the slider or either of the accessories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544814-target?language=objc
+func (s_ SliderTouchBarItem) SetTarget(value objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("setTarget:"), value)
+}
+
+// The user-visible string identifying this item during bar customization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544793-customizationlabel?language=objc
+func (s_ SliderTouchBarItem) SetCustomizationLabel(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setCustomizationLabel:"), value)
+}
+
+// The selector on the target object that is invoked when a user interacts with the slider or either of the accessories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544765-action?language=objc
+func (s_ SliderTouchBarItem) Action() objc.Selector {
+	rv := objc.Call[objc.Selector](s_, objc.Sel("action"))
+	return rv
+}
+
+// The selector on the target object that is invoked when a user interacts with the slider or either of the accessories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544765-action?language=objc
+func (s_ SliderTouchBarItem) SetAction(value objc.Selector) {
+	objc.Call[objc.Void](s_, objc.Sel("setAction:"), value)
+}
+
 // The slider displayed by the bar item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544809-slider?language=objc
@@ -116,36 +153,6 @@ func (s_ SliderTouchBarItem) Slider() Slider {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544809-slider?language=objc
 func (s_ SliderTouchBarItem) SetSlider(value ISlider) {
 	objc.Call[objc.Void](s_, objc.Sel("setSlider:"), value)
-}
-
-// The double value of the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/3237220-doublevalue?language=objc
-func (s_ SliderTouchBarItem) DoubleValue() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("doubleValue"))
-	return rv
-}
-
-// The double value of the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/3237220-doublevalue?language=objc
-func (s_ SliderTouchBarItem) SetDoubleValue(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setDoubleValue:"), value)
-}
-
-// The text displayed alongside the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544741-label?language=objc
-func (s_ SliderTouchBarItem) Label() string {
-	rv := objc.Call[string](s_, objc.Sel("label"))
-	return rv
-}
-
-// The text displayed alongside the slider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544741-label?language=objc
-func (s_ SliderTouchBarItem) SetLabel(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setLabel:"), value)
 }
 
 // The accessory that appears at the end of the slider with the maximum value. [Full Topic]
@@ -163,43 +170,6 @@ func (s_ SliderTouchBarItem) SetMaximumValueAccessory(value ISliderAccessory) {
 	objc.Call[objc.Void](s_, objc.Sel("setMaximumValueAccessory:"), value)
 }
 
-// The accessory that appears at the end of the slider with the minimum value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544846-minimumvalueaccessory?language=objc
-func (s_ SliderTouchBarItem) MinimumValueAccessory() SliderAccessory {
-	rv := objc.Call[SliderAccessory](s_, objc.Sel("minimumValueAccessory"))
-	return rv
-}
-
-// The accessory that appears at the end of the slider with the minimum value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544846-minimumvalueaccessory?language=objc
-func (s_ SliderTouchBarItem) SetMinimumValueAccessory(value ISliderAccessory) {
-	objc.Call[objc.Void](s_, objc.Sel("setMinimumValueAccessory:"), value)
-}
-
-// The user-visible string identifying this item during bar customization. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544793-customizationlabel?language=objc
-func (s_ SliderTouchBarItem) SetCustomizationLabel(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setCustomizationLabel:"), value)
-}
-
-// An object that is notified when a user interacts with the slider or either of the accessories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544814-target?language=objc
-func (s_ SliderTouchBarItem) Target() objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("target"))
-	return rv
-}
-
-// An object that is notified when a user interacts with the slider or either of the accessories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544814-target?language=objc
-func (s_ SliderTouchBarItem) SetTarget(value objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setTarget:"), value)
-}
-
 // The maximum width of the slider’s track. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/3237221-maximumsliderwidth?language=objc
@@ -215,6 +185,51 @@ func (s_ SliderTouchBarItem) SetMaximumSliderWidth(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMaximumSliderWidth:"), value)
 }
 
+// The double value of the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/3237220-doublevalue?language=objc
+func (s_ SliderTouchBarItem) DoubleValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("doubleValue"))
+	return rv
+}
+
+// The double value of the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/3237220-doublevalue?language=objc
+func (s_ SliderTouchBarItem) SetDoubleValue(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setDoubleValue:"), value)
+}
+
+// The accessory that appears at the end of the slider with the minimum value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544846-minimumvalueaccessory?language=objc
+func (s_ SliderTouchBarItem) MinimumValueAccessory() SliderAccessory {
+	rv := objc.Call[SliderAccessory](s_, objc.Sel("minimumValueAccessory"))
+	return rv
+}
+
+// The accessory that appears at the end of the slider with the minimum value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544846-minimumvalueaccessory?language=objc
+func (s_ SliderTouchBarItem) SetMinimumValueAccessory(value ISliderAccessory) {
+	objc.Call[objc.Void](s_, objc.Sel("setMinimumValueAccessory:"), value)
+}
+
+// The text displayed alongside the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544741-label?language=objc
+func (s_ SliderTouchBarItem) Label() string {
+	rv := objc.Call[string](s_, objc.Sel("label"))
+	return rv
+}
+
+// The text displayed alongside the slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544741-label?language=objc
+func (s_ SliderTouchBarItem) SetLabel(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setLabel:"), value)
+}
+
 // The width of the value accessories that appear at either end of the slider. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544811-valueaccessorywidth?language=objc
@@ -228,19 +243,4 @@ func (s_ SliderTouchBarItem) ValueAccessoryWidth() SliderAccessoryWidth {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544811-valueaccessorywidth?language=objc
 func (s_ SliderTouchBarItem) SetValueAccessoryWidth(value SliderAccessoryWidth) {
 	objc.Call[objc.Void](s_, objc.Sel("setValueAccessoryWidth:"), value)
-}
-
-// The selector on the target object that is invoked when a user interacts with the slider or either of the accessories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544765-action?language=objc
-func (s_ SliderTouchBarItem) Action() objc.Selector {
-	rv := objc.Call[objc.Selector](s_, objc.Sel("action"))
-	return rv
-}
-
-// The selector on the target object that is invoked when a user interacts with the slider or either of the accessories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544765-action?language=objc
-func (s_ SliderTouchBarItem) SetAction(value objc.Selector) {
-	objc.Call[objc.Void](s_, objc.Sel("setAction:"), value)
 }

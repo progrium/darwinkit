@@ -33,18 +33,6 @@ func ContentKeyResponseFrom(ptr unsafe.Pointer) ContentKeyResponse {
 	}
 }
 
-func (cc _ContentKeyResponseClass) ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData []byte) ContentKeyResponse {
-	rv := objc.Call[ContentKeyResponse](cc, objc.Sel("contentKeyResponseWithAuthorizationTokenData:"), authorizationTokenData)
-	return rv
-}
-
-// Creates a content key response with an authorization token. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyresponse/3088798-contentkeyresponsewithauthorizat?language=objc
-func ContentKeyResponse_ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData []byte) ContentKeyResponse {
-	return ContentKeyResponseClass.ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData)
-}
-
 func (cc _ContentKeyResponseClass) ContentKeyResponseWithClearKeyDataInitializationVector(keyData []byte, initializationVector []byte) ContentKeyResponse {
 	rv := objc.Call[ContentKeyResponse](cc, objc.Sel("contentKeyResponseWithClearKeyData:initializationVector:"), keyData, initializationVector)
 	return rv
@@ -55,6 +43,18 @@ func (cc _ContentKeyResponseClass) ContentKeyResponseWithClearKeyDataInitializat
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyresponse/2867986-contentkeyresponsewithclearkeyda?language=objc
 func ContentKeyResponse_ContentKeyResponseWithClearKeyDataInitializationVector(keyData []byte, initializationVector []byte) ContentKeyResponse {
 	return ContentKeyResponseClass.ContentKeyResponseWithClearKeyDataInitializationVector(keyData, initializationVector)
+}
+
+func (cc _ContentKeyResponseClass) ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData []byte) ContentKeyResponse {
+	rv := objc.Call[ContentKeyResponse](cc, objc.Sel("contentKeyResponseWithAuthorizationTokenData:"), authorizationTokenData)
+	return rv
+}
+
+// Creates a content key response with an authorization token. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyresponse/3088798-contentkeyresponsewithauthorizat?language=objc
+func ContentKeyResponse_ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData []byte) ContentKeyResponse {
+	return ContentKeyResponseClass.ContentKeyResponseWithAuthorizationTokenData(authorizationTokenData)
 }
 
 func (cc _ContentKeyResponseClass) ContentKeyResponseWithFairPlayStreamingKeyResponseData(keyResponseData []byte) ContentKeyResponse {

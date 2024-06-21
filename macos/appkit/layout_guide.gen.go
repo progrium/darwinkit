@@ -20,22 +20,22 @@ type _LayoutGuideClass struct {
 type ILayoutGuide interface {
 	objc.IObject
 	ConstraintsAffectingLayoutForOrientation(orientation LayoutConstraintOrientation) []LayoutConstraint
-	TrailingAnchor() LayoutXAxisAnchor
-	CenterYAnchor() LayoutYAxisAnchor
-	OwningView() View
-	SetOwningView(value IView)
 	TopAnchor() LayoutYAxisAnchor
+	LeftAnchor() LayoutXAxisAnchor
+	CenterYAnchor() LayoutYAxisAnchor
+	RightAnchor() LayoutXAxisAnchor
 	BottomAnchor() LayoutYAxisAnchor
-	CenterXAnchor() LayoutXAxisAnchor
 	HeightAnchor() LayoutDimension
-	Identifier() UserInterfaceItemIdentifier
-	SetIdentifier(value UserInterfaceItemIdentifier)
-	HasAmbiguousLayout() bool
+	TrailingAnchor() LayoutXAxisAnchor
 	LeadingAnchor() LayoutXAxisAnchor
 	Frame() foundation.Rect
+	OwningView() View
+	SetOwningView(value IView)
+	HasAmbiguousLayout() bool
+	CenterXAnchor() LayoutXAxisAnchor
+	Identifier() UserInterfaceItemIdentifier
+	SetIdentifier(value UserInterfaceItemIdentifier)
 	WidthAnchor() LayoutDimension
-	LeftAnchor() LayoutXAxisAnchor
-	RightAnchor() LayoutXAxisAnchor
 }
 
 // A rectangular area that can interact with Auto Layout. [Full Topic]
@@ -79,11 +79,19 @@ func (l_ LayoutGuide) ConstraintsAffectingLayoutForOrientation(orientation Layou
 	return rv
 }
 
-// A layout anchor representing the trailing edge of the layout guide’s frame. [Full Topic]
+// A layout anchor representing the top edge of the layout guide’s frame. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1528204-trailinganchor?language=objc
-func (l_ LayoutGuide) TrailingAnchor() LayoutXAxisAnchor {
-	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("trailingAnchor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1534159-topanchor?language=objc
+func (l_ LayoutGuide) TopAnchor() LayoutYAxisAnchor {
+	rv := objc.Call[LayoutYAxisAnchor](l_, objc.Sel("topAnchor"))
+	return rv
+}
+
+// A layout anchor representing the left edge of the layout guide’s frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1530723-leftanchor?language=objc
+func (l_ LayoutGuide) LeftAnchor() LayoutXAxisAnchor {
+	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("leftAnchor"))
 	return rv
 }
 
@@ -95,26 +103,11 @@ func (l_ LayoutGuide) CenterYAnchor() LayoutYAxisAnchor {
 	return rv
 }
 
-// The view that owns this layout guide. [Full Topic]
+// A layout anchor representing the right edge of the layout guide’s frame. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1533971-owningview?language=objc
-func (l_ LayoutGuide) OwningView() View {
-	rv := objc.Call[View](l_, objc.Sel("owningView"))
-	return rv
-}
-
-// The view that owns this layout guide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1533971-owningview?language=objc
-func (l_ LayoutGuide) SetOwningView(value IView) {
-	objc.Call[objc.Void](l_, objc.Sel("setOwningView:"), value)
-}
-
-// A layout anchor representing the top edge of the layout guide’s frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1534159-topanchor?language=objc
-func (l_ LayoutGuide) TopAnchor() LayoutYAxisAnchor {
-	rv := objc.Call[LayoutYAxisAnchor](l_, objc.Sel("topAnchor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1534892-rightanchor?language=objc
+func (l_ LayoutGuide) RightAnchor() LayoutXAxisAnchor {
+	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("rightAnchor"))
 	return rv
 }
 
@@ -126,14 +119,6 @@ func (l_ LayoutGuide) BottomAnchor() LayoutYAxisAnchor {
 	return rv
 }
 
-// A layout anchor representing the horizontal center of the layout guide’s frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1528997-centerxanchor?language=objc
-func (l_ LayoutGuide) CenterXAnchor() LayoutXAxisAnchor {
-	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("centerXAnchor"))
-	return rv
-}
-
 // A layout anchor representing the height of the layout guide’s frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1532150-heightanchor?language=objc
@@ -142,26 +127,11 @@ func (l_ LayoutGuide) HeightAnchor() LayoutDimension {
 	return rv
 }
 
-// A string used to identify the layout guide. [Full Topic]
+// A layout anchor representing the trailing edge of the layout guide’s frame. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1524460-identifier?language=objc
-func (l_ LayoutGuide) Identifier() UserInterfaceItemIdentifier {
-	rv := objc.Call[UserInterfaceItemIdentifier](l_, objc.Sel("identifier"))
-	return rv
-}
-
-// A string used to identify the layout guide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1524460-identifier?language=objc
-func (l_ LayoutGuide) SetIdentifier(value UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](l_, objc.Sel("setIdentifier:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1641955-hasambiguouslayout?language=objc
-func (l_ LayoutGuide) HasAmbiguousLayout() bool {
-	rv := objc.Call[bool](l_, objc.Sel("hasAmbiguousLayout"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1528204-trailinganchor?language=objc
+func (l_ LayoutGuide) TrailingAnchor() LayoutXAxisAnchor {
+	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("trailingAnchor"))
 	return rv
 }
 
@@ -181,26 +151,56 @@ func (l_ LayoutGuide) Frame() foundation.Rect {
 	return rv
 }
 
+// The view that owns this layout guide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1533971-owningview?language=objc
+func (l_ LayoutGuide) OwningView() View {
+	rv := objc.Call[View](l_, objc.Sel("owningView"))
+	return rv
+}
+
+// The view that owns this layout guide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1533971-owningview?language=objc
+func (l_ LayoutGuide) SetOwningView(value IView) {
+	objc.Call[objc.Void](l_, objc.Sel("setOwningView:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1641955-hasambiguouslayout?language=objc
+func (l_ LayoutGuide) HasAmbiguousLayout() bool {
+	rv := objc.Call[bool](l_, objc.Sel("hasAmbiguousLayout"))
+	return rv
+}
+
+// A layout anchor representing the horizontal center of the layout guide’s frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1528997-centerxanchor?language=objc
+func (l_ LayoutGuide) CenterXAnchor() LayoutXAxisAnchor {
+	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("centerXAnchor"))
+	return rv
+}
+
+// A string used to identify the layout guide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1524460-identifier?language=objc
+func (l_ LayoutGuide) Identifier() UserInterfaceItemIdentifier {
+	rv := objc.Call[UserInterfaceItemIdentifier](l_, objc.Sel("identifier"))
+	return rv
+}
+
+// A string used to identify the layout guide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1524460-identifier?language=objc
+func (l_ LayoutGuide) SetIdentifier(value UserInterfaceItemIdentifier) {
+	objc.Call[objc.Void](l_, objc.Sel("setIdentifier:"), value)
+}
+
 // A layout anchor representing the width of the layout guide’s frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1527215-widthanchor?language=objc
 func (l_ LayoutGuide) WidthAnchor() LayoutDimension {
 	rv := objc.Call[LayoutDimension](l_, objc.Sel("widthAnchor"))
-	return rv
-}
-
-// A layout anchor representing the left edge of the layout guide’s frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1530723-leftanchor?language=objc
-func (l_ LayoutGuide) LeftAnchor() LayoutXAxisAnchor {
-	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("leftAnchor"))
-	return rv
-}
-
-// A layout anchor representing the right edge of the layout guide’s frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1534892-rightanchor?language=objc
-func (l_ LayoutGuide) RightAnchor() LayoutXAxisAnchor {
-	rv := objc.Call[LayoutXAxisAnchor](l_, objc.Sel("rightAnchor"))
 	return rv
 }

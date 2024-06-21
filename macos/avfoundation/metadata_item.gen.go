@@ -20,24 +20,24 @@ type _MetadataItemClass struct {
 // An interface definition for the [MetadataItem] class.
 type IMetadataItem interface {
 	objc.IObject
-	LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func())
 	StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus
-	StartDate() foundation.Date
-	CommonKey() MetadataKey
-	DateValue() foundation.Date
-	Key() objc.Object
-	DataType() string
-	StringValue() string
-	NumberValue() foundation.Number
-	ExtendedLanguageTag() string
-	Time() coremedia.Time
+	LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func())
 	KeySpace() MetadataKeySpace
+	ExtendedLanguageTag() string
 	DataValue() []byte
-	Duration() coremedia.Time
-	ExtraAttributes() map[MetadataExtraAttributeKey]objc.Object
-	Locale() foundation.Locale
-	Identifier() MetadataIdentifier
+	Key() objc.Object
 	Value() objc.Object
+	StringValue() string
+	ExtraAttributes() map[MetadataExtraAttributeKey]objc.Object
+	NumberValue() foundation.Number
+	Locale() foundation.Locale
+	DateValue() foundation.Date
+	Time() coremedia.Time
+	DataType() string
+	StartDate() foundation.Date
+	Duration() coremedia.Time
+	CommonKey() MetadataKey
+	Identifier() MetadataIdentifier
 }
 
 // A metadata item for an audiovisual asset or one of its tracks. [Full Topic]
@@ -73,6 +73,14 @@ func (m_ MetadataItem) Init() MetadataItem {
 	return rv
 }
 
+// Reports whether the value for a given key is immediately available without blocking. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388523-statusofvalueforkey?language=objc
+func (m_ MetadataItem) StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus {
+	rv := objc.Call[KeyValueStatus](m_, objc.Sel("statusOfValueForKey:error:"), key, outError)
+	return rv
+}
+
 // Returns a metadata key space for the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390663-keyspaceforidentifier?language=objc
@@ -86,73 +94,6 @@ func (mc _MetadataItemClass) KeySpaceForIdentifier(identifier MetadataIdentifier
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390663-keyspaceforidentifier?language=objc
 func MetadataItem_KeySpaceForIdentifier(identifier MetadataIdentifier) MetadataKeySpace {
 	return MetadataItemClass.KeySpaceForIdentifier(identifier)
-}
-
-// Returns metadata items that match a specified key or key space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386083-metadataitemsfromarray?language=objc
-func (mc _MetadataItemClass) MetadataItemsFromArrayWithKeyKeySpace(metadataItems []IMetadataItem, key objc.IObject, keySpace MetadataKeySpace) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:withKey:keySpace:"), metadataItems, key, keySpace)
-	return rv
-}
-
-// Returns metadata items that match a specified key or key space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386083-metadataitemsfromarray?language=objc
-func MetadataItem_MetadataItemsFromArrayWithKeyKeySpace(metadataItems []IMetadataItem, key objc.IObject, keySpace MetadataKeySpace) []MetadataItem {
-	return MetadataItemClass.MetadataItemsFromArrayWithKeyKeySpace(metadataItems, key, keySpace)
-}
-
-// Returns metadata items for the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385843-metadataitemsfromarray?language=objc
-func (mc _MetadataItemClass) MetadataItemsFromArrayFilteredByIdentifier(metadataItems []IMetadataItem, identifier MetadataIdentifier) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:filteredByIdentifier:"), metadataItems, identifier)
-	return rv
-}
-
-// Returns metadata items for the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385843-metadataitemsfromarray?language=objc
-func MetadataItem_MetadataItemsFromArrayFilteredByIdentifier(metadataItems []IMetadataItem, identifier MetadataIdentifier) []MetadataItem {
-	return MetadataItemClass.MetadataItemsFromArrayFilteredByIdentifier(metadataItems, identifier)
-}
-
-// Returns filtered metadata items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390238-metadataitemsfromarray?language=objc
-func (mc _MetadataItemClass) MetadataItemsFromArrayFilteredByMetadataItemFilter(metadataItems []IMetadataItem, metadataItemFilter IMetadataItemFilter) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:filteredByMetadataItemFilter:"), metadataItems, metadataItemFilter)
-	return rv
-}
-
-// Returns filtered metadata items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390238-metadataitemsfromarray?language=objc
-func MetadataItem_MetadataItemsFromArrayFilteredByMetadataItemFilter(metadataItems []IMetadataItem, metadataItemFilter IMetadataItemFilter) []MetadataItem {
-	return MetadataItemClass.MetadataItemsFromArrayFilteredByMetadataItemFilter(metadataItems, metadataItemFilter)
-}
-
-// Returns metadata items that match a specified locale. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389374-metadataitemsfromarray?language=objc
-func (mc _MetadataItemClass) MetadataItemsFromArrayWithLocale(metadataItems []IMetadataItem, locale foundation.ILocale) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:withLocale:"), metadataItems, locale)
-	return rv
-}
-
-// Returns metadata items that match a specified locale. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389374-metadataitemsfromarray?language=objc
-func MetadataItem_MetadataItemsFromArrayWithLocale(metadataItems []IMetadataItem, locale foundation.ILocale) []MetadataItem {
-	return MetadataItemClass.MetadataItemsFromArrayWithLocale(metadataItems, locale)
-}
-
-// Tells the object to load the values of any of the specified keys that aren’t already loaded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387102-loadvaluesasynchronouslyforkeys?language=objc
-func (m_ MetadataItem) LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func()) {
-	objc.Call[objc.Void](m_, objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"), keys, handler)
 }
 
 // Returns a metadata identifier for the specified key and key space. [Full Topic]
@@ -170,12 +111,26 @@ func MetadataItem_IdentifierForKeyKeySpace(key objc.IObject, keySpace MetadataKe
 	return MetadataItemClass.IdentifierForKeyKeySpace(key, keySpace)
 }
 
-// Reports whether the value for a given key is immediately available without blocking. [Full Topic]
+// Returns a metadata key for the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388523-statusofvalueforkey?language=objc
-func (m_ MetadataItem) StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus {
-	rv := objc.Call[KeyValueStatus](m_, objc.Sel("statusOfValueForKey:error:"), key, outError)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385613-keyforidentifier?language=objc
+func (mc _MetadataItemClass) KeyForIdentifier(identifier MetadataIdentifier) objc.Object {
+	rv := objc.Call[objc.Object](mc, objc.Sel("keyForIdentifier:"), identifier)
 	return rv
+}
+
+// Returns a metadata key for the specified identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385613-keyforidentifier?language=objc
+func MetadataItem_KeyForIdentifier(identifier MetadataIdentifier) objc.Object {
+	return MetadataItemClass.KeyForIdentifier(identifier)
+}
+
+// Tells the object to load the values of any of the specified keys that aren’t already loaded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387102-loadvaluesasynchronouslyforkeys?language=objc
+func (m_ MetadataItem) LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func()) {
+	objc.Call[objc.Void](m_, objc.Sel("loadValuesAsynchronouslyForKeys:completionHandler:"), keys, handler)
 }
 
 // Creates a metadata item whose value loads on an on-demand basis only. [Full Topic]
@@ -193,89 +148,26 @@ func MetadataItem_MetadataItemWithPropertiesOfMetadataItemValueLoadingHandler(me
 	return MetadataItemClass.MetadataItemWithPropertiesOfMetadataItemValueLoadingHandler(metadataItem, handler)
 }
 
-// Returns a metadata key for the specified identifier. [Full Topic]
+// Returns metadata items that match a specified locale. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385613-keyforidentifier?language=objc
-func (mc _MetadataItemClass) KeyForIdentifier(identifier MetadataIdentifier) objc.Object {
-	rv := objc.Call[objc.Object](mc, objc.Sel("keyForIdentifier:"), identifier)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389374-metadataitemsfromarray?language=objc
+func (mc _MetadataItemClass) MetadataItemsFromArrayWithLocale(metadataItems []IMetadataItem, locale foundation.ILocale) []MetadataItem {
+	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:withLocale:"), metadataItems, locale)
 	return rv
 }
 
-// Returns a metadata key for the specified identifier. [Full Topic]
+// Returns metadata items that match a specified locale. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385613-keyforidentifier?language=objc
-func MetadataItem_KeyForIdentifier(identifier MetadataIdentifier) objc.Object {
-	return MetadataItemClass.KeyForIdentifier(identifier)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389374-metadataitemsfromarray?language=objc
+func MetadataItem_MetadataItemsFromArrayWithLocale(metadataItems []IMetadataItem, locale foundation.ILocale) []MetadataItem {
+	return MetadataItemClass.MetadataItemsFromArrayWithLocale(metadataItems, locale)
 }
 
-// Returns metadata items whose locales match one of the specified language identifiers. [Full Topic]
+// The key space for the metadata item’s key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387901-metadataitemsfromarray?language=objc
-func (mc _MetadataItemClass) MetadataItemsFromArrayFilteredAndSortedAccordingToPreferredLanguages(metadataItems []IMetadataItem, preferredLanguages []string) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:filteredAndSortedAccordingToPreferredLanguages:"), metadataItems, preferredLanguages)
-	return rv
-}
-
-// Returns metadata items whose locales match one of the specified language identifiers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387901-metadataitemsfromarray?language=objc
-func MetadataItem_MetadataItemsFromArrayFilteredAndSortedAccordingToPreferredLanguages(metadataItems []IMetadataItem, preferredLanguages []string) []MetadataItem {
-	return MetadataItemClass.MetadataItemsFromArrayFilteredAndSortedAccordingToPreferredLanguages(metadataItems, preferredLanguages)
-}
-
-// The start date of the timed metadata. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388535-startdate?language=objc
-func (m_ MetadataItem) StartDate() foundation.Date {
-	rv := objc.Call[foundation.Date](m_, objc.Sel("startDate"))
-	return rv
-}
-
-// The common key of the metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389864-commonkey?language=objc
-func (m_ MetadataItem) CommonKey() MetadataKey {
-	rv := objc.Call[MetadataKey](m_, objc.Sel("commonKey"))
-	return rv
-}
-
-// The value of the metadata item as a date. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385563-datevalue?language=objc
-func (m_ MetadataItem) DateValue() foundation.Date {
-	rv := objc.Call[foundation.Date](m_, objc.Sel("dateValue"))
-	return rv
-}
-
-// The key of the metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387843-key?language=objc
-func (m_ MetadataItem) Key() objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("key"))
-	return rv
-}
-
-// The data type of the metadata item’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386856-datatype?language=objc
-func (m_ MetadataItem) DataType() string {
-	rv := objc.Call[string](m_, objc.Sel("dataType"))
-	return rv
-}
-
-// The value of the metadata item as a string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390846-stringvalue?language=objc
-func (m_ MetadataItem) StringValue() string {
-	rv := objc.Call[string](m_, objc.Sel("stringValue"))
-	return rv
-}
-
-// The value of the metadata item as a number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390681-numbervalue?language=objc
-func (m_ MetadataItem) NumberValue() foundation.Number {
-	rv := objc.Call[foundation.Number](m_, objc.Sel("numberValue"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385757-keyspace?language=objc
+func (m_ MetadataItem) KeySpace() MetadataKeySpace {
+	rv := objc.Call[MetadataKeySpace](m_, objc.Sel("keySpace"))
 	return rv
 }
 
@@ -287,22 +179,6 @@ func (m_ MetadataItem) ExtendedLanguageTag() string {
 	return rv
 }
 
-// The timestamp of the metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388612-time?language=objc
-func (m_ MetadataItem) Time() coremedia.Time {
-	rv := objc.Call[coremedia.Time](m_, objc.Sel("time"))
-	return rv
-}
-
-// The key space for the metadata item’s key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385757-keyspace?language=objc
-func (m_ MetadataItem) KeySpace() MetadataKeySpace {
-	rv := objc.Call[MetadataKeySpace](m_, objc.Sel("keySpace"))
-	return rv
-}
-
 // The value of the metadata item as a data value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387641-datavalue?language=objc
@@ -311,11 +187,27 @@ func (m_ MetadataItem) DataValue() []byte {
 	return rv
 }
 
-// The duration of the metadata item. [Full Topic]
+// The key of the metadata item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386610-duration?language=objc
-func (m_ MetadataItem) Duration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](m_, objc.Sel("duration"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387843-key?language=objc
+func (m_ MetadataItem) Key() objc.Object {
+	rv := objc.Call[objc.Object](m_, objc.Sel("key"))
+	return rv
+}
+
+// The value of the metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390537-value?language=objc
+func (m_ MetadataItem) Value() objc.Object {
+	rv := objc.Call[objc.Object](m_, objc.Sel("value"))
+	return rv
+}
+
+// The value of the metadata item as a string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390846-stringvalue?language=objc
+func (m_ MetadataItem) StringValue() string {
+	rv := objc.Call[string](m_, objc.Sel("stringValue"))
 	return rv
 }
 
@@ -327,6 +219,14 @@ func (m_ MetadataItem) ExtraAttributes() map[MetadataExtraAttributeKey]objc.Obje
 	return rv
 }
 
+// The value of the metadata item as a number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390681-numbervalue?language=objc
+func (m_ MetadataItem) NumberValue() foundation.Number {
+	rv := objc.Call[foundation.Number](m_, objc.Sel("numberValue"))
+	return rv
+}
+
 // The locale of the metadata item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387114-locale?language=objc
@@ -335,18 +235,58 @@ func (m_ MetadataItem) Locale() foundation.Locale {
 	return rv
 }
 
+// The value of the metadata item as a date. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1385563-datevalue?language=objc
+func (m_ MetadataItem) DateValue() foundation.Date {
+	rv := objc.Call[foundation.Date](m_, objc.Sel("dateValue"))
+	return rv
+}
+
+// The timestamp of the metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388612-time?language=objc
+func (m_ MetadataItem) Time() coremedia.Time {
+	rv := objc.Call[coremedia.Time](m_, objc.Sel("time"))
+	return rv
+}
+
+// The data type of the metadata item’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386856-datatype?language=objc
+func (m_ MetadataItem) DataType() string {
+	rv := objc.Call[string](m_, objc.Sel("dataType"))
+	return rv
+}
+
+// The start date of the timed metadata. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388535-startdate?language=objc
+func (m_ MetadataItem) StartDate() foundation.Date {
+	rv := objc.Call[foundation.Date](m_, objc.Sel("startDate"))
+	return rv
+}
+
+// The duration of the metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386610-duration?language=objc
+func (m_ MetadataItem) Duration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](m_, objc.Sel("duration"))
+	return rv
+}
+
+// The common key of the metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389864-commonkey?language=objc
+func (m_ MetadataItem) CommonKey() MetadataKey {
+	rv := objc.Call[MetadataKey](m_, objc.Sel("commonKey"))
+	return rv
+}
+
 // An identifier for a metadata item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1386968-identifier?language=objc
 func (m_ MetadataItem) Identifier() MetadataIdentifier {
 	rv := objc.Call[MetadataIdentifier](m_, objc.Sel("identifier"))
-	return rv
-}
-
-// The value of the metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390537-value?language=objc
-func (m_ MetadataItem) Value() objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("value"))
 	return rv
 }

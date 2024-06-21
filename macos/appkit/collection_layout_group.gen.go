@@ -19,10 +19,10 @@ type _CollectionLayoutGroupClass struct {
 type ICollectionLayoutGroup interface {
 	ICollectionLayoutItem
 	VisualDescription() string
-	InterItemSpacing() CollectionLayoutSpacing
-	SetInterItemSpacing(value ICollectionLayoutSpacing)
 	SetSupplementaryItems(value []ICollectionLayoutSupplementaryItem)
 	Subitems() []CollectionLayoutItem
+	InterItemSpacing() CollectionLayoutSpacing
+	SetInterItemSpacing(value ICollectionLayoutSpacing)
 }
 
 // A container for a set of items that lays out the items along a path. [Full Topic]
@@ -38,16 +38,16 @@ func CollectionLayoutGroupFrom(ptr unsafe.Pointer) CollectionLayoutGroup {
 	}
 }
 
-func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("customGroupWithLayoutSize:itemProvider:"), layoutSize, itemProvider)
+func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("verticalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
 	return rv
 }
 
-// Creates a group of the specified size, with an item provider that creates a custom arrangement for those items. [Full Topic]
+// Creates a group of the specified size, containing an array of items arranged in a vertical line. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213853-customgroupwithlayoutsize?language=objc
-func CollectionLayoutGroup_CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.CustomGroupWithLayoutSizeItemProvider(layoutSize, itemProvider)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213860-verticalgroupwithlayoutsize?language=objc
+func CollectionLayoutGroup_VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
+	return CollectionLayoutGroupClass.VerticalGroupWithLayoutSizeSubitems(layoutSize, subitems)
 }
 
 func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
@@ -62,16 +62,16 @@ func CollectionLayoutGroup_HorizontalGroupWithLayoutSizeSubitems(layoutSize ICol
 	return CollectionLayoutGroupClass.HorizontalGroupWithLayoutSizeSubitems(layoutSize, subitems)
 }
 
-func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("verticalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
+func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("customGroupWithLayoutSize:itemProvider:"), layoutSize, itemProvider)
 	return rv
 }
 
-// Creates a group of the specified size, containing an array of items arranged in a vertical line. [Full Topic]
+// Creates a group of the specified size, with an item provider that creates a custom arrangement for those items. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213860-verticalgroupwithlayoutsize?language=objc
-func CollectionLayoutGroup_VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.VerticalGroupWithLayoutSizeSubitems(layoutSize, subitems)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213853-customgroupwithlayoutsize?language=objc
+func CollectionLayoutGroup_CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
+	return CollectionLayoutGroupClass.CustomGroupWithLayoutSizeItemProvider(layoutSize, itemProvider)
 }
 
 func (cc _CollectionLayoutGroupClass) Alloc() CollectionLayoutGroup {
@@ -106,23 +106,26 @@ func CollectionLayoutGroup_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) 
 	return CollectionLayoutGroupClass.ItemWithLayoutSize(layoutSize)
 }
 
-func (cc _CollectionLayoutGroupClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
-	return rv
-}
-
-// Creates an item of the specified size with an array of supplementary items to attach to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213872-itemwithlayoutsize?language=objc
-func CollectionLayoutGroup_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 // Returns a string with an ASCII representation of the group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199082-visualdescription?language=objc
 func (c_ CollectionLayoutGroup) VisualDescription() string {
 	rv := objc.Call[string](c_, objc.Sel("visualDescription"))
+	return rv
+}
+
+// An array of the supplementary items that are anchored to the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199079-supplementaryitems?language=objc
+func (c_ CollectionLayoutGroup) SetSupplementaryItems(value []ICollectionLayoutSupplementaryItem) {
+	objc.Call[objc.Void](c_, objc.Sel("setSupplementaryItems:"), value)
+}
+
+// An array of the items contained in the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213857-subitems?language=objc
+func (c_ CollectionLayoutGroup) Subitems() []CollectionLayoutItem {
+	rv := objc.Call[[]CollectionLayoutItem](c_, objc.Sel("subitems"))
 	return rv
 }
 
@@ -139,19 +142,4 @@ func (c_ CollectionLayoutGroup) InterItemSpacing() CollectionLayoutSpacing {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199078-interitemspacing?language=objc
 func (c_ CollectionLayoutGroup) SetInterItemSpacing(value ICollectionLayoutSpacing) {
 	objc.Call[objc.Void](c_, objc.Sel("setInterItemSpacing:"), value)
-}
-
-// An array of the supplementary items that are anchored to the group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199079-supplementaryitems?language=objc
-func (c_ CollectionLayoutGroup) SetSupplementaryItems(value []ICollectionLayoutSupplementaryItem) {
-	objc.Call[objc.Void](c_, objc.Sel("setSupplementaryItems:"), value)
-}
-
-// An array of the items contained in the group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213857-subitems?language=objc
-func (c_ CollectionLayoutGroup) Subitems() []CollectionLayoutItem {
-	rv := objc.Call[[]CollectionLayoutItem](c_, objc.Sel("subitems"))
-	return rv
 }

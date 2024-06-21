@@ -11,32 +11,32 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation?language=objc
 type PFileProviderTestingOperation interface {
 	// optional
-	AsContentFetch() FileProviderTestingContentFetchObject
-	HasAsContentFetch() bool
-
-	// optional
-	AsDeletion() FileProviderTestingDeletionObject
-	HasAsDeletion() bool
-
-	// optional
-	AsIngestion() FileProviderTestingIngestionObject
-	HasAsIngestion() bool
+	AsModification() FileProviderTestingModificationObject
+	HasAsModification() bool
 
 	// optional
 	AsCreation() FileProviderTestingCreationObject
 	HasAsCreation() bool
 
 	// optional
-	AsCollisionResolution() FileProviderTestingCollisionResolutionObject
-	HasAsCollisionResolution() bool
-
-	// optional
-	AsModification() FileProviderTestingModificationObject
-	HasAsModification() bool
+	AsDeletion() FileProviderTestingDeletionObject
+	HasAsDeletion() bool
 
 	// optional
 	AsLookup() FileProviderTestingLookupObject
 	HasAsLookup() bool
+
+	// optional
+	AsContentFetch() FileProviderTestingContentFetchObject
+	HasAsContentFetch() bool
+
+	// optional
+	AsIngestion() FileProviderTestingIngestionObject
+	HasAsIngestion() bool
+
+	// optional
+	AsCollisionResolution() FileProviderTestingCollisionResolutionObject
+	HasAsCollisionResolution() bool
 
 	// optional
 	AsChildrenEnumeration() FileProviderTestingChildrenEnumerationObject
@@ -55,39 +55,15 @@ type FileProviderTestingOperationObject struct {
 	objc.Object
 }
 
-func (f_ FileProviderTestingOperationObject) HasAsContentFetch() bool {
-	return f_.RespondsToSelector(objc.Sel("asContentFetch"))
+func (f_ FileProviderTestingOperationObject) HasAsModification() bool {
+	return f_.RespondsToSelector(objc.Sel("asModification"))
 }
 
-// Returns the operation if it fetches an item’s content. [Full Topic]
+// Returns the operation if it propagates a change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736249-ascontentfetch?language=objc
-func (f_ FileProviderTestingOperationObject) AsContentFetch() FileProviderTestingContentFetchObject {
-	rv := objc.Call[FileProviderTestingContentFetchObject](f_, objc.Sel("asContentFetch"))
-	return rv
-}
-
-func (f_ FileProviderTestingOperationObject) HasAsDeletion() bool {
-	return f_.RespondsToSelector(objc.Sel("asDeletion"))
-}
-
-// Returns the operation if it propagates the deletion of an item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736251-asdeletion?language=objc
-func (f_ FileProviderTestingOperationObject) AsDeletion() FileProviderTestingDeletionObject {
-	rv := objc.Call[FileProviderTestingDeletionObject](f_, objc.Sel("asDeletion"))
-	return rv
-}
-
-func (f_ FileProviderTestingOperationObject) HasAsIngestion() bool {
-	return f_.RespondsToSelector(objc.Sel("asIngestion"))
-}
-
-// Returns the operation if it alerts the system to changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736252-asingestion?language=objc
-func (f_ FileProviderTestingOperationObject) AsIngestion() FileProviderTestingIngestionObject {
-	rv := objc.Call[FileProviderTestingIngestionObject](f_, objc.Sel("asIngestion"))
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736254-asmodification?language=objc
+func (f_ FileProviderTestingOperationObject) AsModification() FileProviderTestingModificationObject {
+	rv := objc.Call[FileProviderTestingModificationObject](f_, objc.Sel("asModification"))
 	return rv
 }
 
@@ -103,27 +79,15 @@ func (f_ FileProviderTestingOperationObject) AsCreation() FileProviderTestingCre
 	return rv
 }
 
-func (f_ FileProviderTestingOperationObject) HasAsCollisionResolution() bool {
-	return f_.RespondsToSelector(objc.Sel("asCollisionResolution"))
+func (f_ FileProviderTestingOperationObject) HasAsDeletion() bool {
+	return f_.RespondsToSelector(objc.Sel("asDeletion"))
 }
 
-// Returns the operation if it resolves a collision by renaming the new item. [Full Topic]
+// Returns the operation if it propagates the deletion of an item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736248-ascollisionresolution?language=objc
-func (f_ FileProviderTestingOperationObject) AsCollisionResolution() FileProviderTestingCollisionResolutionObject {
-	rv := objc.Call[FileProviderTestingCollisionResolutionObject](f_, objc.Sel("asCollisionResolution"))
-	return rv
-}
-
-func (f_ FileProviderTestingOperationObject) HasAsModification() bool {
-	return f_.RespondsToSelector(objc.Sel("asModification"))
-}
-
-// Returns the operation if it propagates a change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736254-asmodification?language=objc
-func (f_ FileProviderTestingOperationObject) AsModification() FileProviderTestingModificationObject {
-	rv := objc.Call[FileProviderTestingModificationObject](f_, objc.Sel("asModification"))
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736251-asdeletion?language=objc
+func (f_ FileProviderTestingOperationObject) AsDeletion() FileProviderTestingDeletionObject {
+	rv := objc.Call[FileProviderTestingDeletionObject](f_, objc.Sel("asDeletion"))
 	return rv
 }
 
@@ -136,6 +100,42 @@ func (f_ FileProviderTestingOperationObject) HasAsLookup() bool {
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736253-aslookup?language=objc
 func (f_ FileProviderTestingOperationObject) AsLookup() FileProviderTestingLookupObject {
 	rv := objc.Call[FileProviderTestingLookupObject](f_, objc.Sel("asLookup"))
+	return rv
+}
+
+func (f_ FileProviderTestingOperationObject) HasAsContentFetch() bool {
+	return f_.RespondsToSelector(objc.Sel("asContentFetch"))
+}
+
+// Returns the operation if it fetches an item’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736249-ascontentfetch?language=objc
+func (f_ FileProviderTestingOperationObject) AsContentFetch() FileProviderTestingContentFetchObject {
+	rv := objc.Call[FileProviderTestingContentFetchObject](f_, objc.Sel("asContentFetch"))
+	return rv
+}
+
+func (f_ FileProviderTestingOperationObject) HasAsIngestion() bool {
+	return f_.RespondsToSelector(objc.Sel("asIngestion"))
+}
+
+// Returns the operation if it alerts the system to changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736252-asingestion?language=objc
+func (f_ FileProviderTestingOperationObject) AsIngestion() FileProviderTestingIngestionObject {
+	rv := objc.Call[FileProviderTestingIngestionObject](f_, objc.Sel("asIngestion"))
+	return rv
+}
+
+func (f_ FileProviderTestingOperationObject) HasAsCollisionResolution() bool {
+	return f_.RespondsToSelector(objc.Sel("asCollisionResolution"))
+}
+
+// Returns the operation if it resolves a collision by renaming the new item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingoperation/3736248-ascollisionresolution?language=objc
+func (f_ FileProviderTestingOperationObject) AsCollisionResolution() FileProviderTestingCollisionResolutionObject {
+	rv := objc.Call[FileProviderTestingCollisionResolutionObject](f_, objc.Sel("asCollisionResolution"))
 	return rv
 }
 

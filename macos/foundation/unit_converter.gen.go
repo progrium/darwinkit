@@ -18,8 +18,8 @@ type _UnitConverterClass struct {
 // An interface definition for the [UnitConverter] class.
 type IUnitConverter interface {
 	objc.IObject
-	ValueFromBaseUnitValue(baseUnitValue float64) float64
 	BaseUnitValueFromValue(value float64) float64
+	ValueFromBaseUnitValue(baseUnitValue float64) float64
 }
 
 // An abstract class that provides a description of how to convert a unit to and from the base unit of its dimension. [Full Topic]
@@ -55,18 +55,18 @@ func (u_ UnitConverter) Init() UnitConverter {
 	return rv
 }
 
-// For a given unit, returns the specified value of the base unit in terms of that unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconverter/1823657-valuefrombaseunitvalue?language=objc
-func (u_ UnitConverter) ValueFromBaseUnitValue(baseUnitValue float64) float64 {
-	rv := objc.Call[float64](u_, objc.Sel("valueFromBaseUnitValue:"), baseUnitValue)
-	return rv
-}
-
 // For a given unit, returns the specified value of that unit in terms of the base unit of its dimension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconverter/1823668-baseunitvaluefromvalue?language=objc
 func (u_ UnitConverter) BaseUnitValueFromValue(value float64) float64 {
 	rv := objc.Call[float64](u_, objc.Sel("baseUnitValueFromValue:"), value)
+	return rv
+}
+
+// For a given unit, returns the specified value of the base unit in terms of that unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconverter/1823657-valuefrombaseunitvalue?language=objc
+func (u_ UnitConverter) ValueFromBaseUnitValue(baseUnitValue float64) float64 {
+	rv := objc.Call[float64](u_, objc.Sel("valueFromBaseUnitValue:"), baseUnitValue)
 	return rv
 }

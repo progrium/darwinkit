@@ -171,7 +171,7 @@ const (
 	KNotFound Index = -1
 )
 
-// These constants describe the text direction for a language. They are returned by the functions [corefoundation/cflocalegetlanguagecharacterdire] and [corefoundation/cflocalegetlanguagelinedirection]. [Full Topic]
+// These constants describe the text direction for a language. They are returned by the functions CFLocaleGetLanguageCharacterDirection and CFLocaleGetLanguageLineDirection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corefoundation/cflocalelanguagedirection?language=objc
 type LocaleLanguageDirection Index
@@ -593,7 +593,7 @@ const (
 	KStringNormalizationFormKD StringNormalizationForm = 1
 )
 
-// Token types returned by [corefoundation/cfstringtokenizergototokenatinde] and [corefoundation/cfstringtokenizeradvancetonextto]. [Full Topic]
+// Token types returned by CFStringTokenizerGoToTokenAtIndex and CFStringTokenizerAdvanceToNextToken. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corefoundation/cfstringtokenizertokentype?language=objc
 type StringTokenizerTokenType OptionFlags
@@ -706,7 +706,7 @@ const (
 	KURLEnumeratorSkipPackageContents         URLEnumeratorOptions = 8
 )
 
-// Result codes from the [corefoundation/cfurlenumeratorgetnexturl] function. [Full Topic]
+// Result codes from the CFURLEnumeratorGetNextURL function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corefoundation/cfurlenumeratorresult?language=objc
 type URLEnumeratorResult Index

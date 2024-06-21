@@ -18,8 +18,8 @@ type _AssetWriterInputGroupClass struct {
 // An interface definition for the [AssetWriterInputGroup] class.
 type IAssetWriterInputGroup interface {
 	IMediaSelectionGroup
-	Inputs() []AssetWriterInput
 	DefaultInput() AssetWriterInput
+	Inputs() []AssetWriterInput
 }
 
 // A group of inputs with tracks that are mutually exclusive to each other for playback or processing. [Full Topic]
@@ -81,18 +81,18 @@ func (a_ AssetWriterInputGroup) Init() AssetWriterInputGroup {
 	return rv
 }
 
-// The inputs with tracks that are mutually exclusive to each other for playback or processing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputgroup/1388226-inputs?language=objc
-func (a_ AssetWriterInputGroup) Inputs() []AssetWriterInput {
-	rv := objc.Call[[]AssetWriterInput](a_, objc.Sel("inputs"))
-	return rv
-}
-
 // The default input for the group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputgroup/1389698-defaultinput?language=objc
 func (a_ AssetWriterInputGroup) DefaultInput() AssetWriterInput {
 	rv := objc.Call[AssetWriterInput](a_, objc.Sel("defaultInput"))
+	return rv
+}
+
+// The inputs with tracks that are mutually exclusive to each other for playback or processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputgroup/1388226-inputs?language=objc
+func (a_ AssetWriterInputGroup) Inputs() []AssetWriterInput {
+	rv := objc.Call[[]AssetWriterInput](a_, objc.Sel("inputs"))
 	return rv
 }

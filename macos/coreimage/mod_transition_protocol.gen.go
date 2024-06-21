@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition?language=objc
 type PModTransition interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetCompression(value float32)
+	HasSetCompression() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	Compression() float32
+	HasCompression() bool
 
 	// optional
 	SetRadius(value float32)
@@ -28,20 +28,20 @@ type PModTransition interface {
 	HasRadius() bool
 
 	// optional
-	SetCompression(value float32)
-	HasSetCompression() bool
-
-	// optional
-	Compression() float32
-	HasCompression() bool
-
-	// optional
 	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
 	Angle() float32
 	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,26 +52,26 @@ type ModTransitionObject struct {
 	objc.Object
 }
 
-func (m_ ModTransitionObject) HasSetCenter() bool {
-	return m_.RespondsToSelector(objc.Sel("setCenter:"))
+func (m_ ModTransitionObject) HasSetCompression() bool {
+	return m_.RespondsToSelector(objc.Sel("setCompression:"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The amount of stretching applied to the mod hole pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228570-center?language=objc
-func (m_ ModTransitionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](m_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
+func (m_ ModTransitionObject) SetCompression(value float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setCompression:"), value)
 }
 
-func (m_ ModTransitionObject) HasCenter() bool {
-	return m_.RespondsToSelector(objc.Sel("center"))
+func (m_ ModTransitionObject) HasCompression() bool {
+	return m_.RespondsToSelector(objc.Sel("compression"))
 }
 
-// The x and y position to use as the center of the effect. [Full Topic]
+// The amount of stretching applied to the mod hole pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228570-center?language=objc
-func (m_ ModTransitionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](m_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
+func (m_ ModTransitionObject) Compression() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("compression"))
 	return rv
 }
 
@@ -98,29 +98,6 @@ func (m_ ModTransitionObject) Radius() float32 {
 	return rv
 }
 
-func (m_ ModTransitionObject) HasSetCompression() bool {
-	return m_.RespondsToSelector(objc.Sel("setCompression:"))
-}
-
-// The amount of stretching applied to the mod hole pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
-func (m_ ModTransitionObject) SetCompression(value float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setCompression:"), value)
-}
-
-func (m_ ModTransitionObject) HasCompression() bool {
-	return m_.RespondsToSelector(objc.Sel("compression"))
-}
-
-// The amount of stretching applied to the mod hole pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
-func (m_ ModTransitionObject) Compression() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("compression"))
-	return rv
-}
-
 func (m_ ModTransitionObject) HasSetAngle() bool {
 	return m_.RespondsToSelector(objc.Sel("setAngle:"))
 }
@@ -141,5 +118,28 @@ func (m_ ModTransitionObject) HasAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228569-angle?language=objc
 func (m_ ModTransitionObject) Angle() float32 {
 	rv := objc.Call[float32](m_, objc.Sel("angle"))
+	return rv
+}
+
+func (m_ ModTransitionObject) HasSetCenter() bool {
+	return m_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228570-center?language=objc
+func (m_ ModTransitionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](m_, objc.Sel("setCenter:"), value)
+}
+
+func (m_ ModTransitionObject) HasCenter() bool {
+	return m_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228570-center?language=objc
+func (m_ ModTransitionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](m_, objc.Sel("center"))
 	return rv
 }

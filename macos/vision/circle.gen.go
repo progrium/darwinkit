@@ -18,10 +18,9 @@ type _CircleClass struct {
 // An interface definition for the [Circle] class.
 type ICircle interface {
 	objc.IObject
-	ContainsPointInCircumferentialRingOfWidth(point IPoint, ringWidth float64) bool
 	ContainsPoint(point IPoint) bool
-	Diameter() float64
 	Radius() float64
+	Diameter() float64
 	Center() Point
 }
 
@@ -52,20 +51,6 @@ func NewCircleWithCenterRadius(center IPoint, radius float64) Circle {
 	return instance
 }
 
-func (c_ Circle) InitWithCenterDiameter(center IPoint, diameter float64) Circle {
-	rv := objc.Call[Circle](c_, objc.Sel("initWithCenter:diameter:"), center, diameter)
-	return rv
-}
-
-// Creates a circle with the specified center and diameter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548316-initwithcenter?language=objc
-func NewCircleWithCenterDiameter(center IPoint, diameter float64) Circle {
-	instance := CircleClass.Alloc().InitWithCenterDiameter(center, diameter)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CircleClass) Alloc() Circle {
 	rv := objc.Call[Circle](cc, objc.Sel("alloc"))
 	return rv
@@ -86,19 +71,19 @@ func (c_ Circle) Init() Circle {
 	return rv
 }
 
-// Determines if a ring around this circle’s circumference contains the specified point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548314-containspoint?language=objc
-func (c_ Circle) ContainsPointInCircumferentialRingOfWidth(point IPoint, ringWidth float64) bool {
-	rv := objc.Call[bool](c_, objc.Sel("containsPoint:inCircumferentialRingOfWidth:"), point, ringWidth)
-	return rv
-}
-
 // Determines if this circle, including its boundary, contains the specified point. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548313-containspoint?language=objc
 func (c_ Circle) ContainsPoint(point IPoint) bool {
 	rv := objc.Call[bool](c_, objc.Sel("containsPoint:"), point)
+	return rv
+}
+
+// The circle’s radius. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548318-radius?language=objc
+func (c_ Circle) Radius() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("radius"))
 	return rv
 }
 
@@ -123,14 +108,6 @@ func (cc _CircleClass) ZeroCircle() Circle {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548319-zerocircle?language=objc
 func Circle_ZeroCircle() Circle {
 	return CircleClass.ZeroCircle()
-}
-
-// The circle’s radius. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548318-radius?language=objc
-func (c_ Circle) Radius() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("radius"))
-	return rv
 }
 
 // The circle’s center point. [Full Topic]

@@ -18,15 +18,15 @@ type _CounterSampleBufferDescriptorClass struct {
 // An interface definition for the [CounterSampleBufferDescriptor] class.
 type ICounterSampleBufferDescriptor interface {
 	objc.IObject
+	SampleCount() uint
+	SetSampleCount(value uint)
 	CounterSet() CounterSetObject
 	SetCounterSet(value PCounterSet)
 	SetCounterSetObject(valueObject objc.IObject)
-	SampleCount() uint
-	SetSampleCount(value uint)
-	Label() string
-	SetLabel(value string)
 	StorageMode() StorageMode
 	SetStorageMode(value StorageMode)
+	Label() string
+	SetLabel(value string)
 }
 
 // A group of properties that configures the counter sample buffers you create with it. [Full Topic]
@@ -62,6 +62,21 @@ func (c_ CounterSampleBufferDescriptor) Init() CounterSampleBufferDescriptor {
 	return rv
 }
 
+// The number of instances of a counter set’s data that a counter sample buffer can store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081732-samplecount?language=objc
+func (c_ CounterSampleBufferDescriptor) SampleCount() uint {
+	rv := objc.Call[uint](c_, objc.Sel("sampleCount"))
+	return rv
+}
+
+// The number of instances of a counter set’s data that a counter sample buffer can store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081732-samplecount?language=objc
+func (c_ CounterSampleBufferDescriptor) SetSampleCount(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setSampleCount:"), value)
+}
+
 // A GPU device’s counter set instance that you want to sample. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081730-counterset?language=objc
@@ -85,19 +100,19 @@ func (c_ CounterSampleBufferDescriptor) SetCounterSetObject(valueObject objc.IOb
 	objc.Call[objc.Void](c_, objc.Sel("setCounterSet:"), valueObject)
 }
 
-// The number of instances of a counter set’s data that a counter sample buffer can store. [Full Topic]
+// The memory storage mode for the counter sample buffers you create with the descriptor. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081732-samplecount?language=objc
-func (c_ CounterSampleBufferDescriptor) SampleCount() uint {
-	rv := objc.Call[uint](c_, objc.Sel("sampleCount"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081733-storagemode?language=objc
+func (c_ CounterSampleBufferDescriptor) StorageMode() StorageMode {
+	rv := objc.Call[StorageMode](c_, objc.Sel("storageMode"))
 	return rv
 }
 
-// The number of instances of a counter set’s data that a counter sample buffer can store. [Full Topic]
+// The memory storage mode for the counter sample buffers you create with the descriptor. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081732-samplecount?language=objc
-func (c_ CounterSampleBufferDescriptor) SetSampleCount(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setSampleCount:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081733-storagemode?language=objc
+func (c_ CounterSampleBufferDescriptor) SetStorageMode(value StorageMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setStorageMode:"), value)
 }
 
 // The name for the counter sample buffer you create with the descriptor. [Full Topic]
@@ -113,19 +128,4 @@ func (c_ CounterSampleBufferDescriptor) Label() string {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081731-label?language=objc
 func (c_ CounterSampleBufferDescriptor) SetLabel(value string) {
 	objc.Call[objc.Void](c_, objc.Sel("setLabel:"), value)
-}
-
-// The memory storage mode for the counter sample buffers you create with the descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081733-storagemode?language=objc
-func (c_ CounterSampleBufferDescriptor) StorageMode() StorageMode {
-	rv := objc.Call[StorageMode](c_, objc.Sel("storageMode"))
-	return rv
-}
-
-// The memory storage mode for the counter sample buffers you create with the descriptor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081733-storagemode?language=objc
-func (c_ CounterSampleBufferDescriptor) SetStorageMode(value StorageMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setStorageMode:"), value)
 }

@@ -19,14 +19,11 @@ type _LayoutAnchorClass struct {
 type ILayoutAnchor interface {
 	objc.IObject
 	ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
-	ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
 	ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
-	ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
-	ConstraintsAffectingLayout() []LayoutConstraint
+	ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
 	Item() objc.Object
 	Name() string
+	ConstraintsAffectingLayout() []LayoutConstraint
 	HasAmbiguousLayout() bool
 }
 
@@ -71,22 +68,6 @@ func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) L
 	return rv
 }
 
-// Returns a constraint that defines one item’s attribute as equal to another item’s attribute plus a constant offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500937-constraintequaltoanchor?language=objc
-func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:constant:"), anchor, c)
-	return rv
-}
-
-// Returns a constraint that defines one item’s attribute as greater than or equal to another. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500936-constraintgreaterthanorequaltoan?language=objc
-func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:"), anchor)
-	return rv
-}
-
 // Returns a constraint that defines one item’s attribute as equal to another. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500946-constraintequaltoanchor?language=objc
@@ -95,27 +76,11 @@ func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConst
 	return rv
 }
 
-// Returns a constraint that defines one item’s attribute as less than or equal to another item’s attribute plus a constant offset. [Full Topic]
+// Returns a constraint that defines one item’s attribute as greater than or equal to another. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500959-constraintlessthanorequaltoancho?language=objc
-func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:constant:"), anchor, c)
-	return rv
-}
-
-// Returns a constraint that defines one item’s attribute as greater than or equal to another item’s attribute plus a constant offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500948-constraintgreaterthanorequaltoan?language=objc
-func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:constant:"), anchor, c)
-	return rv
-}
-
-// The constraints that impact the layout of the anchor. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870023-constraintsaffectinglayout?language=objc
-func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
-	rv := objc.Call[[]LayoutConstraint](l_, objc.Sel("constraintsAffectingLayout"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500936-constraintgreaterthanorequaltoan?language=objc
+func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:"), anchor)
 	return rv
 }
 
@@ -132,6 +97,14 @@ func (l_ LayoutAnchor) Item() objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870022-name?language=objc
 func (l_ LayoutAnchor) Name() string {
 	rv := objc.Call[string](l_, objc.Sel("name"))
+	return rv
+}
+
+// The constraints that impact the layout of the anchor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870023-constraintsaffectinglayout?language=objc
+func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
+	rv := objc.Call[[]LayoutConstraint](l_, objc.Sel("constraintsAffectingLayout"))
 	return rv
 }
 

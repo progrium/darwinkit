@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdiscardablecontent?language=objc
 type PDiscardableContent interface {
 	// optional
-	EndContentAccess()
-	HasEndContentAccess() bool
-
-	// optional
 	IsContentDiscarded() bool
 	HasIsContentDiscarded() bool
 
 	// optional
 	DiscardContentIfPossible()
 	HasDiscardContentIfPossible() bool
+
+	// optional
+	EndContentAccess()
+	HasEndContentAccess() bool
 
 	// optional
 	BeginContentAccess() bool
@@ -33,17 +33,6 @@ var _ PDiscardableContent = (*DiscardableContentObject)(nil)
 // A concrete type for the [PDiscardableContent] protocol.
 type DiscardableContentObject struct {
 	objc.Object
-}
-
-func (d_ DiscardableContentObject) HasEndContentAccess() bool {
-	return d_.RespondsToSelector(objc.Sel("endContentAccess"))
-}
-
-// Called if the discardable contents are no longer being accessed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdiscardablecontent/1407535-endcontentaccess?language=objc
-func (d_ DiscardableContentObject) EndContentAccess() {
-	objc.Call[objc.Void](d_, objc.Sel("endContentAccess"))
 }
 
 func (d_ DiscardableContentObject) HasIsContentDiscarded() bool {
@@ -67,6 +56,17 @@ func (d_ DiscardableContentObject) HasDiscardContentIfPossible() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdiscardablecontent/1408998-discardcontentifpossible?language=objc
 func (d_ DiscardableContentObject) DiscardContentIfPossible() {
 	objc.Call[objc.Void](d_, objc.Sel("discardContentIfPossible"))
+}
+
+func (d_ DiscardableContentObject) HasEndContentAccess() bool {
+	return d_.RespondsToSelector(objc.Sel("endContentAccess"))
+}
+
+// Called if the discardable contents are no longer being accessed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdiscardablecontent/1407535-endcontentaccess?language=objc
+func (d_ DiscardableContentObject) EndContentAccess() {
+	objc.Call[objc.Void](d_, objc.Sel("endContentAccess"))
 }
 
 func (d_ DiscardableContentObject) HasBeginContentAccess() bool {

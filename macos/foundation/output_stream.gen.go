@@ -35,56 +35,18 @@ func OutputStreamFrom(ptr unsafe.Pointer) OutputStream {
 	}
 }
 
-func (oc _OutputStreamClass) OutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamToFileAtPath:append:"), path, shouldAppend)
+func (o_ OutputStream) InitWithURLAppend(url IURL, shouldAppend bool) OutputStream {
+	rv := objc.Call[OutputStream](o_, objc.Sel("initWithURL:append:"), url, shouldAppend)
 	return rv
 }
 
-// Creates and returns an initialized output stream for writing to a specified file. [Full Topic]
+// Returns an initialized output stream for writing to a specified URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1564841-outputstreamtofileatpath?language=objc
-func OutputStream_OutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
-	return OutputStreamClass.OutputStreamToFileAtPathAppend(path, shouldAppend)
-}
-
-func (o_ OutputStream) InitToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](o_, objc.Sel("initToFileAtPath:append:"), path, shouldAppend)
-	return rv
-}
-
-// Returns an initialized output stream for writing to a specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1416367-inittofileatpath?language=objc
-func NewOutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
-	instance := OutputStreamClass.Alloc().InitToFileAtPathAppend(path, shouldAppend)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1414446-initwithurl?language=objc
+func NewOutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
+	instance := OutputStreamClass.Alloc().InitWithURLAppend(url, shouldAppend)
 	instance.Autorelease()
 	return instance
-}
-
-func (o_ OutputStream) InitToMemory() OutputStream {
-	rv := objc.Call[OutputStream](o_, objc.Sel("initToMemory"))
-	return rv
-}
-
-// Returns an initialized output stream that will write to memory. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1409909-inittomemory?language=objc
-func NewOutputStreamToMemory() OutputStream {
-	instance := OutputStreamClass.Alloc().InitToMemory()
-	instance.Autorelease()
-	return instance
-}
-
-func (oc _OutputStreamClass) OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamWithURL:append:"), url, shouldAppend)
-	return rv
-}
-
-// Creates and returns an initialized output stream for writing to a specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1564840-outputstreamwithurl?language=objc
-func OutputStream_OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	return OutputStreamClass.OutputStreamWithURLAppend(url, shouldAppend)
 }
 
 func (o_ OutputStream) InitToBufferCapacity(buffer *uint8, capacity uint) OutputStream {
@@ -101,18 +63,16 @@ func NewOutputStreamToBufferCapacity(buffer *uint8, capacity uint) OutputStream 
 	return instance
 }
 
-func (o_ OutputStream) InitWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](o_, objc.Sel("initWithURL:append:"), url, shouldAppend)
+func (oc _OutputStreamClass) OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
+	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamWithURL:append:"), url, shouldAppend)
 	return rv
 }
 
-// Returns an initialized output stream for writing to a specified URL. [Full Topic]
+// Creates and returns an initialized output stream for writing to a specified URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1414446-initwithurl?language=objc
-func NewOutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	instance := OutputStreamClass.Alloc().InitWithURLAppend(url, shouldAppend)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1564840-outputstreamwithurl?language=objc
+func OutputStream_OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
+	return OutputStreamClass.OutputStreamWithURLAppend(url, shouldAppend)
 }
 
 func (oc _OutputStreamClass) OutputStreamToBufferCapacity(buffer *uint8, capacity uint) OutputStream {
@@ -127,6 +87,20 @@ func OutputStream_OutputStreamToBufferCapacity(buffer *uint8, capacity uint) Out
 	return OutputStreamClass.OutputStreamToBufferCapacity(buffer, capacity)
 }
 
+func (o_ OutputStream) InitToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
+	rv := objc.Call[OutputStream](o_, objc.Sel("initToFileAtPath:append:"), path, shouldAppend)
+	return rv
+}
+
+// Returns an initialized output stream for writing to a specified file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1416367-inittofileatpath?language=objc
+func NewOutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
+	instance := OutputStreamClass.Alloc().InitToFileAtPathAppend(path, shouldAppend)
+	instance.Autorelease()
+	return instance
+}
+
 func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
 	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamToMemory"))
 	return rv
@@ -137,6 +111,32 @@ func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1411948-outputstreamtomemory?language=objc
 func OutputStream_OutputStreamToMemory() OutputStream {
 	return OutputStreamClass.OutputStreamToMemory()
+}
+
+func (oc _OutputStreamClass) OutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
+	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamToFileAtPath:append:"), path, shouldAppend)
+	return rv
+}
+
+// Creates and returns an initialized output stream for writing to a specified file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1564841-outputstreamtofileatpath?language=objc
+func OutputStream_OutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
+	return OutputStreamClass.OutputStreamToFileAtPathAppend(path, shouldAppend)
+}
+
+func (o_ OutputStream) InitToMemory() OutputStream {
+	rv := objc.Call[OutputStream](o_, objc.Sel("initToMemory"))
+	return rv
+}
+
+// Returns an initialized output stream that will write to memory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1409909-inittomemory?language=objc
+func NewOutputStreamToMemory() OutputStream {
+	instance := OutputStreamClass.Alloc().InitToMemory()
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OutputStreamClass) Alloc() OutputStream {

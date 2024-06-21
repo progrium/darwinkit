@@ -19,10 +19,10 @@ type _SaveChangesRequestClass struct {
 // An interface definition for the [SaveChangesRequest] class.
 type ISaveChangesRequest interface {
 	IPersistentStoreRequest
-	LockedObjects() foundation.Set
-	UpdatedObjects() foundation.Set
-	InsertedObjects() foundation.Set
 	DeletedObjects() foundation.Set
+	InsertedObjects() foundation.Set
+	UpdatedObjects() foundation.Set
+	LockedObjects() foundation.Set
 }
 
 // An encapsulation of a collection of changes to be made by an object store in response to a save operation on a managed object context. [Full Topic]
@@ -72,19 +72,11 @@ func (s_ SaveChangesRequest) Init() SaveChangesRequest {
 	return rv
 }
 
-// The objects that were flagged for optimistic locking on the calling context. [Full Topic]
+// The objects that were deleted in the calling context. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500426-lockedobjects?language=objc
-func (s_ SaveChangesRequest) LockedObjects() foundation.Set {
-	rv := objc.Call[foundation.Set](s_, objc.Sel("lockedObjects"))
-	return rv
-}
-
-// The objects that were modified in the calling context. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500424-updatedobjects?language=objc
-func (s_ SaveChangesRequest) UpdatedObjects() foundation.Set {
-	rv := objc.Call[foundation.Set](s_, objc.Sel("updatedObjects"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500420-deletedobjects?language=objc
+func (s_ SaveChangesRequest) DeletedObjects() foundation.Set {
+	rv := objc.Call[foundation.Set](s_, objc.Sel("deletedObjects"))
 	return rv
 }
 
@@ -96,10 +88,18 @@ func (s_ SaveChangesRequest) InsertedObjects() foundation.Set {
 	return rv
 }
 
-// The objects that were deleted in the calling context. [Full Topic]
+// The objects that were modified in the calling context. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500420-deletedobjects?language=objc
-func (s_ SaveChangesRequest) DeletedObjects() foundation.Set {
-	rv := objc.Call[foundation.Set](s_, objc.Sel("deletedObjects"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500424-updatedobjects?language=objc
+func (s_ SaveChangesRequest) UpdatedObjects() foundation.Set {
+	rv := objc.Call[foundation.Set](s_, objc.Sel("updatedObjects"))
+	return rv
+}
+
+// The objects that were flagged for optimistic locking on the calling context. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500426-lockedobjects?language=objc
+func (s_ SaveChangesRequest) LockedObjects() foundation.Set {
+	rv := objc.Call[foundation.Set](s_, objc.Sel("lockedObjects"))
 	return rv
 }

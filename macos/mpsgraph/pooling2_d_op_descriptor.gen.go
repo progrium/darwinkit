@@ -20,38 +20,38 @@ type _Pooling2DOpDescriptorClass struct {
 type IPooling2DOpDescriptor interface {
 	objc.IObject
 	SetExplicitPaddingWithPaddingLeftPaddingRightPaddingTopPaddingBottom(paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint)
-	KernelWidth() uint
-	SetKernelWidth(value uint)
-	StrideInY() uint
-	SetStrideInY(value uint)
 	StrideInX() uint
 	SetStrideInX(value uint)
-	DilationRateInY() uint
-	SetDilationRateInY(value uint)
-	PaddingBottom() uint
-	SetPaddingBottom(value uint)
-	IncludeZeroPadToAverage() bool
-	SetIncludeZeroPadToAverage(value bool)
-	KernelHeight() uint
-	SetKernelHeight(value uint)
-	PaddingTop() uint
-	SetPaddingTop(value uint)
-	ReturnIndicesMode() PoolingReturnIndicesMode
-	SetReturnIndicesMode(value PoolingReturnIndicesMode)
-	DataLayout() TensorNamedDataLayout
-	SetDataLayout(value TensorNamedDataLayout)
-	PaddingRight() uint
-	SetPaddingRight(value uint)
-	DilationRateInX() uint
-	SetDilationRateInX(value uint)
 	PaddingStyle() PaddingStyle
 	SetPaddingStyle(value PaddingStyle)
+	PaddingBottom() uint
+	SetPaddingBottom(value uint)
+	PaddingTop() uint
+	SetPaddingTop(value uint)
+	StrideInY() uint
+	SetStrideInY(value uint)
 	CeilMode() bool
 	SetCeilMode(value bool)
 	PaddingLeft() uint
 	SetPaddingLeft(value uint)
+	DilationRateInX() uint
+	SetDilationRateInX(value uint)
+	ReturnIndicesMode() PoolingReturnIndicesMode
+	SetReturnIndicesMode(value PoolingReturnIndicesMode)
+	DataLayout() TensorNamedDataLayout
+	SetDataLayout(value TensorNamedDataLayout)
 	ReturnIndicesDataType() mps.DataType
 	SetReturnIndicesDataType(value mps.DataType)
+	DilationRateInY() uint
+	SetDilationRateInY(value uint)
+	KernelHeight() uint
+	SetKernelHeight(value uint)
+	IncludeZeroPadToAverage() bool
+	SetIncludeZeroPadToAverage(value bool)
+	KernelWidth() uint
+	SetKernelWidth(value uint)
+	PaddingRight() uint
+	SetPaddingRight(value uint)
 }
 
 //	[Full Topic]
@@ -65,18 +65,6 @@ func Pooling2DOpDescriptorFrom(ptr unsafe.Pointer) Pooling2DOpDescriptor {
 	return Pooling2DOpDescriptor{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (pc _Pooling2DOpDescriptorClass) DescriptorWithKernelWidthKernelHeightStrideInXStrideInYDilationRateInXDilationRateInYPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayout(kernelWidth uint, kernelHeight uint, strideInX uint, strideInY uint, dilationRateInX uint, dilationRateInY uint, paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout) Pooling2DOpDescriptor {
-	rv := objc.Call[Pooling2DOpDescriptor](pc, objc.Sel("descriptorWithKernelWidth:kernelHeight:strideInX:strideInY:dilationRateInX:dilationRateInY:paddingLeft:paddingRight:paddingTop:paddingBottom:paddingStyle:dataLayout:"), kernelWidth, kernelHeight, strideInX, strideInY, dilationRateInX, dilationRateInY, paddingLeft, paddingRight, paddingTop, paddingBottom, paddingStyle, dataLayout)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564711-descriptorwithkernelwidth?language=objc
-func Pooling2DOpDescriptor_DescriptorWithKernelWidthKernelHeightStrideInXStrideInYDilationRateInXDilationRateInYPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayout(kernelWidth uint, kernelHeight uint, strideInX uint, strideInY uint, dilationRateInX uint, dilationRateInY uint, paddingLeft uint, paddingRight uint, paddingTop uint, paddingBottom uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout) Pooling2DOpDescriptor {
-	return Pooling2DOpDescriptorClass.DescriptorWithKernelWidthKernelHeightStrideInXStrideInYDilationRateInXDilationRateInYPaddingLeftPaddingRightPaddingTopPaddingBottomPaddingStyleDataLayout(kernelWidth, kernelHeight, strideInX, strideInY, dilationRateInX, dilationRateInY, paddingLeft, paddingRight, paddingTop, paddingBottom, paddingStyle, dataLayout)
 }
 
 func (pc _Pooling2DOpDescriptorClass) DescriptorWithKernelWidthKernelHeightStrideInXStrideInYPaddingStyleDataLayout(kernelWidth uint, kernelHeight uint, strideInX uint, strideInY uint, paddingStyle PaddingStyle, dataLayout TensorNamedDataLayout) Pooling2DOpDescriptor {
@@ -120,36 +108,6 @@ func (p_ Pooling2DOpDescriptor) SetExplicitPaddingWithPaddingLeftPaddingRightPad
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564716-kernelwidth?language=objc
-func (p_ Pooling2DOpDescriptor) KernelWidth() uint {
-	rv := objc.Call[uint](p_, objc.Sel("kernelWidth"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564716-kernelwidth?language=objc
-func (p_ Pooling2DOpDescriptor) SetKernelWidth(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setKernelWidth:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564724-strideiny?language=objc
-func (p_ Pooling2DOpDescriptor) StrideInY() uint {
-	rv := objc.Call[uint](p_, objc.Sel("strideInY"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564724-strideiny?language=objc
-func (p_ Pooling2DOpDescriptor) SetStrideInY(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setStrideInY:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564723-strideinx?language=objc
 func (p_ Pooling2DOpDescriptor) StrideInX() uint {
 	rv := objc.Call[uint](p_, objc.Sel("strideInX"))
@@ -165,17 +123,17 @@ func (p_ Pooling2DOpDescriptor) SetStrideInX(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564714-dilationrateiny?language=objc
-func (p_ Pooling2DOpDescriptor) DilationRateInY() uint {
-	rv := objc.Call[uint](p_, objc.Sel("dilationRateInY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564720-paddingstyle?language=objc
+func (p_ Pooling2DOpDescriptor) PaddingStyle() PaddingStyle {
+	rv := objc.Call[PaddingStyle](p_, objc.Sel("paddingStyle"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564714-dilationrateiny?language=objc
-func (p_ Pooling2DOpDescriptor) SetDilationRateInY(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setDilationRateInY:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564720-paddingstyle?language=objc
+func (p_ Pooling2DOpDescriptor) SetPaddingStyle(value PaddingStyle) {
+	objc.Call[objc.Void](p_, objc.Sel("setPaddingStyle:"), value)
 }
 
 //	[Full Topic]
@@ -195,36 +153,6 @@ func (p_ Pooling2DOpDescriptor) SetPaddingBottom(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3861843-includezeropadtoaverage?language=objc
-func (p_ Pooling2DOpDescriptor) IncludeZeroPadToAverage() bool {
-	rv := objc.Call[bool](p_, objc.Sel("includeZeroPadToAverage"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3861843-includezeropadtoaverage?language=objc
-func (p_ Pooling2DOpDescriptor) SetIncludeZeroPadToAverage(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setIncludeZeroPadToAverage:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564715-kernelheight?language=objc
-func (p_ Pooling2DOpDescriptor) KernelHeight() uint {
-	rv := objc.Call[uint](p_, objc.Sel("kernelHeight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564715-kernelheight?language=objc
-func (p_ Pooling2DOpDescriptor) SetKernelHeight(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setKernelHeight:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564721-paddingtop?language=objc
 func (p_ Pooling2DOpDescriptor) PaddingTop() uint {
 	rv := objc.Call[uint](p_, objc.Sel("paddingTop"))
@@ -240,77 +168,17 @@ func (p_ Pooling2DOpDescriptor) SetPaddingTop(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919745-returnindicesmode?language=objc
-func (p_ Pooling2DOpDescriptor) ReturnIndicesMode() PoolingReturnIndicesMode {
-	rv := objc.Call[PoolingReturnIndicesMode](p_, objc.Sel("returnIndicesMode"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564724-strideiny?language=objc
+func (p_ Pooling2DOpDescriptor) StrideInY() uint {
+	rv := objc.Call[uint](p_, objc.Sel("strideInY"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919745-returnindicesmode?language=objc
-func (p_ Pooling2DOpDescriptor) SetReturnIndicesMode(value PoolingReturnIndicesMode) {
-	objc.Call[objc.Void](p_, objc.Sel("setReturnIndicesMode:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564710-datalayout?language=objc
-func (p_ Pooling2DOpDescriptor) DataLayout() TensorNamedDataLayout {
-	rv := objc.Call[TensorNamedDataLayout](p_, objc.Sel("dataLayout"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564710-datalayout?language=objc
-func (p_ Pooling2DOpDescriptor) SetDataLayout(value TensorNamedDataLayout) {
-	objc.Call[objc.Void](p_, objc.Sel("setDataLayout:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564719-paddingright?language=objc
-func (p_ Pooling2DOpDescriptor) PaddingRight() uint {
-	rv := objc.Call[uint](p_, objc.Sel("paddingRight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564719-paddingright?language=objc
-func (p_ Pooling2DOpDescriptor) SetPaddingRight(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setPaddingRight:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564713-dilationrateinx?language=objc
-func (p_ Pooling2DOpDescriptor) DilationRateInX() uint {
-	rv := objc.Call[uint](p_, objc.Sel("dilationRateInX"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564713-dilationrateinx?language=objc
-func (p_ Pooling2DOpDescriptor) SetDilationRateInX(value uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setDilationRateInX:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564720-paddingstyle?language=objc
-func (p_ Pooling2DOpDescriptor) PaddingStyle() PaddingStyle {
-	rv := objc.Call[PaddingStyle](p_, objc.Sel("paddingStyle"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564720-paddingstyle?language=objc
-func (p_ Pooling2DOpDescriptor) SetPaddingStyle(value PaddingStyle) {
-	objc.Call[objc.Void](p_, objc.Sel("setPaddingStyle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564724-strideiny?language=objc
+func (p_ Pooling2DOpDescriptor) SetStrideInY(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setStrideInY:"), value)
 }
 
 //	[Full Topic]
@@ -345,6 +213,51 @@ func (p_ Pooling2DOpDescriptor) SetPaddingLeft(value uint) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564713-dilationrateinx?language=objc
+func (p_ Pooling2DOpDescriptor) DilationRateInX() uint {
+	rv := objc.Call[uint](p_, objc.Sel("dilationRateInX"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564713-dilationrateinx?language=objc
+func (p_ Pooling2DOpDescriptor) SetDilationRateInX(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setDilationRateInX:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919745-returnindicesmode?language=objc
+func (p_ Pooling2DOpDescriptor) ReturnIndicesMode() PoolingReturnIndicesMode {
+	rv := objc.Call[PoolingReturnIndicesMode](p_, objc.Sel("returnIndicesMode"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919745-returnindicesmode?language=objc
+func (p_ Pooling2DOpDescriptor) SetReturnIndicesMode(value PoolingReturnIndicesMode) {
+	objc.Call[objc.Void](p_, objc.Sel("setReturnIndicesMode:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564710-datalayout?language=objc
+func (p_ Pooling2DOpDescriptor) DataLayout() TensorNamedDataLayout {
+	rv := objc.Call[TensorNamedDataLayout](p_, objc.Sel("dataLayout"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564710-datalayout?language=objc
+func (p_ Pooling2DOpDescriptor) SetDataLayout(value TensorNamedDataLayout) {
+	objc.Call[objc.Void](p_, objc.Sel("setDataLayout:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919744-returnindicesdatatype?language=objc
 func (p_ Pooling2DOpDescriptor) ReturnIndicesDataType() mps.DataType {
 	rv := objc.Call[mps.DataType](p_, objc.Sel("returnIndicesDataType"))
@@ -356,4 +269,79 @@ func (p_ Pooling2DOpDescriptor) ReturnIndicesDataType() mps.DataType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3919744-returnindicesdatatype?language=objc
 func (p_ Pooling2DOpDescriptor) SetReturnIndicesDataType(value mps.DataType) {
 	objc.Call[objc.Void](p_, objc.Sel("setReturnIndicesDataType:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564714-dilationrateiny?language=objc
+func (p_ Pooling2DOpDescriptor) DilationRateInY() uint {
+	rv := objc.Call[uint](p_, objc.Sel("dilationRateInY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564714-dilationrateiny?language=objc
+func (p_ Pooling2DOpDescriptor) SetDilationRateInY(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setDilationRateInY:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564715-kernelheight?language=objc
+func (p_ Pooling2DOpDescriptor) KernelHeight() uint {
+	rv := objc.Call[uint](p_, objc.Sel("kernelHeight"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564715-kernelheight?language=objc
+func (p_ Pooling2DOpDescriptor) SetKernelHeight(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setKernelHeight:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3861843-includezeropadtoaverage?language=objc
+func (p_ Pooling2DOpDescriptor) IncludeZeroPadToAverage() bool {
+	rv := objc.Call[bool](p_, objc.Sel("includeZeroPadToAverage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3861843-includezeropadtoaverage?language=objc
+func (p_ Pooling2DOpDescriptor) SetIncludeZeroPadToAverage(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setIncludeZeroPadToAverage:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564716-kernelwidth?language=objc
+func (p_ Pooling2DOpDescriptor) KernelWidth() uint {
+	rv := objc.Call[uint](p_, objc.Sel("kernelWidth"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564716-kernelwidth?language=objc
+func (p_ Pooling2DOpDescriptor) SetKernelWidth(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setKernelWidth:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564719-paddingright?language=objc
+func (p_ Pooling2DOpDescriptor) PaddingRight() uint {
+	rv := objc.Call[uint](p_, objc.Sel("paddingRight"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpooling2dopdescriptor/3564719-paddingright?language=objc
+func (p_ Pooling2DOpDescriptor) SetPaddingRight(value uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setPaddingRight:"), value)
 }

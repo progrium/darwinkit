@@ -19,47 +19,47 @@ type _PrintInfoClass struct {
 // An interface definition for the [PrintInfo] class.
 type IPrintInfo interface {
 	objc.IObject
-	Dictionary() foundation.MutableDictionary
-	TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo)
-	PMPrintSettings() unsafe.Pointer
-	PMPageFormat() unsafe.Pointer
 	UpdateFromPMPageFormat()
-	UpdateFromPMPrintSettings()
+	PMPageFormat() unsafe.Pointer
+	Dictionary() foundation.MutableDictionary
 	PMPrintSession() unsafe.Pointer
+	TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo)
 	SetUpPrintOperationDefaultValues()
-	Printer() Printer
-	SetPrinter(value IPrinter)
-	LeftMargin() float64
-	SetLeftMargin(value float64)
-	ScalingFactor() float64
-	SetScalingFactor(value float64)
-	JobDisposition() PrintJobDispositionValue
-	SetJobDisposition(value PrintJobDispositionValue)
-	VerticalPagination() PrintingPaginationMode
-	SetVerticalPagination(value PrintingPaginationMode)
-	PaperSize() foundation.Size
-	SetPaperSize(value foundation.Size)
-	TopMargin() float64
-	SetTopMargin(value float64)
-	Orientation() PaperOrientation
-	SetOrientation(value PaperOrientation)
-	HorizontalPagination() PrintingPaginationMode
-	SetHorizontalPagination(value PrintingPaginationMode)
-	LocalizedPaperName() string
-	IsVerticallyCentered() bool
-	SetVerticallyCentered(value bool)
-	ImageablePageBounds() foundation.Rect
-	IsSelectionOnly() bool
-	SetSelectionOnly(value bool)
+	PMPrintSettings() unsafe.Pointer
+	UpdateFromPMPrintSettings()
 	RightMargin() float64
 	SetRightMargin(value float64)
-	IsHorizontallyCentered() bool
-	SetHorizontallyCentered(value bool)
 	BottomMargin() float64
 	SetBottomMargin(value float64)
+	JobDisposition() PrintJobDispositionValue
+	SetJobDisposition(value PrintJobDispositionValue)
+	Printer() Printer
+	SetPrinter(value IPrinter)
+	IsHorizontallyCentered() bool
+	SetHorizontallyCentered(value bool)
+	PaperSize() foundation.Size
+	SetPaperSize(value foundation.Size)
+	VerticalPagination() PrintingPaginationMode
+	SetVerticalPagination(value PrintingPaginationMode)
+	LeftMargin() float64
+	SetLeftMargin(value float64)
+	TopMargin() float64
+	SetTopMargin(value float64)
+	ImageablePageBounds() foundation.Rect
+	ScalingFactor() float64
+	SetScalingFactor(value float64)
+	LocalizedPaperName() string
+	HorizontalPagination() PrintingPaginationMode
+	SetHorizontalPagination(value PrintingPaginationMode)
+	PrintSettings() foundation.MutableDictionary
+	IsSelectionOnly() bool
+	SetSelectionOnly(value bool)
+	IsVerticallyCentered() bool
+	SetVerticallyCentered(value bool)
+	Orientation() PaperOrientation
+	SetOrientation(value PaperOrientation)
 	PaperName() PrinterPaperName
 	SetPaperName(value PrinterPaperName)
-	PrintSettings() foundation.MutableDictionary
 }
 
 // An object that stores information that’s used to generate printed output. [Full Topic]
@@ -109,27 +109,11 @@ func NewPrintInfo() PrintInfo {
 	return PrintInfoClass.New()
 }
 
-// Returns the print info’s dictionary that contains the printing attributes. [Full Topic]
+// Synchronizes the print info’s page format information with information from its associated page format object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524990-dictionary?language=objc
-func (p_ PrintInfo) Dictionary() foundation.MutableDictionary {
-	rv := objc.Call[foundation.MutableDictionary](p_, objc.Sel("dictionary"))
-	return rv
-}
-
-// Updates the print info with all the settings and attributes in the specified PDF info object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530099-takesettingsfrompdfinfo?language=objc
-func (p_ PrintInfo) TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo) {
-	objc.Call[objc.Void](p_, objc.Sel("takeSettingsFromPDFInfo:"), inPDFInfo)
-}
-
-// Returns a Core Printing object configured with the print info’s print settings information [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533537-pmprintsettings?language=objc
-func (p_ PrintInfo) PMPrintSettings() unsafe.Pointer {
-	rv := objc.Call[unsafe.Pointer](p_, objc.Sel("PMPrintSettings"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534429-updatefrompmpageformat?language=objc
+func (p_ PrintInfo) UpdateFromPMPageFormat() {
+	objc.Call[objc.Void](p_, objc.Sel("updateFromPMPageFormat"))
 }
 
 // Returns a Core Printing object configured with the print info’s page format information. [Full Topic]
@@ -140,18 +124,12 @@ func (p_ PrintInfo) PMPageFormat() unsafe.Pointer {
 	return rv
 }
 
-// Synchronizes the print info’s page format information with information from its associated page format object. [Full Topic]
+// Returns the print info’s dictionary that contains the printing attributes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534429-updatefrompmpageformat?language=objc
-func (p_ PrintInfo) UpdateFromPMPageFormat() {
-	objc.Call[objc.Void](p_, objc.Sel("updateFromPMPageFormat"))
-}
-
-// Synchronizes the print info’s print settings information with information from its associated print settings object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1525003-updatefrompmprintsettings?language=objc
-func (p_ PrintInfo) UpdateFromPMPrintSettings() {
-	objc.Call[objc.Void](p_, objc.Sel("updateFromPMPrintSettings"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524990-dictionary?language=objc
+func (p_ PrintInfo) Dictionary() foundation.MutableDictionary {
+	rv := objc.Call[foundation.MutableDictionary](p_, objc.Sel("dictionary"))
+	return rv
 }
 
 // Returns a Core Printing object configured with the print info’s session information. [Full Topic]
@@ -162,6 +140,13 @@ func (p_ PrintInfo) PMPrintSession() unsafe.Pointer {
 	return rv
 }
 
+// Updates the print info with all the settings and attributes in the specified PDF info object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530099-takesettingsfrompdfinfo?language=objc
+func (p_ PrintInfo) TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo) {
+	objc.Call[objc.Void](p_, objc.Sel("takeSettingsFromPDFInfo:"), inPDFInfo)
+}
+
 // Validates the attributes encapsulated by the print info. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529453-setupprintoperationdefaultvalues?language=objc
@@ -169,64 +154,49 @@ func (p_ PrintInfo) SetUpPrintOperationDefaultValues() {
 	objc.Call[objc.Void](p_, objc.Sel("setUpPrintOperationDefaultValues"))
 }
 
-// The printer object to be used for printing. [Full Topic]
+// Returns a Core Printing object configured with the print info’s print settings information [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524495-printer?language=objc
-func (p_ PrintInfo) Printer() Printer {
-	rv := objc.Call[Printer](p_, objc.Sel("printer"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533537-pmprintsettings?language=objc
+func (p_ PrintInfo) PMPrintSettings() unsafe.Pointer {
+	rv := objc.Call[unsafe.Pointer](p_, objc.Sel("PMPrintSettings"))
 	return rv
 }
 
-// The printer object to be used for printing. [Full Topic]
+// Synchronizes the print info’s print settings information with information from its associated print settings object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524495-printer?language=objc
-func (p_ PrintInfo) SetPrinter(value IPrinter) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrinter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1525003-updatefrompmprintsettings?language=objc
+func (p_ PrintInfo) UpdateFromPMPrintSettings() {
+	objc.Call[objc.Void](p_, objc.Sel("updateFromPMPrintSettings"))
 }
 
-// The width of the left margin. [Full Topic]
+// The width of the right margin. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533430-leftmargin?language=objc
-func (p_ PrintInfo) LeftMargin() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("leftMargin"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530882-rightmargin?language=objc
+func (p_ PrintInfo) RightMargin() float64 {
+	rv := objc.Call[float64](p_, objc.Sel("rightMargin"))
 	return rv
 }
 
-// The width of the left margin. [Full Topic]
+// The width of the right margin. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533430-leftmargin?language=objc
-func (p_ PrintInfo) SetLeftMargin(value float64) {
-	objc.Call[objc.Void](p_, objc.Sel("setLeftMargin:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530882-rightmargin?language=objc
+func (p_ PrintInfo) SetRightMargin(value float64) {
+	objc.Call[objc.Void](p_, objc.Sel("setRightMargin:"), value)
 }
 
-// The current scaling factor. [Full Topic]
+// The height of the bottom margin. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529753-scalingfactor?language=objc
-func (p_ PrintInfo) ScalingFactor() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("scalingFactor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528397-bottommargin?language=objc
+func (p_ PrintInfo) BottomMargin() float64 {
+	rv := objc.Call[float64](p_, objc.Sel("bottomMargin"))
 	return rv
 }
 
-// The current scaling factor. [Full Topic]
+// The height of the bottom margin. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529753-scalingfactor?language=objc
-func (p_ PrintInfo) SetScalingFactor(value float64) {
-	objc.Call[objc.Void](p_, objc.Sel("setScalingFactor:"), value)
-}
-
-// The action specified for the job. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528717-jobdisposition?language=objc
-func (p_ PrintInfo) JobDisposition() PrintJobDispositionValue {
-	rv := objc.Call[PrintJobDispositionValue](p_, objc.Sel("jobDisposition"))
-	return rv
-}
-
-// The action specified for the job. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528717-jobdisposition?language=objc
-func (p_ PrintInfo) SetJobDisposition(value PrintJobDispositionValue) {
-	objc.Call[objc.Void](p_, objc.Sel("setJobDisposition:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528397-bottommargin?language=objc
+func (p_ PrintInfo) SetBottomMargin(value float64) {
+	objc.Call[objc.Void](p_, objc.Sel("setBottomMargin:"), value)
 }
 
 // Deprecated. [Full Topic]
@@ -244,19 +214,49 @@ func PrintInfo_DefaultPrinter() Printer {
 	return PrintInfoClass.DefaultPrinter()
 }
 
-// The vertical pagination to the specified mode. [Full Topic]
+// The action specified for the job. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526743-verticalpagination?language=objc
-func (p_ PrintInfo) VerticalPagination() PrintingPaginationMode {
-	rv := objc.Call[PrintingPaginationMode](p_, objc.Sel("verticalPagination"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528717-jobdisposition?language=objc
+func (p_ PrintInfo) JobDisposition() PrintJobDispositionValue {
+	rv := objc.Call[PrintJobDispositionValue](p_, objc.Sel("jobDisposition"))
 	return rv
 }
 
-// The vertical pagination to the specified mode. [Full Topic]
+// The action specified for the job. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526743-verticalpagination?language=objc
-func (p_ PrintInfo) SetVerticalPagination(value PrintingPaginationMode) {
-	objc.Call[objc.Void](p_, objc.Sel("setVerticalPagination:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528717-jobdisposition?language=objc
+func (p_ PrintInfo) SetJobDisposition(value PrintJobDispositionValue) {
+	objc.Call[objc.Void](p_, objc.Sel("setJobDisposition:"), value)
+}
+
+// The printer object to be used for printing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524495-printer?language=objc
+func (p_ PrintInfo) Printer() Printer {
+	rv := objc.Call[Printer](p_, objc.Sel("printer"))
+	return rv
+}
+
+// The printer object to be used for printing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524495-printer?language=objc
+func (p_ PrintInfo) SetPrinter(value IPrinter) {
+	objc.Call[objc.Void](p_, objc.Sel("setPrinter:"), value)
+}
+
+// A Boolean value that indicates whether the image is centered horizontally. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534703-horizontallycentered?language=objc
+func (p_ PrintInfo) IsHorizontallyCentered() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isHorizontallyCentered"))
+	return rv
+}
+
+// A Boolean value that indicates whether the image is centered horizontally. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534703-horizontallycentered?language=objc
+func (p_ PrintInfo) SetHorizontallyCentered(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setHorizontallyCentered:"), value)
 }
 
 // The size of the paper. [Full Topic]
@@ -274,6 +274,36 @@ func (p_ PrintInfo) SetPaperSize(value foundation.Size) {
 	objc.Call[objc.Void](p_, objc.Sel("setPaperSize:"), value)
 }
 
+// The vertical pagination to the specified mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526743-verticalpagination?language=objc
+func (p_ PrintInfo) VerticalPagination() PrintingPaginationMode {
+	rv := objc.Call[PrintingPaginationMode](p_, objc.Sel("verticalPagination"))
+	return rv
+}
+
+// The vertical pagination to the specified mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526743-verticalpagination?language=objc
+func (p_ PrintInfo) SetVerticalPagination(value PrintingPaginationMode) {
+	objc.Call[objc.Void](p_, objc.Sel("setVerticalPagination:"), value)
+}
+
+// The width of the left margin. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533430-leftmargin?language=objc
+func (p_ PrintInfo) LeftMargin() float64 {
+	rv := objc.Call[float64](p_, objc.Sel("leftMargin"))
+	return rv
+}
+
+// The width of the left margin. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533430-leftmargin?language=objc
+func (p_ PrintInfo) SetLeftMargin(value float64) {
+	objc.Call[objc.Void](p_, objc.Sel("setLeftMargin:"), value)
+}
+
 // The top margin to the specified size. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529662-topmargin?language=objc
@@ -289,95 +319,12 @@ func (p_ PrintInfo) SetTopMargin(value float64) {
 	objc.Call[objc.Void](p_, objc.Sel("setTopMargin:"), value)
 }
 
-// The orientation attribute. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533755-orientation?language=objc
-func (p_ PrintInfo) Orientation() PaperOrientation {
-	rv := objc.Call[PaperOrientation](p_, objc.Sel("orientation"))
-	return rv
-}
-
-// The orientation attribute. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533755-orientation?language=objc
-func (p_ PrintInfo) SetOrientation(value PaperOrientation) {
-	objc.Call[objc.Void](p_, objc.Sel("setOrientation:"), value)
-}
-
-// The horizontal pagination mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1532693-horizontalpagination?language=objc
-func (p_ PrintInfo) HorizontalPagination() PrintingPaginationMode {
-	rv := objc.Call[PrintingPaginationMode](p_, objc.Sel("horizontalPagination"))
-	return rv
-}
-
-// The horizontal pagination mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1532693-horizontalpagination?language=objc
-func (p_ PrintInfo) SetHorizontalPagination(value PrintingPaginationMode) {
-	objc.Call[objc.Void](p_, objc.Sel("setHorizontalPagination:"), value)
-}
-
-// The human-readable name of the currently selected paper size, suitable for presentation in user interfaces. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524573-localizedpapername?language=objc
-func (p_ PrintInfo) LocalizedPaperName() string {
-	rv := objc.Call[string](p_, objc.Sel("localizedPaperName"))
-	return rv
-}
-
-// A Boolean value that indicates whether the image is centered vertically. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530330-verticallycentered?language=objc
-func (p_ PrintInfo) IsVerticallyCentered() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isVerticallyCentered"))
-	return rv
-}
-
-// A Boolean value that indicates whether the image is centered vertically. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530330-verticallycentered?language=objc
-func (p_ PrintInfo) SetVerticallyCentered(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setVerticallyCentered:"), value)
-}
-
 // The imageable area of a sheet of paper specified by the print info. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526570-imageablepagebounds?language=objc
 func (p_ PrintInfo) ImageablePageBounds() foundation.Rect {
 	rv := objc.Call[foundation.Rect](p_, objc.Sel("imageablePageBounds"))
 	return rv
-}
-
-// A Boolean value that indicates whether only the currently selected contents should be printed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534094-selectiononly?language=objc
-func (p_ PrintInfo) IsSelectionOnly() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isSelectionOnly"))
-	return rv
-}
-
-// A Boolean value that indicates whether only the currently selected contents should be printed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534094-selectiononly?language=objc
-func (p_ PrintInfo) SetSelectionOnly(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setSelectionOnly:"), value)
-}
-
-// The width of the right margin. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530882-rightmargin?language=objc
-func (p_ PrintInfo) RightMargin() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("rightMargin"))
-	return rv
-}
-
-// The width of the right margin. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530882-rightmargin?language=objc
-func (p_ PrintInfo) SetRightMargin(value float64) {
-	objc.Call[objc.Void](p_, objc.Sel("setRightMargin:"), value)
 }
 
 // The shared printing information object. [Full Topic]
@@ -409,34 +356,95 @@ func PrintInfo_SetSharedPrintInfo(value IPrintInfo) {
 	PrintInfoClass.SetSharedPrintInfo(value)
 }
 
-// A Boolean value that indicates whether the image is centered horizontally. [Full Topic]
+// The current scaling factor. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534703-horizontallycentered?language=objc
-func (p_ PrintInfo) IsHorizontallyCentered() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isHorizontallyCentered"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529753-scalingfactor?language=objc
+func (p_ PrintInfo) ScalingFactor() float64 {
+	rv := objc.Call[float64](p_, objc.Sel("scalingFactor"))
 	return rv
 }
 
-// A Boolean value that indicates whether the image is centered horizontally. [Full Topic]
+// The current scaling factor. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534703-horizontallycentered?language=objc
-func (p_ PrintInfo) SetHorizontallyCentered(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setHorizontallyCentered:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529753-scalingfactor?language=objc
+func (p_ PrintInfo) SetScalingFactor(value float64) {
+	objc.Call[objc.Void](p_, objc.Sel("setScalingFactor:"), value)
 }
 
-// The height of the bottom margin. [Full Topic]
+// The human-readable name of the currently selected paper size, suitable for presentation in user interfaces. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528397-bottommargin?language=objc
-func (p_ PrintInfo) BottomMargin() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("bottomMargin"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524573-localizedpapername?language=objc
+func (p_ PrintInfo) LocalizedPaperName() string {
+	rv := objc.Call[string](p_, objc.Sel("localizedPaperName"))
 	return rv
 }
 
-// The height of the bottom margin. [Full Topic]
+// The horizontal pagination mode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1528397-bottommargin?language=objc
-func (p_ PrintInfo) SetBottomMargin(value float64) {
-	objc.Call[objc.Void](p_, objc.Sel("setBottomMargin:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1532693-horizontalpagination?language=objc
+func (p_ PrintInfo) HorizontalPagination() PrintingPaginationMode {
+	rv := objc.Call[PrintingPaginationMode](p_, objc.Sel("horizontalPagination"))
+	return rv
+}
+
+// The horizontal pagination mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1532693-horizontalpagination?language=objc
+func (p_ PrintInfo) SetHorizontalPagination(value PrintingPaginationMode) {
+	objc.Call[objc.Void](p_, objc.Sel("setHorizontalPagination:"), value)
+}
+
+// A mutable dictionary containing the print settings from Core Printing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529413-printsettings?language=objc
+func (p_ PrintInfo) PrintSettings() foundation.MutableDictionary {
+	rv := objc.Call[foundation.MutableDictionary](p_, objc.Sel("printSettings"))
+	return rv
+}
+
+// A Boolean value that indicates whether only the currently selected contents should be printed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534094-selectiononly?language=objc
+func (p_ PrintInfo) IsSelectionOnly() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isSelectionOnly"))
+	return rv
+}
+
+// A Boolean value that indicates whether only the currently selected contents should be printed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1534094-selectiononly?language=objc
+func (p_ PrintInfo) SetSelectionOnly(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setSelectionOnly:"), value)
+}
+
+// A Boolean value that indicates whether the image is centered vertically. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530330-verticallycentered?language=objc
+func (p_ PrintInfo) IsVerticallyCentered() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isVerticallyCentered"))
+	return rv
+}
+
+// A Boolean value that indicates whether the image is centered vertically. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530330-verticallycentered?language=objc
+func (p_ PrintInfo) SetVerticallyCentered(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setVerticallyCentered:"), value)
+}
+
+// The orientation attribute. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533755-orientation?language=objc
+func (p_ PrintInfo) Orientation() PaperOrientation {
+	rv := objc.Call[PaperOrientation](p_, objc.Sel("orientation"))
+	return rv
+}
+
+// The orientation attribute. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1533755-orientation?language=objc
+func (p_ PrintInfo) SetOrientation(value PaperOrientation) {
+	objc.Call[objc.Void](p_, objc.Sel("setOrientation:"), value)
 }
 
 // The name of the currently selected paper size. [Full Topic]
@@ -452,12 +460,4 @@ func (p_ PrintInfo) PaperName() PrinterPaperName {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1532124-papername?language=objc
 func (p_ PrintInfo) SetPaperName(value PrinterPaperName) {
 	objc.Call[objc.Void](p_, objc.Sel("setPaperName:"), value)
-}
-
-// A mutable dictionary containing the print settings from Core Printing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1529413-printsettings?language=objc
-func (p_ PrintInfo) PrintSettings() foundation.MutableDictionary {
-	rv := objc.Call[foundation.MutableDictionary](p_, objc.Sel("printSettings"))
-	return rv
 }

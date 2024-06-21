@@ -68,21 +68,6 @@ func MetricKey_EpochIndex() MetricKey {
 	return MetricKeyClass.EpochIndex()
 }
 
-// The key you use to access the current loss (a float value). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180091-lossvalue?language=objc
-func (mc _MetricKeyClass) LossValue() MetricKey {
-	rv := objc.Call[MetricKey](mc, objc.Sel("lossValue"))
-	return rv
-}
-
-// The key you use to access the current loss (a float value). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180091-lossvalue?language=objc
-func MetricKey_LossValue() MetricKey {
-	return MetricKeyClass.LossValue()
-}
-
 // The key you use to access the mini-batch index (an Int64 value) within an epoch. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180092-minibatchindex?language=objc
@@ -96,4 +81,19 @@ func (mc _MetricKeyClass) MiniBatchIndex() MetricKey {
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180092-minibatchindex?language=objc
 func MetricKey_MiniBatchIndex() MetricKey {
 	return MetricKeyClass.MiniBatchIndex()
+}
+
+// The key you use to access the current loss (a float value). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180091-lossvalue?language=objc
+func (mc _MetricKeyClass) LossValue() MetricKey {
+	rv := objc.Call[MetricKey](mc, objc.Sel("lossValue"))
+	return rv
+}
+
+// The key you use to access the current loss (a float value). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmetrickey/3180091-lossvalue?language=objc
+func MetricKey_LossValue() MetricKey {
+	return MetricKeyClass.LossValue()
 }

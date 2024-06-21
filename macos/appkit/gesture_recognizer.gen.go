@@ -20,58 +20,58 @@ type _GestureRecognizerClass struct {
 type IGestureRecognizer interface {
 	objc.IObject
 	TouchesMovedWithEvent(event IEvent)
-	KeyDown(event IEvent)
-	Reset()
-	TabletPoint(event IEvent)
-	KeyUp(event IEvent)
-	MouseDown(event IEvent)
-	CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool
-	TouchesEndedWithEvent(event IEvent)
-	CanBePreventedByGestureRecognizer(preventingGestureRecognizer IGestureRecognizer) bool
-	OtherMouseDown(event IEvent)
-	RightMouseUp(event IEvent)
-	OtherMouseUp(event IEvent)
-	RotateWithEvent(event IEvent)
-	MouseDragged(event IEvent)
-	TouchesBeganWithEvent(event IEvent)
-	PressureChangeWithEvent(event IEvent)
-	MagnifyWithEvent(event IEvent)
-	TouchesCancelledWithEvent(event IEvent)
-	OtherMouseDragged(event IEvent)
 	MouseUp(event IEvent)
-	LocationInView(view IView) foundation.Point
+	CanBePreventedByGestureRecognizer(preventingGestureRecognizer IGestureRecognizer) bool
+	PressureChangeWithEvent(event IEvent)
 	ShouldBeRequiredToFailByGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool
+	OtherMouseDragged(event IEvent)
 	RightMouseDragged(event IEvent)
+	CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool
 	ShouldRequireFailureOfGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool
 	FlagsChanged(event IEvent)
+	TouchesBeganWithEvent(event IEvent)
+	TouchesCancelledWithEvent(event IEvent)
+	RotateWithEvent(event IEvent)
+	KeyDown(event IEvent)
+	TabletPoint(event IEvent)
+	TouchesEndedWithEvent(event IEvent)
+	OtherMouseDown(event IEvent)
+	OtherMouseUp(event IEvent)
+	MagnifyWithEvent(event IEvent)
+	MouseDragged(event IEvent)
+	LocationInView(view IView) foundation.Point
+	MouseDown(event IEvent)
+	KeyUp(event IEvent)
 	RightMouseDown(event IEvent)
-	DelaysMagnificationEvents() bool
-	SetDelaysMagnificationEvents(value bool)
-	DelaysSecondaryMouseButtonEvents() bool
-	SetDelaysSecondaryMouseButtonEvents(value bool)
-	DelaysKeyEvents() bool
-	SetDelaysKeyEvents(value bool)
-	PressureConfiguration() PressureConfiguration
-	SetPressureConfiguration(value IPressureConfiguration)
+	Reset()
+	RightMouseUp(event IEvent)
 	DelaysOtherMouseButtonEvents() bool
 	SetDelaysOtherMouseButtonEvents(value bool)
-	DelaysRotationEvents() bool
-	SetDelaysRotationEvents(value bool)
-	State() GestureRecognizerState
-	IsEnabled() bool
-	SetEnabled(value bool)
+	DelaysSecondaryMouseButtonEvents() bool
+	SetDelaysSecondaryMouseButtonEvents(value bool)
 	Target() objc.Object
 	SetTarget(value objc.IObject)
-	AllowedTouchTypes() TouchTypeMask
-	SetAllowedTouchTypes(value TouchTypeMask)
+	State() GestureRecognizerState
+	Action() objc.Selector
+	SetAction(value objc.Selector)
+	PressureConfiguration() PressureConfiguration
+	SetPressureConfiguration(value IPressureConfiguration)
 	View() View
-	DelaysPrimaryMouseButtonEvents() bool
-	SetDelaysPrimaryMouseButtonEvents(value bool)
+	DelaysMagnificationEvents() bool
+	SetDelaysMagnificationEvents(value bool)
 	Delegate() GestureRecognizerDelegateObject
 	SetDelegate(value PGestureRecognizerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	Action() objc.Selector
-	SetAction(value objc.Selector)
+	DelaysPrimaryMouseButtonEvents() bool
+	SetDelaysPrimaryMouseButtonEvents(value bool)
+	DelaysKeyEvents() bool
+	SetDelaysKeyEvents(value bool)
+	DelaysRotationEvents() bool
+	SetDelaysRotationEvents(value bool)
+	AllowedTouchTypes() TouchTypeMask
+	SetAllowedTouchTypes(value TouchTypeMask)
+	IsEnabled() bool
+	SetEnabled(value bool)
 }
 
 // An object that monitors events and calls its action method when a predefined sequence of events occur. [Full Topic]
@@ -128,54 +128,11 @@ func (g_ GestureRecognizer) TouchesMovedWithEvent(event IEvent) {
 	objc.Call[objc.Void](g_, objc.Sel("touchesMovedWithEvent:"), event)
 }
 
-// Informs the gesture recognizer that the user has pressed a key. [Full Topic]
+// Informs the gesture recognizer that the user released the left mouse button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1532158-keydown?language=objc
-func (g_ GestureRecognizer) KeyDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("keyDown:"), event)
-}
-
-// Overridden to reset the internal state of the gesture recognizer when an attempt completes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527219-reset?language=objc
-func (g_ GestureRecognizer) Reset() {
-	objc.Call[objc.Void](g_, objc.Sel("reset"))
-}
-
-// Informs the user that a tablet-point event occurred. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529889-tabletpoint?language=objc
-func (g_ GestureRecognizer) TabletPoint(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("tabletPoint:"), event)
-}
-
-// Informs the gesture recognizer that the user released a key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526578-keyup?language=objc
-func (g_ GestureRecognizer) KeyUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("keyUp:"), event)
-}
-
-// Informs the gesture recognizer that the user pressed the left mouse button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524901-mousedown?language=objc
-func (g_ GestureRecognizer) MouseDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseDown:"), event)
-}
-
-// Overridden to indicate that the current object can prevent the specified gesture recognizer from recognizing its gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534503-canpreventgesturerecognizer?language=objc
-func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("canPreventGestureRecognizer:"), preventedGestureRecognizer)
-	return rv
-}
-
-// Called when one or more fingers are removed from contact with an NSTouchBar instance on the Touch Bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544740-touchesendedwithevent?language=objc
-func (g_ GestureRecognizer) TouchesEndedWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesEndedWithEvent:"), event)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526116-mouseup?language=objc
+func (g_ GestureRecognizer) MouseUp(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("mouseUp:"), event)
 }
 
 // Overridden to indicate that the specified gesture recognizer can prevent the current object from recognizing a gesture. [Full Topic]
@@ -186,89 +143,11 @@ func (g_ GestureRecognizer) CanBePreventedByGestureRecognizer(preventingGestureR
 	return rv
 }
 
-// Informs the gesture recognizer that the user pressed a mouse button other than the left or right one. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534433-othermousedown?language=objc
-func (g_ GestureRecognizer) OtherMouseDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseDown:"), event)
-}
-
-// Informs the gesture recognizer that the user released the right mouse button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1525729-rightmouseup?language=objc
-func (g_ GestureRecognizer) RightMouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rightMouseUp:"), event)
-}
-
-// Informs the gesture recognizer that the user released a mouse button other than the left or right one. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527874-othermouseup?language=objc
-func (g_ GestureRecognizer) OtherMouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseUp:"), event)
-}
-
-// Informs the gesture recognizer that the user is performing a rotation gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1531401-rotatewithevent?language=objc
-func (g_ GestureRecognizer) RotateWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rotateWithEvent:"), event)
-}
-
-// Informs the gesture recognizer that the user moved the mouse with the left button pressed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534535-mousedragged?language=objc
-func (g_ GestureRecognizer) MouseDragged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseDragged:"), event)
-}
-
-// Called when one or more fingers first make contact with an NSTouchBar instance on the Touch Bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544794-touchesbeganwithevent?language=objc
-func (g_ GestureRecognizer) TouchesBeganWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesBeganWithEvent:"), event)
-}
-
 // Informs the current object that a pressure change occurred on a system that supports pressure sensitivity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527009-pressurechangewithevent?language=objc
 func (g_ GestureRecognizer) PressureChangeWithEvent(event IEvent) {
 	objc.Call[objc.Void](g_, objc.Sel("pressureChangeWithEvent:"), event)
-}
-
-// Informs the gesture recognizer that the user is performing a pinch gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1528828-magnifywithevent?language=objc
-func (g_ GestureRecognizer) MagnifyWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("magnifyWithEvent:"), event)
-}
-
-// Called when a system event, such as a low-memory warning, cancels an in-progress touch event in an NSTouchBar object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544757-touchescancelledwithevent?language=objc
-func (g_ GestureRecognizer) TouchesCancelledWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesCancelledWithEvent:"), event)
-}
-
-// Informs the gesture recognizer that the user moved the mouse with a button other than the left or right one pressed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534208-othermousedragged?language=objc
-func (g_ GestureRecognizer) OtherMouseDragged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseDragged:"), event)
-}
-
-// Informs the gesture recognizer that the user released the left mouse button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526116-mouseup?language=objc
-func (g_ GestureRecognizer) MouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseUp:"), event)
-}
-
-// Returns the point computed as the location of the gesture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524261-locationinview?language=objc
-func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](g_, objc.Sel("locationInView:"), view)
-	return rv
 }
 
 // Overridden to indicate that the current object must fail before the specified gesture recognizer begins recognizing its gesture. [Full Topic]
@@ -279,11 +158,26 @@ func (g_ GestureRecognizer) ShouldBeRequiredToFailByGestureRecognizer(otherGestu
 	return rv
 }
 
+// Informs the gesture recognizer that the user moved the mouse with a button other than the left or right one pressed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534208-othermousedragged?language=objc
+func (g_ GestureRecognizer) OtherMouseDragged(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseDragged:"), event)
+}
+
 // Informs the gesture recognizer that the user moved the mouse with the right button pressed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529778-rightmousedragged?language=objc
 func (g_ GestureRecognizer) RightMouseDragged(event IEvent) {
 	objc.Call[objc.Void](g_, objc.Sel("rightMouseDragged:"), event)
+}
+
+// Overridden to indicate that the current object can prevent the specified gesture recognizer from recognizing its gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534503-canpreventgesturerecognizer?language=objc
+func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool {
+	rv := objc.Call[bool](g_, objc.Sel("canPreventGestureRecognizer:"), preventedGestureRecognizer)
+	return rv
 }
 
 // Overridden to indicate that the specified gesture recognizer must fail before the current object begins recognizing its gesture. [Full Topic]
@@ -301,6 +195,98 @@ func (g_ GestureRecognizer) FlagsChanged(event IEvent) {
 	objc.Call[objc.Void](g_, objc.Sel("flagsChanged:"), event)
 }
 
+// Called when one or more fingers first make contact with an NSTouchBar instance on the Touch Bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544794-touchesbeganwithevent?language=objc
+func (g_ GestureRecognizer) TouchesBeganWithEvent(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("touchesBeganWithEvent:"), event)
+}
+
+// Called when a system event, such as a low-memory warning, cancels an in-progress touch event in an NSTouchBar object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544757-touchescancelledwithevent?language=objc
+func (g_ GestureRecognizer) TouchesCancelledWithEvent(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("touchesCancelledWithEvent:"), event)
+}
+
+// Informs the gesture recognizer that the user is performing a rotation gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1531401-rotatewithevent?language=objc
+func (g_ GestureRecognizer) RotateWithEvent(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("rotateWithEvent:"), event)
+}
+
+// Informs the gesture recognizer that the user has pressed a key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1532158-keydown?language=objc
+func (g_ GestureRecognizer) KeyDown(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("keyDown:"), event)
+}
+
+// Informs the user that a tablet-point event occurred. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529889-tabletpoint?language=objc
+func (g_ GestureRecognizer) TabletPoint(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("tabletPoint:"), event)
+}
+
+// Called when one or more fingers are removed from contact with an NSTouchBar instance on the Touch Bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544740-touchesendedwithevent?language=objc
+func (g_ GestureRecognizer) TouchesEndedWithEvent(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("touchesEndedWithEvent:"), event)
+}
+
+// Informs the gesture recognizer that the user pressed a mouse button other than the left or right one. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534433-othermousedown?language=objc
+func (g_ GestureRecognizer) OtherMouseDown(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseDown:"), event)
+}
+
+// Informs the gesture recognizer that the user released a mouse button other than the left or right one. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527874-othermouseup?language=objc
+func (g_ GestureRecognizer) OtherMouseUp(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseUp:"), event)
+}
+
+// Informs the gesture recognizer that the user is performing a pinch gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1528828-magnifywithevent?language=objc
+func (g_ GestureRecognizer) MagnifyWithEvent(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("magnifyWithEvent:"), event)
+}
+
+// Informs the gesture recognizer that the user moved the mouse with the left button pressed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534535-mousedragged?language=objc
+func (g_ GestureRecognizer) MouseDragged(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("mouseDragged:"), event)
+}
+
+// Returns the point computed as the location of the gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524261-locationinview?language=objc
+func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
+	rv := objc.Call[foundation.Point](g_, objc.Sel("locationInView:"), view)
+	return rv
+}
+
+// Informs the gesture recognizer that the user pressed the left mouse button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524901-mousedown?language=objc
+func (g_ GestureRecognizer) MouseDown(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("mouseDown:"), event)
+}
+
+// Informs the gesture recognizer that the user released a key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526578-keyup?language=objc
+func (g_ GestureRecognizer) KeyUp(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("keyUp:"), event)
+}
+
 // Informs the gesture recognizer that the user pressed the right mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527421-rightmousedown?language=objc
@@ -308,64 +294,18 @@ func (g_ GestureRecognizer) RightMouseDown(event IEvent) {
 	objc.Call[objc.Void](g_, objc.Sel("rightMouseDown:"), event)
 }
 
-// A Boolean value that indicates whether magnification events are delivered only after gesture recognition fails. [Full Topic]
+// Overridden to reset the internal state of the gesture recognizer when an attempt completes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529974-delaysmagnificationevents?language=objc
-func (g_ GestureRecognizer) DelaysMagnificationEvents() bool {
-	rv := objc.Call[bool](g_, objc.Sel("delaysMagnificationEvents"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527219-reset?language=objc
+func (g_ GestureRecognizer) Reset() {
+	objc.Call[objc.Void](g_, objc.Sel("reset"))
 }
 
-// A Boolean value that indicates whether magnification events are delivered only after gesture recognition fails. [Full Topic]
+// Informs the gesture recognizer that the user released the right mouse button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529974-delaysmagnificationevents?language=objc
-func (g_ GestureRecognizer) SetDelaysMagnificationEvents(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelaysMagnificationEvents:"), value)
-}
-
-// A Boolean value that indicates whether secondary mouse button events are delivered only after gesture recognition fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535204-delayssecondarymousebuttonevents?language=objc
-func (g_ GestureRecognizer) DelaysSecondaryMouseButtonEvents() bool {
-	rv := objc.Call[bool](g_, objc.Sel("delaysSecondaryMouseButtonEvents"))
-	return rv
-}
-
-// A Boolean value that indicates whether secondary mouse button events are delivered only after gesture recognition fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535204-delayssecondarymousebuttonevents?language=objc
-func (g_ GestureRecognizer) SetDelaysSecondaryMouseButtonEvents(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelaysSecondaryMouseButtonEvents:"), value)
-}
-
-// A Boolean value that indicates whether key events are delivered only after gesture recognition fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529788-delayskeyevents?language=objc
-func (g_ GestureRecognizer) DelaysKeyEvents() bool {
-	rv := objc.Call[bool](g_, objc.Sel("delaysKeyEvents"))
-	return rv
-}
-
-// A Boolean value that indicates whether key events are delivered only after gesture recognition fails. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529788-delayskeyevents?language=objc
-func (g_ GestureRecognizer) SetDelaysKeyEvents(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelaysKeyEvents:"), value)
-}
-
-// Configures the behavior and progression of the Force Touch trackpad when responding to recognized pressure gestures. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535895-pressureconfiguration?language=objc
-func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {
-	rv := objc.Call[PressureConfiguration](g_, objc.Sel("pressureConfiguration"))
-	return rv
-}
-
-// Configures the behavior and progression of the Force Touch trackpad when responding to recognized pressure gestures. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535895-pressureconfiguration?language=objc
-func (g_ GestureRecognizer) SetPressureConfiguration(value IPressureConfiguration) {
-	objc.Call[objc.Void](g_, objc.Sel("setPressureConfiguration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1525729-rightmouseup?language=objc
+func (g_ GestureRecognizer) RightMouseUp(event IEvent) {
+	objc.Call[objc.Void](g_, objc.Sel("rightMouseUp:"), event)
 }
 
 // A Boolean value that indicates whether other mouse button events are delivered only after gesture recognition fails. [Full Topic]
@@ -383,42 +323,19 @@ func (g_ GestureRecognizer) SetDelaysOtherMouseButtonEvents(value bool) {
 	objc.Call[objc.Void](g_, objc.Sel("setDelaysOtherMouseButtonEvents:"), value)
 }
 
-// A Boolean value that indicates whether rotation events are delivered only after gesture recognition fails. [Full Topic]
+// A Boolean value that indicates whether secondary mouse button events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535384-delaysrotationevents?language=objc
-func (g_ GestureRecognizer) DelaysRotationEvents() bool {
-	rv := objc.Call[bool](g_, objc.Sel("delaysRotationEvents"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535204-delayssecondarymousebuttonevents?language=objc
+func (g_ GestureRecognizer) DelaysSecondaryMouseButtonEvents() bool {
+	rv := objc.Call[bool](g_, objc.Sel("delaysSecondaryMouseButtonEvents"))
 	return rv
 }
 
-// A Boolean value that indicates whether rotation events are delivered only after gesture recognition fails. [Full Topic]
+// A Boolean value that indicates whether secondary mouse button events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535384-delaysrotationevents?language=objc
-func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelaysRotationEvents:"), value)
-}
-
-// The current state of the gesture recognizer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535694-state?language=objc
-func (g_ GestureRecognizer) State() GestureRecognizerState {
-	rv := objc.Call[GestureRecognizerState](g_, objc.Sel("state"))
-	return rv
-}
-
-// A Boolean value indicating whether the gesture recognizer is able to handle events. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535263-enabled?language=objc
-func (g_ GestureRecognizer) IsEnabled() bool {
-	rv := objc.Call[bool](g_, objc.Sel("isEnabled"))
-	return rv
-}
-
-// A Boolean value indicating whether the gesture recognizer is able to handle events. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535263-enabled?language=objc
-func (g_ GestureRecognizer) SetEnabled(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setEnabled:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535204-delayssecondarymousebuttonevents?language=objc
+func (g_ GestureRecognizer) SetDelaysSecondaryMouseButtonEvents(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setDelaysSecondaryMouseButtonEvents:"), value)
 }
 
 // The object that implements the action method. [Full Topic]
@@ -436,19 +353,42 @@ func (g_ GestureRecognizer) SetTarget(value objc.IObject) {
 	objc.Call[objc.Void](g_, objc.Sel("setTarget:"), value)
 }
 
-//	[Full Topic]
+// The current state of the gesture recognizer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2588249-allowedtouchtypes?language=objc
-func (g_ GestureRecognizer) AllowedTouchTypes() TouchTypeMask {
-	rv := objc.Call[TouchTypeMask](g_, objc.Sel("allowedTouchTypes"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535694-state?language=objc
+func (g_ GestureRecognizer) State() GestureRecognizerState {
+	rv := objc.Call[GestureRecognizerState](g_, objc.Sel("state"))
 	return rv
 }
 
-//	[Full Topic]
+// The action method to call when the gesture is recognized. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2588249-allowedtouchtypes?language=objc
-func (g_ GestureRecognizer) SetAllowedTouchTypes(value TouchTypeMask) {
-	objc.Call[objc.Void](g_, objc.Sel("setAllowedTouchTypes:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529280-action?language=objc
+func (g_ GestureRecognizer) Action() objc.Selector {
+	rv := objc.Call[objc.Selector](g_, objc.Sel("action"))
+	return rv
+}
+
+// The action method to call when the gesture is recognized. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529280-action?language=objc
+func (g_ GestureRecognizer) SetAction(value objc.Selector) {
+	objc.Call[objc.Void](g_, objc.Sel("setAction:"), value)
+}
+
+// Configures the behavior and progression of the Force Touch trackpad when responding to recognized pressure gestures. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535895-pressureconfiguration?language=objc
+func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {
+	rv := objc.Call[PressureConfiguration](g_, objc.Sel("pressureConfiguration"))
+	return rv
+}
+
+// Configures the behavior and progression of the Force Touch trackpad when responding to recognized pressure gestures. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535895-pressureconfiguration?language=objc
+func (g_ GestureRecognizer) SetPressureConfiguration(value IPressureConfiguration) {
+	objc.Call[objc.Void](g_, objc.Sel("setPressureConfiguration:"), value)
 }
 
 // The view to which the gesture recognizer is attached. [Full Topic]
@@ -459,19 +399,19 @@ func (g_ GestureRecognizer) View() View {
 	return rv
 }
 
-// A Boolean value that indicates whether primary mouse button events are delivered only after gesture recognition fails. [Full Topic]
+// A Boolean value that indicates whether magnification events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1533619-delaysprimarymousebuttonevents?language=objc
-func (g_ GestureRecognizer) DelaysPrimaryMouseButtonEvents() bool {
-	rv := objc.Call[bool](g_, objc.Sel("delaysPrimaryMouseButtonEvents"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529974-delaysmagnificationevents?language=objc
+func (g_ GestureRecognizer) DelaysMagnificationEvents() bool {
+	rv := objc.Call[bool](g_, objc.Sel("delaysMagnificationEvents"))
 	return rv
 }
 
-// A Boolean value that indicates whether primary mouse button events are delivered only after gesture recognition fails. [Full Topic]
+// A Boolean value that indicates whether magnification events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1533619-delaysprimarymousebuttonevents?language=objc
-func (g_ GestureRecognizer) SetDelaysPrimaryMouseButtonEvents(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelaysPrimaryMouseButtonEvents:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529974-delaysmagnificationevents?language=objc
+func (g_ GestureRecognizer) SetDelaysMagnificationEvents(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setDelaysMagnificationEvents:"), value)
 }
 
 // The delegate of the gesture recognizer. [Full Topic]
@@ -498,17 +438,77 @@ func (g_ GestureRecognizer) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](g_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The action method to call when the gesture is recognized. [Full Topic]
+// A Boolean value that indicates whether primary mouse button events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529280-action?language=objc
-func (g_ GestureRecognizer) Action() objc.Selector {
-	rv := objc.Call[objc.Selector](g_, objc.Sel("action"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1533619-delaysprimarymousebuttonevents?language=objc
+func (g_ GestureRecognizer) DelaysPrimaryMouseButtonEvents() bool {
+	rv := objc.Call[bool](g_, objc.Sel("delaysPrimaryMouseButtonEvents"))
 	return rv
 }
 
-// The action method to call when the gesture is recognized. [Full Topic]
+// A Boolean value that indicates whether primary mouse button events are delivered only after gesture recognition fails. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529280-action?language=objc
-func (g_ GestureRecognizer) SetAction(value objc.Selector) {
-	objc.Call[objc.Void](g_, objc.Sel("setAction:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1533619-delaysprimarymousebuttonevents?language=objc
+func (g_ GestureRecognizer) SetDelaysPrimaryMouseButtonEvents(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setDelaysPrimaryMouseButtonEvents:"), value)
+}
+
+// A Boolean value that indicates whether key events are delivered only after gesture recognition fails. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529788-delayskeyevents?language=objc
+func (g_ GestureRecognizer) DelaysKeyEvents() bool {
+	rv := objc.Call[bool](g_, objc.Sel("delaysKeyEvents"))
+	return rv
+}
+
+// A Boolean value that indicates whether key events are delivered only after gesture recognition fails. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529788-delayskeyevents?language=objc
+func (g_ GestureRecognizer) SetDelaysKeyEvents(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setDelaysKeyEvents:"), value)
+}
+
+// A Boolean value that indicates whether rotation events are delivered only after gesture recognition fails. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535384-delaysrotationevents?language=objc
+func (g_ GestureRecognizer) DelaysRotationEvents() bool {
+	rv := objc.Call[bool](g_, objc.Sel("delaysRotationEvents"))
+	return rv
+}
+
+// A Boolean value that indicates whether rotation events are delivered only after gesture recognition fails. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535384-delaysrotationevents?language=objc
+func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setDelaysRotationEvents:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2588249-allowedtouchtypes?language=objc
+func (g_ GestureRecognizer) AllowedTouchTypes() TouchTypeMask {
+	rv := objc.Call[TouchTypeMask](g_, objc.Sel("allowedTouchTypes"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2588249-allowedtouchtypes?language=objc
+func (g_ GestureRecognizer) SetAllowedTouchTypes(value TouchTypeMask) {
+	objc.Call[objc.Void](g_, objc.Sel("setAllowedTouchTypes:"), value)
+}
+
+// A Boolean value indicating whether the gesture recognizer is able to handle events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535263-enabled?language=objc
+func (g_ GestureRecognizer) IsEnabled() bool {
+	rv := objc.Call[bool](g_, objc.Sel("isEnabled"))
+	return rv
+}
+
+// A Boolean value indicating whether the gesture recognizer is able to handle events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535263-enabled?language=objc
+func (g_ GestureRecognizer) SetEnabled(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setEnabled:"), value)
 }

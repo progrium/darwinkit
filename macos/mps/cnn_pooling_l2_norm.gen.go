@@ -69,21 +69,6 @@ func (c_ CNNPoolingL2Norm) Init() CNNPoolingL2Norm {
 	return rv
 }
 
-func (c_ CNNPoolingL2Norm) InitWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPoolingL2Norm {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNPoolingL2Norm](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:"), po0, kernelWidth, kernelHeight)
-	return rv
-}
-
-// Initializes a pooling filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpooling/1648887-initwithdevice?language=objc
-func NewCNNPoolingL2NormWithDeviceKernelWidthKernelHeight(device metal.PDevice, kernelWidth uint, kernelHeight uint) CNNPoolingL2Norm {
-	instance := CNNPoolingL2NormClass.Alloc().InitWithDeviceKernelWidthKernelHeight(device, kernelWidth, kernelHeight)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNPoolingL2Norm) InitWithDevice(device metal.PDevice) CNNPoolingL2Norm {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNPoolingL2Norm](c_, objc.Sel("initWithDevice:"), po0)

@@ -20,10 +20,10 @@ type IMetadataQueryResultGroup interface {
 	objc.IObject
 	ResultAtIndex(idx uint) objc.Object
 	Subgroups() []MetadataQueryResultGroup
-	ResultCount() uint
 	Value() objc.Object
-	Results() []objc.Object
 	Attribute() string
+	Results() []objc.Object
+	ResultCount() uint
 }
 
 // The NSMetadataQueryResultGroup class represents a collection of grouped attribute results returned by an NSMetadataQuery object. [Full Topic]
@@ -75,19 +75,19 @@ func (m_ MetadataQueryResultGroup) Subgroups() []MetadataQueryResultGroup {
 	return rv
 }
 
-// The number of results returned by the result group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataqueryresultgroup/1414790-resultcount?language=objc
-func (m_ MetadataQueryResultGroup) ResultCount() uint {
-	rv := objc.Call[uint](m_, objc.Sel("resultCount"))
-	return rv
-}
-
 // The result group’s value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataqueryresultgroup/1417674-value?language=objc
 func (m_ MetadataQueryResultGroup) Value() objc.Object {
 	rv := objc.Call[objc.Object](m_, objc.Sel("value"))
+	return rv
+}
+
+// The result group’s attribute name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataqueryresultgroup/1411276-attribute?language=objc
+func (m_ MetadataQueryResultGroup) Attribute() string {
+	rv := objc.Call[string](m_, objc.Sel("attribute"))
 	return rv
 }
 
@@ -99,10 +99,10 @@ func (m_ MetadataQueryResultGroup) Results() []objc.Object {
 	return rv
 }
 
-// The result group’s attribute name. [Full Topic]
+// The number of results returned by the result group. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataqueryresultgroup/1411276-attribute?language=objc
-func (m_ MetadataQueryResultGroup) Attribute() string {
-	rv := objc.Call[string](m_, objc.Sel("attribute"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataqueryresultgroup/1414790-resultcount?language=objc
+func (m_ MetadataQueryResultGroup) ResultCount() uint {
+	rv := objc.Call[uint](m_, objc.Sel("resultCount"))
 	return rv
 }

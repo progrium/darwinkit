@@ -21,9 +21,9 @@ type IAtomicStoreCacheNode interface {
 	objc.IObject
 	SetValueForKey(value objc.IObject, key string)
 	ValueForKey(key string) objc.Object
-	ObjectID() ManagedObjectID
 	PropertyCache() foundation.MutableDictionary
 	SetPropertyCache(value foundation.IMutableDictionary)
+	ObjectID() ManagedObjectID
 }
 
 // A concrete class that you use to represent basic nodes in a Core Data atomic store. [Full Topic]
@@ -88,14 +88,6 @@ func (a_ AtomicStoreCacheNode) ValueForKey(key string) objc.Object {
 	return rv
 }
 
-// The managed object ID of the node. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506627-objectid?language=objc
-func (a_ AtomicStoreCacheNode) ObjectID() ManagedObjectID {
-	rv := objc.Call[ManagedObjectID](a_, objc.Sel("objectID"))
-	return rv
-}
-
 // The property cache dictionary of the node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506283-propertycache?language=objc
@@ -109,4 +101,12 @@ func (a_ AtomicStoreCacheNode) PropertyCache() foundation.MutableDictionary {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506283-propertycache?language=objc
 func (a_ AtomicStoreCacheNode) SetPropertyCache(value foundation.IMutableDictionary) {
 	objc.Call[objc.Void](a_, objc.Sel("setPropertyCache:"), value)
+}
+
+// The managed object ID of the node. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506627-objectid?language=objc
+func (a_ AtomicStoreCacheNode) ObjectID() ManagedObjectID {
+	rv := objc.Call[ManagedObjectID](a_, objc.Sel("objectID"))
+	return rv
 }

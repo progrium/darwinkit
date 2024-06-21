@@ -56,45 +56,16 @@ func (r_ RNNRecurrentImageState) Init() RNNRecurrentImageState {
 	return rv
 }
 
-func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (r_ RNNRecurrentImageState) InitWithResources(resources []metal.PResource) RNNRecurrentImageState {
+	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func RNNRecurrentImageState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentImageState {
-	return RNNRecurrentImageStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (r_ RNNRecurrentImageState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewRNNRecurrentImageStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
-	instance := RNNRecurrentImageStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (r_ RNNRecurrentImageState) InitWithResource(resource metal.PResource) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewRNNRecurrentImageStateWithResource(resource metal.PResource) RNNRecurrentImageState {
-	instance := RNNRecurrentImageStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewRNNRecurrentImageStateWithResources(resources []metal.PResource) RNNRecurrentImageState {
+	instance := RNNRecurrentImageStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -114,72 +85,32 @@ func NewRNNRecurrentImageStateWithDeviceBufferSize(device metal.PDevice, bufferS
 	return instance
 }
 
-func (r_ RNNRecurrentImageState) InitWithResources(resources []metal.PResource) RNNRecurrentImageState {
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithResources:"), resources)
+func (r_ RNNRecurrentImageState) InitWithResource(resource metal.PResource) RNNRecurrentImageState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewRNNRecurrentImageStateWithResources(resources []metal.PResource) RNNRecurrentImageState {
-	instance := RNNRecurrentImageStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewRNNRecurrentImageStateWithResource(resource metal.PResource) RNNRecurrentImageState {
+	instance := RNNRecurrentImageStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentImageState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func RNNRecurrentImageState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) RNNRecurrentImageState {
-	return RNNRecurrentImageStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func RNNRecurrentImageState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) RNNRecurrentImageState {
-	return RNNRecurrentImageStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func RNNRecurrentImageState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
-	return RNNRecurrentImageStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (r_ RNNRecurrentImageState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNRecurrentImageState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewRNNRecurrentImageStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNRecurrentImageState {
-	instance := RNNRecurrentImageStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func RNNRecurrentImageState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentImageState {
+	return RNNRecurrentImageStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }
 
 //	[Full Topic]

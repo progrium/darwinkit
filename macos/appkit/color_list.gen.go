@@ -19,12 +19,12 @@ type _ColorListClass struct {
 // An interface definition for the [ColorList] class.
 type IColorList interface {
 	objc.IObject
-	SetColorForKey(color IColor, key ColorName)
 	RemoveFile()
-	ColorWithKey(key ColorName) Color
-	WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool
 	InsertColorKeyAtIndex(color IColor, key ColorName, loc uint)
 	RemoveColorWithKey(key ColorName)
+	ColorWithKey(key ColorName) Color
+	WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool
+	SetColorForKey(color IColor, key ColorName)
 	IsEditable() bool
 	Name() ColorListName
 	AllKeys() []ColorName
@@ -41,20 +41,6 @@ func ColorListFrom(ptr unsafe.Pointer) ColorList {
 	return ColorList{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (c_ ColorList) InitWithName(name ColorListName) ColorList {
-	rv := objc.Call[ColorList](c_, objc.Sel("initWithName:"), name)
-	return rv
-}
-
-// Initializes and returns a color list, registering it under the specified name if it isn’t in use already. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522140-initwithname?language=objc
-func NewColorListWithName(name ColorListName) ColorList {
-	instance := ColorListClass.Alloc().InitWithName(name)
-	instance.Autorelease()
-	return instance
 }
 
 func (c_ ColorList) InitWithNameFromFile(name ColorListName, path string) ColorList {
@@ -91,34 +77,11 @@ func (c_ ColorList) Init() ColorList {
 	return rv
 }
 
-// Associates the specified color object with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522130-setcolor?language=objc
-func (c_ ColorList) SetColorForKey(color IColor, key ColorName) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:forKey:"), color, key)
-}
-
 // Removes the file from which the list was created, if the file is in a standard search path and owned by the user. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522132-removefile?language=objc
 func (c_ ColorList) RemoveFile() {
 	objc.Call[objc.Void](c_, objc.Sel("removeFile"))
-}
-
-// Returns the color object associated with the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522143-colorwithkey?language=objc
-func (c_ ColorList) ColorWithKey(key ColorName) Color {
-	rv := objc.Call[Color](c_, objc.Sel("colorWithKey:"), key)
-	return rv
-}
-
-// Saves the color list to the file at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/2269695-writetourl?language=objc
-func (c_ ColorList) WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeToURL:error:"), url, errPtr)
-	return rv
 }
 
 // Inserts the specified color at the specified location in the color list. [Full Topic]
@@ -150,6 +113,44 @@ func (c_ ColorList) RemoveColorWithKey(key ColorName) {
 	objc.Call[objc.Void](c_, objc.Sel("removeColorWithKey:"), key)
 }
 
+// Returns the color object associated with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522143-colorwithkey?language=objc
+func (c_ ColorList) ColorWithKey(key ColorName) Color {
+	rv := objc.Call[Color](c_, objc.Sel("colorWithKey:"), key)
+	return rv
+}
+
+// Saves the color list to the file at the specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/2269695-writetourl?language=objc
+func (c_ ColorList) WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeToURL:error:"), url, errPtr)
+	return rv
+}
+
+// Associates the specified color object with the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522130-setcolor?language=objc
+func (c_ ColorList) SetColorForKey(color IColor, key ColorName) {
+	objc.Call[objc.Void](c_, objc.Sel("setColor:forKey:"), color, key)
+}
+
+// Returns an array of all color lists found in the standard color list directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522127-availablecolorlists?language=objc
+func (cc _ColorListClass) AvailableColorLists() []ColorList {
+	rv := objc.Call[[]ColorList](cc, objc.Sel("availableColorLists"))
+	return rv
+}
+
+// Returns an array of all color lists found in the standard color list directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522127-availablecolorlists?language=objc
+func ColorList_AvailableColorLists() []ColorList {
+	return ColorListClass.AvailableColorLists()
+}
+
 // A Boolean value that indicates whether the color list can be modified. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522125-editable?language=objc
@@ -172,19 +173,4 @@ func (c_ ColorList) Name() ColorListName {
 func (c_ ColorList) AllKeys() []ColorName {
 	rv := objc.Call[[]ColorName](c_, objc.Sel("allKeys"))
 	return rv
-}
-
-// Returns an array of all color lists found in the standard color list directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522127-availablecolorlists?language=objc
-func (cc _ColorListClass) AvailableColorLists() []ColorList {
-	rv := objc.Call[[]ColorList](cc, objc.Sel("availableColorLists"))
-	return rv
-}
-
-// Returns an array of all color lists found in the standard color list directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522127-availablecolorlists?language=objc
-func ColorList_AvailableColorLists() []ColorList {
-	return ColorListClass.AvailableColorLists()
 }

@@ -19,9 +19,9 @@ type _CaptionConversionWarningClass struct {
 // An interface definition for the [CaptionConversionWarning] class.
 type ICaptionConversionWarning interface {
 	objc.IObject
-	Adjustment() CaptionConversionAdjustment
-	RangeOfCaptions() foundation.Range
 	WarningType() CaptionConversionWarningType
+	RangeOfCaptions() foundation.Range
+	Adjustment() CaptionConversionAdjustment
 }
 
 // An object that represents a conversion warning produced by a validator. [Full Topic]
@@ -57,11 +57,11 @@ func (c_ CaptionConversionWarning) Init() CaptionConversionWarning {
 	return rv
 }
 
-// A correction the converter makes when it converts a caption to a specific format. [Full Topic]
+// A type that indicates the nature of the validation warning. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionwarning/3752949-adjustment?language=objc
-func (c_ CaptionConversionWarning) Adjustment() CaptionConversionAdjustment {
-	rv := objc.Call[CaptionConversionAdjustment](c_, objc.Sel("adjustment"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionwarning/3752951-warningtype?language=objc
+func (c_ CaptionConversionWarning) WarningType() CaptionConversionWarningType {
+	rv := objc.Call[CaptionConversionWarningType](c_, objc.Sel("warningType"))
 	return rv
 }
 
@@ -73,10 +73,10 @@ func (c_ CaptionConversionWarning) RangeOfCaptions() foundation.Range {
 	return rv
 }
 
-// A type that indicates the nature of the validation warning. [Full Topic]
+// A correction the converter makes when it converts a caption to a specific format. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionwarning/3752951-warningtype?language=objc
-func (c_ CaptionConversionWarning) WarningType() CaptionConversionWarningType {
-	rv := objc.Call[CaptionConversionWarningType](c_, objc.Sel("warningType"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionconversionwarning/3752949-adjustment?language=objc
+func (c_ CaptionConversionWarning) Adjustment() CaptionConversionAdjustment {
+	rv := objc.Call[CaptionConversionAdjustment](c_, objc.Sel("adjustment"))
 	return rv
 }

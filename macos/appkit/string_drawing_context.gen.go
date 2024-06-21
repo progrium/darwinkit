@@ -5,7 +5,7 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -19,10 +19,10 @@ type _StringDrawingContextClass struct {
 // An interface definition for the [StringDrawingContext] class.
 type IStringDrawingContext interface {
 	objc.IObject
-	TotalBounds() foundation.Rect
+	TotalBounds() coregraphics.Rect
+	ActualScaleFactor() float64
 	MinimumScaleFactor() float64
 	SetMinimumScaleFactor(value float64)
-	ActualScaleFactor() float64
 }
 
 // An object that manages metrics for drawing attributed strings. [Full Topic]
@@ -61,8 +61,16 @@ func (s_ StringDrawingContext) Init() StringDrawingContext {
 // The most recent bounding rectangle that the system used to draw the string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsstringdrawingcontext/1530525-totalbounds?language=objc
-func (s_ StringDrawingContext) TotalBounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("totalBounds"))
+func (s_ StringDrawingContext) TotalBounds() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](s_, objc.Sel("totalBounds"))
+	return rv
+}
+
+// The actual scale factor that the system applied to the font during drawing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsstringdrawingcontext/1531498-actualscalefactor?language=objc
+func (s_ StringDrawingContext) ActualScaleFactor() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("actualScaleFactor"))
 	return rv
 }
 
@@ -79,12 +87,4 @@ func (s_ StringDrawingContext) MinimumScaleFactor() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsstringdrawingcontext/1534020-minimumscalefactor?language=objc
 func (s_ StringDrawingContext) SetMinimumScaleFactor(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMinimumScaleFactor:"), value)
-}
-
-// The actual scale factor that the system applied to the font during drawing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nsstringdrawingcontext/1531498-actualscalefactor?language=objc
-func (s_ StringDrawingContext) ActualScaleFactor() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("actualScaleFactor"))
-	return rv
 }

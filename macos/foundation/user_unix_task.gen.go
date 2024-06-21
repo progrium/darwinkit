@@ -19,12 +19,12 @@ type _UserUnixTaskClass struct {
 type IUserUnixTask interface {
 	IUserScriptTask
 	ExecuteWithArgumentsCompletionHandler(arguments []string, handler UserUnixTaskCompletionHandler)
-	StandardInput() FileHandle
-	SetStandardInput(value IFileHandle)
 	StandardOutput() FileHandle
 	SetStandardOutput(value IFileHandle)
 	StandardError() FileHandle
 	SetStandardError(value IFileHandle)
+	StandardInput() FileHandle
+	SetStandardInput(value IFileHandle)
 }
 
 // An object that executes unix applications. [Full Topic]
@@ -81,21 +81,6 @@ func (u_ UserUnixTask) ExecuteWithArgumentsCompletionHandler(arguments []string,
 	objc.Call[objc.Void](u_, objc.Sel("executeWithArguments:completionHandler:"), arguments, handler)
 }
 
-// The standard input stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1407821-standardinput?language=objc
-func (u_ UserUnixTask) StandardInput() FileHandle {
-	rv := objc.Call[FileHandle](u_, objc.Sel("standardInput"))
-	return rv
-}
-
-// The standard input stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1407821-standardinput?language=objc
-func (u_ UserUnixTask) SetStandardInput(value IFileHandle) {
-	objc.Call[objc.Void](u_, objc.Sel("setStandardInput:"), value)
-}
-
 // The standard output stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1418151-standardoutput?language=objc
@@ -124,4 +109,19 @@ func (u_ UserUnixTask) StandardError() FileHandle {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1411522-standarderror?language=objc
 func (u_ UserUnixTask) SetStandardError(value IFileHandle) {
 	objc.Call[objc.Void](u_, objc.Sel("setStandardError:"), value)
+}
+
+// The standard input stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1407821-standardinput?language=objc
+func (u_ UserUnixTask) StandardInput() FileHandle {
+	rv := objc.Call[FileHandle](u_, objc.Sel("standardInput"))
+	return rv
+}
+
+// The standard input stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1407821-standardinput?language=objc
+func (u_ UserUnixTask) SetStandardInput(value IFileHandle) {
+	objc.Call[objc.Void](u_, objc.Sel("setStandardInput:"), value)
 }

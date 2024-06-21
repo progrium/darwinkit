@@ -100,21 +100,6 @@ func ImageMedian_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) I
 	return instance
 }
 
-// Queries the maximum diameter, in pixels, of the filter window supported by the median filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618830-maxkerneldiameter?language=objc
-func (ic _ImageMedianClass) MaxKernelDiameter() uint {
-	rv := objc.Call[uint](ic, objc.Sel("maxKernelDiameter"))
-	return rv
-}
-
-// Queries the maximum diameter, in pixels, of the filter window supported by the median filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618830-maxkerneldiameter?language=objc
-func ImageMedian_MaxKernelDiameter() uint {
-	return ImageMedianClass.MaxKernelDiameter()
-}
-
 // Queries the minimum diameter, in pixels, of the filter window supported by the median filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618864-minkerneldiameter?language=objc
@@ -128,6 +113,21 @@ func (ic _ImageMedianClass) MinKernelDiameter() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618864-minkerneldiameter?language=objc
 func ImageMedian_MinKernelDiameter() uint {
 	return ImageMedianClass.MinKernelDiameter()
+}
+
+// Queries the maximum diameter, in pixels, of the filter window supported by the median filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618830-maxkerneldiameter?language=objc
+func (ic _ImageMedianClass) MaxKernelDiameter() uint {
+	rv := objc.Call[uint](ic, objc.Sel("maxKernelDiameter"))
+	return rv
+}
+
+// Queries the maximum diameter, in pixels, of the filter window supported by the median filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagemedian/1618830-maxkerneldiameter?language=objc
+func ImageMedian_MaxKernelDiameter() uint {
+	return ImageMedianClass.MaxKernelDiameter()
 }
 
 // The diameter, in pixels, of the filter window. [Full Topic]

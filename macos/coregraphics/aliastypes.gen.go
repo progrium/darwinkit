@@ -125,7 +125,7 @@ type FunctionReleaseInfoCallback = func(info unsafe.Pointer)
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgpdfarrayapplierblock?language=objc
 type PDFArrayApplierBlock = func(index uint, value unsafe.Pointer, info unsafe.Pointer) bool
 
-// A callback function that releases data you supply to the function [coregraphics/cgdataprovidercreatewithdata]. [Full Topic]
+// A callback function that releases data you supply to the function CGDataProviderCreateWithData. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgdataproviderreleasedatacallback?language=objc
 type DataProviderReleaseDataCallback = func(info unsafe.Pointer, data unsafe.Pointer, size uint)

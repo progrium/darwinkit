@@ -20,16 +20,16 @@ type IStatusItem interface {
 	objc.IObject
 	IsVisible() bool
 	SetVisible(value bool)
+	Behavior() StatusItemBehavior
+	SetBehavior(value StatusItemBehavior)
 	StatusBar() StatusBar
 	AutosaveName() StatusItemAutosaveName
 	SetAutosaveName(value StatusItemAutosaveName)
-	Behavior() StatusItemBehavior
-	SetBehavior(value StatusItemBehavior)
+	Length() float64
+	SetLength(value float64)
 	Menu() Menu
 	SetMenu(value IMenu)
 	Button() StatusBarButton
-	Length() float64
-	SetLength(value float64)
 }
 
 // An individual element displayed in the system menu bar. [Full Topic]
@@ -80,6 +80,21 @@ func (s_ StatusItem) SetVisible(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setVisible:"), value)
 }
 
+// The set of allowed behaviors for the status item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1644024-behavior?language=objc
+func (s_ StatusItem) Behavior() StatusItemBehavior {
+	rv := objc.Call[StatusItemBehavior](s_, objc.Sel("behavior"))
+	return rv
+}
+
+// The set of allowed behaviors for the status item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1644024-behavior?language=objc
+func (s_ StatusItem) SetBehavior(value StatusItemBehavior) {
+	objc.Call[objc.Void](s_, objc.Sel("setBehavior:"), value)
+}
+
 // The status bar that displays the status item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1525951-statusbar?language=objc
@@ -103,19 +118,19 @@ func (s_ StatusItem) SetAutosaveName(value StatusItemAutosaveName) {
 	objc.Call[objc.Void](s_, objc.Sel("setAutosaveName:"), value)
 }
 
-// The set of allowed behaviors for the status item. [Full Topic]
+// The amount of space in the status bar that should be allocated to the status item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1644024-behavior?language=objc
-func (s_ StatusItem) Behavior() StatusItemBehavior {
-	rv := objc.Call[StatusItemBehavior](s_, objc.Sel("behavior"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc
+func (s_ StatusItem) Length() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("length"))
 	return rv
 }
 
-// The set of allowed behaviors for the status item. [Full Topic]
+// The amount of space in the status bar that should be allocated to the status item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1644024-behavior?language=objc
-func (s_ StatusItem) SetBehavior(value StatusItemBehavior) {
-	objc.Call[objc.Void](s_, objc.Sel("setBehavior:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc
+func (s_ StatusItem) SetLength(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setLength:"), value)
 }
 
 // The pull-down menu displayed when the user clicks the status item. [Full Topic]
@@ -139,19 +154,4 @@ func (s_ StatusItem) SetMenu(value IMenu) {
 func (s_ StatusItem) Button() StatusBarButton {
 	rv := objc.Call[StatusBarButton](s_, objc.Sel("button"))
 	return rv
-}
-
-// The amount of space in the status bar that should be allocated to the status item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc
-func (s_ StatusItem) Length() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("length"))
-	return rv
-}
-
-// The amount of space in the status bar that should be allocated to the status item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc
-func (s_ StatusItem) SetLength(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setLength:"), value)
 }

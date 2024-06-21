@@ -19,13 +19,13 @@ type _MutablePostalAddressClass struct {
 type IMutablePostalAddress interface {
 	IPostalAddress
 	SetState(value string)
-	SetCountry(value string)
-	SetCity(value string)
-	SetStreet(value string)
-	SetPostalCode(value string)
 	SetSubLocality(value string)
-	SetSubAdministrativeArea(value string)
+	SetStreet(value string)
+	SetCity(value string)
+	SetPostalCode(value string)
 	SetISOCountryCode(value string)
+	SetSubAdministrativeArea(value string)
+	SetCountry(value string)
 }
 
 // A mutable representation of the postal address for a contact. [Full Topic]
@@ -68,18 +68,11 @@ func (m_ MutablePostalAddress) SetState(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setState:"), value)
 }
 
-// The country or region name of the address. [Full Topic]
+// Additional information associated with the location, typically defined at the city or town level, in a postal address. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1402917-country?language=objc
-func (m_ MutablePostalAddress) SetCountry(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setCountry:"), value)
-}
-
-// The city name of the address. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1403395-city?language=objc
-func (m_ MutablePostalAddress) SetCity(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setCity:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/2799058-sublocality?language=objc
+func (m_ MutablePostalAddress) SetSubLocality(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setSubLocality:"), value)
 }
 
 // The street name of the address. [Full Topic]
@@ -89,6 +82,13 @@ func (m_ MutablePostalAddress) SetStreet(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setStreet:"), value)
 }
 
+// The city name of the address. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1403395-city?language=objc
+func (m_ MutablePostalAddress) SetCity(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setCity:"), value)
+}
+
 // The postal code of the address. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1403303-postalcode?language=objc
@@ -96,11 +96,11 @@ func (m_ MutablePostalAddress) SetPostalCode(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setPostalCode:"), value)
 }
 
-// Additional information associated with the location, typically defined at the city or town level, in a postal address. [Full Topic]
+// The ISO country code, using the ISO 3166-1 alpha-2 standard. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/2799058-sublocality?language=objc
-func (m_ MutablePostalAddress) SetSubLocality(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setSubLocality:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1403295-isocountrycode?language=objc
+func (m_ MutablePostalAddress) SetISOCountryCode(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setISOCountryCode:"), value)
 }
 
 // The subadministrative area (such as a county or other region) in a postal address. [Full Topic]
@@ -110,9 +110,9 @@ func (m_ MutablePostalAddress) SetSubAdministrativeArea(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setSubAdministrativeArea:"), value)
 }
 
-// The ISO country code, using the ISO 3166-1 alpha-2 standard. [Full Topic]
+// The country or region name of the address. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1403295-isocountrycode?language=objc
-func (m_ MutablePostalAddress) SetISOCountryCode(value string) {
-	objc.Call[objc.Void](m_, objc.Sel("setISOCountryCode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablepostaladdress/1402917-country?language=objc
+func (m_ MutablePostalAddress) SetCountry(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setCountry:"), value)
 }

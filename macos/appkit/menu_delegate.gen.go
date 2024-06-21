@@ -14,117 +14,61 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate?language=objc
 type PMenuDelegate interface {
 	// optional
-	NumberOfItemsInMenu(menu Menu) int
-	HasNumberOfItemsInMenu() bool
-
-	// optional
-	MenuDidClose(menu Menu)
-	HasMenuDidClose() bool
-
-	// optional
-	MenuNeedsUpdate(menu Menu)
-	HasMenuNeedsUpdate() bool
-
-	// optional
-	MenuWillOpen(menu Menu)
-	HasMenuWillOpen() bool
+	MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool
+	HasMenuHasKeyEquivalentForEventTargetAction() bool
 
 	// optional
 	MenuWillHighlightItem(menu Menu, item MenuItem)
 	HasMenuWillHighlightItem() bool
 
 	// optional
-	MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool
-	HasMenuHasKeyEquivalentForEventTargetAction() bool
+	MenuDidClose(menu Menu)
+	HasMenuDidClose() bool
+
+	// optional
+	NumberOfItemsInMenu(menu Menu) int
+	HasNumberOfItemsInMenu() bool
+
+	// optional
+	MenuNeedsUpdate(menu Menu)
+	HasMenuNeedsUpdate() bool
 
 	// optional
 	ConfinementRectForMenuOnScreen(menu Menu, screen Screen) foundation.Rect
 	HasConfinementRectForMenuOnScreen() bool
 
 	// optional
-	MenuUpdateItemAtIndexShouldCancel(menu Menu, item MenuItem, index int, shouldCancel bool) bool
-	HasMenuUpdateItemAtIndexShouldCancel() bool
+	MenuWillOpen(menu Menu)
+	HasMenuWillOpen() bool
 }
 
 // A delegate implementation builder for the [PMenuDelegate] protocol.
 type MenuDelegate struct {
-	_NumberOfItemsInMenu                      func(menu Menu) int
-	_MenuDidClose                             func(menu Menu)
-	_MenuNeedsUpdate                          func(menu Menu)
-	_MenuWillOpen                             func(menu Menu)
-	_MenuWillHighlightItem                    func(menu Menu, item MenuItem)
 	_MenuHasKeyEquivalentForEventTargetAction func(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool
+	_MenuWillHighlightItem                    func(menu Menu, item MenuItem)
+	_MenuDidClose                             func(menu Menu)
+	_NumberOfItemsInMenu                      func(menu Menu) int
+	_MenuNeedsUpdate                          func(menu Menu)
 	_ConfinementRectForMenuOnScreen           func(menu Menu, screen Screen) foundation.Rect
-	_MenuUpdateItemAtIndexShouldCancel        func(menu Menu, item MenuItem, index int, shouldCancel bool) bool
+	_MenuWillOpen                             func(menu Menu)
 }
 
-func (di *MenuDelegate) HasNumberOfItemsInMenu() bool {
-	return di._NumberOfItemsInMenu != nil
+func (di *MenuDelegate) HasMenuHasKeyEquivalentForEventTargetAction() bool {
+	return di._MenuHasKeyEquivalentForEventTargetAction != nil
 }
 
-// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
+// Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
-func (di *MenuDelegate) SetNumberOfItemsInMenu(f func(menu Menu) int) {
-	di._NumberOfItemsInMenu = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
+func (di *MenuDelegate) SetMenuHasKeyEquivalentForEventTargetAction(f func(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool) {
+	di._MenuHasKeyEquivalentForEventTargetAction = f
 }
 
-// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
+// Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
-func (di *MenuDelegate) NumberOfItemsInMenu(menu Menu) int {
-	return di._NumberOfItemsInMenu(menu)
-}
-func (di *MenuDelegate) HasMenuDidClose() bool {
-	return di._MenuDidClose != nil
-}
-
-// Invoked after a menu closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
-func (di *MenuDelegate) SetMenuDidClose(f func(menu Menu)) {
-	di._MenuDidClose = f
-}
-
-// Invoked after a menu closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
-func (di *MenuDelegate) MenuDidClose(menu Menu) {
-	di._MenuDidClose(menu)
-}
-func (di *MenuDelegate) HasMenuNeedsUpdate() bool {
-	return di._MenuNeedsUpdate != nil
-}
-
-// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
-func (di *MenuDelegate) SetMenuNeedsUpdate(f func(menu Menu)) {
-	di._MenuNeedsUpdate = f
-}
-
-// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
-func (di *MenuDelegate) MenuNeedsUpdate(menu Menu) {
-	di._MenuNeedsUpdate(menu)
-}
-func (di *MenuDelegate) HasMenuWillOpen() bool {
-	return di._MenuWillOpen != nil
-}
-
-// Invoked when a menu is about to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
-func (di *MenuDelegate) SetMenuWillOpen(f func(menu Menu)) {
-	di._MenuWillOpen = f
-}
-
-// Invoked when a menu is about to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
-func (di *MenuDelegate) MenuWillOpen(menu Menu) {
-	di._MenuWillOpen(menu)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
+func (di *MenuDelegate) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool {
+	return di._MenuHasKeyEquivalentForEventTargetAction(menu, event, target, action)
 }
 func (di *MenuDelegate) HasMenuWillHighlightItem() bool {
 	return di._MenuWillHighlightItem != nil
@@ -143,22 +87,56 @@ func (di *MenuDelegate) SetMenuWillHighlightItem(f func(menu Menu, item MenuItem
 func (di *MenuDelegate) MenuWillHighlightItem(menu Menu, item MenuItem) {
 	di._MenuWillHighlightItem(menu, item)
 }
-func (di *MenuDelegate) HasMenuHasKeyEquivalentForEventTargetAction() bool {
-	return di._MenuHasKeyEquivalentForEventTargetAction != nil
+func (di *MenuDelegate) HasMenuDidClose() bool {
+	return di._MenuDidClose != nil
 }
 
-// Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
+// Invoked after a menu closed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
-func (di *MenuDelegate) SetMenuHasKeyEquivalentForEventTargetAction(f func(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool) {
-	di._MenuHasKeyEquivalentForEventTargetAction = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
+func (di *MenuDelegate) SetMenuDidClose(f func(menu Menu)) {
+	di._MenuDidClose = f
 }
 
-// Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
+// Invoked after a menu closed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
-func (di *MenuDelegate) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool {
-	return di._MenuHasKeyEquivalentForEventTargetAction(menu, event, target, action)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
+func (di *MenuDelegate) MenuDidClose(menu Menu) {
+	di._MenuDidClose(menu)
+}
+func (di *MenuDelegate) HasNumberOfItemsInMenu() bool {
+	return di._NumberOfItemsInMenu != nil
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
+func (di *MenuDelegate) SetNumberOfItemsInMenu(f func(menu Menu) int) {
+	di._NumberOfItemsInMenu = f
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
+func (di *MenuDelegate) NumberOfItemsInMenu(menu Menu) int {
+	return di._NumberOfItemsInMenu(menu)
+}
+func (di *MenuDelegate) HasMenuNeedsUpdate() bool {
+	return di._MenuNeedsUpdate != nil
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
+func (di *MenuDelegate) SetMenuNeedsUpdate(f func(menu Menu)) {
+	di._MenuNeedsUpdate = f
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
+func (di *MenuDelegate) MenuNeedsUpdate(menu Menu) {
+	di._MenuNeedsUpdate(menu)
 }
 func (di *MenuDelegate) HasConfinementRectForMenuOnScreen() bool {
 	return di._ConfinementRectForMenuOnScreen != nil
@@ -177,22 +155,22 @@ func (di *MenuDelegate) SetConfinementRectForMenuOnScreen(f func(menu Menu, scre
 func (di *MenuDelegate) ConfinementRectForMenuOnScreen(menu Menu, screen Screen) foundation.Rect {
 	return di._ConfinementRectForMenuOnScreen(menu, screen)
 }
-func (di *MenuDelegate) HasMenuUpdateItemAtIndexShouldCancel() bool {
-	return di._MenuUpdateItemAtIndexShouldCancel != nil
+func (di *MenuDelegate) HasMenuWillOpen() bool {
+	return di._MenuWillOpen != nil
 }
 
-// Invoked to let the delegate update a menu item before it is displayed. [Full Topic]
+// Invoked when a menu is about to open. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518256-menu?language=objc
-func (di *MenuDelegate) SetMenuUpdateItemAtIndexShouldCancel(f func(menu Menu, item MenuItem, index int, shouldCancel bool) bool) {
-	di._MenuUpdateItemAtIndexShouldCancel = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
+func (di *MenuDelegate) SetMenuWillOpen(f func(menu Menu)) {
+	di._MenuWillOpen = f
 }
 
-// Invoked to let the delegate update a menu item before it is displayed. [Full Topic]
+// Invoked when a menu is about to open. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518256-menu?language=objc
-func (di *MenuDelegate) MenuUpdateItemAtIndexShouldCancel(menu Menu, item MenuItem, index int, shouldCancel bool) bool {
-	return di._MenuUpdateItemAtIndexShouldCancel(menu, item, index, shouldCancel)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
+func (di *MenuDelegate) MenuWillOpen(menu Menu) {
+	di._MenuWillOpen(menu)
 }
 
 // ensure impl type implements protocol interface
@@ -201,62 +179,6 @@ var _ PMenuDelegate = (*MenuDelegateObject)(nil)
 // A concrete type for the [PMenuDelegate] protocol.
 type MenuDelegateObject struct {
 	objc.Object
-}
-
-func (m_ MenuDelegateObject) HasNumberOfItemsInMenu() bool {
-	return m_.RespondsToSelector(objc.Sel("numberOfItemsInMenu:"))
-}
-
-// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
-func (m_ MenuDelegateObject) NumberOfItemsInMenu(menu Menu) int {
-	rv := objc.Call[int](m_, objc.Sel("numberOfItemsInMenu:"), menu)
-	return rv
-}
-
-func (m_ MenuDelegateObject) HasMenuDidClose() bool {
-	return m_.RespondsToSelector(objc.Sel("menuDidClose:"))
-}
-
-// Invoked after a menu closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
-func (m_ MenuDelegateObject) MenuDidClose(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuDidClose:"), menu)
-}
-
-func (m_ MenuDelegateObject) HasMenuNeedsUpdate() bool {
-	return m_.RespondsToSelector(objc.Sel("menuNeedsUpdate:"))
-}
-
-// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
-func (m_ MenuDelegateObject) MenuNeedsUpdate(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuNeedsUpdate:"), menu)
-}
-
-func (m_ MenuDelegateObject) HasMenuWillOpen() bool {
-	return m_.RespondsToSelector(objc.Sel("menuWillOpen:"))
-}
-
-// Invoked when a menu is about to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
-func (m_ MenuDelegateObject) MenuWillOpen(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuWillOpen:"), menu)
-}
-
-func (m_ MenuDelegateObject) HasMenuWillHighlightItem() bool {
-	return m_.RespondsToSelector(objc.Sel("menu:willHighlightItem:"))
-}
-
-// Invoked to indicate that a menu is about to highlight a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518260-menu?language=objc
-func (m_ MenuDelegateObject) MenuWillHighlightItem(menu Menu, item MenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("menu:willHighlightItem:"), menu, item)
 }
 
 func (m_ MenuDelegateObject) HasMenuHasKeyEquivalentForEventTargetAction() bool {
@@ -271,6 +193,51 @@ func (m_ MenuDelegateObject) MenuHasKeyEquivalentForEventTargetAction(menu Menu,
 	return rv
 }
 
+func (m_ MenuDelegateObject) HasMenuWillHighlightItem() bool {
+	return m_.RespondsToSelector(objc.Sel("menu:willHighlightItem:"))
+}
+
+// Invoked to indicate that a menu is about to highlight a given item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518260-menu?language=objc
+func (m_ MenuDelegateObject) MenuWillHighlightItem(menu Menu, item MenuItem) {
+	objc.Call[objc.Void](m_, objc.Sel("menu:willHighlightItem:"), menu, item)
+}
+
+func (m_ MenuDelegateObject) HasMenuDidClose() bool {
+	return m_.RespondsToSelector(objc.Sel("menuDidClose:"))
+}
+
+// Invoked after a menu closed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
+func (m_ MenuDelegateObject) MenuDidClose(menu Menu) {
+	objc.Call[objc.Void](m_, objc.Sel("menuDidClose:"), menu)
+}
+
+func (m_ MenuDelegateObject) HasNumberOfItemsInMenu() bool {
+	return m_.RespondsToSelector(objc.Sel("numberOfItemsInMenu:"))
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session so the delegate can specify the number of items in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
+func (m_ MenuDelegateObject) NumberOfItemsInMenu(menu Menu) int {
+	rv := objc.Call[int](m_, objc.Sel("numberOfItemsInMenu:"), menu)
+	return rv
+}
+
+func (m_ MenuDelegateObject) HasMenuNeedsUpdate() bool {
+	return m_.RespondsToSelector(objc.Sel("menuNeedsUpdate:"))
+}
+
+// Invoked when a menu is about to be displayed at the start of a tracking session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
+func (m_ MenuDelegateObject) MenuNeedsUpdate(menu Menu) {
+	objc.Call[objc.Void](m_, objc.Sel("menuNeedsUpdate:"), menu)
+}
+
 func (m_ MenuDelegateObject) HasConfinementRectForMenuOnScreen() bool {
 	return m_.RespondsToSelector(objc.Sel("confinementRectForMenu:onScreen:"))
 }
@@ -283,14 +250,13 @@ func (m_ MenuDelegateObject) ConfinementRectForMenuOnScreen(menu Menu, screen Sc
 	return rv
 }
 
-func (m_ MenuDelegateObject) HasMenuUpdateItemAtIndexShouldCancel() bool {
-	return m_.RespondsToSelector(objc.Sel("menu:updateItem:atIndex:shouldCancel:"))
+func (m_ MenuDelegateObject) HasMenuWillOpen() bool {
+	return m_.RespondsToSelector(objc.Sel("menuWillOpen:"))
 }
 
-// Invoked to let the delegate update a menu item before it is displayed. [Full Topic]
+// Invoked when a menu is about to open. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518256-menu?language=objc
-func (m_ MenuDelegateObject) MenuUpdateItemAtIndexShouldCancel(menu Menu, item MenuItem, index int, shouldCancel bool) bool {
-	rv := objc.Call[bool](m_, objc.Sel("menu:updateItem:atIndex:shouldCancel:"), menu, item, index, shouldCancel)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
+func (m_ MenuDelegateObject) MenuWillOpen(menu Menu) {
+	objc.Call[objc.Void](m_, objc.Sel("menuWillOpen:"), menu)
 }

@@ -20,12 +20,12 @@ type INibConnector interface {
 	objc.IObject
 	ReplaceObjectWithObject(oldObject objc.IObject, newObject objc.IObject)
 	EstablishConnection()
-	Label() string
-	SetLabel(value string)
-	Destination() objc.Object
-	SetDestination(value objc.IObject)
 	Source() objc.Object
 	SetSource(value objc.IObject)
+	Destination() objc.Object
+	SetDestination(value objc.IObject)
+	Label() string
+	SetLabel(value string)
 }
 
 // A connection between two nibs. [Full Topic]
@@ -77,17 +77,17 @@ func (n_ NibConnector) EstablishConnection() {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387493-label?language=objc
-func (n_ NibConnector) Label() string {
-	rv := objc.Call[string](n_, objc.Sel("label"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387484-source?language=objc
+func (n_ NibConnector) Source() objc.Object {
+	rv := objc.Call[objc.Object](n_, objc.Sel("source"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387493-label?language=objc
-func (n_ NibConnector) SetLabel(value string) {
-	objc.Call[objc.Void](n_, objc.Sel("setLabel:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387484-source?language=objc
+func (n_ NibConnector) SetSource(value objc.IObject) {
+	objc.Call[objc.Void](n_, objc.Sel("setSource:"), value)
 }
 
 //	[Full Topic]
@@ -107,15 +107,15 @@ func (n_ NibConnector) SetDestination(value objc.IObject) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387484-source?language=objc
-func (n_ NibConnector) Source() objc.Object {
-	rv := objc.Call[objc.Object](n_, objc.Sel("source"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387493-label?language=objc
+func (n_ NibConnector) Label() string {
+	rv := objc.Call[string](n_, objc.Sel("label"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387484-source?language=objc
-func (n_ NibConnector) SetSource(value objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setSource:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibconnector/1387493-label?language=objc
+func (n_ NibConnector) SetLabel(value string) {
+	objc.Call[objc.Void](n_, objc.Sel("setLabel:"), value)
 }

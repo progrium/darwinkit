@@ -15,8 +15,8 @@ type PIndirectRenderCommand interface {
 	HasDrawIndexedPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetInstanceCountBaseInstanceTessellationFactorBufferTessellationFactorBufferOffsetTessellationFactorBufferInstanceStride() bool
 
 	// optional
-	Reset()
-	HasReset() bool
+	SetVertexBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
+	HasSetVertexBufferOffsetAtIndex() bool
 
 	// optional
 	DrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstanceTessellationFactorBufferTessellationFactorBufferOffsetTessellationFactorBufferInstanceStride(numberOfPatchControlPoints uint, patchStart uint, patchCount uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, instanceCount uint, baseInstance uint, buffer BufferObject, offset uint, instanceStride uint)
@@ -27,20 +27,20 @@ type PIndirectRenderCommand interface {
 	HasDrawPrimitivesVertexStartVertexCountInstanceCountBaseInstance() bool
 
 	// optional
-	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint)
-	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool
+	SetFragmentBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
+	HasSetFragmentBufferOffsetAtIndex() bool
 
 	// optional
 	SetRenderPipelineState(pipelineState RenderPipelineStateObject)
 	HasSetRenderPipelineState() bool
 
 	// optional
-	SetVertexBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
-	HasSetVertexBufferOffsetAtIndex() bool
+	Reset()
+	HasReset() bool
 
 	// optional
-	SetFragmentBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint)
-	HasSetFragmentBufferOffsetAtIndex() bool
+	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint)
+	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool
 }
 
 // ensure impl type implements protocol interface
@@ -65,15 +65,16 @@ func (i_ IndirectRenderCommandObject) DrawIndexedPatchesPatchStartPatchCountPatc
 	objc.Call[objc.Void](i_, objc.Sel("drawIndexedPatches:patchStart:patchCount:patchIndexBuffer:patchIndexBufferOffset:controlPointIndexBuffer:controlPointIndexBufferOffset:instanceCount:baseInstance:tessellationFactorBuffer:tessellationFactorBufferOffset:tessellationFactorBufferInstanceStride:"), numberOfPatchControlPoints, patchStart, patchCount, po3, patchIndexBufferOffset, po5, controlPointIndexBufferOffset, instanceCount, baseInstance, po9, offset, instanceStride)
 }
 
-func (i_ IndirectRenderCommandObject) HasReset() bool {
-	return i_.RespondsToSelector(objc.Sel("reset"))
+func (i_ IndirectRenderCommandObject) HasSetVertexBufferOffsetAtIndex() bool {
+	return i_.RespondsToSelector(objc.Sel("setVertexBuffer:offset:atIndex:"))
 }
 
-// Resets the command to its default state. [Full Topic]
+// Sets a vertex buffer argument for the command. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2981030-reset?language=objc
-func (i_ IndirectRenderCommandObject) Reset() {
-	objc.Call[objc.Void](i_, objc.Sel("reset"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2967438-setvertexbuffer?language=objc
+func (i_ IndirectRenderCommandObject) SetVertexBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](i_, objc.Sel("setVertexBuffer:offset:atIndex:"), po0, offset, index)
 }
 
 func (i_ IndirectRenderCommandObject) HasDrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstanceTessellationFactorBufferTessellationFactorBufferOffsetTessellationFactorBufferInstanceStride() bool {
@@ -100,16 +101,16 @@ func (i_ IndirectRenderCommandObject) DrawPrimitivesVertexStartVertexCountInstan
 	objc.Call[objc.Void](i_, objc.Sel("drawPrimitives:vertexStart:vertexCount:instanceCount:baseInstance:"), primitiveType, vertexStart, vertexCount, instanceCount, baseInstance)
 }
 
-func (i_ IndirectRenderCommandObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool {
-	return i_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"))
+func (i_ IndirectRenderCommandObject) HasSetFragmentBufferOffsetAtIndex() bool {
+	return i_.RespondsToSelector(objc.Sel("setFragmentBuffer:offset:atIndex:"))
 }
 
-// Encodes a command to render a number of instances of primitives using an index list specified in a buffer, starting from the base vertex of the base instance. [Full Topic]
+// Sets a fragment buffer argument for the command. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2966618-drawindexedprimitives?language=objc
-func (i_ IndirectRenderCommandObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint) {
-	po3 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
-	objc.Call[objc.Void](i_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"), primitiveType, indexCount, indexType, po3, indexBufferOffset, instanceCount, baseVertex, baseInstance)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2967437-setfragmentbuffer?language=objc
+func (i_ IndirectRenderCommandObject) SetFragmentBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](i_, objc.Sel("setFragmentBuffer:offset:atIndex:"), po0, offset, index)
 }
 
 func (i_ IndirectRenderCommandObject) HasSetRenderPipelineState() bool {
@@ -124,26 +125,25 @@ func (i_ IndirectRenderCommandObject) SetRenderPipelineState(pipelineState Rende
 	objc.Call[objc.Void](i_, objc.Sel("setRenderPipelineState:"), po0)
 }
 
-func (i_ IndirectRenderCommandObject) HasSetVertexBufferOffsetAtIndex() bool {
-	return i_.RespondsToSelector(objc.Sel("setVertexBuffer:offset:atIndex:"))
+func (i_ IndirectRenderCommandObject) HasReset() bool {
+	return i_.RespondsToSelector(objc.Sel("reset"))
 }
 
-// Sets a vertex buffer argument for the command. [Full Topic]
+// Resets the command to its default state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2967438-setvertexbuffer?language=objc
-func (i_ IndirectRenderCommandObject) SetVertexBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](i_, objc.Sel("setVertexBuffer:offset:atIndex:"), po0, offset, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2981030-reset?language=objc
+func (i_ IndirectRenderCommandObject) Reset() {
+	objc.Call[objc.Void](i_, objc.Sel("reset"))
 }
 
-func (i_ IndirectRenderCommandObject) HasSetFragmentBufferOffsetAtIndex() bool {
-	return i_.RespondsToSelector(objc.Sel("setFragmentBuffer:offset:atIndex:"))
+func (i_ IndirectRenderCommandObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool {
+	return i_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"))
 }
 
-// Sets a fragment buffer argument for the command. [Full Topic]
+// Encodes a command to render a number of instances of primitives using an index list specified in a buffer, starting from the base vertex of the base instance. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2967437-setfragmentbuffer?language=objc
-func (i_ IndirectRenderCommandObject) SetFragmentBufferOffsetAtIndex(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](i_, objc.Sel("setFragmentBuffer:offset:atIndex:"), po0, offset, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlindirectrendercommand/2966618-drawindexedprimitives?language=objc
+func (i_ IndirectRenderCommandObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint) {
+	po3 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
+	objc.Call[objc.Void](i_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"), primitiveType, indexCount, indexType, po3, indexBufferOffset, instanceCount, baseVertex, baseInstance)
 }

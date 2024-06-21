@@ -19,17 +19,17 @@ type _PresentationIntentClass struct {
 type IPresentationIntent interface {
 	objc.IObject
 	IsEquivalentToPresentationIntent(other IPresentationIntent) bool
-	LanguageHint() string
-	Row() int
+	IntentKind() PresentationIntentKind
+	Ordinal() int
 	IndentationLevel() int
 	ColumnCount() int
-	IntentKind() PresentationIntentKind
-	ColumnAlignments() []Number
+	Column() int
 	HeaderLevel() int
 	Identity() int
+	Row() int
+	ColumnAlignments() []Number
+	LanguageHint() string
 	ParentIntent() PresentationIntent
-	Ordinal() int
-	Column() int
 }
 
 // The intended presentation for blocks of text, like paragraphs, lists, code blocsk, and parts of tables. [Full Topic]
@@ -67,36 +67,6 @@ func (p_ PresentationIntent) Init() PresentationIntent {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793748-orderedlistintentwithidentity?language=objc
-func (pc _PresentationIntentClass) OrderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("orderedListIntentWithIdentity:nestedInsideIntent:"), identity, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793748-orderedlistintentwithidentity?language=objc
-func PresentationIntent_OrderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.OrderedListIntentWithIdentityNestedInsideIntent(identity, parent)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793747-listitemintentwithidentity?language=objc
-func (pc _PresentationIntentClass) ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity int, ordinal int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("listItemIntentWithIdentity:ordinal:nestedInsideIntent:"), identity, ordinal, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793747-listitemintentwithidentity?language=objc
-func PresentationIntent_ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity int, ordinal int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity, ordinal, parent)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793753-tablecellintentwithidentity?language=objc
 func (pc _PresentationIntentClass) TableCellIntentWithIdentityColumnNestedInsideIntent(identity int, column int, parent IPresentationIntent) PresentationIntent {
 	rv := objc.Call[PresentationIntent](pc, objc.Sel("tableCellIntentWithIdentity:column:nestedInsideIntent:"), identity, column, parent)
@@ -108,51 +78,6 @@ func (pc _PresentationIntentClass) TableCellIntentWithIdentityColumnNestedInside
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793753-tablecellintentwithidentity?language=objc
 func PresentationIntent_TableCellIntentWithIdentityColumnNestedInsideIntent(identity int, column int, parent IPresentationIntent) PresentationIntent {
 	return PresentationIntentClass.TableCellIntentWithIdentityColumnNestedInsideIntent(identity, column, parent)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793736-codeblockintentwithidentity?language=objc
-func (pc _PresentationIntentClass) CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity int, languageHint string, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("codeBlockIntentWithIdentity:languageHint:nestedInsideIntent:"), identity, languageHint, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793736-codeblockintentwithidentity?language=objc
-func PresentationIntent_CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity int, languageHint string, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity, languageHint, parent)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793735-blockquoteintentwithidentity?language=objc
-func (pc _PresentationIntentClass) BlockQuoteIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("blockQuoteIntentWithIdentity:nestedInsideIntent:"), identity, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793735-blockquoteintentwithidentity?language=objc
-func PresentationIntent_BlockQuoteIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.BlockQuoteIntentWithIdentityNestedInsideIntent(identity, parent)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793758-unorderedlistintentwithidentity?language=objc
-func (pc _PresentationIntentClass) UnorderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("unorderedListIntentWithIdentity:nestedInsideIntent:"), identity, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793758-unorderedlistintentwithidentity?language=objc
-func PresentationIntent_UnorderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.UnorderedListIntentWithIdentityNestedInsideIntent(identity, parent)
 }
 
 //	[Full Topic]
@@ -172,32 +97,17 @@ func PresentationIntent_TableIntentWithIdentityColumnCountAlignmentsNestedInside
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793750-paragraphintentwithidentity?language=objc
-func (pc _PresentationIntentClass) ParagraphIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("paragraphIntentWithIdentity:nestedInsideIntent:"), identity, parent)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793736-codeblockintentwithidentity?language=objc
+func (pc _PresentationIntentClass) CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity int, languageHint string, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("codeBlockIntentWithIdentity:languageHint:nestedInsideIntent:"), identity, languageHint, parent)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793750-paragraphintentwithidentity?language=objc
-func PresentationIntent_ParagraphIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.ParagraphIntentWithIdentityNestedInsideIntent(identity, parent)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793740-headerintentwithidentity?language=objc
-func (pc _PresentationIntentClass) HeaderIntentWithIdentityLevelNestedInsideIntent(identity int, level int, parent IPresentationIntent) PresentationIntent {
-	rv := objc.Call[PresentationIntent](pc, objc.Sel("headerIntentWithIdentity:level:nestedInsideIntent:"), identity, level, parent)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793740-headerintentwithidentity?language=objc
-func PresentationIntent_HeaderIntentWithIdentityLevelNestedInsideIntent(identity int, level int, parent IPresentationIntent) PresentationIntent {
-	return PresentationIntentClass.HeaderIntentWithIdentityLevelNestedInsideIntent(identity, level, parent)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793736-codeblockintentwithidentity?language=objc
+func PresentationIntent_CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity int, languageHint string, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.CodeBlockIntentWithIdentityLanguageHintNestedInsideIntent(identity, languageHint, parent)
 }
 
 //	[Full Topic]
@@ -217,6 +127,21 @@ func PresentationIntent_TableHeaderRowIntentWithIdentityNestedInsideIntent(ident
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793747-listitemintentwithidentity?language=objc
+func (pc _PresentationIntentClass) ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity int, ordinal int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("listItemIntentWithIdentity:ordinal:nestedInsideIntent:"), identity, ordinal, parent)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793747-listitemintentwithidentity?language=objc
+func PresentationIntent_ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity int, ordinal int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.ListItemIntentWithIdentityOrdinalNestedInsideIntent(identity, ordinal, parent)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793757-thematicbreakintentwithidentity?language=objc
 func (pc _PresentationIntentClass) ThematicBreakIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
 	rv := objc.Call[PresentationIntent](pc, objc.Sel("thematicBreakIntentWithIdentity:nestedInsideIntent:"), identity, parent)
@@ -228,6 +153,59 @@ func (pc _PresentationIntentClass) ThematicBreakIntentWithIdentityNestedInsideIn
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793757-thematicbreakintentwithidentity?language=objc
 func PresentationIntent_ThematicBreakIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
 	return PresentationIntentClass.ThematicBreakIntentWithIdentityNestedInsideIntent(identity, parent)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793750-paragraphintentwithidentity?language=objc
+func (pc _PresentationIntentClass) ParagraphIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("paragraphIntentWithIdentity:nestedInsideIntent:"), identity, parent)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793750-paragraphintentwithidentity?language=objc
+func PresentationIntent_ParagraphIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.ParagraphIntentWithIdentityNestedInsideIntent(identity, parent)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793758-unorderedlistintentwithidentity?language=objc
+func (pc _PresentationIntentClass) UnorderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("unorderedListIntentWithIdentity:nestedInsideIntent:"), identity, parent)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793758-unorderedlistintentwithidentity?language=objc
+func PresentationIntent_UnorderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.UnorderedListIntentWithIdentityNestedInsideIntent(identity, parent)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793745-isequivalenttopresentationintent?language=objc
+func (p_ PresentationIntent) IsEquivalentToPresentationIntent(other IPresentationIntent) bool {
+	rv := objc.Call[bool](p_, objc.Sel("isEquivalentToPresentationIntent:"), other)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793735-blockquoteintentwithidentity?language=objc
+func (pc _PresentationIntentClass) BlockQuoteIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("blockQuoteIntentWithIdentity:nestedInsideIntent:"), identity, parent)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793735-blockquoteintentwithidentity?language=objc
+func PresentationIntent_BlockQuoteIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.BlockQuoteIntentWithIdentityNestedInsideIntent(identity, parent)
 }
 
 //	[Full Topic]
@@ -247,25 +225,47 @@ func PresentationIntent_TableRowIntentWithIdentityRowNestedInsideIntent(identity
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793745-isequivalenttopresentationintent?language=objc
-func (p_ PresentationIntent) IsEquivalentToPresentationIntent(other IPresentationIntent) bool {
-	rv := objc.Call[bool](p_, objc.Sel("isEquivalentToPresentationIntent:"), other)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793740-headerintentwithidentity?language=objc
+func (pc _PresentationIntentClass) HeaderIntentWithIdentityLevelNestedInsideIntent(identity int, level int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("headerIntentWithIdentity:level:nestedInsideIntent:"), identity, level, parent)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793746-languagehint?language=objc
-func (p_ PresentationIntent) LanguageHint() string {
-	rv := objc.Call[string](p_, objc.Sel("languageHint"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793740-headerintentwithidentity?language=objc
+func PresentationIntent_HeaderIntentWithIdentityLevelNestedInsideIntent(identity int, level int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.HeaderIntentWithIdentityLevelNestedInsideIntent(identity, level, parent)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793748-orderedlistintentwithidentity?language=objc
+func (pc _PresentationIntentClass) OrderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	rv := objc.Call[PresentationIntent](pc, objc.Sel("orderedListIntentWithIdentity:nestedInsideIntent:"), identity, parent)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793752-row?language=objc
-func (p_ PresentationIntent) Row() int {
-	rv := objc.Call[int](p_, objc.Sel("row"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793748-orderedlistintentwithidentity?language=objc
+func PresentationIntent_OrderedListIntentWithIdentityNestedInsideIntent(identity int, parent IPresentationIntent) PresentationIntent {
+	return PresentationIntentClass.OrderedListIntentWithIdentityNestedInsideIntent(identity, parent)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793744-intentkind?language=objc
+func (p_ PresentationIntent) IntentKind() PresentationIntentKind {
+	rv := objc.Call[PresentationIntentKind](p_, objc.Sel("intentKind"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793749-ordinal?language=objc
+func (p_ PresentationIntent) Ordinal() int {
+	rv := objc.Call[int](p_, objc.Sel("ordinal"))
 	return rv
 }
 
@@ -287,17 +287,9 @@ func (p_ PresentationIntent) ColumnCount() int {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793744-intentkind?language=objc
-func (p_ PresentationIntent) IntentKind() PresentationIntentKind {
-	rv := objc.Call[PresentationIntentKind](p_, objc.Sel("intentKind"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793738-columnalignments?language=objc
-func (p_ PresentationIntent) ColumnAlignments() []Number {
-	rv := objc.Call[[]Number](p_, objc.Sel("columnAlignments"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793737-column?language=objc
+func (p_ PresentationIntent) Column() int {
+	rv := objc.Call[int](p_, objc.Sel("column"))
 	return rv
 }
 
@@ -319,24 +311,32 @@ func (p_ PresentationIntent) Identity() int {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793752-row?language=objc
+func (p_ PresentationIntent) Row() int {
+	rv := objc.Call[int](p_, objc.Sel("row"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793738-columnalignments?language=objc
+func (p_ PresentationIntent) ColumnAlignments() []Number {
+	rv := objc.Call[[]Number](p_, objc.Sel("columnAlignments"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793746-languagehint?language=objc
+func (p_ PresentationIntent) LanguageHint() string {
+	rv := objc.Call[string](p_, objc.Sel("languageHint"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793751-parentintent?language=objc
 func (p_ PresentationIntent) ParentIntent() PresentationIntent {
 	rv := objc.Call[PresentationIntent](p_, objc.Sel("parentIntent"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793749-ordinal?language=objc
-func (p_ PresentationIntent) Ordinal() int {
-	rv := objc.Call[int](p_, objc.Sel("ordinal"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nspresentationintent/3793737-column?language=objc
-func (p_ PresentationIntent) Column() int {
-	rv := objc.Call[int](p_, objc.Sel("column"))
 	return rv
 }

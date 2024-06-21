@@ -23,9 +23,9 @@ type IExtensionProvider interface {
 	AddDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool
 	RemoveDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool
 	Source() ExtensionProviderSourceObject
-	Devices() []ExtensionDevice
-	ClientQueue() dispatch.Queue
 	ConnectedClients() []ExtensionClient
+	ClientQueue() dispatch.Queue
+	Devices() []ExtensionDevice
 }
 
 // An object that manages device connections for a provider. [Full Topic]
@@ -96,14 +96,6 @@ func (e_ ExtensionProvider) NotifyPropertiesChanged(propertyStates map[Extension
 	objc.Call[objc.Void](e_, objc.Sel("notifyPropertiesChanged:"), propertyStates)
 }
 
-// Adds a device to a provider. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915906-adddevice?language=objc
-func (e_ ExtensionProvider) AddDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](e_, objc.Sel("addDevice:error:"), device, outError)
-	return rv
-}
-
 // Starts the system extension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915915-startservicewithprovider?language=objc
@@ -116,6 +108,14 @@ func (ec _ExtensionProviderClass) StartServiceWithProvider(provider IExtensionPr
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915915-startservicewithprovider?language=objc
 func ExtensionProvider_StartServiceWithProvider(provider IExtensionProvider) {
 	ExtensionProviderClass.StartServiceWithProvider(provider)
+}
+
+// Adds a device to a provider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915906-adddevice?language=objc
+func (e_ ExtensionProvider) AddDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("addDevice:error:"), device, outError)
+	return rv
 }
 
 // Removes a device from a provider. [Full Topic]
@@ -134,11 +134,11 @@ func (e_ ExtensionProvider) Source() ExtensionProviderSourceObject {
 	return rv
 }
 
-// An array of connected devices. [Full Topic]
+// An array of connected clients. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915909-devices?language=objc
-func (e_ ExtensionProvider) Devices() []ExtensionDevice {
-	rv := objc.Call[[]ExtensionDevice](e_, objc.Sel("devices"))
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915908-connectedclients?language=objc
+func (e_ ExtensionProvider) ConnectedClients() []ExtensionClient {
+	rv := objc.Call[[]ExtensionClient](e_, objc.Sel("connectedClients"))
 	return rv
 }
 
@@ -150,10 +150,10 @@ func (e_ ExtensionProvider) ClientQueue() dispatch.Queue {
 	return rv
 }
 
-// An array of connected clients. [Full Topic]
+// An array of connected devices. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915908-connectedclients?language=objc
-func (e_ ExtensionProvider) ConnectedClients() []ExtensionClient {
-	rv := objc.Call[[]ExtensionClient](e_, objc.Sel("connectedClients"))
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915909-devices?language=objc
+func (e_ ExtensionProvider) Devices() []ExtensionDevice {
+	rv := objc.Call[[]ExtensionDevice](e_, objc.Sel("devices"))
 	return rv
 }

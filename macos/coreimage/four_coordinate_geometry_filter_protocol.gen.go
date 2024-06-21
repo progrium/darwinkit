@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter?language=objc
 type PFourCoordinateGeometryFilter interface {
 	// optional
-	SetTopRight(value coregraphics.Point)
-	HasSetTopRight() bool
+	SetBottomRight(value coregraphics.Point)
+	HasSetBottomRight() bool
 
 	// optional
-	TopRight() coregraphics.Point
-	HasTopRight() bool
+	BottomRight() coregraphics.Point
+	HasBottomRight() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -28,20 +28,20 @@ type PFourCoordinateGeometryFilter interface {
 	HasInputImage() bool
 
 	// optional
-	SetBottomRight(value coregraphics.Point)
-	HasSetBottomRight() bool
-
-	// optional
-	BottomRight() coregraphics.Point
-	HasBottomRight() bool
-
-	// optional
 	SetBottomLeft(value coregraphics.Point)
 	HasSetBottomLeft() bool
 
 	// optional
 	BottomLeft() coregraphics.Point
 	HasBottomLeft() bool
+
+	// optional
+	SetTopRight(value coregraphics.Point)
+	HasSetTopRight() bool
+
+	// optional
+	TopRight() coregraphics.Point
+	HasTopRight() bool
 
 	// optional
 	SetTopLeft(value coregraphics.Point)
@@ -60,26 +60,26 @@ type FourCoordinateGeometryFilterObject struct {
 	objc.Object
 }
 
-func (f_ FourCoordinateGeometryFilterObject) HasSetTopRight() bool {
-	return f_.RespondsToSelector(objc.Sel("setTopRight:"))
+func (f_ FourCoordinateGeometryFilterObject) HasSetBottomRight() bool {
+	return f_.RespondsToSelector(objc.Sel("setBottomRight:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338735-topright?language=objc
-func (f_ FourCoordinateGeometryFilterObject) SetTopRight(value coregraphics.Point) {
-	objc.Call[objc.Void](f_, objc.Sel("setTopRight:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338732-bottomright?language=objc
+func (f_ FourCoordinateGeometryFilterObject) SetBottomRight(value coregraphics.Point) {
+	objc.Call[objc.Void](f_, objc.Sel("setBottomRight:"), value)
 }
 
-func (f_ FourCoordinateGeometryFilterObject) HasTopRight() bool {
-	return f_.RespondsToSelector(objc.Sel("topRight"))
+func (f_ FourCoordinateGeometryFilterObject) HasBottomRight() bool {
+	return f_.RespondsToSelector(objc.Sel("bottomRight"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338735-topright?language=objc
-func (f_ FourCoordinateGeometryFilterObject) TopRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](f_, objc.Sel("topRight"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338732-bottomright?language=objc
+func (f_ FourCoordinateGeometryFilterObject) BottomRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](f_, objc.Sel("bottomRight"))
 	return rv
 }
 
@@ -106,29 +106,6 @@ func (f_ FourCoordinateGeometryFilterObject) InputImage() Image {
 	return rv
 }
 
-func (f_ FourCoordinateGeometryFilterObject) HasSetBottomRight() bool {
-	return f_.RespondsToSelector(objc.Sel("setBottomRight:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338732-bottomright?language=objc
-func (f_ FourCoordinateGeometryFilterObject) SetBottomRight(value coregraphics.Point) {
-	objc.Call[objc.Void](f_, objc.Sel("setBottomRight:"), value)
-}
-
-func (f_ FourCoordinateGeometryFilterObject) HasBottomRight() bool {
-	return f_.RespondsToSelector(objc.Sel("bottomRight"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338732-bottomright?language=objc
-func (f_ FourCoordinateGeometryFilterObject) BottomRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](f_, objc.Sel("bottomRight"))
-	return rv
-}
-
 func (f_ FourCoordinateGeometryFilterObject) HasSetBottomLeft() bool {
 	return f_.RespondsToSelector(objc.Sel("setBottomLeft:"))
 }
@@ -149,6 +126,29 @@ func (f_ FourCoordinateGeometryFilterObject) HasBottomLeft() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338731-bottomleft?language=objc
 func (f_ FourCoordinateGeometryFilterObject) BottomLeft() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](f_, objc.Sel("bottomLeft"))
+	return rv
+}
+
+func (f_ FourCoordinateGeometryFilterObject) HasSetTopRight() bool {
+	return f_.RespondsToSelector(objc.Sel("setTopRight:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338735-topright?language=objc
+func (f_ FourCoordinateGeometryFilterObject) SetTopRight(value coregraphics.Point) {
+	objc.Call[objc.Void](f_, objc.Sel("setTopRight:"), value)
+}
+
+func (f_ FourCoordinateGeometryFilterObject) HasTopRight() bool {
+	return f_.RespondsToSelector(objc.Sel("topRight"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338735-topright?language=objc
+func (f_ FourCoordinateGeometryFilterObject) TopRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](f_, objc.Sel("topRight"))
 	return rv
 }
 

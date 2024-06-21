@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask?language=objc
 type PBlendWithMask interface {
 	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
+
+	// optional
 	SetMaskImage(value Image)
 	HasSetMaskImage() bool
 
@@ -25,14 +33,6 @@ type PBlendWithMask interface {
 	// optional
 	BackgroundImage() Image
 	HasBackgroundImage() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PBlendWithMask = (*BlendWithMaskObject)(nil)
 // A concrete type for the [PBlendWithMask] protocol.
 type BlendWithMaskObject struct {
 	objc.Object
+}
+
+func (b_ BlendWithMaskObject) HasSetInputImage() bool {
+	return b_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as a foreground image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228081-inputimage?language=objc
+func (b_ BlendWithMaskObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
+}
+
+func (b_ BlendWithMaskObject) HasInputImage() bool {
+	return b_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as a foreground image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228081-inputimage?language=objc
+func (b_ BlendWithMaskObject) InputImage() Image {
+	rv := objc.Call[Image](b_, objc.Sel("inputImage"))
+	return rv
 }
 
 func (b_ BlendWithMaskObject) HasSetMaskImage() bool {
@@ -86,28 +109,5 @@ func (b_ BlendWithMaskObject) HasBackgroundImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228080-backgroundimage?language=objc
 func (b_ BlendWithMaskObject) BackgroundImage() Image {
 	rv := objc.Call[Image](b_, objc.Sel("backgroundImage"))
-	return rv
-}
-
-func (b_ BlendWithMaskObject) HasSetInputImage() bool {
-	return b_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as a foreground image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228081-inputimage?language=objc
-func (b_ BlendWithMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
-}
-
-func (b_ BlendWithMaskObject) HasInputImage() bool {
-	return b_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as a foreground image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228081-inputimage?language=objc
-func (b_ BlendWithMaskObject) InputImage() Image {
-	rv := objc.Call[Image](b_, objc.Sel("inputImage"))
 	return rv
 }

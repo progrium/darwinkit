@@ -19,20 +19,20 @@ type _TextFinderClass struct {
 // An interface definition for the [TextFinder] class.
 type ITextFinder interface {
 	objc.IObject
-	NoteClientStringWillChange()
-	ValidateAction(op TextFinderAction) bool
 	PerformAction(op TextFinderAction)
 	CancelFindIndicator()
+	NoteClientStringWillChange()
+	ValidateAction(op TextFinderAction) bool
+	IncrementalMatchRanges() []foundation.Value
 	IsIncrementalSearchingEnabled() bool
 	SetIncrementalSearchingEnabled(value bool)
-	IncrementalSearchingShouldDimContentView() bool
-	SetIncrementalSearchingShouldDimContentView(value bool)
-	IncrementalMatchRanges() []foundation.Value
+	FindIndicatorNeedsUpdate() bool
+	SetFindIndicatorNeedsUpdate(value bool)
 	FindBarContainer() TextFinderBarContainerObject
 	SetFindBarContainer(value PTextFinderBarContainer)
 	SetFindBarContainerObject(valueObject objc.IObject)
-	FindIndicatorNeedsUpdate() bool
-	SetFindIndicatorNeedsUpdate(value bool)
+	IncrementalSearchingShouldDimContentView() bool
+	SetIncrementalSearchingShouldDimContentView(value bool)
 	Client() TextFinderClientObject
 	SetClient(value PTextFinderClient)
 	SetClientObject(valueObject objc.IObject)
@@ -71,18 +71,18 @@ func NewTextFinder() TextFinder {
 	return TextFinderClass.New()
 }
 
-// Override this method to draw custom highlighting. [Full Topic]
+// Performs the specified text finding action. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526120-drawincrementalmatchhighlightinr?language=objc
-func (tc _TextFinderClass) DrawIncrementalMatchHighlightInRect(rect foundation.Rect) {
-	objc.Call[objc.Void](tc, objc.Sel("drawIncrementalMatchHighlightInRect:"), rect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526414-performaction?language=objc
+func (t_ TextFinder) PerformAction(op TextFinderAction) {
+	objc.Call[objc.Void](t_, objc.Sel("performAction:"), op)
 }
 
-// Override this method to draw custom highlighting. [Full Topic]
+// Cancels the find indicator immediately. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526120-drawincrementalmatchhighlightinr?language=objc
-func TextFinder_DrawIncrementalMatchHighlightInRect(rect foundation.Rect) {
-	TextFinderClass.DrawIncrementalMatchHighlightInRect(rect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1525467-cancelfindindicator?language=objc
+func (t_ TextFinder) CancelFindIndicator() {
+	objc.Call[objc.Void](t_, objc.Sel("cancelFindIndicator"))
 }
 
 // Invoke this method when the searched content will change. [Full Topic]
@@ -100,18 +100,26 @@ func (t_ TextFinder) ValidateAction(op TextFinderAction) bool {
 	return rv
 }
 
-// Performs the specified text finding action. [Full Topic]
+// Override this method to draw custom highlighting. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526414-performaction?language=objc
-func (t_ TextFinder) PerformAction(op TextFinderAction) {
-	objc.Call[objc.Void](t_, objc.Sel("performAction:"), op)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526120-drawincrementalmatchhighlightinr?language=objc
+func (tc _TextFinderClass) DrawIncrementalMatchHighlightInRect(rect foundation.Rect) {
+	objc.Call[objc.Void](tc, objc.Sel("drawIncrementalMatchHighlightInRect:"), rect)
 }
 
-// Cancels the find indicator immediately. [Full Topic]
+// Override this method to draw custom highlighting. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1525467-cancelfindindicator?language=objc
-func (t_ TextFinder) CancelFindIndicator() {
-	objc.Call[objc.Void](t_, objc.Sel("cancelFindIndicator"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526120-drawincrementalmatchhighlightinr?language=objc
+func TextFinder_DrawIncrementalMatchHighlightInRect(rect foundation.Rect) {
+	TextFinderClass.DrawIncrementalMatchHighlightInRect(rect)
+}
+
+// Array of incremental search matches posted on the main queue, which have been found during a background search. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528304-incrementalmatchranges?language=objc
+func (t_ TextFinder) IncrementalMatchRanges() []foundation.Value {
+	rv := objc.Call[[]foundation.Value](t_, objc.Sel("incrementalMatchRanges"))
+	return rv
 }
 
 // Determines if incremental searching is enabled. [Full Topic]
@@ -129,27 +137,19 @@ func (t_ TextFinder) SetIncrementalSearchingEnabled(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setIncrementalSearchingEnabled:"), value)
 }
 
-// Determines the type of incremental search feedback to be presented [Full Topic]
+// Invoke to specify that the find indicator needs updating when not contained within a scroll view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528196-incrementalsearchingshoulddimcon?language=objc
-func (t_ TextFinder) IncrementalSearchingShouldDimContentView() bool {
-	rv := objc.Call[bool](t_, objc.Sel("incrementalSearchingShouldDimContentView"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1534431-findindicatorneedsupdate?language=objc
+func (t_ TextFinder) FindIndicatorNeedsUpdate() bool {
+	rv := objc.Call[bool](t_, objc.Sel("findIndicatorNeedsUpdate"))
 	return rv
 }
 
-// Determines the type of incremental search feedback to be presented [Full Topic]
+// Invoke to specify that the find indicator needs updating when not contained within a scroll view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528196-incrementalsearchingshoulddimcon?language=objc
-func (t_ TextFinder) SetIncrementalSearchingShouldDimContentView(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setIncrementalSearchingShouldDimContentView:"), value)
-}
-
-// Array of incremental search matches posted on the main queue, which have been found during a background search. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528304-incrementalmatchranges?language=objc
-func (t_ TextFinder) IncrementalMatchRanges() []foundation.Value {
-	rv := objc.Call[[]foundation.Value](t_, objc.Sel("incrementalMatchRanges"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1534431-findindicatorneedsupdate?language=objc
+func (t_ TextFinder) SetFindIndicatorNeedsUpdate(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setFindIndicatorNeedsUpdate:"), value)
 }
 
 // Specifies the find bar container. [Full Topic]
@@ -175,19 +175,19 @@ func (t_ TextFinder) SetFindBarContainerObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](t_, objc.Sel("setFindBarContainer:"), valueObject)
 }
 
-// Invoke to specify that the find indicator needs updating when not contained within a scroll view. [Full Topic]
+// Determines the type of incremental search feedback to be presented [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1534431-findindicatorneedsupdate?language=objc
-func (t_ TextFinder) FindIndicatorNeedsUpdate() bool {
-	rv := objc.Call[bool](t_, objc.Sel("findIndicatorNeedsUpdate"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528196-incrementalsearchingshoulddimcon?language=objc
+func (t_ TextFinder) IncrementalSearchingShouldDimContentView() bool {
+	rv := objc.Call[bool](t_, objc.Sel("incrementalSearchingShouldDimContentView"))
 	return rv
 }
 
-// Invoke to specify that the find indicator needs updating when not contained within a scroll view. [Full Topic]
+// Determines the type of incremental search feedback to be presented [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1534431-findindicatorneedsupdate?language=objc
-func (t_ TextFinder) SetFindIndicatorNeedsUpdate(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setFindIndicatorNeedsUpdate:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1528196-incrementalsearchingshoulddimcon?language=objc
+func (t_ TextFinder) SetIncrementalSearchingShouldDimContentView(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setIncrementalSearchingShouldDimContentView:"), value)
 }
 
 // The object that provides the target search string, find bar location, and feedback methods. [Full Topic]

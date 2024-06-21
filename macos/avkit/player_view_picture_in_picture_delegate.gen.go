@@ -3,7 +3,6 @@
 package avkit
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,113 +11,40 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate?language=objc
 type PPlayerViewPictureInPictureDelegate interface {
 	// optional
-	PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView PlayerView) bool
-	HasPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart() bool
+	PlayerViewWillStartPictureInPicture(playerView PlayerView)
+	HasPlayerViewWillStartPictureInPicture() bool
 
 	// optional
-	PlayerViewFailedToStartPictureInPictureWithError(playerView PlayerView, error foundation.Error)
-	HasPlayerViewFailedToStartPictureInPictureWithError() bool
-
-	// optional
-	PlayerViewWillStopPictureInPicture(playerView PlayerView)
-	HasPlayerViewWillStopPictureInPicture() bool
+	PlayerViewDidStopPictureInPicture(playerView PlayerView)
+	HasPlayerViewDidStopPictureInPicture() bool
 
 	// optional
 	PlayerViewDidStartPictureInPicture(playerView PlayerView)
 	HasPlayerViewDidStartPictureInPicture() bool
 
 	// optional
-	PlayerViewWillStartPictureInPicture(playerView PlayerView)
-	HasPlayerViewWillStartPictureInPicture() bool
+	PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView PlayerView) bool
+	HasPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart() bool
+
+	// optional
+	PlayerViewWillStopPictureInPicture(playerView PlayerView)
+	HasPlayerViewWillStopPictureInPicture() bool
 
 	// optional
 	PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool))
 	HasPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool
-
-	// optional
-	PlayerViewDidStopPictureInPicture(playerView PlayerView)
-	HasPlayerViewDidStopPictureInPicture() bool
 }
 
 // A delegate implementation builder for the [PPlayerViewPictureInPictureDelegate] protocol.
 type PlayerViewPictureInPictureDelegate struct {
-	_PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart                func(playerView PlayerView) bool
-	_PlayerViewFailedToStartPictureInPictureWithError                           func(playerView PlayerView, error foundation.Error)
-	_PlayerViewWillStopPictureInPicture                                         func(playerView PlayerView)
-	_PlayerViewDidStartPictureInPicture                                         func(playerView PlayerView)
 	_PlayerViewWillStartPictureInPicture                                        func(playerView PlayerView)
-	_PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler func(playerView PlayerView, completionHandler func(restored bool))
 	_PlayerViewDidStopPictureInPicture                                          func(playerView PlayerView)
+	_PlayerViewDidStartPictureInPicture                                         func(playerView PlayerView)
+	_PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart                func(playerView PlayerView) bool
+	_PlayerViewWillStopPictureInPicture                                         func(playerView PlayerView)
+	_PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler func(playerView PlayerView, completionHandler func(restored bool))
 }
 
-func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart() bool {
-	return di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart != nil
-}
-
-// Asks the delegate if the player view should miniaturize when Picture in Picture starts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172695-playerviewshouldautomaticallydis?language=objc
-func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(f func(playerView PlayerView) bool) {
-	di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart = f
-}
-
-// Asks the delegate if the player view should miniaturize when Picture in Picture starts. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172695-playerviewshouldautomaticallydis?language=objc
-func (di *PlayerViewPictureInPictureDelegate) PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView PlayerView) bool {
-	return di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView)
-}
-func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewFailedToStartPictureInPictureWithError() bool {
-	return di._PlayerViewFailedToStartPictureInPictureWithError != nil
-}
-
-// Tells the delegate that Picture in Picture playback failed to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172691-playerview?language=objc
-func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewFailedToStartPictureInPictureWithError(f func(playerView PlayerView, error foundation.Error)) {
-	di._PlayerViewFailedToStartPictureInPictureWithError = f
-}
-
-// Tells the delegate that Picture in Picture playback failed to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172691-playerview?language=objc
-func (di *PlayerViewPictureInPictureDelegate) PlayerViewFailedToStartPictureInPictureWithError(playerView PlayerView, error foundation.Error) {
-	di._PlayerViewFailedToStartPictureInPictureWithError(playerView, error)
-}
-func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewWillStopPictureInPicture() bool {
-	return di._PlayerViewWillStopPictureInPicture != nil
-}
-
-// Tells the delegate that Picture in Picture playback is about to stop. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172697-playerviewwillstoppictureinpictu?language=objc
-func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewWillStopPictureInPicture(f func(playerView PlayerView)) {
-	di._PlayerViewWillStopPictureInPicture = f
-}
-
-// Tells the delegate that Picture in Picture playback is about to stop. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172697-playerviewwillstoppictureinpictu?language=objc
-func (di *PlayerViewPictureInPictureDelegate) PlayerViewWillStopPictureInPicture(playerView PlayerView) {
-	di._PlayerViewWillStopPictureInPicture(playerView)
-}
-func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewDidStartPictureInPicture() bool {
-	return di._PlayerViewDidStartPictureInPicture != nil
-}
-
-// Tells the delegate that Picture in Picture playback started. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
-func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewDidStartPictureInPicture(f func(playerView PlayerView)) {
-	di._PlayerViewDidStartPictureInPicture = f
-}
-
-// Tells the delegate that Picture in Picture playback started. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
-func (di *PlayerViewPictureInPictureDelegate) PlayerViewDidStartPictureInPicture(playerView PlayerView) {
-	di._PlayerViewDidStartPictureInPicture(playerView)
-}
 func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewWillStartPictureInPicture() bool {
 	return di._PlayerViewWillStartPictureInPicture != nil
 }
@@ -135,23 +61,6 @@ func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewWillStartPictureInPic
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172696-playerviewwillstartpictureinpict?language=objc
 func (di *PlayerViewPictureInPictureDelegate) PlayerViewWillStartPictureInPicture(playerView PlayerView) {
 	di._PlayerViewWillStartPictureInPicture(playerView)
-}
-func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
-	return di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler != nil
-}
-
-// Tells the delegate to restore the user interface before Picture in Picture playback stops. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
-func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(f func(playerView PlayerView, completionHandler func(restored bool))) {
-	di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler = f
-}
-
-// Tells the delegate to restore the user interface before Picture in Picture playback stops. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
-func (di *PlayerViewPictureInPictureDelegate) PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool)) {
-	di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView, completionHandler)
 }
 func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewDidStopPictureInPicture() bool {
 	return di._PlayerViewDidStopPictureInPicture != nil
@@ -170,6 +79,74 @@ func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewDidStopPictureInPictu
 func (di *PlayerViewPictureInPictureDelegate) PlayerViewDidStopPictureInPicture(playerView PlayerView) {
 	di._PlayerViewDidStopPictureInPicture(playerView)
 }
+func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewDidStartPictureInPicture() bool {
+	return di._PlayerViewDidStartPictureInPicture != nil
+}
+
+// Tells the delegate that Picture in Picture playback started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
+func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewDidStartPictureInPicture(f func(playerView PlayerView)) {
+	di._PlayerViewDidStartPictureInPicture = f
+}
+
+// Tells the delegate that Picture in Picture playback started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
+func (di *PlayerViewPictureInPictureDelegate) PlayerViewDidStartPictureInPicture(playerView PlayerView) {
+	di._PlayerViewDidStartPictureInPicture(playerView)
+}
+func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart() bool {
+	return di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart != nil
+}
+
+// Asks the delegate if the player view should miniaturize when Picture in Picture starts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172695-playerviewshouldautomaticallydis?language=objc
+func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(f func(playerView PlayerView) bool) {
+	di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart = f
+}
+
+// Asks the delegate if the player view should miniaturize when Picture in Picture starts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172695-playerviewshouldautomaticallydis?language=objc
+func (di *PlayerViewPictureInPictureDelegate) PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView PlayerView) bool {
+	return di._PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView)
+}
+func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewWillStopPictureInPicture() bool {
+	return di._PlayerViewWillStopPictureInPicture != nil
+}
+
+// Tells the delegate that Picture in Picture playback is about to stop. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172697-playerviewwillstoppictureinpictu?language=objc
+func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewWillStopPictureInPicture(f func(playerView PlayerView)) {
+	di._PlayerViewWillStopPictureInPicture = f
+}
+
+// Tells the delegate that Picture in Picture playback is about to stop. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172697-playerviewwillstoppictureinpictu?language=objc
+func (di *PlayerViewPictureInPictureDelegate) PlayerViewWillStopPictureInPicture(playerView PlayerView) {
+	di._PlayerViewWillStopPictureInPicture(playerView)
+}
+func (di *PlayerViewPictureInPictureDelegate) HasPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
+	return di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler != nil
+}
+
+// Tells the delegate to restore the user interface before Picture in Picture playback stops. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
+func (di *PlayerViewPictureInPictureDelegate) SetPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(f func(playerView PlayerView, completionHandler func(restored bool))) {
+	di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler = f
+}
+
+// Tells the delegate to restore the user interface before Picture in Picture playback stops. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
+func (di *PlayerViewPictureInPictureDelegate) PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool)) {
+	di._PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView, completionHandler)
+}
 
 // ensure impl type implements protocol interface
 var _ PPlayerViewPictureInPictureDelegate = (*PlayerViewPictureInPictureDelegateObject)(nil)
@@ -177,6 +154,39 @@ var _ PPlayerViewPictureInPictureDelegate = (*PlayerViewPictureInPictureDelegate
 // A concrete type for the [PPlayerViewPictureInPictureDelegate] protocol.
 type PlayerViewPictureInPictureDelegateObject struct {
 	objc.Object
+}
+
+func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStartPictureInPicture() bool {
+	return p_.RespondsToSelector(objc.Sel("playerViewWillStartPictureInPicture:"))
+}
+
+// Tells the delegate that Picture in Picture playback is about to start. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172696-playerviewwillstartpictureinpict?language=objc
+func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewWillStartPictureInPicture(playerView PlayerView) {
+	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStartPictureInPicture:"), playerView)
+}
+
+func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStopPictureInPicture() bool {
+	return p_.RespondsToSelector(objc.Sel("playerViewDidStopPictureInPicture:"))
+}
+
+// Tells the delegate that Picture in Picture playback stopped. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172694-playerviewdidstoppictureinpictur?language=objc
+func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStopPictureInPicture(playerView PlayerView) {
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStopPictureInPicture:"), playerView)
+}
+
+func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStartPictureInPicture() bool {
+	return p_.RespondsToSelector(objc.Sel("playerViewDidStartPictureInPicture:"))
+}
+
+// Tells the delegate that Picture in Picture playback started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
+func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStartPictureInPicture(playerView PlayerView) {
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStartPictureInPicture:"), playerView)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewShouldAutomaticallyDismissAtPictureInPictureStart() bool {
@@ -191,17 +201,6 @@ func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewShouldAutomatically
 	return rv
 }
 
-func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewFailedToStartPictureInPictureWithError() bool {
-	return p_.RespondsToSelector(objc.Sel("playerView:failedToStartPictureInPictureWithError:"))
-}
-
-// Tells the delegate that Picture in Picture playback failed to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172691-playerview?language=objc
-func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewFailedToStartPictureInPictureWithError(playerView PlayerView, error foundation.Error) {
-	objc.Call[objc.Void](p_, objc.Sel("playerView:failedToStartPictureInPictureWithError:"), playerView, error)
-}
-
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStopPictureInPicture() bool {
 	return p_.RespondsToSelector(objc.Sel("playerViewWillStopPictureInPicture:"))
 }
@@ -213,28 +212,6 @@ func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewWillStopPictureInPi
 	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStopPictureInPicture:"), playerView)
 }
 
-func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStartPictureInPicture() bool {
-	return p_.RespondsToSelector(objc.Sel("playerViewDidStartPictureInPicture:"))
-}
-
-// Tells the delegate that Picture in Picture playback started. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
-func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStartPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStartPictureInPicture:"), playerView)
-}
-
-func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStartPictureInPicture() bool {
-	return p_.RespondsToSelector(objc.Sel("playerViewWillStartPictureInPicture:"))
-}
-
-// Tells the delegate that Picture in Picture playback is about to start. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172696-playerviewwillstartpictureinpict?language=objc
-func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewWillStartPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStartPictureInPicture:"), playerView)
-}
-
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
 	return p_.RespondsToSelector(objc.Sel("playerView:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"))
 }
@@ -244,15 +221,4 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewRestoreUserInter
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool)) {
 	objc.Call[objc.Void](p_, objc.Sel("playerView:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), playerView, completionHandler)
-}
-
-func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStopPictureInPicture() bool {
-	return p_.RespondsToSelector(objc.Sel("playerViewDidStopPictureInPicture:"))
-}
-
-// Tells the delegate that Picture in Picture playback stopped. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172694-playerviewdidstoppictureinpictur?language=objc
-func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStopPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStopPictureInPicture:"), playerView)
 }

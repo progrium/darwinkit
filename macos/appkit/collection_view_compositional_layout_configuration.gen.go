@@ -18,12 +18,12 @@ type _CollectionViewCompositionalLayoutConfigurationClass struct {
 // An interface definition for the [CollectionViewCompositionalLayoutConfiguration] class.
 type ICollectionViewCompositionalLayoutConfiguration interface {
 	objc.IObject
-	BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem
-	SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem)
 	ScrollDirection() CollectionViewScrollDirection
 	SetScrollDirection(value CollectionViewScrollDirection)
 	InterSectionSpacing() float64
 	SetInterSectionSpacing(value float64)
+	BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem
+	SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem)
 }
 
 // An object that defines scroll direction, section spacing, and headers or footers for the layout. [Full Topic]
@@ -59,21 +59,6 @@ func (c_ CollectionViewCompositionalLayoutConfiguration) Init() CollectionViewCo
 	return rv
 }
 
-// An array of the supplementary items that are associated with the boundary edges of the entire layout, such as global headers and footers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281811-boundarysupplementaryitems?language=objc
-func (c_ CollectionViewCompositionalLayoutConfiguration) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.Sel("boundarySupplementaryItems"))
-	return rv
-}
-
-// An array of the supplementary items that are associated with the boundary edges of the entire layout, such as global headers and footers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281811-boundarysupplementaryitems?language=objc
-func (c_ CollectionViewCompositionalLayoutConfiguration) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
-	objc.Call[objc.Void](c_, objc.Sel("setBoundarySupplementaryItems:"), value)
-}
-
 // The axis that the content in the collection view layout scrolls along. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281813-scrolldirection?language=objc
@@ -102,4 +87,19 @@ func (c_ CollectionViewCompositionalLayoutConfiguration) InterSectionSpacing() f
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281812-intersectionspacing?language=objc
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetInterSectionSpacing(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setInterSectionSpacing:"), value)
+}
+
+// An array of the supplementary items that are associated with the boundary edges of the entire layout, such as global headers and footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281811-boundarysupplementaryitems?language=objc
+func (c_ CollectionViewCompositionalLayoutConfiguration) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
+	rv := objc.Call[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.Sel("boundarySupplementaryItems"))
+	return rv
+}
+
+// An array of the supplementary items that are associated with the boundary edges of the entire layout, such as global headers and footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayoutconfiguration/3281811-boundarysupplementaryitems?language=objc
+func (c_ CollectionViewCompositionalLayoutConfiguration) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
+	objc.Call[objc.Void](c_, objc.Sel("setBoundarySupplementaryItems:"), value)
 }

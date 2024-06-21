@@ -20,18 +20,18 @@ type _LocationClass struct {
 type ILocation interface {
 	objc.IObject
 	DistanceFromLocation(location ILocation) LocationDistance
-	Coordinate() LocationCoordinate2D
 	Floor() Floor
-	Speed() LocationSpeed
-	SourceInformation() LocationSourceInformation
-	Course() LocationDirection
-	SpeedAccuracy() LocationSpeedAccuracy
 	HorizontalAccuracy() LocationAccuracy
-	Timestamp() foundation.Date
+	Coordinate() LocationCoordinate2D
+	CourseAccuracy() LocationDirectionAccuracy
+	Course() LocationDirection
+	Speed() LocationSpeed
+	EllipsoidalAltitude() LocationDistance
+	SpeedAccuracy() LocationSpeedAccuracy
 	Altitude() LocationDistance
 	VerticalAccuracy() LocationAccuracy
-	EllipsoidalAltitude() LocationDistance
-	CourseAccuracy() LocationDirectionAccuracy
+	Timestamp() foundation.Date
+	SourceInformation() LocationSourceInformation
 }
 
 // The latitude, longitude, and course information reported by the system. [Full Topic]
@@ -45,20 +45,6 @@ func LocationFrom(ptr unsafe.Pointer) Location {
 	return Location{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, timestamp)
-	return rv
-}
-
-// Creates a location object with the specified coordinate and altitude information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423666-initwithcoordinate?language=objc
-func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
-	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate, altitude, hAccuracy, vAccuracy, timestamp)
-	instance.Autorelease()
-	return instance
 }
 
 func (l_ Location) InitWithLatitudeLongitude(latitude LocationDegrees, longitude LocationDegrees) Location {
@@ -75,44 +61,16 @@ func NewLocationWithLatitudeLongitude(latitude LocationDegrees, longitude Locati
 	return instance
 }
 
-func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp)
+func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
+	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, timestamp)
 	return rv
 }
 
-// Creates a location object with the specified coordinate, altitude, course, and accuracy information. [Full Topic]
+// Creates a location object with the specified coordinate and altitude information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3524339-initwithcoordinate?language=objc
-func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate) Location {
-	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestamp(coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestampSourceInfo(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate, sourceInfo ILocationSourceInformation) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:sourceInfo:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp, sourceInfo)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3861802-initwithcoordinate?language=objc
-func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestampSourceInfo(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate, sourceInfo ILocationSourceInformation) Location {
-	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestampSourceInfo(coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp, sourceInfo)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, speed LocationSpeed, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:speed:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, speed, timestamp)
-	return rv
-}
-
-// Creates a location object with the specified coordinate, altitude, and course information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423718-initwithcoordinate?language=objc
-func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, speed LocationSpeed, timestamp foundation.IDate) Location {
-	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(coordinate, altitude, hAccuracy, vAccuracy, course, speed, timestamp)
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423666-initwithcoordinate?language=objc
+func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
+	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate, altitude, hAccuracy, vAccuracy, timestamp)
 	instance.Autorelease()
 	return instance
 }
@@ -145,51 +103,11 @@ func (l_ Location) DistanceFromLocation(location ILocation) LocationDistance {
 	return rv
 }
 
-// The geographical coordinate information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423504-coordinate?language=objc
-func (l_ Location) Coordinate() LocationCoordinate2D {
-	rv := objc.Call[LocationCoordinate2D](l_, objc.Sel("coordinate"))
-	return rv
-}
-
 // The logical floor of the building in which the user is located. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1616762-floor?language=objc
 func (l_ Location) Floor() Floor {
 	rv := objc.Call[Floor](l_, objc.Sel("floor"))
-	return rv
-}
-
-// The instantaneous speed of the device, measured in meters per second. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423798-speed?language=objc
-func (l_ Location) Speed() LocationSpeed {
-	rv := objc.Call[LocationSpeed](l_, objc.Sel("speed"))
-	return rv
-}
-
-// Information about the source that provides the location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3861803-sourceinformation?language=objc
-func (l_ Location) SourceInformation() LocationSourceInformation {
-	rv := objc.Call[LocationSourceInformation](l_, objc.Sel("sourceInformation"))
-	return rv
-}
-
-// The direction in which the device is traveling, measured in degrees and relative to due north. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423832-course?language=objc
-func (l_ Location) Course() LocationDirection {
-	rv := objc.Call[LocationDirection](l_, objc.Sel("course"))
-	return rv
-}
-
-// The accuracy of the speed value, measured in meters per second. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3524340-speedaccuracy?language=objc
-func (l_ Location) SpeedAccuracy() LocationSpeedAccuracy {
-	rv := objc.Call[LocationSpeedAccuracy](l_, objc.Sel("speedAccuracy"))
 	return rv
 }
 
@@ -201,11 +119,51 @@ func (l_ Location) HorizontalAccuracy() LocationAccuracy {
 	return rv
 }
 
-// The time at which this location was determined. [Full Topic]
+// The geographical coordinate information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423589-timestamp?language=objc
-func (l_ Location) Timestamp() foundation.Date {
-	rv := objc.Call[foundation.Date](l_, objc.Sel("timestamp"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423504-coordinate?language=objc
+func (l_ Location) Coordinate() LocationCoordinate2D {
+	rv := objc.Call[LocationCoordinate2D](l_, objc.Sel("coordinate"))
+	return rv
+}
+
+// The accuracy of the course value, measured in degrees. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3524338-courseaccuracy?language=objc
+func (l_ Location) CourseAccuracy() LocationDirectionAccuracy {
+	rv := objc.Call[LocationDirectionAccuracy](l_, objc.Sel("courseAccuracy"))
+	return rv
+}
+
+// The direction in which the device is traveling, measured in degrees and relative to due north. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423832-course?language=objc
+func (l_ Location) Course() LocationDirection {
+	rv := objc.Call[LocationDirection](l_, objc.Sel("course"))
+	return rv
+}
+
+// The instantaneous speed of the device, measured in meters per second. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423798-speed?language=objc
+func (l_ Location) Speed() LocationSpeed {
+	rv := objc.Call[LocationSpeed](l_, objc.Sel("speed"))
+	return rv
+}
+
+// The altitude as a height above the World Geodetic System 1984 (WGS84) ellipsoid, measured in meters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3861801-ellipsoidalaltitude?language=objc
+func (l_ Location) EllipsoidalAltitude() LocationDistance {
+	rv := objc.Call[LocationDistance](l_, objc.Sel("ellipsoidalAltitude"))
+	return rv
+}
+
+// The accuracy of the speed value, measured in meters per second. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3524340-speedaccuracy?language=objc
+func (l_ Location) SpeedAccuracy() LocationSpeedAccuracy {
+	rv := objc.Call[LocationSpeedAccuracy](l_, objc.Sel("speedAccuracy"))
 	return rv
 }
 
@@ -225,18 +183,18 @@ func (l_ Location) VerticalAccuracy() LocationAccuracy {
 	return rv
 }
 
-// The altitude as a height above the World Geodetic System 1984 (WGS84) ellipsoid, measured in meters. [Full Topic]
+// The time at which this location was determined. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3861801-ellipsoidalaltitude?language=objc
-func (l_ Location) EllipsoidalAltitude() LocationDistance {
-	rv := objc.Call[LocationDistance](l_, objc.Sel("ellipsoidalAltitude"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423589-timestamp?language=objc
+func (l_ Location) Timestamp() foundation.Date {
+	rv := objc.Call[foundation.Date](l_, objc.Sel("timestamp"))
 	return rv
 }
 
-// The accuracy of the course value, measured in degrees. [Full Topic]
+// Information about the source that provides the location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3524338-courseaccuracy?language=objc
-func (l_ Location) CourseAccuracy() LocationDirectionAccuracy {
-	rv := objc.Call[LocationDirectionAccuracy](l_, objc.Sel("courseAccuracy"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/3861803-sourceinformation?language=objc
+func (l_ Location) SourceInformation() LocationSourceInformation {
+	rv := objc.Call[LocationSourceInformation](l_, objc.Sel("sourceInformation"))
 	return rv
 }

@@ -12,46 +12,46 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate?language=objc
 type PTextViewportLayoutControllerDelegate interface {
 	// optional
-	TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController)
-	HasTextViewportLayoutControllerDidLayout() bool
+	ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect
+	HasViewportBoundsForTextViewportLayoutController() bool
 
 	// optional
 	TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment(textViewportLayoutController TextViewportLayoutController, textLayoutFragment TextLayoutFragment)
 	HasTextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment() bool
 
 	// optional
-	TextViewportLayoutControllerWillLayout(textViewportLayoutController TextViewportLayoutController)
-	HasTextViewportLayoutControllerWillLayout() bool
+	TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController)
+	HasTextViewportLayoutControllerDidLayout() bool
 
 	// optional
-	ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect
-	HasViewportBoundsForTextViewportLayoutController() bool
+	TextViewportLayoutControllerWillLayout(textViewportLayoutController TextViewportLayoutController)
+	HasTextViewportLayoutControllerWillLayout() bool
 }
 
 // A delegate implementation builder for the [PTextViewportLayoutControllerDelegate] protocol.
 type TextViewportLayoutControllerDelegate struct {
-	_TextViewportLayoutControllerDidLayout                                      func(textViewportLayoutController TextViewportLayoutController)
-	_TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment func(textViewportLayoutController TextViewportLayoutController, textLayoutFragment TextLayoutFragment)
-	_TextViewportLayoutControllerWillLayout                                     func(textViewportLayoutController TextViewportLayoutController)
 	_ViewportBoundsForTextViewportLayoutController                              func(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect
+	_TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment func(textViewportLayoutController TextViewportLayoutController, textLayoutFragment TextLayoutFragment)
+	_TextViewportLayoutControllerDidLayout                                      func(textViewportLayoutController TextViewportLayoutController)
+	_TextViewportLayoutControllerWillLayout                                     func(textViewportLayoutController TextViewportLayoutController)
 }
 
-func (di *TextViewportLayoutControllerDelegate) HasTextViewportLayoutControllerDidLayout() bool {
-	return di._TextViewportLayoutControllerDidLayout != nil
+func (di *TextViewportLayoutControllerDelegate) HasViewportBoundsForTextViewportLayoutController() bool {
+	return di._ViewportBoundsForTextViewportLayoutController != nil
 }
 
-// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
-func (di *TextViewportLayoutControllerDelegate) SetTextViewportLayoutControllerDidLayout(f func(textViewportLayoutController TextViewportLayoutController)) {
-	di._TextViewportLayoutControllerDidLayout = f
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
+func (di *TextViewportLayoutControllerDelegate) SetViewportBoundsForTextViewportLayoutController(f func(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect) {
+	di._ViewportBoundsForTextViewportLayoutController = f
 }
 
-// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
-func (di *TextViewportLayoutControllerDelegate) TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController) {
-	di._TextViewportLayoutControllerDidLayout(textViewportLayoutController)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
+func (di *TextViewportLayoutControllerDelegate) ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect {
+	return di._ViewportBoundsForTextViewportLayoutController(textViewportLayoutController)
 }
 func (di *TextViewportLayoutControllerDelegate) HasTextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment() bool {
 	return di._TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment != nil
@@ -70,6 +70,23 @@ func (di *TextViewportLayoutControllerDelegate) SetTextViewportLayoutControllerC
 func (di *TextViewportLayoutControllerDelegate) TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment(textViewportLayoutController TextViewportLayoutController, textLayoutFragment TextLayoutFragment) {
 	di._TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment(textViewportLayoutController, textLayoutFragment)
 }
+func (di *TextViewportLayoutControllerDelegate) HasTextViewportLayoutControllerDidLayout() bool {
+	return di._TextViewportLayoutControllerDidLayout != nil
+}
+
+// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
+func (di *TextViewportLayoutControllerDelegate) SetTextViewportLayoutControllerDidLayout(f func(textViewportLayoutController TextViewportLayoutController)) {
+	di._TextViewportLayoutControllerDidLayout = f
+}
+
+// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
+func (di *TextViewportLayoutControllerDelegate) TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController) {
+	di._TextViewportLayoutControllerDidLayout(textViewportLayoutController)
+}
 func (di *TextViewportLayoutControllerDelegate) HasTextViewportLayoutControllerWillLayout() bool {
 	return di._TextViewportLayoutControllerWillLayout != nil
 }
@@ -87,23 +104,6 @@ func (di *TextViewportLayoutControllerDelegate) SetTextViewportLayoutControllerW
 func (di *TextViewportLayoutControllerDelegate) TextViewportLayoutControllerWillLayout(textViewportLayoutController TextViewportLayoutController) {
 	di._TextViewportLayoutControllerWillLayout(textViewportLayoutController)
 }
-func (di *TextViewportLayoutControllerDelegate) HasViewportBoundsForTextViewportLayoutController() bool {
-	return di._ViewportBoundsForTextViewportLayoutController != nil
-}
-
-// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
-func (di *TextViewportLayoutControllerDelegate) SetViewportBoundsForTextViewportLayoutController(f func(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect) {
-	di._ViewportBoundsForTextViewportLayoutController = f
-}
-
-// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
-func (di *TextViewportLayoutControllerDelegate) ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect {
-	return di._ViewportBoundsForTextViewportLayoutController(textViewportLayoutController)
-}
 
 // ensure impl type implements protocol interface
 var _ PTextViewportLayoutControllerDelegate = (*TextViewportLayoutControllerDelegateObject)(nil)
@@ -113,15 +113,16 @@ type TextViewportLayoutControllerDelegateObject struct {
 	objc.Object
 }
 
-func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerDidLayout() bool {
-	return t_.RespondsToSelector(objc.Sel("textViewportLayoutControllerDidLayout:"))
+func (t_ TextViewportLayoutControllerDelegateObject) HasViewportBoundsForTextViewportLayoutController() bool {
+	return t_.RespondsToSelector(objc.Sel("viewportBoundsForTextViewportLayoutController:"))
 }
 
-// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
-func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerDidLayout:"), textViewportLayoutController)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
+func (t_ TextViewportLayoutControllerDelegateObject) ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBoundsForTextViewportLayoutController:"), textViewportLayoutController)
+	return rv
 }
 
 func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment() bool {
@@ -135,6 +136,17 @@ func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControlle
 	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutController:configureRenderingSurfaceForTextLayoutFragment:"), textViewportLayoutController, textLayoutFragment)
 }
 
+func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerDidLayout() bool {
+	return t_.RespondsToSelector(objc.Sel("textViewportLayoutControllerDidLayout:"))
+}
+
+// The method the framework calls when the text viewport layout controller finishes its layout process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
+func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController) {
+	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerDidLayout:"), textViewportLayoutController)
+}
+
 func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerWillLayout() bool {
 	return t_.RespondsToSelector(objc.Sel("textViewportLayoutControllerWillLayout:"))
 }
@@ -144,16 +156,4 @@ func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutContro
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824778-textviewportlayoutcontrollerwill?language=objc
 func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerWillLayout(textViewportLayoutController TextViewportLayoutController) {
 	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerWillLayout:"), textViewportLayoutController)
-}
-
-func (t_ TextViewportLayoutControllerDelegateObject) HasViewportBoundsForTextViewportLayoutController() bool {
-	return t_.RespondsToSelector(objc.Sel("viewportBoundsForTextViewportLayoutController:"))
-}
-
-// Returns the current viewport, which is the view visible bounds plus the overdraw area. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
-func (t_ TextViewportLayoutControllerDelegateObject) ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBoundsForTextViewportLayoutController:"), textViewportLayoutController)
-	return rv
 }

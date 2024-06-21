@@ -20,9 +20,9 @@ type IHumanHandPoseObservation interface {
 	IRecognizedPointsObservation
 	RecognizedPointsForJointsGroupNameError(jointsGroupName HumanHandPoseObservationJointsGroupName, error unsafe.Pointer) map[HumanHandPoseObservationJointName]RecognizedPoint
 	RecognizedPointForJointNameError(jointName HumanHandPoseObservationJointName, error unsafe.Pointer) RecognizedPoint
+	Chirality() Chirality
 	AvailableJointNames() []HumanHandPoseObservationJointName
 	AvailableJointsGroupNames() []HumanHandPoseObservationJointsGroupName
-	Chirality() Chirality
 }
 
 // An observation that provides the hand points the analysis recognized. [Full Topic]
@@ -74,6 +74,14 @@ func (h_ HumanHandPoseObservation) RecognizedPointForJointNameError(jointName Hu
 	return rv
 }
 
+// The chirality, or handedness, of a pose. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3750971-chirality?language=objc
+func (h_ HumanHandPoseObservation) Chirality() Chirality {
+	rv := objc.Call[Chirality](h_, objc.Sel("chirality"))
+	return rv
+}
+
 // The names of the available joints in the observation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3675637-availablejointnames?language=objc
@@ -87,13 +95,5 @@ func (h_ HumanHandPoseObservation) AvailableJointNames() []HumanHandPoseObservat
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3675638-availablejointsgroupnames?language=objc
 func (h_ HumanHandPoseObservation) AvailableJointsGroupNames() []HumanHandPoseObservationJointsGroupName {
 	rv := objc.Call[[]HumanHandPoseObservationJointsGroupName](h_, objc.Sel("availableJointsGroupNames"))
-	return rv
-}
-
-// The chirality, or handedness, of a pose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3750971-chirality?language=objc
-func (h_ HumanHandPoseObservation) Chirality() Chirality {
-	rv := objc.Call[Chirality](h_, objc.Sel("chirality"))
 	return rv
 }

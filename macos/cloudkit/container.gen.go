@@ -19,21 +19,21 @@ type _ContainerClass struct {
 // An interface definition for the [Container] class.
 type IContainer interface {
 	objc.IObject
-	FetchShareParticipantWithPhoneNumberCompletionHandler(phoneNumber string, completionHandler func(shareParticipant ShareParticipant, error foundation.Error))
+	DatabaseWithDatabaseScope(databaseScope DatabaseScope) Database
 	FetchAllLongLivedOperationIDsWithCompletionHandler(completionHandler func(outstandingOperationIDs []OperationID, error foundation.Error))
 	FetchShareMetadataWithURLCompletionHandler(url foundation.IURL, completionHandler func(metadata ShareMetadata, error foundation.Error))
-	DatabaseWithDatabaseScope(databaseScope DatabaseScope) Database
-	AccountStatusWithCompletionHandler(completionHandler func(accountStatus AccountStatus, error foundation.Error))
 	AddOperation(operation IOperation)
-	FetchShareParticipantWithUserRecordIDCompletionHandler(userRecordID IRecordID, completionHandler func(shareParticipant ShareParticipant, error foundation.Error))
-	FetchUserRecordIDWithCompletionHandler(completionHandler func(recordID RecordID, error foundation.Error))
-	AcceptShareMetadataCompletionHandler(metadata IShareMetadata, completionHandler func(acceptedShare Share, error foundation.Error))
 	FetchShareParticipantWithEmailAddressCompletionHandler(emailAddress string, completionHandler func(shareParticipant ShareParticipant, error foundation.Error))
+	FetchUserRecordIDWithCompletionHandler(completionHandler func(recordID RecordID, error foundation.Error))
 	FetchLongLivedOperationWithIDCompletionHandler(operationID OperationID, completionHandler func(outstandingOperation Operation, error foundation.Error))
+	AcceptShareMetadataCompletionHandler(metadata IShareMetadata, completionHandler func(acceptedShare Share, error foundation.Error))
+	FetchShareParticipantWithPhoneNumberCompletionHandler(phoneNumber string, completionHandler func(shareParticipant ShareParticipant, error foundation.Error))
+	AccountStatusWithCompletionHandler(completionHandler func(accountStatus AccountStatus, error foundation.Error))
+	FetchShareParticipantWithUserRecordIDCompletionHandler(userRecordID IRecordID, completionHandler func(shareParticipant ShareParticipant, error foundation.Error))
+	SharedCloudDatabase() Database
+	PrivateCloudDatabase() Database
 	PublicCloudDatabase() Database
 	ContainerIdentifier() string
-	PrivateCloudDatabase() Database
-	SharedCloudDatabase() Database
 }
 
 // A conduit to your app’s databases. [Full Topic]
@@ -69,11 +69,12 @@ func (c_ Container) Init() Container {
 	return rv
 }
 
-// Fetches the share participant with the specified phone number. [Full Topic]
+// Returns the database with the specified scope. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640493-fetchshareparticipantwithphonenu?language=objc
-func (c_ Container) FetchShareParticipantWithPhoneNumberCompletionHandler(phoneNumber string, completionHandler func(shareParticipant ShareParticipant, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithPhoneNumber:completionHandler:"), phoneNumber, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640475-databasewithdatabasescope?language=objc
+func (c_ Container) DatabaseWithDatabaseScope(databaseScope DatabaseScope) Database {
+	rv := objc.Call[Database](c_, objc.Sel("databaseWithDatabaseScope:"), databaseScope)
+	return rv
 }
 
 // Fetches the IDs of any long-lived operations that are running. [Full Topic]
@@ -88,64 +89,6 @@ func (c_ Container) FetchAllLongLivedOperationIDsWithCompletionHandler(completio
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/2113666-fetchsharemetadatawithurl?language=objc
 func (c_ Container) FetchShareMetadataWithURLCompletionHandler(url foundation.IURL, completionHandler func(metadata ShareMetadata, error foundation.Error)) {
 	objc.Call[objc.Void](c_, objc.Sel("fetchShareMetadataWithURL:completionHandler:"), url, completionHandler)
-}
-
-// Returns the database with the specified scope. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640475-databasewithdatabasescope?language=objc
-func (c_ Container) DatabaseWithDatabaseScope(databaseScope DatabaseScope) Database {
-	rv := objc.Call[Database](c_, objc.Sel("databaseWithDatabaseScope:"), databaseScope)
-	return rv
-}
-
-// Determines whether the system can access the user’s iCloud account. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399180-accountstatuswithcompletionhandl?language=objc
-func (c_ Container) AccountStatusWithCompletionHandler(completionHandler func(accountStatus AccountStatus, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("accountStatusWithCompletionHandler:"), completionHandler)
-}
-
-// Adds an operation to the container’s queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399215-addoperation?language=objc
-func (c_ Container) AddOperation(operation IOperation) {
-	objc.Call[objc.Void](c_, objc.Sel("addOperation:"), operation)
-}
-
-// Returns the app’s default container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399189-defaultcontainer?language=objc
-func (cc _ContainerClass) DefaultContainer() Container {
-	rv := objc.Call[Container](cc, objc.Sel("defaultContainer"))
-	return rv
-}
-
-// Returns the app’s default container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399189-defaultcontainer?language=objc
-func Container_DefaultContainer() Container {
-	return ContainerClass.DefaultContainer()
-}
-
-// Fetches the share participant with the specified user record ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640387-fetchshareparticipantwithuserrec?language=objc
-func (c_ Container) FetchShareParticipantWithUserRecordIDCompletionHandler(userRecordID IRecordID, completionHandler func(shareParticipant ShareParticipant, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithUserRecordID:completionHandler:"), userRecordID, completionHandler)
-}
-
-// Fetches the user record ID of the current user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399191-fetchuserrecordidwithcompletionh?language=objc
-func (c_ Container) FetchUserRecordIDWithCompletionHandler(completionHandler func(recordID RecordID, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("fetchUserRecordIDWithCompletionHandler:"), completionHandler)
-}
-
-// Accepts the specified share metadata. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/2113667-acceptsharemetadata?language=objc
-func (c_ Container) AcceptShareMetadataCompletionHandler(metadata IShareMetadata, completionHandler func(acceptedShare Share, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("acceptShareMetadata:completionHandler:"), metadata, completionHandler)
 }
 
 // Creates a container for the specified identifier. [Full Topic]
@@ -163,6 +106,13 @@ func Container_ContainerWithIdentifier(containerIdentifier string) Container {
 	return ContainerClass.ContainerWithIdentifier(containerIdentifier)
 }
 
+// Adds an operation to the container’s queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399215-addoperation?language=objc
+func (c_ Container) AddOperation(operation IOperation) {
+	objc.Call[objc.Void](c_, objc.Sel("addOperation:"), operation)
+}
+
 // Fetches the share participant with the specified email address. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640489-fetchshareparticipantwithemailad?language=objc
@@ -170,11 +120,77 @@ func (c_ Container) FetchShareParticipantWithEmailAddressCompletionHandler(email
 	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithEmailAddress:completionHandler:"), emailAddress, completionHandler)
 }
 
+// Returns the app’s default container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399189-defaultcontainer?language=objc
+func (cc _ContainerClass) DefaultContainer() Container {
+	rv := objc.Call[Container](cc, objc.Sel("defaultContainer"))
+	return rv
+}
+
+// Returns the app’s default container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399189-defaultcontainer?language=objc
+func Container_DefaultContainer() Container {
+	return ContainerClass.DefaultContainer()
+}
+
+// Fetches the user record ID of the current user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399191-fetchuserrecordidwithcompletionh?language=objc
+func (c_ Container) FetchUserRecordIDWithCompletionHandler(completionHandler func(recordID RecordID, error foundation.Error)) {
+	objc.Call[objc.Void](c_, objc.Sel("fetchUserRecordIDWithCompletionHandler:"), completionHandler)
+}
+
 // Fetches the long-lived operation for the specified operation ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399164-fetchlonglivedoperationwithid?language=objc
 func (c_ Container) FetchLongLivedOperationWithIDCompletionHandler(operationID OperationID, completionHandler func(outstandingOperation Operation, error foundation.Error)) {
 	objc.Call[objc.Void](c_, objc.Sel("fetchLongLivedOperationWithID:completionHandler:"), operationID, completionHandler)
+}
+
+// Accepts the specified share metadata. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/2113667-acceptsharemetadata?language=objc
+func (c_ Container) AcceptShareMetadataCompletionHandler(metadata IShareMetadata, completionHandler func(acceptedShare Share, error foundation.Error)) {
+	objc.Call[objc.Void](c_, objc.Sel("acceptShareMetadata:completionHandler:"), metadata, completionHandler)
+}
+
+// Fetches the share participant with the specified phone number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640493-fetchshareparticipantwithphonenu?language=objc
+func (c_ Container) FetchShareParticipantWithPhoneNumberCompletionHandler(phoneNumber string, completionHandler func(shareParticipant ShareParticipant, error foundation.Error)) {
+	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithPhoneNumber:completionHandler:"), phoneNumber, completionHandler)
+}
+
+// Determines whether the system can access the user’s iCloud account. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399180-accountstatuswithcompletionhandl?language=objc
+func (c_ Container) AccountStatusWithCompletionHandler(completionHandler func(accountStatus AccountStatus, error foundation.Error)) {
+	objc.Call[objc.Void](c_, objc.Sel("accountStatusWithCompletionHandler:"), completionHandler)
+}
+
+// Fetches the share participant with the specified user record ID. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640387-fetchshareparticipantwithuserrec?language=objc
+func (c_ Container) FetchShareParticipantWithUserRecordIDCompletionHandler(userRecordID IRecordID, completionHandler func(shareParticipant ShareParticipant, error foundation.Error)) {
+	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithUserRecordID:completionHandler:"), userRecordID, completionHandler)
+}
+
+// The database that contains shared data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640408-sharedclouddatabase?language=objc
+func (c_ Container) SharedCloudDatabase() Database {
+	rv := objc.Call[Database](c_, objc.Sel("sharedCloudDatabase"))
+	return rv
+}
+
+// The user’s private database. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399205-privateclouddatabase?language=objc
+func (c_ Container) PrivateCloudDatabase() Database {
+	rv := objc.Call[Database](c_, objc.Sel("privateCloudDatabase"))
+	return rv
 }
 
 // The app’s public database. [Full Topic]
@@ -190,21 +206,5 @@ func (c_ Container) PublicCloudDatabase() Database {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399182-containeridentifier?language=objc
 func (c_ Container) ContainerIdentifier() string {
 	rv := objc.Call[string](c_, objc.Sel("containerIdentifier"))
-	return rv
-}
-
-// The user’s private database. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399205-privateclouddatabase?language=objc
-func (c_ Container) PrivateCloudDatabase() Database {
-	rv := objc.Call[Database](c_, objc.Sel("privateCloudDatabase"))
-	return rv
-}
-
-// The database that contains shared data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640408-sharedclouddatabase?language=objc
-func (c_ Container) SharedCloudDatabase() Database {
-	rv := objc.Call[Database](c_, objc.Sel("sharedCloudDatabase"))
 	return rv
 }

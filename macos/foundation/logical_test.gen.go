@@ -33,20 +33,6 @@ func LogicalTestFrom(ptr unsafe.Pointer) LogicalTest {
 	}
 }
 
-func (l_ LogicalTest) InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
-	rv := objc.Call[LogicalTest](l_, objc.Sel("initNotTestWithTest:"), subTest)
-	return rv
-}
-
-// Returns an NSLogicalTest object initialized to perform a NOT operation on the given NSScriptWhoseTest object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393879-initnottestwithtest?language=objc
-func NewLogicalTestNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
-	instance := LogicalTestClass.Alloc().InitNotTestWithTest(subTest)
-	instance.Autorelease()
-	return instance
-}
-
 func (l_ LogicalTest) InitAndTestWithTests(subTests []ISpecifierTest) LogicalTest {
 	rv := objc.Call[LogicalTest](l_, objc.Sel("initAndTestWithTests:"), subTests)
 	return rv
@@ -71,6 +57,20 @@ func (l_ LogicalTest) InitOrTestWithTests(subTests []ISpecifierTest) LogicalTest
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393875-initortestwithtests?language=objc
 func NewLogicalTestOrTestWithTests(subTests []ISpecifierTest) LogicalTest {
 	instance := LogicalTestClass.Alloc().InitOrTestWithTests(subTests)
+	instance.Autorelease()
+	return instance
+}
+
+func (l_ LogicalTest) InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
+	rv := objc.Call[LogicalTest](l_, objc.Sel("initNotTestWithTest:"), subTest)
+	return rv
+}
+
+// Returns an NSLogicalTest object initialized to perform a NOT operation on the given NSScriptWhoseTest object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393879-initnottestwithtest?language=objc
+func NewLogicalTestNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
+	instance := LogicalTestClass.Alloc().InitNotTestWithTest(subTest)
 	instance.Autorelease()
 	return instance
 }

@@ -19,27 +19,27 @@ type _SearchFieldCellClass struct {
 // An interface definition for the [SearchFieldCell] class.
 type ISearchFieldCell interface {
 	ITextFieldCell
-	ResetCancelButtonCell()
+	SearchTextRectForBounds(rect foundation.Rect) foundation.Rect
+	SearchButtonRectForBounds(rect foundation.Rect) foundation.Rect
 	ResetSearchButtonCell()
 	CancelButtonRectForBounds(rect foundation.Rect) foundation.Rect
-	SearchButtonRectForBounds(rect foundation.Rect) foundation.Rect
-	SearchTextRectForBounds(rect foundation.Rect) foundation.Rect
-	SendsWholeSearchString() bool
-	SetSendsWholeSearchString(value bool)
+	ResetCancelButtonCell()
+	RecentsAutosaveName() SearchFieldRecentsAutosaveName
+	SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName)
+	MaximumRecents() int
+	SetMaximumRecents(value int)
 	SearchButtonCell() ButtonCell
 	SetSearchButtonCell(value IButtonCell)
+	SendsWholeSearchString() bool
+	SetSendsWholeSearchString(value bool)
+	SearchMenuTemplate() Menu
+	SetSearchMenuTemplate(value IMenu)
+	CancelButtonCell() ButtonCell
+	SetCancelButtonCell(value IButtonCell)
 	SendsSearchStringImmediately() bool
 	SetSendsSearchStringImmediately(value bool)
 	RecentSearches() []string
 	SetRecentSearches(value []string)
-	SearchMenuTemplate() Menu
-	SetSearchMenuTemplate(value IMenu)
-	MaximumRecents() int
-	SetMaximumRecents(value int)
-	CancelButtonCell() ButtonCell
-	SetCancelButtonCell(value IButtonCell)
-	RecentsAutosaveName() SearchFieldRecentsAutosaveName
-	SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName)
 }
 
 // The programmatic interface for text fields that are used for text-based searches. [Full Topic]
@@ -103,11 +103,20 @@ func NewSearchFieldCellImageCell(image IImage) SearchFieldCell {
 	return instance
 }
 
-// Resets the cancel button cell to its default attributes. [Full Topic]
+// Modifies the bounding rectangle for the search-text field cell. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399442-resetcancelbuttoncell?language=objc
-func (s_ SearchFieldCell) ResetCancelButtonCell() {
-	objc.Call[objc.Void](s_, objc.Sel("resetCancelButtonCell"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399455-searchtextrectforbounds?language=objc
+func (s_ SearchFieldCell) SearchTextRectForBounds(rect foundation.Rect) foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchTextRectForBounds:"), rect)
+	return rv
+}
+
+// Modifies the bounding rectangle for the search button cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399450-searchbuttonrectforbounds?language=objc
+func (s_ SearchFieldCell) SearchButtonRectForBounds(rect foundation.Rect) foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchButtonRectForBounds:"), rect)
+	return rv
 }
 
 // Resets the search button cell to its default attributes. [Full Topic]
@@ -125,20 +134,56 @@ func (s_ SearchFieldCell) CancelButtonRectForBounds(rect foundation.Rect) founda
 	return rv
 }
 
-// Modifies the bounding rectangle for the search button cell. [Full Topic]
+// Resets the cancel button cell to its default attributes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399450-searchbuttonrectforbounds?language=objc
-func (s_ SearchFieldCell) SearchButtonRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchButtonRectForBounds:"), rect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399442-resetcancelbuttoncell?language=objc
+func (s_ SearchFieldCell) ResetCancelButtonCell() {
+	objc.Call[objc.Void](s_, objc.Sel("resetCancelButtonCell"))
+}
+
+// The autosave name under which the search field automatically saves the list of recent search strings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399463-recentsautosavename?language=objc
+func (s_ SearchFieldCell) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
+	rv := objc.Call[SearchFieldRecentsAutosaveName](s_, objc.Sel("recentsAutosaveName"))
 	return rv
 }
 
-// Modifies the bounding rectangle for the search-text field cell. [Full Topic]
+// The autosave name under which the search field automatically saves the list of recent search strings. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399455-searchtextrectforbounds?language=objc
-func (s_ SearchFieldCell) SearchTextRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchTextRectForBounds:"), rect)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399463-recentsautosavename?language=objc
+func (s_ SearchFieldCell) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
+	objc.Call[objc.Void](s_, objc.Sel("setRecentsAutosaveName:"), value)
+}
+
+// The maximum number of search strings that can appear in the search menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399468-maximumrecents?language=objc
+func (s_ SearchFieldCell) MaximumRecents() int {
+	rv := objc.Call[int](s_, objc.Sel("maximumRecents"))
 	return rv
+}
+
+// The maximum number of search strings that can appear in the search menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399468-maximumrecents?language=objc
+func (s_ SearchFieldCell) SetMaximumRecents(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setMaximumRecents:"), value)
+}
+
+// The button cell used to display the search-button image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399457-searchbuttoncell?language=objc
+func (s_ SearchFieldCell) SearchButtonCell() ButtonCell {
+	rv := objc.Call[ButtonCell](s_, objc.Sel("searchButtonCell"))
+	return rv
+}
+
+// The button cell used to display the search-button image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399457-searchbuttoncell?language=objc
+func (s_ SearchFieldCell) SetSearchButtonCell(value IButtonCell) {
+	objc.Call[objc.Void](s_, objc.Sel("setSearchButtonCell:"), value)
 }
 
 // A Boolean value indicating whether the cell calls its search action method when the user clicks the search button (or presses Return) or after each keystroke. [Full Topic]
@@ -156,19 +201,34 @@ func (s_ SearchFieldCell) SetSendsWholeSearchString(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setSendsWholeSearchString:"), value)
 }
 
-// The button cell used to display the search-button image. [Full Topic]
+// The menu object used to dynamically construct the search field’s pop-up icon menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399457-searchbuttoncell?language=objc
-func (s_ SearchFieldCell) SearchButtonCell() ButtonCell {
-	rv := objc.Call[ButtonCell](s_, objc.Sel("searchButtonCell"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399452-searchmenutemplate?language=objc
+func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
+	rv := objc.Call[Menu](s_, objc.Sel("searchMenuTemplate"))
 	return rv
 }
 
-// The button cell used to display the search-button image. [Full Topic]
+// The menu object used to dynamically construct the search field’s pop-up icon menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399457-searchbuttoncell?language=objc
-func (s_ SearchFieldCell) SetSearchButtonCell(value IButtonCell) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchButtonCell:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399452-searchmenutemplate?language=objc
+func (s_ SearchFieldCell) SetSearchMenuTemplate(value IMenu) {
+	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), value)
+}
+
+// The button cell used to display the cancel-button image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399440-cancelbuttoncell?language=objc
+func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
+	rv := objc.Call[ButtonCell](s_, objc.Sel("cancelButtonCell"))
+	return rv
+}
+
+// The button cell used to display the cancel-button image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399440-cancelbuttoncell?language=objc
+func (s_ SearchFieldCell) SetCancelButtonCell(value IButtonCell) {
+	objc.Call[objc.Void](s_, objc.Sel("setCancelButtonCell:"), value)
 }
 
 // A Boolean value indicating whether the cell calls its action method immediately when an appropriate action occurs. [Full Topic]
@@ -199,64 +259,4 @@ func (s_ SearchFieldCell) RecentSearches() []string {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399446-recentsearches?language=objc
 func (s_ SearchFieldCell) SetRecentSearches(value []string) {
 	objc.Call[objc.Void](s_, objc.Sel("setRecentSearches:"), value)
-}
-
-// The menu object used to dynamically construct the search field’s pop-up icon menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399452-searchmenutemplate?language=objc
-func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
-	rv := objc.Call[Menu](s_, objc.Sel("searchMenuTemplate"))
-	return rv
-}
-
-// The menu object used to dynamically construct the search field’s pop-up icon menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399452-searchmenutemplate?language=objc
-func (s_ SearchFieldCell) SetSearchMenuTemplate(value IMenu) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), value)
-}
-
-// The maximum number of search strings that can appear in the search menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399468-maximumrecents?language=objc
-func (s_ SearchFieldCell) MaximumRecents() int {
-	rv := objc.Call[int](s_, objc.Sel("maximumRecents"))
-	return rv
-}
-
-// The maximum number of search strings that can appear in the search menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399468-maximumrecents?language=objc
-func (s_ SearchFieldCell) SetMaximumRecents(value int) {
-	objc.Call[objc.Void](s_, objc.Sel("setMaximumRecents:"), value)
-}
-
-// The button cell used to display the cancel-button image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399440-cancelbuttoncell?language=objc
-func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
-	rv := objc.Call[ButtonCell](s_, objc.Sel("cancelButtonCell"))
-	return rv
-}
-
-// The button cell used to display the cancel-button image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399440-cancelbuttoncell?language=objc
-func (s_ SearchFieldCell) SetCancelButtonCell(value IButtonCell) {
-	objc.Call[objc.Void](s_, objc.Sel("setCancelButtonCell:"), value)
-}
-
-// The autosave name under which the search field automatically saves the list of recent search strings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399463-recentsautosavename?language=objc
-func (s_ SearchFieldCell) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
-	rv := objc.Call[SearchFieldRecentsAutosaveName](s_, objc.Sel("recentsAutosaveName"))
-	return rv
-}
-
-// The autosave name under which the search field automatically saves the list of recent search strings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399463-recentsautosavename?language=objc
-func (s_ SearchFieldCell) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
-	objc.Call[objc.Void](s_, objc.Sel("setRecentsAutosaveName:"), value)
 }

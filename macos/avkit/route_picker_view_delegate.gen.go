@@ -11,37 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate?language=objc
 type PRoutePickerViewDelegate interface {
 	// optional
-	RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView)
-	HasRoutePickerViewDidEndPresentingRoutes() bool
-
-	// optional
 	RoutePickerViewWillBeginPresentingRoutes(routePickerView RoutePickerView)
 	HasRoutePickerViewWillBeginPresentingRoutes() bool
+
+	// optional
+	RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView)
+	HasRoutePickerViewDidEndPresentingRoutes() bool
 }
 
 // A delegate implementation builder for the [PRoutePickerViewDelegate] protocol.
 type RoutePickerViewDelegate struct {
-	_RoutePickerViewDidEndPresentingRoutes    func(routePickerView RoutePickerView)
 	_RoutePickerViewWillBeginPresentingRoutes func(routePickerView RoutePickerView)
+	_RoutePickerViewDidEndPresentingRoutes    func(routePickerView RoutePickerView)
 }
 
-func (di *RoutePickerViewDelegate) HasRoutePickerViewDidEndPresentingRoutes() bool {
-	return di._RoutePickerViewDidEndPresentingRoutes != nil
-}
-
-// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
-func (di *RoutePickerViewDelegate) SetRoutePickerViewDidEndPresentingRoutes(f func(routePickerView RoutePickerView)) {
-	di._RoutePickerViewDidEndPresentingRoutes = f
-}
-
-// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
-func (di *RoutePickerViewDelegate) RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView) {
-	di._RoutePickerViewDidEndPresentingRoutes(routePickerView)
-}
 func (di *RoutePickerViewDelegate) HasRoutePickerViewWillBeginPresentingRoutes() bool {
 	return di._RoutePickerViewWillBeginPresentingRoutes != nil
 }
@@ -59,6 +42,23 @@ func (di *RoutePickerViewDelegate) SetRoutePickerViewWillBeginPresentingRoutes(f
 func (di *RoutePickerViewDelegate) RoutePickerViewWillBeginPresentingRoutes(routePickerView RoutePickerView) {
 	di._RoutePickerViewWillBeginPresentingRoutes(routePickerView)
 }
+func (di *RoutePickerViewDelegate) HasRoutePickerViewDidEndPresentingRoutes() bool {
+	return di._RoutePickerViewDidEndPresentingRoutes != nil
+}
+
+// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
+func (di *RoutePickerViewDelegate) SetRoutePickerViewDidEndPresentingRoutes(f func(routePickerView RoutePickerView)) {
+	di._RoutePickerViewDidEndPresentingRoutes = f
+}
+
+// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
+func (di *RoutePickerViewDelegate) RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView) {
+	di._RoutePickerViewDidEndPresentingRoutes(routePickerView)
+}
 
 // ensure impl type implements protocol interface
 var _ PRoutePickerViewDelegate = (*RoutePickerViewDelegateObject)(nil)
@@ -66,17 +66,6 @@ var _ PRoutePickerViewDelegate = (*RoutePickerViewDelegateObject)(nil)
 // A concrete type for the [PRoutePickerViewDelegate] protocol.
 type RoutePickerViewDelegateObject struct {
 	objc.Object
-}
-
-func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewDidEndPresentingRoutes() bool {
-	return r_.RespondsToSelector(objc.Sel("routePickerViewDidEndPresentingRoutes:"))
-}
-
-// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
-func (r_ RoutePickerViewDelegateObject) RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView) {
-	objc.Call[objc.Void](r_, objc.Sel("routePickerViewDidEndPresentingRoutes:"), routePickerView)
 }
 
 func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewWillBeginPresentingRoutes() bool {
@@ -88,4 +77,15 @@ func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewWillBeginPresentingRou
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915788-routepickerviewwillbeginpresenti?language=objc
 func (r_ RoutePickerViewDelegateObject) RoutePickerViewWillBeginPresentingRoutes(routePickerView RoutePickerView) {
 	objc.Call[objc.Void](r_, objc.Sel("routePickerViewWillBeginPresentingRoutes:"), routePickerView)
+}
+
+func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewDidEndPresentingRoutes() bool {
+	return r_.RespondsToSelector(objc.Sel("routePickerViewDidEndPresentingRoutes:"))
+}
+
+// Tells the delegate when the route picker view finishes presenting routes to the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
+func (r_ RoutePickerViewDelegateObject) RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView) {
+	objc.Call[objc.Void](r_, objc.Sel("routePickerViewDidEndPresentingRoutes:"), routePickerView)
 }

@@ -5,7 +5,7 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -22,10 +22,10 @@ type IShadow interface {
 	Set()
 	ShadowBlurRadius() float64
 	SetShadowBlurRadius(value float64)
-	ShadowOffset() foundation.Size
-	SetShadowOffset(value foundation.Size)
-	ShadowColor() Color
-	SetShadowColor(value IColor)
+	ShadowOffset() coregraphics.Size
+	SetShadowOffset(value coregraphics.Size)
+	ShadowColor() objc.Object
+	SetShadowColor(value objc.IObject)
 }
 
 // An object you use to specify attributes to create and style a drop shadow during drawing operations. [Full Topic]
@@ -86,29 +86,29 @@ func (s_ Shadow) SetShadowBlurRadius(value float64) {
 // The shadow’s relative position, which you specify with horizontal and vertical offset values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsshadow/1429851-shadowoffset?language=objc
-func (s_ Shadow) ShadowOffset() foundation.Size {
-	rv := objc.Call[foundation.Size](s_, objc.Sel("shadowOffset"))
+func (s_ Shadow) ShadowOffset() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](s_, objc.Sel("shadowOffset"))
 	return rv
 }
 
 // The shadow’s relative position, which you specify with horizontal and vertical offset values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsshadow/1429851-shadowoffset?language=objc
-func (s_ Shadow) SetShadowOffset(value foundation.Size) {
+func (s_ Shadow) SetShadowOffset(value coregraphics.Size) {
 	objc.Call[objc.Void](s_, objc.Sel("setShadowOffset:"), value)
 }
 
 // The color of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsshadow/1429855-shadowcolor?language=objc
-func (s_ Shadow) ShadowColor() Color {
-	rv := objc.Call[Color](s_, objc.Sel("shadowColor"))
+func (s_ Shadow) ShadowColor() objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("shadowColor"))
 	return rv
 }
 
 // The color of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsshadow/1429855-shadowcolor?language=objc
-func (s_ Shadow) SetShadowColor(value IColor) {
+func (s_ Shadow) SetShadowColor(value objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setShadowColor:"), value)
 }

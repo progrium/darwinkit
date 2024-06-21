@@ -12,68 +12,68 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient?language=objc
 type PTextInputClient interface {
 	// optional
-	AttributedString() foundation.AttributedString
-	HasAttributedString() bool
-
-	// optional
-	FractionOfDistanceThroughGlyphForPoint(point foundation.Point) float64
-	HasFractionOfDistanceThroughGlyphForPoint() bool
-
-	// optional
-	SetMarkedTextSelectedRangeReplacementRange(string_ objc.Object, selectedRange foundation.Range, replacementRange foundation.Range)
-	HasSetMarkedTextSelectedRangeReplacementRange() bool
-
-	// optional
-	FirstRectForCharacterRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.Rect
-	HasFirstRectForCharacterRangeActualRange() bool
-
-	// optional
-	UnmarkText()
-	HasUnmarkText() bool
+	InsertTextReplacementRange(string_ objc.Object, replacementRange foundation.Range)
+	HasInsertTextReplacementRange() bool
 
 	// optional
 	HasMarkedText() bool
 	HasHasMarkedText() bool
 
 	// optional
-	SelectedRange() foundation.Range
-	HasSelectedRange() bool
-
-	// optional
-	BaselineDeltaForCharacterAtIndex(anIndex uint) float64
-	HasBaselineDeltaForCharacterAtIndex() bool
-
-	// optional
-	DoCommandBySelector(selector objc.Selector)
-	HasDoCommandBySelector() bool
-
-	// optional
 	DrawsVerticallyForCharacterAtIndex(charIndex uint) bool
 	HasDrawsVerticallyForCharacterAtIndex() bool
 
 	// optional
-	AttributedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString
-	HasAttributedSubstringForProposedRangeActualRange() bool
+	AttributedString() foundation.AttributedString
+	HasAttributedString() bool
 
 	// optional
-	ValidAttributesForMarkedText() []foundation.AttributedStringKey
-	HasValidAttributesForMarkedText() bool
+	CharacterIndexForPoint(point foundation.Point) uint
+	HasCharacterIndexForPoint() bool
 
 	// optional
-	InsertTextReplacementRange(string_ objc.Object, replacementRange foundation.Range)
-	HasInsertTextReplacementRange() bool
+	UnmarkText()
+	HasUnmarkText() bool
 
 	// optional
-	WindowLevel() int
-	HasWindowLevel() bool
+	SelectedRange() foundation.Range
+	HasSelectedRange() bool
 
 	// optional
 	MarkedRange() foundation.Range
 	HasMarkedRange() bool
 
 	// optional
-	CharacterIndexForPoint(point foundation.Point) uint
-	HasCharacterIndexForPoint() bool
+	SetMarkedTextSelectedRangeReplacementRange(string_ objc.Object, selectedRange foundation.Range, replacementRange foundation.Range)
+	HasSetMarkedTextSelectedRangeReplacementRange() bool
+
+	// optional
+	WindowLevel() int
+	HasWindowLevel() bool
+
+	// optional
+	BaselineDeltaForCharacterAtIndex(anIndex uint) float64
+	HasBaselineDeltaForCharacterAtIndex() bool
+
+	// optional
+	AttributedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString
+	HasAttributedSubstringForProposedRangeActualRange() bool
+
+	// optional
+	FirstRectForCharacterRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.Rect
+	HasFirstRectForCharacterRangeActualRange() bool
+
+	// optional
+	DoCommandBySelector(selector objc.Selector)
+	HasDoCommandBySelector() bool
+
+	// optional
+	FractionOfDistanceThroughGlyphForPoint(point foundation.Point) float64
+	HasFractionOfDistanceThroughGlyphForPoint() bool
+
+	// optional
+	ValidAttributesForMarkedText() []foundation.AttributedStringKey
+	HasValidAttributesForMarkedText() bool
 }
 
 // ensure impl type implements protocol interface
@@ -84,62 +84,15 @@ type TextInputClientObject struct {
 	objc.Object
 }
 
-func (t_ TextInputClientObject) HasAttributedString() bool {
-	return t_.RespondsToSelector(objc.Sel("attributedString"))
+func (t_ TextInputClientObject) HasInsertTextReplacementRange() bool {
+	return t_.RespondsToSelector(objc.Sel("insertText:replacementRange:"))
 }
 
-// Returns an attributed string representing the receiver's text storage. [Full Topic]
+// Inserts the given string into the receiver, replacing the specified content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438232-attributedstring?language=objc
-func (t_ TextInputClientObject) AttributedString() foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedString"))
-	return rv
-}
-
-func (t_ TextInputClientObject) HasFractionOfDistanceThroughGlyphForPoint() bool {
-	return t_.RespondsToSelector(objc.Sel("fractionOfDistanceThroughGlyphForPoint:"))
-}
-
-// Returns the fraction of the distance from the left side of the character to the right side that a given point lies. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438236-fractionofdistancethroughglyphfo?language=objc
-func (t_ TextInputClientObject) FractionOfDistanceThroughGlyphForPoint(point foundation.Point) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("fractionOfDistanceThroughGlyphForPoint:"), point)
-	return rv
-}
-
-func (t_ TextInputClientObject) HasSetMarkedTextSelectedRangeReplacementRange() bool {
-	return t_.RespondsToSelector(objc.Sel("setMarkedText:selectedRange:replacementRange:"))
-}
-
-// Replaces a specified range in the receiver’s text storage with the given string and sets the selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438246-setmarkedtext?language=objc
-func (t_ TextInputClientObject) SetMarkedTextSelectedRangeReplacementRange(string_ objc.Object, selectedRange foundation.Range, replacementRange foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("setMarkedText:selectedRange:replacementRange:"), string_, selectedRange, replacementRange)
-}
-
-func (t_ TextInputClientObject) HasFirstRectForCharacterRangeActualRange() bool {
-	return t_.RespondsToSelector(objc.Sel("firstRectForCharacterRange:actualRange:"))
-}
-
-// Returns the first logical boundary rectangle for characters in the given range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438240-firstrectforcharacterrange?language=objc
-func (t_ TextInputClientObject) FirstRectForCharacterRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("firstRectForCharacterRange:actualRange:"), range_, actualRange)
-	return rv
-}
-
-func (t_ TextInputClientObject) HasUnmarkText() bool {
-	return t_.RespondsToSelector(objc.Sel("unmarkText"))
-}
-
-// Unmarks the marked text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438239-unmarktext?language=objc
-func (t_ TextInputClientObject) UnmarkText() {
-	objc.Call[objc.Void](t_, objc.Sel("unmarkText"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438258-inserttext?language=objc
+func (t_ TextInputClientObject) InsertTextReplacementRange(string_ objc.Object, replacementRange foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("insertText:replacementRange:"), string_, replacementRange)
 }
 
 func (t_ TextInputClientObject) HasHasMarkedText() bool {
@@ -154,41 +107,6 @@ func (t_ TextInputClientObject) HasMarkedText() bool {
 	return rv
 }
 
-func (t_ TextInputClientObject) HasSelectedRange() bool {
-	return t_.RespondsToSelector(objc.Sel("selectedRange"))
-}
-
-// Returns the range of selected text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438242-selectedrange?language=objc
-func (t_ TextInputClientObject) SelectedRange() foundation.Range {
-	rv := objc.Call[foundation.Range](t_, objc.Sel("selectedRange"))
-	return rv
-}
-
-func (t_ TextInputClientObject) HasBaselineDeltaForCharacterAtIndex() bool {
-	return t_.RespondsToSelector(objc.Sel("baselineDeltaForCharacterAtIndex:"))
-}
-
-// Returns the baseline position of a given character relative to the origin of rectangle returned by [appkit/nstextinputclient/firstrectforcharacterrange]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438254-baselinedeltaforcharacteratindex?language=objc
-func (t_ TextInputClientObject) BaselineDeltaForCharacterAtIndex(anIndex uint) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("baselineDeltaForCharacterAtIndex:"), anIndex)
-	return rv
-}
-
-func (t_ TextInputClientObject) HasDoCommandBySelector() bool {
-	return t_.RespondsToSelector(objc.Sel("doCommandBySelector:"))
-}
-
-// Invokes the action specified by the given selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438256-docommandbyselector?language=objc
-func (t_ TextInputClientObject) DoCommandBySelector(selector objc.Selector) {
-	objc.Call[objc.Void](t_, objc.Sel("doCommandBySelector:"), selector)
-}
-
 func (t_ TextInputClientObject) HasDrawsVerticallyForCharacterAtIndex() bool {
 	return t_.RespondsToSelector(objc.Sel("drawsVerticallyForCharacterAtIndex:"))
 }
@@ -201,50 +119,50 @@ func (t_ TextInputClientObject) DrawsVerticallyForCharacterAtIndex(charIndex uin
 	return rv
 }
 
-func (t_ TextInputClientObject) HasAttributedSubstringForProposedRangeActualRange() bool {
-	return t_.RespondsToSelector(objc.Sel("attributedSubstringForProposedRange:actualRange:"))
+func (t_ TextInputClientObject) HasAttributedString() bool {
+	return t_.RespondsToSelector(objc.Sel("attributedString"))
 }
 
-// Returns an attributed string derived from the given range in the receiver's text storage. [Full Topic]
+// Returns an attributed string representing the receiver's text storage. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438238-attributedsubstringforproposedra?language=objc
-func (t_ TextInputClientObject) AttributedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedSubstringForProposedRange:actualRange:"), range_, actualRange)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438232-attributedstring?language=objc
+func (t_ TextInputClientObject) AttributedString() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedString"))
 	return rv
 }
 
-func (t_ TextInputClientObject) HasValidAttributesForMarkedText() bool {
-	return t_.RespondsToSelector(objc.Sel("validAttributesForMarkedText"))
+func (t_ TextInputClientObject) HasCharacterIndexForPoint() bool {
+	return t_.RespondsToSelector(objc.Sel("characterIndexForPoint:"))
 }
 
-// Returns an array of attribute names recognized by the receiver. [Full Topic]
+// Returns the index of the character whose bounding rectangle includes the given point. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438228-validattributesformarkedtext?language=objc
-func (t_ TextInputClientObject) ValidAttributesForMarkedText() []foundation.AttributedStringKey {
-	rv := objc.Call[[]foundation.AttributedStringKey](t_, objc.Sel("validAttributesForMarkedText"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438244-characterindexforpoint?language=objc
+func (t_ TextInputClientObject) CharacterIndexForPoint(point foundation.Point) uint {
+	rv := objc.Call[uint](t_, objc.Sel("characterIndexForPoint:"), point)
 	return rv
 }
 
-func (t_ TextInputClientObject) HasInsertTextReplacementRange() bool {
-	return t_.RespondsToSelector(objc.Sel("insertText:replacementRange:"))
+func (t_ TextInputClientObject) HasUnmarkText() bool {
+	return t_.RespondsToSelector(objc.Sel("unmarkText"))
 }
 
-// Inserts the given string into the receiver, replacing the specified content. [Full Topic]
+// Unmarks the marked text. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438258-inserttext?language=objc
-func (t_ TextInputClientObject) InsertTextReplacementRange(string_ objc.Object, replacementRange foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("insertText:replacementRange:"), string_, replacementRange)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438239-unmarktext?language=objc
+func (t_ TextInputClientObject) UnmarkText() {
+	objc.Call[objc.Void](t_, objc.Sel("unmarkText"))
 }
 
-func (t_ TextInputClientObject) HasWindowLevel() bool {
-	return t_.RespondsToSelector(objc.Sel("windowLevel"))
+func (t_ TextInputClientObject) HasSelectedRange() bool {
+	return t_.RespondsToSelector(objc.Sel("selectedRange"))
 }
 
-// Returns the window level of the receiver. [Full Topic]
+// Returns the range of selected text. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438248-windowlevel?language=objc
-func (t_ TextInputClientObject) WindowLevel() int {
-	rv := objc.Call[int](t_, objc.Sel("windowLevel"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438242-selectedrange?language=objc
+func (t_ TextInputClientObject) SelectedRange() foundation.Range {
+	rv := objc.Call[foundation.Range](t_, objc.Sel("selectedRange"))
 	return rv
 }
 
@@ -260,14 +178,96 @@ func (t_ TextInputClientObject) MarkedRange() foundation.Range {
 	return rv
 }
 
-func (t_ TextInputClientObject) HasCharacterIndexForPoint() bool {
-	return t_.RespondsToSelector(objc.Sel("characterIndexForPoint:"))
+func (t_ TextInputClientObject) HasSetMarkedTextSelectedRangeReplacementRange() bool {
+	return t_.RespondsToSelector(objc.Sel("setMarkedText:selectedRange:replacementRange:"))
 }
 
-// Returns the index of the character whose bounding rectangle includes the given point. [Full Topic]
+// Replaces a specified range in the receiver’s text storage with the given string and sets the selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438244-characterindexforpoint?language=objc
-func (t_ TextInputClientObject) CharacterIndexForPoint(point foundation.Point) uint {
-	rv := objc.Call[uint](t_, objc.Sel("characterIndexForPoint:"), point)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438246-setmarkedtext?language=objc
+func (t_ TextInputClientObject) SetMarkedTextSelectedRangeReplacementRange(string_ objc.Object, selectedRange foundation.Range, replacementRange foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("setMarkedText:selectedRange:replacementRange:"), string_, selectedRange, replacementRange)
+}
+
+func (t_ TextInputClientObject) HasWindowLevel() bool {
+	return t_.RespondsToSelector(objc.Sel("windowLevel"))
+}
+
+// Returns the window level of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438248-windowlevel?language=objc
+func (t_ TextInputClientObject) WindowLevel() int {
+	rv := objc.Call[int](t_, objc.Sel("windowLevel"))
+	return rv
+}
+
+func (t_ TextInputClientObject) HasBaselineDeltaForCharacterAtIndex() bool {
+	return t_.RespondsToSelector(objc.Sel("baselineDeltaForCharacterAtIndex:"))
+}
+
+// Returns the baseline position of a given character relative to the origin of rectangle returned by firstRectForCharacterRange:actualRange:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438254-baselinedeltaforcharacteratindex?language=objc
+func (t_ TextInputClientObject) BaselineDeltaForCharacterAtIndex(anIndex uint) float64 {
+	rv := objc.Call[float64](t_, objc.Sel("baselineDeltaForCharacterAtIndex:"), anIndex)
+	return rv
+}
+
+func (t_ TextInputClientObject) HasAttributedSubstringForProposedRangeActualRange() bool {
+	return t_.RespondsToSelector(objc.Sel("attributedSubstringForProposedRange:actualRange:"))
+}
+
+// Returns an attributed string derived from the given range in the receiver's text storage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438238-attributedsubstringforproposedra?language=objc
+func (t_ TextInputClientObject) AttributedSubstringForProposedRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedSubstringForProposedRange:actualRange:"), range_, actualRange)
+	return rv
+}
+
+func (t_ TextInputClientObject) HasFirstRectForCharacterRangeActualRange() bool {
+	return t_.RespondsToSelector(objc.Sel("firstRectForCharacterRange:actualRange:"))
+}
+
+// Returns the first logical boundary rectangle for characters in the given range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438240-firstrectforcharacterrange?language=objc
+func (t_ TextInputClientObject) FirstRectForCharacterRangeActualRange(range_ foundation.Range, actualRange foundation.RangePointer) foundation.Rect {
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("firstRectForCharacterRange:actualRange:"), range_, actualRange)
+	return rv
+}
+
+func (t_ TextInputClientObject) HasDoCommandBySelector() bool {
+	return t_.RespondsToSelector(objc.Sel("doCommandBySelector:"))
+}
+
+// Invokes the action specified by the given selector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438256-docommandbyselector?language=objc
+func (t_ TextInputClientObject) DoCommandBySelector(selector objc.Selector) {
+	objc.Call[objc.Void](t_, objc.Sel("doCommandBySelector:"), selector)
+}
+
+func (t_ TextInputClientObject) HasFractionOfDistanceThroughGlyphForPoint() bool {
+	return t_.RespondsToSelector(objc.Sel("fractionOfDistanceThroughGlyphForPoint:"))
+}
+
+// Returns the fraction of the distance from the left side of the character to the right side that a given point lies. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438236-fractionofdistancethroughglyphfo?language=objc
+func (t_ TextInputClientObject) FractionOfDistanceThroughGlyphForPoint(point foundation.Point) float64 {
+	rv := objc.Call[float64](t_, objc.Sel("fractionOfDistanceThroughGlyphForPoint:"), point)
+	return rv
+}
+
+func (t_ TextInputClientObject) HasValidAttributesForMarkedText() bool {
+	return t_.RespondsToSelector(objc.Sel("validAttributesForMarkedText"))
+}
+
+// Returns an array of attribute names recognized by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputclient/1438228-validattributesformarkedtext?language=objc
+func (t_ TextInputClientObject) ValidAttributesForMarkedText() []foundation.AttributedStringKey {
+	rv := objc.Call[[]foundation.AttributedStringKey](t_, objc.Sel("validAttributesForMarkedText"))
 	return rv
 }

@@ -18,10 +18,10 @@ type _MergePolicyClass struct {
 // An interface definition for the [MergePolicy] class.
 type IMergePolicy interface {
 	objc.IObject
-	InitWithMergeType(ty MergePolicyType) objc.Object
 	ResolveConstraintConflictsError(list []IConstraintConflict, error unsafe.Pointer) bool
-	ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool
 	ResolveConflictsError(list []objc.IObject, error unsafe.Pointer) bool
+	InitWithMergeType(ty MergePolicyType) objc.Object
+	ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool
 	MergeType() MergePolicyType
 }
 
@@ -58,27 +58,11 @@ func (m_ MergePolicy) Init() MergePolicy {
 	return rv
 }
 
-// Returns a merge policy initialized with a given policy type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506763-initwithmergetype?language=objc
-func (m_ MergePolicy) InitWithMergeType(ty MergePolicyType) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("initWithMergeType:"), ty)
-	return rv
-}
-
 // Resolves the conflicts in a given list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506678-resolveconstraintconflicts?language=objc
 func (m_ MergePolicy) ResolveConstraintConflictsError(list []IConstraintConflict, error unsafe.Pointer) bool {
 	rv := objc.Call[bool](m_, objc.Sel("resolveConstraintConflicts:error:"), list, error)
-	return rv
-}
-
-// Resolves the conflicts in a given list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506787-resolveoptimisticlockingversionc?language=objc
-func (m_ MergePolicy) ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](m_, objc.Sel("resolveOptimisticLockingVersionConflicts:error:"), list, error)
 	return rv
 }
 
@@ -90,19 +74,20 @@ func (m_ MergePolicy) ResolveConflictsError(list []objc.IObject, error unsafe.Po
 	return rv
 }
 
-// The default merge policy for all managed object contexts. [Full Topic]
+// Returns a merge policy initialized with a given policy type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690612-errormergepolicy?language=objc
-func (mc _MergePolicyClass) ErrorMergePolicy() MergePolicy {
-	rv := objc.Call[MergePolicy](mc, objc.Sel("errorMergePolicy"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506763-initwithmergetype?language=objc
+func (m_ MergePolicy) InitWithMergeType(ty MergePolicyType) objc.Object {
+	rv := objc.Call[objc.Object](m_, objc.Sel("initWithMergeType:"), ty)
 	return rv
 }
 
-// The default merge policy for all managed object contexts. [Full Topic]
+// Resolves the conflicts in a given list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690612-errormergepolicy?language=objc
-func MergePolicy_ErrorMergePolicy() MergePolicy {
-	return MergePolicyClass.ErrorMergePolicy()
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506787-resolveoptimisticlockingversionc?language=objc
+func (m_ MergePolicy) ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("resolveOptimisticLockingVersionConflicts:error:"), list, error)
+	return rv
 }
 
 // A property-based merge policy that applies in-memory changes. [Full Topic]
@@ -118,21 +103,6 @@ func (mc _MergePolicyClass) MergeByPropertyObjectTrumpMergePolicy() MergePolicy 
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690607-mergebypropertyobjecttrumpmergep?language=objc
 func MergePolicy_MergeByPropertyObjectTrumpMergePolicy() MergePolicy {
 	return MergePolicyClass.MergeByPropertyObjectTrumpMergePolicy()
-}
-
-// A merge policy that overwrites the entire stored object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690610-overwritemergepolicy?language=objc
-func (mc _MergePolicyClass) OverwriteMergePolicy() MergePolicy {
-	rv := objc.Call[MergePolicy](mc, objc.Sel("overwriteMergePolicy"))
-	return rv
-}
-
-// A merge policy that overwrites the entire stored object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690610-overwritemergepolicy?language=objc
-func MergePolicy_OverwriteMergePolicy() MergePolicy {
-	return MergePolicyClass.OverwriteMergePolicy()
 }
 
 // The merge type. [Full Topic]
@@ -171,4 +141,34 @@ func (mc _MergePolicyClass) RollbackMergePolicy() MergePolicy {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690613-rollbackmergepolicy?language=objc
 func MergePolicy_RollbackMergePolicy() MergePolicy {
 	return MergePolicyClass.RollbackMergePolicy()
+}
+
+// The default merge policy for all managed object contexts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690612-errormergepolicy?language=objc
+func (mc _MergePolicyClass) ErrorMergePolicy() MergePolicy {
+	rv := objc.Call[MergePolicy](mc, objc.Sel("errorMergePolicy"))
+	return rv
+}
+
+// The default merge policy for all managed object contexts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690612-errormergepolicy?language=objc
+func MergePolicy_ErrorMergePolicy() MergePolicy {
+	return MergePolicyClass.ErrorMergePolicy()
+}
+
+// A merge policy that overwrites the entire stored object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690610-overwritemergepolicy?language=objc
+func (mc _MergePolicyClass) OverwriteMergePolicy() MergePolicy {
+	rv := objc.Call[MergePolicy](mc, objc.Sel("overwriteMergePolicy"))
+	return rv
+}
+
+// A merge policy that overwrites the entire stored object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1690610-overwritemergepolicy?language=objc
+func MergePolicy_OverwriteMergePolicy() MergePolicy {
+	return MergePolicyClass.OverwriteMergePolicy()
 }

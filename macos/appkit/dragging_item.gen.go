@@ -20,10 +20,10 @@ type _DraggingItemClass struct {
 type IDraggingItem interface {
 	objc.IObject
 	SetDraggingFrameContents(frame foundation.Rect, contents objc.IObject)
+	Item() objc.Object
 	DraggingFrame() foundation.Rect
 	SetDraggingFrame(value foundation.Rect)
 	ImageComponents() []DraggingImageComponent
-	Item() objc.Object
 	ImageComponentsProvider() func() []DraggingImageComponent
 	SetImageComponentsProvider(value func() []DraggingImageComponent)
 }
@@ -83,6 +83,14 @@ func (d_ DraggingItem) SetDraggingFrameContents(frame foundation.Rect, contents 
 	objc.Call[objc.Void](d_, objc.Sel("setDraggingFrame:contents:"), frame, contents)
 }
 
+// The pasteboard reader or writer object dependent on the context where you use the dragging item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitem/1533258-item?language=objc
+func (d_ DraggingItem) Item() objc.Object {
+	rv := objc.Call[objc.Object](d_, objc.Sel("item"))
+	return rv
+}
+
 // The frame of the dragging item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitem/1528559-draggingframe?language=objc
@@ -103,14 +111,6 @@ func (d_ DraggingItem) SetDraggingFrame(value foundation.Rect) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitem/1524302-imagecomponents?language=objc
 func (d_ DraggingItem) ImageComponents() []DraggingImageComponent {
 	rv := objc.Call[[]DraggingImageComponent](d_, objc.Sel("imageComponents"))
-	return rv
-}
-
-// The pasteboard reader or writer object dependent on the context where you use the dragging item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitem/1533258-item?language=objc
-func (d_ DraggingItem) Item() objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("item"))
 	return rv
 }
 

@@ -36,18 +36,6 @@ func PICTImageRepFrom(ptr unsafe.Pointer) PICTImageRep {
 	}
 }
 
-func (pc _PICTImageRepClass) ImageRepWithData(pictData []byte) PICTImageRep {
-	rv := objc.Call[PICTImageRep](pc, objc.Sel("imageRepWithData:"), pictData)
-	return rv
-}
-
-// Creates and returns a representation of an image from the specified data in the PICT file format. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspictimagerep/1588725-imagerepwithdata?language=objc
-func PICTImageRep_ImageRepWithData(pictData []byte) PICTImageRep {
-	return PICTImageRepClass.ImageRepWithData(pictData)
-}
-
 func (p_ PICTImageRep) InitWithData(pictData []byte) PICTImageRep {
 	rv := objc.Call[PICTImageRep](p_, objc.Sel("initWithData:"), pictData)
 	return rv
@@ -60,6 +48,18 @@ func NewPICTImageRepWithData(pictData []byte) PICTImageRep {
 	instance := PICTImageRepClass.Alloc().InitWithData(pictData)
 	instance.Autorelease()
 	return instance
+}
+
+func (pc _PICTImageRepClass) ImageRepWithData(pictData []byte) PICTImageRep {
+	rv := objc.Call[PICTImageRep](pc, objc.Sel("imageRepWithData:"), pictData)
+	return rv
+}
+
+// Creates and returns a representation of an image from the specified data in the PICT file format. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspictimagerep/1588725-imagerepwithdata?language=objc
+func PICTImageRep_ImageRepWithData(pictData []byte) PICTImageRep {
+	return PICTImageRepClass.ImageRepWithData(pictData)
 }
 
 func (pc _PICTImageRepClass) Alloc() PICTImageRep {

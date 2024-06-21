@@ -28,7 +28,7 @@ type BufferGetBooleanCallback = func(buf BufferRef, refcon unsafe.Pointer) bool
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmbufferqueuetriggercallback?language=objc
 type BufferQueueTriggerCallback = func(triggerRefcon unsafe.Pointer, triggerToken unsafe.Pointer)
 
-// Client callback called by [coremedia/cmsamplebufferinvalidate]. [Full Topic]
+// Client callback called by CMSampleBufferInvalidate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmsamplebufferinvalidatehandler?language=objc
 type SampleBufferInvalidateHandler = func(sbuf SampleBufferRef)
@@ -38,7 +38,7 @@ type SampleBufferInvalidateHandler = func(sbuf SampleBufferRef)
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmbuffergetsizehandler?language=objc
 type BufferGetSizeHandler = func(buf BufferRef) uint
 
-// Client callback called by [coremedia/cmsamplebufferinvalidate]. [Full Topic]
+// Client callback called by CMSampleBufferInvalidate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmsamplebufferinvalidatecallback?language=objc
 type SampleBufferInvalidateCallback = func(sbuf SampleBufferRef, invalidateRefCon uint64)
@@ -53,7 +53,7 @@ type BufferValidationCallback = func(queue BufferQueueRef, buf BufferRef, valida
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmbuffergetsizecallback?language=objc
 type BufferGetSizeCallback = func(buf BufferRef, refcon unsafe.Pointer) uint
 
-// Client callback called by [coremedia/cmsamplebuffermakedataready]. [Full Topic]
+// Client callback called by CMSampleBufferMakeDataReady. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremedia/cmsamplebuffermakedatareadycallback?language=objc
 type SampleBufferMakeDataReadyCallback = func(sbuf SampleBufferRef, makeDataReadyRefcon unsafe.Pointer) uint

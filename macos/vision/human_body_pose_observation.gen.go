@@ -18,10 +18,10 @@ type _HumanBodyPoseObservationClass struct {
 // An interface definition for the [HumanBodyPoseObservation] class.
 type IHumanBodyPoseObservation interface {
 	IRecognizedPointsObservation
-	RecognizedPointForJointNameError(jointName HumanBodyPoseObservationJointName, error unsafe.Pointer) RecognizedPoint
 	RecognizedPointsForJointsGroupNameError(jointsGroupName HumanBodyPoseObservationJointsGroupName, error unsafe.Pointer) map[HumanBodyPoseObservationJointName]RecognizedPoint
-	AvailableJointsGroupNames() []HumanBodyPoseObservationJointsGroupName
+	RecognizedPointForJointNameError(jointName HumanBodyPoseObservationJointName, error unsafe.Pointer) RecognizedPoint
 	AvailableJointNames() []HumanBodyPoseObservationJointName
+	AvailableJointsGroupNames() []HumanBodyPoseObservationJointsGroupName
 }
 
 // An observation that provides the body points the analysis recognized. [Full Topic]
@@ -57,14 +57,6 @@ func (h_ HumanBodyPoseObservation) Init() HumanBodyPoseObservation {
 	return rv
 }
 
-// Retrieves the recognized point for a joint name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675603-recognizedpointforjointname?language=objc
-func (h_ HumanBodyPoseObservation) RecognizedPointForJointNameError(jointName HumanBodyPoseObservationJointName, error unsafe.Pointer) RecognizedPoint {
-	rv := objc.Call[RecognizedPoint](h_, objc.Sel("recognizedPointForJointName:error:"), jointName, error)
-	return rv
-}
-
 // Retrieves the recognized points associated with the joint group name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675604-recognizedpointsforjointsgroupna?language=objc
@@ -73,11 +65,11 @@ func (h_ HumanBodyPoseObservation) RecognizedPointsForJointsGroupNameError(joint
 	return rv
 }
 
-// The available joint group names in the observation. [Full Topic]
+// Retrieves the recognized point for a joint name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675602-availablejointsgroupnames?language=objc
-func (h_ HumanBodyPoseObservation) AvailableJointsGroupNames() []HumanBodyPoseObservationJointsGroupName {
-	rv := objc.Call[[]HumanBodyPoseObservationJointsGroupName](h_, objc.Sel("availableJointsGroupNames"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675603-recognizedpointforjointname?language=objc
+func (h_ HumanBodyPoseObservation) RecognizedPointForJointNameError(jointName HumanBodyPoseObservationJointName, error unsafe.Pointer) RecognizedPoint {
+	rv := objc.Call[RecognizedPoint](h_, objc.Sel("recognizedPointForJointName:error:"), jointName, error)
 	return rv
 }
 
@@ -86,5 +78,13 @@ func (h_ HumanBodyPoseObservation) AvailableJointsGroupNames() []HumanBodyPoseOb
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675601-availablejointnames?language=objc
 func (h_ HumanBodyPoseObservation) AvailableJointNames() []HumanBodyPoseObservationJointName {
 	rv := objc.Call[[]HumanBodyPoseObservationJointName](h_, objc.Sel("availableJointNames"))
+	return rv
+}
+
+// The available joint group names in the observation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanbodyposeobservation/3675602-availablejointsgroupnames?language=objc
+func (h_ HumanBodyPoseObservation) AvailableJointsGroupNames() []HumanBodyPoseObservationJointsGroupName {
+	rv := objc.Call[[]HumanBodyPoseObservationJointsGroupName](h_, objc.Sel("availableJointsGroupNames"))
 	return rv
 }

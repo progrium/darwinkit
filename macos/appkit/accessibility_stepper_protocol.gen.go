@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper?language=objc
 type PAccessibilityStepper interface {
 	// optional
-	AccessibilityPerformIncrement() bool
-	HasAccessibilityPerformIncrement() bool
+	AccessibilityPerformDecrement() bool
+	HasAccessibilityPerformDecrement() bool
 
 	// optional
 	AccessibilityLabel() string
 	HasAccessibilityLabel() bool
 
 	// optional
-	AccessibilityValue() objc.Object
-	HasAccessibilityValue() bool
+	AccessibilityPerformIncrement() bool
+	HasAccessibilityPerformIncrement() bool
 
 	// optional
-	AccessibilityPerformDecrement() bool
-	HasAccessibilityPerformDecrement() bool
+	AccessibilityValue() objc.Object
+	HasAccessibilityValue() bool
 }
 
 // ensure impl type implements protocol interface
@@ -35,15 +35,15 @@ type AccessibilityStepperObject struct {
 	objc.Object
 }
 
-func (a_ AccessibilityStepperObject) HasAccessibilityPerformIncrement() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityPerformIncrement"))
+func (a_ AccessibilityStepperObject) HasAccessibilityPerformDecrement() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityPerformDecrement"))
 }
 
-// Increments the stepper’s value. [Full Topic]
+// Decrements the stepper’s value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper/1533764-accessibilityperformincrement?language=objc
-func (a_ AccessibilityStepperObject) AccessibilityPerformIncrement() bool {
-	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformIncrement"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper/1525327-accessibilityperformdecrement?language=objc
+func (a_ AccessibilityStepperObject) AccessibilityPerformDecrement() bool {
+	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformDecrement"))
 	return rv
 }
 
@@ -59,6 +59,18 @@ func (a_ AccessibilityStepperObject) AccessibilityLabel() string {
 	return rv
 }
 
+func (a_ AccessibilityStepperObject) HasAccessibilityPerformIncrement() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityPerformIncrement"))
+}
+
+// Increments the stepper’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper/1533764-accessibilityperformincrement?language=objc
+func (a_ AccessibilityStepperObject) AccessibilityPerformIncrement() bool {
+	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformIncrement"))
+	return rv
+}
+
 func (a_ AccessibilityStepperObject) HasAccessibilityValue() bool {
 	return a_.RespondsToSelector(objc.Sel("accessibilityValue"))
 }
@@ -68,17 +80,5 @@ func (a_ AccessibilityStepperObject) HasAccessibilityValue() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper/1528167-accessibilityvalue?language=objc
 func (a_ AccessibilityStepperObject) AccessibilityValue() objc.Object {
 	rv := objc.Call[objc.Object](a_, objc.Sel("accessibilityValue"))
-	return rv
-}
-
-func (a_ AccessibilityStepperObject) HasAccessibilityPerformDecrement() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityPerformDecrement"))
-}
-
-// Decrements the stepper’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitystepper/1525327-accessibilityperformdecrement?language=objc
-func (a_ AccessibilityStepperObject) AccessibilityPerformDecrement() bool {
-	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformDecrement"))
 	return rv
 }

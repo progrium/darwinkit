@@ -19,7 +19,6 @@ type _FunctionConstantValuesClass struct {
 // An interface definition for the [FunctionConstantValues] class.
 type IFunctionConstantValues interface {
 	objc.IObject
-	SetConstantValueTypeAtIndex(value unsafe.Pointer, type_ DataType, index uint)
 	SetConstantValueTypeWithName(value unsafe.Pointer, type_ DataType, name string)
 	SetConstantValuesTypeWithRange(values unsafe.Pointer, type_ DataType, range_ foundation.Range)
 	Reset()
@@ -56,13 +55,6 @@ func NewFunctionConstantValues() FunctionConstantValues {
 func (f_ FunctionConstantValues) Init() FunctionConstantValues {
 	rv := objc.Call[FunctionConstantValues](f_, objc.Sel("init"))
 	return rv
-}
-
-// Sets a value for a function constant at a specific index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionconstantvalues/1639531-setconstantvalue?language=objc
-func (f_ FunctionConstantValues) SetConstantValueTypeAtIndex(value unsafe.Pointer, type_ DataType, index uint) {
-	objc.Call[objc.Void](f_, objc.Sel("setConstantValue:type:atIndex:"), value, type_, index)
 }
 
 // Sets a value for a function constant with a specific name. [Full Topic]

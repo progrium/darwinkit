@@ -13,65 +13,31 @@ import (
 type PComboBoxDelegate interface {
 	PTextFieldDelegate
 	// optional
-	ComboBoxWillDismiss(notification foundation.Notification)
-	HasComboBoxWillDismiss() bool
-
-	// optional
-	ComboBoxSelectionIsChanging(notification foundation.Notification)
-	HasComboBoxSelectionIsChanging() bool
-
-	// optional
 	ComboBoxSelectionDidChange(notification foundation.Notification)
 	HasComboBoxSelectionDidChange() bool
 
 	// optional
 	ComboBoxWillPopUp(notification foundation.Notification)
 	HasComboBoxWillPopUp() bool
+
+	// optional
+	ComboBoxWillDismiss(notification foundation.Notification)
+	HasComboBoxWillDismiss() bool
+
+	// optional
+	ComboBoxSelectionIsChanging(notification foundation.Notification)
+	HasComboBoxSelectionIsChanging() bool
 }
 
 // A delegate implementation builder for the [PComboBoxDelegate] protocol.
 type ComboBoxDelegate struct {
 	TextFieldDelegate
-	_ComboBoxWillDismiss         func(notification foundation.Notification)
-	_ComboBoxSelectionIsChanging func(notification foundation.Notification)
 	_ComboBoxSelectionDidChange  func(notification foundation.Notification)
 	_ComboBoxWillPopUp           func(notification foundation.Notification)
+	_ComboBoxWillDismiss         func(notification foundation.Notification)
+	_ComboBoxSelectionIsChanging func(notification foundation.Notification)
 }
 
-func (di *ComboBoxDelegate) HasComboBoxWillDismiss() bool {
-	return di._ComboBoxWillDismiss != nil
-}
-
-// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
-func (di *ComboBoxDelegate) SetComboBoxWillDismiss(f func(notification foundation.Notification)) {
-	di._ComboBoxWillDismiss = f
-}
-
-// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
-func (di *ComboBoxDelegate) ComboBoxWillDismiss(notification foundation.Notification) {
-	di._ComboBoxWillDismiss(notification)
-}
-func (di *ComboBoxDelegate) HasComboBoxSelectionIsChanging() bool {
-	return di._ComboBoxSelectionIsChanging != nil
-}
-
-// Informs the delegate that the pop-up list selection is changing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
-func (di *ComboBoxDelegate) SetComboBoxSelectionIsChanging(f func(notification foundation.Notification)) {
-	di._ComboBoxSelectionIsChanging = f
-}
-
-// Informs the delegate that the pop-up list selection is changing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
-func (di *ComboBoxDelegate) ComboBoxSelectionIsChanging(notification foundation.Notification) {
-	di._ComboBoxSelectionIsChanging(notification)
-}
 func (di *ComboBoxDelegate) HasComboBoxSelectionDidChange() bool {
 	return di._ComboBoxSelectionDidChange != nil
 }
@@ -106,6 +72,40 @@ func (di *ComboBoxDelegate) SetComboBoxWillPopUp(f func(notification foundation.
 func (di *ComboBoxDelegate) ComboBoxWillPopUp(notification foundation.Notification) {
 	di._ComboBoxWillPopUp(notification)
 }
+func (di *ComboBoxDelegate) HasComboBoxWillDismiss() bool {
+	return di._ComboBoxWillDismiss != nil
+}
+
+// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
+func (di *ComboBoxDelegate) SetComboBoxWillDismiss(f func(notification foundation.Notification)) {
+	di._ComboBoxWillDismiss = f
+}
+
+// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
+func (di *ComboBoxDelegate) ComboBoxWillDismiss(notification foundation.Notification) {
+	di._ComboBoxWillDismiss(notification)
+}
+func (di *ComboBoxDelegate) HasComboBoxSelectionIsChanging() bool {
+	return di._ComboBoxSelectionIsChanging != nil
+}
+
+// Informs the delegate that the pop-up list selection is changing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
+func (di *ComboBoxDelegate) SetComboBoxSelectionIsChanging(f func(notification foundation.Notification)) {
+	di._ComboBoxSelectionIsChanging = f
+}
+
+// Informs the delegate that the pop-up list selection is changing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
+func (di *ComboBoxDelegate) ComboBoxSelectionIsChanging(notification foundation.Notification) {
+	di._ComboBoxSelectionIsChanging(notification)
+}
 
 // ensure impl type implements protocol interface
 var _ PComboBoxDelegate = (*ComboBoxDelegateObject)(nil)
@@ -113,28 +113,6 @@ var _ PComboBoxDelegate = (*ComboBoxDelegateObject)(nil)
 // A concrete type for the [PComboBoxDelegate] protocol.
 type ComboBoxDelegateObject struct {
 	TextFieldDelegateObject
-}
-
-func (c_ ComboBoxDelegateObject) HasComboBoxWillDismiss() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBoxWillDismiss:"))
-}
-
-// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
-func (c_ ComboBoxDelegateObject) ComboBoxWillDismiss(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillDismiss:"), notification)
-}
-
-func (c_ ComboBoxDelegateObject) HasComboBoxSelectionIsChanging() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBoxSelectionIsChanging:"))
-}
-
-// Informs the delegate that the pop-up list selection is changing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
-func (c_ ComboBoxDelegateObject) ComboBoxSelectionIsChanging(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionIsChanging:"), notification)
 }
 
 func (c_ ComboBoxDelegateObject) HasComboBoxSelectionDidChange() bool {
@@ -157,4 +135,26 @@ func (c_ ComboBoxDelegateObject) HasComboBoxWillPopUp() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436784-comboboxwillpopup?language=objc
 func (c_ ComboBoxDelegateObject) ComboBoxWillPopUp(notification foundation.Notification) {
 	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillPopUp:"), notification)
+}
+
+func (c_ ComboBoxDelegateObject) HasComboBoxWillDismiss() bool {
+	return c_.RespondsToSelector(objc.Sel("comboBoxWillDismiss:"))
+}
+
+// Informs the delegate that the pop-up list is about to be dismissed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
+func (c_ ComboBoxDelegateObject) ComboBoxWillDismiss(notification foundation.Notification) {
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillDismiss:"), notification)
+}
+
+func (c_ ComboBoxDelegateObject) HasComboBoxSelectionIsChanging() bool {
+	return c_.RespondsToSelector(objc.Sel("comboBoxSelectionIsChanging:"))
+}
+
+// Informs the delegate that the pop-up list selection is changing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
+func (c_ ComboBoxDelegateObject) ComboBoxSelectionIsChanging(notification foundation.Notification) {
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionIsChanging:"), notification)
 }

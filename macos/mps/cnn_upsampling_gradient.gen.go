@@ -19,8 +19,8 @@ type _CNNUpsamplingGradientClass struct {
 // An interface definition for the [CNNUpsamplingGradient] class.
 type ICNNUpsamplingGradient interface {
 	ICNNGradientKernel
-	ScaleFactorX() float64
 	ScaleFactorY() float64
+	ScaleFactorX() float64
 }
 
 // A gradient filter that upsamples an existing Metal Performance Shaders image. [Full Topic]
@@ -88,16 +88,16 @@ func CNNUpsamplingGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplinggradient/2942630-scalefactorx?language=objc
-func (c_ CNNUpsamplingGradient) ScaleFactorX() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplinggradient/2942628-scalefactory?language=objc
+func (c_ CNNUpsamplingGradient) ScaleFactorY() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplinggradient/2942628-scalefactory?language=objc
-func (c_ CNNUpsamplingGradient) ScaleFactorY() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplinggradient/2942630-scalefactorx?language=objc
+func (c_ CNNUpsamplingGradient) ScaleFactorX() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
 	return rv
 }

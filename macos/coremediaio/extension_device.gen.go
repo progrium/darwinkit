@@ -19,14 +19,14 @@ type _ExtensionDeviceClass struct {
 // An interface definition for the [ExtensionDevice] class.
 type IExtensionDevice interface {
 	objc.IObject
-	AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
-	RemoveStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
 	NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState)
-	LocalizedName() string
-	Streams() []ExtensionStream
-	LegacyDeviceID() string
+	RemoveStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
+	AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
 	DeviceID() foundation.UUID
+	Streams() []ExtensionStream
 	Source() ExtensionDeviceSourceObject
+	LocalizedName() string
+	LegacyDeviceID() string
 }
 
 // An object that represents a physical or virtual device. [Full Topic]
@@ -40,34 +40,6 @@ func ExtensionDeviceFrom(ptr unsafe.Pointer) ExtensionDevice {
 	return ExtensionDevice{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (ec _ExtensionDeviceClass) DeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
-	po3 := objc.WrapAsProtocol("CMIOExtensionDeviceSource", source)
-	rv := objc.Call[ExtensionDevice](ec, objc.Sel("deviceWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, deviceID, legacyDeviceID, po3)
-	return rv
-}
-
-// Returns a new extension device with an optional legacy device identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915828-devicewithlocalizedname?language=objc
-func ExtensionDevice_DeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
-	return ExtensionDeviceClass.DeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName, deviceID, legacyDeviceID, source)
-}
-
-func (e_ ExtensionDevice) InitWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
-	po3 := objc.WrapAsProtocol("CMIOExtensionDeviceSource", source)
-	rv := objc.Call[ExtensionDevice](e_, objc.Sel("initWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, deviceID, legacyDeviceID, po3)
-	return rv
-}
-
-// Creates an extension device with an optional legacy device identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915830-initwithlocalizedname?language=objc
-func NewExtensionDeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
-	instance := ExtensionDeviceClass.Alloc().InitWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName, deviceID, legacyDeviceID, source)
-	instance.Autorelease()
-	return instance
 }
 
 func (ec _ExtensionDeviceClass) Alloc() ExtensionDevice {
@@ -90,12 +62,11 @@ func (e_ ExtensionDevice) Init() ExtensionDevice {
 	return rv
 }
 
-// Adds a stream to a device. [Full Topic]
+// Notifies clients of property changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915826-addstream?language=objc
-func (e_ ExtensionDevice) AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](e_, objc.Sel("addStream:error:"), stream, outError)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915834-notifypropertieschanged?language=objc
+func (e_ ExtensionDevice) NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState) {
+	objc.Call[objc.Void](e_, objc.Sel("notifyPropertiesChanged:"), propertyStates)
 }
 
 // Removes a stream from the device. [Full Topic]
@@ -106,34 +77,11 @@ func (e_ ExtensionDevice) RemoveStreamError(stream IExtensionStream, outError un
 	return rv
 }
 
-// Notifies clients of property changes. [Full Topic]
+// Adds a stream to a device. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915834-notifypropertieschanged?language=objc
-func (e_ ExtensionDevice) NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState) {
-	objc.Call[objc.Void](e_, objc.Sel("notifyPropertiesChanged:"), propertyStates)
-}
-
-// A localized name for a device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915833-localizedname?language=objc
-func (e_ ExtensionDevice) LocalizedName() string {
-	rv := objc.Call[string](e_, objc.Sel("localizedName"))
-	return rv
-}
-
-// An array of media streams attached to this device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915837-streams?language=objc
-func (e_ ExtensionDevice) Streams() []ExtensionStream {
-	rv := objc.Call[[]ExtensionStream](e_, objc.Sel("streams"))
-	return rv
-}
-
-// A legacy device identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915832-legacydeviceid?language=objc
-func (e_ ExtensionDevice) LegacyDeviceID() string {
-	rv := objc.Call[string](e_, objc.Sel("legacyDeviceID"))
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915826-addstream?language=objc
+func (e_ ExtensionDevice) AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("addStream:error:"), stream, outError)
 	return rv
 }
 
@@ -145,10 +93,34 @@ func (e_ ExtensionDevice) DeviceID() foundation.UUID {
 	return rv
 }
 
+// An array of media streams attached to this device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915837-streams?language=objc
+func (e_ ExtensionDevice) Streams() []ExtensionStream {
+	rv := objc.Call[[]ExtensionStream](e_, objc.Sel("streams"))
+	return rv
+}
+
 // A source object for a device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915836-source?language=objc
 func (e_ ExtensionDevice) Source() ExtensionDeviceSourceObject {
 	rv := objc.Call[ExtensionDeviceSourceObject](e_, objc.Sel("source"))
+	return rv
+}
+
+// A localized name for a device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915833-localizedname?language=objc
+func (e_ ExtensionDevice) LocalizedName() string {
+	rv := objc.Call[string](e_, objc.Sel("localizedName"))
+	return rv
+}
+
+// A legacy device identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915832-legacydeviceid?language=objc
+func (e_ ExtensionDevice) LegacyDeviceID() string {
+	rv := objc.Call[string](e_, objc.Sel("legacyDeviceID"))
 	return rv
 }

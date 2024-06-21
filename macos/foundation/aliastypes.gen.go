@@ -11,7 +11,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovidercompletionhandler?language=objc
 type ItemProviderCompletionHandler = func(item objc.Object, error Error)
 
-// Implement this block to retrieve the result of the AppleScript executed by [foundation/nsuserapplescripttask/executewithappleevent]. [Full Topic]
+// Implement this block to retrieve the result of the AppleScript executed by executeWithAppleEvent:completionHandler:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserapplescripttaskcompletionhandler?language=objc
 type UserAppleScriptTaskCompletionHandler = func(result AppleEventDescriptor, error Error)
@@ -36,17 +36,17 @@ type ProgressPublishingHandler = func(progress Progress) ProgressUnpublishingHan
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscomparator?language=objc
 type Comparator = func(obj1 objc.Object, obj2 objc.Object) ComparisonResult
 
-// Implement this block to retrieve the error of the script executed by [foundation/nsuserscripttask/executewithcompletionhandler]. [Full Topic]
+// Implement this block to retrieve the error of the script executed by executeWithCompletionHandler:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttaskcompletionhandler?language=objc
 type UserScriptTaskCompletionHandler = func(error Error)
 
-// Implement this block to retrieve the output of the Automator workflow executed by [foundation/nsuserautomatortask/executewithinput]. [Full Topic]
+// Implement this block to retrieve the output of the Automator workflow executed by executeWithInput:completionHandler:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserautomatortaskcompletionhandler?language=objc
 type UserAutomatorTaskCompletionHandler = func(result objc.Object, error Error)
 
-// Implement this block to retrieve an error from the Unix scripted executed by [foundation/nsuserunixtask/executewitharguments]. [Full Topic]
+// Implement this block to retrieve an error from the Unix scripted executed by executeWithArguments:completionHandler:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtaskcompletionhandler?language=objc
 type UserUnixTaskCompletionHandler = func(error Error)

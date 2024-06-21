@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktileplugin?language=objc
 type PDockTilePlugIn interface {
 	// optional
-	DockMenu() Menu
-	HasDockMenu() bool
-
-	// optional
 	SetDockTile(dockTile DockTile)
 	HasSetDockTile() bool
+
+	// optional
+	DockMenu() Menu
+	HasDockMenu() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,6 +25,17 @@ var _ PDockTilePlugIn = (*DockTilePlugInObject)(nil)
 // A concrete type for the [PDockTilePlugIn] protocol.
 type DockTilePlugInObject struct {
 	objc.Object
+}
+
+func (d_ DockTilePlugInObject) HasSetDockTile() bool {
+	return d_.RespondsToSelector(objc.Sel("setDockTile:"))
+}
+
+// Invoked when the plug-in is first loaded and when the application is removed from the Dock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktileplugin/1534120-setdocktile?language=objc
+func (d_ DockTilePlugInObject) SetDockTile(dockTile DockTile) {
+	objc.Call[objc.Void](d_, objc.Sel("setDockTile:"), dockTile)
 }
 
 func (d_ DockTilePlugInObject) HasDockMenu() bool {
@@ -37,15 +48,4 @@ func (d_ DockTilePlugInObject) HasDockMenu() bool {
 func (d_ DockTilePlugInObject) DockMenu() Menu {
 	rv := objc.Call[Menu](d_, objc.Sel("dockMenu"))
 	return rv
-}
-
-func (d_ DockTilePlugInObject) HasSetDockTile() bool {
-	return d_.RespondsToSelector(objc.Sel("setDockTile:"))
-}
-
-// Invoked when the plug-in is first loaded and when the application is removed from the Dock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktileplugin/1534120-setdocktile?language=objc
-func (d_ DockTilePlugInObject) SetDockTile(dockTile DockTile) {
-	objc.Call[objc.Void](d_, objc.Sel("setDockTile:"), dockTile)
 }

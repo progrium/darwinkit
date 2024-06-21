@@ -19,8 +19,8 @@ type _CustomImageRepClass struct {
 // An interface definition for the [CustomImageRep] class.
 type ICustomImageRep interface {
 	IImageRep
-	DrawingHandler() func(arg0 foundation.Rect) bool
 	DrawSelector() objc.Selector
+	DrawingHandler() func(arg0 foundation.Rect) bool
 	Delegate() objc.Object
 }
 
@@ -85,19 +85,19 @@ func (c_ CustomImageRep) Init() CustomImageRep {
 	return rv
 }
 
-// The destination rectangle of the drawing handler block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomimagerep/1527316-drawinghandler?language=objc
-func (c_ CustomImageRep) DrawingHandler() func(arg0 foundation.Rect) bool {
-	rv := objc.Call[func(arg0 foundation.Rect) bool](c_, objc.Sel("drawingHandler"))
-	return rv
-}
-
 // The selector for the delegate's drawing method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomimagerep/1529935-drawselector?language=objc
 func (c_ CustomImageRep) DrawSelector() objc.Selector {
 	rv := objc.Call[objc.Selector](c_, objc.Sel("drawSelector"))
+	return rv
+}
+
+// The destination rectangle of the drawing handler block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomimagerep/1527316-drawinghandler?language=objc
+func (c_ CustomImageRep) DrawingHandler() func(arg0 foundation.Rect) bool {
+	rv := objc.Call[func(arg0 foundation.Rect) bool](c_, objc.Sel("drawingHandler"))
 	return rv
 }
 

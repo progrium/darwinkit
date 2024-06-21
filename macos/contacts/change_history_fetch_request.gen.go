@@ -20,16 +20,16 @@ type IChangeHistoryFetchRequest interface {
 	IFetchRequest
 	MutableObjects() bool
 	SetMutableObjects(value bool)
-	ShouldUnifyResults() bool
-	SetShouldUnifyResults(value bool)
-	IncludeGroupChanges() bool
-	SetIncludeGroupChanges(value bool)
-	AdditionalContactKeyDescriptors() []objc.Object
-	SetAdditionalContactKeyDescriptors(value []objc.IObject)
 	ExcludedTransactionAuthors() []string
 	SetExcludedTransactionAuthors(value []string)
+	ShouldUnifyResults() bool
+	SetShouldUnifyResults(value bool)
 	StartingToken() []byte
 	SetStartingToken(value []byte)
+	AdditionalContactKeyDescriptors() []objc.Object
+	SetAdditionalContactKeyDescriptors(value []objc.IObject)
+	IncludeGroupChanges() bool
+	SetIncludeGroupChanges(value bool)
 }
 
 //	[Full Topic]
@@ -82,6 +82,21 @@ func (c_ ChangeHistoryFetchRequest) SetMutableObjects(value bool) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294185-excludedtransactionauthors?language=objc
+func (c_ ChangeHistoryFetchRequest) ExcludedTransactionAuthors() []string {
+	rv := objc.Call[[]string](c_, objc.Sel("excludedTransactionAuthors"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294185-excludedtransactionauthors?language=objc
+func (c_ ChangeHistoryFetchRequest) SetExcludedTransactionAuthors(value []string) {
+	objc.Call[objc.Void](c_, objc.Sel("setExcludedTransactionAuthors:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294188-shouldunifyresults?language=objc
 func (c_ ChangeHistoryFetchRequest) ShouldUnifyResults() bool {
 	rv := objc.Call[bool](c_, objc.Sel("shouldUnifyResults"))
@@ -97,17 +112,17 @@ func (c_ ChangeHistoryFetchRequest) SetShouldUnifyResults(value bool) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294186-includegroupchanges?language=objc
-func (c_ ChangeHistoryFetchRequest) IncludeGroupChanges() bool {
-	rv := objc.Call[bool](c_, objc.Sel("includeGroupChanges"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294189-startingtoken?language=objc
+func (c_ ChangeHistoryFetchRequest) StartingToken() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("startingToken"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294186-includegroupchanges?language=objc
-func (c_ ChangeHistoryFetchRequest) SetIncludeGroupChanges(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setIncludeGroupChanges:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294189-startingtoken?language=objc
+func (c_ ChangeHistoryFetchRequest) SetStartingToken(value []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("setStartingToken:"), value)
 }
 
 //	[Full Topic]
@@ -127,30 +142,15 @@ func (c_ ChangeHistoryFetchRequest) SetAdditionalContactKeyDescriptors(value []o
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294185-excludedtransactionauthors?language=objc
-func (c_ ChangeHistoryFetchRequest) ExcludedTransactionAuthors() []string {
-	rv := objc.Call[[]string](c_, objc.Sel("excludedTransactionAuthors"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294186-includegroupchanges?language=objc
+func (c_ ChangeHistoryFetchRequest) IncludeGroupChanges() bool {
+	rv := objc.Call[bool](c_, objc.Sel("includeGroupChanges"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294185-excludedtransactionauthors?language=objc
-func (c_ ChangeHistoryFetchRequest) SetExcludedTransactionAuthors(value []string) {
-	objc.Call[objc.Void](c_, objc.Sel("setExcludedTransactionAuthors:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294189-startingtoken?language=objc
-func (c_ ChangeHistoryFetchRequest) StartingToken() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("startingToken"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294189-startingtoken?language=objc
-func (c_ ChangeHistoryFetchRequest) SetStartingToken(value []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("setStartingToken:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryfetchrequest/3294186-includegroupchanges?language=objc
+func (c_ ChangeHistoryFetchRequest) SetIncludeGroupChanges(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setIncludeGroupChanges:"), value)
 }

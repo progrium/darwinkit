@@ -20,15 +20,19 @@ type _VectorClass struct {
 type IVector interface {
 	objc.IObject
 	ValueAtIndex(index uint) float64
-	Count() uint
-	Y() float64
-	StringRepresentation() string
-	CGRectValue() coregraphics.Rect
-	W() float64
-	Z() float64
-	CGPointValue() coregraphics.Point
 	X() float64
+	SetX(value float64)
+	Y() float64
+	SetY(value float64)
+	CGRectValue() coregraphics.Rect
+	Count() uint
+	CGPointValue() coregraphics.Point
 	CGAffineTransformValue() coregraphics.AffineTransform
+	Z() float64
+	SetZ(value float64)
+	StringRepresentation() string
+	W() float64
+	SetW(value float64)
 }
 
 // A container for coordinate values, direction vectors, matrices, and other non-scalar values, typically used in Core Image for filter parameters. [Full Topic]
@@ -44,16 +48,16 @@ func VectorFrom(ptr unsafe.Pointer) Vector {
 	}
 }
 
-func (v_ Vector) InitWithXYZW(x float64, y float64, z float64, w float64) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithX:Y:Z:W:"), x, y, z, w)
+func (v_ Vector) InitWithCGRect(r coregraphics.Rect) Vector {
+	rv := objc.Call[Vector](v_, objc.Sel("initWithCGRect:"), r)
 	return rv
 }
 
-// Initializes four positions of a vector with the provided values. [Full Topic]
+// Initializes a vector that is initialized with values provided by a CGRect structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438088-initwithx?language=objc
-func NewVectorWithXYZW(x float64, y float64, z float64, w float64) Vector {
-	instance := VectorClass.Alloc().InitWithXYZW(x, y, z, w)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437644-initwithcgrect?language=objc
+func NewVectorWithCGRect(r coregraphics.Rect) Vector {
+	instance := VectorClass.Alloc().InitWithCGRect(r)
 	instance.Autorelease()
 	return instance
 }
@@ -72,44 +76,16 @@ func NewVectorWithValuesCount(values *float64, count uint) Vector {
 	return instance
 }
 
-func (v_ Vector) InitWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithCGAffineTransform:"), r)
+func (vc _VectorClass) VectorWithCGAffineTransform(t coregraphics.AffineTransform) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorWithCGAffineTransform:"), t)
 	return rv
 }
 
-// Initializes a vector that is initialized with values provided by a CGAffineTransform structure. [Full Topic]
+// Creates and returns a vector that is initialized with values provided by a CGAffineTransform structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438102-initwithcgaffinetransform?language=objc
-func NewVectorWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
-	instance := VectorClass.Alloc().InitWithCGAffineTransform(r)
-	instance.Autorelease()
-	return instance
-}
-
-func (v_ Vector) InitWithCGRect(r coregraphics.Rect) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithCGRect:"), r)
-	return rv
-}
-
-// Initializes a vector that is initialized with values provided by a CGRect structure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437644-initwithcgrect?language=objc
-func NewVectorWithCGRect(r coregraphics.Rect) Vector {
-	instance := VectorClass.Alloc().InitWithCGRect(r)
-	instance.Autorelease()
-	return instance
-}
-
-func (vc _VectorClass) VectorWithCGPoint(p coregraphics.Point) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithCGPoint:"), p)
-	return rv
-}
-
-// Creates and returns a vector that is initialized with values provided by a CGPoint structure. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564086-vectorwithcgpoint?language=objc
-func Vector_VectorWithCGPoint(p coregraphics.Point) Vector {
-	return VectorClass.VectorWithCGPoint(p)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564090-vectorwithcgaffinetransform?language=objc
+func Vector_VectorWithCGAffineTransform(t coregraphics.AffineTransform) Vector {
+	return VectorClass.VectorWithCGAffineTransform(t)
 }
 
 func (v_ Vector) InitWithString(representation string) Vector {
@@ -126,18 +102,6 @@ func NewVectorWithString(representation string) Vector {
 	return instance
 }
 
-func (vc _VectorClass) VectorWithXY(x float64, y float64) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithX:Y:"), x, y)
-	return rv
-}
-
-// Creates and returns a vector that is initialized with two values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564091-vectorwithx?language=objc
-func Vector_VectorWithXY(x float64, y float64) Vector {
-	return VectorClass.VectorWithXY(x, y)
-}
-
 func (v_ Vector) InitWithXY(x float64, y float64) Vector {
 	rv := objc.Call[Vector](v_, objc.Sel("initWithX:Y:"), x, y)
 	return rv
@@ -152,18 +116,6 @@ func NewVectorWithXY(x float64, y float64) Vector {
 	return instance
 }
 
-func (vc _VectorClass) VectorWithValuesCount(values *float64, count uint) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithValues:count:"), values, count)
-	return rv
-}
-
-// Creates and returns a vector that is initialized with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564088-vectorwithvalues?language=objc
-func Vector_VectorWithValuesCount(values *float64, count uint) Vector {
-	return VectorClass.VectorWithValuesCount(values, count)
-}
-
 func (vc _VectorClass) VectorWithX(x float64) Vector {
 	rv := objc.Call[Vector](vc, objc.Sel("vectorWithX:"), x)
 	return rv
@@ -176,6 +128,20 @@ func Vector_VectorWithX(x float64) Vector {
 	return VectorClass.VectorWithX(x)
 }
 
+func (v_ Vector) InitWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
+	rv := objc.Call[Vector](v_, objc.Sel("initWithCGAffineTransform:"), r)
+	return rv
+}
+
+// Initializes a vector that is initialized with values provided by a CGAffineTransform structure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438102-initwithcgaffinetransform?language=objc
+func NewVectorWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
+	instance := VectorClass.Alloc().InitWithCGAffineTransform(r)
+	instance.Autorelease()
+	return instance
+}
+
 func (vc _VectorClass) VectorWithCGRect(r coregraphics.Rect) Vector {
 	rv := objc.Call[Vector](vc, objc.Sel("vectorWithCGRect:"), r)
 	return rv
@@ -186,30 +152,6 @@ func (vc _VectorClass) VectorWithCGRect(r coregraphics.Rect) Vector {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564085-vectorwithcgrect?language=objc
 func Vector_VectorWithCGRect(r coregraphics.Rect) Vector {
 	return VectorClass.VectorWithCGRect(r)
-}
-
-func (vc _VectorClass) VectorWithXYZ(x float64, y float64, z float64) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithX:Y:Z:"), x, y, z)
-	return rv
-}
-
-// Creates and returns a vector that is initialized with three values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564089-vectorwithx?language=objc
-func Vector_VectorWithXYZ(x float64, y float64, z float64) Vector {
-	return VectorClass.VectorWithXYZ(x, y, z)
-}
-
-func (vc _VectorClass) VectorWithString(representation string) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithString:"), representation)
-	return rv
-}
-
-// Creates and returns a vector that is initialized with values provided in a string representation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564093-vectorwithstring?language=objc
-func Vector_VectorWithString(representation string) Vector {
-	return VectorClass.VectorWithString(representation)
 }
 
 func (v_ Vector) InitWithCGPoint(p coregraphics.Point) Vector {
@@ -226,56 +168,40 @@ func NewVectorWithCGPoint(p coregraphics.Point) Vector {
 	return instance
 }
 
-func (vc _VectorClass) VectorWithXYZW(x float64, y float64, z float64, w float64) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithX:Y:Z:W:"), x, y, z, w)
+func (vc _VectorClass) VectorWithValuesCount(values *float64, count uint) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorWithValues:count:"), values, count)
 	return rv
 }
 
-// Creates and returns a vector that is initialized with  four values. [Full Topic]
+// Creates and returns a vector that is initialized with the specified values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564087-vectorwithx?language=objc
-func Vector_VectorWithXYZW(x float64, y float64, z float64, w float64) Vector {
-	return VectorClass.VectorWithXYZW(x, y, z, w)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564088-vectorwithvalues?language=objc
+func Vector_VectorWithValuesCount(values *float64, count uint) Vector {
+	return VectorClass.VectorWithValuesCount(values, count)
 }
 
-func (v_ Vector) InitWithX(x float64) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithX:"), x)
+func (vc _VectorClass) VectorWithString(representation string) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorWithString:"), representation)
 	return rv
 }
 
-// Initializes the first position of a vector with the provided values. [Full Topic]
+// Creates and returns a vector that is initialized with values provided in a string representation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437657-initwithx?language=objc
-func NewVectorWithX(x float64) Vector {
-	instance := VectorClass.Alloc().InitWithX(x)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564093-vectorwithstring?language=objc
+func Vector_VectorWithString(representation string) Vector {
+	return VectorClass.VectorWithString(representation)
 }
 
-func (vc _VectorClass) VectorWithCGAffineTransform(t coregraphics.AffineTransform) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorWithCGAffineTransform:"), t)
+func (vc _VectorClass) VectorWithCGPoint(p coregraphics.Point) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorWithCGPoint:"), p)
 	return rv
 }
 
-// Creates and returns a vector that is initialized with values provided by a CGAffineTransform structure. [Full Topic]
+// Creates and returns a vector that is initialized with values provided by a CGPoint structure. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564090-vectorwithcgaffinetransform?language=objc
-func Vector_VectorWithCGAffineTransform(t coregraphics.AffineTransform) Vector {
-	return VectorClass.VectorWithCGAffineTransform(t)
-}
-
-func (v_ Vector) InitWithXYZ(x float64, y float64, z float64) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithX:Y:Z:"), x, y, z)
-	return rv
-}
-
-// Initializes the first three positions of a vector with the provided values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438056-initwithx?language=objc
-func NewVectorWithXYZ(x float64, y float64, z float64) Vector {
-	instance := VectorClass.Alloc().InitWithXYZ(x, y, z)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1564086-vectorwithcgpoint?language=objc
+func Vector_VectorWithCGPoint(p coregraphics.Point) Vector {
+	return VectorClass.VectorWithCGPoint(p)
 }
 
 func (vc _VectorClass) Alloc() Vector {
@@ -306,12 +232,19 @@ func (v_ Vector) ValueAtIndex(index uint) float64 {
 	return rv
 }
 
-// The number of items in the vector. [Full Topic]
+// The value located in the first position in the vector. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438197-count?language=objc
-func (v_ Vector) Count() uint {
-	rv := objc.Call[uint](v_, objc.Sel("count"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437738-x?language=objc
+func (v_ Vector) X() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("X"))
 	return rv
+}
+
+// The value located in the first position in the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437738-x?language=objc
+func (v_ Vector) SetX(value float64) {
+	objc.Call[objc.Void](v_, objc.Sel("setX:"), value)
 }
 
 // The value located in the second position in the vector. [Full Topic]
@@ -322,12 +255,11 @@ func (v_ Vector) Y() float64 {
 	return rv
 }
 
-// The string representation of the vector. [Full Topic]
+// The value located in the second position in the vector. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437752-stringrepresentation?language=objc
-func (v_ Vector) StringRepresentation() string {
-	rv := objc.Call[string](v_, objc.Sel("stringRepresentation"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437843-y?language=objc
+func (v_ Vector) SetY(value float64) {
+	objc.Call[objc.Void](v_, objc.Sel("setY:"), value)
 }
 
 // The values in the vector as a Core Graphics rectangle structure. [Full Topic]
@@ -338,19 +270,11 @@ func (v_ Vector) CGRectValue() coregraphics.Rect {
 	return rv
 }
 
-// The value located in the fourth position in the vector. [Full Topic]
+// The number of items in the vector. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438058-w?language=objc
-func (v_ Vector) W() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("W"))
-	return rv
-}
-
-// The value located in the third position in the vector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437627-z?language=objc
-func (v_ Vector) Z() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("Z"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438197-count?language=objc
+func (v_ Vector) Count() uint {
+	rv := objc.Call[uint](v_, objc.Sel("count"))
 	return rv
 }
 
@@ -362,18 +286,48 @@ func (v_ Vector) CGPointValue() coregraphics.Point {
 	return rv
 }
 
-// The value located in the first position in the vector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437738-x?language=objc
-func (v_ Vector) X() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("X"))
-	return rv
-}
-
 // The values in the vector represented as an affine transform. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438249-cgaffinetransformvalue?language=objc
 func (v_ Vector) CGAffineTransformValue() coregraphics.AffineTransform {
 	rv := objc.Call[coregraphics.AffineTransform](v_, objc.Sel("CGAffineTransformValue"))
 	return rv
+}
+
+// The value located in the third position in the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437627-z?language=objc
+func (v_ Vector) Z() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("Z"))
+	return rv
+}
+
+// The value located in the third position in the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437627-z?language=objc
+func (v_ Vector) SetZ(value float64) {
+	objc.Call[objc.Void](v_, objc.Sel("setZ:"), value)
+}
+
+// The string representation of the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437752-stringrepresentation?language=objc
+func (v_ Vector) StringRepresentation() string {
+	rv := objc.Call[string](v_, objc.Sel("stringRepresentation"))
+	return rv
+}
+
+// The value located in the fourth position in the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438058-w?language=objc
+func (v_ Vector) W() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("W"))
+	return rv
+}
+
+// The value located in the fourth position in the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438058-w?language=objc
+func (v_ Vector) SetW(value float64) {
+	objc.Call[objc.Void](v_, objc.Sel("setW:"), value)
 }

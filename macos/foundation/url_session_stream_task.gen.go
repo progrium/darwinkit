@@ -18,12 +18,12 @@ type _URLSessionStreamTaskClass struct {
 // An interface definition for the [URLSessionStreamTask] class.
 type IURLSessionStreamTask interface {
 	IURLSessionTask
-	StartSecureConnection()
 	CloseWrite()
-	CaptureStreams()
-	ReadDataOfMinLengthMaxLengthTimeoutCompletionHandler(minBytes uint, maxBytes uint, timeout TimeInterval, completionHandler func(data []byte, atEOF bool, error Error))
-	CloseRead()
 	WriteDataTimeoutCompletionHandler(data []byte, timeout TimeInterval, completionHandler func(error Error))
+	CloseRead()
+	StartSecureConnection()
+	ReadDataOfMinLengthMaxLengthTimeoutCompletionHandler(minBytes uint, maxBytes uint, timeout TimeInterval, completionHandler func(data []byte, atEOF bool, error Error))
+	CaptureStreams()
 }
 
 // A URL session task that is stream-based. [Full Topic]
@@ -59,13 +59,6 @@ func (u_ URLSessionStreamTask) Init() URLSessionStreamTask {
 	return rv
 }
 
-// Completes any enqueued reads and writes, and establishes a secure connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411567-startsecureconnection?language=objc
-func (u_ URLSessionStreamTask) StartSecureConnection() {
-	objc.Call[objc.Void](u_, objc.Sel("startSecureConnection"))
-}
-
 // Completes any enqueued reads and writes, and then closes the write side of the underlying socket. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411347-closewrite?language=objc
@@ -73,18 +66,11 @@ func (u_ URLSessionStreamTask) CloseWrite() {
 	objc.Call[objc.Void](u_, objc.Sel("closeWrite"))
 }
 
-// Completes any already enqueued reads and writes, and then invokes the [foundation/nsurlsessionstreamdelegate/urlsession] delegate message. [Full Topic]
+// Asynchronously writes the specified data to the stream, and calls a handler upon completion. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1410132-capturestreams?language=objc
-func (u_ URLSessionStreamTask) CaptureStreams() {
-	objc.Call[objc.Void](u_, objc.Sel("captureStreams"))
-}
-
-// Asynchronously reads a number of bytes from the stream, and calls a handler upon completion. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411604-readdataofminlength?language=objc
-func (u_ URLSessionStreamTask) ReadDataOfMinLengthMaxLengthTimeoutCompletionHandler(minBytes uint, maxBytes uint, timeout TimeInterval, completionHandler func(data []byte, atEOF bool, error Error)) {
-	objc.Call[objc.Void](u_, objc.Sel("readDataOfMinLength:maxLength:timeout:completionHandler:"), minBytes, maxBytes, timeout, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411602-writedata?language=objc
+func (u_ URLSessionStreamTask) WriteDataTimeoutCompletionHandler(data []byte, timeout TimeInterval, completionHandler func(error Error)) {
+	objc.Call[objc.Void](u_, objc.Sel("writeData:timeout:completionHandler:"), data, timeout, completionHandler)
 }
 
 // Completes any enqueued reads and writes, and then closes the read side of the underlying socket. [Full Topic]
@@ -94,9 +80,23 @@ func (u_ URLSessionStreamTask) CloseRead() {
 	objc.Call[objc.Void](u_, objc.Sel("closeRead"))
 }
 
-// Asynchronously writes the specified data to the stream, and calls a handler upon completion. [Full Topic]
+// Completes any enqueued reads and writes, and establishes a secure connection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411602-writedata?language=objc
-func (u_ URLSessionStreamTask) WriteDataTimeoutCompletionHandler(data []byte, timeout TimeInterval, completionHandler func(error Error)) {
-	objc.Call[objc.Void](u_, objc.Sel("writeData:timeout:completionHandler:"), data, timeout, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411567-startsecureconnection?language=objc
+func (u_ URLSessionStreamTask) StartSecureConnection() {
+	objc.Call[objc.Void](u_, objc.Sel("startSecureConnection"))
+}
+
+// Asynchronously reads a number of bytes from the stream, and calls a handler upon completion. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1411604-readdataofminlength?language=objc
+func (u_ URLSessionStreamTask) ReadDataOfMinLengthMaxLengthTimeoutCompletionHandler(minBytes uint, maxBytes uint, timeout TimeInterval, completionHandler func(data []byte, atEOF bool, error Error)) {
+	objc.Call[objc.Void](u_, objc.Sel("readDataOfMinLength:maxLength:timeout:completionHandler:"), minBytes, maxBytes, timeout, completionHandler)
+}
+
+// Completes any already enqueued reads and writes, and then invokes the URLSession:writeClosedForStreamTask: delegate message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamtask/1410132-capturestreams?language=objc
+func (u_ URLSessionStreamTask) CaptureStreams() {
+	objc.Call[objc.Void](u_, objc.Sel("captureStreams"))
 }

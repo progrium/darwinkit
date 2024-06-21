@@ -18,8 +18,8 @@ type _ChangeHistoryAddContactEventClass struct {
 // An interface definition for the [ChangeHistoryAddContactEvent] class.
 type IChangeHistoryAddContactEvent interface {
 	IChangeHistoryEvent
-	ContainerIdentifier() string
 	Contact() Contact
+	ContainerIdentifier() string
 }
 
 //	[Full Topic]
@@ -57,16 +57,16 @@ func (c_ ChangeHistoryAddContactEvent) Init() ChangeHistoryAddContactEvent {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddcontactevent/3113251-containeridentifier?language=objc
-func (c_ ChangeHistoryAddContactEvent) ContainerIdentifier() string {
-	rv := objc.Call[string](c_, objc.Sel("containerIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddcontactevent/3113250-contact?language=objc
+func (c_ ChangeHistoryAddContactEvent) Contact() Contact {
+	rv := objc.Call[Contact](c_, objc.Sel("contact"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddcontactevent/3113250-contact?language=objc
-func (c_ ChangeHistoryAddContactEvent) Contact() Contact {
-	rv := objc.Call[Contact](c_, objc.Sel("contact"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryaddcontactevent/3113251-containeridentifier?language=objc
+func (c_ ChangeHistoryAddContactEvent) ContainerIdentifier() string {
+	rv := objc.Call[string](c_, objc.Sel("containerIdentifier"))
 	return rv
 }

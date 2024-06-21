@@ -53,6 +53,32 @@ func (t_ TransformLayer) Init() TransformLayer {
 	return rv
 }
 
+func (tc _TransformLayerClass) Layer() TransformLayer {
+	rv := objc.Call[TransformLayer](tc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func TransformLayer_Layer() TransformLayer {
+	return TransformLayerClass.Layer()
+}
+
+func (t_ TransformLayer) InitWithLayer(layer objc.IObject) TransformLayer {
+	rv := objc.Call[TransformLayer](t_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewTransformLayerWithLayer(layer objc.IObject) TransformLayer {
+	instance := TransformLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (t_ TransformLayer) ModelLayer() TransformLayer {
 	rv := objc.Call[TransformLayer](t_, objc.Sel("modelLayer"))
 	return rv
@@ -79,30 +105,4 @@ func TransformLayer_PresentationLayer() TransformLayer {
 	instance := TransformLayerClass.Alloc().PresentationLayer()
 	instance.Autorelease()
 	return instance
-}
-
-func (t_ TransformLayer) InitWithLayer(layer objc.IObject) TransformLayer {
-	rv := objc.Call[TransformLayer](t_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewTransformLayerWithLayer(layer objc.IObject) TransformLayer {
-	instance := TransformLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (tc _TransformLayerClass) Layer() TransformLayer {
-	rv := objc.Call[TransformLayer](tc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func TransformLayer_Layer() TransformLayer {
-	return TransformLayerClass.Layer()
 }

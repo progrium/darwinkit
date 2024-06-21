@@ -18,12 +18,12 @@ type _CollectionViewTransitionLayoutClass struct {
 // An interface definition for the [CollectionViewTransitionLayout] class.
 type ICollectionViewTransitionLayout interface {
 	ICollectionViewLayout
-	UpdateValueForAnimatedKey(value float64, key CollectionViewTransitionLayoutAnimatedKey)
 	ValueForAnimatedKey(key CollectionViewTransitionLayoutAnimatedKey) float64
-	NextLayout() CollectionViewLayout
+	UpdateValueForAnimatedKey(value float64, key CollectionViewTransitionLayoutAnimatedKey)
+	CurrentLayout() CollectionViewLayout
 	TransitionProgress() float64
 	SetTransitionProgress(value float64)
-	CurrentLayout() CollectionViewLayout
+	NextLayout() CollectionViewLayout
 }
 
 // An object that implements custom behaviors when changing from one layout to another in a collection view. [Full Topic]
@@ -73,13 +73,6 @@ func (c_ CollectionViewTransitionLayout) Init() CollectionViewTransitionLayout {
 	return rv
 }
 
-// Sets the value of a key whose value you use during the animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524303-updatevalue?language=objc
-func (c_ CollectionViewTransitionLayout) UpdateValueForAnimatedKey(value float64, key CollectionViewTransitionLayoutAnimatedKey) {
-	objc.Call[objc.Void](c_, objc.Sel("updateValue:forAnimatedKey:"), value, key)
-}
-
 // Returns the most recently set value for the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524429-valueforanimatedkey?language=objc
@@ -88,11 +81,18 @@ func (c_ CollectionViewTransitionLayout) ValueForAnimatedKey(key CollectionViewT
 	return rv
 }
 
-// The collection view’s new layout object. [Full Topic]
+// Sets the value of a key whose value you use during the animation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524426-nextlayout?language=objc
-func (c_ CollectionViewTransitionLayout) NextLayout() CollectionViewLayout {
-	rv := objc.Call[CollectionViewLayout](c_, objc.Sel("nextLayout"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524303-updatevalue?language=objc
+func (c_ CollectionViewTransitionLayout) UpdateValueForAnimatedKey(value float64, key CollectionViewTransitionLayoutAnimatedKey) {
+	objc.Call[objc.Void](c_, objc.Sel("updateValue:forAnimatedKey:"), value, key)
+}
+
+// The collection view’s current layout object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524425-currentlayout?language=objc
+func (c_ CollectionViewTransitionLayout) CurrentLayout() CollectionViewLayout {
+	rv := objc.Call[CollectionViewLayout](c_, objc.Sel("currentLayout"))
 	return rv
 }
 
@@ -111,10 +111,10 @@ func (c_ CollectionViewTransitionLayout) SetTransitionProgress(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setTransitionProgress:"), value)
 }
 
-// The collection view’s current layout object. [Full Topic]
+// The collection view’s new layout object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524425-currentlayout?language=objc
-func (c_ CollectionViewTransitionLayout) CurrentLayout() CollectionViewLayout {
-	rv := objc.Call[CollectionViewLayout](c_, objc.Sel("currentLayout"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524426-nextlayout?language=objc
+func (c_ CollectionViewTransitionLayout) NextLayout() CollectionViewLayout {
+	rv := objc.Call[CollectionViewLayout](c_, objc.Sel("nextLayout"))
 	return rv
 }

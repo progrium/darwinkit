@@ -18,14 +18,14 @@ type _ArrayTypeClass struct {
 // An interface definition for the [ArrayType] class.
 type IArrayType interface {
 	IType
-	ElementStructType() StructType
-	ElementArrayType() ArrayType
-	ElementTextureReferenceType() TextureReferenceType
 	ElementPointerType() PointerType
-	Stride() uint
-	ElementType() DataType
+	ElementArrayType() ArrayType
+	ElementStructType() StructType
+	ElementTextureReferenceType() TextureReferenceType
 	ArgumentIndexStride() uint
 	ArrayLength() uint
+	Stride() uint
+	ElementType() DataType
 }
 
 // A description of an array. [Full Topic]
@@ -61,11 +61,11 @@ func (a_ ArrayType) Init() ArrayType {
 	return rv
 }
 
-// Provides a description of the underlying struct type when an array holds structs as its elements. [Full Topic]
+// Provides a description of the underlying pointer type when an array holds pointers as its elements. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1461901-elementstructtype?language=objc
-func (a_ ArrayType) ElementStructType() StructType {
-	rv := objc.Call[StructType](a_, objc.Sel("elementStructType"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/2915749-elementpointertype?language=objc
+func (a_ ArrayType) ElementPointerType() PointerType {
+	rv := objc.Call[PointerType](a_, objc.Sel("elementPointerType"))
 	return rv
 }
 
@@ -77,35 +77,19 @@ func (a_ ArrayType) ElementArrayType() ArrayType {
 	return rv
 }
 
+// Provides a description of the underlying struct type when an array holds structs as its elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1461901-elementstructtype?language=objc
+func (a_ ArrayType) ElementStructType() StructType {
+	rv := objc.Call[StructType](a_, objc.Sel("elementStructType"))
+	return rv
+}
+
 // Provides a description of the underlying texture type when an array holds textures as its elements. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/2915750-elementtexturereferencetype?language=objc
 func (a_ ArrayType) ElementTextureReferenceType() TextureReferenceType {
 	rv := objc.Call[TextureReferenceType](a_, objc.Sel("elementTextureReferenceType"))
-	return rv
-}
-
-// Provides a description of the underlying pointer type when an array holds pointers as its elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/2915749-elementpointertype?language=objc
-func (a_ ArrayType) ElementPointerType() PointerType {
-	rv := objc.Call[PointerType](a_, objc.Sel("elementPointerType"))
-	return rv
-}
-
-// The stride between array elements, in bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1461926-stride?language=objc
-func (a_ ArrayType) Stride() uint {
-	rv := objc.Call[uint](a_, objc.Sel("stride"))
-	return rv
-}
-
-// The data type of the array’s elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1462012-elementtype?language=objc
-func (a_ ArrayType) ElementType() DataType {
-	rv := objc.Call[DataType](a_, objc.Sel("elementType"))
 	return rv
 }
 
@@ -122,5 +106,21 @@ func (a_ ArrayType) ArgumentIndexStride() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1462043-arraylength?language=objc
 func (a_ ArrayType) ArrayLength() uint {
 	rv := objc.Call[uint](a_, objc.Sel("arrayLength"))
+	return rv
+}
+
+// The stride between array elements, in bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1461926-stride?language=objc
+func (a_ ArrayType) Stride() uint {
+	rv := objc.Call[uint](a_, objc.Sel("stride"))
+	return rv
+}
+
+// The data type of the array’s elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlarraytype/1462012-elementtype?language=objc
+func (a_ ArrayType) ElementType() DataType {
+	rv := objc.Call[DataType](a_, objc.Sel("elementType"))
 	return rv
 }

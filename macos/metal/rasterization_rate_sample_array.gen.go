@@ -19,8 +19,8 @@ type _RasterizationRateSampleArrayClass struct {
 // An interface definition for the [RasterizationRateSampleArray] class.
 type IRasterizationRateSampleArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(value foundation.INumber, index uint)
 	ObjectAtIndexedSubscript(index uint) foundation.Number
+	SetObjectAtIndexedSubscript(value foundation.INumber, index uint)
 }
 
 // An array object that contains rasterization rates. [Full Topic]
@@ -56,17 +56,17 @@ func (r_ RasterizationRateSampleArray) Init() RasterizationRateSampleArray {
 	return rv
 }
 
-// Stores a sample value at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratesamplearray/3088876-setobject?language=objc
-func (r_ RasterizationRateSampleArray) SetObjectAtIndexedSubscript(value foundation.INumber, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), value, index)
-}
-
 // Retrieves the sample value at the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratesamplearray/3088875-objectatindexedsubscript?language=objc
 func (r_ RasterizationRateSampleArray) ObjectAtIndexedSubscript(index uint) foundation.Number {
 	rv := objc.Call[foundation.Number](r_, objc.Sel("objectAtIndexedSubscript:"), index)
 	return rv
+}
+
+// Stores a sample value at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratesamplearray/3088876-setobject?language=objc
+func (r_ RasterizationRateSampleArray) SetObjectAtIndexedSubscript(value foundation.INumber, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), value, index)
 }

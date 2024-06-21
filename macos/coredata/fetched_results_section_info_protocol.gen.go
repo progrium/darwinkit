@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo?language=objc
 type PFetchedResultsSectionInfo interface {
 	// optional
-	Name() string
-	HasName() bool
-
-	// optional
 	IndexTitle() string
 	HasIndexTitle() bool
 
 	// optional
-	Objects() []objc.Object
-	HasObjects() bool
+	Name() string
+	HasName() bool
 
 	// optional
 	NumberOfObjects() uint
 	HasNumberOfObjects() bool
+
+	// optional
+	Objects() []objc.Object
+	HasObjects() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,18 +33,6 @@ var _ PFetchedResultsSectionInfo = (*FetchedResultsSectionInfoObject)(nil)
 // A concrete type for the [PFetchedResultsSectionInfo] protocol.
 type FetchedResultsSectionInfoObject struct {
 	objc.Object
-}
-
-func (f_ FetchedResultsSectionInfoObject) HasName() bool {
-	return f_.RespondsToSelector(objc.Sel("name"))
-}
-
-// The name of the section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo/1622302-name?language=objc
-func (f_ FetchedResultsSectionInfoObject) Name() string {
-	rv := objc.Call[string](f_, objc.Sel("name"))
-	return rv
 }
 
 func (f_ FetchedResultsSectionInfoObject) HasIndexTitle() bool {
@@ -59,15 +47,15 @@ func (f_ FetchedResultsSectionInfoObject) IndexTitle() string {
 	return rv
 }
 
-func (f_ FetchedResultsSectionInfoObject) HasObjects() bool {
-	return f_.RespondsToSelector(objc.Sel("objects"))
+func (f_ FetchedResultsSectionInfoObject) HasName() bool {
+	return f_.RespondsToSelector(objc.Sel("name"))
 }
 
-// The array of objects in the section. [Full Topic]
+// The name of the section. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo/1622293-objects?language=objc
-func (f_ FetchedResultsSectionInfoObject) Objects() []objc.Object {
-	rv := objc.Call[[]objc.Object](f_, objc.Sel("objects"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo/1622302-name?language=objc
+func (f_ FetchedResultsSectionInfoObject) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
 	return rv
 }
 
@@ -80,5 +68,17 @@ func (f_ FetchedResultsSectionInfoObject) HasNumberOfObjects() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo/1622289-numberofobjects?language=objc
 func (f_ FetchedResultsSectionInfoObject) NumberOfObjects() uint {
 	rv := objc.Call[uint](f_, objc.Sel("numberOfObjects"))
+	return rv
+}
+
+func (f_ FetchedResultsSectionInfoObject) HasObjects() bool {
+	return f_.RespondsToSelector(objc.Sel("objects"))
+}
+
+// The array of objects in the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultssectioninfo/1622293-objects?language=objc
+func (f_ FetchedResultsSectionInfoObject) Objects() []objc.Object {
+	rv := objc.Call[[]objc.Object](f_, objc.Sel("objects"))
 	return rv
 }

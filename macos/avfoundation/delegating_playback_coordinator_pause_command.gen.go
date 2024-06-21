@@ -18,8 +18,8 @@ type _DelegatingPlaybackCoordinatorPauseCommandClass struct {
 // An interface definition for the [DelegatingPlaybackCoordinatorPauseCommand] class.
 type IDelegatingPlaybackCoordinatorPauseCommand interface {
 	IDelegatingPlaybackCoordinatorPlaybackControlCommand
-	AnticipatedPlaybackRate() float32
 	ShouldBufferInAnticipationOfPlayback() bool
+	AnticipatedPlaybackRate() float32
 }
 
 // A command that indicates to pause playback. [Full Topic]
@@ -55,18 +55,18 @@ func (d_ DelegatingPlaybackCoordinatorPauseCommand) Init() DelegatingPlaybackCoo
 	return rv
 }
 
-// The rate at which the coordinator expects the current item to play. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorpausecommand/3750263-anticipatedplaybackrate?language=objc
-func (d_ DelegatingPlaybackCoordinatorPauseCommand) AnticipatedPlaybackRate() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("anticipatedPlaybackRate"))
-	return rv
-}
-
 // A Boolean value that indicates whether the player starts buffering in preparation for a request to begin playback. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorpausecommand/3750264-shouldbufferinanticipationofplay?language=objc
 func (d_ DelegatingPlaybackCoordinatorPauseCommand) ShouldBufferInAnticipationOfPlayback() bool {
 	rv := objc.Call[bool](d_, objc.Sel("shouldBufferInAnticipationOfPlayback"))
+	return rv
+}
+
+// The rate at which the coordinator expects the current item to play. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorpausecommand/3750263-anticipatedplaybackrate?language=objc
+func (d_ DelegatingPlaybackCoordinatorPauseCommand) AnticipatedPlaybackRate() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("anticipatedPlaybackRate"))
 	return rv
 }

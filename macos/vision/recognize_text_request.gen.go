@@ -19,16 +19,16 @@ type _RecognizeTextRequestClass struct {
 type IRecognizeTextRequest interface {
 	IImageBasedRequest
 	SupportedRecognitionLanguagesAndReturnError(error unsafe.Pointer) []string
-	RecognitionLanguages() []string
-	SetRecognitionLanguages(value []string)
 	RecognitionLevel() RequestTextRecognitionLevel
 	SetRecognitionLevel(value RequestTextRecognitionLevel)
-	MinimumTextHeight() float32
-	SetMinimumTextHeight(value float32)
-	CustomWords() []string
-	SetCustomWords(value []string)
 	UsesLanguageCorrection() bool
 	SetUsesLanguageCorrection(value bool)
+	MinimumTextHeight() float32
+	SetMinimumTextHeight(value float32)
+	RecognitionLanguages() []string
+	SetRecognitionLanguages(value []string)
+	CustomWords() []string
+	SetCustomWords(value []string)
 }
 
 // An image analysis request that finds and recognizes text in an image. [Full Topic]
@@ -86,21 +86,6 @@ func (r_ RecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(error
 	return rv
 }
 
-// An array of languages to detect, in priority order. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152642-recognitionlanguages?language=objc
-func (r_ RecognizeTextRequest) RecognitionLanguages() []string {
-	rv := objc.Call[[]string](r_, objc.Sel("recognitionLanguages"))
-	return rv
-}
-
-// An array of languages to detect, in priority order. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152642-recognitionlanguages?language=objc
-func (r_ RecognizeTextRequest) SetRecognitionLanguages(value []string) {
-	objc.Call[objc.Void](r_, objc.Sel("setRecognitionLanguages:"), value)
-}
-
 // A value that determines whether the request prioritizes accuracy or speed in text recognition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152643-recognitionlevel?language=objc
@@ -114,6 +99,21 @@ func (r_ RecognizeTextRequest) RecognitionLevel() RequestTextRecognitionLevel {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152643-recognitionlevel?language=objc
 func (r_ RecognizeTextRequest) SetRecognitionLevel(value RequestTextRecognitionLevel) {
 	objc.Call[objc.Void](r_, objc.Sel("setRecognitionLevel:"), value)
+}
+
+// A Boolean value that indicates whether the request applies language correction during the recognition process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3166773-useslanguagecorrection?language=objc
+func (r_ RecognizeTextRequest) UsesLanguageCorrection() bool {
+	rv := objc.Call[bool](r_, objc.Sel("usesLanguageCorrection"))
+	return rv
+}
+
+// A Boolean value that indicates whether the request applies language correction during the recognition process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3166773-useslanguagecorrection?language=objc
+func (r_ RecognizeTextRequest) SetUsesLanguageCorrection(value bool) {
+	objc.Call[objc.Void](r_, objc.Sel("setUsesLanguageCorrection:"), value)
 }
 
 // The minimum height, relative to the image height, of the text to recognize. [Full Topic]
@@ -131,6 +131,21 @@ func (r_ RecognizeTextRequest) SetMinimumTextHeight(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setMinimumTextHeight:"), value)
 }
 
+// An array of languages to detect, in priority order. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152642-recognitionlanguages?language=objc
+func (r_ RecognizeTextRequest) RecognitionLanguages() []string {
+	rv := objc.Call[[]string](r_, objc.Sel("recognitionLanguages"))
+	return rv
+}
+
+// An array of languages to detect, in priority order. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152642-recognitionlanguages?language=objc
+func (r_ RecognizeTextRequest) SetRecognitionLanguages(value []string) {
+	objc.Call[objc.Void](r_, objc.Sel("setRecognitionLanguages:"), value)
+}
+
 // An array of strings to supplement the recognized languages at the word-recognition stage. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152640-customwords?language=objc
@@ -144,19 +159,4 @@ func (r_ RecognizeTextRequest) CustomWords() []string {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152640-customwords?language=objc
 func (r_ RecognizeTextRequest) SetCustomWords(value []string) {
 	objc.Call[objc.Void](r_, objc.Sel("setCustomWords:"), value)
-}
-
-// A Boolean value that indicates whether the request applies language correction during the recognition process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3166773-useslanguagecorrection?language=objc
-func (r_ RecognizeTextRequest) UsesLanguageCorrection() bool {
-	rv := objc.Call[bool](r_, objc.Sel("usesLanguageCorrection"))
-	return rv
-}
-
-// A Boolean value that indicates whether the request applies language correction during the recognition process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3166773-useslanguagecorrection?language=objc
-func (r_ RecognizeTextRequest) SetUsesLanguageCorrection(value bool) {
-	objc.Call[objc.Void](r_, objc.Sel("setUsesLanguageCorrection:"), value)
 }

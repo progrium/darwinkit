@@ -18,21 +18,21 @@ type _ColorPickerTouchBarItemClass struct {
 // An interface definition for the [ColorPickerTouchBarItem] class.
 type IColorPickerTouchBarItem interface {
 	ITouchBarItem
-	ShowsAlpha() bool
-	SetShowsAlpha(value bool)
+	Color() Color
+	SetColor(value IColor)
+	Target() objc.Object
+	SetTarget(value objc.IObject)
+	SetCustomizationLabel(value string)
 	Action() objc.Selector
 	SetAction(value objc.Selector)
 	AllowedColorSpaces() []ColorSpace
 	SetAllowedColorSpaces(value []IColorSpace)
-	Target() objc.Object
-	SetTarget(value objc.IObject)
-	Color() Color
-	SetColor(value IColor)
-	IsEnabled() bool
-	SetEnabled(value bool)
-	SetCustomizationLabel(value string)
 	ColorList() ColorList
 	SetColorList(value IColorList)
+	ShowsAlpha() bool
+	SetShowsAlpha(value bool)
+	IsEnabled() bool
+	SetEnabled(value bool)
 }
 
 // A bar item that provides a system-defined color picker. [Full Topic]
@@ -60,16 +60,16 @@ func ColorPickerTouchBarItem_StrokeColorPickerWithIdentifier(identifier TouchBar
 	return ColorPickerTouchBarItemClass.StrokeColorPickerWithIdentifier(identifier)
 }
 
-func (cc _ColorPickerTouchBarItemClass) ColorPickerWithIdentifierButtonImage(identifier TouchBarItemIdentifier, image IImage) ColorPickerTouchBarItem {
-	rv := objc.Call[ColorPickerTouchBarItem](cc, objc.Sel("colorPickerWithIdentifier:buttonImage:"), identifier, image)
+func (cc _ColorPickerTouchBarItemClass) ColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
+	rv := objc.Call[ColorPickerTouchBarItem](cc, objc.Sel("colorPickerWithIdentifier:"), identifier)
 	return rv
 }
 
-// Creates a color picker bar item using the supplied image as its icon. [Full Topic]
+// Creates a bar item with the standard color picker icon. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544784-colorpickerwithidentifier?language=objc
-func ColorPickerTouchBarItem_ColorPickerWithIdentifierButtonImage(identifier TouchBarItemIdentifier, image IImage) ColorPickerTouchBarItem {
-	return ColorPickerTouchBarItemClass.ColorPickerWithIdentifierButtonImage(identifier, image)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544807-colorpickerwithidentifier?language=objc
+func ColorPickerTouchBarItem_ColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
+	return ColorPickerTouchBarItemClass.ColorPickerWithIdentifier(identifier)
 }
 
 func (cc _ColorPickerTouchBarItemClass) TextColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
@@ -82,18 +82,6 @@ func (cc _ColorPickerTouchBarItemClass) TextColorPickerWithIdentifier(identifier
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2560995-textcolorpickerwithidentifier?language=objc
 func ColorPickerTouchBarItem_TextColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
 	return ColorPickerTouchBarItemClass.TextColorPickerWithIdentifier(identifier)
-}
-
-func (cc _ColorPickerTouchBarItemClass) ColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
-	rv := objc.Call[ColorPickerTouchBarItem](cc, objc.Sel("colorPickerWithIdentifier:"), identifier)
-	return rv
-}
-
-// Creates a bar item with the standard color picker icon. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544807-colorpickerwithidentifier?language=objc
-func ColorPickerTouchBarItem_ColorPickerWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
-	return ColorPickerTouchBarItemClass.ColorPickerWithIdentifier(identifier)
 }
 
 func (cc _ColorPickerTouchBarItemClass) Alloc() ColorPickerTouchBarItem {
@@ -130,19 +118,41 @@ func NewColorPickerTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier)
 	return instance
 }
 
-// A Boolean value that controls whether the color picker allows picking of colors with alpha values other than 1.0. [Full Topic]
+// The picker's currently selected color. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544828-showsalpha?language=objc
-func (c_ ColorPickerTouchBarItem) ShowsAlpha() bool {
-	rv := objc.Call[bool](c_, objc.Sel("showsAlpha"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544768-color?language=objc
+func (c_ ColorPickerTouchBarItem) Color() Color {
+	rv := objc.Call[Color](c_, objc.Sel("color"))
 	return rv
 }
 
-// A Boolean value that controls whether the color picker allows picking of colors with alpha values other than 1.0. [Full Topic]
+// The picker's currently selected color. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544828-showsalpha?language=objc
-func (c_ ColorPickerTouchBarItem) SetShowsAlpha(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setShowsAlpha:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544768-color?language=objc
+func (c_ ColorPickerTouchBarItem) SetColor(value IColor) {
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
+}
+
+// An object that is notified when a user interacts with the color picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544857-target?language=objc
+func (c_ ColorPickerTouchBarItem) Target() objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("target"))
+	return rv
+}
+
+// An object that is notified when a user interacts with the color picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544857-target?language=objc
+func (c_ ColorPickerTouchBarItem) SetTarget(value objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("setTarget:"), value)
+}
+
+// The user-visible string identifying this item during touch bar customization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544803-customizationlabel?language=objc
+func (c_ ColorPickerTouchBarItem) SetCustomizationLabel(value string) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomizationLabel:"), value)
 }
 
 // The selector on the target object that is invoked when a user interacts with the color picker. [Full Topic]
@@ -175,34 +185,34 @@ func (c_ ColorPickerTouchBarItem) SetAllowedColorSpaces(value []IColorSpace) {
 	objc.Call[objc.Void](c_, objc.Sel("setAllowedColorSpaces:"), value)
 }
 
-// An object that is notified when a user interacts with the color picker. [Full Topic]
+// The list of colors displayed in the color picker. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544857-target?language=objc
-func (c_ ColorPickerTouchBarItem) Target() objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("target"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641681-colorlist?language=objc
+func (c_ ColorPickerTouchBarItem) ColorList() ColorList {
+	rv := objc.Call[ColorList](c_, objc.Sel("colorList"))
 	return rv
 }
 
-// An object that is notified when a user interacts with the color picker. [Full Topic]
+// The list of colors displayed in the color picker. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544857-target?language=objc
-func (c_ ColorPickerTouchBarItem) SetTarget(value objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setTarget:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641681-colorlist?language=objc
+func (c_ ColorPickerTouchBarItem) SetColorList(value IColorList) {
+	objc.Call[objc.Void](c_, objc.Sel("setColorList:"), value)
 }
 
-// The picker's currently selected color. [Full Topic]
+// A Boolean value that controls whether the color picker allows picking of colors with alpha values other than 1.0. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544768-color?language=objc
-func (c_ ColorPickerTouchBarItem) Color() Color {
-	rv := objc.Call[Color](c_, objc.Sel("color"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544828-showsalpha?language=objc
+func (c_ ColorPickerTouchBarItem) ShowsAlpha() bool {
+	rv := objc.Call[bool](c_, objc.Sel("showsAlpha"))
 	return rv
 }
 
-// The picker's currently selected color. [Full Topic]
+// A Boolean value that controls whether the color picker allows picking of colors with alpha values other than 1.0. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544768-color?language=objc
-func (c_ ColorPickerTouchBarItem) SetColor(value IColor) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544828-showsalpha?language=objc
+func (c_ ColorPickerTouchBarItem) SetShowsAlpha(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setShowsAlpha:"), value)
 }
 
 // A Boolean value that determines whether the color picker is enabled. [Full Topic]
@@ -218,26 +228,4 @@ func (c_ ColorPickerTouchBarItem) IsEnabled() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641680-enabled?language=objc
 func (c_ ColorPickerTouchBarItem) SetEnabled(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setEnabled:"), value)
-}
-
-// The user-visible string identifying this item during touch bar customization. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544803-customizationlabel?language=objc
-func (c_ ColorPickerTouchBarItem) SetCustomizationLabel(value string) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomizationLabel:"), value)
-}
-
-// The list of colors displayed in the color picker. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641681-colorlist?language=objc
-func (c_ ColorPickerTouchBarItem) ColorList() ColorList {
-	rv := objc.Call[ColorList](c_, objc.Sel("colorList"))
-	return rv
-}
-
-// The list of colors displayed in the color picker. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641681-colorlist?language=objc
-func (c_ ColorPickerTouchBarItem) SetColorList(value IColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("setColorList:"), value)
 }

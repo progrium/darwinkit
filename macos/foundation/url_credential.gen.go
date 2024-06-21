@@ -18,11 +18,11 @@ type _URLCredentialClass struct {
 // An interface definition for the [URLCredential] class.
 type IURLCredential interface {
 	objc.IObject
-	Certificates() []objc.Object
-	Persistence() URLCredentialPersistence
 	Password() string
+	Certificates() []objc.Object
 	User() string
 	HasPassword() bool
+	Persistence() URLCredentialPersistence
 }
 
 // An authentication credential consisting of information specific to the type of credential and the type of persistent storage to use, if any. [Full Topic]
@@ -87,27 +87,19 @@ func URLCredential_CredentialWithUserPasswordPersistence(user string, password s
 	return URLCredentialClass.CredentialWithUserPasswordPersistence(user, password, persistence)
 }
 
-// The intermediate certificates of the credential, if it is a client certificate credential. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1412369-certificates?language=objc
-func (u_ URLCredential) Certificates() []objc.Object {
-	rv := objc.Call[[]objc.Object](u_, objc.Sel("certificates"))
-	return rv
-}
-
-// The credential’s persistence setting. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1416977-persistence?language=objc
-func (u_ URLCredential) Persistence() URLCredentialPersistence {
-	rv := objc.Call[URLCredentialPersistence](u_, objc.Sel("persistence"))
-	return rv
-}
-
 // The credential’s password. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1417913-password?language=objc
 func (u_ URLCredential) Password() string {
 	rv := objc.Call[string](u_, objc.Sel("password"))
+	return rv
+}
+
+// The intermediate certificates of the credential, if it is a client certificate credential. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1412369-certificates?language=objc
+func (u_ URLCredential) Certificates() []objc.Object {
+	rv := objc.Call[[]objc.Object](u_, objc.Sel("certificates"))
 	return rv
 }
 
@@ -124,5 +116,13 @@ func (u_ URLCredential) User() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1418072-haspassword?language=objc
 func (u_ URLCredential) HasPassword() bool {
 	rv := objc.Call[bool](u_, objc.Sel("hasPassword"))
+	return rv
+}
+
+// The credential’s persistence setting. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1416977-persistence?language=objc
+func (u_ URLCredential) Persistence() URLCredentialPersistence {
+	rv := objc.Call[URLCredentialPersistence](u_, objc.Sel("persistence"))
 	return rv
 }

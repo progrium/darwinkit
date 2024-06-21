@@ -18,12 +18,12 @@ type _OrthographyClass struct {
 // An interface definition for the [Orthography] class.
 type IOrthography interface {
 	objc.IObject
-	DominantLanguageForScript(script string) string
 	LanguagesForScript(script string) []string
+	DominantLanguageForScript(script string) string
+	AllLanguages() []string
 	DominantScript() string
 	AllScripts() []string
 	DominantLanguage() string
-	AllLanguages() []string
 	LanguageMap() map[string][]string
 }
 
@@ -98,6 +98,14 @@ func (o_ Orthography) Init() Orthography {
 	return rv
 }
 
+// Returns the list of languages for the specified script. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1412606-languagesforscript?language=objc
+func (o_ Orthography) LanguagesForScript(script string) []string {
+	rv := objc.Call[[]string](o_, objc.Sel("languagesForScript:"), script)
+	return rv
+}
+
 // Returns the dominant language for the specified script. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1407326-dominantlanguageforscript?language=objc
@@ -106,11 +114,11 @@ func (o_ Orthography) DominantLanguageForScript(script string) string {
 	return rv
 }
 
-// Returns the list of languages for the specified script. [Full Topic]
+// The languages appearing in values of the language map. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1412606-languagesforscript?language=objc
-func (o_ Orthography) LanguagesForScript(script string) []string {
-	rv := objc.Call[[]string](o_, objc.Sel("languagesForScript:"), script)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1416205-alllanguages?language=objc
+func (o_ Orthography) AllLanguages() []string {
+	rv := objc.Call[[]string](o_, objc.Sel("allLanguages"))
 	return rv
 }
 
@@ -135,14 +143,6 @@ func (o_ Orthography) AllScripts() []string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1415229-dominantlanguage?language=objc
 func (o_ Orthography) DominantLanguage() string {
 	rv := objc.Call[string](o_, objc.Sel("dominantLanguage"))
-	return rv
-}
-
-// The languages appearing in values of the language map. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1416205-alllanguages?language=objc
-func (o_ Orthography) AllLanguages() []string {
-	rv := objc.Call[[]string](o_, objc.Sel("allLanguages"))
 	return rv
 }
 

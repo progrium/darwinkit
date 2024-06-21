@@ -19,7 +19,6 @@ type _DetectorClass struct {
 type IDetector interface {
 	objc.IObject
 	FeaturesInImage(image IImage) []Feature
-	FeaturesInImageOptions(image IImage, options map[string]objc.IObject) []Feature
 }
 
 // An image processor that identifies notable features (such as faces and barcodes) in a still image or video. [Full Topic]
@@ -55,6 +54,14 @@ func (d_ Detector) Init() Detector {
 	return rv
 }
 
+// Searches for features in an image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1438049-featuresinimage?language=objc
+func (d_ Detector) FeaturesInImage(image IImage) []Feature {
+	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:"), image)
+	return rv
+}
+
 // Creates and returns a configured detector. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1437884-detectoroftype?language=objc
@@ -68,20 +75,4 @@ func (dc _DetectorClass) DetectorOfTypeContextOptions(type_ string, context ICon
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1437884-detectoroftype?language=objc
 func Detector_DetectorOfTypeContextOptions(type_ string, context IContext, options map[string]objc.IObject) Detector {
 	return DetectorClass.DetectorOfTypeContextOptions(type_, context, options)
-}
-
-// Searches for features in an image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1438049-featuresinimage?language=objc
-func (d_ Detector) FeaturesInImage(image IImage) []Feature {
-	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:"), image)
-	return rv
-}
-
-// Searches for features in an image based on the specified image orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1438189-featuresinimage?language=objc
-func (d_ Detector) FeaturesInImageOptions(image IImage, options map[string]objc.IObject) []Feature {
-	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:options:"), image, options)
-	return rv
 }

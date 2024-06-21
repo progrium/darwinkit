@@ -11,228 +11,41 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate?language=objc
 type PXMLParserDelegate interface {
 	// optional
-	ParserFoundNotationDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string)
-	HasParserFoundNotationDeclarationWithNamePublicIDSystemID() bool
-
-	// optional
-	ParserResolveExternalEntityNameSystemID(parser XMLParser, name string, systemID string) []byte
-	HasParserResolveExternalEntityNameSystemID() bool
-
-	// optional
-	ParserFoundComment(parser XMLParser, comment string)
-	HasParserFoundComment() bool
-
-	// optional
-	ParserFoundInternalEntityDeclarationWithNameValue(parser XMLParser, name string, value string)
-	HasParserFoundInternalEntityDeclarationWithNameValue() bool
-
-	// optional
-	ParserDidEndElementNamespaceURIQualifiedName(parser XMLParser, elementName string, namespaceURI string, qName string)
-	HasParserDidEndElementNamespaceURIQualifiedName() bool
-
-	// optional
-	ParserFoundElementDeclarationWithNameModel(parser XMLParser, elementName string, model string)
-	HasParserFoundElementDeclarationWithNameModel() bool
-
-	// optional
-	ParserDidStartElementNamespaceURIQualifiedNameAttributes(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string)
-	HasParserDidStartElementNamespaceURIQualifiedNameAttributes() bool
+	ParserDidStartDocument(parser XMLParser)
+	HasParserDidStartDocument() bool
 
 	// optional
 	ParserDidEndDocument(parser XMLParser)
 	HasParserDidEndDocument() bool
 
 	// optional
-	ParserValidationErrorOccurred(parser XMLParser, validationError Error)
-	HasParserValidationErrorOccurred() bool
-
-	// optional
-	ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(parser XMLParser, name string, publicID string, systemID string, notationName string)
-	HasParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName() bool
-
-	// optional
-	ParserFoundCDATA(parser XMLParser, CDATABlock []byte)
-	HasParserFoundCDATA() bool
-
-	// optional
-	ParserFoundProcessingInstructionWithTargetData(parser XMLParser, target string, data string)
-	HasParserFoundProcessingInstructionWithTargetData() bool
-
-	// optional
-	ParserFoundIgnorableWhitespace(parser XMLParser, whitespaceString string)
-	HasParserFoundIgnorableWhitespace() bool
-
-	// optional
-	ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string)
-	HasParserFoundExternalEntityDeclarationWithNamePublicIDSystemID() bool
-
-	// optional
-	ParserDidStartDocument(parser XMLParser)
-	HasParserDidStartDocument() bool
-
-	// optional
-	ParserDidStartMappingPrefixToURI(parser XMLParser, prefix string, namespaceURI string)
-	HasParserDidStartMappingPrefixToURI() bool
-
-	// optional
-	ParserDidEndMappingPrefix(parser XMLParser, prefix string)
-	HasParserDidEndMappingPrefix() bool
-
-	// optional
-	ParserParseErrorOccurred(parser XMLParser, parseError Error)
-	HasParserParseErrorOccurred() bool
-
-	// optional
-	ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string)
-	HasParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue() bool
-
-	// optional
-	ParserFoundCharacters(parser XMLParser, string_ string)
-	HasParserFoundCharacters() bool
+	ParserFoundComment(parser XMLParser, comment string)
+	HasParserFoundComment() bool
 }
 
 // A delegate implementation builder for the [PXMLParserDelegate] protocol.
 type XMLParserDelegate struct {
-	_ParserFoundNotationDeclarationWithNamePublicIDSystemID                   func(parser XMLParser, name string, publicID string, systemID string)
-	_ParserResolveExternalEntityNameSystemID                                  func(parser XMLParser, name string, systemID string) []byte
-	_ParserFoundComment                                                       func(parser XMLParser, comment string)
-	_ParserFoundInternalEntityDeclarationWithNameValue                        func(parser XMLParser, name string, value string)
-	_ParserDidEndElementNamespaceURIQualifiedName                             func(parser XMLParser, elementName string, namespaceURI string, qName string)
-	_ParserFoundElementDeclarationWithNameModel                               func(parser XMLParser, elementName string, model string)
-	_ParserDidStartElementNamespaceURIQualifiedNameAttributes                 func(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string)
-	_ParserDidEndDocument                                                     func(parser XMLParser)
-	_ParserValidationErrorOccurred                                            func(parser XMLParser, validationError Error)
-	_ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName func(parser XMLParser, name string, publicID string, systemID string, notationName string)
-	_ParserFoundCDATA                                                         func(parser XMLParser, CDATABlock []byte)
-	_ParserFoundProcessingInstructionWithTargetData                           func(parser XMLParser, target string, data string)
-	_ParserFoundIgnorableWhitespace                                           func(parser XMLParser, whitespaceString string)
-	_ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID             func(parser XMLParser, name string, publicID string, systemID string)
-	_ParserDidStartDocument                                                   func(parser XMLParser)
-	_ParserDidStartMappingPrefixToURI                                         func(parser XMLParser, prefix string, namespaceURI string)
-	_ParserDidEndMappingPrefix                                                func(parser XMLParser, prefix string)
-	_ParserParseErrorOccurred                                                 func(parser XMLParser, parseError Error)
-	_ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue        func(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string)
-	_ParserFoundCharacters                                                    func(parser XMLParser, string_ string)
+	_ParserDidStartDocument func(parser XMLParser)
+	_ParserDidEndDocument   func(parser XMLParser)
+	_ParserFoundComment     func(parser XMLParser, comment string)
 }
 
-func (di *XMLParserDelegate) HasParserFoundNotationDeclarationWithNamePublicIDSystemID() bool {
-	return di._ParserFoundNotationDeclarationWithNamePublicIDSystemID != nil
+func (di *XMLParserDelegate) HasParserDidStartDocument() bool {
+	return di._ParserDidStartDocument != nil
 }
 
-// Sent by a parser object to its delegate when it encounters a notation declaration. [Full Topic]
+// Sent by the parser object to the delegate when it begins parsing a document. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411925-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundNotationDeclarationWithNamePublicIDSystemID(f func(parser XMLParser, name string, publicID string, systemID string)) {
-	di._ParserFoundNotationDeclarationWithNamePublicIDSystemID = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412065-parserdidstartdocument?language=objc
+func (di *XMLParserDelegate) SetParserDidStartDocument(f func(parser XMLParser)) {
+	di._ParserDidStartDocument = f
 }
 
-// Sent by a parser object to its delegate when it encounters a notation declaration. [Full Topic]
+// Sent by the parser object to the delegate when it begins parsing a document. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411925-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundNotationDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	di._ParserFoundNotationDeclarationWithNamePublicIDSystemID(parser, name, publicID, systemID)
-}
-func (di *XMLParserDelegate) HasParserResolveExternalEntityNameSystemID() bool {
-	return di._ParserResolveExternalEntityNameSystemID != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a given external entity with a specific system ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416221-parser?language=objc
-func (di *XMLParserDelegate) SetParserResolveExternalEntityNameSystemID(f func(parser XMLParser, name string, systemID string) []byte) {
-	di._ParserResolveExternalEntityNameSystemID = f
-}
-
-// Sent by a parser object to its delegate when it encounters a given external entity with a specific system ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416221-parser?language=objc
-func (di *XMLParserDelegate) ParserResolveExternalEntityNameSystemID(parser XMLParser, name string, systemID string) []byte {
-	return di._ParserResolveExternalEntityNameSystemID(parser, name, systemID)
-}
-func (di *XMLParserDelegate) HasParserFoundComment() bool {
-	return di._ParserFoundComment != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundComment(f func(parser XMLParser, comment string)) {
-	di._ParserFoundComment = f
-}
-
-// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundComment(parser XMLParser, comment string) {
-	di._ParserFoundComment(parser, comment)
-}
-func (di *XMLParserDelegate) HasParserFoundInternalEntityDeclarationWithNameValue() bool {
-	return di._ParserFoundInternalEntityDeclarationWithNameValue != nil
-}
-
-// Sent by a parser object to the delegate when it encounters an internal entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1414803-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundInternalEntityDeclarationWithNameValue(f func(parser XMLParser, name string, value string)) {
-	di._ParserFoundInternalEntityDeclarationWithNameValue = f
-}
-
-// Sent by a parser object to the delegate when it encounters an internal entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1414803-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundInternalEntityDeclarationWithNameValue(parser XMLParser, name string, value string) {
-	di._ParserFoundInternalEntityDeclarationWithNameValue(parser, name, value)
-}
-func (di *XMLParserDelegate) HasParserDidEndElementNamespaceURIQualifiedName() bool {
-	return di._ParserDidEndElementNamespaceURIQualifiedName != nil
-}
-
-// Sent by a parser object to its delegate when it encounters an end tag for a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417955-parser?language=objc
-func (di *XMLParserDelegate) SetParserDidEndElementNamespaceURIQualifiedName(f func(parser XMLParser, elementName string, namespaceURI string, qName string)) {
-	di._ParserDidEndElementNamespaceURIQualifiedName = f
-}
-
-// Sent by a parser object to its delegate when it encounters an end tag for a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417955-parser?language=objc
-func (di *XMLParserDelegate) ParserDidEndElementNamespaceURIQualifiedName(parser XMLParser, elementName string, namespaceURI string, qName string) {
-	di._ParserDidEndElementNamespaceURIQualifiedName(parser, elementName, namespaceURI, qName)
-}
-func (di *XMLParserDelegate) HasParserFoundElementDeclarationWithNameModel() bool {
-	return di._ParserFoundElementDeclarationWithNameModel != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an element with a given model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411043-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundElementDeclarationWithNameModel(f func(parser XMLParser, elementName string, model string)) {
-	di._ParserFoundElementDeclarationWithNameModel = f
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an element with a given model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411043-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundElementDeclarationWithNameModel(parser XMLParser, elementName string, model string) {
-	di._ParserFoundElementDeclarationWithNameModel(parser, elementName, model)
-}
-func (di *XMLParserDelegate) HasParserDidStartElementNamespaceURIQualifiedNameAttributes() bool {
-	return di._ParserDidStartElementNamespaceURIQualifiedNameAttributes != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a start tag for a given element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1415894-parser?language=objc
-func (di *XMLParserDelegate) SetParserDidStartElementNamespaceURIQualifiedNameAttributes(f func(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string)) {
-	di._ParserDidStartElementNamespaceURIQualifiedNameAttributes = f
-}
-
-// Sent by a parser object to its delegate when it encounters a start tag for a given element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1415894-parser?language=objc
-func (di *XMLParserDelegate) ParserDidStartElementNamespaceURIQualifiedNameAttributes(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string) {
-	di._ParserDidStartElementNamespaceURIQualifiedNameAttributes(parser, elementName, namespaceURI, qName, attributeDict)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412065-parserdidstartdocument?language=objc
+func (di *XMLParserDelegate) ParserDidStartDocument(parser XMLParser) {
+	di._ParserDidStartDocument(parser)
 }
 func (di *XMLParserDelegate) HasParserDidEndDocument() bool {
 	return di._ParserDidEndDocument != nil
@@ -251,209 +64,22 @@ func (di *XMLParserDelegate) SetParserDidEndDocument(f func(parser XMLParser)) {
 func (di *XMLParserDelegate) ParserDidEndDocument(parser XMLParser) {
 	di._ParserDidEndDocument(parser)
 }
-func (di *XMLParserDelegate) HasParserValidationErrorOccurred() bool {
-	return di._ParserValidationErrorOccurred != nil
+func (di *XMLParserDelegate) HasParserFoundComment() bool {
+	return di._ParserFoundComment != nil
 }
 
-// Sent by a parser object to its delegate when it encounters a fatal validation error. NSXMLParser currently does not invoke this method and does not perform validation. [Full Topic]
+// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417838-parser?language=objc
-func (di *XMLParserDelegate) SetParserValidationErrorOccurred(f func(parser XMLParser, validationError Error)) {
-	di._ParserValidationErrorOccurred = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
+func (di *XMLParserDelegate) SetParserFoundComment(f func(parser XMLParser, comment string)) {
+	di._ParserFoundComment = f
 }
 
-// Sent by a parser object to its delegate when it encounters a fatal validation error. NSXMLParser currently does not invoke this method and does not perform validation. [Full Topic]
+// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417838-parser?language=objc
-func (di *XMLParserDelegate) ParserValidationErrorOccurred(parser XMLParser, validationError Error) {
-	di._ParserValidationErrorOccurred(parser, validationError)
-}
-func (di *XMLParserDelegate) HasParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName() bool {
-	return di._ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName != nil
-}
-
-// Sent by a parser object to its delegate when it encounters an unparsed entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412907-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(f func(parser XMLParser, name string, publicID string, systemID string, notationName string)) {
-	di._ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName = f
-}
-
-// Sent by a parser object to its delegate when it encounters an unparsed entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412907-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(parser XMLParser, name string, publicID string, systemID string, notationName string) {
-	di._ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(parser, name, publicID, systemID, notationName)
-}
-func (di *XMLParserDelegate) HasParserFoundCDATA() bool {
-	return di._ParserFoundCDATA != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a CDATA block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1407687-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundCDATA(f func(parser XMLParser, CDATABlock []byte)) {
-	di._ParserFoundCDATA = f
-}
-
-// Sent by a parser object to its delegate when it encounters a CDATA block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1407687-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundCDATA(parser XMLParser, CDATABlock []byte) {
-	di._ParserFoundCDATA(parser, CDATABlock)
-}
-func (di *XMLParserDelegate) HasParserFoundProcessingInstructionWithTargetData() bool {
-	return di._ParserFoundProcessingInstructionWithTargetData != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a processing instruction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412929-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundProcessingInstructionWithTargetData(f func(parser XMLParser, target string, data string)) {
-	di._ParserFoundProcessingInstructionWithTargetData = f
-}
-
-// Sent by a parser object to its delegate when it encounters a processing instruction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412929-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundProcessingInstructionWithTargetData(parser XMLParser, target string, data string) {
-	di._ParserFoundProcessingInstructionWithTargetData(parser, target, data)
-}
-func (di *XMLParserDelegate) HasParserFoundIgnorableWhitespace() bool {
-	return di._ParserFoundIgnorableWhitespace != nil
-}
-
-// Reported by a parser object to provide its delegate with a string representing all or part of the ignorable whitespace characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416470-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundIgnorableWhitespace(f func(parser XMLParser, whitespaceString string)) {
-	di._ParserFoundIgnorableWhitespace = f
-}
-
-// Reported by a parser object to provide its delegate with a string representing all or part of the ignorable whitespace characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416470-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundIgnorableWhitespace(parser XMLParser, whitespaceString string) {
-	di._ParserFoundIgnorableWhitespace(parser, whitespaceString)
-}
-func (di *XMLParserDelegate) HasParserFoundExternalEntityDeclarationWithNamePublicIDSystemID() bool {
-	return di._ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID != nil
-}
-
-// Sent by a parser object to its delegate when it encounters an external entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1408156-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(f func(parser XMLParser, name string, publicID string, systemID string)) {
-	di._ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID = f
-}
-
-// Sent by a parser object to its delegate when it encounters an external entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1408156-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	di._ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(parser, name, publicID, systemID)
-}
-func (di *XMLParserDelegate) HasParserDidStartDocument() bool {
-	return di._ParserDidStartDocument != nil
-}
-
-// Sent by the parser object to the delegate when it begins parsing a document. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412065-parserdidstartdocument?language=objc
-func (di *XMLParserDelegate) SetParserDidStartDocument(f func(parser XMLParser)) {
-	di._ParserDidStartDocument = f
-}
-
-// Sent by the parser object to the delegate when it begins parsing a document. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412065-parserdidstartdocument?language=objc
-func (di *XMLParserDelegate) ParserDidStartDocument(parser XMLParser) {
-	di._ParserDidStartDocument(parser)
-}
-func (di *XMLParserDelegate) HasParserDidStartMappingPrefixToURI() bool {
-	return di._ParserDidStartMappingPrefixToURI != nil
-}
-
-// Sent by a parser object to its delegate the first time it encounters a given namespace prefix, which is mapped to a URI. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416738-parser?language=objc
-func (di *XMLParserDelegate) SetParserDidStartMappingPrefixToURI(f func(parser XMLParser, prefix string, namespaceURI string)) {
-	di._ParserDidStartMappingPrefixToURI = f
-}
-
-// Sent by a parser object to its delegate the first time it encounters a given namespace prefix, which is mapped to a URI. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416738-parser?language=objc
-func (di *XMLParserDelegate) ParserDidStartMappingPrefixToURI(parser XMLParser, prefix string, namespaceURI string) {
-	di._ParserDidStartMappingPrefixToURI(parser, prefix, namespaceURI)
-}
-func (di *XMLParserDelegate) HasParserDidEndMappingPrefix() bool {
-	return di._ParserDidEndMappingPrefix != nil
-}
-
-// Sent by a parser object to its delegate when a given namespace prefix goes out of scope. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412878-parser?language=objc
-func (di *XMLParserDelegate) SetParserDidEndMappingPrefix(f func(parser XMLParser, prefix string)) {
-	di._ParserDidEndMappingPrefix = f
-}
-
-// Sent by a parser object to its delegate when a given namespace prefix goes out of scope. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412878-parser?language=objc
-func (di *XMLParserDelegate) ParserDidEndMappingPrefix(parser XMLParser, prefix string) {
-	di._ParserDidEndMappingPrefix(parser, prefix)
-}
-func (di *XMLParserDelegate) HasParserParseErrorOccurred() bool {
-	return di._ParserParseErrorOccurred != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a fatal error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412379-parser?language=objc
-func (di *XMLParserDelegate) SetParserParseErrorOccurred(f func(parser XMLParser, parseError Error)) {
-	di._ParserParseErrorOccurred = f
-}
-
-// Sent by a parser object to its delegate when it encounters a fatal error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412379-parser?language=objc
-func (di *XMLParserDelegate) ParserParseErrorOccurred(parser XMLParser, parseError Error) {
-	di._ParserParseErrorOccurred(parser, parseError)
-}
-func (di *XMLParserDelegate) HasParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue() bool {
-	return di._ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue != nil
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an attribute that is associated with a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416969-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(f func(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string)) {
-	di._ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue = f
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an attribute that is associated with a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416969-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string) {
-	di._ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(parser, attributeName, elementName, type_, defaultValue)
-}
-func (di *XMLParserDelegate) HasParserFoundCharacters() bool {
-	return di._ParserFoundCharacters != nil
-}
-
-// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412539-parser?language=objc
-func (di *XMLParserDelegate) SetParserFoundCharacters(f func(parser XMLParser, string_ string)) {
-	di._ParserFoundCharacters = f
-}
-
-// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412539-parser?language=objc
-func (di *XMLParserDelegate) ParserFoundCharacters(parser XMLParser, string_ string) {
-	di._ParserFoundCharacters(parser, string_)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
+func (di *XMLParserDelegate) ParserFoundComment(parser XMLParser, comment string) {
+	di._ParserFoundComment(parser, comment)
 }
 
 // ensure impl type implements protocol interface
@@ -462,161 +88,6 @@ var _ PXMLParserDelegate = (*XMLParserDelegateObject)(nil)
 // A concrete type for the [PXMLParserDelegate] protocol.
 type XMLParserDelegateObject struct {
 	objc.Object
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundNotationDeclarationWithNamePublicIDSystemID() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundNotationDeclarationWithName:publicID:systemID:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a notation declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411925-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundNotationDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundNotationDeclarationWithName:publicID:systemID:"), parser, name, publicID, systemID)
-}
-
-func (x_ XMLParserDelegateObject) HasParserResolveExternalEntityNameSystemID() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:resolveExternalEntityName:systemID:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a given external entity with a specific system ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416221-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserResolveExternalEntityNameSystemID(parser XMLParser, name string, systemID string) []byte {
-	rv := objc.Call[[]byte](x_, objc.Sel("parser:resolveExternalEntityName:systemID:"), parser, name, systemID)
-	return rv
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundComment() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundComment:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundComment(parser XMLParser, comment string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundComment:"), parser, comment)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundInternalEntityDeclarationWithNameValue() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundInternalEntityDeclarationWithName:value:"))
-}
-
-// Sent by a parser object to the delegate when it encounters an internal entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1414803-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundInternalEntityDeclarationWithNameValue(parser XMLParser, name string, value string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundInternalEntityDeclarationWithName:value:"), parser, name, value)
-}
-
-func (x_ XMLParserDelegateObject) HasParserDidEndElementNamespaceURIQualifiedName() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:didEndElement:namespaceURI:qualifiedName:"))
-}
-
-// Sent by a parser object to its delegate when it encounters an end tag for a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417955-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserDidEndElementNamespaceURIQualifiedName(parser XMLParser, elementName string, namespaceURI string, qName string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didEndElement:namespaceURI:qualifiedName:"), parser, elementName, namespaceURI, qName)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundElementDeclarationWithNameModel() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundElementDeclarationWithName:model:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an element with a given model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411043-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundElementDeclarationWithNameModel(parser XMLParser, elementName string, model string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundElementDeclarationWithName:model:"), parser, elementName, model)
-}
-
-func (x_ XMLParserDelegateObject) HasParserDidStartElementNamespaceURIQualifiedNameAttributes() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:didStartElement:namespaceURI:qualifiedName:attributes:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a start tag for a given element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1415894-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserDidStartElementNamespaceURIQualifiedNameAttributes(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didStartElement:namespaceURI:qualifiedName:attributes:"), parser, elementName, namespaceURI, qName, attributeDict)
-}
-
-func (x_ XMLParserDelegateObject) HasParserDidEndDocument() bool {
-	return x_.RespondsToSelector(objc.Sel("parserDidEndDocument:"))
-}
-
-// Sent by the parser object to the delegate when it has successfully completed parsing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1418172-parserdidenddocument?language=objc
-func (x_ XMLParserDelegateObject) ParserDidEndDocument(parser XMLParser) {
-	objc.Call[objc.Void](x_, objc.Sel("parserDidEndDocument:"), parser)
-}
-
-func (x_ XMLParserDelegateObject) HasParserValidationErrorOccurred() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:validationErrorOccurred:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a fatal validation error. NSXMLParser currently does not invoke this method and does not perform validation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417838-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserValidationErrorOccurred(parser XMLParser, validationError Error) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:validationErrorOccurred:"), parser, validationError)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:"))
-}
-
-// Sent by a parser object to its delegate when it encounters an unparsed entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412907-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(parser XMLParser, name string, publicID string, systemID string, notationName string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:"), parser, name, publicID, systemID, notationName)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundCDATA() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundCDATA:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a CDATA block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1407687-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundCDATA(parser XMLParser, CDATABlock []byte) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundCDATA:"), parser, CDATABlock)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundProcessingInstructionWithTargetData() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundProcessingInstructionWithTarget:data:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a processing instruction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412929-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundProcessingInstructionWithTargetData(parser XMLParser, target string, data string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundProcessingInstructionWithTarget:data:"), parser, target, data)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundIgnorableWhitespace() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundIgnorableWhitespace:"))
-}
-
-// Reported by a parser object to provide its delegate with a string representing all or part of the ignorable whitespace characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416470-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundIgnorableWhitespace(parser XMLParser, whitespaceString string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundIgnorableWhitespace:"), parser, whitespaceString)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundExternalEntityDeclarationWithNamePublicIDSystemID() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundExternalEntityDeclarationWithName:publicID:systemID:"))
-}
-
-// Sent by a parser object to its delegate when it encounters an external entity declaration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1408156-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundExternalEntityDeclarationWithName:publicID:systemID:"), parser, name, publicID, systemID)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidStartDocument() bool {
@@ -630,57 +101,24 @@ func (x_ XMLParserDelegateObject) ParserDidStartDocument(parser XMLParser) {
 	objc.Call[objc.Void](x_, objc.Sel("parserDidStartDocument:"), parser)
 }
 
-func (x_ XMLParserDelegateObject) HasParserDidStartMappingPrefixToURI() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:didStartMappingPrefix:toURI:"))
+func (x_ XMLParserDelegateObject) HasParserDidEndDocument() bool {
+	return x_.RespondsToSelector(objc.Sel("parserDidEndDocument:"))
 }
 
-// Sent by a parser object to its delegate the first time it encounters a given namespace prefix, which is mapped to a URI. [Full Topic]
+// Sent by the parser object to the delegate when it has successfully completed parsing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416738-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserDidStartMappingPrefixToURI(parser XMLParser, prefix string, namespaceURI string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didStartMappingPrefix:toURI:"), parser, prefix, namespaceURI)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1418172-parserdidenddocument?language=objc
+func (x_ XMLParserDelegateObject) ParserDidEndDocument(parser XMLParser) {
+	objc.Call[objc.Void](x_, objc.Sel("parserDidEndDocument:"), parser)
 }
 
-func (x_ XMLParserDelegateObject) HasParserDidEndMappingPrefix() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:didEndMappingPrefix:"))
+func (x_ XMLParserDelegateObject) HasParserFoundComment() bool {
+	return x_.RespondsToSelector(objc.Sel("parser:foundComment:"))
 }
 
-// Sent by a parser object to its delegate when a given namespace prefix goes out of scope. [Full Topic]
+// Sent by a parser object to its delegate when it encounters a comment in the XML. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412878-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserDidEndMappingPrefix(parser XMLParser, prefix string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didEndMappingPrefix:"), parser, prefix)
-}
-
-func (x_ XMLParserDelegateObject) HasParserParseErrorOccurred() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:parseErrorOccurred:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a fatal error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412379-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserParseErrorOccurred(parser XMLParser, parseError Error) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:parseErrorOccurred:"), parser, parseError)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundAttributeDeclarationWithName:forElement:type:defaultValue:"))
-}
-
-// Sent by a parser object to its delegate when it encounters a declaration of an attribute that is associated with a specific element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416969-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundAttributeDeclarationWithName:forElement:type:defaultValue:"), parser, attributeName, elementName, type_, defaultValue)
-}
-
-func (x_ XMLParserDelegateObject) HasParserFoundCharacters() bool {
-	return x_.RespondsToSelector(objc.Sel("parser:foundCharacters:"))
-}
-
-// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412539-parser?language=objc
-func (x_ XMLParserDelegateObject) ParserFoundCharacters(parser XMLParser, string_ string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundCharacters:"), parser, string_)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
+func (x_ XMLParserDelegateObject) ParserFoundComment(parser XMLParser, comment string) {
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundComment:"), parser, comment)
 }

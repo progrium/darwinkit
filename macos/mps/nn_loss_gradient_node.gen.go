@@ -18,17 +18,17 @@ type _NNLossGradientNodeClass struct {
 // An interface definition for the [NNLossGradientNode] class.
 type INNLossGradientNode interface {
 	INNGradientFilterNode
+	NumberOfClasses() uint
+	Weight() float32
+	IsLabelsGradientFilter() bool
 	PropertyCallBack() NNLossCallbackObject
 	SetPropertyCallBack(value PNNLossCallback)
 	SetPropertyCallBackObject(valueObject objc.IObject)
-	LossType() CNNLossType
-	NumberOfClasses() uint
-	IsLabelsGradientFilter() bool
-	Weight() float32
-	ReductionType() CNNReductionType
-	Delta() float32
 	Epsilon() float32
+	Delta() float32
+	ReductionType() CNNReductionType
 	ReduceAcrossBatch() bool
+	LossType() CNNLossType
 	LabelSmoothing() float32
 }
 
@@ -43,6 +43,18 @@ func NNLossGradientNodeFrom(ptr unsafe.Pointer) NNLossGradientNode {
 	return NNLossGradientNode{
 		NNGradientFilterNode: NNGradientFilterNodeFrom(ptr),
 	}
+}
+
+func (nc _NNLossGradientNodeClass) NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
+	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131863-nodewithsources?language=objc
+func NNLossGradientNode_NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
+	return NNLossGradientNodeClass.NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
 }
 
 func (n_ NNLossGradientNode) InitWithSourceGradientSourceImageLabelsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
@@ -69,44 +81,6 @@ func (nc _NNLossGradientNodeClass) NodeWithSourceGradientSourceImageLabelsGradie
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131861-nodewithsourcegradient?language=objc
 func NNLossGradientNode_NodeWithSourceGradientSourceImageLabelsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
 	return NNLossGradientNodeClass.NodeWithSourceGradientSourceImageLabelsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient, sourceImage, labels, gradientState, descriptor, isLabelsGradientFilter)
-}
-
-func (n_ NNLossGradientNode) InitWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131856-initwithsourcegradient?language=objc
-func NewNNLossGradientNodeWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	instance := NNLossGradientNodeClass.Alloc().InitWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
-	instance.Autorelease()
-	return instance
-}
-
-func (nc _NNLossGradientNodeClass) NodeWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131862-nodewithsourcegradient?language=objc
-func NNLossGradientNode_NodeWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	return NNLossGradientNodeClass.NodeWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
-}
-
-func (nc _NNLossGradientNodeClass) NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131863-nodewithsources?language=objc
-func NNLossGradientNode_NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	return NNLossGradientNodeClass.NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
 }
 
 func (n_ NNLossGradientNode) InitWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
@@ -145,6 +119,30 @@ func (n_ NNLossGradientNode) Init() NNLossGradientNode {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131864-numberofclasses?language=objc
+func (n_ NNLossGradientNode) NumberOfClasses() uint {
+	rv := objc.Call[uint](n_, objc.Sel("numberOfClasses"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131867-weight?language=objc
+func (n_ NNLossGradientNode) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131858-islabelsgradientfilter?language=objc
+func (n_ NNLossGradientNode) IsLabelsGradientFilter() bool {
+	rv := objc.Call[bool](n_, objc.Sel("isLabelsGradientFilter"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131865-propertycallback?language=objc
 func (n_ NNLossGradientNode) PropertyCallBack() NNLossCallbackObject {
 	rv := objc.Call[NNLossCallbackObject](n_, objc.Sel("propertyCallBack"))
@@ -168,41 +166,9 @@ func (n_ NNLossGradientNode) SetPropertyCallBackObject(valueObject objc.IObject)
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131860-losstype?language=objc
-func (n_ NNLossGradientNode) LossType() CNNLossType {
-	rv := objc.Call[CNNLossType](n_, objc.Sel("lossType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131864-numberofclasses?language=objc
-func (n_ NNLossGradientNode) NumberOfClasses() uint {
-	rv := objc.Call[uint](n_, objc.Sel("numberOfClasses"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131858-islabelsgradientfilter?language=objc
-func (n_ NNLossGradientNode) IsLabelsGradientFilter() bool {
-	rv := objc.Call[bool](n_, objc.Sel("isLabelsGradientFilter"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131867-weight?language=objc
-func (n_ NNLossGradientNode) Weight() float32 {
-	rv := objc.Call[float32](n_, objc.Sel("weight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131866-reductiontype?language=objc
-func (n_ NNLossGradientNode) ReductionType() CNNReductionType {
-	rv := objc.Call[CNNReductionType](n_, objc.Sel("reductionType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131854-epsilon?language=objc
+func (n_ NNLossGradientNode) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -216,9 +182,9 @@ func (n_ NNLossGradientNode) Delta() float32 {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131854-epsilon?language=objc
-func (n_ NNLossGradientNode) Epsilon() float32 {
-	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131866-reductiontype?language=objc
+func (n_ NNLossGradientNode) ReductionType() CNNReductionType {
+	rv := objc.Call[CNNReductionType](n_, objc.Sel("reductionType"))
 	return rv
 }
 
@@ -227,6 +193,14 @@ func (n_ NNLossGradientNode) Epsilon() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3547988-reduceacrossbatch?language=objc
 func (n_ NNLossGradientNode) ReduceAcrossBatch() bool {
 	rv := objc.Call[bool](n_, objc.Sel("reduceAcrossBatch"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131860-losstype?language=objc
+func (n_ NNLossGradientNode) LossType() CNNLossType {
+	rv := objc.Call[CNNLossType](n_, objc.Sel("lossType"))
 	return rv
 }
 

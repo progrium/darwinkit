@@ -19,22 +19,22 @@ type _URLRequestClass struct {
 type IURLRequest interface {
 	objc.IObject
 	ValueForHTTPHeaderField(field string) string
-	AssumesHTTP3Capable() bool
-	HTTPBodyStream() InputStream
-	URL() URL
 	AllHTTPHeaderFields() map[string]string
+	MainDocumentURL() URL
+	HTTPShouldHandleCookies() bool
+	HTTPMethod() string
+	AllowsCellularAccess() bool
+	URL() URL
+	HTTPBodyStream() InputStream
+	AssumesHTTP3Capable() bool
 	AllowsExpensiveNetworkAccess() bool
+	AllowsConstrainedNetworkAccess() bool
+	TimeoutInterval() TimeInterval
+	Attribution() URLRequestAttribution
+	HTTPBody() []byte
+	CachePolicy() URLRequestCachePolicy
 	NetworkServiceType() URLRequestNetworkServiceType
 	HTTPShouldUsePipelining() bool
-	HTTPMethod() string
-	AllowsConstrainedNetworkAccess() bool
-	MainDocumentURL() URL
-	CachePolicy() URLRequestCachePolicy
-	Attribution() URLRequestAttribution
-	HTTPShouldHandleCookies() bool
-	TimeoutInterval() TimeInterval
-	HTTPBody() []byte
-	AllowsCellularAccess() bool
 }
 
 // A URL load request that is independent of protocol or URL scheme. [Full Topic]
@@ -48,18 +48,6 @@ func URLRequestFrom(ptr unsafe.Pointer) URLRequest {
 	return URLRequest{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (uc _URLRequestClass) RequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	rv := objc.Call[URLRequest](uc, objc.Sel("requestWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
-	return rv
-}
-
-// Creates and returns an initialized URL request with specified URL, cache policy, and timeout values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1528579-requestwithurl?language=objc
-func URLRequest_RequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	return URLRequestClass.RequestWithURLCachePolicyTimeoutInterval(URL, cachePolicy, timeoutInterval)
 }
 
 func (u_ URLRequest) InitWithURL(URL IURL) URLRequest {
@@ -86,20 +74,6 @@ func (uc _URLRequestClass) RequestWithURL(URL IURL) URLRequest {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl?language=objc
 func URLRequest_RequestWithURL(URL IURL) URLRequest {
 	return URLRequestClass.RequestWithURL(URL)
-}
-
-func (u_ URLRequest) InitWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	rv := objc.Call[URLRequest](u_, objc.Sel("initWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
-	return rv
-}
-
-// Creates a URL request with the specified URL, cache policy, and timeout values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1416292-initwithurl?language=objc
-func NewURLRequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	instance := URLRequestClass.Alloc().InitWithURLCachePolicyTimeoutInterval(URL, cachePolicy, timeoutInterval)
-	instance.Autorelease()
-	return instance
 }
 
 func (uc _URLRequestClass) Alloc() URLRequest {
@@ -130,19 +104,43 @@ func (u_ URLRequest) ValueForHTTPHeaderField(field string) string {
 	return rv
 }
 
-//	[Full Topic]
+// A dictionary containing all of the HTTP header fields for a request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/3735880-assumeshttp3capable?language=objc
-func (u_ URLRequest) AssumesHTTP3Capable() bool {
-	rv := objc.Call[bool](u_, objc.Sel("assumesHTTP3Capable"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields?language=objc
+func (u_ URLRequest) AllHTTPHeaderFields() map[string]string {
+	rv := objc.Call[map[string]string](u_, objc.Sel("allHTTPHeaderFields"))
 	return rv
 }
 
-// The request body as an input stream. [Full Topic]
+// The main document URL associated with the request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1407341-httpbodystream?language=objc
-func (u_ URLRequest) HTTPBodyStream() InputStream {
-	rv := objc.Call[InputStream](u_, objc.Sel("HTTPBodyStream"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1414134-maindocumenturl?language=objc
+func (u_ URLRequest) MainDocumentURL() URL {
+	rv := objc.Call[URL](u_, objc.Sel("mainDocumentURL"))
+	return rv
+}
+
+// A Boolean value that indicates whether the default cookie handling will be used for this request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418369-httpshouldhandlecookies?language=objc
+func (u_ URLRequest) HTTPShouldHandleCookies() bool {
+	rv := objc.Call[bool](u_, objc.Sel("HTTPShouldHandleCookies"))
+	return rv
+}
+
+// The HTTP request method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc
+func (u_ URLRequest) HTTPMethod() string {
+	rv := objc.Call[string](u_, objc.Sel("HTTPMethod"))
+	return rv
+}
+
+// A Boolean value that indicates whether the request is allowed to use the cellular radio (if present). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1412032-allowscellularaccess?language=objc
+func (u_ URLRequest) AllowsCellularAccess() bool {
+	rv := objc.Call[bool](u_, objc.Sel("allowsCellularAccess"))
 	return rv
 }
 
@@ -154,11 +152,19 @@ func (u_ URLRequest) URL() URL {
 	return rv
 }
 
-// A dictionary containing all of the HTTP header fields for a request. [Full Topic]
+// The request body as an input stream. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields?language=objc
-func (u_ URLRequest) AllHTTPHeaderFields() map[string]string {
-	rv := objc.Call[map[string]string](u_, objc.Sel("allHTTPHeaderFields"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1407341-httpbodystream?language=objc
+func (u_ URLRequest) HTTPBodyStream() InputStream {
+	rv := objc.Call[InputStream](u_, objc.Sel("HTTPBodyStream"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/3735880-assumeshttp3capable?language=objc
+func (u_ URLRequest) AssumesHTTP3Capable() bool {
+	rv := objc.Call[bool](u_, objc.Sel("assumesHTTP3Capable"))
 	return rv
 }
 
@@ -170,19 +176,19 @@ func (u_ URLRequest) AllowsExpensiveNetworkAccess() bool {
 	return rv
 }
 
-// The network service type of the request. [Full Topic]
+// A Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418333-networkservicetype?language=objc
-func (u_ URLRequest) NetworkServiceType() URLRequestNetworkServiceType {
-	rv := objc.Call[URLRequestNetworkServiceType](u_, objc.Sel("networkServiceType"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/3325678-allowsconstrainednetworkaccess?language=objc
+func (u_ URLRequest) AllowsConstrainedNetworkAccess() bool {
+	rv := objc.Call[bool](u_, objc.Sel("allowsConstrainedNetworkAccess"))
 	return rv
 }
 
-// A Boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission. [Full Topic]
+// The request’s timeout interval, in seconds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1409170-httpshouldusepipelining?language=objc
-func (u_ URLRequest) HTTPShouldUsePipelining() bool {
-	rv := objc.Call[bool](u_, objc.Sel("HTTPShouldUsePipelining"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418229-timeoutinterval?language=objc
+func (u_ URLRequest) TimeoutInterval() TimeInterval {
+	rv := objc.Call[TimeInterval](u_, objc.Sel("timeoutInterval"))
 	return rv
 }
 
@@ -201,59 +207,11 @@ func URLRequest_SupportsSecureCoding() bool {
 	return URLRequestClass.SupportsSecureCoding()
 }
 
-// The HTTP request method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc
-func (u_ URLRequest) HTTPMethod() string {
-	rv := objc.Call[string](u_, objc.Sel("HTTPMethod"))
-	return rv
-}
-
-// A Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/3325678-allowsconstrainednetworkaccess?language=objc
-func (u_ URLRequest) AllowsConstrainedNetworkAccess() bool {
-	rv := objc.Call[bool](u_, objc.Sel("allowsConstrainedNetworkAccess"))
-	return rv
-}
-
-// The main document URL associated with the request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1414134-maindocumenturl?language=objc
-func (u_ URLRequest) MainDocumentURL() URL {
-	rv := objc.Call[URL](u_, objc.Sel("mainDocumentURL"))
-	return rv
-}
-
-// The request’s cache policy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1407944-cachepolicy?language=objc
-func (u_ URLRequest) CachePolicy() URLRequestCachePolicy {
-	rv := objc.Call[URLRequestCachePolicy](u_, objc.Sel("cachePolicy"))
-	return rv
-}
-
 // The entity that initiates the network request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/3746973-attribution?language=objc
 func (u_ URLRequest) Attribution() URLRequestAttribution {
 	rv := objc.Call[URLRequestAttribution](u_, objc.Sel("attribution"))
-	return rv
-}
-
-// A Boolean value that indicates whether the default cookie handling will be used for this request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418369-httpshouldhandlecookies?language=objc
-func (u_ URLRequest) HTTPShouldHandleCookies() bool {
-	rv := objc.Call[bool](u_, objc.Sel("HTTPShouldHandleCookies"))
-	return rv
-}
-
-// The request’s timeout interval, in seconds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418229-timeoutinterval?language=objc
-func (u_ URLRequest) TimeoutInterval() TimeInterval {
-	rv := objc.Call[TimeInterval](u_, objc.Sel("timeoutInterval"))
 	return rv
 }
 
@@ -265,10 +223,26 @@ func (u_ URLRequest) HTTPBody() []byte {
 	return rv
 }
 
-// A Boolean value that indicates whether the request is allowed to use the cellular radio (if present). [Full Topic]
+// The request’s cache policy. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1412032-allowscellularaccess?language=objc
-func (u_ URLRequest) AllowsCellularAccess() bool {
-	rv := objc.Call[bool](u_, objc.Sel("allowsCellularAccess"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1407944-cachepolicy?language=objc
+func (u_ URLRequest) CachePolicy() URLRequestCachePolicy {
+	rv := objc.Call[URLRequestCachePolicy](u_, objc.Sel("cachePolicy"))
+	return rv
+}
+
+// The network service type of the request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1418333-networkservicetype?language=objc
+func (u_ URLRequest) NetworkServiceType() URLRequestNetworkServiceType {
+	rv := objc.Call[URLRequestNetworkServiceType](u_, objc.Sel("networkServiceType"))
+	return rv
+}
+
+// A Boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1409170-httpshouldusepipelining?language=objc
+func (u_ URLRequest) HTTPShouldUsePipelining() bool {
+	rv := objc.Call[bool](u_, objc.Sel("HTTPShouldUsePipelining"))
 	return rv
 }

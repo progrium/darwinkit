@@ -20,37 +20,37 @@ type _ObjectControllerClass struct {
 // An interface definition for the [ObjectController] class.
 type IObjectController interface {
 	IController
-	DefaultFetchRequest() coredata.FetchRequest
+	AddObject(object objc.IObject)
 	PrepareContent()
-	Remove(sender objc.IObject) objc.Object
-	FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool
-	RemoveObject(object objc.IObject)
 	NewObject() objc.Object
-	Add(sender objc.IObject) objc.Object
+	RemoveObject(object objc.IObject)
+	Fetch(sender objc.IObject) objc.Object
 	ValidateUserInterfaceItem(item PValidatedUserInterfaceItem) bool
 	ValidateUserInterfaceItemObject(itemObject objc.IObject) bool
-	AddObject(object objc.IObject)
-	Fetch(sender objc.IObject) objc.Object
-	IsEditable() bool
-	SetEditable(value bool)
+	Remove(sender objc.IObject) objc.Object
+	Add(sender objc.IObject) objc.Object
+	FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool
+	DefaultFetchRequest() coredata.FetchRequest
 	EntityName() string
 	SetEntityName(value string)
-	ObjectClass() objc.Class
-	SetObjectClass(value objc.IClass)
-	AutomaticallyPreparesContent() bool
-	SetAutomaticallyPreparesContent(value bool)
-	FetchPredicate() foundation.Predicate
-	SetFetchPredicate(value foundation.IPredicate)
-	UsesLazyFetching() bool
-	SetUsesLazyFetching(value bool)
 	Content() objc.Object
 	SetContent(value objc.IObject)
+	CanAdd() bool
+	ObjectClass() objc.Class
+	SetObjectClass(value objc.IClass)
+	IsEditable() bool
+	SetEditable(value bool)
+	FetchPredicate() foundation.Predicate
+	SetFetchPredicate(value foundation.IPredicate)
+	SelectedObjects() []objc.Object
+	AutomaticallyPreparesContent() bool
+	SetAutomaticallyPreparesContent(value bool)
+	Selection() objc.Object
 	ManagedObjectContext() coredata.ManagedObjectContext
 	SetManagedObjectContext(value coredata.IManagedObjectContext)
-	SelectedObjects() []objc.Object
-	CanAdd() bool
 	CanRemove() bool
-	Selection() objc.Object
+	UsesLazyFetching() bool
+	SetUsesLazyFetching(value bool)
 }
 
 // A controller that can manage an object's properties referenced by key-value paths. [Full Topic]
@@ -100,12 +100,11 @@ func (o_ ObjectController) Init() ObjectController {
 	return rv
 }
 
-// Returns the default fetch request used by the receiver. [Full Topic]
+// Sets the receiver’s content object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528145-defaultfetchrequest?language=objc
-func (o_ ObjectController) DefaultFetchRequest() coredata.FetchRequest {
-	rv := objc.Call[coredata.FetchRequest](o_, objc.Sel("defaultFetchRequest"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534093-addobject?language=objc
+func (o_ ObjectController) AddObject(object objc.IObject) {
+	objc.Call[objc.Void](o_, objc.Sel("addObject:"), object)
 }
 
 // Typically overridden by subclasses that require additional control over the creation of new objects. [Full Topic]
@@ -113,29 +112,6 @@ func (o_ ObjectController) DefaultFetchRequest() coredata.FetchRequest {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534218-preparecontent?language=objc
 func (o_ ObjectController) PrepareContent() {
 	objc.Call[objc.Void](o_, objc.Sel("prepareContent"))
-}
-
-// Removes the receiver’s content object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1533713-remove?language=objc
-func (o_ ObjectController) Remove(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("remove:"), sender)
-	return rv
-}
-
-// Subclasses should override this method to customize a fetch request, for example to specify fetch limits. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531782-fetchwithrequest?language=objc
-func (o_ ObjectController) FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](o_, objc.Sel("fetchWithRequest:merge:error:"), fetchRequest, merge, error)
-	return rv
-}
-
-// Removes a given object from the receiver’s content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1532897-removeobject?language=objc
-func (o_ ObjectController) RemoveObject(object objc.IObject) {
-	objc.Call[objc.Void](o_, objc.Sel("removeObject:"), object)
 }
 
 // Creates and returns a new object of the appropriate class. [Full Topic]
@@ -146,11 +122,18 @@ func (o_ ObjectController) NewObject() objc.Object {
 	return rv
 }
 
-// Creates a new object and sets it as the receiver’s content object. [Full Topic]
+// Removes a given object from the receiver’s content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528376-add?language=objc
-func (o_ ObjectController) Add(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("add:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1532897-removeobject?language=objc
+func (o_ ObjectController) RemoveObject(object objc.IObject) {
+	objc.Call[objc.Void](o_, objc.Sel("removeObject:"), object)
+}
+
+// Causes the receiver to fetch the data objects specified by the entity name and fetch predicate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1524554-fetch?language=objc
+func (o_ ObjectController) Fetch(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("fetch:"), sender)
 	return rv
 }
 
@@ -171,34 +154,36 @@ func (o_ ObjectController) ValidateUserInterfaceItemObject(itemObject objc.IObje
 	return rv
 }
 
-// Sets the receiver’s content object. [Full Topic]
+// Removes the receiver’s content object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534093-addobject?language=objc
-func (o_ ObjectController) AddObject(object objc.IObject) {
-	objc.Call[objc.Void](o_, objc.Sel("addObject:"), object)
-}
-
-// Causes the receiver to fetch the data objects specified by the entity name and fetch predicate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1524554-fetch?language=objc
-func (o_ ObjectController) Fetch(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("fetch:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1533713-remove?language=objc
+func (o_ ObjectController) Remove(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("remove:"), sender)
 	return rv
 }
 
-// A Boolean that indicates whether the receiver allows adding and removing objects. [Full Topic]
+// Creates a new object and sets it as the receiver’s content object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534699-editable?language=objc
-func (o_ ObjectController) IsEditable() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isEditable"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528376-add?language=objc
+func (o_ ObjectController) Add(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("add:"), sender)
 	return rv
 }
 
-// A Boolean that indicates whether the receiver allows adding and removing objects. [Full Topic]
+// Subclasses should override this method to customize a fetch request, for example to specify fetch limits. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534699-editable?language=objc
-func (o_ ObjectController) SetEditable(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setEditable:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531782-fetchwithrequest?language=objc
+func (o_ ObjectController) FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](o_, objc.Sel("fetchWithRequest:merge:error:"), fetchRequest, merge, error)
+	return rv
+}
+
+// Returns the default fetch request used by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528145-defaultfetchrequest?language=objc
+func (o_ ObjectController) DefaultFetchRequest() coredata.FetchRequest {
+	rv := objc.Call[coredata.FetchRequest](o_, objc.Sel("defaultFetchRequest"))
+	return rv
 }
 
 // The entity name used by the receiver to create new objects. [Full Topic]
@@ -216,6 +201,29 @@ func (o_ ObjectController) SetEntityName(value string) {
 	objc.Call[objc.Void](o_, objc.Sel("setEntityName:"), value)
 }
 
+// The receiver’s content object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1530826-content?language=objc
+func (o_ ObjectController) Content() objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("content"))
+	return rv
+}
+
+// The receiver’s content object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1530826-content?language=objc
+func (o_ ObjectController) SetContent(value objc.IObject) {
+	objc.Call[objc.Void](o_, objc.Sel("setContent:"), value)
+}
+
+// A Boolean value that indicates whether an object can be added to the receiver using add:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528497-canadd?language=objc
+func (o_ ObjectController) CanAdd() bool {
+	rv := objc.Call[bool](o_, objc.Sel("canAdd"))
+	return rv
+}
+
 // The object class to use when creating new objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1535459-objectclass?language=objc
@@ -231,19 +239,19 @@ func (o_ ObjectController) SetObjectClass(value objc.IClass) {
 	objc.Call[objc.Void](o_, objc.Sel("setObjectClass:"), value)
 }
 
-// A Boolean that shows whether the receiver automatically creates and inserts new content objects automatically when loading from a nib file. [Full Topic]
+// A Boolean that indicates whether the receiver allows adding and removing objects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534767-automaticallypreparescontent?language=objc
-func (o_ ObjectController) AutomaticallyPreparesContent() bool {
-	rv := objc.Call[bool](o_, objc.Sel("automaticallyPreparesContent"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534699-editable?language=objc
+func (o_ ObjectController) IsEditable() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isEditable"))
 	return rv
 }
 
-// A Boolean that shows whether the receiver automatically creates and inserts new content objects automatically when loading from a nib file. [Full Topic]
+// A Boolean that indicates whether the receiver allows adding and removing objects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534767-automaticallypreparescontent?language=objc
-func (o_ ObjectController) SetAutomaticallyPreparesContent(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setAutomaticallyPreparesContent:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534699-editable?language=objc
+func (o_ ObjectController) SetEditable(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setEditable:"), value)
 }
 
 // The receiver’s fetch predicate. [Full Topic]
@@ -261,34 +269,35 @@ func (o_ ObjectController) SetFetchPredicate(value foundation.IPredicate) {
 	objc.Call[objc.Void](o_, objc.Sel("setFetchPredicate:"), value)
 }
 
-// A Boolean that indicates whether the receiver uses lazy fetching. [Full Topic]
+// An array of all objects to be affected by editing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531411-useslazyfetching?language=objc
-func (o_ ObjectController) UsesLazyFetching() bool {
-	rv := objc.Call[bool](o_, objc.Sel("usesLazyFetching"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1535397-selectedobjects?language=objc
+func (o_ ObjectController) SelectedObjects() []objc.Object {
+	rv := objc.Call[[]objc.Object](o_, objc.Sel("selectedObjects"))
 	return rv
 }
 
-// A Boolean that indicates whether the receiver uses lazy fetching. [Full Topic]
+// A Boolean that shows whether the receiver automatically creates and inserts new content objects automatically when loading from a nib file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531411-useslazyfetching?language=objc
-func (o_ ObjectController) SetUsesLazyFetching(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setUsesLazyFetching:"), value)
-}
-
-// The receiver’s content object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1530826-content?language=objc
-func (o_ ObjectController) Content() objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("content"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534767-automaticallypreparescontent?language=objc
+func (o_ ObjectController) AutomaticallyPreparesContent() bool {
+	rv := objc.Call[bool](o_, objc.Sel("automaticallyPreparesContent"))
 	return rv
 }
 
-// The receiver’s content object. [Full Topic]
+// A Boolean that shows whether the receiver automatically creates and inserts new content objects automatically when loading from a nib file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1530826-content?language=objc
-func (o_ ObjectController) SetContent(value objc.IObject) {
-	objc.Call[objc.Void](o_, objc.Sel("setContent:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534767-automaticallypreparescontent?language=objc
+func (o_ ObjectController) SetAutomaticallyPreparesContent(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setAutomaticallyPreparesContent:"), value)
+}
+
+// A proxy object representing the receiver’s selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1527403-selection?language=objc
+func (o_ ObjectController) Selection() objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("selection"))
+	return rv
 }
 
 // The receiver’s managed object context. [Full Topic]
@@ -306,22 +315,6 @@ func (o_ ObjectController) SetManagedObjectContext(value coredata.IManagedObject
 	objc.Call[objc.Void](o_, objc.Sel("setManagedObjectContext:"), value)
 }
 
-// An array of all objects to be affected by editing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1535397-selectedobjects?language=objc
-func (o_ ObjectController) SelectedObjects() []objc.Object {
-	rv := objc.Call[[]objc.Object](o_, objc.Sel("selectedObjects"))
-	return rv
-}
-
-// A Boolean value that indicates whether an object can be added to the receiver using [appkit/nsobjectcontroller/add]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1528497-canadd?language=objc
-func (o_ ObjectController) CanAdd() bool {
-	rv := objc.Call[bool](o_, objc.Sel("canAdd"))
-	return rv
-}
-
 // A Boolean value that indicates whether an object can be removed from the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1532378-canremove?language=objc
@@ -330,10 +323,17 @@ func (o_ ObjectController) CanRemove() bool {
 	return rv
 }
 
-// A proxy object representing the receiver’s selection. [Full Topic]
+// A Boolean that indicates whether the receiver uses lazy fetching. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1527403-selection?language=objc
-func (o_ ObjectController) Selection() objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("selection"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531411-useslazyfetching?language=objc
+func (o_ ObjectController) UsesLazyFetching() bool {
+	rv := objc.Call[bool](o_, objc.Sel("usesLazyFetching"))
 	return rv
+}
+
+// A Boolean that indicates whether the receiver uses lazy fetching. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531411-useslazyfetching?language=objc
+func (o_ ObjectController) SetUsesLazyFetching(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setUsesLazyFetching:"), value)
 }

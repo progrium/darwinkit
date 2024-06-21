@@ -12,16 +12,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldrawable?language=objc
 type PDrawable interface {
 	// optional
-	PresentAfterMinimumDuration(duration corefoundation.TimeInterval)
-	HasPresentAfterMinimumDuration() bool
+	AddPresentedHandler(block DrawablePresentedHandler)
+	HasAddPresentedHandler() bool
 
 	// optional
 	Present()
 	HasPresent() bool
 
 	// optional
-	AddPresentedHandler(block DrawablePresentedHandler)
-	HasAddPresentedHandler() bool
+	PresentAfterMinimumDuration(duration corefoundation.TimeInterval)
+	HasPresentAfterMinimumDuration() bool
 
 	// optional
 	PresentAtTime(presentationTime corefoundation.TimeInterval)
@@ -44,15 +44,15 @@ type DrawableObject struct {
 	objc.Object
 }
 
-func (d_ DrawableObject) HasPresentAfterMinimumDuration() bool {
-	return d_.RespondsToSelector(objc.Sel("presentAfterMinimumDuration:"))
+func (d_ DrawableObject) HasAddPresentedHandler() bool {
+	return d_.RespondsToSelector(objc.Sel("addPresentedHandler:"))
 }
 
-// Presents the drawable onscreen as soon as possible after a previous drawable is visible for the specified duration. [Full Topic]
+// Registers a block of code to be called immediately after the drawable is presented. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldrawable/2806859-presentafterminimumduration?language=objc
-func (d_ DrawableObject) PresentAfterMinimumDuration(duration corefoundation.TimeInterval) {
-	objc.Call[objc.Void](d_, objc.Sel("presentAfterMinimumDuration:"), duration)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldrawable/2806858-addpresentedhandler?language=objc
+func (d_ DrawableObject) AddPresentedHandler(block DrawablePresentedHandler) {
+	objc.Call[objc.Void](d_, objc.Sel("addPresentedHandler:"), block)
 }
 
 func (d_ DrawableObject) HasPresent() bool {
@@ -66,15 +66,15 @@ func (d_ DrawableObject) Present() {
 	objc.Call[objc.Void](d_, objc.Sel("present"))
 }
 
-func (d_ DrawableObject) HasAddPresentedHandler() bool {
-	return d_.RespondsToSelector(objc.Sel("addPresentedHandler:"))
+func (d_ DrawableObject) HasPresentAfterMinimumDuration() bool {
+	return d_.RespondsToSelector(objc.Sel("presentAfterMinimumDuration:"))
 }
 
-// Registers a block of code to be called immediately after the drawable is presented. [Full Topic]
+// Presents the drawable onscreen as soon as possible after a previous drawable is visible for the specified duration. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldrawable/2806858-addpresentedhandler?language=objc
-func (d_ DrawableObject) AddPresentedHandler(block DrawablePresentedHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("addPresentedHandler:"), block)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldrawable/2806859-presentafterminimumduration?language=objc
+func (d_ DrawableObject) PresentAfterMinimumDuration(duration corefoundation.TimeInterval) {
+	objc.Call[objc.Void](d_, objc.Sel("presentAfterMinimumDuration:"), duration)
 }
 
 func (d_ DrawableObject) HasPresentAtTime() bool {

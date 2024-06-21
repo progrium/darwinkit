@@ -13,229 +13,77 @@ import (
 type POutlineViewDelegate interface {
 	PControlTextEditingDelegate
 	// optional
-	SelectionShouldChangeInOutlineView(outlineView OutlineView) bool
-	HasSelectionShouldChangeInOutlineView() bool
-
-	// optional
-	OutlineViewSelectionIndexesForProposedSelection(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet
-	HasOutlineViewSelectionIndexesForProposedSelection() bool
+	OutlineViewItemDidCollapse(notification foundation.Notification)
+	HasOutlineViewItemDidCollapse() bool
 
 	// optional
 	OutlineViewItemWillExpand(notification foundation.Notification)
 	HasOutlineViewItemWillExpand() bool
 
 	// optional
-	OutlineViewHeightOfRowByItem(outlineView OutlineView, item objc.Object) float64
-	HasOutlineViewHeightOfRowByItem() bool
-
-	// optional
-	OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn)
-	HasOutlineViewDidClickTableColumn() bool
-
-	// optional
-	OutlineViewItemDidExpand(notification foundation.Notification)
-	HasOutlineViewItemDidExpand() bool
-
-	// optional
-	OutlineViewShouldSelectTableColumn(outlineView OutlineView, tableColumn TableColumn) bool
-	HasOutlineViewShouldSelectTableColumn() bool
-
-	// optional
-	OutlineViewNextTypeSelectMatchFromItemToItemForString(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object
-	HasOutlineViewNextTypeSelectMatchFromItemToItemForString() bool
-
-	// optional
-	OutlineViewShouldSelectItem(outlineView OutlineView, item objc.Object) bool
-	HasOutlineViewShouldSelectItem() bool
-
-	// optional
-	OutlineViewColumnDidResize(notification foundation.Notification)
-	HasOutlineViewColumnDidResize() bool
-
-	// optional
-	OutlineViewItemDidCollapse(notification foundation.Notification)
-	HasOutlineViewItemDidCollapse() bool
-
-	// optional
-	OutlineViewMouseDownInHeaderOfTableColumn(outlineView OutlineView, tableColumn TableColumn)
-	HasOutlineViewMouseDownInHeaderOfTableColumn() bool
-
-	// optional
-	OutlineViewTintConfigurationForItem(outlineView OutlineView, item objc.Object) TintConfiguration
-	HasOutlineViewTintConfigurationForItem() bool
-
-	// optional
 	OutlineViewColumnDidMove(notification foundation.Notification)
 	HasOutlineViewColumnDidMove() bool
-
-	// optional
-	OutlineViewDidAddRowViewForRow(outlineView OutlineView, rowView TableRowView, row int)
-	HasOutlineViewDidAddRowViewForRow() bool
-
-	// optional
-	OutlineViewSelectionIsChanging(notification foundation.Notification)
-	HasOutlineViewSelectionIsChanging() bool
-
-	// optional
-	OutlineViewShouldTrackCellForTableColumnItem(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool
-	HasOutlineViewShouldTrackCellForTableColumnItem() bool
-
-	// optional
-	OutlineViewShouldCollapseItem(outlineView OutlineView, item objc.Object) bool
-	HasOutlineViewShouldCollapseItem() bool
-
-	// optional
-	OutlineViewSizeToFitWidthOfColumn(outlineView OutlineView, column int) float64
-	HasOutlineViewSizeToFitWidthOfColumn() bool
-
-	// optional
-	OutlineViewShouldShowOutlineCellForItem(outlineView OutlineView, item objc.Object) bool
-	HasOutlineViewShouldShowOutlineCellForItem() bool
-
-	// optional
-	OutlineViewToolTipForCellRectTableColumnItemMouseLocation(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string
-	HasOutlineViewToolTipForCellRectTableColumnItemMouseLocation() bool
-
-	// optional
-	OutlineViewShouldEditTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool
-	HasOutlineViewShouldEditTableColumnItem() bool
 
 	// optional
 	OutlineViewItemWillCollapse(notification foundation.Notification)
 	HasOutlineViewItemWillCollapse() bool
 
 	// optional
-	OutlineViewShouldExpandItem(outlineView OutlineView, item objc.Object) bool
-	HasOutlineViewShouldExpandItem() bool
+	OutlineViewColumnDidResize(notification foundation.Notification)
+	HasOutlineViewColumnDidResize() bool
 
 	// optional
-	OutlineViewWillDisplayCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)
-	HasOutlineViewWillDisplayCellForTableColumnItem() bool
-
-	// optional
-	OutlineViewDataCellForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell
-	HasOutlineViewDataCellForTableColumnItem() bool
+	OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn)
+	HasOutlineViewDidClickTableColumn() bool
 
 	// optional
 	OutlineViewSelectionDidChange(notification foundation.Notification)
 	HasOutlineViewSelectionDidChange() bool
 
 	// optional
-	OutlineViewWillDisplayOutlineCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)
-	HasOutlineViewWillDisplayOutlineCellForTableColumnItem() bool
+	OutlineViewItemDidExpand(notification foundation.Notification)
+	HasOutlineViewItemDidExpand() bool
 
 	// optional
-	OutlineViewViewForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View
-	HasOutlineViewViewForTableColumnItem() bool
+	OutlineViewSelectionIsChanging(notification foundation.Notification)
+	HasOutlineViewSelectionIsChanging() bool
 
 	// optional
-	OutlineViewDidRemoveRowViewForRow(outlineView OutlineView, rowView TableRowView, row int)
-	HasOutlineViewDidRemoveRowViewForRow() bool
-
-	// optional
-	OutlineViewShouldTypeSelectForEventWithCurrentSearchString(outlineView OutlineView, event Event, searchString string) bool
-	HasOutlineViewShouldTypeSelectForEventWithCurrentSearchString() bool
-
-	// optional
-	OutlineViewRowViewForItem(outlineView OutlineView, item objc.Object) TableRowView
-	HasOutlineViewRowViewForItem() bool
-
-	// optional
-	OutlineViewIsGroupItem(outlineView OutlineView, item objc.Object) bool
-	HasOutlineViewIsGroupItem() bool
-
-	// optional
-	OutlineViewShouldShowCellExpansionForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool
-	HasOutlineViewShouldShowCellExpansionForTableColumnItem() bool
-
-	// optional
-	OutlineViewDidDragTableColumn(outlineView OutlineView, tableColumn TableColumn)
-	HasOutlineViewDidDragTableColumn() bool
-
-	// optional
-	OutlineViewShouldReorderColumnToColumn(outlineView OutlineView, columnIndex int, newColumnIndex int) bool
-	HasOutlineViewShouldReorderColumnToColumn() bool
-
-	// optional
-	OutlineViewTypeSelectStringForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string
-	HasOutlineViewTypeSelectStringForTableColumnItem() bool
+	SelectionShouldChangeInOutlineView(outlineView OutlineView) bool
+	HasSelectionShouldChangeInOutlineView() bool
 }
 
 // A delegate implementation builder for the [POutlineViewDelegate] protocol.
 type OutlineViewDelegate struct {
 	ControlTextEditingDelegate
-	_SelectionShouldChangeInOutlineView                         func(outlineView OutlineView) bool
-	_OutlineViewSelectionIndexesForProposedSelection            func(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet
-	_OutlineViewItemWillExpand                                  func(notification foundation.Notification)
-	_OutlineViewHeightOfRowByItem                               func(outlineView OutlineView, item objc.Object) float64
-	_OutlineViewDidClickTableColumn                             func(outlineView OutlineView, tableColumn TableColumn)
-	_OutlineViewItemDidExpand                                   func(notification foundation.Notification)
-	_OutlineViewShouldSelectTableColumn                         func(outlineView OutlineView, tableColumn TableColumn) bool
-	_OutlineViewNextTypeSelectMatchFromItemToItemForString      func(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object
-	_OutlineViewShouldSelectItem                                func(outlineView OutlineView, item objc.Object) bool
-	_OutlineViewColumnDidResize                                 func(notification foundation.Notification)
-	_OutlineViewItemDidCollapse                                 func(notification foundation.Notification)
-	_OutlineViewMouseDownInHeaderOfTableColumn                  func(outlineView OutlineView, tableColumn TableColumn)
-	_OutlineViewTintConfigurationForItem                        func(outlineView OutlineView, item objc.Object) TintConfiguration
-	_OutlineViewColumnDidMove                                   func(notification foundation.Notification)
-	_OutlineViewDidAddRowViewForRow                             func(outlineView OutlineView, rowView TableRowView, row int)
-	_OutlineViewSelectionIsChanging                             func(notification foundation.Notification)
-	_OutlineViewShouldTrackCellForTableColumnItem               func(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool
-	_OutlineViewShouldCollapseItem                              func(outlineView OutlineView, item objc.Object) bool
-	_OutlineViewSizeToFitWidthOfColumn                          func(outlineView OutlineView, column int) float64
-	_OutlineViewShouldShowOutlineCellForItem                    func(outlineView OutlineView, item objc.Object) bool
-	_OutlineViewToolTipForCellRectTableColumnItemMouseLocation  func(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string
-	_OutlineViewShouldEditTableColumnItem                       func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool
-	_OutlineViewItemWillCollapse                                func(notification foundation.Notification)
-	_OutlineViewShouldExpandItem                                func(outlineView OutlineView, item objc.Object) bool
-	_OutlineViewWillDisplayCellForTableColumnItem               func(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)
-	_OutlineViewDataCellForTableColumnItem                      func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell
-	_OutlineViewSelectionDidChange                              func(notification foundation.Notification)
-	_OutlineViewWillDisplayOutlineCellForTableColumnItem        func(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)
-	_OutlineViewViewForTableColumnItem                          func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View
-	_OutlineViewDidRemoveRowViewForRow                          func(outlineView OutlineView, rowView TableRowView, row int)
-	_OutlineViewShouldTypeSelectForEventWithCurrentSearchString func(outlineView OutlineView, event Event, searchString string) bool
-	_OutlineViewRowViewForItem                                  func(outlineView OutlineView, item objc.Object) TableRowView
-	_OutlineViewIsGroupItem                                     func(outlineView OutlineView, item objc.Object) bool
-	_OutlineViewShouldShowCellExpansionForTableColumnItem       func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool
-	_OutlineViewDidDragTableColumn                              func(outlineView OutlineView, tableColumn TableColumn)
-	_OutlineViewShouldReorderColumnToColumn                     func(outlineView OutlineView, columnIndex int, newColumnIndex int) bool
-	_OutlineViewTypeSelectStringForTableColumnItem              func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string
+	_OutlineViewItemDidCollapse         func(notification foundation.Notification)
+	_OutlineViewItemWillExpand          func(notification foundation.Notification)
+	_OutlineViewColumnDidMove           func(notification foundation.Notification)
+	_OutlineViewItemWillCollapse        func(notification foundation.Notification)
+	_OutlineViewColumnDidResize         func(notification foundation.Notification)
+	_OutlineViewDidClickTableColumn     func(outlineView OutlineView, tableColumn TableColumn)
+	_OutlineViewSelectionDidChange      func(notification foundation.Notification)
+	_OutlineViewItemDidExpand           func(notification foundation.Notification)
+	_OutlineViewSelectionIsChanging     func(notification foundation.Notification)
+	_SelectionShouldChangeInOutlineView func(outlineView OutlineView) bool
 }
 
-func (di *OutlineViewDelegate) HasSelectionShouldChangeInOutlineView() bool {
-	return di._SelectionShouldChangeInOutlineView != nil
+func (di *OutlineViewDelegate) HasOutlineViewItemDidCollapse() bool {
+	return di._OutlineViewItemDidCollapse != nil
 }
 
-// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
+// Invoked when the did collapse notification is posted—that is, whenever the user collapses an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
-func (di *OutlineViewDelegate) SetSelectionShouldChangeInOutlineView(f func(outlineView OutlineView) bool) {
-	di._SelectionShouldChangeInOutlineView = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535557-outlineviewitemdidcollapse?language=objc
+func (di *OutlineViewDelegate) SetOutlineViewItemDidCollapse(f func(notification foundation.Notification)) {
+	di._OutlineViewItemDidCollapse = f
 }
 
-// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
+// Invoked when the did collapse notification is posted—that is, whenever the user collapses an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
-func (di *OutlineViewDelegate) SelectionShouldChangeInOutlineView(outlineView OutlineView) bool {
-	return di._SelectionShouldChangeInOutlineView(outlineView)
-}
-func (di *OutlineViewDelegate) HasOutlineViewSelectionIndexesForProposedSelection() bool {
-	return di._OutlineViewSelectionIndexesForProposedSelection != nil
-}
-
-// Invoked to allow the delegate to modify the proposed selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527575-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewSelectionIndexesForProposedSelection(f func(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet) {
-	di._OutlineViewSelectionIndexesForProposedSelection = f
-}
-
-// Invoked to allow the delegate to modify the proposed selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527575-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewSelectionIndexesForProposedSelection(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet {
-	return di._OutlineViewSelectionIndexesForProposedSelection(outlineView, proposedSelectionIndexes)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535557-outlineviewitemdidcollapse?language=objc
+func (di *OutlineViewDelegate) OutlineViewItemDidCollapse(notification foundation.Notification) {
+	di._OutlineViewItemDidCollapse(notification)
 }
 func (di *OutlineViewDelegate) HasOutlineViewItemWillExpand() bool {
 	return di._OutlineViewItemWillExpand != nil
@@ -254,176 +102,6 @@ func (di *OutlineViewDelegate) SetOutlineViewItemWillExpand(f func(notification 
 func (di *OutlineViewDelegate) OutlineViewItemWillExpand(notification foundation.Notification) {
 	di._OutlineViewItemWillExpand(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewHeightOfRowByItem() bool {
-	return di._OutlineViewHeightOfRowByItem != nil
-}
-
-// Returns the height in points of the row containing item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531870-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewHeightOfRowByItem(f func(outlineView OutlineView, item objc.Object) float64) {
-	di._OutlineViewHeightOfRowByItem = f
-}
-
-// Returns the height in points of the row containing item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531870-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewHeightOfRowByItem(outlineView OutlineView, item objc.Object) float64 {
-	return di._OutlineViewHeightOfRowByItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewDidClickTableColumn() bool {
-	return di._OutlineViewDidClickTableColumn != nil
-}
-
-// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewDidClickTableColumn(f func(outlineView OutlineView, tableColumn TableColumn)) {
-	di._OutlineViewDidClickTableColumn = f
-}
-
-// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	di._OutlineViewDidClickTableColumn(outlineView, tableColumn)
-}
-func (di *OutlineViewDelegate) HasOutlineViewItemDidExpand() bool {
-	return di._OutlineViewItemDidExpand != nil
-}
-
-// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewItemDidExpand(f func(notification foundation.Notification)) {
-	di._OutlineViewItemDidExpand = f
-}
-
-// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
-func (di *OutlineViewDelegate) OutlineViewItemDidExpand(notification foundation.Notification) {
-	di._OutlineViewItemDidExpand(notification)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldSelectTableColumn() bool {
-	return di._OutlineViewShouldSelectTableColumn != nil
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535118-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldSelectTableColumn(f func(outlineView OutlineView, tableColumn TableColumn) bool) {
-	di._OutlineViewShouldSelectTableColumn = f
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535118-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldSelectTableColumn(outlineView OutlineView, tableColumn TableColumn) bool {
-	return di._OutlineViewShouldSelectTableColumn(outlineView, tableColumn)
-}
-func (di *OutlineViewDelegate) HasOutlineViewNextTypeSelectMatchFromItemToItemForString() bool {
-	return di._OutlineViewNextTypeSelectMatchFromItemToItemForString != nil
-}
-
-// Returns the first item that matches the searchString from within the range of startItem to endItem [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533321-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewNextTypeSelectMatchFromItemToItemForString(f func(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object) {
-	di._OutlineViewNextTypeSelectMatchFromItemToItemForString = f
-}
-
-// Returns the first item that matches the searchString from within the range of startItem to endItem [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533321-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewNextTypeSelectMatchFromItemToItemForString(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object {
-	return di._OutlineViewNextTypeSelectMatchFromItemToItemForString(outlineView, startItem, endItem, searchString)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldSelectItem() bool {
-	return di._OutlineViewShouldSelectItem != nil
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531075-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldSelectItem(f func(outlineView OutlineView, item objc.Object) bool) {
-	di._OutlineViewShouldSelectItem = f
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531075-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldSelectItem(outlineView OutlineView, item objc.Object) bool {
-	return di._OutlineViewShouldSelectItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewColumnDidResize() bool {
-	return di._OutlineViewColumnDidResize != nil
-}
-
-// Invoked whenever the user resizes a column in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewColumnDidResize(f func(notification foundation.Notification)) {
-	di._OutlineViewColumnDidResize = f
-}
-
-// Invoked whenever the user resizes a column in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
-func (di *OutlineViewDelegate) OutlineViewColumnDidResize(notification foundation.Notification) {
-	di._OutlineViewColumnDidResize(notification)
-}
-func (di *OutlineViewDelegate) HasOutlineViewItemDidCollapse() bool {
-	return di._OutlineViewItemDidCollapse != nil
-}
-
-// Invoked when the did collapse notification is posted—that is, whenever the user collapses an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535557-outlineviewitemdidcollapse?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewItemDidCollapse(f func(notification foundation.Notification)) {
-	di._OutlineViewItemDidCollapse = f
-}
-
-// Invoked when the did collapse notification is posted—that is, whenever the user collapses an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535557-outlineviewitemdidcollapse?language=objc
-func (di *OutlineViewDelegate) OutlineViewItemDidCollapse(notification foundation.Notification) {
-	di._OutlineViewItemDidCollapse(notification)
-}
-func (di *OutlineViewDelegate) HasOutlineViewMouseDownInHeaderOfTableColumn() bool {
-	return di._OutlineViewMouseDownInHeaderOfTableColumn != nil
-}
-
-// Sent to the delegate whenever the mouse button is clicked in outlineView while the cursor is in a column header tableColumn. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531835-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewMouseDownInHeaderOfTableColumn(f func(outlineView OutlineView, tableColumn TableColumn)) {
-	di._OutlineViewMouseDownInHeaderOfTableColumn = f
-}
-
-// Sent to the delegate whenever the mouse button is clicked in outlineView while the cursor is in a column header tableColumn. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531835-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewMouseDownInHeaderOfTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	di._OutlineViewMouseDownInHeaderOfTableColumn(outlineView, tableColumn)
-}
-func (di *OutlineViewDelegate) HasOutlineViewTintConfigurationForItem() bool {
-	return di._OutlineViewTintConfigurationForItem != nil
-}
-
-// Customizes an item’s tinting behavior. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/3626816-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewTintConfigurationForItem(f func(outlineView OutlineView, item objc.Object) TintConfiguration) {
-	di._OutlineViewTintConfigurationForItem = f
-}
-
-// Customizes an item’s tinting behavior. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/3626816-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewTintConfigurationForItem(outlineView OutlineView, item objc.Object) TintConfiguration {
-	return di._OutlineViewTintConfigurationForItem(outlineView, item)
-}
 func (di *OutlineViewDelegate) HasOutlineViewColumnDidMove() bool {
 	return di._OutlineViewColumnDidMove != nil
 }
@@ -440,142 +118,6 @@ func (di *OutlineViewDelegate) SetOutlineViewColumnDidMove(f func(notification f
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525297-outlineviewcolumndidmove?language=objc
 func (di *OutlineViewDelegate) OutlineViewColumnDidMove(notification foundation.Notification) {
 	di._OutlineViewColumnDidMove(notification)
-}
-func (di *OutlineViewDelegate) HasOutlineViewDidAddRowViewForRow() bool {
-	return di._OutlineViewDidAddRowViewForRow != nil
-}
-
-// Implemented to know when a new row view is added to the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528320-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewDidAddRowViewForRow(f func(outlineView OutlineView, rowView TableRowView, row int)) {
-	di._OutlineViewDidAddRowViewForRow = f
-}
-
-// Implemented to know when a new row view is added to the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528320-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewDidAddRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	di._OutlineViewDidAddRowViewForRow(outlineView, rowView, row)
-}
-func (di *OutlineViewDelegate) HasOutlineViewSelectionIsChanging() bool {
-	return di._OutlineViewSelectionIsChanging != nil
-}
-
-// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewSelectionIsChanging(f func(notification foundation.Notification)) {
-	di._OutlineViewSelectionIsChanging = f
-}
-
-// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
-func (di *OutlineViewDelegate) OutlineViewSelectionIsChanging(notification foundation.Notification) {
-	di._OutlineViewSelectionIsChanging(notification)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldTrackCellForTableColumnItem() bool {
-	return di._OutlineViewShouldTrackCellForTableColumnItem != nil
-}
-
-// Returns a Boolean value that indicates whether a given cell should be tracked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534295-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldTrackCellForTableColumnItem(f func(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool) {
-	di._OutlineViewShouldTrackCellForTableColumnItem = f
-}
-
-// Returns a Boolean value that indicates whether a given cell should be tracked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534295-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldTrackCellForTableColumnItem(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool {
-	return di._OutlineViewShouldTrackCellForTableColumnItem(outlineView, cell, tableColumn, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldCollapseItem() bool {
-	return di._OutlineViewShouldCollapseItem != nil
-}
-
-// Returns a Boolean value that indicates whether the outline view should collapse a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529825-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldCollapseItem(f func(outlineView OutlineView, item objc.Object) bool) {
-	di._OutlineViewShouldCollapseItem = f
-}
-
-// Returns a Boolean value that indicates whether the outline view should collapse a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529825-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldCollapseItem(outlineView OutlineView, item objc.Object) bool {
-	return di._OutlineViewShouldCollapseItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewSizeToFitWidthOfColumn() bool {
-	return di._OutlineViewSizeToFitWidthOfColumn != nil
-}
-
-// Invoked to allow the delegate to provide custom sizing behavior when a column’s resize divider is double clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530479-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewSizeToFitWidthOfColumn(f func(outlineView OutlineView, column int) float64) {
-	di._OutlineViewSizeToFitWidthOfColumn = f
-}
-
-// Invoked to allow the delegate to provide custom sizing behavior when a column’s resize divider is double clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530479-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewSizeToFitWidthOfColumn(outlineView OutlineView, column int) float64 {
-	return di._OutlineViewSizeToFitWidthOfColumn(outlineView, column)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldShowOutlineCellForItem() bool {
-	return di._OutlineViewShouldShowOutlineCellForItem != nil
-}
-
-// Returns whether the specified item should display the outline cell (the disclosure triangle). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534006-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldShowOutlineCellForItem(f func(outlineView OutlineView, item objc.Object) bool) {
-	di._OutlineViewShouldShowOutlineCellForItem = f
-}
-
-// Returns whether the specified item should display the outline cell (the disclosure triangle). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534006-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldShowOutlineCellForItem(outlineView OutlineView, item objc.Object) bool {
-	return di._OutlineViewShouldShowOutlineCellForItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewToolTipForCellRectTableColumnItemMouseLocation() bool {
-	return di._OutlineViewToolTipForCellRectTableColumnItemMouseLocation != nil
-}
-
-// When the cursor pauses over a given cell, the value returned from this method is displayed in a tooltip. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527695-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewToolTipForCellRectTableColumnItemMouseLocation(f func(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string) {
-	di._OutlineViewToolTipForCellRectTableColumnItemMouseLocation = f
-}
-
-// When the cursor pauses over a given cell, the value returned from this method is displayed in a tooltip. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527695-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewToolTipForCellRectTableColumnItemMouseLocation(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string {
-	return di._OutlineViewToolTipForCellRectTableColumnItemMouseLocation(outlineView, cell, rect, tableColumn, item, mouseLocation)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldEditTableColumnItem() bool {
-	return di._OutlineViewShouldEditTableColumnItem != nil
-}
-
-// Returns a Boolean value that indicates whether the outline view should allow editing of a given item in a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535450-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldEditTableColumnItem(f func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool) {
-	di._OutlineViewShouldEditTableColumnItem = f
-}
-
-// Returns a Boolean value that indicates whether the outline view should allow editing of a given item in a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535450-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldEditTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	return di._OutlineViewShouldEditTableColumnItem(outlineView, tableColumn, item)
 }
 func (di *OutlineViewDelegate) HasOutlineViewItemWillCollapse() bool {
 	return di._OutlineViewItemWillCollapse != nil
@@ -594,56 +136,39 @@ func (di *OutlineViewDelegate) SetOutlineViewItemWillCollapse(f func(notificatio
 func (di *OutlineViewDelegate) OutlineViewItemWillCollapse(notification foundation.Notification) {
 	di._OutlineViewItemWillCollapse(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewShouldExpandItem() bool {
-	return di._OutlineViewShouldExpandItem != nil
+func (di *OutlineViewDelegate) HasOutlineViewColumnDidResize() bool {
+	return di._OutlineViewColumnDidResize != nil
 }
 
-// Returns a Boolean value that indicates whether the outline view should expand a given item. [Full Topic]
+// Invoked whenever the user resizes a column in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531199-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldExpandItem(f func(outlineView OutlineView, item objc.Object) bool) {
-	di._OutlineViewShouldExpandItem = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
+func (di *OutlineViewDelegate) SetOutlineViewColumnDidResize(f func(notification foundation.Notification)) {
+	di._OutlineViewColumnDidResize = f
 }
 
-// Returns a Boolean value that indicates whether the outline view should expand a given item. [Full Topic]
+// Invoked whenever the user resizes a column in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531199-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldExpandItem(outlineView OutlineView, item objc.Object) bool {
-	return di._OutlineViewShouldExpandItem(outlineView, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
+func (di *OutlineViewDelegate) OutlineViewColumnDidResize(notification foundation.Notification) {
+	di._OutlineViewColumnDidResize(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewWillDisplayCellForTableColumnItem() bool {
-	return di._OutlineViewWillDisplayCellForTableColumnItem != nil
+func (di *OutlineViewDelegate) HasOutlineViewDidClickTableColumn() bool {
+	return di._OutlineViewDidClickTableColumn != nil
 }
 
-// Informs the delegate that the cell specified by the column and item will be displayed. [Full Topic]
+// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529359-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewWillDisplayCellForTableColumnItem(f func(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)) {
-	di._OutlineViewWillDisplayCellForTableColumnItem = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
+func (di *OutlineViewDelegate) SetOutlineViewDidClickTableColumn(f func(outlineView OutlineView, tableColumn TableColumn)) {
+	di._OutlineViewDidClickTableColumn = f
 }
 
-// Informs the delegate that the cell specified by the column and item will be displayed. [Full Topic]
+// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529359-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewWillDisplayCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	di._OutlineViewWillDisplayCellForTableColumnItem(outlineView, cell, tableColumn, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewDataCellForTableColumnItem() bool {
-	return di._OutlineViewDataCellForTableColumnItem != nil
-}
-
-// Returns the cell to use in a given column for a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525161-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewDataCellForTableColumnItem(f func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell) {
-	di._OutlineViewDataCellForTableColumnItem = f
-}
-
-// Returns the cell to use in a given column for a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525161-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewDataCellForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell {
-	return di._OutlineViewDataCellForTableColumnItem(outlineView, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
+func (di *OutlineViewDelegate) OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn) {
+	di._OutlineViewDidClickTableColumn(outlineView, tableColumn)
 }
 func (di *OutlineViewDelegate) HasOutlineViewSelectionDidChange() bool {
 	return di._OutlineViewSelectionDidChange != nil
@@ -662,175 +187,56 @@ func (di *OutlineViewDelegate) SetOutlineViewSelectionDidChange(f func(notificat
 func (di *OutlineViewDelegate) OutlineViewSelectionDidChange(notification foundation.Notification) {
 	di._OutlineViewSelectionDidChange(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewWillDisplayOutlineCellForTableColumnItem() bool {
-	return di._OutlineViewWillDisplayOutlineCellForTableColumnItem != nil
+func (di *OutlineViewDelegate) HasOutlineViewItemDidExpand() bool {
+	return di._OutlineViewItemDidExpand != nil
 }
 
-// Informs the delegate that an outline view is about to display a cell used to draw the expansion symbol. [Full Topic]
+// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535808-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewWillDisplayOutlineCellForTableColumnItem(f func(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)) {
-	di._OutlineViewWillDisplayOutlineCellForTableColumnItem = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
+func (di *OutlineViewDelegate) SetOutlineViewItemDidExpand(f func(notification foundation.Notification)) {
+	di._OutlineViewItemDidExpand = f
 }
 
-// Informs the delegate that an outline view is about to display a cell used to draw the expansion symbol. [Full Topic]
+// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535808-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewWillDisplayOutlineCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	di._OutlineViewWillDisplayOutlineCellForTableColumnItem(outlineView, cell, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
+func (di *OutlineViewDelegate) OutlineViewItemDidExpand(notification foundation.Notification) {
+	di._OutlineViewItemDidExpand(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewViewForTableColumnItem() bool {
-	return di._OutlineViewViewForTableColumnItem != nil
+func (di *OutlineViewDelegate) HasOutlineViewSelectionIsChanging() bool {
+	return di._OutlineViewSelectionIsChanging != nil
 }
 
-// Implemented to return the view used to display the specified item and column. [Full Topic]
+// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535566-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewViewForTableColumnItem(f func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View) {
-	di._OutlineViewViewForTableColumnItem = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
+func (di *OutlineViewDelegate) SetOutlineViewSelectionIsChanging(f func(notification foundation.Notification)) {
+	di._OutlineViewSelectionIsChanging = f
 }
 
-// Implemented to return the view used to display the specified item and column. [Full Topic]
+// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535566-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewViewForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View {
-	return di._OutlineViewViewForTableColumnItem(outlineView, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
+func (di *OutlineViewDelegate) OutlineViewSelectionIsChanging(notification foundation.Notification) {
+	di._OutlineViewSelectionIsChanging(notification)
 }
-func (di *OutlineViewDelegate) HasOutlineViewDidRemoveRowViewForRow() bool {
-	return di._OutlineViewDidRemoveRowViewForRow != nil
+func (di *OutlineViewDelegate) HasSelectionShouldChangeInOutlineView() bool {
+	return di._SelectionShouldChangeInOutlineView != nil
 }
 
-// Implemented to know when a row view is removed from the table [Full Topic]
+// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530612-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewDidRemoveRowViewForRow(f func(outlineView OutlineView, rowView TableRowView, row int)) {
-	di._OutlineViewDidRemoveRowViewForRow = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
+func (di *OutlineViewDelegate) SetSelectionShouldChangeInOutlineView(f func(outlineView OutlineView) bool) {
+	di._SelectionShouldChangeInOutlineView = f
 }
 
-// Implemented to know when a row view is removed from the table [Full Topic]
+// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530612-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewDidRemoveRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	di._OutlineViewDidRemoveRowViewForRow(outlineView, rowView, row)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldTypeSelectForEventWithCurrentSearchString() bool {
-	return di._OutlineViewShouldTypeSelectForEventWithCurrentSearchString != nil
-}
-
-// Returns a Boolean value that indicates whether type select should proceed for a given event and search string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532941-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldTypeSelectForEventWithCurrentSearchString(f func(outlineView OutlineView, event Event, searchString string) bool) {
-	di._OutlineViewShouldTypeSelectForEventWithCurrentSearchString = f
-}
-
-// Returns a Boolean value that indicates whether type select should proceed for a given event and search string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532941-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldTypeSelectForEventWithCurrentSearchString(outlineView OutlineView, event Event, searchString string) bool {
-	return di._OutlineViewShouldTypeSelectForEventWithCurrentSearchString(outlineView, event, searchString)
-}
-func (di *OutlineViewDelegate) HasOutlineViewRowViewForItem() bool {
-	return di._OutlineViewRowViewForItem != nil
-}
-
-// implement this method to return a custom NSTableRowView for a particular item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532140-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewRowViewForItem(f func(outlineView OutlineView, item objc.Object) TableRowView) {
-	di._OutlineViewRowViewForItem = f
-}
-
-// implement this method to return a custom NSTableRowView for a particular item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532140-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewRowViewForItem(outlineView OutlineView, item objc.Object) TableRowView {
-	return di._OutlineViewRowViewForItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewIsGroupItem() bool {
-	return di._OutlineViewIsGroupItem != nil
-}
-
-// Returns a Boolean that indicates whether a given row should be drawn in the “group row” style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528482-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewIsGroupItem(f func(outlineView OutlineView, item objc.Object) bool) {
-	di._OutlineViewIsGroupItem = f
-}
-
-// Returns a Boolean that indicates whether a given row should be drawn in the “group row” style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528482-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewIsGroupItem(outlineView OutlineView, item objc.Object) bool {
-	return di._OutlineViewIsGroupItem(outlineView, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldShowCellExpansionForTableColumnItem() bool {
-	return di._OutlineViewShouldShowCellExpansionForTableColumnItem != nil
-}
-
-// Invoked to allow the delegate to control cell expansion for a specific column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534411-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldShowCellExpansionForTableColumnItem(f func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool) {
-	di._OutlineViewShouldShowCellExpansionForTableColumnItem = f
-}
-
-// Invoked to allow the delegate to control cell expansion for a specific column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534411-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldShowCellExpansionForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	return di._OutlineViewShouldShowCellExpansionForTableColumnItem(outlineView, tableColumn, item)
-}
-func (di *OutlineViewDelegate) HasOutlineViewDidDragTableColumn() bool {
-	return di._OutlineViewDidDragTableColumn != nil
-}
-
-// Sent at the time the mouse button goes up in outlineView and tableColumn has been dragged during the time the mouse button was down. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526632-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewDidDragTableColumn(f func(outlineView OutlineView, tableColumn TableColumn)) {
-	di._OutlineViewDidDragTableColumn = f
-}
-
-// Sent at the time the mouse button goes up in outlineView and tableColumn has been dragged during the time the mouse button was down. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526632-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewDidDragTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	di._OutlineViewDidDragTableColumn(outlineView, tableColumn)
-}
-func (di *OutlineViewDelegate) HasOutlineViewShouldReorderColumnToColumn() bool {
-	return di._OutlineViewShouldReorderColumnToColumn != nil
-}
-
-// Sent to the delegate to allow or prohibit the specified column to be dragged to a new location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530792-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewShouldReorderColumnToColumn(f func(outlineView OutlineView, columnIndex int, newColumnIndex int) bool) {
-	di._OutlineViewShouldReorderColumnToColumn = f
-}
-
-// Sent to the delegate to allow or prohibit the specified column to be dragged to a new location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530792-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewShouldReorderColumnToColumn(outlineView OutlineView, columnIndex int, newColumnIndex int) bool {
-	return di._OutlineViewShouldReorderColumnToColumn(outlineView, columnIndex, newColumnIndex)
-}
-func (di *OutlineViewDelegate) HasOutlineViewTypeSelectStringForTableColumnItem() bool {
-	return di._OutlineViewTypeSelectStringForTableColumnItem != nil
-}
-
-// Returns the string that is used for type selection for a given column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526847-outlineview?language=objc
-func (di *OutlineViewDelegate) SetOutlineViewTypeSelectStringForTableColumnItem(f func(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string) {
-	di._OutlineViewTypeSelectStringForTableColumnItem = f
-}
-
-// Returns the string that is used for type selection for a given column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526847-outlineview?language=objc
-func (di *OutlineViewDelegate) OutlineViewTypeSelectStringForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string {
-	return di._OutlineViewTypeSelectStringForTableColumnItem(outlineView, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
+func (di *OutlineViewDelegate) SelectionShouldChangeInOutlineView(outlineView OutlineView) bool {
+	return di._SelectionShouldChangeInOutlineView(outlineView)
 }
 
 // ensure impl type implements protocol interface
@@ -839,122 +245,6 @@ var _ POutlineViewDelegate = (*OutlineViewDelegateObject)(nil)
 // A concrete type for the [POutlineViewDelegate] protocol.
 type OutlineViewDelegateObject struct {
 	ControlTextEditingDelegateObject
-}
-
-func (o_ OutlineViewDelegateObject) HasSelectionShouldChangeInOutlineView() bool {
-	return o_.RespondsToSelector(objc.Sel("selectionShouldChangeInOutlineView:"))
-}
-
-// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
-func (o_ OutlineViewDelegateObject) SelectionShouldChangeInOutlineView(outlineView OutlineView) bool {
-	rv := objc.Call[bool](o_, objc.Sel("selectionShouldChangeInOutlineView:"), outlineView)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIndexesForProposedSelection() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:selectionIndexesForProposedSelection:"))
-}
-
-// Invoked to allow the delegate to modify the proposed selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527575-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewSelectionIndexesForProposedSelection(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet {
-	rv := objc.Call[foundation.IndexSet](o_, objc.Sel("outlineView:selectionIndexesForProposedSelection:"), outlineView, proposedSelectionIndexes)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewItemWillExpand() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineViewItemWillExpand:"))
-}
-
-// Invoked when notification is posted—that is, whenever the user is about to expand an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535847-outlineviewitemwillexpand?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewItemWillExpand(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillExpand:"), notification)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewHeightOfRowByItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:heightOfRowByItem:"))
-}
-
-// Returns the height in points of the row containing item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531870-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewHeightOfRowByItem(outlineView OutlineView, item objc.Object) float64 {
-	rv := objc.Call[float64](o_, objc.Sel("outlineView:heightOfRowByItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewDidClickTableColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:didClickTableColumn:"))
-}
-
-// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didClickTableColumn:"), outlineView, tableColumn)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidExpand() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineViewItemDidExpand:"))
-}
-
-// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewItemDidExpand(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidExpand:"), notification)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldSelectTableColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldSelectTableColumn:"))
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535118-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldSelectTableColumn(outlineView OutlineView, tableColumn TableColumn) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectTableColumn:"), outlineView, tableColumn)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewNextTypeSelectMatchFromItemToItemForString() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"))
-}
-
-// Returns the first item that matches the searchString from within the range of startItem to endItem [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533321-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewNextTypeSelectMatchFromItemToItemForString(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"), outlineView, startItem, endItem, searchString)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldSelectItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldSelectItem:"))
-}
-
-// Returns a Boolean value that indicates whether the outline view should select a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531075-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldSelectItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewColumnDidResize() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineViewColumnDidResize:"))
-}
-
-// Invoked whenever the user resizes a column in the outline view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewColumnDidResize(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidResize:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidCollapse() bool {
@@ -968,27 +258,15 @@ func (o_ OutlineViewDelegateObject) OutlineViewItemDidCollapse(notification foun
 	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidCollapse:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewMouseDownInHeaderOfTableColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:mouseDownInHeaderOfTableColumn:"))
+func (o_ OutlineViewDelegateObject) HasOutlineViewItemWillExpand() bool {
+	return o_.RespondsToSelector(objc.Sel("outlineViewItemWillExpand:"))
 }
 
-// Sent to the delegate whenever the mouse button is clicked in outlineView while the cursor is in a column header tableColumn. [Full Topic]
+// Invoked when notification is posted—that is, whenever the user is about to expand an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531835-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewMouseDownInHeaderOfTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:mouseDownInHeaderOfTableColumn:"), outlineView, tableColumn)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewTintConfigurationForItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:tintConfigurationForItem:"))
-}
-
-// Customizes an item’s tinting behavior. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/3626816-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewTintConfigurationForItem(outlineView OutlineView, item objc.Object) TintConfiguration {
-	rv := objc.Call[TintConfiguration](o_, objc.Sel("outlineView:tintConfigurationForItem:"), outlineView, item)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535847-outlineviewitemwillexpand?language=objc
+func (o_ OutlineViewDelegateObject) OutlineViewItemWillExpand(notification foundation.Notification) {
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillExpand:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewColumnDidMove() bool {
@@ -1002,100 +280,6 @@ func (o_ OutlineViewDelegateObject) OutlineViewColumnDidMove(notification founda
 	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidMove:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewDidAddRowViewForRow() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:didAddRowView:forRow:"))
-}
-
-// Implemented to know when a new row view is added to the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528320-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewDidAddRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didAddRowView:forRow:"), outlineView, rowView, row)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIsChanging() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineViewSelectionIsChanging:"))
-}
-
-// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewSelectionIsChanging(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionIsChanging:"), notification)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTrackCellForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldTrackCell:forTableColumn:item:"))
-}
-
-// Returns a Boolean value that indicates whether a given cell should be tracked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534295-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldTrackCellForTableColumnItem(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTrackCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldCollapseItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldCollapseItem:"))
-}
-
-// Returns a Boolean value that indicates whether the outline view should collapse a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529825-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldCollapseItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldCollapseItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewSizeToFitWidthOfColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:sizeToFitWidthOfColumn:"))
-}
-
-// Invoked to allow the delegate to provide custom sizing behavior when a column’s resize divider is double clicked. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530479-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewSizeToFitWidthOfColumn(outlineView OutlineView, column int) float64 {
-	rv := objc.Call[float64](o_, objc.Sel("outlineView:sizeToFitWidthOfColumn:"), outlineView, column)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldShowOutlineCellForItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldShowOutlineCellForItem:"))
-}
-
-// Returns whether the specified item should display the outline cell (the disclosure triangle). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534006-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldShowOutlineCellForItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowOutlineCellForItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewToolTipForCellRectTableColumnItemMouseLocation() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"))
-}
-
-// When the cursor pauses over a given cell, the value returned from this method is displayed in a tooltip. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527695-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewToolTipForCellRectTableColumnItemMouseLocation(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string {
-	rv := objc.Call[string](o_, objc.Sel("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"), outlineView, cell, rect, tableColumn, item, mouseLocation)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldEditTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldEditTableColumn:item:"))
-}
-
-// Returns a Boolean value that indicates whether the outline view should allow editing of a given item in a given table column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535450-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldEditTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldEditTableColumn:item:"), outlineView, tableColumn, item)
-	return rv
-}
-
 func (o_ OutlineViewDelegateObject) HasOutlineViewItemWillCollapse() bool {
 	return o_.RespondsToSelector(objc.Sel("outlineViewItemWillCollapse:"))
 }
@@ -1107,39 +291,26 @@ func (o_ OutlineViewDelegateObject) OutlineViewItemWillCollapse(notification fou
 	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillCollapse:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldExpandItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldExpandItem:"))
+func (o_ OutlineViewDelegateObject) HasOutlineViewColumnDidResize() bool {
+	return o_.RespondsToSelector(objc.Sel("outlineViewColumnDidResize:"))
 }
 
-// Returns a Boolean value that indicates whether the outline view should expand a given item. [Full Topic]
+// Invoked whenever the user resizes a column in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531199-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldExpandItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldExpandItem:"), outlineView, item)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
+func (o_ OutlineViewDelegateObject) OutlineViewColumnDidResize(notification foundation.Notification) {
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidResize:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewWillDisplayCellForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:willDisplayCell:forTableColumn:item:"))
+func (o_ OutlineViewDelegateObject) HasOutlineViewDidClickTableColumn() bool {
+	return o_.RespondsToSelector(objc.Sel("outlineView:didClickTableColumn:"))
 }
 
-// Informs the delegate that the cell specified by the column and item will be displayed. [Full Topic]
+// Sent at the time the mouse button subsequently goes up in outlineView and tableColumn has been “clicked” without having been dragged anywhere. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529359-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewWillDisplayCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewDataCellForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:dataCellForTableColumn:item:"))
-}
-
-// Returns the cell to use in a given column for a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525161-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewDataCellForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell {
-	rv := objc.Call[Cell](o_, objc.Sel("outlineView:dataCellForTableColumn:item:"), outlineView, tableColumn, item)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
+func (o_ OutlineViewDelegateObject) OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn) {
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:didClickTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionDidChange() bool {
@@ -1153,119 +324,36 @@ func (o_ OutlineViewDelegateObject) OutlineViewSelectionDidChange(notification f
 	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionDidChange:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewWillDisplayOutlineCellForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:willDisplayOutlineCell:forTableColumn:item:"))
+func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidExpand() bool {
+	return o_.RespondsToSelector(objc.Sel("outlineViewItemDidExpand:"))
 }
 
-// Informs the delegate that an outline view is about to display a cell used to draw the expansion symbol. [Full Topic]
+// Invoked when notification is posted—that is, whenever the user expands an item in the outline view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535808-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewWillDisplayOutlineCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayOutlineCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
+func (o_ OutlineViewDelegateObject) OutlineViewItemDidExpand(notification foundation.Notification) {
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidExpand:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewViewForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:viewForTableColumn:item:"))
+func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIsChanging() bool {
+	return o_.RespondsToSelector(objc.Sel("outlineViewSelectionIsChanging:"))
 }
 
-// Implemented to return the view used to display the specified item and column. [Full Topic]
+// Invoked when notification is posted—that is, whenever the outline view’s selection changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535566-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewViewForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View {
-	rv := objc.Call[View](o_, objc.Sel("outlineView:viewForTableColumn:item:"), outlineView, tableColumn, item)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
+func (o_ OutlineViewDelegateObject) OutlineViewSelectionIsChanging(notification foundation.Notification) {
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionIsChanging:"), notification)
 }
 
-func (o_ OutlineViewDelegateObject) HasOutlineViewDidRemoveRowViewForRow() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:didRemoveRowView:forRow:"))
+func (o_ OutlineViewDelegateObject) HasSelectionShouldChangeInOutlineView() bool {
+	return o_.RespondsToSelector(objc.Sel("selectionShouldChangeInOutlineView:"))
 }
 
-// Implemented to know when a row view is removed from the table [Full Topic]
+// Returns a Boolean value that indicates whether the outline view should change its selection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530612-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewDidRemoveRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didRemoveRowView:forRow:"), outlineView, rowView, row)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTypeSelectForEventWithCurrentSearchString() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"))
-}
-
-// Returns a Boolean value that indicates whether type select should proceed for a given event and search string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532941-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldTypeSelectForEventWithCurrentSearchString(outlineView OutlineView, event Event, searchString string) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"), outlineView, event, searchString)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewRowViewForItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:rowViewForItem:"))
-}
-
-// implement this method to return a custom NSTableRowView for a particular item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532140-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewRowViewForItem(outlineView OutlineView, item objc.Object) TableRowView {
-	rv := objc.Call[TableRowView](o_, objc.Sel("outlineView:rowViewForItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewIsGroupItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:isGroupItem:"))
-}
-
-// Returns a Boolean that indicates whether a given row should be drawn in the “group row” style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528482-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewIsGroupItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:isGroupItem:"), outlineView, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldShowCellExpansionForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldShowCellExpansionForTableColumn:item:"))
-}
-
-// Invoked to allow the delegate to control cell expansion for a specific column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534411-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldShowCellExpansionForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowCellExpansionForTableColumn:item:"), outlineView, tableColumn, item)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewDidDragTableColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:didDragTableColumn:"))
-}
-
-// Sent at the time the mouse button goes up in outlineView and tableColumn has been dragged during the time the mouse button was down. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526632-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewDidDragTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didDragTableColumn:"), outlineView, tableColumn)
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewShouldReorderColumnToColumn() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:shouldReorderColumn:toColumn:"))
-}
-
-// Sent to the delegate to allow or prohibit the specified column to be dragged to a new location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530792-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewShouldReorderColumnToColumn(outlineView OutlineView, columnIndex int, newColumnIndex int) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldReorderColumn:toColumn:"), outlineView, columnIndex, newColumnIndex)
-	return rv
-}
-
-func (o_ OutlineViewDelegateObject) HasOutlineViewTypeSelectStringForTableColumnItem() bool {
-	return o_.RespondsToSelector(objc.Sel("outlineView:typeSelectStringForTableColumn:item:"))
-}
-
-// Returns the string that is used for type selection for a given column and item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526847-outlineview?language=objc
-func (o_ OutlineViewDelegateObject) OutlineViewTypeSelectStringForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string {
-	rv := objc.Call[string](o_, objc.Sel("outlineView:typeSelectStringForTableColumn:item:"), outlineView, tableColumn, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
+func (o_ OutlineViewDelegateObject) SelectionShouldChangeInOutlineView(outlineView OutlineView) bool {
+	rv := objc.Call[bool](o_, objc.Sel("selectionShouldChangeInOutlineView:"), outlineView)
 	return rv
 }

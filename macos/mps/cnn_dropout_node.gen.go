@@ -37,16 +37,16 @@ func CNNDropoutNodeFrom(ptr unsafe.Pointer) CNNDropoutNode {
 	}
 }
 
-func (cc _CNNDropoutNodeClass) NodeWithSourceKeepProbability(source INNImageNode, keepProbability float32) CNNDropoutNode {
-	rv := objc.Call[CNNDropoutNode](cc, objc.Sel("nodeWithSource:keepProbability:"), source, keepProbability)
+func (cc _CNNDropoutNodeClass) NodeWithSource(source INNImageNode) CNNDropoutNode {
+	rv := objc.Call[CNNDropoutNode](cc, objc.Sel("nodeWithSource:"), source)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2947975-nodewithsource?language=objc
-func CNNDropoutNode_NodeWithSourceKeepProbability(source INNImageNode, keepProbability float32) CNNDropoutNode {
-	return CNNDropoutNodeClass.NodeWithSourceKeepProbability(source, keepProbability)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2948007-nodewithsource?language=objc
+func CNNDropoutNode_NodeWithSource(source INNImageNode) CNNDropoutNode {
+	return CNNDropoutNodeClass.NodeWithSource(source)
 }
 
 func (c_ CNNDropoutNode) InitWithSourceKeepProbability(source INNImageNode, keepProbability float32) CNNDropoutNode {
@@ -61,58 +61,6 @@ func NewCNNDropoutNodeWithSourceKeepProbability(source INNImageNode, keepProbabi
 	instance := CNNDropoutNodeClass.Alloc().InitWithSourceKeepProbability(source, keepProbability)
 	instance.Autorelease()
 	return instance
-}
-
-func (c_ CNNDropoutNode) InitWithSourceKeepProbabilitySeedMaskStrideInPixels(source INNImageNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutNode {
-	rv := objc.Call[CNNDropoutNode](c_, objc.Sel("initWithSource:keepProbability:seed:maskStrideInPixels:"), source, keepProbability, seed, maskStrideInPixels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2947990-initwithsource?language=objc
-func NewCNNDropoutNodeWithSourceKeepProbabilitySeedMaskStrideInPixels(source INNImageNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutNode {
-	instance := CNNDropoutNodeClass.Alloc().InitWithSourceKeepProbabilitySeedMaskStrideInPixels(source, keepProbability, seed, maskStrideInPixels)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNDropoutNode) InitWithSource(source INNImageNode) CNNDropoutNode {
-	rv := objc.Call[CNNDropoutNode](c_, objc.Sel("initWithSource:"), source)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2947969-initwithsource?language=objc
-func NewCNNDropoutNodeWithSource(source INNImageNode) CNNDropoutNode {
-	instance := CNNDropoutNodeClass.Alloc().InitWithSource(source)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNDropoutNodeClass) NodeWithSourceKeepProbabilitySeedMaskStrideInPixels(source INNImageNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutNode {
-	rv := objc.Call[CNNDropoutNode](cc, objc.Sel("nodeWithSource:keepProbability:seed:maskStrideInPixels:"), source, keepProbability, seed, maskStrideInPixels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2947989-nodewithsource?language=objc
-func CNNDropoutNode_NodeWithSourceKeepProbabilitySeedMaskStrideInPixels(source INNImageNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutNode {
-	return CNNDropoutNodeClass.NodeWithSourceKeepProbabilitySeedMaskStrideInPixels(source, keepProbability, seed, maskStrideInPixels)
-}
-
-func (cc _CNNDropoutNodeClass) NodeWithSource(source INNImageNode) CNNDropoutNode {
-	rv := objc.Call[CNNDropoutNode](cc, objc.Sel("nodeWithSource:"), source)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutnode/2948007-nodewithsource?language=objc
-func CNNDropoutNode_NodeWithSource(source INNImageNode) CNNDropoutNode {
-	return CNNDropoutNodeClass.NodeWithSource(source)
 }
 
 func (cc _CNNDropoutNodeClass) Alloc() CNNDropoutNode {

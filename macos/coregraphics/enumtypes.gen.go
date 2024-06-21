@@ -320,7 +320,7 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgeventmask?language=objc
 type EventMask uint64
 
-// Constants used with the kCGMouseEventSubtype event field. [Full Topic]
+// Constants used with the [coregraphics/cgeventfield/kcgmouseeventsubtype] event field. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgeventmousesubtype?language=objc
 type EventMouseSubtype uint32

@@ -18,8 +18,8 @@ type _CompoundPredicateClass struct {
 // An interface definition for the [CompoundPredicate] class.
 type ICompoundPredicate interface {
 	IPredicate
-	CompoundPredicateType() CompoundPredicateType
 	Subpredicates() []objc.Object
+	CompoundPredicateType() CompoundPredicateType
 }
 
 // A specialized predicate that evaluates logical combinations of other predicates. [Full Topic]
@@ -83,6 +83,21 @@ func CompoundPredicate_PredicateWithSubstitutionVariables(variables map[string]o
 	return instance
 }
 
+// Returns a new predicate that you form using a NOT operation on a specified predicate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1409462-notpredicatewithsubpredicate?language=objc
+func (cc _CompoundPredicateClass) NotPredicateWithSubpredicate(predicate IPredicate) CompoundPredicate {
+	rv := objc.Call[CompoundPredicate](cc, objc.Sel("notPredicateWithSubpredicate:"), predicate)
+	return rv
+}
+
+// Returns a new predicate that you form using a NOT operation on a specified predicate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1409462-notpredicatewithsubpredicate?language=objc
+func CompoundPredicate_NotPredicateWithSubpredicate(predicate IPredicate) CompoundPredicate {
+	return CompoundPredicateClass.NotPredicateWithSubpredicate(predicate)
+}
+
 // Returns a new predicate that you form using an AND operation on the predicates in a specified array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1407855-andpredicatewithsubpredicates?language=objc
@@ -113,19 +128,12 @@ func CompoundPredicate_OrPredicateWithSubpredicates(subpredicates []IPredicate) 
 	return CompoundPredicateClass.OrPredicateWithSubpredicates(subpredicates)
 }
 
-// Returns a new predicate that you form using a NOT operation on a specified predicate. [Full Topic]
+// The receiver’s subpredicates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1409462-notpredicatewithsubpredicate?language=objc
-func (cc _CompoundPredicateClass) NotPredicateWithSubpredicate(predicate IPredicate) CompoundPredicate {
-	rv := objc.Call[CompoundPredicate](cc, objc.Sel("notPredicateWithSubpredicate:"), predicate)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1410273-subpredicates?language=objc
+func (c_ CompoundPredicate) Subpredicates() []objc.Object {
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("subpredicates"))
 	return rv
-}
-
-// Returns a new predicate that you form using a NOT operation on a specified predicate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1409462-notpredicatewithsubpredicate?language=objc
-func CompoundPredicate_NotPredicateWithSubpredicate(predicate IPredicate) CompoundPredicate {
-	return CompoundPredicateClass.NotPredicateWithSubpredicate(predicate)
 }
 
 // The predicate type for the receiver. [Full Topic]
@@ -133,13 +141,5 @@ func CompoundPredicate_NotPredicateWithSubpredicate(predicate IPredicate) Compou
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1412973-compoundpredicatetype?language=objc
 func (c_ CompoundPredicate) CompoundPredicateType() CompoundPredicateType {
 	rv := objc.Call[CompoundPredicateType](c_, objc.Sel("compoundPredicateType"))
-	return rv
-}
-
-// The receiver’s subpredicates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1410273-subpredicates?language=objc
-func (c_ CompoundPredicate) Subpredicates() []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("subpredicates"))
 	return rv
 }

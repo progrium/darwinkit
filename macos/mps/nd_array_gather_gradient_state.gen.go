@@ -54,45 +54,16 @@ func (n_ NDArrayGatherGradientState) Init() NDArrayGatherGradientState {
 	return rv
 }
 
-func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (n_ NDArrayGatherGradientState) InitWithResources(resources []metal.PResource) NDArrayGatherGradientState {
+	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func NDArrayGatherGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NDArrayGatherGradientState {
-	return NDArrayGatherGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (n_ NDArrayGatherGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewNDArrayGatherGradientStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
-	instance := NDArrayGatherGradientStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (n_ NDArrayGatherGradientState) InitWithResource(resource metal.PResource) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewNDArrayGatherGradientStateWithResource(resource metal.PResource) NDArrayGatherGradientState {
-	instance := NDArrayGatherGradientStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewNDArrayGatherGradientStateWithResources(resources []metal.PResource) NDArrayGatherGradientState {
+	instance := NDArrayGatherGradientStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -112,70 +83,30 @@ func NewNDArrayGatherGradientStateWithDeviceBufferSize(device metal.PDevice, buf
 	return instance
 }
 
-func (n_ NDArrayGatherGradientState) InitWithResources(resources []metal.PResource) NDArrayGatherGradientState {
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithResources:"), resources)
+func (n_ NDArrayGatherGradientState) InitWithResource(resource metal.PResource) NDArrayGatherGradientState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewNDArrayGatherGradientStateWithResources(resources []metal.PResource) NDArrayGatherGradientState {
-	instance := NDArrayGatherGradientStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewNDArrayGatherGradientStateWithResource(resource metal.PResource) NDArrayGatherGradientState {
+	instance := NDArrayGatherGradientStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NDArrayGatherGradientState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func NDArrayGatherGradientState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) NDArrayGatherGradientState {
-	return NDArrayGatherGradientStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func NDArrayGatherGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) NDArrayGatherGradientState {
-	return NDArrayGatherGradientStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func NDArrayGatherGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
-	return NDArrayGatherGradientStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (n_ NDArrayGatherGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NDArrayGatherGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewNDArrayGatherGradientStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NDArrayGatherGradientState {
-	instance := NDArrayGatherGradientStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func NDArrayGatherGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NDArrayGatherGradientState {
+	return NDArrayGatherGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }

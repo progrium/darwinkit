@@ -19,6 +19,7 @@ type _AutoreleasePoolClass struct {
 type IAutoreleasePool interface {
 	objc.IObject
 	Drain()
+	AddObject(anObject objc.IObject)
 }
 
 // An object that supports Cocoa’s reference-counted memory management system. [Full Topic]
@@ -61,6 +62,13 @@ func (a_ AutoreleasePool) Drain() {
 	objc.Call[objc.Void](a_, objc.Sel("drain"))
 }
 
+// Adds a given object to the receiver [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsautoreleasepool/1520555-addobject?language=objc
+func (a_ AutoreleasePool) AddObject(anObject objc.IObject) {
+	objc.Call[objc.Void](a_, objc.Sel("addObject:"), anObject)
+}
+
 // Displays the state of the current thread's autorelease pool stack to stderr. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsautoreleasepool/1539124-showpools?language=objc
@@ -73,18 +81,4 @@ func (ac _AutoreleasePoolClass) ShowPools() {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsautoreleasepool/1539124-showpools?language=objc
 func AutoreleasePool_ShowPools() {
 	AutoreleasePoolClass.ShowPools()
-}
-
-// Adds a given object to the active autorelease pool in the current thread. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsautoreleasepool/1520551-addobject?language=objc
-func (ac _AutoreleasePoolClass) AddObject_(anObject objc.IObject) {
-	objc.Call[objc.Void](ac, objc.Sel("addObject:"), anObject)
-}
-
-// Adds a given object to the active autorelease pool in the current thread. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsautoreleasepool/1520551-addobject?language=objc
-func AutoreleasePool_AddObject_(anObject objc.IObject) {
-	AutoreleasePoolClass.AddObject_(anObject)
 }

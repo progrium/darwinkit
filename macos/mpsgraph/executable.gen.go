@@ -28,8 +28,8 @@ type IExecutable interface {
 	EncodeToCommandBufferInputsArrayResultsArrayExecutionDescriptor(commandBuffer mps.ICommandBuffer, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData
 	Options() Options
 	SetOptions(value Options)
-	TargetTensors() []Tensor
 	FeedTensors() []Tensor
+	TargetTensors() []Tensor
 }
 
 //	[Full Topic]
@@ -131,16 +131,16 @@ func (e_ Executable) SetOptions(value Options) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787597-targettensors?language=objc
-func (e_ Executable) TargetTensors() []Tensor {
-	rv := objc.Call[[]Tensor](e_, objc.Sel("targetTensors"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787592-feedtensors?language=objc
+func (e_ Executable) FeedTensors() []Tensor {
+	rv := objc.Call[[]Tensor](e_, objc.Sel("feedTensors"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787592-feedtensors?language=objc
-func (e_ Executable) FeedTensors() []Tensor {
-	rv := objc.Call[[]Tensor](e_, objc.Sel("feedTensors"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787597-targettensors?language=objc
+func (e_ Executable) TargetTensors() []Tensor {
+	rv := objc.Call[[]Tensor](e_, objc.Sel("targetTensors"))
 	return rv
 }

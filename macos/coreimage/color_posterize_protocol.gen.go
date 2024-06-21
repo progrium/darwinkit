@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize?language=objc
 type PColorPosterize interface {
 	// optional
-	SetLevels(value float32)
-	HasSetLevels() bool
-
-	// optional
-	Levels() float32
-	HasLevels() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetLevels(value float32)
+	HasSetLevels() bool
+
+	// optional
+	Levels() float32
+	HasLevels() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PColorPosterize = (*ColorPosterizeObject)(nil)
 // A concrete type for the [PColorPosterize] protocol.
 type ColorPosterizeObject struct {
 	objc.Object
-}
-
-func (c_ ColorPosterizeObject) HasSetLevels() bool {
-	return c_.RespondsToSelector(objc.Sel("setLevels:"))
-}
-
-// The number of brightness levels to use for each color component. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
-func (c_ ColorPosterizeObject) SetLevels(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setLevels:"), value)
-}
-
-func (c_ ColorPosterizeObject) HasLevels() bool {
-	return c_.RespondsToSelector(objc.Sel("levels"))
-}
-
-// The number of brightness levels to use for each color component. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
-func (c_ ColorPosterizeObject) Levels() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("levels"))
-	return rv
 }
 
 func (c_ ColorPosterizeObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (c_ ColorPosterizeObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228177-inputimage?language=objc
 func (c_ ColorPosterizeObject) InputImage() Image {
 	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (c_ ColorPosterizeObject) HasSetLevels() bool {
+	return c_.RespondsToSelector(objc.Sel("setLevels:"))
+}
+
+// The number of brightness levels to use for each color component. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
+func (c_ ColorPosterizeObject) SetLevels(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setLevels:"), value)
+}
+
+func (c_ ColorPosterizeObject) HasLevels() bool {
+	return c_.RespondsToSelector(objc.Sel("levels"))
+}
+
+// The number of brightness levels to use for each color component. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
+func (c_ ColorPosterizeObject) Levels() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("levels"))
 	return rv
 }

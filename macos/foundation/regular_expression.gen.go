@@ -18,17 +18,17 @@ type _RegularExpressionClass struct {
 // An interface definition for the [RegularExpression] class.
 type IRegularExpression interface {
 	objc.IObject
-	MatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) []TextCheckingResult
-	EnumerateMatchesInStringOptionsRangeUsingBlock(string_ string, options MatchingOptions, range_ Range, block func(result TextCheckingResult, flags MatchingFlags, stop *bool))
-	StringByReplacingMatchesInStringOptionsRangeWithTemplate(string_ string, options MatchingOptions, range_ Range, templ string) string
 	ReplaceMatchesInStringOptionsRangeWithTemplate(string_ IMutableString, options MatchingOptions, range_ Range, templ string) uint
-	FirstMatchInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) TextCheckingResult
-	NumberOfMatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) uint
 	RangeOfFirstMatchInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) Range
 	ReplacementStringForResultInStringOffsetTemplate(result ITextCheckingResult, string_ string, offset int, templ string) string
-	Pattern() string
+	FirstMatchInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) TextCheckingResult
+	NumberOfMatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) uint
+	StringByReplacingMatchesInStringOptionsRangeWithTemplate(string_ string, options MatchingOptions, range_ Range, templ string) string
+	MatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) []TextCheckingResult
+	EnumerateMatchesInStringOptionsRangeUsingBlock(string_ string, options MatchingOptions, range_ Range, block func(result TextCheckingResult, flags MatchingFlags, stop *bool))
 	Options() RegularExpressionOptions
 	NumberOfCaptureGroups() uint
+	Pattern() string
 }
 
 // An immutable representation of a compiled regular expression that you apply to Unicode strings. [Full Topic]
@@ -78,34 +78,42 @@ func (r_ RegularExpression) Init() RegularExpression {
 	return rv
 }
 
-// Returns an array containing all the matches of the regular expression in the string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1412446-matchesinstring?language=objc
-func (r_ RegularExpression) MatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) []TextCheckingResult {
-	rv := objc.Call[[]TextCheckingResult](r_, objc.Sel("matchesInString:options:range:"), string_, options, range_)
-	return rv
-}
-
-// Enumerates the string allowing the Block to handle each regular expression match. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1409687-enumeratematchesinstring?language=objc
-func (r_ RegularExpression) EnumerateMatchesInStringOptionsRangeUsingBlock(string_ string, options MatchingOptions, range_ Range, block func(result TextCheckingResult, flags MatchingFlags, stop *bool)) {
-	objc.Call[objc.Void](r_, objc.Sel("enumerateMatchesInString:options:range:usingBlock:"), string_, options, range_, block)
-}
-
-// Returns a new string containing matching regular expressions replaced with the template string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1413740-stringbyreplacingmatchesinstring?language=objc
-func (r_ RegularExpression) StringByReplacingMatchesInStringOptionsRangeWithTemplate(string_ string, options MatchingOptions, range_ Range, templ string) string {
-	rv := objc.Call[string](r_, objc.Sel("stringByReplacingMatchesInString:options:range:withTemplate:"), string_, options, range_, templ)
-	return rv
-}
-
 // Replaces regular expression matches within the mutable string using the template string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1411139-replacematchesinstring?language=objc
 func (r_ RegularExpression) ReplaceMatchesInStringOptionsRangeWithTemplate(string_ IMutableString, options MatchingOptions, range_ Range, templ string) uint {
 	rv := objc.Call[uint](r_, objc.Sel("replaceMatchesInString:options:range:withTemplate:"), string_, options, range_, templ)
+	return rv
+}
+
+// Returns the range of the first match of the regular expression within the specified range of the string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1411510-rangeoffirstmatchinstring?language=objc
+func (r_ RegularExpression) RangeOfFirstMatchInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) Range {
+	rv := objc.Call[Range](r_, objc.Sel("rangeOfFirstMatchInString:options:range:"), string_, options, range_)
+	return rv
+}
+
+// Returns a string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1408386-escapedpatternforstring?language=objc
+func (rc _RegularExpressionClass) EscapedPatternForString(string_ string) string {
+	rv := objc.Call[string](rc, objc.Sel("escapedPatternForString:"), string_)
+	return rv
+}
+
+// Returns a string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1408386-escapedpatternforstring?language=objc
+func RegularExpression_EscapedPatternForString(string_ string) string {
+	return RegularExpressionClass.EscapedPatternForString(string_)
+}
+
+// Used to perform template substitution for a single result for clients implementing their own replace functionality. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1414859-replacementstringforresult?language=objc
+func (r_ RegularExpression) ReplacementStringForResultInStringOffsetTemplate(result ITextCheckingResult, string_ string, offset int, templ string) string {
+	rv := objc.Call[string](r_, objc.Sel("replacementStringForResult:inString:offset:template:"), result, string_, offset, templ)
 	return rv
 }
 
@@ -125,6 +133,14 @@ func (r_ RegularExpression) NumberOfMatchesInStringOptionsRange(string_ string, 
 	return rv
 }
 
+// Returns a new string containing matching regular expressions replaced with the template string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1413740-stringbyreplacingmatchesinstring?language=objc
+func (r_ RegularExpression) StringByReplacingMatchesInStringOptionsRangeWithTemplate(string_ string, options MatchingOptions, range_ Range, templ string) string {
+	rv := objc.Call[string](r_, objc.Sel("stringByReplacingMatchesInString:options:range:withTemplate:"), string_, options, range_, templ)
+	return rv
+}
+
 // Returns a template string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1410085-escapedtemplateforstring?language=objc
@@ -140,35 +156,12 @@ func RegularExpression_EscapedTemplateForString(string_ string) string {
 	return RegularExpressionClass.EscapedTemplateForString(string_)
 }
 
-// Returns the range of the first match of the regular expression within the specified range of the string. [Full Topic]
+// Returns an array containing all the matches of the regular expression in the string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1411510-rangeoffirstmatchinstring?language=objc
-func (r_ RegularExpression) RangeOfFirstMatchInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) Range {
-	rv := objc.Call[Range](r_, objc.Sel("rangeOfFirstMatchInString:options:range:"), string_, options, range_)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1412446-matchesinstring?language=objc
+func (r_ RegularExpression) MatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) []TextCheckingResult {
+	rv := objc.Call[[]TextCheckingResult](r_, objc.Sel("matchesInString:options:range:"), string_, options, range_)
 	return rv
-}
-
-// Used to perform template substitution for a single result for clients implementing their own replace functionality. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1414859-replacementstringforresult?language=objc
-func (r_ RegularExpression) ReplacementStringForResultInStringOffsetTemplate(result ITextCheckingResult, string_ string, offset int, templ string) string {
-	rv := objc.Call[string](r_, objc.Sel("replacementStringForResult:inString:offset:template:"), result, string_, offset, templ)
-	return rv
-}
-
-// Returns a string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1408386-escapedpatternforstring?language=objc
-func (rc _RegularExpressionClass) EscapedPatternForString(string_ string) string {
-	rv := objc.Call[string](rc, objc.Sel("escapedPatternForString:"), string_)
-	return rv
-}
-
-// Returns a string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1408386-escapedpatternforstring?language=objc
-func RegularExpression_EscapedPatternForString(string_ string) string {
-	return RegularExpressionClass.EscapedPatternForString(string_)
 }
 
 // Creates an NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
@@ -186,12 +179,11 @@ func RegularExpression_RegularExpressionWithPatternOptionsError(pattern string, 
 	return RegularExpressionClass.RegularExpressionWithPatternOptionsError(pattern, options, error)
 }
 
-// Returns the regular expression pattern. [Full Topic]
+// Enumerates the string allowing the Block to handle each regular expression match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1414932-pattern?language=objc
-func (r_ RegularExpression) Pattern() string {
-	rv := objc.Call[string](r_, objc.Sel("pattern"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1409687-enumeratematchesinstring?language=objc
+func (r_ RegularExpression) EnumerateMatchesInStringOptionsRangeUsingBlock(string_ string, options MatchingOptions, range_ Range, block func(result TextCheckingResult, flags MatchingFlags, stop *bool)) {
+	objc.Call[objc.Void](r_, objc.Sel("enumerateMatchesInString:options:range:usingBlock:"), string_, options, range_, block)
 }
 
 // Returns the options used when the regular expression option was created. [Full Topic]
@@ -207,5 +199,13 @@ func (r_ RegularExpression) Options() RegularExpressionOptions {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1415052-numberofcapturegroups?language=objc
 func (r_ RegularExpression) NumberOfCaptureGroups() uint {
 	rv := objc.Call[uint](r_, objc.Sel("numberOfCaptureGroups"))
+	return rv
+}
+
+// Returns the regular expression pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1414932-pattern?language=objc
+func (r_ RegularExpression) Pattern() string {
+	rv := objc.Call[string](r_, objc.Sel("pattern"))
 	return rv
 }

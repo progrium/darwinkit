@@ -53,6 +53,18 @@ func (u_ UnitElectricResistance) Init() UnitElectricResistance {
 	return rv
 }
 
+func (uc _UnitElectricResistanceClass) BaseUnit() UnitElectricResistance {
+	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitElectricResistance_BaseUnit() UnitElectricResistance {
+	return UnitElectricResistanceClass.BaseUnit()
+}
+
 func (u_ UnitElectricResistance) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricResistance {
 	rv := objc.Call[UnitElectricResistance](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitElectricResistanceWithSymbolConverter(symbol string, converter IUnit
 	instance := UnitElectricResistanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitElectricResistanceClass) BaseUnit() UnitElectricResistance {
-	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitElectricResistance_BaseUnit() UnitElectricResistance {
-	return UnitElectricResistanceClass.BaseUnit()
 }
 
 func (u_ UnitElectricResistance) InitWithSymbol(symbol string) UnitElectricResistance {
@@ -93,21 +93,6 @@ func NewUnitElectricResistanceWithSymbol(symbol string) UnitElectricResistance {
 	return instance
 }
 
-// The megaohms unit of electric resistance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856009-megaohms?language=objc
-func (uc _UnitElectricResistanceClass) Megaohms() UnitElectricResistance {
-	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("megaohms"))
-	return rv
-}
-
-// The megaohms unit of electric resistance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856009-megaohms?language=objc
-func UnitElectricResistance_Megaohms() UnitElectricResistance {
-	return UnitElectricResistanceClass.Megaohms()
-}
-
 // The ohms unit of electric resistance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856110-ohms?language=objc
@@ -121,21 +106,6 @@ func (uc _UnitElectricResistanceClass) Ohms() UnitElectricResistance {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856110-ohms?language=objc
 func UnitElectricResistance_Ohms() UnitElectricResistance {
 	return UnitElectricResistanceClass.Ohms()
-}
-
-// The kiloohms unit of electric resistance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1855981-kiloohms?language=objc
-func (uc _UnitElectricResistanceClass) Kiloohms() UnitElectricResistance {
-	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("kiloohms"))
-	return rv
-}
-
-// The kiloohms unit of electric resistance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1855981-kiloohms?language=objc
-func UnitElectricResistance_Kiloohms() UnitElectricResistance {
-	return UnitElectricResistanceClass.Kiloohms()
 }
 
 // The milliohms unit of electric resistance. [Full Topic]
@@ -166,4 +136,34 @@ func (uc _UnitElectricResistanceClass) Microohms() UnitElectricResistance {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856031-microohms?language=objc
 func UnitElectricResistance_Microohms() UnitElectricResistance {
 	return UnitElectricResistanceClass.Microohms()
+}
+
+// The kiloohms unit of electric resistance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1855981-kiloohms?language=objc
+func (uc _UnitElectricResistanceClass) Kiloohms() UnitElectricResistance {
+	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("kiloohms"))
+	return rv
+}
+
+// The kiloohms unit of electric resistance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1855981-kiloohms?language=objc
+func UnitElectricResistance_Kiloohms() UnitElectricResistance {
+	return UnitElectricResistanceClass.Kiloohms()
+}
+
+// The megaohms unit of electric resistance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856009-megaohms?language=objc
+func (uc _UnitElectricResistanceClass) Megaohms() UnitElectricResistance {
+	rv := objc.Call[UnitElectricResistance](uc, objc.Sel("megaohms"))
+	return rv
+}
+
+// The megaohms unit of electric resistance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitelectricresistance/1856009-megaohms?language=objc
+func UnitElectricResistance_Megaohms() UnitElectricResistance {
+	return UnitElectricResistanceClass.Megaohms()
 }

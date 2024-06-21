@@ -20,22 +20,22 @@ type _TextLayerClass struct {
 // An interface definition for the [TextLayer] class.
 type ITextLayer interface {
 	ILayer
+	FontSize() float64
+	SetFontSize(value float64)
+	IsWrapped() bool
+	SetWrapped(value bool)
 	AlignmentMode() TextLayerAlignmentMode
 	SetAlignmentMode(value TextLayerAlignmentMode)
+	ForegroundColor() coregraphics.ColorRef
+	SetForegroundColor(value coregraphics.ColorRef)
 	String() objc.Object
 	SetString(value objc.IObject)
 	Font() corefoundation.TypeRef
 	SetFont(value corefoundation.TypeRef)
-	FontSize() float64
-	SetFontSize(value float64)
 	AllowsFontSubpixelQuantization() bool
 	SetAllowsFontSubpixelQuantization(value bool)
-	IsWrapped() bool
-	SetWrapped(value bool)
 	TruncationMode() TextLayerTruncationMode
 	SetTruncationMode(value TextLayerTruncationMode)
-	ForegroundColor() coregraphics.ColorRef
-	SetForegroundColor(value coregraphics.ColorRef)
 }
 
 // A layer that provides simple text layout and rendering of plain or attributed strings. [Full Topic]
@@ -71,6 +71,32 @@ func (t_ TextLayer) Init() TextLayer {
 	return rv
 }
 
+func (tc _TextLayerClass) Layer() TextLayer {
+	rv := objc.Call[TextLayer](tc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func TextLayer_Layer() TextLayer {
+	return TextLayerClass.Layer()
+}
+
+func (t_ TextLayer) InitWithLayer(layer objc.IObject) TextLayer {
+	rv := objc.Call[TextLayer](t_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewTextLayerWithLayer(layer objc.IObject) TextLayer {
+	instance := TextLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (t_ TextLayer) ModelLayer() TextLayer {
 	rv := objc.Call[TextLayer](t_, objc.Sel("modelLayer"))
 	return rv
@@ -99,30 +125,34 @@ func TextLayer_PresentationLayer() TextLayer {
 	return instance
 }
 
-func (t_ TextLayer) InitWithLayer(layer objc.IObject) TextLayer {
-	rv := objc.Call[TextLayer](t_, objc.Sel("initWithLayer:"), layer)
+// The font size used to render the receiver’s text. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515290-fontsize?language=objc
+func (t_ TextLayer) FontSize() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("fontSize"))
 	return rv
 }
 
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+// The font size used to render the receiver’s text. Animatable. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewTextLayerWithLayer(layer objc.IObject) TextLayer {
-	instance := TextLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515290-fontsize?language=objc
+func (t_ TextLayer) SetFontSize(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setFontSize:"), value)
 }
 
-func (tc _TextLayerClass) Layer() TextLayer {
-	rv := objc.Call[TextLayer](tc, objc.Sel("layer"))
+// Determines whether the text is wrapped to fit within the receiver’s bounds. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515302-wrapped?language=objc
+func (t_ TextLayer) IsWrapped() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isWrapped"))
 	return rv
 }
 
-// Creates and returns an instance of the layer object. [Full Topic]
+// Determines whether the text is wrapped to fit within the receiver’s bounds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func TextLayer_Layer() TextLayer {
-	return TextLayerClass.Layer()
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515302-wrapped?language=objc
+func (t_ TextLayer) SetWrapped(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setWrapped:"), value)
 }
 
 // Determines how individual lines of text are horizontally aligned within the receiver’s bounds. [Full Topic]
@@ -138,6 +168,21 @@ func (t_ TextLayer) AlignmentMode() TextLayerAlignmentMode {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515301-alignmentmode?language=objc
 func (t_ TextLayer) SetAlignmentMode(value TextLayerAlignmentMode) {
 	objc.Call[objc.Void](t_, objc.Sel("setAlignmentMode:"), value)
+}
+
+// The color used to render the receiver’s text. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515305-foregroundcolor?language=objc
+func (t_ TextLayer) ForegroundColor() coregraphics.ColorRef {
+	rv := objc.Call[coregraphics.ColorRef](t_, objc.Sel("foregroundColor"))
+	return rv
+}
+
+// The color used to render the receiver’s text. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515305-foregroundcolor?language=objc
+func (t_ TextLayer) SetForegroundColor(value coregraphics.ColorRef) {
+	objc.Call[objc.Void](t_, objc.Sel("setForegroundColor:"), value)
 }
 
 // The text to be rendered by the receiver. [Full Topic]
@@ -170,21 +215,6 @@ func (t_ TextLayer) SetFont(value corefoundation.TypeRef) {
 	objc.Call[objc.Void](t_, objc.Sel("setFont:"), value)
 }
 
-// The font size used to render the receiver’s text. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515290-fontsize?language=objc
-func (t_ TextLayer) FontSize() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("fontSize"))
-	return rv
-}
-
-// The font size used to render the receiver’s text. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515290-fontsize?language=objc
-func (t_ TextLayer) SetFontSize(value float64) {
-	objc.Call[objc.Void](t_, objc.Sel("setFontSize:"), value)
-}
-
 // Determines whether to allow subpixel quantization for the graphics context used for text rendering. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515300-allowsfontsubpixelquantization?language=objc
@@ -200,21 +230,6 @@ func (t_ TextLayer) SetAllowsFontSubpixelQuantization(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setAllowsFontSubpixelQuantization:"), value)
 }
 
-// Determines whether the text is wrapped to fit within the receiver’s bounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515302-wrapped?language=objc
-func (t_ TextLayer) IsWrapped() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isWrapped"))
-	return rv
-}
-
-// Determines whether the text is wrapped to fit within the receiver’s bounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515302-wrapped?language=objc
-func (t_ TextLayer) SetWrapped(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setWrapped:"), value)
-}
-
 // Determines how the text is truncated to fit within the receiver’s bounds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515296-truncationmode?language=objc
@@ -228,19 +243,4 @@ func (t_ TextLayer) TruncationMode() TextLayerTruncationMode {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515296-truncationmode?language=objc
 func (t_ TextLayer) SetTruncationMode(value TextLayerTruncationMode) {
 	objc.Call[objc.Void](t_, objc.Sel("setTruncationMode:"), value)
-}
-
-// The color used to render the receiver’s text. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515305-foregroundcolor?language=objc
-func (t_ TextLayer) ForegroundColor() coregraphics.ColorRef {
-	rv := objc.Call[coregraphics.ColorRef](t_, objc.Sel("foregroundColor"))
-	return rv
-}
-
-// The color used to render the receiver’s text. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catextlayer/1515305-foregroundcolor?language=objc
-func (t_ TextLayer) SetForegroundColor(value coregraphics.ColorRef) {
-	objc.Call[objc.Void](t_, objc.Sel("setForegroundColor:"), value)
 }

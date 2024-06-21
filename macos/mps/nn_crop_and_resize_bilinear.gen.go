@@ -19,10 +19,10 @@ type _NNCropAndResizeBilinearClass struct {
 // An interface definition for the [NNCropAndResizeBilinear] class.
 type INNCropAndResizeBilinear interface {
 	ICNNKernel
-	Regions() *Region
 	ResizeHeight() uint
-	NumberOfRegions() uint
 	ResizeWidth() uint
+	Regions() *Region
+	NumberOfRegions() uint
 }
 
 // A cropping and bilinear resizing filter. [Full Topic]
@@ -105,14 +105,6 @@ func NNCropAndResizeBilinear_CopyWithZoneDevice(zone unsafe.Pointer, device meta
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013791-regions?language=objc
-func (n_ NNCropAndResizeBilinear) Regions() *Region {
-	rv := objc.Call[*Region](n_, objc.Sel("regions"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013792-resizeheight?language=objc
 func (n_ NNCropAndResizeBilinear) ResizeHeight() uint {
 	rv := objc.Call[uint](n_, objc.Sel("resizeHeight"))
@@ -121,16 +113,24 @@ func (n_ NNCropAndResizeBilinear) ResizeHeight() uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013790-numberofregions?language=objc
-func (n_ NNCropAndResizeBilinear) NumberOfRegions() uint {
-	rv := objc.Call[uint](n_, objc.Sel("numberOfRegions"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013793-resizewidth?language=objc
+func (n_ NNCropAndResizeBilinear) ResizeWidth() uint {
+	rv := objc.Call[uint](n_, objc.Sel("resizeWidth"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013793-resizewidth?language=objc
-func (n_ NNCropAndResizeBilinear) ResizeWidth() uint {
-	rv := objc.Call[uint](n_, objc.Sel("resizeWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013791-regions?language=objc
+func (n_ NNCropAndResizeBilinear) Regions() *Region {
+	rv := objc.Call[*Region](n_, objc.Sel("regions"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncropandresizebilinear/3013790-numberofregions?language=objc
+func (n_ NNCropAndResizeBilinear) NumberOfRegions() uint {
+	rv := objc.Call[uint](n_, objc.Sel("numberOfRegions"))
 	return rv
 }

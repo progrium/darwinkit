@@ -21,8 +21,8 @@ type _VideoCompositionLayerInstructionClass struct {
 type IVideoCompositionLayerInstruction interface {
 	objc.IObject
 	GetCropRectangleRampForTimeStartCropRectangleEndCropRectangleTimeRange(time coremedia.Time, startCropRectangle *coregraphics.Rect, endCropRectangle *coregraphics.Rect, timeRange *coremedia.TimeRange) bool
-	GetTransformRampForTimeStartTransformEndTransformTimeRange(time coremedia.Time, startTransform *coregraphics.AffineTransform, endTransform *coregraphics.AffineTransform, timeRange *coremedia.TimeRange) bool
 	GetOpacityRampForTimeStartOpacityEndOpacityTimeRange(time coremedia.Time, startOpacity *float32, endOpacity *float32, timeRange *coremedia.TimeRange) bool
+	GetTransformRampForTimeStartTransformEndTransformTimeRange(time coremedia.Time, startTransform *coregraphics.AffineTransform, endTransform *coregraphics.AffineTransform, timeRange *coremedia.TimeRange) bool
 	TrackID() objc.Object
 }
 
@@ -67,19 +67,19 @@ func (v_ VideoCompositionLayerInstruction) GetCropRectangleRampForTimeStartCropR
 	return rv
 }
 
-// Obtains the transform ramp that includes a specified time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionlayerinstruction/1387257-gettransformrampfortime?language=objc
-func (v_ VideoCompositionLayerInstruction) GetTransformRampForTimeStartTransformEndTransformTimeRange(time coremedia.Time, startTransform *coregraphics.AffineTransform, endTransform *coregraphics.AffineTransform, timeRange *coremedia.TimeRange) bool {
-	rv := objc.Call[bool](v_, objc.Sel("getTransformRampForTime:startTransform:endTransform:timeRange:"), time, startTransform, endTransform, timeRange)
-	return rv
-}
-
 // Obtains the opacity ramp that includes a specified time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionlayerinstruction/1388471-getopacityrampfortime?language=objc
 func (v_ VideoCompositionLayerInstruction) GetOpacityRampForTimeStartOpacityEndOpacityTimeRange(time coremedia.Time, startOpacity *float32, endOpacity *float32, timeRange *coremedia.TimeRange) bool {
 	rv := objc.Call[bool](v_, objc.Sel("getOpacityRampForTime:startOpacity:endOpacity:timeRange:"), time, startOpacity, endOpacity, timeRange)
+	return rv
+}
+
+// Obtains the transform ramp that includes a specified time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionlayerinstruction/1387257-gettransformrampfortime?language=objc
+func (v_ VideoCompositionLayerInstruction) GetTransformRampForTimeStartTransformEndTransformTimeRange(time coremedia.Time, startTransform *coregraphics.AffineTransform, endTransform *coregraphics.AffineTransform, timeRange *coremedia.TimeRange) bool {
+	rv := objc.Call[bool](v_, objc.Sel("getTransformRampForTime:startTransform:endTransform:timeRange:"), time, startTransform, endTransform, timeRange)
 	return rv
 }
 

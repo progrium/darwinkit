@@ -19,9 +19,9 @@ type _FrameRateRangeClass struct {
 // An interface definition for the [FrameRateRange] class.
 type IFrameRateRange interface {
 	objc.IObject
-	MinFrameRate() float64
-	MaxFrameRate() float64
 	MaxFrameDuration() coremedia.Time
+	MaxFrameRate() float64
+	MinFrameRate() float64
 	MinFrameDuration() coremedia.Time
 }
 
@@ -58,11 +58,11 @@ func (f_ FrameRateRange) Init() FrameRateRange {
 	return rv
 }
 
-// The minimum frame rate supported by the range. [Full Topic]
+// The maximum frame duration supported by the range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avframeraterange/1389132-minframerate?language=objc
-func (f_ FrameRateRange) MinFrameRate() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("minFrameRate"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avframeraterange/1386786-maxframeduration?language=objc
+func (f_ FrameRateRange) MaxFrameDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](f_, objc.Sel("maxFrameDuration"))
 	return rv
 }
 
@@ -74,11 +74,11 @@ func (f_ FrameRateRange) MaxFrameRate() float64 {
 	return rv
 }
 
-// The maximum frame duration supported by the range. [Full Topic]
+// The minimum frame rate supported by the range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avframeraterange/1386786-maxframeduration?language=objc
-func (f_ FrameRateRange) MaxFrameDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](f_, objc.Sel("maxFrameDuration"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avframeraterange/1389132-minframerate?language=objc
+func (f_ FrameRateRange) MinFrameRate() float64 {
+	rv := objc.Call[float64](f_, objc.Sel("minFrameRate"))
 	return rv
 }
 

@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition?language=objc
 type PDisintegrateWithMaskTransition interface {
 	// optional
-	SetShadowRadius(value float32)
-	HasSetShadowRadius() bool
-
-	// optional
-	ShadowRadius() float32
-	HasShadowRadius() bool
-
-	// optional
 	SetShadowDensity(value float32)
 	HasSetShadowDensity() bool
 
 	// optional
 	ShadowDensity() float32
 	HasShadowDensity() bool
+
+	// optional
+	SetShadowOffset(value coregraphics.Point)
+	HasSetShadowOffset() bool
+
+	// optional
+	ShadowOffset() coregraphics.Point
+	HasShadowOffset() bool
 
 	// optional
 	SetMaskImage(value Image)
@@ -36,12 +36,12 @@ type PDisintegrateWithMaskTransition interface {
 	HasMaskImage() bool
 
 	// optional
-	SetShadowOffset(value coregraphics.Point)
-	HasSetShadowOffset() bool
+	SetShadowRadius(value float32)
+	HasSetShadowRadius() bool
 
 	// optional
-	ShadowOffset() coregraphics.Point
-	HasShadowOffset() bool
+	ShadowRadius() float32
+	HasShadowRadius() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PDisintegrateWithMaskTransition = (*DisintegrateWithMaskTransitionObject)(
 // A concrete type for the [PDisintegrateWithMaskTransition] protocol.
 type DisintegrateWithMaskTransitionObject struct {
 	objc.Object
-}
-
-func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowRadius() bool {
-	return d_.RespondsToSelector(objc.Sel("setShadowRadius:"))
-}
-
-// The radius of the shadow the mask creates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) SetShadowRadius(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setShadowRadius:"), value)
-}
-
-func (d_ DisintegrateWithMaskTransitionObject) HasShadowRadius() bool {
-	return d_.RespondsToSelector(objc.Sel("shadowRadius"))
-}
-
-// The radius of the shadow the mask creates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) ShadowRadius() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("shadowRadius"))
-	return rv
 }
 
 func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowDensity() bool {
@@ -95,6 +72,29 @@ func (d_ DisintegrateWithMaskTransitionObject) HasShadowDensity() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228218-shadowdensity?language=objc
 func (d_ DisintegrateWithMaskTransitionObject) ShadowDensity() float32 {
 	rv := objc.Call[float32](d_, objc.Sel("shadowDensity"))
+	return rv
+}
+
+func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowOffset() bool {
+	return d_.RespondsToSelector(objc.Sel("setShadowOffset:"))
+}
+
+// The offset of the shadow the mask creates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228219-shadowoffset?language=objc
+func (d_ DisintegrateWithMaskTransitionObject) SetShadowOffset(value coregraphics.Point) {
+	objc.Call[objc.Void](d_, objc.Sel("setShadowOffset:"), value)
+}
+
+func (d_ DisintegrateWithMaskTransitionObject) HasShadowOffset() bool {
+	return d_.RespondsToSelector(objc.Sel("shadowOffset"))
+}
+
+// The offset of the shadow the mask creates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228219-shadowoffset?language=objc
+func (d_ DisintegrateWithMaskTransitionObject) ShadowOffset() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](d_, objc.Sel("shadowOffset"))
 	return rv
 }
 
@@ -121,25 +121,25 @@ func (d_ DisintegrateWithMaskTransitionObject) MaskImage() Image {
 	return rv
 }
 
-func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowOffset() bool {
-	return d_.RespondsToSelector(objc.Sel("setShadowOffset:"))
+func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowRadius() bool {
+	return d_.RespondsToSelector(objc.Sel("setShadowRadius:"))
 }
 
-// The offset of the shadow the mask creates. [Full Topic]
+// The radius of the shadow the mask creates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228219-shadowoffset?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) SetShadowOffset(value coregraphics.Point) {
-	objc.Call[objc.Void](d_, objc.Sel("setShadowOffset:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
+func (d_ DisintegrateWithMaskTransitionObject) SetShadowRadius(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setShadowRadius:"), value)
 }
 
-func (d_ DisintegrateWithMaskTransitionObject) HasShadowOffset() bool {
-	return d_.RespondsToSelector(objc.Sel("shadowOffset"))
+func (d_ DisintegrateWithMaskTransitionObject) HasShadowRadius() bool {
+	return d_.RespondsToSelector(objc.Sel("shadowRadius"))
 }
 
-// The offset of the shadow the mask creates. [Full Topic]
+// The radius of the shadow the mask creates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228219-shadowoffset?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) ShadowOffset() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](d_, objc.Sel("shadowOffset"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
+func (d_ DisintegrateWithMaskTransitionObject) ShadowRadius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("shadowRadius"))
 	return rv
 }

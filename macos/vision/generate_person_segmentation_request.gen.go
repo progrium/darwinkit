@@ -38,6 +38,16 @@ func GeneratePersonSegmentationRequestFrom(ptr unsafe.Pointer) GeneratePersonSeg
 	}
 }
 
+func (gc _GeneratePersonSegmentationRequestClass) New() GeneratePersonSegmentationRequest {
+	rv := objc.Call[GeneratePersonSegmentationRequest](gc, objc.Sel("new"))
+	rv.Autorelease()
+	return rv
+}
+
+func NewGeneratePersonSegmentationRequest() GeneratePersonSegmentationRequest {
+	return GeneratePersonSegmentationRequestClass.New()
+}
+
 func (g_ GeneratePersonSegmentationRequest) InitWithCompletionHandler(completionHandler RequestCompletionHandler) GeneratePersonSegmentationRequest {
 	rv := objc.Call[GeneratePersonSegmentationRequest](g_, objc.Sel("initWithCompletionHandler:"), completionHandler)
 	return rv
@@ -50,16 +60,6 @@ func NewGeneratePersonSegmentationRequestWithCompletionHandler(completionHandler
 	instance := GeneratePersonSegmentationRequestClass.Alloc().InitWithCompletionHandler(completionHandler)
 	instance.Autorelease()
 	return instance
-}
-
-func (gc _GeneratePersonSegmentationRequestClass) New() GeneratePersonSegmentationRequest {
-	rv := objc.Call[GeneratePersonSegmentationRequest](gc, objc.Sel("new"))
-	rv.Autorelease()
-	return rv
-}
-
-func NewGeneratePersonSegmentationRequest() GeneratePersonSegmentationRequest {
-	return GeneratePersonSegmentationRequestClass.New()
 }
 
 func (g_ GeneratePersonSegmentationRequest) Init() GeneratePersonSegmentationRequest {

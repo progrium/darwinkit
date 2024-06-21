@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile?language=objc
 type PFourfoldReflectedTile interface {
 	// optional
-	SetAcuteAngle(value float32)
-	HasSetAcuteAngle() bool
-
-	// optional
-	AcuteAngle() float32
-	HasAcuteAngle() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
@@ -36,20 +28,28 @@ type PFourfoldReflectedTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
 	Angle() float32
 	HasAngle() bool
+
+	// optional
+	SetAcuteAngle(value float32)
+	HasSetAcuteAngle() bool
+
+	// optional
+	AcuteAngle() float32
+	HasAcuteAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,29 +58,6 @@ var _ PFourfoldReflectedTile = (*FourfoldReflectedTileObject)(nil)
 // A concrete type for the [PFourfoldReflectedTile] protocol.
 type FourfoldReflectedTileObject struct {
 	objc.Object
-}
-
-func (f_ FourfoldReflectedTileObject) HasSetAcuteAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("setAcuteAngle:"))
-}
-
-// The primary angle for the repeating reflected tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
-func (f_ FourfoldReflectedTileObject) SetAcuteAngle(value float32) {
-	objc.Call[objc.Void](f_, objc.Sel("setAcuteAngle:"), value)
-}
-
-func (f_ FourfoldReflectedTileObject) HasAcuteAngle() bool {
-	return f_.RespondsToSelector(objc.Sel("acuteAngle"))
-}
-
-// The primary angle for the repeating reflected tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
-func (f_ FourfoldReflectedTileObject) AcuteAngle() float32 {
-	rv := objc.Call[float32](f_, objc.Sel("acuteAngle"))
-	return rv
 }
 
 func (f_ FourfoldReflectedTileObject) HasSetWidth() bool {
@@ -129,29 +106,6 @@ func (f_ FourfoldReflectedTileObject) InputImage() Image {
 	return rv
 }
 
-func (f_ FourfoldReflectedTileObject) HasSetCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228446-center?language=objc
-func (f_ FourfoldReflectedTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
-}
-
-func (f_ FourfoldReflectedTileObject) HasCenter() bool {
-	return f_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228446-center?language=objc
-func (f_ FourfoldReflectedTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
-	return rv
-}
-
 func (f_ FourfoldReflectedTileObject) HasSetAngle() bool {
 	return f_.RespondsToSelector(objc.Sel("setAngle:"))
 }
@@ -172,5 +126,51 @@ func (f_ FourfoldReflectedTileObject) HasAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228445-angle?language=objc
 func (f_ FourfoldReflectedTileObject) Angle() float32 {
 	rv := objc.Call[float32](f_, objc.Sel("angle"))
+	return rv
+}
+
+func (f_ FourfoldReflectedTileObject) HasSetAcuteAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("setAcuteAngle:"))
+}
+
+// The primary angle for the repeating reflected tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
+func (f_ FourfoldReflectedTileObject) SetAcuteAngle(value float32) {
+	objc.Call[objc.Void](f_, objc.Sel("setAcuteAngle:"), value)
+}
+
+func (f_ FourfoldReflectedTileObject) HasAcuteAngle() bool {
+	return f_.RespondsToSelector(objc.Sel("acuteAngle"))
+}
+
+// The primary angle for the repeating reflected tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
+func (f_ FourfoldReflectedTileObject) AcuteAngle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("acuteAngle"))
+	return rv
+}
+
+func (f_ FourfoldReflectedTileObject) HasSetCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228446-center?language=objc
+func (f_ FourfoldReflectedTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](f_, objc.Sel("setCenter:"), value)
+}
+
+func (f_ FourfoldReflectedTileObject) HasCenter() bool {
+	return f_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228446-center?language=objc
+func (f_ FourfoldReflectedTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](f_, objc.Sel("center"))
 	return rv
 }

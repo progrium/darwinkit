@@ -18,20 +18,20 @@ type _SaveRequestClass struct {
 // An interface definition for the [SaveRequest] class.
 type ISaveRequest interface {
 	objc.IObject
-	DeleteContact(contact IMutableContact)
 	DeleteGroup(group IMutableGroup)
-	AddGroupToContainerWithIdentifier(group IMutableGroup, identifier string)
-	AddMemberToGroup(contact IContact, group IGroup)
 	UpdateGroup(group IMutableGroup)
+	AddMemberToGroup(contact IContact, group IGroup)
+	DeleteContact(contact IMutableContact)
 	RemoveMemberFromGroup(contact IContact, group IGroup)
+	UpdateContact(contact IMutableContact)
+	AddGroupToContainerWithIdentifier(group IMutableGroup, identifier string)
 	AddContactToContainerWithIdentifier(contact IMutableContact, identifier string)
 	AddSubgroupToGroup(subgroup IGroup, group IGroup)
 	RemoveSubgroupFromGroup(subgroup IGroup, group IGroup)
-	UpdateContact(contact IMutableContact)
-	TransactionAuthor() string
-	SetTransactionAuthor(value string)
 	ShouldRefetchContacts() bool
 	SetShouldRefetchContacts(value bool)
+	TransactionAuthor() string
+	SetTransactionAuthor(value string)
 }
 
 // An object that collects the changes you want to save to the user's contacts database. [Full Topic]
@@ -67,32 +67,11 @@ func (s_ SaveRequest) Init() SaveRequest {
 	return rv
 }
 
-// Deletes a contact from the contact store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402970-deletecontact?language=objc
-func (s_ SaveRequest) DeleteContact(contact IMutableContact) {
-	objc.Call[objc.Void](s_, objc.Sel("deleteContact:"), contact)
-}
-
 // Deletes a group from the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402859-deletegroup?language=objc
 func (s_ SaveRequest) DeleteGroup(group IMutableGroup) {
 	objc.Call[objc.Void](s_, objc.Sel("deleteGroup:"), group)
-}
-
-// Adds a group to the contact store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402821-addgroup?language=objc
-func (s_ SaveRequest) AddGroupToContainerWithIdentifier(group IMutableGroup, identifier string) {
-	objc.Call[objc.Void](s_, objc.Sel("addGroup:toContainerWithIdentifier:"), group, identifier)
-}
-
-// Adds a contact as a member of a group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403180-addmember?language=objc
-func (s_ SaveRequest) AddMemberToGroup(contact IContact, group IGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("addMember:toGroup:"), contact, group)
 }
 
 // Updates an existing group in the contact store. [Full Topic]
@@ -102,11 +81,39 @@ func (s_ SaveRequest) UpdateGroup(group IMutableGroup) {
 	objc.Call[objc.Void](s_, objc.Sel("updateGroup:"), group)
 }
 
+// Adds a contact as a member of a group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403180-addmember?language=objc
+func (s_ SaveRequest) AddMemberToGroup(contact IContact, group IGroup) {
+	objc.Call[objc.Void](s_, objc.Sel("addMember:toGroup:"), contact, group)
+}
+
+// Deletes a contact from the contact store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402970-deletecontact?language=objc
+func (s_ SaveRequest) DeleteContact(contact IMutableContact) {
+	objc.Call[objc.Void](s_, objc.Sel("deleteContact:"), contact)
+}
+
 // Removes a contact as a member of a group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403373-removemember?language=objc
 func (s_ SaveRequest) RemoveMemberFromGroup(contact IContact, group IGroup) {
 	objc.Call[objc.Void](s_, objc.Sel("removeMember:fromGroup:"), contact, group)
+}
+
+// Updates an existing contact in the contact store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403074-updatecontact?language=objc
+func (s_ SaveRequest) UpdateContact(contact IMutableContact) {
+	objc.Call[objc.Void](s_, objc.Sel("updateContact:"), contact)
+}
+
+// Adds a group to the contact store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402821-addgroup?language=objc
+func (s_ SaveRequest) AddGroupToContainerWithIdentifier(group IMutableGroup, identifier string) {
+	objc.Call[objc.Void](s_, objc.Sel("addGroup:toContainerWithIdentifier:"), group, identifier)
 }
 
 // Adds the specified contact to the contact store. [Full Topic]
@@ -130,11 +137,19 @@ func (s_ SaveRequest) RemoveSubgroupFromGroup(subgroup IGroup, group IGroup) {
 	objc.Call[objc.Void](s_, objc.Sel("removeSubgroup:fromGroup:"), subgroup, group)
 }
 
-// Updates an existing contact in the contact store. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403074-updatecontact?language=objc
-func (s_ SaveRequest) UpdateContact(contact IMutableContact) {
-	objc.Call[objc.Void](s_, objc.Sel("updateContact:"), contact)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/3925416-shouldrefetchcontacts?language=objc
+func (s_ SaveRequest) ShouldRefetchContacts() bool {
+	rv := objc.Call[bool](s_, objc.Sel("shouldRefetchContacts"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/3925416-shouldrefetchcontacts?language=objc
+func (s_ SaveRequest) SetShouldRefetchContacts(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setShouldRefetchContacts:"), value)
 }
 
 //	[Full Topic]
@@ -150,19 +165,4 @@ func (s_ SaveRequest) TransactionAuthor() string {
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/3824780-transactionauthor?language=objc
 func (s_ SaveRequest) SetTransactionAuthor(value string) {
 	objc.Call[objc.Void](s_, objc.Sel("setTransactionAuthor:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/3925416-shouldrefetchcontacts?language=objc
-func (s_ SaveRequest) ShouldRefetchContacts() bool {
-	rv := objc.Call[bool](s_, objc.Sel("shouldRefetchContacts"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/3925416-shouldrefetchcontacts?language=objc
-func (s_ SaveRequest) SetShouldRefetchContacts(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setShouldRefetchContacts:"), value)
 }

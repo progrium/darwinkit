@@ -19,12 +19,12 @@ type _FetchRecordZonesOperationClass struct {
 // An interface definition for the [FetchRecordZonesOperation] class.
 type IFetchRecordZonesOperation interface {
 	IDatabaseOperation
-	PerRecordZoneCompletionBlock() func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)
-	SetPerRecordZoneCompletionBlock(value func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error))
 	FetchRecordZonesCompletionBlock() func(recordZonesByZoneID foundation.Dictionary, operationError foundation.Error)
 	SetFetchRecordZonesCompletionBlock(value func(recordZonesByZoneID foundation.Dictionary, operationError foundation.Error))
 	RecordZoneIDs() []RecordZoneID
 	SetRecordZoneIDs(value []IRecordZoneID)
+	PerRecordZoneCompletionBlock() func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)
+	SetPerRecordZoneCompletionBlock(value func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error))
 }
 
 // An operation for retrieving record zones from a database. [Full Topic]
@@ -54,11 +54,6 @@ func NewFetchRecordZonesOperationWithRecordZoneIDs(zoneIDs []IRecordZoneID) Fetc
 	return instance
 }
 
-func (f_ FetchRecordZonesOperation) Init() FetchRecordZonesOperation {
-	rv := objc.Call[FetchRecordZonesOperation](f_, objc.Sel("init"))
-	return rv
-}
-
 func (fc _FetchRecordZonesOperationClass) FetchAllRecordZonesOperation() FetchRecordZonesOperation {
 	rv := objc.Call[FetchRecordZonesOperation](fc, objc.Sel("fetchAllRecordZonesOperation"))
 	return rv
@@ -69,6 +64,11 @@ func (fc _FetchRecordZonesOperationClass) FetchAllRecordZonesOperation() FetchRe
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/1514890-fetchallrecordzonesoperation?language=objc
 func FetchRecordZonesOperation_FetchAllRecordZonesOperation() FetchRecordZonesOperation {
 	return FetchRecordZonesOperationClass.FetchAllRecordZonesOperation()
+}
+
+func (f_ FetchRecordZonesOperation) Init() FetchRecordZonesOperation {
+	rv := objc.Call[FetchRecordZonesOperation](f_, objc.Sel("init"))
+	return rv
 }
 
 func (fc _FetchRecordZonesOperationClass) Alloc() FetchRecordZonesOperation {
@@ -84,21 +84,6 @@ func (fc _FetchRecordZonesOperationClass) New() FetchRecordZonesOperation {
 
 func NewFetchRecordZonesOperation() FetchRecordZonesOperation {
 	return FetchRecordZonesOperationClass.New()
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/3793699-perrecordzonecompletionblock?language=objc
-func (f_ FetchRecordZonesOperation) PerRecordZoneCompletionBlock() func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error) {
-	rv := objc.Call[func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)](f_, objc.Sel("perRecordZoneCompletionBlock"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/3793699-perrecordzonecompletionblock?language=objc
-func (f_ FetchRecordZonesOperation) SetPerRecordZoneCompletionBlock(value func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setPerRecordZoneCompletionBlock:"), value)
 }
 
 // The block to execute after CloudKit retrieves all of the record zones. [Full Topic]
@@ -129,4 +114,19 @@ func (f_ FetchRecordZonesOperation) RecordZoneIDs() []RecordZoneID {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/1515084-recordzoneids?language=objc
 func (f_ FetchRecordZonesOperation) SetRecordZoneIDs(value []IRecordZoneID) {
 	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneIDs:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/3793699-perrecordzonecompletionblock?language=objc
+func (f_ FetchRecordZonesOperation) PerRecordZoneCompletionBlock() func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error) {
+	rv := objc.Call[func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)](f_, objc.Sel("perRecordZoneCompletionBlock"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/3793699-perrecordzonecompletionblock?language=objc
+func (f_ FetchRecordZonesOperation) SetPerRecordZoneCompletionBlock(value func(zoneID RecordZoneID, recordZone RecordZone, error foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setPerRecordZoneCompletionBlock:"), value)
 }

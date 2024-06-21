@@ -54,45 +54,16 @@ func (r_ RNNMatrixTrainingState) Init() RNNMatrixTrainingState {
 	return rv
 }
 
-func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (r_ RNNMatrixTrainingState) InitWithResources(resources []metal.PResource) RNNMatrixTrainingState {
+	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func RNNMatrixTrainingState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNMatrixTrainingState {
-	return RNNMatrixTrainingStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (r_ RNNMatrixTrainingState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewRNNMatrixTrainingStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
-	instance := RNNMatrixTrainingStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (r_ RNNMatrixTrainingState) InitWithResource(resource metal.PResource) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewRNNMatrixTrainingStateWithResource(resource metal.PResource) RNNMatrixTrainingState {
-	instance := RNNMatrixTrainingStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewRNNMatrixTrainingStateWithResources(resources []metal.PResource) RNNMatrixTrainingState {
+	instance := RNNMatrixTrainingStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -112,70 +83,30 @@ func NewRNNMatrixTrainingStateWithDeviceBufferSize(device metal.PDevice, bufferS
 	return instance
 }
 
-func (r_ RNNMatrixTrainingState) InitWithResources(resources []metal.PResource) RNNMatrixTrainingState {
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithResources:"), resources)
+func (r_ RNNMatrixTrainingState) InitWithResource(resource metal.PResource) RNNMatrixTrainingState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewRNNMatrixTrainingStateWithResources(resources []metal.PResource) RNNMatrixTrainingState {
-	instance := RNNMatrixTrainingStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewRNNMatrixTrainingStateWithResource(resource metal.PResource) RNNMatrixTrainingState {
+	instance := RNNMatrixTrainingStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNMatrixTrainingState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func RNNMatrixTrainingState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) RNNMatrixTrainingState {
-	return RNNMatrixTrainingStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func RNNMatrixTrainingState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) RNNMatrixTrainingState {
-	return RNNMatrixTrainingStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func RNNMatrixTrainingState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
-	return RNNMatrixTrainingStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (r_ RNNMatrixTrainingState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNMatrixTrainingState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewRNNMatrixTrainingStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNMatrixTrainingState {
-	instance := RNNMatrixTrainingStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func RNNMatrixTrainingState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNMatrixTrainingState {
+	return RNNMatrixTrainingStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }

@@ -19,9 +19,9 @@ type _CaptionRendererSceneClass struct {
 // An interface definition for the [CaptionRendererScene] class.
 type ICaptionRendererScene interface {
 	objc.IObject
+	HasActiveCaptions() bool
 	TimeRange() coremedia.TimeRange
 	NeedsPeriodicRefresh() bool
-	HasActiveCaptions() bool
 }
 
 // An object that holds a time range and an associated state which indicates when the renderer draws output. [Full Topic]
@@ -57,6 +57,14 @@ func (c_ CaptionRendererScene) Init() CaptionRendererScene {
 	return rv
 }
 
+// A Boolean value that indicates whether the scene contains one or more active captions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrendererscene/3752973-hasactivecaptions?language=objc
+func (c_ CaptionRendererScene) HasActiveCaptions() bool {
+	rv := objc.Call[bool](c_, objc.Sel("hasActiveCaptions"))
+	return rv
+}
+
 // The time range during which the system doesn’t modify the scene. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrendererscene/3752975-timerange?language=objc
@@ -70,13 +78,5 @@ func (c_ CaptionRendererScene) TimeRange() coremedia.TimeRange {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrendererscene/3752974-needsperiodicrefresh?language=objc
 func (c_ CaptionRendererScene) NeedsPeriodicRefresh() bool {
 	rv := objc.Call[bool](c_, objc.Sel("needsPeriodicRefresh"))
-	return rv
-}
-
-// A Boolean value that indicates whether the scene contains one or more active captions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrendererscene/3752973-hasactivecaptions?language=objc
-func (c_ CaptionRendererScene) HasActiveCaptions() bool {
-	rv := objc.Call[bool](c_, objc.Sel("hasActiveCaptions"))
 	return rv
 }

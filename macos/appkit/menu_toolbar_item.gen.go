@@ -18,10 +18,10 @@ type _MenuToolbarItemClass struct {
 // An interface definition for the [MenuToolbarItem] class.
 type IMenuToolbarItem interface {
 	IToolbarItem
-	Menu() Menu
-	SetMenu(value IMenu)
 	ShowsIndicator() bool
 	SetShowsIndicator(value bool)
+	Menu() Menu
+	SetMenu(value IMenu)
 }
 
 // A control that presents a menu in a window’s toolbar. [Full Topic]
@@ -71,21 +71,6 @@ func NewMenuToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) 
 	return instance
 }
 
-// The menu presented from the toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
-func (m_ MenuToolbarItem) Menu() Menu {
-	rv := objc.Call[Menu](m_, objc.Sel("menu"))
-	return rv
-}
-
-// The menu presented from the toolbar item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
-func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), value)
-}
-
 // A Boolean value that determines whether the toolbar item displays an indicator of additional functionality. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237192-showsindicator?language=objc
@@ -99,4 +84,19 @@ func (m_ MenuToolbarItem) ShowsIndicator() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237192-showsindicator?language=objc
 func (m_ MenuToolbarItem) SetShowsIndicator(value bool) {
 	objc.Call[objc.Void](m_, objc.Sel("setShowsIndicator:"), value)
+}
+
+// The menu presented from the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
+func (m_ MenuToolbarItem) Menu() Menu {
+	rv := objc.Call[Menu](m_, objc.Sel("menu"))
+	return rv
+}
+
+// The menu presented from the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
+func (m_ MenuToolbarItem) SetMenu(value IMenu) {
+	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), value)
 }

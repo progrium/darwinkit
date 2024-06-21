@@ -34,18 +34,6 @@ func CNNNeuronGradientNodeFrom(ptr unsafe.Pointer) CNNNeuronGradientNode {
 	}
 }
 
-func (cc _CNNNeuronGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
-	rv := objc.Call[CNNNeuronGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:descriptor:"), sourceGradient, sourceImage, gradientState, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneurongradientnode/2948028-nodewithsourcegradient?language=objc
-func CNNNeuronGradientNode_NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
-	return CNNNeuronGradientNodeClass.NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient, sourceImage, gradientState, descriptor)
-}
-
 func (c_ CNNNeuronGradientNode) InitWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
 	rv := objc.Call[CNNNeuronGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:descriptor:"), sourceGradient, sourceImage, gradientState, descriptor)
 	return rv
@@ -58,6 +46,18 @@ func NewCNNNeuronGradientNodeWithSourceGradientSourceImageGradientStateDescripto
 	instance := CNNNeuronGradientNodeClass.Alloc().InitWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient, sourceImage, gradientState, descriptor)
 	instance.Autorelease()
 	return instance
+}
+
+func (cc _CNNNeuronGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
+	rv := objc.Call[CNNNeuronGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:descriptor:"), sourceGradient, sourceImage, gradientState, descriptor)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneurongradientnode/2948028-nodewithsourcegradient?language=objc
+func CNNNeuronGradientNode_NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
+	return CNNNeuronGradientNodeClass.NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient, sourceImage, gradientState, descriptor)
 }
 
 func (cc _CNNNeuronGradientNodeClass) Alloc() CNNNeuronGradientNode {

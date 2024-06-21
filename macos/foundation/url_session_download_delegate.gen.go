@@ -11,59 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate?language=objc
 type PURLSessionDownloadDelegate interface {
 	// optional
-	URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64)
-	HasURLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite() bool
-
-	// optional
-	URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64)
-	HasURLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes() bool
-
-	// optional
 	URLSessionDownloadTaskDidFinishDownloadingToURL(session URLSession, downloadTask URLSessionDownloadTask, location URL)
 	HasURLSessionDownloadTaskDidFinishDownloadingToURL() bool
 }
 
 // A delegate implementation builder for the [PURLSessionDownloadDelegate] protocol.
 type URLSessionDownloadDelegate struct {
-	_URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite func(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64)
-	_URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes                    func(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64)
-	_URLSessionDownloadTaskDidFinishDownloadingToURL                              func(session URLSession, downloadTask URLSessionDownloadTask, location URL)
+	_URLSessionDownloadTaskDidFinishDownloadingToURL func(session URLSession, downloadTask URLSessionDownloadTask, location URL)
 }
 
-func (di *URLSessionDownloadDelegate) HasURLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite() bool {
-	return di._URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite != nil
-}
-
-// Periodically informs the delegate about the download’s progress. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1409408-urlsession?language=objc
-func (di *URLSessionDownloadDelegate) SetURLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(f func(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64)) {
-	di._URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite = f
-}
-
-// Periodically informs the delegate about the download’s progress. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1409408-urlsession?language=objc
-func (di *URLSessionDownloadDelegate) URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64) {
-	di._URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(session, downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
-}
-func (di *URLSessionDownloadDelegate) HasURLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes() bool {
-	return di._URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes != nil
-}
-
-// Tells the delegate that the download task has resumed downloading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1408142-urlsession?language=objc
-func (di *URLSessionDownloadDelegate) SetURLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(f func(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64)) {
-	di._URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes = f
-}
-
-// Tells the delegate that the download task has resumed downloading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1408142-urlsession?language=objc
-func (di *URLSessionDownloadDelegate) URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64) {
-	di._URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(session, downloadTask, fileOffset, expectedTotalBytes)
-}
 func (di *URLSessionDownloadDelegate) HasURLSessionDownloadTaskDidFinishDownloadingToURL() bool {
 	return di._URLSessionDownloadTaskDidFinishDownloadingToURL != nil
 }
@@ -88,28 +44,6 @@ var _ PURLSessionDownloadDelegate = (*URLSessionDownloadDelegateObject)(nil)
 // A concrete type for the [PURLSessionDownloadDelegate] protocol.
 type URLSessionDownloadDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:"))
-}
-
-// Periodically informs the delegate about the download’s progress. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1409408-urlsession?language=objc
-func (u_ URLSessionDownloadDelegateObject) URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:"), session, downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
-}
-
-func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:downloadTask:didResumeAtOffset:expectedTotalBytes:"))
-}
-
-// Tells the delegate that the download task has resumed downloading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1408142-urlsession?language=objc
-func (u_ URLSessionDownloadDelegateObject) URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didResumeAtOffset:expectedTotalBytes:"), session, downloadTask, fileOffset, expectedTotalBytes)
 }
 
 func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidFinishDownloadingToURL() bool {

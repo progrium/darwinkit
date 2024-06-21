@@ -20,8 +20,8 @@ type _MovieTrackClass struct {
 type IMovieTrack interface {
 	IAssetTrack
 	MediaPresentationTimeRange() coremedia.TimeRange
-	MediaDataStorage() MediaDataStorage
 	AlternateGroupID() int
+	MediaDataStorage() MediaDataStorage
 	MediaDecodeTimeRange() coremedia.TimeRange
 }
 
@@ -66,19 +66,19 @@ func (m_ MovieTrack) MediaPresentationTimeRange() coremedia.TimeRange {
 	return rv
 }
 
-// The storage container for media data added to a track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovietrack/1386868-mediadatastorage?language=objc
-func (m_ MovieTrack) MediaDataStorage() MediaDataStorage {
-	rv := objc.Call[MediaDataStorage](m_, objc.Sel("mediaDataStorage"))
-	return rv
-}
-
 // A value that identifies the track as a member of a particular alternate group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovietrack/1387020-alternategroupid?language=objc
 func (m_ MovieTrack) AlternateGroupID() int {
 	rv := objc.Call[int](m_, objc.Sel("alternateGroupID"))
+	return rv
+}
+
+// The storage container for media data added to a track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovietrack/1386868-mediadatastorage?language=objc
+func (m_ MovieTrack) MediaDataStorage() MediaDataStorage {
+	rv := objc.Call[MediaDataStorage](m_, objc.Sel("mediaDataStorage"))
 	return rv
 }
 

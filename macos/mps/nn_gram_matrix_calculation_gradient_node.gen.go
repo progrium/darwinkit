@@ -34,30 +34,6 @@ func NNGramMatrixCalculationGradientNodeFrom(ptr unsafe.Pointer) NNGramMatrixCal
 	}
 }
 
-func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:alpha:"), sourceGradient, sourceImage, gradientState, alpha)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114092-nodewithsourcegradient?language=objc
-func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
-	return NNGramMatrixCalculationGradientNodeClass.NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient, sourceImage, gradientState, alpha)
-}
-
-func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114091-nodewithsourcegradient?language=objc
-func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
-	return NNGramMatrixCalculationGradientNodeClass.NodeWithSourceGradientSourceImageGradientState(sourceGradient, sourceImage, gradientState)
-}
-
 func (n_ NNGramMatrixCalculationGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
 	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
@@ -72,18 +48,16 @@ func NewNNGramMatrixCalculationGradientNodeWithSourceGradientSourceImageGradient
 	return instance
 }
 
-func (n_ NNGramMatrixCalculationGradientNode) InitWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:alpha:"), sourceGradient, sourceImage, gradientState, alpha)
+func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
+	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114090-initwithsourcegradient?language=objc
-func NewNNGramMatrixCalculationGradientNodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
-	instance := NNGramMatrixCalculationGradientNodeClass.Alloc().InitWithSourceGradientSourceImageGradientStateAlpha(sourceGradient, sourceImage, gradientState, alpha)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114091-nodewithsourcegradient?language=objc
+func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
+	return NNGramMatrixCalculationGradientNodeClass.NodeWithSourceGradientSourceImageGradientState(sourceGradient, sourceImage, gradientState)
 }
 
 func (nc _NNGramMatrixCalculationGradientNodeClass) Alloc() NNGramMatrixCalculationGradientNode {

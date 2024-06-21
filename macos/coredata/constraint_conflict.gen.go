@@ -19,12 +19,12 @@ type _ConstraintConflictClass struct {
 // An interface definition for the [ConstraintConflict] class.
 type IConstraintConflict interface {
 	objc.IObject
-	ConflictingObjects() []ManagedObject
-	ConflictingSnapshots() []foundation.Dictionary
-	DatabaseSnapshot() map[string]objc.Object
 	ConstraintValues() map[string]objc.Object
-	Constraint() []string
 	DatabaseObject() ManagedObject
+	Constraint() []string
+	DatabaseSnapshot() map[string]objc.Object
+	ConflictingSnapshots() []foundation.Dictionary
+	ConflictingObjects() []ManagedObject
 }
 
 // An encapsulation of conflicts that occur during an attempt to save a managed object. [Full Topic]
@@ -74,35 +74,19 @@ func (c_ ConstraintConflict) Init() ConstraintConflict {
 	return rv
 }
 
-// The managed objects that are in conflict. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506707-conflictingobjects?language=objc
-func (c_ ConstraintConflict) ConflictingObjects() []ManagedObject {
-	rv := objc.Call[[]ManagedObject](c_, objc.Sel("conflictingObjects"))
-	return rv
-}
-
-// The original property values of objects in violation of the constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506774-conflictingsnapshots?language=objc
-func (c_ ConstraintConflict) ConflictingSnapshots() []foundation.Dictionary {
-	rv := objc.Call[[]foundation.Dictionary](c_, objc.Sel("conflictingSnapshots"))
-	return rv
-}
-
-// The values currently stored in the database. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506687-databasesnapshot?language=objc
-func (c_ ConstraintConflict) DatabaseSnapshot() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("databaseSnapshot"))
-	return rv
-}
-
 // The values that the conflicting objects had when the conflict was created. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506399-constraintvalues?language=objc
 func (c_ ConstraintConflict) ConstraintValues() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("constraintValues"))
+	return rv
+}
+
+// The object whose database row is using constraint values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506665-databaseobject?language=objc
+func (c_ ConstraintConflict) DatabaseObject() ManagedObject {
+	rv := objc.Call[ManagedObject](c_, objc.Sel("databaseObject"))
 	return rv
 }
 
@@ -114,10 +98,26 @@ func (c_ ConstraintConflict) Constraint() []string {
 	return rv
 }
 
-// The object whose database row is using constraint values. [Full Topic]
+// The values currently stored in the database. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506665-databaseobject?language=objc
-func (c_ ConstraintConflict) DatabaseObject() ManagedObject {
-	rv := objc.Call[ManagedObject](c_, objc.Sel("databaseObject"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506687-databasesnapshot?language=objc
+func (c_ ConstraintConflict) DatabaseSnapshot() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("databaseSnapshot"))
+	return rv
+}
+
+// The original property values of objects in violation of the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506774-conflictingsnapshots?language=objc
+func (c_ ConstraintConflict) ConflictingSnapshots() []foundation.Dictionary {
+	rv := objc.Call[[]foundation.Dictionary](c_, objc.Sel("conflictingSnapshots"))
+	return rv
+}
+
+// The managed objects that are in conflict. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506707-conflictingobjects?language=objc
+func (c_ ConstraintConflict) ConflictingObjects() []ManagedObject {
+	rv := objc.Call[[]ManagedObject](c_, objc.Sel("conflictingObjects"))
 	return rv
 }

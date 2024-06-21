@@ -18,13 +18,13 @@ type _DictionaryControllerKeyValuePairClass struct {
 // An interface definition for the [DictionaryControllerKeyValuePair] class.
 type IDictionaryControllerKeyValuePair interface {
 	objc.IObject
-	IsExplicitlyIncluded() bool
 	LocalizedKey() string
 	SetLocalizedKey(value string)
-	Value() objc.Object
-	SetValue(value objc.IObject)
 	Key() string
 	SetKey(value string)
+	Value() objc.Object
+	SetValue(value objc.IObject)
+	IsExplicitlyIncluded() bool
 }
 
 // A set of methods implemented by arranged objects to give access to information about those objects. [Full Topic]
@@ -62,14 +62,6 @@ func (d_ DictionaryControllerKeyValuePair) Init() DictionaryControllerKeyValuePa
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1526717-explicitlyincluded?language=objc
-func (d_ DictionaryControllerKeyValuePair) IsExplicitlyIncluded() bool {
-	rv := objc.Call[bool](d_, objc.Sel("isExplicitlyIncluded"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1531961-localizedkey?language=objc
 func (d_ DictionaryControllerKeyValuePair) LocalizedKey() string {
 	rv := objc.Call[string](d_, objc.Sel("localizedKey"))
@@ -81,6 +73,21 @@ func (d_ DictionaryControllerKeyValuePair) LocalizedKey() string {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1531961-localizedkey?language=objc
 func (d_ DictionaryControllerKeyValuePair) SetLocalizedKey(value string) {
 	objc.Call[objc.Void](d_, objc.Sel("setLocalizedKey:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1527207-key?language=objc
+func (d_ DictionaryControllerKeyValuePair) Key() string {
+	rv := objc.Call[string](d_, objc.Sel("key"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1527207-key?language=objc
+func (d_ DictionaryControllerKeyValuePair) SetKey(value string) {
+	objc.Call[objc.Void](d_, objc.Sel("setKey:"), value)
 }
 
 //	[Full Topic]
@@ -100,15 +107,8 @@ func (d_ DictionaryControllerKeyValuePair) SetValue(value objc.IObject) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1527207-key?language=objc
-func (d_ DictionaryControllerKeyValuePair) Key() string {
-	rv := objc.Call[string](d_, objc.Sel("key"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1526717-explicitlyincluded?language=objc
+func (d_ DictionaryControllerKeyValuePair) IsExplicitlyIncluded() bool {
+	rv := objc.Call[bool](d_, objc.Sel("isExplicitlyIncluded"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdictionarycontrollerkeyvaluepair/1527207-key?language=objc
-func (d_ DictionaryControllerKeyValuePair) SetKey(value string) {
-	objc.Call[objc.Void](d_, objc.Sel("setKey:"), value)
 }

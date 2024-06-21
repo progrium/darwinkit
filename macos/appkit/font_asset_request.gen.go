@@ -20,8 +20,8 @@ type _FontAssetRequestClass struct {
 type IFontAssetRequest interface {
 	objc.IObject
 	DownloadFontAssetsWithCompletionHandler(completionHandler func(error foundation.Error) bool)
-	Progress() foundation.Progress
 	DownloadedFontDescriptors() []FontDescriptor
+	Progress() foundation.Progress
 }
 
 //	[Full Topic]
@@ -80,16 +80,16 @@ func (f_ FontAssetRequest) DownloadFontAssetsWithCompletionHandler(completionHan
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequest/2890804-progress?language=objc
-func (f_ FontAssetRequest) Progress() foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("progress"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequest/2890802-downloadedfontdescriptors?language=objc
+func (f_ FontAssetRequest) DownloadedFontDescriptors() []FontDescriptor {
+	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("downloadedFontDescriptors"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequest/2890802-downloadedfontdescriptors?language=objc
-func (f_ FontAssetRequest) DownloadedFontDescriptors() []FontDescriptor {
-	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("downloadedFontDescriptors"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequest/2890804-progress?language=objc
+func (f_ FontAssetRequest) Progress() foundation.Progress {
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("progress"))
 	return rv
 }

@@ -20,7 +20,7 @@ type IWebPreferences interface {
 	objc.IObject
 }
 
-// WebPreferences encapsulates the preferences you can change per WebView object. These preferences include font, text encoding, and image settings. Normally a WebView object uses the standard preferences returned by the [webkit/webpreferences/standardpreferences] class method. However, you can modify the preferences for individual WebView instances too. Use the [webkit/webview/preferencesidentifier] WebView method to change a WebView object’s preferences, or to share preferences between WebView objects. Use the [webkit/webpreferences/autosaves] method to specify if the preferences object should be automatically saved to the user defaults database. [Full Topic]
+// WebPreferences encapsulates the preferences you can change per WebView object. These preferences include font, text encoding, and image settings. Normally a WebView object uses the standard preferences returned by the standardPreferences class method. However, you can modify the preferences for individual WebView instances too. Use the preferencesIdentifier WebView method to change a WebView object’s preferences, or to share preferences between WebView objects. Use the autosaves method to specify if the preferences object should be automatically saved to the user defaults database. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webpreferences?language=objc
 type WebPreferences struct {

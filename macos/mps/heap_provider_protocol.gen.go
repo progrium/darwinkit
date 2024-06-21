@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsheapprovider?language=objc
 type PHeapProvider interface {
 	// optional
-	NewHeapWithDescriptor(descriptor metal.HeapDescriptor) metal.HeapObject
-	HasNewHeapWithDescriptor() bool
-
-	// optional
 	RetireHeapCacheDelay(heap metal.HeapObject, seconds float64)
 	HasRetireHeapCacheDelay() bool
+
+	// optional
+	NewHeapWithDescriptor(descriptor metal.HeapDescriptor) metal.HeapObject
+	HasNewHeapWithDescriptor() bool
 }
 
 // ensure impl type implements protocol interface
@@ -26,18 +26,6 @@ var _ PHeapProvider = (*HeapProviderObject)(nil)
 // A concrete type for the [PHeapProvider] protocol.
 type HeapProviderObject struct {
 	objc.Object
-}
-
-func (h_ HeapProviderObject) HasNewHeapWithDescriptor() bool {
-	return h_.RespondsToSelector(objc.Sel("newHeapWithDescriptor:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsheapprovider/3229861-newheapwithdescriptor?language=objc
-func (h_ HeapProviderObject) NewHeapWithDescriptor(descriptor metal.HeapDescriptor) metal.HeapObject {
-	rv := objc.Call[metal.HeapObject](h_, objc.Sel("newHeapWithDescriptor:"), descriptor)
-	return rv
 }
 
 func (h_ HeapProviderObject) HasRetireHeapCacheDelay() bool {
@@ -50,4 +38,16 @@ func (h_ HeapProviderObject) HasRetireHeapCacheDelay() bool {
 func (h_ HeapProviderObject) RetireHeapCacheDelay(heap metal.HeapObject, seconds float64) {
 	po0 := objc.WrapAsProtocol("MTLHeap", heap)
 	objc.Call[objc.Void](h_, objc.Sel("retireHeap:cacheDelay:"), po0, seconds)
+}
+
+func (h_ HeapProviderObject) HasNewHeapWithDescriptor() bool {
+	return h_.RespondsToSelector(objc.Sel("newHeapWithDescriptor:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsheapprovider/3229861-newheapwithdescriptor?language=objc
+func (h_ HeapProviderObject) NewHeapWithDescriptor(descriptor metal.HeapDescriptor) metal.HeapObject {
+	rv := objc.Call[metal.HeapObject](h_, objc.Sel("newHeapWithDescriptor:"), descriptor)
+	return rv
 }

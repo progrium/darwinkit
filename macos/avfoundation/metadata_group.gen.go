@@ -18,9 +18,9 @@ type _MetadataGroupClass struct {
 // An interface definition for the [MetadataGroup] class.
 type IMetadataGroup interface {
 	objc.IObject
+	Items() []MetadataItem
 	ClassifyingLabel() string
 	UniqueID() string
-	Items() []MetadataItem
 }
 
 // A collection of metadata items associated with a timeline segment. [Full Topic]
@@ -56,6 +56,14 @@ func (m_ MetadataGroup) Init() MetadataGroup {
 	return rv
 }
 
+// The array of metadata items associated with the metadata group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatagroup/1389935-items?language=objc
+func (m_ MetadataGroup) Items() []MetadataItem {
+	rv := objc.Call[[]MetadataItem](m_, objc.Sel("items"))
+	return rv
+}
+
 // The classifying label associated with the metadata group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatagroup/1620087-classifyinglabel?language=objc
@@ -69,13 +77,5 @@ func (m_ MetadataGroup) ClassifyingLabel() string {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatagroup/1620088-uniqueid?language=objc
 func (m_ MetadataGroup) UniqueID() string {
 	rv := objc.Call[string](m_, objc.Sel("uniqueID"))
-	return rv
-}
-
-// The array of metadata items associated with the metadata group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatagroup/1389935-items?language=objc
-func (m_ MetadataGroup) Items() []MetadataItem {
-	rv := objc.Call[[]MetadataItem](m_, objc.Sel("items"))
 	return rv
 }

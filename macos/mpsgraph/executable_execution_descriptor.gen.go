@@ -18,12 +18,12 @@ type _ExecutableExecutionDescriptorClass struct {
 // An interface definition for the [ExecutableExecutionDescriptor] class.
 type IExecutableExecutionDescriptor interface {
 	objc.IObject
+	ScheduledHandler() ExecutableScheduledHandler
+	SetScheduledHandler(value ExecutableScheduledHandler)
 	WaitUntilCompleted() bool
 	SetWaitUntilCompleted(value bool)
 	CompletionHandler() ExecutableCompletionHandler
 	SetCompletionHandler(value ExecutableCompletionHandler)
-	ScheduledHandler() ExecutableScheduledHandler
-	SetScheduledHandler(value ExecutableScheduledHandler)
 }
 
 //	[Full Topic]
@@ -61,6 +61,21 @@ func (e_ ExecutableExecutionDescriptor) Init() ExecutableExecutionDescriptor {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787601-scheduledhandler?language=objc
+func (e_ ExecutableExecutionDescriptor) ScheduledHandler() ExecutableScheduledHandler {
+	rv := objc.Call[ExecutableScheduledHandler](e_, objc.Sel("scheduledHandler"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787601-scheduledhandler?language=objc
+func (e_ ExecutableExecutionDescriptor) SetScheduledHandler(value ExecutableScheduledHandler) {
+	objc.Call[objc.Void](e_, objc.Sel("setScheduledHandler:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787602-waituntilcompleted?language=objc
 func (e_ ExecutableExecutionDescriptor) WaitUntilCompleted() bool {
 	rv := objc.Call[bool](e_, objc.Sel("waitUntilCompleted"))
@@ -87,19 +102,4 @@ func (e_ ExecutableExecutionDescriptor) CompletionHandler() ExecutableCompletion
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787600-completionhandler?language=objc
 func (e_ ExecutableExecutionDescriptor) SetCompletionHandler(value ExecutableCompletionHandler) {
 	objc.Call[objc.Void](e_, objc.Sel("setCompletionHandler:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787601-scheduledhandler?language=objc
-func (e_ ExecutableExecutionDescriptor) ScheduledHandler() ExecutableScheduledHandler {
-	rv := objc.Call[ExecutableScheduledHandler](e_, objc.Sel("scheduledHandler"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutableexecutiondescriptor/3787601-scheduledhandler?language=objc
-func (e_ ExecutableExecutionDescriptor) SetScheduledHandler(value ExecutableScheduledHandler) {
-	objc.Call[objc.Void](e_, objc.Sel("setScheduledHandler:"), value)
 }

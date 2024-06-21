@@ -18,10 +18,10 @@ type _CollectionLayoutEdgeSpacingClass struct {
 // An interface definition for the [CollectionLayoutEdgeSpacing] class.
 type ICollectionLayoutEdgeSpacing interface {
 	objc.IObject
-	Trailing() CollectionLayoutSpacing
-	Top() CollectionLayoutSpacing
-	Bottom() CollectionLayoutSpacing
 	Leading() CollectionLayoutSpacing
+	Trailing() CollectionLayoutSpacing
+	Bottom() CollectionLayoutSpacing
+	Top() CollectionLayoutSpacing
 }
 
 // An object that defines the space around the edges of items in a collection view. [Full Topic]
@@ -69,19 +69,19 @@ func (c_ CollectionLayoutEdgeSpacing) Init() CollectionLayoutEdgeSpacing {
 	return rv
 }
 
+// The leading edge spacing value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutedgespacing/3199069-leading?language=objc
+func (c_ CollectionLayoutEdgeSpacing) Leading() CollectionLayoutSpacing {
+	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("leading"))
+	return rv
+}
+
 // The trailing edge spacing value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutedgespacing/3199071-trailing?language=objc
 func (c_ CollectionLayoutEdgeSpacing) Trailing() CollectionLayoutSpacing {
 	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("trailing"))
-	return rv
-}
-
-// The top edge spacing value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutedgespacing/3199070-top?language=objc
-func (c_ CollectionLayoutEdgeSpacing) Top() CollectionLayoutSpacing {
-	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("top"))
 	return rv
 }
 
@@ -93,10 +93,10 @@ func (c_ CollectionLayoutEdgeSpacing) Bottom() CollectionLayoutSpacing {
 	return rv
 }
 
-// The leading edge spacing value. [Full Topic]
+// The top edge spacing value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutedgespacing/3199069-leading?language=objc
-func (c_ CollectionLayoutEdgeSpacing) Leading() CollectionLayoutSpacing {
-	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("leading"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutedgespacing/3199070-top?language=objc
+func (c_ CollectionLayoutEdgeSpacing) Top() CollectionLayoutSpacing {
+	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("top"))
 	return rv
 }

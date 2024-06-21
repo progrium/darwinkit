@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample?language=objc
 type PEdgePreserveUpsample interface {
 	// optional
-	SetSmallImage(value Image)
-	HasSetSmallImage() bool
-
-	// optional
-	SmallImage() Image
-	HasSmallImage() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -35,6 +27,14 @@ type PEdgePreserveUpsample interface {
 	HasSpatialSigma() bool
 
 	// optional
+	SetSmallImage(value Image)
+	HasSetSmallImage() bool
+
+	// optional
+	SmallImage() Image
+	HasSmallImage() bool
+
+	// optional
 	SetLumaSigma(value float32)
 	HasSetLumaSigma() bool
 
@@ -49,29 +49,6 @@ var _ PEdgePreserveUpsample = (*EdgePreserveUpsampleObject)(nil)
 // A concrete type for the [PEdgePreserveUpsample] protocol.
 type EdgePreserveUpsampleObject struct {
 	objc.Object
-}
-
-func (e_ EdgePreserveUpsampleObject) HasSetSmallImage() bool {
-	return e_.RespondsToSelector(objc.Sel("setSmallImage:"))
-}
-
-// The image that the filter upsamples. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample/3228239-smallimage?language=objc
-func (e_ EdgePreserveUpsampleObject) SetSmallImage(value Image) {
-	objc.Call[objc.Void](e_, objc.Sel("setSmallImage:"), value)
-}
-
-func (e_ EdgePreserveUpsampleObject) HasSmallImage() bool {
-	return e_.RespondsToSelector(objc.Sel("smallImage"))
-}
-
-// The image that the filter upsamples. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample/3228239-smallimage?language=objc
-func (e_ EdgePreserveUpsampleObject) SmallImage() Image {
-	rv := objc.Call[Image](e_, objc.Sel("smallImage"))
-	return rv
 }
 
 func (e_ EdgePreserveUpsampleObject) HasSetInputImage() bool {
@@ -117,6 +94,29 @@ func (e_ EdgePreserveUpsampleObject) HasSpatialSigma() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample/3228240-spatialsigma?language=objc
 func (e_ EdgePreserveUpsampleObject) SpatialSigma() float32 {
 	rv := objc.Call[float32](e_, objc.Sel("spatialSigma"))
+	return rv
+}
+
+func (e_ EdgePreserveUpsampleObject) HasSetSmallImage() bool {
+	return e_.RespondsToSelector(objc.Sel("setSmallImage:"))
+}
+
+// The image that the filter upsamples. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample/3228239-smallimage?language=objc
+func (e_ EdgePreserveUpsampleObject) SetSmallImage(value Image) {
+	objc.Call[objc.Void](e_, objc.Sel("setSmallImage:"), value)
+}
+
+func (e_ EdgePreserveUpsampleObject) HasSmallImage() bool {
+	return e_.RespondsToSelector(objc.Sel("smallImage"))
+}
+
+// The image that the filter upsamples. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgepreserveupsample/3228239-smallimage?language=objc
+func (e_ EdgePreserveUpsampleObject) SmallImage() Image {
+	rv := objc.Call[Image](e_, objc.Sel("smallImage"))
 	return rv
 }
 

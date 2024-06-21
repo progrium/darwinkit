@@ -54,35 +54,6 @@ func (n_ NNLanczosScaleNode) Init() NNLanczosScaleNode {
 	return rv
 }
 
-func (n_ NNLanczosScaleNode) InitWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
-	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:outputSize:"), sourceNode, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnscalenode/2915285-initwithsource?language=objc
-func NewNNLanczosScaleNodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
-	instance := NNLanczosScaleNodeClass.Alloc().InitWithSourceOutputSize(sourceNode, size)
-	instance.Autorelease()
-	return instance
-}
-
-func (n_ NNLanczosScaleNode) InitWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
-	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnscalenode/2915278-initwithsource?language=objc
-func NewNNLanczosScaleNodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
-	instance := NNLanczosScaleNodeClass.Alloc().InitWithSourceTransformProviderOutputSize(sourceNode, transformProvider, size)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNLanczosScaleNodeClass) NodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
 	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), sourceNode, size)
 	return rv
@@ -95,15 +66,16 @@ func NNLanczosScaleNode_NodeWithSourceOutputSize(sourceNode INNImageNode, size m
 	return NNLanczosScaleNodeClass.NodeWithSourceOutputSize(sourceNode, size)
 }
 
-func (nc _NNLanczosScaleNodeClass) NodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
-	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
+func (n_ NNLanczosScaleNode) InitWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
+	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnscalenode/2915286-nodewithsource?language=objc
-func NNLanczosScaleNode_NodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
-	return NNLanczosScaleNodeClass.NodeWithSourceTransformProviderOutputSize(sourceNode, transformProvider, size)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnscalenode/2915285-initwithsource?language=objc
+func NewNNLanczosScaleNodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
+	instance := NNLanczosScaleNodeClass.Alloc().InitWithSourceOutputSize(sourceNode, size)
+	instance.Autorelease()
+	return instance
 }

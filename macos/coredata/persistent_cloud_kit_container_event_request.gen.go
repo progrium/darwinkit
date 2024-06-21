@@ -36,16 +36,16 @@ func PersistentCloudKitContainerEventRequestFrom(ptr unsafe.Pointer) PersistentC
 	}
 }
 
-func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterEvent(event IPersistentCloudKitContainerEvent) PersistentCloudKitContainerEventRequest {
-	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterEvent:"), event)
+func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterDate(date foundation.IDate) PersistentCloudKitContainerEventRequest {
+	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterDate:"), date)
 	return rv
 }
 
-// Creates a fetch request for events that occur after a specified event from a persistent CloudKit container. [Full Topic]
+// Creates a fetch request for events after a specified date from a persistent CloudKit container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventrequest/3618816-fetcheventsafterevent?language=objc
-func PersistentCloudKitContainerEventRequest_FetchEventsAfterEvent(event IPersistentCloudKitContainerEvent) PersistentCloudKitContainerEventRequest {
-	return PersistentCloudKitContainerEventRequestClass.FetchEventsAfterEvent(event)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventrequest/3618815-fetcheventsafterdate?language=objc
+func PersistentCloudKitContainerEventRequest_FetchEventsAfterDate(date foundation.IDate) PersistentCloudKitContainerEventRequest {
+	return PersistentCloudKitContainerEventRequestClass.FetchEventsAfterDate(date)
 }
 
 func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsMatchingFetchRequest(fetchRequest IFetchRequest) PersistentCloudKitContainerEventRequest {
@@ -60,16 +60,16 @@ func PersistentCloudKitContainerEventRequest_FetchEventsMatchingFetchRequest(fet
 	return PersistentCloudKitContainerEventRequestClass.FetchEventsMatchingFetchRequest(fetchRequest)
 }
 
-func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterDate(date foundation.IDate) PersistentCloudKitContainerEventRequest {
-	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterDate:"), date)
+func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterEvent(event IPersistentCloudKitContainerEvent) PersistentCloudKitContainerEventRequest {
+	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterEvent:"), event)
 	return rv
 }
 
-// Creates a fetch request for events after a specified date from a persistent CloudKit container. [Full Topic]
+// Creates a fetch request for events that occur after a specified event from a persistent CloudKit container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventrequest/3618815-fetcheventsafterdate?language=objc
-func PersistentCloudKitContainerEventRequest_FetchEventsAfterDate(date foundation.IDate) PersistentCloudKitContainerEventRequest {
-	return PersistentCloudKitContainerEventRequestClass.FetchEventsAfterDate(date)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventrequest/3618816-fetcheventsafterevent?language=objc
+func PersistentCloudKitContainerEventRequest_FetchEventsAfterEvent(event IPersistentCloudKitContainerEvent) PersistentCloudKitContainerEventRequest {
+	return PersistentCloudKitContainerEventRequestClass.FetchEventsAfterEvent(event)
 }
 
 func (pc _PersistentCloudKitContainerEventRequestClass) Alloc() PersistentCloudKitContainerEventRequest {

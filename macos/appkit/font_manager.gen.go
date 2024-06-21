@@ -18,45 +18,40 @@ type _FontManagerClass struct {
 // An interface definition for the [FontManager] class.
 type IFontManager interface {
 	objc.IObject
-	FontWithFamilyTraitsWeightSize(family string, traits FontTraitMask, weight int, size float64) Font
-	ConvertFontToFace(fontObj IFont, typeface string) Font
-	ConvertFontToSize(fontObj IFont, size float64) Font
-	SetSelectedFontIsMultiple(fontObj IFont, flag bool)
-	OrderFrontStylesPanel(sender objc.IObject)
-	ConvertFont(fontObj IFont) Font
-	ConvertAttributes(attributes map[string]objc.IObject) map[string]objc.Object
-	FontNamedHasTraits(fName string, someTraits FontTraitMask) bool
-	LocalizedNameForFamilyFace(family string, faceKey string) string
-	OrderFrontFontPanel(sender objc.IObject)
-	WeightOfFont(fontObj IFont) int
-	ConvertFontToFamily(fontObj IFont, family string) Font
-	SetSelectedAttributesIsMultiple(attributes map[string]objc.IObject, flag bool)
-	ConvertWeightOfFont(upFlag bool, fontObj IFont) Font
+	SendAction() bool
 	ConvertFontTraits(traits FontTraitMask) FontTraitMask
-	AddFontTrait(sender objc.IObject)
+	AvailableFontNamesWithTraits(someTraits FontTraitMask) []string
+	LocalizedNameForFamilyFace(family string, faceKey string) string
+	ConvertAttributes(attributes map[string]objc.IObject) map[string]objc.Object
+	WeightOfFont(fontObj IFont) int
+	SetFontMenu(newMenu IMenu)
 	TraitsOfFont(fontObj IFont) FontTraitMask
 	RemoveFontTrait(sender objc.IObject)
-	SetFontMenu(newMenu IMenu)
-	FontMenu(create bool) Menu
-	FontPanel(create bool) FontPanel
-	ConvertFontToHaveTrait(fontObj IFont, trait FontTraitMask) Font
-	AvailableFontNamesWithTraits(someTraits FontTraitMask) []string
-	ModifyFontViaPanel(sender objc.IObject)
-	ConvertFontToNotHaveTrait(fontObj IFont, trait FontTraitMask) Font
+	OrderFrontFontPanel(sender objc.IObject)
+	AddFontTrait(sender objc.IObject)
 	ModifyFont(sender objc.IObject)
+	ConvertWeightOfFont(upFlag bool, fontObj IFont) Font
+	OrderFrontStylesPanel(sender objc.IObject)
+	SetSelectedAttributesIsMultiple(attributes map[string]objc.IObject, flag bool)
+	FontMenu(create bool) Menu
+	ConvertFontToSize(fontObj IFont, size float64) Font
+	FontWithFamilyTraitsWeightSize(family string, traits FontTraitMask, weight int, size float64) Font
+	SetSelectedFontIsMultiple(fontObj IFont, flag bool)
+	FontPanel(create bool) FontPanel
+	FontNamedHasTraits(fName string, someTraits FontTraitMask) bool
+	ModifyFontViaPanel(sender objc.IObject)
 	AvailableMembersOfFontFamily(fam string) [][]objc.Object
-	SendAction() bool
 	CurrentFontAction() FontAction
-	AvailableFonts() []string
+	Target() objc.Object
+	SetTarget(value objc.IObject)
+	Action() objc.Selector
+	SetAction(value objc.Selector)
+	IsMultiple() bool
+	AvailableFontFamilies() []string
 	SelectedFont() Font
 	IsEnabled() bool
 	SetEnabled(value bool)
-	IsMultiple() bool
-	Target() objc.Object
-	SetTarget(value objc.IObject)
-	AvailableFontFamilies() []string
-	Action() objc.Selector
-	SetAction(value objc.Selector)
+	AvailableFonts() []string
 }
 
 // The center of activity for the font-conversion system. [Full Topic]
@@ -92,65 +87,27 @@ func (f_ FontManager) Init() FontManager {
 	return rv
 }
 
-// Attempts to load a font with the specified characteristics. [Full Topic]
+// A Boolean value that indicates whether a responder handled the font manager’s action message. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462332-fontwithfamily?language=objc
-func (f_ FontManager) FontWithFamilyTraitsWeightSize(family string, traits FontTraitMask, weight int, size float64) Font {
-	rv := objc.Call[Font](f_, objc.Sel("fontWithFamily:traits:weight:size:"), family, traits, weight, size)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462386-sendaction?language=objc
+func (f_ FontManager) SendAction() bool {
+	rv := objc.Call[bool](f_, objc.Sel("sendAction"))
 	return rv
 }
 
-// Returns a font whose traits are as similar as possible to those of the given font except for the typeface, which is changed to the given typeface. [Full Topic]
+// Converts font traits to a new traits mask value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462309-convertfont?language=objc
-func (f_ FontManager) ConvertFontToFace(fontObj IFont, typeface string) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFace:"), fontObj, typeface)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462274-convertfonttraits?language=objc
+func (f_ FontManager) ConvertFontTraits(traits FontTraitMask) FontTraitMask {
+	rv := objc.Call[FontTraitMask](f_, objc.Sel("convertFontTraits:"), traits)
 	return rv
 }
 
-// Returns a font object whose traits are the same as those of the given font, except for the size, which is changed to the given size. [Full Topic]
+// Returns the names of the fonts available in the system whose traits are described exactly by the given font trait mask (not the NSFont objects themselves). [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462378-convertfont?language=objc
-func (f_ FontManager) ConvertFontToSize(fontObj IFont, size float64) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toSize:"), fontObj, size)
-	return rv
-}
-
-// Records the specified font as the currently selected font and updates the Font panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462398-setselectedfont?language=objc
-func (f_ FontManager) SetSelectedFontIsMultiple(fontObj IFont, flag bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setSelectedFont:isMultiple:"), fontObj, flag)
-}
-
-// Opens the Font Styles panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462392-orderfrontstylespanel?language=objc
-func (f_ FontManager) OrderFrontStylesPanel(sender objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("orderFrontStylesPanel:"), sender)
-}
-
-// Converts the given font according to the object that initiated a font change, typically the Font panel or Font menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462293-convertfont?language=objc
-func (f_ FontManager) ConvertFont(fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:"), fontObj)
-	return rv
-}
-
-// Converts attributes in response to an object initiating an attribute change, typically the Font panel or Font menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462295-convertattributes?language=objc
-func (f_ FontManager) ConvertAttributes(attributes map[string]objc.IObject) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](f_, objc.Sel("convertAttributes:"), attributes)
-	return rv
-}
-
-// Indicates whether the given font has all the specified traits. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462327-fontnamed?language=objc
-func (f_ FontManager) FontNamedHasTraits(fName string, someTraits FontTraitMask) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fontNamed:hasTraits:"), fName, someTraits)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462329-availablefontnameswithtraits?language=objc
+func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []string {
+	rv := objc.Call[[]string](f_, objc.Sel("availableFontNamesWithTraits:"), someTraits)
 	return rv
 }
 
@@ -162,11 +119,12 @@ func (f_ FontManager) LocalizedNameForFamilyFace(family string, faceKey string) 
 	return rv
 }
 
-// Opens the Font panel, creating it if necessary, and displays that panel in front of the app's windows. [Full Topic]
+// Converts attributes in response to an object initiating an attribute change, typically the Font panel or Font menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462384-orderfrontfontpanel?language=objc
-func (f_ FontManager) OrderFrontFontPanel(sender objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("orderFrontFontPanel:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462295-convertattributes?language=objc
+func (f_ FontManager) ConvertAttributes(attributes map[string]objc.IObject) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](f_, objc.Sel("convertAttributes:"), attributes)
+	return rv
 }
 
 // Returns an approximation of the specified font's weight. [Full Topic]
@@ -177,56 +135,11 @@ func (f_ FontManager) WeightOfFont(fontObj IFont) int {
 	return rv
 }
 
-// Returns a font whose traits are as similar as possible to those of the given font except for the font family, which is changed to the given family. [Full Topic]
+// Records the given menu as the application’s Font menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462318-convertfont?language=objc
-func (f_ FontManager) ConvertFontToFamily(fontObj IFont, family string) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFamily:"), fontObj, family)
-	return rv
-}
-
-// Informs the Font panel that the specified font attributes changed for the selected text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462270-setselectedattributes?language=objc
-func (f_ FontManager) SetSelectedAttributesIsMultiple(attributes map[string]objc.IObject, flag bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setSelectedAttributes:isMultiple:"), attributes, flag)
-}
-
-// Returns a font object whose weight is greater or lesser than that of the given font. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462321-convertweight?language=objc
-func (f_ FontManager) ConvertWeightOfFont(upFlag bool, fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertWeight:ofFont:"), upFlag, fontObj)
-	return rv
-}
-
-// Sets the class that creates the shared Font panel object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462388-setfontpanelfactory?language=objc
-func (fc _FontManagerClass) SetFontPanelFactory(factoryId objc.IClass) {
-	objc.Call[objc.Void](fc, objc.Sel("setFontPanelFactory:"), factoryId)
-}
-
-// Sets the class that creates the shared Font panel object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462388-setfontpanelfactory?language=objc
-func FontManager_SetFontPanelFactory(factoryId objc.IClass) {
-	FontManagerClass.SetFontPanelFactory(factoryId)
-}
-
-// Converts font traits to a new traits mask value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462274-convertfonttraits?language=objc
-func (f_ FontManager) ConvertFontTraits(traits FontTraitMask) FontTraitMask {
-	rv := objc.Call[FontTraitMask](f_, objc.Sel("convertFontTraits:"), traits)
-	return rv
-}
-
-// Adds a trait to the font. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462320-addfonttrait?language=objc
-func (f_ FontManager) AddFontTrait(sender objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("addFontTrait:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462381-setfontmenu?language=objc
+func (f_ FontManager) SetFontMenu(newMenu IMenu) {
+	objc.Call[objc.Void](f_, objc.Sel("setFontMenu:"), newMenu)
 }
 
 // Returns the traits of the given font. [Full Topic]
@@ -244,11 +157,47 @@ func (f_ FontManager) RemoveFontTrait(sender objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("removeFontTrait:"), sender)
 }
 
-// Records the given menu as the application’s Font menu. [Full Topic]
+// Opens the Font panel, creating it if necessary, and displays that panel in front of the app's windows. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462381-setfontmenu?language=objc
-func (f_ FontManager) SetFontMenu(newMenu IMenu) {
-	objc.Call[objc.Void](f_, objc.Sel("setFontMenu:"), newMenu)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462384-orderfrontfontpanel?language=objc
+func (f_ FontManager) OrderFrontFontPanel(sender objc.IObject) {
+	objc.Call[objc.Void](f_, objc.Sel("orderFrontFontPanel:"), sender)
+}
+
+// Adds a trait to the font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462320-addfonttrait?language=objc
+func (f_ FontManager) AddFontTrait(sender objc.IObject) {
+	objc.Call[objc.Void](f_, objc.Sel("addFontTrait:"), sender)
+}
+
+// Modifies a trait of the font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462353-modifyfont?language=objc
+func (f_ FontManager) ModifyFont(sender objc.IObject) {
+	objc.Call[objc.Void](f_, objc.Sel("modifyFont:"), sender)
+}
+
+// Returns a font object whose weight is greater or lesser than that of the given font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462321-convertweight?language=objc
+func (f_ FontManager) ConvertWeightOfFont(upFlag bool, fontObj IFont) Font {
+	rv := objc.Call[Font](f_, objc.Sel("convertWeight:ofFont:"), upFlag, fontObj)
+	return rv
+}
+
+// Opens the Font Styles panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462392-orderfrontstylespanel?language=objc
+func (f_ FontManager) OrderFrontStylesPanel(sender objc.IObject) {
+	objc.Call[objc.Void](f_, objc.Sel("orderFrontStylesPanel:"), sender)
+}
+
+// Informs the Font panel that the specified font attributes changed for the selected text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462270-setselectedattributes?language=objc
+func (f_ FontManager) SetSelectedAttributesIsMultiple(attributes map[string]objc.IObject, flag bool) {
+	objc.Call[objc.Void](f_, objc.Sel("setSelectedAttributes:isMultiple:"), attributes, flag)
 }
 
 // Returns the menu that’s connected to the font conversion system, creating it if necessary. [Full Topic]
@@ -259,27 +208,48 @@ func (f_ FontManager) FontMenu(create bool) Menu {
 	return rv
 }
 
+// Sets the class that creates the shared Font panel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462388-setfontpanelfactory?language=objc
+func (fc _FontManagerClass) SetFontPanelFactory(factoryId objc.IClass) {
+	objc.Call[objc.Void](fc, objc.Sel("setFontPanelFactory:"), factoryId)
+}
+
+// Sets the class that creates the shared Font panel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462388-setfontpanelfactory?language=objc
+func FontManager_SetFontPanelFactory(factoryId objc.IClass) {
+	FontManagerClass.SetFontPanelFactory(factoryId)
+}
+
+// Returns a font object whose traits are the same as those of the given font, except for the size, which is changed to the given size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462378-convertfont?language=objc
+func (f_ FontManager) ConvertFontToSize(fontObj IFont, size float64) Font {
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toSize:"), fontObj, size)
+	return rv
+}
+
+// Attempts to load a font with the specified characteristics. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462332-fontwithfamily?language=objc
+func (f_ FontManager) FontWithFamilyTraitsWeightSize(family string, traits FontTraitMask, weight int, size float64) Font {
+	rv := objc.Call[Font](f_, objc.Sel("fontWithFamily:traits:weight:size:"), family, traits, weight, size)
+	return rv
+}
+
+// Records the specified font as the currently selected font and updates the Font panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462398-setselectedfont?language=objc
+func (f_ FontManager) SetSelectedFontIsMultiple(fontObj IFont, flag bool) {
+	objc.Call[objc.Void](f_, objc.Sel("setSelectedFont:isMultiple:"), fontObj, flag)
+}
+
 // Returns the application’s shared Font panel object, creating it if necessary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462283-fontpanel?language=objc
 func (f_ FontManager) FontPanel(create bool) FontPanel {
 	rv := objc.Call[FontPanel](f_, objc.Sel("fontPanel:"), create)
-	return rv
-}
-
-// Returns a new version of the font object containing a single additional trait. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462345-convertfont?language=objc
-func (f_ FontManager) ConvertFontToHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toHaveTrait:"), fontObj, trait)
-	return rv
-}
-
-// Returns the names of the fonts available in the system whose traits are described exactly by the given font trait mask (not the NSFont objects themselves). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462329-availablefontnameswithtraits?language=objc
-func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []string {
-	rv := objc.Call[[]string](f_, objc.Sel("availableFontNamesWithTraits:"), someTraits)
 	return rv
 }
 
@@ -297,6 +267,14 @@ func FontManager_SetFontManagerFactory(factoryId objc.IClass) {
 	FontManagerClass.SetFontManagerFactory(factoryId)
 }
 
+// Indicates whether the given font has all the specified traits. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462327-fontnamed?language=objc
+func (f_ FontManager) FontNamedHasTraits(fName string, someTraits FontTraitMask) bool {
+	rv := objc.Call[bool](f_, objc.Sel("fontNamed:hasTraits:"), fName, someTraits)
+	return rv
+}
+
 // Modifies a font trait using input from the Font panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462355-modifyfontviapanel?language=objc
@@ -304,34 +282,11 @@ func (f_ FontManager) ModifyFontViaPanel(sender objc.IObject) {
 	objc.Call[objc.Void](f_, objc.Sel("modifyFontViaPanel:"), sender)
 }
 
-// Returns a new version of a font object without the specified traits. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462364-convertfont?language=objc
-func (f_ FontManager) ConvertFontToNotHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toNotHaveTrait:"), fontObj, trait)
-	return rv
-}
-
-// Modifies a trait of the font. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462353-modifyfont?language=objc
-func (f_ FontManager) ModifyFont(sender objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("modifyFont:"), sender)
-}
-
 // Returns an array with one entry for each available member of a font family. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462316-availablemembersoffontfamily?language=objc
 func (f_ FontManager) AvailableMembersOfFontFamily(fam string) [][]objc.Object {
 	rv := objc.Call[[][]objc.Object](f_, objc.Sel("availableMembersOfFontFamily:"), fam)
-	return rv
-}
-
-// A Boolean value that indicates whether a responder handled the font manager’s action message. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462386-sendaction?language=objc
-func (f_ FontManager) SendAction() bool {
-	rv := objc.Call[bool](f_, objc.Sel("sendAction"))
 	return rv
 }
 
@@ -343,11 +298,64 @@ func (f_ FontManager) CurrentFontAction() FontAction {
 	return rv
 }
 
-// The names of the fonts available in the system (not the NSFont objects themselves). [Full Topic]
+// The object that receives action messages related to the font manager. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462372-availablefonts?language=objc
-func (f_ FontManager) AvailableFonts() []string {
-	rv := objc.Call[[]string](f_, objc.Sel("availableFonts"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462380-target?language=objc
+func (f_ FontManager) Target() objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("target"))
+	return rv
+}
+
+// The object that receives action messages related to the font manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462380-target?language=objc
+func (f_ FontManager) SetTarget(value objc.IObject) {
+	objc.Call[objc.Void](f_, objc.Sel("setTarget:"), value)
+}
+
+// The action sent to the first responder when the user selects a new font from the Font panel or chooses a command from the Font menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462349-action?language=objc
+func (f_ FontManager) Action() objc.Selector {
+	rv := objc.Call[objc.Selector](f_, objc.Sel("action"))
+	return rv
+}
+
+// The action sent to the first responder when the user selects a new font from the Font panel or chooses a command from the Font menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462349-action?language=objc
+func (f_ FontManager) SetAction(value objc.Selector) {
+	objc.Call[objc.Void](f_, objc.Sel("setAction:"), value)
+}
+
+// A Boolean value that indicates whether the currently selected font has multiple fonts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462376-multiple?language=objc
+func (f_ FontManager) IsMultiple() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isMultiple"))
+	return rv
+}
+
+// Returns the shared instance of the font manager for the application, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462360-sharedfontmanager?language=objc
+func (fc _FontManagerClass) SharedFontManager() FontManager {
+	rv := objc.Call[FontManager](fc, objc.Sel("sharedFontManager"))
+	return rv
+}
+
+// Returns the shared instance of the font manager for the application, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462360-sharedfontmanager?language=objc
+func FontManager_SharedFontManager() FontManager {
+	return FontManagerClass.SharedFontManager()
+}
+
+// The names of the font families available in the system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462323-availablefontfamilies?language=objc
+func (f_ FontManager) AvailableFontFamilies() []string {
+	rv := objc.Call[[]string](f_, objc.Sel("availableFontFamilies"))
 	return rv
 }
 
@@ -374,63 +382,10 @@ func (f_ FontManager) SetEnabled(value bool) {
 	objc.Call[objc.Void](f_, objc.Sel("setEnabled:"), value)
 }
 
-// A Boolean value that indicates whether the currently selected font has multiple fonts. [Full Topic]
+// The names of the fonts available in the system (not the NSFont objects themselves). [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462376-multiple?language=objc
-func (f_ FontManager) IsMultiple() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isMultiple"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462372-availablefonts?language=objc
+func (f_ FontManager) AvailableFonts() []string {
+	rv := objc.Call[[]string](f_, objc.Sel("availableFonts"))
 	return rv
-}
-
-// The object that receives action messages related to the font manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462380-target?language=objc
-func (f_ FontManager) Target() objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("target"))
-	return rv
-}
-
-// The object that receives action messages related to the font manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462380-target?language=objc
-func (f_ FontManager) SetTarget(value objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("setTarget:"), value)
-}
-
-// The names of the font families available in the system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462323-availablefontfamilies?language=objc
-func (f_ FontManager) AvailableFontFamilies() []string {
-	rv := objc.Call[[]string](f_, objc.Sel("availableFontFamilies"))
-	return rv
-}
-
-// Returns the shared instance of the font manager for the application, creating it if necessary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462360-sharedfontmanager?language=objc
-func (fc _FontManagerClass) SharedFontManager() FontManager {
-	rv := objc.Call[FontManager](fc, objc.Sel("sharedFontManager"))
-	return rv
-}
-
-// Returns the shared instance of the font manager for the application, creating it if necessary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462360-sharedfontmanager?language=objc
-func FontManager_SharedFontManager() FontManager {
-	return FontManagerClass.SharedFontManager()
-}
-
-// The action sent to the first responder when the user selects a new font from the Font panel or chooses a command from the Font menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462349-action?language=objc
-func (f_ FontManager) Action() objc.Selector {
-	rv := objc.Call[objc.Selector](f_, objc.Sel("action"))
-	return rv
-}
-
-// The action sent to the first responder when the user selects a new font from the Font panel or chooses a command from the Font menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462349-action?language=objc
-func (f_ FontManager) SetAction(value objc.Selector) {
-	objc.Call[objc.Void](f_, objc.Sel("setAction:"), value)
 }

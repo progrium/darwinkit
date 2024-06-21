@@ -18,16 +18,16 @@ type _WhoseSpecifierClass struct {
 // An interface definition for the [WhoseSpecifier] class.
 type IWhoseSpecifier interface {
 	IScriptObjectSpecifier
-	StartSubelementIdentifier() WhoseSubelementIdentifier
-	SetStartSubelementIdentifier(value WhoseSubelementIdentifier)
-	EndSubelementIdentifier() WhoseSubelementIdentifier
-	SetEndSubelementIdentifier(value WhoseSubelementIdentifier)
 	StartSubelementIndex() int
 	SetStartSubelementIndex(value int)
-	EndSubelementIndex() int
-	SetEndSubelementIndex(value int)
+	EndSubelementIdentifier() WhoseSubelementIdentifier
+	SetEndSubelementIdentifier(value WhoseSubelementIdentifier)
 	Test() ScriptWhoseTest
 	SetTest(value IScriptWhoseTest)
+	EndSubelementIndex() int
+	SetEndSubelementIndex(value int)
+	StartSubelementIdentifier() WhoseSubelementIdentifier
+	SetStartSubelementIdentifier(value WhoseSubelementIdentifier)
 }
 
 // A specifier that indicates every object in a collection matching a condition. [Full Topic]
@@ -105,19 +105,19 @@ func NewWhoseSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier
 	return instance
 }
 
-// Returns the start sub-element identifier for the receiver. [Full Topic]
+// Returns the index position of the first sub-element within the range of objects being tested that pass the receiver's test. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1413408-startsubelementidentifier?language=objc
-func (w_ WhoseSpecifier) StartSubelementIdentifier() WhoseSubelementIdentifier {
-	rv := objc.Call[WhoseSubelementIdentifier](w_, objc.Sel("startSubelementIdentifier"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1417856-startsubelementindex?language=objc
+func (w_ WhoseSpecifier) StartSubelementIndex() int {
+	rv := objc.Call[int](w_, objc.Sel("startSubelementIndex"))
 	return rv
 }
 
-// Returns the start sub-element identifier for the receiver. [Full Topic]
+// Returns the index position of the first sub-element within the range of objects being tested that pass the receiver's test. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1413408-startsubelementidentifier?language=objc
-func (w_ WhoseSpecifier) SetStartSubelementIdentifier(value WhoseSubelementIdentifier) {
-	objc.Call[objc.Void](w_, objc.Sel("setStartSubelementIdentifier:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1417856-startsubelementindex?language=objc
+func (w_ WhoseSpecifier) SetStartSubelementIndex(value int) {
+	objc.Call[objc.Void](w_, objc.Sel("setStartSubelementIndex:"), value)
 }
 
 // Sets the end sub-element identifier for the specifier to the value of a given sub-element. [Full Topic]
@@ -135,19 +135,19 @@ func (w_ WhoseSpecifier) SetEndSubelementIdentifier(value WhoseSubelementIdentif
 	objc.Call[objc.Void](w_, objc.Sel("setEndSubelementIdentifier:"), value)
 }
 
-// Returns the index position of the first sub-element within the range of objects being tested that pass the receiver's test. [Full Topic]
+// Returns the test object encapsulated by the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1417856-startsubelementindex?language=objc
-func (w_ WhoseSpecifier) StartSubelementIndex() int {
-	rv := objc.Call[int](w_, objc.Sel("startSubelementIndex"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412482-test?language=objc
+func (w_ WhoseSpecifier) Test() ScriptWhoseTest {
+	rv := objc.Call[ScriptWhoseTest](w_, objc.Sel("test"))
 	return rv
 }
 
-// Returns the index position of the first sub-element within the range of objects being tested that pass the receiver's test. [Full Topic]
+// Returns the test object encapsulated by the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1417856-startsubelementindex?language=objc
-func (w_ WhoseSpecifier) SetStartSubelementIndex(value int) {
-	objc.Call[objc.Void](w_, objc.Sel("setStartSubelementIndex:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412482-test?language=objc
+func (w_ WhoseSpecifier) SetTest(value IScriptWhoseTest) {
+	objc.Call[objc.Void](w_, objc.Sel("setTest:"), value)
 }
 
 // Sets the index position of the last sub-element within the range of objects being tested that pass the specifier’s test. [Full Topic]
@@ -165,17 +165,17 @@ func (w_ WhoseSpecifier) SetEndSubelementIndex(value int) {
 	objc.Call[objc.Void](w_, objc.Sel("setEndSubelementIndex:"), value)
 }
 
-// Returns the test object encapsulated by the receiver. [Full Topic]
+// Returns the start sub-element identifier for the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412482-test?language=objc
-func (w_ WhoseSpecifier) Test() ScriptWhoseTest {
-	rv := objc.Call[ScriptWhoseTest](w_, objc.Sel("test"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1413408-startsubelementidentifier?language=objc
+func (w_ WhoseSpecifier) StartSubelementIdentifier() WhoseSubelementIdentifier {
+	rv := objc.Call[WhoseSubelementIdentifier](w_, objc.Sel("startSubelementIdentifier"))
 	return rv
 }
 
-// Returns the test object encapsulated by the receiver. [Full Topic]
+// Returns the start sub-element identifier for the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412482-test?language=objc
-func (w_ WhoseSpecifier) SetTest(value IScriptWhoseTest) {
-	objc.Call[objc.Void](w_, objc.Sel("setTest:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1413408-startsubelementidentifier?language=objc
+func (w_ WhoseSpecifier) SetStartSubelementIdentifier(value WhoseSubelementIdentifier) {
+	objc.Call[objc.Void](w_, objc.Sel("setStartSubelementIdentifier:"), value)
 }

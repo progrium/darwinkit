@@ -19,9 +19,8 @@ type _WebsiteDataStoreClass struct {
 // An interface definition for the [WebsiteDataStore] class.
 type IWebsiteDataStore interface {
 	objc.IObject
-	RemoveDataOfTypesModifiedSinceCompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func())
-	RemoveDataOfTypesForDataRecordsCompletionHandler(dataTypes foundation.ISet, dataRecords []IWebsiteDataRecord, completionHandler func())
 	FetchDataRecordsOfTypesCompletionHandler(dataTypes foundation.ISet, completionHandler func(arg0 []WebsiteDataRecord))
+	RemoveDataOfTypesModifiedSinceCompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func())
 	IsPersistent() bool
 	HttpCookieStore() HTTPCookieStore
 }
@@ -59,21 +58,6 @@ func (w_ WebsiteDataStore) Init() WebsiteDataStore {
 	return rv
 }
 
-// Returns the set of all the available data types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532929-allwebsitedatatypes?language=objc
-func (wc _WebsiteDataStoreClass) AllWebsiteDataTypes() foundation.Set {
-	rv := objc.Call[foundation.Set](wc, objc.Sel("allWebsiteDataTypes"))
-	return rv
-}
-
-// Returns the set of all the available data types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532929-allwebsitedatatypes?language=objc
-func WebsiteDataStore_AllWebsiteDataTypes() foundation.Set {
-	return WebsiteDataStoreClass.AllWebsiteDataTypes()
-}
-
 // Returns the default data store, which stores data persistently to disk. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532937-defaultdatastore?language=objc
@@ -89,25 +73,26 @@ func WebsiteDataStore_DefaultDataStore() WebsiteDataStore {
 	return WebsiteDataStoreClass.DefaultDataStore()
 }
 
-// Removes website data that changed after the specified date. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedataoftypes?language=objc
-func (w_ WebsiteDataStore) RemoveDataOfTypesModifiedSinceCompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:modifiedSince:completionHandler:"), dataTypes, date, completionHandler)
-}
-
-// Removes the specified types of website data from one or more data records. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532936-removedataoftypes?language=objc
-func (w_ WebsiteDataStore) RemoveDataOfTypesForDataRecordsCompletionHandler(dataTypes foundation.ISet, dataRecords []IWebsiteDataRecord, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:forDataRecords:completionHandler:"), dataTypes, dataRecords, completionHandler)
-}
-
 // Fetches the specified types of records from the data store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532932-fetchdatarecordsoftypes?language=objc
 func (w_ WebsiteDataStore) FetchDataRecordsOfTypesCompletionHandler(dataTypes foundation.ISet, completionHandler func(arg0 []WebsiteDataRecord)) {
 	objc.Call[objc.Void](w_, objc.Sel("fetchDataRecordsOfTypes:completionHandler:"), dataTypes, completionHandler)
+}
+
+// Returns the set of all the available data types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532929-allwebsitedatatypes?language=objc
+func (wc _WebsiteDataStoreClass) AllWebsiteDataTypes() foundation.Set {
+	rv := objc.Call[foundation.Set](wc, objc.Sel("allWebsiteDataTypes"))
+	return rv
+}
+
+// Returns the set of all the available data types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532929-allwebsitedatatypes?language=objc
+func WebsiteDataStore_AllWebsiteDataTypes() foundation.Set {
+	return WebsiteDataStoreClass.AllWebsiteDataTypes()
 }
 
 // Creates a new data store object that stores website data in memory, and doesn’t write that data to disk. [Full Topic]
@@ -123,6 +108,13 @@ func (wc _WebsiteDataStoreClass) NonPersistentDataStore() WebsiteDataStore {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532934-nonpersistentdatastore?language=objc
 func WebsiteDataStore_NonPersistentDataStore() WebsiteDataStore {
 	return WebsiteDataStoreClass.NonPersistentDataStore()
+}
+
+// Removes website data that changed after the specified date. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedataoftypes?language=objc
+func (w_ WebsiteDataStore) RemoveDataOfTypesModifiedSinceCompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func()) {
+	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:modifiedSince:completionHandler:"), dataTypes, date, completionHandler)
 }
 
 // A Boolean value that indicates whether this object stores data to disk. [Full Topic]

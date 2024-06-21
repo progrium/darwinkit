@@ -19,38 +19,35 @@ type _OutlineViewClass struct {
 // An interface definition for the [OutlineView] class.
 type IOutlineView interface {
 	ITableView
+	SetDropItemDropChildIndex(item objc.IObject, index int)
 	MoveItemAtIndexInParentToIndexInParent(fromIndex int, oldParent objc.IObject, toIndex int, newParent objc.IObject)
 	IsItemExpanded(item objc.IObject) bool
-	ItemAtRow(row int) objc.Object
-	RemoveItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions)
 	RowForItem(item objc.IObject) int
-	ExpandItemExpandChildren(item objc.IObject, expandChildren bool)
-	LevelForRow(row int) int
-	ChildIndexForItem(item objc.IObject) int
-	FrameOfOutlineCellAtRow(row int) foundation.Rect
-	ReloadItem(item objc.IObject)
-	InsertItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions)
-	NumberOfChildrenOfItem(item objc.IObject) int
-	ParentForItem(item objc.IObject) objc.Object
-	LevelForItem(item objc.IObject) int
-	CollapseItem(item objc.IObject)
-	ChildOfItem(index int, item objc.IObject) objc.Object
-	CollapseItemCollapseChildren(item objc.IObject, collapseChildren bool)
-	SetDropItemDropChildIndex(item objc.IObject, index int)
-	ReloadItemReloadChildren(item objc.IObject, reloadChildren bool)
-	ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool
-	IsExpandable(item objc.IObject) bool
 	ExpandItem(item objc.IObject)
-	IndentationMarkerFollowsCell() bool
-	SetIndentationMarkerFollowsCell(value bool)
-	StronglyReferencesItems() bool
-	SetStronglyReferencesItems(value bool)
+	LevelForItem(item objc.IObject) int
+	ReloadItem(item objc.IObject)
+	RemoveItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions)
+	ParentForItem(item objc.IObject) objc.Object
+	CollapseItem(item objc.IObject)
+	LevelForRow(row int) int
+	NumberOfChildrenOfItem(item objc.IObject) int
+	InsertItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions)
+	FrameOfOutlineCellAtRow(row int) foundation.Rect
+	IsExpandable(item objc.IObject) bool
+	ItemAtRow(row int) objc.Object
+	ChildOfItem(index int, item objc.IObject) objc.Object
+	ChildIndexForItem(item objc.IObject) int
+	ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool
 	AutosaveExpandedItems() bool
 	SetAutosaveExpandedItems(value bool)
-	OutlineTableColumn() TableColumn
-	SetOutlineTableColumn(value ITableColumn)
 	AutoresizesOutlineColumn() bool
 	SetAutoresizesOutlineColumn(value bool)
+	StronglyReferencesItems() bool
+	SetStronglyReferencesItems(value bool)
+	IndentationMarkerFollowsCell() bool
+	SetIndentationMarkerFollowsCell(value bool)
+	OutlineTableColumn() TableColumn
+	SetOutlineTableColumn(value ITableColumn)
 	IndentationPerLevel() float64
 	SetIndentationPerLevel(value float64)
 }
@@ -102,6 +99,13 @@ func NewOutlineViewWithFrame(frameRect foundation.Rect) OutlineView {
 	return instance
 }
 
+// Used to “retarget” a proposed drop. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1525351-setdropitem?language=objc
+func (o_ OutlineView) SetDropItemDropChildIndex(item objc.IObject, index int) {
+	objc.Call[objc.Void](o_, objc.Sel("setDropItem:dropChildIndex:"), item, index)
+}
+
 // Moves an item at a given index in the given parent to a new index in a new parent. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1530467-moveitematindex?language=objc
@@ -117,21 +121,6 @@ func (o_ OutlineView) IsItemExpanded(item objc.IObject) bool {
 	return rv
 }
 
-// Returns the item associated with a given row. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1534846-itematrow?language=objc
-func (o_ OutlineView) ItemAtRow(row int) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("itemAtRow:"), row)
-	return rv
-}
-
-// Removes items at the given indexes in the given parent with the specified optional animations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1527168-removeitemsatindexes?language=objc
-func (o_ OutlineView) RemoveItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](o_, objc.Sel("removeItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
-}
-
 // Returns the row associated with a given item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533885-rowforitem?language=objc
@@ -140,65 +129,11 @@ func (o_ OutlineView) RowForItem(item objc.IObject) int {
 	return rv
 }
 
-// Expands a specified item and, optionally, its children. [Full Topic]
+// Expands a given item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532826-expanditem?language=objc
-func (o_ OutlineView) ExpandItemExpandChildren(item objc.IObject, expandChildren bool) {
-	objc.Call[objc.Void](o_, objc.Sel("expandItem:expandChildren:"), item, expandChildren)
-}
-
-// Returns the indentation level for a given row. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531449-levelforrow?language=objc
-func (o_ OutlineView) LevelForRow(row int) int {
-	rv := objc.Call[int](o_, objc.Sel("levelForRow:"), row)
-	return rv
-}
-
-// Returns the child index of the specified item within its parent. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1529954-childindexforitem?language=objc
-func (o_ OutlineView) ChildIndexForItem(item objc.IObject) int {
-	rv := objc.Call[int](o_, objc.Sel("childIndexForItem:"), item)
-	return rv
-}
-
-// Returns the frame of the outline cell for a given row. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532314-frameofoutlinecellatrow?language=objc
-func (o_ OutlineView) FrameOfOutlineCellAtRow(row int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](o_, objc.Sel("frameOfOutlineCellAtRow:"), row)
-	return rv
-}
-
-// Reloads and redisplays the data for the given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531263-reloaditem?language=objc
-func (o_ OutlineView) ReloadItem(item objc.IObject) {
-	objc.Call[objc.Void](o_, objc.Sel("reloadItem:"), item)
-}
-
-// Inserts new items at the given indexes in the given parent with the specified optional animations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1528656-insertitemsatindexes?language=objc
-func (o_ OutlineView) InsertItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](o_, objc.Sel("insertItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
-}
-
-// Returns the number of children for the specified parent item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1534304-numberofchildrenofitem?language=objc
-func (o_ OutlineView) NumberOfChildrenOfItem(item objc.IObject) int {
-	rv := objc.Call[int](o_, objc.Sel("numberOfChildrenOfItem:"), item)
-	return rv
-}
-
-// Returns the parent for a given item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535031-parentforitem?language=objc
-func (o_ OutlineView) ParentForItem(item objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("parentForItem:"), item)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535323-expanditem?language=objc
+func (o_ OutlineView) ExpandItem(item objc.IObject) {
+	objc.Call[objc.Void](o_, objc.Sel("expandItem:"), item)
 }
 
 // Returns the indentation level for a given item. [Full Topic]
@@ -209,6 +144,28 @@ func (o_ OutlineView) LevelForItem(item objc.IObject) int {
 	return rv
 }
 
+// Reloads and redisplays the data for the given item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531263-reloaditem?language=objc
+func (o_ OutlineView) ReloadItem(item objc.IObject) {
+	objc.Call[objc.Void](o_, objc.Sel("reloadItem:"), item)
+}
+
+// Removes items at the given indexes in the given parent with the specified optional animations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1527168-removeitemsatindexes?language=objc
+func (o_ OutlineView) RemoveItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
+	objc.Call[objc.Void](o_, objc.Sel("removeItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
+}
+
+// Returns the parent for a given item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535031-parentforitem?language=objc
+func (o_ OutlineView) ParentForItem(item objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("parentForItem:"), item)
+	return rv
+}
+
 // Collapses a given item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532295-collapseitem?language=objc
@@ -216,40 +173,34 @@ func (o_ OutlineView) CollapseItem(item objc.IObject) {
 	objc.Call[objc.Void](o_, objc.Sel("collapseItem:"), item)
 }
 
-// Returns the specified child of an item. [Full Topic]
+// Returns the indentation level for a given row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1527501-child?language=objc
-func (o_ OutlineView) ChildOfItem(index int, item objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("child:ofItem:"), index, item)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531449-levelforrow?language=objc
+func (o_ OutlineView) LevelForRow(row int) int {
+	rv := objc.Call[int](o_, objc.Sel("levelForRow:"), row)
 	return rv
 }
 
-// Collapses a given item and, optionally, its children. [Full Topic]
+// Returns the number of children for the specified parent item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531436-collapseitem?language=objc
-func (o_ OutlineView) CollapseItemCollapseChildren(item objc.IObject, collapseChildren bool) {
-	objc.Call[objc.Void](o_, objc.Sel("collapseItem:collapseChildren:"), item, collapseChildren)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1534304-numberofchildrenofitem?language=objc
+func (o_ OutlineView) NumberOfChildrenOfItem(item objc.IObject) int {
+	rv := objc.Call[int](o_, objc.Sel("numberOfChildrenOfItem:"), item)
+	return rv
 }
 
-// Used to “retarget” a proposed drop. [Full Topic]
+// Inserts new items at the given indexes in the given parent with the specified optional animations. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1525351-setdropitem?language=objc
-func (o_ OutlineView) SetDropItemDropChildIndex(item objc.IObject, index int) {
-	objc.Call[objc.Void](o_, objc.Sel("setDropItem:dropChildIndex:"), item, index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1528656-insertitemsatindexes?language=objc
+func (o_ OutlineView) InsertItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
+	objc.Call[objc.Void](o_, objc.Sel("insertItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
 }
 
-// Reloads a given item and, optionally, its children. [Full Topic]
+// Returns the frame of the outline cell for a given row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531176-reloaditem?language=objc
-func (o_ OutlineView) ReloadItemReloadChildren(item objc.IObject, reloadChildren bool) {
-	objc.Call[objc.Void](o_, objc.Sel("reloadItem:reloadChildren:"), item, reloadChildren)
-}
-
-// Returns a Boolean value that indicates whether auto-expanded items should return to their original collapsed state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535362-shouldcollapseautoexpandeditemsf?language=objc
-func (o_ OutlineView) ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool {
-	rv := objc.Call[bool](o_, objc.Sel("shouldCollapseAutoExpandedItemsForDeposited:"), deposited)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532314-frameofoutlinecellatrow?language=objc
+func (o_ OutlineView) FrameOfOutlineCellAtRow(row int) foundation.Rect {
+	rv := objc.Call[foundation.Rect](o_, objc.Sel("frameOfOutlineCellAtRow:"), row)
 	return rv
 }
 
@@ -261,41 +212,36 @@ func (o_ OutlineView) IsExpandable(item objc.IObject) bool {
 	return rv
 }
 
-// Expands a given item. [Full Topic]
+// Returns the item associated with a given row. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535323-expanditem?language=objc
-func (o_ OutlineView) ExpandItem(item objc.IObject) {
-	objc.Call[objc.Void](o_, objc.Sel("expandItem:"), item)
-}
-
-// A Boolean value indicating whether the indentation marker symbol displayed in the outline column should be indented along with the cell contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531707-indentationmarkerfollowscell?language=objc
-func (o_ OutlineView) IndentationMarkerFollowsCell() bool {
-	rv := objc.Call[bool](o_, objc.Sel("indentationMarkerFollowsCell"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1534846-itematrow?language=objc
+func (o_ OutlineView) ItemAtRow(row int) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("itemAtRow:"), row)
 	return rv
 }
 
-// A Boolean value indicating whether the indentation marker symbol displayed in the outline column should be indented along with the cell contents. [Full Topic]
+// Returns the specified child of an item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531707-indentationmarkerfollowscell?language=objc
-func (o_ OutlineView) SetIndentationMarkerFollowsCell(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setIndentationMarkerFollowsCell:"), value)
-}
-
-// A Boolean value that indicates whether the outline view retains and releases the objects returned from its data source. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1644626-stronglyreferencesitems?language=objc
-func (o_ OutlineView) StronglyReferencesItems() bool {
-	rv := objc.Call[bool](o_, objc.Sel("stronglyReferencesItems"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1527501-child?language=objc
+func (o_ OutlineView) ChildOfItem(index int, item objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](o_, objc.Sel("child:ofItem:"), index, item)
 	return rv
 }
 
-// A Boolean value that indicates whether the outline view retains and releases the objects returned from its data source. [Full Topic]
+// Returns the child index of the specified item within its parent. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1644626-stronglyreferencesitems?language=objc
-func (o_ OutlineView) SetStronglyReferencesItems(value bool) {
-	objc.Call[objc.Void](o_, objc.Sel("setStronglyReferencesItems:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1529954-childindexforitem?language=objc
+func (o_ OutlineView) ChildIndexForItem(item objc.IObject) int {
+	rv := objc.Call[int](o_, objc.Sel("childIndexForItem:"), item)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether auto-expanded items should return to their original collapsed state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1535362-shouldcollapseautoexpandeditemsf?language=objc
+func (o_ OutlineView) ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool {
+	rv := objc.Call[bool](o_, objc.Sel("shouldCollapseAutoExpandedItemsForDeposited:"), deposited)
+	return rv
 }
 
 // A Boolean value indicating whether the expanded items are automatically saved across launches of the app. [Full Topic]
@@ -313,21 +259,6 @@ func (o_ OutlineView) SetAutosaveExpandedItems(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setAutosaveExpandedItems:"), value)
 }
 
-// The table column in which hierarchical data is displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533581-outlinetablecolumn?language=objc
-func (o_ OutlineView) OutlineTableColumn() TableColumn {
-	rv := objc.Call[TableColumn](o_, objc.Sel("outlineTableColumn"))
-	return rv
-}
-
-// The table column in which hierarchical data is displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533581-outlinetablecolumn?language=objc
-func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("setOutlineTableColumn:"), value)
-}
-
 // A Boolean value that indicates whether the outline view resizes its outline column when the user expands or collapses items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532304-autoresizesoutlinecolumn?language=objc
@@ -341,6 +272,51 @@ func (o_ OutlineView) AutoresizesOutlineColumn() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1532304-autoresizesoutlinecolumn?language=objc
 func (o_ OutlineView) SetAutoresizesOutlineColumn(value bool) {
 	objc.Call[objc.Void](o_, objc.Sel("setAutoresizesOutlineColumn:"), value)
+}
+
+// A Boolean value that indicates whether the outline view retains and releases the objects returned from its data source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1644626-stronglyreferencesitems?language=objc
+func (o_ OutlineView) StronglyReferencesItems() bool {
+	rv := objc.Call[bool](o_, objc.Sel("stronglyReferencesItems"))
+	return rv
+}
+
+// A Boolean value that indicates whether the outline view retains and releases the objects returned from its data source. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1644626-stronglyreferencesitems?language=objc
+func (o_ OutlineView) SetStronglyReferencesItems(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setStronglyReferencesItems:"), value)
+}
+
+// A Boolean value indicating whether the indentation marker symbol displayed in the outline column should be indented along with the cell contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531707-indentationmarkerfollowscell?language=objc
+func (o_ OutlineView) IndentationMarkerFollowsCell() bool {
+	rv := objc.Call[bool](o_, objc.Sel("indentationMarkerFollowsCell"))
+	return rv
+}
+
+// A Boolean value indicating whether the indentation marker symbol displayed in the outline column should be indented along with the cell contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1531707-indentationmarkerfollowscell?language=objc
+func (o_ OutlineView) SetIndentationMarkerFollowsCell(value bool) {
+	objc.Call[objc.Void](o_, objc.Sel("setIndentationMarkerFollowsCell:"), value)
+}
+
+// The table column in which hierarchical data is displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533581-outlinetablecolumn?language=objc
+func (o_ OutlineView) OutlineTableColumn() TableColumn {
+	rv := objc.Call[TableColumn](o_, objc.Sel("outlineTableColumn"))
+	return rv
+}
+
+// The table column in which hierarchical data is displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533581-outlinetablecolumn?language=objc
+func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
+	objc.Call[objc.Void](o_, objc.Sel("setOutlineTableColumn:"), value)
 }
 
 // The per-level indentation, measured in points. [Full Topic]

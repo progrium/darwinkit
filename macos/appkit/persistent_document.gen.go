@@ -21,7 +21,6 @@ type _PersistentDocumentClass struct {
 type IPersistentDocument interface {
 	IDocument
 	PersistentStoreTypeForFileType(fileType string) string
-	ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error unsafe.Pointer) bool
 	ManagedObjectModel() coredata.ManagedObjectModel
 	ManagedObjectContext() coredata.ManagedObjectContext
 	SetManagedObjectContext(value coredata.IManagedObjectContext)
@@ -60,20 +59,6 @@ func (p_ PersistentDocument) Init() PersistentDocument {
 	return rv
 }
 
-func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
-	rv := objc.Call[PersistentDocument](p_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, outError)
-	return rv
-}
-
-// Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
-func NewPersistentDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
-	instance := PersistentDocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
-	instance.Autorelease()
-	return instance
-}
-
 func (p_ PersistentDocument) InitWithTypeError(typeName string, outError unsafe.Pointer) PersistentDocument {
 	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithType:error:"), typeName, outError)
 	return rv
@@ -88,16 +73,16 @@ func NewPersistentDocumentWithTypeError(typeName string, outError unsafe.Pointer
 	return instance
 }
 
-func (p_ PersistentDocument) InitWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
-	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithContentsOfURL:ofType:error:"), url, typeName, outError)
+func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
+	rv := objc.Call[PersistentDocument](p_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, outError)
 	return rv
 }
 
-// Initializes a document located by a URL of a specified type. [Full Topic]
+// Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515097-initwithcontentsofurl?language=objc
-func NewPersistentDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
-	instance := PersistentDocumentClass.Alloc().InitWithContentsOfURLOfTypeError(url, typeName, outError)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
+func NewPersistentDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
+	instance := PersistentDocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
 	instance.Autorelease()
 	return instance
 }
@@ -107,14 +92,6 @@ func NewPersistentDocumentWithContentsOfURLOfTypeError(url foundation.IURL, type
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspersistentdocument/1396168-persistentstoretypeforfiletype?language=objc
 func (p_ PersistentDocument) PersistentStoreTypeForFileType(fileType string) string {
 	rv := objc.Call[string](p_, objc.Sel("persistentStoreTypeForFileType:"), fileType)
-	return rv
-}
-
-// Configures the receiver’s persistent store coordinator with the appropriate stores for a given URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspersistentdocument/1396160-configurepersistentstorecoordina?language=objc
-func (p_ PersistentDocument) ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](p_, objc.Sel("configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"), url, fileType, configuration, storeOptions, error)
 	return rv
 }
 

@@ -53,6 +53,18 @@ func (u_ UnitConcentrationMass) Init() UnitConcentrationMass {
 	return rv
 }
 
+func (uc _UnitConcentrationMassClass) BaseUnit() UnitConcentrationMass {
+	rv := objc.Call[UnitConcentrationMass](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitConcentrationMass_BaseUnit() UnitConcentrationMass {
+	return UnitConcentrationMassClass.BaseUnit()
+}
+
 func (u_ UnitConcentrationMass) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitConcentrationMass {
 	rv := objc.Call[UnitConcentrationMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitConcentrationMassWithSymbolConverter(symbol string, converter IUnitC
 	instance := UnitConcentrationMassClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitConcentrationMassClass) BaseUnit() UnitConcentrationMass {
-	rv := objc.Call[UnitConcentrationMass](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitConcentrationMass_BaseUnit() UnitConcentrationMass {
-	return UnitConcentrationMassClass.BaseUnit()
 }
 
 func (u_ UnitConcentrationMass) InitWithSymbol(symbol string) UnitConcentrationMass {
@@ -108,21 +108,6 @@ func UnitConcentrationMass_MillimolesPerLiterWithGramsPerMole(gramsPerMole float
 	return UnitConcentrationMassClass.MillimolesPerLiterWithGramsPerMole(gramsPerMole)
 }
 
-// The milligrams per deciliter unit of concentration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856024-milligramsperdeciliter?language=objc
-func (uc _UnitConcentrationMassClass) MilligramsPerDeciliter() UnitConcentrationMass {
-	rv := objc.Call[UnitConcentrationMass](uc, objc.Sel("milligramsPerDeciliter"))
-	return rv
-}
-
-// The milligrams per deciliter unit of concentration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856024-milligramsperdeciliter?language=objc
-func UnitConcentrationMass_MilligramsPerDeciliter() UnitConcentrationMass {
-	return UnitConcentrationMassClass.MilligramsPerDeciliter()
-}
-
 // The grams per liter unit of concentration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856019-gramsperliter?language=objc
@@ -136,4 +121,19 @@ func (uc _UnitConcentrationMassClass) GramsPerLiter() UnitConcentrationMass {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856019-gramsperliter?language=objc
 func UnitConcentrationMass_GramsPerLiter() UnitConcentrationMass {
 	return UnitConcentrationMassClass.GramsPerLiter()
+}
+
+// The milligrams per deciliter unit of concentration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856024-milligramsperdeciliter?language=objc
+func (uc _UnitConcentrationMassClass) MilligramsPerDeciliter() UnitConcentrationMass {
+	rv := objc.Call[UnitConcentrationMass](uc, objc.Sel("milligramsPerDeciliter"))
+	return rv
+}
+
+// The milligrams per deciliter unit of concentration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitconcentrationmass/1856024-milligramsperdeciliter?language=objc
+func UnitConcentrationMass_MilligramsPerDeciliter() UnitConcentrationMass {
+	return UnitConcentrationMassClass.MilligramsPerDeciliter()
 }

@@ -19,13 +19,13 @@ type _CIResponderClass struct {
 // An interface definition for the [CIResponder] class.
 type ICIResponder interface {
 	objc.IObject
+	NotifyProfileOnChannelIsEnabled(aProfile ICIProfile, channel ChannelNumber, enabledState bool) bool
 	SendProfileOnChannelProfileData(aProfile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool
 	Start() bool
 	Stop()
-	NotifyProfileOnChannelIsEnabled(aProfile ICIProfile, channel ChannelNumber, enabledState bool) bool
 	Initiators() []CIInitiatiorMUID
-	ProfileDelegate() CIProfileResponderDelegateObject
 	DeviceInfo() CIDeviceInfo
+	ProfileDelegate() CIProfileResponderDelegateObject
 }
 
 // An object that responds to MIDI-CI inquiries from an initiator on behalf of a MIDI client, and handles profile and property exchange operations. [Full Topic]
@@ -76,6 +76,14 @@ func (c_ CIResponder) Init() CIResponder {
 	return rv
 }
 
+// Enables or disables a profile and notifies all connected initiators. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553257-notifyprofile?language=objc
+func (c_ CIResponder) NotifyProfileOnChannelIsEnabled(aProfile ICIProfile, channel ChannelNumber, enabledState bool) bool {
+	rv := objc.Call[bool](c_, objc.Sel("notifyProfile:onChannel:isEnabled:"), aProfile, channel, enabledState)
+	return rv
+}
+
 // Sends profile-specific data to all connected initiators. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553259-sendprofile?language=objc
@@ -99,14 +107,6 @@ func (c_ CIResponder) Stop() {
 	objc.Call[objc.Void](c_, objc.Sel("stop"))
 }
 
-// Enables or disables a profile and notifies all connected initiators. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553257-notifyprofile?language=objc
-func (c_ CIResponder) NotifyProfileOnChannelIsEnabled(aProfile ICIProfile, channel ChannelNumber, enabledState bool) bool {
-	rv := objc.Call[bool](c_, objc.Sel("notifyProfile:onChannel:isEnabled:"), aProfile, channel, enabledState)
-	return rv
-}
-
 // An array of initiators. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3580333-initiators?language=objc
@@ -115,18 +115,18 @@ func (c_ CIResponder) Initiators() []CIInitiatiorMUID {
 	return rv
 }
 
-// The profile delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3580334-profiledelegate?language=objc
-func (c_ CIResponder) ProfileDelegate() CIProfileResponderDelegateObject {
-	rv := objc.Call[CIProfileResponderDelegateObject](c_, objc.Sel("profileDelegate"))
-	return rv
-}
-
 // The MIDI-CI device’s information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553255-deviceinfo?language=objc
 func (c_ CIResponder) DeviceInfo() CIDeviceInfo {
 	rv := objc.Call[CIDeviceInfo](c_, objc.Sel("deviceInfo"))
+	return rv
+}
+
+// The profile delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3580334-profiledelegate?language=objc
+func (c_ CIResponder) ProfileDelegate() CIProfileResponderDelegateObject {
+	rv := objc.Call[CIProfileResponderDelegateObject](c_, objc.Sel("profileDelegate"))
 	return rv
 }

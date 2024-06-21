@@ -20,15 +20,14 @@ type _MultiArrayClass struct {
 // An interface definition for the [MultiArray] class.
 type IMultiArray interface {
 	objc.IObject
-	SetObjectForKeyedSubscript(obj foundation.INumber, key []foundation.INumber)
-	SetObjectAtIndexedSubscript(obj foundation.INumber, idx int)
 	ObjectAtIndexedSubscript(idx int) foundation.Number
 	ObjectForKeyedSubscript(key []foundation.INumber) foundation.Number
-	Strides() []foundation.Number
-	PixelBuffer() corevideo.PixelBufferRef
+	SetObjectAtIndexedSubscript(obj foundation.INumber, idx int)
 	Shape() []foundation.Number
-	DataType() MultiArrayDataType
+	PixelBuffer() corevideo.PixelBufferRef
 	Count() int
+	DataType() MultiArrayDataType
+	Strides() []foundation.Number
 }
 
 // A machine learning collection type that stores numeric values in an array with multiple dimensions. [Full Topic]
@@ -70,20 +69,6 @@ func NewMultiArrayWithShapeDataTypeError(shape []foundation.INumber, dataType Mu
 	return instance
 }
 
-func (m_ MultiArray) InitWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
-	rv := objc.Call[MultiArray](m_, objc.Sel("initWithPixelBuffer:shape:"), pixelBuffer, shape)
-	return rv
-}
-
-// Creates a multiarray sharing the surface of a pixel buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/3882834-initwithpixelbuffer?language=objc
-func NewMultiArrayWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
-	instance := MultiArrayClass.Alloc().InitWithPixelBufferShape(pixelBuffer, shape)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error unsafe.Pointer) MultiArray {
 	rv := objc.Call[MultiArray](m_, objc.Sel("initWithDataPointer:shape:dataType:strides:deallocator:error:"), dataPointer, shape, dataType, strides, deallocator, error)
 	return rv
@@ -94,6 +79,20 @@ func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dat
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2881219-initwithdatapointer?language=objc
 func NewMultiArrayWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error unsafe.Pointer) MultiArray {
 	instance := MultiArrayClass.Alloc().InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer, shape, dataType, strides, deallocator, error)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MultiArray) InitWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
+	rv := objc.Call[MultiArray](m_, objc.Sel("initWithPixelBuffer:shape:"), pixelBuffer, shape)
+	return rv
+}
+
+// Creates a multiarray sharing the surface of a pixel buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/3882834-initwithpixelbuffer?language=objc
+func NewMultiArrayWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
+	instance := MultiArrayClass.Alloc().InitWithPixelBufferShape(pixelBuffer, shape)
 	instance.Autorelease()
 	return instance
 }
@@ -118,20 +117,6 @@ func (m_ MultiArray) Init() MultiArray {
 	return rv
 }
 
-// Assigns a number to the multiarray’s element at the location that the number array defines. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879225-setobject?language=objc
-func (m_ MultiArray) SetObjectForKeyedSubscript(obj foundation.INumber, key []foundation.INumber) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), obj, key)
-}
-
-// Assigns a number to the multiarray’s element at the location that the linear offset defines. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879226-setobject?language=objc
-func (m_ MultiArray) SetObjectAtIndexedSubscript(obj foundation.INumber, idx int) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
-}
-
 // Accesses the multiarray by using a linear offset. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879228-objectatindexedsubscript?language=objc
@@ -148,11 +133,18 @@ func (m_ MultiArray) ObjectForKeyedSubscript(key []foundation.INumber) foundatio
 	return rv
 }
 
-// A number array in which each element is the number of memory locations that span the length of the corresponding dimension. [Full Topic]
+// Assigns a number to the multiarray’s element at the location that the linear offset defines. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879222-strides?language=objc
-func (m_ MultiArray) Strides() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](m_, objc.Sel("strides"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879226-setobject?language=objc
+func (m_ MultiArray) SetObjectAtIndexedSubscript(obj foundation.INumber, idx int) {
+	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
+}
+
+// The multiarray’s multidimensional shape as a number array in which each element’s value is the size of the corresponding dimension. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879229-shape?language=objc
+func (m_ MultiArray) Shape() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](m_, objc.Sel("shape"))
 	return rv
 }
 
@@ -164,11 +156,11 @@ func (m_ MultiArray) PixelBuffer() corevideo.PixelBufferRef {
 	return rv
 }
 
-// The multiarray’s multidimensional shape as a number array in which each element’s value is the size of the corresponding dimension. [Full Topic]
+// The total number of elements in the multiarray. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879229-shape?language=objc
-func (m_ MultiArray) Shape() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](m_, objc.Sel("shape"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879233-count?language=objc
+func (m_ MultiArray) Count() int {
+	rv := objc.Call[int](m_, objc.Sel("count"))
 	return rv
 }
 
@@ -180,10 +172,10 @@ func (m_ MultiArray) DataType() MultiArrayDataType {
 	return rv
 }
 
-// The total number of elements in the multiarray. [Full Topic]
+// A number array in which each element is the number of memory locations that span the length of the corresponding dimension. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879233-count?language=objc
-func (m_ MultiArray) Count() int {
-	rv := objc.Call[int](m_, objc.Sel("count"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879222-strides?language=objc
+func (m_ MultiArray) Strides() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](m_, objc.Sel("strides"))
 	return rv
 }

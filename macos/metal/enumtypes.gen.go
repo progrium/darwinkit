@@ -151,7 +151,7 @@ const (
 	BinaryArchiveErrorUnexpectedElement  BinaryArchiveError = 2
 )
 
-// The source and destination blend factors are often needed to complete specification of a blend operation. In most cases, the blend factor for both RGB values (F(rgb)) and alpha values (F(a)) are similar to one another, but in some cases, such as MTLBlendFactorSourceAlphaSaturated, the blend factor is slightly different. Four blend factors (MTLBlendFactorBlendColor, MTLBlendFactorOneMinusBlendColor, MTLBlendFactorBlendAlpha, and MTLBlendFactorOneMinusBlendAlpha) refer to a constant blend color value that is set by the [metal/mtlrendercommandencoder/setblendcolorred] method of MTLRenderCommandEncoder. [Full Topic]
+// The source and destination blend factors are often needed to complete specification of a blend operation. In most cases, the blend factor for both RGB values (F(rgb)) and alpha values (F(a)) are similar to one another, but in some cases, such as MTLBlendFactorSourceAlphaSaturated, the blend factor is slightly different. Four blend factors (MTLBlendFactorBlendColor, MTLBlendFactorOneMinusBlendColor, MTLBlendFactorBlendAlpha, and MTLBlendFactorOneMinusBlendAlpha) refer to a constant blend color value that is set by the setBlendColorRed:green:blue:alpha: method of MTLRenderCommandEncoder. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblendfactor?language=objc
 type BlendFactor uint
@@ -234,7 +234,7 @@ const (
 	CaptureErrorNotSupported      CaptureError = 1
 )
 
-// Values used to specify a mask to permit or restrict writing to color channels of a color value. The values MTLColorWriteMaskRed, MTLColorWriteMaskGreen, MTLColorWriteMaskBlue, and MTLColorWriteMaskAlpha select one color channel each, and they can be bitwise combined. [Full Topic]
+// Values used to specify a mask to permit or restrict writing to color channels of a color value. The values [metal/mtlcolorwritemask/mtlcolorwritemaskred], [metal/mtlcolorwritemask/mtlcolorwritemaskgreen], [metal/mtlcolorwritemask/mtlcolorwritemaskblue], and [metal/mtlcolorwritemask/mtlcolorwritemaskalpha] select one color channel each, and they can be bitwise combined. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcolorwritemask?language=objc
 type ColorWriteMask uint
@@ -1040,7 +1040,7 @@ const (
 	SamplerAddressModeRepeat             SamplerAddressMode = 2
 )
 
-// Values that determine the border color for clamped texture values when the sampler address mode is MTLSamplerAddressModeClampToBorderColor. [Full Topic]
+// Values that determine the border color for clamped texture values when the sampler address mode is [metal/mtlsampleraddressmode/mtlsampleraddressmodeclamptobordercolor]. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsamplerbordercolor?language=objc
 type SamplerBorderColor uint

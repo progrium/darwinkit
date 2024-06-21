@@ -19,11 +19,11 @@ type _PortMessageClass struct {
 type IPortMessage interface {
 	objc.IObject
 	SendBeforeDate(date IDate) bool
-	ReceivePort() Port
-	SendPort() Port
 	Components() []objc.Object
+	SendPort() Port
 	Msgid() uint32
 	SetMsgid(value uint32)
+	ReceivePort() Port
 }
 
 // A low-level, operating system-independent type for inter-application (and inter-thread) messages. [Full Topic]
@@ -81,11 +81,11 @@ func (p_ PortMessage) SendBeforeDate(date IDate) bool {
 	return rv
 }
 
-// For an outgoing message, returns the port on which replies to the receiver will arrive. For an incoming message, returns the port the receiver did arrive on. [Full Topic]
+// Returns the data components of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1413908-receiveport?language=objc
-func (p_ PortMessage) ReceivePort() Port {
-	rv := objc.Call[Port](p_, objc.Sel("receivePort"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1407377-components?language=objc
+func (p_ PortMessage) Components() []objc.Object {
+	rv := objc.Call[[]objc.Object](p_, objc.Sel("components"))
 	return rv
 }
 
@@ -94,14 +94,6 @@ func (p_ PortMessage) ReceivePort() Port {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1417234-sendport?language=objc
 func (p_ PortMessage) SendPort() Port {
 	rv := objc.Call[Port](p_, objc.Sel("sendPort"))
-	return rv
-}
-
-// Returns the data components of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1407377-components?language=objc
-func (p_ PortMessage) Components() []objc.Object {
-	rv := objc.Call[[]objc.Object](p_, objc.Sel("components"))
 	return rv
 }
 
@@ -118,4 +110,12 @@ func (p_ PortMessage) Msgid() uint32 {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1407880-msgid?language=objc
 func (p_ PortMessage) SetMsgid(value uint32) {
 	objc.Call[objc.Void](p_, objc.Sel("setMsgid:"), value)
+}
+
+// For an outgoing message, returns the port on which replies to the receiver will arrive. For an incoming message, returns the port the receiver did arrive on. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1413908-receiveport?language=objc
+func (p_ PortMessage) ReceivePort() Port {
+	rv := objc.Call[Port](p_, objc.Sel("receivePort"))
+	return rv
 }

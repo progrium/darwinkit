@@ -18,10 +18,10 @@ type _TextElementClass struct {
 // An interface definition for the [TextElement] class.
 type ITextElement interface {
 	objc.IObject
-	TextContentManager() TextContentManager
-	SetTextContentManager(value ITextContentManager)
 	ElementRange() TextRange
 	SetElementRange(value ITextRange)
+	TextContentManager() TextContentManager
+	SetTextContentManager(value ITextContentManager)
 }
 
 // An abstract base class that represents the smallest units of text layout such as paragraphs or attachments. [Full Topic]
@@ -71,21 +71,6 @@ func (t_ TextElement) Init() TextElement {
 	return rv
 }
 
-// The value that represents the current content manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
-func (t_ TextElement) TextContentManager() TextContentManager {
-	rv := objc.Call[TextContentManager](t_, objc.Sel("textContentManager"))
-	return rv
-}
-
-// The value that represents the current content manager. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
-func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextContentManager:"), value)
-}
-
 // A range value that represents the range of the element inside the document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809954-elementrange?language=objc
@@ -99,4 +84,19 @@ func (t_ TextElement) ElementRange() TextRange {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809954-elementrange?language=objc
 func (t_ TextElement) SetElementRange(value ITextRange) {
 	objc.Call[objc.Void](t_, objc.Sel("setElementRange:"), value)
+}
+
+// The value that represents the current content manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
+func (t_ TextElement) TextContentManager() TextContentManager {
+	rv := objc.Call[TextContentManager](t_, objc.Sel("textContentManager"))
+	return rv
+}
+
+// The value that represents the current content manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
+func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextContentManager:"), value)
 }

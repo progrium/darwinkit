@@ -18,23 +18,23 @@ type _ContentItemClass struct {
 // An interface definition for the [ContentItem] class.
 type IContentItem interface {
 	objc.IObject
-	IsStreamingContent() bool
-	SetStreamingContent(value bool)
-	IsContainer() bool
-	SetContainer(value bool)
-	IsPlayable() bool
-	SetPlayable(value bool)
+	Subtitle() string
+	SetSubtitle(value string)
 	PlaybackProgress() float32
 	SetPlaybackProgress(value float32)
 	Artwork() MediaItemArtwork
 	SetArtwork(value IMediaItemArtwork)
-	Subtitle() string
-	SetSubtitle(value string)
+	IsStreamingContent() bool
+	SetStreamingContent(value bool)
+	IsContainer() bool
+	SetContainer(value bool)
+	Title() string
+	SetTitle(value string)
 	IsExplicitContent() bool
 	SetExplicitContent(value bool)
 	Identifier() string
-	Title() string
-	SetTitle(value string)
+	IsPlayable() bool
+	SetPlayable(value bool)
 }
 
 // An object that contains the information for a displayed media item. [Full Topic]
@@ -84,49 +84,19 @@ func (c_ ContentItem) Init() ContentItem {
 	return rv
 }
 
-// A Boolean value that indicates whether the content item is streaming content. [Full Topic]
+// A secondary designator for the media item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1771745-streamingcontent?language=objc
-func (c_ ContentItem) IsStreamingContent() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isStreamingContent"))
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620155-subtitle?language=objc
+func (c_ ContentItem) Subtitle() string {
+	rv := objc.Call[string](c_, objc.Sel("subtitle"))
 	return rv
 }
 
-// A Boolean value that indicates whether the content item is streaming content. [Full Topic]
+// A secondary designator for the media item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1771745-streamingcontent?language=objc
-func (c_ ContentItem) SetStreamingContent(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setStreamingContent:"), value)
-}
-
-// A Boolean value that indicates whether a media item is container of other items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620154-container?language=objc
-func (c_ ContentItem) IsContainer() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isContainer"))
-	return rv
-}
-
-// A Boolean value that indicates whether a media item is container of other items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620154-container?language=objc
-func (c_ ContentItem) SetContainer(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setContainer:"), value)
-}
-
-// A Boolean value that indicates whether a media item is able to be played. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620158-playable?language=objc
-func (c_ ContentItem) IsPlayable() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isPlayable"))
-	return rv
-}
-
-// A Boolean value that indicates whether a media item is able to be played. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620158-playable?language=objc
-func (c_ ContentItem) SetPlayable(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setPlayable:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620155-subtitle?language=objc
+func (c_ ContentItem) SetSubtitle(value string) {
+	objc.Call[objc.Void](c_, objc.Sel("setSubtitle:"), value)
 }
 
 // The amount of content played for the media item. [Full Topic]
@@ -159,19 +129,49 @@ func (c_ ContentItem) SetArtwork(value IMediaItemArtwork) {
 	objc.Call[objc.Void](c_, objc.Sel("setArtwork:"), value)
 }
 
-// A secondary designator for the media item. [Full Topic]
+// A Boolean value that indicates whether the content item is streaming content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620155-subtitle?language=objc
-func (c_ ContentItem) Subtitle() string {
-	rv := objc.Call[string](c_, objc.Sel("subtitle"))
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1771745-streamingcontent?language=objc
+func (c_ ContentItem) IsStreamingContent() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isStreamingContent"))
 	return rv
 }
 
-// A secondary designator for the media item. [Full Topic]
+// A Boolean value that indicates whether the content item is streaming content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620155-subtitle?language=objc
-func (c_ ContentItem) SetSubtitle(value string) {
-	objc.Call[objc.Void](c_, objc.Sel("setSubtitle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1771745-streamingcontent?language=objc
+func (c_ ContentItem) SetStreamingContent(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setStreamingContent:"), value)
+}
+
+// A Boolean value that indicates whether a media item is container of other items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620154-container?language=objc
+func (c_ ContentItem) IsContainer() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isContainer"))
+	return rv
+}
+
+// A Boolean value that indicates whether a media item is container of other items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620154-container?language=objc
+func (c_ ContentItem) SetContainer(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setContainer:"), value)
+}
+
+// The public name of the media item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620156-title?language=objc
+func (c_ ContentItem) Title() string {
+	rv := objc.Call[string](c_, objc.Sel("title"))
+	return rv
+}
+
+// The public name of the media item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620156-title?language=objc
+func (c_ ContentItem) SetTitle(value string) {
+	objc.Call[objc.Void](c_, objc.Sel("setTitle:"), value)
 }
 
 // A Boolean value that indicates whether the media item contains explicit content. [Full Topic]
@@ -197,17 +197,17 @@ func (c_ ContentItem) Identifier() string {
 	return rv
 }
 
-// The public name of the media item. [Full Topic]
+// A Boolean value that indicates whether a media item is able to be played. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620156-title?language=objc
-func (c_ ContentItem) Title() string {
-	rv := objc.Call[string](c_, objc.Sel("title"))
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620158-playable?language=objc
+func (c_ ContentItem) IsPlayable() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isPlayable"))
 	return rv
 }
 
-// The public name of the media item. [Full Topic]
+// A Boolean value that indicates whether a media item is able to be played. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620156-title?language=objc
-func (c_ ContentItem) SetTitle(value string) {
-	objc.Call[objc.Void](c_, objc.Sel("setTitle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620158-playable?language=objc
+func (c_ ContentItem) SetPlayable(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setPlayable:"), value)
 }

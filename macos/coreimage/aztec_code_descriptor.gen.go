@@ -18,10 +18,10 @@ type _AztecCodeDescriptorClass struct {
 // An interface definition for the [AztecCodeDescriptor] class.
 type IAztecCodeDescriptor interface {
 	IBarcodeDescriptor
-	ErrorCorrectedPayload() []byte
-	LayerCount() int
 	IsCompact() bool
 	DataCodewordCount() int
+	ErrorCorrectedPayload() []byte
+	LayerCount() int
 }
 
 // A concrete subclass of CIBarcodeDescriptor that represents an Aztec code symbol. [Full Topic]
@@ -83,22 +83,6 @@ func (a_ AztecCodeDescriptor) Init() AztecCodeDescriptor {
 	return rv
 }
 
-// The error-corrected payload containing the data encoded in the Aztec code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875187-errorcorrectedpayload?language=objc
-func (a_ AztecCodeDescriptor) ErrorCorrectedPayload() []byte {
-	rv := objc.Call[[]byte](a_, objc.Sel("errorCorrectedPayload"))
-	return rv
-}
-
-// The number of layers embedded in the Aztec code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875174-layercount?language=objc
-func (a_ AztecCodeDescriptor) LayerCount() int {
-	rv := objc.Call[int](a_, objc.Sel("layerCount"))
-	return rv
-}
-
 // A Boolean value telling if the Aztec code is compact. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875203-iscompact?language=objc
@@ -112,5 +96,21 @@ func (a_ AztecCodeDescriptor) IsCompact() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875166-datacodewordcount?language=objc
 func (a_ AztecCodeDescriptor) DataCodewordCount() int {
 	rv := objc.Call[int](a_, objc.Sel("dataCodewordCount"))
+	return rv
+}
+
+// The error-corrected payload containing the data encoded in the Aztec code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875187-errorcorrectedpayload?language=objc
+func (a_ AztecCodeDescriptor) ErrorCorrectedPayload() []byte {
+	rv := objc.Call[[]byte](a_, objc.Sel("errorCorrectedPayload"))
+	return rv
+}
+
+// The number of layers embedded in the Aztec code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875174-layercount?language=objc
+func (a_ AztecCodeDescriptor) LayerCount() int {
+	rv := objc.Call[int](a_, objc.Sel("layerCount"))
 	return rv
 }

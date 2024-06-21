@@ -18,12 +18,12 @@ type _KeyedUnarchiverClass struct {
 // An interface definition for the [KeyedUnarchiver] class.
 type IKeyedUnarchiver interface {
 	ICoder
-	ClassForClassName_(codedName string) objc.Class
+	SetClassForClassName(cls objc.IClass, codedName string)
 	FinishDecoding()
+	SetDecodingFailurePolicy(value DecodingFailurePolicy)
 	Delegate() KeyedUnarchiverDelegateObject
 	SetDelegate(value PKeyedUnarchiverDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	SetDecodingFailurePolicy(value DecodingFailurePolicy)
 	SetRequiresSecureCoding(value bool)
 }
 
@@ -74,27 +74,34 @@ func (k_ KeyedUnarchiver) Init() KeyedUnarchiver {
 	return rv
 }
 
+// Decodes a previously-archived object graph, that returns the root object as the specified type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/2962884-unarchivedobjectofclass?language=objc
+func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataError(cls objc.IClass, data []byte, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:error:"), cls, data, error)
+	return rv
+}
+
+// Decodes a previously-archived object graph, that returns the root object as the specified type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/2962884-unarchivedobjectofclass?language=objc
+func KeyedUnarchiver_UnarchivedObjectOfClassFromDataError(cls objc.IClass, data []byte, error unsafe.Pointer) objc.Object {
+	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataError(cls, data, error)
+}
+
 // Returns the class from which this unarchiver instantiates an encoded object with a given class name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1412476-classforclassname?language=objc
-func (k_ KeyedUnarchiver) ClassForClassName_(codedName string) objc.Class {
-	rv := objc.Call[objc.Class](k_, objc.Sel("classForClassName:"), codedName)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1416807-classforclassname?language=objc
+func (kc _KeyedUnarchiverClass) ClassForClassName(codedName string) objc.Class {
+	rv := objc.Call[objc.Class](kc, objc.Sel("classForClassName:"), codedName)
 	return rv
 }
 
-//	[Full Topic]
+// Returns the class from which this unarchiver instantiates an encoded object with a given class name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563984-unarchiveddictionarywithkeysofcl?language=objc
-func (kc _KeyedUnarchiverClass) UnarchivedDictionaryWithKeysOfClassesObjectsOfClassesFromDataError(keyClasses ISet, valueClasses ISet, data []byte, error unsafe.Pointer) Dictionary {
-	rv := objc.Call[Dictionary](kc, objc.Sel("unarchivedDictionaryWithKeysOfClasses:objectsOfClasses:fromData:error:"), keyClasses, valueClasses, data, error)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563984-unarchiveddictionarywithkeysofcl?language=objc
-func KeyedUnarchiver_UnarchivedDictionaryWithKeysOfClassesObjectsOfClassesFromDataError(keyClasses ISet, valueClasses ISet, data []byte, error unsafe.Pointer) Dictionary {
-	return KeyedUnarchiverClass.UnarchivedDictionaryWithKeysOfClassesObjectsOfClassesFromDataError(keyClasses, valueClasses, data, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1416807-classforclassname?language=objc
+func KeyedUnarchiver_ClassForClassName(codedName string) objc.Class {
+	return KeyedUnarchiverClass.ClassForClassName(codedName)
 }
 
 //	[Full Topic]
@@ -112,55 +119,11 @@ func KeyedUnarchiver_UnarchivedDictionaryWithKeysOfClassObjectsOfClassFromDataEr
 	return KeyedUnarchiverClass.UnarchivedDictionaryWithKeysOfClassObjectsOfClassFromDataError(keyCls, valueCls, data, error)
 }
 
-// Decodes a previously-archived object graph, that returns the root object as the specified type. [Full Topic]
+// Sets a translation mapping on this unarchiver to decode objects encoded with a given class name as instances of a given class instead. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/2962884-unarchivedobjectofclass?language=objc
-func (kc _KeyedUnarchiverClass) UnarchivedObjectOfClassFromDataError(cls objc.IClass, data []byte, error unsafe.Pointer) objc.Object {
-	rv := objc.Call[objc.Object](kc, objc.Sel("unarchivedObjectOfClass:fromData:error:"), cls, data, error)
-	return rv
-}
-
-// Decodes a previously-archived object graph, that returns the root object as the specified type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/2962884-unarchivedobjectofclass?language=objc
-func KeyedUnarchiver_UnarchivedObjectOfClassFromDataError(cls objc.IClass, data []byte, error unsafe.Pointer) objc.Object {
-	return KeyedUnarchiverClass.UnarchivedObjectOfClassFromDataError(cls, data, error)
-}
-
-// Tells the receiver that you are finished decoding objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1418233-finishdecoding?language=objc
-func (k_ KeyedUnarchiver) FinishDecoding() {
-	objc.Call[objc.Void](k_, objc.Sel("finishDecoding"))
-}
-
-// Sets a global translation mapping to decode objects encoded with a given class name as instances of a given class instead. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1409718-setclass?language=objc
-func (kc _KeyedUnarchiverClass) SetClassForClassName_(cls objc.IClass, codedName string) {
-	objc.Call[objc.Void](kc, objc.Sel("setClass:forClassName:"), cls, codedName)
-}
-
-// Sets a global translation mapping to decode objects encoded with a given class name as instances of a given class instead. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1409718-setclass?language=objc
-func KeyedUnarchiver_SetClassForClassName_(cls objc.IClass, codedName string) {
-	KeyedUnarchiverClass.SetClassForClassName_(cls, codedName)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563982-unarchivedarrayofobjectsofclasse?language=objc
-func (kc _KeyedUnarchiverClass) UnarchivedArrayOfObjectsOfClassesFromDataError(classes ISet, data []byte, error unsafe.Pointer) []objc.Object {
-	rv := objc.Call[[]objc.Object](kc, objc.Sel("unarchivedArrayOfObjectsOfClasses:fromData:error:"), classes, data, error)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563982-unarchivedarrayofobjectsofclasse?language=objc
-func KeyedUnarchiver_UnarchivedArrayOfObjectsOfClassesFromDataError(classes ISet, data []byte, error unsafe.Pointer) []objc.Object {
-	return KeyedUnarchiverClass.UnarchivedArrayOfObjectsOfClassesFromDataError(classes, data, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1414659-setclass?language=objc
+func (k_ KeyedUnarchiver) SetClassForClassName(cls objc.IClass, codedName string) {
+	objc.Call[objc.Void](k_, objc.Sel("setClass:forClassName:"), cls, codedName)
 }
 
 //	[Full Topic]
@@ -193,6 +156,35 @@ func KeyedUnarchiver_UnarchivedObjectOfClassesFromDataError(classes ISet, data [
 	return KeyedUnarchiverClass.UnarchivedObjectOfClassesFromDataError(classes, data, error)
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563982-unarchivedarrayofobjectsofclasse?language=objc
+func (kc _KeyedUnarchiverClass) UnarchivedArrayOfObjectsOfClassesFromDataError(classes ISet, data []byte, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](kc, objc.Sel("unarchivedArrayOfObjectsOfClasses:fromData:error:"), classes, data, error)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/3563982-unarchivedarrayofobjectsofclasse?language=objc
+func KeyedUnarchiver_UnarchivedArrayOfObjectsOfClassesFromDataError(classes ISet, data []byte, error unsafe.Pointer) []objc.Object {
+	return KeyedUnarchiverClass.UnarchivedArrayOfObjectsOfClassesFromDataError(classes, data, error)
+}
+
+// Tells the receiver that you are finished decoding objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1418233-finishdecoding?language=objc
+func (k_ KeyedUnarchiver) FinishDecoding() {
+	objc.Call[objc.Void](k_, objc.Sel("finishDecoding"))
+}
+
+// The action to take when this unarchiver fails to decode an entry. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1643164-decodingfailurepolicy?language=objc
+func (k_ KeyedUnarchiver) SetDecodingFailurePolicy(value DecodingFailurePolicy) {
+	objc.Call[objc.Void](k_, objc.Sel("setDecodingFailurePolicy:"), value)
+}
+
 // The receiver’s delegate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1415688-delegate?language=objc
@@ -214,13 +206,6 @@ func (k_ KeyedUnarchiver) SetDelegate(value PKeyedUnarchiverDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1415688-delegate?language=objc
 func (k_ KeyedUnarchiver) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](k_, objc.Sel("setDelegate:"), valueObject)
-}
-
-// The action to take when this unarchiver fails to decode an entry. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/1643164-decodingfailurepolicy?language=objc
-func (k_ KeyedUnarchiver) SetDecodingFailurePolicy(value DecodingFailurePolicy) {
-	objc.Call[objc.Void](k_, objc.Sel("setDecodingFailurePolicy:"), value)
 }
 
 // Indicates whether the receiver requires all unarchived classes to conform to NSSecureCoding. [Full Topic]

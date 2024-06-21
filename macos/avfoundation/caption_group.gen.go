@@ -19,8 +19,8 @@ type _CaptionGroupClass struct {
 // An interface definition for the [CaptionGroup] class.
 type ICaptionGroup interface {
 	objc.IObject
-	TimeRange() coremedia.TimeRange
 	Captions() []Caption
+	TimeRange() coremedia.TimeRange
 }
 
 // An object that represents zero or more captions that intersect in time. [Full Topic]
@@ -84,18 +84,18 @@ func (c_ CaptionGroup) Init() CaptionGroup {
 	return rv
 }
 
-// The time range of the caption group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongroup/3752963-timerange?language=objc
-func (c_ CaptionGroup) TimeRange() coremedia.TimeRange {
-	rv := objc.Call[coremedia.TimeRange](c_, objc.Sel("timeRange"))
-	return rv
-}
-
 // The captions associated with the caption group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongroup/3752960-captions?language=objc
 func (c_ CaptionGroup) Captions() []Caption {
 	rv := objc.Call[[]Caption](c_, objc.Sel("captions"))
+	return rv
+}
+
+// The time range of the caption group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongroup/3752963-timerange?language=objc
+func (c_ CaptionGroup) TimeRange() coremedia.TimeRange {
+	rv := objc.Call[coremedia.TimeRange](c_, objc.Sel("timeRange"))
 	return rv
 }

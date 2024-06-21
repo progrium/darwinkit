@@ -19,15 +19,15 @@ type _ModelDescriptionClass struct {
 // An interface definition for the [ModelDescription] class.
 type IModelDescription interface {
 	objc.IObject
-	InputDescriptionsByName() map[string]FeatureDescription
-	OutputDescriptionsByName() map[string]FeatureDescription
 	TrainingInputDescriptionsByName() map[string]FeatureDescription
-	IsUpdatable() bool
 	ParameterDescriptionsByKey() foundation.Dictionary
-	PredictedFeatureName() string
-	PredictedProbabilitiesName() string
+	IsUpdatable() bool
 	Metadata() map[ModelMetadataKey]objc.Object
+	PredictedFeatureName() string
+	InputDescriptionsByName() map[string]FeatureDescription
 	ClassLabels() []objc.Object
+	PredictedProbabilitiesName() string
+	OutputDescriptionsByName() map[string]FeatureDescription
 }
 
 // Information about a model, primarily the input and output format for each feature the model expects, and optional metadata. [Full Topic]
@@ -63,35 +63,11 @@ func (m_ ModelDescription) Init() ModelDescription {
 	return rv
 }
 
-// A dictionary of input feature descriptions, which the model keys by the input’s name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879352-inputdescriptionsbyname?language=objc
-func (m_ ModelDescription) InputDescriptionsByName() map[string]FeatureDescription {
-	rv := objc.Call[map[string]FeatureDescription](m_, objc.Sel("inputDescriptionsByName"))
-	return rv
-}
-
-// A dictionary of output feature descriptions, which the model keys by the output’s name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879361-outputdescriptionsbyname?language=objc
-func (m_ ModelDescription) OutputDescriptionsByName() map[string]FeatureDescription {
-	rv := objc.Call[map[string]FeatureDescription](m_, objc.Sel("outputDescriptionsByName"))
-	return rv
-}
-
 // A dictionary of the training input feature descriptions, which the model keys by the input’s name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/3180060-traininginputdescriptionsbyname?language=objc
 func (m_ ModelDescription) TrainingInputDescriptionsByName() map[string]FeatureDescription {
 	rv := objc.Call[map[string]FeatureDescription](m_, objc.Sel("trainingInputDescriptionsByName"))
-	return rv
-}
-
-// A Boolean value that indicates whether you can update the model with additional training. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/3180059-isupdatable?language=objc
-func (m_ ModelDescription) IsUpdatable() bool {
-	rv := objc.Call[bool](m_, objc.Sel("isUpdatable"))
 	return rv
 }
 
@@ -103,19 +79,11 @@ func (m_ ModelDescription) ParameterDescriptionsByKey() foundation.Dictionary {
 	return rv
 }
 
-// The name of the primary prediction feature output description. [Full Topic]
+// A Boolean value that indicates whether you can update the model with additional training. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879390-predictedfeaturename?language=objc
-func (m_ ModelDescription) PredictedFeatureName() string {
-	rv := objc.Call[string](m_, objc.Sel("predictedFeatureName"))
-	return rv
-}
-
-// The name of the feature output description for all probabilities of a prediction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879383-predictedprobabilitiesname?language=objc
-func (m_ ModelDescription) PredictedProbabilitiesName() string {
-	rv := objc.Call[string](m_, objc.Sel("predictedProbabilitiesName"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/3180059-isupdatable?language=objc
+func (m_ ModelDescription) IsUpdatable() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isUpdatable"))
 	return rv
 }
 
@@ -127,10 +95,42 @@ func (m_ ModelDescription) Metadata() map[ModelMetadataKey]objc.Object {
 	return rv
 }
 
+// The name of the primary prediction feature output description. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879390-predictedfeaturename?language=objc
+func (m_ ModelDescription) PredictedFeatureName() string {
+	rv := objc.Call[string](m_, objc.Sel("predictedFeatureName"))
+	return rv
+}
+
+// A dictionary of input feature descriptions, which the model keys by the input’s name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879352-inputdescriptionsbyname?language=objc
+func (m_ ModelDescription) InputDescriptionsByName() map[string]FeatureDescription {
+	rv := objc.Call[map[string]FeatureDescription](m_, objc.Sel("inputDescriptionsByName"))
+	return rv
+}
+
 // An array of labels, which can be either strings or a numbers, for classifier models. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/3649657-classlabels?language=objc
 func (m_ ModelDescription) ClassLabels() []objc.Object {
 	rv := objc.Call[[]objc.Object](m_, objc.Sel("classLabels"))
+	return rv
+}
+
+// The name of the feature output description for all probabilities of a prediction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879383-predictedprobabilitiesname?language=objc
+func (m_ ModelDescription) PredictedProbabilitiesName() string {
+	rv := objc.Call[string](m_, objc.Sel("predictedProbabilitiesName"))
+	return rv
+}
+
+// A dictionary of output feature descriptions, which the model keys by the output’s name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodeldescription/2879361-outputdescriptionsbyname?language=objc
+func (m_ ModelDescription) OutputDescriptionsByName() map[string]FeatureDescription {
+	rv := objc.Call[map[string]FeatureDescription](m_, objc.Sel("outputDescriptionsByName"))
 	return rv
 }

@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur?language=objc
 type PBoxBlur interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
-
-	// optional
-	Radius() float32
-	HasRadius() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetRadius(value float32)
+	HasSetRadius() bool
+
+	// optional
+	Radius() float32
+	HasRadius() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PBoxBlur = (*BoxBlurObject)(nil)
 // A concrete type for the [PBoxBlur] protocol.
 type BoxBlurObject struct {
 	objc.Object
-}
-
-func (b_ BoxBlurObject) HasSetRadius() bool {
-	return b_.RespondsToSelector(objc.Sel("setRadius:"))
-}
-
-// The radius of the blur, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
-func (b_ BoxBlurObject) SetRadius(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
-}
-
-func (b_ BoxBlurObject) HasRadius() bool {
-	return b_.RespondsToSelector(objc.Sel("radius"))
-}
-
-// The radius of the blur, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
-func (b_ BoxBlurObject) Radius() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("radius"))
-	return rv
 }
 
 func (b_ BoxBlurObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (b_ BoxBlurObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228094-inputimage?language=objc
 func (b_ BoxBlurObject) InputImage() Image {
 	rv := objc.Call[Image](b_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (b_ BoxBlurObject) HasSetRadius() bool {
+	return b_.RespondsToSelector(objc.Sel("setRadius:"))
+}
+
+// The radius of the blur, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
+func (b_ BoxBlurObject) SetRadius(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
+}
+
+func (b_ BoxBlurObject) HasRadius() bool {
+	return b_.RespondsToSelector(objc.Sel("radius"))
+}
+
+// The radius of the blur, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
+func (b_ BoxBlurObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }

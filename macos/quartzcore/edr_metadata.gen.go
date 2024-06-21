@@ -53,21 +53,6 @@ func (e_ EDRMetadata) Init() EDRMetadata {
 	return rv
 }
 
-// Creates EDR metadata for HDR10 content based on mastering display color information and content light levels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194382-hdr10metadatawithdisplayinfo?language=objc
-func (ec _EDRMetadataClass) HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData []byte, contentData []byte, scale float32) EDRMetadata {
-	rv := objc.Call[EDRMetadata](ec, objc.Sel("HDR10MetadataWithDisplayInfo:contentInfo:opticalOutputScale:"), displayData, contentData, scale)
-	return rv
-}
-
-// Creates EDR metadata for HDR10 content based on mastering display color information and content light levels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194382-hdr10metadatawithdisplayinfo?language=objc
-func EDRMetadata_HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData []byte, contentData []byte, scale float32) EDRMetadata {
-	return EDRMetadataClass.HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData, contentData, scale)
-}
-
 // Creates EDR metadata for HDR10 content based on the luminance characteristics of a mastering display. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194383-hdr10metadatawithminluminance?language=objc
@@ -81,6 +66,21 @@ func (ec _EDRMetadataClass) HDR10MetadataWithMinLuminanceMaxLuminanceOpticalOutp
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194383-hdr10metadatawithminluminance?language=objc
 func EDRMetadata_HDR10MetadataWithMinLuminanceMaxLuminanceOpticalOutputScale(minNits float32, maxNits float32, scale float32) EDRMetadata {
 	return EDRMetadataClass.HDR10MetadataWithMinLuminanceMaxLuminanceOpticalOutputScale(minNits, maxNits, scale)
+}
+
+// Creates EDR metadata for HDR10 content based on mastering display color information and content light levels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194382-hdr10metadatawithdisplayinfo?language=objc
+func (ec _EDRMetadataClass) HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData []byte, contentData []byte, scale float32) EDRMetadata {
+	rv := objc.Call[EDRMetadata](ec, objc.Sel("HDR10MetadataWithDisplayInfo:contentInfo:opticalOutputScale:"), displayData, contentData, scale)
+	return rv
+}
+
+// Creates EDR metadata for HDR10 content based on mastering display color information and content light levels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caedrmetadata/3194382-hdr10metadatawithdisplayinfo?language=objc
+func EDRMetadata_HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData []byte, contentData []byte, scale float32) EDRMetadata {
+	return EDRMetadataClass.HDR10MetadataWithDisplayInfoContentInfoOpticalOutputScale(displayData, contentData, scale)
 }
 
 // Extended dynamic range (EDR) metadata for the Hybrid Log-Gamma (HLG) transfer function. [Full Topic]

@@ -11,48 +11,44 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource?language=objc
 type PResource interface {
 	// optional
-	SetPurgeableState(state PurgeableState) PurgeableState
-	HasSetPurgeableState() bool
+	IsAliasable() bool
+	HasIsAliasable() bool
 
 	// optional
 	MakeAliasable()
 	HasMakeAliasable() bool
 
 	// optional
-	IsAliasable() bool
-	HasIsAliasable() bool
+	SetPurgeableState(state PurgeableState) PurgeableState
+	HasSetPurgeableState() bool
 
 	// optional
 	Device() DeviceObject
 	HasDevice() bool
 
 	// optional
-	HazardTrackingMode() HazardTrackingMode
-	HasHazardTrackingMode() bool
+	AllocatedSize() uint
+	HasAllocatedSize() bool
 
 	// optional
-	ResourceOptions() ResourceOptions
-	HasResourceOptions() bool
+	Heap() HeapObject
+	HasHeap() bool
 
 	// optional
 	CpuCacheMode() CPUCacheMode
 	HasCpuCacheMode() bool
 
 	// optional
-	HeapOffset() uint
-	HasHeapOffset() bool
-
-	// optional
-	AllocatedSize() uint
-	HasAllocatedSize() bool
-
-	// optional
 	StorageMode() StorageMode
 	HasStorageMode() bool
 
 	// optional
-	Heap() HeapObject
-	HasHeap() bool
+	ResourceOptions() ResourceOptions
+	HasResourceOptions() bool
+
+	// optional
+	HeapOffset() uint
+	HasHeapOffset() bool
 
 	// optional
 	SetLabel(value string)
@@ -61,6 +57,10 @@ type PResource interface {
 	// optional
 	Label() string
 	HasLabel() bool
+
+	// optional
+	HazardTrackingMode() HazardTrackingMode
+	HasHazardTrackingMode() bool
 }
 
 // ensure impl type implements protocol interface
@@ -71,15 +71,15 @@ type ResourceObject struct {
 	objc.Object
 }
 
-func (r_ ResourceObject) HasSetPurgeableState() bool {
-	return r_.RespondsToSelector(objc.Sel("setPurgeableState:"))
+func (r_ ResourceObject) HasIsAliasable() bool {
+	return r_.RespondsToSelector(objc.Sel("isAliasable"))
 }
 
-// Specifies or queries the resource’s purgeable state. [Full Topic]
+// A Boolean value that indicates whether future heap resource allocations may alias against the resource’s memory. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1515898-setpurgeablestate?language=objc
-func (r_ ResourceObject) SetPurgeableState(state PurgeableState) PurgeableState {
-	rv := objc.Call[PurgeableState](r_, objc.Sel("setPurgeableState:"), state)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1771702-isaliasable?language=objc
+func (r_ ResourceObject) IsAliasable() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isAliasable"))
 	return rv
 }
 
@@ -94,15 +94,15 @@ func (r_ ResourceObject) MakeAliasable() {
 	objc.Call[objc.Void](r_, objc.Sel("makeAliasable"))
 }
 
-func (r_ ResourceObject) HasIsAliasable() bool {
-	return r_.RespondsToSelector(objc.Sel("isAliasable"))
+func (r_ ResourceObject) HasSetPurgeableState() bool {
+	return r_.RespondsToSelector(objc.Sel("setPurgeableState:"))
 }
 
-// A Boolean value that indicates whether future heap resource allocations may alias against the resource’s memory. [Full Topic]
+// Specifies or queries the resource’s purgeable state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1771702-isaliasable?language=objc
-func (r_ ResourceObject) IsAliasable() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isAliasable"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1515898-setpurgeablestate?language=objc
+func (r_ ResourceObject) SetPurgeableState(state PurgeableState) PurgeableState {
+	rv := objc.Call[PurgeableState](r_, objc.Sel("setPurgeableState:"), state)
 	return rv
 }
 
@@ -118,27 +118,27 @@ func (r_ ResourceObject) Device() DeviceObject {
 	return rv
 }
 
-func (r_ ResourceObject) HasHazardTrackingMode() bool {
-	return r_.RespondsToSelector(objc.Sel("hazardTrackingMode"))
+func (r_ ResourceObject) HasAllocatedSize() bool {
+	return r_.RespondsToSelector(objc.Sel("allocatedSize"))
 }
 
-// A mode that determines whether Metal tracks and synchronizes resource access. [Full Topic]
+// The size of the resource, in bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3131693-hazardtrackingmode?language=objc
-func (r_ ResourceObject) HazardTrackingMode() HazardTrackingMode {
-	rv := objc.Call[HazardTrackingMode](r_, objc.Sel("hazardTrackingMode"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/2915287-allocatedsize?language=objc
+func (r_ ResourceObject) AllocatedSize() uint {
+	rv := objc.Call[uint](r_, objc.Sel("allocatedSize"))
 	return rv
 }
 
-func (r_ ResourceObject) HasResourceOptions() bool {
-	return r_.RespondsToSelector(objc.Sel("resourceOptions"))
+func (r_ ResourceObject) HasHeap() bool {
+	return r_.RespondsToSelector(objc.Sel("heap"))
 }
 
-// The storage mode, CPU cache mode, and hazard tracking mode of the resource. [Full Topic]
+// The heap on which the resource is allocated, if any. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3131694-resourceoptions?language=objc
-func (r_ ResourceObject) ResourceOptions() ResourceOptions {
-	rv := objc.Call[ResourceOptions](r_, objc.Sel("resourceOptions"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1682333-heap?language=objc
+func (r_ ResourceObject) Heap() HeapObject {
+	rv := objc.Call[HeapObject](r_, objc.Sel("heap"))
 	return rv
 }
 
@@ -154,30 +154,6 @@ func (r_ ResourceObject) CpuCacheMode() CPUCacheMode {
 	return rv
 }
 
-func (r_ ResourceObject) HasHeapOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("heapOffset"))
-}
-
-// The distance, in bytes, from the beginning of the heap to the first byte of the resource, if you allocated the resource on a heap. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3043406-heapoffset?language=objc
-func (r_ ResourceObject) HeapOffset() uint {
-	rv := objc.Call[uint](r_, objc.Sel("heapOffset"))
-	return rv
-}
-
-func (r_ ResourceObject) HasAllocatedSize() bool {
-	return r_.RespondsToSelector(objc.Sel("allocatedSize"))
-}
-
-// The size of the resource, in bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/2915287-allocatedsize?language=objc
-func (r_ ResourceObject) AllocatedSize() uint {
-	rv := objc.Call[uint](r_, objc.Sel("allocatedSize"))
-	return rv
-}
-
 func (r_ ResourceObject) HasStorageMode() bool {
 	return r_.RespondsToSelector(objc.Sel("storageMode"))
 }
@@ -190,15 +166,27 @@ func (r_ ResourceObject) StorageMode() StorageMode {
 	return rv
 }
 
-func (r_ ResourceObject) HasHeap() bool {
-	return r_.RespondsToSelector(objc.Sel("heap"))
+func (r_ ResourceObject) HasResourceOptions() bool {
+	return r_.RespondsToSelector(objc.Sel("resourceOptions"))
 }
 
-// The heap on which the resource is allocated, if any. [Full Topic]
+// The storage mode, CPU cache mode, and hazard tracking mode of the resource. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1682333-heap?language=objc
-func (r_ ResourceObject) Heap() HeapObject {
-	rv := objc.Call[HeapObject](r_, objc.Sel("heap"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3131694-resourceoptions?language=objc
+func (r_ ResourceObject) ResourceOptions() ResourceOptions {
+	rv := objc.Call[ResourceOptions](r_, objc.Sel("resourceOptions"))
+	return rv
+}
+
+func (r_ ResourceObject) HasHeapOffset() bool {
+	return r_.RespondsToSelector(objc.Sel("heapOffset"))
+}
+
+// The distance, in bytes, from the beginning of the heap to the first byte of the resource, if you allocated the resource on a heap. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3043406-heapoffset?language=objc
+func (r_ ResourceObject) HeapOffset() uint {
+	rv := objc.Call[uint](r_, objc.Sel("heapOffset"))
 	return rv
 }
 
@@ -222,5 +210,17 @@ func (r_ ResourceObject) HasLabel() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/1515814-label?language=objc
 func (r_ ResourceObject) Label() string {
 	rv := objc.Call[string](r_, objc.Sel("label"))
+	return rv
+}
+
+func (r_ ResourceObject) HasHazardTrackingMode() bool {
+	return r_.RespondsToSelector(objc.Sel("hazardTrackingMode"))
+}
+
+// A mode that determines whether Metal tracks and synchronizes resource access. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresource/3131693-hazardtrackingmode?language=objc
+func (r_ ResourceObject) HazardTrackingMode() HazardTrackingMode {
+	rv := objc.Call[HazardTrackingMode](r_, objc.Sel("hazardTrackingMode"))
 	return rv
 }

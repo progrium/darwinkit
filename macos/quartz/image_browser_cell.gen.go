@@ -21,20 +21,20 @@ type _ImageBrowserCellClass struct {
 // An interface definition for the [ImageBrowserCell] class.
 type IImageBrowserCell interface {
 	objc.IObject
-	ImageBrowserView() ImageBrowserView
-	Opacity() float64
-	SelectionFrame() foundation.Rect
 	ImageAlignment() appkit.ImageAlignment
-	ImageFrame() foundation.Rect
-	SubtitleFrame() foundation.Rect
-	IsSelected() bool
+	Opacity() float64
 	IndexOfRepresentedItem() uint
+	IsSelected() bool
 	ImageContainerFrame() foundation.Rect
+	CellState() ImageBrowserCellState
 	RepresentedItem() objc.Object
+	ImageFrame() foundation.Rect
 	TitleFrame() foundation.Rect
 	Frame() foundation.Rect
+	ImageBrowserView() ImageBrowserView
+	SubtitleFrame() foundation.Rect
 	LayerForType(type_ string) quartzcore.Layer
-	CellState() ImageBrowserCellState
+	SelectionFrame() foundation.Rect
 }
 
 // A class that is used to display a cell conforming to the [quartz/imagekit/ikimagebrowseritem_protocol] in an IKImageBrowserView. [Full Topic]
@@ -70,11 +70,11 @@ func (i_ ImageBrowserCell) Init() ImageBrowserCell {
 	return rv
 }
 
-// Returns the view the receiver uses to display the cell. [Full Topic]
+// Returns the position of the cell’s image in the frame. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500049-imagebrowserview?language=objc
-func (i_ ImageBrowserCell) ImageBrowserView() ImageBrowserView {
-	rv := objc.Call[ImageBrowserView](i_, objc.Sel("imageBrowserView"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500042-imagealignment?language=objc
+func (i_ ImageBrowserCell) ImageAlignment() appkit.ImageAlignment {
+	rv := objc.Call[appkit.ImageAlignment](i_, objc.Sel("imageAlignment"))
 	return rv
 }
 
@@ -86,35 +86,11 @@ func (i_ ImageBrowserCell) Opacity() float64 {
 	return rv
 }
 
-// Returns the receiver’s selection frame rectangle, which defines the position of the selection rectangle in its IKImageBrowserView. [Full Topic]
+// Returns the index of the receiver’s represented object in the datasource. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500070-selectionframe?language=objc
-func (i_ ImageBrowserCell) SelectionFrame() foundation.Rect {
-	rv := objc.Call[foundation.Rect](i_, objc.Sel("selectionFrame"))
-	return rv
-}
-
-// Returns the position of the cell’s image in the frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500042-imagealignment?language=objc
-func (i_ ImageBrowserCell) ImageAlignment() appkit.ImageAlignment {
-	rv := objc.Call[appkit.ImageAlignment](i_, objc.Sel("imageAlignment"))
-	return rv
-}
-
-// Returns the receiver’s image frame rectangle, which defines the position of the thumbnail in its IKImageBrowserView. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500052-imageframe?language=objc
-func (i_ ImageBrowserCell) ImageFrame() foundation.Rect {
-	rv := objc.Call[foundation.Rect](i_, objc.Sel("imageFrame"))
-	return rv
-}
-
-// Returns the receiver’s subtitle frame rectangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500074-subtitleframe?language=objc
-func (i_ ImageBrowserCell) SubtitleFrame() foundation.Rect {
-	rv := objc.Call[foundation.Rect](i_, objc.Sel("subtitleFrame"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500047-indexofrepresenteditem?language=objc
+func (i_ ImageBrowserCell) IndexOfRepresentedItem() uint {
+	rv := objc.Call[uint](i_, objc.Sel("indexOfRepresentedItem"))
 	return rv
 }
 
@@ -126,14 +102,6 @@ func (i_ ImageBrowserCell) IsSelected() bool {
 	return rv
 }
 
-// Returns the index of the receiver’s represented object in the datasource. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500047-indexofrepresenteditem?language=objc
-func (i_ ImageBrowserCell) IndexOfRepresentedItem() uint {
-	rv := objc.Call[uint](i_, objc.Sel("indexOfRepresentedItem"))
-	return rv
-}
-
 // Returns the receiver’s image container frame rectangle, which defines the position of the container of the thumbnail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500064-imagecontainerframe?language=objc
@@ -142,11 +110,27 @@ func (i_ ImageBrowserCell) ImageContainerFrame() foundation.Rect {
 	return rv
 }
 
+// Returns the current cell state of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500062-cellstate?language=objc
+func (i_ ImageBrowserCell) CellState() ImageBrowserCellState {
+	rv := objc.Call[ImageBrowserCellState](i_, objc.Sel("cellState"))
+	return rv
+}
+
 // Returns the receiver’s represented object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500071-representeditem?language=objc
 func (i_ ImageBrowserCell) RepresentedItem() objc.Object {
 	rv := objc.Call[objc.Object](i_, objc.Sel("representedItem"))
+	return rv
+}
+
+// Returns the receiver’s image frame rectangle, which defines the position of the thumbnail in its IKImageBrowserView. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500052-imageframe?language=objc
+func (i_ ImageBrowserCell) ImageFrame() foundation.Rect {
+	rv := objc.Call[foundation.Rect](i_, objc.Sel("imageFrame"))
 	return rv
 }
 
@@ -166,6 +150,22 @@ func (i_ ImageBrowserCell) Frame() foundation.Rect {
 	return rv
 }
 
+// Returns the view the receiver uses to display the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500049-imagebrowserview?language=objc
+func (i_ ImageBrowserCell) ImageBrowserView() ImageBrowserView {
+	rv := objc.Call[ImageBrowserView](i_, objc.Sel("imageBrowserView"))
+	return rv
+}
+
+// Returns the receiver’s subtitle frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500074-subtitleframe?language=objc
+func (i_ ImageBrowserCell) SubtitleFrame() foundation.Rect {
+	rv := objc.Call[foundation.Rect](i_, objc.Sel("subtitleFrame"))
+	return rv
+}
+
 // Returns a layer for the specified position. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500045-layerfortype?language=objc
@@ -174,10 +174,10 @@ func (i_ ImageBrowserCell) LayerForType(type_ string) quartzcore.Layer {
 	return rv
 }
 
-// Returns the current cell state of the receiver. [Full Topic]
+// Returns the receiver’s selection frame rectangle, which defines the position of the selection rectangle in its IKImageBrowserView. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500062-cellstate?language=objc
-func (i_ ImageBrowserCell) CellState() ImageBrowserCellState {
-	rv := objc.Call[ImageBrowserCellState](i_, objc.Sel("cellState"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercell/1500070-selectionframe?language=objc
+func (i_ ImageBrowserCell) SelectionFrame() foundation.Rect {
+	rv := objc.Call[foundation.Rect](i_, objc.Sel("selectionFrame"))
 	return rv
 }

@@ -3,7 +3,6 @@
 package avfoundation
 
 import (
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -12,86 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate?language=objc
 type PCapturePhotoCaptureDelegate interface {
 	// optional
-	CaptureOutputDidFinishCaptureForResolvedSettingsError(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error)
-	HasCaptureOutputDidFinishCaptureForResolvedSettingsError() bool
-
-	// optional
-	CaptureOutputWillCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
-	HasCaptureOutputWillCapturePhotoForResolvedSettings() bool
-
-	// optional
-	CaptureOutputDidFinishProcessingPhotoError(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error)
-	HasCaptureOutputDidFinishProcessingPhotoError() bool
-
-	// optional
 	CaptureOutputDidCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
 	HasCaptureOutputDidCapturePhotoForResolvedSettings() bool
-
-	// optional
-	CaptureOutputWillBeginCaptureForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
-	HasCaptureOutputWillBeginCaptureForResolvedSettings() bool
 }
 
 // A delegate implementation builder for the [PCapturePhotoCaptureDelegate] protocol.
 type CapturePhotoCaptureDelegate struct {
-	_CaptureOutputDidFinishCaptureForResolvedSettingsError func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error)
-	_CaptureOutputWillCapturePhotoForResolvedSettings      func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
-	_CaptureOutputDidFinishProcessingPhotoError            func(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error)
-	_CaptureOutputDidCapturePhotoForResolvedSettings       func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
-	_CaptureOutputWillBeginCaptureForResolvedSettings      func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
+	_CaptureOutputDidCapturePhotoForResolvedSettings func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)
 }
 
-func (di *CapturePhotoCaptureDelegate) HasCaptureOutputDidFinishCaptureForResolvedSettingsError() bool {
-	return di._CaptureOutputDidFinishCaptureForResolvedSettingsError != nil
-}
-
-// Notifies the delegate that the capture process is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778618-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) SetCaptureOutputDidFinishCaptureForResolvedSettingsError(f func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error)) {
-	di._CaptureOutputDidFinishCaptureForResolvedSettingsError = f
-}
-
-// Notifies the delegate that the capture process is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778618-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) CaptureOutputDidFinishCaptureForResolvedSettingsError(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error) {
-	di._CaptureOutputDidFinishCaptureForResolvedSettingsError(output, resolvedSettings, error)
-}
-func (di *CapturePhotoCaptureDelegate) HasCaptureOutputWillCapturePhotoForResolvedSettings() bool {
-	return di._CaptureOutputWillCapturePhotoForResolvedSettings != nil
-}
-
-// Notifies the delegate that photo capture is about to occur. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778625-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) SetCaptureOutputWillCapturePhotoForResolvedSettings(f func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)) {
-	di._CaptureOutputWillCapturePhotoForResolvedSettings = f
-}
-
-// Notifies the delegate that photo capture is about to occur. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778625-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) CaptureOutputWillCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	di._CaptureOutputWillCapturePhotoForResolvedSettings(output, resolvedSettings)
-}
-func (di *CapturePhotoCaptureDelegate) HasCaptureOutputDidFinishProcessingPhotoError() bool {
-	return di._CaptureOutputDidFinishProcessingPhotoError != nil
-}
-
-// Provides the delegate with the captured image and associated metadata resulting from a photo capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/2873949-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) SetCaptureOutputDidFinishProcessingPhotoError(f func(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error)) {
-	di._CaptureOutputDidFinishProcessingPhotoError = f
-}
-
-// Provides the delegate with the captured image and associated metadata resulting from a photo capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/2873949-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) CaptureOutputDidFinishProcessingPhotoError(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error) {
-	di._CaptureOutputDidFinishProcessingPhotoError(output, photo, error)
-}
 func (di *CapturePhotoCaptureDelegate) HasCaptureOutputDidCapturePhotoForResolvedSettings() bool {
 	return di._CaptureOutputDidCapturePhotoForResolvedSettings != nil
 }
@@ -109,23 +37,6 @@ func (di *CapturePhotoCaptureDelegate) SetCaptureOutputDidCapturePhotoForResolve
 func (di *CapturePhotoCaptureDelegate) CaptureOutputDidCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
 	di._CaptureOutputDidCapturePhotoForResolvedSettings(output, resolvedSettings)
 }
-func (di *CapturePhotoCaptureDelegate) HasCaptureOutputWillBeginCaptureForResolvedSettings() bool {
-	return di._CaptureOutputWillBeginCaptureForResolvedSettings != nil
-}
-
-// Notifies the delegate that the capture output has resolved settings and will soon begin its capture process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778621-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) SetCaptureOutputWillBeginCaptureForResolvedSettings(f func(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings)) {
-	di._CaptureOutputWillBeginCaptureForResolvedSettings = f
-}
-
-// Notifies the delegate that the capture output has resolved settings and will soon begin its capture process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778621-captureoutput?language=objc
-func (di *CapturePhotoCaptureDelegate) CaptureOutputWillBeginCaptureForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	di._CaptureOutputWillBeginCaptureForResolvedSettings(output, resolvedSettings)
-}
 
 // ensure impl type implements protocol interface
 var _ PCapturePhotoCaptureDelegate = (*CapturePhotoCaptureDelegateObject)(nil)
@@ -133,39 +44,6 @@ var _ PCapturePhotoCaptureDelegate = (*CapturePhotoCaptureDelegateObject)(nil)
 // A concrete type for the [PCapturePhotoCaptureDelegate] protocol.
 type CapturePhotoCaptureDelegateObject struct {
 	objc.Object
-}
-
-func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidFinishCaptureForResolvedSettingsError() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didFinishCaptureForResolvedSettings:error:"))
-}
-
-// Notifies the delegate that the capture process is complete. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778618-captureoutput?language=objc
-func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidFinishCaptureForResolvedSettingsError(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishCaptureForResolvedSettings:error:"), output, resolvedSettings, error)
-}
-
-func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillCapturePhotoForResolvedSettings() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:willCapturePhotoForResolvedSettings:"))
-}
-
-// Notifies the delegate that photo capture is about to occur. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778625-captureoutput?language=objc
-func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputWillCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willCapturePhotoForResolvedSettings:"), output, resolvedSettings)
-}
-
-func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidFinishProcessingPhotoError() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:didFinishProcessingPhoto:error:"))
-}
-
-// Provides the delegate with the captured image and associated metadata resulting from a photo capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/2873949-captureoutput?language=objc
-func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidFinishProcessingPhotoError(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishProcessingPhoto:error:"), output, photo, error)
 }
 
 func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidCapturePhotoForResolvedSettings() bool {
@@ -177,15 +55,4 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidCapturePhotoForRe
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778632-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
 	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didCapturePhotoForResolvedSettings:"), output, resolvedSettings)
-}
-
-func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillBeginCaptureForResolvedSettings() bool {
-	return c_.RespondsToSelector(objc.Sel("captureOutput:willBeginCaptureForResolvedSettings:"))
-}
-
-// Notifies the delegate that the capture output has resolved settings and will soon begin its capture process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778621-captureoutput?language=objc
-func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputWillBeginCaptureForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willBeginCaptureForResolvedSettings:"), output, resolvedSettings)
 }

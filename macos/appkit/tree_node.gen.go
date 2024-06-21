@@ -21,12 +21,12 @@ type ITreeNode interface {
 	objc.IObject
 	SortWithSortDescriptorsRecursively(sortDescriptors []foundation.ISortDescriptor, recursively bool)
 	DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode
-	IsLeaf() bool
-	ChildNodes() []TreeNode
-	MutableChildNodes() foundation.MutableArray
-	RepresentedObject() objc.Object
 	ParentNode() TreeNode
+	IsLeaf() bool
+	MutableChildNodes() foundation.MutableArray
+	ChildNodes() []TreeNode
 	IndexPath() foundation.IndexPath
+	RepresentedObject() objc.Object
 }
 
 // A node in a tree of nodes. [Full Topic]
@@ -103,19 +103,19 @@ func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) Tr
 	return rv
 }
 
+// The receiver’s parent node. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1530728-parentnode?language=objc
+func (t_ TreeNode) ParentNode() TreeNode {
+	rv := objc.Call[TreeNode](t_, objc.Sel("parentNode"))
+	return rv
+}
+
 // A Boolean that indicates whether the receiver is a leaf node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1532729-leaf?language=objc
 func (t_ TreeNode) IsLeaf() bool {
 	rv := objc.Call[bool](t_, objc.Sel("isLeaf"))
-	return rv
-}
-
-// An array containing receiver’s child nodes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1525285-childnodes?language=objc
-func (t_ TreeNode) ChildNodes() []TreeNode {
-	rv := objc.Call[[]TreeNode](t_, objc.Sel("childNodes"))
 	return rv
 }
 
@@ -127,19 +127,11 @@ func (t_ TreeNode) MutableChildNodes() foundation.MutableArray {
 	return rv
 }
 
-// The object the tree node represents. [Full Topic]
+// An array containing receiver’s child nodes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1531596-representedobject?language=objc
-func (t_ TreeNode) RepresentedObject() objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("representedObject"))
-	return rv
-}
-
-// The receiver’s parent node. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1530728-parentnode?language=objc
-func (t_ TreeNode) ParentNode() TreeNode {
-	rv := objc.Call[TreeNode](t_, objc.Sel("parentNode"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1525285-childnodes?language=objc
+func (t_ TreeNode) ChildNodes() []TreeNode {
+	rv := objc.Call[[]TreeNode](t_, objc.Sel("childNodes"))
 	return rv
 }
 
@@ -148,5 +140,13 @@ func (t_ TreeNode) ParentNode() TreeNode {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1532255-indexpath?language=objc
 func (t_ TreeNode) IndexPath() foundation.IndexPath {
 	rv := objc.Call[foundation.IndexPath](t_, objc.Sel("indexPath"))
+	return rv
+}
+
+// The object the tree node represents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1531596-representedobject?language=objc
+func (t_ TreeNode) RepresentedObject() objc.Object {
+	rv := objc.Call[objc.Object](t_, objc.Sel("representedObject"))
 	return rv
 }

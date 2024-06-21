@@ -18,18 +18,18 @@ type _PrimitiveAccelerationStructureDescriptorClass struct {
 // An interface definition for the [PrimitiveAccelerationStructureDescriptor] class.
 type IPrimitiveAccelerationStructureDescriptor interface {
 	IAccelerationStructureDescriptor
+	MotionEndTime() float32
+	SetMotionEndTime(value float32)
 	MotionStartBorderMode() MotionBorderMode
 	SetMotionStartBorderMode(value MotionBorderMode)
+	MotionEndBorderMode() MotionBorderMode
+	SetMotionEndBorderMode(value MotionBorderMode)
 	MotionStartTime() float32
 	SetMotionStartTime(value float32)
 	GeometryDescriptors() []AccelerationStructureGeometryDescriptor
 	SetGeometryDescriptors(value []IAccelerationStructureGeometryDescriptor)
-	MotionEndBorderMode() MotionBorderMode
-	SetMotionEndBorderMode(value MotionBorderMode)
 	MotionKeyframeCount() uint
 	SetMotionKeyframeCount(value uint)
-	MotionEndTime() float32
-	SetMotionEndTime(value float32)
 }
 
 // A description of an acceleration structure that contains geometry primitives. [Full Topic]
@@ -77,6 +77,21 @@ func (p_ PrimitiveAccelerationStructureDescriptor) Init() PrimitiveAccelerationS
 	return rv
 }
 
+// The end time for the range of motion that the keyframe data describes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750510-motionendtime?language=objc
+func (p_ PrimitiveAccelerationStructureDescriptor) MotionEndTime() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("motionEndTime"))
+	return rv
+}
+
+// The end time for the range of motion that the keyframe data describes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750510-motionendtime?language=objc
+func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionEndTime(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setMotionEndTime:"), value)
+}
+
 // The mode to use when handling timestamps before the start time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750512-motionstartbordermode?language=objc
@@ -90,6 +105,21 @@ func (p_ PrimitiveAccelerationStructureDescriptor) MotionStartBorderMode() Motio
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750512-motionstartbordermode?language=objc
 func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionStartBorderMode(value MotionBorderMode) {
 	objc.Call[objc.Void](p_, objc.Sel("setMotionStartBorderMode:"), value)
+}
+
+// The mode to use when handling timestamps after the end time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750509-motionendbordermode?language=objc
+func (p_ PrimitiveAccelerationStructureDescriptor) MotionEndBorderMode() MotionBorderMode {
+	rv := objc.Call[MotionBorderMode](p_, objc.Sel("motionEndBorderMode"))
+	return rv
+}
+
+// The mode to use when handling timestamps after the end time. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750509-motionendbordermode?language=objc
+func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionEndBorderMode(value MotionBorderMode) {
+	objc.Call[objc.Void](p_, objc.Sel("setMotionEndBorderMode:"), value)
 }
 
 // The start time for the range of motion that the keyframe data describes. [Full Topic]
@@ -122,21 +152,6 @@ func (p_ PrimitiveAccelerationStructureDescriptor) SetGeometryDescriptors(value 
 	objc.Call[objc.Void](p_, objc.Sel("setGeometryDescriptors:"), value)
 }
 
-// The mode to use when handling timestamps after the end time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750509-motionendbordermode?language=objc
-func (p_ PrimitiveAccelerationStructureDescriptor) MotionEndBorderMode() MotionBorderMode {
-	rv := objc.Call[MotionBorderMode](p_, objc.Sel("motionEndBorderMode"))
-	return rv
-}
-
-// The mode to use when handling timestamps after the end time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750509-motionendbordermode?language=objc
-func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionEndBorderMode(value MotionBorderMode) {
-	objc.Call[objc.Void](p_, objc.Sel("setMotionEndBorderMode:"), value)
-}
-
 // The number of keyframes in the geometry data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750511-motionkeyframecount?language=objc
@@ -150,19 +165,4 @@ func (p_ PrimitiveAccelerationStructureDescriptor) MotionKeyframeCount() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750511-motionkeyframecount?language=objc
 func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionKeyframeCount(value uint) {
 	objc.Call[objc.Void](p_, objc.Sel("setMotionKeyframeCount:"), value)
-}
-
-// The end time for the range of motion that the keyframe data describes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750510-motionendtime?language=objc
-func (p_ PrimitiveAccelerationStructureDescriptor) MotionEndTime() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("motionEndTime"))
-	return rv
-}
-
-// The end time for the range of motion that the keyframe data describes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlprimitiveaccelerationstructuredescriptor/3750510-motionendtime?language=objc
-func (p_ PrimitiveAccelerationStructureDescriptor) SetMotionEndTime(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setMotionEndTime:"), value)
 }

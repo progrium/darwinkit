@@ -22,9 +22,9 @@ type ICNNGroupNormalization interface {
 	ReloadGammaAndBetaFromDataSource()
 	ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
 	ReloadGammaAndBetaWithCommandBufferObjectGammaAndBetaState(commandBufferObject objc.IObject, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
+	DataSource() CNNGroupNormalizationDataSourceObject
 	Epsilon() float32
 	SetEpsilon(value float32)
-	DataSource() CNNGroupNormalizationDataSourceObject
 }
 
 //	[Full Topic]
@@ -130,6 +130,14 @@ func (c_ CNNGroupNormalization) ReloadGammaAndBetaWithCommandBufferObjectGammaAn
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalization/3152534-datasource?language=objc
+func (c_ CNNGroupNormalization) DataSource() CNNGroupNormalizationDataSourceObject {
+	rv := objc.Call[CNNGroupNormalizationDataSourceObject](c_, objc.Sel("dataSource"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalization/3152535-epsilon?language=objc
 func (c_ CNNGroupNormalization) Epsilon() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
@@ -141,12 +149,4 @@ func (c_ CNNGroupNormalization) Epsilon() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalization/3152535-epsilon?language=objc
 func (c_ CNNGroupNormalization) SetEpsilon(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalization/3152534-datasource?language=objc
-func (c_ CNNGroupNormalization) DataSource() CNNGroupNormalizationDataSourceObject {
-	rv := objc.Call[CNNGroupNormalizationDataSourceObject](c_, objc.Sel("dataSource"))
-	return rv
 }

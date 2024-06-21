@@ -19,17 +19,17 @@ type _TextTableClass struct {
 // An interface definition for the [TextTable] class.
 type ITextTable interface {
 	ITextBlock
-	RectForBlockLayoutAtPointInRectTextContainerCharacterRange(block ITextTableBlock, startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
 	BoundsRectForBlockContentRectInRectTextContainerCharacterRange(block ITextTableBlock, contentRect foundation.Rect, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
 	DrawBackgroundForBlockWithFrameInViewCharacterRangeLayoutManager(block ITextTableBlock, frameRect foundation.Rect, controlView IView, charRange foundation.Range, layoutManager ILayoutManager)
-	LayoutAlgorithm() TextTableLayoutAlgorithm
-	SetLayoutAlgorithm(value TextTableLayoutAlgorithm)
+	RectForBlockLayoutAtPointInRectTextContainerCharacterRange(block ITextTableBlock, startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect
 	CollapsesBorders() bool
 	SetCollapsesBorders(value bool)
-	NumberOfColumns() uint
-	SetNumberOfColumns(value uint)
 	HidesEmptyCells() bool
 	SetHidesEmptyCells(value bool)
+	LayoutAlgorithm() TextTableLayoutAlgorithm
+	SetLayoutAlgorithm(value TextTableLayoutAlgorithm)
+	NumberOfColumns() uint
+	SetNumberOfColumns(value uint)
 }
 
 // An object that represents a text table as a whole. [Full Topic]
@@ -65,14 +65,6 @@ func (t_ TextTable) Init() TextTable {
 	return rv
 }
 
-// Returns the rectangle within which glyphs should be laid out for a text table block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1534161-rectforblock?language=objc
-func (t_ TextTable) RectForBlockLayoutAtPointInRectTextContainerCharacterRange(block ITextTableBlock, startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForBlock:layoutAtPoint:inRect:textContainer:characterRange:"), block, startingPoint, rect, textContainer, charRange)
-	return rv
-}
-
 // Returns the rectangle the text table block actually occupies, including padding, borders, and margins. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1525956-boundsrectforblock?language=objc
@@ -88,19 +80,12 @@ func (t_ TextTable) DrawBackgroundForBlockWithFrameInViewCharacterRangeLayoutMan
 	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundForBlock:withFrame:inView:characterRange:layoutManager:"), block, frameRect, controlView, charRange, layoutManager)
 }
 
-// The text table layout algorithm. [Full Topic]
+// Returns the rectangle within which glyphs should be laid out for a text table block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1531734-layoutalgorithm?language=objc
-func (t_ TextTable) LayoutAlgorithm() TextTableLayoutAlgorithm {
-	rv := objc.Call[TextTableLayoutAlgorithm](t_, objc.Sel("layoutAlgorithm"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1534161-rectforblock?language=objc
+func (t_ TextTable) RectForBlockLayoutAtPointInRectTextContainerCharacterRange(block ITextTableBlock, startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForBlock:layoutAtPoint:inRect:textContainer:characterRange:"), block, startingPoint, rect, textContainer, charRange)
 	return rv
-}
-
-// The text table layout algorithm. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1531734-layoutalgorithm?language=objc
-func (t_ TextTable) SetLayoutAlgorithm(value TextTableLayoutAlgorithm) {
-	objc.Call[objc.Void](t_, objc.Sel("setLayoutAlgorithm:"), value)
 }
 
 // A Boolean value indicating whether the text table borders are collapsible. [Full Topic]
@@ -118,21 +103,6 @@ func (t_ TextTable) SetCollapsesBorders(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setCollapsesBorders:"), value)
 }
 
-// The number of columns in the text table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1532413-numberofcolumns?language=objc
-func (t_ TextTable) NumberOfColumns() uint {
-	rv := objc.Call[uint](t_, objc.Sel("numberOfColumns"))
-	return rv
-}
-
-// The number of columns in the text table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1532413-numberofcolumns?language=objc
-func (t_ TextTable) SetNumberOfColumns(value uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setNumberOfColumns:"), value)
-}
-
 // A Boolean value indicating whether the text table hides empty cells. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1526288-hidesemptycells?language=objc
@@ -146,4 +116,34 @@ func (t_ TextTable) HidesEmptyCells() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1526288-hidesemptycells?language=objc
 func (t_ TextTable) SetHidesEmptyCells(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setHidesEmptyCells:"), value)
+}
+
+// The text table layout algorithm. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1531734-layoutalgorithm?language=objc
+func (t_ TextTable) LayoutAlgorithm() TextTableLayoutAlgorithm {
+	rv := objc.Call[TextTableLayoutAlgorithm](t_, objc.Sel("layoutAlgorithm"))
+	return rv
+}
+
+// The text table layout algorithm. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1531734-layoutalgorithm?language=objc
+func (t_ TextTable) SetLayoutAlgorithm(value TextTableLayoutAlgorithm) {
+	objc.Call[objc.Void](t_, objc.Sel("setLayoutAlgorithm:"), value)
+}
+
+// The number of columns in the text table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1532413-numberofcolumns?language=objc
+func (t_ TextTable) NumberOfColumns() uint {
+	rv := objc.Call[uint](t_, objc.Sel("numberOfColumns"))
+	return rv
+}
+
+// The number of columns in the text table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1532413-numberofcolumns?language=objc
+func (t_ TextTable) SetNumberOfColumns(value uint) {
+	objc.Call[objc.Void](t_, objc.Sel("setNumberOfColumns:"), value)
 }

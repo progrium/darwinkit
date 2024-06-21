@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametaldrawable?language=objc
 type PMetalDrawable interface {
 	// optional
-	Texture() metal.TextureObject
-	HasTexture() bool
-
-	// optional
 	Layer() MetalLayer
 	HasLayer() bool
+
+	// optional
+	Texture() metal.TextureObject
+	HasTexture() bool
 }
 
 // ensure impl type implements protocol interface
@@ -26,18 +26,6 @@ var _ PMetalDrawable = (*MetalDrawableObject)(nil)
 // A concrete type for the [PMetalDrawable] protocol.
 type MetalDrawableObject struct {
 	objc.Object
-}
-
-func (m_ MetalDrawableObject) HasTexture() bool {
-	return m_.RespondsToSelector(objc.Sel("texture"))
-}
-
-// A Metal texture object that contains the drawable’s contents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametaldrawable/1478159-texture?language=objc
-func (m_ MetalDrawableObject) Texture() metal.TextureObject {
-	rv := objc.Call[metal.TextureObject](m_, objc.Sel("texture"))
-	return rv
 }
 
 func (m_ MetalDrawableObject) HasLayer() bool {
@@ -49,5 +37,17 @@ func (m_ MetalDrawableObject) HasLayer() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametaldrawable/1478165-layer?language=objc
 func (m_ MetalDrawableObject) Layer() MetalLayer {
 	rv := objc.Call[MetalLayer](m_, objc.Sel("layer"))
+	return rv
+}
+
+func (m_ MetalDrawableObject) HasTexture() bool {
+	return m_.RespondsToSelector(objc.Sel("texture"))
+}
+
+// A Metal texture object that contains the drawable’s contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametaldrawable/1478159-texture?language=objc
+func (m_ MetalDrawableObject) Texture() metal.TextureObject {
+	rv := objc.Call[metal.TextureObject](m_, objc.Sel("texture"))
 	return rv
 }

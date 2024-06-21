@@ -24,39 +24,36 @@ type _ImageClass struct {
 // An interface definition for the [Image] class.
 type IImage interface {
 	objc.IObject
+	AutoAdjustmentFiltersWithOptions(options map[ImageAutoAdjustmentOption]objc.IObject) []Filter
+	ImageBySettingAlphaOneInExtent(extent coregraphics.Rect) Image
+	DrawAtPointFromRectOperationFraction(point foundation.Point, fromRect foundation.Rect, op objc.IObject, delta float64)
+	ImageBySamplingLinear() Image
+	ImageBySamplingNearest() Image
+	DrawInRectFromRectOperationFraction(rect foundation.Rect, fromRect foundation.Rect, op objc.IObject, delta float64)
+	ImageByApplyingGaussianBlurWithSigma(sigma float64) Image
+	ImageByClampingToRect(rect coregraphics.Rect) Image
+	ImageByUnpremultiplyingAlpha() Image
+	ImageTransformForOrientation(orientation int) coregraphics.AffineTransform
 	ImageByCompositingOverImage(dest IImage) Image
 	ImageByColorMatchingColorSpaceToWorkingSpace(colorSpace coregraphics.ColorSpaceRef) Image
-	DrawInRectFromRectOperationFraction(rect foundation.Rect, fromRect foundation.Rect, op objc.IObject, delta float64)
-	ImageByApplyingCGOrientation(orientation imageio.ImagePropertyOrientation) Image
-	ImageByUnpremultiplyingAlpha() Image
-	ImageByClampingToRect(rect coregraphics.Rect) Image
-	ImageByColorMatchingWorkingSpaceToColorSpace(colorSpace coregraphics.ColorSpaceRef) Image
 	ImageByClampingToExtent() Image
-	ImageByApplyingTransform(matrix coregraphics.AffineTransform) Image
-	ImageBySamplingLinear() Image
-	ImageByApplyingGaussianBlurWithSigma(sigma float64) Image
-	AutoAdjustmentFiltersWithOptions(options map[ImageAutoAdjustmentOption]objc.IObject) []Filter
+	ImageByColorMatchingWorkingSpaceToColorSpace(colorSpace coregraphics.ColorSpaceRef) Image
 	ImageTransformForCGOrientation(orientation imageio.ImagePropertyOrientation) coregraphics.AffineTransform
-	ImageBySamplingNearest() Image
-	ImageByApplyingTransformHighQualityDownsample(matrix coregraphics.AffineTransform, highQualityDownsample bool) Image
-	ImageByInsertingIntermediate_(cache bool) Image
-	ImageByApplyingFilterWithInputParameters(filterName string, params map[string]objc.IObject) Image
-	AutoAdjustmentFilters() []Filter
-	RegionOfInterestForImageInRect(image IImage, rect coregraphics.Rect) coregraphics.Rect
-	ImageTransformForOrientation(orientation int) coregraphics.AffineTransform
+	ImageByApplyingCGOrientation(orientation imageio.ImagePropertyOrientation) Image
 	ImageByApplyingFilter(filterName string) Image
-	ImageByApplyingOrientation(orientation int) Image
-	ImageByCroppingToRect(rect coregraphics.Rect) Image
-	ImageBySettingAlphaOneInExtent(extent coregraphics.Rect) Image
-	ImageByPremultiplyingAlpha() Image
-	ImageBySettingProperties(properties foundation.Dictionary) Image
-	DrawAtPointFromRectOperationFraction(point foundation.Point, fromRect foundation.Rect, op objc.IObject, delta float64)
 	ImageByInsertingIntermediate() Image
-	ColorSpace() coregraphics.ColorSpaceRef
+	ImageBySettingProperties(properties foundation.Dictionary) Image
+	ImageByPremultiplyingAlpha() Image
+	AutoAdjustmentFilters() []Filter
+	ImageByCroppingToRect(rect coregraphics.Rect) Image
+	ImageByApplyingTransformHighQualityDownsample(matrix coregraphics.AffineTransform, highQualityDownsample bool) Image
+	ImageByApplyingOrientation(orientation int) Image
+	RegionOfInterestForImageInRect(image IImage, rect coregraphics.Rect) coregraphics.Rect
+	CGImage() coregraphics.ImageRef
 	Properties() map[string]objc.Object
 	PixelBuffer() corevideo.PixelBufferRef
+	ColorSpace() coregraphics.ColorSpaceRef
 	Url() foundation.URL
-	CGImage() coregraphics.ImageRef
 	Extent() coregraphics.Rect
 	Definition() FilterShape
 }
@@ -74,6 +71,62 @@ func ImageFrom(ptr unsafe.Pointer) Image {
 	}
 }
 
+func (i_ Image) InitWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithCVImageBuffer:"), imageBuffer)
+	return rv
+}
+
+// Initializes an image object from the contents of a Core Video image buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438012-initwithcvimagebuffer?language=objc
+func NewImageWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
+	instance := ImageClass.Alloc().InitWithCVImageBuffer(imageBuffer)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ Image) InitWithIOSurface(surface iosurface.Ref) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithIOSurface:"), surface)
+	return rv
+}
+
+// Initializes an image with the contents of an IOSurface. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438030-initwithiosurface?language=objc
+func NewImageWithIOSurface(surface iosurface.Ref) Image {
+	instance := ImageClass.Alloc().InitWithIOSurface(surface)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ Image) InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapData:bytesPerRow:size:format:colorSpace:"), data, bytesPerRow, size, format, colorSpace)
+	return rv
+}
+
+// Initializes an image object with bitmap data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437857-initwithbitmapdata?language=objc
+func NewImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
+	instance := ImageClass.Alloc().InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
+	instance.Autorelease()
+	return instance
+}
+
+func (i_ Image) InitWithColor(color IColor) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithColor:"), color)
+	return rv
+}
+
+// Initializes an image of infinite extent whose entire content is the specified color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437947-initwithcolor?language=objc
+func NewImageWithColor(color IColor) Image {
+	instance := ImageClass.Alloc().InitWithColor(color)
+	instance.Autorelease()
+	return instance
+}
+
 func (i_ Image) InitWithData(data []byte) Image {
 	rv := objc.Call[Image](i_, objc.Sel("initWithData:"), data)
 	return rv
@@ -88,30 +141,16 @@ func NewImageWithData(data []byte) Image {
 	return instance
 }
 
-func (i_ Image) InitWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:options:"), url, options)
+func (i_ Image) InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapImageRep:"), bitmapImageRep)
 	return rv
 }
 
-// Initializes an image object by reading an image from a URL, using the specified options. [Full Topic]
+// Initializes an image object with the specified bitmap image representation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437867-initwithcontentsofurl?language=objc
-func NewImageWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithContentsOfURLOptions(url, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCVImageBuffer:options:"), imageBuffer, options)
-	return rv
-}
-
-// Initializes an image object from the contents of a Core Video image buffer, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437617-initwithcvimagebuffer?language=objc
-func NewImageWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithCVImageBufferOptions(imageBuffer, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1535335-initwithbitmapimagerep?language=objc
+func NewImageWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
+	instance := ImageClass.Alloc().InitWithBitmapImageRep(bitmapImageRep)
 	instance.Autorelease()
 	return instance
 }
@@ -131,72 +170,16 @@ func NewImageWithMTLTextureOptions(texture metal.PTexture, options map[ImageOpti
 	return instance
 }
 
-func (i_ Image) InitWithCGImage(image coregraphics.ImageRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCGImage:"), image)
+func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
-// Initializes an image object with a Quartz 2D image. [Full Topic]
+// Initializes an image object by reading an image from a URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437986-initwithcgimage?language=objc
-func NewImageWithCGImage(image coregraphics.ImageRef) Image {
-	instance := ImageClass.Alloc().InitWithCGImage(image)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapData:bytesPerRow:size:format:colorSpace:"), data, bytesPerRow, size, format, colorSpace)
-	return rv
-}
-
-// Initializes an image object with bitmap data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437857-initwithbitmapdata?language=objc
-func NewImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
-	instance := ImageClass.Alloc().InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCGImage:options:"), image, options)
-	return rv
-}
-
-// Initializes an image object with a Quartz 2D image, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437764-initwithcgimage?language=objc
-func NewImageWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithCGImageOptions(image, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapImageRep:"), bitmapImageRep)
-	return rv
-}
-
-// Initializes an image object with the specified bitmap image representation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1535335-initwithbitmapimagerep?language=objc
-func NewImageWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithBitmapImageRep(bitmapImageRep)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCVImageBuffer:"), imageBuffer)
-	return rv
-}
-
-// Initializes an image object from the contents of a Core Video image buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438012-initwithcvimagebuffer?language=objc
-func NewImageWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
-	instance := ImageClass.Alloc().InitWithCVImageBuffer(imageBuffer)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437908-initwithcontentsofurl?language=objc
+func NewImageWithContentsOfURL(url foundation.IURL) Image {
+	instance := ImageClass.Alloc().InitWithContentsOfURL(url)
 	instance.Autorelease()
 	return instance
 }
@@ -215,76 +198,6 @@ func NewImageWithImageProviderSize(p objc.IObject, width uint) Image {
 	return instance
 }
 
-func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), url)
-	return rv
-}
-
-// Initializes an image object by reading an image from a URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437908-initwithcontentsofurl?language=objc
-func NewImageWithContentsOfURL(url foundation.IURL) Image {
-	instance := ImageClass.Alloc().InitWithContentsOfURL(url)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCVPixelBuffer:"), pixelBuffer)
-	return rv
-}
-
-// Initializes an image object from the contents of a Core Video pixel buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438072-initwithcvpixelbuffer?language=objc
-func NewImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
-	instance := ImageClass.Alloc().InitWithCVPixelBuffer(pixelBuffer)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithIOSurface(surface iosurface.Ref) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithIOSurface:"), surface)
-	return rv
-}
-
-// Initializes an image with the contents of an IOSurface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438030-initwithiosurface?language=objc
-func NewImageWithIOSurface(surface iosurface.Ref) Image {
-	instance := ImageClass.Alloc().InitWithIOSurface(surface)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithIOSurfaceOptions(surface iosurface.Ref, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithIOSurface:options:"), surface, options)
-	return rv
-}
-
-// Initializes, using the specified options, an image with the contents of an IOSurface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438181-initwithiosurface?language=objc
-func NewImageWithIOSurfaceOptions(surface iosurface.Ref, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithIOSurfaceOptions(surface, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ Image) InitWithDataOptions(data []byte, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithData:options:"), data, options)
-	return rv
-}
-
-// Initializes an image object with the supplied image data, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438032-initwithdata?language=objc
-func NewImageWithDataOptions(data []byte, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithDataOptions(data, options)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ Image) InitWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
 	rv := objc.Call[Image](i_, objc.Sel("initWithCGImageSource:index:options:"), source, index, dict)
 	return rv
@@ -299,30 +212,30 @@ func NewImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index 
 	return instance
 }
 
-func (i_ Image) InitWithCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithCVPixelBuffer:options:"), pixelBuffer, options)
+func (i_ Image) InitWithCGImage(image coregraphics.ImageRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithCGImage:"), image)
 	return rv
 }
 
-// Initializes an image object from the contents of a Core Video pixel buffer using the specified options. [Full Topic]
+// Initializes an image object with a Quartz 2D image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438209-initwithcvpixelbuffer?language=objc
-func NewImageWithCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) Image {
-	instance := ImageClass.Alloc().InitWithCVPixelBufferOptions(pixelBuffer, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437986-initwithcgimage?language=objc
+func NewImageWithCGImage(image coregraphics.ImageRef) Image {
+	instance := ImageClass.Alloc().InitWithCGImage(image)
 	instance.Autorelease()
 	return instance
 }
 
-func (i_ Image) InitWithColor(color IColor) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithColor:"), color)
+func (i_ Image) InitWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithCVPixelBuffer:"), pixelBuffer)
 	return rv
 }
 
-// Initializes an image of infinite extent whose entire content is the specified color. [Full Topic]
+// Initializes an image object from the contents of a Core Video pixel buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437947-initwithcolor?language=objc
-func NewImageWithColor(color IColor) Image {
-	instance := ImageClass.Alloc().InitWithColor(color)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438072-initwithcvpixelbuffer?language=objc
+func NewImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
+	instance := ImageClass.Alloc().InitWithCVPixelBuffer(pixelBuffer)
 	instance.Autorelease()
 	return instance
 }
@@ -347,172 +260,35 @@ func (i_ Image) Init() Image {
 	return rv
 }
 
-// Creates and returns an image object from bitmap data. [Full Topic]
+// Returns a subset of automatically selected and configured filters for adjusting the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547023-imagewithbitmapdata?language=objc
-func (ic _ImageClass) ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithBitmapData:bytesPerRow:size:format:colorSpace:"), data, bytesPerRow, size, format, colorSpace)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437792-autoadjustmentfilterswithoptions?language=objc
+func (i_ Image) AutoAdjustmentFiltersWithOptions(options map[ImageAutoAdjustmentOption]objc.IObject) []Filter {
+	rv := objc.Call[[]Filter](i_, objc.Sel("autoAdjustmentFiltersWithOptions:"), options)
 	return rv
 }
 
-// Creates and returns an image object from bitmap data. [Full Topic]
+// Creates and returns an image object from the contents of  CVImageBuffer object, using the specified options. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547023-imagewithbitmapdata?language=objc
-func Image_ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
-	return ImageClass.ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
-}
-
-// Returns a new image created by compositing the original image over the specified destination image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437837-imagebycompositingoverimage?language=objc
-func (i_ Image) ImageByCompositingOverImage(dest IImage) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByCompositingOverImage:"), dest)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547028-imagewithcvimagebuffer?language=objc
+func (ic _ImageClass) ImageWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithCVImageBuffer:options:"), imageBuffer, options)
 	return rv
 }
 
-// Creates and returns an image object from a Quartz 2D image using the specified options. [Full Topic]
+// Creates and returns an image object from the contents of  CVImageBuffer object, using the specified options. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547021-imagewithcgimage?language=objc
-func (ic _ImageClass) ImageWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCGImage:options:"), image, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547028-imagewithcvimagebuffer?language=objc
+func Image_ImageWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
+	return ImageClass.ImageWithCVImageBufferOptions(imageBuffer, options)
+}
+
+// Returns a new image created by setting all alpha values to 1.0 within the specified rectangle and to 0.0 outside of that area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645891-imagebysettingalphaoneinextent?language=objc
+func (i_ Image) ImageBySettingAlphaOneInExtent(extent coregraphics.Rect) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageBySettingAlphaOneInExtent:"), extent)
 	return rv
-}
-
-// Creates and returns an image object from a Quartz 2D image using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547021-imagewithcgimage?language=objc
-func Image_ImageWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithCGImageOptions(image, options)
-}
-
-// Returns a new image created by color matching from the specified color space to the context’s working color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645896-imagebycolormatchingcolorspaceto?language=objc
-func (i_ Image) ImageByColorMatchingColorSpaceToWorkingSpace(colorSpace coregraphics.ColorSpaceRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByColorMatchingColorSpaceToWorkingSpace:"), colorSpace)
-	return rv
-}
-
-// Draws all or part of the image in the specified rectangle in the current coordinate system [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534407-drawinrect?language=objc
-func (i_ Image) DrawInRectFromRectOperationFraction(rect foundation.Rect, fromRect foundation.Rect, op objc.IObject, delta float64) {
-	objc.Call[objc.Void](i_, objc.Sel("drawInRect:fromRect:operation:fraction:"), rect, fromRect, op, delta)
-}
-
-// Transforms the original image by a given CGImagePropertyOrientation and returns the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2919727-imagebyapplyingcgorientation?language=objc
-func (i_ Image) ImageByApplyingCGOrientation(orientation imageio.ImagePropertyOrientation) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingCGOrientation:"), orientation)
-	return rv
-}
-
-// Creates, using the specified options, and returns an image from the contents of an IOSurface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547001-imagewithiosurface?language=objc
-func (ic _ImageClass) ImageWithIOSurfaceOptions(surface iosurface.Ref, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithIOSurface:options:"), surface, options)
-	return rv
-}
-
-// Creates, using the specified options, and returns an image from the contents of an IOSurface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547001-imagewithiosurface?language=objc
-func Image_ImageWithIOSurfaceOptions(surface iosurface.Ref, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithIOSurfaceOptions(surface, options)
-}
-
-// Creates and returns an image object from the contents of  CVPixelBuffer object, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547003-imagewithcvpixelbuffer?language=objc
-func (ic _ImageClass) ImageWithCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCVPixelBuffer:options:"), pixelBuffer, options)
-	return rv
-}
-
-// Creates and returns an image object from the contents of  CVPixelBuffer object, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547003-imagewithcvpixelbuffer?language=objc
-func Image_ImageWithCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithCVPixelBufferOptions(pixelBuffer, options)
-}
-
-// Creates and returns an image object initialized with the supplied image data, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547016-imagewithdata?language=objc
-func (ic _ImageClass) ImageWithDataOptions(data []byte, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithData:options:"), data, options)
-	return rv
-}
-
-// Creates and returns an image object initialized with the supplied image data, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547016-imagewithdata?language=objc
-func Image_ImageWithDataOptions(data []byte, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithDataOptions(data, options)
-}
-
-// Returns a new image created by dividing the image’s RGB values by its alpha values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645892-imagebyunpremultiplyingalpha?language=objc
-func (i_ Image) ImageByUnpremultiplyingAlpha() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByUnpremultiplyingAlpha"))
-	return rv
-}
-
-// Creates and returns an image object from a Quartz 2D image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547025-imagewithcgimage?language=objc
-func (ic _ImageClass) ImageWithCGImage(image coregraphics.ImageRef) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCGImage:"), image)
-	return rv
-}
-
-// Creates and returns an image object from a Quartz 2D image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547025-imagewithcgimage?language=objc
-func Image_ImageWithCGImage(image coregraphics.ImageRef) Image {
-	return ImageClass.ImageWithCGImage(image)
-}
-
-// Returns a new image created by cropping to a specified area, then making the pixel colors along the edges of the cropped image extend infinitely in all directions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645893-imagebyclampingtorect?language=objc
-func (i_ Image) ImageByClampingToRect(rect coregraphics.Rect) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByClampingToRect:"), rect)
-	return rv
-}
-
-// Returns a new image created by color matching from the context’s working color space to the specified color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645898-imagebycolormatchingworkingspace?language=objc
-func (i_ Image) ImageByColorMatchingWorkingSpaceToColorSpace(colorSpace coregraphics.ColorSpaceRef) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByColorMatchingWorkingSpaceToColorSpace:"), colorSpace)
-	return rv
-}
-
-// Returns a new image created by making the pixel colors along its edges extend infinitely in all directions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437628-imagebyclampingtoextent?language=objc
-func (i_ Image) ImageByClampingToExtent() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByClampingToExtent"))
-	return rv
-}
-
-// Creates and returns an empty image object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438023-emptyimage?language=objc
-func (ic _ImageClass) EmptyImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("emptyImage"))
-	return rv
-}
-
-// Creates and returns an empty image object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438023-emptyimage?language=objc
-func Image_EmptyImage() Image {
-	return ImageClass.EmptyImage()
 }
 
 // Creates and returns an image of infinite extent whose entire content is the specified color. [Full Topic]
@@ -530,26 +306,49 @@ func Image_ImageWithColor(color IColor) Image {
 	return ImageClass.ImageWithColor(color)
 }
 
-//	[Full Topic]
+// Draws all or part of the image at the specified point in the current coordinate system. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3152398-imagewithcgimagesource?language=objc
-func (ic _ImageClass) ImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCGImageSource:index:options:"), source, index, dict)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534432-drawatpoint?language=objc
+func (i_ Image) DrawAtPointFromRectOperationFraction(point foundation.Point, fromRect foundation.Rect, op objc.IObject, delta float64) {
+	objc.Call[objc.Void](i_, objc.Sel("drawAtPoint:fromRect:operation:fraction:"), point, fromRect, op, delta)
+}
+
+// Samples the image using bilinear interpolation and returns the result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2867346-imagebysamplinglinear?language=objc
+func (i_ Image) ImageBySamplingLinear() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageBySamplingLinear"))
 	return rv
 }
 
-//	[Full Topic]
+// Samples the image using nearest-neighbor and returns the result. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3152398-imagewithcgimagesource?language=objc
-func Image_ImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithCGImageSourceIndexOptions(source, index, dict)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2867429-imagebysamplingnearest?language=objc
+func (i_ Image) ImageBySamplingNearest() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageBySamplingNearest"))
+	return rv
 }
 
-// Returns a new image that represents the original image after applying an affine transform. [Full Topic]
+// Draws all or part of the image in the specified rectangle in the current coordinate system [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438203-imagebyapplyingtransform?language=objc
-func (i_ Image) ImageByApplyingTransform(matrix coregraphics.AffineTransform) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingTransform:"), matrix)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534407-drawinrect?language=objc
+func (i_ Image) DrawInRectFromRectOperationFraction(rect foundation.Rect, fromRect foundation.Rect, op objc.IObject, delta float64) {
+	objc.Call[objc.Void](i_, objc.Sel("drawInRect:fromRect:operation:fraction:"), rect, fromRect, op, delta)
+}
+
+// Returns a new image created by applying a Gaussian Blur filter to the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645897-imagebyapplyinggaussianblurwiths?language=objc
+func (i_ Image) ImageByApplyingGaussianBlurWithSigma(sigma float64) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingGaussianBlurWithSigma:"), sigma)
+	return rv
+}
+
+// Returns a new image created by cropping to a specified area, then making the pixel colors along the edges of the cropped image extend infinitely in all directions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645893-imagebyclampingtorect?language=objc
+func (i_ Image) ImageByClampingToRect(rect coregraphics.Rect) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByClampingToRect:"), rect)
 	return rv
 }
 
@@ -568,19 +367,36 @@ func Image_ImageWithIOSurface(surface iosurface.Ref) Image {
 	return ImageClass.ImageWithIOSurface(surface)
 }
 
-// Creates and returns an image object from the contents of  CVImageBuffer object, using the specified options. [Full Topic]
+// Returns a new image created by dividing the image’s RGB values by its alpha values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547028-imagewithcvimagebuffer?language=objc
-func (ic _ImageClass) ImageWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCVImageBuffer:options:"), imageBuffer, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645892-imagebyunpremultiplyingalpha?language=objc
+func (i_ Image) ImageByUnpremultiplyingAlpha() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByUnpremultiplyingAlpha"))
 	return rv
 }
 
-// Creates and returns an image object from the contents of  CVImageBuffer object, using the specified options. [Full Topic]
+// Returns the transformation needed to reorient the image to the specified orientation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547028-imagewithcvimagebuffer?language=objc
-func Image_ImageWithCVImageBufferOptions(imageBuffer corevideo.ImageBufferRef, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithCVImageBufferOptions(imageBuffer, options)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437930-imagetransformfororientation?language=objc
+func (i_ Image) ImageTransformForOrientation(orientation int) coregraphics.AffineTransform {
+	rv := objc.Call[coregraphics.AffineTransform](i_, objc.Sel("imageTransformForOrientation:"), orientation)
+	return rv
+}
+
+// Returns a new image created by compositing the original image over the specified destination image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437837-imagebycompositingoverimage?language=objc
+func (i_ Image) ImageByCompositingOverImage(dest IImage) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByCompositingOverImage:"), dest)
+	return rv
+}
+
+// Returns a new image created by color matching from the specified color space to the context’s working color space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645896-imagebycolormatchingcolorspaceto?language=objc
+func (i_ Image) ImageByColorMatchingColorSpaceToWorkingSpace(colorSpace coregraphics.ColorSpaceRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByColorMatchingColorSpaceToWorkingSpace:"), colorSpace)
+	return rv
 }
 
 // Creates and returns an image object with data supplied by a Metal texture. [Full Topic]
@@ -599,214 +415,11 @@ func Image_ImageWithMTLTextureOptions(texture metal.PTexture, options map[ImageO
 	return ImageClass.ImageWithMTLTextureOptions(texture, options)
 }
 
-// Samples the image using bilinear interpolation and returns the result. [Full Topic]
+// Returns a new image created by making the pixel colors along its edges extend infinitely in all directions. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2867346-imagebysamplinglinear?language=objc
-func (i_ Image) ImageBySamplingLinear() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageBySamplingLinear"))
-	return rv
-}
-
-// Returns a new image created by applying a Gaussian Blur filter to the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645897-imagebyapplyinggaussianblurwiths?language=objc
-func (i_ Image) ImageByApplyingGaussianBlurWithSigma(sigma float64) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingGaussianBlurWithSigma:"), sigma)
-	return rv
-}
-
-// Returns a subset of automatically selected and configured filters for adjusting the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437792-autoadjustmentfilterswithoptions?language=objc
-func (i_ Image) AutoAdjustmentFiltersWithOptions(options map[ImageAutoAdjustmentOption]objc.IObject) []Filter {
-	rv := objc.Call[[]Filter](i_, objc.Sel("autoAdjustmentFiltersWithOptions:"), options)
-	return rv
-}
-
-// The affine transform for changing the image to the given orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2919726-imagetransformforcgorientation?language=objc
-func (i_ Image) ImageTransformForCGOrientation(orientation imageio.ImagePropertyOrientation) coregraphics.AffineTransform {
-	rv := objc.Call[coregraphics.AffineTransform](i_, objc.Sel("imageTransformForCGOrientation:"), orientation)
-	return rv
-}
-
-// Samples the image using nearest-neighbor and returns the result. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2867429-imagebysamplingnearest?language=objc
-func (i_ Image) ImageBySamplingNearest() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageBySamplingNearest"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3334939-imagebyapplyingtransform?language=objc
-func (i_ Image) ImageByApplyingTransformHighQualityDownsample(matrix coregraphics.AffineTransform, highQualityDownsample bool) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingTransform:highQualityDownsample:"), matrix, highQualityDownsample)
-	return rv
-}
-
-// Returns a new image created by inserting a cacheable intermediate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2966522-imagebyinsertingintermediate?language=objc
-func (i_ Image) ImageByInsertingIntermediate_(cache bool) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByInsertingIntermediate:"), cache)
-	return rv
-}
-
-// Creates and returns an image object from the contents of  CVImageBuffer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547007-imagewithcvimagebuffer?language=objc
-func (ic _ImageClass) ImageWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCVImageBuffer:"), imageBuffer)
-	return rv
-}
-
-// Creates and returns an image object from the contents of  CVImageBuffer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547007-imagewithcvimagebuffer?language=objc
-func Image_ImageWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
-	return ImageClass.ImageWithCVImageBuffer(imageBuffer)
-}
-
-// Returns a new image created by applying a filter to the original image with the specified name and parameters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437589-imagebyapplyingfilter?language=objc
-func (i_ Image) ImageByApplyingFilterWithInputParameters(filterName string, params map[string]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingFilter:withInputParameters:"), filterName, params)
-	return rv
-}
-
-// Creates and returns an image object from the contents of a file, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1546997-imagewithcontentsofurl?language=objc
-func (ic _ImageClass) ImageWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:options:"), url, options)
-	return rv
-}
-
-// Creates and returns an image object from the contents of a file, using the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1546997-imagewithcontentsofurl?language=objc
-func Image_ImageWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.ImageWithContentsOfURLOptions(url, options)
-}
-
-// Returns all possible automatically selected and configured filters for adjusting the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645889-autoadjustmentfilters?language=objc
-func (i_ Image) AutoAdjustmentFilters() []Filter {
-	rv := objc.Call[[]Filter](i_, objc.Sel("autoAdjustmentFilters"))
-	return rv
-}
-
-// Returns the region of interest for the filter chain that generates the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437994-regionofinterestforimage?language=objc
-func (i_ Image) RegionOfInterestForImageInRect(image IImage, rect coregraphics.Rect) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("regionOfInterestForImage:inRect:"), image, rect)
-	return rv
-}
-
-// Returns the transformation needed to reorient the image to the specified orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437930-imagetransformfororientation?language=objc
-func (i_ Image) ImageTransformForOrientation(orientation int) coregraphics.AffineTransform {
-	rv := objc.Call[coregraphics.AffineTransform](i_, objc.Sel("imageTransformForOrientation:"), orientation)
-	return rv
-}
-
-// Applies the filter to an image and returns the output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2915368-imagebyapplyingfilter?language=objc
-func (i_ Image) ImageByApplyingFilter(filterName string) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingFilter:"), filterName)
-	return rv
-}
-
-// Returns a new image created by transforming the original image to the specified EXIF orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438223-imagebyapplyingorientation?language=objc
-func (i_ Image) ImageByApplyingOrientation(orientation int) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingOrientation:"), orientation)
-	return rv
-}
-
-// Returns a new image with a cropped portion of the original image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437833-imagebycroppingtorect?language=objc
-func (i_ Image) ImageByCroppingToRect(rect coregraphics.Rect) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByCroppingToRect:"), rect)
-	return rv
-}
-
-// Returns a new image created by setting all alpha values to 1.0 within the specified rectangle and to 0.0 outside of that area. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645891-imagebysettingalphaoneinextent?language=objc
-func (i_ Image) ImageBySettingAlphaOneInExtent(extent coregraphics.Rect) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageBySettingAlphaOneInExtent:"), extent)
-	return rv
-}
-
-// Returns a new image created by multiplying the image’s RGB values by its alpha values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645894-imagebypremultiplyingalpha?language=objc
-func (i_ Image) ImageByPremultiplyingAlpha() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByPremultiplyingAlpha"))
-	return rv
-}
-
-// Creates and returns an image object from the contents of  CVPixelBuffer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547005-imagewithcvpixelbuffer?language=objc
-func (ic _ImageClass) ImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithCVPixelBuffer:"), pixelBuffer)
-	return rv
-}
-
-// Creates and returns an image object from the contents of  CVPixelBuffer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547005-imagewithcvpixelbuffer?language=objc
-func Image_ImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
-	return ImageClass.ImageWithCVPixelBuffer(pixelBuffer)
-}
-
-// Creates and returns an image object from the contents of a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547027-imagewithcontentsofurl?language=objc
-func (ic _ImageClass) ImageWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:"), url)
-	return rv
-}
-
-// Creates and returns an image object from the contents of a file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547027-imagewithcontentsofurl?language=objc
-func Image_ImageWithContentsOfURL(url foundation.IURL) Image {
-	return ImageClass.ImageWithContentsOfURL(url)
-}
-
-// Returns a new image created by adding the specified metadata properties to the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645895-imagebysettingproperties?language=objc
-func (i_ Image) ImageBySettingProperties(properties foundation.Dictionary) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageBySettingProperties:"), properties)
-	return rv
-}
-
-// Draws all or part of the image at the specified point in the current coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534432-drawatpoint?language=objc
-func (i_ Image) DrawAtPointFromRectOperationFraction(point foundation.Point, fromRect foundation.Rect, op objc.IObject, delta float64) {
-	objc.Call[objc.Void](i_, objc.Sel("drawAtPoint:fromRect:operation:fraction:"), point, fromRect, op, delta)
-}
-
-// Returns a new image created by inserting an intermediate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2966521-imagebyinsertingintermediate?language=objc
-func (i_ Image) ImageByInsertingIntermediate() Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByInsertingIntermediate"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437628-imagebyclampingtoextent?language=objc
+func (i_ Image) ImageByClampingToExtent() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByClampingToExtent"))
 	return rv
 }
 
@@ -823,6 +436,21 @@ func (ic _ImageClass) ImageWithData(data []byte) Image {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547029-imagewithdata?language=objc
 func Image_ImageWithData(data []byte) Image {
 	return ImageClass.ImageWithData(data)
+}
+
+// Creates and returns an image object from the contents of a file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547027-imagewithcontentsofurl?language=objc
+func (ic _ImageClass) ImageWithContentsOfURL(url foundation.IURL) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:"), url)
+	return rv
+}
+
+// Creates and returns an image object from the contents of a file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547027-imagewithcontentsofurl?language=objc
+func Image_ImageWithContentsOfURL(url foundation.IURL) Image {
+	return ImageClass.ImageWithContentsOfURL(url)
 }
 
 // Creates and returns an image object initialized with data provided by an image provider. [Full Topic]
@@ -842,124 +470,181 @@ func Image_ImageWithImageProviderSize(p objc.IObject, width uint) Image {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074421-blackimage?language=objc
-func (ic _ImageClass) BlackImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("blackImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3152398-imagewithcgimagesource?language=objc
+func (ic _ImageClass) ImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithCGImageSource:index:options:"), source, index, dict)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074421-blackimage?language=objc
-func Image_BlackImage() Image {
-	return ImageClass.BlackImage()
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3152398-imagewithcgimagesource?language=objc
+func Image_ImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
+	return ImageClass.ImageWithCGImageSourceIndexOptions(source, index, dict)
 }
 
-//	[Full Topic]
+// Returns a new image created by color matching from the context’s working color space to the specified color space. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074429-whiteimage?language=objc
-func (ic _ImageClass) WhiteImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("whiteImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645898-imagebycolormatchingworkingspace?language=objc
+func (i_ Image) ImageByColorMatchingWorkingSpaceToColorSpace(colorSpace coregraphics.ColorSpaceRef) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByColorMatchingWorkingSpaceToColorSpace:"), colorSpace)
+	return rv
+}
+
+// The affine transform for changing the image to the given orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2919726-imagetransformforcgorientation?language=objc
+func (i_ Image) ImageTransformForCGOrientation(orientation imageio.ImagePropertyOrientation) coregraphics.AffineTransform {
+	rv := objc.Call[coregraphics.AffineTransform](i_, objc.Sel("imageTransformForCGOrientation:"), orientation)
+	return rv
+}
+
+// Transforms the original image by a given CGImagePropertyOrientation and returns the result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2919727-imagebyapplyingcgorientation?language=objc
+func (i_ Image) ImageByApplyingCGOrientation(orientation imageio.ImagePropertyOrientation) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingCGOrientation:"), orientation)
+	return rv
+}
+
+// Creates and returns an image object from a Quartz 2D image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547025-imagewithcgimage?language=objc
+func (ic _ImageClass) ImageWithCGImage(image coregraphics.ImageRef) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithCGImage:"), image)
+	return rv
+}
+
+// Creates and returns an image object from a Quartz 2D image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547025-imagewithcgimage?language=objc
+func Image_ImageWithCGImage(image coregraphics.ImageRef) Image {
+	return ImageClass.ImageWithCGImage(image)
+}
+
+// Applies the filter to an image and returns the output. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2915368-imagebyapplyingfilter?language=objc
+func (i_ Image) ImageByApplyingFilter(filterName string) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingFilter:"), filterName)
+	return rv
+}
+
+// Returns a new image created by inserting an intermediate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/2966521-imagebyinsertingintermediate?language=objc
+func (i_ Image) ImageByInsertingIntermediate() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByInsertingIntermediate"))
+	return rv
+}
+
+// Creates and returns an empty image object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438023-emptyimage?language=objc
+func (ic _ImageClass) EmptyImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("emptyImage"))
+	return rv
+}
+
+// Creates and returns an empty image object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438023-emptyimage?language=objc
+func Image_EmptyImage() Image {
+	return ImageClass.EmptyImage()
+}
+
+// Returns a new image created by adding the specified metadata properties to the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645895-imagebysettingproperties?language=objc
+func (i_ Image) ImageBySettingProperties(properties foundation.Dictionary) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageBySettingProperties:"), properties)
+	return rv
+}
+
+// Returns a new image created by multiplying the image’s RGB values by its alpha values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645894-imagebypremultiplyingalpha?language=objc
+func (i_ Image) ImageByPremultiplyingAlpha() Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByPremultiplyingAlpha"))
+	return rv
+}
+
+// Returns all possible automatically selected and configured filters for adjusting the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1645889-autoadjustmentfilters?language=objc
+func (i_ Image) AutoAdjustmentFilters() []Filter {
+	rv := objc.Call[[]Filter](i_, objc.Sel("autoAdjustmentFilters"))
+	return rv
+}
+
+// Returns a new image with a cropped portion of the original image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437833-imagebycroppingtorect?language=objc
+func (i_ Image) ImageByCroppingToRect(rect coregraphics.Rect) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByCroppingToRect:"), rect)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074429-whiteimage?language=objc
-func Image_WhiteImage() Image {
-	return ImageClass.WhiteImage()
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074428-redimage?language=objc
-func (ic _ImageClass) RedImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("redImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3334939-imagebyapplyingtransform?language=objc
+func (i_ Image) ImageByApplyingTransformHighQualityDownsample(matrix coregraphics.AffineTransform, highQualityDownsample bool) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingTransform:highQualityDownsample:"), matrix, highQualityDownsample)
 	return rv
 }
 
-//	[Full Topic]
+// Creates and returns an image object from bitmap data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074428-redimage?language=objc
-func Image_RedImage() Image {
-	return ImageClass.RedImage()
-}
-
-// The color space of the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437750-colorspace?language=objc
-func (i_ Image) ColorSpace() coregraphics.ColorSpaceRef {
-	rv := objc.Call[coregraphics.ColorSpaceRef](i_, objc.Sel("colorSpace"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547023-imagewithbitmapdata?language=objc
+func (ic _ImageClass) ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithBitmapData:bytesPerRow:size:format:colorSpace:"), data, bytesPerRow, size, format, colorSpace)
 	return rv
 }
 
-// A dictionary containing metadata about the image. [Full Topic]
+// Creates and returns an image object from bitmap data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437733-properties?language=objc
-func (i_ Image) Properties() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](i_, objc.Sel("properties"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547023-imagewithbitmapdata?language=objc
+func Image_ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
+	return ImageClass.ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
+}
+
+// Returns a new image created by transforming the original image to the specified EXIF orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438223-imagebyapplyingorientation?language=objc
+func (i_ Image) ImageByApplyingOrientation(orientation int) Image {
+	rv := objc.Call[Image](i_, objc.Sel("imageByApplyingOrientation:"), orientation)
 	return rv
 }
 
-//	[Full Topic]
+// Returns the region of interest for the filter chain that generates the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074430-yellowimage?language=objc
-func (ic _ImageClass) YellowImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("yellowImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437994-regionofinterestforimage?language=objc
+func (i_ Image) RegionOfInterestForImageInRect(image IImage, rect coregraphics.Rect) coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("regionOfInterestForImage:inRect:"), image, rect)
 	return rv
 }
 
-//	[Full Topic]
+// Creates and returns an image object from the contents of  CVPixelBuffer object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074430-yellowimage?language=objc
-func Image_YellowImage() Image {
-	return ImageClass.YellowImage()
-}
-
-// The CoreVideo pixel buffer this image was created from, if applicable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1687604-pixelbuffer?language=objc
-func (i_ Image) PixelBuffer() corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](i_, objc.Sel("pixelBuffer"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547005-imagewithcvpixelbuffer?language=objc
+func (ic _ImageClass) ImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
+	rv := objc.Call[Image](ic, objc.Sel("imageWithCVPixelBuffer:"), pixelBuffer)
 	return rv
 }
 
-// The URL from which the image was loaded. [Full Topic]
+// Creates and returns an image object from the contents of  CVPixelBuffer object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438195-url?language=objc
-func (i_ Image) Url() foundation.URL {
-	rv := objc.Call[foundation.URL](i_, objc.Sel("url"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547005-imagewithcvpixelbuffer?language=objc
+func Image_ImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
+	return ImageClass.ImageWithCVPixelBuffer(pixelBuffer)
+}
+
+// The CoreGraphics image object this image was created from, if applicable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1687603-cgimage?language=objc
+func (i_ Image) CGImage() coregraphics.ImageRef {
+	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImage"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074422-blueimage?language=objc
-func (ic _ImageClass) BlueImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("blueImage"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074422-blueimage?language=objc
-func Image_BlueImage() Image {
-	return ImageClass.BlueImage()
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074426-greenimage?language=objc
-func (ic _ImageClass) GreenImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("greenImage"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074426-greenimage?language=objc
-func Image_GreenImage() Image {
-	return ImageClass.GreenImage()
 }
 
 //	[Full Topic]
@@ -977,11 +662,65 @@ func Image_CyanImage() Image {
 	return ImageClass.CyanImage()
 }
 
-// The CoreGraphics image object this image was created from, if applicable. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1687603-cgimage?language=objc
-func (i_ Image) CGImage() coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074422-blueimage?language=objc
+func (ic _ImageClass) BlueImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("blueImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074422-blueimage?language=objc
+func Image_BlueImage() Image {
+	return ImageClass.BlueImage()
+}
+
+// A dictionary containing metadata about the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437733-properties?language=objc
+func (i_ Image) Properties() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](i_, objc.Sel("properties"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074428-redimage?language=objc
+func (ic _ImageClass) RedImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("redImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074428-redimage?language=objc
+func Image_RedImage() Image {
+	return ImageClass.RedImage()
+}
+
+// The CoreVideo pixel buffer this image was created from, if applicable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1687604-pixelbuffer?language=objc
+func (i_ Image) PixelBuffer() corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](i_, objc.Sel("pixelBuffer"))
+	return rv
+}
+
+// The color space of the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437750-colorspace?language=objc
+func (i_ Image) ColorSpace() coregraphics.ColorSpaceRef {
+	rv := objc.Call[coregraphics.ColorSpaceRef](i_, objc.Sel("colorSpace"))
+	return rv
+}
+
+// The URL from which the image was loaded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438195-url?language=objc
+func (i_ Image) Url() foundation.URL {
+	rv := objc.Call[foundation.URL](i_, objc.Sel("url"))
 	return rv
 }
 
@@ -1002,17 +741,32 @@ func Image_ClearImage() Image {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074427-magentaimage?language=objc
-func (ic _ImageClass) MagentaImage() Image {
-	rv := objc.Call[Image](ic, objc.Sel("magentaImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074426-greenimage?language=objc
+func (ic _ImageClass) GreenImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("greenImage"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074427-magentaimage?language=objc
-func Image_MagentaImage() Image {
-	return ImageClass.MagentaImage()
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074426-greenimage?language=objc
+func Image_GreenImage() Image {
+	return ImageClass.GreenImage()
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074430-yellowimage?language=objc
+func (ic _ImageClass) YellowImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("yellowImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074430-yellowimage?language=objc
+func Image_YellowImage() Image {
+	return ImageClass.YellowImage()
 }
 
 // A rectangle that specifies the extent of the image. [Full Topic]
@@ -1023,12 +777,19 @@ func (i_ Image) Extent() coregraphics.Rect {
 	return rv
 }
 
-// Returns a filter shape object that represents the domain of definition of the image. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437804-definition?language=objc
-func (i_ Image) Definition() FilterShape {
-	rv := objc.Call[FilterShape](i_, objc.Sel("definition"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074421-blackimage?language=objc
+func (ic _ImageClass) BlackImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("blackImage"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074421-blackimage?language=objc
+func Image_BlackImage() Image {
+	return ImageClass.BlackImage()
 }
 
 //	[Full Topic]
@@ -1044,4 +805,42 @@ func (ic _ImageClass) GrayImage() Image {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074425-grayimage?language=objc
 func Image_GrayImage() Image {
 	return ImageClass.GrayImage()
+}
+
+// Returns a filter shape object that represents the domain of definition of the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437804-definition?language=objc
+func (i_ Image) Definition() FilterShape {
+	rv := objc.Call[FilterShape](i_, objc.Sel("definition"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074427-magentaimage?language=objc
+func (ic _ImageClass) MagentaImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("magentaImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074427-magentaimage?language=objc
+func Image_MagentaImage() Image {
+	return ImageClass.MagentaImage()
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074429-whiteimage?language=objc
+func (ic _ImageClass) WhiteImage() Image {
+	rv := objc.Call[Image](ic, objc.Sel("whiteImage"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3074429-whiteimage?language=objc
+func Image_WhiteImage() Image {
+	return ImageClass.WhiteImage()
 }

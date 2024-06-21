@@ -19,40 +19,40 @@ type _LevelIndicatorClass struct {
 // An interface definition for the [LevelIndicator] class.
 type ILevelIndicator interface {
 	IControl
-	TickMarkValueAtIndex(index int) float64
 	RectOfTickMarkAtIndex(index int) foundation.Rect
-	MinValue() float64
-	SetMinValue(value float64)
-	NumberOfTickMarks() int
-	SetNumberOfTickMarks(value int)
-	CriticalValue() float64
-	SetCriticalValue(value float64)
+	TickMarkValueAtIndex(index int) float64
 	DrawsTieredCapacityLevels() bool
 	SetDrawsTieredCapacityLevels(value bool)
-	RatingImage() Image
-	SetRatingImage(value IImage)
-	WarningValue() float64
-	SetWarningValue(value float64)
-	LevelIndicatorStyle() LevelIndicatorStyle
-	SetLevelIndicatorStyle(value LevelIndicatorStyle)
-	WarningFillColor() Color
-	SetWarningFillColor(value IColor)
-	FillColor() Color
-	SetFillColor(value IColor)
-	PlaceholderVisibility() LevelIndicatorPlaceholderVisibility
-	SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility)
-	TickMarkPosition() TickMarkPosition
-	SetTickMarkPosition(value TickMarkPosition)
-	IsEditable() bool
-	SetEditable(value bool)
 	RatingPlaceholderImage() Image
 	SetRatingPlaceholderImage(value IImage)
-	MaxValue() float64
-	SetMaxValue(value float64)
+	TickMarkPosition() TickMarkPosition
+	SetTickMarkPosition(value TickMarkPosition)
+	CriticalValue() float64
+	SetCriticalValue(value float64)
 	NumberOfMajorTickMarks() int
 	SetNumberOfMajorTickMarks(value int)
+	WarningValue() float64
+	SetWarningValue(value float64)
+	IsEditable() bool
+	SetEditable(value bool)
+	LevelIndicatorStyle() LevelIndicatorStyle
+	SetLevelIndicatorStyle(value LevelIndicatorStyle)
 	CriticalFillColor() Color
 	SetCriticalFillColor(value IColor)
+	WarningFillColor() Color
+	SetWarningFillColor(value IColor)
+	MinValue() float64
+	SetMinValue(value float64)
+	FillColor() Color
+	SetFillColor(value IColor)
+	MaxValue() float64
+	SetMaxValue(value float64)
+	RatingImage() Image
+	SetRatingImage(value IImage)
+	PlaceholderVisibility() LevelIndicatorPlaceholderVisibility
+	SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility)
+	NumberOfTickMarks() int
+	SetNumberOfTickMarks(value int)
 }
 
 // A visual representation of a level or quantity, using discrete values. [Full Topic]
@@ -102,14 +102,6 @@ func NewLevelIndicatorWithFrame(frameRect foundation.Rect) LevelIndicator {
 	return instance
 }
 
-// Returns the receiver’s value represented by the tick mark at the specified index (the minimum-value tick mark has an index of 0). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388823-tickmarkvalueatindex?language=objc
-func (l_ LevelIndicator) TickMarkValueAtIndex(index int) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("tickMarkValueAtIndex:"), index)
-	return rv
-}
-
 // Returns the bounding rectangle of the tick mark identified by the specified index (the minimum-value tick mark is at index 0). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388825-rectoftickmarkatindex?language=objc
@@ -118,49 +110,12 @@ func (l_ LevelIndicator) RectOfTickMarkAtIndex(index int) foundation.Rect {
 	return rv
 }
 
-// The receiver’s minimum value. [Full Topic]
+// Returns the receiver’s value represented by the tick mark at the specified index (the minimum-value tick mark has an index of 0). [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388829-minvalue?language=objc
-func (l_ LevelIndicator) MinValue() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("minValue"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388823-tickmarkvalueatindex?language=objc
+func (l_ LevelIndicator) TickMarkValueAtIndex(index int) float64 {
+	rv := objc.Call[float64](l_, objc.Sel("tickMarkValueAtIndex:"), index)
 	return rv
-}
-
-// The receiver’s minimum value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388829-minvalue?language=objc
-func (l_ LevelIndicator) SetMinValue(value float64) {
-	objc.Call[objc.Void](l_, objc.Sel("setMinValue:"), value)
-}
-
-// The number of tick marks associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc
-func (l_ LevelIndicator) NumberOfTickMarks() int {
-	rv := objc.Call[int](l_, objc.Sel("numberOfTickMarks"))
-	return rv
-}
-
-// The number of tick marks associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc
-func (l_ LevelIndicator) SetNumberOfTickMarks(value int) {
-	objc.Call[objc.Void](l_, objc.Sel("setNumberOfTickMarks:"), value)
-}
-
-// The receiver’s critical value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388821-criticalvalue?language=objc
-func (l_ LevelIndicator) CriticalValue() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("criticalValue"))
-	return rv
-}
-
-// The receiver’s critical value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388821-criticalvalue?language=objc
-func (l_ LevelIndicator) SetCriticalValue(value float64) {
-	objc.Call[objc.Void](l_, objc.Sel("setCriticalValue:"), value)
 }
 
 //	[Full Topic]
@@ -180,17 +135,62 @@ func (l_ LevelIndicator) SetDrawsTieredCapacityLevels(value bool) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc
-func (l_ LevelIndicator) RatingImage() Image {
-	rv := objc.Call[Image](l_, objc.Sel("ratingImage"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc
+func (l_ LevelIndicator) RatingPlaceholderImage() Image {
+	rv := objc.Call[Image](l_, objc.Sel("ratingPlaceholderImage"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc
-func (l_ LevelIndicator) SetRatingImage(value IImage) {
-	objc.Call[objc.Void](l_, objc.Sel("setRatingImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc
+func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
+	objc.Call[objc.Void](l_, objc.Sel("setRatingPlaceholderImage:"), value)
+}
+
+// Determines how the receiver’s tick marks are aligned with it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388837-tickmarkposition?language=objc
+func (l_ LevelIndicator) TickMarkPosition() TickMarkPosition {
+	rv := objc.Call[TickMarkPosition](l_, objc.Sel("tickMarkPosition"))
+	return rv
+}
+
+// Determines how the receiver’s tick marks are aligned with it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388837-tickmarkposition?language=objc
+func (l_ LevelIndicator) SetTickMarkPosition(value TickMarkPosition) {
+	objc.Call[objc.Void](l_, objc.Sel("setTickMarkPosition:"), value)
+}
+
+// The receiver’s critical value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388821-criticalvalue?language=objc
+func (l_ LevelIndicator) CriticalValue() float64 {
+	rv := objc.Call[float64](l_, objc.Sel("criticalValue"))
+	return rv
+}
+
+// The receiver’s critical value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388821-criticalvalue?language=objc
+func (l_ LevelIndicator) SetCriticalValue(value float64) {
+	objc.Call[objc.Void](l_, objc.Sel("setCriticalValue:"), value)
+}
+
+// The number of major tick marks associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc
+func (l_ LevelIndicator) NumberOfMajorTickMarks() int {
+	rv := objc.Call[int](l_, objc.Sel("numberOfMajorTickMarks"))
+	return rv
+}
+
+// The number of major tick marks associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc
+func (l_ LevelIndicator) SetNumberOfMajorTickMarks(value int) {
+	objc.Call[objc.Void](l_, objc.Sel("setNumberOfMajorTickMarks:"), value)
 }
 
 // The receiver’s warning value. [Full Topic]
@@ -206,6 +206,21 @@ func (l_ LevelIndicator) WarningValue() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388835-warningvalue?language=objc
 func (l_ LevelIndicator) SetWarningValue(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setWarningValue:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc
+func (l_ LevelIndicator) IsEditable() bool {
+	rv := objc.Call[bool](l_, objc.Sel("isEditable"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc
+func (l_ LevelIndicator) SetEditable(value bool) {
+	objc.Call[objc.Void](l_, objc.Sel("setEditable:"), value)
 }
 
 // The appearance of the indicator. [Full Topic]
@@ -225,6 +240,21 @@ func (l_ LevelIndicator) SetLevelIndicatorStyle(value LevelIndicatorStyle) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc
+func (l_ LevelIndicator) CriticalFillColor() Color {
+	rv := objc.Call[Color](l_, objc.Sel("criticalFillColor"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc
+func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
+	objc.Call[objc.Void](l_, objc.Sel("setCriticalFillColor:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902307-warningfillcolor?language=objc
 func (l_ LevelIndicator) WarningFillColor() Color {
 	rv := objc.Call[Color](l_, objc.Sel("warningFillColor"))
@@ -236,6 +266,21 @@ func (l_ LevelIndicator) WarningFillColor() Color {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902307-warningfillcolor?language=objc
 func (l_ LevelIndicator) SetWarningFillColor(value IColor) {
 	objc.Call[objc.Void](l_, objc.Sel("setWarningFillColor:"), value)
+}
+
+// The receiver’s minimum value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388829-minvalue?language=objc
+func (l_ LevelIndicator) MinValue() float64 {
+	rv := objc.Call[float64](l_, objc.Sel("minValue"))
+	return rv
+}
+
+// The receiver’s minimum value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388829-minvalue?language=objc
+func (l_ LevelIndicator) SetMinValue(value float64) {
+	objc.Call[objc.Void](l_, objc.Sel("setMinValue:"), value)
 }
 
 //	[Full Topic]
@@ -253,66 +298,6 @@ func (l_ LevelIndicator) SetFillColor(value IColor) {
 	objc.Call[objc.Void](l_, objc.Sel("setFillColor:"), value)
 }
 
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902323-placeholdervisibility?language=objc
-func (l_ LevelIndicator) PlaceholderVisibility() LevelIndicatorPlaceholderVisibility {
-	rv := objc.Call[LevelIndicatorPlaceholderVisibility](l_, objc.Sel("placeholderVisibility"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902323-placeholdervisibility?language=objc
-func (l_ LevelIndicator) SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility) {
-	objc.Call[objc.Void](l_, objc.Sel("setPlaceholderVisibility:"), value)
-}
-
-// Determines how the receiver’s tick marks are aligned with it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388837-tickmarkposition?language=objc
-func (l_ LevelIndicator) TickMarkPosition() TickMarkPosition {
-	rv := objc.Call[TickMarkPosition](l_, objc.Sel("tickMarkPosition"))
-	return rv
-}
-
-// Determines how the receiver’s tick marks are aligned with it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388837-tickmarkposition?language=objc
-func (l_ LevelIndicator) SetTickMarkPosition(value TickMarkPosition) {
-	objc.Call[objc.Void](l_, objc.Sel("setTickMarkPosition:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc
-func (l_ LevelIndicator) IsEditable() bool {
-	rv := objc.Call[bool](l_, objc.Sel("isEditable"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc
-func (l_ LevelIndicator) SetEditable(value bool) {
-	objc.Call[objc.Void](l_, objc.Sel("setEditable:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc
-func (l_ LevelIndicator) RatingPlaceholderImage() Image {
-	rv := objc.Call[Image](l_, objc.Sel("ratingPlaceholderImage"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc
-func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
-	objc.Call[objc.Void](l_, objc.Sel("setRatingPlaceholderImage:"), value)
-}
-
 // The receiver’s maximum value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388839-maxvalue?language=objc
@@ -328,32 +313,47 @@ func (l_ LevelIndicator) SetMaxValue(value float64) {
 	objc.Call[objc.Void](l_, objc.Sel("setMaxValue:"), value)
 }
 
-// The number of major tick marks associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc
-func (l_ LevelIndicator) NumberOfMajorTickMarks() int {
-	rv := objc.Call[int](l_, objc.Sel("numberOfMajorTickMarks"))
-	return rv
-}
-
-// The number of major tick marks associated with the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc
-func (l_ LevelIndicator) SetNumberOfMajorTickMarks(value int) {
-	objc.Call[objc.Void](l_, objc.Sel("setNumberOfMajorTickMarks:"), value)
-}
-
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc
-func (l_ LevelIndicator) CriticalFillColor() Color {
-	rv := objc.Call[Color](l_, objc.Sel("criticalFillColor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc
+func (l_ LevelIndicator) RatingImage() Image {
+	rv := objc.Call[Image](l_, objc.Sel("ratingImage"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc
-func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
-	objc.Call[objc.Void](l_, objc.Sel("setCriticalFillColor:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc
+func (l_ LevelIndicator) SetRatingImage(value IImage) {
+	objc.Call[objc.Void](l_, objc.Sel("setRatingImage:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902323-placeholdervisibility?language=objc
+func (l_ LevelIndicator) PlaceholderVisibility() LevelIndicatorPlaceholderVisibility {
+	rv := objc.Call[LevelIndicatorPlaceholderVisibility](l_, objc.Sel("placeholderVisibility"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902323-placeholdervisibility?language=objc
+func (l_ LevelIndicator) SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility) {
+	objc.Call[objc.Void](l_, objc.Sel("setPlaceholderVisibility:"), value)
+}
+
+// The number of tick marks associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc
+func (l_ LevelIndicator) NumberOfTickMarks() int {
+	rv := objc.Call[int](l_, objc.Sel("numberOfTickMarks"))
+	return rv
+}
+
+// The number of tick marks associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc
+func (l_ LevelIndicator) SetNumberOfTickMarks(value int) {
+	objc.Call[objc.Void](l_, objc.Sel("setNumberOfTickMarks:"), value)
 }

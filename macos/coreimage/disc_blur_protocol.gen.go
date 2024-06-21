@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur?language=objc
 type PDiscBlur interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
-
-	// optional
-	Radius() float32
-	HasRadius() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetRadius(value float32)
+	HasSetRadius() bool
+
+	// optional
+	Radius() float32
+	HasRadius() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PDiscBlur = (*DiscBlurObject)(nil)
 // A concrete type for the [PDiscBlur] protocol.
 type DiscBlurObject struct {
 	objc.Object
-}
-
-func (d_ DiscBlurObject) HasSetRadius() bool {
-	return d_.RespondsToSelector(objc.Sel("setRadius:"))
-}
-
-// The radius of the blur, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur/3228215-radius?language=objc
-func (d_ DiscBlurObject) SetRadius(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setRadius:"), value)
-}
-
-func (d_ DiscBlurObject) HasRadius() bool {
-	return d_.RespondsToSelector(objc.Sel("radius"))
-}
-
-// The radius of the blur, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur/3228215-radius?language=objc
-func (d_ DiscBlurObject) Radius() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("radius"))
-	return rv
 }
 
 func (d_ DiscBlurObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (d_ DiscBlurObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur/3228214-inputimage?language=objc
 func (d_ DiscBlurObject) InputImage() Image {
 	rv := objc.Call[Image](d_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (d_ DiscBlurObject) HasSetRadius() bool {
+	return d_.RespondsToSelector(objc.Sel("setRadius:"))
+}
+
+// The radius of the blur, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur/3228215-radius?language=objc
+func (d_ DiscBlurObject) SetRadius(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setRadius:"), value)
+}
+
+func (d_ DiscBlurObject) HasRadius() bool {
+	return d_.RespondsToSelector(objc.Sel("radius"))
+}
+
+// The radius of the blur, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidiscblur/3228215-radius?language=objc
+func (d_ DiscBlurObject) Radius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("radius"))
 	return rv
 }

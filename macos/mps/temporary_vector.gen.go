@@ -69,21 +69,6 @@ func (t_ TemporaryVector) Init() TemporaryVector {
 	return rv
 }
 
-func (t_ TemporaryVector) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) TemporaryVector {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/3229864-initwithbuffer?language=objc
-func NewTemporaryVectorWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) TemporaryVector {
-	instance := TemporaryVectorClass.Alloc().InitWithBufferOffsetDescriptor(buffer, offset, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TemporaryVector) InitWithDeviceDescriptor(device metal.PDevice, descriptor IVectorDescriptor) TemporaryVector {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)

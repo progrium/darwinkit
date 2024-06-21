@@ -18,11 +18,11 @@ type _TextTableBlockClass struct {
 // An interface definition for the [TextTableBlock] class.
 type ITextTableBlock interface {
 	ITextBlock
-	StartingColumn() int
+	RowSpan() int
 	StartingRow() int
 	Table() TextTable
+	StartingColumn() int
 	ColumnSpan() int
-	RowSpan() int
 }
 
 // A text block that appears as a cell in a text table. [Full Topic]
@@ -72,11 +72,11 @@ func (t_ TextTableBlock) Init() TextTableBlock {
 	return rv
 }
 
-// Returns the table column at which this text table block starts. [Full Topic]
+// Returns the number of table rows spanned by this text table block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1525383-startingcolumn?language=objc
-func (t_ TextTableBlock) StartingColumn() int {
-	rv := objc.Call[int](t_, objc.Sel("startingColumn"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1528586-rowspan?language=objc
+func (t_ TextTableBlock) RowSpan() int {
+	rv := objc.Call[int](t_, objc.Sel("rowSpan"))
 	return rv
 }
 
@@ -96,18 +96,18 @@ func (t_ TextTableBlock) Table() TextTable {
 	return rv
 }
 
+// Returns the table column at which this text table block starts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1525383-startingcolumn?language=objc
+func (t_ TextTableBlock) StartingColumn() int {
+	rv := objc.Call[int](t_, objc.Sel("startingColumn"))
+	return rv
+}
+
 // Returns the number of table columns spanned by this text table block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1528568-columnspan?language=objc
 func (t_ TextTableBlock) ColumnSpan() int {
 	rv := objc.Call[int](t_, objc.Sel("columnSpan"))
-	return rv
-}
-
-// Returns the number of table rows spanned by this text table block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1528586-rowspan?language=objc
-func (t_ TextTableBlock) RowSpan() int {
-	rv := objc.Call[int](t_, objc.Sel("rowSpan"))
 	return rv
 }

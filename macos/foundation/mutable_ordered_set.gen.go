@@ -18,36 +18,35 @@ type _MutableOrderedSetClass struct {
 // An interface definition for the [MutableOrderedSet] class.
 type IMutableOrderedSet interface {
 	IOrderedSet
-	AddObject(object objc.IObject)
-	RemoveObject(object objc.IObject)
+	SortUsingDescriptors(sortDescriptors []ISortDescriptor)
+	AddObjectsFromArray(array []objc.IObject)
+	MoveObjectsAtIndexesToIndex(indexes IIndexSet, idx uint)
+	IntersectSet(other ISet)
+	FilterUsingPredicate(p IPredicate)
 	MinusOrderedSet(other IOrderedSet)
-	UnionOrderedSet(other IOrderedSet)
 	ReplaceObjectsInRangeWithObjectsCount(range_ Range, objects unsafe.Pointer, count uint)
-	ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject)
+	AddObject(object objc.IObject)
 	ExchangeObjectAtIndexWithObjectAtIndex(idx1 uint, idx2 uint)
+	InsertObjectAtIndex(object objc.IObject, idx uint)
 	ApplyDifference(difference IOrderedCollectionDifference)
 	SetObjectAtIndexedSubscript(obj objc.IObject, idx uint)
-	IntersectSet(other ISet)
-	IntersectOrderedSet(other IOrderedSet)
+	RemoveObject(object objc.IObject)
 	RemoveObjectAtIndex(idx uint)
-	SortUsingComparator(cmptr Comparator)
-	RemoveObjectsAtIndexes(indexes IIndexSet)
-	SortRangeOptionsUsingComparator(range_ Range, opts SortOptions, cmptr Comparator)
-	RemoveAllObjects()
-	InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet)
-	SetObjectAtIndex(obj objc.IObject, idx uint)
-	SortWithOptionsUsingComparator(opts SortOptions, cmptr Comparator)
-	SortUsingDescriptors(sortDescriptors []ISortDescriptor)
-	UnionSet(other ISet)
-	MoveObjectsAtIndexesToIndex(indexes IIndexSet, idx uint)
-	ReplaceObjectAtIndexWithObject(idx uint, object objc.IObject)
-	FilterUsingPredicate(p IPredicate)
-	AddObjectsFromArray(array []objc.IObject)
 	RemoveObjectsInArray(array []objc.IObject)
-	RemoveObjectsInRange(range_ Range)
 	MinusSet(other ISet)
+	RemoveObjectsInRange(range_ Range)
+	IntersectOrderedSet(other IOrderedSet)
+	ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject)
+	RemoveObjectsAtIndexes(indexes IIndexSet)
+	UnionSet(other ISet)
+	SortUsingComparator(cmptr Comparator)
 	AddObjectsCount(objects unsafe.Pointer, count uint)
-	InsertObjectAtIndex(object objc.IObject, idx uint)
+	InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet)
+	SortWithOptionsUsingComparator(opts SortOptions, cmptr Comparator)
+	RemoveAllObjects()
+	ReplaceObjectAtIndexWithObject(idx uint, object objc.IObject)
+	SortRangeOptionsUsingComparator(range_ Range, opts SortOptions, cmptr Comparator)
+	UnionOrderedSet(other IOrderedSet)
 }
 
 // A dynamic, ordered collection of unique objects. [Full Topic]
@@ -63,6 +62,18 @@ func MutableOrderedSetFrom(ptr unsafe.Pointer) MutableOrderedSet {
 	}
 }
 
+func (mc _MutableOrderedSetClass) OrderedSetWithCapacity(numItems uint) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithCapacity:"), numItems)
+	return rv
+}
+
+// Creates and returns an mutable ordered set with a given initial capacity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1543283-orderedsetwithcapacity?language=objc
+func MutableOrderedSet_OrderedSetWithCapacity(numItems uint) MutableOrderedSet {
+	return MutableOrderedSetClass.OrderedSetWithCapacity(numItems)
+}
+
 func (m_ MutableOrderedSet) InitWithCapacity(numItems uint) MutableOrderedSet {
 	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithCapacity:"), numItems)
 	return rv
@@ -75,18 +86,6 @@ func NewMutableOrderedSetWithCapacity(numItems uint) MutableOrderedSet {
 	instance := MutableOrderedSetClass.Alloc().InitWithCapacity(numItems)
 	instance.Autorelease()
 	return instance
-}
-
-func (mc _MutableOrderedSetClass) OrderedSetWithCapacity(numItems uint) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithCapacity:"), numItems)
-	return rv
-}
-
-// Creates and returns an mutable ordered set with a given initial capacity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1543283-orderedsetwithcapacity?language=objc
-func MutableOrderedSet_OrderedSetWithCapacity(numItems uint) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithCapacity(numItems)
 }
 
 func (m_ MutableOrderedSet) Init() MutableOrderedSet {
@@ -109,42 +108,56 @@ func NewMutableOrderedSet() MutableOrderedSet {
 	return MutableOrderedSetClass.New()
 }
 
-func (mc _MutableOrderedSetClass) OrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:count:"), objects, cnt)
+func (mc _MutableOrderedSetClass) OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:"), set)
 	return rv
 }
 
-// Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
+// Creates and returns an ordered set containing the objects from another ordered set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543334-orderedsetwithobjects?language=objc
-func MutableOrderedSet_OrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithObjectsCount(objects, cnt)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543280-orderedsetwithorderedset?language=objc
+func MutableOrderedSet_OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
+	return MutableOrderedSetClass.OrderedSetWithOrderedSet(set)
 }
 
-func (m_ MutableOrderedSet) InitWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:copyItems:"), set, flag)
+func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
-// Initializes a new ordered set with the contents of a set, optionally copying the objects in the set. [Full Topic]
+// Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1411246-initwithset?language=objc
-func NewMutableOrderedSetWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithSetCopyItems(set, flag)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
+func NewMutableOrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
 	instance.Autorelease()
 	return instance
 }
 
-func (mc _MutableOrderedSetClass) OrderedSetWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithSet:copyItems:"), set, flag)
+func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
-// Creates and returns an ordered set with the contents of a set, optionally copying the items. [Full Topic]
+// Creates and returns a ordered set containing the objects in a given argument list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543331-orderedsetwithset?language=objc
-func MutableOrderedSet_OrderedSetWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithSetCopyItems(set, flag)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543312-orderedsetwithobjects?language=objc
+func MutableOrderedSet_OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	return MutableOrderedSetClass.OrderedSetWithObjects(firstObj, args...)
+}
+
+func (m_ MutableOrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:range:copyItems:"), set, range_, flag)
+	return rv
+}
+
+// Initializes a new ordered set with the contents of an ordered set, optionally copying the items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1417751-initwithorderedset?language=objc
+func NewMutableOrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableOrderedSet) InitWithObject(object objc.IObject) MutableOrderedSet {
@@ -187,32 +200,6 @@ func MutableOrderedSet_OrderedSetWithArray(array []objc.IObject) MutableOrderedS
 	return MutableOrderedSetClass.OrderedSetWithArray(array)
 }
 
-func (m_ MutableOrderedSet) InitWithSet(set ISet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:"), set)
-	return rv
-}
-
-// Initializes a new ordered set with the contents of a set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1416344-initwithset?language=objc
-func NewMutableOrderedSetWithSet(set ISet) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithSet(set)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableOrderedSetClass) OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:"), set)
-	return rv
-}
-
-// Creates and returns an ordered set containing the objects from another ordered set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543280-orderedsetwithorderedset?language=objc
-func MutableOrderedSet_OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithOrderedSet(set)
-}
-
 func (mc _MutableOrderedSetClass) OrderedSetWithObject(object objc.IObject) MutableOrderedSet {
 	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObject:"), object)
 	return rv
@@ -223,20 +210,6 @@ func (mc _MutableOrderedSetClass) OrderedSetWithObject(object objc.IObject) Muta
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543339-orderedsetwithobject?language=objc
 func MutableOrderedSet_OrderedSetWithObject(object objc.IObject) MutableOrderedSet {
 	return MutableOrderedSetClass.OrderedSetWithObject(object)
-}
-
-func (m_ MutableOrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:range:copyItems:"), set, range_, flag)
-	return rv
-}
-
-// Initializes a new ordered set with the contents of an ordered set, optionally copying the items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1417751-initwithorderedset?language=objc
-func NewMutableOrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
-	instance.Autorelease()
-	return instance
 }
 
 func (mc _MutableOrderedSetClass) OrderedSet() MutableOrderedSet {
@@ -251,110 +224,18 @@ func MutableOrderedSet_OrderedSet() MutableOrderedSet {
 	return MutableOrderedSetClass.OrderedSet()
 }
 
-func (mc _MutableOrderedSetClass) OrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:range:copyItems:"), set, range_, flag)
-	return rv
-}
-
-// Creates and returns a new ordered set for a specified range of objects in an ordered set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543292-orderedsetwithorderedset?language=objc
-func MutableOrderedSet_OrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithOrderedSetRangeCopyItems(set, range_, flag)
-}
-
-func (mc _MutableOrderedSetClass) OrderedSetWithArrayRangeCopyItems(array []objc.IObject, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithArray:range:copyItems:"), array, range_, flag)
-	return rv
-}
-
-// Creates and returns a new ordered set for a specified range of objects in an array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543321-orderedsetwitharray?language=objc
-func MutableOrderedSet_OrderedSetWithArrayRangeCopyItems(array []objc.IObject, range_ Range, flag bool) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithArrayRangeCopyItems(array, range_, flag)
-}
-
-func (m_ MutableOrderedSet) InitWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:"), set)
+func (m_ MutableOrderedSet) InitWithSet(set ISet) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:"), set)
 	return rv
 }
 
 // Initializes a new ordered set with the contents of a set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1412402-initwithorderedset?language=objc
-func NewMutableOrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithOrderedSet(set)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1416344-initwithset?language=objc
+func NewMutableOrderedSetWithSet(set ISet) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithSet(set)
 	instance.Autorelease()
 	return instance
-}
-
-func (m_ MutableOrderedSet) InitWithOrderedSetCopyItems(set IOrderedSet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:copyItems:"), set, flag)
-	return rv
-}
-
-// Initializes a new ordered set with the contents of a set, optionally copying the items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1411658-initwithorderedset?language=objc
-func NewMutableOrderedSetWithOrderedSetCopyItems(set IOrderedSet, flag bool) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithOrderedSetCopyItems(set, flag)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableOrderedSet) InitWithArray(array []objc.IObject) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithArray:"), array)
-	return rv
-}
-
-// Initializes a newly allocated set with the objects that are contained in a given array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1408623-initwitharray?language=objc
-func NewMutableOrderedSetWithArray(array []objc.IObject) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithArray(array)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableOrderedSet) InitWithArrayRangeCopyItems(set []objc.IObject, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithArray:range:copyItems:"), set, range_, flag)
-	return rv
-}
-
-// Initializes a newly allocated set with the objects that are contained in the specified range of an array, optionally copying the items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1409272-initwitharray?language=objc
-func NewMutableOrderedSetWithArrayRangeCopyItems(set []objc.IObject, range_ Range, flag bool) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithArrayRangeCopyItems(set, range_, flag)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
-	return rv
-}
-
-// Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
-func NewMutableOrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), append([]any{firstObj}, args...)...)
-	return rv
-}
-
-// Creates and returns a ordered set containing the objects in a given argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543312-orderedsetwithobjects?language=objc
-func MutableOrderedSet_OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithObjects(firstObj, args...)
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithSet(set ISet) MutableOrderedSet {
@@ -369,32 +250,39 @@ func MutableOrderedSet_OrderedSetWithSet(set ISet) MutableOrderedSet {
 	return MutableOrderedSetClass.OrderedSetWithSet(set)
 }
 
-func (m_ MutableOrderedSet) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:count:"), objects, cnt)
-	return rv
+// Sorts the receiving ordered set using a given array of sort descriptors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410023-sortusingdescriptors?language=objc
+func (m_ MutableOrderedSet) SortUsingDescriptors(sortDescriptors []ISortDescriptor) {
+	objc.Call[objc.Void](m_, objc.Sel("sortUsingDescriptors:"), sortDescriptors)
 }
 
-// Initializes a newly allocated set with a specified number of objects from a given C array of objects. [Full Topic]
+// Appends to the end of the mutable ordered set each object contained in a given array that is not already a member. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1411910-initwithobjects?language=objc
-func NewMutableOrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
-	instance := MutableOrderedSetClass.Alloc().InitWithObjectsCount(objects, cnt)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417200-addobjectsfromarray?language=objc
+func (m_ MutableOrderedSet) AddObjectsFromArray(array []objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("addObjectsFromArray:"), array)
 }
 
-// Appends a given object to the end of the mutable ordered set, if it is not already a member. [Full Topic]
+// Moves the objects at the specified indexes to the new location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408009-addobject?language=objc
-func (m_ MutableOrderedSet) AddObject(object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("addObject:"), object)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417677-moveobjectsatindexes?language=objc
+func (m_ MutableOrderedSet) MoveObjectsAtIndexesToIndex(indexes IIndexSet, idx uint) {
+	objc.Call[objc.Void](m_, objc.Sel("moveObjectsAtIndexes:toIndex:"), indexes, idx)
 }
 
-// Removes a given object from the mutable ordered set. [Full Topic]
+// Removes from the receiving ordered set each object that isn’t a member of another set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416776-removeobject?language=objc
-func (m_ MutableOrderedSet) RemoveObject(object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), object)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1415257-intersectset?language=objc
+func (m_ MutableOrderedSet) IntersectSet(other ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), other)
+}
+
+// Evaluates a given predicate against the mutable ordered set’s content and leaves only objects that match. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408348-filterusingpredicate?language=objc
+func (m_ MutableOrderedSet) FilterUsingPredicate(p IPredicate) {
+	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), p)
 }
 
 // Removes each object in another given ordered set from the receiving mutable ordered set, if present. [Full Topic]
@@ -404,13 +292,6 @@ func (m_ MutableOrderedSet) MinusOrderedSet(other IOrderedSet) {
 	objc.Call[objc.Void](m_, objc.Sel("minusOrderedSet:"), other)
 }
 
-// Adds each object in another given ordered set to the receiving mutable ordered set, if not present. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410973-unionorderedset?language=objc
-func (m_ MutableOrderedSet) UnionOrderedSet(other IOrderedSet) {
-	objc.Call[objc.Void](m_, objc.Sel("unionOrderedSet:"), other)
-}
-
 // Replaces the objects in the receiving mutable ordered set at the range with the specified number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1415340-replaceobjectsinrange?language=objc
@@ -418,11 +299,11 @@ func (m_ MutableOrderedSet) ReplaceObjectsInRangeWithObjectsCount(range_ Range, 
 	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsInRange:withObjects:count:"), range_, objects, count)
 }
 
-// Replaces the objects at the specified indexes with the new objects. [Full Topic]
+// Appends a given object to the end of the mutable ordered set, if it is not already a member. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416127-replaceobjectsatindexes?language=objc
-func (m_ MutableOrderedSet) ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), indexes, objects)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408009-addobject?language=objc
+func (m_ MutableOrderedSet) AddObject(object objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("addObject:"), object)
 }
 
 // Exchanges the object at the specified index with the object at the other index. [Full Topic]
@@ -430,6 +311,13 @@ func (m_ MutableOrderedSet) ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416821-exchangeobjectatindex?language=objc
 func (m_ MutableOrderedSet) ExchangeObjectAtIndexWithObjectAtIndex(idx1 uint, idx2 uint) {
 	objc.Call[objc.Void](m_, objc.Sel("exchangeObjectAtIndex:withObjectAtIndex:"), idx1, idx2)
+}
+
+// Inserts the given object at the specified index of the mutable ordered set, if it is not already a member. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416634-insertobject?language=objc
+func (m_ MutableOrderedSet) InsertObjectAtIndex(object objc.IObject, idx uint) {
+	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), object, idx)
 }
 
 //	[Full Topic]
@@ -446,18 +334,11 @@ func (m_ MutableOrderedSet) SetObjectAtIndexedSubscript(obj objc.IObject, idx ui
 	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
 }
 
-// Removes from the receiving ordered set each object that isn’t a member of another set. [Full Topic]
+// Removes a given object from the mutable ordered set. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1415257-intersectset?language=objc
-func (m_ MutableOrderedSet) IntersectSet(other ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), other)
-}
-
-// Removes from the receiving ordered set each object that isn’t a member of another ordered set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408541-intersectorderedset?language=objc
-func (m_ MutableOrderedSet) IntersectOrderedSet(other IOrderedSet) {
-	objc.Call[objc.Void](m_, objc.Sel("intersectOrderedSet:"), other)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416776-removeobject?language=objc
+func (m_ MutableOrderedSet) RemoveObject(object objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), object)
 }
 
 // Removes a the object at the specified index from the mutable ordered set. [Full Topic]
@@ -467,109 +348,11 @@ func (m_ MutableOrderedSet) RemoveObjectAtIndex(idx uint) {
 	objc.Call[objc.Void](m_, objc.Sel("removeObjectAtIndex:"), idx)
 }
 
-// Sorts the mutable ordered set using the comparison method specified by the comparator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1414566-sortusingcomparator?language=objc
-func (m_ MutableOrderedSet) SortUsingComparator(cmptr Comparator) {
-	objc.Call[objc.Void](m_, objc.Sel("sortUsingComparator:"), cmptr)
-}
-
-// Removes the objects at the specified indexes from the mutable ordered set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1418161-removeobjectsatindexes?language=objc
-func (m_ MutableOrderedSet) RemoveObjectsAtIndexes(indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), indexes)
-}
-
-// Sorts the specified range of the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1407529-sortrange?language=objc
-func (m_ MutableOrderedSet) SortRangeOptionsUsingComparator(range_ Range, opts SortOptions, cmptr Comparator) {
-	objc.Call[objc.Void](m_, objc.Sel("sortRange:options:usingComparator:"), range_, opts, cmptr)
-}
-
-// Removes all the objects from the mutable ordered set. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1414262-removeallobjects?language=objc
-func (m_ MutableOrderedSet) RemoveAllObjects() {
-	objc.Call[objc.Void](m_, objc.Sel("removeAllObjects"))
-}
-
-// Inserts the objects in the array at the specified indexes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410287-insertobjects?language=objc
-func (m_ MutableOrderedSet) InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, indexes)
-}
-
-// Appends or replaces the object at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411158-setobject?language=objc
-func (m_ MutableOrderedSet) SetObjectAtIndex(obj objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndex:"), obj, idx)
-}
-
-// Sorts the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411561-sortwithoptions?language=objc
-func (m_ MutableOrderedSet) SortWithOptionsUsingComparator(opts SortOptions, cmptr Comparator) {
-	objc.Call[objc.Void](m_, objc.Sel("sortWithOptions:usingComparator:"), opts, cmptr)
-}
-
-// Sorts the receiving ordered set using a given array of sort descriptors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410023-sortusingdescriptors?language=objc
-func (m_ MutableOrderedSet) SortUsingDescriptors(sortDescriptors []ISortDescriptor) {
-	objc.Call[objc.Void](m_, objc.Sel("sortUsingDescriptors:"), sortDescriptors)
-}
-
-// Adds each object in another given set to the receiving mutable ordered set, if not present. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1413853-unionset?language=objc
-func (m_ MutableOrderedSet) UnionSet(other ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("unionSet:"), other)
-}
-
-// Moves the objects at the specified indexes to the new location. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417677-moveobjectsatindexes?language=objc
-func (m_ MutableOrderedSet) MoveObjectsAtIndexesToIndex(indexes IIndexSet, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("moveObjectsAtIndexes:toIndex:"), indexes, idx)
-}
-
-// Replaces the object at the specified index with the new object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1412115-replaceobjectatindex?language=objc
-func (m_ MutableOrderedSet) ReplaceObjectAtIndexWithObject(idx uint, object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), idx, object)
-}
-
-// Evaluates a given predicate against the mutable ordered set’s content and leaves only objects that match. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408348-filterusingpredicate?language=objc
-func (m_ MutableOrderedSet) FilterUsingPredicate(p IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), p)
-}
-
-// Appends to the end of the mutable ordered set each object contained in a given array that is not already a member. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417200-addobjectsfromarray?language=objc
-func (m_ MutableOrderedSet) AddObjectsFromArray(array []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("addObjectsFromArray:"), array)
-}
-
 // Removes the objects in the array from the mutable ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411635-removeobjectsinarray?language=objc
 func (m_ MutableOrderedSet) RemoveObjectsInArray(array []objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("removeObjectsInArray:"), array)
-}
-
-// Removes from the mutable ordered set each of the objects within a given range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417539-removeobjectsinrange?language=objc
-func (m_ MutableOrderedSet) RemoveObjectsInRange(range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectsInRange:"), range_)
 }
 
 // Removes each object in another given set from the receiving mutable ordered set, if present. [Full Topic]
@@ -579,6 +362,48 @@ func (m_ MutableOrderedSet) MinusSet(other ISet) {
 	objc.Call[objc.Void](m_, objc.Sel("minusSet:"), other)
 }
 
+// Removes from the mutable ordered set each of the objects within a given range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417539-removeobjectsinrange?language=objc
+func (m_ MutableOrderedSet) RemoveObjectsInRange(range_ Range) {
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectsInRange:"), range_)
+}
+
+// Removes from the receiving ordered set each object that isn’t a member of another ordered set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408541-intersectorderedset?language=objc
+func (m_ MutableOrderedSet) IntersectOrderedSet(other IOrderedSet) {
+	objc.Call[objc.Void](m_, objc.Sel("intersectOrderedSet:"), other)
+}
+
+// Replaces the objects at the specified indexes with the new objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416127-replaceobjectsatindexes?language=objc
+func (m_ MutableOrderedSet) ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), indexes, objects)
+}
+
+// Removes the objects at the specified indexes from the mutable ordered set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1418161-removeobjectsatindexes?language=objc
+func (m_ MutableOrderedSet) RemoveObjectsAtIndexes(indexes IIndexSet) {
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), indexes)
+}
+
+// Adds each object in another given set to the receiving mutable ordered set, if not present. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1413853-unionset?language=objc
+func (m_ MutableOrderedSet) UnionSet(other ISet) {
+	objc.Call[objc.Void](m_, objc.Sel("unionSet:"), other)
+}
+
+// Sorts the mutable ordered set using the comparison method specified by the comparator block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1414566-sortusingcomparator?language=objc
+func (m_ MutableOrderedSet) SortUsingComparator(cmptr Comparator) {
+	objc.Call[objc.Void](m_, objc.Sel("sortUsingComparator:"), cmptr)
+}
+
 // Appends the given number of objects from a given C array to the end of the mutable ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1413840-addobjects?language=objc
@@ -586,9 +411,44 @@ func (m_ MutableOrderedSet) AddObjectsCount(objects unsafe.Pointer, count uint) 
 	objc.Call[objc.Void](m_, objc.Sel("addObjects:count:"), objects, count)
 }
 
-// Inserts the given object at the specified index of the mutable ordered set, if it is not already a member. [Full Topic]
+// Inserts the objects in the array at the specified indexes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416634-insertobject?language=objc
-func (m_ MutableOrderedSet) InsertObjectAtIndex(object objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), object, idx)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410287-insertobjects?language=objc
+func (m_ MutableOrderedSet) InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet) {
+	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, indexes)
+}
+
+// Sorts the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411561-sortwithoptions?language=objc
+func (m_ MutableOrderedSet) SortWithOptionsUsingComparator(opts SortOptions, cmptr Comparator) {
+	objc.Call[objc.Void](m_, objc.Sel("sortWithOptions:usingComparator:"), opts, cmptr)
+}
+
+// Removes all the objects from the mutable ordered set. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1414262-removeallobjects?language=objc
+func (m_ MutableOrderedSet) RemoveAllObjects() {
+	objc.Call[objc.Void](m_, objc.Sel("removeAllObjects"))
+}
+
+// Replaces the object at the specified index with the new object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1412115-replaceobjectatindex?language=objc
+func (m_ MutableOrderedSet) ReplaceObjectAtIndexWithObject(idx uint, object objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), idx, object)
+}
+
+// Sorts the specified range of the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1407529-sortrange?language=objc
+func (m_ MutableOrderedSet) SortRangeOptionsUsingComparator(range_ Range, opts SortOptions, cmptr Comparator) {
+	objc.Call[objc.Void](m_, objc.Sel("sortRange:options:usingComparator:"), range_, opts, cmptr)
+}
+
+// Adds each object in another given ordered set to the receiving mutable ordered set, if not present. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410973-unionorderedset?language=objc
+func (m_ MutableOrderedSet) UnionOrderedSet(other IOrderedSet) {
+	objc.Call[objc.Void](m_, objc.Sel("unionOrderedSet:"), other)
 }

@@ -11,20 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform?language=objc
 type PBicubicScaleTransform interface {
 	// optional
-	SetParameterC(value float32)
-	HasSetParameterC() bool
+	SetScale(value float32)
+	HasSetScale() bool
 
 	// optional
-	ParameterC() float32
-	HasParameterC() bool
-
-	// optional
-	SetParameterB(value float32)
-	HasSetParameterB() bool
-
-	// optional
-	ParameterB() float32
-	HasParameterB() bool
+	Scale() float32
+	HasScale() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -35,6 +27,14 @@ type PBicubicScaleTransform interface {
 	HasInputImage() bool
 
 	// optional
+	SetParameterC(value float32)
+	HasSetParameterC() bool
+
+	// optional
+	ParameterC() float32
+	HasParameterC() bool
+
+	// optional
 	SetAspectRatio(value float32)
 	HasSetAspectRatio() bool
 
@@ -43,12 +43,12 @@ type PBicubicScaleTransform interface {
 	HasAspectRatio() bool
 
 	// optional
-	SetScale(value float32)
-	HasSetScale() bool
+	SetParameterB(value float32)
+	HasSetParameterB() bool
 
 	// optional
-	Scale() float32
-	HasScale() bool
+	ParameterB() float32
+	HasParameterB() bool
 }
 
 // ensure impl type implements protocol interface
@@ -59,49 +59,26 @@ type BicubicScaleTransformObject struct {
 	objc.Object
 }
 
-func (b_ BicubicScaleTransformObject) HasSetParameterC() bool {
-	return b_.RespondsToSelector(objc.Sel("setParameterC:"))
+func (b_ BicubicScaleTransformObject) HasSetScale() bool {
+	return b_.RespondsToSelector(objc.Sel("setScale:"))
 }
 
-// The value of C to use for the cubic resampling function. [Full Topic]
+// The scaling factor to use on the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228077-parameterc?language=objc
-func (b_ BicubicScaleTransformObject) SetParameterC(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setParameterC:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228078-scale?language=objc
+func (b_ BicubicScaleTransformObject) SetScale(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
 }
 
-func (b_ BicubicScaleTransformObject) HasParameterC() bool {
-	return b_.RespondsToSelector(objc.Sel("parameterC"))
+func (b_ BicubicScaleTransformObject) HasScale() bool {
+	return b_.RespondsToSelector(objc.Sel("scale"))
 }
 
-// The value of C to use for the cubic resampling function. [Full Topic]
+// The scaling factor to use on the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228077-parameterc?language=objc
-func (b_ BicubicScaleTransformObject) ParameterC() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("parameterC"))
-	return rv
-}
-
-func (b_ BicubicScaleTransformObject) HasSetParameterB() bool {
-	return b_.RespondsToSelector(objc.Sel("setParameterB:"))
-}
-
-// The value of B to use for the cubic resampling function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228076-parameterb?language=objc
-func (b_ BicubicScaleTransformObject) SetParameterB(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setParameterB:"), value)
-}
-
-func (b_ BicubicScaleTransformObject) HasParameterB() bool {
-	return b_.RespondsToSelector(objc.Sel("parameterB"))
-}
-
-// The value of B to use for the cubic resampling function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228076-parameterb?language=objc
-func (b_ BicubicScaleTransformObject) ParameterB() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("parameterB"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228078-scale?language=objc
+func (b_ BicubicScaleTransformObject) Scale() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("scale"))
 	return rv
 }
 
@@ -128,6 +105,29 @@ func (b_ BicubicScaleTransformObject) InputImage() Image {
 	return rv
 }
 
+func (b_ BicubicScaleTransformObject) HasSetParameterC() bool {
+	return b_.RespondsToSelector(objc.Sel("setParameterC:"))
+}
+
+// The value of C to use for the cubic resampling function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228077-parameterc?language=objc
+func (b_ BicubicScaleTransformObject) SetParameterC(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setParameterC:"), value)
+}
+
+func (b_ BicubicScaleTransformObject) HasParameterC() bool {
+	return b_.RespondsToSelector(objc.Sel("parameterC"))
+}
+
+// The value of C to use for the cubic resampling function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228077-parameterc?language=objc
+func (b_ BicubicScaleTransformObject) ParameterC() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("parameterC"))
+	return rv
+}
+
 func (b_ BicubicScaleTransformObject) HasSetAspectRatio() bool {
 	return b_.RespondsToSelector(objc.Sel("setAspectRatio:"))
 }
@@ -151,25 +151,25 @@ func (b_ BicubicScaleTransformObject) AspectRatio() float32 {
 	return rv
 }
 
-func (b_ BicubicScaleTransformObject) HasSetScale() bool {
-	return b_.RespondsToSelector(objc.Sel("setScale:"))
+func (b_ BicubicScaleTransformObject) HasSetParameterB() bool {
+	return b_.RespondsToSelector(objc.Sel("setParameterB:"))
 }
 
-// The scaling factor to use on the image. [Full Topic]
+// The value of B to use for the cubic resampling function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228078-scale?language=objc
-func (b_ BicubicScaleTransformObject) SetScale(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228076-parameterb?language=objc
+func (b_ BicubicScaleTransformObject) SetParameterB(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setParameterB:"), value)
 }
 
-func (b_ BicubicScaleTransformObject) HasScale() bool {
-	return b_.RespondsToSelector(objc.Sel("scale"))
+func (b_ BicubicScaleTransformObject) HasParameterB() bool {
+	return b_.RespondsToSelector(objc.Sel("parameterB"))
 }
 
-// The scaling factor to use on the image. [Full Topic]
+// The value of B to use for the cubic resampling function. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228078-scale?language=objc
-func (b_ BicubicScaleTransformObject) Scale() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("scale"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibicubicscaletransform/3228076-parameterb?language=objc
+func (b_ BicubicScaleTransformObject) ParameterB() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("parameterB"))
 	return rv
 }

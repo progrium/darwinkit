@@ -12,104 +12,72 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder?language=objc
 type PBlitCommandEncoder interface {
 	// optional
-	ResetCommandsInBufferWithRange(buffer IndirectCommandBufferObject, range_ foundation.Range)
-	HasResetCommandsInBufferWithRange() bool
-
-	// optional
-	CopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin(sourceBuffer BufferObject, sourceOffset uint, sourceBytesPerRow uint, sourceBytesPerImage uint, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin)
-	HasCopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin() bool
-
-	// optional
-	WaitForFence(fence FenceObject)
-	HasWaitForFence() bool
-
-	// optional
-	CopyFromTextureSourceSliceSourceLevelToTextureDestinationSliceDestinationLevelSliceCountLevelCount(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, sliceCount uint, levelCount uint)
-	HasCopyFromTextureSourceSliceSourceLevelToTextureDestinationSliceDestinationLevelSliceCountLevelCount() bool
-
-	// optional
-	OptimizeContentsForGPUAccessSliceLevel(texture TextureObject, slice uint, level uint)
-	HasOptimizeContentsForGPUAccessSliceLevel() bool
-
-	// optional
-	OptimizeContentsForCPUAccess(texture TextureObject)
-	HasOptimizeContentsForCPUAccess() bool
-
-	// optional
-	CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImageOptions(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationBuffer BufferObject, destinationOffset uint, destinationBytesPerRow uint, destinationBytesPerImage uint, options BlitOption)
-	HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImageOptions() bool
-
-	// optional
-	OptimizeIndirectCommandBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, range_ foundation.Range)
-	HasOptimizeIndirectCommandBufferWithRange() bool
-
-	// optional
-	SynchronizeResource(resource ResourceObject)
-	HasSynchronizeResource() bool
+	CopyIndirectCommandBufferSourceRangeDestinationDestinationIndex(source IndirectCommandBufferObject, sourceRange foundation.Range, destination IndirectCommandBufferObject, destinationIndex uint)
+	HasCopyIndirectCommandBufferSourceRangeDestinationDestinationIndex() bool
 
 	// optional
 	SynchronizeTextureSliceLevel(texture TextureObject, slice uint, level uint)
 	HasSynchronizeTextureSliceLevel() bool
 
 	// optional
-	GetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset(texture TextureObject, region Region, mipLevel uint, slice uint, resetCounters bool, countersBuffer BufferObject, countersBufferOffset uint)
-	HasGetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset() bool
-
-	// optional
-	OptimizeContentsForCPUAccessSliceLevel(texture TextureObject, slice uint, level uint)
-	HasOptimizeContentsForCPUAccessSliceLevel() bool
-
-	// optional
-	CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImage(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationBuffer BufferObject, destinationOffset uint, destinationBytesPerRow uint, destinationBytesPerImage uint)
-	HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImage() bool
-
-	// optional
-	CopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOriginOptions(sourceBuffer BufferObject, sourceOffset uint, sourceBytesPerRow uint, sourceBytesPerImage uint, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin, options BlitOption)
-	HasCopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOriginOptions() bool
-
-	// optional
-	UpdateFence(fence FenceObject)
-	HasUpdateFence() bool
-
-	// optional
-	CopyIndirectCommandBufferSourceRangeDestinationDestinationIndex(source IndirectCommandBufferObject, sourceRange foundation.Range, destination IndirectCommandBufferObject, destinationIndex uint)
-	HasCopyIndirectCommandBufferSourceRangeDestinationDestinationIndex() bool
-
-	// optional
-	SampleCountersInBufferAtSampleIndexWithBarrier(sampleBuffer CounterSampleBufferObject, sampleIndex uint, barrier bool)
-	HasSampleCountersInBufferAtSampleIndexWithBarrier() bool
-
-	// optional
-	FillBufferRangeValue(buffer BufferObject, range_ foundation.Range, value uint8)
-	HasFillBufferRangeValue() bool
-
-	// optional
-	GenerateMipmapsForTexture(texture TextureObject)
-	HasGenerateMipmapsForTexture() bool
-
-	// optional
-	CopyFromTextureToTexture(sourceTexture TextureObject, destinationTexture TextureObject)
-	HasCopyFromTextureToTexture() bool
-
-	// optional
-	CopyFromBufferSourceOffsetToBufferDestinationOffsetSize(sourceBuffer BufferObject, sourceOffset uint, destinationBuffer BufferObject, destinationOffset uint, size uint)
-	HasCopyFromBufferSourceOffsetToBufferDestinationOffsetSize() bool
-
-	// optional
-	ResetTextureAccessCountersRegionMipLevelSlice(texture TextureObject, region Region, mipLevel uint, slice uint)
-	HasResetTextureAccessCountersRegionMipLevelSlice() bool
-
-	// optional
-	CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin)
-	HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin() bool
+	ResolveCountersInRangeDestinationBufferDestinationOffset(sampleBuffer CounterSampleBufferObject, range_ foundation.Range, destinationBuffer BufferObject, destinationOffset uint)
+	HasResolveCountersInRangeDestinationBufferDestinationOffset() bool
 
 	// optional
 	OptimizeContentsForGPUAccess(texture TextureObject)
 	HasOptimizeContentsForGPUAccess() bool
 
 	// optional
-	ResolveCountersInRangeDestinationBufferDestinationOffset(sampleBuffer CounterSampleBufferObject, range_ foundation.Range, destinationBuffer BufferObject, destinationOffset uint)
-	HasResolveCountersInRangeDestinationBufferDestinationOffset() bool
+	SynchronizeResource(resource ResourceObject)
+	HasSynchronizeResource() bool
+
+	// optional
+	SampleCountersInBufferAtSampleIndexWithBarrier(sampleBuffer CounterSampleBufferObject, sampleIndex uint, barrier bool)
+	HasSampleCountersInBufferAtSampleIndexWithBarrier() bool
+
+	// optional
+	ResetTextureAccessCountersRegionMipLevelSlice(texture TextureObject, region Region, mipLevel uint, slice uint)
+	HasResetTextureAccessCountersRegionMipLevelSlice() bool
+
+	// optional
+	CopyFromBufferSourceOffsetToBufferDestinationOffsetSize(sourceBuffer BufferObject, sourceOffset uint, destinationBuffer BufferObject, destinationOffset uint, size uint)
+	HasCopyFromBufferSourceOffsetToBufferDestinationOffsetSize() bool
+
+	// optional
+	FillBufferRangeValue(buffer BufferObject, range_ foundation.Range, value uint8)
+	HasFillBufferRangeValue() bool
+
+	// optional
+	OptimizeContentsForCPUAccess(texture TextureObject)
+	HasOptimizeContentsForCPUAccess() bool
+
+	// optional
+	OptimizeIndirectCommandBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, range_ foundation.Range)
+	HasOptimizeIndirectCommandBufferWithRange() bool
+
+	// optional
+	ResetCommandsInBufferWithRange(buffer IndirectCommandBufferObject, range_ foundation.Range)
+	HasResetCommandsInBufferWithRange() bool
+
+	// optional
+	GetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset(texture TextureObject, region Region, mipLevel uint, slice uint, resetCounters bool, countersBuffer BufferObject, countersBufferOffset uint)
+	HasGetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset() bool
+
+	// optional
+	GenerateMipmapsForTexture(texture TextureObject)
+	HasGenerateMipmapsForTexture() bool
+
+	// optional
+	UpdateFence(fence FenceObject)
+	HasUpdateFence() bool
+
+	// optional
+	CopyFromTextureToTexture(sourceTexture TextureObject, destinationTexture TextureObject)
+	HasCopyFromTextureToTexture() bool
+
+	// optional
+	WaitForFence(fence FenceObject)
+	HasWaitForFence() bool
 }
 
 // ensure impl type implements protocol interface
@@ -118,192 +86,6 @@ var _ PBlitCommandEncoder = (*BlitCommandEncoderObject)(nil)
 // A concrete type for the [PBlitCommandEncoder] protocol.
 type BlitCommandEncoderObject struct {
 	objc.Object
-}
-
-func (b_ BlitCommandEncoderObject) HasResetCommandsInBufferWithRange() bool {
-	return b_.RespondsToSelector(objc.Sel("resetCommandsInBuffer:withRange:"))
-}
-
-// Encodes a command that resets a range of commands in an indirect command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2967414-resetcommandsinbuffer?language=objc
-func (b_ BlitCommandEncoderObject) ResetCommandsInBufferWithRange(buffer IndirectCommandBufferObject, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", buffer)
-	objc.Call[objc.Void](b_, objc.Sel("resetCommandsInBuffer:withRange:"), po0, range_)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:"))
-}
-
-// Encodes a command to copy image data from a source buffer into a destination texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400752-copyfrombuffer?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin(sourceBuffer BufferObject, sourceOffset uint, sourceBytesPerRow uint, sourceBytesPerImage uint, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", sourceBuffer)
-	po5 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:"), po0, sourceOffset, sourceBytesPerRow, sourceBytesPerImage, sourceSize, po5, destinationSlice, destinationLevel, destinationOrigin)
-}
-
-func (b_ BlitCommandEncoderObject) HasWaitForFence() bool {
-	return b_.RespondsToSelector(objc.Sel("waitForFence:"))
-}
-
-// Encodes a command that instructs the GPU to wait until a pass updates a fence. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1649358-waitforfence?language=objc
-func (b_ BlitCommandEncoderObject) WaitForFence(fence FenceObject) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](b_, objc.Sel("waitForFence:"), po0)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromTextureSourceSliceSourceLevelToTextureDestinationSliceDestinationLevelSliceCountLevelCount() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromTexture:sourceSlice:sourceLevel:toTexture:destinationSlice:destinationLevel:sliceCount:levelCount:"))
-}
-
-// Encodes a command that copies slices of a texture to another texture’s slices. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3081674-copyfromtexture?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromTextureSourceSliceSourceLevelToTextureDestinationSliceDestinationLevelSliceCountLevelCount(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, sliceCount uint, levelCount uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po3 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:sourceSlice:sourceLevel:toTexture:destinationSlice:destinationLevel:sliceCount:levelCount:"), po0, sourceSlice, sourceLevel, po3, destinationSlice, destinationLevel, sliceCount, levelCount)
-}
-
-func (b_ BlitCommandEncoderObject) HasOptimizeContentsForGPUAccessSliceLevel() bool {
-	return b_.RespondsToSelector(objc.Sel("optimizeContentsForGPUAccess:slice:level:"))
-}
-
-// Encodes a command that improves the performance of the GPU’s accesses to a specific portion of a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966540-optimizecontentsforgpuaccess?language=objc
-func (b_ BlitCommandEncoderObject) OptimizeContentsForGPUAccessSliceLevel(texture TextureObject, slice uint, level uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForGPUAccess:slice:level:"), po0, slice, level)
-}
-
-func (b_ BlitCommandEncoderObject) HasOptimizeContentsForCPUAccess() bool {
-	return b_.RespondsToSelector(objc.Sel("optimizeContentsForCPUAccess:"))
-}
-
-// Encodes a command that improves the performance of the CPU’s accesses to a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966537-optimizecontentsforcpuaccess?language=objc
-func (b_ BlitCommandEncoderObject) OptimizeContentsForCPUAccess(texture TextureObject) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForCPUAccess:"), po0)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImageOptions() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:options:"))
-}
-
-// Encodes a command that copies image data from a texture slice to a buffer, and provides options for special texture formats. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400756-copyfromtexture?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImageOptions(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationBuffer BufferObject, destinationOffset uint, destinationBytesPerRow uint, destinationBytesPerImage uint, options BlitOption) {
-	po0 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po5 := objc.WrapAsProtocol("MTLBuffer", destinationBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:options:"), po0, sourceSlice, sourceLevel, sourceOrigin, sourceSize, po5, destinationOffset, destinationBytesPerRow, destinationBytesPerImage, options)
-}
-
-func (b_ BlitCommandEncoderObject) HasOptimizeIndirectCommandBufferWithRange() bool {
-	return b_.RespondsToSelector(objc.Sel("optimizeIndirectCommandBuffer:withRange:"))
-}
-
-// Encodes a command that can improve the performance of a range of commands within an indirect command buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2967413-optimizeindirectcommandbuffer?language=objc
-func (b_ BlitCommandEncoderObject) OptimizeIndirectCommandBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", indirectCommandBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("optimizeIndirectCommandBuffer:withRange:"), po0, range_)
-}
-
-func (b_ BlitCommandEncoderObject) HasSynchronizeResource() bool {
-	return b_.RespondsToSelector(objc.Sel("synchronizeResource:"))
-}
-
-// Encodes a command that synchronizes the CPU’s copy of a managed resource, such as a buffer or texture, so that it matches the GPU’s copy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400775-synchronizeresource?language=objc
-func (b_ BlitCommandEncoderObject) SynchronizeResource(resource ResourceObject) {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	objc.Call[objc.Void](b_, objc.Sel("synchronizeResource:"), po0)
-}
-
-func (b_ BlitCommandEncoderObject) HasSynchronizeTextureSliceLevel() bool {
-	return b_.RespondsToSelector(objc.Sel("synchronizeTexture:slice:level:"))
-}
-
-// Encodes a command that synchronizes a part of the CPU’s copy of a texture so that it matches the GPU’s copy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400757-synchronizetexture?language=objc
-func (b_ BlitCommandEncoderObject) SynchronizeTextureSliceLevel(texture TextureObject, slice uint, level uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("synchronizeTexture:slice:level:"), po0, slice, level)
-}
-
-func (b_ BlitCommandEncoderObject) HasGetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset() bool {
-	return b_.RespondsToSelector(objc.Sel("getTextureAccessCounters:region:mipLevel:slice:resetCounters:countersBuffer:countersBufferOffset:"))
-}
-
-// Encodes a command that retrieves a sparse texture’s access data for a specific region, mipmap level, and slice. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3043910-gettextureaccesscounters?language=objc
-func (b_ BlitCommandEncoderObject) GetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset(texture TextureObject, region Region, mipLevel uint, slice uint, resetCounters bool, countersBuffer BufferObject, countersBufferOffset uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	po5 := objc.WrapAsProtocol("MTLBuffer", countersBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("getTextureAccessCounters:region:mipLevel:slice:resetCounters:countersBuffer:countersBufferOffset:"), po0, region, mipLevel, slice, resetCounters, po5, countersBufferOffset)
-}
-
-func (b_ BlitCommandEncoderObject) HasOptimizeContentsForCPUAccessSliceLevel() bool {
-	return b_.RespondsToSelector(objc.Sel("optimizeContentsForCPUAccess:slice:level:"))
-}
-
-// Encodes a command that improves the performance of the CPU’s accesses to a specific portion of a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966538-optimizecontentsforcpuaccess?language=objc
-func (b_ BlitCommandEncoderObject) OptimizeContentsForCPUAccessSliceLevel(texture TextureObject, slice uint, level uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForCPUAccess:slice:level:"), po0, slice, level)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImage() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:"))
-}
-
-// Encodes a command that copies image data from a texture slice to a buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400773-copyfromtexture?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToBufferDestinationOffsetDestinationBytesPerRowDestinationBytesPerImage(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationBuffer BufferObject, destinationOffset uint, destinationBytesPerRow uint, destinationBytesPerImage uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po5 := objc.WrapAsProtocol("MTLBuffer", destinationBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:"), po0, sourceSlice, sourceLevel, sourceOrigin, sourceSize, po5, destinationOffset, destinationBytesPerRow, destinationBytesPerImage)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOriginOptions() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:options:"))
-}
-
-// Encodes a command to copy image data from a source buffer into a destination texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400771-copyfrombuffer?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromBufferSourceOffsetSourceBytesPerRowSourceBytesPerImageSourceSizeToTextureDestinationSliceDestinationLevelDestinationOriginOptions(sourceBuffer BufferObject, sourceOffset uint, sourceBytesPerRow uint, sourceBytesPerImage uint, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin, options BlitOption) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", sourceBuffer)
-	po5 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:options:"), po0, sourceOffset, sourceBytesPerRow, sourceBytesPerImage, sourceSize, po5, destinationSlice, destinationLevel, destinationOrigin, options)
-}
-
-func (b_ BlitCommandEncoderObject) HasUpdateFence() bool {
-	return b_.RespondsToSelector(objc.Sel("updateFence:"))
-}
-
-// Encodes a command that instructs the GPU to update a fence, which can signal a pass that’s waiting for it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1649359-updatefence?language=objc
-func (b_ BlitCommandEncoderObject) UpdateFence(fence FenceObject) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](b_, objc.Sel("updateFence:"), po0)
 }
 
 func (b_ BlitCommandEncoderObject) HasCopyIndirectCommandBufferSourceRangeDestinationDestinationIndex() bool {
@@ -319,6 +101,55 @@ func (b_ BlitCommandEncoderObject) CopyIndirectCommandBufferSourceRangeDestinati
 	objc.Call[objc.Void](b_, objc.Sel("copyIndirectCommandBuffer:sourceRange:destination:destinationIndex:"), po0, sourceRange, po2, destinationIndex)
 }
 
+func (b_ BlitCommandEncoderObject) HasSynchronizeTextureSliceLevel() bool {
+	return b_.RespondsToSelector(objc.Sel("synchronizeTexture:slice:level:"))
+}
+
+// Encodes a command that synchronizes a part of the CPU’s copy of a texture so that it matches the GPU’s copy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400757-synchronizetexture?language=objc
+func (b_ BlitCommandEncoderObject) SynchronizeTextureSliceLevel(texture TextureObject, slice uint, level uint) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](b_, objc.Sel("synchronizeTexture:slice:level:"), po0, slice, level)
+}
+
+func (b_ BlitCommandEncoderObject) HasResolveCountersInRangeDestinationBufferDestinationOffset() bool {
+	return b_.RespondsToSelector(objc.Sel("resolveCounters:inRange:destinationBuffer:destinationOffset:"))
+}
+
+// Encodes a command that resolves the data from the samples in a sample counter buffer and stores the results into a buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3194347-resolvecounters?language=objc
+func (b_ BlitCommandEncoderObject) ResolveCountersInRangeDestinationBufferDestinationOffset(sampleBuffer CounterSampleBufferObject, range_ foundation.Range, destinationBuffer BufferObject, destinationOffset uint) {
+	po0 := objc.WrapAsProtocol("MTLCounterSampleBuffer", sampleBuffer)
+	po2 := objc.WrapAsProtocol("MTLBuffer", destinationBuffer)
+	objc.Call[objc.Void](b_, objc.Sel("resolveCounters:inRange:destinationBuffer:destinationOffset:"), po0, range_, po2, destinationOffset)
+}
+
+func (b_ BlitCommandEncoderObject) HasOptimizeContentsForGPUAccess() bool {
+	return b_.RespondsToSelector(objc.Sel("optimizeContentsForGPUAccess:"))
+}
+
+// Encodes a command that improves the performance of the GPU’s accesses to a texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966539-optimizecontentsforgpuaccess?language=objc
+func (b_ BlitCommandEncoderObject) OptimizeContentsForGPUAccess(texture TextureObject) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForGPUAccess:"), po0)
+}
+
+func (b_ BlitCommandEncoderObject) HasSynchronizeResource() bool {
+	return b_.RespondsToSelector(objc.Sel("synchronizeResource:"))
+}
+
+// Encodes a command that synchronizes the CPU’s copy of a managed resource, such as a buffer or texture, so that it matches the GPU’s copy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400775-synchronizeresource?language=objc
+func (b_ BlitCommandEncoderObject) SynchronizeResource(resource ResourceObject) {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	objc.Call[objc.Void](b_, objc.Sel("synchronizeResource:"), po0)
+}
+
 func (b_ BlitCommandEncoderObject) HasSampleCountersInBufferAtSampleIndexWithBarrier() bool {
 	return b_.RespondsToSelector(objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"))
 }
@@ -331,41 +162,16 @@ func (b_ BlitCommandEncoderObject) SampleCountersInBufferAtSampleIndexWithBarrie
 	objc.Call[objc.Void](b_, objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"), po0, sampleIndex, barrier)
 }
 
-func (b_ BlitCommandEncoderObject) HasFillBufferRangeValue() bool {
-	return b_.RespondsToSelector(objc.Sel("fillBuffer:range:value:"))
+func (b_ BlitCommandEncoderObject) HasResetTextureAccessCountersRegionMipLevelSlice() bool {
+	return b_.RespondsToSelector(objc.Sel("resetTextureAccessCounters:region:mipLevel:slice:"))
 }
 
-// Encodes a command that fills a buffer with a constant value for each byte. [Full Topic]
+// Encodes a command that resets a sparse texture’s access data for a specific region, mipmap level, and slice. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400761-fillbuffer?language=objc
-func (b_ BlitCommandEncoderObject) FillBufferRangeValue(buffer BufferObject, range_ foundation.Range, value uint8) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](b_, objc.Sel("fillBuffer:range:value:"), po0, range_, value)
-}
-
-func (b_ BlitCommandEncoderObject) HasGenerateMipmapsForTexture() bool {
-	return b_.RespondsToSelector(objc.Sel("generateMipmapsForTexture:"))
-}
-
-// Encodes a command that generates mipmaps for a texture from the base mipmap level up to the highest mipmap level. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400748-generatemipmapsfortexture?language=objc
-func (b_ BlitCommandEncoderObject) GenerateMipmapsForTexture(texture TextureObject) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3043911-resettextureaccesscounters?language=objc
+func (b_ BlitCommandEncoderObject) ResetTextureAccessCountersRegionMipLevelSlice(texture TextureObject, region Region, mipLevel uint, slice uint) {
 	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("generateMipmapsForTexture:"), po0)
-}
-
-func (b_ BlitCommandEncoderObject) HasCopyFromTextureToTexture() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromTexture:toTexture:"))
-}
-
-// Encodes a command that copies data from one texture to another. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3075383-copyfromtexture?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromTextureToTexture(sourceTexture TextureObject, destinationTexture TextureObject) {
-	po0 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po1 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:toTexture:"), po0, po1)
+	objc.Call[objc.Void](b_, objc.Sel("resetTextureAccessCounters:region:mipLevel:slice:"), po0, region, mipLevel, slice)
 }
 
 func (b_ BlitCommandEncoderObject) HasCopyFromBufferSourceOffsetToBufferDestinationOffsetSize() bool {
@@ -381,52 +187,112 @@ func (b_ BlitCommandEncoderObject) CopyFromBufferSourceOffsetToBufferDestination
 	objc.Call[objc.Void](b_, objc.Sel("copyFromBuffer:sourceOffset:toBuffer:destinationOffset:size:"), po0, sourceOffset, po2, destinationOffset, size)
 }
 
-func (b_ BlitCommandEncoderObject) HasResetTextureAccessCountersRegionMipLevelSlice() bool {
-	return b_.RespondsToSelector(objc.Sel("resetTextureAccessCounters:region:mipLevel:slice:"))
+func (b_ BlitCommandEncoderObject) HasFillBufferRangeValue() bool {
+	return b_.RespondsToSelector(objc.Sel("fillBuffer:range:value:"))
 }
 
-// Encodes a command that resets a sparse texture’s access data for a specific region, mipmap level, and slice. [Full Topic]
+// Encodes a command that fills a buffer with a constant value for each byte. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3043911-resettextureaccesscounters?language=objc
-func (b_ BlitCommandEncoderObject) ResetTextureAccessCountersRegionMipLevelSlice(texture TextureObject, region Region, mipLevel uint, slice uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400761-fillbuffer?language=objc
+func (b_ BlitCommandEncoderObject) FillBufferRangeValue(buffer BufferObject, range_ foundation.Range, value uint8) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](b_, objc.Sel("fillBuffer:range:value:"), po0, range_, value)
+}
+
+func (b_ BlitCommandEncoderObject) HasOptimizeContentsForCPUAccess() bool {
+	return b_.RespondsToSelector(objc.Sel("optimizeContentsForCPUAccess:"))
+}
+
+// Encodes a command that improves the performance of the CPU’s accesses to a texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966537-optimizecontentsforcpuaccess?language=objc
+func (b_ BlitCommandEncoderObject) OptimizeContentsForCPUAccess(texture TextureObject) {
 	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("resetTextureAccessCounters:region:mipLevel:slice:"), po0, region, mipLevel, slice)
+	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForCPUAccess:"), po0)
 }
 
-func (b_ BlitCommandEncoderObject) HasCopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin() bool {
-	return b_.RespondsToSelector(objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:"))
+func (b_ BlitCommandEncoderObject) HasOptimizeIndirectCommandBufferWithRange() bool {
+	return b_.RespondsToSelector(objc.Sel("optimizeIndirectCommandBuffer:withRange:"))
 }
 
-// Encodes a command that copies image data from a texture’s slice into another slice. [Full Topic]
+// Encodes a command that can improve the performance of a range of commands within an indirect command buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400754-copyfromtexture?language=objc
-func (b_ BlitCommandEncoderObject) CopyFromTextureSourceSliceSourceLevelSourceOriginSourceSizeToTextureDestinationSliceDestinationLevelDestinationOrigin(sourceTexture TextureObject, sourceSlice uint, sourceLevel uint, sourceOrigin Origin, sourceSize Size, destinationTexture TextureObject, destinationSlice uint, destinationLevel uint, destinationOrigin Origin) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2967413-optimizeindirectcommandbuffer?language=objc
+func (b_ BlitCommandEncoderObject) OptimizeIndirectCommandBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", indirectCommandBuffer)
+	objc.Call[objc.Void](b_, objc.Sel("optimizeIndirectCommandBuffer:withRange:"), po0, range_)
+}
+
+func (b_ BlitCommandEncoderObject) HasResetCommandsInBufferWithRange() bool {
+	return b_.RespondsToSelector(objc.Sel("resetCommandsInBuffer:withRange:"))
+}
+
+// Encodes a command that resets a range of commands in an indirect command buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2967414-resetcommandsinbuffer?language=objc
+func (b_ BlitCommandEncoderObject) ResetCommandsInBufferWithRange(buffer IndirectCommandBufferObject, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", buffer)
+	objc.Call[objc.Void](b_, objc.Sel("resetCommandsInBuffer:withRange:"), po0, range_)
+}
+
+func (b_ BlitCommandEncoderObject) HasGetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset() bool {
+	return b_.RespondsToSelector(objc.Sel("getTextureAccessCounters:region:mipLevel:slice:resetCounters:countersBuffer:countersBufferOffset:"))
+}
+
+// Encodes a command that retrieves a sparse texture’s access data for a specific region, mipmap level, and slice. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3043910-gettextureaccesscounters?language=objc
+func (b_ BlitCommandEncoderObject) GetTextureAccessCountersRegionMipLevelSliceResetCountersCountersBufferCountersBufferOffset(texture TextureObject, region Region, mipLevel uint, slice uint, resetCounters bool, countersBuffer BufferObject, countersBufferOffset uint) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	po5 := objc.WrapAsProtocol("MTLBuffer", countersBuffer)
+	objc.Call[objc.Void](b_, objc.Sel("getTextureAccessCounters:region:mipLevel:slice:resetCounters:countersBuffer:countersBufferOffset:"), po0, region, mipLevel, slice, resetCounters, po5, countersBufferOffset)
+}
+
+func (b_ BlitCommandEncoderObject) HasGenerateMipmapsForTexture() bool {
+	return b_.RespondsToSelector(objc.Sel("generateMipmapsForTexture:"))
+}
+
+// Encodes a command that generates mipmaps for a texture from the base mipmap level up to the highest mipmap level. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1400748-generatemipmapsfortexture?language=objc
+func (b_ BlitCommandEncoderObject) GenerateMipmapsForTexture(texture TextureObject) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](b_, objc.Sel("generateMipmapsForTexture:"), po0)
+}
+
+func (b_ BlitCommandEncoderObject) HasUpdateFence() bool {
+	return b_.RespondsToSelector(objc.Sel("updateFence:"))
+}
+
+// Encodes a command that instructs the GPU to update a fence, which can signal a pass that’s waiting for it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1649359-updatefence?language=objc
+func (b_ BlitCommandEncoderObject) UpdateFence(fence FenceObject) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](b_, objc.Sel("updateFence:"), po0)
+}
+
+func (b_ BlitCommandEncoderObject) HasCopyFromTextureToTexture() bool {
+	return b_.RespondsToSelector(objc.Sel("copyFromTexture:toTexture:"))
+}
+
+// Encodes a command that copies data from one texture to another. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3075383-copyfromtexture?language=objc
+func (b_ BlitCommandEncoderObject) CopyFromTextureToTexture(sourceTexture TextureObject, destinationTexture TextureObject) {
 	po0 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po5 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:"), po0, sourceSlice, sourceLevel, sourceOrigin, sourceSize, po5, destinationSlice, destinationLevel, destinationOrigin)
+	po1 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
+	objc.Call[objc.Void](b_, objc.Sel("copyFromTexture:toTexture:"), po0, po1)
 }
 
-func (b_ BlitCommandEncoderObject) HasOptimizeContentsForGPUAccess() bool {
-	return b_.RespondsToSelector(objc.Sel("optimizeContentsForGPUAccess:"))
+func (b_ BlitCommandEncoderObject) HasWaitForFence() bool {
+	return b_.RespondsToSelector(objc.Sel("waitForFence:"))
 }
 
-// Encodes a command that improves the performance of the GPU’s accesses to a texture. [Full Topic]
+// Encodes a command that instructs the GPU to wait until a pass updates a fence. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/2966539-optimizecontentsforgpuaccess?language=objc
-func (b_ BlitCommandEncoderObject) OptimizeContentsForGPUAccess(texture TextureObject) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](b_, objc.Sel("optimizeContentsForGPUAccess:"), po0)
-}
-
-func (b_ BlitCommandEncoderObject) HasResolveCountersInRangeDestinationBufferDestinationOffset() bool {
-	return b_.RespondsToSelector(objc.Sel("resolveCounters:inRange:destinationBuffer:destinationOffset:"))
-}
-
-// Encodes a command that resolves the data from the samples in a sample counter buffer and stores the results into a buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/3194347-resolvecounters?language=objc
-func (b_ BlitCommandEncoderObject) ResolveCountersInRangeDestinationBufferDestinationOffset(sampleBuffer CounterSampleBufferObject, range_ foundation.Range, destinationBuffer BufferObject, destinationOffset uint) {
-	po0 := objc.WrapAsProtocol("MTLCounterSampleBuffer", sampleBuffer)
-	po2 := objc.WrapAsProtocol("MTLBuffer", destinationBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("resolveCounters:inRange:destinationBuffer:destinationOffset:"), po0, range_, po2, destinationOffset)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitcommandencoder/1649358-waitforfence?language=objc
+func (b_ BlitCommandEncoderObject) WaitForFence(fence FenceObject) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](b_, objc.Sel("waitForFence:"), po0)
 }

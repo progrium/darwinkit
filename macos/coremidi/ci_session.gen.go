@@ -19,20 +19,20 @@ type _CISessionClass struct {
 // An interface definition for the [CISession] class.
 type ICISession interface {
 	objc.IObject
-	DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool
-	SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool
 	EnableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool
 	ProfileStateForChannel(channel ChannelNumber) CIProfileState
-	DeviceInfo() CIDeviceInfo
-	MidiDestination() EntityRef
-	SupportsProfileCapability() bool
-	SupportsPropertyCapability() bool
+	DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool
+	SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool
 	MaxPropertyRequests() foundation.Number
 	MaxSysExSize() foundation.Number
+	DeviceInfo() CIDeviceInfo
 	ProfileChangedCallback() CIProfileChangedBlock
 	SetProfileChangedCallback(value CIProfileChangedBlock)
+	SupportsPropertyCapability() bool
+	MidiDestination() EntityRef
 	ProfileSpecificDataHandler() CIProfileSpecificDataBlock
 	SetProfileSpecificDataHandler(value CIProfileSpecificDataBlock)
+	SupportsProfileCapability() bool
 }
 
 // An object that represents a MIDI-CI session. [Full Topic]
@@ -82,22 +82,6 @@ func (c_ CISession) Init() CISession {
 	return rv
 }
 
-// Performs an asynchronous request to disable a profile for a specific MIDI channel number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977116-disableprofile?language=objc
-func (c_ CISession) DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool {
-	rv := objc.Call[bool](c_, objc.Sel("disableProfile:onChannel:error:"), profile, channel, outError)
-	return rv
-}
-
-// Sends profile-specific data to the MIDI-CI session. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3553276-sendprofile?language=objc
-func (c_ CISession) SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool {
-	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), profile, channel, profileSpecificData)
-	return rv
-}
-
 // Performs an asynchronous request to enable a profile for a specific MIDI channel number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977117-enableprofile?language=objc
@@ -114,35 +98,19 @@ func (c_ CISession) ProfileStateForChannel(channel ChannelNumber) CIProfileState
 	return rv
 }
 
-// Information about a MIDI-CI device. [Full Topic]
+// Performs an asynchronous request to disable a profile for a specific MIDI channel number. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3553274-deviceinfo?language=objc
-func (c_ CISession) DeviceInfo() CIDeviceInfo {
-	rv := objc.Call[CIDeviceInfo](c_, objc.Sel("deviceInfo"))
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977116-disableprofile?language=objc
+func (c_ CISession) DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("disableProfile:onChannel:error:"), profile, channel, outError)
 	return rv
 }
 
-// The MIDI destination with which the session is communicating. [Full Topic]
+// Sends profile-specific data to the MIDI-CI session. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3580338-mididestination?language=objc
-func (c_ CISession) MidiDestination() EntityRef {
-	rv := objc.Call[EntityRef](c_, objc.Sel("midiDestination"))
-	return rv
-}
-
-// A Boolean value that indicates whether the entity supports the MIDI-CI profile’s capability. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977126-supportsprofilecapability?language=objc
-func (c_ CISession) SupportsProfileCapability() bool {
-	rv := objc.Call[bool](c_, objc.Sel("supportsProfileCapability"))
-	return rv
-}
-
-// A Boolean value that indicates whether the entity supports the MIDI-CI property exchange capability. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977127-supportspropertycapability?language=objc
-func (c_ CISession) SupportsPropertyCapability() bool {
-	rv := objc.Call[bool](c_, objc.Sel("supportsPropertyCapability"))
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3553276-sendprofile?language=objc
+func (c_ CISession) SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool {
+	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), profile, channel, profileSpecificData)
 	return rv
 }
 
@@ -162,6 +130,14 @@ func (c_ CISession) MaxSysExSize() foundation.Number {
 	return rv
 }
 
+// Information about a MIDI-CI device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3553274-deviceinfo?language=objc
+func (c_ CISession) DeviceInfo() CIDeviceInfo {
+	rv := objc.Call[CIDeviceInfo](c_, objc.Sel("deviceInfo"))
+	return rv
+}
+
 // An optional block the system calls after it enables or disables a profile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977122-profilechangedcallback?language=objc
@@ -177,6 +153,22 @@ func (c_ CISession) SetProfileChangedCallback(value CIProfileChangedBlock) {
 	objc.Call[objc.Void](c_, objc.Sel("setProfileChangedCallback:"), value)
 }
 
+// A Boolean value that indicates whether the entity supports the MIDI-CI property exchange capability. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977127-supportspropertycapability?language=objc
+func (c_ CISession) SupportsPropertyCapability() bool {
+	rv := objc.Call[bool](c_, objc.Sel("supportsPropertyCapability"))
+	return rv
+}
+
+// The MIDI destination with which the session is communicating. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3580338-mididestination?language=objc
+func (c_ CISession) MidiDestination() EntityRef {
+	rv := objc.Call[EntityRef](c_, objc.Sel("midiDestination"))
+	return rv
+}
+
 // An optional block the system calls when a device sends profile-specific data to the session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3580339-profilespecificdatahandler?language=objc
@@ -190,4 +182,12 @@ func (c_ CISession) ProfileSpecificDataHandler() CIProfileSpecificDataBlock {
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3580339-profilespecificdatahandler?language=objc
 func (c_ CISession) SetProfileSpecificDataHandler(value CIProfileSpecificDataBlock) {
 	objc.Call[objc.Void](c_, objc.Sel("setProfileSpecificDataHandler:"), value)
+}
+
+// A Boolean value that indicates whether the entity supports the MIDI-CI profile’s capability. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977126-supportsprofilecapability?language=objc
+func (c_ CISession) SupportsProfileCapability() bool {
+	rv := objc.Call[bool](c_, objc.Sel("supportsProfileCapability"))
+	return rv
 }

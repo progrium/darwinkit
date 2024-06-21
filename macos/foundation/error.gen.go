@@ -19,15 +19,15 @@ type _ErrorClass struct {
 type IError interface {
 	objc.IObject
 	Domain() ErrorDomain
-	UserInfo() map[ErrorUserInfoKey]objc.Object
 	LocalizedDescription() string
+	LocalizedFailureReason() string
+	LocalizedRecoverySuggestion() string
+	Code() int
 	LocalizedRecoveryOptions() []string
+	UserInfo() map[ErrorUserInfoKey]objc.Object
 	UnderlyingErrors() []Error
 	RecoveryAttempter() objc.Object
 	HelpAnchor() string
-	LocalizedRecoverySuggestion() string
-	Code() int
-	LocalizedFailureReason() string
 }
 
 // Information about an error condition including a domain, a domain-specific error code, and application-specific information. [Full Topic]
@@ -55,18 +55,6 @@ func Error_FileProviderErrorForRejectedDeletionOfItem(updatedVersion objc.IObjec
 	return ErrorClass.FileProviderErrorForRejectedDeletionOfItem(updatedVersion)
 }
 
-func (ec _ErrorClass) FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc.IObject) Error {
-	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForNonExistentItemWithIdentifier:"), itemIdentifier)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/2915899-fileprovidererrorfornonexistenti?language=objc
-func Error_FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc.IObject) Error {
-	return ErrorClass.FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier)
-}
-
 func (ec _ErrorClass) FileProviderErrorForCollisionWithItem(existingItem objc.IObject) Error {
 	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForCollisionWithItem:"), existingItem)
 	return rv
@@ -77,6 +65,18 @@ func (ec _ErrorClass) FileProviderErrorForCollisionWithItem(existingItem objc.IO
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/2882067-fileprovidererrorforcollisionwit?language=objc
 func Error_FileProviderErrorForCollisionWithItem(existingItem objc.IObject) Error {
 	return ErrorClass.FileProviderErrorForCollisionWithItem(existingItem)
+}
+
+func (ec _ErrorClass) FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc.IObject) Error {
+	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForNonExistentItemWithIdentifier:"), itemIdentifier)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/2915899-fileprovidererrorfornonexistenti?language=objc
+func Error_FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc.IObject) Error {
+	return ErrorClass.FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier)
 }
 
 func (ec _ErrorClass) ErrorWithDomainCodeUserInfo(domain ErrorDomain, code int, dict map[ErrorUserInfoKey]objc.IObject) Error {
@@ -162,14 +162,6 @@ func (e_ Error) Domain() ErrorDomain {
 	return rv
 }
 
-// The user info dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1411580-userinfo?language=objc
-func (e_ Error) UserInfo() map[ErrorUserInfoKey]objc.Object {
-	rv := objc.Call[map[ErrorUserInfoKey]objc.Object](e_, objc.Sel("userInfo"))
-	return rv
-}
-
 // A string containing the localized description of the error. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1414418-localizeddescription?language=objc
@@ -178,11 +170,43 @@ func (e_ Error) LocalizedDescription() string {
 	return rv
 }
 
+// A string containing the localized explanation of the reason for the error. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason?language=objc
+func (e_ Error) LocalizedFailureReason() string {
+	rv := objc.Call[string](e_, objc.Sel("localizedFailureReason"))
+	return rv
+}
+
+// A string containing the localized recovery suggestion for the error. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion?language=objc
+func (e_ Error) LocalizedRecoverySuggestion() string {
+	rv := objc.Call[string](e_, objc.Sel("localizedRecoverySuggestion"))
+	return rv
+}
+
+// The error code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1409165-code?language=objc
+func (e_ Error) Code() int {
+	rv := objc.Call[int](e_, objc.Sel("code"))
+	return rv
+}
+
 // An array containing the localized titles of buttons appropriate for displaying in an alert panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1415950-localizedrecoveryoptions?language=objc
 func (e_ Error) LocalizedRecoveryOptions() []string {
 	rv := objc.Call[[]string](e_, objc.Sel("localizedRecoveryOptions"))
+	return rv
+}
+
+// The user info dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1411580-userinfo?language=objc
+func (e_ Error) UserInfo() map[ErrorUserInfoKey]objc.Object {
+	rv := objc.Call[map[ErrorUserInfoKey]objc.Object](e_, objc.Sel("userInfo"))
 	return rv
 }
 
@@ -207,29 +231,5 @@ func (e_ Error) RecoveryAttempter() objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1414718-helpanchor?language=objc
 func (e_ Error) HelpAnchor() string {
 	rv := objc.Call[string](e_, objc.Sel("helpAnchor"))
-	return rv
-}
-
-// A string containing the localized recovery suggestion for the error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion?language=objc
-func (e_ Error) LocalizedRecoverySuggestion() string {
-	rv := objc.Call[string](e_, objc.Sel("localizedRecoverySuggestion"))
-	return rv
-}
-
-// The error code. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1409165-code?language=objc
-func (e_ Error) Code() int {
-	rv := objc.Call[int](e_, objc.Sel("code"))
-	return rv
-}
-
-// A string containing the localized explanation of the reason for the error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason?language=objc
-func (e_ Error) LocalizedFailureReason() string {
-	rv := objc.Call[string](e_, objc.Sel("localizedFailureReason"))
 	return rv
 }

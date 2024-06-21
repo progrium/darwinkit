@@ -33,6 +33,18 @@ func NNConcatenationNodeFrom(ptr unsafe.Pointer) NNConcatenationNode {
 	}
 }
 
+func (nc _NNConcatenationNodeClass) NodeWithSources(sourceNodes []INNImageNode) NNConcatenationNode {
+	rv := objc.Call[NNConcatenationNode](nc, objc.Sel("nodeWithSources:"), sourceNodes)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnconcatenationnode/2866432-nodewithsources?language=objc
+func NNConcatenationNode_NodeWithSources(sourceNodes []INNImageNode) NNConcatenationNode {
+	return NNConcatenationNodeClass.NodeWithSources(sourceNodes)
+}
+
 func (n_ NNConcatenationNode) InitWithSources(sourceNodes []INNImageNode) NNConcatenationNode {
 	rv := objc.Call[NNConcatenationNode](n_, objc.Sel("initWithSources:"), sourceNodes)
 	return rv
@@ -45,18 +57,6 @@ func NewNNConcatenationNodeWithSources(sourceNodes []INNImageNode) NNConcatenati
 	instance := NNConcatenationNodeClass.Alloc().InitWithSources(sourceNodes)
 	instance.Autorelease()
 	return instance
-}
-
-func (nc _NNConcatenationNodeClass) NodeWithSources(sourceNodes []INNImageNode) NNConcatenationNode {
-	rv := objc.Call[NNConcatenationNode](nc, objc.Sel("nodeWithSources:"), sourceNodes)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnconcatenationnode/2866432-nodewithsources?language=objc
-func NNConcatenationNode_NodeWithSources(sourceNodes []INNImageNode) NNConcatenationNode {
-	return NNConcatenationNodeClass.NodeWithSources(sourceNodes)
 }
 
 func (nc _NNConcatenationNodeClass) Alloc() NNConcatenationNode {

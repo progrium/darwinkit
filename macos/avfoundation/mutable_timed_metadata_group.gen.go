@@ -56,20 +56,6 @@ func (m_ MutableTimedMetadataGroup) Init() MutableTimedMetadataGroup {
 	return rv
 }
 
-func (m_ MutableTimedMetadataGroup) InitWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) MutableTimedMetadataGroup {
-	rv := objc.Call[MutableTimedMetadataGroup](m_, objc.Sel("initWithItems:timeRange:"), items, timeRange)
-	return rv
-}
-
-// Creates a timed metadata group initialized with the given metadata items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1389632-initwithitems?language=objc
-func NewMutableTimedMetadataGroupWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) MutableTimedMetadataGroup {
-	instance := MutableTimedMetadataGroupClass.Alloc().InitWithItemsTimeRange(items, timeRange)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MutableTimedMetadataGroup) InitWithSampleBuffer(sampleBuffer coremedia.SampleBufferRef) MutableTimedMetadataGroup {
 	rv := objc.Call[MutableTimedMetadataGroup](m_, objc.Sel("initWithSampleBuffer:"), sampleBuffer)
 	return rv
@@ -80,6 +66,20 @@ func (m_ MutableTimedMetadataGroup) InitWithSampleBuffer(sampleBuffer coremedia.
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1387128-initwithsamplebuffer?language=objc
 func NewMutableTimedMetadataGroupWithSampleBuffer(sampleBuffer coremedia.SampleBufferRef) MutableTimedMetadataGroup {
 	instance := MutableTimedMetadataGroupClass.Alloc().InitWithSampleBuffer(sampleBuffer)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MutableTimedMetadataGroup) InitWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) MutableTimedMetadataGroup {
+	rv := objc.Call[MutableTimedMetadataGroup](m_, objc.Sel("initWithItems:timeRange:"), items, timeRange)
+	return rv
+}
+
+// Creates a timed metadata group initialized with the given metadata items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avtimedmetadatagroup/1389632-initwithitems?language=objc
+func NewMutableTimedMetadataGroupWithItemsTimeRange(items []IMetadataItem, timeRange coremedia.TimeRange) MutableTimedMetadataGroup {
+	instance := MutableTimedMetadataGroupClass.Alloc().InitWithItemsTimeRange(items, timeRange)
 	instance.Autorelease()
 	return instance
 }

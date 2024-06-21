@@ -15,16 +15,16 @@ type PFunctionLog interface {
 	HasFunction() bool
 
 	// optional
-	Type() FunctionLogType
-	HasType() bool
+	DebugLocation() FunctionLogDebugLocationObject
+	HasDebugLocation() bool
 
 	// optional
 	EncoderLabel() string
 	HasEncoderLabel() bool
 
 	// optional
-	DebugLocation() FunctionLogDebugLocationObject
-	HasDebugLocation() bool
+	Type() FunctionLogType
+	HasType() bool
 }
 
 // ensure impl type implements protocol interface
@@ -47,15 +47,15 @@ func (f_ FunctionLogObject) Function() FunctionObject {
 	return rv
 }
 
-func (f_ FunctionLogObject) HasType() bool {
-	return f_.RespondsToSelector(objc.Sel("type"))
+func (f_ FunctionLogObject) HasDebugLocation() bool {
+	return f_.RespondsToSelector(objc.Sel("debugLocation"))
 }
 
-// The type of message that was logged. [Full Topic]
+// If known, the location of the logging command within a shader source file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlog/3554016-type?language=objc
-func (f_ FunctionLogObject) Type() FunctionLogType {
-	rv := objc.Call[FunctionLogType](f_, objc.Sel("type"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlog/3554007-debuglocation?language=objc
+func (f_ FunctionLogObject) DebugLocation() FunctionLogDebugLocationObject {
+	rv := objc.Call[FunctionLogDebugLocationObject](f_, objc.Sel("debugLocation"))
 	return rv
 }
 
@@ -71,14 +71,14 @@ func (f_ FunctionLogObject) EncoderLabel() string {
 	return rv
 }
 
-func (f_ FunctionLogObject) HasDebugLocation() bool {
-	return f_.RespondsToSelector(objc.Sel("debugLocation"))
+func (f_ FunctionLogObject) HasType() bool {
+	return f_.RespondsToSelector(objc.Sel("type"))
 }
 
-// If known, the location of the logging command within a shader source file. [Full Topic]
+// The type of message that was logged. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlog/3554007-debuglocation?language=objc
-func (f_ FunctionLogObject) DebugLocation() FunctionLogDebugLocationObject {
-	rv := objc.Call[FunctionLogDebugLocationObject](f_, objc.Sel("debugLocation"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionlog/3554016-type?language=objc
+func (f_ FunctionLogObject) Type() FunctionLogType {
+	rv := objc.Call[FunctionLogType](f_, objc.Sel("type"))
 	return rv
 }

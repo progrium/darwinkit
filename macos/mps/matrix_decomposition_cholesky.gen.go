@@ -71,21 +71,6 @@ func (m_ MatrixDecompositionCholesky) Init() MatrixDecompositionCholesky {
 	return rv
 }
 
-func (m_ MatrixDecompositionCholesky) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionCholesky {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixDecompositionCholesky](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixDecompositionCholesky_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionCholesky {
-	instance := MatrixDecompositionCholeskyClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixDecompositionCholesky) InitWithDevice(device metal.PDevice) MatrixDecompositionCholesky {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixDecompositionCholesky](m_, objc.Sel("initWithDevice:"), po0)
@@ -97,6 +82,21 @@ func (m_ MatrixDecompositionCholesky) InitWithDevice(device metal.PDevice) Matri
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixDecompositionCholeskyWithDevice(device metal.PDevice) MatrixDecompositionCholesky {
 	instance := MatrixDecompositionCholeskyClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixDecompositionCholesky) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionCholesky {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixDecompositionCholesky](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixDecompositionCholesky_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixDecompositionCholesky {
+	instance := MatrixDecompositionCholeskyClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

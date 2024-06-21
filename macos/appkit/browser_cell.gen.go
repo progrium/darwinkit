@@ -18,15 +18,15 @@ type _BrowserCellClass struct {
 // An interface definition for the [BrowserCell] class.
 type IBrowserCell interface {
 	ICell
-	Reset()
-	Set()
 	HighlightColorInView(controlView IView) Color
-	IsLoaded() bool
-	SetLoaded(value bool)
-	AlternateImage() Image
-	SetAlternateImage(value IImage)
+	Set()
+	Reset()
 	IsLeaf() bool
 	SetLeaf(value bool)
+	AlternateImage() Image
+	SetAlternateImage(value IImage)
+	IsLoaded() bool
+	SetLoaded(value bool)
 }
 
 // The user interface of a browser. [Full Topic]
@@ -90,11 +90,12 @@ func (b_ BrowserCell) Init() BrowserCell {
 	return rv
 }
 
-// Unhighlights the receiver and unsets its state. [Full Topic]
+// Returns the highlight color that the receiver wants to display. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435773-reset?language=objc
-func (b_ BrowserCell) Reset() {
-	objc.Call[objc.Void](b_, objc.Sel("reset"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435767-highlightcolorinview?language=objc
+func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
+	rv := objc.Call[Color](b_, objc.Sel("highlightColorInView:"), controlView)
+	return rv
 }
 
 // Highlights the receiver and sets its state. [Full Topic]
@@ -104,42 +105,26 @@ func (b_ BrowserCell) Set() {
 	objc.Call[objc.Void](b_, objc.Sel("set"))
 }
 
-// Returns the highlight color that the receiver wants to display. [Full Topic]
+// Unhighlights the receiver and unsets its state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435767-highlightcolorinview?language=objc
-func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
-	rv := objc.Call[Color](b_, objc.Sel("highlightColorInView:"), controlView)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435773-reset?language=objc
+func (b_ BrowserCell) Reset() {
+	objc.Call[objc.Void](b_, objc.Sel("reset"))
+}
+
+// A Boolean that indicates whether the browser cell is a leaf or a branch cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435771-leaf?language=objc
+func (b_ BrowserCell) IsLeaf() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isLeaf"))
 	return rv
 }
 
-// Returns the default image for branch cells in a browser. [Full Topic]
+// A Boolean that indicates whether the browser cell is a leaf or a branch cell. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435775-branchimage?language=objc
-func (bc _BrowserCellClass) BranchImage() Image {
-	rv := objc.Call[Image](bc, objc.Sel("branchImage"))
-	return rv
-}
-
-// Returns the default image for branch cells in a browser. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435775-branchimage?language=objc
-func BrowserCell_BranchImage() Image {
-	return BrowserCellClass.BranchImage()
-}
-
-// A Boolean that indicates whether the cell is ready to display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435772-loaded?language=objc
-func (b_ BrowserCell) IsLoaded() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isLoaded"))
-	return rv
-}
-
-// A Boolean that indicates whether the cell is ready to display. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435772-loaded?language=objc
-func (b_ BrowserCell) SetLoaded(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setLoaded:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435771-leaf?language=objc
+func (b_ BrowserCell) SetLeaf(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setLeaf:"), value)
 }
 
 // The browser cell’s image for the highlighted state. [Full Topic]
@@ -157,6 +142,21 @@ func (b_ BrowserCell) SetAlternateImage(value IImage) {
 	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
 }
 
+// A Boolean that indicates whether the cell is ready to display. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435772-loaded?language=objc
+func (b_ BrowserCell) IsLoaded() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isLoaded"))
+	return rv
+}
+
+// A Boolean that indicates whether the cell is ready to display. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435772-loaded?language=objc
+func (b_ BrowserCell) SetLoaded(value bool) {
+	objc.Call[objc.Void](b_, objc.Sel("setLoaded:"), value)
+}
+
 // Returns the default image for branch browser cells that are highlighted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435769-highlightedbranchimage?language=objc
@@ -172,17 +172,17 @@ func BrowserCell_HighlightedBranchImage() Image {
 	return BrowserCellClass.HighlightedBranchImage()
 }
 
-// A Boolean that indicates whether the browser cell is a leaf or a branch cell. [Full Topic]
+// Returns the default image for branch cells in a browser. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435771-leaf?language=objc
-func (b_ BrowserCell) IsLeaf() bool {
-	rv := objc.Call[bool](b_, objc.Sel("isLeaf"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435775-branchimage?language=objc
+func (bc _BrowserCellClass) BranchImage() Image {
+	rv := objc.Call[Image](bc, objc.Sel("branchImage"))
 	return rv
 }
 
-// A Boolean that indicates whether the browser cell is a leaf or a branch cell. [Full Topic]
+// Returns the default image for branch cells in a browser. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435771-leaf?language=objc
-func (b_ BrowserCell) SetLeaf(value bool) {
-	objc.Call[objc.Void](b_, objc.Sel("setLeaf:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435775-branchimage?language=objc
+func BrowserCell_BranchImage() Image {
+	return BrowserCellClass.BranchImage()
 }

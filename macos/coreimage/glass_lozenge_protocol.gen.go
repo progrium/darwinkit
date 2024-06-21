@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge?language=objc
 type PGlassLozenge interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Radius() float32
-	HasRadius() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetRefraction(value float32)
@@ -28,20 +28,12 @@ type PGlassLozenge interface {
 	HasRefraction() bool
 
 	// optional
-	SetPoint0(value coregraphics.Point)
-	HasSetPoint0() bool
+	SetRadius(value float32)
+	HasSetRadius() bool
 
 	// optional
-	Point0() coregraphics.Point
-	HasPoint0() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Radius() float32
+	HasRadius() bool
 
 	// optional
 	SetPoint1(value coregraphics.Point)
@@ -50,6 +42,14 @@ type PGlassLozenge interface {
 	// optional
 	Point1() coregraphics.Point
 	HasPoint1() bool
+
+	// optional
+	SetPoint0(value coregraphics.Point)
+	HasSetPoint0() bool
+
+	// optional
+	Point0() coregraphics.Point
+	HasPoint0() bool
 }
 
 // ensure impl type implements protocol interface
@@ -60,26 +60,26 @@ type GlassLozengeObject struct {
 	objc.Object
 }
 
-func (g_ GlassLozengeObject) HasSetRadius() bool {
-	return g_.RespondsToSelector(objc.Sel("setRadius:"))
+func (g_ GlassLozengeObject) HasSetInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
-func (g_ GlassLozengeObject) SetRadius(value float32) {
-	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600161-inputimage?language=objc
+func (g_ GlassLozengeObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
-func (g_ GlassLozengeObject) HasRadius() bool {
-	return g_.RespondsToSelector(objc.Sel("radius"))
+func (g_ GlassLozengeObject) HasInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
-func (g_ GlassLozengeObject) Radius() float32 {
-	rv := objc.Call[float32](g_, objc.Sel("radius"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600161-inputimage?language=objc
+func (g_ GlassLozengeObject) InputImage() Image {
+	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -106,49 +106,26 @@ func (g_ GlassLozengeObject) Refraction() float32 {
 	return rv
 }
 
-func (g_ GlassLozengeObject) HasSetPoint0() bool {
-	return g_.RespondsToSelector(objc.Sel("setPoint0:"))
+func (g_ GlassLozengeObject) HasSetRadius() bool {
+	return g_.RespondsToSelector(objc.Sel("setRadius:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600162-point0?language=objc
-func (g_ GlassLozengeObject) SetPoint0(value coregraphics.Point) {
-	objc.Call[objc.Void](g_, objc.Sel("setPoint0:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
+func (g_ GlassLozengeObject) SetRadius(value float32) {
+	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
 }
 
-func (g_ GlassLozengeObject) HasPoint0() bool {
-	return g_.RespondsToSelector(objc.Sel("point0"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600162-point0?language=objc
-func (g_ GlassLozengeObject) Point0() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](g_, objc.Sel("point0"))
-	return rv
-}
-
-func (g_ GlassLozengeObject) HasSetInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (g_ GlassLozengeObject) HasRadius() bool {
+	return g_.RespondsToSelector(objc.Sel("radius"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600161-inputimage?language=objc
-func (g_ GlassLozengeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
-}
-
-func (g_ GlassLozengeObject) HasInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600161-inputimage?language=objc
-func (g_ GlassLozengeObject) InputImage() Image {
-	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
+func (g_ GlassLozengeObject) Radius() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("radius"))
 	return rv
 }
 
@@ -172,5 +149,28 @@ func (g_ GlassLozengeObject) HasPoint1() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600163-point1?language=objc
 func (g_ GlassLozengeObject) Point1() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](g_, objc.Sel("point1"))
+	return rv
+}
+
+func (g_ GlassLozengeObject) HasSetPoint0() bool {
+	return g_.RespondsToSelector(objc.Sel("setPoint0:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600162-point0?language=objc
+func (g_ GlassLozengeObject) SetPoint0(value coregraphics.Point) {
+	objc.Call[objc.Void](g_, objc.Sel("setPoint0:"), value)
+}
+
+func (g_ GlassLozengeObject) HasPoint0() bool {
+	return g_.RespondsToSelector(objc.Sel("point0"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600162-point0?language=objc
+func (g_ GlassLozengeObject) Point0() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](g_, objc.Sel("point0"))
 	return rv
 }

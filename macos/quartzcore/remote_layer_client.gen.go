@@ -19,9 +19,9 @@ type _RemoteLayerClientClass struct {
 type IRemoteLayerClient interface {
 	objc.IObject
 	Invalidate()
-	ClientId() uint32
 	Layer() Layer
 	SetLayer(value ILayer)
+	ClientId() uint32
 }
 
 //	[Full Topic]
@@ -64,14 +64,6 @@ func (r_ RemoteLayerClient) Invalidate() {
 	objc.Call[objc.Void](r_, objc.Sel("invalidate"))
 }
 
-// The ID of the remote layer client. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caremotelayerclient/1418375-clientid?language=objc
-func (r_ RemoteLayerClient) ClientId() uint32 {
-	rv := objc.Call[uint32](r_, objc.Sel("clientId"))
-	return rv
-}
-
 // The layer associated with the remote client. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caremotelayerclient/1418373-layer?language=objc
@@ -85,4 +77,12 @@ func (r_ RemoteLayerClient) Layer() Layer {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caremotelayerclient/1418373-layer?language=objc
 func (r_ RemoteLayerClient) SetLayer(value ILayer) {
 	objc.Call[objc.Void](r_, objc.Sel("setLayer:"), value)
+}
+
+// The ID of the remote layer client. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caremotelayerclient/1418375-clientid?language=objc
+func (r_ RemoteLayerClient) ClientId() uint32 {
+	rv := objc.Call[uint32](r_, objc.Sel("clientId"))
+	return rv
 }

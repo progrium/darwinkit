@@ -15,12 +15,12 @@ type PSeguePerforming interface {
 	HasPerformSegueWithIdentifierSender() bool
 
 	// optional
-	PrepareForSegueSender(segue StoryboardSegue, sender objc.Object)
-	HasPrepareForSegueSender() bool
-
-	// optional
 	ShouldPerformSegueWithIdentifierSender(identifier StoryboardSegueIdentifier, sender objc.Object) bool
 	HasShouldPerformSegueWithIdentifierSender() bool
+
+	// optional
+	PrepareForSegueSender(segue StoryboardSegue, sender objc.Object)
+	HasPrepareForSegueSender() bool
 }
 
 // ensure impl type implements protocol interface
@@ -42,17 +42,6 @@ func (s_ SeguePerformingObject) PerformSegueWithIdentifierSender(identifier Stor
 	objc.Call[objc.Void](s_, objc.Sel("performSegueWithIdentifier:sender:"), identifier, sender)
 }
 
-func (s_ SeguePerformingObject) HasPrepareForSegueSender() bool {
-	return s_.RespondsToSelector(objc.Sel("prepareForSegue:sender:"))
-}
-
-// Called when a segue is about to be performed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegueperforming/1409580-prepareforsegue?language=objc
-func (s_ SeguePerformingObject) PrepareForSegueSender(segue StoryboardSegue, sender objc.Object) {
-	objc.Call[objc.Void](s_, objc.Sel("prepareForSegue:sender:"), segue, sender)
-}
-
 func (s_ SeguePerformingObject) HasShouldPerformSegueWithIdentifierSender() bool {
 	return s_.RespondsToSelector(objc.Sel("shouldPerformSegueWithIdentifier:sender:"))
 }
@@ -63,4 +52,15 @@ func (s_ SeguePerformingObject) HasShouldPerformSegueWithIdentifierSender() bool
 func (s_ SeguePerformingObject) ShouldPerformSegueWithIdentifierSender(identifier StoryboardSegueIdentifier, sender objc.Object) bool {
 	rv := objc.Call[bool](s_, objc.Sel("shouldPerformSegueWithIdentifier:sender:"), identifier, sender)
 	return rv
+}
+
+func (s_ SeguePerformingObject) HasPrepareForSegueSender() bool {
+	return s_.RespondsToSelector(objc.Sel("prepareForSegue:sender:"))
+}
+
+// Called when a segue is about to be performed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegueperforming/1409580-prepareforsegue?language=objc
+func (s_ SeguePerformingObject) PrepareForSegueSender(segue StoryboardSegue, sender objc.Object) {
+	objc.Call[objc.Void](s_, objc.Sel("prepareForSegue:sender:"), segue, sender)
 }

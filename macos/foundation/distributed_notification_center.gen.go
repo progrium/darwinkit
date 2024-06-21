@@ -18,9 +18,7 @@ type _DistributedNotificationCenterClass struct {
 // An interface definition for the [DistributedNotificationCenter] class.
 type IDistributedNotificationCenter interface {
 	INotificationCenter
-	PostNotificationNameObjectUserInfoDeliverImmediately(name NotificationName, object string, userInfo Dictionary, deliverImmediately bool)
-	PostNotificationNameObjectUserInfoOptions(name NotificationName, object string, userInfo Dictionary, options DistributedNotificationOptions)
-	AddObserverSelectorNameObjectSuspensionBehavior(observer objc.IObject, selector objc.Selector, name NotificationName, object string, suspensionBehavior NotificationSuspensionBehavior)
+	PostNotificationNameObject(aName NotificationName, anObject string)
 	Suspended() bool
 	SetSuspended(value bool)
 }
@@ -58,25 +56,11 @@ func (d_ DistributedNotificationCenter) Init() DistributedNotificationCenter {
 	return rv
 }
 
-// Creates a notification with information and an immediate-delivery specifier, and posts it to the receiver. [Full Topic]
+// Creates a notification, and posts it to the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributednotificationcenter/1418360-postnotificationname?language=objc
-func (d_ DistributedNotificationCenter) PostNotificationNameObjectUserInfoDeliverImmediately(name NotificationName, object string, userInfo Dictionary, deliverImmediately bool) {
-	objc.Call[objc.Void](d_, objc.Sel("postNotificationName:object:userInfo:deliverImmediately:"), name, object, userInfo, deliverImmediately)
-}
-
-// Creates a notification with information, and posts it to the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributednotificationcenter/1417581-postnotificationname?language=objc
-func (d_ DistributedNotificationCenter) PostNotificationNameObjectUserInfoOptions(name NotificationName, object string, userInfo Dictionary, options DistributedNotificationOptions) {
-	objc.Call[objc.Void](d_, objc.Sel("postNotificationName:object:userInfo:options:"), name, object, userInfo, options)
-}
-
-// Adds an entry to the receiver’s dispatch table with a specific observer and suspended-notifications behavior, and optional notification name and sender. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributednotificationcenter/1414136-addobserver?language=objc
-func (d_ DistributedNotificationCenter) AddObserverSelectorNameObjectSuspensionBehavior(observer objc.IObject, selector objc.Selector, name NotificationName, object string, suspensionBehavior NotificationSuspensionBehavior) {
-	objc.Call[objc.Void](d_, objc.Sel("addObserver:selector:name:object:suspensionBehavior:"), observer, selector, name, object, suspensionBehavior)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributednotificationcenter/1410991-postnotificationname?language=objc
+func (d_ DistributedNotificationCenter) PostNotificationNameObject(aName NotificationName, anObject string) {
+	objc.Call[objc.Void](d_, objc.Sel("postNotificationName:object:"), aName, anObject)
 }
 
 // Returns the distributed notification center for a particular notification center type. [Full Topic]

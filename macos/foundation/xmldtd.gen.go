@@ -18,20 +18,20 @@ type _XMLDTDClass struct {
 // An interface definition for the [XMLDTD] class.
 type IXMLDTD interface {
 	IXMLNode
+	NotationDeclarationForName(name string) XMLDTDNode
+	RemoveChildAtIndex(index uint)
+	AttributeDeclarationForNameElementName(name string, elementName string) XMLDTDNode
 	EntityDeclarationForName(name string) XMLDTDNode
+	ElementDeclarationForName(name string) XMLDTDNode
 	InsertChildrenAtIndex(children []IXMLNode, index uint)
 	InsertChildAtIndex(child IXMLNode, index uint)
-	NotationDeclarationForName(name string) XMLDTDNode
-	AttributeDeclarationForNameElementName(name string, elementName string) XMLDTDNode
-	AddChild(child IXMLNode)
 	SetChildren(children []IXMLNode)
-	RemoveChildAtIndex(index uint)
+	AddChild(child IXMLNode)
 	ReplaceChildAtIndexWithNode(index uint, node IXMLNode)
-	ElementDeclarationForName(name string) XMLDTDNode
-	PublicID() string
-	SetPublicID(value string)
 	SystemID() string
 	SetSystemID(value string)
+	PublicID() string
+	SetPublicID(value string)
 }
 
 // A representation of a Document Type Definition. [Full Topic]
@@ -45,11 +45,6 @@ func XMLDTDFrom(ptr unsafe.Pointer) XMLDTD {
 	return XMLDTD{
 		XMLNode: XMLNodeFrom(ptr),
 	}
-}
-
-func (x_ XMLDTD) Init() XMLDTD {
-	rv := objc.Call[XMLDTD](x_, objc.Sel("init"))
-	return rv
 }
 
 func (x_ XMLDTD) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error unsafe.Pointer) XMLDTD {
@@ -80,6 +75,11 @@ func NewXMLDTDWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error
 	return instance
 }
 
+func (x_ XMLDTD) Init() XMLDTD {
+	rv := objc.Call[XMLDTD](x_, objc.Sel("init"))
+	return rv
+}
+
 func (xc _XMLDTDClass) Alloc() XMLDTD {
 	rv := objc.Call[XMLDTD](xc, objc.Sel("alloc"))
 	return rv
@@ -93,20 +93,6 @@ func (xc _XMLDTDClass) New() XMLDTD {
 
 func NewXMLDTD() XMLDTD {
 	return XMLDTDClass.New()
-}
-
-func (x_ XMLDTD) InitWithKind(kind XMLNodeKind) XMLDTD {
-	rv := objc.Call[XMLDTD](x_, objc.Sel("initWithKind:"), kind)
-	return rv
-}
-
-// Returns an NSXMLNode instance initialized with the constant indicating node kind. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409766-initwithkind?language=objc
-func NewXMLDTDWithKind(kind XMLNodeKind) XMLDTD {
-	instance := XMLDTDClass.Alloc().InitWithKind(kind)
-	instance.Autorelease()
-	return instance
 }
 
 func (x_ XMLDTD) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTD {
@@ -123,11 +109,42 @@ func NewXMLDTDWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTD {
 	return instance
 }
 
+// Returns the DTD node representing the notation declaration identified by the specified notation name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1410533-notationdeclarationforname?language=objc
+func (x_ XMLDTD) NotationDeclarationForName(name string) XMLDTDNode {
+	rv := objc.Call[XMLDTDNode](x_, objc.Sel("notationDeclarationForName:"), name)
+	return rv
+}
+
+// Removes the child node at a particular location in the receiver’s list of children. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412262-removechildatindex?language=objc
+func (x_ XMLDTD) RemoveChildAtIndex(index uint) {
+	objc.Call[objc.Void](x_, objc.Sel("removeChildAtIndex:"), index)
+}
+
+// Returns the DTD node representing an attribute-list declaration for a given attribute and its element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1411397-attributedeclarationforname?language=objc
+func (x_ XMLDTD) AttributeDeclarationForNameElementName(name string, elementName string) XMLDTDNode {
+	rv := objc.Call[XMLDTDNode](x_, objc.Sel("attributeDeclarationForName:elementName:"), name, elementName)
+	return rv
+}
+
 // Returns the DTD node representing the entity declaration for a specified entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412325-entitydeclarationforname?language=objc
 func (x_ XMLDTD) EntityDeclarationForName(name string) XMLDTDNode {
 	rv := objc.Call[XMLDTDNode](x_, objc.Sel("entityDeclarationForName:"), name)
+	return rv
+}
+
+// Returns the DTD node representing an element declaration for a specified element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1416067-elementdeclarationforname?language=objc
+func (x_ XMLDTD) ElementDeclarationForName(name string) XMLDTDNode {
+	rv := objc.Call[XMLDTDNode](x_, objc.Sel("elementDeclarationForName:"), name)
 	return rv
 }
 
@@ -145,20 +162,18 @@ func (x_ XMLDTD) InsertChildAtIndex(child IXMLNode, index uint) {
 	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), child, index)
 }
 
-// Returns the DTD node representing the notation declaration identified by the specified notation name. [Full Topic]
+// Removes all existing children of the receiver and replaces them with an array of new child nodes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1410533-notationdeclarationforname?language=objc
-func (x_ XMLDTD) NotationDeclarationForName(name string) XMLDTDNode {
-	rv := objc.Call[XMLDTDNode](x_, objc.Sel("notationDeclarationForName:"), name)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1415145-setchildren?language=objc
+func (x_ XMLDTD) SetChildren(children []IXMLNode) {
+	objc.Call[objc.Void](x_, objc.Sel("setChildren:"), children)
 }
 
-// Returns the DTD node representing an attribute-list declaration for a given attribute and its element. [Full Topic]
+// Adds a child node to the end of the list of existing children. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1411397-attributedeclarationforname?language=objc
-func (x_ XMLDTD) AttributeDeclarationForNameElementName(name string, elementName string) XMLDTDNode {
-	rv := objc.Call[XMLDTDNode](x_, objc.Sel("attributeDeclarationForName:elementName:"), name, elementName)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412988-addchild?language=objc
+func (x_ XMLDTD) AddChild(child IXMLNode) {
+	objc.Call[objc.Void](x_, objc.Sel("addChild:"), child)
 }
 
 // Returns a DTD node representing the predefined entity declaration with the specified name. [Full Topic]
@@ -176,55 +191,11 @@ func XMLDTD_PredefinedEntityDeclarationForName(name string) XMLDTDNode {
 	return XMLDTDClass.PredefinedEntityDeclarationForName(name)
 }
 
-// Adds a child node to the end of the list of existing children. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412988-addchild?language=objc
-func (x_ XMLDTD) AddChild(child IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addChild:"), child)
-}
-
-// Removes all existing children of the receiver and replaces them with an array of new child nodes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1415145-setchildren?language=objc
-func (x_ XMLDTD) SetChildren(children []IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("setChildren:"), children)
-}
-
-// Removes the child node at a particular location in the receiver’s list of children. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412262-removechildatindex?language=objc
-func (x_ XMLDTD) RemoveChildAtIndex(index uint) {
-	objc.Call[objc.Void](x_, objc.Sel("removeChildAtIndex:"), index)
-}
-
 // Replaces a child at a particular index with another child. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1413890-replacechildatindex?language=objc
 func (x_ XMLDTD) ReplaceChildAtIndexWithNode(index uint, node IXMLNode) {
 	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, node)
-}
-
-// Returns the DTD node representing an element declaration for a specified element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1416067-elementdeclarationforname?language=objc
-func (x_ XMLDTD) ElementDeclarationForName(name string) XMLDTDNode {
-	rv := objc.Call[XMLDTDNode](x_, objc.Sel("elementDeclarationForName:"), name)
-	return rv
-}
-
-// Returns the receiver’s public identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1408524-publicid?language=objc
-func (x_ XMLDTD) PublicID() string {
-	rv := objc.Call[string](x_, objc.Sel("publicID"))
-	return rv
-}
-
-// Returns the receiver’s public identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1408524-publicid?language=objc
-func (x_ XMLDTD) SetPublicID(value string) {
-	objc.Call[objc.Void](x_, objc.Sel("setPublicID:"), value)
 }
 
 // Returns the receiver’s system identifier. [Full Topic]
@@ -240,4 +211,19 @@ func (x_ XMLDTD) SystemID() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1410949-systemid?language=objc
 func (x_ XMLDTD) SetSystemID(value string) {
 	objc.Call[objc.Void](x_, objc.Sel("setSystemID:"), value)
+}
+
+// Returns the receiver’s public identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1408524-publicid?language=objc
+func (x_ XMLDTD) PublicID() string {
+	rv := objc.Call[string](x_, objc.Sel("publicID"))
+	return rv
+}
+
+// Returns the receiver’s public identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1408524-publicid?language=objc
+func (x_ XMLDTD) SetPublicID(value string) {
+	objc.Call[objc.Void](x_, objc.Sel("setPublicID:"), value)
 }

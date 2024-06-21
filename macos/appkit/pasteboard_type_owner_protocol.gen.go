@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner?language=objc
 type PPasteboardTypeOwner interface {
 	// optional
-	PasteboardProvideDataForType(sender Pasteboard, type_ PasteboardType)
-	HasPasteboardProvideDataForType() bool
-
-	// optional
 	PasteboardChangedOwner(sender Pasteboard)
 	HasPasteboardChangedOwner() bool
+
+	// optional
+	PasteboardProvideDataForType(sender Pasteboard, type_ PasteboardType)
+	HasPasteboardProvideDataForType() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,17 +25,6 @@ var _ PPasteboardTypeOwner = (*PasteboardTypeOwnerObject)(nil)
 // A concrete type for the [PPasteboardTypeOwner] protocol.
 type PasteboardTypeOwnerObject struct {
 	objc.Object
-}
-
-func (p_ PasteboardTypeOwnerObject) HasPasteboardProvideDataForType() bool {
-	return p_.RespondsToSelector(objc.Sel("pasteboard:provideDataForType:"))
-}
-
-// Requests that the object provide data for the data type to the pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner/3005193-pasteboard?language=objc
-func (p_ PasteboardTypeOwnerObject) PasteboardProvideDataForType(sender Pasteboard, type_ PasteboardType) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboard:provideDataForType:"), sender, type_)
 }
 
 func (p_ PasteboardTypeOwnerObject) HasPasteboardChangedOwner() bool {
@@ -47,4 +36,15 @@ func (p_ PasteboardTypeOwnerObject) HasPasteboardChangedOwner() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner/3005194-pasteboardchangedowner?language=objc
 func (p_ PasteboardTypeOwnerObject) PasteboardChangedOwner(sender Pasteboard) {
 	objc.Call[objc.Void](p_, objc.Sel("pasteboardChangedOwner:"), sender)
+}
+
+func (p_ PasteboardTypeOwnerObject) HasPasteboardProvideDataForType() bool {
+	return p_.RespondsToSelector(objc.Sel("pasteboard:provideDataForType:"))
+}
+
+// Requests that the object provide data for the data type to the pasteboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner/3005193-pasteboard?language=objc
+func (p_ PasteboardTypeOwnerObject) PasteboardProvideDataForType(sender Pasteboard, type_ PasteboardType) {
+	objc.Call[objc.Void](p_, objc.Sel("pasteboard:provideDataForType:"), sender, type_)
 }

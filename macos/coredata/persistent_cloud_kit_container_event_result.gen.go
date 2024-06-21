@@ -18,8 +18,8 @@ type _PersistentCloudKitContainerEventResultClass struct {
 // An interface definition for the [PersistentCloudKitContainerEventResult] class.
 type IPersistentCloudKitContainerEventResult interface {
 	IPersistentStoreResult
-	ResultType() PersistentCloudKitContainerEventResultType
 	Result() objc.Object
+	ResultType() PersistentCloudKitContainerEventResultType
 }
 
 // The result of a request to fetch persistent CloudKit container events. [Full Topic]
@@ -55,18 +55,18 @@ func (p_ PersistentCloudKitContainerEventResult) Init() PersistentCloudKitContai
 	return rv
 }
 
-// The type of result that the CloudKit container event fetch request returns. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventresult/3618822-resulttype?language=objc
-func (p_ PersistentCloudKitContainerEventResult) ResultType() PersistentCloudKitContainerEventResultType {
-	rv := objc.Call[PersistentCloudKitContainerEventResultType](p_, objc.Sel("resultType"))
-	return rv
-}
-
 // The result of the persistent CloudKit container event request, which the result type determines. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventresult/3618821-result?language=objc
 func (p_ PersistentCloudKitContainerEventResult) Result() objc.Object {
 	rv := objc.Call[objc.Object](p_, objc.Sel("result"))
+	return rv
+}
+
+// The type of result that the CloudKit container event fetch request returns. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainereventresult/3618822-resulttype?language=objc
+func (p_ PersistentCloudKitContainerEventResult) ResultType() PersistentCloudKitContainerEventResultType {
+	rv := objc.Call[PersistentCloudKitContainerEventResultType](p_, objc.Sel("resultType"))
 	return rv
 }

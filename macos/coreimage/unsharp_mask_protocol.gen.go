@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask?language=objc
 type PUnsharpMask interface {
 	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
+
+	// optional
 	SetIntensity(value float32)
 	HasSetIntensity() bool
 
@@ -25,14 +33,6 @@ type PUnsharpMask interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PUnsharpMask = (*UnsharpMaskObject)(nil)
 // A concrete type for the [PUnsharpMask] protocol.
 type UnsharpMaskObject struct {
 	objc.Object
+}
+
+func (u_ UnsharpMaskObject) HasSetInputImage() bool {
+	return u_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228819-inputimage?language=objc
+func (u_ UnsharpMaskObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](u_, objc.Sel("setInputImage:"), value)
+}
+
+func (u_ UnsharpMaskObject) HasInputImage() bool {
+	return u_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228819-inputimage?language=objc
+func (u_ UnsharpMaskObject) InputImage() Image {
+	rv := objc.Call[Image](u_, objc.Sel("inputImage"))
+	return rv
 }
 
 func (u_ UnsharpMaskObject) HasSetIntensity() bool {
@@ -86,28 +109,5 @@ func (u_ UnsharpMaskObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228821-radius?language=objc
 func (u_ UnsharpMaskObject) Radius() float32 {
 	rv := objc.Call[float32](u_, objc.Sel("radius"))
-	return rv
-}
-
-func (u_ UnsharpMaskObject) HasSetInputImage() bool {
-	return u_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228819-inputimage?language=objc
-func (u_ UnsharpMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](u_, objc.Sel("setInputImage:"), value)
-}
-
-func (u_ UnsharpMaskObject) HasInputImage() bool {
-	return u_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228819-inputimage?language=objc
-func (u_ UnsharpMaskObject) InputImage() Image {
-	rv := objc.Call[Image](u_, objc.Sel("inputImage"))
 	return rv
 }

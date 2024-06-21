@@ -54,20 +54,6 @@ func (p_ PlugIn) Init() PlugIn {
 	return rv
 }
 
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/3180431-loadnonexecutableplugin?language=objc
-func (pc _PlugInClass) LoadNonExecutablePlugIn(url foundation.IURL) {
-	objc.Call[objc.Void](pc, objc.Sel("loadNonExecutablePlugIn:"), url)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/3180431-loadnonexecutableplugin?language=objc
-func PlugIn_LoadNonExecutablePlugIn(url foundation.IURL) {
-	PlugInClass.LoadNonExecutablePlugIn(url)
-}
-
 // Scans directories for files that have the .plugin extension and then loads only those filters that are marked by the image unit as non-executable filters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/1437599-loadnonexecutableplugins?language=objc
@@ -80,4 +66,18 @@ func (pc _PlugInClass) LoadNonExecutablePlugIns() {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/1437599-loadnonexecutableplugins?language=objc
 func PlugIn_LoadNonExecutablePlugIns() {
 	PlugInClass.LoadNonExecutablePlugIns()
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/3180431-loadnonexecutableplugin?language=objc
+func (pc _PlugInClass) LoadNonExecutablePlugIn(url foundation.IURL) {
+	objc.Call[objc.Void](pc, objc.Sel("loadNonExecutablePlugIn:"), url)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/3180431-loadnonexecutableplugin?language=objc
+func PlugIn_LoadNonExecutablePlugIn(url foundation.IURL) {
+	PlugInClass.LoadNonExecutablePlugIn(url)
 }

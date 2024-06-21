@@ -18,10 +18,10 @@ type _ImageConstraintClass struct {
 // An interface definition for the [ImageConstraint] class.
 type IImageConstraint interface {
 	objc.IObject
-	PixelsWide() int
-	PixelFormatType() uint
-	PixelsHigh() int
 	SizeConstraint() ImageSizeConstraint
+	PixelFormatType() uint
+	PixelsWide() int
+	PixelsHigh() int
 }
 
 // The width, height, and pixel format constraints of an image feature. [Full Topic]
@@ -57,11 +57,11 @@ func (i_ ImageConstraint) Init() ImageConstraint {
 	return rv
 }
 
-// The model's default width for an image feature. [Full Topic]
+// Additional sizes this image feature supports. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimageconstraint/2921270-pixelswide?language=objc
-func (i_ ImageConstraint) PixelsWide() int {
-	rv := objc.Call[int](i_, objc.Sel("pixelsWide"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimageconstraint/2994299-sizeconstraint?language=objc
+func (i_ ImageConstraint) SizeConstraint() ImageSizeConstraint {
+	rv := objc.Call[ImageSizeConstraint](i_, objc.Sel("sizeConstraint"))
 	return rv
 }
 
@@ -73,18 +73,18 @@ func (i_ ImageConstraint) PixelFormatType() uint {
 	return rv
 }
 
+// The model's default width for an image feature. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimageconstraint/2921270-pixelswide?language=objc
+func (i_ ImageConstraint) PixelsWide() int {
+	rv := objc.Call[int](i_, objc.Sel("pixelsWide"))
+	return rv
+}
+
 // The model's default height for an image feature. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlimageconstraint/2921268-pixelshigh?language=objc
 func (i_ ImageConstraint) PixelsHigh() int {
 	rv := objc.Call[int](i_, objc.Sel("pixelsHigh"))
-	return rv
-}
-
-// Additional sizes this image feature supports. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlimageconstraint/2994299-sizeconstraint?language=objc
-func (i_ ImageConstraint) SizeConstraint() ImageSizeConstraint {
-	rv := objc.Call[ImageSizeConstraint](i_, objc.Sel("sizeConstraint"))
 	return rv
 }

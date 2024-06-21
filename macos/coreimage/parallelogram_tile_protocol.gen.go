@@ -20,20 +20,20 @@ type PParallelogramTile interface {
 	HasWidth() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
 
 	// optional
 	SetAcuteAngle(value float32)
@@ -44,12 +44,12 @@ type PParallelogramTile interface {
 	HasAcuteAngle() bool
 
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	Angle() float32
-	HasAngle() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -83,29 +83,6 @@ func (p_ ParallelogramTileObject) Width() float32 {
 	return rv
 }
 
-func (p_ ParallelogramTileObject) HasSetCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228642-center?language=objc
-func (p_ ParallelogramTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
-}
-
-func (p_ ParallelogramTileObject) HasCenter() bool {
-	return p_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228642-center?language=objc
-func (p_ ParallelogramTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
-	return rv
-}
-
 func (p_ ParallelogramTileObject) HasSetInputImage() bool {
 	return p_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -126,6 +103,29 @@ func (p_ ParallelogramTileObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228643-inputimage?language=objc
 func (p_ ParallelogramTileObject) InputImage() Image {
 	rv := objc.Call[Image](p_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (p_ ParallelogramTileObject) HasSetAngle() bool {
+	return p_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
+func (p_ ParallelogramTileObject) SetAngle(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setAngle:"), value)
+}
+
+func (p_ ParallelogramTileObject) HasAngle() bool {
+	return p_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
+func (p_ ParallelogramTileObject) Angle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("angle"))
 	return rv
 }
 
@@ -152,25 +152,25 @@ func (p_ ParallelogramTileObject) AcuteAngle() float32 {
 	return rv
 }
 
-func (p_ ParallelogramTileObject) HasSetAngle() bool {
-	return p_.RespondsToSelector(objc.Sel("setAngle:"))
+func (p_ ParallelogramTileObject) HasSetCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
-// The angle, in radians, of the tiled pattern. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
-func (p_ ParallelogramTileObject) SetAngle(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setAngle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228642-center?language=objc
+func (p_ ParallelogramTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](p_, objc.Sel("setCenter:"), value)
 }
 
-func (p_ ParallelogramTileObject) HasAngle() bool {
-	return p_.RespondsToSelector(objc.Sel("angle"))
+func (p_ ParallelogramTileObject) HasCenter() bool {
+	return p_.RespondsToSelector(objc.Sel("center"))
 }
 
-// The angle, in radians, of the tiled pattern. [Full Topic]
+// The x and y position to use as the center of the effect. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
-func (p_ ParallelogramTileObject) Angle() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("angle"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228642-center?language=objc
+func (p_ ParallelogramTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("center"))
 	return rv
 }

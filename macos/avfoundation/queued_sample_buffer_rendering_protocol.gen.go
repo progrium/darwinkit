@@ -13,24 +13,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering?language=objc
 type PQueuedSampleBufferRendering interface {
 	// optional
-	Flush()
-	HasFlush() bool
+	StopRequestingMediaData()
+	HasStopRequestingMediaData() bool
 
 	// optional
 	RequestMediaDataWhenReadyOnQueueUsingBlock(queue dispatch.Queue, block func())
 	HasRequestMediaDataWhenReadyOnQueueUsingBlock() bool
 
 	// optional
+	Flush()
+	HasFlush() bool
+
+	// optional
 	EnqueueSampleBuffer(sampleBuffer coremedia.SampleBufferRef)
 	HasEnqueueSampleBuffer() bool
-
-	// optional
-	StopRequestingMediaData()
-	HasStopRequestingMediaData() bool
-
-	// optional
-	HasSufficientMediaDataForReliablePlaybackStart() bool
-	HasHasSufficientMediaDataForReliablePlaybackStart() bool
 
 	// optional
 	IsReadyForMoreMediaData() bool
@@ -39,6 +35,10 @@ type PQueuedSampleBufferRendering interface {
 	// optional
 	Timebase() coremedia.TimebaseRef
 	HasTimebase() bool
+
+	// optional
+	HasSufficientMediaDataForReliablePlaybackStart() bool
+	HasHasSufficientMediaDataForReliablePlaybackStart() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,15 +49,15 @@ type QueuedSampleBufferRenderingObject struct {
 	objc.Object
 }
 
-func (q_ QueuedSampleBufferRenderingObject) HasFlush() bool {
-	return q_.RespondsToSelector(objc.Sel("flush"))
+func (q_ QueuedSampleBufferRenderingObject) HasStopRequestingMediaData() bool {
+	return q_.RespondsToSelector(objc.Sel("stopRequestingMediaData"))
 }
 
-// Discards all pending enqueued sample buffers. [Full Topic]
+// Cancels any current requestMediaDataWhenReadyOnQueue:usingBlock: call. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867639-flush?language=objc
-func (q_ QueuedSampleBufferRenderingObject) Flush() {
-	objc.Call[objc.Void](q_, objc.Sel("flush"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867642-stoprequestingmediadata?language=objc
+func (q_ QueuedSampleBufferRenderingObject) StopRequestingMediaData() {
+	objc.Call[objc.Void](q_, objc.Sel("stopRequestingMediaData"))
 }
 
 func (q_ QueuedSampleBufferRenderingObject) HasRequestMediaDataWhenReadyOnQueueUsingBlock() bool {
@@ -71,6 +71,17 @@ func (q_ QueuedSampleBufferRenderingObject) RequestMediaDataWhenReadyOnQueueUsin
 	objc.Call[objc.Void](q_, objc.Sel("requestMediaDataWhenReadyOnQueue:usingBlock:"), queue, block)
 }
 
+func (q_ QueuedSampleBufferRenderingObject) HasFlush() bool {
+	return q_.RespondsToSelector(objc.Sel("flush"))
+}
+
+// Discards all pending enqueued sample buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867639-flush?language=objc
+func (q_ QueuedSampleBufferRenderingObject) Flush() {
+	objc.Call[objc.Void](q_, objc.Sel("flush"))
+}
+
 func (q_ QueuedSampleBufferRenderingObject) HasEnqueueSampleBuffer() bool {
 	return q_.RespondsToSelector(objc.Sel("enqueueSampleBuffer:"))
 }
@@ -80,29 +91,6 @@ func (q_ QueuedSampleBufferRenderingObject) HasEnqueueSampleBuffer() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867641-enqueuesamplebuffer?language=objc
 func (q_ QueuedSampleBufferRenderingObject) EnqueueSampleBuffer(sampleBuffer coremedia.SampleBufferRef) {
 	objc.Call[objc.Void](q_, objc.Sel("enqueueSampleBuffer:"), sampleBuffer)
-}
-
-func (q_ QueuedSampleBufferRenderingObject) HasStopRequestingMediaData() bool {
-	return q_.RespondsToSelector(objc.Sel("stopRequestingMediaData"))
-}
-
-// Cancels any current [avfoundation/avqueuedsamplebufferrendering/requestmediadatawhenreadyonqueue] call. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867642-stoprequestingmediadata?language=objc
-func (q_ QueuedSampleBufferRenderingObject) StopRequestingMediaData() {
-	objc.Call[objc.Void](q_, objc.Sel("stopRequestingMediaData"))
-}
-
-func (q_ QueuedSampleBufferRenderingObject) HasHasSufficientMediaDataForReliablePlaybackStart() bool {
-	return q_.RespondsToSelector(objc.Sel("hasSufficientMediaDataForReliablePlaybackStart"))
-}
-
-// A Boolean value that indicates whether the enqued media meets the required preroll level for reliable playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/3726153-hassufficientmediadataforreliabl?language=objc
-func (q_ QueuedSampleBufferRenderingObject) HasSufficientMediaDataForReliablePlaybackStart() bool {
-	rv := objc.Call[bool](q_, objc.Sel("hasSufficientMediaDataForReliablePlaybackStart"))
-	return rv
 }
 
 func (q_ QueuedSampleBufferRenderingObject) HasIsReadyForMoreMediaData() bool {
@@ -126,5 +114,17 @@ func (q_ QueuedSampleBufferRenderingObject) HasTimebase() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/2867640-timebase?language=objc
 func (q_ QueuedSampleBufferRenderingObject) Timebase() coremedia.TimebaseRef {
 	rv := objc.Call[coremedia.TimebaseRef](q_, objc.Sel("timebase"))
+	return rv
+}
+
+func (q_ QueuedSampleBufferRenderingObject) HasHasSufficientMediaDataForReliablePlaybackStart() bool {
+	return q_.RespondsToSelector(objc.Sel("hasSufficientMediaDataForReliablePlaybackStart"))
+}
+
+// A Boolean value that indicates whether the enqued media meets the required preroll level for reliable playback. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueuedsamplebufferrendering/3726153-hassufficientmediadataforreliabl?language=objc
+func (q_ QueuedSampleBufferRenderingObject) HasSufficientMediaDataForReliablePlaybackStart() bool {
+	rv := objc.Call[bool](q_, objc.Sel("hasSufficientMediaDataForReliablePlaybackStart"))
 	return rv
 }

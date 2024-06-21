@@ -18,10 +18,10 @@ type _SliderAccessoryClass struct {
 // An interface definition for the [SliderAccessory] class.
 type ISliderAccessory interface {
 	objc.IObject
-	IsEnabled() bool
-	SetEnabled(value bool)
 	Behavior() SliderAccessoryBehavior
 	SetBehavior(value ISliderAccessoryBehavior)
+	IsEnabled() bool
+	SetEnabled(value bool)
 }
 
 //	[Full Topic]
@@ -74,21 +74,6 @@ func SliderAccessory_AccessoryWithImage(image IImage) SliderAccessory {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544779-enabled?language=objc
-func (s_ SliderAccessory) IsEnabled() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isEnabled"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544779-enabled?language=objc
-func (s_ SliderAccessory) SetEnabled(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setEnabled:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544656-behavior?language=objc
 func (s_ SliderAccessory) Behavior() SliderAccessoryBehavior {
 	rv := objc.Call[SliderAccessoryBehavior](s_, objc.Sel("behavior"))
@@ -100,4 +85,19 @@ func (s_ SliderAccessory) Behavior() SliderAccessoryBehavior {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544656-behavior?language=objc
 func (s_ SliderAccessory) SetBehavior(value ISliderAccessoryBehavior) {
 	objc.Call[objc.Void](s_, objc.Sel("setBehavior:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544779-enabled?language=objc
+func (s_ SliderAccessory) IsEnabled() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isEnabled"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544779-enabled?language=objc
+func (s_ SliderAccessory) SetEnabled(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setEnabled:"), value)
 }

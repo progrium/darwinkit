@@ -19,12 +19,12 @@ type _WindowTabClass struct {
 // An interface definition for the [WindowTab] class.
 type IWindowTab interface {
 	objc.IObject
-	AccessoryView() View
-	SetAccessoryView(value IView)
-	AttributedTitle() foundation.AttributedString
-	SetAttributedTitle(value foundation.IAttributedString)
 	ToolTip() string
 	SetToolTip(value string)
+	AttributedTitle() foundation.AttributedString
+	SetAttributedTitle(value foundation.IAttributedString)
+	AccessoryView() View
+	SetAccessoryView(value IView)
 	Title() string
 	SetTitle(value string)
 }
@@ -62,19 +62,19 @@ func (w_ WindowTab) Init() WindowTab {
 	return rv
 }
 
-// An optional accessory view for the tab. [Full Topic]
+// The tooltip for this window tab. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869745-accessoryview?language=objc
-func (w_ WindowTab) AccessoryView() View {
-	rv := objc.Call[View](w_, objc.Sel("accessoryView"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869744-tooltip?language=objc
+func (w_ WindowTab) ToolTip() string {
+	rv := objc.Call[string](w_, objc.Sel("toolTip"))
 	return rv
 }
 
-// An optional accessory view for the tab. [Full Topic]
+// The tooltip for this window tab. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869745-accessoryview?language=objc
-func (w_ WindowTab) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](w_, objc.Sel("setAccessoryView:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869744-tooltip?language=objc
+func (w_ WindowTab) SetToolTip(value string) {
+	objc.Call[objc.Void](w_, objc.Sel("setToolTip:"), value)
 }
 
 // The title for the window tab, specified as an attributed string. [Full Topic]
@@ -92,19 +92,19 @@ func (w_ WindowTab) SetAttributedTitle(value foundation.IAttributedString) {
 	objc.Call[objc.Void](w_, objc.Sel("setAttributedTitle:"), value)
 }
 
-// The tooltip for this window tab. [Full Topic]
+// An optional accessory view for the tab. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869744-tooltip?language=objc
-func (w_ WindowTab) ToolTip() string {
-	rv := objc.Call[string](w_, objc.Sel("toolTip"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869745-accessoryview?language=objc
+func (w_ WindowTab) AccessoryView() View {
+	rv := objc.Call[View](w_, objc.Sel("accessoryView"))
 	return rv
 }
 
-// The tooltip for this window tab. [Full Topic]
+// An optional accessory view for the tab. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869744-tooltip?language=objc
-func (w_ WindowTab) SetToolTip(value string) {
-	objc.Call[objc.Void](w_, objc.Sel("setToolTip:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869745-accessoryview?language=objc
+func (w_ WindowTab) SetAccessoryView(value IView) {
+	objc.Call[objc.Void](w_, objc.Sel("setAccessoryView:"), value)
 }
 
 // The title for the window tab. [Full Topic]

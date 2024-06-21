@@ -19,9 +19,9 @@ type _CoordinatedPlaybackParticipantClass struct {
 // An interface definition for the [CoordinatedPlaybackParticipant] class.
 type ICoordinatedPlaybackParticipant interface {
 	objc.IObject
-	Identifier() foundation.UUID
 	IsReadyToPlay() bool
 	SuspensionReasons() []CoordinatedPlaybackSuspensionReason
+	Identifier() foundation.UUID
 }
 
 // An object that represents a participant in a coordinated playback session. [Full Topic]
@@ -57,14 +57,6 @@ func (c_ CoordinatedPlaybackParticipant) Init() CoordinatedPlaybackParticipant {
 	return rv
 }
 
-// A unique identifier for the participant. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcoordinatedplaybackparticipant/3750235-identifier?language=objc
-func (c_ CoordinatedPlaybackParticipant) Identifier() foundation.UUID {
-	rv := objc.Call[foundation.UUID](c_, objc.Sel("identifier"))
-	return rv
-}
-
 // A Boolean value that indicates whether the participant is ready to start coordinated playback. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcoordinatedplaybackparticipant/3750236-readytoplay?language=objc
@@ -78,5 +70,13 @@ func (c_ CoordinatedPlaybackParticipant) IsReadyToPlay() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcoordinatedplaybackparticipant/3750237-suspensionreasons?language=objc
 func (c_ CoordinatedPlaybackParticipant) SuspensionReasons() []CoordinatedPlaybackSuspensionReason {
 	rv := objc.Call[[]CoordinatedPlaybackSuspensionReason](c_, objc.Sel("suspensionReasons"))
+	return rv
+}
+
+// A unique identifier for the participant. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcoordinatedplaybackparticipant/3750235-identifier?language=objc
+func (c_ CoordinatedPlaybackParticipant) Identifier() foundation.UUID {
+	rv := objc.Call[foundation.UUID](c_, objc.Sel("identifier"))
 	return rv
 }

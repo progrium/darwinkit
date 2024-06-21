@@ -18,36 +18,36 @@ type _RenderPassDescriptorClass struct {
 // An interface definition for the [RenderPassDescriptor] class.
 type IRenderPassDescriptor interface {
 	objc.IObject
-	GetSamplePositionsCount(positions *SamplePosition, count uint) uint
 	SetSamplePositionsCount(positions *SamplePosition, count uint)
-	ThreadgroupMemoryLength() uint
-	SetThreadgroupMemoryLength(value uint)
-	SampleBufferAttachments() RenderPassSampleBufferAttachmentDescriptorArray
-	RasterizationRateMap() RasterizationRateMapObject
-	SetRasterizationRateMap(value PRasterizationRateMap)
-	SetRasterizationRateMapObject(valueObject objc.IObject)
+	GetSamplePositionsCount(positions *SamplePosition, count uint) uint
 	VisibilityResultBuffer() BufferObject
 	SetVisibilityResultBuffer(value PBuffer)
 	SetVisibilityResultBufferObject(valueObject objc.IObject)
-	RenderTargetWidth() uint
-	SetRenderTargetWidth(value uint)
+	RasterizationRateMap() RasterizationRateMapObject
+	SetRasterizationRateMap(value PRasterizationRateMap)
+	SetRasterizationRateMapObject(valueObject objc.IObject)
+	ColorAttachments() RenderPassColorAttachmentDescriptorArray
 	RenderTargetArrayLength() uint
 	SetRenderTargetArrayLength(value uint)
 	DepthAttachment() RenderPassDepthAttachmentDescriptor
 	SetDepthAttachment(value IRenderPassDepthAttachmentDescriptor)
+	TileWidth() uint
+	SetTileWidth(value uint)
+	TileHeight() uint
+	SetTileHeight(value uint)
+	SampleBufferAttachments() RenderPassSampleBufferAttachmentDescriptorArray
+	DefaultRasterSampleCount() uint
+	SetDefaultRasterSampleCount(value uint)
+	RenderTargetWidth() uint
+	SetRenderTargetWidth(value uint)
+	ThreadgroupMemoryLength() uint
+	SetThreadgroupMemoryLength(value uint)
 	RenderTargetHeight() uint
 	SetRenderTargetHeight(value uint)
 	StencilAttachment() RenderPassStencilAttachmentDescriptor
 	SetStencilAttachment(value IRenderPassStencilAttachmentDescriptor)
 	ImageblockSampleLength() uint
 	SetImageblockSampleLength(value uint)
-	DefaultRasterSampleCount() uint
-	SetDefaultRasterSampleCount(value uint)
-	TileWidth() uint
-	SetTileWidth(value uint)
-	ColorAttachments() RenderPassColorAttachmentDescriptorArray
-	TileHeight() uint
-	SetTileHeight(value uint)
 }
 
 // A group of render targets that hold the results of a render pass. [Full Topic]
@@ -83,19 +83,19 @@ func (r_ RenderPassDescriptor) Init() RenderPassDescriptor {
 	return rv
 }
 
+// Sets the programmable sample positions for a render pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866524-setsamplepositions?language=objc
+func (r_ RenderPassDescriptor) SetSamplePositionsCount(positions *SamplePosition, count uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setSamplePositions:count:"), positions, count)
+}
+
 // Retrieves the programmable sample positions set for a render pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866342-getsamplepositions?language=objc
 func (r_ RenderPassDescriptor) GetSamplePositionsCount(positions *SamplePosition, count uint) uint {
 	rv := objc.Call[uint](r_, objc.Sel("getSamplePositions:count:"), positions, count)
 	return rv
-}
-
-// Sets the programmable sample positions for a render pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866524-setsamplepositions?language=objc
-func (r_ RenderPassDescriptor) SetSamplePositionsCount(positions *SamplePosition, count uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setSamplePositions:count:"), positions, count)
 }
 
 // Creates a default render pass descriptor. [Full Topic]
@@ -111,52 +111,6 @@ func (rc _RenderPassDescriptorClass) RenderPassDescriptor() RenderPassDescriptor
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437979-renderpassdescriptor?language=objc
 func RenderPassDescriptor_RenderPassDescriptor() RenderPassDescriptor {
 	return RenderPassDescriptorClass.RenderPassDescriptor()
-}
-
-// The per-tile size, in bytes, of the persistent threadgroup memory allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866527-threadgroupmemorylength?language=objc
-func (r_ RenderPassDescriptor) ThreadgroupMemoryLength() uint {
-	rv := objc.Call[uint](r_, objc.Sel("threadgroupMemoryLength"))
-	return rv
-}
-
-// The per-tile size, in bytes, of the persistent threadgroup memory allocation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866527-threadgroupmemorylength?language=objc
-func (r_ RenderPassDescriptor) SetThreadgroupMemoryLength(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setThreadgroupMemoryLength:"), value)
-}
-
-// The array of sample buffers that the render pass can access. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3564463-samplebufferattachments?language=objc
-func (r_ RenderPassDescriptor) SampleBufferAttachments() RenderPassSampleBufferAttachmentDescriptorArray {
-	rv := objc.Call[RenderPassSampleBufferAttachmentDescriptorArray](r_, objc.Sel("sampleBufferAttachments"))
-	return rv
-}
-
-// The rasterization rate map to use when executing the render pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
-func (r_ RenderPassDescriptor) RasterizationRateMap() RasterizationRateMapObject {
-	rv := objc.Call[RasterizationRateMapObject](r_, objc.Sel("rasterizationRateMap"))
-	return rv
-}
-
-// The rasterization rate map to use when executing the render pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
-func (r_ RenderPassDescriptor) SetRasterizationRateMap(value PRasterizationRateMap) {
-	po0 := objc.WrapAsProtocol("MTLRasterizationRateMap", value)
-	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), po0)
-}
-
-// The rasterization rate map to use when executing the render pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
-func (r_ RenderPassDescriptor) SetRasterizationRateMapObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), valueObject)
 }
 
 // A buffer where the GPU writes visibility test results when fragments pass depth and stencil tests. [Full Topic]
@@ -182,19 +136,35 @@ func (r_ RenderPassDescriptor) SetVisibilityResultBufferObject(valueObject objc.
 	objc.Call[objc.Void](r_, objc.Sel("setVisibilityResultBuffer:"), valueObject)
 }
 
-// The width, in pixels, to constrain the render target to. [Full Topic]
+// The rasterization rate map to use when executing the render pass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2879276-rendertargetwidth?language=objc
-func (r_ RenderPassDescriptor) RenderTargetWidth() uint {
-	rv := objc.Call[uint](r_, objc.Sel("renderTargetWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
+func (r_ RenderPassDescriptor) RasterizationRateMap() RasterizationRateMapObject {
+	rv := objc.Call[RasterizationRateMapObject](r_, objc.Sel("rasterizationRateMap"))
 	return rv
 }
 
-// The width, in pixels, to constrain the render target to. [Full Topic]
+// The rasterization rate map to use when executing the render pass. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2879276-rendertargetwidth?language=objc
-func (r_ RenderPassDescriptor) SetRenderTargetWidth(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setRenderTargetWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
+func (r_ RenderPassDescriptor) SetRasterizationRateMap(value PRasterizationRateMap) {
+	po0 := objc.WrapAsProtocol("MTLRasterizationRateMap", value)
+	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), po0)
+}
+
+// The rasterization rate map to use when executing the render pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
+func (r_ RenderPassDescriptor) SetRasterizationRateMapObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), valueObject)
+}
+
+// An array of state information for attachments that store color data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437970-colorattachments?language=objc
+func (r_ RenderPassDescriptor) ColorAttachments() RenderPassColorAttachmentDescriptorArray {
+	rv := objc.Call[RenderPassColorAttachmentDescriptorArray](r_, objc.Sel("colorAttachments"))
+	return rv
 }
 
 // The number of active layers that all attachments must have for layered rendering. [Full Topic]
@@ -225,6 +195,89 @@ func (r_ RenderPassDescriptor) DepthAttachment() RenderPassDepthAttachmentDescri
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437973-depthattachment?language=objc
 func (r_ RenderPassDescriptor) SetDepthAttachment(value IRenderPassDepthAttachmentDescriptor) {
 	objc.Call[objc.Void](r_, objc.Sel("setDepthAttachment:"), value)
+}
+
+// The tile width, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866529-tilewidth?language=objc
+func (r_ RenderPassDescriptor) TileWidth() uint {
+	rv := objc.Call[uint](r_, objc.Sel("tileWidth"))
+	return rv
+}
+
+// The tile width, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866529-tilewidth?language=objc
+func (r_ RenderPassDescriptor) SetTileWidth(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setTileWidth:"), value)
+}
+
+// The tile height, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866356-tileheight?language=objc
+func (r_ RenderPassDescriptor) TileHeight() uint {
+	rv := objc.Call[uint](r_, objc.Sel("tileHeight"))
+	return rv
+}
+
+// The tile height, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866356-tileheight?language=objc
+func (r_ RenderPassDescriptor) SetTileHeight(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setTileHeight:"), value)
+}
+
+// The array of sample buffers that the render pass can access. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3564463-samplebufferattachments?language=objc
+func (r_ RenderPassDescriptor) SampleBufferAttachments() RenderPassSampleBufferAttachmentDescriptorArray {
+	rv := objc.Call[RenderPassSampleBufferAttachmentDescriptorArray](r_, objc.Sel("sampleBufferAttachments"))
+	return rv
+}
+
+// The raster sample count for the render pass when the render pass doesn’t have explicit attachments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2890260-defaultrastersamplecount?language=objc
+func (r_ RenderPassDescriptor) DefaultRasterSampleCount() uint {
+	rv := objc.Call[uint](r_, objc.Sel("defaultRasterSampleCount"))
+	return rv
+}
+
+// The raster sample count for the render pass when the render pass doesn’t have explicit attachments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2890260-defaultrastersamplecount?language=objc
+func (r_ RenderPassDescriptor) SetDefaultRasterSampleCount(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setDefaultRasterSampleCount:"), value)
+}
+
+// The width, in pixels, to constrain the render target to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2879276-rendertargetwidth?language=objc
+func (r_ RenderPassDescriptor) RenderTargetWidth() uint {
+	rv := objc.Call[uint](r_, objc.Sel("renderTargetWidth"))
+	return rv
+}
+
+// The width, in pixels, to constrain the render target to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2879276-rendertargetwidth?language=objc
+func (r_ RenderPassDescriptor) SetRenderTargetWidth(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setRenderTargetWidth:"), value)
+}
+
+// The per-tile size, in bytes, of the persistent threadgroup memory allocation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866527-threadgroupmemorylength?language=objc
+func (r_ RenderPassDescriptor) ThreadgroupMemoryLength() uint {
+	rv := objc.Call[uint](r_, objc.Sel("threadgroupMemoryLength"))
+	return rv
+}
+
+// The per-tile size, in bytes, of the persistent threadgroup memory allocation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866527-threadgroupmemorylength?language=objc
+func (r_ RenderPassDescriptor) SetThreadgroupMemoryLength(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setThreadgroupMemoryLength:"), value)
 }
 
 // The height, in pixels, to constrain the render target to. [Full Topic]
@@ -270,57 +323,4 @@ func (r_ RenderPassDescriptor) ImageblockSampleLength() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2928281-imageblocksamplelength?language=objc
 func (r_ RenderPassDescriptor) SetImageblockSampleLength(value uint) {
 	objc.Call[objc.Void](r_, objc.Sel("setImageblockSampleLength:"), value)
-}
-
-// The raster sample count for the render pass when the render pass doesn’t have explicit attachments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2890260-defaultrastersamplecount?language=objc
-func (r_ RenderPassDescriptor) DefaultRasterSampleCount() uint {
-	rv := objc.Call[uint](r_, objc.Sel("defaultRasterSampleCount"))
-	return rv
-}
-
-// The raster sample count for the render pass when the render pass doesn’t have explicit attachments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2890260-defaultrastersamplecount?language=objc
-func (r_ RenderPassDescriptor) SetDefaultRasterSampleCount(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setDefaultRasterSampleCount:"), value)
-}
-
-// The tile width, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866529-tilewidth?language=objc
-func (r_ RenderPassDescriptor) TileWidth() uint {
-	rv := objc.Call[uint](r_, objc.Sel("tileWidth"))
-	return rv
-}
-
-// The tile width, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866529-tilewidth?language=objc
-func (r_ RenderPassDescriptor) SetTileWidth(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setTileWidth:"), value)
-}
-
-// An array of state information for attachments that store color data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437970-colorattachments?language=objc
-func (r_ RenderPassDescriptor) ColorAttachments() RenderPassColorAttachmentDescriptorArray {
-	rv := objc.Call[RenderPassColorAttachmentDescriptorArray](r_, objc.Sel("colorAttachments"))
-	return rv
-}
-
-// The tile height, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866356-tileheight?language=objc
-func (r_ RenderPassDescriptor) TileHeight() uint {
-	rv := objc.Call[uint](r_, objc.Sel("tileHeight"))
-	return rv
-}
-
-// The tile height, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/2866356-tileheight?language=objc
-func (r_ RenderPassDescriptor) SetTileHeight(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setTileHeight:"), value)
 }

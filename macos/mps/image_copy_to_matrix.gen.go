@@ -20,15 +20,15 @@ type _ImageCopyToMatrixClass struct {
 // An interface definition for the [ImageCopyToMatrix] class.
 type IImageCopyToMatrix interface {
 	IKernel
-	EncodeToCommandBufferSourceImageDestinationMatrix(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationMatrix IMatrix)
-	EncodeToCommandBufferObjectSourceImageDestinationMatrix(commandBufferObject objc.IObject, sourceImage IImage, destinationMatrix IMatrix)
 	EncodeBatchToCommandBufferSourceImagesDestinationMatrix(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationMatrix IMatrix)
 	EncodeBatchToCommandBufferObjectSourceImagesDestinationMatrix(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationMatrix IMatrix)
+	EncodeToCommandBufferSourceImageDestinationMatrix(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationMatrix IMatrix)
+	EncodeToCommandBufferObjectSourceImageDestinationMatrix(commandBufferObject objc.IObject, sourceImage IImage, destinationMatrix IMatrix)
+	DestinationMatrixBatchIndex() uint
+	SetDestinationMatrixBatchIndex(value uint)
 	DataLayout() DataLayout
 	DestinationMatrixOrigin() metal.Origin
 	SetDestinationMatrixOrigin(value metal.Origin)
-	DestinationMatrixBatchIndex() uint
-	SetDestinationMatrixBatchIndex(value uint)
 }
 
 // A class that copies image data to a matrix. [Full Topic]
@@ -79,6 +79,21 @@ func (i_ ImageCopyToMatrix) Init() ImageCopyToMatrix {
 	return rv
 }
 
+func (i_ ImageCopyToMatrix) InitWithDevice(device metal.PDevice) ImageCopyToMatrix {
+	po0 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[ImageCopyToMatrix](i_, objc.Sel("initWithDevice:"), po0)
+	return rv
+}
+
+// Initializes a new kernel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
+func NewImageCopyToMatrixWithDevice(device metal.PDevice) ImageCopyToMatrix {
+	instance := ImageCopyToMatrixClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
 func (i_ ImageCopyToMatrix) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) ImageCopyToMatrix {
 	po1 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageCopyToMatrix](i_, objc.Sel("copyWithZone:device:"), zone, po1)
@@ -94,19 +109,19 @@ func ImageCopyToMatrix_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDev
 	return instance
 }
 
-func (i_ ImageCopyToMatrix) InitWithDevice(device metal.PDevice) ImageCopyToMatrix {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[ImageCopyToMatrix](i_, objc.Sel("initWithDevice:"), po0)
-	return rv
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/3013769-encodebatchtocommandbuffer?language=objc
+func (i_ ImageCopyToMatrix) EncodeBatchToCommandBufferSourceImagesDestinationMatrix(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationMatrix IMatrix) {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	objc.Call[objc.Void](i_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationMatrix:"), po0, sourceImages, destinationMatrix)
 }
 
-// Initializes a new kernel object. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
-func NewImageCopyToMatrixWithDevice(device metal.PDevice) ImageCopyToMatrix {
-	instance := ImageCopyToMatrixClass.Alloc().InitWithDevice(device)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/3013769-encodebatchtocommandbuffer?language=objc
+func (i_ ImageCopyToMatrix) EncodeBatchToCommandBufferObjectSourceImagesDestinationMatrix(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationMatrix IMatrix) {
+	objc.Call[objc.Void](i_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationMatrix:"), commandBufferObject, sourceImages, destinationMatrix)
 }
 
 //	[Full Topic]
@@ -126,17 +141,17 @@ func (i_ ImageCopyToMatrix) EncodeToCommandBufferObjectSourceImageDestinationMat
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/3013769-encodebatchtocommandbuffer?language=objc
-func (i_ ImageCopyToMatrix) EncodeBatchToCommandBufferSourceImagesDestinationMatrix(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationMatrix IMatrix) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](i_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationMatrix:"), po0, sourceImages, destinationMatrix)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/2873211-destinationmatrixbatchindex?language=objc
+func (i_ ImageCopyToMatrix) DestinationMatrixBatchIndex() uint {
+	rv := objc.Call[uint](i_, objc.Sel("destinationMatrixBatchIndex"))
+	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/3013769-encodebatchtocommandbuffer?language=objc
-func (i_ ImageCopyToMatrix) EncodeBatchToCommandBufferObjectSourceImagesDestinationMatrix(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationMatrix IMatrix) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationMatrix:"), commandBufferObject, sourceImages, destinationMatrix)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/2873211-destinationmatrixbatchindex?language=objc
+func (i_ ImageCopyToMatrix) SetDestinationMatrixBatchIndex(value uint) {
+	objc.Call[objc.Void](i_, objc.Sel("setDestinationMatrixBatchIndex:"), value)
 }
 
 //	[Full Topic]
@@ -160,19 +175,4 @@ func (i_ ImageCopyToMatrix) DestinationMatrixOrigin() metal.Origin {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/2873215-destinationmatrixorigin?language=objc
 func (i_ ImageCopyToMatrix) SetDestinationMatrixOrigin(value metal.Origin) {
 	objc.Call[objc.Void](i_, objc.Sel("setDestinationMatrixOrigin:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/2873211-destinationmatrixbatchindex?language=objc
-func (i_ ImageCopyToMatrix) DestinationMatrixBatchIndex() uint {
-	rv := objc.Call[uint](i_, objc.Sel("destinationMatrixBatchIndex"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagecopytomatrix/2873211-destinationmatrixbatchindex?language=objc
-func (i_ ImageCopyToMatrix) SetDestinationMatrixBatchIndex(value uint) {
-	objc.Call[objc.Void](i_, objc.Sel("setDestinationMatrixBatchIndex:"), value)
 }

@@ -17,17 +17,12 @@ type PURLConnectionDelegate interface {
 	// optional
 	ConnectionDidFailWithError(connection URLConnection, error Error)
 	HasConnectionDidFailWithError() bool
-
-	// optional
-	ConnectionWillSendRequestForAuthenticationChallenge(connection URLConnection, challenge URLAuthenticationChallenge)
-	HasConnectionWillSendRequestForAuthenticationChallenge() bool
 }
 
 // A delegate implementation builder for the [PURLConnectionDelegate] protocol.
 type URLConnectionDelegate struct {
-	_ConnectionShouldUseCredentialStorage                func(connection URLConnection) bool
-	_ConnectionDidFailWithError                          func(connection URLConnection, error Error)
-	_ConnectionWillSendRequestForAuthenticationChallenge func(connection URLConnection, challenge URLAuthenticationChallenge)
+	_ConnectionShouldUseCredentialStorage func(connection URLConnection) bool
+	_ConnectionDidFailWithError           func(connection URLConnection, error Error)
 }
 
 func (di *URLConnectionDelegate) HasConnectionShouldUseCredentialStorage() bool {
@@ -64,23 +59,6 @@ func (di *URLConnectionDelegate) SetConnectionDidFailWithError(f func(connection
 func (di *URLConnectionDelegate) ConnectionDidFailWithError(connection URLConnection, error Error) {
 	di._ConnectionDidFailWithError(connection, error)
 }
-func (di *URLConnectionDelegate) HasConnectionWillSendRequestForAuthenticationChallenge() bool {
-	return di._ConnectionWillSendRequestForAuthenticationChallenge != nil
-}
-
-// Tells the delegate that the connection will send a request for an authentication challenge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1414078-connection?language=objc
-func (di *URLConnectionDelegate) SetConnectionWillSendRequestForAuthenticationChallenge(f func(connection URLConnection, challenge URLAuthenticationChallenge)) {
-	di._ConnectionWillSendRequestForAuthenticationChallenge = f
-}
-
-// Tells the delegate that the connection will send a request for an authentication challenge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1414078-connection?language=objc
-func (di *URLConnectionDelegate) ConnectionWillSendRequestForAuthenticationChallenge(connection URLConnection, challenge URLAuthenticationChallenge) {
-	di._ConnectionWillSendRequestForAuthenticationChallenge(connection, challenge)
-}
 
 // ensure impl type implements protocol interface
 var _ PURLConnectionDelegate = (*URLConnectionDelegateObject)(nil)
@@ -111,15 +89,4 @@ func (u_ URLConnectionDelegateObject) HasConnectionDidFailWithError() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1418443-connection?language=objc
 func (u_ URLConnectionDelegateObject) ConnectionDidFailWithError(connection URLConnection, error Error) {
 	objc.Call[objc.Void](u_, objc.Sel("connection:didFailWithError:"), connection, error)
-}
-
-func (u_ URLConnectionDelegateObject) HasConnectionWillSendRequestForAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("connection:willSendRequestForAuthenticationChallenge:"))
-}
-
-// Tells the delegate that the connection will send a request for an authentication challenge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1414078-connection?language=objc
-func (u_ URLConnectionDelegateObject) ConnectionWillSendRequestForAuthenticationChallenge(connection URLConnection, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:willSendRequestForAuthenticationChallenge:"), connection, challenge)
 }

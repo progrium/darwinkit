@@ -20,25 +20,25 @@ type _RunningApplicationClass struct {
 // An interface definition for the [RunningApplication] class.
 type IRunningApplication interface {
 	objc.IObject
-	Terminate() bool
-	ActivateWithOptions(options ApplicationActivationOptions) bool
-	Unhide() bool
 	Hide() bool
 	ForceTerminate() bool
-	ActivationPolicy() ApplicationActivationPolicy
+	ActivateWithOptions(options ApplicationActivationOptions) bool
+	Unhide() bool
+	Terminate() bool
+	BundleIdentifier() string
+	ExecutableURL() foundation.URL
+	IsHidden() bool
 	OwnsMenuBar() bool
+	IsTerminated() bool
+	LaunchDate() foundation.Date
+	IsActive() bool
+	ExecutableArchitecture() int
+	ActivationPolicy() ApplicationActivationPolicy
+	LocalizedName() string
 	Icon() Image
 	BundleURL() foundation.URL
 	IsFinishedLaunching() bool
-	LaunchDate() foundation.Date
-	IsActive() bool
-	IsHidden() bool
 	ProcessIdentifier() kernel.Pid
-	ExecutableURL() foundation.URL
-	IsTerminated() bool
-	ExecutableArchitecture() int
-	LocalizedName() string
-	BundleIdentifier() string
 }
 
 // An object that can manipulate and provide information for a single instance of an app. [Full Topic]
@@ -86,6 +86,14 @@ func (r_ RunningApplication) Init() RunningApplication {
 	return rv
 }
 
+// Attempts to hide or the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526608-hide?language=objc
+func (r_ RunningApplication) Hide() bool {
+	rv := objc.Call[bool](r_, objc.Sel("hide"))
+	return rv
+}
+
 // Returns an array of currently running applications with the specified bundle identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1530798-runningapplicationswithbundleide?language=objc
@@ -115,11 +123,11 @@ func RunningApplication_TerminateAutomaticallyTerminableApplications() {
 	RunningApplicationClass.TerminateAutomaticallyTerminableApplications()
 }
 
-// Attempts to quit the receiver normally. [Full Topic]
+// Attempts to force the receiver to quit. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1528922-terminate?language=objc
-func (r_ RunningApplication) Terminate() bool {
-	rv := objc.Call[bool](r_, objc.Sel("terminate"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1530370-forceterminate?language=objc
+func (r_ RunningApplication) ForceTerminate() bool {
+	rv := objc.Call[bool](r_, objc.Sel("forceTerminate"))
 	return rv
 }
 
@@ -139,19 +147,90 @@ func (r_ RunningApplication) Unhide() bool {
 	return rv
 }
 
-// Attempts to hide or the application. [Full Topic]
+// Attempts to quit the receiver normally. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526608-hide?language=objc
-func (r_ RunningApplication) Hide() bool {
-	rv := objc.Call[bool](r_, objc.Sel("hide"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1528922-terminate?language=objc
+func (r_ RunningApplication) Terminate() bool {
+	rv := objc.Call[bool](r_, objc.Sel("terminate"))
 	return rv
 }
 
-// Attempts to force the receiver to quit. [Full Topic]
+// Indicates the CFBundleIdentifier of the application. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1530370-forceterminate?language=objc
-func (r_ RunningApplication) ForceTerminate() bool {
-	rv := objc.Call[bool](r_, objc.Sel("forceTerminate"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1529140-bundleidentifier?language=objc
+func (r_ RunningApplication) BundleIdentifier() string {
+	rv := objc.Call[string](r_, objc.Sel("bundleIdentifier"))
+	return rv
+}
+
+// Indicates the URL to the application's executable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1531062-executableurl?language=objc
+func (r_ RunningApplication) ExecutableURL() foundation.URL {
+	rv := objc.Call[foundation.URL](r_, objc.Sel("executableURL"))
+	return rv
+}
+
+// Indicates whether the application is currently hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1525949-hidden?language=objc
+func (r_ RunningApplication) IsHidden() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isHidden"))
+	return rv
+}
+
+// Returns whether the application owns the current menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1525915-ownsmenubar?language=objc
+func (r_ RunningApplication) OwnsMenuBar() bool {
+	rv := objc.Call[bool](r_, objc.Sel("ownsMenuBar"))
+	return rv
+}
+
+// Indicates that the receiver’s application has terminated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1532239-terminated?language=objc
+func (r_ RunningApplication) IsTerminated() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isTerminated"))
+	return rv
+}
+
+// Indicates the date when the application was launched. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1532595-launchdate?language=objc
+func (r_ RunningApplication) LaunchDate() foundation.Date {
+	rv := objc.Call[foundation.Date](r_, objc.Sel("launchDate"))
+	return rv
+}
+
+// Returns an NSRunningApplication representing this application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
+func (rc _RunningApplicationClass) CurrentApplication() RunningApplication {
+	rv := objc.Call[RunningApplication](rc, objc.Sel("currentApplication"))
+	return rv
+}
+
+// Returns an NSRunningApplication representing this application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
+func RunningApplication_CurrentApplication() RunningApplication {
+	return RunningApplicationClass.CurrentApplication()
+}
+
+// Indicates whether the application is currently frontmost. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1528778-active?language=objc
+func (r_ RunningApplication) IsActive() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isActive"))
+	return rv
+}
+
+// Indicates the executing processor architecture for the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1524287-executablearchitecture?language=objc
+func (r_ RunningApplication) ExecutableArchitecture() int {
+	rv := objc.Call[int](r_, objc.Sel("executableArchitecture"))
 	return rv
 }
 
@@ -163,11 +242,11 @@ func (r_ RunningApplication) ActivationPolicy() ApplicationActivationPolicy {
 	return rv
 }
 
-// Returns whether the application owns the current menu bar. [Full Topic]
+// Indicates the localized name of the application. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1525915-ownsmenubar?language=objc
-func (r_ RunningApplication) OwnsMenuBar() bool {
-	rv := objc.Call[bool](r_, objc.Sel("ownsMenuBar"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526751-localizedname?language=objc
+func (r_ RunningApplication) LocalizedName() string {
+	rv := objc.Call[string](r_, objc.Sel("localizedName"))
 	return rv
 }
 
@@ -195,89 +274,10 @@ func (r_ RunningApplication) IsFinishedLaunching() bool {
 	return rv
 }
 
-// Indicates the date when the application was launched. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1532595-launchdate?language=objc
-func (r_ RunningApplication) LaunchDate() foundation.Date {
-	rv := objc.Call[foundation.Date](r_, objc.Sel("launchDate"))
-	return rv
-}
-
-// Indicates whether the application is currently frontmost. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1528778-active?language=objc
-func (r_ RunningApplication) IsActive() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isActive"))
-	return rv
-}
-
-// Indicates whether the application is currently hidden. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1525949-hidden?language=objc
-func (r_ RunningApplication) IsHidden() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isHidden"))
-	return rv
-}
-
-// Returns an NSRunningApplication representing this application. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
-func (rc _RunningApplicationClass) CurrentApplication() RunningApplication {
-	rv := objc.Call[RunningApplication](rc, objc.Sel("currentApplication"))
-	return rv
-}
-
-// Returns an NSRunningApplication representing this application. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
-func RunningApplication_CurrentApplication() RunningApplication {
-	return RunningApplicationClass.CurrentApplication()
-}
-
 // Indicates the process identifier (pid) of the application. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526998-processidentifier?language=objc
 func (r_ RunningApplication) ProcessIdentifier() kernel.Pid {
 	rv := objc.Call[kernel.Pid](r_, objc.Sel("processIdentifier"))
-	return rv
-}
-
-// Indicates the URL to the application's executable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1531062-executableurl?language=objc
-func (r_ RunningApplication) ExecutableURL() foundation.URL {
-	rv := objc.Call[foundation.URL](r_, objc.Sel("executableURL"))
-	return rv
-}
-
-// Indicates that the receiver’s application has terminated. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1532239-terminated?language=objc
-func (r_ RunningApplication) IsTerminated() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isTerminated"))
-	return rv
-}
-
-// Indicates the executing processor architecture for the application. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1524287-executablearchitecture?language=objc
-func (r_ RunningApplication) ExecutableArchitecture() int {
-	rv := objc.Call[int](r_, objc.Sel("executableArchitecture"))
-	return rv
-}
-
-// Indicates the localized name of the application. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526751-localizedname?language=objc
-func (r_ RunningApplication) LocalizedName() string {
-	rv := objc.Call[string](r_, objc.Sel("localizedName"))
-	return rv
-}
-
-// Indicates the CFBundleIdentifier of the application. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1529140-bundleidentifier?language=objc
-func (r_ RunningApplication) BundleIdentifier() string {
-	rv := objc.Call[string](r_, objc.Sel("bundleIdentifier"))
 	return rv
 }

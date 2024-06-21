@@ -18,10 +18,10 @@ type _PlayerInterstitialEventMonitorClass struct {
 // An interface definition for the [PlayerInterstitialEventMonitor] class.
 type IPlayerInterstitialEventMonitor interface {
 	objc.IObject
-	InterstitialPlayer() QueuePlayer
 	CurrentEvent() PlayerInterstitialEvent
-	PrimaryPlayer() Player
 	Events() []PlayerInterstitialEvent
+	PrimaryPlayer() Player
+	InterstitialPlayer() QueuePlayer
 }
 
 // An object that monitors the scheduling and progress of interstitial events. [Full Topic]
@@ -83,19 +83,19 @@ func (p_ PlayerInterstitialEventMonitor) Init() PlayerInterstitialEventMonitor {
 	return rv
 }
 
-// An object that plays interstitial content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialeventmonitor/3800567-interstitialplayer?language=objc
-func (p_ PlayerInterstitialEventMonitor) InterstitialPlayer() QueuePlayer {
-	rv := objc.Call[QueuePlayer](p_, objc.Sel("interstitialPlayer"))
-	return rv
-}
-
 // The current interstitial event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialeventmonitor/3800563-currentevent?language=objc
 func (p_ PlayerInterstitialEventMonitor) CurrentEvent() PlayerInterstitialEvent {
 	rv := objc.Call[PlayerInterstitialEvent](p_, objc.Sel("currentEvent"))
+	return rv
+}
+
+// The schedule of interstitial events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialeventmonitor/3800564-events?language=objc
+func (p_ PlayerInterstitialEventMonitor) Events() []PlayerInterstitialEvent {
+	rv := objc.Call[[]PlayerInterstitialEvent](p_, objc.Sel("events"))
 	return rv
 }
 
@@ -107,10 +107,10 @@ func (p_ PlayerInterstitialEventMonitor) PrimaryPlayer() Player {
 	return rv
 }
 
-// The schedule of interstitial events. [Full Topic]
+// An object that plays interstitial content. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialeventmonitor/3800564-events?language=objc
-func (p_ PlayerInterstitialEventMonitor) Events() []PlayerInterstitialEvent {
-	rv := objc.Call[[]PlayerInterstitialEvent](p_, objc.Sel("events"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerinterstitialeventmonitor/3800567-interstitialplayer?language=objc
+func (p_ PlayerInterstitialEventMonitor) InterstitialPlayer() QueuePlayer {
+	rv := objc.Call[QueuePlayer](p_, objc.Sel("interstitialPlayer"))
 	return rv
 }

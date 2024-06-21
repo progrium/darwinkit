@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution?language=objc
 type PConvolution interface {
 	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
+
+	// optional
 	SetWeights(value Vector)
 	HasSetWeights() bool
 
@@ -25,14 +33,6 @@ type PConvolution interface {
 	// optional
 	Bias() float32
 	HasBias() bool
-
-	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PConvolution = (*ConvolutionObject)(nil)
 // A concrete type for the [PConvolution] protocol.
 type ConvolutionObject struct {
 	objc.Object
+}
+
+func (c_ ConvolutionObject) HasSetInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228186-inputimage?language=objc
+func (c_ ConvolutionObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+}
+
+func (c_ ConvolutionObject) HasInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228186-inputimage?language=objc
+func (c_ ConvolutionObject) InputImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+	return rv
 }
 
 func (c_ ConvolutionObject) HasSetWeights() bool {
@@ -86,28 +109,5 @@ func (c_ ConvolutionObject) HasBias() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228185-bias?language=objc
 func (c_ ConvolutionObject) Bias() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("bias"))
-	return rv
-}
-
-func (c_ ConvolutionObject) HasSetInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228186-inputimage?language=objc
-func (c_ ConvolutionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
-}
-
-func (c_ ConvolutionObject) HasInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228186-inputimage?language=objc
-func (c_ ConvolutionObject) InputImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
 	return rv
 }

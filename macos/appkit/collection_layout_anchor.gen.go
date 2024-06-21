@@ -5,7 +5,7 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -22,7 +22,7 @@ type ICollectionLayoutAnchor interface {
 	Edges() DirectionalRectEdge
 	IsFractionalOffset() bool
 	IsAbsoluteOffset() bool
-	Offset() foundation.Point
+	Offset() coregraphics.Point
 }
 
 // An object that defines how to attach a supplementary item to an item in a collection view. [Full Topic]
@@ -36,30 +36,6 @@ func CollectionLayoutAnchorFrom(ptr unsafe.Pointer) CollectionLayoutAnchor {
 	return CollectionLayoutAnchor{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (cc _CollectionLayoutAnchorClass) LayoutAnchorWithEdgesFractionalOffset(edges DirectionalRectEdge, fractionalOffset foundation.Point) CollectionLayoutAnchor {
-	rv := objc.Call[CollectionLayoutAnchor](cc, objc.Sel("layoutAnchorWithEdges:fractionalOffset:"), edges, fractionalOffset)
-	return rv
-}
-
-// Creates an anchor with the specified edges to attach to, offset by the provided fractional value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutanchor/3213815-layoutanchorwithedges?language=objc
-func CollectionLayoutAnchor_LayoutAnchorWithEdgesFractionalOffset(edges DirectionalRectEdge, fractionalOffset foundation.Point) CollectionLayoutAnchor {
-	return CollectionLayoutAnchorClass.LayoutAnchorWithEdgesFractionalOffset(edges, fractionalOffset)
-}
-
-func (cc _CollectionLayoutAnchorClass) LayoutAnchorWithEdgesAbsoluteOffset(edges DirectionalRectEdge, absoluteOffset foundation.Point) CollectionLayoutAnchor {
-	rv := objc.Call[CollectionLayoutAnchor](cc, objc.Sel("layoutAnchorWithEdges:absoluteOffset:"), edges, absoluteOffset)
-	return rv
-}
-
-// Creates an anchor with the specified edges to attach to, offset by the provided absolute value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutanchor/3213814-layoutanchorwithedges?language=objc
-func CollectionLayoutAnchor_LayoutAnchorWithEdgesAbsoluteOffset(edges DirectionalRectEdge, absoluteOffset foundation.Point) CollectionLayoutAnchor {
-	return CollectionLayoutAnchorClass.LayoutAnchorWithEdgesAbsoluteOffset(edges, absoluteOffset)
 }
 
 func (cc _CollectionLayoutAnchorClass) LayoutAnchorWithEdges(edges DirectionalRectEdge) CollectionLayoutAnchor {
@@ -121,7 +97,7 @@ func (c_ CollectionLayoutAnchor) IsAbsoluteOffset() bool {
 // The floating-point value of the anchor's offset from the item it's attached to. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutanchor/3199037-offset?language=objc
-func (c_ CollectionLayoutAnchor) Offset() foundation.Point {
-	rv := objc.Call[foundation.Point](c_, objc.Sel("offset"))
+func (c_ CollectionLayoutAnchor) Offset() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("offset"))
 	return rv
 }

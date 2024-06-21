@@ -21,10 +21,10 @@ type _ImageEditPanelClass struct {
 type IImageEditPanel interface {
 	appkit.IPanel
 	ReloadData()
-	FilterArray() []objc.Object
 	DataSource() ImageEditPanelDataSourceObject
 	SetDataSource(value PImageEditPanelDataSource)
 	SetDataSourceObject(valueObject objc.IObject)
+	FilterArray() []objc.Object
 }
 
 // The IKImageEditPanel class provides a panel, that is, a utility window that floats on top of document windows, optimized for image editing. [Full Topic]
@@ -86,27 +86,6 @@ func NewImageEditPanelWithContentRectStyleMaskBackingDeferScreen(contentRect fou
 	return instance
 }
 
-func (i_ ImageEditPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) ImageEditPanel {
-	rv := objc.Call[ImageEditPanel](i_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewImageEditPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) ImageEditPanel {
-	instance := ImageEditPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
-// Reloads the data from the data associated with an image editing panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1503419-reloaddata?language=objc
-func (i_ ImageEditPanel) ReloadData() {
-	objc.Call[objc.Void](i_, objc.Sel("reloadData"))
-}
-
 // Creates a shared instance of an image editing panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1503827-sharedimageeditpanel?language=objc
@@ -122,12 +101,11 @@ func ImageEditPanel_SharedImageEditPanel() ImageEditPanel {
 	return ImageEditPanelClass.SharedImageEditPanel()
 }
 
-// Returns the current array of user adjustments to effects. [Full Topic]
+// Reloads the data from the data associated with an image editing panel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1504436-filterarray?language=objc
-func (i_ ImageEditPanel) FilterArray() []objc.Object {
-	rv := objc.Call[[]objc.Object](i_, objc.Sel("filterArray"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1503419-reloaddata?language=objc
+func (i_ ImageEditPanel) ReloadData() {
+	objc.Call[objc.Void](i_, objc.Sel("reloadData"))
 }
 
 // Specifies the edit panel’s dataSource. [Full Topic]
@@ -151,4 +129,12 @@ func (i_ ImageEditPanel) SetDataSource(value PImageEditPanelDataSource) {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1503831-datasource?language=objc
 func (i_ ImageEditPanel) SetDataSourceObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](i_, objc.Sel("setDataSource:"), valueObject)
+}
+
+// Returns the current array of user adjustments to effects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1504436-filterarray?language=objc
+func (i_ ImageEditPanel) FilterArray() []objc.Object {
+	rv := objc.Call[[]objc.Object](i_, objc.Sel("filterArray"))
+	return rv
 }

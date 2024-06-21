@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile?language=objc
 type PGlideReflectedTile interface {
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
 	Width() float32
 	HasWidth() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetAngle(value float32)
@@ -52,29 +52,6 @@ type GlideReflectedTileObject struct {
 	objc.Object
 }
 
-func (g_ GlideReflectedTileObject) HasSetInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228474-inputimage?language=objc
-func (g_ GlideReflectedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
-}
-
-func (g_ GlideReflectedTileObject) HasInputImage() bool {
-	return g_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228474-inputimage?language=objc
-func (g_ GlideReflectedTileObject) InputImage() Image {
-	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
-	return rv
-}
-
 func (g_ GlideReflectedTileObject) HasSetWidth() bool {
 	return g_.RespondsToSelector(objc.Sel("setWidth:"))
 }
@@ -95,6 +72,29 @@ func (g_ GlideReflectedTileObject) HasWidth() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228475-width?language=objc
 func (g_ GlideReflectedTileObject) Width() float32 {
 	rv := objc.Call[float32](g_, objc.Sel("width"))
+	return rv
+}
+
+func (g_ GlideReflectedTileObject) HasSetInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228474-inputimage?language=objc
+func (g_ GlideReflectedTileObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
+}
+
+func (g_ GlideReflectedTileObject) HasInputImage() bool {
+	return g_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228474-inputimage?language=objc
+func (g_ GlideReflectedTileObject) InputImage() Image {
+	rv := objc.Call[Image](g_, objc.Sel("inputImage"))
 	return rv
 }
 

@@ -18,13 +18,13 @@ type _XPCListenerClass struct {
 // An interface definition for the [XPCListener] class.
 type IXPCListener interface {
 	objc.IObject
-	Resume()
 	Suspend()
+	Resume()
 	Invalidate()
+	Endpoint() XPCListenerEndpoint
 	Delegate() XPCListenerDelegateObject
 	SetDelegate(value PXPCListenerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	Endpoint() XPCListenerEndpoint
 }
 
 // A listener that waits for new incoming connections, configures them, and accepts or rejects them. [Full Topic]
@@ -74,11 +74,19 @@ func (x_ XPCListener) Init() XPCListener {
 	return rv
 }
 
-// Starts processing of incoming requests. [Full Topic]
+// Returns a new anonymous listener connection. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1409652-resume?language=objc
-func (x_ XPCListener) Resume() {
-	objc.Call[objc.Void](x_, objc.Sel("resume"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1412648-anonymouslistener?language=objc
+func (xc _XPCListenerClass) AnonymousListener() XPCListener {
+	rv := objc.Call[XPCListener](xc, objc.Sel("anonymousListener"))
+	return rv
+}
+
+// Returns a new anonymous listener connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1412648-anonymouslistener?language=objc
+func XPCListener_AnonymousListener() XPCListener {
+	return XPCListenerClass.AnonymousListener()
 }
 
 // Suspends the listener. [Full Topic]
@@ -103,19 +111,11 @@ func XPCListener_ServiceListener() XPCListener {
 	return XPCListenerClass.ServiceListener()
 }
 
-// Returns a new anonymous listener connection. [Full Topic]
+// Starts processing of incoming requests. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1412648-anonymouslistener?language=objc
-func (xc _XPCListenerClass) AnonymousListener() XPCListener {
-	rv := objc.Call[XPCListener](xc, objc.Sel("anonymousListener"))
-	return rv
-}
-
-// Returns a new anonymous listener connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1412648-anonymouslistener?language=objc
-func XPCListener_AnonymousListener() XPCListener {
-	return XPCListenerClass.AnonymousListener()
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1409652-resume?language=objc
+func (x_ XPCListener) Resume() {
+	objc.Call[objc.Void](x_, objc.Sel("resume"))
 }
 
 // Invalidates the listener. [Full Topic]
@@ -123,6 +123,14 @@ func XPCListener_AnonymousListener() XPCListener {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1418427-invalidate?language=objc
 func (x_ XPCListener) Invalidate() {
 	objc.Call[objc.Void](x_, objc.Sel("invalidate"))
+}
+
+// Returns an endpoint object that may be sent over an existing connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1408519-endpoint?language=objc
+func (x_ XPCListener) Endpoint() XPCListenerEndpoint {
+	rv := objc.Call[XPCListenerEndpoint](x_, objc.Sel("endpoint"))
+	return rv
 }
 
 // The delegate for the listener. [Full Topic]
@@ -147,12 +155,4 @@ func (x_ XPCListener) SetDelegate(value PXPCListenerDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1408939-delegate?language=objc
 func (x_ XPCListener) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), valueObject)
-}
-
-// Returns an endpoint object that may be sent over an existing connection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1408519-endpoint?language=objc
-func (x_ XPCListener) Endpoint() XPCListenerEndpoint {
-	rv := objc.Call[XPCListenerEndpoint](x_, objc.Sel("endpoint"))
-	return rv
 }

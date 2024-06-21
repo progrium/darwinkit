@@ -20,10 +20,10 @@ type IVectorDescriptor interface {
 	objc.IObject
 	VectorBytes() uint
 	Vectors() uint
-	DataType() DataType
-	SetDataType(value DataType)
 	Length() uint
 	SetLength(value uint)
+	DataType() DataType
+	SetDataType(value DataType)
 }
 
 // A description of the length and data type of a vector. [Full Topic]
@@ -49,18 +49,6 @@ func (vc _VectorDescriptorClass) VectorDescriptorWithLengthDataType(length uint,
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873328-vectordescriptorwithlength?language=objc
 func VectorDescriptor_VectorDescriptorWithLengthDataType(length uint, dataType DataType) VectorDescriptor {
 	return VectorDescriptorClass.VectorDescriptorWithLengthDataType(length, dataType)
-}
-
-func (vc _VectorDescriptorClass) VectorDescriptorWithLengthVectorsVectorBytesDataType(length uint, vectors uint, vectorBytes uint, dataType DataType) VectorDescriptor {
-	rv := objc.Call[VectorDescriptor](vc, objc.Sel("vectorDescriptorWithLength:vectors:vectorBytes:dataType:"), length, vectors, vectorBytes, dataType)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873348-vectordescriptorwithlength?language=objc
-func VectorDescriptor_VectorDescriptorWithLengthVectorsVectorBytesDataType(length uint, vectors uint, vectorBytes uint, dataType DataType) VectorDescriptor {
-	return VectorDescriptorClass.VectorDescriptorWithLengthVectorsVectorBytesDataType(length, vectors, vectorBytes, dataType)
 }
 
 func (vc _VectorDescriptorClass) Alloc() VectorDescriptor {
@@ -116,21 +104,6 @@ func (v_ VectorDescriptor) Vectors() uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873362-datatype?language=objc
-func (v_ VectorDescriptor) DataType() DataType {
-	rv := objc.Call[DataType](v_, objc.Sel("dataType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873362-datatype?language=objc
-func (v_ VectorDescriptor) SetDataType(value DataType) {
-	objc.Call[objc.Void](v_, objc.Sel("setDataType:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873345-length?language=objc
 func (v_ VectorDescriptor) Length() uint {
 	rv := objc.Call[uint](v_, objc.Sel("length"))
@@ -142,4 +115,19 @@ func (v_ VectorDescriptor) Length() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873345-length?language=objc
 func (v_ VectorDescriptor) SetLength(value uint) {
 	objc.Call[objc.Void](v_, objc.Sel("setLength:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873362-datatype?language=objc
+func (v_ VectorDescriptor) DataType() DataType {
+	rv := objc.Call[DataType](v_, objc.Sel("dataType"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvectordescriptor/2873362-datatype?language=objc
+func (v_ VectorDescriptor) SetDataType(value DataType) {
+	objc.Call[objc.Void](v_, objc.Sel("setDataType:"), value)
 }

@@ -55,18 +55,6 @@ func (c_ ColorKernel) Init() ColorKernel {
 	return rv
 }
 
-func (cc _ColorKernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) ColorKernel {
-	rv := objc.Call[ColorKernel](cc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, error)
-	return rv
-}
-
-// Creates a single kernel object using a Metal Shading Language (MSL) kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880194-kernelwithfunctionname?language=objc
-func ColorKernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) ColorKernel {
-	return ColorKernelClass.KernelWithFunctionNameFromMetalLibraryDataError(name, data, error)
-}
-
 func (cc _ColorKernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) ColorKernel {
 	rv := objc.Call[ColorKernel](cc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, error)
 	return rv

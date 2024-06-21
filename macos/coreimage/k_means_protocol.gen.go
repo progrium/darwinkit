@@ -27,20 +27,20 @@ type PKMeans interface {
 	HasCount() bool
 
 	// optional
-	SetPasses(value float32)
-	HasSetPasses() bool
-
-	// optional
-	Passes() float32
-	HasPasses() bool
-
-	// optional
 	SetPerceptual(value bool)
 	HasSetPerceptual() bool
 
 	// optional
 	Perceptual() bool
 	HasPerceptual() bool
+
+	// optional
+	SetPasses(value float32)
+	HasSetPasses() bool
+
+	// optional
+	Passes() float32
+	HasPasses() bool
 }
 
 // ensure impl type implements protocol interface
@@ -97,29 +97,6 @@ func (k_ KMeansObject) Count() int {
 	return rv
 }
 
-func (k_ KMeansObject) HasSetPasses() bool {
-	return k_.RespondsToSelector(objc.Sel("setPasses:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
-func (k_ KMeansObject) SetPasses(value float32) {
-	objc.Call[objc.Void](k_, objc.Sel("setPasses:"), value)
-}
-
-func (k_ KMeansObject) HasPasses() bool {
-	return k_.RespondsToSelector(objc.Sel("passes"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
-func (k_ KMeansObject) Passes() float32 {
-	rv := objc.Call[float32](k_, objc.Sel("passes"))
-	return rv
-}
-
 func (k_ KMeansObject) HasSetPerceptual() bool {
 	return k_.RespondsToSelector(objc.Sel("setPerceptual:"))
 }
@@ -140,5 +117,28 @@ func (k_ KMeansObject) HasPerceptual() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547133-perceptual?language=objc
 func (k_ KMeansObject) Perceptual() bool {
 	rv := objc.Call[bool](k_, objc.Sel("perceptual"))
+	return rv
+}
+
+func (k_ KMeansObject) HasSetPasses() bool {
+	return k_.RespondsToSelector(objc.Sel("setPasses:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
+func (k_ KMeansObject) SetPasses(value float32) {
+	objc.Call[objc.Void](k_, objc.Sel("setPasses:"), value)
+}
+
+func (k_ KMeansObject) HasPasses() bool {
+	return k_.RespondsToSelector(objc.Sel("passes"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
+func (k_ KMeansObject) Passes() float32 {
+	rv := objc.Call[float32](k_, objc.Sel("passes"))
 	return rv
 }

@@ -11,22 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay?language=objc
 type PHistogramDisplay interface {
 	// optional
-	SetLowLimit(value float32)
-	HasSetLowLimit() bool
-
-	// optional
-	LowLimit() float32
-	HasLowLimit() bool
-
-	// optional
-	SetHighLimit(value float32)
-	HasSetHighLimit() bool
-
-	// optional
-	HighLimit() float32
-	HasHighLimit() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -41,6 +25,22 @@ type PHistogramDisplay interface {
 	// optional
 	Height() float32
 	HasHeight() bool
+
+	// optional
+	SetHighLimit(value float32)
+	HasSetHighLimit() bool
+
+	// optional
+	HighLimit() float32
+	HasHighLimit() bool
+
+	// optional
+	SetLowLimit(value float32)
+	HasSetLowLimit() bool
+
+	// optional
+	LowLimit() float32
+	HasLowLimit() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,52 +49,6 @@ var _ PHistogramDisplay = (*HistogramDisplayObject)(nil)
 // A concrete type for the [PHistogramDisplay] protocol.
 type HistogramDisplayObject struct {
 	objc.Object
-}
-
-func (h_ HistogramDisplayObject) HasSetLowLimit() bool {
-	return h_.RespondsToSelector(objc.Sel("setLowLimit:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547128-lowlimit?language=objc
-func (h_ HistogramDisplayObject) SetLowLimit(value float32) {
-	objc.Call[objc.Void](h_, objc.Sel("setLowLimit:"), value)
-}
-
-func (h_ HistogramDisplayObject) HasLowLimit() bool {
-	return h_.RespondsToSelector(objc.Sel("lowLimit"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547128-lowlimit?language=objc
-func (h_ HistogramDisplayObject) LowLimit() float32 {
-	rv := objc.Call[float32](h_, objc.Sel("lowLimit"))
-	return rv
-}
-
-func (h_ HistogramDisplayObject) HasSetHighLimit() bool {
-	return h_.RespondsToSelector(objc.Sel("setHighLimit:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547126-highlimit?language=objc
-func (h_ HistogramDisplayObject) SetHighLimit(value float32) {
-	objc.Call[objc.Void](h_, objc.Sel("setHighLimit:"), value)
-}
-
-func (h_ HistogramDisplayObject) HasHighLimit() bool {
-	return h_.RespondsToSelector(objc.Sel("highLimit"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547126-highlimit?language=objc
-func (h_ HistogramDisplayObject) HighLimit() float32 {
-	rv := objc.Call[float32](h_, objc.Sel("highLimit"))
-	return rv
 }
 
 func (h_ HistogramDisplayObject) HasSetInputImage() bool {
@@ -140,5 +94,51 @@ func (h_ HistogramDisplayObject) HasHeight() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547125-height?language=objc
 func (h_ HistogramDisplayObject) Height() float32 {
 	rv := objc.Call[float32](h_, objc.Sel("height"))
+	return rv
+}
+
+func (h_ HistogramDisplayObject) HasSetHighLimit() bool {
+	return h_.RespondsToSelector(objc.Sel("setHighLimit:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547126-highlimit?language=objc
+func (h_ HistogramDisplayObject) SetHighLimit(value float32) {
+	objc.Call[objc.Void](h_, objc.Sel("setHighLimit:"), value)
+}
+
+func (h_ HistogramDisplayObject) HasHighLimit() bool {
+	return h_.RespondsToSelector(objc.Sel("highLimit"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547126-highlimit?language=objc
+func (h_ HistogramDisplayObject) HighLimit() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("highLimit"))
+	return rv
+}
+
+func (h_ HistogramDisplayObject) HasSetLowLimit() bool {
+	return h_.RespondsToSelector(objc.Sel("setLowLimit:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547128-lowlimit?language=objc
+func (h_ HistogramDisplayObject) SetLowLimit(value float32) {
+	objc.Call[objc.Void](h_, objc.Sel("setLowLimit:"), value)
+}
+
+func (h_ HistogramDisplayObject) HasLowLimit() bool {
+	return h_.RespondsToSelector(objc.Sel("lowLimit"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cihistogramdisplay/3547128-lowlimit?language=objc
+func (h_ HistogramDisplayObject) LowLimit() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("lowLimit"))
 	return rv
 }

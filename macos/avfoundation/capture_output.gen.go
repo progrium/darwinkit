@@ -20,8 +20,8 @@ type _CaptureOutputClass struct {
 type ICaptureOutput interface {
 	objc.IObject
 	TransformedMetadataObjectForMetadataObjectConnection(metadataObject IMetadataObject, connection ICaptureConnection) MetadataObject
-	RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect
 	MetadataOutputRectOfInterestForRect(rectInOutputCoordinates coregraphics.Rect) coregraphics.Rect
+	RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect
 	ConnectionWithMediaType(mediaType MediaType) CaptureConnection
 	Connections() []CaptureConnection
 }
@@ -67,19 +67,19 @@ func (c_ CaptureOutput) TransformedMetadataObjectForMetadataObjectConnection(met
 	return rv
 }
 
-// Converts a rectangle in the coordinate system used for metadata outputs to one in the capture output object’s coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureoutput/1616311-rectformetadataoutputrectofinter?language=objc
-func (c_ CaptureOutput) RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("rectForMetadataOutputRectOfInterest:"), rectInMetadataOutputCoordinates)
-	return rv
-}
-
 // Converts a rectangle in the capture output object’s coordinate system to one in the coordinate system used for metadata outputs. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureoutput/1616304-metadataoutputrectofinterestforr?language=objc
 func (c_ CaptureOutput) MetadataOutputRectOfInterestForRect(rectInOutputCoordinates coregraphics.Rect) coregraphics.Rect {
 	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("metadataOutputRectOfInterestForRect:"), rectInOutputCoordinates)
+	return rv
+}
+
+// Converts a rectangle in the coordinate system used for metadata outputs to one in the capture output object’s coordinate system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureoutput/1616311-rectformetadataoutputrectofinter?language=objc
+func (c_ CaptureOutput) RectForMetadataOutputRectOfInterest(rectInMetadataOutputCoordinates coregraphics.Rect) coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("rectForMetadataOutputRectOfInterest:"), rectInMetadataOutputCoordinates)
 	return rv
 }
 

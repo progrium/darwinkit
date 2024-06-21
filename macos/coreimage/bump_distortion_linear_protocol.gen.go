@@ -20,14 +20,6 @@ type PBumpDistortionLinear interface {
 	HasScale() bool
 
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -36,20 +28,28 @@ type PBumpDistortionLinear interface {
 	HasInputImage() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -83,29 +83,6 @@ func (b_ BumpDistortionLinearObject) Scale() float32 {
 	return rv
 }
 
-func (b_ BumpDistortionLinearObject) HasSetAngle() bool {
-	return b_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
-func (b_ BumpDistortionLinearObject) SetAngle(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
-}
-
-func (b_ BumpDistortionLinearObject) HasAngle() bool {
-	return b_.RespondsToSelector(objc.Sel("angle"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
-func (b_ BumpDistortionLinearObject) Angle() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("angle"))
-	return rv
-}
-
 func (b_ BumpDistortionLinearObject) HasSetInputImage() bool {
 	return b_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -129,29 +106,6 @@ func (b_ BumpDistortionLinearObject) InputImage() Image {
 	return rv
 }
 
-func (b_ BumpDistortionLinearObject) HasSetCenter() bool {
-	return b_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600113-center?language=objc
-func (b_ BumpDistortionLinearObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](b_, objc.Sel("setCenter:"), value)
-}
-
-func (b_ BumpDistortionLinearObject) HasCenter() bool {
-	return b_.RespondsToSelector(objc.Sel("center"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600113-center?language=objc
-func (b_ BumpDistortionLinearObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](b_, objc.Sel("center"))
-	return rv
-}
-
 func (b_ BumpDistortionLinearObject) HasSetRadius() bool {
 	return b_.RespondsToSelector(objc.Sel("setRadius:"))
 }
@@ -172,5 +126,51 @@ func (b_ BumpDistortionLinearObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600115-radius?language=objc
 func (b_ BumpDistortionLinearObject) Radius() float32 {
 	rv := objc.Call[float32](b_, objc.Sel("radius"))
+	return rv
+}
+
+func (b_ BumpDistortionLinearObject) HasSetAngle() bool {
+	return b_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
+func (b_ BumpDistortionLinearObject) SetAngle(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
+}
+
+func (b_ BumpDistortionLinearObject) HasAngle() bool {
+	return b_.RespondsToSelector(objc.Sel("angle"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
+func (b_ BumpDistortionLinearObject) Angle() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("angle"))
+	return rv
+}
+
+func (b_ BumpDistortionLinearObject) HasSetCenter() bool {
+	return b_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600113-center?language=objc
+func (b_ BumpDistortionLinearObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](b_, objc.Sel("setCenter:"), value)
+}
+
+func (b_ BumpDistortionLinearObject) HasCenter() bool {
+	return b_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600113-center?language=objc
+func (b_ BumpDistortionLinearObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](b_, objc.Sel("center"))
 	return rv
 }

@@ -35,32 +35,6 @@ func ExtensionPropertyStateFrom(ptr unsafe.Pointer) ExtensionPropertyState {
 	}
 }
 
-func (ec _ExtensionPropertyStateClass) PropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:"), value)
-	return rv
-}
-
-// Returns a new property state with a value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertystate/3915873-propertystatewithvalue?language=objc
-func ExtensionPropertyState_PropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
-	return ExtensionPropertyStateClass.PropertyStateWithValue(value)
-}
-
-func (e_ ExtensionPropertyState) InitWithValue(value objc.IObject) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:"), value)
-	return rv
-}
-
-// Creates a property state with a value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertystate/3915871-initwithvalue?language=objc
-func NewExtensionPropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
-	instance := ExtensionPropertyStateClass.Alloc().InitWithValue(value)
-	instance.Autorelease()
-	return instance
-}
-
 func (e_ ExtensionPropertyState) InitWithValueAttributes(value objc.IObject, attributes IExtensionPropertyAttributes) ExtensionPropertyState {
 	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:attributes:"), value, attributes)
 	return rv
@@ -75,16 +49,16 @@ func NewExtensionPropertyStateWithValueAttributes(value objc.IObject, attributes
 	return instance
 }
 
-func (ec _ExtensionPropertyStateClass) PropertyStateWithValueAttributes(value objc.IObject, attributes IExtensionPropertyAttributes) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:attributes:"), value, attributes)
+func (ec _ExtensionPropertyStateClass) PropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
+	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:"), value)
 	return rv
 }
 
-// Returns a new property state with a value and attributes. [Full Topic]
+// Returns a new property state with a value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertystate/3915874-propertystatewithvalue?language=objc
-func ExtensionPropertyState_PropertyStateWithValueAttributes(value objc.IObject, attributes IExtensionPropertyAttributes) ExtensionPropertyState {
-	return ExtensionPropertyStateClass.PropertyStateWithValueAttributes(value, attributes)
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertystate/3915873-propertystatewithvalue?language=objc
+func ExtensionPropertyState_PropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
+	return ExtensionPropertyStateClass.PropertyStateWithValue(value)
 }
 
 func (ec _ExtensionPropertyStateClass) Alloc() ExtensionPropertyState {

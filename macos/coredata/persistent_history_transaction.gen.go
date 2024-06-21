@@ -20,15 +20,15 @@ type _PersistentHistoryTransactionClass struct {
 type IPersistentHistoryTransaction interface {
 	objc.IObject
 	ObjectIDNotification() foundation.Notification
-	ProcessID() string
-	ContextName() string
-	StoreID() string
-	Changes() []PersistentHistoryChange
-	Author() string
-	Timestamp() foundation.Date
 	Token() PersistentHistoryToken
 	BundleID() string
 	TransactionNumber() int64
+	StoreID() string
+	Author() string
+	ProcessID() string
+	Changes() []PersistentHistoryChange
+	Timestamp() foundation.Date
+	ContextName() string
 }
 
 // A set of changes in the persistent history based on a context save or batch operation. [Full Topic]
@@ -64,6 +64,14 @@ func (p_ PersistentHistoryTransaction) Init() PersistentHistoryTransaction {
 	return rv
 }
 
+// Obtains a notification for use in merging the transaction’s changes into a managed object context. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894946-objectidnotification?language=objc
+func (p_ PersistentHistoryTransaction) ObjectIDNotification() foundation.Notification {
+	rv := objc.Call[foundation.Notification](p_, objc.Sel("objectIDNotification"))
+	return rv
+}
+
 // Requests an entity description using the provided context for the managed object type affected by the transaction. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240595-entitydescriptionwithcontext?language=objc
@@ -79,60 +87,19 @@ func PersistentHistoryTransaction_EntityDescriptionWithContext(context IManagedO
 	return PersistentHistoryTransactionClass.EntityDescriptionWithContext(context)
 }
 
-// Obtains a notification for use in merging the transaction’s changes into a managed object context. [Full Topic]
+// A fetch request that has the persistent history transaction as the entity. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894946-objectidnotification?language=objc
-func (p_ PersistentHistoryTransaction) ObjectIDNotification() foundation.Notification {
-	rv := objc.Call[foundation.Notification](p_, objc.Sel("objectIDNotification"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240596-fetchrequest?language=objc
+func (pc _PersistentHistoryTransactionClass) FetchRequest() FetchRequest {
+	rv := objc.Call[FetchRequest](pc, objc.Sel("fetchRequest"))
 	return rv
 }
 
-// The originating process’s identifier. [Full Topic]
+// A fetch request that has the persistent history transaction as the entity. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894939-processid?language=objc
-func (p_ PersistentHistoryTransaction) ProcessID() string {
-	rv := objc.Call[string](p_, objc.Sel("processID"))
-	return rv
-}
-
-// The originating context’s name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894944-contextname?language=objc
-func (p_ PersistentHistoryTransaction) ContextName() string {
-	rv := objc.Call[string](p_, objc.Sel("contextName"))
-	return rv
-}
-
-// The originating store’s identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894941-storeid?language=objc
-func (p_ PersistentHistoryTransaction) StoreID() string {
-	rv := objc.Call[string](p_, objc.Sel("storeID"))
-	return rv
-}
-
-// The array of persistent history changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894948-changes?language=objc
-func (p_ PersistentHistoryTransaction) Changes() []PersistentHistoryChange {
-	rv := objc.Call[[]PersistentHistoryChange](p_, objc.Sel("changes"))
-	return rv
-}
-
-// A granular description of the context that made the persistent history change, if available. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894947-author?language=objc
-func (p_ PersistentHistoryTransaction) Author() string {
-	rv := objc.Call[string](p_, objc.Sel("author"))
-	return rv
-}
-
-// The date of the persistent history change. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894940-timestamp?language=objc
-func (p_ PersistentHistoryTransaction) Timestamp() foundation.Date {
-	rv := objc.Call[foundation.Date](p_, objc.Sel("timestamp"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240596-fetchrequest?language=objc
+func PersistentHistoryTransaction_FetchRequest() FetchRequest {
+	return PersistentHistoryTransactionClass.FetchRequest()
 }
 
 // The token that represents this transaction in the persistent history. [Full Topic]
@@ -151,6 +118,38 @@ func (p_ PersistentHistoryTransaction) BundleID() string {
 	return rv
 }
 
+// The transaction’s numeric identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894945-transactionnumber?language=objc
+func (p_ PersistentHistoryTransaction) TransactionNumber() int64 {
+	rv := objc.Call[int64](p_, objc.Sel("transactionNumber"))
+	return rv
+}
+
+// The originating store’s identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894941-storeid?language=objc
+func (p_ PersistentHistoryTransaction) StoreID() string {
+	rv := objc.Call[string](p_, objc.Sel("storeID"))
+	return rv
+}
+
+// A granular description of the context that made the persistent history change, if available. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894947-author?language=objc
+func (p_ PersistentHistoryTransaction) Author() string {
+	rv := objc.Call[string](p_, objc.Sel("author"))
+	return rv
+}
+
+// The originating process’s identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894939-processid?language=objc
+func (p_ PersistentHistoryTransaction) ProcessID() string {
+	rv := objc.Call[string](p_, objc.Sel("processID"))
+	return rv
+}
+
 // The entity description of the persistent history transaction entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240594-entitydescription?language=objc
@@ -166,25 +165,26 @@ func PersistentHistoryTransaction_EntityDescription() EntityDescription {
 	return PersistentHistoryTransactionClass.EntityDescription()
 }
 
-// The transaction’s numeric identifier. [Full Topic]
+// The array of persistent history changes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894945-transactionnumber?language=objc
-func (p_ PersistentHistoryTransaction) TransactionNumber() int64 {
-	rv := objc.Call[int64](p_, objc.Sel("transactionNumber"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894948-changes?language=objc
+func (p_ PersistentHistoryTransaction) Changes() []PersistentHistoryChange {
+	rv := objc.Call[[]PersistentHistoryChange](p_, objc.Sel("changes"))
 	return rv
 }
 
-// A fetch request that has the persistent history transaction as the entity. [Full Topic]
+// The date of the persistent history change. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240596-fetchrequest?language=objc
-func (pc _PersistentHistoryTransactionClass) FetchRequest() FetchRequest {
-	rv := objc.Call[FetchRequest](pc, objc.Sel("fetchRequest"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894940-timestamp?language=objc
+func (p_ PersistentHistoryTransaction) Timestamp() foundation.Date {
+	rv := objc.Call[foundation.Date](p_, objc.Sel("timestamp"))
 	return rv
 }
 
-// A fetch request that has the persistent history transaction as the entity. [Full Topic]
+// The originating context’s name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240596-fetchrequest?language=objc
-func PersistentHistoryTransaction_FetchRequest() FetchRequest {
-	return PersistentHistoryTransactionClass.FetchRequest()
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/2894944-contextname?language=objc
+func (p_ PersistentHistoryTransaction) ContextName() string {
+	rv := objc.Call[string](p_, objc.Sel("contextName"))
+	return rv
 }

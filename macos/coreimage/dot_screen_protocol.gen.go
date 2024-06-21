@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen?language=objc
 type PDotScreen interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetInputImage(value Image)
@@ -28,12 +28,12 @@ type PDotScreen interface {
 	HasInputImage() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
+	SetSharpness(value float32)
+	HasSetSharpness() bool
 
 	// optional
-	Width() float32
-	HasWidth() bool
+	Sharpness() float32
+	HasSharpness() bool
 
 	// optional
 	SetAngle(value float32)
@@ -44,12 +44,12 @@ type PDotScreen interface {
 	HasAngle() bool
 
 	// optional
-	SetSharpness(value float32)
-	HasSetSharpness() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	Sharpness() float32
-	HasSharpness() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -60,26 +60,26 @@ type DotScreenObject struct {
 	objc.Object
 }
 
-func (d_ DotScreenObject) HasSetCenter() bool {
-	return d_.RespondsToSelector(objc.Sel("setCenter:"))
+func (d_ DotScreenObject) HasSetWidth() bool {
+	return d_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// The x and y position to use as the center of the dot screen pattern. [Full Topic]
+// The distance between dots in the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228232-center?language=objc
-func (d_ DotScreenObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](d_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
+func (d_ DotScreenObject) SetWidth(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setWidth:"), value)
 }
 
-func (d_ DotScreenObject) HasCenter() bool {
-	return d_.RespondsToSelector(objc.Sel("center"))
+func (d_ DotScreenObject) HasWidth() bool {
+	return d_.RespondsToSelector(objc.Sel("width"))
 }
 
-// The x and y position to use as the center of the dot screen pattern. [Full Topic]
+// The distance between dots in the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228232-center?language=objc
-func (d_ DotScreenObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](d_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
+func (d_ DotScreenObject) Width() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("width"))
 	return rv
 }
 
@@ -106,26 +106,26 @@ func (d_ DotScreenObject) InputImage() Image {
 	return rv
 }
 
-func (d_ DotScreenObject) HasSetWidth() bool {
-	return d_.RespondsToSelector(objc.Sel("setWidth:"))
+func (d_ DotScreenObject) HasSetSharpness() bool {
+	return d_.RespondsToSelector(objc.Sel("setSharpness:"))
 }
 
-// The distance between dots in the pattern. [Full Topic]
+// The sharpness of the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
-func (d_ DotScreenObject) SetWidth(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
+func (d_ DotScreenObject) SetSharpness(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setSharpness:"), value)
 }
 
-func (d_ DotScreenObject) HasWidth() bool {
-	return d_.RespondsToSelector(objc.Sel("width"))
+func (d_ DotScreenObject) HasSharpness() bool {
+	return d_.RespondsToSelector(objc.Sel("sharpness"))
 }
 
-// The distance between dots in the pattern. [Full Topic]
+// The sharpness of the pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
-func (d_ DotScreenObject) Width() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
+func (d_ DotScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("sharpness"))
 	return rv
 }
 
@@ -152,25 +152,25 @@ func (d_ DotScreenObject) Angle() float32 {
 	return rv
 }
 
-func (d_ DotScreenObject) HasSetSharpness() bool {
-	return d_.RespondsToSelector(objc.Sel("setSharpness:"))
+func (d_ DotScreenObject) HasSetCenter() bool {
+	return d_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
-// The sharpness of the pattern. [Full Topic]
+// The x and y position to use as the center of the dot screen pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
-func (d_ DotScreenObject) SetSharpness(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setSharpness:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228232-center?language=objc
+func (d_ DotScreenObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](d_, objc.Sel("setCenter:"), value)
 }
 
-func (d_ DotScreenObject) HasSharpness() bool {
-	return d_.RespondsToSelector(objc.Sel("sharpness"))
+func (d_ DotScreenObject) HasCenter() bool {
+	return d_.RespondsToSelector(objc.Sel("center"))
 }
 
-// The sharpness of the pattern. [Full Topic]
+// The x and y position to use as the center of the dot screen pattern. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
-func (d_ DotScreenObject) Sharpness() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("sharpness"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228232-center?language=objc
+func (d_ DotScreenObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](d_, objc.Sel("center"))
 	return rv
 }

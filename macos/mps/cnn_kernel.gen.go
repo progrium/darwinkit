@@ -20,59 +20,47 @@ type _CNNKernelClass struct {
 // An interface definition for the [CNNKernel] class.
 type ICNNKernel interface {
 	IKernel
-	EncodeToCommandBufferSourceImageDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationImage IImage)
-	EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage)
+	BatchEncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) uint
 	TemporaryResultStateForCommandBufferSourceImageSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, sourceStates []IState, destinationImage IImage) State
 	TemporaryResultStateForCommandBufferObjectSourceImageSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, sourceStates []IState, destinationImage IImage) State
-	EncodeToCommandBufferSourceImageDestinationStateDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationState IState, destinationImage IImage)
-	EncodeToCommandBufferObjectSourceImageDestinationStateDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationState IState, destinationImage IImage)
-	EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array)
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array)
-	EncodeBatchToCommandBufferSourceImagesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationImages *foundation.Array)
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationImages *foundation.Array)
-	EncodeToCommandBufferSourceImageDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, outState unsafe.Pointer, isTemporary bool) Image
-	EncodeToCommandBufferObjectSourceImageDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, outState unsafe.Pointer, isTemporary bool) Image
+	AppendBatchBarrier() bool
 	TemporaryResultStateBatchForCommandBufferSourceImageSourceStatesDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
 	TemporaryResultStateBatchForCommandBufferObjectSourceImageSourceStatesDestinationImage(commandBufferObject objc.IObject, sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
 	DestinationImageDescriptorForSourceImagesSourceStates(sourceImages []IImage, sourceStates []IState) ImageDescriptor
-	BatchEncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) uint
-	ResultStateForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) State
-	IsResultStateReusedAcrossBatch() bool
+	EncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) uint
 	EncodeBatchToCommandBufferSourceImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array) *foundation.Array
 	EncodeBatchToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages *foundation.Array) *foundation.Array
-	AppendBatchBarrier() bool
-	EncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) uint
-	EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
+	ResultStateBatchForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
 	EncodeToCommandBufferSourceImage(commandBuffer metal.PCommandBuffer, sourceImage IImage) Image
 	EncodeToCommandBufferObjectSourceImage(commandBufferObject objc.IObject, sourceImage IImage) Image
-	ResultStateBatchForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array
-	StrideInPixelsY() uint
-	KernelHeight() uint
-	KernelWidth() uint
-	DestinationFeatureChannelOffset() uint
-	SetDestinationFeatureChannelOffset(value uint)
-	DestinationImageAllocator() ImageAllocatorObject
-	SetDestinationImageAllocator(value PImageAllocator)
-	SetDestinationImageAllocatorObject(valueObject objc.IObject)
+	IsResultStateReusedAcrossBatch() bool
+	ResultStateForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) State
 	SourceFeatureChannelMaxCount() uint
 	SetSourceFeatureChannelMaxCount(value uint)
-	DilationRateY() uint
-	ClipRect() metal.Region
-	SetClipRect(value metal.Region)
-	DilationRateX() uint
-	StrideInPixelsX() uint
 	IsStateModified() bool
-	SourceFeatureChannelOffset() uint
-	SetSourceFeatureChannelOffset(value uint)
-	EdgeMode() ImageEdgeMode
-	SetEdgeMode(value ImageEdgeMode)
-	IsBackwards() bool
 	Padding() NNPaddingObject
 	SetPadding(value PNNPadding)
 	SetPaddingObject(valueObject objc.IObject)
+	SourceFeatureChannelOffset() uint
+	SetSourceFeatureChannelOffset(value uint)
+	StrideInPixelsY() uint
+	StrideInPixelsX() uint
+	EdgeMode() ImageEdgeMode
+	SetEdgeMode(value ImageEdgeMode)
 	Offset() Offset
 	SetOffset(value Offset)
+	IsBackwards() bool
+	DilationRateY() uint
+	KernelHeight() uint
+	ClipRect() metal.Region
+	SetClipRect(value metal.Region)
+	KernelWidth() uint
+	DestinationImageAllocator() ImageAllocatorObject
+	SetDestinationImageAllocator(value PImageAllocator)
+	SetDestinationImageAllocatorObject(valueObject objc.IObject)
+	DestinationFeatureChannelOffset() uint
+	SetDestinationFeatureChannelOffset(value uint)
+	DilationRateX() uint
 }
 
 // Base class for neural network layers. [Full Topic]
@@ -138,19 +126,12 @@ func CNNKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNN
 	return instance
 }
 
-// Encodes a kernel into a command buffer.  The ensuing operation proceeds out-of-place. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648919-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferSourceImageDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationImage IImage) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), po0, sourceImage, destinationImage)
-}
-
-// Encodes a kernel into a command buffer.  The ensuing operation proceeds out-of-place. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648919-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), commandBufferObject, sourceImage, destinationImage)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/3237263-batchencodingstoragesizeforsourc?language=objc
+func (c_ CNNKernel) BatchEncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) uint {
+	rv := objc.Call[uint](c_, objc.Sel("batchEncodingStorageSizeForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
+	return rv
 }
 
 //	[Full Topic]
@@ -172,63 +153,9 @@ func (c_ CNNKernel) TemporaryResultStateForCommandBufferObjectSourceImageSourceS
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942672-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferSourceImageDestinationStateDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationState IState, destinationImage IImage) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationImage:"), po0, sourceImage, destinationState, destinationImage)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942672-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferObjectSourceImageDestinationStateDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationState IState, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationImage:"), commandBufferObject, sourceImage, destinationState, destinationImage)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942649-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationImages:"), po0, sourceImages, destinationStates, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942649-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationImages:"), commandBufferObject, sourceImages, destinationStates, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942681-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferSourceImagesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, destinationImages *foundation.Array) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationImages:"), po0, sourceImages, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942681-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferObjectSourceImagesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationImages:"), commandBufferObject, sourceImages, destinationImages)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942680-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferSourceImageDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, outState unsafe.Pointer, isTemporary bool) Image {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationStateIsTemporary:"), po0, sourceImage, outState, isTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942680-encodetocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeToCommandBufferObjectSourceImageDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, outState unsafe.Pointer, isTemporary bool) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationState:destinationStateIsTemporary:"), commandBufferObject, sourceImage, outState, isTemporary)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942671-appendbatchbarrier?language=objc
+func (c_ CNNKernel) AppendBatchBarrier() bool {
+	rv := objc.Call[bool](c_, objc.Sel("appendBatchBarrier"))
 	return rv
 }
 
@@ -259,25 +186,9 @@ func (c_ CNNKernel) DestinationImageDescriptorForSourceImagesSourceStates(source
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/3237263-batchencodingstoragesizeforsourc?language=objc
-func (c_ CNNKernel) BatchEncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) uint {
-	rv := objc.Call[uint](c_, objc.Sel("batchEncodingStorageSizeForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2947932-resultstateforsourceimage?language=objc
-func (c_ CNNKernel) ResultStateForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) State {
-	rv := objc.Call[State](c_, objc.Sel("resultStateForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942665-isresultstatereusedacrossbatch?language=objc
-func (c_ CNNKernel) IsResultStateReusedAcrossBatch() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isResultStateReusedAcrossBatch"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/3237264-encodingstoragesizeforsourceimag?language=objc
+func (c_ CNNKernel) EncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) uint {
+	rv := objc.Call[uint](c_, objc.Sel("encodingStorageSizeForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
 	return rv
 }
 
@@ -300,34 +211,9 @@ func (c_ CNNKernel) EncodeBatchToCommandBufferObjectSourceImages(commandBufferOb
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942671-appendbatchbarrier?language=objc
-func (c_ CNNKernel) AppendBatchBarrier() bool {
-	rv := objc.Call[bool](c_, objc.Sel("appendBatchBarrier"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/3237264-encodingstoragesizeforsourceimag?language=objc
-func (c_ CNNKernel) EncodingStorageSizeForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) uint {
-	rv := objc.Call[uint](c_, objc.Sel("encodingStorageSizeForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942646-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferSourceImagesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:"), po0, sourceImages, outStates, isTemporary)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942646-encodebatchtocommandbuffer?language=objc
-func (c_ CNNKernel) EncodeBatchToCommandBufferObjectSourceImagesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:destinationStates:destinationStateIsTemporary:"), commandBufferObject, sourceImages, outStates, isTemporary)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2947931-resultstatebatchforsourceimage?language=objc
+func (c_ CNNKernel) ResultStateBatchForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array {
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("resultStateBatchForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
 	return rv
 }
 
@@ -350,72 +236,18 @@ func (c_ CNNKernel) EncodeToCommandBufferObjectSourceImage(commandBufferObject o
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2947931-resultstatebatchforsourceimage?language=objc
-func (c_ CNNKernel) ResultStateBatchForSourceImageSourceStatesDestinationImage(sourceImage *foundation.Array, sourceStates []*foundation.Array, destinationImage *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("resultStateBatchForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942665-isresultstatereusedacrossbatch?language=objc
+func (c_ CNNKernel) IsResultStateReusedAcrossBatch() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isResultStateReusedAcrossBatch"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865644-strideinpixelsy?language=objc
-func (c_ CNNKernel) StrideInPixelsY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2947932-resultstateforsourceimage?language=objc
+func (c_ CNNKernel) ResultStateForSourceImageSourceStatesDestinationImage(sourceImage IImage, sourceStates []IState, destinationImage IImage) State {
+	rv := objc.Call[State](c_, objc.Sel("resultStateForSourceImage:sourceStates:destinationImage:"), sourceImage, sourceStates, destinationImage)
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865648-kernelheight?language=objc
-func (c_ CNNKernel) KernelHeight() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865637-kernelwidth?language=objc
-func (c_ CNNKernel) KernelWidth() uint {
-	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
-	return rv
-}
-
-// The number of channels in the destination image to skip before writing output data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2097550-destinationfeaturechanneloffset?language=objc
-func (c_ CNNKernel) DestinationFeatureChannelOffset() uint {
-	rv := objc.Call[uint](c_, objc.Sel("destinationFeatureChannelOffset"))
-	return rv
-}
-
-// The number of channels in the destination image to skip before writing output data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2097550-destinationfeaturechanneloffset?language=objc
-func (c_ CNNKernel) SetDestinationFeatureChannelOffset(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setDestinationFeatureChannelOffset:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
-func (c_ CNNKernel) DestinationImageAllocator() ImageAllocatorObject {
-	rv := objc.Call[ImageAllocatorObject](c_, objc.Sel("destinationImageAllocator"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
-func (c_ CNNKernel) SetDestinationImageAllocator(value PImageAllocator) {
-	po0 := objc.WrapAsProtocol("MPSImageAllocator", value)
-	objc.Call[objc.Void](c_, objc.Sel("setDestinationImageAllocator:"), po0)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
-func (c_ CNNKernel) SetDestinationImageAllocatorObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDestinationImageAllocator:"), valueObject)
 }
 
 //	[Full Topic]
@@ -435,86 +267,9 @@ func (c_ CNNKernel) SetSourceFeatureChannelMaxCount(value uint) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942679-dilationratey?language=objc
-func (c_ CNNKernel) DilationRateY() uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateY"))
-	return rv
-}
-
-// An optional clip rectangle to use when writing data. Only the pixels in the clip rectangle will be overwritten. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648911-cliprect?language=objc
-func (c_ CNNKernel) ClipRect() metal.Region {
-	rv := objc.Call[metal.Region](c_, objc.Sel("clipRect"))
-	return rv
-}
-
-// An optional clip rectangle to use when writing data. Only the pixels in the clip rectangle will be overwritten. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648911-cliprect?language=objc
-func (c_ CNNKernel) SetClipRect(value metal.Region) {
-	objc.Call[objc.Void](c_, objc.Sel("setClipRect:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942669-dilationratex?language=objc
-func (c_ CNNKernel) DilationRateX() uint {
-	rv := objc.Call[uint](c_, objc.Sel("dilationRateX"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865654-strideinpixelsx?language=objc
-func (c_ CNNKernel) StrideInPixelsX() uint {
-	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsX"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942673-isstatemodified?language=objc
 func (c_ CNNKernel) IsStateModified() bool {
 	rv := objc.Call[bool](c_, objc.Sel("isStateModified"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942682-sourcefeaturechanneloffset?language=objc
-func (c_ CNNKernel) SourceFeatureChannelOffset() uint {
-	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelOffset"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942682-sourcefeaturechanneloffset?language=objc
-func (c_ CNNKernel) SetSourceFeatureChannelOffset(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelOffset:"), value)
-}
-
-// The edge mode to use when texture reads stray off the edge of an image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648826-edgemode?language=objc
-func (c_ CNNKernel) EdgeMode() ImageEdgeMode {
-	rv := objc.Call[ImageEdgeMode](c_, objc.Sel("edgeMode"))
-	return rv
-}
-
-// The edge mode to use when texture reads stray off the edge of an image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648826-edgemode?language=objc
-func (c_ CNNKernel) SetEdgeMode(value ImageEdgeMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setEdgeMode:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865634-isbackwards?language=objc
-func (c_ CNNKernel) IsBackwards() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isBackwards"))
 	return rv
 }
 
@@ -541,6 +296,52 @@ func (c_ CNNKernel) SetPaddingObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setPadding:"), valueObject)
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942682-sourcefeaturechanneloffset?language=objc
+func (c_ CNNKernel) SourceFeatureChannelOffset() uint {
+	rv := objc.Call[uint](c_, objc.Sel("sourceFeatureChannelOffset"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942682-sourcefeaturechanneloffset?language=objc
+func (c_ CNNKernel) SetSourceFeatureChannelOffset(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setSourceFeatureChannelOffset:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865644-strideinpixelsy?language=objc
+func (c_ CNNKernel) StrideInPixelsY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865654-strideinpixelsx?language=objc
+func (c_ CNNKernel) StrideInPixelsX() uint {
+	rv := objc.Call[uint](c_, objc.Sel("strideInPixelsX"))
+	return rv
+}
+
+// The edge mode to use when texture reads stray off the edge of an image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648826-edgemode?language=objc
+func (c_ CNNKernel) EdgeMode() ImageEdgeMode {
+	rv := objc.Call[ImageEdgeMode](c_, objc.Sel("edgeMode"))
+	return rv
+}
+
+// The edge mode to use when texture reads stray off the edge of an image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648826-edgemode?language=objc
+func (c_ CNNKernel) SetEdgeMode(value ImageEdgeMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setEdgeMode:"), value)
+}
+
 // The position of the destination image's clip rectangle origin, relative to the source image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648835-offset?language=objc
@@ -554,4 +355,97 @@ func (c_ CNNKernel) Offset() Offset {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648835-offset?language=objc
 func (c_ CNNKernel) SetOffset(value Offset) {
 	objc.Call[objc.Void](c_, objc.Sel("setOffset:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865634-isbackwards?language=objc
+func (c_ CNNKernel) IsBackwards() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isBackwards"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942679-dilationratey?language=objc
+func (c_ CNNKernel) DilationRateY() uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865648-kernelheight?language=objc
+func (c_ CNNKernel) KernelHeight() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelHeight"))
+	return rv
+}
+
+// An optional clip rectangle to use when writing data. Only the pixels in the clip rectangle will be overwritten. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648911-cliprect?language=objc
+func (c_ CNNKernel) ClipRect() metal.Region {
+	rv := objc.Call[metal.Region](c_, objc.Sel("clipRect"))
+	return rv
+}
+
+// An optional clip rectangle to use when writing data. Only the pixels in the clip rectangle will be overwritten. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/1648911-cliprect?language=objc
+func (c_ CNNKernel) SetClipRect(value metal.Region) {
+	objc.Call[objc.Void](c_, objc.Sel("setClipRect:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865637-kernelwidth?language=objc
+func (c_ CNNKernel) KernelWidth() uint {
+	rv := objc.Call[uint](c_, objc.Sel("kernelWidth"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
+func (c_ CNNKernel) DestinationImageAllocator() ImageAllocatorObject {
+	rv := objc.Call[ImageAllocatorObject](c_, objc.Sel("destinationImageAllocator"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
+func (c_ CNNKernel) SetDestinationImageAllocator(value PImageAllocator) {
+	po0 := objc.WrapAsProtocol("MPSImageAllocator", value)
+	objc.Call[objc.Void](c_, objc.Sel("setDestinationImageAllocator:"), po0)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2865650-destinationimageallocator?language=objc
+func (c_ CNNKernel) SetDestinationImageAllocatorObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("setDestinationImageAllocator:"), valueObject)
+}
+
+// The number of channels in the destination image to skip before writing output data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2097550-destinationfeaturechanneloffset?language=objc
+func (c_ CNNKernel) DestinationFeatureChannelOffset() uint {
+	rv := objc.Call[uint](c_, objc.Sel("destinationFeatureChannelOffset"))
+	return rv
+}
+
+// The number of channels in the destination image to skip before writing output data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2097550-destinationfeaturechanneloffset?language=objc
+func (c_ CNNKernel) SetDestinationFeatureChannelOffset(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setDestinationFeatureChannelOffset:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnkernel/2942669-dilationratex?language=objc
+func (c_ CNNKernel) DilationRateX() uint {
+	rv := objc.Call[uint](c_, objc.Sel("dilationRateX"))
+	return rv
 }

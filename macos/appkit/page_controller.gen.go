@@ -19,21 +19,21 @@ type _PageControllerClass struct {
 // An interface definition for the [PageController] class.
 type IPageController interface {
 	IViewController
-	NavigateBack(sender objc.IObject) objc.Object
-	NavigateForwardToObject(object objc.IObject)
 	NavigateForward(sender objc.IObject) objc.Object
-	CompleteTransition()
+	NavigateForwardToObject(object objc.IObject)
 	TakeSelectedIndexFrom(sender objc.IObject) objc.Object
-	SelectedIndex() int
-	SetSelectedIndex(value int)
+	CompleteTransition()
+	NavigateBack(sender objc.IObject) objc.Object
+	SelectedViewController() ViewController
 	ArrangedObjects() []objc.Object
 	SetArrangedObjects(value []objc.IObject)
-	SelectedViewController() ViewController
-	TransitionStyle() PageControllerTransitionStyle
-	SetTransitionStyle(value PageControllerTransitionStyle)
 	Delegate() PageControllerDelegateObject
 	SetDelegate(value PPageControllerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	TransitionStyle() PageControllerTransitionStyle
+	SetTransitionStyle(value PageControllerTransitionStyle)
+	SelectedIndex() int
+	SetSelectedIndex(value int)
 }
 
 // An object that controls swipe navigation and animations between views or view content. [Full Topic]
@@ -83,11 +83,11 @@ func NewPageControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil fou
 	return instance
 }
 
-// Navigates backwards in the page controller’s arranged objects array. [Full Topic]
+// Navigates to the next object in the page controller’s arranged objects array, if appropriate. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435017-navigateback?language=objc
-func (p_ PageController) NavigateBack(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](p_, objc.Sel("navigateBack:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435004-navigateforward?language=objc
+func (p_ PageController) NavigateForward(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("navigateForward:"), sender)
 	return rv
 }
 
@@ -98,11 +98,11 @@ func (p_ PageController) NavigateForwardToObject(object objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("navigateForwardToObject:"), object)
 }
 
-// Navigates to the next object in the page controller’s arranged objects array, if appropriate. [Full Topic]
+// Navigates to the selected index, which is taken from the sender. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435004-navigateforward?language=objc
-func (p_ PageController) NavigateForward(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](p_, objc.Sel("navigateForward:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435011-takeselectedindexfrom?language=objc
+func (p_ PageController) TakeSelectedIndexFrom(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("takeSelectedIndexFrom:"), sender)
 	return rv
 }
 
@@ -113,27 +113,20 @@ func (p_ PageController) CompleteTransition() {
 	objc.Call[objc.Void](p_, objc.Sel("completeTransition"))
 }
 
-// Navigates to the selected index, which is taken from the sender. [Full Topic]
+// Navigates backwards in the page controller’s arranged objects array. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435011-takeselectedindexfrom?language=objc
-func (p_ PageController) TakeSelectedIndexFrom(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](p_, objc.Sel("takeSelectedIndexFrom:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435017-navigateback?language=objc
+func (p_ PageController) NavigateBack(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("navigateBack:"), sender)
 	return rv
 }
 
-// The currently selected object in the arranged objects array. [Full Topic]
+// The view controller associated with the selected object.. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434988-selectedindex?language=objc
-func (p_ PageController) SelectedIndex() int {
-	rv := objc.Call[int](p_, objc.Sel("selectedIndex"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435013-selectedviewcontroller?language=objc
+func (p_ PageController) SelectedViewController() ViewController {
+	rv := objc.Call[ViewController](p_, objc.Sel("selectedViewController"))
 	return rv
-}
-
-// The currently selected object in the arranged objects array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434988-selectedindex?language=objc
-func (p_ PageController) SetSelectedIndex(value int) {
-	objc.Call[objc.Void](p_, objc.Sel("setSelectedIndex:"), value)
 }
 
 // An array containing the objects displayed in the page controller’s view. [Full Topic]
@@ -149,29 +142,6 @@ func (p_ PageController) ArrangedObjects() []objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435001-arrangedobjects?language=objc
 func (p_ PageController) SetArrangedObjects(value []objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setArrangedObjects:"), value)
-}
-
-// The view controller associated with the selected object.. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435013-selectedviewcontroller?language=objc
-func (p_ PageController) SelectedViewController() ViewController {
-	rv := objc.Call[ViewController](p_, objc.Sel("selectedViewController"))
-	return rv
-}
-
-// The transition style the page controller uses when changing pages. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434999-transitionstyle?language=objc
-func (p_ PageController) TransitionStyle() PageControllerTransitionStyle {
-	rv := objc.Call[PageControllerTransitionStyle](p_, objc.Sel("transitionStyle"))
-	return rv
-}
-
-// The transition style the page controller uses when changing pages. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434999-transitionstyle?language=objc
-func (p_ PageController) SetTransitionStyle(value PageControllerTransitionStyle) {
-	objc.Call[objc.Void](p_, objc.Sel("setTransitionStyle:"), value)
 }
 
 // The page controller’s delegate object. [Full Topic]
@@ -196,4 +166,34 @@ func (p_ PageController) SetDelegate(value PPageControllerDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435019-delegate?language=objc
 func (p_ PageController) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// The transition style the page controller uses when changing pages. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434999-transitionstyle?language=objc
+func (p_ PageController) TransitionStyle() PageControllerTransitionStyle {
+	rv := objc.Call[PageControllerTransitionStyle](p_, objc.Sel("transitionStyle"))
+	return rv
+}
+
+// The transition style the page controller uses when changing pages. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434999-transitionstyle?language=objc
+func (p_ PageController) SetTransitionStyle(value PageControllerTransitionStyle) {
+	objc.Call[objc.Void](p_, objc.Sel("setTransitionStyle:"), value)
+}
+
+// The currently selected object in the arranged objects array. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434988-selectedindex?language=objc
+func (p_ PageController) SelectedIndex() int {
+	rv := objc.Call[int](p_, objc.Sel("selectedIndex"))
+	return rv
+}
+
+// The currently selected object in the arranged objects array. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1434988-selectedindex?language=objc
+func (p_ PageController) SetSelectedIndex(value int) {
+	objc.Call[objc.Void](p_, objc.Sel("setSelectedIndex:"), value)
 }

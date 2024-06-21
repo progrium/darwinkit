@@ -21,8 +21,8 @@ type _FaceLandmarkRegion2DClass struct {
 type IFaceLandmarkRegion2D interface {
 	IFaceLandmarkRegion
 	PointsInImageOfSize(imageSize coregraphics.Size) *coregraphics.Point
-	NormalizedPoints() *coregraphics.Point
 	PrecisionEstimatesPerPoint() []foundation.Number
+	NormalizedPoints() *coregraphics.Point
 }
 
 // 2D geometry information for a specific facial feature. [Full Topic]
@@ -66,18 +66,18 @@ func (f_ FaceLandmarkRegion2D) PointsInImageOfSize(imageSize coregraphics.Size) 
 	return rv
 }
 
-// A buffer in memory containing normalized landmark points. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarkregion2d/2923490-normalizedpoints?language=objc
-func (f_ FaceLandmarkRegion2D) NormalizedPoints() *coregraphics.Point {
-	rv := objc.Call[*coregraphics.Point](f_, objc.Sel("normalizedPoints"))
-	return rv
-}
-
 // An array of precision estimates for each landmark point. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarkregion2d/3143672-precisionestimatesperpoint?language=objc
 func (f_ FaceLandmarkRegion2D) PrecisionEstimatesPerPoint() []foundation.Number {
 	rv := objc.Call[[]foundation.Number](f_, objc.Sel("precisionEstimatesPerPoint"))
+	return rv
+}
+
+// A buffer in memory containing normalized landmark points. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarkregion2d/2923490-normalizedpoints?language=objc
+func (f_ FaceLandmarkRegion2D) NormalizedPoints() *coregraphics.Point {
+	rv := objc.Call[*coregraphics.Point](f_, objc.Sel("normalizedPoints"))
 	return rv
 }

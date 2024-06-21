@@ -19,20 +19,20 @@ type _GridColumnClass struct {
 // An interface definition for the [GridColumn] class.
 type IGridColumn interface {
 	objc.IObject
-	CellAtIndex(index int) GridCell
 	MergeCellsInRange(range_ foundation.Range)
-	GridView() GridView
-	IsHidden() bool
-	SetHidden(value bool)
-	XPlacement() GridCellPlacement
-	SetXPlacement(value GridCellPlacement)
+	CellAtIndex(index int) GridCell
 	Width() float64
 	SetWidth(value float64)
+	IsHidden() bool
+	SetHidden(value bool)
+	LeadingPadding() float64
+	SetLeadingPadding(value float64)
+	GridView() GridView
+	XPlacement() GridCellPlacement
+	SetXPlacement(value GridCellPlacement)
 	TrailingPadding() float64
 	SetTrailingPadding(value float64)
 	NumberOfCells() int
-	LeadingPadding() float64
-	SetLeadingPadding(value float64)
 }
 
 // A column within a grid view. [Full Topic]
@@ -70,6 +70,13 @@ func (g_ GridColumn) Init() GridColumn {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639752-mergecellsinrange?language=objc
+func (g_ GridColumn) MergeCellsInRange(range_ foundation.Range) {
+	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInRange:"), range_)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639683-cellatindex?language=objc
 func (g_ GridColumn) CellAtIndex(index int) GridCell {
 	rv := objc.Call[GridCell](g_, objc.Sel("cellAtIndex:"), index)
@@ -78,17 +85,17 @@ func (g_ GridColumn) CellAtIndex(index int) GridCell {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639752-mergecellsinrange?language=objc
-func (g_ GridColumn) MergeCellsInRange(range_ foundation.Range) {
-	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInRange:"), range_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639679-width?language=objc
+func (g_ GridColumn) Width() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("width"))
+	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639675-gridview?language=objc
-func (g_ GridColumn) GridView() GridView {
-	rv := objc.Call[GridView](g_, objc.Sel("gridView"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639679-width?language=objc
+func (g_ GridColumn) SetWidth(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setWidth:"), value)
 }
 
 //	[Full Topic]
@@ -108,6 +115,29 @@ func (g_ GridColumn) SetHidden(value bool) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639769-leadingpadding?language=objc
+func (g_ GridColumn) LeadingPadding() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("leadingPadding"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639769-leadingpadding?language=objc
+func (g_ GridColumn) SetLeadingPadding(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setLeadingPadding:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639675-gridview?language=objc
+func (g_ GridColumn) GridView() GridView {
+	rv := objc.Call[GridView](g_, objc.Sel("gridView"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639663-xplacement?language=objc
 func (g_ GridColumn) XPlacement() GridCellPlacement {
 	rv := objc.Call[GridCellPlacement](g_, objc.Sel("xPlacement"))
@@ -119,21 +149,6 @@ func (g_ GridColumn) XPlacement() GridCellPlacement {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639663-xplacement?language=objc
 func (g_ GridColumn) SetXPlacement(value GridCellPlacement) {
 	objc.Call[objc.Void](g_, objc.Sel("setXPlacement:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639679-width?language=objc
-func (g_ GridColumn) Width() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("width"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639679-width?language=objc
-func (g_ GridColumn) SetWidth(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setWidth:"), value)
 }
 
 //	[Full Topic]
@@ -157,19 +172,4 @@ func (g_ GridColumn) SetTrailingPadding(value float64) {
 func (g_ GridColumn) NumberOfCells() int {
 	rv := objc.Call[int](g_, objc.Sel("numberOfCells"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639769-leadingpadding?language=objc
-func (g_ GridColumn) LeadingPadding() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("leadingPadding"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcolumn/1639769-leadingpadding?language=objc
-func (g_ GridColumn) SetLeadingPadding(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setLeadingPadding:"), value)
 }

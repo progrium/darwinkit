@@ -18,17 +18,17 @@ type _RenderPassSampleBufferAttachmentDescriptorClass struct {
 // An interface definition for the [RenderPassSampleBufferAttachmentDescriptor] class.
 type IRenderPassSampleBufferAttachmentDescriptor interface {
 	objc.IObject
+	EndOfVertexSampleIndex() uint
+	SetEndOfVertexSampleIndex(value uint)
 	StartOfVertexSampleIndex() uint
 	SetStartOfVertexSampleIndex(value uint)
+	EndOfFragmentSampleIndex() uint
+	SetEndOfFragmentSampleIndex(value uint)
+	StartOfFragmentSampleIndex() uint
+	SetStartOfFragmentSampleIndex(value uint)
 	SampleBuffer() CounterSampleBufferObject
 	SetSampleBuffer(value PCounterSampleBuffer)
 	SetSampleBufferObject(valueObject objc.IObject)
-	StartOfFragmentSampleIndex() uint
-	SetStartOfFragmentSampleIndex(value uint)
-	EndOfVertexSampleIndex() uint
-	SetEndOfVertexSampleIndex(value uint)
-	EndOfFragmentSampleIndex() uint
-	SetEndOfFragmentSampleIndex(value uint)
 }
 
 // A description of where to store GPU counter information at the start and end of a render pass. [Full Topic]
@@ -64,6 +64,21 @@ func (r_ RenderPassSampleBufferAttachmentDescriptor) Init() RenderPassSampleBuff
 	return rv
 }
 
+// The index the Metal device object should use to store GPU counters when ending the render pass’s vertex stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081770-endofvertexsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) EndOfVertexSampleIndex() uint {
+	rv := objc.Call[uint](r_, objc.Sel("endOfVertexSampleIndex"))
+	return rv
+}
+
+// The index the Metal device object should use to store GPU counters when ending the render pass’s vertex stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081770-endofvertexsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) SetEndOfVertexSampleIndex(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setEndOfVertexSampleIndex:"), value)
+}
+
 // The index the Metal device object should use to store GPU counters when starting the render pass’s vertex stage. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081772-startofvertexsampleindex?language=objc
@@ -77,6 +92,36 @@ func (r_ RenderPassSampleBufferAttachmentDescriptor) StartOfVertexSampleIndex() 
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081772-startofvertexsampleindex?language=objc
 func (r_ RenderPassSampleBufferAttachmentDescriptor) SetStartOfVertexSampleIndex(value uint) {
 	objc.Call[objc.Void](r_, objc.Sel("setStartOfVertexSampleIndex:"), value)
+}
+
+// The index the Metal device object should use to store GPU counters when ending the render pass’s fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081769-endoffragmentsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) EndOfFragmentSampleIndex() uint {
+	rv := objc.Call[uint](r_, objc.Sel("endOfFragmentSampleIndex"))
+	return rv
+}
+
+// The index the Metal device object should use to store GPU counters when ending the render pass’s fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081769-endoffragmentsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) SetEndOfFragmentSampleIndex(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setEndOfFragmentSampleIndex:"), value)
+}
+
+// The index the Metal device object should use to store GPU counters when starting the render pass’s fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081771-startoffragmentsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) StartOfFragmentSampleIndex() uint {
+	rv := objc.Call[uint](r_, objc.Sel("startOfFragmentSampleIndex"))
+	return rv
+}
+
+// The index the Metal device object should use to store GPU counters when starting the render pass’s fragment stage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081771-startoffragmentsampleindex?language=objc
+func (r_ RenderPassSampleBufferAttachmentDescriptor) SetStartOfFragmentSampleIndex(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setStartOfFragmentSampleIndex:"), value)
 }
 
 // A specialized memory buffer that the GPU uses to store its counter data during the render pass. [Full Topic]
@@ -100,49 +145,4 @@ func (r_ RenderPassSampleBufferAttachmentDescriptor) SetSampleBuffer(value PCoun
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081752-samplebuffer?language=objc
 func (r_ RenderPassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](r_, objc.Sel("setSampleBuffer:"), valueObject)
-}
-
-// The index the Metal device object should use to store GPU counters when starting the render pass’s fragment stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081771-startoffragmentsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) StartOfFragmentSampleIndex() uint {
-	rv := objc.Call[uint](r_, objc.Sel("startOfFragmentSampleIndex"))
-	return rv
-}
-
-// The index the Metal device object should use to store GPU counters when starting the render pass’s fragment stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081771-startoffragmentsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) SetStartOfFragmentSampleIndex(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setStartOfFragmentSampleIndex:"), value)
-}
-
-// The index the Metal device object should use to store GPU counters when ending the render pass’s vertex stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081770-endofvertexsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) EndOfVertexSampleIndex() uint {
-	rv := objc.Call[uint](r_, objc.Sel("endOfVertexSampleIndex"))
-	return rv
-}
-
-// The index the Metal device object should use to store GPU counters when ending the render pass’s vertex stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081770-endofvertexsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) SetEndOfVertexSampleIndex(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setEndOfVertexSampleIndex:"), value)
-}
-
-// The index the Metal device object should use to store GPU counters when ending the render pass’s fragment stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081769-endoffragmentsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) EndOfFragmentSampleIndex() uint {
-	rv := objc.Call[uint](r_, objc.Sel("endOfFragmentSampleIndex"))
-	return rv
-}
-
-// The index the Metal device object should use to store GPU counters when ending the render pass’s fragment stage. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081769-endoffragmentsampleindex?language=objc
-func (r_ RenderPassSampleBufferAttachmentDescriptor) SetEndOfFragmentSampleIndex(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setEndOfFragmentSampleIndex:"), value)
 }

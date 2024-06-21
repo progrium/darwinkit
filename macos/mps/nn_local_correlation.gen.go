@@ -19,14 +19,14 @@ type _NNLocalCorrelationClass struct {
 // An interface definition for the [NNLocalCorrelation] class.
 type INNLocalCorrelation interface {
 	INNReduceBinary
-	WindowInY() uint
-	SetWindowInY(value uint)
-	WindowInX() uint
-	SetWindowInX(value uint)
 	StrideInX() uint
 	SetStrideInX(value uint)
 	StrideInY() uint
 	SetStrideInY(value uint)
+	WindowInX() uint
+	SetWindowInX(value uint)
+	WindowInY() uint
+	SetWindowInY(value uint)
 }
 
 //	[Full Topic]
@@ -53,21 +53,6 @@ func (n_ NNLocalCorrelation) InitWithDevice(device metal.PDevice) NNLocalCorrela
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131875-initwithdevice?language=objc
 func NewNNLocalCorrelationWithDevice(device metal.PDevice) NNLocalCorrelation {
 	instance := NNLocalCorrelationClass.Alloc().InitWithDevice(device)
-	instance.Autorelease()
-	return instance
-}
-
-func (n_ NNLocalCorrelation) InitWithDeviceWindowInXWindowInYStrideInXStrideInY(device metal.PDevice, windowInX uint, windowInY uint, strideInX uint, strideInY uint) NNLocalCorrelation {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNLocalCorrelation](n_, objc.Sel("initWithDevice:windowInX:windowInY:strideInX:strideInY:"), po0, windowInX, windowInY, strideInX, strideInY)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131876-initwithdevice?language=objc
-func NewNNLocalCorrelationWithDeviceWindowInXWindowInYStrideInXStrideInY(device metal.PDevice, windowInX uint, windowInY uint, strideInX uint, strideInY uint) NNLocalCorrelation {
-	instance := NNLocalCorrelationClass.Alloc().InitWithDeviceWindowInXWindowInYStrideInXStrideInY(device, windowInX, windowInY, strideInX, strideInY)
 	instance.Autorelease()
 	return instance
 }
@@ -109,36 +94,6 @@ func NNLocalCorrelation_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDe
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131880-windowiny?language=objc
-func (n_ NNLocalCorrelation) WindowInY() uint {
-	rv := objc.Call[uint](n_, objc.Sel("windowInY"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131880-windowiny?language=objc
-func (n_ NNLocalCorrelation) SetWindowInY(value uint) {
-	objc.Call[objc.Void](n_, objc.Sel("setWindowInY:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131879-windowinx?language=objc
-func (n_ NNLocalCorrelation) WindowInX() uint {
-	rv := objc.Call[uint](n_, objc.Sel("windowInX"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131879-windowinx?language=objc
-func (n_ NNLocalCorrelation) SetWindowInX(value uint) {
-	objc.Call[objc.Void](n_, objc.Sel("setWindowInX:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131877-strideinx?language=objc
 func (n_ NNLocalCorrelation) StrideInX() uint {
 	rv := objc.Call[uint](n_, objc.Sel("strideInX"))
@@ -165,4 +120,34 @@ func (n_ NNLocalCorrelation) StrideInY() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131878-strideiny?language=objc
 func (n_ NNLocalCorrelation) SetStrideInY(value uint) {
 	objc.Call[objc.Void](n_, objc.Sel("setStrideInY:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131879-windowinx?language=objc
+func (n_ NNLocalCorrelation) WindowInX() uint {
+	rv := objc.Call[uint](n_, objc.Sel("windowInX"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131879-windowinx?language=objc
+func (n_ NNLocalCorrelation) SetWindowInX(value uint) {
+	objc.Call[objc.Void](n_, objc.Sel("setWindowInX:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131880-windowiny?language=objc
+func (n_ NNLocalCorrelation) WindowInY() uint {
+	rv := objc.Call[uint](n_, objc.Sel("windowInY"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlocalcorrelation/3131880-windowiny?language=objc
+func (n_ NNLocalCorrelation) SetWindowInY(value uint) {
+	objc.Call[objc.Void](n_, objc.Sel("setWindowInY:"), value)
 }

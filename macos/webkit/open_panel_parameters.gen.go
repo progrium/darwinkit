@@ -18,8 +18,8 @@ type _OpenPanelParametersClass struct {
 // An interface definition for the [OpenPanelParameters] class.
 type IOpenPanelParameters interface {
 	objc.IObject
-	AllowsDirectories() bool
 	AllowsMultipleSelection() bool
+	AllowsDirectories() bool
 }
 
 // The configuration details of a file upload control in your web content. [Full Topic]
@@ -55,18 +55,18 @@ func (o_ OpenPanelParameters) Init() OpenPanelParameters {
 	return rv
 }
 
-// A Boolean value that indicates whether the file upload control supports the selection of directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkopenpanelparameters/2937920-allowsdirectories?language=objc
-func (o_ OpenPanelParameters) AllowsDirectories() bool {
-	rv := objc.Call[bool](o_, objc.Sel("allowsDirectories"))
-	return rv
-}
-
 // A Boolean value that indicates whether the file upload control supports multiple files. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkopenpanelparameters/1639524-allowsmultipleselection?language=objc
 func (o_ OpenPanelParameters) AllowsMultipleSelection() bool {
 	rv := objc.Call[bool](o_, objc.Sel("allowsMultipleSelection"))
+	return rv
+}
+
+// A Boolean value that indicates whether the file upload control supports the selection of directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkopenpanelparameters/2937920-allowsdirectories?language=objc
+func (o_ OpenPanelParameters) AllowsDirectories() bool {
+	rv := objc.Call[bool](o_, objc.Sel("allowsDirectories"))
 	return rv
 }

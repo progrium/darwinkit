@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient?language=objc
 type PTextFinderClient interface {
 	// optional
-	ReplaceCharactersInRangeWithString(range_ foundation.Range, string_ string)
-	HasReplaceCharactersInRangeWithString() bool
+	DidReplaceCharacters()
+	HasDidReplaceCharacters() bool
 
 	// optional
-	ShouldReplaceCharactersInRangesWithStrings(ranges []foundation.Value, strings []string) bool
-	HasShouldReplaceCharactersInRangesWithStrings() bool
+	ScrollRangeToVisible(range_ foundation.Range)
+	HasScrollRangeToVisible() bool
 
 	// optional
 	DrawCharactersInRangeForContentView(range_ foundation.Range, view View)
@@ -32,28 +32,28 @@ type PTextFinderClient interface {
 	HasStringLength() bool
 
 	// optional
-	RectsForCharacterRange(range_ foundation.Range) []foundation.Value
-	HasRectsForCharacterRange() bool
+	ShouldReplaceCharactersInRangesWithStrings(ranges []foundation.Value, strings []string) bool
+	HasShouldReplaceCharactersInRangesWithStrings() bool
 
 	// optional
-	ScrollRangeToVisible(range_ foundation.Range)
-	HasScrollRangeToVisible() bool
+	ReplaceCharactersInRangeWithString(range_ foundation.Range, string_ string)
+	HasReplaceCharactersInRangeWithString() bool
+
+	// optional
+	RectsForCharacterRange(range_ foundation.Range) []foundation.Value
+	HasRectsForCharacterRange() bool
 
 	// optional
 	ContentViewAtIndexEffectiveCharacterRange(index uint, outRange foundation.RangePointer) View
 	HasContentViewAtIndexEffectiveCharacterRange() bool
 
 	// optional
-	DidReplaceCharacters()
-	HasDidReplaceCharacters() bool
-
-	// optional
-	AllowsMultipleSelection() bool
-	HasAllowsMultipleSelection() bool
-
-	// optional
 	IsEditable() bool
 	HasIsEditable() bool
+
+	// optional
+	FirstSelectedRange() foundation.Range
+	HasFirstSelectedRange() bool
 
 	// optional
 	VisibleCharacterRanges() []foundation.Value
@@ -64,8 +64,12 @@ type PTextFinderClient interface {
 	HasIsSelectable() bool
 
 	// optional
-	FirstSelectedRange() foundation.Range
-	HasFirstSelectedRange() bool
+	String() string
+	HasString() bool
+
+	// optional
+	AllowsMultipleSelection() bool
+	HasAllowsMultipleSelection() bool
 
 	// optional
 	SetSelectedRanges(value []foundation.Value)
@@ -74,10 +78,6 @@ type PTextFinderClient interface {
 	// optional
 	SelectedRanges() []foundation.Value
 	HasSelectedRanges() bool
-
-	// optional
-	String() string
-	HasString() bool
 }
 
 // ensure impl type implements protocol interface
@@ -88,27 +88,26 @@ type TextFinderClientObject struct {
 	objc.Object
 }
 
-func (t_ TextFinderClientObject) HasReplaceCharactersInRangeWithString() bool {
-	return t_.RespondsToSelector(objc.Sel("replaceCharactersInRange:withString:"))
+func (t_ TextFinderClientObject) HasDidReplaceCharacters() bool {
+	return t_.RespondsToSelector(objc.Sel("didReplaceCharacters"))
 }
 
-// Replaces the text in the specified range with the new string. [Full Topic]
+// Specifies whether text characters were replaced. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1527702-replacecharactersinrange?language=objc
-func (t_ TextFinderClientObject) ReplaceCharactersInRangeWithString(range_ foundation.Range, string_ string) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withString:"), range_, string_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1534301-didreplacecharacters?language=objc
+func (t_ TextFinderClientObject) DidReplaceCharacters() {
+	objc.Call[objc.Void](t_, objc.Sel("didReplaceCharacters"))
 }
 
-func (t_ TextFinderClientObject) HasShouldReplaceCharactersInRangesWithStrings() bool {
-	return t_.RespondsToSelector(objc.Sel("shouldReplaceCharactersInRanges:withStrings:"))
+func (t_ TextFinderClientObject) HasScrollRangeToVisible() bool {
+	return t_.RespondsToSelector(objc.Sel("scrollRangeToVisible:"))
 }
 
-// Returns whether the specified strings should be replaced. [Full Topic]
+// Scrolls the specified range such that it is visible. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1529811-shouldreplacecharactersinranges?language=objc
-func (t_ TextFinderClientObject) ShouldReplaceCharactersInRangesWithStrings(ranges []foundation.Value, strings []string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("shouldReplaceCharactersInRanges:withStrings:"), ranges, strings)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1526989-scrollrangetovisible?language=objc
+func (t_ TextFinderClientObject) ScrollRangeToVisible(range_ foundation.Range) {
+	objc.Call[objc.Void](t_, objc.Sel("scrollRangeToVisible:"), range_)
 }
 
 func (t_ TextFinderClientObject) HasDrawCharactersInRangeForContentView() bool {
@@ -146,6 +145,29 @@ func (t_ TextFinderClientObject) StringLength() uint {
 	return rv
 }
 
+func (t_ TextFinderClientObject) HasShouldReplaceCharactersInRangesWithStrings() bool {
+	return t_.RespondsToSelector(objc.Sel("shouldReplaceCharactersInRanges:withStrings:"))
+}
+
+// Returns whether the specified strings should be replaced. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1529811-shouldreplacecharactersinranges?language=objc
+func (t_ TextFinderClientObject) ShouldReplaceCharactersInRangesWithStrings(ranges []foundation.Value, strings []string) bool {
+	rv := objc.Call[bool](t_, objc.Sel("shouldReplaceCharactersInRanges:withStrings:"), ranges, strings)
+	return rv
+}
+
+func (t_ TextFinderClientObject) HasReplaceCharactersInRangeWithString() bool {
+	return t_.RespondsToSelector(objc.Sel("replaceCharactersInRange:withString:"))
+}
+
+// Replaces the text in the specified range with the new string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1527702-replacecharactersinrange?language=objc
+func (t_ TextFinderClientObject) ReplaceCharactersInRangeWithString(range_ foundation.Range, string_ string) {
+	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withString:"), range_, string_)
+}
+
 func (t_ TextFinderClientObject) HasRectsForCharacterRange() bool {
 	return t_.RespondsToSelector(objc.Sel("rectsForCharacterRange:"))
 }
@@ -156,17 +178,6 @@ func (t_ TextFinderClientObject) HasRectsForCharacterRange() bool {
 func (t_ TextFinderClientObject) RectsForCharacterRange(range_ foundation.Range) []foundation.Value {
 	rv := objc.Call[[]foundation.Value](t_, objc.Sel("rectsForCharacterRange:"), range_)
 	return rv
-}
-
-func (t_ TextFinderClientObject) HasScrollRangeToVisible() bool {
-	return t_.RespondsToSelector(objc.Sel("scrollRangeToVisible:"))
-}
-
-// Scrolls the specified range such that it is visible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1526989-scrollrangetovisible?language=objc
-func (t_ TextFinderClientObject) ScrollRangeToVisible(range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("scrollRangeToVisible:"), range_)
 }
 
 func (t_ TextFinderClientObject) HasContentViewAtIndexEffectiveCharacterRange() bool {
@@ -181,29 +192,6 @@ func (t_ TextFinderClientObject) ContentViewAtIndexEffectiveCharacterRange(index
 	return rv
 }
 
-func (t_ TextFinderClientObject) HasDidReplaceCharacters() bool {
-	return t_.RespondsToSelector(objc.Sel("didReplaceCharacters"))
-}
-
-// Specifies whether text characters were replaced. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1534301-didreplacecharacters?language=objc
-func (t_ TextFinderClientObject) DidReplaceCharacters() {
-	objc.Call[objc.Void](t_, objc.Sel("didReplaceCharacters"))
-}
-
-func (t_ TextFinderClientObject) HasAllowsMultipleSelection() bool {
-	return t_.RespondsToSelector(objc.Sel("allowsMultipleSelection"))
-}
-
-// Returns whether multiple items can be selected. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1530815-allowsmultipleselection?language=objc
-func (t_ TextFinderClientObject) AllowsMultipleSelection() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsMultipleSelection"))
-	return rv
-}
-
 func (t_ TextFinderClientObject) HasIsEditable() bool {
 	return t_.RespondsToSelector(objc.Sel("isEditable"))
 }
@@ -213,6 +201,18 @@ func (t_ TextFinderClientObject) HasIsEditable() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1528515-editable?language=objc
 func (t_ TextFinderClientObject) IsEditable() bool {
 	rv := objc.Call[bool](t_, objc.Sel("isEditable"))
+	return rv
+}
+
+func (t_ TextFinderClientObject) HasFirstSelectedRange() bool {
+	return t_.RespondsToSelector(objc.Sel("firstSelectedRange"))
+}
+
+// Returns the currently selected range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1526936-firstselectedrange?language=objc
+func (t_ TextFinderClientObject) FirstSelectedRange() foundation.Range {
+	rv := objc.Call[foundation.Range](t_, objc.Sel("firstSelectedRange"))
 	return rv
 }
 
@@ -240,15 +240,27 @@ func (t_ TextFinderClientObject) IsSelectable() bool {
 	return rv
 }
 
-func (t_ TextFinderClientObject) HasFirstSelectedRange() bool {
-	return t_.RespondsToSelector(objc.Sel("firstSelectedRange"))
+func (t_ TextFinderClientObject) HasString() bool {
+	return t_.RespondsToSelector(objc.Sel("string"))
 }
 
-// Returns the currently selected range. [Full Topic]
+// Allows the client to specify a single string for searching. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1526936-firstselectedrange?language=objc
-func (t_ TextFinderClientObject) FirstSelectedRange() foundation.Range {
-	rv := objc.Call[foundation.Range](t_, objc.Sel("firstSelectedRange"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1529462-string?language=objc
+func (t_ TextFinderClientObject) String() string {
+	rv := objc.Call[string](t_, objc.Sel("string"))
+	return rv
+}
+
+func (t_ TextFinderClientObject) HasAllowsMultipleSelection() bool {
+	return t_.RespondsToSelector(objc.Sel("allowsMultipleSelection"))
+}
+
+// Returns whether multiple items can be selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1530815-allowsmultipleselection?language=objc
+func (t_ TextFinderClientObject) AllowsMultipleSelection() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsMultipleSelection"))
 	return rv
 }
 
@@ -272,17 +284,5 @@ func (t_ TextFinderClientObject) HasSelectedRanges() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1524696-selectedranges?language=objc
 func (t_ TextFinderClientObject) SelectedRanges() []foundation.Value {
 	rv := objc.Call[[]foundation.Value](t_, objc.Sel("selectedRanges"))
-	return rv
-}
-
-func (t_ TextFinderClientObject) HasString() bool {
-	return t_.RespondsToSelector(objc.Sel("string"))
-}
-
-// Allows the client to specify a single string for searching. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1529462-string?language=objc
-func (t_ TextFinderClientObject) String() string {
-	rv := objc.Call[string](t_, objc.Sel("string"))
 	return rv
 }

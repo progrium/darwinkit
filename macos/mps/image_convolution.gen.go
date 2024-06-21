@@ -19,10 +19,10 @@ type _ImageConvolutionClass struct {
 // An interface definition for the [ImageConvolution] class.
 type IImageConvolution interface {
 	IUnaryImageKernel
+	KernelHeight() uint
 	Bias() float32
 	SetBias(value float32)
 	KernelWidth() uint
-	KernelHeight() uint
 }
 
 // A filter that convolves an image with a given kernel of odd width and height. [Full Topic]
@@ -103,6 +103,14 @@ func ImageConvolution_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevi
 	return instance
 }
 
+// The height of the filter window. Must be an odd number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618842-kernelheight?language=objc
+func (i_ ImageConvolution) KernelHeight() uint {
+	rv := objc.Call[uint](i_, objc.Sel("kernelHeight"))
+	return rv
+}
+
 // The value added to a convolved pixel before it is converted back to its intended storage format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618841-bias?language=objc
@@ -123,13 +131,5 @@ func (i_ ImageConvolution) SetBias(value float32) {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618868-kernelwidth?language=objc
 func (i_ ImageConvolution) KernelWidth() uint {
 	rv := objc.Call[uint](i_, objc.Sel("kernelWidth"))
-	return rv
-}
-
-// The height of the filter window. Must be an odd number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618842-kernelheight?language=objc
-func (i_ ImageConvolution) KernelHeight() uint {
-	rv := objc.Call[uint](i_, objc.Sel("kernelHeight"))
 	return rv
 }

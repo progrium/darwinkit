@@ -19,8 +19,8 @@ type _MeasurementClass struct {
 type IMeasurement interface {
 	objc.IObject
 	MeasurementByConvertingToUnit(unit IUnit) Measurement
-	MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement
 	CanBeConvertedToUnit(unit IUnit) bool
+	MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement
 	MeasurementByAddingMeasurement(measurement IMeasurement) Measurement
 	DoubleValue() float64
 	Unit() objc.Object
@@ -81,19 +81,19 @@ func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
 	return rv
 }
 
-// Returns a new measurement by subtracting the specified measurement from the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1642872-measurementbysubtractingmeasurem?language=objc
-func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.Call[Measurement](m_, objc.Sel("measurementBySubtractingMeasurement:"), measurement)
-	return rv
-}
-
 // Indicates whether the measurement can be converted to the given unit. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1690850-canbeconvertedtounit?language=objc
 func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
 	rv := objc.Call[bool](m_, objc.Sel("canBeConvertedToUnit:"), unit)
+	return rv
+}
+
+// Returns a new measurement by subtracting the specified measurement from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1642872-measurementbysubtractingmeasurem?language=objc
+func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
+	rv := objc.Call[Measurement](m_, objc.Sel("measurementBySubtractingMeasurement:"), measurement)
 	return rv
 }
 

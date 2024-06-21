@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator?language=objc
 type PCode128BarcodeGenerator interface {
 	// optional
-	SetBarcodeHeight(value float32)
-	HasSetBarcodeHeight() bool
-
-	// optional
-	BarcodeHeight() float32
-	HasBarcodeHeight() bool
-
-	// optional
 	SetQuietSpace(value float32)
 	HasSetQuietSpace() bool
 
 	// optional
 	QuietSpace() float32
 	HasQuietSpace() bool
+
+	// optional
+	SetBarcodeHeight(value float32)
+	HasSetBarcodeHeight() bool
+
+	// optional
+	BarcodeHeight() float32
+	HasBarcodeHeight() bool
 
 	// optional
 	SetMessage(value []byte)
@@ -41,29 +41,6 @@ var _ PCode128BarcodeGenerator = (*Code128BarcodeGeneratorObject)(nil)
 // A concrete type for the [PCode128BarcodeGenerator] protocol.
 type Code128BarcodeGeneratorObject struct {
 	objc.Object
-}
-
-func (c_ Code128BarcodeGeneratorObject) HasSetBarcodeHeight() bool {
-	return c_.RespondsToSelector(objc.Sel("setBarcodeHeight:"))
-}
-
-// The height, in pixels, of the generated barcode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
-func (c_ Code128BarcodeGeneratorObject) SetBarcodeHeight(value float32) {
-	objc.Call[objc.Void](c_, objc.Sel("setBarcodeHeight:"), value)
-}
-
-func (c_ Code128BarcodeGeneratorObject) HasBarcodeHeight() bool {
-	return c_.RespondsToSelector(objc.Sel("barcodeHeight"))
-}
-
-// The height, in pixels, of the generated barcode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
-func (c_ Code128BarcodeGeneratorObject) BarcodeHeight() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("barcodeHeight"))
-	return rv
 }
 
 func (c_ Code128BarcodeGeneratorObject) HasSetQuietSpace() bool {
@@ -86,6 +63,29 @@ func (c_ Code128BarcodeGeneratorObject) HasQuietSpace() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228118-quietspace?language=objc
 func (c_ Code128BarcodeGeneratorObject) QuietSpace() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("quietSpace"))
+	return rv
+}
+
+func (c_ Code128BarcodeGeneratorObject) HasSetBarcodeHeight() bool {
+	return c_.RespondsToSelector(objc.Sel("setBarcodeHeight:"))
+}
+
+// The height, in pixels, of the generated barcode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
+func (c_ Code128BarcodeGeneratorObject) SetBarcodeHeight(value float32) {
+	objc.Call[objc.Void](c_, objc.Sel("setBarcodeHeight:"), value)
+}
+
+func (c_ Code128BarcodeGeneratorObject) HasBarcodeHeight() bool {
+	return c_.RespondsToSelector(objc.Sel("barcodeHeight"))
+}
+
+// The height, in pixels, of the generated barcode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
+func (c_ Code128BarcodeGeneratorObject) BarcodeHeight() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("barcodeHeight"))
 	return rv
 }
 

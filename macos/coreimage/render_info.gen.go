@@ -19,8 +19,8 @@ type _RenderInfoClass struct {
 // An interface definition for the [RenderInfo] class.
 type IRenderInfo interface {
 	objc.IObject
-	PixelsProcessed() int
 	KernelExecutionTime() foundation.TimeInterval
+	PixelsProcessed() int
 	PassCount() int
 }
 
@@ -57,19 +57,19 @@ func (r_ RenderInfo) Init() RenderInfo {
 	return rv
 }
 
-// The number of pixels the render produced executing kernels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderinfo/2919725-pixelsprocessed?language=objc
-func (r_ RenderInfo) PixelsProcessed() int {
-	rv := objc.Call[int](r_, objc.Sel("pixelsProcessed"))
-	return rv
-}
-
 // The amount of time a render spent executing kernels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderinfo/2875453-kernelexecutiontime?language=objc
 func (r_ RenderInfo) KernelExecutionTime() foundation.TimeInterval {
 	rv := objc.Call[foundation.TimeInterval](r_, objc.Sel("kernelExecutionTime"))
+	return rv
+}
+
+// The number of pixels the render produced executing kernels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderinfo/2919725-pixelsprocessed?language=objc
+func (r_ RenderInfo) PixelsProcessed() int {
+	rv := objc.Call[int](r_, objc.Sel("pixelsProcessed"))
 	return rv
 }
 

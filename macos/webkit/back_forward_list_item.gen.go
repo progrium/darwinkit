@@ -19,9 +19,9 @@ type _BackForwardListItemClass struct {
 // An interface definition for the [BackForwardListItem] class.
 type IBackForwardListItem interface {
 	objc.IObject
-	InitialURL() foundation.URL
-	Title() string
 	URL() foundation.URL
+	Title() string
+	InitialURL() foundation.URL
 }
 
 // A representation of a webpage that the web view previously visited. [Full Topic]
@@ -57,11 +57,11 @@ func (b_ BackForwardListItem) Init() BackForwardListItem {
 	return rv
 }
 
-// The source URL that originally asked the web view to load this page. [Full Topic]
+// The URL of the webpage this item represents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlistitem/1455507-initialurl?language=objc
-func (b_ BackForwardListItem) InitialURL() foundation.URL {
-	rv := objc.Call[foundation.URL](b_, objc.Sel("initialURL"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlistitem/1455513-url?language=objc
+func (b_ BackForwardListItem) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](b_, objc.Sel("URL"))
 	return rv
 }
 
@@ -73,10 +73,10 @@ func (b_ BackForwardListItem) Title() string {
 	return rv
 }
 
-// The URL of the webpage this item represents. [Full Topic]
+// The source URL that originally asked the web view to load this page. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlistitem/1455513-url?language=objc
-func (b_ BackForwardListItem) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](b_, objc.Sel("URL"))
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkbackforwardlistitem/1455507-initialurl?language=objc
+func (b_ BackForwardListItem) InitialURL() foundation.URL {
+	rv := objc.Call[foundation.URL](b_, objc.Sel("initialURL"))
 	return rv
 }

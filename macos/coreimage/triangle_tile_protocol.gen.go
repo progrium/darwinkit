@@ -20,14 +20,6 @@ type PTriangleTile interface {
 	HasWidth() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -42,6 +34,14 @@ type PTriangleTile interface {
 	// optional
 	Angle() float32
 	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -72,29 +72,6 @@ func (t_ TriangleTileObject) HasWidth() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228812-width?language=objc
 func (t_ TriangleTileObject) Width() float32 {
 	rv := objc.Call[float32](t_, objc.Sel("width"))
-	return rv
-}
-
-func (t_ TriangleTileObject) HasSetCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228810-center?language=objc
-func (t_ TriangleTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
-}
-
-func (t_ TriangleTileObject) HasCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228810-center?language=objc
-func (t_ TriangleTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
 	return rv
 }
 
@@ -141,5 +118,28 @@ func (t_ TriangleTileObject) HasAngle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228809-angle?language=objc
 func (t_ TriangleTileObject) Angle() float32 {
 	rv := objc.Call[float32](t_, objc.Sel("angle"))
+	return rv
+}
+
+func (t_ TriangleTileObject) HasSetCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228810-center?language=objc
+func (t_ TriangleTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
+}
+
+func (t_ TriangleTileObject) HasCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228810-center?language=objc
+func (t_ TriangleTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
 	return rv
 }

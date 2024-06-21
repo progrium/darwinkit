@@ -19,22 +19,22 @@ type _StencilOpDescriptorClass struct {
 // An interface definition for the [StencilOpDescriptor] class.
 type IStencilOpDescriptor interface {
 	objc.IObject
-	Strides() *foundation.Array
-	SetStrides(value *foundation.Array)
-	PaddingStyle() PaddingStyle
-	SetPaddingStyle(value PaddingStyle)
-	ExplicitPadding() *foundation.Array
-	SetExplicitPadding(value *foundation.Array)
-	BoundaryMode() PaddingMode
-	SetBoundaryMode(value PaddingMode)
 	PaddingConstant() float32
 	SetPaddingConstant(value float32)
 	Offsets() *foundation.Array
 	SetOffsets(value *foundation.Array)
-	ReductionMode() ReductionMode
-	SetReductionMode(value ReductionMode)
+	PaddingStyle() PaddingStyle
+	SetPaddingStyle(value PaddingStyle)
 	DilationRates() *foundation.Array
 	SetDilationRates(value *foundation.Array)
+	ExplicitPadding() *foundation.Array
+	SetExplicitPadding(value *foundation.Array)
+	BoundaryMode() PaddingMode
+	SetBoundaryMode(value PaddingMode)
+	ReductionMode() ReductionMode
+	SetReductionMode(value ReductionMode)
+	Strides() *foundation.Array
+	SetStrides(value *foundation.Array)
 }
 
 //	[Full Topic]
@@ -62,18 +62,6 @@ func StencilOpDescriptor_DescriptorWithOffsetsExplicitPadding(offsets *foundatio
 	return StencilOpDescriptorClass.DescriptorWithOffsetsExplicitPadding(offsets, explicitPadding)
 }
 
-func (sc _StencilOpDescriptorClass) DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode ReductionMode, offsets *foundation.Array, strides *foundation.Array, dilationRates *foundation.Array, explicitPadding *foundation.Array, boundaryMode PaddingMode, paddingStyle PaddingStyle, paddingConstant float32) StencilOpDescriptor {
-	rv := objc.Call[StencilOpDescriptor](sc, objc.Sel("descriptorWithReductionMode:offsets:strides:dilationRates:explicitPadding:boundaryMode:paddingStyle:paddingConstant:"), reductionMode, offsets, strides, dilationRates, explicitPadding, boundaryMode, paddingStyle, paddingConstant)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787611-descriptorwithreductionmode?language=objc
-func StencilOpDescriptor_DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode ReductionMode, offsets *foundation.Array, strides *foundation.Array, dilationRates *foundation.Array, explicitPadding *foundation.Array, boundaryMode PaddingMode, paddingStyle PaddingStyle, paddingConstant float32) StencilOpDescriptor {
-	return StencilOpDescriptorClass.DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode, offsets, strides, dilationRates, explicitPadding, boundaryMode, paddingStyle, paddingConstant)
-}
-
 func (sc _StencilOpDescriptorClass) DescriptorWithExplicitPadding(explicitPadding *foundation.Array) StencilOpDescriptor {
 	rv := objc.Call[StencilOpDescriptor](sc, objc.Sel("descriptorWithExplicitPadding:"), explicitPadding)
 	return rv
@@ -84,6 +72,18 @@ func (sc _StencilOpDescriptorClass) DescriptorWithExplicitPadding(explicitPaddin
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787608-descriptorwithexplicitpadding?language=objc
 func StencilOpDescriptor_DescriptorWithExplicitPadding(explicitPadding *foundation.Array) StencilOpDescriptor {
 	return StencilOpDescriptorClass.DescriptorWithExplicitPadding(explicitPadding)
+}
+
+func (sc _StencilOpDescriptorClass) DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode ReductionMode, offsets *foundation.Array, strides *foundation.Array, dilationRates *foundation.Array, explicitPadding *foundation.Array, boundaryMode PaddingMode, paddingStyle PaddingStyle, paddingConstant float32) StencilOpDescriptor {
+	rv := objc.Call[StencilOpDescriptor](sc, objc.Sel("descriptorWithReductionMode:offsets:strides:dilationRates:explicitPadding:boundaryMode:paddingStyle:paddingConstant:"), reductionMode, offsets, strides, dilationRates, explicitPadding, boundaryMode, paddingStyle, paddingConstant)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787611-descriptorwithreductionmode?language=objc
+func StencilOpDescriptor_DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode ReductionMode, offsets *foundation.Array, strides *foundation.Array, dilationRates *foundation.Array, explicitPadding *foundation.Array, boundaryMode PaddingMode, paddingStyle PaddingStyle, paddingConstant float32) StencilOpDescriptor {
+	return StencilOpDescriptorClass.DescriptorWithReductionModeOffsetsStridesDilationRatesExplicitPaddingBoundaryModePaddingStylePaddingConstant(reductionMode, offsets, strides, dilationRates, explicitPadding, boundaryMode, paddingStyle, paddingConstant)
 }
 
 func (sc _StencilOpDescriptorClass) DescriptorWithPaddingStyle(paddingStyle PaddingStyle) StencilOpDescriptor {
@@ -120,17 +120,32 @@ func (s_ StencilOpDescriptor) Init() StencilOpDescriptor {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787618-strides?language=objc
-func (s_ StencilOpDescriptor) Strides() *foundation.Array {
-	rv := objc.Call[*foundation.Array](s_, objc.Sel("strides"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787615-paddingconstant?language=objc
+func (s_ StencilOpDescriptor) PaddingConstant() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("paddingConstant"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787618-strides?language=objc
-func (s_ StencilOpDescriptor) SetStrides(value *foundation.Array) {
-	objc.Call[objc.Void](s_, objc.Sel("setStrides:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787615-paddingconstant?language=objc
+func (s_ StencilOpDescriptor) SetPaddingConstant(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setPaddingConstant:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787614-offsets?language=objc
+func (s_ StencilOpDescriptor) Offsets() *foundation.Array {
+	rv := objc.Call[*foundation.Array](s_, objc.Sel("offsets"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787614-offsets?language=objc
+func (s_ StencilOpDescriptor) SetOffsets(value *foundation.Array) {
+	objc.Call[objc.Void](s_, objc.Sel("setOffsets:"), value)
 }
 
 //	[Full Topic]
@@ -146,6 +161,21 @@ func (s_ StencilOpDescriptor) PaddingStyle() PaddingStyle {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787616-paddingstyle?language=objc
 func (s_ StencilOpDescriptor) SetPaddingStyle(value PaddingStyle) {
 	objc.Call[objc.Void](s_, objc.Sel("setPaddingStyle:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787612-dilationrates?language=objc
+func (s_ StencilOpDescriptor) DilationRates() *foundation.Array {
+	rv := objc.Call[*foundation.Array](s_, objc.Sel("dilationRates"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787612-dilationrates?language=objc
+func (s_ StencilOpDescriptor) SetDilationRates(value *foundation.Array) {
+	objc.Call[objc.Void](s_, objc.Sel("setDilationRates:"), value)
 }
 
 //	[Full Topic]
@@ -180,36 +210,6 @@ func (s_ StencilOpDescriptor) SetBoundaryMode(value PaddingMode) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787615-paddingconstant?language=objc
-func (s_ StencilOpDescriptor) PaddingConstant() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("paddingConstant"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787615-paddingconstant?language=objc
-func (s_ StencilOpDescriptor) SetPaddingConstant(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setPaddingConstant:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787614-offsets?language=objc
-func (s_ StencilOpDescriptor) Offsets() *foundation.Array {
-	rv := objc.Call[*foundation.Array](s_, objc.Sel("offsets"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787614-offsets?language=objc
-func (s_ StencilOpDescriptor) SetOffsets(value *foundation.Array) {
-	objc.Call[objc.Void](s_, objc.Sel("setOffsets:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787617-reductionmode?language=objc
 func (s_ StencilOpDescriptor) ReductionMode() ReductionMode {
 	rv := objc.Call[ReductionMode](s_, objc.Sel("reductionMode"))
@@ -225,15 +225,15 @@ func (s_ StencilOpDescriptor) SetReductionMode(value ReductionMode) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787612-dilationrates?language=objc
-func (s_ StencilOpDescriptor) DilationRates() *foundation.Array {
-	rv := objc.Call[*foundation.Array](s_, objc.Sel("dilationRates"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787618-strides?language=objc
+func (s_ StencilOpDescriptor) Strides() *foundation.Array {
+	rv := objc.Call[*foundation.Array](s_, objc.Sel("strides"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787612-dilationrates?language=objc
-func (s_ StencilOpDescriptor) SetDilationRates(value *foundation.Array) {
-	objc.Call[objc.Void](s_, objc.Sel("setDilationRates:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphstencilopdescriptor/3787618-strides?language=objc
+func (s_ StencilOpDescriptor) SetStrides(value *foundation.Array) {
+	objc.Call[objc.Void](s_, objc.Sel("setStrides:"), value)
 }

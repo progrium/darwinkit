@@ -19,9 +19,9 @@ type _MappingModelClass struct {
 // An interface definition for the [MappingModel] class.
 type IMappingModel interface {
 	objc.IObject
+	EntityMappingsByName() map[string]EntityMapping
 	EntityMappings() []EntityMapping
 	SetEntityMappings(value []IEntityMapping)
-	EntityMappingsByName() map[string]EntityMapping
 }
 
 // A model instance that specifies how to map a model from a source to a destination managed object model. [Full Topic]
@@ -101,6 +101,14 @@ func MappingModel_InferredMappingModelForSourceModelDestinationModelError(source
 	return MappingModelClass.InferredMappingModelForSourceModelDestinationModelError(sourceModel, destinationModel, error)
 }
 
+// The entity mappings for the mapping model, keyed by name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506179-entitymappingsbyname?language=objc
+func (m_ MappingModel) EntityMappingsByName() map[string]EntityMapping {
+	rv := objc.Call[map[string]EntityMapping](m_, objc.Sel("entityMappingsByName"))
+	return rv
+}
+
 // The entity mappings for the mapping model. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506196-entitymappings?language=objc
@@ -114,12 +122,4 @@ func (m_ MappingModel) EntityMappings() []EntityMapping {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506196-entitymappings?language=objc
 func (m_ MappingModel) SetEntityMappings(value []IEntityMapping) {
 	objc.Call[objc.Void](m_, objc.Sel("setEntityMappings:"), value)
-}
-
-// The entity mappings for the mapping model, keyed by name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506179-entitymappingsbyname?language=objc
-func (m_ MappingModel) EntityMappingsByName() map[string]EntityMapping {
-	rv := objc.Call[map[string]EntityMapping](m_, objc.Sel("entityMappingsByName"))
-	return rv
 }

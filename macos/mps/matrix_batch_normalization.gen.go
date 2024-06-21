@@ -19,21 +19,21 @@ type _MatrixBatchNormalizationClass struct {
 // An interface definition for the [MatrixBatchNormalization] class.
 type IMatrixBatchNormalization interface {
 	IMatrixUnaryKernel
-	NeuronParameterC() float32
+	NeuronParameterA() float32
+	NeuronType() CNNNeuronType
 	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterB() float32
 	EncodeToCommandBufferInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultMatrix IMatrix)
-	NeuronParameterA() float32
-	NeuronParameterB() float32
-	NeuronType() CNNNeuronType
-	SourceInputFeatureChannels() uint
-	SetSourceInputFeatureChannels(value uint)
-	Epsilon() float32
-	SetEpsilon(value float32)
+	NeuronParameterC() float32
 	ComputeStatistics() bool
 	SetComputeStatistics(value bool)
+	Epsilon() float32
+	SetEpsilon(value float32)
 	SourceNumberOfFeatureVectors() uint
 	SetSourceNumberOfFeatureVectors(value uint)
+	SourceInputFeatureChannels() uint
+	SetSourceInputFeatureChannels(value uint)
 }
 
 // A batch normalization kernel that operates on matrices. [Full Topic]
@@ -49,21 +49,6 @@ func MatrixBatchNormalizationFrom(ptr unsafe.Pointer) MatrixBatchNormalization {
 	}
 }
 
-func (m_ MatrixBatchNormalization) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixBatchNormalization {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixBatchNormalization](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980731-copywithzone?language=objc
-func MatrixBatchNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixBatchNormalization {
-	instance := MatrixBatchNormalizationClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixBatchNormalization) InitWithDevice(device metal.PDevice) MatrixBatchNormalization {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixBatchNormalization](m_, objc.Sel("initWithDevice:"), po0)
@@ -75,6 +60,21 @@ func (m_ MatrixBatchNormalization) InitWithDevice(device metal.PDevice) MatrixBa
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980735-initwithdevice?language=objc
 func NewMatrixBatchNormalizationWithDevice(device metal.PDevice) MatrixBatchNormalization {
 	instance := MatrixBatchNormalizationClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixBatchNormalization) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixBatchNormalization {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixBatchNormalization](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980731-copywithzone?language=objc
+func MatrixBatchNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixBatchNormalization {
+	instance := MatrixBatchNormalizationClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }
@@ -101,9 +101,17 @@ func (m_ MatrixBatchNormalization) Init() MatrixBatchNormalization {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980738-neuronparameterc?language=objc
-func (m_ MatrixBatchNormalization) NeuronParameterC() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980736-neuronparametera?language=objc
+func (m_ MatrixBatchNormalization) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980739-neurontype?language=objc
+func (m_ MatrixBatchNormalization) NeuronType() CNNNeuronType {
+	rv := objc.Call[CNNNeuronType](m_, objc.Sel("neuronType"))
 	return rv
 }
 
@@ -112,6 +120,14 @@ func (m_ MatrixBatchNormalization) NeuronParameterC() float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980740-setneurontype?language=objc
 func (m_ MatrixBatchNormalization) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980737-neuronparameterb?language=objc
+func (m_ MatrixBatchNormalization) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
+	return rv
 }
 
 //	[Full Topic]
@@ -131,56 +147,10 @@ func (m_ MatrixBatchNormalization) EncodeToCommandBufferObjectInputMatrixMeanVec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980736-neuronparametera?language=objc
-func (m_ MatrixBatchNormalization) NeuronParameterA() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980738-neuronparameterc?language=objc
+func (m_ MatrixBatchNormalization) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980737-neuronparameterb?language=objc
-func (m_ MatrixBatchNormalization) NeuronParameterB() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980739-neurontype?language=objc
-func (m_ MatrixBatchNormalization) NeuronType() CNNNeuronType {
-	rv := objc.Call[CNNNeuronType](m_, objc.Sel("neuronType"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980741-sourceinputfeaturechannels?language=objc
-func (m_ MatrixBatchNormalization) SourceInputFeatureChannels() uint {
-	rv := objc.Call[uint](m_, objc.Sel("sourceInputFeatureChannels"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980741-sourceinputfeaturechannels?language=objc
-func (m_ MatrixBatchNormalization) SetSourceInputFeatureChannels(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceInputFeatureChannels:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980733-epsilon?language=objc
-func (m_ MatrixBatchNormalization) Epsilon() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("epsilon"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980733-epsilon?language=objc
-func (m_ MatrixBatchNormalization) SetEpsilon(value float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setEpsilon:"), value)
 }
 
 //	[Full Topic]
@@ -200,6 +170,21 @@ func (m_ MatrixBatchNormalization) SetComputeStatistics(value bool) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980733-epsilon?language=objc
+func (m_ MatrixBatchNormalization) Epsilon() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("epsilon"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980733-epsilon?language=objc
+func (m_ MatrixBatchNormalization) SetEpsilon(value float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setEpsilon:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980742-sourcenumberoffeaturevectors?language=objc
 func (m_ MatrixBatchNormalization) SourceNumberOfFeatureVectors() uint {
 	rv := objc.Call[uint](m_, objc.Sel("sourceNumberOfFeatureVectors"))
@@ -211,4 +196,19 @@ func (m_ MatrixBatchNormalization) SourceNumberOfFeatureVectors() uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980742-sourcenumberoffeaturevectors?language=objc
 func (m_ MatrixBatchNormalization) SetSourceNumberOfFeatureVectors(value uint) {
 	objc.Call[objc.Void](m_, objc.Sel("setSourceNumberOfFeatureVectors:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980741-sourceinputfeaturechannels?language=objc
+func (m_ MatrixBatchNormalization) SourceInputFeatureChannels() uint {
+	rv := objc.Call[uint](m_, objc.Sel("sourceInputFeatureChannels"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalization/2980741-sourceinputfeaturechannels?language=objc
+func (m_ MatrixBatchNormalization) SetSourceInputFeatureChannels(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setSourceInputFeatureChannels:"), value)
 }

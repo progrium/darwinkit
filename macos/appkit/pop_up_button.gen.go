@@ -19,39 +19,39 @@ type _PopUpButtonClass struct {
 // An interface definition for the [PopUpButton] class.
 type IPopUpButton interface {
 	IButton
-	IndexOfItemWithTargetAndAction(target objc.IObject, actionSelector objc.Selector) int
-	ItemWithTitle(title string) MenuItem
+	ItemAtIndex(index int) MenuItem
+	IndexOfItemWithTag(tag int) int
+	InsertItemWithTitleAtIndex(title string, index int)
+	RemoveAllItems()
 	RemoveItemAtIndex(index int)
 	RemoveItemWithTitle(title string)
-	IndexOfItemWithTitle(title string) int
-	IndexOfItemWithTag(tag int) int
-	AddItemsWithTitles(itemTitles []string)
-	ItemTitleAtIndex(index int) string
-	IndexOfItem(item IMenuItem) int
-	RemoveAllItems()
-	SynchronizeTitleAndSelectedItem()
 	SelectItemWithTag(tag int) bool
-	ItemAtIndex(index int) MenuItem
-	IndexOfItemWithRepresentedObject(obj objc.IObject) int
 	AddItemWithTitle(title string)
 	SelectItemWithTitle(title string)
-	SelectItemAtIndex(index int)
-	InsertItemWithTitleAtIndex(title string, index int)
+	ItemWithTitle(title string) MenuItem
+	IndexOfItemWithRepresentedObject(obj objc.IObject) int
+	ItemTitleAtIndex(index int) string
 	SelectItem(item IMenuItem)
-	ItemTitles() []string
-	TitleOfSelectedItem() string
-	PreferredEdge() foundation.RectEdge
-	SetPreferredEdge(value foundation.RectEdge)
-	NumberOfItems() int
-	ItemArray() []MenuItem
-	PullsDown() bool
-	SetPullsDown(value bool)
+	IndexOfItem(item IMenuItem) int
+	AddItemsWithTitles(itemTitles []string)
+	SelectItemAtIndex(index int)
+	SynchronizeTitleAndSelectedItem()
+	IndexOfItemWithTargetAndAction(target objc.IObject, actionSelector objc.Selector) int
+	IndexOfItemWithTitle(title string) int
 	IndexOfSelectedItem() int
+	SelectedItem() MenuItem
+	ItemArray() []MenuItem
 	AutoenablesItems() bool
 	SetAutoenablesItems(value bool)
-	SelectedItem() MenuItem
+	PullsDown() bool
+	SetPullsDown(value bool)
 	LastItem() MenuItem
+	NumberOfItems() int
 	SelectedTag() int
+	TitleOfSelectedItem() string
+	ItemTitles() []string
+	PreferredEdge() foundation.RectEdge
+	SetPreferredEdge(value foundation.RectEdge)
 }
 
 // A control for selecting an item from a list. [Full Topic]
@@ -101,16 +101,16 @@ func (p_ PopUpButton) Init() PopUpButton {
 	return rv
 }
 
-func (pc _PopUpButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.Call[PopUpButton](pc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
+func (pc _PopUpButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
+	rv := objc.Call[PopUpButton](pc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
-// Creates a standard push button with a title and image. [Full Topic]
+// Creates a standard checkbox with the title you specify. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc
-func PopUpButton_ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	return PopUpButtonClass.ButtonWithTitleImageTargetAction(title, image, target, action)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
+func PopUpButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
+	return PopUpButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
@@ -123,18 +123,6 @@ func (pc _PopUpButtonClass) ButtonWithTitleTargetAction(title string, target obj
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc
 func PopUpButton_ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
 	return PopUpButtonClass.ButtonWithTitleTargetAction(title, target, action)
-}
-
-func (pc _PopUpButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.Call[PopUpButton](pc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
-	return rv
-}
-
-// Creates a standard checkbox with the title you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
-func PopUpButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	return PopUpButtonClass.CheckboxWithTitleTargetAction(title, target, action)
 }
 
 func (pc _PopUpButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) PopUpButton {
@@ -175,20 +163,34 @@ func NewPopUpButtonWithFrame(frameRect foundation.Rect) PopUpButton {
 	return instance
 }
 
-// Returns the index of the menu item with the specified target and action. [Full Topic]
+// Returns the menu item at the specified index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535747-indexofitemwithtarget?language=objc
-func (p_ PopUpButton) IndexOfItemWithTargetAndAction(target objc.IObject, actionSelector objc.Selector) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTarget:andAction:"), target, actionSelector)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535860-itematindex?language=objc
+func (p_ PopUpButton) ItemAtIndex(index int) MenuItem {
+	rv := objc.Call[MenuItem](p_, objc.Sel("itemAtIndex:"), index)
 	return rv
 }
 
-// Returns the menu item with the specified title. [Full Topic]
+// Returns the index of the menu item with the specified tag. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1524680-itemwithtitle?language=objc
-func (p_ PopUpButton) ItemWithTitle(title string) MenuItem {
-	rv := objc.Call[MenuItem](p_, objc.Sel("itemWithTitle:"), title)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534140-indexofitemwithtag?language=objc
+func (p_ PopUpButton) IndexOfItemWithTag(tag int) int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTag:"), tag)
 	return rv
+}
+
+// Inserts an item at the specified position in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1533750-insertitemwithtitle?language=objc
+func (p_ PopUpButton) InsertItemWithTitleAtIndex(title string, index int) {
+	objc.Call[objc.Void](p_, objc.Sel("insertItemWithTitle:atIndex:"), title, index)
+}
+
+// Removes all items in the receiver’s item menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534430-removeallitems?language=objc
+func (p_ PopUpButton) RemoveAllItems() {
+	objc.Call[objc.Void](p_, objc.Sel("removeAllItems"))
 }
 
 // Removes the item at the specified index. [Full Topic]
@@ -205,80 +207,11 @@ func (p_ PopUpButton) RemoveItemWithTitle(title string) {
 	objc.Call[objc.Void](p_, objc.Sel("removeItemWithTitle:"), title)
 }
 
-// Returns the index of the item with the specified title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535406-indexofitemwithtitle?language=objc
-func (p_ PopUpButton) IndexOfItemWithTitle(title string) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTitle:"), title)
-	return rv
-}
-
-// Returns the index of the menu item with the specified tag. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534140-indexofitemwithtag?language=objc
-func (p_ PopUpButton) IndexOfItemWithTag(tag int) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTag:"), tag)
-	return rv
-}
-
-// Adds multiple items to the end of the menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532518-additemswithtitles?language=objc
-func (p_ PopUpButton) AddItemsWithTitles(itemTitles []string) {
-	objc.Call[objc.Void](p_, objc.Sel("addItemsWithTitles:"), itemTitles)
-}
-
-// Returns the title of the item at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1524908-itemtitleatindex?language=objc
-func (p_ PopUpButton) ItemTitleAtIndex(index int) string {
-	rv := objc.Call[string](p_, objc.Sel("itemTitleAtIndex:"), index)
-	return rv
-}
-
-// Returns the index of the specified menu item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1529708-indexofitem?language=objc
-func (p_ PopUpButton) IndexOfItem(item IMenuItem) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), item)
-	return rv
-}
-
-// Removes all items in the receiver’s item menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534430-removeallitems?language=objc
-func (p_ PopUpButton) RemoveAllItems() {
-	objc.Call[objc.Void](p_, objc.Sel("removeAllItems"))
-}
-
-// Ensures that the item being displayed by the receiver agrees with the selected item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1527124-synchronizetitleandselecteditem?language=objc
-func (p_ PopUpButton) SynchronizeTitleAndSelectedItem() {
-	objc.Call[objc.Void](p_, objc.Sel("synchronizeTitleAndSelectedItem"))
-}
-
 // Selects the menu item with the specified tag. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1528181-selectitemwithtag?language=objc
 func (p_ PopUpButton) SelectItemWithTag(tag int) bool {
 	rv := objc.Call[bool](p_, objc.Sel("selectItemWithTag:"), tag)
-	return rv
-}
-
-// Returns the menu item at the specified index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535860-itematindex?language=objc
-func (p_ PopUpButton) ItemAtIndex(index int) MenuItem {
-	rv := objc.Call[MenuItem](p_, objc.Sel("itemAtIndex:"), index)
-	return rv
-}
-
-// Returns the index of the menu item that holds the specified represented object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1533993-indexofitemwithrepresentedobject?language=objc
-func (p_ PopUpButton) IndexOfItemWithRepresentedObject(obj objc.IObject) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithRepresentedObject:"), obj)
 	return rv
 }
 
@@ -296,18 +229,28 @@ func (p_ PopUpButton) SelectItemWithTitle(title string) {
 	objc.Call[objc.Void](p_, objc.Sel("selectItemWithTitle:"), title)
 }
 
-// Selects the item in the menu at the specified index. [Full Topic]
+// Returns the menu item with the specified title. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534906-selectitematindex?language=objc
-func (p_ PopUpButton) SelectItemAtIndex(index int) {
-	objc.Call[objc.Void](p_, objc.Sel("selectItemAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1524680-itemwithtitle?language=objc
+func (p_ PopUpButton) ItemWithTitle(title string) MenuItem {
+	rv := objc.Call[MenuItem](p_, objc.Sel("itemWithTitle:"), title)
+	return rv
 }
 
-// Inserts an item at the specified position in the menu. [Full Topic]
+// Returns the index of the menu item that holds the specified represented object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1533750-insertitemwithtitle?language=objc
-func (p_ PopUpButton) InsertItemWithTitleAtIndex(title string, index int) {
-	objc.Call[objc.Void](p_, objc.Sel("insertItemWithTitle:atIndex:"), title, index)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1533993-indexofitemwithrepresentedobject?language=objc
+func (p_ PopUpButton) IndexOfItemWithRepresentedObject(obj objc.IObject) int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithRepresentedObject:"), obj)
+	return rv
+}
+
+// Returns the title of the item at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1524908-itemtitleatindex?language=objc
+func (p_ PopUpButton) ItemTitleAtIndex(index int) string {
+	rv := objc.Call[string](p_, objc.Sel("itemTitleAtIndex:"), index)
+	return rv
 }
 
 // Selects the specified menu item. [Full Topic]
@@ -317,42 +260,64 @@ func (p_ PopUpButton) SelectItem(item IMenuItem) {
 	objc.Call[objc.Void](p_, objc.Sel("selectItem:"), item)
 }
 
-// An array of strings corresponding to the titles of the items in the menu. [Full Topic]
+// Returns the index of the specified menu item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1529271-itemtitles?language=objc
-func (p_ PopUpButton) ItemTitles() []string {
-	rv := objc.Call[[]string](p_, objc.Sel("itemTitles"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1529708-indexofitem?language=objc
+func (p_ PopUpButton) IndexOfItem(item IMenuItem) int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), item)
 	return rv
 }
 
-// The title of the item that was last selected by the user. [Full Topic]
+// Adds multiple items to the end of the menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534038-titleofselecteditem?language=objc
-func (p_ PopUpButton) TitleOfSelectedItem() string {
-	rv := objc.Call[string](p_, objc.Sel("titleOfSelectedItem"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532518-additemswithtitles?language=objc
+func (p_ PopUpButton) AddItemsWithTitles(itemTitles []string) {
+	objc.Call[objc.Void](p_, objc.Sel("addItemsWithTitles:"), itemTitles)
+}
+
+// Selects the item in the menu at the specified index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534906-selectitematindex?language=objc
+func (p_ PopUpButton) SelectItemAtIndex(index int) {
+	objc.Call[objc.Void](p_, objc.Sel("selectItemAtIndex:"), index)
+}
+
+// Ensures that the item being displayed by the receiver agrees with the selected item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1527124-synchronizetitleandselecteditem?language=objc
+func (p_ PopUpButton) SynchronizeTitleAndSelectedItem() {
+	objc.Call[objc.Void](p_, objc.Sel("synchronizeTitleAndSelectedItem"))
+}
+
+// Returns the index of the menu item with the specified target and action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535747-indexofitemwithtarget?language=objc
+func (p_ PopUpButton) IndexOfItemWithTargetAndAction(target objc.IObject, actionSelector objc.Selector) int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTarget:andAction:"), target, actionSelector)
 	return rv
 }
 
-// The edge of the button on which to display the menu when screen space is constrained. [Full Topic]
+// Returns the index of the item with the specified title. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535345-preferrededge?language=objc
-func (p_ PopUpButton) PreferredEdge() foundation.RectEdge {
-	rv := objc.Call[foundation.RectEdge](p_, objc.Sel("preferredEdge"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535406-indexofitemwithtitle?language=objc
+func (p_ PopUpButton) IndexOfItemWithTitle(title string) int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfItemWithTitle:"), title)
 	return rv
 }
 
-// The edge of the button on which to display the menu when screen space is constrained. [Full Topic]
+// The index of the item that was last selected by the user. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535345-preferrededge?language=objc
-func (p_ PopUpButton) SetPreferredEdge(value foundation.RectEdge) {
-	objc.Call[objc.Void](p_, objc.Sel("setPreferredEdge:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534134-indexofselecteditem?language=objc
+func (p_ PopUpButton) IndexOfSelectedItem() int {
+	rv := objc.Call[int](p_, objc.Sel("indexOfSelectedItem"))
+	return rv
 }
 
-// The number of items in the menu. [Full Topic]
+// The menu item that was last selected by the user. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534959-numberofitems?language=objc
-func (p_ PopUpButton) NumberOfItems() int {
-	rv := objc.Call[int](p_, objc.Sel("numberOfItems"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1526197-selecteditem?language=objc
+func (p_ PopUpButton) SelectedItem() MenuItem {
+	rv := objc.Call[MenuItem](p_, objc.Sel("selectedItem"))
 	return rv
 }
 
@@ -361,29 +326,6 @@ func (p_ PopUpButton) NumberOfItems() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535361-itemarray?language=objc
 func (p_ PopUpButton) ItemArray() []MenuItem {
 	rv := objc.Call[[]MenuItem](p_, objc.Sel("itemArray"))
-	return rv
-}
-
-// A Boolean value indicating whether the button displays a pull-down or pop-up menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532070-pullsdown?language=objc
-func (p_ PopUpButton) PullsDown() bool {
-	rv := objc.Call[bool](p_, objc.Sel("pullsDown"))
-	return rv
-}
-
-// A Boolean value indicating whether the button displays a pull-down or pop-up menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532070-pullsdown?language=objc
-func (p_ PopUpButton) SetPullsDown(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setPullsDown:"), value)
-}
-
-// The index of the item that was last selected by the user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534134-indexofselecteditem?language=objc
-func (p_ PopUpButton) IndexOfSelectedItem() int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfSelectedItem"))
 	return rv
 }
 
@@ -402,12 +344,19 @@ func (p_ PopUpButton) SetAutoenablesItems(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setAutoenablesItems:"), value)
 }
 
-// The menu item that was last selected by the user. [Full Topic]
+// A Boolean value indicating whether the button displays a pull-down or pop-up menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1526197-selecteditem?language=objc
-func (p_ PopUpButton) SelectedItem() MenuItem {
-	rv := objc.Call[MenuItem](p_, objc.Sel("selectedItem"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532070-pullsdown?language=objc
+func (p_ PopUpButton) PullsDown() bool {
+	rv := objc.Call[bool](p_, objc.Sel("pullsDown"))
 	return rv
+}
+
+// A Boolean value indicating whether the button displays a pull-down or pop-up menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1532070-pullsdown?language=objc
+func (p_ PopUpButton) SetPullsDown(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setPullsDown:"), value)
 }
 
 // The last item in the menu. [Full Topic]
@@ -418,10 +367,49 @@ func (p_ PopUpButton) LastItem() MenuItem {
 	return rv
 }
 
+// The number of items in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534959-numberofitems?language=objc
+func (p_ PopUpButton) NumberOfItems() int {
+	rv := objc.Call[int](p_, objc.Sel("numberOfItems"))
+	return rv
+}
+
 // The tag of the menu item that was last selected by the user. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1577134-selectedtag?language=objc
 func (p_ PopUpButton) SelectedTag() int {
 	rv := objc.Call[int](p_, objc.Sel("selectedTag"))
 	return rv
+}
+
+// The title of the item that was last selected by the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1534038-titleofselecteditem?language=objc
+func (p_ PopUpButton) TitleOfSelectedItem() string {
+	rv := objc.Call[string](p_, objc.Sel("titleOfSelectedItem"))
+	return rv
+}
+
+// An array of strings corresponding to the titles of the items in the menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1529271-itemtitles?language=objc
+func (p_ PopUpButton) ItemTitles() []string {
+	rv := objc.Call[[]string](p_, objc.Sel("itemTitles"))
+	return rv
+}
+
+// The edge of the button on which to display the menu when screen space is constrained. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535345-preferrededge?language=objc
+func (p_ PopUpButton) PreferredEdge() foundation.RectEdge {
+	rv := objc.Call[foundation.RectEdge](p_, objc.Sel("preferredEdge"))
+	return rv
+}
+
+// The edge of the button on which to display the menu when screen space is constrained. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1535345-preferrededge?language=objc
+func (p_ PopUpButton) SetPreferredEdge(value foundation.RectEdge) {
+	objc.Call[objc.Void](p_, objc.Sel("setPreferredEdge:"), value)
 }

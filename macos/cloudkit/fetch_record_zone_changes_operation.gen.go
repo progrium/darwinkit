@@ -19,22 +19,22 @@ type _FetchRecordZoneChangesOperationClass struct {
 // An interface definition for the [FetchRecordZoneChangesOperation] class.
 type IFetchRecordZoneChangesOperation interface {
 	IDatabaseOperation
-	RecordWasChangedBlock() func(recordID RecordID, record Record, error foundation.Error)
-	SetRecordWasChangedBlock(value func(recordID RecordID, record Record, error foundation.Error))
-	RecordZoneFetchCompletionBlock() func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)
-	SetRecordZoneFetchCompletionBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error))
+	RecordZoneIDs() []RecordZoneID
+	SetRecordZoneIDs(value []IRecordZoneID)
 	RecordWithIDWasDeletedBlock() func(recordID RecordID, recordType RecordType)
 	SetRecordWithIDWasDeletedBlock(value func(recordID RecordID, recordType RecordType))
+	RecordWasChangedBlock() func(recordID RecordID, record Record, error foundation.Error)
+	SetRecordWasChangedBlock(value func(recordID RecordID, record Record, error foundation.Error))
 	FetchRecordZoneChangesCompletionBlock() func(operationError foundation.Error)
 	SetFetchRecordZoneChangesCompletionBlock(value func(operationError foundation.Error))
 	ConfigurationsByRecordZoneID() foundation.Dictionary
 	SetConfigurationsByRecordZoneID(value foundation.Dictionary)
 	FetchAllChanges() bool
 	SetFetchAllChanges(value bool)
+	RecordZoneFetchCompletionBlock() func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)
+	SetRecordZoneFetchCompletionBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error))
 	RecordZoneChangeTokensUpdatedBlock() func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte)
 	SetRecordZoneChangeTokensUpdatedBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte))
-	RecordZoneIDs() []RecordZoneID
-	SetRecordZoneIDs(value []IRecordZoneID)
 }
 
 // An operation that fetches record zone changes. [Full Topic]
@@ -84,34 +84,19 @@ func NewFetchRecordZoneChangesOperation() FetchRecordZoneChangesOperation {
 	return FetchRecordZoneChangesOperationClass.New()
 }
 
-//	[Full Topic]
+// The IDs of the record zones that contain the records to fetch. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/3793698-recordwaschangedblock?language=objc
-func (f_ FetchRecordZoneChangesOperation) RecordWasChangedBlock() func(recordID RecordID, record Record, error foundation.Error) {
-	rv := objc.Call[func(recordID RecordID, record Record, error foundation.Error)](f_, objc.Sel("recordWasChangedBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640463-recordzoneids?language=objc
+func (f_ FetchRecordZoneChangesOperation) RecordZoneIDs() []RecordZoneID {
+	rv := objc.Call[[]RecordZoneID](f_, objc.Sel("recordZoneIDs"))
 	return rv
 }
 
-//	[Full Topic]
+// The IDs of the record zones that contain the records to fetch. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/3793698-recordwaschangedblock?language=objc
-func (f_ FetchRecordZoneChangesOperation) SetRecordWasChangedBlock(value func(recordID RecordID, record Record, error foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setRecordWasChangedBlock:"), value)
-}
-
-// The block to execute when a record zone’s fetch finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640411-recordzonefetchcompletionblock?language=objc
-func (f_ FetchRecordZoneChangesOperation) RecordZoneFetchCompletionBlock() func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error) {
-	rv := objc.Call[func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)](f_, objc.Sel("recordZoneFetchCompletionBlock"))
-	return rv
-}
-
-// The block to execute when a record zone’s fetch finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640411-recordzonefetchcompletionblock?language=objc
-func (f_ FetchRecordZoneChangesOperation) SetRecordZoneFetchCompletionBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneFetchCompletionBlock:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640463-recordzoneids?language=objc
+func (f_ FetchRecordZoneChangesOperation) SetRecordZoneIDs(value []IRecordZoneID) {
+	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneIDs:"), value)
 }
 
 // The block to execute when a record no longer exists. [Full Topic]
@@ -127,6 +112,21 @@ func (f_ FetchRecordZoneChangesOperation) RecordWithIDWasDeletedBlock() func(rec
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640470-recordwithidwasdeletedblock?language=objc
 func (f_ FetchRecordZoneChangesOperation) SetRecordWithIDWasDeletedBlock(value func(recordID RecordID, recordType RecordType)) {
 	objc.Call[objc.Void](f_, objc.Sel("setRecordWithIDWasDeletedBlock:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/3793698-recordwaschangedblock?language=objc
+func (f_ FetchRecordZoneChangesOperation) RecordWasChangedBlock() func(recordID RecordID, record Record, error foundation.Error) {
+	rv := objc.Call[func(recordID RecordID, record Record, error foundation.Error)](f_, objc.Sel("recordWasChangedBlock"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/3793698-recordwaschangedblock?language=objc
+func (f_ FetchRecordZoneChangesOperation) SetRecordWasChangedBlock(value func(recordID RecordID, record Record, error foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setRecordWasChangedBlock:"), value)
 }
 
 // The block to execute when the operation finishes. [Full Topic]
@@ -174,6 +174,21 @@ func (f_ FetchRecordZoneChangesOperation) SetFetchAllChanges(value bool) {
 	objc.Call[objc.Void](f_, objc.Sel("setFetchAllChanges:"), value)
 }
 
+// The block to execute when a record zone’s fetch finishes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640411-recordzonefetchcompletionblock?language=objc
+func (f_ FetchRecordZoneChangesOperation) RecordZoneFetchCompletionBlock() func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error) {
+	rv := objc.Call[func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)](f_, objc.Sel("recordZoneFetchCompletionBlock"))
+	return rv
+}
+
+// The block to execute when a record zone’s fetch finishes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640411-recordzonefetchcompletionblock?language=objc
+func (f_ FetchRecordZoneChangesOperation) SetRecordZoneFetchCompletionBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte, moreComing bool, recordZoneError foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneFetchCompletionBlock:"), value)
+}
+
 // The block to execute when the change token updates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640422-recordzonechangetokensupdatedblo?language=objc
@@ -187,19 +202,4 @@ func (f_ FetchRecordZoneChangesOperation) RecordZoneChangeTokensUpdatedBlock() f
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640422-recordzonechangetokensupdatedblo?language=objc
 func (f_ FetchRecordZoneChangesOperation) SetRecordZoneChangeTokensUpdatedBlock(value func(recordZoneID RecordZoneID, serverChangeToken ServerChangeToken, clientChangeTokenData []byte)) {
 	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneChangeTokensUpdatedBlock:"), value)
-}
-
-// The IDs of the record zones that contain the records to fetch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640463-recordzoneids?language=objc
-func (f_ FetchRecordZoneChangesOperation) RecordZoneIDs() []RecordZoneID {
-	rv := objc.Call[[]RecordZoneID](f_, objc.Sel("recordZoneIDs"))
-	return rv
-}
-
-// The IDs of the record zones that contain the records to fetch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/1640463-recordzoneids?language=objc
-func (f_ FetchRecordZoneChangesOperation) SetRecordZoneIDs(value []IRecordZoneID) {
-	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneIDs:"), value)
 }

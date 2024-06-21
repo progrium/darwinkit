@@ -18,9 +18,9 @@ type _ConditionClass struct {
 // An interface definition for the [Condition] class.
 type ICondition interface {
 	objc.IObject
-	Broadcast()
 	Signal()
 	Wait()
+	Broadcast()
 	WaitUntilDate(limit IDate) bool
 	Name() string
 	SetName(value string)
@@ -59,13 +59,6 @@ func (c_ Condition) Init() Condition {
 	return rv
 }
 
-// Signals the condition, waking up all threads waiting on it. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscondition/1415094-broadcast?language=objc
-func (c_ Condition) Broadcast() {
-	objc.Call[objc.Void](c_, objc.Sel("broadcast"))
-}
-
 // Signals the condition, waking up one thread waiting on it. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscondition/1415724-signal?language=objc
@@ -78,6 +71,13 @@ func (c_ Condition) Signal() {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscondition/1407950-wait?language=objc
 func (c_ Condition) Wait() {
 	objc.Call[objc.Void](c_, objc.Sel("wait"))
+}
+
+// Signals the condition, waking up all threads waiting on it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscondition/1415094-broadcast?language=objc
+func (c_ Condition) Broadcast() {
+	objc.Call[objc.Void](c_, objc.Sel("broadcast"))
 }
 
 // Blocks the current thread until the condition is signaled or the specified time limit is reached. [Full Topic]

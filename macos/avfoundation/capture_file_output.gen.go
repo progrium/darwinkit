@@ -20,25 +20,25 @@ type _CaptureFileOutputClass struct {
 // An interface definition for the [CaptureFileOutput] class.
 type ICaptureFileOutput interface {
 	ICaptureOutput
+	PauseRecording()
 	StartRecordingToOutputFileURLRecordingDelegate(outputFileURL foundation.IURL, delegate PCaptureFileOutputRecordingDelegate)
 	StartRecordingToOutputFileURLRecordingDelegateObject(outputFileURL foundation.IURL, delegateObject objc.IObject)
-	ResumeRecording()
-	PauseRecording()
 	StopRecording()
-	MinFreeDiskSpaceLimit() int64
-	SetMinFreeDiskSpaceLimit(value int64)
-	IsRecording() bool
-	RecordedFileSize() int64
+	ResumeRecording()
 	IsRecordingPaused() bool
+	MaxRecordedFileSize() int64
+	SetMaxRecordedFileSize(value int64)
 	MaxRecordedDuration() coremedia.Time
 	SetMaxRecordedDuration(value coremedia.Time)
-	RecordedDuration() coremedia.Time
+	IsRecording() bool
 	Delegate() CaptureFileOutputDelegateObject
 	SetDelegate(value PCaptureFileOutputDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	MinFreeDiskSpaceLimit() int64
+	SetMinFreeDiskSpaceLimit(value int64)
+	RecordedDuration() coremedia.Time
 	OutputFileURL() foundation.URL
-	MaxRecordedFileSize() int64
-	SetMaxRecordedFileSize(value int64)
+	RecordedFileSize() int64
 }
 
 // The abstract superclass for capture outputs that can record captured data to a file. [Full Topic]
@@ -74,6 +74,13 @@ func (c_ CaptureFileOutput) Init() CaptureFileOutput {
 	return rv
 }
 
+// Pauses recording to the current output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1386806-pauserecording?language=objc
+func (c_ CaptureFileOutput) PauseRecording() {
+	objc.Call[objc.Void](c_, objc.Sel("pauseRecording"))
+}
+
 // Starts recording media to the specified output URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387224-startrecordingtooutputfileurl?language=objc
@@ -89,20 +96,6 @@ func (c_ CaptureFileOutput) StartRecordingToOutputFileURLRecordingDelegateObject
 	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:recordingDelegate:"), outputFileURL, delegateObject)
 }
 
-// Resumes recording to the current output file after it was previously paused using [avfoundation/avcapturefileoutput/pauserecording]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1389849-resumerecording?language=objc
-func (c_ CaptureFileOutput) ResumeRecording() {
-	objc.Call[objc.Void](c_, objc.Sel("resumeRecording"))
-}
-
-// Pauses recording to the current output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1386806-pauserecording?language=objc
-func (c_ CaptureFileOutput) PauseRecording() {
-	objc.Call[objc.Void](c_, objc.Sel("pauseRecording"))
-}
-
 // Tells the receiver to stop recording to the current file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1389485-stoprecording?language=objc
@@ -110,35 +103,11 @@ func (c_ CaptureFileOutput) StopRecording() {
 	objc.Call[objc.Void](c_, objc.Sel("stopRecording"))
 }
 
-// The minimum amount of free space, in bytes, required for recording to continue on a given volume. [Full Topic]
+// Resumes recording to the current output file after it was previously paused using pauseRecording. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387523-minfreediskspacelimit?language=objc
-func (c_ CaptureFileOutput) MinFreeDiskSpaceLimit() int64 {
-	rv := objc.Call[int64](c_, objc.Sel("minFreeDiskSpaceLimit"))
-	return rv
-}
-
-// The minimum amount of free space, in bytes, required for recording to continue on a given volume. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387523-minfreediskspacelimit?language=objc
-func (c_ CaptureFileOutput) SetMinFreeDiskSpaceLimit(value int64) {
-	objc.Call[objc.Void](c_, objc.Sel("setMinFreeDiskSpaceLimit:"), value)
-}
-
-// Indicates whether recording is in progress. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387539-recording?language=objc
-func (c_ CaptureFileOutput) IsRecording() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isRecording"))
-	return rv
-}
-
-// Indicates the size, in bytes, of the data recorded to the current output file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1386933-recordedfilesize?language=objc
-func (c_ CaptureFileOutput) RecordedFileSize() int64 {
-	rv := objc.Call[int64](c_, objc.Sel("recordedFileSize"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1389849-resumerecording?language=objc
+func (c_ CaptureFileOutput) ResumeRecording() {
+	objc.Call[objc.Void](c_, objc.Sel("resumeRecording"))
 }
 
 // Indicates whether recording to the current output file is paused. [Full Topic]
@@ -147,6 +116,21 @@ func (c_ CaptureFileOutput) RecordedFileSize() int64 {
 func (c_ CaptureFileOutput) IsRecordingPaused() bool {
 	rv := objc.Call[bool](c_, objc.Sel("isRecordingPaused"))
 	return rv
+}
+
+// The maximum size, in bytes, of the data that should be recorded by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387684-maxrecordedfilesize?language=objc
+func (c_ CaptureFileOutput) MaxRecordedFileSize() int64 {
+	rv := objc.Call[int64](c_, objc.Sel("maxRecordedFileSize"))
+	return rv
+}
+
+// The maximum size, in bytes, of the data that should be recorded by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387684-maxrecordedfilesize?language=objc
+func (c_ CaptureFileOutput) SetMaxRecordedFileSize(value int64) {
+	objc.Call[objc.Void](c_, objc.Sel("setMaxRecordedFileSize:"), value)
 }
 
 // The longest duration allowed for the recording. [Full Topic]
@@ -164,11 +148,11 @@ func (c_ CaptureFileOutput) SetMaxRecordedDuration(value coremedia.Time) {
 	objc.Call[objc.Void](c_, objc.Sel("setMaxRecordedDuration:"), value)
 }
 
-// Indicates the duration of the media recorded to the current output file. [Full Topic]
+// Indicates whether recording is in progress. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1389028-recordedduration?language=objc
-func (c_ CaptureFileOutput) RecordedDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](c_, objc.Sel("recordedDuration"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387539-recording?language=objc
+func (c_ CaptureFileOutput) IsRecording() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isRecording"))
 	return rv
 }
 
@@ -195,6 +179,29 @@ func (c_ CaptureFileOutput) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }
 
+// The minimum amount of free space, in bytes, required for recording to continue on a given volume. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387523-minfreediskspacelimit?language=objc
+func (c_ CaptureFileOutput) MinFreeDiskSpaceLimit() int64 {
+	rv := objc.Call[int64](c_, objc.Sel("minFreeDiskSpaceLimit"))
+	return rv
+}
+
+// The minimum amount of free space, in bytes, required for recording to continue on a given volume. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387523-minfreediskspacelimit?language=objc
+func (c_ CaptureFileOutput) SetMinFreeDiskSpaceLimit(value int64) {
+	objc.Call[objc.Void](c_, objc.Sel("setMinFreeDiskSpaceLimit:"), value)
+}
+
+// Indicates the duration of the media recorded to the current output file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1389028-recordedduration?language=objc
+func (c_ CaptureFileOutput) RecordedDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](c_, objc.Sel("recordedDuration"))
+	return rv
+}
+
 // The URL to which output is directed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1388576-outputfileurl?language=objc
@@ -203,17 +210,10 @@ func (c_ CaptureFileOutput) OutputFileURL() foundation.URL {
 	return rv
 }
 
-// The maximum size, in bytes, of the data that should be recorded by the receiver. [Full Topic]
+// Indicates the size, in bytes, of the data recorded to the current output file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387684-maxrecordedfilesize?language=objc
-func (c_ CaptureFileOutput) MaxRecordedFileSize() int64 {
-	rv := objc.Call[int64](c_, objc.Sel("maxRecordedFileSize"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1386933-recordedfilesize?language=objc
+func (c_ CaptureFileOutput) RecordedFileSize() int64 {
+	rv := objc.Call[int64](c_, objc.Sel("recordedFileSize"))
 	return rv
-}
-
-// The maximum size, in bytes, of the data that should be recorded by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387684-maxrecordedfilesize?language=objc
-func (c_ CaptureFileOutput) SetMaxRecordedFileSize(value int64) {
-	objc.Call[objc.Void](c_, objc.Sel("setMaxRecordedFileSize:"), value)
 }

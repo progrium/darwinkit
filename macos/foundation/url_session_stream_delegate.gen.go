@@ -11,81 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate?language=objc
 type PURLSessionStreamDelegate interface {
 	// optional
-	URLSessionBetterRouteDiscoveredForStreamTask(session URLSession, streamTask URLSessionStreamTask)
-	HasURLSessionBetterRouteDiscoveredForStreamTask() bool
-
-	// optional
-	URLSessionReadClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask)
-	HasURLSessionReadClosedForStreamTask() bool
-
-	// optional
-	URLSessionStreamTaskDidBecomeInputStreamOutputStream(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream)
-	HasURLSessionStreamTaskDidBecomeInputStreamOutputStream() bool
-
-	// optional
 	URLSessionWriteClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask)
 	HasURLSessionWriteClosedForStreamTask() bool
 }
 
 // A delegate implementation builder for the [PURLSessionStreamDelegate] protocol.
 type URLSessionStreamDelegate struct {
-	_URLSessionBetterRouteDiscoveredForStreamTask         func(session URLSession, streamTask URLSessionStreamTask)
-	_URLSessionReadClosedForStreamTask                    func(session URLSession, streamTask URLSessionStreamTask)
-	_URLSessionStreamTaskDidBecomeInputStreamOutputStream func(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream)
-	_URLSessionWriteClosedForStreamTask                   func(session URLSession, streamTask URLSessionStreamTask)
+	_URLSessionWriteClosedForStreamTask func(session URLSession, streamTask URLSessionStreamTask)
 }
 
-func (di *URLSessionStreamDelegate) HasURLSessionBetterRouteDiscoveredForStreamTask() bool {
-	return di._URLSessionBetterRouteDiscoveredForStreamTask != nil
-}
-
-// Tells the delegate that a better route to the host has been detected for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1407527-urlsession?language=objc
-func (di *URLSessionStreamDelegate) SetURLSessionBetterRouteDiscoveredForStreamTask(f func(session URLSession, streamTask URLSessionStreamTask)) {
-	di._URLSessionBetterRouteDiscoveredForStreamTask = f
-}
-
-// Tells the delegate that a better route to the host has been detected for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1407527-urlsession?language=objc
-func (di *URLSessionStreamDelegate) URLSessionBetterRouteDiscoveredForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	di._URLSessionBetterRouteDiscoveredForStreamTask(session, streamTask)
-}
-func (di *URLSessionStreamDelegate) HasURLSessionReadClosedForStreamTask() bool {
-	return di._URLSessionReadClosedForStreamTask != nil
-}
-
-// Tells the delegate that the read side of the underlying socket has been closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411501-urlsession?language=objc
-func (di *URLSessionStreamDelegate) SetURLSessionReadClosedForStreamTask(f func(session URLSession, streamTask URLSessionStreamTask)) {
-	di._URLSessionReadClosedForStreamTask = f
-}
-
-// Tells the delegate that the read side of the underlying socket has been closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411501-urlsession?language=objc
-func (di *URLSessionStreamDelegate) URLSessionReadClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	di._URLSessionReadClosedForStreamTask(session, streamTask)
-}
-func (di *URLSessionStreamDelegate) HasURLSessionStreamTaskDidBecomeInputStreamOutputStream() bool {
-	return di._URLSessionStreamTaskDidBecomeInputStreamOutputStream != nil
-}
-
-// Tells the delegate that the stream task has been completed as a result of the stream task calling the [foundation/nsurlsessionstreamtask/capturestreams] method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411625-urlsession?language=objc
-func (di *URLSessionStreamDelegate) SetURLSessionStreamTaskDidBecomeInputStreamOutputStream(f func(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream)) {
-	di._URLSessionStreamTaskDidBecomeInputStreamOutputStream = f
-}
-
-// Tells the delegate that the stream task has been completed as a result of the stream task calling the [foundation/nsurlsessionstreamtask/capturestreams] method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411625-urlsession?language=objc
-func (di *URLSessionStreamDelegate) URLSessionStreamTaskDidBecomeInputStreamOutputStream(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream) {
-	di._URLSessionStreamTaskDidBecomeInputStreamOutputStream(session, streamTask, inputStream, outputStream)
-}
 func (di *URLSessionStreamDelegate) HasURLSessionWriteClosedForStreamTask() bool {
 	return di._URLSessionWriteClosedForStreamTask != nil
 }
@@ -110,39 +44,6 @@ var _ PURLSessionStreamDelegate = (*URLSessionStreamDelegateObject)(nil)
 // A concrete type for the [PURLSessionStreamDelegate] protocol.
 type URLSessionStreamDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLSessionStreamDelegateObject) HasURLSessionBetterRouteDiscoveredForStreamTask() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:betterRouteDiscoveredForStreamTask:"))
-}
-
-// Tells the delegate that a better route to the host has been detected for the stream. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1407527-urlsession?language=objc
-func (u_ URLSessionStreamDelegateObject) URLSessionBetterRouteDiscoveredForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:betterRouteDiscoveredForStreamTask:"), session, streamTask)
-}
-
-func (u_ URLSessionStreamDelegateObject) HasURLSessionReadClosedForStreamTask() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:readClosedForStreamTask:"))
-}
-
-// Tells the delegate that the read side of the underlying socket has been closed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411501-urlsession?language=objc
-func (u_ URLSessionStreamDelegateObject) URLSessionReadClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:readClosedForStreamTask:"), session, streamTask)
-}
-
-func (u_ URLSessionStreamDelegateObject) HasURLSessionStreamTaskDidBecomeInputStreamOutputStream() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:streamTask:didBecomeInputStream:outputStream:"))
-}
-
-// Tells the delegate that the stream task has been completed as a result of the stream task calling the [foundation/nsurlsessionstreamtask/capturestreams] method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411625-urlsession?language=objc
-func (u_ URLSessionStreamDelegateObject) URLSessionStreamTaskDidBecomeInputStreamOutputStream(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:streamTask:didBecomeInputStream:outputStream:"), session, streamTask, inputStream, outputStream)
 }
 
 func (u_ URLSessionStreamDelegateObject) HasURLSessionWriteClosedForStreamTask() bool {

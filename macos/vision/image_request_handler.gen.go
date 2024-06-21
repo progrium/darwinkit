@@ -10,7 +10,6 @@ import (
 	"github.com/progrium/darwinkit/macos/coremedia"
 	"github.com/progrium/darwinkit/macos/corevideo"
 	"github.com/progrium/darwinkit/macos/foundation"
-	"github.com/progrium/darwinkit/macos/imageio"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -40,62 +39,6 @@ func ImageRequestHandlerFrom(ptr unsafe.Pointer) ImageRequestHandler {
 	}
 }
 
-func (i_ ImageRequestHandler) InitWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCGImage:options:"), image, options)
-	return rv
-}
-
-// Creates a handler to be used for performing requests on Core Graphics images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866541-initwithcgimage?language=objc
-func NewImageRequestHandlerWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithCGImageOptions(image, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageRequestHandler) InitWithDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithData:orientation:options:"), imageData, orientation, options)
-	return rv
-}
-
-// Creates a handler to be used for performing requests on an image of known orientation, contained in an NSData object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869635-initwithdata?language=objc
-func NewImageRequestHandlerWithDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithDataOrientationOptions(imageData, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageRequestHandler) InitWithDataOptions(imageData []byte, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithData:options:"), imageData, options)
-	return rv
-}
-
-// Creates a handler to be used for performing requests on an image contained in an NSData object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866551-initwithdata?language=objc
-func NewImageRequestHandlerWithDataOptions(imageData []byte, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithDataOptions(imageData, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageRequestHandler) InitWithURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithURL:orientation:options:"), imageURL, orientation, options)
-	return rv
-}
-
-// Creates a handler to be used for performing requests on an image with known orientation, at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869645-initwithurl?language=objc
-func NewImageRequestHandlerWithURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithURLOrientationOptions(imageURL, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
 func (i_ ImageRequestHandler) InitWithCIImageOptions(image coreimage.IImage, options map[ImageOption]objc.IObject) ImageRequestHandler {
 	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:options:"), image, options)
 	return rv
@@ -110,30 +53,16 @@ func NewImageRequestHandlerWithCIImageOptions(image coreimage.IImage, options ma
 	return instance
 }
 
-func (i_ ImageRequestHandler) InitWithCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCMSampleBuffer:orientation:options:"), sampleBuffer, orientation, options)
+func (i_ ImageRequestHandler) InitWithDataOptions(imageData []byte, options map[ImageOption]objc.IObject) ImageRequestHandler {
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithData:options:"), imageData, options)
 	return rv
 }
 
-// Creates a request handler that performs requests on an image of a specified orientation contained within a sample buffer. [Full Topic]
+// Creates a handler to be used for performing requests on an image contained in an NSData object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/3548374-initwithcmsamplebuffer?language=objc
-func NewImageRequestHandlerWithCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithCMSampleBufferOrientationOptions(sampleBuffer, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageRequestHandler) InitWithCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCVPixelBuffer:orientation:options:"), pixelBuffer, orientation, options)
-	return rv
-}
-
-// Creates a handler for performing requests on a Core Video pixel buffer of a known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880303-initwithcvpixelbuffer?language=objc
-func NewImageRequestHandlerWithCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithCVPixelBufferOrientationOptions(pixelBuffer, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866551-initwithdata?language=objc
+func NewImageRequestHandlerWithDataOptions(imageData []byte, options map[ImageOption]objc.IObject) ImageRequestHandler {
+	instance := ImageRequestHandlerClass.Alloc().InitWithDataOptions(imageData, options)
 	instance.Autorelease()
 	return instance
 }
@@ -166,30 +95,16 @@ func NewImageRequestHandlerWithCMSampleBufferOptions(sampleBuffer coremedia.Samp
 	return instance
 }
 
-func (i_ ImageRequestHandler) InitWithCIImageOrientationOptions(image coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:orientation:options:"), image, orientation, options)
+func (i_ ImageRequestHandler) InitWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) ImageRequestHandler {
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCGImage:options:"), image, options)
 	return rv
 }
 
-// Creates a handler to be used for performing requests on CIImage data of a known orientation. [Full Topic]
+// Creates a handler to be used for performing requests on Core Graphics images. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869641-initwithciimage?language=objc
-func NewImageRequestHandlerWithCIImageOrientationOptions(image coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithCIImageOrientationOptions(image, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (i_ ImageRequestHandler) InitWithCGImageOrientationOptions(image coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCGImage:orientation:options:"), image, orientation, options)
-	return rv
-}
-
-// Creates a handler to be used for performing requests on a Core Graphics image with known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869629-initwithcgimage?language=objc
-func NewImageRequestHandlerWithCGImageOrientationOptions(image coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	instance := ImageRequestHandlerClass.Alloc().InitWithCGImageOrientationOptions(image, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866541-initwithcgimage?language=objc
+func NewImageRequestHandlerWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOption]objc.IObject) ImageRequestHandler {
+	instance := ImageRequestHandlerClass.Alloc().InitWithCGImageOptions(image, options)
 	instance.Autorelease()
 	return instance
 }

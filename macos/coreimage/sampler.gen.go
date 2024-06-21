@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/darwinkit/macos/coregraphics"
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -37,20 +36,6 @@ func SamplerFrom(ptr unsafe.Pointer) Sampler {
 	}
 }
 
-func (s_ Sampler) InitWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:keysAndValues:"), append([]any{im, key0}, args...)...)
-	return rv
-}
-
-// Initializes the sampler with an image object using options specified as key-value pairs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisampler/1555077-initwithimage?language=objc
-func NewSamplerWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	instance := SamplerClass.Alloc().InitWithImageKeysAndValues(im, key0, args...)
-	instance.Autorelease()
-	return instance
-}
-
 func (sc _SamplerClass) SamplerWithImage(im IImage) Sampler {
 	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:"), im)
 	return rv
@@ -75,44 +60,6 @@ func NewSamplerWithImage(im IImage) Sampler {
 	instance := SamplerClass.Alloc().InitWithImage(im)
 	instance.Autorelease()
 	return instance
-}
-
-func (sc _SamplerClass) SamplerWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:options:"), im, dict)
-	return rv
-}
-
-// Creates and returns a sampler that references an image using options specified in a dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisampler/1555076-samplerwithimage?language=objc
-func Sampler_SamplerWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	return SamplerClass.SamplerWithImageOptions(im, dict)
-}
-
-func (s_ Sampler) InitWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:options:"), im, dict)
-	return rv
-}
-
-// Initializes the sampler with an image object using options specified in a dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisampler/1437963-initwithimage?language=objc
-func NewSamplerWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	instance := SamplerClass.Alloc().InitWithImageOptions(im, dict)
-	instance.Autorelease()
-	return instance
-}
-
-func (sc _SamplerClass) SamplerWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:keysAndValues:"), append([]any{im, key0}, args...)...)
-	return rv
-}
-
-// Creates and returns a sampler that references an image using options specified as key-value pairs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cisampler/1555078-samplerwithimage?language=objc
-func Sampler_SamplerWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	return SamplerClass.SamplerWithImageKeysAndValues(im, key0, args...)
 }
 
 func (sc _SamplerClass) Alloc() Sampler {

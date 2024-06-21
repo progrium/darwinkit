@@ -20,12 +20,12 @@ type _FilterBrowserPanelClass struct {
 // An interface definition for the [FilterBrowserPanel] class.
 type IFilterBrowserPanel interface {
 	appkit.IPanel
-	FilterName() string
 	BeginWithOptionsModelessDelegateDidEndSelectorContextInfo(inOptions foundation.Dictionary, modelessDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
+	FilterBrowserViewWithOptions(inOptions foundation.Dictionary) FilterBrowserView
+	FilterName() string
 	BeginSheetWithOptionsModalForWindowModalDelegateDidEndSelectorContextInfo(inOptions foundation.Dictionary, docWindow appkit.IWindow, modalDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
 	Finish(sender objc.IObject)
 	RunModalWithOptions(inOptions foundation.Dictionary) int
-	FilterBrowserViewWithOptions(inOptions foundation.Dictionary) FilterBrowserView
 }
 
 // The IKFilterBrowserPanel class provides a user interface that allows users to browse Core Image filters (CIFilter), to preview a filter, and to get additional information about the filter, such as its description. [Full Topic]
@@ -87,18 +87,19 @@ func NewFilterBrowserPanelWithContentRectStyleMaskBackingDeferScreen(contentRect
 	return instance
 }
 
-func (f_ FilterBrowserPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) FilterBrowserPanel {
-	rv := objc.Call[FilterBrowserPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
+// Displays the filter browser in a new utility window, unless the filter browser is already open. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1504894-beginwithoptions?language=objc
+func (f_ FilterBrowserPanel) BeginWithOptionsModelessDelegateDidEndSelectorContextInfo(inOptions foundation.Dictionary, modelessDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
+	objc.Call[objc.Void](f_, objc.Sel("beginWithOptions:modelessDelegate:didEndSelector:contextInfo:"), inOptions, modelessDelegate, didEndSelector, contextInfo)
 }
 
-// Initializes the window with the specified values. [Full Topic]
+// Returns a view that contains a filter browser. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewFilterBrowserPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) FilterBrowserPanel {
-	instance := FilterBrowserPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1503992-filterbrowserviewwithoptions?language=objc
+func (f_ FilterBrowserPanel) FilterBrowserViewWithOptions(inOptions foundation.Dictionary) FilterBrowserView {
+	rv := objc.Call[FilterBrowserView](f_, objc.Sel("filterBrowserViewWithOptions:"), inOptions)
+	return rv
 }
 
 // Creates a shared instance of the IKFilterBrowserPanel class. [Full Topic]
@@ -124,13 +125,6 @@ func (f_ FilterBrowserPanel) FilterName() string {
 	return rv
 }
 
-// Displays the filter browser in a new utility window, unless the filter browser is already open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1504894-beginwithoptions?language=objc
-func (f_ FilterBrowserPanel) BeginWithOptionsModelessDelegateDidEndSelectorContextInfo(inOptions foundation.Dictionary, modelessDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](f_, objc.Sel("beginWithOptions:modelessDelegate:didEndSelector:contextInfo:"), inOptions, modelessDelegate, didEndSelector, contextInfo)
-}
-
 // Displays the filter browser in a sheet—that is, a dialog that is attached to its parent window and must be dismissed by the user. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1504636-beginsheetwithoptions?language=objc
@@ -150,13 +144,5 @@ func (f_ FilterBrowserPanel) Finish(sender objc.IObject) {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1504028-runmodalwithoptions?language=objc
 func (f_ FilterBrowserPanel) RunModalWithOptions(inOptions foundation.Dictionary) int {
 	rv := objc.Call[int](f_, objc.Sel("runModalWithOptions:"), inOptions)
-	return rv
-}
-
-// Returns a view that contains a filter browser. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1503992-filterbrowserviewwithoptions?language=objc
-func (f_ FilterBrowserPanel) FilterBrowserViewWithOptions(inOptions foundation.Dictionary) FilterBrowserView {
-	rv := objc.Call[FilterBrowserView](f_, objc.Sel("filterBrowserViewWithOptions:"), inOptions)
 	return rv
 }

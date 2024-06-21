@@ -12,42 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate?language=objc
 type PFilePromiseProviderDelegate interface {
 	// optional
-	FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string
-	HasFilePromiseProviderFileNameForType() bool
-
-	// optional
 	OperationQueueForFilePromiseProvider(filePromiseProvider FilePromiseProvider) foundation.OperationQueue
 	HasOperationQueueForFilePromiseProvider() bool
 
 	// optional
-	FilePromiseProviderWritePromiseToURLCompletionHandler(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error))
-	HasFilePromiseProviderWritePromiseToURLCompletionHandler() bool
+	FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string
+	HasFilePromiseProviderFileNameForType() bool
 }
 
 // A delegate implementation builder for the [PFilePromiseProviderDelegate] protocol.
 type FilePromiseProviderDelegate struct {
-	_FilePromiseProviderFileNameForType                    func(filePromiseProvider FilePromiseProvider, fileType string) string
-	_OperationQueueForFilePromiseProvider                  func(filePromiseProvider FilePromiseProvider) foundation.OperationQueue
-	_FilePromiseProviderWritePromiseToURLCompletionHandler func(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error))
+	_OperationQueueForFilePromiseProvider func(filePromiseProvider FilePromiseProvider) foundation.OperationQueue
+	_FilePromiseProviderFileNameForType   func(filePromiseProvider FilePromiseProvider, fileType string) string
 }
 
-func (di *FilePromiseProviderDelegate) HasFilePromiseProviderFileNameForType() bool {
-	return di._FilePromiseProviderFileNameForType != nil
-}
-
-// Provides the drag destination file's name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
-func (di *FilePromiseProviderDelegate) SetFilePromiseProviderFileNameForType(f func(filePromiseProvider FilePromiseProvider, fileType string) string) {
-	di._FilePromiseProviderFileNameForType = f
-}
-
-// Provides the drag destination file's name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
-func (di *FilePromiseProviderDelegate) FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string {
-	return di._FilePromiseProviderFileNameForType(filePromiseProvider, fileType)
-}
 func (di *FilePromiseProviderDelegate) HasOperationQueueForFilePromiseProvider() bool {
 	return di._OperationQueueForFilePromiseProvider != nil
 }
@@ -65,22 +43,22 @@ func (di *FilePromiseProviderDelegate) SetOperationQueueForFilePromiseProvider(f
 func (di *FilePromiseProviderDelegate) OperationQueueForFilePromiseProvider(filePromiseProvider FilePromiseProvider) foundation.OperationQueue {
 	return di._OperationQueueForFilePromiseProvider(filePromiseProvider)
 }
-func (di *FilePromiseProviderDelegate) HasFilePromiseProviderWritePromiseToURLCompletionHandler() bool {
-	return di._FilePromiseProviderWritePromiseToURLCompletionHandler != nil
+func (di *FilePromiseProviderDelegate) HasFilePromiseProviderFileNameForType() bool {
+	return di._FilePromiseProviderFileNameForType != nil
 }
 
-// Writes the contents of a promise to the specified URL. [Full Topic]
+// Provides the drag destination file's name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/1644244-filepromiseprovider?language=objc
-func (di *FilePromiseProviderDelegate) SetFilePromiseProviderWritePromiseToURLCompletionHandler(f func(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error))) {
-	di._FilePromiseProviderWritePromiseToURLCompletionHandler = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
+func (di *FilePromiseProviderDelegate) SetFilePromiseProviderFileNameForType(f func(filePromiseProvider FilePromiseProvider, fileType string) string) {
+	di._FilePromiseProviderFileNameForType = f
 }
 
-// Writes the contents of a promise to the specified URL. [Full Topic]
+// Provides the drag destination file's name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/1644244-filepromiseprovider?language=objc
-func (di *FilePromiseProviderDelegate) FilePromiseProviderWritePromiseToURLCompletionHandler(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error)) {
-	di._FilePromiseProviderWritePromiseToURLCompletionHandler(filePromiseProvider, url, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
+func (di *FilePromiseProviderDelegate) FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string {
+	return di._FilePromiseProviderFileNameForType(filePromiseProvider, fileType)
 }
 
 // ensure impl type implements protocol interface
@@ -89,18 +67,6 @@ var _ PFilePromiseProviderDelegate = (*FilePromiseProviderDelegateObject)(nil)
 // A concrete type for the [PFilePromiseProviderDelegate] protocol.
 type FilePromiseProviderDelegateObject struct {
 	objc.Object
-}
-
-func (f_ FilePromiseProviderDelegateObject) HasFilePromiseProviderFileNameForType() bool {
-	return f_.RespondsToSelector(objc.Sel("filePromiseProvider:fileNameForType:"))
-}
-
-// Provides the drag destination file's name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
-func (f_ FilePromiseProviderDelegateObject) FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string {
-	rv := objc.Call[string](f_, objc.Sel("filePromiseProvider:fileNameForType:"), filePromiseProvider, fileType)
-	return rv
 }
 
 func (f_ FilePromiseProviderDelegateObject) HasOperationQueueForFilePromiseProvider() bool {
@@ -115,13 +81,14 @@ func (f_ FilePromiseProviderDelegateObject) OperationQueueForFilePromiseProvider
 	return rv
 }
 
-func (f_ FilePromiseProviderDelegateObject) HasFilePromiseProviderWritePromiseToURLCompletionHandler() bool {
-	return f_.RespondsToSelector(objc.Sel("filePromiseProvider:writePromiseToURL:completionHandler:"))
+func (f_ FilePromiseProviderDelegateObject) HasFilePromiseProviderFileNameForType() bool {
+	return f_.RespondsToSelector(objc.Sel("filePromiseProvider:fileNameForType:"))
 }
 
-// Writes the contents of a promise to the specified URL. [Full Topic]
+// Provides the drag destination file's name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/1644244-filepromiseprovider?language=objc
-func (f_ FilePromiseProviderDelegateObject) FilePromiseProviderWritePromiseToURLCompletionHandler(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("filePromiseProvider:writePromiseToURL:completionHandler:"), filePromiseProvider, url, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
+func (f_ FilePromiseProviderDelegateObject) FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string {
+	rv := objc.Call[string](f_, objc.Sel("filePromiseProvider:fileNameForType:"), filePromiseProvider, fileType)
+	return rv
 }

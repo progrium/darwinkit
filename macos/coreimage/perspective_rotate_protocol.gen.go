@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate?language=objc
 type PPerspectiveRotate interface {
 	// optional
-	SetRoll(value float32)
-	HasSetRoll() bool
-
-	// optional
-	Roll() float32
-	HasRoll() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -27,12 +19,12 @@ type PPerspectiveRotate interface {
 	HasInputImage() bool
 
 	// optional
-	SetFocalLength(value float32)
-	HasSetFocalLength() bool
+	SetRoll(value float32)
+	HasSetRoll() bool
 
 	// optional
-	FocalLength() float32
-	HasFocalLength() bool
+	Roll() float32
+	HasRoll() bool
 
 	// optional
 	SetYaw(value float32)
@@ -41,6 +33,14 @@ type PPerspectiveRotate interface {
 	// optional
 	Yaw() float32
 	HasYaw() bool
+
+	// optional
+	SetFocalLength(value float32)
+	HasSetFocalLength() bool
+
+	// optional
+	FocalLength() float32
+	HasFocalLength() bool
 
 	// optional
 	SetPitch(value float32)
@@ -57,29 +57,6 @@ var _ PPerspectiveRotate = (*PerspectiveRotateObject)(nil)
 // A concrete type for the [PPerspectiveRotate] protocol.
 type PerspectiveRotateObject struct {
 	objc.Object
-}
-
-func (p_ PerspectiveRotateObject) HasSetRoll() bool {
-	return p_.RespondsToSelector(objc.Sel("setRoll:"))
-}
-
-// The roll angle, in radians. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
-func (p_ PerspectiveRotateObject) SetRoll(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setRoll:"), value)
-}
-
-func (p_ PerspectiveRotateObject) HasRoll() bool {
-	return p_.RespondsToSelector(objc.Sel("roll"))
-}
-
-// The roll angle, in radians. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
-func (p_ PerspectiveRotateObject) Roll() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("roll"))
-	return rv
 }
 
 func (p_ PerspectiveRotateObject) HasSetInputImage() bool {
@@ -105,26 +82,26 @@ func (p_ PerspectiveRotateObject) InputImage() Image {
 	return rv
 }
 
-func (p_ PerspectiveRotateObject) HasSetFocalLength() bool {
-	return p_.RespondsToSelector(objc.Sel("setFocalLength:"))
+func (p_ PerspectiveRotateObject) HasSetRoll() bool {
+	return p_.RespondsToSelector(objc.Sel("setRoll:"))
 }
 
-// The 35mm equivalent focal length of the input image. [Full Topic]
+// The roll angle, in radians. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
-func (p_ PerspectiveRotateObject) SetFocalLength(value float32) {
-	objc.Call[objc.Void](p_, objc.Sel("setFocalLength:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
+func (p_ PerspectiveRotateObject) SetRoll(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setRoll:"), value)
 }
 
-func (p_ PerspectiveRotateObject) HasFocalLength() bool {
-	return p_.RespondsToSelector(objc.Sel("focalLength"))
+func (p_ PerspectiveRotateObject) HasRoll() bool {
+	return p_.RespondsToSelector(objc.Sel("roll"))
 }
 
-// The 35mm equivalent focal length of the input image. [Full Topic]
+// The roll angle, in radians. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
-func (p_ PerspectiveRotateObject) FocalLength() float32 {
-	rv := objc.Call[float32](p_, objc.Sel("focalLength"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
+func (p_ PerspectiveRotateObject) Roll() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("roll"))
 	return rv
 }
 
@@ -148,6 +125,29 @@ func (p_ PerspectiveRotateObject) HasYaw() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325541-yaw?language=objc
 func (p_ PerspectiveRotateObject) Yaw() float32 {
 	rv := objc.Call[float32](p_, objc.Sel("yaw"))
+	return rv
+}
+
+func (p_ PerspectiveRotateObject) HasSetFocalLength() bool {
+	return p_.RespondsToSelector(objc.Sel("setFocalLength:"))
+}
+
+// The 35mm equivalent focal length of the input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
+func (p_ PerspectiveRotateObject) SetFocalLength(value float32) {
+	objc.Call[objc.Void](p_, objc.Sel("setFocalLength:"), value)
+}
+
+func (p_ PerspectiveRotateObject) HasFocalLength() bool {
+	return p_.RespondsToSelector(objc.Sel("focalLength"))
+}
+
+// The 35mm equivalent focal length of the input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
+func (p_ PerspectiveRotateObject) FocalLength() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("focalLength"))
 	return rv
 }
 

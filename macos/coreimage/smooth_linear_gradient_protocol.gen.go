@@ -20,20 +20,20 @@ type PSmoothLinearGradient interface {
 	HasPoint1() bool
 
 	// optional
-	SetColor0(value Color)
-	HasSetColor0() bool
-
-	// optional
-	Color0() Color
-	HasColor0() bool
-
-	// optional
 	SetPoint0(value coregraphics.Point)
 	HasSetPoint0() bool
 
 	// optional
 	Point0() coregraphics.Point
 	HasPoint0() bool
+
+	// optional
+	SetColor0(value Color)
+	HasSetColor0() bool
+
+	// optional
+	Color0() Color
+	HasColor0() bool
 
 	// optional
 	SetColor1(value Color)
@@ -75,29 +75,6 @@ func (s_ SmoothLinearGradientObject) Point1() coregraphics.Point {
 	return rv
 }
 
-func (s_ SmoothLinearGradientObject) HasSetColor0() bool {
-	return s_.RespondsToSelector(objc.Sel("setColor0:"))
-}
-
-// The first color to use in the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228723-color0?language=objc
-func (s_ SmoothLinearGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), value)
-}
-
-func (s_ SmoothLinearGradientObject) HasColor0() bool {
-	return s_.RespondsToSelector(objc.Sel("color0"))
-}
-
-// The first color to use in the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228723-color0?language=objc
-func (s_ SmoothLinearGradientObject) Color0() Color {
-	rv := objc.Call[Color](s_, objc.Sel("color0"))
-	return rv
-}
-
 func (s_ SmoothLinearGradientObject) HasSetPoint0() bool {
 	return s_.RespondsToSelector(objc.Sel("setPoint0:"))
 }
@@ -118,6 +95,29 @@ func (s_ SmoothLinearGradientObject) HasPoint0() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228725-point0?language=objc
 func (s_ SmoothLinearGradientObject) Point0() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](s_, objc.Sel("point0"))
+	return rv
+}
+
+func (s_ SmoothLinearGradientObject) HasSetColor0() bool {
+	return s_.RespondsToSelector(objc.Sel("setColor0:"))
+}
+
+// The first color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228723-color0?language=objc
+func (s_ SmoothLinearGradientObject) SetColor0(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), value)
+}
+
+func (s_ SmoothLinearGradientObject) HasColor0() bool {
+	return s_.RespondsToSelector(objc.Sel("color0"))
+}
+
+// The first color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228723-color0?language=objc
+func (s_ SmoothLinearGradientObject) Color0() Color {
+	rv := objc.Call[Color](s_, objc.Sel("color0"))
 	return rv
 }
 

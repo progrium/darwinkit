@@ -21,9 +21,9 @@ type IPDFImageRep interface {
 	IImageRep
 	PDFRepresentation() []byte
 	PageCount() int
+	Bounds() foundation.Rect
 	CurrentPage() int
 	SetCurrentPage(value int)
-	Bounds() foundation.Rect
 }
 
 // An object that can render an image from a PDF format data stream. [Full Topic]
@@ -101,6 +101,14 @@ func (p_ PDFImageRep) PageCount() int {
 	return rv
 }
 
+// The image representation’s bounding rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfimagerep/1533966-bounds?language=objc
+func (p_ PDFImageRep) Bounds() foundation.Rect {
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("bounds"))
+	return rv
+}
+
 // The page currently displayed by the image representation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfimagerep/1528846-currentpage?language=objc
@@ -114,12 +122,4 @@ func (p_ PDFImageRep) CurrentPage() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfimagerep/1528846-currentpage?language=objc
 func (p_ PDFImageRep) SetCurrentPage(value int) {
 	objc.Call[objc.Void](p_, objc.Sel("setCurrentPage:"), value)
-}
-
-// The image representation’s bounding rectangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfimagerep/1533966-bounds?language=objc
-func (p_ PDFImageRep) Bounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("bounds"))
-	return rv
 }

@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp?language=objc
 type PColorClamp interface {
 	// optional
-	SetMinComponents(value Vector)
-	HasSetMinComponents() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	MinComponents() Vector
-	HasMinComponents() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetMaxComponents(value Vector)
@@ -27,12 +27,12 @@ type PColorClamp interface {
 	HasMaxComponents() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetMinComponents(value Vector)
+	HasSetMinComponents() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	MinComponents() Vector
+	HasMinComponents() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type ColorClampObject struct {
 	objc.Object
 }
 
-func (c_ ColorClampObject) HasSetMinComponents() bool {
-	return c_.RespondsToSelector(objc.Sel("setMinComponents:"))
+func (c_ ColorClampObject) HasSetInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// A vector containing the lower clamping values. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228122-mincomponents?language=objc
-func (c_ ColorClampObject) SetMinComponents(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setMinComponents:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228120-inputimage?language=objc
+func (c_ ColorClampObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
-func (c_ ColorClampObject) HasMinComponents() bool {
-	return c_.RespondsToSelector(objc.Sel("minComponents"))
+func (c_ ColorClampObject) HasInputImage() bool {
+	return c_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// A vector containing the lower clamping values. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228122-mincomponents?language=objc
-func (c_ ColorClampObject) MinComponents() Vector {
-	rv := objc.Call[Vector](c_, objc.Sel("minComponents"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228120-inputimage?language=objc
+func (c_ ColorClampObject) InputImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (c_ ColorClampObject) MaxComponents() Vector {
 	return rv
 }
 
-func (c_ ColorClampObject) HasSetInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (c_ ColorClampObject) HasSetMinComponents() bool {
+	return c_.RespondsToSelector(objc.Sel("setMinComponents:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// A vector containing the lower clamping values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228120-inputimage?language=objc
-func (c_ ColorClampObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228122-mincomponents?language=objc
+func (c_ ColorClampObject) SetMinComponents(value Vector) {
+	objc.Call[objc.Void](c_, objc.Sel("setMinComponents:"), value)
 }
 
-func (c_ ColorClampObject) HasInputImage() bool {
-	return c_.RespondsToSelector(objc.Sel("inputImage"))
+func (c_ ColorClampObject) HasMinComponents() bool {
+	return c_.RespondsToSelector(objc.Sel("minComponents"))
 }
 
-// The image to use as an input image. [Full Topic]
+// A vector containing the lower clamping values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228120-inputimage?language=objc
-func (c_ ColorClampObject) InputImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228122-mincomponents?language=objc
+func (c_ ColorClampObject) MinComponents() Vector {
+	rv := objc.Call[Vector](c_, objc.Sel("minComponents"))
 	return rv
 }

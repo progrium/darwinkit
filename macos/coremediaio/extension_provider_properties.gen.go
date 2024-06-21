@@ -40,6 +40,18 @@ func ExtensionProviderPropertiesFrom(ptr unsafe.Pointer) ExtensionProviderProper
 	}
 }
 
+func (ec _ExtensionProviderPropertiesClass) ProviderPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionProviderProperties {
+	rv := objc.Call[ExtensionProviderProperties](ec, objc.Sel("providerPropertiesWithDictionary:"), propertiesDictionary)
+	return rv
+}
+
+// Returns a new provider properties object with the specified properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionproviderproperties/3915921-providerpropertieswithdictionary?language=objc
+func ExtensionProviderProperties_ProviderPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionProviderProperties {
+	return ExtensionProviderPropertiesClass.ProviderPropertiesWithDictionary(propertiesDictionary)
+}
+
 func (e_ ExtensionProviderProperties) InitWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionProviderProperties {
 	rv := objc.Call[ExtensionProviderProperties](e_, objc.Sel("initWithDictionary:"), propertiesDictionary)
 	return rv
@@ -52,18 +64,6 @@ func NewExtensionProviderPropertiesWithDictionary(propertiesDictionary map[Exten
 	instance := ExtensionProviderPropertiesClass.Alloc().InitWithDictionary(propertiesDictionary)
 	instance.Autorelease()
 	return instance
-}
-
-func (ec _ExtensionProviderPropertiesClass) ProviderPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionProviderProperties {
-	rv := objc.Call[ExtensionProviderProperties](ec, objc.Sel("providerPropertiesWithDictionary:"), propertiesDictionary)
-	return rv
-}
-
-// Returns a new provider properties object with the specified properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionproviderproperties/3915921-providerpropertieswithdictionary?language=objc
-func ExtensionProviderProperties_ProviderPropertiesWithDictionary(propertiesDictionary map[ExtensionProperty]IExtensionPropertyState) ExtensionProviderProperties {
-	return ExtensionProviderPropertiesClass.ProviderPropertiesWithDictionary(propertiesDictionary)
 }
 
 func (ec _ExtensionProviderPropertiesClass) Alloc() ExtensionProviderProperties {

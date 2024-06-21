@@ -21,8 +21,6 @@ type INDArrayMultiaryGradientKernel interface {
 	INDArrayMultiaryBase
 	EncodeToCommandBufferSourceArraysSourceGradientGradientState(cmdBuf metal.PCommandBuffer, sources []INDArray, gradient INDArray, state IState) NDArray
 	EncodeToCommandBufferObjectSourceArraysSourceGradientGradientState(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState) NDArray
-	EncodeToCommandBufferSourceArraysSourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, sources []INDArray, gradient INDArray, state IState, destination INDArray)
-	EncodeToCommandBufferObjectSourceArraysSourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState, destination INDArray)
 }
 
 //	[Full Topic]
@@ -133,19 +131,4 @@ func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferSourceArraysSourceG
 func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferObjectSourceArraysSourceGradientGradientState(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState) NDArray {
 	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:"), cmdBufObject, sources, gradient, state)
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143523-encodetocommandbuffer?language=objc
-func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferSourceArraysSourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, sources []INDArray, gradient INDArray, state IState, destination INDArray) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), po0, sources, gradient, state, destination)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143523-encodetocommandbuffer?language=objc
-func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferObjectSourceArraysSourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState, destination INDArray) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), cmdBufObject, sources, gradient, state, destination)
 }

@@ -13,32 +13,28 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate?language=objc
 type PComputePipelineState interface {
 	// optional
-	FunctionHandleWithFunction(function FunctionObject) FunctionHandleObject
-	HasFunctionHandleWithFunction() bool
-
-	// optional
 	NewIntersectionFunctionTableWithDescriptor(descriptor IntersectionFunctionTableDescriptor) IntersectionFunctionTableObject
 	HasNewIntersectionFunctionTableWithDescriptor() bool
-
-	// optional
-	ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint
-	HasImageblockMemoryLengthForDimensions() bool
 
 	// optional
 	NewVisibleFunctionTableWithDescriptor(descriptor VisibleFunctionTableDescriptor) VisibleFunctionTableObject
 	HasNewVisibleFunctionTableWithDescriptor() bool
 
 	// optional
+	FunctionHandleWithFunction(function FunctionObject) FunctionHandleObject
+	HasFunctionHandleWithFunction() bool
+
+	// optional
+	ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint
+	HasImageblockMemoryLengthForDimensions() bool
+
+	// optional
 	NewComputePipelineStateWithAdditionalBinaryFunctionsError(functions []FunctionObject, error unsafe.Pointer) ComputePipelineStateObject
 	HasNewComputePipelineStateWithAdditionalBinaryFunctionsError() bool
 
 	// optional
-	StaticThreadgroupMemoryLength() uint
-	HasStaticThreadgroupMemoryLength() bool
-
-	// optional
-	Label() string
-	HasLabel() bool
+	Device() DeviceObject
+	HasDevice() bool
 
 	// optional
 	MaxTotalThreadsPerThreadgroup() uint
@@ -49,12 +45,16 @@ type PComputePipelineState interface {
 	HasThreadExecutionWidth() bool
 
 	// optional
-	SupportIndirectCommandBuffers() bool
-	HasSupportIndirectCommandBuffers() bool
+	StaticThreadgroupMemoryLength() uint
+	HasStaticThreadgroupMemoryLength() bool
 
 	// optional
-	Device() DeviceObject
-	HasDevice() bool
+	Label() string
+	HasLabel() bool
+
+	// optional
+	SupportIndirectCommandBuffers() bool
+	HasSupportIndirectCommandBuffers() bool
 }
 
 // ensure impl type implements protocol interface
@@ -63,19 +63,6 @@ var _ PComputePipelineState = (*ComputePipelineStateObject)(nil)
 // A concrete type for the [PComputePipelineState] protocol.
 type ComputePipelineStateObject struct {
 	objc.Object
-}
-
-func (c_ ComputePipelineStateObject) HasFunctionHandleWithFunction() bool {
-	return c_.RespondsToSelector(objc.Sel("functionHandleWithFunction:"))
-}
-
-// Creates a function handle for a visible function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3553964-functionhandlewithfunction?language=objc
-func (c_ ComputePipelineStateObject) FunctionHandleWithFunction(function FunctionObject) FunctionHandleObject {
-	po0 := objc.WrapAsProtocol("MTLFunction", function)
-	rv := objc.Call[FunctionHandleObject](c_, objc.Sel("functionHandleWithFunction:"), po0)
-	return rv
 }
 
 func (c_ ComputePipelineStateObject) HasNewIntersectionFunctionTableWithDescriptor() bool {
@@ -87,18 +74,6 @@ func (c_ ComputePipelineStateObject) HasNewIntersectionFunctionTableWithDescript
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3580381-newintersectionfunctiontablewith?language=objc
 func (c_ ComputePipelineStateObject) NewIntersectionFunctionTableWithDescriptor(descriptor IntersectionFunctionTableDescriptor) IntersectionFunctionTableObject {
 	rv := objc.Call[IntersectionFunctionTableObject](c_, objc.Sel("newIntersectionFunctionTableWithDescriptor:"), descriptor)
-	return rv
-}
-
-func (c_ ComputePipelineStateObject) HasImageblockMemoryLengthForDimensions() bool {
-	return c_.RespondsToSelector(objc.Sel("imageblockMemoryLengthForDimensions:"))
-}
-
-// Returns the imageblock memory length, in bytes, for the specified imageblock dimensions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2928195-imageblockmemorylengthfordimensi?language=objc
-func (c_ ComputePipelineStateObject) ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint {
-	rv := objc.Call[uint](c_, objc.Sel("imageblockMemoryLengthForDimensions:"), imageblockDimensions)
 	return rv
 }
 
@@ -114,6 +89,31 @@ func (c_ ComputePipelineStateObject) NewVisibleFunctionTableWithDescriptor(descr
 	return rv
 }
 
+func (c_ ComputePipelineStateObject) HasFunctionHandleWithFunction() bool {
+	return c_.RespondsToSelector(objc.Sel("functionHandleWithFunction:"))
+}
+
+// Creates a function handle for a visible function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3553964-functionhandlewithfunction?language=objc
+func (c_ ComputePipelineStateObject) FunctionHandleWithFunction(function FunctionObject) FunctionHandleObject {
+	po0 := objc.WrapAsProtocol("MTLFunction", function)
+	rv := objc.Call[FunctionHandleObject](c_, objc.Sel("functionHandleWithFunction:"), po0)
+	return rv
+}
+
+func (c_ ComputePipelineStateObject) HasImageblockMemoryLengthForDimensions() bool {
+	return c_.RespondsToSelector(objc.Sel("imageblockMemoryLengthForDimensions:"))
+}
+
+// Returns the imageblock memory length, in bytes, for the specified imageblock dimensions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2928195-imageblockmemorylengthfordimensi?language=objc
+func (c_ ComputePipelineStateObject) ImageblockMemoryLengthForDimensions(imageblockDimensions Size) uint {
+	rv := objc.Call[uint](c_, objc.Sel("imageblockMemoryLengthForDimensions:"), imageblockDimensions)
+	return rv
+}
+
 func (c_ ComputePipelineStateObject) HasNewComputePipelineStateWithAdditionalBinaryFunctionsError() bool {
 	return c_.RespondsToSelector(objc.Sel("newComputePipelineStateWithAdditionalBinaryFunctions:error:"))
 }
@@ -126,27 +126,15 @@ func (c_ ComputePipelineStateObject) NewComputePipelineStateWithAdditionalBinary
 	return rv
 }
 
-func (c_ ComputePipelineStateObject) HasStaticThreadgroupMemoryLength() bool {
-	return c_.RespondsToSelector(objc.Sel("staticThreadgroupMemoryLength"))
+func (c_ ComputePipelineStateObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
 }
 
-// The length, in bytes, of statically allocated threadgroup memory. [Full Topic]
+// The Metal device object that created the pipeline state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2877435-staticthreadgroupmemorylength?language=objc
-func (c_ ComputePipelineStateObject) StaticThreadgroupMemoryLength() uint {
-	rv := objc.Call[uint](c_, objc.Sel("staticThreadgroupMemoryLength"))
-	return rv
-}
-
-func (c_ ComputePipelineStateObject) HasLabel() bool {
-	return c_.RespondsToSelector(objc.Sel("label"))
-}
-
-// A string that identifies the compute pipeline state object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2880323-label?language=objc
-func (c_ ComputePipelineStateObject) Label() string {
-	rv := objc.Call[string](c_, objc.Sel("label"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/1414925-device?language=objc
+func (c_ ComputePipelineStateObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }
 
@@ -174,6 +162,30 @@ func (c_ ComputePipelineStateObject) ThreadExecutionWidth() uint {
 	return rv
 }
 
+func (c_ ComputePipelineStateObject) HasStaticThreadgroupMemoryLength() bool {
+	return c_.RespondsToSelector(objc.Sel("staticThreadgroupMemoryLength"))
+}
+
+// The length, in bytes, of statically allocated threadgroup memory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2877435-staticthreadgroupmemorylength?language=objc
+func (c_ ComputePipelineStateObject) StaticThreadgroupMemoryLength() uint {
+	rv := objc.Call[uint](c_, objc.Sel("staticThreadgroupMemoryLength"))
+	return rv
+}
+
+func (c_ ComputePipelineStateObject) HasLabel() bool {
+	return c_.RespondsToSelector(objc.Sel("label"))
+}
+
+// A string that identifies the compute pipeline state object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2880323-label?language=objc
+func (c_ ComputePipelineStateObject) Label() string {
+	rv := objc.Call[string](c_, objc.Sel("label"))
+	return rv
+}
+
 func (c_ ComputePipelineStateObject) HasSupportIndirectCommandBuffers() bool {
 	return c_.RespondsToSelector(objc.Sel("supportIndirectCommandBuffers"))
 }
@@ -183,17 +195,5 @@ func (c_ ComputePipelineStateObject) HasSupportIndirectCommandBuffers() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/2966562-supportindirectcommandbuffers?language=objc
 func (c_ ComputePipelineStateObject) SupportIndirectCommandBuffers() bool {
 	rv := objc.Call[bool](c_, objc.Sel("supportIndirectCommandBuffers"))
-	return rv
-}
-
-func (c_ ComputePipelineStateObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The Metal device object that created the pipeline state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/1414925-device?language=objc
-func (c_ ComputePipelineStateObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }

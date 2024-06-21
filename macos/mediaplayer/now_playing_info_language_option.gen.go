@@ -18,13 +18,13 @@ type _NowPlayingInfoLanguageOptionClass struct {
 // An interface definition for the [NowPlayingInfoLanguageOption] class.
 type INowPlayingInfoLanguageOption interface {
 	objc.IObject
-	IsAutomaticAudibleLanguageOption() bool
 	IsAutomaticLegibleLanguageOption() bool
-	DisplayName() string
+	IsAutomaticAudibleLanguageOption() bool
+	LanguageOptionType() NowPlayingInfoLanguageOptionType
 	LanguageTag() string
 	LanguageOptionCharacteristics() []string
+	DisplayName() string
 	Identifier() string
-	LanguageOptionType() NowPlayingInfoLanguageOptionType
 }
 
 // A set of interfaces for setting the language option for the Now Playing item. [Full Topic]
@@ -74,14 +74,6 @@ func (n_ NowPlayingInfoLanguageOption) Init() NowPlayingInfoLanguageOption {
 	return rv
 }
 
-// Returns a Boolean value that determines whether to use the best audible language option based on the system preferences. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623151-isautomaticaudiblelanguageoption?language=objc
-func (n_ NowPlayingInfoLanguageOption) IsAutomaticAudibleLanguageOption() bool {
-	rv := objc.Call[bool](n_, objc.Sel("isAutomaticAudibleLanguageOption"))
-	return rv
-}
-
 // Returns a Boolean value that determines whether to use the best legible language option based on the system preferences. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623144-isautomaticlegiblelanguageoption?language=objc
@@ -90,11 +82,19 @@ func (n_ NowPlayingInfoLanguageOption) IsAutomaticLegibleLanguageOption() bool {
 	return rv
 }
 
-// The display name for a language option. [Full Topic]
+// Returns a Boolean value that determines whether to use the best audible language option based on the system preferences. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623145-displayname?language=objc
-func (n_ NowPlayingInfoLanguageOption) DisplayName() string {
-	rv := objc.Call[string](n_, objc.Sel("displayName"))
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623151-isautomaticaudiblelanguageoption?language=objc
+func (n_ NowPlayingInfoLanguageOption) IsAutomaticAudibleLanguageOption() bool {
+	rv := objc.Call[bool](n_, objc.Sel("isAutomaticAudibleLanguageOption"))
+	return rv
+}
+
+// The type of language option. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623153-languageoptiontype?language=objc
+func (n_ NowPlayingInfoLanguageOption) LanguageOptionType() NowPlayingInfoLanguageOptionType {
+	rv := objc.Call[NowPlayingInfoLanguageOptionType](n_, objc.Sel("languageOptionType"))
 	return rv
 }
 
@@ -114,18 +114,18 @@ func (n_ NowPlayingInfoLanguageOption) LanguageOptionCharacteristics() []string 
 	return rv
 }
 
+// The display name for a language option. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623145-displayname?language=objc
+func (n_ NowPlayingInfoLanguageOption) DisplayName() string {
+	rv := objc.Call[string](n_, objc.Sel("displayName"))
+	return rv
+}
+
 // The unique identifier for the language option. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623135-identifier?language=objc
 func (n_ NowPlayingInfoLanguageOption) Identifier() string {
 	rv := objc.Call[string](n_, objc.Sel("identifier"))
-	return rv
-}
-
-// The type of language option. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfolanguageoption/1623153-languageoptiontype?language=objc
-func (n_ NowPlayingInfoLanguageOption) LanguageOptionType() NowPlayingInfoLanguageOptionType {
-	rv := objc.Call[NowPlayingInfoLanguageOptionType](n_, objc.Sel("languageOptionType"))
 	return rv
 }

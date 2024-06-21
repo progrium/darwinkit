@@ -11,37 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate?language=objc
 type PMetadataQueryDelegate interface {
 	// optional
-	MetadataQueryReplacementObjectForResultObject(query MetadataQuery, result MetadataItem) objc.Object
-	HasMetadataQueryReplacementObjectForResultObject() bool
-
-	// optional
 	MetadataQueryReplacementValueForAttributeValue(query MetadataQuery, attrName string, attrValue objc.Object) objc.Object
 	HasMetadataQueryReplacementValueForAttributeValue() bool
 }
 
 // A delegate implementation builder for the [PMetadataQueryDelegate] protocol.
 type MetadataQueryDelegate struct {
-	_MetadataQueryReplacementObjectForResultObject  func(query MetadataQuery, result MetadataItem) objc.Object
 	_MetadataQueryReplacementValueForAttributeValue func(query MetadataQuery, attrName string, attrValue objc.Object) objc.Object
 }
 
-func (di *MetadataQueryDelegate) HasMetadataQueryReplacementObjectForResultObject() bool {
-	return di._MetadataQueryReplacementObjectForResultObject != nil
-}
-
-// Returns a different object for a given query result object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate/1407317-metadataquery?language=objc
-func (di *MetadataQueryDelegate) SetMetadataQueryReplacementObjectForResultObject(f func(query MetadataQuery, result MetadataItem) objc.Object) {
-	di._MetadataQueryReplacementObjectForResultObject = f
-}
-
-// Returns a different object for a given query result object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate/1407317-metadataquery?language=objc
-func (di *MetadataQueryDelegate) MetadataQueryReplacementObjectForResultObject(query MetadataQuery, result MetadataItem) objc.Object {
-	return di._MetadataQueryReplacementObjectForResultObject(query, result)
-}
 func (di *MetadataQueryDelegate) HasMetadataQueryReplacementValueForAttributeValue() bool {
 	return di._MetadataQueryReplacementValueForAttributeValue != nil
 }
@@ -66,18 +44,6 @@ var _ PMetadataQueryDelegate = (*MetadataQueryDelegateObject)(nil)
 // A concrete type for the [PMetadataQueryDelegate] protocol.
 type MetadataQueryDelegateObject struct {
 	objc.Object
-}
-
-func (m_ MetadataQueryDelegateObject) HasMetadataQueryReplacementObjectForResultObject() bool {
-	return m_.RespondsToSelector(objc.Sel("metadataQuery:replacementObjectForResultObject:"))
-}
-
-// Returns a different object for a given query result object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate/1407317-metadataquery?language=objc
-func (m_ MetadataQueryDelegateObject) MetadataQueryReplacementObjectForResultObject(query MetadataQuery, result MetadataItem) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("metadataQuery:replacementObjectForResultObject:"), query, result)
-	return rv
 }
 
 func (m_ MetadataQueryDelegateObject) HasMetadataQueryReplacementValueForAttributeValue() bool {

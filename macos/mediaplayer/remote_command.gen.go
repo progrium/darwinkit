@@ -19,9 +19,8 @@ type _RemoteCommandClass struct {
 type IRemoteCommand interface {
 	objc.IObject
 	AddTargetWithHandler(handler func(event RemoteCommandEvent) RemoteCommandHandlerStatus) objc.Object
-	AddTargetAction(target objc.IObject, action objc.Selector)
-	RemoveTargetAction(target objc.IObject, action objc.Selector)
 	RemoveTarget(target objc.IObject)
+	AddTargetAction(target objc.IObject, action objc.Selector)
 	IsEnabled() bool
 	SetEnabled(value bool)
 }
@@ -67,25 +66,18 @@ func (r_ RemoteCommand) AddTargetWithHandler(handler func(event RemoteCommandEve
 	return rv
 }
 
-// Adds a target object to be called when an event is received. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpremotecommand/1622895-addtarget?language=objc
-func (r_ RemoteCommand) AddTargetAction(target objc.IObject, action objc.Selector) {
-	objc.Call[objc.Void](r_, objc.Sel("addTarget:action:"), target, action)
-}
-
-// Removes a target and action from a remote command object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpremotecommand/1622896-removetarget?language=objc
-func (r_ RemoteCommand) RemoveTargetAction(target objc.IObject, action objc.Selector) {
-	objc.Call[objc.Void](r_, objc.Sel("removeTarget:action:"), target, action)
-}
-
 // Removes a target from the remote command object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpremotecommand/1622903-removetarget?language=objc
 func (r_ RemoteCommand) RemoveTarget(target objc.IObject) {
 	objc.Call[objc.Void](r_, objc.Sel("removeTarget:"), target)
+}
+
+// Adds a target object to be called when an event is received. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpremotecommand/1622895-addtarget?language=objc
+func (r_ RemoteCommand) AddTargetAction(target objc.IObject, action objc.Selector) {
+	objc.Call[objc.Void](r_, objc.Sel("addTarget:action:"), target, action)
 }
 
 // A Boolean value that indicates whether a user can interact with the displayed element. [Full Topic]

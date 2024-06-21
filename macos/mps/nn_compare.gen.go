@@ -19,10 +19,10 @@ type _NNCompareClass struct {
 // An interface definition for the [NNCompare] class.
 type INNCompare interface {
 	ICNNArithmetic
-	Threshold() float32
-	SetThreshold(value float32)
 	ComparisonType() NNComparisonType
 	SetComparisonType(value NNComparisonType)
+	Threshold() float32
+	SetThreshold(value float32)
 }
 
 //	[Full Topic]
@@ -90,21 +90,6 @@ func NNCompare_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNC
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
-func (n_ NNCompare) Threshold() float32 {
-	rv := objc.Call[float32](n_, objc.Sel("threshold"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
-func (n_ NNCompare) SetThreshold(value float32) {
-	objc.Call[objc.Void](n_, objc.Sel("setThreshold:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037374-comparisontype?language=objc
 func (n_ NNCompare) ComparisonType() NNComparisonType {
 	rv := objc.Call[NNComparisonType](n_, objc.Sel("comparisonType"))
@@ -116,4 +101,19 @@ func (n_ NNCompare) ComparisonType() NNComparisonType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037374-comparisontype?language=objc
 func (n_ NNCompare) SetComparisonType(value NNComparisonType) {
 	objc.Call[objc.Void](n_, objc.Sel("setComparisonType:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
+func (n_ NNCompare) Threshold() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("threshold"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
+func (n_ NNCompare) SetThreshold(value float32) {
+	objc.Call[objc.Void](n_, objc.Sel("setThreshold:"), value)
 }

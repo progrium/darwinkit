@@ -21,22 +21,22 @@ type ICandidateListTouchBarItem interface {
 	ITouchBarItem
 	SetCandidatesForSelectedRangeInString(candidates []objc.IObject, selectedRange foundation.Range, originalString string)
 	UpdateWithInsertionPointVisibility(isVisible bool)
+	Candidates() []objc.Object
 	AllowsTextInputContextCandidates() bool
 	SetAllowsTextInputContextCandidates(value bool)
 	IsCandidateListVisible() bool
+	SetCustomizationLabel(value string)
 	AllowsCollapsing() bool
 	SetAllowsCollapsing(value bool)
+	IsCollapsed() bool
+	SetCollapsed(value bool)
 	Delegate() CandidateListTouchBarItemDelegateObject
 	SetDelegate(value PCandidateListTouchBarItemDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	Candidates() []objc.Object
-	AttributedStringForCandidate() func(candidate objc.Object, index int) foundation.AttributedString
-	SetAttributedStringForCandidate(value func(candidate objc.Object, index int) foundation.AttributedString)
-	SetCustomizationLabel(value string)
 	Client() View
 	SetClient(value IView)
-	IsCollapsed() bool
-	SetCollapsed(value bool)
+	AttributedStringForCandidate() func(candidate objc.Object, index int) foundation.AttributedString
+	SetAttributedStringForCandidate(value func(candidate objc.Object, index int) foundation.AttributedString)
 }
 
 // A bar item that, along with its delegate, provides a list of textual suggestions for the current text view. [Full Topic]
@@ -100,6 +100,14 @@ func (c_ CandidateListTouchBarItem) UpdateWithInsertionPointVisibility(isVisible
 	objc.Call[objc.Void](c_, objc.Sel("updateWithInsertionPointVisibility:"), isVisible)
 }
 
+// The array of candidate objects previously set by setCandidates:forSelectedRange:inString:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544728-candidates?language=objc
+func (c_ CandidateListTouchBarItem) Candidates() []objc.Object {
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("candidates"))
+	return rv
+}
+
 // A Boolean value that specifies whether a candidate list item displays candidates from text input providers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544668-allowstextinputcontextcandidates?language=objc
@@ -123,6 +131,13 @@ func (c_ CandidateListTouchBarItem) IsCandidateListVisible() bool {
 	return rv
 }
 
+// The user-visible string identifying this item during bar customization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544821-customizationlabel?language=objc
+func (c_ CandidateListTouchBarItem) SetCustomizationLabel(value string) {
+	objc.Call[objc.Void](c_, objc.Sel("setCustomizationLabel:"), value)
+}
+
 // A Boolean value that specifies whether the item can be collapsed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544718-allowscollapsing?language=objc
@@ -136,6 +151,21 @@ func (c_ CandidateListTouchBarItem) AllowsCollapsing() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544718-allowscollapsing?language=objc
 func (c_ CandidateListTouchBarItem) SetAllowsCollapsing(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setAllowsCollapsing:"), value)
+}
+
+// A Boolean value that controls the visibility of the candidate list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544733-collapsed?language=objc
+func (c_ CandidateListTouchBarItem) IsCollapsed() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isCollapsed"))
+	return rv
+}
+
+// A Boolean value that controls the visibility of the candidate list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544733-collapsed?language=objc
+func (c_ CandidateListTouchBarItem) SetCollapsed(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setCollapsed:"), value)
 }
 
 // The delegate of the candidate list item. [Full Topic]
@@ -162,36 +192,6 @@ func (c_ CandidateListTouchBarItem) SetDelegateObject(valueObject objc.IObject) 
 	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The array of candidate objects previously set by [appkit/nscandidatelisttouchbaritem/setcandidates]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544728-candidates?language=objc
-func (c_ CandidateListTouchBarItem) Candidates() []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("candidates"))
-	return rv
-}
-
-// A block that converts a candidate object into an attributed string for display in the candidate list item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544823-attributedstringforcandidate?language=objc
-func (c_ CandidateListTouchBarItem) AttributedStringForCandidate() func(candidate objc.Object, index int) foundation.AttributedString {
-	rv := objc.Call[func(candidate objc.Object, index int) foundation.AttributedString](c_, objc.Sel("attributedStringForCandidate"))
-	return rv
-}
-
-// A block that converts a candidate object into an attributed string for display in the candidate list item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544823-attributedstringforcandidate?language=objc
-func (c_ CandidateListTouchBarItem) SetAttributedStringForCandidate(value func(candidate objc.Object, index int) foundation.AttributedString) {
-	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringForCandidate:"), value)
-}
-
-// The user-visible string identifying this item during bar customization. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544821-customizationlabel?language=objc
-func (c_ CandidateListTouchBarItem) SetCustomizationLabel(value string) {
-	objc.Call[objc.Void](c_, objc.Sel("setCustomizationLabel:"), value)
-}
-
 // The client object for the candidate list item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544873-client?language=objc
@@ -207,17 +207,17 @@ func (c_ CandidateListTouchBarItem) SetClient(value IView) {
 	objc.Call[objc.Void](c_, objc.Sel("setClient:"), value)
 }
 
-// A Boolean value that controls the visibility of the candidate list. [Full Topic]
+// A block that converts a candidate object into an attributed string for display in the candidate list item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544733-collapsed?language=objc
-func (c_ CandidateListTouchBarItem) IsCollapsed() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isCollapsed"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544823-attributedstringforcandidate?language=objc
+func (c_ CandidateListTouchBarItem) AttributedStringForCandidate() func(candidate objc.Object, index int) foundation.AttributedString {
+	rv := objc.Call[func(candidate objc.Object, index int) foundation.AttributedString](c_, objc.Sel("attributedStringForCandidate"))
 	return rv
 }
 
-// A Boolean value that controls the visibility of the candidate list. [Full Topic]
+// A block that converts a candidate object into an attributed string for display in the candidate list item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544733-collapsed?language=objc
-func (c_ CandidateListTouchBarItem) SetCollapsed(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setCollapsed:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544823-attributedstringforcandidate?language=objc
+func (c_ CandidateListTouchBarItem) SetAttributedStringForCandidate(value func(candidate objc.Object, index int) foundation.AttributedString) {
+	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringForCandidate:"), value)
 }

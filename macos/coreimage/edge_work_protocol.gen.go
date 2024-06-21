@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework?language=objc
 type PEdgeWork interface {
 	// optional
-	SetRadius(value float32)
-	HasSetRadius() bool
-
-	// optional
-	Radius() float32
-	HasRadius() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetRadius(value float32)
+	HasSetRadius() bool
+
+	// optional
+	Radius() float32
+	HasRadius() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,29 +33,6 @@ var _ PEdgeWork = (*EdgeWorkObject)(nil)
 // A concrete type for the [PEdgeWork] protocol.
 type EdgeWorkObject struct {
 	objc.Object
-}
-
-func (e_ EdgeWorkObject) HasSetRadius() bool {
-	return e_.RespondsToSelector(objc.Sel("setRadius:"))
-}
-
-// The thickness of the edges. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
-func (e_ EdgeWorkObject) SetRadius(value float32) {
-	objc.Call[objc.Void](e_, objc.Sel("setRadius:"), value)
-}
-
-func (e_ EdgeWorkObject) HasRadius() bool {
-	return e_.RespondsToSelector(objc.Sel("radius"))
-}
-
-// The thickness of the edges. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
-func (e_ EdgeWorkObject) Radius() float32 {
-	rv := objc.Call[float32](e_, objc.Sel("radius"))
-	return rv
 }
 
 func (e_ EdgeWorkObject) HasSetInputImage() bool {
@@ -78,5 +55,28 @@ func (e_ EdgeWorkObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228242-inputimage?language=objc
 func (e_ EdgeWorkObject) InputImage() Image {
 	rv := objc.Call[Image](e_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (e_ EdgeWorkObject) HasSetRadius() bool {
+	return e_.RespondsToSelector(objc.Sel("setRadius:"))
+}
+
+// The thickness of the edges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
+func (e_ EdgeWorkObject) SetRadius(value float32) {
+	objc.Call[objc.Void](e_, objc.Sel("setRadius:"), value)
+}
+
+func (e_ EdgeWorkObject) HasRadius() bool {
+	return e_.RespondsToSelector(objc.Sel("radius"))
+}
+
+// The thickness of the edges. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
+func (e_ EdgeWorkObject) Radius() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("radius"))
 	return rv
 }

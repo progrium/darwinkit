@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider?language=objc
 type PPasteboardItemDataProvider interface {
 	// optional
-	PasteboardItemProvideDataForType(pasteboard Pasteboard, item PasteboardItem, type_ PasteboardType)
-	HasPasteboardItemProvideDataForType() bool
-
-	// optional
 	PasteboardFinishedWithDataProvider(pasteboard Pasteboard)
 	HasPasteboardFinishedWithDataProvider() bool
+
+	// optional
+	PasteboardItemProvideDataForType(pasteboard Pasteboard, item PasteboardItem, type_ PasteboardType)
+	HasPasteboardItemProvideDataForType() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,17 +25,6 @@ var _ PPasteboardItemDataProvider = (*PasteboardItemDataProviderObject)(nil)
 // A concrete type for the [PPasteboardItemDataProvider] protocol.
 type PasteboardItemDataProviderObject struct {
 	objc.Object
-}
-
-func (p_ PasteboardItemDataProviderObject) HasPasteboardItemProvideDataForType() bool {
-	return p_.RespondsToSelector(objc.Sel("pasteboard:item:provideDataForType:"))
-}
-
-// Asks the receiver to provide data for a specified type to a given pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider/1508503-pasteboard?language=objc
-func (p_ PasteboardItemDataProviderObject) PasteboardItemProvideDataForType(pasteboard Pasteboard, item PasteboardItem, type_ PasteboardType) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboard:item:provideDataForType:"), pasteboard, item, type_)
 }
 
 func (p_ PasteboardItemDataProviderObject) HasPasteboardFinishedWithDataProvider() bool {
@@ -47,4 +36,15 @@ func (p_ PasteboardItemDataProviderObject) HasPasteboardFinishedWithDataProvider
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider/1508506-pasteboardfinishedwithdataprovid?language=objc
 func (p_ PasteboardItemDataProviderObject) PasteboardFinishedWithDataProvider(pasteboard Pasteboard) {
 	objc.Call[objc.Void](p_, objc.Sel("pasteboardFinishedWithDataProvider:"), pasteboard)
+}
+
+func (p_ PasteboardItemDataProviderObject) HasPasteboardItemProvideDataForType() bool {
+	return p_.RespondsToSelector(objc.Sel("pasteboard:item:provideDataForType:"))
+}
+
+// Asks the receiver to provide data for a specified type to a given pasteboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider/1508503-pasteboard?language=objc
+func (p_ PasteboardItemDataProviderObject) PasteboardItemProvideDataForType(pasteboard Pasteboard, item PasteboardItem, type_ PasteboardType) {
+	objc.Call[objc.Void](p_, objc.Sel("pasteboard:item:provideDataForType:"), pasteboard, item, type_)
 }

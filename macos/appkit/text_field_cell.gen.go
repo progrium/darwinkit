@@ -24,16 +24,16 @@ type ITextFieldCell interface {
 	SetAllowedInputSourceLocales(value []string)
 	PlaceholderAttributedString() foundation.AttributedString
 	SetPlaceholderAttributedString(value foundation.IAttributedString)
-	TextColor() Color
-	SetTextColor(value IColor)
-	BezelStyle() TextFieldBezelStyle
-	SetBezelStyle(value TextFieldBezelStyle)
-	PlaceholderString() string
-	SetPlaceholderString(value string)
 	BackgroundColor() Color
 	SetBackgroundColor(value IColor)
 	DrawsBackground() bool
 	SetDrawsBackground(value bool)
+	TextColor() Color
+	SetTextColor(value IColor)
+	PlaceholderString() string
+	SetPlaceholderString(value string)
+	BezelStyle() TextFieldBezelStyle
+	SetBezelStyle(value TextFieldBezelStyle)
 }
 
 // An object that enhances the text display capabilities of a cell. [Full Topic]
@@ -134,51 +134,6 @@ func (t_ TextFieldCell) SetPlaceholderAttributedString(value foundation.IAttribu
 	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
-// The color to use to draw the cell’s text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447151-textcolor?language=objc
-func (t_ TextFieldCell) TextColor() Color {
-	rv := objc.Call[Color](t_, objc.Sel("textColor"))
-	return rv
-}
-
-// The color to use to draw the cell’s text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447151-textcolor?language=objc
-func (t_ TextFieldCell) SetTextColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
-}
-
-// The bezel style to use when drawing the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447161-bezelstyle?language=objc
-func (t_ TextFieldCell) BezelStyle() TextFieldBezelStyle {
-	rv := objc.Call[TextFieldBezelStyle](t_, objc.Sel("bezelStyle"))
-	return rv
-}
-
-// The bezel style to use when drawing the text field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447161-bezelstyle?language=objc
-func (t_ TextFieldCell) SetBezelStyle(value TextFieldBezelStyle) {
-	objc.Call[objc.Void](t_, objc.Sel("setBezelStyle:"), value)
-}
-
-// The placeholder text for the cell, specified as a plain text string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447165-placeholderstring?language=objc
-func (t_ TextFieldCell) PlaceholderString() string {
-	rv := objc.Call[string](t_, objc.Sel("placeholderString"))
-	return rv
-}
-
-// The placeholder text for the cell, specified as a plain text string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447165-placeholderstring?language=objc
-func (t_ TextFieldCell) SetPlaceholderString(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderString:"), value)
-}
-
 // The color of the cell’s background. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447159-backgroundcolor?language=objc
@@ -207,4 +162,49 @@ func (t_ TextFieldCell) DrawsBackground() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447155-drawsbackground?language=objc
 func (t_ TextFieldCell) SetDrawsBackground(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setDrawsBackground:"), value)
+}
+
+// The color to use to draw the cell’s text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447151-textcolor?language=objc
+func (t_ TextFieldCell) TextColor() Color {
+	rv := objc.Call[Color](t_, objc.Sel("textColor"))
+	return rv
+}
+
+// The color to use to draw the cell’s text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447151-textcolor?language=objc
+func (t_ TextFieldCell) SetTextColor(value IColor) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
+}
+
+// The placeholder text for the cell, specified as a plain text string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447165-placeholderstring?language=objc
+func (t_ TextFieldCell) PlaceholderString() string {
+	rv := objc.Call[string](t_, objc.Sel("placeholderString"))
+	return rv
+}
+
+// The placeholder text for the cell, specified as a plain text string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447165-placeholderstring?language=objc
+func (t_ TextFieldCell) SetPlaceholderString(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderString:"), value)
+}
+
+// The bezel style to use when drawing the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447161-bezelstyle?language=objc
+func (t_ TextFieldCell) BezelStyle() TextFieldBezelStyle {
+	rv := objc.Call[TextFieldBezelStyle](t_, objc.Sel("bezelStyle"))
+	return rv
+}
+
+// The bezel style to use when drawing the text field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447161-bezelstyle?language=objc
+func (t_ TextFieldCell) SetBezelStyle(value TextFieldBezelStyle) {
+	objc.Call[objc.Void](t_, objc.Sel("setBezelStyle:"), value)
 }

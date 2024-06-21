@@ -11,101 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate?language=objc
 type PURLSessionTaskDelegate interface {
 	// optional
-	URLSessionTaskNeedNewBodyStream(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream))
-	HasURLSessionTaskNeedNewBodyStream() bool
-
-	// optional
-	URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest))
-	HasURLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler() bool
-
-	// optional
-	URLSessionTaskDidReceiveChallengeCompletionHandler(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential))
-	HasURLSessionTaskDidReceiveChallengeCompletionHandler() bool
-
-	// optional
 	URLSessionTaskDidFinishCollectingMetrics(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics)
 	HasURLSessionTaskDidFinishCollectingMetrics() bool
-
-	// optional
-	URLSessionTaskIsWaitingForConnectivity(session URLSession, task URLSessionTask)
-	HasURLSessionTaskIsWaitingForConnectivity() bool
-
-	// optional
-	URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64)
-	HasURLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend() bool
-
-	// optional
-	URLSessionTaskWillBeginDelayedRequestCompletionHandler(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest))
-	HasURLSessionTaskWillBeginDelayedRequestCompletionHandler() bool
-
-	// optional
-	URLSessionTaskDidCompleteWithError(session URLSession, task URLSessionTask, error Error)
-	HasURLSessionTaskDidCompleteWithError() bool
 }
 
 // A delegate implementation builder for the [PURLSessionTaskDelegate] protocol.
 type URLSessionTaskDelegate struct {
-	_URLSessionTaskNeedNewBodyStream                                     func(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream))
-	_URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler func(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest))
-	_URLSessionTaskDidReceiveChallengeCompletionHandler                  func(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential))
-	_URLSessionTaskDidFinishCollectingMetrics                            func(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics)
-	_URLSessionTaskIsWaitingForConnectivity                              func(session URLSession, task URLSessionTask)
-	_URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend func(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64)
-	_URLSessionTaskWillBeginDelayedRequestCompletionHandler              func(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest))
-	_URLSessionTaskDidCompleteWithError                                  func(session URLSession, task URLSessionTask, error Error)
+	_URLSessionTaskDidFinishCollectingMetrics func(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics)
 }
 
-func (di *URLSessionTaskDelegate) HasURLSessionTaskNeedNewBodyStream() bool {
-	return di._URLSessionTaskNeedNewBodyStream != nil
-}
-
-// Tells the delegate when a task requires a new request body stream to send to the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1410001-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskNeedNewBodyStream(f func(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream))) {
-	di._URLSessionTaskNeedNewBodyStream = f
-}
-
-// Tells the delegate when a task requires a new request body stream to send to the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1410001-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskNeedNewBodyStream(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream)) {
-	di._URLSessionTaskNeedNewBodyStream(session, task, completionHandler)
-}
-func (di *URLSessionTaskDelegate) HasURLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler() bool {
-	return di._URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler != nil
-}
-
-// Tells the delegate that the remote server requested an HTTP redirect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(f func(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest))) {
-	di._URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler = f
-}
-
-// Tells the delegate that the remote server requested an HTTP redirect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest)) {
-	di._URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(session, task, response, request, completionHandler)
-}
-func (di *URLSessionTaskDelegate) HasURLSessionTaskDidReceiveChallengeCompletionHandler() bool {
-	return di._URLSessionTaskDidReceiveChallengeCompletionHandler != nil
-}
-
-// Requests credentials from the delegate in response to an authentication request from the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411595-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskDidReceiveChallengeCompletionHandler(f func(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential))) {
-	di._URLSessionTaskDidReceiveChallengeCompletionHandler = f
-}
-
-// Requests credentials from the delegate in response to an authentication request from the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411595-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskDidReceiveChallengeCompletionHandler(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential)) {
-	di._URLSessionTaskDidReceiveChallengeCompletionHandler(session, task, challenge, completionHandler)
-}
 func (di *URLSessionTaskDelegate) HasURLSessionTaskDidFinishCollectingMetrics() bool {
 	return di._URLSessionTaskDidFinishCollectingMetrics != nil
 }
@@ -123,74 +37,6 @@ func (di *URLSessionTaskDelegate) SetURLSessionTaskDidFinishCollectingMetrics(f 
 func (di *URLSessionTaskDelegate) URLSessionTaskDidFinishCollectingMetrics(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics) {
 	di._URLSessionTaskDidFinishCollectingMetrics(session, task, metrics)
 }
-func (di *URLSessionTaskDelegate) HasURLSessionTaskIsWaitingForConnectivity() bool {
-	return di._URLSessionTaskIsWaitingForConnectivity != nil
-}
-
-// Tells the delegate that the task is waiting until suitable connectivity is available before beginning the network load. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2908819-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskIsWaitingForConnectivity(f func(session URLSession, task URLSessionTask)) {
-	di._URLSessionTaskIsWaitingForConnectivity = f
-}
-
-// Tells the delegate that the task is waiting until suitable connectivity is available before beginning the network load. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2908819-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskIsWaitingForConnectivity(session URLSession, task URLSessionTask) {
-	di._URLSessionTaskIsWaitingForConnectivity(session, task)
-}
-func (di *URLSessionTaskDelegate) HasURLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend() bool {
-	return di._URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend != nil
-}
-
-// Periodically informs the delegate of the progress of sending body content to the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(f func(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64)) {
-	di._URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend = f
-}
-
-// Periodically informs the delegate of the progress of sending body content to the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64) {
-	di._URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(session, task, bytesSent, totalBytesSent, totalBytesExpectedToSend)
-}
-func (di *URLSessionTaskDelegate) HasURLSessionTaskWillBeginDelayedRequestCompletionHandler() bool {
-	return di._URLSessionTaskWillBeginDelayedRequestCompletionHandler != nil
-}
-
-// Tells the delegate that a delayed URL session task will now begin loading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2873415-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskWillBeginDelayedRequestCompletionHandler(f func(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest))) {
-	di._URLSessionTaskWillBeginDelayedRequestCompletionHandler = f
-}
-
-// Tells the delegate that a delayed URL session task will now begin loading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2873415-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskWillBeginDelayedRequestCompletionHandler(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest)) {
-	di._URLSessionTaskWillBeginDelayedRequestCompletionHandler(session, task, request, completionHandler)
-}
-func (di *URLSessionTaskDelegate) HasURLSessionTaskDidCompleteWithError() bool {
-	return di._URLSessionTaskDidCompleteWithError != nil
-}
-
-// Tells the delegate that the task finished transferring data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession?language=objc
-func (di *URLSessionTaskDelegate) SetURLSessionTaskDidCompleteWithError(f func(session URLSession, task URLSessionTask, error Error)) {
-	di._URLSessionTaskDidCompleteWithError = f
-}
-
-// Tells the delegate that the task finished transferring data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession?language=objc
-func (di *URLSessionTaskDelegate) URLSessionTaskDidCompleteWithError(session URLSession, task URLSessionTask, error Error) {
-	di._URLSessionTaskDidCompleteWithError(session, task, error)
-}
 
 // ensure impl type implements protocol interface
 var _ PURLSessionTaskDelegate = (*URLSessionTaskDelegateObject)(nil)
@@ -198,39 +44,6 @@ var _ PURLSessionTaskDelegate = (*URLSessionTaskDelegateObject)(nil)
 // A concrete type for the [PURLSessionTaskDelegate] protocol.
 type URLSessionTaskDelegateObject struct {
 	objc.Object
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskNeedNewBodyStream() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:needNewBodyStream:"))
-}
-
-// Tells the delegate when a task requires a new request body stream to send to the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1410001-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskNeedNewBodyStream(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:needNewBodyStream:"), session, task, completionHandler)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:"))
-}
-
-// Tells the delegate that the remote server requested an HTTP redirect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:"), session, task, response, request, completionHandler)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidReceiveChallengeCompletionHandler() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:didReceiveChallenge:completionHandler:"))
-}
-
-// Requests credentials from the delegate in response to an authentication request from the remote server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411595-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidReceiveChallengeCompletionHandler(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didReceiveChallenge:completionHandler:"), session, task, challenge, completionHandler)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidFinishCollectingMetrics() bool {
@@ -242,48 +55,4 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidFinishCollectingMetri
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1643148-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidFinishCollectingMetrics(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics) {
 	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didFinishCollectingMetrics:"), session, task, metrics)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskIsWaitingForConnectivity() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:taskIsWaitingForConnectivity:"))
-}
-
-// Tells the delegate that the task is waiting until suitable connectivity is available before beginning the network load. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2908819-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskIsWaitingForConnectivity(session URLSession, task URLSessionTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:taskIsWaitingForConnectivity:"), session, task)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:"))
-}
-
-// Periodically informs the delegate of the progress of sending body content to the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:"), session, task, bytesSent, totalBytesSent, totalBytesExpectedToSend)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillBeginDelayedRequestCompletionHandler() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:willBeginDelayedRequest:completionHandler:"))
-}
-
-// Tells the delegate that a delayed URL session task will now begin loading. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2873415-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskWillBeginDelayedRequestCompletionHandler(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willBeginDelayedRequest:completionHandler:"), session, task, request, completionHandler)
-}
-
-func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidCompleteWithError() bool {
-	return u_.RespondsToSelector(objc.Sel("URLSession:task:didCompleteWithError:"))
-}
-
-// Tells the delegate that the task finished transferring data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession?language=objc
-func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidCompleteWithError(session URLSession, task URLSessionTask, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didCompleteWithError:"), session, task, error)
 }

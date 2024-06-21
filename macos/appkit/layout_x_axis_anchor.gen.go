@@ -18,10 +18,10 @@ type _LayoutXAxisAnchorClass struct {
 // An interface definition for the [LayoutXAxisAnchor] class.
 type ILayoutXAxisAnchor interface {
 	ILayoutAnchor
-	AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension
 	ConstraintLessThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint
-	ConstraintEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint
 	ConstraintGreaterThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint
+	ConstraintEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint
+	AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension
 }
 
 // A factory class for creating horizontal layout constraint objects using a fluent API. [Full Topic]
@@ -57,19 +57,19 @@ func (l_ LayoutXAxisAnchor) Init() LayoutXAxisAnchor {
 	return rv
 }
 
-// Creates a layout dimension object from two anchors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866024-anchorwithoffsettoanchor?language=objc
-func (l_ LayoutXAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension {
-	rv := objc.Call[LayoutDimension](l_, objc.Sel("anchorWithOffsetToAnchor:"), otherAnchor)
-	return rv
-}
-
 // Returns a constraint that defines the maximum amount by which the current anchor trails the specified anchor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866018-constraintlessthanorequaltosyste?language=objc
 func (l_ LayoutXAxisAnchor) ConstraintLessThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
 	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
+	return rv
+}
+
+// Returns a constraint that defines the minimum amount by which the current anchor trails the specified anchor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2865871-constraintgreaterthanorequaltosy?language=objc
+func (l_ LayoutXAxisAnchor) ConstraintGreaterThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
@@ -81,10 +81,10 @@ func (l_ LayoutXAxisAnchor) ConstraintEqualToSystemSpacingAfterAnchorMultiplier(
 	return rv
 }
 
-// Returns a constraint that defines the minimum amount by which the current anchor trails the specified anchor. [Full Topic]
+// Creates a layout dimension object from two anchors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2865871-constraintgreaterthanorequaltosy?language=objc
-func (l_ LayoutXAxisAnchor) ConstraintGreaterThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866024-anchorwithoffsettoanchor?language=objc
+func (l_ LayoutXAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension {
+	rv := objc.Call[LayoutDimension](l_, objc.Sel("anchorWithOffsetToAnchor:"), otherAnchor)
 	return rv
 }

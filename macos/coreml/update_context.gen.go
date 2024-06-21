@@ -19,9 +19,9 @@ type _UpdateContextClass struct {
 // An interface definition for the [UpdateContext] class.
 type IUpdateContext interface {
 	objc.IObject
-	Parameters() foundation.Dictionary
 	Metrics() foundation.Dictionary
 	Model() Model
+	Parameters() foundation.Dictionary
 	Task() UpdateTask
 	Event() UpdateProgressEvent
 }
@@ -59,14 +59,6 @@ func (u_ UpdateContext) Init() UpdateContext {
 	return rv
 }
 
-// The parameters for the update task. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatecontext/3180097-parameters?language=objc
-func (u_ UpdateContext) Parameters() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](u_, objc.Sel("parameters"))
-	return rv
-}
-
 // The training metrics of the model for the update task, contained in a dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatecontext/3180095-metrics?language=objc
@@ -80,6 +72,14 @@ func (u_ UpdateContext) Metrics() foundation.Dictionary {
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatecontext/3180096-model?language=objc
 func (u_ UpdateContext) Model() Model {
 	rv := objc.Call[Model](u_, objc.Sel("model"))
+	return rv
+}
+
+// The parameters for the update task. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatecontext/3180097-parameters?language=objc
+func (u_ UpdateContext) Parameters() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](u_, objc.Sel("parameters"))
 	return rv
 }
 

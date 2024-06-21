@@ -20,24 +20,24 @@ type _ReplicatorLayerClass struct {
 // An interface definition for the [ReplicatorLayer] class.
 type IReplicatorLayer interface {
 	ILayer
-	InstanceRedOffset() float32
-	SetInstanceRedOffset(value float32)
 	InstanceBlueOffset() float32
 	SetInstanceBlueOffset(value float32)
+	InstanceRedOffset() float32
+	SetInstanceRedOffset(value float32)
+	InstanceColor() coregraphics.ColorRef
+	SetInstanceColor(value coregraphics.ColorRef)
+	InstanceTransform() Transform3D
+	SetInstanceTransform(value Transform3D)
+	InstanceAlphaOffset() float32
+	SetInstanceAlphaOffset(value float32)
+	InstanceGreenOffset() float32
+	SetInstanceGreenOffset(value float32)
 	InstanceDelay() corefoundation.TimeInterval
 	SetInstanceDelay(value corefoundation.TimeInterval)
 	InstanceCount() int
 	SetInstanceCount(value int)
-	InstanceAlphaOffset() float32
-	SetInstanceAlphaOffset(value float32)
-	InstanceColor() coregraphics.ColorRef
-	SetInstanceColor(value coregraphics.ColorRef)
 	PreservesDepth() bool
 	SetPreservesDepth(value bool)
-	InstanceGreenOffset() float32
-	SetInstanceGreenOffset(value float32)
-	InstanceTransform() Transform3D
-	SetInstanceTransform(value Transform3D)
 }
 
 // A layer that creates a specified number of sublayer copies with varying geometric, temporal, and color transformations. [Full Topic]
@@ -73,6 +73,32 @@ func (r_ ReplicatorLayer) Init() ReplicatorLayer {
 	return rv
 }
 
+func (rc _ReplicatorLayerClass) Layer() ReplicatorLayer {
+	rv := objc.Call[ReplicatorLayer](rc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func ReplicatorLayer_Layer() ReplicatorLayer {
+	return ReplicatorLayerClass.Layer()
+}
+
+func (r_ ReplicatorLayer) InitWithLayer(layer objc.IObject) ReplicatorLayer {
+	rv := objc.Call[ReplicatorLayer](r_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewReplicatorLayerWithLayer(layer objc.IObject) ReplicatorLayer {
+	instance := ReplicatorLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (r_ ReplicatorLayer) ModelLayer() ReplicatorLayer {
 	rv := objc.Call[ReplicatorLayer](r_, objc.Sel("modelLayer"))
 	return rv
@@ -101,30 +127,19 @@ func ReplicatorLayer_PresentationLayer() ReplicatorLayer {
 	return instance
 }
 
-func (r_ ReplicatorLayer) InitWithLayer(layer objc.IObject) ReplicatorLayer {
-	rv := objc.Call[ReplicatorLayer](r_, objc.Sel("initWithLayer:"), layer)
+// Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
+func (r_ ReplicatorLayer) InstanceBlueOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceBlueOffset"))
 	return rv
 }
 
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+// Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewReplicatorLayerWithLayer(layer objc.IObject) ReplicatorLayer {
-	instance := ReplicatorLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (rc _ReplicatorLayerClass) Layer() ReplicatorLayer {
-	rv := objc.Call[ReplicatorLayer](rc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func ReplicatorLayer_Layer() ReplicatorLayer {
-	return ReplicatorLayerClass.Layer()
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
+func (r_ ReplicatorLayer) SetInstanceBlueOffset(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setInstanceBlueOffset:"), value)
 }
 
 // Defines the offset added to the red component of the color for each replicated instance. Animatable. [Full Topic]
@@ -142,19 +157,64 @@ func (r_ ReplicatorLayer) SetInstanceRedOffset(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceRedOffset:"), value)
 }
 
-// Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
+// Defines the color used to multiply the source object. Animatable. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
-func (r_ ReplicatorLayer) InstanceBlueOffset() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("instanceBlueOffset"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522154-instancecolor?language=objc
+func (r_ ReplicatorLayer) InstanceColor() coregraphics.ColorRef {
+	rv := objc.Call[coregraphics.ColorRef](r_, objc.Sel("instanceColor"))
 	return rv
 }
 
-// Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
+// Defines the color used to multiply the source object. Animatable. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceBlueOffset(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setInstanceBlueOffset:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522154-instancecolor?language=objc
+func (r_ ReplicatorLayer) SetInstanceColor(value coregraphics.ColorRef) {
+	objc.Call[objc.Void](r_, objc.Sel("setInstanceColor:"), value)
+}
+
+// The transform matrix applied to the previous instance to produce the current instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522312-instancetransform?language=objc
+func (r_ ReplicatorLayer) InstanceTransform() Transform3D {
+	rv := objc.Call[Transform3D](r_, objc.Sel("instanceTransform"))
+	return rv
+}
+
+// The transform matrix applied to the previous instance to produce the current instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522312-instancetransform?language=objc
+func (r_ ReplicatorLayer) SetInstanceTransform(value Transform3D) {
+	objc.Call[objc.Void](r_, objc.Sel("setInstanceTransform:"), value)
+}
+
+// Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
+func (r_ ReplicatorLayer) InstanceAlphaOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceAlphaOffset"))
+	return rv
+}
+
+// Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
+func (r_ ReplicatorLayer) SetInstanceAlphaOffset(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setInstanceAlphaOffset:"), value)
+}
+
+// Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
+func (r_ ReplicatorLayer) InstanceGreenOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceGreenOffset"))
+	return rv
+}
+
+// Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
+func (r_ ReplicatorLayer) SetInstanceGreenOffset(value float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setInstanceGreenOffset:"), value)
 }
 
 // Specifies the delay, in seconds, between replicated copies. Animatable. [Full Topic]
@@ -187,36 +247,6 @@ func (r_ ReplicatorLayer) SetInstanceCount(value int) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceCount:"), value)
 }
 
-// Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
-func (r_ ReplicatorLayer) InstanceAlphaOffset() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("instanceAlphaOffset"))
-	return rv
-}
-
-// Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceAlphaOffset(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setInstanceAlphaOffset:"), value)
-}
-
-// Defines the color used to multiply the source object. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522154-instancecolor?language=objc
-func (r_ ReplicatorLayer) InstanceColor() coregraphics.ColorRef {
-	rv := objc.Call[coregraphics.ColorRef](r_, objc.Sel("instanceColor"))
-	return rv
-}
-
-// Defines the color used to multiply the source object. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522154-instancecolor?language=objc
-func (r_ ReplicatorLayer) SetInstanceColor(value coregraphics.ColorRef) {
-	objc.Call[objc.Void](r_, objc.Sel("setInstanceColor:"), value)
-}
-
 // Defines whether this layer flattens its sublayers into its plane. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522095-preservesdepth?language=objc
@@ -230,34 +260,4 @@ func (r_ ReplicatorLayer) PreservesDepth() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522095-preservesdepth?language=objc
 func (r_ ReplicatorLayer) SetPreservesDepth(value bool) {
 	objc.Call[objc.Void](r_, objc.Sel("setPreservesDepth:"), value)
-}
-
-// Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
-func (r_ ReplicatorLayer) InstanceGreenOffset() float32 {
-	rv := objc.Call[float32](r_, objc.Sel("instanceGreenOffset"))
-	return rv
-}
-
-// Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceGreenOffset(value float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setInstanceGreenOffset:"), value)
-}
-
-// The transform matrix applied to the previous instance to produce the current instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522312-instancetransform?language=objc
-func (r_ ReplicatorLayer) InstanceTransform() Transform3D {
-	rv := objc.Call[Transform3D](r_, objc.Sel("instanceTransform"))
-	return rv
-}
-
-// The transform matrix applied to the previous instance to produce the current instance. Animatable. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522312-instancetransform?language=objc
-func (r_ ReplicatorLayer) SetInstanceTransform(value Transform3D) {
-	objc.Call[objc.Void](r_, objc.Sel("setInstanceTransform:"), value)
 }

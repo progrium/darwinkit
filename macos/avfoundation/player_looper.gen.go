@@ -21,10 +21,10 @@ type _PlayerLooperClass struct {
 type IPlayerLooper interface {
 	objc.IObject
 	DisableLooping()
-	LoopCount() int
-	LoopingPlayerItems() []PlayerItem
 	Error() foundation.Error
+	LoopCount() int
 	Status() PlayerLooperStatus
+	LoopingPlayerItems() []PlayerItem
 }
 
 // An object that loops media content using a queue player. [Full Topic]
@@ -50,18 +50,6 @@ func (pc _PlayerLooperClass) PlayerLooperWithPlayerTemplateItem(player IQueuePla
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1643625-playerlooperwithplayer?language=objc
 func PlayerLooper_PlayerLooperWithPlayerTemplateItem(player IQueuePlayer, itemToLoop IPlayerItem) PlayerLooper {
 	return PlayerLooperClass.PlayerLooperWithPlayerTemplateItem(player, itemToLoop)
-}
-
-func (pc _PlayerLooperClass) PlayerLooperWithPlayerTemplateItemTimeRange(player IQueuePlayer, itemToLoop IPlayerItem, loopRange coremedia.TimeRange) PlayerLooper {
-	rv := objc.Call[PlayerLooper](pc, objc.Sel("playerLooperWithPlayer:templateItem:timeRange:"), player, itemToLoop, loopRange)
-	return rv
-}
-
-// Returns player looper that continuously plays the specified time range of a player item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1645034-playerlooperwithplayer?language=objc
-func PlayerLooper_PlayerLooperWithPlayerTemplateItemTimeRange(player IQueuePlayer, itemToLoop IPlayerItem, loopRange coremedia.TimeRange) PlayerLooper {
-	return PlayerLooperClass.PlayerLooperWithPlayerTemplateItemTimeRange(player, itemToLoop, loopRange)
 }
 
 func (p_ PlayerLooper) InitWithPlayerTemplateItemTimeRange(player IQueuePlayer, itemToLoop IPlayerItem, loopRange coremedia.TimeRange) PlayerLooper {
@@ -105,22 +93,6 @@ func (p_ PlayerLooper) DisableLooping() {
 	objc.Call[objc.Void](p_, objc.Sel("disableLooping"))
 }
 
-// The number of times the object played the media. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1643648-loopcount?language=objc
-func (p_ PlayerLooper) LoopCount() int {
-	rv := objc.Call[int](p_, objc.Sel("loopCount"))
-	return rv
-}
-
-// An array containing replicas of the template player item used to accomplish the looping. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1643631-loopingplayeritems?language=objc
-func (p_ PlayerLooper) LoopingPlayerItems() []PlayerItem {
-	rv := objc.Call[[]PlayerItem](p_, objc.Sel("loopingPlayerItems"))
-	return rv
-}
-
 // An error that describes the reason looping failed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/2177064-error?language=objc
@@ -129,10 +101,26 @@ func (p_ PlayerLooper) Error() foundation.Error {
 	return rv
 }
 
+// The number of times the object played the media. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1643648-loopcount?language=objc
+func (p_ PlayerLooper) LoopCount() int {
+	rv := objc.Call[int](p_, objc.Sel("loopCount"))
+	return rv
+}
+
 // A status that indicates the object’s ability to loop playback. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/2177060-status?language=objc
 func (p_ PlayerLooper) Status() PlayerLooperStatus {
 	rv := objc.Call[PlayerLooperStatus](p_, objc.Sel("status"))
+	return rv
+}
+
+// An array containing replicas of the template player item used to accomplish the looping. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlooper/1643631-loopingplayeritems?language=objc
+func (p_ PlayerLooper) LoopingPlayerItems() []PlayerItem {
+	rv := objc.Call[[]PlayerItem](p_, objc.Sel("loopingPlayerItems"))
 	return rv
 }

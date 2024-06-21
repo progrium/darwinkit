@@ -19,27 +19,27 @@ type _PasteboardClass struct {
 // An interface definition for the [Pasteboard] class.
 type IPasteboard interface {
 	objc.IObject
-	AddTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int
-	ReadFileContentsTypeToFile(type_ PasteboardType, filename string) string
-	SetPropertyListForType(plist objc.IObject, dataType PasteboardType) bool
-	WriteObjects(objects []PPasteboardWriting) bool
-	ClearContents() int
-	ReadObjectsForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object
 	StringForType(dataType PasteboardType) string
+	ReadFileContentsTypeToFile(type_ PasteboardType, filename string) string
+	ReadObjectsForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object
 	IndexOfPasteboardItem(pasteboardItem IPasteboardItem) uint
-	DataForType(dataType PasteboardType) []byte
-	CanReadObjectForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) bool
-	DeclareTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int
-	PropertyListForType(dataType PasteboardType) objc.Object
+	AddTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int
 	WriteFileContents(filename string) bool
+	ReadFileWrapper() foundation.FileWrapper
+	WriteObjects(objects []PPasteboardWriting) bool
 	ReleaseGlobally()
-	CanReadItemWithDataConformingToTypes(types []string) bool
 	WriteFileWrapper(wrapper foundation.IFileWrapper) bool
+	SetPropertyListForType(plist objc.IObject, dataType PasteboardType) bool
+	SetStringForType(string_ string, dataType PasteboardType) bool
+	CanReadObjectForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) bool
+	DataForType(dataType PasteboardType) []byte
+	ClearContents() int
 	SetDataForType(data []byte, dataType PasteboardType) bool
 	PrepareForNewContentsWithOptions(options PasteboardContentsOptions) int
 	AvailableTypeFromArray(types []PasteboardType) PasteboardType
-	ReadFileWrapper() foundation.FileWrapper
-	SetStringForType(string_ string, dataType PasteboardType) bool
+	DeclareTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int
+	CanReadItemWithDataConformingToTypes(types []string) bool
+	PropertyListForType(dataType PasteboardType) objc.Object
 	Name() PasteboardName
 	Types() []PasteboardType
 	ChangeCount() int
@@ -79,51 +79,11 @@ func (p_ Pasteboard) Init() Pasteboard {
 	return rv
 }
 
-// Adds promises for the specified types to the first pasteboard item. [Full Topic]
+// Returns a concatenation of the strings for the specified type from all the items in the receiver that contain the type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533580-addtypes?language=objc
-func (p_ Pasteboard) AddTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.Call[int](p_, objc.Sel("addTypes:owner:"), newTypes, newOwner)
-	return rv
-}
-
-// Reads data representing a file’s contents from the receiver and writes it to the specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533575-readfilecontentstype?language=objc
-func (p_ Pasteboard) ReadFileContentsTypeToFile(type_ PasteboardType, filename string) string {
-	rv := objc.Call[string](p_, objc.Sel("readFileContentsType:toFile:"), type_, filename)
-	return rv
-}
-
-// Sets the given property list as the representation for the specified type for the first item on the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530774-setpropertylist?language=objc
-func (p_ Pasteboard) SetPropertyListForType(plist objc.IObject, dataType PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setPropertyList:forType:"), plist, dataType)
-	return rv
-}
-
-// Writes an array of objects to the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1525945-writeobjects?language=objc
-func (p_ Pasteboard) WriteObjects(objects []PPasteboardWriting) bool {
-	rv := objc.Call[bool](p_, objc.Sel("writeObjects:"), objects)
-	return rv
-}
-
-// Clears the existing contents of the pasteboard. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533599-clearcontents?language=objc
-func (p_ Pasteboard) ClearContents() int {
-	rv := objc.Call[int](p_, objc.Sel("clearContents"))
-	return rv
-}
-
-// Reads from the receiver objects that best match the specified array of classes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1524454-readobjectsforclasses?language=objc
-func (p_ Pasteboard) ReadObjectsForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](p_, objc.Sel("readObjectsForClasses:options:"), classArray, options)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533566-stringfortype?language=objc
+func (p_ Pasteboard) StringForType(dataType PasteboardType) string {
+	rv := objc.Call[string](p_, objc.Sel("stringForType:"), dataType)
 	return rv
 }
 
@@ -142,26 +102,19 @@ func Pasteboard_PasteboardWithName(name PasteboardName) Pasteboard {
 	return PasteboardClass.PasteboardWithName(name)
 }
 
-// Creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services. [Full Topic]
+// Reads data representing a file’s contents from the receiver and writes it to the specified file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
-func (pc _PasteboardClass) PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
-	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringTypesInPasteboard:"), pboard)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533575-readfilecontentstype?language=objc
+func (p_ Pasteboard) ReadFileContentsTypeToFile(type_ PasteboardType, filename string) string {
+	rv := objc.Call[string](p_, objc.Sel("readFileContentsType:toFile:"), type_, filename)
 	return rv
 }
 
-// Creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services. [Full Topic]
+// Reads from the receiver objects that best match the specified array of classes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
-func Pasteboard_PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
-	return PasteboardClass.PasteboardByFilteringTypesInPasteboard(pboard)
-}
-
-// Returns a concatenation of the strings for the specified type from all the items in the receiver that contain the type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533566-stringfortype?language=objc
-func (p_ Pasteboard) StringForType(dataType PasteboardType) string {
-	rv := objc.Call[string](p_, objc.Sel("stringForType:"), dataType)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1524454-readobjectsforclasses?language=objc
+func (p_ Pasteboard) ReadObjectsForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object {
+	rv := objc.Call[[]objc.Object](p_, objc.Sel("readObjectsForClasses:options:"), classArray, options)
 	return rv
 }
 
@@ -173,11 +126,11 @@ func (p_ Pasteboard) IndexOfPasteboardItem(pasteboardItem IPasteboardItem) uint 
 	return rv
 }
 
-// Returns the data for the specified type from the first item in the receiver that contains the type. [Full Topic]
+// Adds promises for the specified types to the first pasteboard item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1531810-datafortype?language=objc
-func (p_ Pasteboard) DataForType(dataType PasteboardType) []byte {
-	rv := objc.Call[[]byte](p_, objc.Sel("dataForType:"), dataType)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533580-addtypes?language=objc
+func (p_ Pasteboard) AddTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int {
+	rv := objc.Call[int](p_, objc.Sel("addTypes:owner:"), newTypes, newOwner)
 	return rv
 }
 
@@ -196,35 +149,27 @@ func Pasteboard_PasteboardByFilteringDataOfType(data []byte, type_ PasteboardTyp
 	return PasteboardClass.PasteboardByFilteringDataOfType(data, type_)
 }
 
-// Returns a Boolean value that indicates whether the receiver contains any items that can be represented as an instance of any class in a given array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533360-canreadobjectforclasses?language=objc
-func (p_ Pasteboard) CanReadObjectForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) bool {
-	rv := objc.Call[bool](p_, objc.Sel("canReadObjectForClasses:options:"), classArray, options)
-	return rv
-}
-
-// Prepares the receiver for a change in its contents by declaring the new types of data it will contain and a new owner. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533561-declaretypes?language=objc
-func (p_ Pasteboard) DeclareTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.Call[int](p_, objc.Sel("declareTypes:owner:"), newTypes, newOwner)
-	return rv
-}
-
-// Returns the property list for the specified type from the first item in the receiver that contains the type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1528588-propertylistfortype?language=objc
-func (p_ Pasteboard) PropertyListForType(dataType PasteboardType) objc.Object {
-	rv := objc.Call[objc.Object](p_, objc.Sel("propertyListForType:"), dataType)
-	return rv
-}
-
 // Writes the contents of the specified file to the pasteboard. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1531224-writefilecontents?language=objc
 func (p_ Pasteboard) WriteFileContents(filename string) bool {
 	rv := objc.Call[bool](p_, objc.Sel("writeFileContents:"), filename)
+	return rv
+}
+
+// Reads data representing a file’s contents from the receiver and returns it as a file wrapper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1524779-readfilewrapper?language=objc
+func (p_ Pasteboard) ReadFileWrapper() foundation.FileWrapper {
+	rv := objc.Call[foundation.FileWrapper](p_, objc.Sel("readFileWrapper"))
+	return rv
+}
+
+// Writes an array of objects to the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1525945-writeobjects?language=objc
+func (p_ Pasteboard) WriteObjects(objects []PPasteboardWriting) bool {
+	rv := objc.Call[bool](p_, objc.Sel("writeObjects:"), objects)
 	return rv
 }
 
@@ -235,14 +180,6 @@ func (p_ Pasteboard) ReleaseGlobally() {
 	objc.Call[objc.Void](p_, objc.Sel("releaseGlobally"))
 }
 
-// Returns a Boolean value that indicates whether the receiver contains any items that conform to the specified UTIs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533576-canreaditemwithdataconformingtot?language=objc
-func (p_ Pasteboard) CanReadItemWithDataConformingToTypes(types []string) bool {
-	rv := objc.Call[bool](p_, objc.Sel("canReadItemWithDataConformingToTypes:"), types)
-	return rv
-}
-
 // Writes the serialized contents of the specified file wrapper to the pasteboard. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1527279-writefilewrapper?language=objc
@@ -251,19 +188,19 @@ func (p_ Pasteboard) WriteFileWrapper(wrapper foundation.IFileWrapper) bool {
 	return rv
 }
 
-// Sets the data as the representation for the specified type for the first item on the receiver. [Full Topic]
+// Sets the given property list as the representation for the specified type for the first item on the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1531214-setdata?language=objc
-func (p_ Pasteboard) SetDataForType(data []byte, dataType PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setData:forType:"), data, dataType)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530774-setpropertylist?language=objc
+func (p_ Pasteboard) SetPropertyListForType(plist objc.IObject, dataType PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setPropertyList:forType:"), plist, dataType)
 	return rv
 }
 
-// Prepares the pasteboard to receive new contents, removing the existing pasteboard contents. [Full Topic]
+// Sets the given string as the representation for the specified type for the first item on the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/2344960-preparefornewcontentswithoptions?language=objc
-func (p_ Pasteboard) PrepareForNewContentsWithOptions(options PasteboardContentsOptions) int {
-	rv := objc.Call[int](p_, objc.Sel("prepareForNewContentsWithOptions:"), options)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1528225-setstring?language=objc
+func (p_ Pasteboard) SetStringForType(string_ string, dataType PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setString:forType:"), string_, dataType)
 	return rv
 }
 
@@ -282,11 +219,42 @@ func Pasteboard_PasteboardWithUniqueName() Pasteboard {
 	return PasteboardClass.PasteboardWithUniqueName()
 }
 
-// Scans the specified types for a type that the receiver supports. [Full Topic]
+// Creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1526078-availabletypefromarray?language=objc
-func (p_ Pasteboard) AvailableTypeFromArray(types []PasteboardType) PasteboardType {
-	rv := objc.Call[PasteboardType](p_, objc.Sel("availableTypeFromArray:"), types)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc
+func (pc _PasteboardClass) PasteboardByFilteringFile(filename string) Pasteboard {
+	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringFile:"), filename)
+	return rv
+}
+
+// Creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc
+func Pasteboard_PasteboardByFilteringFile(filename string) Pasteboard {
+	return PasteboardClass.PasteboardByFilteringFile(filename)
+}
+
+// Returns a Boolean value that indicates whether the receiver contains any items that can be represented as an instance of any class in a given array. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533360-canreadobjectforclasses?language=objc
+func (p_ Pasteboard) CanReadObjectForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) bool {
+	rv := objc.Call[bool](p_, objc.Sel("canReadObjectForClasses:options:"), classArray, options)
+	return rv
+}
+
+// Returns the data for the specified type from the first item in the receiver that contains the type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1531810-datafortype?language=objc
+func (p_ Pasteboard) DataForType(dataType PasteboardType) []byte {
+	rv := objc.Call[[]byte](p_, objc.Sel("dataForType:"), dataType)
+	return rv
+}
+
+// Clears the existing contents of the pasteboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533599-clearcontents?language=objc
+func (p_ Pasteboard) ClearContents() int {
+	rv := objc.Call[int](p_, objc.Sel("clearContents"))
 	return rv
 }
 
@@ -305,34 +273,66 @@ func Pasteboard_TypesFilterableTo(type_ PasteboardType) []PasteboardType {
 	return PasteboardClass.TypesFilterableTo(type_)
 }
 
-// Reads data representing a file’s contents from the receiver and returns it as a file wrapper. [Full Topic]
+// Sets the data as the representation for the specified type for the first item on the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1524779-readfilewrapper?language=objc
-func (p_ Pasteboard) ReadFileWrapper() foundation.FileWrapper {
-	rv := objc.Call[foundation.FileWrapper](p_, objc.Sel("readFileWrapper"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1531214-setdata?language=objc
+func (p_ Pasteboard) SetDataForType(data []byte, dataType PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setData:forType:"), data, dataType)
 	return rv
 }
 
-// Creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services. [Full Topic]
+// Prepares the pasteboard to receive new contents, removing the existing pasteboard contents. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc
-func (pc _PasteboardClass) PasteboardByFilteringFile(filename string) Pasteboard {
-	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringFile:"), filename)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/2344960-preparefornewcontentswithoptions?language=objc
+func (p_ Pasteboard) PrepareForNewContentsWithOptions(options PasteboardContentsOptions) int {
+	rv := objc.Call[int](p_, objc.Sel("prepareForNewContentsWithOptions:"), options)
 	return rv
 }
 
-// Creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services. [Full Topic]
+// Creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc
-func Pasteboard_PasteboardByFilteringFile(filename string) Pasteboard {
-	return PasteboardClass.PasteboardByFilteringFile(filename)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
+func (pc _PasteboardClass) PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
+	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringTypesInPasteboard:"), pboard)
+	return rv
 }
 
-// Sets the given string as the representation for the specified type for the first item on the receiver. [Full Topic]
+// Creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1528225-setstring?language=objc
-func (p_ Pasteboard) SetStringForType(string_ string, dataType PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setString:forType:"), string_, dataType)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
+func Pasteboard_PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
+	return PasteboardClass.PasteboardByFilteringTypesInPasteboard(pboard)
+}
+
+// Scans the specified types for a type that the receiver supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1526078-availabletypefromarray?language=objc
+func (p_ Pasteboard) AvailableTypeFromArray(types []PasteboardType) PasteboardType {
+	rv := objc.Call[PasteboardType](p_, objc.Sel("availableTypeFromArray:"), types)
+	return rv
+}
+
+// Prepares the receiver for a change in its contents by declaring the new types of data it will contain and a new owner. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533561-declaretypes?language=objc
+func (p_ Pasteboard) DeclareTypesOwner(newTypes []PasteboardType, newOwner objc.IObject) int {
+	rv := objc.Call[int](p_, objc.Sel("declareTypes:owner:"), newTypes, newOwner)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether the receiver contains any items that conform to the specified UTIs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1533576-canreaditemwithdataconformingtot?language=objc
+func (p_ Pasteboard) CanReadItemWithDataConformingToTypes(types []string) bool {
+	rv := objc.Call[bool](p_, objc.Sel("canReadItemWithDataConformingToTypes:"), types)
+	return rv
+}
+
+// Returns the property list for the specified type from the first item in the receiver that contains the type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1528588-propertylistfortype?language=objc
+func (p_ Pasteboard) PropertyListForType(dataType PasteboardType) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("propertyListForType:"), dataType)
 	return rv
 }
 

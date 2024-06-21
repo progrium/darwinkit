@@ -18,9 +18,9 @@ type _UserIdentityLookupInfoClass struct {
 // An interface definition for the [UserIdentityLookupInfo] class.
 type IUserIdentityLookupInfo interface {
 	objc.IObject
-	EmailAddress() string
-	PhoneNumber() string
 	UserRecordID() RecordID
+	PhoneNumber() string
+	EmailAddress() string
 }
 
 // The criteria to use when searching for discoverable iCloud users. [Full Topic]
@@ -50,20 +50,6 @@ func NewUserIdentityLookupInfoWithEmailAddress(emailAddress string) UserIdentity
 	return instance
 }
 
-func (u_ UserIdentityLookupInfo) InitWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
-	rv := objc.Call[UserIdentityLookupInfo](u_, objc.Sel("initWithPhoneNumber:"), phoneNumber)
-	return rv
-}
-
-// Creates a lookup info for the specified phone number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640402-initwithphonenumber?language=objc
-func NewUserIdentityLookupInfoWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
-	instance := UserIdentityLookupInfoClass.Alloc().InitWithPhoneNumber(phoneNumber)
-	instance.Autorelease()
-	return instance
-}
-
 func (u_ UserIdentityLookupInfo) InitWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
 	rv := objc.Call[UserIdentityLookupInfo](u_, objc.Sel("initWithUserRecordID:"), userRecordID)
 	return rv
@@ -74,6 +60,20 @@ func (u_ UserIdentityLookupInfo) InitWithUserRecordID(userRecordID IRecordID) Us
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640419-initwithuserrecordid?language=objc
 func NewUserIdentityLookupInfoWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
 	instance := UserIdentityLookupInfoClass.Alloc().InitWithUserRecordID(userRecordID)
+	instance.Autorelease()
+	return instance
+}
+
+func (u_ UserIdentityLookupInfo) InitWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
+	rv := objc.Call[UserIdentityLookupInfo](u_, objc.Sel("initWithPhoneNumber:"), phoneNumber)
+	return rv
+}
+
+// Creates a lookup info for the specified phone number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640402-initwithphonenumber?language=objc
+func NewUserIdentityLookupInfoWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
+	instance := UserIdentityLookupInfoClass.Alloc().InitWithPhoneNumber(phoneNumber)
 	instance.Autorelease()
 	return instance
 }
@@ -98,19 +98,19 @@ func (u_ UserIdentityLookupInfo) Init() UserIdentityLookupInfo {
 	return rv
 }
 
-// Returns an array of lookup infos for the specifed phone numbers. [Full Topic]
+// Returns an array of lookup infos for the specifed user record IDs. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640429-lookupinfoswithphonenumbers?language=objc
-func (uc _UserIdentityLookupInfoClass) LookupInfosWithPhoneNumbers(phoneNumbers []string) []UserIdentityLookupInfo {
-	rv := objc.Call[[]UserIdentityLookupInfo](uc, objc.Sel("lookupInfosWithPhoneNumbers:"), phoneNumbers)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640407-lookupinfoswithrecordids?language=objc
+func (uc _UserIdentityLookupInfoClass) LookupInfosWithRecordIDs(recordIDs []IRecordID) []UserIdentityLookupInfo {
+	rv := objc.Call[[]UserIdentityLookupInfo](uc, objc.Sel("lookupInfosWithRecordIDs:"), recordIDs)
 	return rv
 }
 
-// Returns an array of lookup infos for the specifed phone numbers. [Full Topic]
+// Returns an array of lookup infos for the specifed user record IDs. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640429-lookupinfoswithphonenumbers?language=objc
-func UserIdentityLookupInfo_LookupInfosWithPhoneNumbers(phoneNumbers []string) []UserIdentityLookupInfo {
-	return UserIdentityLookupInfoClass.LookupInfosWithPhoneNumbers(phoneNumbers)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640407-lookupinfoswithrecordids?language=objc
+func UserIdentityLookupInfo_LookupInfosWithRecordIDs(recordIDs []IRecordID) []UserIdentityLookupInfo {
+	return UserIdentityLookupInfoClass.LookupInfosWithRecordIDs(recordIDs)
 }
 
 // Returns an array of lookup infos for the specifed email addresses. [Full Topic]
@@ -128,26 +128,26 @@ func UserIdentityLookupInfo_LookupInfosWithEmails(emails []string) []UserIdentit
 	return UserIdentityLookupInfoClass.LookupInfosWithEmails(emails)
 }
 
-// Returns an array of lookup infos for the specifed user record IDs. [Full Topic]
+// Returns an array of lookup infos for the specifed phone numbers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640407-lookupinfoswithrecordids?language=objc
-func (uc _UserIdentityLookupInfoClass) LookupInfosWithRecordIDs(recordIDs []IRecordID) []UserIdentityLookupInfo {
-	rv := objc.Call[[]UserIdentityLookupInfo](uc, objc.Sel("lookupInfosWithRecordIDs:"), recordIDs)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640429-lookupinfoswithphonenumbers?language=objc
+func (uc _UserIdentityLookupInfoClass) LookupInfosWithPhoneNumbers(phoneNumbers []string) []UserIdentityLookupInfo {
+	rv := objc.Call[[]UserIdentityLookupInfo](uc, objc.Sel("lookupInfosWithPhoneNumbers:"), phoneNumbers)
 	return rv
 }
 
-// Returns an array of lookup infos for the specifed user record IDs. [Full Topic]
+// Returns an array of lookup infos for the specifed phone numbers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640407-lookupinfoswithrecordids?language=objc
-func UserIdentityLookupInfo_LookupInfosWithRecordIDs(recordIDs []IRecordID) []UserIdentityLookupInfo {
-	return UserIdentityLookupInfoClass.LookupInfosWithRecordIDs(recordIDs)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640429-lookupinfoswithphonenumbers?language=objc
+func UserIdentityLookupInfo_LookupInfosWithPhoneNumbers(phoneNumbers []string) []UserIdentityLookupInfo {
+	return UserIdentityLookupInfoClass.LookupInfosWithPhoneNumbers(phoneNumbers)
 }
 
-// The user’s email address. [Full Topic]
+// The ID of the user record. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640462-emailaddress?language=objc
-func (u_ UserIdentityLookupInfo) EmailAddress() string {
-	rv := objc.Call[string](u_, objc.Sel("emailAddress"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640405-userrecordid?language=objc
+func (u_ UserIdentityLookupInfo) UserRecordID() RecordID {
+	rv := objc.Call[RecordID](u_, objc.Sel("userRecordID"))
 	return rv
 }
 
@@ -159,10 +159,10 @@ func (u_ UserIdentityLookupInfo) PhoneNumber() string {
 	return rv
 }
 
-// The ID of the user record. [Full Topic]
+// The user’s email address. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640405-userrecordid?language=objc
-func (u_ UserIdentityLookupInfo) UserRecordID() RecordID {
-	rv := objc.Call[RecordID](u_, objc.Sel("userRecordID"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640462-emailaddress?language=objc
+func (u_ UserIdentityLookupInfo) EmailAddress() string {
+	rv := objc.Call[string](u_, objc.Sel("emailAddress"))
 	return rv
 }

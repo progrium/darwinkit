@@ -18,8 +18,8 @@ type _BufferLayoutDescriptorArrayClass struct {
 // An interface definition for the [BufferLayoutDescriptorArray] class.
 type IBufferLayoutDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(bufferDesc IBufferLayoutDescriptor, index uint)
 	ObjectAtIndexedSubscript(index uint) BufferLayoutDescriptor
+	SetObjectAtIndexedSubscript(bufferDesc IBufferLayoutDescriptor, index uint)
 }
 
 // An array of buffer layout descriptor objects. [Full Topic]
@@ -55,17 +55,17 @@ func (b_ BufferLayoutDescriptorArray) Init() BufferLayoutDescriptorArray {
 	return rv
 }
 
-// Sets the state of the specified buffer layout. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptorarray/2097295-setobject?language=objc
-func (b_ BufferLayoutDescriptorArray) SetObjectAtIndexedSubscript(bufferDesc IBufferLayoutDescriptor, index uint) {
-	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), bufferDesc, index)
-}
-
 // Returns the state of the specified buffer layout. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptorarray/2097228-objectatindexedsubscript?language=objc
 func (b_ BufferLayoutDescriptorArray) ObjectAtIndexedSubscript(index uint) BufferLayoutDescriptor {
 	rv := objc.Call[BufferLayoutDescriptor](b_, objc.Sel("objectAtIndexedSubscript:"), index)
 	return rv
+}
+
+// Sets the state of the specified buffer layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptorarray/2097295-setobject?language=objc
+func (b_ BufferLayoutDescriptorArray) SetObjectAtIndexedSubscript(bufferDesc IBufferLayoutDescriptor, index uint) {
+	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), bufferDesc, index)
 }

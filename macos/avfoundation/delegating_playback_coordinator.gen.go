@@ -19,10 +19,10 @@ type _DelegatingPlaybackCoordinatorClass struct {
 // An interface definition for the [DelegatingPlaybackCoordinator] class.
 type IDelegatingPlaybackCoordinator interface {
 	IPlaybackCoordinator
-	ReapplyCurrentItemStateToPlaybackControlDelegate()
-	TransitionToItemWithIdentifierProposingInitialTimingBasedOnTimebase(itemIdentifier string, snapshotTimebase coremedia.TimebaseRef)
-	CoordinateSeekToTimeOptions(time coremedia.Time, options DelegatingPlaybackCoordinatorSeekOptions)
 	CoordinateRateChangeToRateOptions(rate float32, options DelegatingPlaybackCoordinatorRateChangeOptions)
+	TransitionToItemWithIdentifierProposingInitialTimingBasedOnTimebase(itemIdentifier string, snapshotTimebase coremedia.TimebaseRef)
+	ReapplyCurrentItemStateToPlaybackControlDelegate()
+	CoordinateSeekToTimeOptions(time coremedia.Time, options DelegatingPlaybackCoordinatorSeekOptions)
 	PlaybackControlDelegate() PlaybackCoordinatorPlaybackControlDelegateObject
 	CurrentItemIdentifier() string
 }
@@ -75,11 +75,11 @@ func (d_ DelegatingPlaybackCoordinator) Init() DelegatingPlaybackCoordinator {
 	return rv
 }
 
-// Tells the coordinator to reissue current play state commands to synchronize the current item to the state of other participants. [Full Topic]
+// Coordinates a rate change across all participants, waiting for others to become ready, if necessary. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750258-reapplycurrentitemstatetoplaybac?language=objc
-func (d_ DelegatingPlaybackCoordinator) ReapplyCurrentItemStateToPlaybackControlDelegate() {
-	objc.Call[objc.Void](d_, objc.Sel("reapplyCurrentItemStateToPlaybackControlDelegate"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750250-coordinateratechangetorate?language=objc
+func (d_ DelegatingPlaybackCoordinator) CoordinateRateChangeToRateOptions(rate float32, options DelegatingPlaybackCoordinatorRateChangeOptions) {
+	objc.Call[objc.Void](d_, objc.Sel("coordinateRateChangeToRate:options:"), rate, options)
 }
 
 // Tells the coordinator to transition to a new item. [Full Topic]
@@ -89,18 +89,18 @@ func (d_ DelegatingPlaybackCoordinator) TransitionToItemWithIdentifierProposingI
 	objc.Call[objc.Void](d_, objc.Sel("transitionToItemWithIdentifier:proposingInitialTimingBasedOnTimebase:"), itemIdentifier, snapshotTimebase)
 }
 
+// Tells the coordinator to reissue current play state commands to synchronize the current item to the state of other participants. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750258-reapplycurrentitemstatetoplaybac?language=objc
+func (d_ DelegatingPlaybackCoordinator) ReapplyCurrentItemStateToPlaybackControlDelegate() {
+	objc.Call[objc.Void](d_, objc.Sel("reapplyCurrentItemStateToPlaybackControlDelegate"))
+}
+
 // Coordinates a seek to the specified time for all connected participants. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750251-coordinateseektotime?language=objc
 func (d_ DelegatingPlaybackCoordinator) CoordinateSeekToTimeOptions(time coremedia.Time, options DelegatingPlaybackCoordinatorSeekOptions) {
 	objc.Call[objc.Void](d_, objc.Sel("coordinateSeekToTime:options:"), time, options)
-}
-
-// Coordinates a rate change across all participants, waiting for others to become ready, if necessary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750250-coordinateratechangetorate?language=objc
-func (d_ DelegatingPlaybackCoordinator) CoordinateRateChangeToRateOptions(rate float32, options DelegatingPlaybackCoordinatorRateChangeOptions) {
-	objc.Call[objc.Void](d_, objc.Sel("coordinateRateChangeToRate:options:"), rate, options)
 }
 
 // The delegate object for the playback coordinator. [Full Topic]

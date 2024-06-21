@@ -20,35 +20,30 @@ type _ImageClass struct {
 // An interface definition for the [Image] class.
 type IImage interface {
 	objc.IObject
-	SetPurgeableState(state PurgeableState) PurgeableState
-	WriteBytesDataLayoutBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint)
-	SubImageWithFeatureChannelRange(range_ foundation.Range) Image
-	WriteBytesDataLayoutBytesPerColumnBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerColumn uint, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint)
-	BatchRepresentation() *foundation.Array
-	ReadBytesDataLayoutBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint)
-	SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer)
-	SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject)
-	ReadBytesDataLayoutBytesPerRowRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint)
 	BatchRepresentationWithSubRange(subRange foundation.Range) *foundation.Array
 	ResourceSize() uint
-	ReadBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint)
-	WriteBytesDataLayoutBytesPerRowRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint)
+	BatchRepresentation() *foundation.Array
 	WriteBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint)
-	Height() uint
-	PixelFormat() metal.PixelFormat
-	NumberOfImages() uint
-	FeatureChannels() uint
-	FeatureChannelFormat() ImageFeatureChannelFormat
-	PixelSize() uint
-	Usage() metal.TextureUsage
-	Texture() metal.TextureObject
+	ReadBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint)
+	SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer)
+	SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject)
+	SubImageWithFeatureChannelRange(range_ foundation.Range) Image
+	SetPurgeableState(state PurgeableState) PurgeableState
 	Width() uint
+	Usage() metal.TextureUsage
 	Parent() Image
-	Precision() uint
+	Device() metal.DeviceObject
+	NumberOfImages() uint
+	Height() uint
+	FeatureChannelFormat() ImageFeatureChannelFormat
+	TextureType() metal.TextureType
+	PixelFormat() metal.PixelFormat
+	FeatureChannels() uint
 	Label() string
 	SetLabel(value string)
-	TextureType() metal.TextureType
-	Device() metal.DeviceObject
+	Texture() metal.TextureObject
+	Precision() uint
+	PixelSize() uint
 }
 
 // A texture that may have more than four channels for use in convolutional neural networks. [Full Topic]
@@ -62,6 +57,20 @@ func ImageFrom(ptr unsafe.Pointer) Image {
 	return Image{
 		Object: objc.ObjectFrom(ptr),
 	}
+}
+
+func (i_ Image) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) Image {
+	rv := objc.Call[Image](i_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942493-initwithparentimage?language=objc
+func NewImageWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) Image {
+	instance := ImageClass.Alloc().InitWithParentImageSliceRangeFeatureChannels(parent, sliceRange, featureChannels)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithTextureFeatureChannels(texture metal.PTexture, featureChannels uint) Image {
@@ -94,20 +103,6 @@ func NewImageWithDeviceImageDescriptor(device metal.PDevice, imageDescriptor IIm
 	return instance
 }
 
-func (i_ Image) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942493-initwithparentimage?language=objc
-func NewImageWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) Image {
-	instance := ImageClass.Alloc().InitWithParentImageSliceRangeFeatureChannels(parent, sliceRange, featureChannels)
-	instance.Autorelease()
-	return instance
-}
-
 func (ic _ImageClass) Alloc() Image {
 	rv := objc.Call[Image](ic, objc.Sel("alloc"))
 	return rv
@@ -128,34 +123,20 @@ func (i_ Image) Init() Image {
 	return rv
 }
 
-// Set (or query) the purgeable state of the image’s underlying texture. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648820-setpurgeablestate?language=objc
-func (i_ Image) SetPurgeableState(state PurgeableState) PurgeableState {
-	rv := objc.Call[PurgeableState](i_, objc.Sel("setPurgeableState:"), state)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942492-batchrepresentationwithsubrange?language=objc
+func (i_ Image) BatchRepresentationWithSubRange(subRange foundation.Range) *foundation.Array {
+	rv := objc.Call[*foundation.Array](i_, objc.Sel("batchRepresentationWithSubRange:"), subRange)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2951915-writebytes?language=objc
-func (i_ Image) WriteBytesDataLayoutBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("writeBytes:dataLayout:bytesPerRow:bytesPerImage:region:featureChannelInfo:imageIndex:"), dataBytes, dataLayout, bytesPerRow, bytesPerImage, region, featureChannelInfo, imageIndex)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942488-subimagewithfeaturechannelrange?language=objc
-func (i_ Image) SubImageWithFeatureChannelRange(range_ foundation.Range) Image {
-	rv := objc.Call[Image](i_, objc.Sel("subImageWithFeatureChannelRange:"), range_)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942494-resourcesize?language=objc
+func (i_ Image) ResourceSize() uint {
+	rv := objc.Call[uint](i_, objc.Sel("resourceSize"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/3143488-writebytes?language=objc
-func (i_ Image) WriteBytesDataLayoutBytesPerColumnBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerColumn uint, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("writeBytes:dataLayout:bytesPerColumn:bytesPerRow:bytesPerImage:region:featureChannelInfo:imageIndex:"), dataBytes, dataLayout, bytesPerColumn, bytesPerRow, bytesPerImage, region, featureChannelInfo, imageIndex)
 }
 
 //	[Full Topic]
@@ -168,9 +149,16 @@ func (i_ Image) BatchRepresentation() *foundation.Array {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2951914-readbytes?language=objc
-func (i_ Image) ReadBytesDataLayoutBytesPerRowBytesPerImageRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, bytesPerImage uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("readBytes:dataLayout:bytesPerRow:bytesPerImage:region:featureChannelInfo:imageIndex:"), dataBytes, dataLayout, bytesPerRow, bytesPerImage, region, featureChannelInfo, imageIndex)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867189-writebytes?language=objc
+func (i_ Image) WriteBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint) {
+	objc.Call[objc.Void](i_, objc.Sel("writeBytes:dataLayout:imageIndex:"), dataBytes, dataLayout, imageIndex)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867188-readbytes?language=objc
+func (i_ Image) ReadBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint) {
+	objc.Call[objc.Void](i_, objc.Sel("readBytes:dataLayout:imageIndex:"), dataBytes, dataLayout, imageIndex)
 }
 
 //	[Full Topic]
@@ -190,36 +178,6 @@ func (i_ Image) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObjec
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867105-readbytes?language=objc
-func (i_ Image) ReadBytesDataLayoutBytesPerRowRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("readBytes:dataLayout:bytesPerRow:region:featureChannelInfo:imageIndex:"), dataBytes, dataLayout, bytesPerRow, region, featureChannelInfo, imageIndex)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942492-batchrepresentationwithsubrange?language=objc
-func (i_ Image) BatchRepresentationWithSubRange(subRange foundation.Range) *foundation.Array {
-	rv := objc.Call[*foundation.Array](i_, objc.Sel("batchRepresentationWithSubRange:"), subRange)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942494-resourcesize?language=objc
-func (i_ Image) ResourceSize() uint {
-	rv := objc.Call[uint](i_, objc.Sel("resourceSize"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867188-readbytes?language=objc
-func (i_ Image) ReadBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("readBytes:dataLayout:imageIndex:"), dataBytes, dataLayout, imageIndex)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867148-defaultallocator?language=objc
 func (ic _ImageClass) DefaultAllocator() ImageAllocatorObject {
 	rv := objc.Call[ImageAllocatorObject](ic, objc.Sel("defaultAllocator"))
@@ -235,79 +193,17 @@ func Image_DefaultAllocator() ImageAllocatorObject {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867055-writebytes?language=objc
-func (i_ Image) WriteBytesDataLayoutBytesPerRowRegionFeatureChannelInfoImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, bytesPerRow uint, region metal.Region, featureChannelInfo ImageReadWriteParams, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("writeBytes:dataLayout:bytesPerRow:region:featureChannelInfo:imageIndex:"), dataBytes, dataLayout, bytesPerRow, region, featureChannelInfo, imageIndex)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2867189-writebytes?language=objc
-func (i_ Image) WriteBytesDataLayoutImageIndex(dataBytes unsafe.Pointer, dataLayout DataLayout, imageIndex uint) {
-	objc.Call[objc.Void](i_, objc.Sel("writeBytes:dataLayout:imageIndex:"), dataBytes, dataLayout, imageIndex)
-}
-
-// The formal height of the image, in pixels. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648952-height?language=objc
-func (i_ Image) Height() uint {
-	rv := objc.Call[uint](i_, objc.Sel("height"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942488-subimagewithfeaturechannelrange?language=objc
+func (i_ Image) SubImageWithFeatureChannelRange(range_ foundation.Range) Image {
+	rv := objc.Call[Image](i_, objc.Sel("subImageWithFeatureChannelRange:"), range_)
 	return rv
 }
 
-// The pixel format of the underlying texture. [Full Topic]
+// Set (or query) the purgeable state of the image’s underlying texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648844-pixelformat?language=objc
-func (i_ Image) PixelFormat() metal.PixelFormat {
-	rv := objc.Call[metal.PixelFormat](i_, objc.Sel("pixelFormat"))
-	return rv
-}
-
-// The number of images for batch processing. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648900-numberofimages?language=objc
-func (i_ Image) NumberOfImages() uint {
-	rv := objc.Call[uint](i_, objc.Sel("numberOfImages"))
-	return rv
-}
-
-// The number of feature channels per pixel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648901-featurechannels?language=objc
-func (i_ Image) FeatureChannels() uint {
-	rv := objc.Call[uint](i_, objc.Sel("featureChannels"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/3131715-featurechannelformat?language=objc
-func (i_ Image) FeatureChannelFormat() ImageFeatureChannelFormat {
-	rv := objc.Call[ImageFeatureChannelFormat](i_, objc.Sel("featureChannelFormat"))
-	return rv
-}
-
-// The number of bytes from the first byte of one pixel to the first byte of the next pixel, in storage order. (Includes padding.) [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648854-pixelsize?language=objc
-func (i_ Image) PixelSize() uint {
-	rv := objc.Call[uint](i_, objc.Sel("pixelSize"))
-	return rv
-}
-
-// The intended usage of the underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648828-usage?language=objc
-func (i_ Image) Usage() metal.TextureUsage {
-	rv := objc.Call[metal.TextureUsage](i_, objc.Sel("usage"))
-	return rv
-}
-
-// The underlying texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648903-texture?language=objc
-func (i_ Image) Texture() metal.TextureObject {
-	rv := objc.Call[metal.TextureObject](i_, objc.Sel("texture"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648820-setpurgeablestate?language=objc
+func (i_ Image) SetPurgeableState(state PurgeableState) PurgeableState {
+	rv := objc.Call[PurgeableState](i_, objc.Sel("setPurgeableState:"), state)
 	return rv
 }
 
@@ -319,6 +215,14 @@ func (i_ Image) Width() uint {
 	return rv
 }
 
+// The intended usage of the underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648828-usage?language=objc
+func (i_ Image) Usage() metal.TextureUsage {
+	rv := objc.Call[metal.TextureUsage](i_, objc.Sel("usage"))
+	return rv
+}
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942490-parent?language=objc
@@ -327,11 +231,59 @@ func (i_ Image) Parent() Image {
 	return rv
 }
 
-// The number of bits of numeric precision available for each feature channel. [Full Topic]
+// The device on which the image will be used. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648880-precision?language=objc
-func (i_ Image) Precision() uint {
-	rv := objc.Call[uint](i_, objc.Sel("precision"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648857-device?language=objc
+func (i_ Image) Device() metal.DeviceObject {
+	rv := objc.Call[metal.DeviceObject](i_, objc.Sel("device"))
+	return rv
+}
+
+// The number of images for batch processing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648900-numberofimages?language=objc
+func (i_ Image) NumberOfImages() uint {
+	rv := objc.Call[uint](i_, objc.Sel("numberOfImages"))
+	return rv
+}
+
+// The formal height of the image, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648952-height?language=objc
+func (i_ Image) Height() uint {
+	rv := objc.Call[uint](i_, objc.Sel("height"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/3131715-featurechannelformat?language=objc
+func (i_ Image) FeatureChannelFormat() ImageFeatureChannelFormat {
+	rv := objc.Call[ImageFeatureChannelFormat](i_, objc.Sel("featureChannelFormat"))
+	return rv
+}
+
+// The type of the underlying texture, typically [metal/mtltexturetype/mtltexturetype2d] or [metal/mtltexturetype/mtltexturetype2darray]. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648948-texturetype?language=objc
+func (i_ Image) TextureType() metal.TextureType {
+	rv := objc.Call[metal.TextureType](i_, objc.Sel("textureType"))
+	return rv
+}
+
+// The pixel format of the underlying texture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648844-pixelformat?language=objc
+func (i_ Image) PixelFormat() metal.PixelFormat {
+	rv := objc.Call[metal.PixelFormat](i_, objc.Sel("pixelFormat"))
+	return rv
+}
+
+// The number of feature channels per pixel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648901-featurechannels?language=objc
+func (i_ Image) FeatureChannels() uint {
+	rv := objc.Call[uint](i_, objc.Sel("featureChannels"))
 	return rv
 }
 
@@ -350,18 +302,26 @@ func (i_ Image) SetLabel(value string) {
 	objc.Call[objc.Void](i_, objc.Sel("setLabel:"), value)
 }
 
-// The type of the underlying texture, typically MTLTextureType2D or MTLTextureType2DArray. [Full Topic]
+// The underlying texture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648948-texturetype?language=objc
-func (i_ Image) TextureType() metal.TextureType {
-	rv := objc.Call[metal.TextureType](i_, objc.Sel("textureType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648903-texture?language=objc
+func (i_ Image) Texture() metal.TextureObject {
+	rv := objc.Call[metal.TextureObject](i_, objc.Sel("texture"))
 	return rv
 }
 
-// The device on which the image will be used. [Full Topic]
+// The number of bits of numeric precision available for each feature channel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648857-device?language=objc
-func (i_ Image) Device() metal.DeviceObject {
-	rv := objc.Call[metal.DeviceObject](i_, objc.Sel("device"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648880-precision?language=objc
+func (i_ Image) Precision() uint {
+	rv := objc.Call[uint](i_, objc.Sel("precision"))
+	return rv
+}
+
+// The number of bytes from the first byte of one pixel to the first byte of the next pixel, in storage order. (Includes padding.) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/1648854-pixelsize?language=objc
+func (i_ Image) PixelSize() uint {
+	rv := objc.Call[uint](i_, objc.Sel("pixelSize"))
 	return rv
 }

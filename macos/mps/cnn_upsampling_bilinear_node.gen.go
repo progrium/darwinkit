@@ -19,8 +19,8 @@ type _CNNUpsamplingBilinearNodeClass struct {
 type ICNNUpsamplingBilinearNode interface {
 	INNFilterNode
 	AlignCorners() bool
-	ScaleFactorX() float64
 	ScaleFactorY() float64
+	ScaleFactorX() float64
 }
 
 // A representation of a bilinear spatial upsampling filter. [Full Topic]
@@ -36,18 +36,6 @@ func CNNUpsamplingBilinearNodeFrom(ptr unsafe.Pointer) CNNUpsamplingBilinearNode
 	}
 }
 
-func (cc _CNNUpsamplingBilinearNodeClass) NodeWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2966689-nodewithsource?language=objc
-func CNNUpsamplingBilinearNode_NodeWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	return CNNUpsamplingBilinearNodeClass.NodeWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
-}
-
 func (cc _CNNUpsamplingBilinearNodeClass) NodeWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinearNode {
 	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:"), sourceNode, integerScaleFactorX, integerScaleFactorY)
 	return rv
@@ -58,20 +46,6 @@ func (cc _CNNUpsamplingBilinearNodeClass) NodeWithSourceIntegerScaleFactorXInteg
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2875987-nodewithsource?language=objc
 func CNNUpsamplingBilinearNode_NodeWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinearNode {
 	return CNNUpsamplingBilinearNodeClass.NodeWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode, integerScaleFactorX, integerScaleFactorY)
-}
-
-func (c_ CNNUpsamplingBilinearNode) InitWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2966688-initwithsource?language=objc
-func NewCNNUpsamplingBilinearNodeWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	instance := CNNUpsamplingBilinearNodeClass.Alloc().InitWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
-	instance.Autorelease()
-	return instance
 }
 
 func (c_ CNNUpsamplingBilinearNode) InitWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinearNode {
@@ -118,16 +92,16 @@ func (c_ CNNUpsamplingBilinearNode) AlignCorners() bool {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2875153-scalefactorx?language=objc
-func (c_ CNNUpsamplingBilinearNode) ScaleFactorX() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2875150-scalefactory?language=objc
+func (c_ CNNUpsamplingBilinearNode) ScaleFactorY() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2875150-scalefactory?language=objc
-func (c_ CNNUpsamplingBilinearNode) ScaleFactorY() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleFactorY"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinearnode/2875153-scalefactorx?language=objc
+func (c_ CNNUpsamplingBilinearNode) ScaleFactorX() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("scaleFactorX"))
 	return rv
 }

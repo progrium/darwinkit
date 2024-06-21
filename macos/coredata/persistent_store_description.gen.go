@@ -21,26 +21,26 @@ type IPersistentStoreDescription interface {
 	objc.IObject
 	SetOptionForKey(option objc.IObject, key string)
 	SetValueForPragmaNamed(value objc.IObject, name string)
-	URL() foundation.URL
-	SetURL(value foundation.IURL)
-	ShouldInferMappingModelAutomatically() bool
-	SetShouldInferMappingModelAutomatically(value bool)
-	Configuration() string
-	SetConfiguration(value string)
+	IsReadOnly() bool
+	SetReadOnly(value bool)
 	ShouldAddStoreAsynchronously() bool
 	SetShouldAddStoreAsynchronously(value bool)
+	Options() map[string]objc.Object
+	ShouldInferMappingModelAutomatically() bool
+	SetShouldInferMappingModelAutomatically(value bool)
 	SqlitePragmas() map[string]objc.Object
+	Timeout() foundation.TimeInterval
+	SetTimeout(value foundation.TimeInterval)
+	URL() foundation.URL
+	SetURL(value foundation.IURL)
+	Configuration() string
+	SetConfiguration(value string)
 	CloudKitContainerOptions() PersistentCloudKitContainerOptions
 	SetCloudKitContainerOptions(value IPersistentCloudKitContainerOptions)
 	ShouldMigrateStoreAutomatically() bool
 	SetShouldMigrateStoreAutomatically(value bool)
 	Type() string
 	SetType(value string)
-	Options() map[string]objc.Object
-	Timeout() foundation.TimeInterval
-	SetTimeout(value foundation.TimeInterval)
-	IsReadOnly() bool
-	SetReadOnly(value bool)
 }
 
 // A description object used to create and load a persistent store. [Full Topic]
@@ -116,49 +116,19 @@ func (p_ PersistentStoreDescription) SetValueForPragmaNamed(value objc.IObject, 
 	objc.Call[objc.Void](p_, objc.Sel("setValue:forPragmaNamed:"), value, name)
 }
 
-// The URL that the store will use for its location. [Full Topic]
+// A flag that indicates whether this store will be read-only. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640616-url?language=objc
-func (p_ PersistentStoreDescription) URL() foundation.URL {
-	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640626-readonly?language=objc
+func (p_ PersistentStoreDescription) IsReadOnly() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isReadOnly"))
 	return rv
 }
 
-// The URL that the store will use for its location. [Full Topic]
+// A flag that indicates whether this store will be read-only. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640616-url?language=objc
-func (p_ PersistentStoreDescription) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
-}
-
-// A flag indicating whether a mapping model should be created automatically. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640623-shouldinfermappingmodelautomatic?language=objc
-func (p_ PersistentStoreDescription) ShouldInferMappingModelAutomatically() bool {
-	rv := objc.Call[bool](p_, objc.Sel("shouldInferMappingModelAutomatically"))
-	return rv
-}
-
-// A flag indicating whether a mapping model should be created automatically. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640623-shouldinfermappingmodelautomatic?language=objc
-func (p_ PersistentStoreDescription) SetShouldInferMappingModelAutomatically(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setShouldInferMappingModelAutomatically:"), value)
-}
-
-// The name of the configuration used by this store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640634-configuration?language=objc
-func (p_ PersistentStoreDescription) Configuration() string {
-	rv := objc.Call[string](p_, objc.Sel("configuration"))
-	return rv
-}
-
-// The name of the configuration used by this store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640634-configuration?language=objc
-func (p_ PersistentStoreDescription) SetConfiguration(value string) {
-	objc.Call[objc.Void](p_, objc.Sel("setConfiguration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640626-readonly?language=objc
+func (p_ PersistentStoreDescription) SetReadOnly(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setReadOnly:"), value)
 }
 
 // A flag that determines whether the store is added asynchronously. [Full Topic]
@@ -176,12 +146,80 @@ func (p_ PersistentStoreDescription) SetShouldAddStoreAsynchronously(value bool)
 	objc.Call[objc.Void](p_, objc.Sel("setShouldAddStoreAsynchronously:"), value)
 }
 
+// A dictionary representation of the options set on the associated persistent store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640571-options?language=objc
+func (p_ PersistentStoreDescription) Options() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](p_, objc.Sel("options"))
+	return rv
+}
+
+// A flag indicating whether a mapping model should be created automatically. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640623-shouldinfermappingmodelautomatic?language=objc
+func (p_ PersistentStoreDescription) ShouldInferMappingModelAutomatically() bool {
+	rv := objc.Call[bool](p_, objc.Sel("shouldInferMappingModelAutomatically"))
+	return rv
+}
+
+// A flag indicating whether a mapping model should be created automatically. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640623-shouldinfermappingmodelautomatic?language=objc
+func (p_ PersistentStoreDescription) SetShouldInferMappingModelAutomatically(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setShouldInferMappingModelAutomatically:"), value)
+}
+
 // The SQLite pragmas set for the associated persistent store. (read-only) [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640614-sqlitepragmas?language=objc
 func (p_ PersistentStoreDescription) SqlitePragmas() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](p_, objc.Sel("sqlitePragmas"))
 	return rv
+}
+
+// The connection timeout for the associated store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640587-timeout?language=objc
+func (p_ PersistentStoreDescription) Timeout() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](p_, objc.Sel("timeout"))
+	return rv
+}
+
+// The connection timeout for the associated store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640587-timeout?language=objc
+func (p_ PersistentStoreDescription) SetTimeout(value foundation.TimeInterval) {
+	objc.Call[objc.Void](p_, objc.Sel("setTimeout:"), value)
+}
+
+// The URL that the store will use for its location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640616-url?language=objc
+func (p_ PersistentStoreDescription) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
+	return rv
+}
+
+// The URL that the store will use for its location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640616-url?language=objc
+func (p_ PersistentStoreDescription) SetURL(value foundation.IURL) {
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
+}
+
+// The name of the configuration used by this store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640634-configuration?language=objc
+func (p_ PersistentStoreDescription) Configuration() string {
+	rv := objc.Call[string](p_, objc.Sel("configuration"))
+	return rv
+}
+
+// The name of the configuration used by this store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640634-configuration?language=objc
+func (p_ PersistentStoreDescription) SetConfiguration(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setConfiguration:"), value)
 }
 
 // Options that customize how this store description aligns with a CloudKit database. [Full Topic]
@@ -227,42 +265,4 @@ func (p_ PersistentStoreDescription) Type() string {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640609-type?language=objc
 func (p_ PersistentStoreDescription) SetType(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setType:"), value)
-}
-
-// A dictionary representation of the options set on the associated persistent store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640571-options?language=objc
-func (p_ PersistentStoreDescription) Options() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](p_, objc.Sel("options"))
-	return rv
-}
-
-// The connection timeout for the associated store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640587-timeout?language=objc
-func (p_ PersistentStoreDescription) Timeout() foundation.TimeInterval {
-	rv := objc.Call[foundation.TimeInterval](p_, objc.Sel("timeout"))
-	return rv
-}
-
-// The connection timeout for the associated store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640587-timeout?language=objc
-func (p_ PersistentStoreDescription) SetTimeout(value foundation.TimeInterval) {
-	objc.Call[objc.Void](p_, objc.Sel("setTimeout:"), value)
-}
-
-// A flag that indicates whether this store will be read-only. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640626-readonly?language=objc
-func (p_ PersistentStoreDescription) IsReadOnly() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isReadOnly"))
-	return rv
-}
-
-// A flag that indicates whether this store will be read-only. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640626-readonly?language=objc
-func (p_ PersistentStoreDescription) SetReadOnly(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setReadOnly:"), value)
 }

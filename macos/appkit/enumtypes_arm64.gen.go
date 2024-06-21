@@ -152,7 +152,6 @@ const ()
 const ()
 const ()
 const ()
-const ()
 const (
 	ImageResizingModeStretch ImageResizingMode = 1
 	ImageResizingModeTile    ImageResizingMode = 0
@@ -280,8 +279,6 @@ const (
 	TextAlignmentCenter TextAlignment = 1
 	TextAlignmentRight  TextAlignment = 2
 )
-const ()
-const ()
 const ()
 const ()
 const ()

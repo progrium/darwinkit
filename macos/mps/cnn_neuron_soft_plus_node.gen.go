@@ -33,30 +33,16 @@ func CNNNeuronSoftPlusNodeFrom(ptr unsafe.Pointer) CNNNeuronSoftPlusNode {
 	}
 }
 
-func (c_ CNNNeuronSoftPlusNode) InitWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](c_, objc.Sel("initWithSource:a:b:"), sourceNode, a, b)
+func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
+	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2866413-initwithsource?language=objc
-func NewCNNNeuronSoftPlusNodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
-	instance := CNNNeuronSoftPlusNodeClass.Alloc().InitWithSourceAB(sourceNode, a, b)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:a:b:"), sourceNode, a, b)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2866450-nodewithsource?language=objc
-func CNNNeuronSoftPlusNode_NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
-	return CNNNeuronSoftPlusNodeClass.NodeWithSourceAB(sourceNode, a, b)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2921449-nodewithsource?language=objc
+func CNNNeuronSoftPlusNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
+	return CNNNeuronSoftPlusNodeClass.NodeWithSource(sourceNode)
 }
 
 func (c_ CNNNeuronSoftPlusNode) InitWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
@@ -71,18 +57,6 @@ func NewCNNNeuronSoftPlusNodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPl
 	instance := CNNNeuronSoftPlusNodeClass.Alloc().InitWithSource(sourceNode)
 	instance.Autorelease()
 	return instance
-}
-
-func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2921449-nodewithsource?language=objc
-func CNNNeuronSoftPlusNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
-	return CNNNeuronSoftPlusNodeClass.NodeWithSource(sourceNode)
 }
 
 func (cc _CNNNeuronSoftPlusNodeClass) Alloc() CNNNeuronSoftPlusNode {

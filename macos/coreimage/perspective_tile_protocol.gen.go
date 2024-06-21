@@ -20,22 +20,6 @@ type PPerspectiveTile interface {
 	HasBottomRight() bool
 
 	// optional
-	SetTopRight(value coregraphics.Point)
-	HasSetTopRight() bool
-
-	// optional
-	TopRight() coregraphics.Point
-	HasTopRight() bool
-
-	// optional
-	SetTopLeft(value coregraphics.Point)
-	HasSetTopLeft() bool
-
-	// optional
-	TopLeft() coregraphics.Point
-	HasTopLeft() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -50,6 +34,22 @@ type PPerspectiveTile interface {
 	// optional
 	BottomLeft() coregraphics.Point
 	HasBottomLeft() bool
+
+	// optional
+	SetTopRight(value coregraphics.Point)
+	HasSetTopRight() bool
+
+	// optional
+	TopRight() coregraphics.Point
+	HasTopRight() bool
+
+	// optional
+	SetTopLeft(value coregraphics.Point)
+	HasSetTopLeft() bool
+
+	// optional
+	TopLeft() coregraphics.Point
+	HasTopLeft() bool
 }
 
 // ensure impl type implements protocol interface
@@ -80,52 +80,6 @@ func (p_ PerspectiveTileObject) HasBottomRight() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228654-bottomright?language=objc
 func (p_ PerspectiveTileObject) BottomRight() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](p_, objc.Sel("bottomRight"))
-	return rv
-}
-
-func (p_ PerspectiveTileObject) HasSetTopRight() bool {
-	return p_.RespondsToSelector(objc.Sel("setTopRight:"))
-}
-
-// The top-right coordinate of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228657-topright?language=objc
-func (p_ PerspectiveTileObject) SetTopRight(value coregraphics.Point) {
-	objc.Call[objc.Void](p_, objc.Sel("setTopRight:"), value)
-}
-
-func (p_ PerspectiveTileObject) HasTopRight() bool {
-	return p_.RespondsToSelector(objc.Sel("topRight"))
-}
-
-// The top-right coordinate of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228657-topright?language=objc
-func (p_ PerspectiveTileObject) TopRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("topRight"))
-	return rv
-}
-
-func (p_ PerspectiveTileObject) HasSetTopLeft() bool {
-	return p_.RespondsToSelector(objc.Sel("setTopLeft:"))
-}
-
-// The top-left coordinate of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228656-topleft?language=objc
-func (p_ PerspectiveTileObject) SetTopLeft(value coregraphics.Point) {
-	objc.Call[objc.Void](p_, objc.Sel("setTopLeft:"), value)
-}
-
-func (p_ PerspectiveTileObject) HasTopLeft() bool {
-	return p_.RespondsToSelector(objc.Sel("topLeft"))
-}
-
-// The top-left coordinate of a tile. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228656-topleft?language=objc
-func (p_ PerspectiveTileObject) TopLeft() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](p_, objc.Sel("topLeft"))
 	return rv
 }
 
@@ -172,5 +126,51 @@ func (p_ PerspectiveTileObject) HasBottomLeft() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228653-bottomleft?language=objc
 func (p_ PerspectiveTileObject) BottomLeft() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](p_, objc.Sel("bottomLeft"))
+	return rv
+}
+
+func (p_ PerspectiveTileObject) HasSetTopRight() bool {
+	return p_.RespondsToSelector(objc.Sel("setTopRight:"))
+}
+
+// The top-right coordinate of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228657-topright?language=objc
+func (p_ PerspectiveTileObject) SetTopRight(value coregraphics.Point) {
+	objc.Call[objc.Void](p_, objc.Sel("setTopRight:"), value)
+}
+
+func (p_ PerspectiveTileObject) HasTopRight() bool {
+	return p_.RespondsToSelector(objc.Sel("topRight"))
+}
+
+// The top-right coordinate of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228657-topright?language=objc
+func (p_ PerspectiveTileObject) TopRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("topRight"))
+	return rv
+}
+
+func (p_ PerspectiveTileObject) HasSetTopLeft() bool {
+	return p_.RespondsToSelector(objc.Sel("setTopLeft:"))
+}
+
+// The top-left coordinate of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228656-topleft?language=objc
+func (p_ PerspectiveTileObject) SetTopLeft(value coregraphics.Point) {
+	objc.Call[objc.Void](p_, objc.Sel("setTopLeft:"), value)
+}
+
+func (p_ PerspectiveTileObject) HasTopLeft() bool {
+	return p_.RespondsToSelector(objc.Sel("topLeft"))
+}
+
+// The top-left coordinate of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228656-topleft?language=objc
+func (p_ PerspectiveTileObject) TopLeft() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](p_, objc.Sel("topLeft"))
 	return rv
 }

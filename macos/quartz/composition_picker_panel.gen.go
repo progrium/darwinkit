@@ -80,17 +80,3 @@ func NewCompositionPickerPanelWithContentRectStyleMaskBackingDeferScreen(content
 	instance.Autorelease()
 	return instance
 }
-
-func (c_ CompositionPickerPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) CompositionPickerPanel {
-	rv := objc.Call[CompositionPickerPanel](c_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewCompositionPickerPanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool) CompositionPickerPanel {
-	instance := CompositionPickerPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}

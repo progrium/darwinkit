@@ -18,14 +18,14 @@ type _LinkedFunctionsClass struct {
 // An interface definition for the [LinkedFunctions] class.
 type ILinkedFunctions interface {
 	objc.IObject
-	Functions() []FunctionObject
-	SetFunctions(value []PFunction)
-	BinaryFunctions() []FunctionObject
-	SetBinaryFunctions(value []PFunction)
 	PrivateFunctions() []FunctionObject
 	SetPrivateFunctions(value []PFunction)
+	BinaryFunctions() []FunctionObject
+	SetBinaryFunctions(value []PFunction)
 	Groups() map[string][]FunctionObject
 	SetGroups(value map[string][]PFunction)
+	Functions() []FunctionObject
+	SetFunctions(value []PFunction)
 }
 
 // A set of related functions that Metal links to when necessary to create the function object. [Full Topic]
@@ -76,19 +76,19 @@ func LinkedFunctions_LinkedFunctions() LinkedFunctions {
 	return LinkedFunctionsClass.LinkedFunctions()
 }
 
-// An array of function objects to link to the new function. [Full Topic]
+// An array of function objects to link to the new function, without exporting the functions publicly. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554048-functions?language=objc
-func (l_ LinkedFunctions) Functions() []FunctionObject {
-	rv := objc.Call[[]FunctionObject](l_, objc.Sel("functions"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3750551-privatefunctions?language=objc
+func (l_ LinkedFunctions) PrivateFunctions() []FunctionObject {
+	rv := objc.Call[[]FunctionObject](l_, objc.Sel("privateFunctions"))
 	return rv
 }
 
-// An array of function objects to link to the new function. [Full Topic]
+// An array of function objects to link to the new function, without exporting the functions publicly. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554048-functions?language=objc
-func (l_ LinkedFunctions) SetFunctions(value []PFunction) {
-	objc.Call[objc.Void](l_, objc.Sel("setFunctions:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3750551-privatefunctions?language=objc
+func (l_ LinkedFunctions) SetPrivateFunctions(value []PFunction) {
+	objc.Call[objc.Void](l_, objc.Sel("setPrivateFunctions:"), value)
 }
 
 // An array of function objects already compiled to a binary representation to link. [Full Topic]
@@ -106,21 +106,6 @@ func (l_ LinkedFunctions) SetBinaryFunctions(value []PFunction) {
 	objc.Call[objc.Void](l_, objc.Sel("setBinaryFunctions:"), value)
 }
 
-// An array of function objects to link to the new function, without exporting the functions publicly. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3750551-privatefunctions?language=objc
-func (l_ LinkedFunctions) PrivateFunctions() []FunctionObject {
-	rv := objc.Call[[]FunctionObject](l_, objc.Sel("privateFunctions"))
-	return rv
-}
-
-// An array of function objects to link to the new function, without exporting the functions publicly. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3750551-privatefunctions?language=objc
-func (l_ LinkedFunctions) SetPrivateFunctions(value []PFunction) {
-	objc.Call[objc.Void](l_, objc.Sel("setPrivateFunctions:"), value)
-}
-
 // An optional list of groups specifying which functions your shader can call at each call site. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554049-groups?language=objc
@@ -134,4 +119,19 @@ func (l_ LinkedFunctions) Groups() map[string][]FunctionObject {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554049-groups?language=objc
 func (l_ LinkedFunctions) SetGroups(value map[string][]PFunction) {
 	objc.Call[objc.Void](l_, objc.Sel("setGroups:"), value)
+}
+
+// An array of function objects to link to the new function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554048-functions?language=objc
+func (l_ LinkedFunctions) Functions() []FunctionObject {
+	rv := objc.Call[[]FunctionObject](l_, objc.Sel("functions"))
+	return rv
+}
+
+// An array of function objects to link to the new function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtllinkedfunctions/3554048-functions?language=objc
+func (l_ LinkedFunctions) SetFunctions(value []PFunction) {
+	objc.Call[objc.Void](l_, objc.Sel("setFunctions:"), value)
 }

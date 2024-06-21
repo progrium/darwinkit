@@ -14,268 +14,156 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder?language=objc
 type PRenderCommandEncoder interface {
 	// optional
-	SetDepthStoreAction(storeAction StoreAction)
-	HasSetDepthStoreAction() bool
-
-	// optional
-	SetVertexIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
-	HasSetVertexIntersectionFunctionTableAtBufferIndex() bool
-
-	// optional
-	SetVertexIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetVertexIntersectionFunctionTablesWithBufferRange() bool
-
-	// optional
-	SetVertexTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
-	HasSetVertexTexturesWithRange() bool
-
-	// optional
-	DrawIndexedPrimitivesIndexTypeIndexBufferIndexBufferOffsetIndirectBufferIndirectBufferOffset(primitiveType PrimitiveType, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, indirectBuffer BufferObject, indirectBufferOffset uint)
-	HasDrawIndexedPrimitivesIndexTypeIndexBufferIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool
-
-	// optional
-	DrawPrimitivesIndirectBufferIndirectBufferOffset(primitiveType PrimitiveType, indirectBuffer BufferObject, indirectBufferOffset uint)
-	HasDrawPrimitivesIndirectBufferIndirectBufferOffset() bool
-
-	// optional
-	SetTileTextureAtIndex(texture TextureObject, index uint)
-	HasSetTileTextureAtIndex() bool
-
-	// optional
-	SetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
-	HasSetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
-
-	// optional
-	SetDepthStencilState(depthStencilState DepthStencilStateObject)
-	HasSetDepthStencilState() bool
-
-	// optional
-	SetFragmentSamplerStateAtIndex(sampler SamplerStateObject, index uint)
-	HasSetFragmentSamplerStateAtIndex() bool
-
-	// optional
-	SetVertexSamplerStateAtIndex(sampler SamplerStateObject, index uint)
-	HasSetVertexSamplerStateAtIndex() bool
-
-	// optional
-	DispatchThreadsPerTile(threadsPerTile Size)
-	HasDispatchThreadsPerTile() bool
-
-	// optional
-	SetFragmentSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
-	HasSetFragmentSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
-
-	// optional
-	SetStencilFrontReferenceValueBackReferenceValue(frontReferenceValue uint32, backReferenceValue uint32)
-	HasSetStencilFrontReferenceValueBackReferenceValue() bool
-
-	// optional
-	SetVertexTextureAtIndex(texture TextureObject, index uint)
-	HasSetVertexTextureAtIndex() bool
-
-	// optional
-	DrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstance(numberOfPatchControlPoints uint, patchStart uint, patchCount uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, instanceCount uint, baseInstance uint)
-	HasDrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstance() bool
-
-	// optional
-	SetTessellationFactorScale(scale float32)
-	HasSetTessellationFactorScale() bool
-
-	// optional
-	SetVertexBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
-	HasSetVertexBufferOffsetAtIndex_() bool
-
-	// optional
-	SetTileVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
-	HasSetTileVisibleFunctionTableAtBufferIndex() bool
-
-	// optional
-	SetVertexAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint)
-	HasSetVertexAccelerationStructureAtBufferIndex() bool
-
-	// optional
-	SetTileTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
-	HasSetTileTexturesWithRange() bool
-
-	// optional
-	SetFragmentBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
-	HasSetFragmentBuffersOffsetsWithRange() bool
-
-	// optional
-	SetTileIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
-	HasSetTileIntersectionFunctionTableAtBufferIndex() bool
-
-	// optional
-	SetTileBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
-	HasSetTileBytesLengthAtIndex() bool
-
-	// optional
-	SetStencilStoreActionOptions(storeActionOptions StoreActionOptions)
-	HasSetStencilStoreActionOptions() bool
-
-	// optional
-	SetFragmentBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
-	HasSetFragmentBufferOffsetAtIndex_() bool
-
-	// optional
-	ExecuteCommandsInBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, executionRange foundation.Range)
-	HasExecuteCommandsInBufferWithRange() bool
-
-	// optional
-	SetTileBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
-	HasSetTileBufferOffsetAtIndex_() bool
-
-	// optional
-	UseResourceUsageStages(resource ResourceObject, usage ResourceUsage, stages RenderStages)
-	HasUseResourceUsageStages() bool
-
-	// optional
-	SetColorStoreActionOptionsAtIndex(storeActionOptions StoreActionOptions, colorAttachmentIndex uint)
-	HasSetColorStoreActionOptionsAtIndex() bool
-
-	// optional
-	SetFragmentTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
-	HasSetFragmentTexturesWithRange() bool
-
-	// optional
-	SetTriangleFillMode(fillMode TriangleFillMode)
-	HasSetTriangleFillMode() bool
-
-	// optional
-	SetTileSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
-	HasSetTileSamplerStatesWithRange() bool
-
-	// optional
-	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint)
-	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount() bool
-
-	// optional
-	SetFragmentBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
-	HasSetFragmentBytesLengthAtIndex() bool
-
-	// optional
-	UseResourcesCountUsageStages(resources unsafe.Pointer, count uint, usage ResourceUsage, stages RenderStages)
-	HasUseResourcesCountUsageStages() bool
-
-	// optional
-	SetStencilReferenceValue(referenceValue uint32)
-	HasSetStencilReferenceValue() bool
-
-	// optional
-	DrawPrimitivesVertexStartVertexCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint)
-	HasDrawPrimitivesVertexStartVertexCount() bool
+	SetViewportsCount(viewports *Viewport, count uint)
+	HasSetViewportsCount() bool
 
 	// optional
 	SetThreadgroupMemoryLengthOffsetAtIndex(length uint, offset uint, index uint)
 	HasSetThreadgroupMemoryLengthOffsetAtIndex() bool
 
 	// optional
-	SetFragmentSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
-	HasSetFragmentSamplerStatesWithRange() bool
+	SetFragmentVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
+	HasSetFragmentVisibleFunctionTableAtBufferIndex() bool
 
 	// optional
-	SetFragmentIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
-	HasSetFragmentIntersectionFunctionTableAtBufferIndex() bool
+	SetFragmentTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
+	HasSetFragmentTexturesWithRange() bool
 
 	// optional
-	SetFragmentIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetFragmentIntersectionFunctionTablesWithBufferRange() bool
+	SetViewport(viewport Viewport)
+	HasSetViewport() bool
 
 	// optional
 	DrawIndexedPatchesPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetIndirectBufferIndirectBufferOffset(numberOfPatchControlPoints uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, controlPointIndexBuffer BufferObject, controlPointIndexBufferOffset uint, indirectBuffer BufferObject, indirectBufferOffset uint)
 	HasDrawIndexedPatchesPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool
 
 	// optional
-	SetVertexSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
-	HasSetVertexSamplerStatesWithRange() bool
+	SetTileSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
+	HasSetTileSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
 
 	// optional
-	SetFragmentSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint)
-	HasSetFragmentSamplerStateLodMinClampLodMaxClampAtIndex() bool
+	SetFragmentTextureAtIndex(texture TextureObject, index uint)
+	HasSetFragmentTextureAtIndex() bool
+
+	// optional
+	SetDepthStoreAction(storeAction StoreAction)
+	HasSetDepthStoreAction() bool
+
+	// optional
+	SetFragmentSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
+	HasSetFragmentSamplerStatesWithRange() bool
+
+	// optional
+	SetVisibilityResultModeOffset(mode VisibilityResultMode, offset uint)
+	HasSetVisibilityResultModeOffset() bool
 
 	// optional
 	SetTileBufferOffsetAtIndex(offset uint, index uint)
 	HasSetTileBufferOffsetAtIndex() bool
 
 	// optional
-	SetFragmentVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
-	HasSetFragmentVisibleFunctionTableAtBufferIndex() bool
+	SetFragmentBufferOffsetAtIndex(offset uint, index uint)
+	HasSetFragmentBufferOffsetAtIndex() bool
+
+	// optional
+	SetVertexBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
+	HasSetVertexBufferOffsetAtIndex_() bool
+
+	// optional
+	SetVertexIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
+	HasSetVertexIntersectionFunctionTableAtBufferIndex() bool
+
+	// optional
+	SetTileBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
+	HasSetTileBufferOffsetAtIndex_() bool
 
 	// optional
 	SetTessellationFactorBufferOffsetInstanceStride(buffer BufferObject, offset uint, instanceStride uint)
 	HasSetTessellationFactorBufferOffsetInstanceStride() bool
 
 	// optional
-	SetVertexSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint)
-	HasSetVertexSamplerStateLodMinClampLodMaxClampAtIndex() bool
-
-	// optional
-	SetFragmentVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetFragmentVisibleFunctionTablesWithBufferRange() bool
-
-	// optional
-	SetStencilStoreAction(storeAction StoreAction)
-	HasSetStencilStoreAction() bool
-
-	// optional
-	SetViewportsCount(viewports *Viewport, count uint)
-	HasSetViewportsCount() bool
-
-	// optional
-	SetBlendColorRedGreenBlueAlpha(red float32, green float32, blue float32, alpha float32)
-	HasSetBlendColorRedGreenBlueAlpha() bool
-
-	// optional
-	SetRenderPipelineState(pipelineState RenderPipelineStateObject)
-	HasSetRenderPipelineState() bool
-
-	// optional
-	DrawPrimitivesVertexStartVertexCountInstanceCountBaseInstance(primitiveType PrimitiveType, vertexStart uint, vertexCount uint, instanceCount uint, baseInstance uint)
-	HasDrawPrimitivesVertexStartVertexCountInstanceCountBaseInstance() bool
-
-	// optional
-	UpdateFenceAfterStages(fence FenceObject, stages RenderStages)
-	HasUpdateFenceAfterStages() bool
+	SetTileVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
+	HasSetTileVisibleFunctionTableAtBufferIndex() bool
 
 	// optional
 	DrawPatchesPatchIndexBufferPatchIndexBufferOffsetIndirectBufferIndirectBufferOffset(numberOfPatchControlPoints uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, indirectBuffer BufferObject, indirectBufferOffset uint)
 	HasDrawPatchesPatchIndexBufferPatchIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool
 
 	// optional
-	SetTileBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
-	HasSetTileBuffersOffsetsWithRange() bool
+	UseResourceUsageStages(resource ResourceObject, usage ResourceUsage, stages RenderStages)
+	HasUseResourceUsageStages() bool
 
 	// optional
-	MemoryBarrierWithScopeAfterStagesBeforeStages(scope BarrierScope, after RenderStages, before RenderStages)
-	HasMemoryBarrierWithScopeAfterStagesBeforeStages() bool
+	DrawPrimitivesVertexStartVertexCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint)
+	HasDrawPrimitivesVertexStartVertexCount() bool
 
 	// optional
-	SetTileAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint)
-	HasSetTileAccelerationStructureAtBufferIndex() bool
+	SetVertexBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
+	HasSetVertexBuffersOffsetsWithRange() bool
 
 	// optional
-	SetFrontFacingWinding(frontFacingWinding Winding)
-	HasSetFrontFacingWinding() bool
+	SetFragmentBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint)
+	HasSetFragmentBufferOffsetAtIndex_() bool
 
 	// optional
-	UseHeapStages(heap HeapObject, stages RenderStages)
-	HasUseHeapStages() bool
+	SetDepthStencilState(depthStencilState DepthStencilStateObject)
+	HasSetDepthStencilState() bool
+
+	// optional
+	SetVertexAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint)
+	HasSetVertexAccelerationStructureAtBufferIndex() bool
+
+	// optional
+	SetVertexBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
+	HasSetVertexBytesLengthAtIndex() bool
+
+	// optional
+	SetVertexAmplificationCountViewMappings(count uint, viewMappings *VertexAmplificationViewMapping)
+	HasSetVertexAmplificationCountViewMappings() bool
+
+	// optional
+	SetScissorRect(rect ScissorRect)
+	HasSetScissorRect() bool
+
+	// optional
+	SetTileTextureAtIndex(texture TextureObject, index uint)
+	HasSetTileTextureAtIndex() bool
+
+	// optional
+	SetVertexSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint)
+	HasSetVertexSamplerStateLodMinClampLodMaxClampAtIndex() bool
+
+	// optional
+	SetStencilFrontReferenceValueBackReferenceValue(frontReferenceValue uint32, backReferenceValue uint32)
+	HasSetStencilFrontReferenceValueBackReferenceValue() bool
+
+	// optional
+	SetVertexVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
+	HasSetVertexVisibleFunctionTablesWithBufferRange() bool
+
+	// optional
+	SetStencilStoreAction(storeAction StoreAction)
+	HasSetStencilStoreAction() bool
+
+	// optional
+	SetCullMode(cullMode CullMode)
+	HasSetCullMode() bool
+
+	// optional
+	SetTriangleFillMode(fillMode TriangleFillMode)
+	HasSetTriangleFillMode() bool
+
+	// optional
+	SetTileTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
+	HasSetTileTexturesWithRange() bool
+
+	// optional
+	MemoryBarrierWithResourcesCountAfterStagesBeforeStages(resources unsafe.Pointer, count uint, after RenderStages, before RenderStages)
+	HasMemoryBarrierWithResourcesCountAfterStagesBeforeStages() bool
 
 	// optional
 	SetFragmentAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint)
 	HasSetFragmentAccelerationStructureAtBufferIndex() bool
-
-	// optional
-	SetTileIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetTileIntersectionFunctionTablesWithBufferRange() bool
-
-	// optional
-	DrawPrimitivesVertexStartVertexCountInstanceCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint, instanceCount uint)
-	HasDrawPrimitivesVertexStartVertexCountInstanceCount() bool
-
-	// optional
-	SetTileSamplerStateAtIndex(sampler SamplerStateObject, index uint)
-	HasSetTileSamplerStateAtIndex() bool
 
 	// optional
 	SetDepthBiasSlopeScaleClamp(depthBias float32, slopeScale float32, clamp float32)
@@ -286,108 +174,148 @@ type PRenderCommandEncoder interface {
 	HasSampleCountersInBufferAtSampleIndexWithBarrier() bool
 
 	// optional
+	SetTileIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
+	HasSetTileIntersectionFunctionTableAtBufferIndex() bool
+
+	// optional
+	SetRenderPipelineState(pipelineState RenderPipelineStateObject)
+	HasSetRenderPipelineState() bool
+
+	// optional
+	SetTileBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
+	HasSetTileBytesLengthAtIndex() bool
+
+	// optional
+	ExecuteCommandsInBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, executionRange foundation.Range)
+	HasExecuteCommandsInBufferWithRange() bool
+
+	// optional
+	SetFragmentBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
+	HasSetFragmentBytesLengthAtIndex() bool
+
+	// optional
+	SetTileBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
+	HasSetTileBuffersOffsetsWithRange() bool
+
+	// optional
+	MemoryBarrierWithScopeAfterStagesBeforeStages(scope BarrierScope, after RenderStages, before RenderStages)
+	HasMemoryBarrierWithScopeAfterStagesBeforeStages() bool
+
+	// optional
+	SetFragmentIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint)
+	HasSetFragmentIntersectionFunctionTableAtBufferIndex() bool
+
+	// optional
+	DispatchThreadsPerTile(threadsPerTile Size)
+	HasDispatchThreadsPerTile() bool
+
+	// optional
+	SetFragmentVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
+	HasSetFragmentVisibleFunctionTablesWithBufferRange() bool
+
+	// optional
+	SetVertexTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
+	HasSetVertexTexturesWithRange() bool
+
+	// optional
+	SetFragmentSamplerStateAtIndex(sampler SamplerStateObject, index uint)
+	HasSetFragmentSamplerStateAtIndex() bool
+
+	// optional
+	SetTileSamplerStateAtIndex(sampler SamplerStateObject, index uint)
+	HasSetTileSamplerStateAtIndex() bool
+
+	// optional
+	SetColorStoreActionOptionsAtIndex(storeActionOptions StoreActionOptions, colorAttachmentIndex uint)
+	HasSetColorStoreActionOptionsAtIndex() bool
+
+	// optional
+	SetVertexTextureAtIndex(texture TextureObject, index uint)
+	HasSetVertexTextureAtIndex() bool
+
+	// optional
+	SetTessellationFactorScale(scale float32)
+	HasSetTessellationFactorScale() bool
+
+	// optional
+	UseHeapStages(heap HeapObject, stages RenderStages)
+	HasUseHeapStages() bool
+
+	// optional
 	SetColorStoreActionAtIndex(storeAction StoreAction, colorAttachmentIndex uint)
 	HasSetColorStoreActionAtIndex() bool
 
 	// optional
-	SetTileSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint)
-	HasSetTileSamplerStateLodMinClampLodMaxClampAtIndex() bool
+	SetStencilStoreActionOptions(storeActionOptions StoreActionOptions)
+	HasSetStencilStoreActionOptions() bool
 
 	// optional
-	SetScissorRectsCount(scissorRects *ScissorRect, count uint)
-	HasSetScissorRectsCount() bool
-
-	// optional
-	WaitForFenceBeforeStages(fence FenceObject, stages RenderStages)
-	HasWaitForFenceBeforeStages() bool
-
-	// optional
-	UseHeapsCountStages(heaps unsafe.Pointer, count uint, stages RenderStages)
-	HasUseHeapsCountStages() bool
-
-	// optional
-	SetVertexBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
-	HasSetVertexBuffersOffsetsWithRange() bool
-
-	// optional
-	SetFragmentTextureAtIndex(texture TextureObject, index uint)
-	HasSetFragmentTextureAtIndex() bool
-
-	// optional
-	SetVertexAmplificationCountViewMappings(count uint, viewMappings *VertexAmplificationViewMapping)
-	HasSetVertexAmplificationCountViewMappings() bool
-
-	// optional
-	SetDepthStoreActionOptions(storeActionOptions StoreActionOptions)
-	HasSetDepthStoreActionOptions() bool
-
-	// optional
-	DrawIndexedPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetInstanceCountBaseInstance(numberOfPatchControlPoints uint, patchStart uint, patchCount uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, controlPointIndexBuffer BufferObject, controlPointIndexBufferOffset uint, instanceCount uint, baseInstance uint)
-	HasDrawIndexedPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetInstanceCountBaseInstance() bool
-
-	// optional
-	SetVisibilityResultModeOffset(mode VisibilityResultMode, offset uint)
-	HasSetVisibilityResultModeOffset() bool
-
-	// optional
-	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint)
-	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool
-
-	// optional
-	SetCullMode(cullMode CullMode)
-	HasSetCullMode() bool
-
-	// optional
-	SetViewport(viewport Viewport)
-	HasSetViewport() bool
-
-	// optional
-	SetScissorRect(rect ScissorRect)
-	HasSetScissorRect() bool
-
-	// optional
-	ExecuteCommandsInBufferIndirectBufferIndirectBufferOffset(indirectCommandbuffer IndirectCommandBufferObject, indirectRangeBuffer BufferObject, indirectBufferOffset uint)
-	HasExecuteCommandsInBufferIndirectBufferIndirectBufferOffset() bool
-
-	// optional
-	SetVertexVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
-	HasSetVertexVisibleFunctionTableAtBufferIndex() bool
-
-	// optional
-	SetFragmentBufferOffsetAtIndex(offset uint, index uint)
-	HasSetFragmentBufferOffsetAtIndex() bool
-
-	// optional
-	SetVertexVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetVertexVisibleFunctionTablesWithBufferRange() bool
+	UseResourcesCountUsageStages(resources unsafe.Pointer, count uint, usage ResourceUsage, stages RenderStages)
+	HasUseResourcesCountUsageStages() bool
 
 	// optional
 	SetDepthClipMode(depthClipMode DepthClipMode)
 	HasSetDepthClipMode() bool
 
 	// optional
-	SetTileVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
-	HasSetTileVisibleFunctionTablesWithBufferRange() bool
-
-	// optional
-	SetTileSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
-	HasSetTileSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
-
-	// optional
-	MemoryBarrierWithResourcesCountAfterStagesBeforeStages(resources unsafe.Pointer, count uint, after RenderStages, before RenderStages)
-	HasMemoryBarrierWithResourcesCountAfterStagesBeforeStages() bool
-
-	// optional
 	SetVertexBufferOffsetAtIndex(offset uint, index uint)
 	HasSetVertexBufferOffsetAtIndex() bool
 
 	// optional
-	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffset(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint)
-	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffset() bool
+	UseHeapsCountStages(heaps unsafe.Pointer, count uint, stages RenderStages)
+	HasUseHeapsCountStages() bool
 
 	// optional
-	SetVertexBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint)
-	HasSetVertexBytesLengthAtIndex() bool
+	SetTileVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range)
+	HasSetTileVisibleFunctionTablesWithBufferRange() bool
+
+	// optional
+	SetBlendColorRedGreenBlueAlpha(red float32, green float32, blue float32, alpha float32)
+	HasSetBlendColorRedGreenBlueAlpha() bool
+
+	// optional
+	SetVertexVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint)
+	HasSetVertexVisibleFunctionTableAtBufferIndex() bool
+
+	// optional
+	UpdateFenceAfterStages(fence FenceObject, stages RenderStages)
+	HasUpdateFenceAfterStages() bool
+
+	// optional
+	SetScissorRectsCount(scissorRects *ScissorRect, count uint)
+	HasSetScissorRectsCount() bool
+
+	// optional
+	SetDepthStoreActionOptions(storeActionOptions StoreActionOptions)
+	HasSetDepthStoreActionOptions() bool
+
+	// optional
+	SetTileAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint)
+	HasSetTileAccelerationStructureAtBufferIndex() bool
+
+	// optional
+	SetFragmentBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
+	HasSetFragmentBuffersOffsetsWithRange() bool
+
+	// optional
+	SetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
+	HasSetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
+
+	// optional
+	SetFrontFacingWinding(frontFacingWinding Winding)
+	HasSetFrontFacingWinding() bool
+
+	// optional
+	DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint)
+	HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount() bool
+
+	// optional
+	SetStencilReferenceValue(referenceValue uint32)
+	HasSetStencilReferenceValue() bool
+
+	// optional
+	WaitForFenceBeforeStages(fence FenceObject, stages RenderStages)
+	HasWaitForFenceBeforeStages() bool
 
 	// optional
 	TileWidth() uint
@@ -406,358 +334,38 @@ type RenderCommandEncoderObject struct {
 	objc.Object
 }
 
-func (r_ RenderCommandEncoderObject) HasSetDepthStoreAction() bool {
-	return r_.RespondsToSelector(objc.Sel("setDepthStoreAction:"))
+func (r_ RenderCommandEncoderObject) HasSetViewportsCount() bool {
+	return r_.RespondsToSelector(objc.Sel("setViewports:count:"))
 }
 
-// Configures the store action for the depth attachment. [Full Topic]
+// Configures the render pipeline with multiple viewports that apply transformations and clipping rectangles. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1640036-setdepthstoreaction?language=objc
-func (r_ RenderCommandEncoderObject) SetDepthStoreAction(storeAction StoreAction) {
-	objc.Call[objc.Void](r_, objc.Sel("setDepthStoreAction:"), storeAction)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2869738-setviewports?language=objc
+func (r_ RenderCommandEncoderObject) SetViewportsCount(viewports *Viewport, count uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setViewports:count:"), viewports, count)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexIntersectionFunctionTableAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexIntersectionFunctionTable:atBufferIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetThreadgroupMemoryLengthOffsetAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setThreadgroupMemoryLength:offset:atIndex:"))
 }
 
-// Assigns an intersection function table to an entry in the vertex shader argument table. [Full Topic]
+// Configures the size of a threadgroup memory buffer for an entry in the fragment or tile shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750564-setvertexintersectionfunctiontab?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866165-setthreadgroupmemorylength?language=objc
+func (r_ RenderCommandEncoderObject) SetThreadgroupMemoryLengthOffsetAtIndex(length uint, offset uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setThreadgroupMemoryLength:offset:atIndex:"), length, offset, index)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexIntersectionFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexIntersectionFunctionTables:withBufferRange:"))
+func (r_ RenderCommandEncoderObject) HasSetFragmentVisibleFunctionTableAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentVisibleFunctionTable:atBufferIndex:"))
 }
 
-// Assigns multiple intersection function tables to a range of entries in the vertex shader argument table. [Full Topic]
+// Assigns a visible function table to an entry in the fragment shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750565-setvertexintersectionfunctiontab?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexIntersectionFunctionTables:withBufferRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexTexturesWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexTextures:withRange:"))
-}
-
-// Assigns multiple textures to a range of entries in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516109-setvertextextures?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLTexture", textures)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexTextures:withRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawIndexedPrimitivesIndexTypeIndexBufferIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexType:indexBuffer:indexBufferOffset:indirectBuffer:indirectBufferOffset:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive with indexed vertices and indirect arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515392-drawindexedprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawIndexedPrimitivesIndexTypeIndexBufferIndexBufferOffsetIndirectBufferIndirectBufferOffset(primitiveType PrimitiveType, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, indirectBuffer BufferObject, indirectBufferOffset uint) {
-	po2 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
-	po4 := objc.WrapAsProtocol("MTLBuffer", indirectBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPrimitives:indexType:indexBuffer:indexBufferOffset:indirectBuffer:indirectBufferOffset:"), primitiveType, indexType, po2, indexBufferOffset, po4, indirectBufferOffset)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawPrimitivesIndirectBufferIndirectBufferOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("drawPrimitives:indirectBuffer:indirectBufferOffset:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive with indirect arguments. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515467-drawprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawPrimitivesIndirectBufferIndirectBufferOffset(primitiveType PrimitiveType, indirectBuffer BufferObject, indirectBufferOffset uint) {
-	po1 := objc.WrapAsProtocol("MTLBuffer", indirectBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawPrimitives:indirectBuffer:indirectBufferOffset:"), primitiveType, po1, indirectBufferOffset)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileTextureAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileTexture:atIndex:"))
-}
-
-// Assigns a texture to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866173-settiletexture?language=objc
-func (r_ RenderCommandEncoderObject) SetTileTextureAtIndex(texture TextureObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](r_, objc.Sel("setTileTexture:atIndex:"), po0, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexSamplerStates:lodMinClamps:lodMaxClamps:withRange:"))
-}
-
-// Assigns multiple sampler states and clamp values to a range of entries in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516322-setvertexsamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetDepthStencilState() bool {
-	return r_.RespondsToSelector(objc.Sel("setDepthStencilState:"))
-}
-
-// Configures the combined depth and stencil state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516119-setdepthstencilstate?language=objc
-func (r_ RenderCommandEncoderObject) SetDepthStencilState(depthStencilState DepthStencilStateObject) {
-	po0 := objc.WrapAsProtocol("MTLDepthStencilState", depthStencilState)
-	objc.Call[objc.Void](r_, objc.Sel("setDepthStencilState:"), po0)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStateAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerState:atIndex:"))
-}
-
-// Assigns a sampler state to an entry in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515577-setfragmentsamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentSamplerStateAtIndex(sampler SamplerStateObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerState:atIndex:"), po0, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStateAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexSamplerState:atIndex:"))
-}
-
-// Assigns a sampler state to an entry in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515537-setvertexsamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexSamplerStateAtIndex(sampler SamplerStateObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerState:atIndex:"), po0, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasDispatchThreadsPerTile() bool {
-	return r_.RespondsToSelector(objc.Sel("dispatchThreadsPerTile:"))
-}
-
-// Encodes a command that invokes GPU functions from the encoder’s current tile render pipeline state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866171-dispatchthreadspertile?language=objc
-func (r_ RenderCommandEncoderObject) DispatchThreadsPerTile(threadsPerTile Size) {
-	objc.Call[objc.Void](r_, objc.Sel("dispatchThreadsPerTile:"), threadsPerTile)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStatesLodMinClampsLodMaxClampsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerStates:lodMinClamps:lodMaxClamps:withRange:"))
-}
-
-// Assigns multiple sampler states and clamp values to a range of entries in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515463-setfragmentsamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetStencilFrontReferenceValueBackReferenceValue() bool {
-	return r_.RespondsToSelector(objc.Sel("setStencilFrontReferenceValue:backReferenceValue:"))
-}
-
-// Configures different comparison values for front- and back-facing primitives. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515522-setstencilfrontreferencevalue?language=objc
-func (r_ RenderCommandEncoderObject) SetStencilFrontReferenceValueBackReferenceValue(frontReferenceValue uint32, backReferenceValue uint32) {
-	objc.Call[objc.Void](r_, objc.Sel("setStencilFrontReferenceValue:backReferenceValue:"), frontReferenceValue, backReferenceValue)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexTextureAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexTexture:atIndex:"))
-}
-
-// Assigns a texture to an entry in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515842-setvertextexture?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexTextureAtIndex(texture TextureObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexTexture:atIndex:"), po0, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstance() bool {
-	return r_.RespondsToSelector(objc.Sel("drawPatches:patchStart:patchCount:patchIndexBuffer:patchIndexBufferOffset:instanceCount:baseInstance:"))
-}
-
-// Encodes a draw command that renders multiple instances of tessellated patches. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1639984-drawpatches?language=objc
-func (r_ RenderCommandEncoderObject) DrawPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetInstanceCountBaseInstance(numberOfPatchControlPoints uint, patchStart uint, patchCount uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, instanceCount uint, baseInstance uint) {
-	po3 := objc.WrapAsProtocol("MTLBuffer", patchIndexBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawPatches:patchStart:patchCount:patchIndexBuffer:patchIndexBufferOffset:instanceCount:baseInstance:"), numberOfPatchControlPoints, patchStart, patchCount, po3, patchIndexBufferOffset, instanceCount, baseInstance)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTessellationFactorScale() bool {
-	return r_.RespondsToSelector(objc.Sel("setTessellationFactorScale:"))
-}
-
-// Configures the scale factor for per-patch tessellation factors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1639992-settessellationfactorscale?language=objc
-func (r_ RenderCommandEncoderObject) SetTessellationFactorScale(scale float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setTessellationFactorScale:"), scale)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexBufferOffsetAtIndex_() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexBuffer:offset:atIndex:"))
-}
-
-// Assigns a buffer to an entry in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515829-setvertexbuffer?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexBuffer:offset:atIndex:"), po0, offset, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileVisibleFunctionTableAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileVisibleFunctionTable:atBufferIndex:"))
-}
-
-// Assigns a visible function table to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750561-settilevisiblefunctiontable?language=objc
-func (r_ RenderCommandEncoderObject) SetTileVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750556-setfragmentvisiblefunctiontable?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint) {
 	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTable)
-	objc.Call[objc.Void](r_, objc.Sel("setTileVisibleFunctionTable:atBufferIndex:"), po0, bufferIndex)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexAccelerationStructureAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexAccelerationStructure:atBufferIndex:"))
-}
-
-// Assigns an acceleration structure to an entry in the vertex shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750563-setvertexaccelerationstructure?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint) {
-	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexAccelerationStructure:atBufferIndex:"), po0, bufferIndex)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileTexturesWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileTextures:withRange:"))
-}
-
-// Assigns multiple textures to a range of entries in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866172-settiletextures?language=objc
-func (r_ RenderCommandEncoderObject) SetTileTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLTexture", textures)
-	objc.Call[objc.Void](r_, objc.Sel("setTileTextures:withRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentBuffersOffsetsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentBuffers:offsets:withRange:"))
-}
-
-// Assigns multiple buffers to a range of entries in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515724-setfragmentbuffers?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentBuffers:offsets:withRange:"), po0, offsets, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileIntersectionFunctionTableAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileIntersectionFunctionTable:atBufferIndex:"))
-}
-
-// Assigns an intersection function table to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750559-settileintersectionfunctiontable?language=objc
-func (r_ RenderCommandEncoderObject) SetTileIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
-	objc.Call[objc.Void](r_, objc.Sel("setTileIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileBytesLengthAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileBytes:length:atIndex:"))
-}
-
-// Creates a buffer from bytes and assigns it to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866175-settilebytes?language=objc
-func (r_ RenderCommandEncoderObject) SetTileBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setTileBytes:length:atIndex:"), bytes, length, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetStencilStoreActionOptions() bool {
-	return r_.RespondsToSelector(objc.Sel("setStencilStoreActionOptions:"))
-}
-
-// Configures the store action options for the stencil attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919771-setstencilstoreactionoptions?language=objc
-func (r_ RenderCommandEncoderObject) SetStencilStoreActionOptions(storeActionOptions StoreActionOptions) {
-	objc.Call[objc.Void](r_, objc.Sel("setStencilStoreActionOptions:"), storeActionOptions)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentBufferOffsetAtIndex_() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentBuffer:offset:atIndex:"))
-}
-
-// Assigns a buffer to an entry in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515470-setfragmentbuffer?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentBuffer:offset:atIndex:"), po0, offset, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasExecuteCommandsInBufferWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("executeCommandsInBuffer:withRange:"))
-}
-
-// Encodes a command that runs a range of commands from an indirect command buffer (ICB). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967440-executecommandsinbuffer?language=objc
-func (r_ RenderCommandEncoderObject) ExecuteCommandsInBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, executionRange foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", indirectCommandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("executeCommandsInBuffer:withRange:"), po0, executionRange)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileBufferOffsetAtIndex_() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileBuffer:offset:atIndex:"))
-}
-
-// Assigns a buffer to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866157-settilebuffer?language=objc
-func (r_ RenderCommandEncoderObject) SetTileBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](r_, objc.Sel("setTileBuffer:offset:atIndex:"), po0, offset, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasUseResourceUsageStages() bool {
-	return r_.RespondsToSelector(objc.Sel("useResource:usage:stages:"))
-}
-
-// Ensures the shaders in the render pass’s subsequent draw commands have access to a resource. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043404-useresource?language=objc
-func (r_ RenderCommandEncoderObject) UseResourceUsageStages(resource ResourceObject, usage ResourceUsage, stages RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	objc.Call[objc.Void](r_, objc.Sel("useResource:usage:stages:"), po0, usage, stages)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetColorStoreActionOptionsAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setColorStoreActionOptions:atIndex:"))
-}
-
-// Configures the store action options for a color attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919773-setcolorstoreactionoptions?language=objc
-func (r_ RenderCommandEncoderObject) SetColorStoreActionOptionsAtIndex(storeActionOptions StoreActionOptions, colorAttachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setColorStoreActionOptions:atIndex:"), storeActionOptions, colorAttachmentIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentVisibleFunctionTable:atBufferIndex:"), po0, bufferIndex)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetFragmentTexturesWithRange() bool {
@@ -772,131 +380,15 @@ func (r_ RenderCommandEncoderObject) SetFragmentTexturesWithRange(textures unsaf
 	objc.Call[objc.Void](r_, objc.Sel("setFragmentTextures:withRange:"), po0, range_)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTriangleFillMode() bool {
-	return r_.RespondsToSelector(objc.Sel("setTriangleFillMode:"))
+func (r_ RenderCommandEncoderObject) HasSetViewport() bool {
+	return r_.RespondsToSelector(objc.Sel("setViewport:"))
 }
 
-// Configures how subsequent draw commands rasterize triangle and triangle strip primitives. [Full Topic]
+// Configures the render pipeline with a viewport that applies a transformation and a clipping rectangle. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516029-settrianglefillmode?language=objc
-func (r_ RenderCommandEncoderObject) SetTriangleFillMode(fillMode TriangleFillMode) {
-	objc.Call[objc.Void](r_, objc.Sel("setTriangleFillMode:"), fillMode)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileSamplerStatesWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileSamplerStates:withRange:"))
-}
-
-// Assigns multiple sampler states to a range of entries in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866161-settilesamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetTileSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerStates:withRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount() bool {
-	return r_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive with indexed vertices. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515699-drawindexedprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint) {
-	po3 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:"), primitiveType, indexCount, indexType, po3, indexBufferOffset, instanceCount)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentBytesLengthAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentBytes:length:atIndex:"))
-}
-
-// Creates a buffer from bytes and assigns it to an entry in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516192-setfragmentbytes?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentBytes:length:atIndex:"), bytes, length, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasUseResourcesCountUsageStages() bool {
-	return r_.RespondsToSelector(objc.Sel("useResources:count:usage:stages:"))
-}
-
-// Ensures the shaders in the render pass’s subsequent draw commands have access to multiple resources. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043405-useresources?language=objc
-func (r_ RenderCommandEncoderObject) UseResourcesCountUsageStages(resources unsafe.Pointer, count uint, usage ResourceUsage, stages RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLResource", resources)
-	objc.Call[objc.Void](r_, objc.Sel("useResources:count:usage:stages:"), po0, count, usage, stages)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetStencilReferenceValue() bool {
-	return r_.RespondsToSelector(objc.Sel("setStencilReferenceValue:"))
-}
-
-// Configures the same comparison value for front- and back-facing primitives. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515697-setstencilreferencevalue?language=objc
-func (r_ RenderCommandEncoderObject) SetStencilReferenceValue(referenceValue uint32) {
-	objc.Call[objc.Void](r_, objc.Sel("setStencilReferenceValue:"), referenceValue)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawPrimitivesVertexStartVertexCount() bool {
-	return r_.RespondsToSelector(objc.Sel("drawPrimitives:vertexStart:vertexCount:"))
-}
-
-// Encodes a draw command that renders an instance of a geometric primitive. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516326-drawprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawPrimitivesVertexStartVertexCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint) {
-	objc.Call[objc.Void](r_, objc.Sel("drawPrimitives:vertexStart:vertexCount:"), primitiveType, vertexStart, vertexCount)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetThreadgroupMemoryLengthOffsetAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setThreadgroupMemoryLength:offset:atIndex:"))
-}
-
-// Configures the size of a threadgroup memory buffer for an entry in the fragment or tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866165-setthreadgroupmemorylength?language=objc
-func (r_ RenderCommandEncoderObject) SetThreadgroupMemoryLengthOffsetAtIndex(length uint, offset uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setThreadgroupMemoryLength:offset:atIndex:"), length, offset, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStatesWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerStates:withRange:"))
-}
-
-// Assigns multiple sampler states to a range of entries in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515970-setfragmentsamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerStates:withRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentIntersectionFunctionTableAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentIntersectionFunctionTable:atBufferIndex:"))
-}
-
-// Assigns an intersection function table to an entry in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750554-setfragmentintersectionfunctiont?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentIntersectionFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentIntersectionFunctionTables:withBufferRange:"))
-}
-
-// Assigns multiple intersection function tables to a range of entries in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750555-setfragmentintersectionfunctiont?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentIntersectionFunctionTables:withBufferRange:"), po0, range_)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515527-setviewport?language=objc
+func (r_ RenderCommandEncoderObject) SetViewport(viewport Viewport) {
+	objc.Call[objc.Void](r_, objc.Sel("setViewport:"), viewport)
 }
 
 func (r_ RenderCommandEncoderObject) HasDrawIndexedPatchesPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool {
@@ -913,28 +405,62 @@ func (r_ RenderCommandEncoderObject) DrawIndexedPatchesPatchIndexBufferPatchInde
 	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPatches:patchIndexBuffer:patchIndexBufferOffset:controlPointIndexBuffer:controlPointIndexBufferOffset:indirectBuffer:indirectBufferOffset:"), numberOfPatchControlPoints, po1, patchIndexBufferOffset, po3, controlPointIndexBufferOffset, po5, indirectBufferOffset)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStatesWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexSamplerStates:withRange:"))
+func (r_ RenderCommandEncoderObject) HasSetTileSamplerStatesLodMinClampsLodMaxClampsWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileSamplerStates:lodMinClamps:lodMaxClamps:withRange:"))
 }
 
-// Assigns multiple sampler states to a range of entries in the vertex shader argument table. [Full Topic]
+// Assigns multiple sampler states and clamp values to a range of entries in the tile shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515400-setvertexsamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866170-settilesamplerstates?language=objc
+func (r_ RenderCommandEncoderObject) SetTileSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerStates:withRange:"), po0, range_)
+	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStateLodMinClampLodMaxClampAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerState:lodMinClamp:lodMaxClamp:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetFragmentTextureAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentTexture:atIndex:"))
 }
 
-// Assigns a sampler state and clamp values to an entry in the fragment shader argument table. [Full Topic]
+// Assigns a texture to an entry in the fragment shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515485-setfragmentsamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerState:lodMinClamp:lodMaxClamp:atIndex:"), po0, lodMinClamp, lodMaxClamp, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515390-setfragmenttexture?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentTextureAtIndex(texture TextureObject, index uint) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentTexture:atIndex:"), po0, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetDepthStoreAction() bool {
+	return r_.RespondsToSelector(objc.Sel("setDepthStoreAction:"))
+}
+
+// Configures the store action for the depth attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1640036-setdepthstoreaction?language=objc
+func (r_ RenderCommandEncoderObject) SetDepthStoreAction(storeAction StoreAction) {
+	objc.Call[objc.Void](r_, objc.Sel("setDepthStoreAction:"), storeAction)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStatesWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerStates:withRange:"))
+}
+
+// Assigns multiple sampler states to a range of entries in the fragment shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515970-setfragmentsamplerstates?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerStates:withRange:"), po0, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVisibilityResultModeOffset() bool {
+	return r_.RespondsToSelector(objc.Sel("setVisibilityResultMode:offset:"))
+}
+
+// Configures which visibility test the GPU runs and the destination for any results it generates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515556-setvisibilityresultmode?language=objc
+func (r_ RenderCommandEncoderObject) SetVisibilityResultModeOffset(mode VisibilityResultMode, offset uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setVisibilityResultMode:offset:"), mode, offset)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetTileBufferOffsetAtIndex() bool {
@@ -948,16 +474,51 @@ func (r_ RenderCommandEncoderObject) SetTileBufferOffsetAtIndex(offset uint, ind
 	objc.Call[objc.Void](r_, objc.Sel("setTileBufferOffset:atIndex:"), offset, index)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetFragmentVisibleFunctionTableAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentVisibleFunctionTable:atBufferIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetFragmentBufferOffsetAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentBufferOffset:atIndex:"))
 }
 
-// Assigns a visible function table to an entry in the fragment shader argument table. [Full Topic]
+// Updates an entry in the fragment shader argument table with a new location within the entry’s current buffer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750556-setfragmentvisiblefunctiontable?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint) {
-	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTable)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentVisibleFunctionTable:atBufferIndex:"), po0, bufferIndex)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515917-setfragmentbufferoffset?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentBufferOffsetAtIndex(offset uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentBufferOffset:atIndex:"), offset, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexBufferOffsetAtIndex_() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexBuffer:offset:atIndex:"))
+}
+
+// Assigns a buffer to an entry in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515829-setvertexbuffer?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexBuffer:offset:atIndex:"), po0, offset, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexIntersectionFunctionTableAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexIntersectionFunctionTable:atBufferIndex:"))
+}
+
+// Assigns an intersection function table to an entry in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750564-setvertexintersectionfunctiontab?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
+	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileBufferOffsetAtIndex_() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileBuffer:offset:atIndex:"))
+}
+
+// Assigns a buffer to an entry in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866157-settilebuffer?language=objc
+func (r_ RenderCommandEncoderObject) SetTileBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](r_, objc.Sel("setTileBuffer:offset:atIndex:"), po0, offset, index)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetTessellationFactorBufferOffsetInstanceStride() bool {
@@ -972,96 +533,16 @@ func (r_ RenderCommandEncoderObject) SetTessellationFactorBufferOffsetInstanceSt
 	objc.Call[objc.Void](r_, objc.Sel("setTessellationFactorBuffer:offset:instanceStride:"), po0, offset, instanceStride)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStateLodMinClampLodMaxClampAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexSamplerState:lodMinClamp:lodMaxClamp:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetTileVisibleFunctionTableAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileVisibleFunctionTable:atBufferIndex:"))
 }
 
-// Assigns a sampler state and clamp values to an entry in the vertex shader argument table. [Full Topic]
+// Assigns a visible function table to an entry in the tile shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515864-setvertexsamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerState:lodMinClamp:lodMaxClamp:atIndex:"), po0, lodMinClamp, lodMaxClamp, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetFragmentVisibleFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentVisibleFunctionTables:withBufferRange:"))
-}
-
-// Assigns multiple visible function tables to a range of entries in the fragment shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750557-setfragmentvisiblefunctiontables?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentVisibleFunctionTables:withBufferRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetStencilStoreAction() bool {
-	return r_.RespondsToSelector(objc.Sel("setStencilStoreAction:"))
-}
-
-// Configures the store action for the stencil attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1639936-setstencilstoreaction?language=objc
-func (r_ RenderCommandEncoderObject) SetStencilStoreAction(storeAction StoreAction) {
-	objc.Call[objc.Void](r_, objc.Sel("setStencilStoreAction:"), storeAction)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetViewportsCount() bool {
-	return r_.RespondsToSelector(objc.Sel("setViewports:count:"))
-}
-
-// Configures the render pipeline with multiple viewports that apply transformations and clipping rectangles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2869738-setviewports?language=objc
-func (r_ RenderCommandEncoderObject) SetViewportsCount(viewports *Viewport, count uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setViewports:count:"), viewports, count)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetBlendColorRedGreenBlueAlpha() bool {
-	return r_.RespondsToSelector(objc.Sel("setBlendColorRed:green:blue:alpha:"))
-}
-
-// Configures each pixel component value, including alpha, for the render pipeline’s constant blend color. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515592-setblendcolorred?language=objc
-func (r_ RenderCommandEncoderObject) SetBlendColorRedGreenBlueAlpha(red float32, green float32, blue float32, alpha float32) {
-	objc.Call[objc.Void](r_, objc.Sel("setBlendColorRed:green:blue:alpha:"), red, green, blue, alpha)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetRenderPipelineState() bool {
-	return r_.RespondsToSelector(objc.Sel("setRenderPipelineState:"))
-}
-
-// Configures the encoder with a render or tile pipeline state instance that applies to your subsequent draw commands. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515811-setrenderpipelinestate?language=objc
-func (r_ RenderCommandEncoderObject) SetRenderPipelineState(pipelineState RenderPipelineStateObject) {
-	po0 := objc.WrapAsProtocol("MTLRenderPipelineState", pipelineState)
-	objc.Call[objc.Void](r_, objc.Sel("setRenderPipelineState:"), po0)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawPrimitivesVertexStartVertexCountInstanceCountBaseInstance() bool {
-	return r_.RespondsToSelector(objc.Sel("drawPrimitives:vertexStart:vertexCount:instanceCount:baseInstance:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive that starts with a custom instance identification number. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515561-drawprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawPrimitivesVertexStartVertexCountInstanceCountBaseInstance(primitiveType PrimitiveType, vertexStart uint, vertexCount uint, instanceCount uint, baseInstance uint) {
-	objc.Call[objc.Void](r_, objc.Sel("drawPrimitives:vertexStart:vertexCount:instanceCount:baseInstance:"), primitiveType, vertexStart, vertexCount, instanceCount, baseInstance)
-}
-
-func (r_ RenderCommandEncoderObject) HasUpdateFenceAfterStages() bool {
-	return r_.RespondsToSelector(objc.Sel("updateFence:afterStages:"))
-}
-
-// Encodes a command that instructs the GPU to update a fence after one or more stages, which signals passes waiting on the fence. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1648377-updatefence?language=objc
-func (r_ RenderCommandEncoderObject) UpdateFenceAfterStages(fence FenceObject, stages RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](r_, objc.Sel("updateFence:afterStages:"), po0, stages)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750561-settilevisiblefunctiontable?language=objc
+func (r_ RenderCommandEncoderObject) SetTileVisibleFunctionTableAtBufferIndex(functionTable VisibleFunctionTableObject, bufferIndex uint) {
+	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTable)
+	objc.Call[objc.Void](r_, objc.Sel("setTileVisibleFunctionTable:atBufferIndex:"), po0, bufferIndex)
 }
 
 func (r_ RenderCommandEncoderObject) HasDrawPatchesPatchIndexBufferPatchIndexBufferOffsetIndirectBufferIndirectBufferOffset() bool {
@@ -1077,62 +558,212 @@ func (r_ RenderCommandEncoderObject) DrawPatchesPatchIndexBufferPatchIndexBuffer
 	objc.Call[objc.Void](r_, objc.Sel("drawPatches:patchIndexBuffer:patchIndexBufferOffset:indirectBuffer:indirectBufferOffset:"), numberOfPatchControlPoints, po1, patchIndexBufferOffset, po3, indirectBufferOffset)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTileBuffersOffsetsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileBuffers:offsets:withRange:"))
+func (r_ RenderCommandEncoderObject) HasUseResourceUsageStages() bool {
+	return r_.RespondsToSelector(objc.Sel("useResource:usage:stages:"))
 }
 
-// Assigns multiple buffers to a range of entries in the tile shader argument table. [Full Topic]
+// Ensures the shaders in the render pass’s subsequent draw commands have access to a resource. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866162-settilebuffers?language=objc
-func (r_ RenderCommandEncoderObject) SetTileBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043404-useresource?language=objc
+func (r_ RenderCommandEncoderObject) UseResourceUsageStages(resource ResourceObject, usage ResourceUsage, stages RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	objc.Call[objc.Void](r_, objc.Sel("useResource:usage:stages:"), po0, usage, stages)
+}
+
+func (r_ RenderCommandEncoderObject) HasDrawPrimitivesVertexStartVertexCount() bool {
+	return r_.RespondsToSelector(objc.Sel("drawPrimitives:vertexStart:vertexCount:"))
+}
+
+// Encodes a draw command that renders an instance of a geometric primitive. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516326-drawprimitives?language=objc
+func (r_ RenderCommandEncoderObject) DrawPrimitivesVertexStartVertexCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint) {
+	objc.Call[objc.Void](r_, objc.Sel("drawPrimitives:vertexStart:vertexCount:"), primitiveType, vertexStart, vertexCount)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexBuffersOffsetsWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexBuffers:offsets:withRange:"))
+}
+
+// Assigns multiple buffers to a range of entries in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515987-setvertexbuffers?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
-	objc.Call[objc.Void](r_, objc.Sel("setTileBuffers:offsets:withRange:"), po0, offsets, range_)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexBuffers:offsets:withRange:"), po0, offsets, range_)
 }
 
-func (r_ RenderCommandEncoderObject) HasMemoryBarrierWithScopeAfterStagesBeforeStages() bool {
-	return r_.RespondsToSelector(objc.Sel("memoryBarrierWithScope:afterStages:beforeStages:"))
+func (r_ RenderCommandEncoderObject) HasSetFragmentBufferOffsetAtIndex_() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentBuffer:offset:atIndex:"))
 }
 
-// Creates a memory barrier that enforces the order of write and read operations for specific resource types. [Full Topic]
+// Assigns a buffer to an entry in the fragment shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967442-memorybarrierwithscope?language=objc
-func (r_ RenderCommandEncoderObject) MemoryBarrierWithScopeAfterStagesBeforeStages(scope BarrierScope, after RenderStages, before RenderStages) {
-	objc.Call[objc.Void](r_, objc.Sel("memoryBarrierWithScope:afterStages:beforeStages:"), scope, after, before)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515470-setfragmentbuffer?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentBufferOffsetAtIndex_(buffer BufferObject, offset uint, index uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentBuffer:offset:atIndex:"), po0, offset, index)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTileAccelerationStructureAtBufferIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileAccelerationStructure:atBufferIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetDepthStencilState() bool {
+	return r_.RespondsToSelector(objc.Sel("setDepthStencilState:"))
 }
 
-// Assigns an acceleration structure to an entry in the tile shader argument table. [Full Topic]
+// Configures the combined depth and stencil state. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750558-settileaccelerationstructure?language=objc
-func (r_ RenderCommandEncoderObject) SetTileAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516119-setdepthstencilstate?language=objc
+func (r_ RenderCommandEncoderObject) SetDepthStencilState(depthStencilState DepthStencilStateObject) {
+	po0 := objc.WrapAsProtocol("MTLDepthStencilState", depthStencilState)
+	objc.Call[objc.Void](r_, objc.Sel("setDepthStencilState:"), po0)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexAccelerationStructureAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexAccelerationStructure:atBufferIndex:"))
+}
+
+// Assigns an acceleration structure to an entry in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750563-setvertexaccelerationstructure?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint) {
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
-	objc.Call[objc.Void](r_, objc.Sel("setTileAccelerationStructure:atBufferIndex:"), po0, bufferIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexAccelerationStructure:atBufferIndex:"), po0, bufferIndex)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetFrontFacingWinding() bool {
-	return r_.RespondsToSelector(objc.Sel("setFrontFacingWinding:"))
+func (r_ RenderCommandEncoderObject) HasSetVertexBytesLengthAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexBytes:length:atIndex:"))
 }
 
-// Configures which face of a primitive, such as a triangle, is the front. [Full Topic]
+// Creates a buffer from bytes and assigns it to an entry in the vertex shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515499-setfrontfacingwinding?language=objc
-func (r_ RenderCommandEncoderObject) SetFrontFacingWinding(frontFacingWinding Winding) {
-	objc.Call[objc.Void](r_, objc.Sel("setFrontFacingWinding:"), frontFacingWinding)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515846-setvertexbytes?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setVertexBytes:length:atIndex:"), bytes, length, index)
 }
 
-func (r_ RenderCommandEncoderObject) HasUseHeapStages() bool {
-	return r_.RespondsToSelector(objc.Sel("useHeap:stages:"))
+func (r_ RenderCommandEncoderObject) HasSetVertexAmplificationCountViewMappings() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexAmplificationCount:viewMappings:"))
 }
 
-// Ensures the shaders in the render pass’s subsequent draw commands have access to the resources you allocate from a heap. [Full Topic]
+// Configures the number of output vertices the render pipeline produces for each input vertex, optionally with render target and viewport offsets. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043402-useheap?language=objc
-func (r_ RenderCommandEncoderObject) UseHeapStages(heap HeapObject, stages RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLHeap", heap)
-	objc.Call[objc.Void](r_, objc.Sel("useHeap:stages:"), po0, stages)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3088849-setvertexamplificationcount?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexAmplificationCountViewMappings(count uint, viewMappings *VertexAmplificationViewMapping) {
+	objc.Call[objc.Void](r_, objc.Sel("setVertexAmplificationCount:viewMappings:"), count, viewMappings)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetScissorRect() bool {
+	return r_.RespondsToSelector(objc.Sel("setScissorRect:"))
+}
+
+// Configures a rectangle for the fragment scissor test. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515583-setscissorrect?language=objc
+func (r_ RenderCommandEncoderObject) SetScissorRect(rect ScissorRect) {
+	objc.Call[objc.Void](r_, objc.Sel("setScissorRect:"), rect)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileTextureAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileTexture:atIndex:"))
+}
+
+// Assigns a texture to an entry in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866173-settiletexture?language=objc
+func (r_ RenderCommandEncoderObject) SetTileTextureAtIndex(texture TextureObject, index uint) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](r_, objc.Sel("setTileTexture:atIndex:"), po0, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStateLodMinClampLodMaxClampAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexSamplerState:lodMinClamp:lodMaxClamp:atIndex:"))
+}
+
+// Assigns a sampler state and clamp values to an entry in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515864-setvertexsamplerstate?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint) {
+	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerState:lodMinClamp:lodMaxClamp:atIndex:"), po0, lodMinClamp, lodMaxClamp, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetStencilFrontReferenceValueBackReferenceValue() bool {
+	return r_.RespondsToSelector(objc.Sel("setStencilFrontReferenceValue:backReferenceValue:"))
+}
+
+// Configures different comparison values for front- and back-facing primitives. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515522-setstencilfrontreferencevalue?language=objc
+func (r_ RenderCommandEncoderObject) SetStencilFrontReferenceValueBackReferenceValue(frontReferenceValue uint32, backReferenceValue uint32) {
+	objc.Call[objc.Void](r_, objc.Sel("setStencilFrontReferenceValue:backReferenceValue:"), frontReferenceValue, backReferenceValue)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexVisibleFunctionTablesWithBufferRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexVisibleFunctionTables:withBufferRange:"))
+}
+
+// Assigns multiple visible function tables to a range of entries in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750567-setvertexvisiblefunctiontables?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexVisibleFunctionTables:withBufferRange:"), po0, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetStencilStoreAction() bool {
+	return r_.RespondsToSelector(objc.Sel("setStencilStoreAction:"))
+}
+
+// Configures the store action for the stencil attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1639936-setstencilstoreaction?language=objc
+func (r_ RenderCommandEncoderObject) SetStencilStoreAction(storeAction StoreAction) {
+	objc.Call[objc.Void](r_, objc.Sel("setStencilStoreAction:"), storeAction)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetCullMode() bool {
+	return r_.RespondsToSelector(objc.Sel("setCullMode:"))
+}
+
+// Configures how the render pipeline determines which primitives to remove. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515975-setcullmode?language=objc
+func (r_ RenderCommandEncoderObject) SetCullMode(cullMode CullMode) {
+	objc.Call[objc.Void](r_, objc.Sel("setCullMode:"), cullMode)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTriangleFillMode() bool {
+	return r_.RespondsToSelector(objc.Sel("setTriangleFillMode:"))
+}
+
+// Configures how subsequent draw commands rasterize triangle and triangle strip primitives. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516029-settrianglefillmode?language=objc
+func (r_ RenderCommandEncoderObject) SetTriangleFillMode(fillMode TriangleFillMode) {
+	objc.Call[objc.Void](r_, objc.Sel("setTriangleFillMode:"), fillMode)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileTexturesWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileTextures:withRange:"))
+}
+
+// Assigns multiple textures to a range of entries in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866172-settiletextures?language=objc
+func (r_ RenderCommandEncoderObject) SetTileTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLTexture", textures)
+	objc.Call[objc.Void](r_, objc.Sel("setTileTextures:withRange:"), po0, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasMemoryBarrierWithResourcesCountAfterStagesBeforeStages() bool {
+	return r_.RespondsToSelector(objc.Sel("memoryBarrierWithResources:count:afterStages:beforeStages:"))
+}
+
+// Creates a memory barrier that enforces the order of write and read operations for specific resources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967441-memorybarrierwithresources?language=objc
+func (r_ RenderCommandEncoderObject) MemoryBarrierWithResourcesCountAfterStagesBeforeStages(resources unsafe.Pointer, count uint, after RenderStages, before RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLResource", resources)
+	objc.Call[objc.Void](r_, objc.Sel("memoryBarrierWithResources:count:afterStages:beforeStages:"), po0, count, after, before)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetFragmentAccelerationStructureAtBufferIndex() bool {
@@ -1145,41 +776,6 @@ func (r_ RenderCommandEncoderObject) HasSetFragmentAccelerationStructureAtBuffer
 func (r_ RenderCommandEncoderObject) SetFragmentAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint) {
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
 	objc.Call[objc.Void](r_, objc.Sel("setFragmentAccelerationStructure:atBufferIndex:"), po0, bufferIndex)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileIntersectionFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileIntersectionFunctionTables:withBufferRange:"))
-}
-
-// Assigns multiple intersection function tables to a range of entries in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750560-settileintersectionfunctiontable?language=objc
-func (r_ RenderCommandEncoderObject) SetTileIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setTileIntersectionFunctionTables:withBufferRange:"), po0, range_)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawPrimitivesVertexStartVertexCountInstanceCount() bool {
-	return r_.RespondsToSelector(objc.Sel("drawPrimitives:vertexStart:vertexCount:instanceCount:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515327-drawprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawPrimitivesVertexStartVertexCountInstanceCount(primitiveType PrimitiveType, vertexStart uint, vertexCount uint, instanceCount uint) {
-	objc.Call[objc.Void](r_, objc.Sel("drawPrimitives:vertexStart:vertexCount:instanceCount:"), primitiveType, vertexStart, vertexCount, instanceCount)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetTileSamplerStateAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileSamplerState:atIndex:"))
-}
-
-// Assigns a sampler state to an entry in the tile shader argument table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866169-settilesamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetTileSamplerStateAtIndex(sampler SamplerStateObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerState:atIndex:"), po0, index)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetDepthBiasSlopeScaleClamp() bool {
@@ -1205,6 +801,204 @@ func (r_ RenderCommandEncoderObject) SampleCountersInBufferAtSampleIndexWithBarr
 	objc.Call[objc.Void](r_, objc.Sel("sampleCountersInBuffer:atSampleIndex:withBarrier:"), po0, sampleIndex, barrier)
 }
 
+func (r_ RenderCommandEncoderObject) HasSetTileIntersectionFunctionTableAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileIntersectionFunctionTable:atBufferIndex:"))
+}
+
+// Assigns an intersection function table to an entry in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750559-settileintersectionfunctiontable?language=objc
+func (r_ RenderCommandEncoderObject) SetTileIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
+	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
+	objc.Call[objc.Void](r_, objc.Sel("setTileIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetRenderPipelineState() bool {
+	return r_.RespondsToSelector(objc.Sel("setRenderPipelineState:"))
+}
+
+// Configures the encoder with a render or tile pipeline state instance that applies to your subsequent draw commands. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515811-setrenderpipelinestate?language=objc
+func (r_ RenderCommandEncoderObject) SetRenderPipelineState(pipelineState RenderPipelineStateObject) {
+	po0 := objc.WrapAsProtocol("MTLRenderPipelineState", pipelineState)
+	objc.Call[objc.Void](r_, objc.Sel("setRenderPipelineState:"), po0)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileBytesLengthAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileBytes:length:atIndex:"))
+}
+
+// Creates a buffer from bytes and assigns it to an entry in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866175-settilebytes?language=objc
+func (r_ RenderCommandEncoderObject) SetTileBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setTileBytes:length:atIndex:"), bytes, length, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasExecuteCommandsInBufferWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("executeCommandsInBuffer:withRange:"))
+}
+
+// Encodes a command that runs a range of commands from an indirect command buffer (ICB). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967440-executecommandsinbuffer?language=objc
+func (r_ RenderCommandEncoderObject) ExecuteCommandsInBufferWithRange(indirectCommandBuffer IndirectCommandBufferObject, executionRange foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", indirectCommandBuffer)
+	objc.Call[objc.Void](r_, objc.Sel("executeCommandsInBuffer:withRange:"), po0, executionRange)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetFragmentBytesLengthAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentBytes:length:atIndex:"))
+}
+
+// Creates a buffer from bytes and assigns it to an entry in the fragment shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516192-setfragmentbytes?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentBytes:length:atIndex:"), bytes, length, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileBuffersOffsetsWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileBuffers:offsets:withRange:"))
+}
+
+// Assigns multiple buffers to a range of entries in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866162-settilebuffers?language=objc
+func (r_ RenderCommandEncoderObject) SetTileBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
+	objc.Call[objc.Void](r_, objc.Sel("setTileBuffers:offsets:withRange:"), po0, offsets, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasMemoryBarrierWithScopeAfterStagesBeforeStages() bool {
+	return r_.RespondsToSelector(objc.Sel("memoryBarrierWithScope:afterStages:beforeStages:"))
+}
+
+// Creates a memory barrier that enforces the order of write and read operations for specific resource types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967442-memorybarrierwithscope?language=objc
+func (r_ RenderCommandEncoderObject) MemoryBarrierWithScopeAfterStagesBeforeStages(scope BarrierScope, after RenderStages, before RenderStages) {
+	objc.Call[objc.Void](r_, objc.Sel("memoryBarrierWithScope:afterStages:beforeStages:"), scope, after, before)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetFragmentIntersectionFunctionTableAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentIntersectionFunctionTable:atBufferIndex:"))
+}
+
+// Assigns an intersection function table to an entry in the fragment shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750554-setfragmentintersectionfunctiont?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentIntersectionFunctionTableAtBufferIndex(intersectionFunctionTable IntersectionFunctionTableObject, bufferIndex uint) {
+	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTable)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentIntersectionFunctionTable:atBufferIndex:"), po0, bufferIndex)
+}
+
+func (r_ RenderCommandEncoderObject) HasDispatchThreadsPerTile() bool {
+	return r_.RespondsToSelector(objc.Sel("dispatchThreadsPerTile:"))
+}
+
+// Encodes a command that invokes GPU functions from the encoder’s current tile render pipeline state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866171-dispatchthreadspertile?language=objc
+func (r_ RenderCommandEncoderObject) DispatchThreadsPerTile(threadsPerTile Size) {
+	objc.Call[objc.Void](r_, objc.Sel("dispatchThreadsPerTile:"), threadsPerTile)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetFragmentVisibleFunctionTablesWithBufferRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentVisibleFunctionTables:withBufferRange:"))
+}
+
+// Assigns multiple visible function tables to a range of entries in the fragment shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750557-setfragmentvisiblefunctiontables?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentVisibleFunctionTables:withBufferRange:"), po0, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexTexturesWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexTextures:withRange:"))
+}
+
+// Assigns multiple textures to a range of entries in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516109-setvertextextures?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLTexture", textures)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexTextures:withRange:"), po0, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetFragmentSamplerStateAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentSamplerState:atIndex:"))
+}
+
+// Assigns a sampler state to an entry in the fragment shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515577-setfragmentsamplerstate?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentSamplerStateAtIndex(sampler SamplerStateObject, index uint) {
+	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentSamplerState:atIndex:"), po0, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTileSamplerStateAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileSamplerState:atIndex:"))
+}
+
+// Assigns a sampler state to an entry in the tile shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866169-settilesamplerstate?language=objc
+func (r_ RenderCommandEncoderObject) SetTileSamplerStateAtIndex(sampler SamplerStateObject, index uint) {
+	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
+	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerState:atIndex:"), po0, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetColorStoreActionOptionsAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setColorStoreActionOptions:atIndex:"))
+}
+
+// Configures the store action options for a color attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919773-setcolorstoreactionoptions?language=objc
+func (r_ RenderCommandEncoderObject) SetColorStoreActionOptionsAtIndex(storeActionOptions StoreActionOptions, colorAttachmentIndex uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setColorStoreActionOptions:atIndex:"), storeActionOptions, colorAttachmentIndex)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexTextureAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexTexture:atIndex:"))
+}
+
+// Assigns a texture to an entry in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515842-setvertextexture?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexTextureAtIndex(texture TextureObject, index uint) {
+	po0 := objc.WrapAsProtocol("MTLTexture", texture)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexTexture:atIndex:"), po0, index)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetTessellationFactorScale() bool {
+	return r_.RespondsToSelector(objc.Sel("setTessellationFactorScale:"))
+}
+
+// Configures the scale factor for per-patch tessellation factors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1639992-settessellationfactorscale?language=objc
+func (r_ RenderCommandEncoderObject) SetTessellationFactorScale(scale float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setTessellationFactorScale:"), scale)
+}
+
+func (r_ RenderCommandEncoderObject) HasUseHeapStages() bool {
+	return r_.RespondsToSelector(objc.Sel("useHeap:stages:"))
+}
+
+// Ensures the shaders in the render pass’s subsequent draw commands have access to the resources you allocate from a heap. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043402-useheap?language=objc
+func (r_ RenderCommandEncoderObject) UseHeapStages(heap HeapObject, stages RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLHeap", heap)
+	objc.Call[objc.Void](r_, objc.Sel("useHeap:stages:"), po0, stages)
+}
+
 func (r_ RenderCommandEncoderObject) HasSetColorStoreActionAtIndex() bool {
 	return r_.RespondsToSelector(objc.Sel("setColorStoreAction:atIndex:"))
 }
@@ -1216,39 +1010,49 @@ func (r_ RenderCommandEncoderObject) SetColorStoreActionAtIndex(storeAction Stor
 	objc.Call[objc.Void](r_, objc.Sel("setColorStoreAction:atIndex:"), storeAction, colorAttachmentIndex)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTileSamplerStateLodMinClampLodMaxClampAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileSamplerState:lodMinClamp:lodMaxClamp:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetStencilStoreActionOptions() bool {
+	return r_.RespondsToSelector(objc.Sel("setStencilStoreActionOptions:"))
 }
 
-// Assigns a sampler state and clamp values to an entry in the tile shader argument table. [Full Topic]
+// Configures the store action options for the stencil attachment. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866160-settilesamplerstate?language=objc
-func (r_ RenderCommandEncoderObject) SetTileSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint) {
-	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
-	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerState:lodMinClamp:lodMaxClamp:atIndex:"), po0, lodMinClamp, lodMaxClamp, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919771-setstencilstoreactionoptions?language=objc
+func (r_ RenderCommandEncoderObject) SetStencilStoreActionOptions(storeActionOptions StoreActionOptions) {
+	objc.Call[objc.Void](r_, objc.Sel("setStencilStoreActionOptions:"), storeActionOptions)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetScissorRectsCount() bool {
-	return r_.RespondsToSelector(objc.Sel("setScissorRects:count:"))
+func (r_ RenderCommandEncoderObject) HasUseResourcesCountUsageStages() bool {
+	return r_.RespondsToSelector(objc.Sel("useResources:count:usage:stages:"))
 }
 
-// Configures multiple rectangles for the fragment scissor test. [Full Topic]
+// Ensures the shaders in the render pass’s subsequent draw commands have access to multiple resources. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2869722-setscissorrects?language=objc
-func (r_ RenderCommandEncoderObject) SetScissorRectsCount(scissorRects *ScissorRect, count uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setScissorRects:count:"), scissorRects, count)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3043405-useresources?language=objc
+func (r_ RenderCommandEncoderObject) UseResourcesCountUsageStages(resources unsafe.Pointer, count uint, usage ResourceUsage, stages RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLResource", resources)
+	objc.Call[objc.Void](r_, objc.Sel("useResources:count:usage:stages:"), po0, count, usage, stages)
 }
 
-func (r_ RenderCommandEncoderObject) HasWaitForFenceBeforeStages() bool {
-	return r_.RespondsToSelector(objc.Sel("waitForFence:beforeStages:"))
+func (r_ RenderCommandEncoderObject) HasSetDepthClipMode() bool {
+	return r_.RespondsToSelector(objc.Sel("setDepthClipMode:"))
 }
 
-// Encodes a command that instructs the GPU to pause before starting one or more stages of the render pass until a pass updates a fence. [Full Topic]
+// Configures how the render pipeline handles fragments outside the near and far planes of the view frustum. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1648378-waitforfence?language=objc
-func (r_ RenderCommandEncoderObject) WaitForFenceBeforeStages(fence FenceObject, stages RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](r_, objc.Sel("waitForFence:beforeStages:"), po0, stages)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516267-setdepthclipmode?language=objc
+func (r_ RenderCommandEncoderObject) SetDepthClipMode(depthClipMode DepthClipMode) {
+	objc.Call[objc.Void](r_, objc.Sel("setDepthClipMode:"), depthClipMode)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexBufferOffsetAtIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexBufferOffset:atIndex:"))
+}
+
+// Updates an entry in the vertex shader argument table with a new location within the entry’s current buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515433-setvertexbufferoffset?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexBufferOffsetAtIndex(offset uint, index uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setVertexBufferOffset:atIndex:"), offset, index)
 }
 
 func (r_ RenderCommandEncoderObject) HasUseHeapsCountStages() bool {
@@ -1263,132 +1067,27 @@ func (r_ RenderCommandEncoderObject) UseHeapsCountStages(heaps unsafe.Pointer, c
 	objc.Call[objc.Void](r_, objc.Sel("useHeaps:count:stages:"), po0, count, stages)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexBuffersOffsetsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexBuffers:offsets:withRange:"))
+func (r_ RenderCommandEncoderObject) HasSetTileVisibleFunctionTablesWithBufferRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileVisibleFunctionTables:withBufferRange:"))
 }
 
-// Assigns multiple buffers to a range of entries in the vertex shader argument table. [Full Topic]
+// Assigns multiple visible function tables to a range of entries in the tile shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515987-setvertexbuffers?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexBuffers:offsets:withRange:"), po0, offsets, range_)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750562-settilevisiblefunctiontables?language=objc
+func (r_ RenderCommandEncoderObject) SetTileVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
+	objc.Call[objc.Void](r_, objc.Sel("setTileVisibleFunctionTables:withBufferRange:"), po0, range_)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetFragmentTextureAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentTexture:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetBlendColorRedGreenBlueAlpha() bool {
+	return r_.RespondsToSelector(objc.Sel("setBlendColorRed:green:blue:alpha:"))
 }
 
-// Assigns a texture to an entry in the fragment shader argument table. [Full Topic]
+// Configures each pixel component value, including alpha, for the render pipeline’s constant blend color. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515390-setfragmenttexture?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentTextureAtIndex(texture TextureObject, index uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentTexture:atIndex:"), po0, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVertexAmplificationCountViewMappings() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexAmplificationCount:viewMappings:"))
-}
-
-// Configures the number of output vertices the render pipeline produces for each input vertex, optionally with render target and viewport offsets. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3088849-setvertexamplificationcount?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexAmplificationCountViewMappings(count uint, viewMappings *VertexAmplificationViewMapping) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexAmplificationCount:viewMappings:"), count, viewMappings)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetDepthStoreActionOptions() bool {
-	return r_.RespondsToSelector(objc.Sel("setDepthStoreActionOptions:"))
-}
-
-// Configures the store action options for the depth attachment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919772-setdepthstoreactionoptions?language=objc
-func (r_ RenderCommandEncoderObject) SetDepthStoreActionOptions(storeActionOptions StoreActionOptions) {
-	objc.Call[objc.Void](r_, objc.Sel("setDepthStoreActionOptions:"), storeActionOptions)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawIndexedPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetInstanceCountBaseInstance() bool {
-	return r_.RespondsToSelector(objc.Sel("drawIndexedPatches:patchStart:patchCount:patchIndexBuffer:patchIndexBufferOffset:controlPointIndexBuffer:controlPointIndexBufferOffset:instanceCount:baseInstance:"))
-}
-
-// Encodes a draw command that renders multiple instances of tessellated patches with a control point index buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1640031-drawindexedpatches?language=objc
-func (r_ RenderCommandEncoderObject) DrawIndexedPatchesPatchStartPatchCountPatchIndexBufferPatchIndexBufferOffsetControlPointIndexBufferControlPointIndexBufferOffsetInstanceCountBaseInstance(numberOfPatchControlPoints uint, patchStart uint, patchCount uint, patchIndexBuffer BufferObject, patchIndexBufferOffset uint, controlPointIndexBuffer BufferObject, controlPointIndexBufferOffset uint, instanceCount uint, baseInstance uint) {
-	po3 := objc.WrapAsProtocol("MTLBuffer", patchIndexBuffer)
-	po5 := objc.WrapAsProtocol("MTLBuffer", controlPointIndexBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPatches:patchStart:patchCount:patchIndexBuffer:patchIndexBufferOffset:controlPointIndexBuffer:controlPointIndexBufferOffset:instanceCount:baseInstance:"), numberOfPatchControlPoints, patchStart, patchCount, po3, patchIndexBufferOffset, po5, controlPointIndexBufferOffset, instanceCount, baseInstance)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetVisibilityResultModeOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("setVisibilityResultMode:offset:"))
-}
-
-// Configures which visibility test the GPU runs and the destination for any results it generates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515556-setvisibilityresultmode?language=objc
-func (r_ RenderCommandEncoderObject) SetVisibilityResultModeOffset(mode VisibilityResultMode, offset uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setVisibilityResultMode:offset:"), mode, offset)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance() bool {
-	return r_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"))
-}
-
-// Encodes a draw command that renders multiple instances of a geometric primitive with indexed vertices, starting with a custom vertex and instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515520-drawindexedprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCountBaseVertexBaseInstance(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint, baseVertex int, baseInstance uint) {
-	po3 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:baseVertex:baseInstance:"), primitiveType, indexCount, indexType, po3, indexBufferOffset, instanceCount, baseVertex, baseInstance)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetCullMode() bool {
-	return r_.RespondsToSelector(objc.Sel("setCullMode:"))
-}
-
-// Configures how the render pipeline determines which primitives to remove. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515975-setcullmode?language=objc
-func (r_ RenderCommandEncoderObject) SetCullMode(cullMode CullMode) {
-	objc.Call[objc.Void](r_, objc.Sel("setCullMode:"), cullMode)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetViewport() bool {
-	return r_.RespondsToSelector(objc.Sel("setViewport:"))
-}
-
-// Configures the render pipeline with a viewport that applies a transformation and a clipping rectangle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515527-setviewport?language=objc
-func (r_ RenderCommandEncoderObject) SetViewport(viewport Viewport) {
-	objc.Call[objc.Void](r_, objc.Sel("setViewport:"), viewport)
-}
-
-func (r_ RenderCommandEncoderObject) HasSetScissorRect() bool {
-	return r_.RespondsToSelector(objc.Sel("setScissorRect:"))
-}
-
-// Configures a rectangle for the fragment scissor test. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515583-setscissorrect?language=objc
-func (r_ RenderCommandEncoderObject) SetScissorRect(rect ScissorRect) {
-	objc.Call[objc.Void](r_, objc.Sel("setScissorRect:"), rect)
-}
-
-func (r_ RenderCommandEncoderObject) HasExecuteCommandsInBufferIndirectBufferIndirectBufferOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("executeCommandsInBuffer:indirectBuffer:indirectBufferOffset:"))
-}
-
-// Encodes a command that runs an indirect range of commands from an indirect command buffer (ICB). [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967439-executecommandsinbuffer?language=objc
-func (r_ RenderCommandEncoderObject) ExecuteCommandsInBufferIndirectBufferIndirectBufferOffset(indirectCommandbuffer IndirectCommandBufferObject, indirectRangeBuffer BufferObject, indirectBufferOffset uint) {
-	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", indirectCommandbuffer)
-	po1 := objc.WrapAsProtocol("MTLBuffer", indirectRangeBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("executeCommandsInBuffer:indirectBuffer:indirectBufferOffset:"), po0, po1, indirectBufferOffset)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515592-setblendcolorred?language=objc
+func (r_ RenderCommandEncoderObject) SetBlendColorRedGreenBlueAlpha(red float32, green float32, blue float32, alpha float32) {
+	objc.Call[objc.Void](r_, objc.Sel("setBlendColorRed:green:blue:alpha:"), red, green, blue, alpha)
 }
 
 func (r_ RenderCommandEncoderObject) HasSetVertexVisibleFunctionTableAtBufferIndex() bool {
@@ -1403,108 +1102,120 @@ func (r_ RenderCommandEncoderObject) SetVertexVisibleFunctionTableAtBufferIndex(
 	objc.Call[objc.Void](r_, objc.Sel("setVertexVisibleFunctionTable:atBufferIndex:"), po0, bufferIndex)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetFragmentBufferOffsetAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setFragmentBufferOffset:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasUpdateFenceAfterStages() bool {
+	return r_.RespondsToSelector(objc.Sel("updateFence:afterStages:"))
 }
 
-// Updates an entry in the fragment shader argument table with a new location within the entry’s current buffer. [Full Topic]
+// Encodes a command that instructs the GPU to update a fence after one or more stages, which signals passes waiting on the fence. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515917-setfragmentbufferoffset?language=objc
-func (r_ RenderCommandEncoderObject) SetFragmentBufferOffsetAtIndex(offset uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentBufferOffset:atIndex:"), offset, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1648377-updatefence?language=objc
+func (r_ RenderCommandEncoderObject) UpdateFenceAfterStages(fence FenceObject, stages RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](r_, objc.Sel("updateFence:afterStages:"), po0, stages)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexVisibleFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexVisibleFunctionTables:withBufferRange:"))
+func (r_ RenderCommandEncoderObject) HasSetScissorRectsCount() bool {
+	return r_.RespondsToSelector(objc.Sel("setScissorRects:count:"))
 }
 
-// Assigns multiple visible function tables to a range of entries in the vertex shader argument table. [Full Topic]
+// Configures multiple rectangles for the fragment scissor test. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750567-setvertexvisiblefunctiontables?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setVertexVisibleFunctionTables:withBufferRange:"), po0, range_)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2869722-setscissorrects?language=objc
+func (r_ RenderCommandEncoderObject) SetScissorRectsCount(scissorRects *ScissorRect, count uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setScissorRects:count:"), scissorRects, count)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetDepthClipMode() bool {
-	return r_.RespondsToSelector(objc.Sel("setDepthClipMode:"))
+func (r_ RenderCommandEncoderObject) HasSetDepthStoreActionOptions() bool {
+	return r_.RespondsToSelector(objc.Sel("setDepthStoreActionOptions:"))
 }
 
-// Configures how the render pipeline handles fragments outside the near and far planes of the view frustum. [Full Topic]
+// Configures the store action options for the depth attachment. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516267-setdepthclipmode?language=objc
-func (r_ RenderCommandEncoderObject) SetDepthClipMode(depthClipMode DepthClipMode) {
-	objc.Call[objc.Void](r_, objc.Sel("setDepthClipMode:"), depthClipMode)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2919772-setdepthstoreactionoptions?language=objc
+func (r_ RenderCommandEncoderObject) SetDepthStoreActionOptions(storeActionOptions StoreActionOptions) {
+	objc.Call[objc.Void](r_, objc.Sel("setDepthStoreActionOptions:"), storeActionOptions)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTileVisibleFunctionTablesWithBufferRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileVisibleFunctionTables:withBufferRange:"))
+func (r_ RenderCommandEncoderObject) HasSetTileAccelerationStructureAtBufferIndex() bool {
+	return r_.RespondsToSelector(objc.Sel("setTileAccelerationStructure:atBufferIndex:"))
 }
 
-// Assigns multiple visible function tables to a range of entries in the tile shader argument table. [Full Topic]
+// Assigns an acceleration structure to an entry in the tile shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750562-settilevisiblefunctiontables?language=objc
-func (r_ RenderCommandEncoderObject) SetTileVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, range_ foundation.Range) {
-	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
-	objc.Call[objc.Void](r_, objc.Sel("setTileVisibleFunctionTables:withBufferRange:"), po0, range_)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/3750558-settileaccelerationstructure?language=objc
+func (r_ RenderCommandEncoderObject) SetTileAccelerationStructureAtBufferIndex(accelerationStructure AccelerationStructureObject, bufferIndex uint) {
+	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
+	objc.Call[objc.Void](r_, objc.Sel("setTileAccelerationStructure:atBufferIndex:"), po0, bufferIndex)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetTileSamplerStatesLodMinClampsLodMaxClampsWithRange() bool {
-	return r_.RespondsToSelector(objc.Sel("setTileSamplerStates:lodMinClamps:lodMaxClamps:withRange:"))
+func (r_ RenderCommandEncoderObject) HasSetFragmentBuffersOffsetsWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setFragmentBuffers:offsets:withRange:"))
 }
 
-// Assigns multiple sampler states and clamp values to a range of entries in the tile shader argument table. [Full Topic]
+// Assigns multiple buffers to a range of entries in the fragment shader argument table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2866170-settilesamplerstates?language=objc
-func (r_ RenderCommandEncoderObject) SetTileSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515724-setfragmentbuffers?language=objc
+func (r_ RenderCommandEncoderObject) SetFragmentBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentBuffers:offsets:withRange:"), po0, offsets, range_)
+}
+
+func (r_ RenderCommandEncoderObject) HasSetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange() bool {
+	return r_.RespondsToSelector(objc.Sel("setVertexSamplerStates:lodMinClamps:lodMaxClamps:withRange:"))
+}
+
+// Assigns multiple sampler states and clamp values to a range of entries in the vertex shader argument table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1516322-setvertexsamplerstates?language=objc
+func (r_ RenderCommandEncoderObject) SetVertexSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
-	objc.Call[objc.Void](r_, objc.Sel("setTileSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
+	objc.Call[objc.Void](r_, objc.Sel("setVertexSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
 }
 
-func (r_ RenderCommandEncoderObject) HasMemoryBarrierWithResourcesCountAfterStagesBeforeStages() bool {
-	return r_.RespondsToSelector(objc.Sel("memoryBarrierWithResources:count:afterStages:beforeStages:"))
+func (r_ RenderCommandEncoderObject) HasSetFrontFacingWinding() bool {
+	return r_.RespondsToSelector(objc.Sel("setFrontFacingWinding:"))
 }
 
-// Creates a memory barrier that enforces the order of write and read operations for specific resources. [Full Topic]
+// Configures which face of a primitive, such as a triangle, is the front. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/2967441-memorybarrierwithresources?language=objc
-func (r_ RenderCommandEncoderObject) MemoryBarrierWithResourcesCountAfterStagesBeforeStages(resources unsafe.Pointer, count uint, after RenderStages, before RenderStages) {
-	po0 := objc.WrapAsProtocol("MTLResource", resources)
-	objc.Call[objc.Void](r_, objc.Sel("memoryBarrierWithResources:count:afterStages:beforeStages:"), po0, count, after, before)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515499-setfrontfacingwinding?language=objc
+func (r_ RenderCommandEncoderObject) SetFrontFacingWinding(frontFacingWinding Winding) {
+	objc.Call[objc.Void](r_, objc.Sel("setFrontFacingWinding:"), frontFacingWinding)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexBufferOffsetAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexBufferOffset:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount() bool {
+	return r_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:"))
 }
 
-// Updates an entry in the vertex shader argument table with a new location within the entry’s current buffer. [Full Topic]
+// Encodes a draw command that renders multiple instances of a geometric primitive with indexed vertices. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515433-setvertexbufferoffset?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexBufferOffsetAtIndex(offset uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexBufferOffset:atIndex:"), offset, index)
-}
-
-func (r_ RenderCommandEncoderObject) HasDrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:"))
-}
-
-// Encodes a draw command that renders an instance of a geometric primitive with indexed vertices. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515542-drawindexedprimitives?language=objc
-func (r_ RenderCommandEncoderObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffset(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint) {
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515699-drawindexedprimitives?language=objc
+func (r_ RenderCommandEncoderObject) DrawIndexedPrimitivesIndexCountIndexTypeIndexBufferIndexBufferOffsetInstanceCount(primitiveType PrimitiveType, indexCount uint, indexType IndexType, indexBuffer BufferObject, indexBufferOffset uint, instanceCount uint) {
 	po3 := objc.WrapAsProtocol("MTLBuffer", indexBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:"), primitiveType, indexCount, indexType, po3, indexBufferOffset)
+	objc.Call[objc.Void](r_, objc.Sel("drawIndexedPrimitives:indexCount:indexType:indexBuffer:indexBufferOffset:instanceCount:"), primitiveType, indexCount, indexType, po3, indexBufferOffset, instanceCount)
 }
 
-func (r_ RenderCommandEncoderObject) HasSetVertexBytesLengthAtIndex() bool {
-	return r_.RespondsToSelector(objc.Sel("setVertexBytes:length:atIndex:"))
+func (r_ RenderCommandEncoderObject) HasSetStencilReferenceValue() bool {
+	return r_.RespondsToSelector(objc.Sel("setStencilReferenceValue:"))
 }
 
-// Creates a buffer from bytes and assigns it to an entry in the vertex shader argument table. [Full Topic]
+// Configures the same comparison value for front- and back-facing primitives. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515846-setvertexbytes?language=objc
-func (r_ RenderCommandEncoderObject) SetVertexBytesLengthAtIndex(bytes unsafe.Pointer, length uint, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexBytes:length:atIndex:"), bytes, length, index)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1515697-setstencilreferencevalue?language=objc
+func (r_ RenderCommandEncoderObject) SetStencilReferenceValue(referenceValue uint32) {
+	objc.Call[objc.Void](r_, objc.Sel("setStencilReferenceValue:"), referenceValue)
+}
+
+func (r_ RenderCommandEncoderObject) HasWaitForFenceBeforeStages() bool {
+	return r_.RespondsToSelector(objc.Sel("waitForFence:beforeStages:"))
+}
+
+// Encodes a command that instructs the GPU to pause before starting one or more stages of the render pass until a pass updates a fence. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrendercommandencoder/1648378-waitforfence?language=objc
+func (r_ RenderCommandEncoderObject) WaitForFenceBeforeStages(fence FenceObject, stages RenderStages) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](r_, objc.Sel("waitForFence:beforeStages:"), po0, stages)
 }
 
 func (r_ RenderCommandEncoderObject) HasTileWidth() bool {

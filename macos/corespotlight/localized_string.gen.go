@@ -69,40 +69,16 @@ func (l_ LocalizedString) Init() LocalizedString {
 	return rv
 }
 
-func (lc _LocalizedStringClass) StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), url, enc, error)
+func (l_ LocalizedString) InitWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCharactersNoCopy:length:deallocator:"), chars, len, deallocator)
 	return rv
 }
 
-// Returns a string created by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497408-stringwithcontentsofurl?language=objc
-func LocalizedString_StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	return LocalizedStringClass.StringWithContentsOfURLUsedEncodingError(url, enc, error)
-}
-
-func (lc _LocalizedStringClass) String() LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("string"))
-	return rv
-}
-
-// Returns an empty string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497312-string?language=objc
-func LocalizedString_String() LocalizedString {
-	return LocalizedStringClass.String()
-}
-
-func (l_ LocalizedString) InitWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414472-initwithcontentsofurl?language=objc
-func NewLocalizedStringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithContentsOfURLUsedEncodingError(url, enc, error)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
+func NewLocalizedStringWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
 	instance.Autorelease()
 	return instance
 }
@@ -119,98 +95,6 @@ func LocalizedString_StringWithString(string_ string) LocalizedString {
 	return LocalizedStringClass.StringWithString(string_)
 }
 
-func (l_ LocalizedString) InitWithString(aString string) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithString:"), aString)
-	return rv
-}
-
-// Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
-func NewLocalizedStringWithString(aString string) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithString(aString)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ LocalizedString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, freeBuffer bool) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithBytesNoCopy:length:encoding:freeWhenDone:"), bytes, len, encoding, freeBuffer)
-	return rv
-}
-
-// Returns an initialized NSString object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413830-initwithbytesnocopy?language=objc
-func NewLocalizedStringWithBytesNoCopyLengthEncodingFreeWhenDone(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, freeBuffer bool) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithBytesNoCopyLengthEncodingFreeWhenDone(bytes, len, encoding, freeBuffer)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ LocalizedString) InitWithCharactersNoCopyLengthFreeWhenDone(characters *foundation.Unichar, length uint, freeBuffer bool) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCharactersNoCopy:length:freeWhenDone:"), characters, length, freeBuffer)
-	return rv
-}
-
-// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412121-initwithcharactersnocopy?language=objc
-func NewLocalizedStringWithCharactersNoCopyLengthFreeWhenDone(characters *foundation.Unichar, length uint, freeBuffer bool) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithCharactersNoCopyLengthFreeWhenDone(characters, length, freeBuffer)
-	instance.Autorelease()
-	return instance
-}
-
-func (lc _LocalizedStringClass) StringWithFormat(format string, args ...any) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
-	return rv
-}
-
-// Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
-func LocalizedString_StringWithFormat(format string, args ...any) LocalizedString {
-	return LocalizedStringClass.StringWithFormat(format, args...)
-}
-
-func (lc _LocalizedStringClass) StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
-func LocalizedString_StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	return LocalizedStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
-}
-
-func (l_ LocalizedString) InitWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:encoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from a given URL interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc
-func NewLocalizedStringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithContentsOfURLEncodingError(url, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
-func (lc _LocalizedStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from the file at a given path and returns by reference the encoding used to interpret the file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497254-stringwithcontentsoffile?language=objc
-func LocalizedString_StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	return LocalizedStringClass.StringWithContentsOfFileUsedEncodingError(path, enc, error)
-}
-
 func (l_ LocalizedString) InitWithFormatLocale(format string, locale objc.IObject, args ...any) LocalizedString {
 	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithFormat:locale:"), append([]any{format, locale}, args...)...)
 	return rv
@@ -223,18 +107,6 @@ func NewLocalizedStringWithFormatLocale(format string, locale objc.IObject, args
 	instance := LocalizedStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
 	instance.Autorelease()
 	return instance
-}
-
-func (lc _LocalizedStringClass) StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
-	return rv
-}
-
-// Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
-func LocalizedString_StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	return LocalizedStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
 func (l_ LocalizedString) InitWithDataEncoding(data []byte, encoding foundation.StringEncoding) LocalizedString {
@@ -251,18 +123,56 @@ func NewLocalizedStringWithDataEncoding(data []byte, encoding foundation.StringE
 	return instance
 }
 
-func (l_ LocalizedString) InitWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCharacters:length:"), characters, length)
+func (lc _LocalizedStringClass) StringWithFormat(format string, args ...any) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
-// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
+// Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
-func NewLocalizedStringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithCharactersLength(characters, length)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
+func LocalizedString_StringWithFormat(format string, args ...any) LocalizedString {
+	return LocalizedStringClass.StringWithFormat(format, args...)
+}
+
+func (l_ LocalizedString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithBytesNoCopy:length:encoding:deallocator:"), bytes, len, encoding, deallocator)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
+func NewLocalizedStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
 	instance.Autorelease()
 	return instance
+}
+
+func (l_ LocalizedString) InitWithString(aString string) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithString:"), aString)
+	return rv
+}
+
+// Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
+func NewLocalizedStringWithString(aString string) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithString(aString)
+	instance.Autorelease()
+	return instance
+}
+
+func (lc _LocalizedStringClass) String() LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("string"))
+	return rv
+}
+
+// Returns an empty string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497312-string?language=objc
+func LocalizedString_String() LocalizedString {
+	return LocalizedStringClass.String()
 }
 
 func (l_ LocalizedString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding) LocalizedString {
@@ -275,6 +185,32 @@ func (l_ LocalizedString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len 
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc
 func NewLocalizedStringWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding) LocalizedString {
 	instance := LocalizedStringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+	instance.Autorelease()
+	return instance
+}
+
+func (lc _LocalizedStringClass) StringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithCharacters:length:"), characters, length)
+	return rv
+}
+
+// Returns a string containing a given number of characters taken from a given C array of UTF-16 code units. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497248-stringwithcharacters?language=objc
+func LocalizedString_StringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
+	return LocalizedStringClass.StringWithCharactersLength(characters, length)
+}
+
+func (l_ LocalizedString) InitWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCharacters:length:"), characters, length)
+	return rv
+}
+
+// Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
+func NewLocalizedStringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithCharactersLength(characters, length)
 	instance.Autorelease()
 	return instance
 }
@@ -293,98 +229,16 @@ func NewLocalizedStringWithUTF8String(nullTerminatedCString *uint8) LocalizedStr
 	return instance
 }
 
-func (lc _LocalizedStringClass) StringWithCStringEncoding(cString *uint8, enc foundation.StringEncoding) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithCString:encoding:"), cString, enc)
+func (lc _LocalizedStringClass) LocalizedStringWithFormat(format string, args ...any) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("localizedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
-// Returns a string containing the bytes in a given C array, interpreted according to a given encoding. [Full Topic]
+// Returns a string created by using a given format string as a template into which the remaining argument values are substituted according to the current locale. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497310-stringwithcstring?language=objc
-func LocalizedString_StringWithCStringEncoding(cString *uint8, enc foundation.StringEncoding) LocalizedString {
-	return LocalizedStringClass.StringWithCStringEncoding(cString, enc)
-}
-
-func (l_ LocalizedString) InitWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from the file at a given path and returns by reference the encoding used to interpret the characters. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1418227-initwithcontentsoffile?language=objc
-func NewLocalizedStringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithContentsOfFileUsedEncodingError(path, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
-func (lc _LocalizedStringClass) StringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithCharacters:length:"), characters, length)
-	return rv
-}
-
-// Returns a string containing a given number of characters taken from a given C array of UTF-16 code units. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497248-stringwithcharacters?language=objc
-func LocalizedString_StringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
-	return LocalizedStringClass.StringWithCharactersLength(characters, length)
-}
-
-func (l_ LocalizedString) InitWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCharactersNoCopy:length:deallocator:"), chars, len, deallocator)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
-func NewLocalizedStringWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ LocalizedString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithBytesNoCopy:length:encoding:deallocator:"), bytes, len, encoding, deallocator)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
-func NewLocalizedStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ LocalizedString) InitWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, error)
-	return rv
-}
-
-// Returns an NSString object initialized by reading data from the file at a given path using a given encoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc
-func NewLocalizedStringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithContentsOfFileEncodingError(path, enc, error)
-	instance.Autorelease()
-	return instance
-}
-
-func (l_ LocalizedString) InitWithFormat(format string, args ...any) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithFormat:"), append([]any{format}, args...)...)
-	return rv
-}
-
-// Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497402-initwithformat?language=objc
-func NewLocalizedStringWithFormat(format string, args ...any) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithFormat(format, args...)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497301-localizedstringwithformat?language=objc
+func LocalizedString_LocalizedStringWithFormat(format string, args ...any) LocalizedString {
+	return LocalizedStringClass.LocalizedStringWithFormat(format, args...)
 }
 
 func (lc _LocalizedStringClass) StringWithUTF8String(nullTerminatedCString *uint8) LocalizedString {
@@ -399,30 +253,28 @@ func LocalizedString_StringWithUTF8String(nullTerminatedCString *uint8) Localize
 	return LocalizedStringClass.StringWithUTF8String(nullTerminatedCString)
 }
 
-func (l_ LocalizedString) InitWithCStringEncoding(nullTerminatedCString *uint8, encoding foundation.StringEncoding) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithCString:encoding:"), nullTerminatedCString, encoding)
+func (lc _LocalizedStringClass) StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
-// Returns an NSString object initialized using the characters in a given C array, interpreted according to a given encoding. [Full Topic]
+// Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411950-initwithcstring?language=objc
-func NewLocalizedStringWithCStringEncoding(nullTerminatedCString *uint8, encoding foundation.StringEncoding) LocalizedString {
-	instance := LocalizedStringClass.Alloc().InitWithCStringEncoding(nullTerminatedCString, encoding)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
+func LocalizedString_StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	return LocalizedStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
-func (lc _LocalizedStringClass) LocalizedStringWithFormat(format string, args ...any) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("localizedStringWithFormat:"), append([]any{format}, args...)...)
+func (lc _LocalizedStringClass) StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
-// Returns a string created by using a given format string as a template into which the remaining argument values are substituted according to the current locale. [Full Topic]
+// Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497301-localizedstringwithformat?language=objc
-func LocalizedString_LocalizedStringWithFormat(format string, args ...any) LocalizedString {
-	return LocalizedStringClass.LocalizedStringWithFormat(format, args...)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
+func LocalizedString_StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	return LocalizedStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
 }
 
 // Returns the localized string for the current language. [Full Topic]

@@ -19,32 +19,32 @@ type _AnimationClass struct {
 // An interface definition for the [Animation] class.
 type IAnimation interface {
 	objc.IObject
+	RemoveProgressMark(progressMark AnimationProgress)
+	StopAnimation()
+	StartAnimation()
 	ClearStartAnimation()
-	StopWhenAnimationReachesProgress(animation IAnimation, stopProgress AnimationProgress)
 	StartWhenAnimationReachesProgress(animation IAnimation, startProgress AnimationProgress)
 	AddProgressMark(progressMark AnimationProgress)
-	RemoveProgressMark(progressMark AnimationProgress)
-	StartAnimation()
 	ClearStopAnimation()
-	StopAnimation()
+	StopWhenAnimationReachesProgress(animation IAnimation, stopProgress AnimationProgress)
+	AnimationBlockingMode() AnimationBlockingMode
+	SetAnimationBlockingMode(value AnimationBlockingMode)
 	CurrentProgress() AnimationProgress
 	SetCurrentProgress(value AnimationProgress)
+	FrameRate() float32
+	SetFrameRate(value float32)
 	RunLoopModesForAnimating() []foundation.RunLoopMode
 	ProgressMarks() []foundation.Number
 	SetProgressMarks(value []foundation.INumber)
 	Delegate() AnimationDelegateObject
 	SetDelegate(value PAnimationDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	Duration() foundation.TimeInterval
-	SetDuration(value foundation.TimeInterval)
+	CurrentValue() float32
 	IsAnimating() bool
 	AnimationCurve() AnimationCurve
 	SetAnimationCurve(value AnimationCurve)
-	AnimationBlockingMode() AnimationBlockingMode
-	SetAnimationBlockingMode(value AnimationBlockingMode)
-	CurrentValue() float32
-	FrameRate() float32
-	SetFrameRate(value float32)
+	Duration() foundation.TimeInterval
+	SetDuration(value foundation.TimeInterval)
 }
 
 // An object that manages the timing and progress of animations in the user interface. [Full Topic]
@@ -94,18 +94,32 @@ func (a_ Animation) Init() Animation {
 	return rv
 }
 
+// Removes progress mark from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1528288-removeprogressmark?language=objc
+func (a_ Animation) RemoveProgressMark(progressMark AnimationProgress) {
+	objc.Call[objc.Void](a_, objc.Sel("removeProgressMark:"), progressMark)
+}
+
+// Stops the animation represented by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1528672-stopanimation?language=objc
+func (a_ Animation) StopAnimation() {
+	objc.Call[objc.Void](a_, objc.Sel("stopAnimation"))
+}
+
+// Starts the animation represented by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1529209-startanimation?language=objc
+func (a_ Animation) StartAnimation() {
+	objc.Call[objc.Void](a_, objc.Sel("startAnimation"))
+}
+
 // Clears linkage to another animation that causes the receiver to start. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1535932-clearstartanimation?language=objc
 func (a_ Animation) ClearStartAnimation() {
 	objc.Call[objc.Void](a_, objc.Sel("clearStartAnimation"))
-}
-
-// Stops running the animation represented by the receiver when another animation reaches a specific progress mark. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530363-stopwhenanimation?language=objc
-func (a_ Animation) StopWhenAnimationReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
-	objc.Call[objc.Void](a_, objc.Sel("stopWhenAnimation:reachesProgress:"), animation, stopProgress)
 }
 
 // Starts running the animation represented by the receiver when another animation reaches a specific progress mark. [Full Topic]
@@ -122,20 +136,6 @@ func (a_ Animation) AddProgressMark(progressMark AnimationProgress) {
 	objc.Call[objc.Void](a_, objc.Sel("addProgressMark:"), progressMark)
 }
 
-// Removes progress mark from the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1528288-removeprogressmark?language=objc
-func (a_ Animation) RemoveProgressMark(progressMark AnimationProgress) {
-	objc.Call[objc.Void](a_, objc.Sel("removeProgressMark:"), progressMark)
-}
-
-// Starts the animation represented by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1529209-startanimation?language=objc
-func (a_ Animation) StartAnimation() {
-	objc.Call[objc.Void](a_, objc.Sel("startAnimation"))
-}
-
 // Clears linkage to another animation that causes the receiver to stop. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1524448-clearstopanimation?language=objc
@@ -143,11 +143,26 @@ func (a_ Animation) ClearStopAnimation() {
 	objc.Call[objc.Void](a_, objc.Sel("clearStopAnimation"))
 }
 
-// Stops the animation represented by the receiver. [Full Topic]
+// Stops running the animation represented by the receiver when another animation reaches a specific progress mark. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1528672-stopanimation?language=objc
-func (a_ Animation) StopAnimation() {
-	objc.Call[objc.Void](a_, objc.Sel("stopAnimation"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530363-stopwhenanimation?language=objc
+func (a_ Animation) StopWhenAnimationReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
+	objc.Call[objc.Void](a_, objc.Sel("stopWhenAnimation:reachesProgress:"), animation, stopProgress)
+}
+
+// The blocking mode of the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1533725-animationblockingmode?language=objc
+func (a_ Animation) AnimationBlockingMode() AnimationBlockingMode {
+	rv := objc.Call[AnimationBlockingMode](a_, objc.Sel("animationBlockingMode"))
+	return rv
+}
+
+// The blocking mode of the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1533725-animationblockingmode?language=objc
+func (a_ Animation) SetAnimationBlockingMode(value AnimationBlockingMode) {
+	objc.Call[objc.Void](a_, objc.Sel("setAnimationBlockingMode:"), value)
 }
 
 // The current progress of the animation. [Full Topic]
@@ -163,6 +178,21 @@ func (a_ Animation) CurrentProgress() AnimationProgress {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530843-currentprogress?language=objc
 func (a_ Animation) SetCurrentProgress(value AnimationProgress) {
 	objc.Call[objc.Void](a_, objc.Sel("setCurrentProgress:"), value)
+}
+
+// The number of frame updates per second to generate for the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
+func (a_ Animation) FrameRate() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("frameRate"))
+	return rv
+}
+
+// The number of frame updates per second to generate for the animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
+func (a_ Animation) SetFrameRate(value float32) {
+	objc.Call[objc.Void](a_, objc.Sel("setFrameRate:"), value)
 }
 
 // An array of strings representing the run loop modes in which the animation can run. [Full Topic]
@@ -212,19 +242,12 @@ func (a_ Animation) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The duration of the animation, in seconds. [Full Topic]
+// The current value of the animation effect, based on the current progress [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1535110-duration?language=objc
-func (a_ Animation) Duration() foundation.TimeInterval {
-	rv := objc.Call[foundation.TimeInterval](a_, objc.Sel("duration"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1531043-currentvalue?language=objc
+func (a_ Animation) CurrentValue() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("currentValue"))
 	return rv
-}
-
-// The duration of the animation, in seconds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1535110-duration?language=objc
-func (a_ Animation) SetDuration(value foundation.TimeInterval) {
-	objc.Call[objc.Void](a_, objc.Sel("setDuration:"), value)
 }
 
 // A Boolean value indicating whether the animation is in progress. [Full Topic]
@@ -250,40 +273,17 @@ func (a_ Animation) SetAnimationCurve(value AnimationCurve) {
 	objc.Call[objc.Void](a_, objc.Sel("setAnimationCurve:"), value)
 }
 
-// The blocking mode of the animation. [Full Topic]
+// The duration of the animation, in seconds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1533725-animationblockingmode?language=objc
-func (a_ Animation) AnimationBlockingMode() AnimationBlockingMode {
-	rv := objc.Call[AnimationBlockingMode](a_, objc.Sel("animationBlockingMode"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1535110-duration?language=objc
+func (a_ Animation) Duration() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](a_, objc.Sel("duration"))
 	return rv
 }
 
-// The blocking mode of the animation. [Full Topic]
+// The duration of the animation, in seconds. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1533725-animationblockingmode?language=objc
-func (a_ Animation) SetAnimationBlockingMode(value AnimationBlockingMode) {
-	objc.Call[objc.Void](a_, objc.Sel("setAnimationBlockingMode:"), value)
-}
-
-// The current value of the animation effect, based on the current progress [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1531043-currentvalue?language=objc
-func (a_ Animation) CurrentValue() float32 {
-	rv := objc.Call[float32](a_, objc.Sel("currentValue"))
-	return rv
-}
-
-// The number of frame updates per second to generate for the animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
-func (a_ Animation) FrameRate() float32 {
-	rv := objc.Call[float32](a_, objc.Sel("frameRate"))
-	return rv
-}
-
-// The number of frame updates per second to generate for the animation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
-func (a_ Animation) SetFrameRate(value float32) {
-	objc.Call[objc.Void](a_, objc.Sel("setFrameRate:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1535110-duration?language=objc
+func (a_ Animation) SetDuration(value foundation.TimeInterval) {
+	objc.Call[objc.Void](a_, objc.Sel("setDuration:"), value)
 }

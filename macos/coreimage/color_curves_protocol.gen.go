@@ -12,22 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves?language=objc
 type PColorCurves interface {
 	// optional
-	SetColorSpace(value coregraphics.ColorSpaceRef)
-	HasSetColorSpace() bool
-
-	// optional
-	ColorSpace() coregraphics.ColorSpaceRef
-	HasColorSpace() bool
-
-	// optional
-	SetCurvesDomain(value Vector)
-	HasSetCurvesDomain() bool
-
-	// optional
-	CurvesDomain() Vector
-	HasCurvesDomain() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -36,12 +20,28 @@ type PColorCurves interface {
 	HasInputImage() bool
 
 	// optional
+	SetColorSpace(value coregraphics.ColorSpaceRef)
+	HasSetColorSpace() bool
+
+	// optional
+	ColorSpace() coregraphics.ColorSpaceRef
+	HasColorSpace() bool
+
+	// optional
 	SetCurvesData(value []byte)
 	HasSetCurvesData() bool
 
 	// optional
 	CurvesData() []byte
 	HasCurvesData() bool
+
+	// optional
+	SetCurvesDomain(value Vector)
+	HasSetCurvesDomain() bool
+
+	// optional
+	CurvesDomain() Vector
+	HasCurvesDomain() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,52 +50,6 @@ var _ PColorCurves = (*ColorCurvesObject)(nil)
 // A concrete type for the [PColorCurves] protocol.
 type ColorCurvesObject struct {
 	objc.Object
-}
-
-func (c_ ColorCurvesObject) HasSetColorSpace() bool {
-	return c_.RespondsToSelector(objc.Sel("setColorSpace:"))
-}
-
-// The working color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228150-colorspace?language=objc
-func (c_ ColorCurvesObject) SetColorSpace(value coregraphics.ColorSpaceRef) {
-	objc.Call[objc.Void](c_, objc.Sel("setColorSpace:"), value)
-}
-
-func (c_ ColorCurvesObject) HasColorSpace() bool {
-	return c_.RespondsToSelector(objc.Sel("colorSpace"))
-}
-
-// The working color space. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228150-colorspace?language=objc
-func (c_ ColorCurvesObject) ColorSpace() coregraphics.ColorSpaceRef {
-	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("colorSpace"))
-	return rv
-}
-
-func (c_ ColorCurvesObject) HasSetCurvesDomain() bool {
-	return c_.RespondsToSelector(objc.Sel("setCurvesDomain:"))
-}
-
-// A two-element vector that defines the minimum and maximum values of the curve data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228152-curvesdomain?language=objc
-func (c_ ColorCurvesObject) SetCurvesDomain(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setCurvesDomain:"), value)
-}
-
-func (c_ ColorCurvesObject) HasCurvesDomain() bool {
-	return c_.RespondsToSelector(objc.Sel("curvesDomain"))
-}
-
-// A two-element vector that defines the minimum and maximum values of the curve data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228152-curvesdomain?language=objc
-func (c_ ColorCurvesObject) CurvesDomain() Vector {
-	rv := objc.Call[Vector](c_, objc.Sel("curvesDomain"))
-	return rv
 }
 
 func (c_ ColorCurvesObject) HasSetInputImage() bool {
@@ -121,6 +75,29 @@ func (c_ ColorCurvesObject) InputImage() Image {
 	return rv
 }
 
+func (c_ ColorCurvesObject) HasSetColorSpace() bool {
+	return c_.RespondsToSelector(objc.Sel("setColorSpace:"))
+}
+
+// The working color space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228150-colorspace?language=objc
+func (c_ ColorCurvesObject) SetColorSpace(value coregraphics.ColorSpaceRef) {
+	objc.Call[objc.Void](c_, objc.Sel("setColorSpace:"), value)
+}
+
+func (c_ ColorCurvesObject) HasColorSpace() bool {
+	return c_.RespondsToSelector(objc.Sel("colorSpace"))
+}
+
+// The working color space. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228150-colorspace?language=objc
+func (c_ ColorCurvesObject) ColorSpace() coregraphics.ColorSpaceRef {
+	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("colorSpace"))
+	return rv
+}
+
 func (c_ ColorCurvesObject) HasSetCurvesData() bool {
 	return c_.RespondsToSelector(objc.Sel("setCurvesData:"))
 }
@@ -141,5 +118,28 @@ func (c_ ColorCurvesObject) HasCurvesData() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228151-curvesdata?language=objc
 func (c_ ColorCurvesObject) CurvesData() []byte {
 	rv := objc.Call[[]byte](c_, objc.Sel("curvesData"))
+	return rv
+}
+
+func (c_ ColorCurvesObject) HasSetCurvesDomain() bool {
+	return c_.RespondsToSelector(objc.Sel("setCurvesDomain:"))
+}
+
+// A two-element vector that defines the minimum and maximum values of the curve data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228152-curvesdomain?language=objc
+func (c_ ColorCurvesObject) SetCurvesDomain(value Vector) {
+	objc.Call[objc.Void](c_, objc.Sel("setCurvesDomain:"), value)
+}
+
+func (c_ ColorCurvesObject) HasCurvesDomain() bool {
+	return c_.RespondsToSelector(objc.Sel("curvesDomain"))
+}
+
+// A two-element vector that defines the minimum and maximum values of the curve data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228152-curvesdomain?language=objc
+func (c_ ColorCurvesObject) CurvesDomain() Vector {
+	rv := objc.Call[Vector](c_, objc.Sel("curvesDomain"))
 	return rv
 }

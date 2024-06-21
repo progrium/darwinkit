@@ -20,8 +20,8 @@ type _FetchRequestExpressionClass struct {
 type IFetchRequestExpression interface {
 	foundation.IExpression
 	RequestExpression() foundation.Expression
-	ContextExpression() foundation.Expression
 	IsCountOnlyRequest() bool
+	ContextExpression() foundation.Expression
 }
 
 // An expression that evaluates the result of a fetch request on a managed object context. [Full Topic]
@@ -94,18 +94,18 @@ func (f_ FetchRequestExpression) RequestExpression() foundation.Expression {
 	return rv
 }
 
-// The expression for the receiver’s managed object context. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequestexpression/1391665-contextexpression?language=objc
-func (f_ FetchRequestExpression) ContextExpression() foundation.Expression {
-	rv := objc.Call[foundation.Expression](f_, objc.Sel("contextExpression"))
-	return rv
-}
-
 // Returns a Boolean value that indicates whether the receiver represents a count-only fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequestexpression/1391670-countonlyrequest?language=objc
 func (f_ FetchRequestExpression) IsCountOnlyRequest() bool {
 	rv := objc.Call[bool](f_, objc.Sel("isCountOnlyRequest"))
+	return rv
+}
+
+// The expression for the receiver’s managed object context. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequestexpression/1391665-contextexpression?language=objc
+func (f_ FetchRequestExpression) ContextExpression() foundation.Expression {
+	rv := objc.Call[foundation.Expression](f_, objc.Sel("contextExpression"))
 	return rv
 }

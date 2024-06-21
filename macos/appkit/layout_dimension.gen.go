@@ -18,15 +18,12 @@ type _LayoutDimensionClass struct {
 // An interface definition for the [LayoutDimension] class.
 type ILayoutDimension interface {
 	ILayoutAnchor
-	ConstraintEqualToConstant(c float64) LayoutConstraint
-	ConstraintLessThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToConstant(c float64) LayoutConstraint
-	ConstraintEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint
-	ConstraintEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint
 	ConstraintLessThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint
+	ConstraintEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint
+	ConstraintEqualToConstant(c float64) LayoutConstraint
 	ConstraintLessThanOrEqualToConstant(c float64) LayoutConstraint
+	ConstraintGreaterThanOrEqualToConstant(c float64) LayoutConstraint
+	ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint
 }
 
 // A factory class for creating size-based layout constraint objects using a fluent API. [Full Topic]
@@ -62,35 +59,11 @@ func (l_ LayoutDimension) Init() LayoutDimension {
 	return rv
 }
 
-// Returns a constraint that defines a constant size for the anchor’s size attribute. [Full Topic]
+// Returns a constraint that defines the anchor’s size attribute as less than or equal to the specified anchor multiplied by the constant. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500941-constraintequaltoconstant?language=objc
-func (l_ LayoutDimension) ConstraintEqualToConstant(c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToConstant:"), c)
-	return rv
-}
-
-// Returns a constraint that defines the anchor’s size attribute as greater than or equal to the specified anchor multiplied by the constant plus an offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500957-constraintlessthanorequaltoancho?language=objc
-func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
-	return rv
-}
-
-// Returns a constraint that defines the minimum size for the anchor’s size attribute. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500939-constraintgreaterthanorequaltoco?language=objc
-func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToConstant(c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToConstant:"), c)
-	return rv
-}
-
-// Returns a constraint that defines the anchor’s size attribute as equal to the specified anchor multiplied by the constant. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500951-constraintequaltoanchor?language=objc
-func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:multiplier:"), anchor, m)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500943-constraintlessthanorequaltoancho?language=objc
+func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:"), anchor, m)
 	return rv
 }
 
@@ -102,27 +75,11 @@ func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplierConstant(anchor ILayo
 	return rv
 }
 
-// Returns a constraint that defines the anchor’s size attribute as greater than or equal to the specified anchor multiplied by the constant. [Full Topic]
+// Returns a constraint that defines a constant size for the anchor’s size attribute. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500961-constraintgreaterthanorequaltoan?language=objc
-func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:"), anchor, m)
-	return rv
-}
-
-// Returns a constraint that defines the anchor’s size attribute as greater than or equal to the specified anchor multiplied by the constant plus an offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500965-constraintgreaterthanorequaltoan?language=objc
-func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
-	return rv
-}
-
-// Returns a constraint that defines the anchor’s size attribute as less than or equal to the specified anchor multiplied by the constant. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500943-constraintlessthanorequaltoancho?language=objc
-func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:"), anchor, m)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500941-constraintequaltoconstant?language=objc
+func (l_ LayoutDimension) ConstraintEqualToConstant(c float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToConstant:"), c)
 	return rv
 }
 
@@ -131,5 +88,21 @@ func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplier(anchor ILa
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500963-constraintlessthanorequaltoconst?language=objc
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToConstant(c float64) LayoutConstraint {
 	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToConstant:"), c)
+	return rv
+}
+
+// Returns a constraint that defines the minimum size for the anchor’s size attribute. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500939-constraintgreaterthanorequaltoco?language=objc
+func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToConstant(c float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToConstant:"), c)
+	return rv
+}
+
+// Returns a constraint that defines the anchor’s size attribute as greater than or equal to the specified anchor multiplied by the constant. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500961-constraintgreaterthanorequaltoan?language=objc
+func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:"), anchor, m)
 	return rv
 }

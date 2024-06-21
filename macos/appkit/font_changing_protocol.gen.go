@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging?language=objc
 type PFontChanging interface {
 	// optional
-	ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask
-	HasValidModesForFontPanel() bool
-
-	// optional
 	ChangeFont(sender FontManager)
 	HasChangeFont() bool
+
+	// optional
+	ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask
+	HasValidModesForFontPanel() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,6 +25,17 @@ var _ PFontChanging = (*FontChangingObject)(nil)
 // A concrete type for the [PFontChanging] protocol.
 type FontChangingObject struct {
 	objc.Object
+}
+
+func (f_ FontChangingObject) HasChangeFont() bool {
+	return f_.RespondsToSelector(objc.Sel("changeFont:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005180-changefont?language=objc
+func (f_ FontChangingObject) ChangeFont(sender FontManager) {
+	objc.Call[objc.Void](f_, objc.Sel("changeFont:"), sender)
 }
 
 func (f_ FontChangingObject) HasValidModesForFontPanel() bool {
@@ -37,15 +48,4 @@ func (f_ FontChangingObject) HasValidModesForFontPanel() bool {
 func (f_ FontChangingObject) ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask {
 	rv := objc.Call[FontPanelModeMask](f_, objc.Sel("validModesForFontPanel:"), fontPanel)
 	return rv
-}
-
-func (f_ FontChangingObject) HasChangeFont() bool {
-	return f_.RespondsToSelector(objc.Sel("changeFont:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005180-changefont?language=objc
-func (f_ FontChangingObject) ChangeFont(sender FontManager) {
-	objc.Call[objc.Void](f_, objc.Sel("changeFont:"), sender)
 }

@@ -18,12 +18,12 @@ type _ClickGestureRecognizerClass struct {
 // An interface definition for the [ClickGestureRecognizer] class.
 type IClickGestureRecognizer interface {
 	IGestureRecognizer
-	NumberOfClicksRequired() int
-	SetNumberOfClicksRequired(value int)
-	NumberOfTouchesRequired() int
-	SetNumberOfTouchesRequired(value int)
 	ButtonMask() uint
 	SetButtonMask(value uint)
+	NumberOfTouchesRequired() int
+	SetNumberOfTouchesRequired(value int)
+	NumberOfClicksRequired() int
+	SetNumberOfClicksRequired(value int)
 }
 
 // A discrete gesture recognizer that tracks a specified number of mouse clicks. [Full Topic]
@@ -73,19 +73,19 @@ func NewClickGestureRecognizerWithTargetAction(target objc.IObject, action objc.
 	return instance
 }
 
-// The number of clicks required to match. [Full Topic]
+// A bit mask of the button (or buttons) required to recognize this click. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1534485-numberofclicksrequired?language=objc
-func (c_ ClickGestureRecognizer) NumberOfClicksRequired() int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfClicksRequired"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1530136-buttonmask?language=objc
+func (c_ ClickGestureRecognizer) ButtonMask() uint {
+	rv := objc.Call[uint](c_, objc.Sel("buttonMask"))
 	return rv
 }
 
-// The number of clicks required to match. [Full Topic]
+// A bit mask of the button (or buttons) required to recognize this click. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1534485-numberofclicksrequired?language=objc
-func (c_ ClickGestureRecognizer) SetNumberOfClicksRequired(value int) {
-	objc.Call[objc.Void](c_, objc.Sel("setNumberOfClicksRequired:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1530136-buttonmask?language=objc
+func (c_ ClickGestureRecognizer) SetButtonMask(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setButtonMask:"), value)
 }
 
 // The number of touches required in an NSTouchBar object for the gesture recognizer to match. [Full Topic]
@@ -103,17 +103,17 @@ func (c_ ClickGestureRecognizer) SetNumberOfTouchesRequired(value int) {
 	objc.Call[objc.Void](c_, objc.Sel("setNumberOfTouchesRequired:"), value)
 }
 
-// A bit mask of the button (or buttons) required to recognize this click. [Full Topic]
+// The number of clicks required to match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1530136-buttonmask?language=objc
-func (c_ ClickGestureRecognizer) ButtonMask() uint {
-	rv := objc.Call[uint](c_, objc.Sel("buttonMask"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1534485-numberofclicksrequired?language=objc
+func (c_ ClickGestureRecognizer) NumberOfClicksRequired() int {
+	rv := objc.Call[int](c_, objc.Sel("numberOfClicksRequired"))
 	return rv
 }
 
-// A bit mask of the button (or buttons) required to recognize this click. [Full Topic]
+// The number of clicks required to match. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1530136-buttonmask?language=objc
-func (c_ ClickGestureRecognizer) SetButtonMask(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setButtonMask:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsclickgesturerecognizer/1534485-numberofclicksrequired?language=objc
+func (c_ ClickGestureRecognizer) SetNumberOfClicksRequired(value int) {
+	objc.Call[objc.Void](c_, objc.Sel("setNumberOfClicksRequired:"), value)
 }

@@ -19,9 +19,9 @@ type _MultiArrayConstraintClass struct {
 // An interface definition for the [MultiArrayConstraint] class.
 type IMultiArrayConstraint interface {
 	objc.IObject
-	DataType() MultiArrayDataType
-	ShapeConstraint() MultiArrayShapeConstraint
 	Shape() []foundation.Number
+	ShapeConstraint() MultiArrayShapeConstraint
+	DataType() MultiArrayDataType
 }
 
 // The shape and data type constraints for a multidimensional array feature. [Full Topic]
@@ -57,11 +57,11 @@ func (m_ MultiArrayConstraint) Init() MultiArrayConstraint {
 	return rv
 }
 
-// The type for the multi array. [Full Topic]
+// The shape of the multi array. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayconstraint/2921278-datatype?language=objc
-func (m_ MultiArrayConstraint) DataType() MultiArrayDataType {
-	rv := objc.Call[MultiArrayDataType](m_, objc.Sel("dataType"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayconstraint/2921277-shape?language=objc
+func (m_ MultiArrayConstraint) Shape() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](m_, objc.Sel("shape"))
 	return rv
 }
 
@@ -73,10 +73,10 @@ func (m_ MultiArrayConstraint) ShapeConstraint() MultiArrayShapeConstraint {
 	return rv
 }
 
-// The shape of the multi array. [Full Topic]
+// The type for the multi array. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayconstraint/2921277-shape?language=objc
-func (m_ MultiArrayConstraint) Shape() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](m_, objc.Sel("shape"))
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayconstraint/2921278-datatype?language=objc
+func (m_ MultiArrayConstraint) DataType() MultiArrayDataType {
+	rv := objc.Call[MultiArrayDataType](m_, objc.Sel("dataType"))
 	return rv
 }

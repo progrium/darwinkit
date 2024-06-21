@@ -20,29 +20,29 @@ type _ScannerDeviceViewClass struct {
 // An interface definition for the [ScannerDeviceView] class.
 type IScannerDeviceView interface {
 	appkit.IView
-	OverviewControlLabel() string
-	SetOverviewControlLabel(value string)
+	DownloadsDirectory() foundation.URL
+	SetDownloadsDirectory(value foundation.IURL)
+	ScanControlLabel() string
+	SetScanControlLabel(value string)
+	HasDisplayModeSimple() bool
+	SetHasDisplayModeSimple(value bool)
 	DisplaysDownloadsDirectoryControl() bool
 	SetDisplaysDownloadsDirectoryControl(value bool)
+	DisplaysPostProcessApplicationControl() bool
+	SetDisplaysPostProcessApplicationControl(value bool)
+	TransferMode() ScannerDeviceViewTransferMode
+	SetTransferMode(value ScannerDeviceViewTransferMode)
 	Delegate() ScannerDeviceViewDelegateObject
 	SetDelegate(value PScannerDeviceViewDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	DocumentName() string
-	SetDocumentName(value string)
 	PostProcessApplication() foundation.URL
 	SetPostProcessApplication(value foundation.IURL)
-	ScanControlLabel() string
-	SetScanControlLabel(value string)
-	TransferMode() ScannerDeviceViewTransferMode
-	SetTransferMode(value ScannerDeviceViewTransferMode)
+	DocumentName() string
+	SetDocumentName(value string)
 	Mode() ScannerDeviceViewDisplayMode
 	SetMode(value ScannerDeviceViewDisplayMode)
-	HasDisplayModeSimple() bool
-	SetHasDisplayModeSimple(value bool)
-	DownloadsDirectory() foundation.URL
-	SetDownloadsDirectory(value foundation.IURL)
-	DisplaysPostProcessApplicationControl() bool
-	SetDisplaysPostProcessApplicationControl(value bool)
+	OverviewControlLabel() string
+	SetOverviewControlLabel(value string)
 	HasDisplayModeAdvanced() bool
 	SetHasDisplayModeAdvanced(value bool)
 }
@@ -94,19 +94,49 @@ func NewScannerDeviceViewWithFrame(frameRect foundation.Rect) ScannerDeviceView 
 	return instance
 }
 
-// Allows customization of the “Overview” label. [Full Topic]
+// The directory where scans are saved. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504055-overviewcontrollabel?language=objc
-func (s_ ScannerDeviceView) OverviewControlLabel() string {
-	rv := objc.Call[string](s_, objc.Sel("overviewControlLabel"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503585-downloadsdirectory?language=objc
+func (s_ ScannerDeviceView) DownloadsDirectory() foundation.URL {
+	rv := objc.Call[foundation.URL](s_, objc.Sel("downloadsDirectory"))
 	return rv
 }
 
-// Allows customization of the “Overview” label. [Full Topic]
+// The directory where scans are saved. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504055-overviewcontrollabel?language=objc
-func (s_ ScannerDeviceView) SetOverviewControlLabel(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setOverviewControlLabel:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503585-downloadsdirectory?language=objc
+func (s_ ScannerDeviceView) SetDownloadsDirectory(value foundation.IURL) {
+	objc.Call[objc.Void](s_, objc.Sel("setDownloadsDirectory:"), value)
+}
+
+// Allows customization of the “Scan” label. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504143-scancontrollabel?language=objc
+func (s_ ScannerDeviceView) ScanControlLabel() string {
+	rv := objc.Call[string](s_, objc.Sel("scanControlLabel"))
+	return rv
+}
+
+// Allows customization of the “Scan” label. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504143-scancontrollabel?language=objc
+func (s_ ScannerDeviceView) SetScanControlLabel(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setScanControlLabel:"), value)
+}
+
+// The property that determines whether the scanner view uses the simple display mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504506-hasdisplaymodesimple?language=objc
+func (s_ ScannerDeviceView) HasDisplayModeSimple() bool {
+	rv := objc.Call[bool](s_, objc.Sel("hasDisplayModeSimple"))
+	return rv
+}
+
+// The property that determines whether the scanner view uses the simple display mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504506-hasdisplaymodesimple?language=objc
+func (s_ ScannerDeviceView) SetHasDisplayModeSimple(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setHasDisplayModeSimple:"), value)
 }
 
 // Determines whether the downloads directory control is displayed. [Full Topic]
@@ -122,6 +152,36 @@ func (s_ ScannerDeviceView) DisplaysDownloadsDirectoryControl() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503830-displaysdownloadsdirectorycontro?language=objc
 func (s_ ScannerDeviceView) SetDisplaysDownloadsDirectoryControl(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setDisplaysDownloadsDirectoryControl:"), value)
+}
+
+// Specifies whether the post processing application control is displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505053-displayspostprocessapplicationco?language=objc
+func (s_ ScannerDeviceView) DisplaysPostProcessApplicationControl() bool {
+	rv := objc.Call[bool](s_, objc.Sel("displaysPostProcessApplicationControl"))
+	return rv
+}
+
+// Specifies whether the post processing application control is displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505053-displayspostprocessapplicationco?language=objc
+func (s_ ScannerDeviceView) SetDisplaysPostProcessApplicationControl(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setDisplaysPostProcessApplicationControl:"), value)
+}
+
+// Determines how the scanned content is provided to the delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505017-transfermode?language=objc
+func (s_ ScannerDeviceView) TransferMode() ScannerDeviceViewTransferMode {
+	rv := objc.Call[ScannerDeviceViewTransferMode](s_, objc.Sel("transferMode"))
+	return rv
+}
+
+// Determines how the scanned content is provided to the delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505017-transfermode?language=objc
+func (s_ ScannerDeviceView) SetTransferMode(value ScannerDeviceViewTransferMode) {
+	objc.Call[objc.Void](s_, objc.Sel("setTransferMode:"), value)
 }
 
 // The scanner device delegate [Full Topic]
@@ -147,21 +207,6 @@ func (s_ ScannerDeviceView) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// Returns the document name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503744-documentname?language=objc
-func (s_ ScannerDeviceView) DocumentName() string {
-	rv := objc.Call[string](s_, objc.Sel("documentName"))
-	return rv
-}
-
-// Returns the document name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503744-documentname?language=objc
-func (s_ ScannerDeviceView) SetDocumentName(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setDocumentName:"), value)
-}
-
 // The URL of the application to use for post processing of the scan. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505215-postprocessapplication?language=objc
@@ -177,34 +222,19 @@ func (s_ ScannerDeviceView) SetPostProcessApplication(value foundation.IURL) {
 	objc.Call[objc.Void](s_, objc.Sel("setPostProcessApplication:"), value)
 }
 
-// Allows customization of the “Scan” label. [Full Topic]
+// Returns the document name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504143-scancontrollabel?language=objc
-func (s_ ScannerDeviceView) ScanControlLabel() string {
-	rv := objc.Call[string](s_, objc.Sel("scanControlLabel"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503744-documentname?language=objc
+func (s_ ScannerDeviceView) DocumentName() string {
+	rv := objc.Call[string](s_, objc.Sel("documentName"))
 	return rv
 }
 
-// Allows customization of the “Scan” label. [Full Topic]
+// Returns the document name. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504143-scancontrollabel?language=objc
-func (s_ ScannerDeviceView) SetScanControlLabel(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setScanControlLabel:"), value)
-}
-
-// Determines how the scanned content is provided to the delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505017-transfermode?language=objc
-func (s_ ScannerDeviceView) TransferMode() ScannerDeviceViewTransferMode {
-	rv := objc.Call[ScannerDeviceViewTransferMode](s_, objc.Sel("transferMode"))
-	return rv
-}
-
-// Determines how the scanned content is provided to the delegate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505017-transfermode?language=objc
-func (s_ ScannerDeviceView) SetTransferMode(value ScannerDeviceViewTransferMode) {
-	objc.Call[objc.Void](s_, objc.Sel("setTransferMode:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503744-documentname?language=objc
+func (s_ ScannerDeviceView) SetDocumentName(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setDocumentName:"), value)
 }
 
 // The display mode used by the device view. [Full Topic]
@@ -222,49 +252,19 @@ func (s_ ScannerDeviceView) SetMode(value ScannerDeviceViewDisplayMode) {
 	objc.Call[objc.Void](s_, objc.Sel("setMode:"), value)
 }
 
-// The property that determines whether the scanner view uses the simple display mode. [Full Topic]
+// Allows customization of the “Overview” label. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504506-hasdisplaymodesimple?language=objc
-func (s_ ScannerDeviceView) HasDisplayModeSimple() bool {
-	rv := objc.Call[bool](s_, objc.Sel("hasDisplayModeSimple"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504055-overviewcontrollabel?language=objc
+func (s_ ScannerDeviceView) OverviewControlLabel() string {
+	rv := objc.Call[string](s_, objc.Sel("overviewControlLabel"))
 	return rv
 }
 
-// The property that determines whether the scanner view uses the simple display mode. [Full Topic]
+// Allows customization of the “Overview” label. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504506-hasdisplaymodesimple?language=objc
-func (s_ ScannerDeviceView) SetHasDisplayModeSimple(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setHasDisplayModeSimple:"), value)
-}
-
-// The directory where scans are saved. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503585-downloadsdirectory?language=objc
-func (s_ ScannerDeviceView) DownloadsDirectory() foundation.URL {
-	rv := objc.Call[foundation.URL](s_, objc.Sel("downloadsDirectory"))
-	return rv
-}
-
-// The directory where scans are saved. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503585-downloadsdirectory?language=objc
-func (s_ ScannerDeviceView) SetDownloadsDirectory(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setDownloadsDirectory:"), value)
-}
-
-// Specifies whether the post processing application control is displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505053-displayspostprocessapplicationco?language=objc
-func (s_ ScannerDeviceView) DisplaysPostProcessApplicationControl() bool {
-	rv := objc.Call[bool](s_, objc.Sel("displaysPostProcessApplicationControl"))
-	return rv
-}
-
-// Specifies whether the post processing application control is displayed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505053-displayspostprocessapplicationco?language=objc
-func (s_ ScannerDeviceView) SetDisplaysPostProcessApplicationControl(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setDisplaysPostProcessApplicationControl:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504055-overviewcontrollabel?language=objc
+func (s_ ScannerDeviceView) SetOverviewControlLabel(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setOverviewControlLabel:"), value)
 }
 
 // The property that determines whether the scanner view uses the advanced display mode. [Full Topic]

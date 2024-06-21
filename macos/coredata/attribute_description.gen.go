@@ -18,20 +18,20 @@ type _AttributeDescriptionClass struct {
 // An interface definition for the [AttributeDescription] class.
 type IAttributeDescription interface {
 	IPropertyDescription
-	AttributeValueClassName() string
-	SetAttributeValueClassName(value string)
-	ValueTransformerName() string
-	SetValueTransformerName(value string)
-	PreservesValueInHistoryOnDeletion() bool
-	SetPreservesValueInHistoryOnDeletion(value bool)
 	AllowsExternalBinaryDataStorage() bool
 	SetAllowsExternalBinaryDataStorage(value bool)
-	AllowsCloudEncryption() bool
-	SetAllowsCloudEncryption(value bool)
 	DefaultValue() objc.Object
 	SetDefaultValue(value objc.IObject)
+	ValueTransformerName() string
+	SetValueTransformerName(value string)
 	AttributeType() AttributeType
 	SetAttributeType(value AttributeType)
+	AllowsCloudEncryption() bool
+	SetAllowsCloudEncryption(value bool)
+	PreservesValueInHistoryOnDeletion() bool
+	SetPreservesValueInHistoryOnDeletion(value bool)
+	AttributeValueClassName() string
+	SetAttributeValueClassName(value string)
 }
 
 // A description of a single attribute belonging to an entity. [Full Topic]
@@ -67,51 +67,6 @@ func (a_ AttributeDescription) Init() AttributeDescription {
 	return rv
 }
 
-// The class name that represents the attribute’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498309-attributevalueclassname?language=objc
-func (a_ AttributeDescription) AttributeValueClassName() string {
-	rv := objc.Call[string](a_, objc.Sel("attributeValueClassName"))
-	return rv
-}
-
-// The class name that represents the attribute’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498309-attributevalueclassname?language=objc
-func (a_ AttributeDescription) SetAttributeValueClassName(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setAttributeValueClassName:"), value)
-}
-
-// The name of the transformer to use for the attribute value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498305-valuetransformername?language=objc
-func (a_ AttributeDescription) ValueTransformerName() string {
-	rv := objc.Call[string](a_, objc.Sel("valueTransformerName"))
-	return rv
-}
-
-// The name of the transformer to use for the attribute value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498305-valuetransformername?language=objc
-func (a_ AttributeDescription) SetValueTransformerName(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setValueTransformerName:"), value)
-}
-
-// A Boolean value that indicates whether the attribute records its value in the persistent history transaction for a managed object’s deletion. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3180042-preservesvalueinhistoryondeletio?language=objc
-func (a_ AttributeDescription) PreservesValueInHistoryOnDeletion() bool {
-	rv := objc.Call[bool](a_, objc.Sel("preservesValueInHistoryOnDeletion"))
-	return rv
-}
-
-// A Boolean value that indicates whether the attribute records its value in the persistent history transaction for a managed object’s deletion. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3180042-preservesvalueinhistoryondeletio?language=objc
-func (a_ AttributeDescription) SetPreservesValueInHistoryOnDeletion(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setPreservesValueInHistoryOnDeletion:"), value)
-}
-
 // A Boolean value that indicates whether the attribute allows external binary storage. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498295-allowsexternalbinarydatastorage?language=objc
@@ -125,21 +80,6 @@ func (a_ AttributeDescription) AllowsExternalBinaryDataStorage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498295-allowsexternalbinarydatastorage?language=objc
 func (a_ AttributeDescription) SetAllowsExternalBinaryDataStorage(value bool) {
 	objc.Call[objc.Void](a_, objc.Sel("setAllowsExternalBinaryDataStorage:"), value)
-}
-
-// A Boolean value that determines whether to encrypt the attribute’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3746827-allowscloudencryption?language=objc
-func (a_ AttributeDescription) AllowsCloudEncryption() bool {
-	rv := objc.Call[bool](a_, objc.Sel("allowsCloudEncryption"))
-	return rv
-}
-
-// A Boolean value that determines whether to encrypt the attribute’s value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3746827-allowscloudencryption?language=objc
-func (a_ AttributeDescription) SetAllowsCloudEncryption(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setAllowsCloudEncryption:"), value)
 }
 
 // The default value of the attribute. [Full Topic]
@@ -157,6 +97,21 @@ func (a_ AttributeDescription) SetDefaultValue(value objc.IObject) {
 	objc.Call[objc.Void](a_, objc.Sel("setDefaultValue:"), value)
 }
 
+// The name of the transformer to use for the attribute value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498305-valuetransformername?language=objc
+func (a_ AttributeDescription) ValueTransformerName() string {
+	rv := objc.Call[string](a_, objc.Sel("valueTransformerName"))
+	return rv
+}
+
+// The name of the transformer to use for the attribute value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498305-valuetransformername?language=objc
+func (a_ AttributeDescription) SetValueTransformerName(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setValueTransformerName:"), value)
+}
+
 // The attribute’s type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498291-attributetype?language=objc
@@ -170,4 +125,49 @@ func (a_ AttributeDescription) AttributeType() AttributeType {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498291-attributetype?language=objc
 func (a_ AttributeDescription) SetAttributeType(value AttributeType) {
 	objc.Call[objc.Void](a_, objc.Sel("setAttributeType:"), value)
+}
+
+// A Boolean value that determines whether to encrypt the attribute’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3746827-allowscloudencryption?language=objc
+func (a_ AttributeDescription) AllowsCloudEncryption() bool {
+	rv := objc.Call[bool](a_, objc.Sel("allowsCloudEncryption"))
+	return rv
+}
+
+// A Boolean value that determines whether to encrypt the attribute’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3746827-allowscloudencryption?language=objc
+func (a_ AttributeDescription) SetAllowsCloudEncryption(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setAllowsCloudEncryption:"), value)
+}
+
+// A Boolean value that indicates whether the attribute records its value in the persistent history transaction for a managed object’s deletion. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3180042-preservesvalueinhistoryondeletio?language=objc
+func (a_ AttributeDescription) PreservesValueInHistoryOnDeletion() bool {
+	rv := objc.Call[bool](a_, objc.Sel("preservesValueInHistoryOnDeletion"))
+	return rv
+}
+
+// A Boolean value that indicates whether the attribute records its value in the persistent history transaction for a managed object’s deletion. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/3180042-preservesvalueinhistoryondeletio?language=objc
+func (a_ AttributeDescription) SetPreservesValueInHistoryOnDeletion(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setPreservesValueInHistoryOnDeletion:"), value)
+}
+
+// The class name that represents the attribute’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498309-attributevalueclassname?language=objc
+func (a_ AttributeDescription) AttributeValueClassName() string {
+	rv := objc.Call[string](a_, objc.Sel("attributeValueClassName"))
+	return rv
+}
+
+// The class name that represents the attribute’s value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsattributedescription/1498309-attributevalueclassname?language=objc
+func (a_ AttributeDescription) SetAttributeValueClassName(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setAttributeValueClassName:"), value)
 }

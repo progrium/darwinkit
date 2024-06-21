@@ -20,11 +20,11 @@ type ISortDescriptor interface {
 	objc.IObject
 	AllowEvaluation()
 	CompareObjectToObject(object1 objc.IObject, object2 objc.IObject) ComparisonResult
+	Comparator() Comparator
 	Key() string
-	Ascending() bool
 	Selector() objc.Selector
 	ReversedSortDescriptor() objc.Object
-	Comparator() Comparator
+	Ascending() bool
 }
 
 // An immutable description of how to order a collection of objects according to a property common to all the objects. [Full Topic]
@@ -38,58 +38,6 @@ func SortDescriptorFrom(ptr unsafe.Pointer) SortDescriptor {
 	return SortDescriptor{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (s_ SortDescriptor) InitWithKeyAscendingSelector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	rv := objc.Call[SortDescriptor](s_, objc.Sel("initWithKey:ascending:selector:"), key, ascending, selector)
-	return rv
-}
-
-// Creates a sort descriptor with a specified string key path, ordering, and comparison selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1412495-initwithkey?language=objc
-func NewSortDescriptorWithKeyAscendingSelector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	instance := SortDescriptorClass.Alloc().InitWithKeyAscendingSelector(key, ascending, selector)
-	instance.Autorelease()
-	return instance
-}
-
-func (sc _SortDescriptorClass) SortDescriptorWithKeyAscending(key string, ascending bool) SortDescriptor {
-	rv := objc.Call[SortDescriptor](sc, objc.Sel("sortDescriptorWithKey:ascending:"), key, ascending)
-	return rv
-}
-
-// Creates and returns a sort descriptor with the specified key path and ordering. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1503726-sortdescriptorwithkey?language=objc
-func SortDescriptor_SortDescriptorWithKeyAscending(key string, ascending bool) SortDescriptor {
-	return SortDescriptorClass.SortDescriptorWithKeyAscending(key, ascending)
-}
-
-func (sc _SortDescriptorClass) SortDescriptorWithKeyAscendingSelector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	rv := objc.Call[SortDescriptor](sc, objc.Sel("sortDescriptorWithKey:ascending:selector:"), key, ascending, selector)
-	return rv
-}
-
-// Creates a sort descriptor with the specified key path, ordering, and comparison selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1503730-sortdescriptorwithkey?language=objc
-func SortDescriptor_SortDescriptorWithKeyAscendingSelector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	return SortDescriptorClass.SortDescriptorWithKeyAscendingSelector(key, ascending, selector)
-}
-
-func (s_ SortDescriptor) InitWithKeyAscendingComparator(key string, ascending bool, cmptr Comparator) SortDescriptor {
-	rv := objc.Call[SortDescriptor](s_, objc.Sel("initWithKey:ascending:comparator:"), key, ascending, cmptr)
-	return rv
-}
-
-// Creates a sort descriptor with a specified string key path and ordering, and a comparator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1411607-initwithkey?language=objc
-func NewSortDescriptorWithKeyAscendingComparator(key string, ascending bool, cmptr Comparator) SortDescriptor {
-	instance := SortDescriptorClass.Alloc().InitWithKeyAscendingComparator(key, ascending, cmptr)
-	instance.Autorelease()
-	return instance
 }
 
 func (sc _SortDescriptorClass) SortDescriptorWithKeyAscendingComparator(key string, ascending bool, cmptr Comparator) SortDescriptor {
@@ -153,19 +101,19 @@ func (s_ SortDescriptor) CompareObjectToObject(object1 objc.IObject, object2 obj
 	return rv
 }
 
+// The comparator for the sort descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1411426-comparator?language=objc
+func (s_ SortDescriptor) Comparator() Comparator {
+	rv := objc.Call[Comparator](s_, objc.Sel("comparator"))
+	return rv
+}
+
 // The key that specifies the property to compare during sorting. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1415022-key?language=objc
 func (s_ SortDescriptor) Key() string {
 	rv := objc.Call[string](s_, objc.Sel("key"))
-	return rv
-}
-
-// A Boolean value that indicates whether the receiver specifies sorting in ascending order. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1408931-ascending?language=objc
-func (s_ SortDescriptor) Ascending() bool {
-	rv := objc.Call[bool](s_, objc.Sel("ascending"))
 	return rv
 }
 
@@ -185,10 +133,10 @@ func (s_ SortDescriptor) ReversedSortDescriptor() objc.Object {
 	return rv
 }
 
-// The comparator for the sort descriptor. [Full Topic]
+// A Boolean value that indicates whether the receiver specifies sorting in ascending order. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1411426-comparator?language=objc
-func (s_ SortDescriptor) Comparator() Comparator {
-	rv := objc.Call[Comparator](s_, objc.Sel("comparator"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1408931-ascending?language=objc
+func (s_ SortDescriptor) Ascending() bool {
+	rv := objc.Call[bool](s_, objc.Sel("ascending"))
 	return rv
 }

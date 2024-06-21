@@ -35,6 +35,19 @@ func CNNGroupNormalizationNodeFrom(ptr unsafe.Pointer) CNNGroupNormalizationNode
 	}
 }
 
+func (cc _CNNGroupNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
+	po1 := objc.WrapAsProtocol("MPSCNNGroupNormalizationDataSource", dataSource)
+	rv := objc.Call[CNNGroupNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationnode/3152573-nodewithsource?language=objc
+func CNNGroupNormalizationNode_NodeWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
+	return CNNGroupNormalizationNodeClass.NodeWithSourceDataSource(source, dataSource)
+}
+
 func (c_ CNNGroupNormalizationNode) InitWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNGroupNormalizationDataSource", dataSource)
 	rv := objc.Call[CNNGroupNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), source, po1)
@@ -48,19 +61,6 @@ func NewCNNGroupNormalizationNodeWithSourceDataSource(source INNImageNode, dataS
 	instance := CNNGroupNormalizationNodeClass.Alloc().InitWithSourceDataSource(source, dataSource)
 	instance.Autorelease()
 	return instance
-}
-
-func (cc _CNNGroupNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
-	po1 := objc.WrapAsProtocol("MPSCNNGroupNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNGroupNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationnode/3152573-nodewithsource?language=objc
-func CNNGroupNormalizationNode_NodeWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
-	return CNNGroupNormalizationNodeClass.NodeWithSourceDataSource(source, dataSource)
 }
 
 func (cc _CNNGroupNormalizationNodeClass) Alloc() CNNGroupNormalizationNode {

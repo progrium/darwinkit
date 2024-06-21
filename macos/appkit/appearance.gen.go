@@ -19,10 +19,10 @@ type _AppearanceClass struct {
 // An interface definition for the [Appearance] class.
 type IAppearance interface {
 	objc.IObject
-	PerformAsCurrentDrawingAppearance(block func())
 	BestMatchFromAppearancesWithNames(appearances []AppearanceName) AppearanceName
-	AllowsVibrancy() bool
+	PerformAsCurrentDrawingAppearance(block func())
 	Name() AppearanceName
+	AllowsVibrancy() bool
 }
 
 // An object that manages standard appearance attributes for UI elements in an app. [Full Topic]
@@ -72,19 +72,19 @@ func (a_ Appearance) Init() Appearance {
 	return rv
 }
 
-// Sets the appearance to be the active drawing appearance and perform the specified block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/3674525-performascurrentdrawingappearanc?language=objc
-func (a_ Appearance) PerformAsCurrentDrawingAppearance(block func()) {
-	objc.Call[objc.Void](a_, objc.Sel("performAsCurrentDrawingAppearance:"), block)
-}
-
 // Returns the appearance name that most closely matches the current appearance object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/2980972-bestmatchfromappearanceswithname?language=objc
 func (a_ Appearance) BestMatchFromAppearancesWithNames(appearances []AppearanceName) AppearanceName {
 	rv := objc.Call[AppearanceName](a_, objc.Sel("bestMatchFromAppearancesWithNames:"), appearances)
 	return rv
+}
+
+// Sets the appearance to be the active drawing appearance and perform the specified block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/3674525-performascurrentdrawingappearanc?language=objc
+func (a_ Appearance) PerformAsCurrentDrawingAppearance(block func()) {
+	objc.Call[objc.Void](a_, objc.Sel("performAsCurrentDrawingAppearance:"), block)
 }
 
 // Creates an appearance object based on the name of one of the standard system appearances. [Full Topic]
@@ -100,6 +100,14 @@ func (ac _AppearanceClass) AppearanceNamed(name AppearanceName) Appearance {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/1529612-appearancenamed?language=objc
 func Appearance_AppearanceNamed(name AppearanceName) Appearance {
 	return AppearanceClass.AppearanceNamed(name)
+}
+
+// The name of the appearance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/1528677-name?language=objc
+func (a_ Appearance) Name() AppearanceName {
+	rv := objc.Call[AppearanceName](a_, objc.Sel("name"))
+	return rv
 }
 
 // The appearance that the system uses for color and asset resolution, and that’s active for drawing, usually from locking focus on a view. [Full Topic]
@@ -122,13 +130,5 @@ func Appearance_CurrentDrawingAppearance() Appearance {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/1524694-allowsvibrancy?language=objc
 func (a_ Appearance) AllowsVibrancy() bool {
 	rv := objc.Call[bool](a_, objc.Sel("allowsVibrancy"))
-	return rv
-}
-
-// The name of the appearance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/1528677-name?language=objc
-func (a_ Appearance) Name() AppearanceName {
-	rv := objc.Call[AppearanceName](a_, objc.Sel("name"))
 	return rv
 }

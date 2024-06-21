@@ -19,11 +19,11 @@ type _ExceptionClass struct {
 type IException interface {
 	objc.IObject
 	Raise()
+	CallStackReturnAddresses() []Number
+	Name() ExceptionName
+	Reason() string
 	UserInfo() Dictionary
 	CallStackSymbols() []string
-	CallStackReturnAddresses() []Number
-	Reason() string
-	Name() ExceptionName
 }
 
 // An object that represents a special condition that interrupts the normal flow of program execution. [Full Topic]
@@ -73,6 +73,13 @@ func (e_ Exception) Init() Exception {
 	return rv
 }
 
+// Raises the receiver, causing program flow to jump to the local exception handler. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1416135-raise?language=objc
+func (e_ Exception) Raise() {
+	objc.Call[objc.Void](e_, objc.Sel("raise"))
+}
+
 // Creates and returns an exception object . [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1569530-exceptionwithname?language=objc
@@ -88,25 +95,28 @@ func Exception_ExceptionWithNameReasonUserInfo(name ExceptionName, reason string
 	return ExceptionClass.ExceptionWithNameReasonUserInfo(name, reason, userInfo)
 }
 
-// Raises the receiver, causing program flow to jump to the local exception handler. [Full Topic]
+// The call return addresses related to a raised exception. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1416135-raise?language=objc
-func (e_ Exception) Raise() {
-	objc.Call[objc.Void](e_, objc.Sel("raise"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1412165-callstackreturnaddresses?language=objc
+func (e_ Exception) CallStackReturnAddresses() []Number {
+	rv := objc.Call[[]Number](e_, objc.Sel("callStackReturnAddresses"))
+	return rv
 }
 
-// A convenience method that creates and raises an exception. [Full Topic]
+// A string used to uniquely identify the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1569524-raise?language=objc
-func (ec _ExceptionClass) RaiseFormat(name ExceptionName, format string, args ...any) {
-	objc.Call[objc.Void](ec, objc.Sel("raise:format:"), append([]any{name, format}, args...)...)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1410925-name?language=objc
+func (e_ Exception) Name() ExceptionName {
+	rv := objc.Call[ExceptionName](e_, objc.Sel("name"))
+	return rv
 }
 
-// A convenience method that creates and raises an exception. [Full Topic]
+// A string containing a “human-readable” reason for the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1569524-raise?language=objc
-func Exception_RaiseFormat(name ExceptionName, format string, args ...any) {
-	ExceptionClass.RaiseFormat(name, format, args...)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1415537-reason?language=objc
+func (e_ Exception) Reason() string {
+	rv := objc.Call[string](e_, objc.Sel("reason"))
+	return rv
 }
 
 // A dictionary containing application-specific data pertaining to the receiver. [Full Topic]
@@ -122,29 +132,5 @@ func (e_ Exception) UserInfo() Dictionary {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1416845-callstacksymbols?language=objc
 func (e_ Exception) CallStackSymbols() []string {
 	rv := objc.Call[[]string](e_, objc.Sel("callStackSymbols"))
-	return rv
-}
-
-// The call return addresses related to a raised exception. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1412165-callstackreturnaddresses?language=objc
-func (e_ Exception) CallStackReturnAddresses() []Number {
-	rv := objc.Call[[]Number](e_, objc.Sel("callStackReturnAddresses"))
-	return rv
-}
-
-// A string containing a “human-readable” reason for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1415537-reason?language=objc
-func (e_ Exception) Reason() string {
-	rv := objc.Call[string](e_, objc.Sel("reason"))
-	return rv
-}
-
-// A string used to uniquely identify the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1410925-name?language=objc
-func (e_ Exception) Name() ExceptionName {
-	rv := objc.Call[ExceptionName](e_, objc.Sel("name"))
 	return rv
 }

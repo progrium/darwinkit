@@ -21,32 +21,32 @@ type IPrintOperation interface {
 	objc.IObject
 	DestroyContext()
 	DeliverResult() bool
+	RunOperation() bool
+	CleanUpOperation()
 	CreateContext() GraphicsContext
 	RunOperationModalForWindowDelegateDidRunSelectorContextInfo(docWindow IWindow, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer)
-	CleanUpOperation()
-	RunOperation() bool
-	Context() GraphicsContext
-	PDFPanel() PDFPanel
-	SetPDFPanel(value IPDFPanel)
+	PrintInfo() PrintInfo
+	SetPrintInfo(value IPrintInfo)
+	PreferredRenderingQuality() PrintRenderingQuality
 	PageOrder() PrintingPageOrder
 	SetPageOrder(value PrintingPageOrder)
-	PrintPanel() PrintPanel
-	SetPrintPanel(value IPrintPanel)
-	PreferredRenderingQuality() PrintRenderingQuality
-	View() View
+	PDFPanel() PDFPanel
+	SetPDFPanel(value IPDFPanel)
 	ShowsPrintPanel() bool
 	SetShowsPrintPanel(value bool)
-	PageRange() foundation.Range
-	IsCopyingOperation() bool
+	View() View
+	CurrentPage() int
 	JobTitle() string
 	SetJobTitle(value string)
 	ShowsProgressPanel() bool
 	SetShowsProgressPanel(value bool)
+	Context() GraphicsContext
+	PrintPanel() PrintPanel
+	SetPrintPanel(value IPrintPanel)
+	PageRange() foundation.Range
+	IsCopyingOperation() bool
 	CanSpawnSeparateThread() bool
 	SetCanSpawnSeparateThread(value bool)
-	CurrentPage() int
-	PrintInfo() PrintInfo
-	SetPrintInfo(value IPrintInfo)
 }
 
 // An object that controls operations that generate Encapsulated PostScript (EPS) code, Portable Document Format (PDF) code, or print jobs. [Full Topic]
@@ -89,19 +89,19 @@ func (p_ PrintOperation) DestroyContext() {
 	objc.Call[objc.Void](p_, objc.Sel("destroyContext"))
 }
 
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view. [Full Topic]
+// Creates and returns an print operation object ready to control the printing of the specified view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1525273-epsoperationwithview?language=objc
-func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:"), view, rect, data)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535893-printoperationwithview?language=objc
+func (pc _PrintOperationClass) PrintOperationWithView(view IView) PrintOperation {
+	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:"), view)
 	return rv
 }
 
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view. [Full Topic]
+// Creates and returns an print operation object ready to control the printing of the specified view. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1525273-epsoperationwithview?language=objc
-func PrintOperation_EPSOperationWithViewInsideRectToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	return PrintOperationClass.EPSOperationWithViewInsideRectToData(view, rect, data)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535893-printoperationwithview?language=objc
+func PrintOperation_PrintOperationWithView(view IView) PrintOperation {
+	return PrintOperationClass.PrintOperationWithView(view)
 }
 
 // Delivers the results of the print operation to the intended destination. [Full Topic]
@@ -109,6 +109,29 @@ func PrintOperation_EPSOperationWithViewInsideRectToData(view IView, rect founda
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530693-deliverresult?language=objc
 func (p_ PrintOperation) DeliverResult() bool {
 	rv := objc.Call[bool](p_, objc.Sel("deliverResult"))
+	return rv
+}
+
+// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view and write the resulting data to the specified file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530037-epsoperationwithview?language=objc
+func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
+	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
+	return rv
+}
+
+// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view and write the resulting data to the specified file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530037-epsoperationwithview?language=objc
+func PrintOperation_EPSOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
+	return PrintOperationClass.EPSOperationWithViewInsideRectToPathPrintInfo(view, rect, path, printInfo)
+}
+
+// Runs the print operation on the current thread. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532039-runoperation?language=objc
+func (p_ PrintOperation) RunOperation() bool {
+	rv := objc.Call[bool](p_, objc.Sel("runOperation"))
 	return rv
 }
 
@@ -127,19 +150,11 @@ func PrintOperation_PDFOperationWithViewInsideRectToData(view IView, rect founda
 	return PrintOperationClass.PDFOperationWithViewInsideRectToData(view, rect, data)
 }
 
-// Creates and returns a new print operation object ready to control the copying of PDF graphics from the specified view using the specified print settings. [Full Topic]
+// Called at the end of a print operation to remove the print operation as the current operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1531298-pdfoperationwithview?language=objc
-func (pc _PrintOperationClass) PDFOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
-	return rv
-}
-
-// Creates and returns a new print operation object ready to control the copying of PDF graphics from the specified view using the specified print settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1531298-pdfoperationwithview?language=objc
-func PrintOperation_PDFOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	return PrintOperationClass.PDFOperationWithViewInsideRectToDataPrintInfo(view, rect, data, printInfo)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534126-cleanupoperation?language=objc
+func (p_ PrintOperation) CleanUpOperation() {
+	objc.Call[objc.Void](p_, objc.Sel("cleanUpOperation"))
 }
 
 // Creates the graphics context object used for drawing during the operation. [Full Topic]
@@ -150,21 +165,6 @@ func (p_ PrintOperation) CreateContext() GraphicsContext {
 	return rv
 }
 
-// Creates and returns an print operation object ready to control the printing of the specified view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535893-printoperationwithview?language=objc
-func (pc _PrintOperationClass) PrintOperationWithView(view IView) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:"), view)
-	return rv
-}
-
-// Creates and returns an print operation object ready to control the printing of the specified view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535893-printoperationwithview?language=objc
-func PrintOperation_PrintOperationWithView(view IView) PrintOperation {
-	return PrintOperationClass.PrintOperationWithView(view)
-}
-
 // Runs the print operation, calling your custom delegate method upon completion. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532065-runoperationmodalforwindow?language=objc
@@ -172,102 +172,27 @@ func (p_ PrintOperation) RunOperationModalForWindowDelegateDidRunSelectorContext
 	objc.Call[objc.Void](p_, objc.Sel("runOperationModalForWindow:delegate:didRunSelector:contextInfo:"), docWindow, delegate, didRunSelector, contextInfo)
 }
 
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view and write the resulting data to the specified file. [Full Topic]
+// The printing information associated with the print operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530037-epsoperationwithview?language=objc
-func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535187-printinfo?language=objc
+func (p_ PrintOperation) PrintInfo() PrintInfo {
+	rv := objc.Call[PrintInfo](p_, objc.Sel("printInfo"))
 	return rv
 }
 
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view and write the resulting data to the specified file. [Full Topic]
+// The printing information associated with the print operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530037-epsoperationwithview?language=objc
-func PrintOperation_EPSOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	return PrintOperationClass.EPSOperationWithViewInsideRectToPathPrintInfo(view, rect, path, printInfo)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535187-printinfo?language=objc
+func (p_ PrintOperation) SetPrintInfo(value IPrintInfo) {
+	objc.Call[objc.Void](p_, objc.Sel("setPrintInfo:"), value)
 }
 
-// Creates and returns a new print operation object ready to control the copying of PDF graphics from the specified view and write the resulting data to the specified file. [Full Topic]
+// The printing quality. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534130-pdfoperationwithview?language=objc
-func (pc _PrintOperationClass) PDFOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529716-preferredrenderingquality?language=objc
+func (p_ PrintOperation) PreferredRenderingQuality() PrintRenderingQuality {
+	rv := objc.Call[PrintRenderingQuality](p_, objc.Sel("preferredRenderingQuality"))
 	return rv
-}
-
-// Creates and returns a new print operation object ready to control the copying of PDF graphics from the specified view and write the resulting data to the specified file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534130-pdfoperationwithview?language=objc
-func PrintOperation_PDFOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	return PrintOperationClass.PDFOperationWithViewInsideRectToPathPrintInfo(view, rect, path, printInfo)
-}
-
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view using the specified print settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524819-epsoperationwithview?language=objc
-func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
-	return rv
-}
-
-// Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view using the specified print settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524819-epsoperationwithview?language=objc
-func PrintOperation_EPSOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	return PrintOperationClass.EPSOperationWithViewInsideRectToDataPrintInfo(view, rect, data, printInfo)
-}
-
-// Creates and returns an print operation object ready to control the printing of the specified view using custom print settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1528557-printoperationwithview?language=objc
-func (pc _PrintOperationClass) PrintOperationWithViewPrintInfo(view IView, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:printInfo:"), view, printInfo)
-	return rv
-}
-
-// Creates and returns an print operation object ready to control the printing of the specified view using custom print settings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1528557-printoperationwithview?language=objc
-func PrintOperation_PrintOperationWithViewPrintInfo(view IView, printInfo IPrintInfo) PrintOperation {
-	return PrintOperationClass.PrintOperationWithViewPrintInfo(view, printInfo)
-}
-
-// Called at the end of a print operation to remove the print operation as the current operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534126-cleanupoperation?language=objc
-func (p_ PrintOperation) CleanUpOperation() {
-	objc.Call[objc.Void](p_, objc.Sel("cleanUpOperation"))
-}
-
-// Runs the print operation on the current thread. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532039-runoperation?language=objc
-func (p_ PrintOperation) RunOperation() bool {
-	rv := objc.Call[bool](p_, objc.Sel("runOperation"))
-	return rv
-}
-
-// The graphics context object used for generating output. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534162-context?language=objc
-func (p_ PrintOperation) Context() GraphicsContext {
-	rv := objc.Call[GraphicsContext](p_, objc.Sel("context"))
-	return rv
-}
-
-// The PDF panel object to use during the operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1526838-pdfpanel?language=objc
-func (p_ PrintOperation) PDFPanel() PDFPanel {
-	rv := objc.Call[PDFPanel](p_, objc.Sel("PDFPanel"))
-	return rv
-}
-
-// The PDF panel object to use during the operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1526838-pdfpanel?language=objc
-func (p_ PrintOperation) SetPDFPanel(value IPDFPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("setPDFPanel:"), value)
 }
 
 // The print order for the pages of the operation. [Full Topic]
@@ -285,35 +210,19 @@ func (p_ PrintOperation) SetPageOrder(value PrintingPageOrder) {
 	objc.Call[objc.Void](p_, objc.Sel("setPageOrder:"), value)
 }
 
-// The print panel object to use during the operation. [Full Topic]
+// The PDF panel object to use during the operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529626-printpanel?language=objc
-func (p_ PrintOperation) PrintPanel() PrintPanel {
-	rv := objc.Call[PrintPanel](p_, objc.Sel("printPanel"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1526838-pdfpanel?language=objc
+func (p_ PrintOperation) PDFPanel() PDFPanel {
+	rv := objc.Call[PDFPanel](p_, objc.Sel("PDFPanel"))
 	return rv
 }
 
-// The print panel object to use during the operation. [Full Topic]
+// The PDF panel object to use during the operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529626-printpanel?language=objc
-func (p_ PrintOperation) SetPrintPanel(value IPrintPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrintPanel:"), value)
-}
-
-// The printing quality. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529716-preferredrenderingquality?language=objc
-func (p_ PrintOperation) PreferredRenderingQuality() PrintRenderingQuality {
-	rv := objc.Call[PrintRenderingQuality](p_, objc.Sel("preferredRenderingQuality"))
-	return rv
-}
-
-// The view object that generates the actual data for the print operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530311-view?language=objc
-func (p_ PrintOperation) View() View {
-	rv := objc.Call[View](p_, objc.Sel("view"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1526838-pdfpanel?language=objc
+func (p_ PrintOperation) SetPDFPanel(value IPDFPanel) {
+	objc.Call[objc.Void](p_, objc.Sel("setPDFPanel:"), value)
 }
 
 // A Boolean value that determines whether the print operation displays a print panel. [Full Topic]
@@ -331,19 +240,19 @@ func (p_ PrintOperation) SetShowsPrintPanel(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setShowsPrintPanel:"), value)
 }
 
-// The range of pages associated with the print operation. [Full Topic]
+// The view object that generates the actual data for the print operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524601-pagerange?language=objc
-func (p_ PrintOperation) PageRange() foundation.Range {
-	rv := objc.Call[foundation.Range](p_, objc.Sel("pageRange"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530311-view?language=objc
+func (p_ PrintOperation) View() View {
+	rv := objc.Call[View](p_, objc.Sel("view"))
 	return rv
 }
 
-// A Boolean value that indicates whether the print operation is an EPS or PDF copy operation. [Full Topic]
+// The current page number being printed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534206-copyingoperation?language=objc
-func (p_ PrintOperation) IsCopyingOperation() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isCopyingOperation"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534881-currentpage?language=objc
+func (p_ PrintOperation) CurrentPage() int {
+	rv := objc.Call[int](p_, objc.Sel("currentPage"))
 	return rv
 }
 
@@ -377,19 +286,43 @@ func (p_ PrintOperation) SetShowsProgressPanel(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setShowsProgressPanel:"), value)
 }
 
-// A Boolean value that determines whether the print operation is allowed to spawn a separate printing thread. [Full Topic]
+// The graphics context object used for generating output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532487-canspawnseparatethread?language=objc
-func (p_ PrintOperation) CanSpawnSeparateThread() bool {
-	rv := objc.Call[bool](p_, objc.Sel("canSpawnSeparateThread"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534162-context?language=objc
+func (p_ PrintOperation) Context() GraphicsContext {
+	rv := objc.Call[GraphicsContext](p_, objc.Sel("context"))
 	return rv
 }
 
-// A Boolean value that determines whether the print operation is allowed to spawn a separate printing thread. [Full Topic]
+// The print panel object to use during the operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532487-canspawnseparatethread?language=objc
-func (p_ PrintOperation) SetCanSpawnSeparateThread(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setCanSpawnSeparateThread:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529626-printpanel?language=objc
+func (p_ PrintOperation) PrintPanel() PrintPanel {
+	rv := objc.Call[PrintPanel](p_, objc.Sel("printPanel"))
+	return rv
+}
+
+// The print panel object to use during the operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529626-printpanel?language=objc
+func (p_ PrintOperation) SetPrintPanel(value IPrintPanel) {
+	objc.Call[objc.Void](p_, objc.Sel("setPrintPanel:"), value)
+}
+
+// The range of pages associated with the print operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524601-pagerange?language=objc
+func (p_ PrintOperation) PageRange() foundation.Range {
+	rv := objc.Call[foundation.Range](p_, objc.Sel("pageRange"))
+	return rv
+}
+
+// A Boolean value that indicates whether the print operation is an EPS or PDF copy operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534206-copyingoperation?language=objc
+func (p_ PrintOperation) IsCopyingOperation() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isCopyingOperation"))
+	return rv
 }
 
 // The current print operation for this thread. [Full Topic]
@@ -421,25 +354,17 @@ func PrintOperation_SetCurrentOperation(value IPrintOperation) {
 	PrintOperationClass.SetCurrentOperation(value)
 }
 
-// The current page number being printed. [Full Topic]
+// A Boolean value that determines whether the print operation is allowed to spawn a separate printing thread. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534881-currentpage?language=objc
-func (p_ PrintOperation) CurrentPage() int {
-	rv := objc.Call[int](p_, objc.Sel("currentPage"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532487-canspawnseparatethread?language=objc
+func (p_ PrintOperation) CanSpawnSeparateThread() bool {
+	rv := objc.Call[bool](p_, objc.Sel("canSpawnSeparateThread"))
 	return rv
 }
 
-// The printing information associated with the print operation. [Full Topic]
+// A Boolean value that determines whether the print operation is allowed to spawn a separate printing thread. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535187-printinfo?language=objc
-func (p_ PrintOperation) PrintInfo() PrintInfo {
-	rv := objc.Call[PrintInfo](p_, objc.Sel("printInfo"))
-	return rv
-}
-
-// The printing information associated with the print operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535187-printinfo?language=objc
-func (p_ PrintOperation) SetPrintInfo(value IPrintInfo) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrintInfo:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532487-canspawnseparatethread?language=objc
+func (p_ PrintOperation) SetCanSpawnSeparateThread(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setCanSpawnSeparateThread:"), value)
 }

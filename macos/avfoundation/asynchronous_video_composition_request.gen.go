@@ -21,17 +21,17 @@ type _AsynchronousVideoCompositionRequestClass struct {
 // An interface definition for the [AsynchronousVideoCompositionRequest] class.
 type IAsynchronousVideoCompositionRequest interface {
 	objc.IObject
-	FinishCancelledRequest()
+	SourceFrameByTrackID(trackID objc.IObject) corevideo.PixelBufferRef
+	FinishWithComposedVideoFrame(composedVideoFrame corevideo.PixelBufferRef)
 	SourceTimedMetadataByTrackID(trackID objc.IObject) TimedMetadataGroup
 	SourceSampleBufferByTrackID(trackID objc.IObject) coremedia.SampleBufferRef
-	FinishWithComposedVideoFrame(composedVideoFrame corevideo.PixelBufferRef)
 	FinishWithError(error foundation.IError)
-	SourceFrameByTrackID(trackID objc.IObject) corevideo.PixelBufferRef
-	SourceSampleDataTrackIDs() []foundation.Number
+	FinishCancelledRequest()
 	VideoCompositionInstruction() objc.Object
+	SourceSampleDataTrackIDs() []foundation.Number
+	SourceTrackIDs() []foundation.Number
 	CompositionTime() coremedia.Time
 	RenderContext() VideoCompositionRenderContext
-	SourceTrackIDs() []foundation.Number
 }
 
 // An object that contains information a video compositor needs to render an output pixel buffer. [Full Topic]
@@ -67,11 +67,19 @@ func (a_ AsynchronousVideoCompositionRequest) Init() AsynchronousVideoCompositio
 	return rv
 }
 
-// Cancels the request to compose a video frame. [Full Topic]
+// Returns a source pixel buffer for the track that contains the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1386261-finishcancelledrequest?language=objc
-func (a_ AsynchronousVideoCompositionRequest) FinishCancelledRequest() {
-	objc.Call[objc.Void](a_, objc.Sel("finishCancelledRequest"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1390379-sourceframebytrackid?language=objc
+func (a_ AsynchronousVideoCompositionRequest) SourceFrameByTrackID(trackID objc.IObject) corevideo.PixelBufferRef {
+	rv := objc.Call[corevideo.PixelBufferRef](a_, objc.Sel("sourceFrameByTrackID:"), trackID)
+	return rv
+}
+
+// Finishes the request to compose the frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1387450-finishwithcomposedvideoframe?language=objc
+func (a_ AsynchronousVideoCompositionRequest) FinishWithComposedVideoFrame(composedVideoFrame corevideo.PixelBufferRef) {
+	objc.Call[objc.Void](a_, objc.Sel("finishWithComposedVideoFrame:"), composedVideoFrame)
 }
 
 // Returns a source timed metadata group for the track that contains the specified identifier. [Full Topic]
@@ -90,13 +98,6 @@ func (a_ AsynchronousVideoCompositionRequest) SourceSampleBufferByTrackID(trackI
 	return rv
 }
 
-// Finishes the request to compose the frame. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1387450-finishwithcomposedvideoframe?language=objc
-func (a_ AsynchronousVideoCompositionRequest) FinishWithComposedVideoFrame(composedVideoFrame corevideo.PixelBufferRef) {
-	objc.Call[objc.Void](a_, objc.Sel("finishWithComposedVideoFrame:"), composedVideoFrame)
-}
-
 // Finishes the request with an error. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1390797-finishwitherror?language=objc
@@ -104,11 +105,18 @@ func (a_ AsynchronousVideoCompositionRequest) FinishWithError(error foundation.I
 	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), error)
 }
 
-// Returns a source pixel buffer for the track that contains the specified identifier. [Full Topic]
+// Cancels the request to compose a video frame. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1390379-sourceframebytrackid?language=objc
-func (a_ AsynchronousVideoCompositionRequest) SourceFrameByTrackID(trackID objc.IObject) corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](a_, objc.Sel("sourceFrameByTrackID:"), trackID)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1386261-finishcancelledrequest?language=objc
+func (a_ AsynchronousVideoCompositionRequest) FinishCancelledRequest() {
+	objc.Call[objc.Void](a_, objc.Sel("finishCancelledRequest"))
+}
+
+// A video composition instruction that indicates how to compose the frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1386672-videocompositioninstruction?language=objc
+func (a_ AsynchronousVideoCompositionRequest) VideoCompositionInstruction() objc.Object {
+	rv := objc.Call[objc.Object](a_, objc.Sel("videoCompositionInstruction"))
 	return rv
 }
 
@@ -120,11 +128,11 @@ func (a_ AsynchronousVideoCompositionRequest) SourceSampleDataTrackIDs() []found
 	return rv
 }
 
-// A video composition instruction that indicates how to compose the frame. [Full Topic]
+// The identifiers of tracks that contain source video. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1386672-videocompositioninstruction?language=objc
-func (a_ AsynchronousVideoCompositionRequest) VideoCompositionInstruction() objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("videoCompositionInstruction"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1388898-sourcetrackids?language=objc
+func (a_ AsynchronousVideoCompositionRequest) SourceTrackIDs() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](a_, objc.Sel("sourceTrackIDs"))
 	return rv
 }
 
@@ -141,13 +149,5 @@ func (a_ AsynchronousVideoCompositionRequest) CompositionTime() coremedia.Time {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1389112-rendercontext?language=objc
 func (a_ AsynchronousVideoCompositionRequest) RenderContext() VideoCompositionRenderContext {
 	rv := objc.Call[VideoCompositionRenderContext](a_, objc.Sel("renderContext"))
-	return rv
-}
-
-// The identifiers of tracks that contain source video. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1388898-sourcetrackids?language=objc
-func (a_ AsynchronousVideoCompositionRequest) SourceTrackIDs() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](a_, objc.Sel("sourceTrackIDs"))
 	return rv
 }

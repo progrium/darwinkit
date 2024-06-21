@@ -18,26 +18,26 @@ type _XMLParserClass struct {
 // An interface definition for the [XMLParser] class.
 type IXMLParser interface {
 	objc.IObject
-	Parse() bool
 	AbortParsing()
-	ShouldProcessNamespaces() bool
-	SetShouldProcessNamespaces(value bool)
+	Parse() bool
+	ColumnNumber() int
 	ExternalEntityResolvingPolicy() XMLParserExternalEntityResolvingPolicy
 	SetExternalEntityResolvingPolicy(value XMLParserExternalEntityResolvingPolicy)
-	ShouldResolveExternalEntities() bool
-	SetShouldResolveExternalEntities(value bool)
-	ParserError() Error
-	PublicID() string
+	SystemID() string
+	ShouldProcessNamespaces() bool
+	SetShouldProcessNamespaces(value bool)
+	ShouldReportNamespacePrefixes() bool
+	SetShouldReportNamespacePrefixes(value bool)
 	Delegate() XMLParserDelegateObject
 	SetDelegate(value PXMLParserDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	PublicID() string
 	AllowedExternalEntityURLs() Set
 	SetAllowedExternalEntityURLs(value ISet)
-	SystemID() string
+	ParserError() Error
+	ShouldResolveExternalEntities() bool
+	SetShouldResolveExternalEntities(value bool)
 	LineNumber() int
-	ShouldReportNamespacePrefixes() bool
-	SetShouldReportNamespacePrefixes(value bool)
-	ColumnNumber() int
 }
 
 // An event driven parser of XML documents (including DTD declarations). [Full Topic]
@@ -51,6 +51,20 @@ func XMLParserFrom(ptr unsafe.Pointer) XMLParser {
 	return XMLParser{
 		Object: objc.ObjectFrom(ptr),
 	}
+}
+
+func (x_ XMLParser) InitWithData(data []byte) XMLParser {
+	rv := objc.Call[XMLParser](x_, objc.Sel("initWithData:"), data)
+	return rv
+}
+
+// Initializes a parser with the XML contents encapsulated in a given data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418103-initwithdata?language=objc
+func NewXMLParserWithData(data []byte) XMLParser {
+	instance := XMLParserClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLParser) InitWithContentsOfURL(url IURL) XMLParser {
@@ -81,20 +95,6 @@ func NewXMLParserWithStream(stream IInputStream) XMLParser {
 	return instance
 }
 
-func (x_ XMLParser) InitWithData(data []byte) XMLParser {
-	rv := objc.Call[XMLParser](x_, objc.Sel("initWithData:"), data)
-	return rv
-}
-
-// Initializes a parser with the XML contents encapsulated in a given data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418103-initwithdata?language=objc
-func NewXMLParserWithData(data []byte) XMLParser {
-	instance := XMLParserClass.Alloc().InitWithData(data)
-	instance.Autorelease()
-	return instance
-}
-
 func (xc _XMLParserClass) Alloc() XMLParser {
 	rv := objc.Call[XMLParser](xc, objc.Sel("alloc"))
 	return rv
@@ -115,6 +115,13 @@ func (x_ XMLParser) Init() XMLParser {
 	return rv
 }
 
+// Stops the parser object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410083-abortparsing?language=objc
+func (x_ XMLParser) AbortParsing() {
+	objc.Call[objc.Void](x_, objc.Sel("abortParsing"))
+}
+
 // Starts the event-driven parsing operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1411778-parse?language=objc
@@ -123,26 +130,12 @@ func (x_ XMLParser) Parse() bool {
 	return rv
 }
 
-// Stops the parser object. [Full Topic]
+// The column number of the XML document being processed by the parser. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410083-abortparsing?language=objc
-func (x_ XMLParser) AbortParsing() {
-	objc.Call[objc.Void](x_, objc.Sel("abortParsing"))
-}
-
-// A Boolean value that determines whether the parser reports the namespaces and qualified names of elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418380-shouldprocessnamespaces?language=objc
-func (x_ XMLParser) ShouldProcessNamespaces() bool {
-	rv := objc.Call[bool](x_, objc.Sel("shouldProcessNamespaces"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1416983-columnnumber?language=objc
+func (x_ XMLParser) ColumnNumber() int {
+	rv := objc.Call[int](x_, objc.Sel("columnNumber"))
 	return rv
-}
-
-// A Boolean value that determines whether the parser reports the namespaces and qualified names of elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418380-shouldprocessnamespaces?language=objc
-func (x_ XMLParser) SetShouldProcessNamespaces(value bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setShouldProcessNamespaces:"), value)
 }
 
 //	[Full Topic]
@@ -160,35 +153,42 @@ func (x_ XMLParser) SetExternalEntityResolvingPolicy(value XMLParserExternalEnti
 	objc.Call[objc.Void](x_, objc.Sel("setExternalEntityResolvingPolicy:"), value)
 }
 
-// A Boolean value that determines whether the parser reports declarations of external entities. [Full Topic]
+// The system identifier of the external entity referenced in the XML document. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414143-shouldresolveexternalentities?language=objc
-func (x_ XMLParser) ShouldResolveExternalEntities() bool {
-	rv := objc.Call[bool](x_, objc.Sel("shouldResolveExternalEntities"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1411917-systemid?language=objc
+func (x_ XMLParser) SystemID() string {
+	rv := objc.Call[string](x_, objc.Sel("systemID"))
 	return rv
 }
 
-// A Boolean value that determines whether the parser reports declarations of external entities. [Full Topic]
+// A Boolean value that determines whether the parser reports the namespaces and qualified names of elements. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414143-shouldresolveexternalentities?language=objc
-func (x_ XMLParser) SetShouldResolveExternalEntities(value bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setShouldResolveExternalEntities:"), value)
-}
-
-// An NSError object from which you can obtain information about a parsing error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1417446-parsererror?language=objc
-func (x_ XMLParser) ParserError() Error {
-	rv := objc.Call[Error](x_, objc.Sel("parserError"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418380-shouldprocessnamespaces?language=objc
+func (x_ XMLParser) ShouldProcessNamespaces() bool {
+	rv := objc.Call[bool](x_, objc.Sel("shouldProcessNamespaces"))
 	return rv
 }
 
-// The public identifier of the external entity referenced in the XML document. [Full Topic]
+// A Boolean value that determines whether the parser reports the namespaces and qualified names of elements. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414516-publicid?language=objc
-func (x_ XMLParser) PublicID() string {
-	rv := objc.Call[string](x_, objc.Sel("publicID"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418380-shouldprocessnamespaces?language=objc
+func (x_ XMLParser) SetShouldProcessNamespaces(value bool) {
+	objc.Call[objc.Void](x_, objc.Sel("setShouldProcessNamespaces:"), value)
+}
+
+// A Boolean value that determines whether the parser reports the prefixes indicating the scope of namespace declarations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410809-shouldreportnamespaceprefixes?language=objc
+func (x_ XMLParser) ShouldReportNamespacePrefixes() bool {
+	rv := objc.Call[bool](x_, objc.Sel("shouldReportNamespacePrefixes"))
 	return rv
+}
+
+// A Boolean value that determines whether the parser reports the prefixes indicating the scope of namespace declarations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410809-shouldreportnamespaceprefixes?language=objc
+func (x_ XMLParser) SetShouldReportNamespacePrefixes(value bool) {
+	objc.Call[objc.Void](x_, objc.Sel("setShouldReportNamespacePrefixes:"), value)
 }
 
 // A delegate object that receives messages about the parsing process. [Full Topic]
@@ -214,6 +214,14 @@ func (x_ XMLParser) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), valueObject)
 }
 
+// The public identifier of the external entity referenced in the XML document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414516-publicid?language=objc
+func (x_ XMLParser) PublicID() string {
+	rv := objc.Call[string](x_, objc.Sel("publicID"))
+	return rv
+}
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1412380-allowedexternalentityurls?language=objc
@@ -229,12 +237,27 @@ func (x_ XMLParser) SetAllowedExternalEntityURLs(value ISet) {
 	objc.Call[objc.Void](x_, objc.Sel("setAllowedExternalEntityURLs:"), value)
 }
 
-// The system identifier of the external entity referenced in the XML document. [Full Topic]
+// An NSError object from which you can obtain information about a parsing error. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1411917-systemid?language=objc
-func (x_ XMLParser) SystemID() string {
-	rv := objc.Call[string](x_, objc.Sel("systemID"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1417446-parsererror?language=objc
+func (x_ XMLParser) ParserError() Error {
+	rv := objc.Call[Error](x_, objc.Sel("parserError"))
 	return rv
+}
+
+// A Boolean value that determines whether the parser reports declarations of external entities. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414143-shouldresolveexternalentities?language=objc
+func (x_ XMLParser) ShouldResolveExternalEntities() bool {
+	rv := objc.Call[bool](x_, objc.Sel("shouldResolveExternalEntities"))
+	return rv
+}
+
+// A Boolean value that determines whether the parser reports declarations of external entities. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1414143-shouldresolveexternalentities?language=objc
+func (x_ XMLParser) SetShouldResolveExternalEntities(value bool) {
+	objc.Call[objc.Void](x_, objc.Sel("setShouldResolveExternalEntities:"), value)
 }
 
 // The line number of the XML document being processed by the parser. [Full Topic]
@@ -242,28 +265,5 @@ func (x_ XMLParser) SystemID() string {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1413404-linenumber?language=objc
 func (x_ XMLParser) LineNumber() int {
 	rv := objc.Call[int](x_, objc.Sel("lineNumber"))
-	return rv
-}
-
-// A Boolean value that determines whether the parser reports the prefixes indicating the scope of namespace declarations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410809-shouldreportnamespaceprefixes?language=objc
-func (x_ XMLParser) ShouldReportNamespacePrefixes() bool {
-	rv := objc.Call[bool](x_, objc.Sel("shouldReportNamespacePrefixes"))
-	return rv
-}
-
-// A Boolean value that determines whether the parser reports the prefixes indicating the scope of namespace declarations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1410809-shouldreportnamespaceprefixes?language=objc
-func (x_ XMLParser) SetShouldReportNamespacePrefixes(value bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setShouldReportNamespacePrefixes:"), value)
-}
-
-// The column number of the XML document being processed by the parser. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1416983-columnnumber?language=objc
-func (x_ XMLParser) ColumnNumber() int {
-	rv := objc.Call[int](x_, objc.Sel("columnNumber"))
 	return rv
 }

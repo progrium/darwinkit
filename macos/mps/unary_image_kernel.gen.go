@@ -19,19 +19,15 @@ type _UnaryImageKernelClass struct {
 // An interface definition for the [UnaryImageKernel] class.
 type IUnaryImageKernel interface {
 	IKernel
-	EncodeToCommandBufferSourceTextureDestinationTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture metal.PTexture)
-	EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject)
 	SourceRegionForDestinationSize(destinationSize metal.Size) Region
-	EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture unsafe.Pointer, copyAllocator CopyAllocator) bool
-	EncodeToCommandBufferObjectInPlaceTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, textureObject objc.IObject, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferSourceImageDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationImage IImage)
 	EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage)
-	ClipRect() metal.Region
-	SetClipRect(value metal.Region)
 	EdgeMode() ImageEdgeMode
 	SetEdgeMode(value ImageEdgeMode)
 	Offset() Offset
 	SetOffset(value Offset)
+	ClipRect() metal.Region
+	SetClipRect(value metal.Region)
 }
 
 // A kernel that consumes one texture and produces one texture. [Full Topic]
@@ -97,46 +93,11 @@ func UnaryImageKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevi
 	return instance
 }
 
-// Encodes a kernel into a command buffer, out of place. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618741-encodetocommandbuffer?language=objc
-func (u_ UnaryImageKernel) EncodeToCommandBufferSourceTextureDestinationTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture metal.PTexture) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	po1 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
-	po2 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
-	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:"), po0, po1, po2)
-}
-
-// Encodes a kernel into a command buffer, out of place. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618741-encodetocommandbuffer?language=objc
-func (u_ UnaryImageKernel) EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:"), commandBufferObject, sourceTextureObject, destinationTextureObject)
-}
-
 // Determines the region of the source texture that will be read for an encode operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618754-sourceregionfordestinationsize?language=objc
 func (u_ UnaryImageKernel) SourceRegionForDestinationSize(destinationSize metal.Size) Region {
 	rv := objc.Call[Region](u_, objc.Sel("sourceRegionForDestinationSize:"), destinationSize)
-	return rv
-}
-
-// This method attempts to apply a kernel in place on a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618873-encodetocommandbuffer?language=objc
-func (u_ UnaryImageKernel) EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture unsafe.Pointer, copyAllocator CopyAllocator) bool {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	po1 := objc.WrapAsProtocol("MTLTexture", texture)
-	rv := objc.Call[bool](u_, objc.Sel("encodeToCommandBuffer:inPlaceTexture:fallbackCopyAllocator:"), po0, po1, copyAllocator)
-	return rv
-}
-
-// This method attempts to apply a kernel in place on a texture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618873-encodetocommandbuffer?language=objc
-func (u_ UnaryImageKernel) EncodeToCommandBufferObjectInPlaceTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, textureObject objc.IObject, copyAllocator CopyAllocator) bool {
-	rv := objc.Call[bool](u_, objc.Sel("encodeToCommandBuffer:inPlaceTexture:fallbackCopyAllocator:"), commandBufferObject, textureObject, copyAllocator)
 	return rv
 }
 
@@ -153,21 +114,6 @@ func (u_ UnaryImageKernel) EncodeToCommandBufferSourceImageDestinationImage(comm
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/2866328-encodetocommandbuffer?language=objc
 func (u_ UnaryImageKernel) EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage) {
 	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), commandBufferObject, sourceImage, destinationImage)
-}
-
-// An optional clip rectangle to use when writing data. Only the pixels in the rectangle will be overwritten. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618859-cliprect?language=objc
-func (u_ UnaryImageKernel) ClipRect() metal.Region {
-	rv := objc.Call[metal.Region](u_, objc.Sel("clipRect"))
-	return rv
-}
-
-// An optional clip rectangle to use when writing data. Only the pixels in the rectangle will be overwritten. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618859-cliprect?language=objc
-func (u_ UnaryImageKernel) SetClipRect(value metal.Region) {
-	objc.Call[objc.Void](u_, objc.Sel("setClipRect:"), value)
 }
 
 // The edge mode to use when texture reads stray off the edge of an image. [Full Topic]
@@ -198,4 +144,19 @@ func (u_ UnaryImageKernel) Offset() Offset {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618884-offset?language=objc
 func (u_ UnaryImageKernel) SetOffset(value Offset) {
 	objc.Call[objc.Void](u_, objc.Sel("setOffset:"), value)
+}
+
+// An optional clip rectangle to use when writing data. Only the pixels in the rectangle will be overwritten. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618859-cliprect?language=objc
+func (u_ UnaryImageKernel) ClipRect() metal.Region {
+	rv := objc.Call[metal.Region](u_, objc.Sel("clipRect"))
+	return rv
+}
+
+// An optional clip rectangle to use when writing data. Only the pixels in the rectangle will be overwritten. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618859-cliprect?language=objc
+func (u_ UnaryImageKernel) SetClipRect(value metal.Region) {
+	objc.Call[objc.Void](u_, objc.Sel("setClipRect:"), value)
 }

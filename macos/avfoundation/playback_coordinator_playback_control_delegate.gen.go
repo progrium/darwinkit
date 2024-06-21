@@ -11,81 +11,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate?language=objc
 type PPlaybackCoordinatorPlaybackControlDelegate interface {
 	// optional
-	PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func())
-	HasPlaybackCoordinatorDidIssueBufferingCommandCompletionHandler() bool
-
-	// optional
-	PlaybackCoordinatorDidIssueSeekCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func())
-	HasPlaybackCoordinatorDidIssueSeekCommandCompletionHandler() bool
-
-	// optional
-	PlaybackCoordinatorDidIssuePauseCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func())
-	HasPlaybackCoordinatorDidIssuePauseCommandCompletionHandler() bool
-
-	// optional
 	PlaybackCoordinatorDidIssuePlayCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, playCommand DelegatingPlaybackCoordinatorPlayCommand, completionHandler func())
 	HasPlaybackCoordinatorDidIssuePlayCommandCompletionHandler() bool
 }
 
 // A delegate implementation builder for the [PPlaybackCoordinatorPlaybackControlDelegate] protocol.
 type PlaybackCoordinatorPlaybackControlDelegate struct {
-	_PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler func(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func())
-	_PlaybackCoordinatorDidIssueSeekCommandCompletionHandler      func(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func())
-	_PlaybackCoordinatorDidIssuePauseCommandCompletionHandler     func(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func())
-	_PlaybackCoordinatorDidIssuePlayCommandCompletionHandler      func(coordinator DelegatingPlaybackCoordinator, playCommand DelegatingPlaybackCoordinatorPlayCommand, completionHandler func())
+	_PlaybackCoordinatorDidIssuePlayCommandCompletionHandler func(coordinator DelegatingPlaybackCoordinator, playCommand DelegatingPlaybackCoordinatorPlayCommand, completionHandler func())
 }
 
-func (di *PlaybackCoordinatorPlaybackControlDelegate) HasPlaybackCoordinatorDidIssueBufferingCommandCompletionHandler() bool {
-	return di._PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler != nil
-}
-
-// Tells the delegate to expect playback soon and to start buffering media data in preparation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750294-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) SetPlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(f func(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func())) {
-	di._PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler = f
-}
-
-// Tells the delegate to expect playback soon and to start buffering media data in preparation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750294-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func()) {
-	di._PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(coordinator, bufferingCommand, completionHandler)
-}
-func (di *PlaybackCoordinatorPlaybackControlDelegate) HasPlaybackCoordinatorDidIssueSeekCommandCompletionHandler() bool {
-	return di._PlaybackCoordinatorDidIssueSeekCommandCompletionHandler != nil
-}
-
-// Tells the delegate to seek to a new time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750298-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) SetPlaybackCoordinatorDidIssueSeekCommandCompletionHandler(f func(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func())) {
-	di._PlaybackCoordinatorDidIssueSeekCommandCompletionHandler = f
-}
-
-// Tells the delegate to seek to a new time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750298-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) PlaybackCoordinatorDidIssueSeekCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func()) {
-	di._PlaybackCoordinatorDidIssueSeekCommandCompletionHandler(coordinator, seekCommand, completionHandler)
-}
-func (di *PlaybackCoordinatorPlaybackControlDelegate) HasPlaybackCoordinatorDidIssuePauseCommandCompletionHandler() bool {
-	return di._PlaybackCoordinatorDidIssuePauseCommandCompletionHandler != nil
-}
-
-// Tells the delegate to pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750295-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) SetPlaybackCoordinatorDidIssuePauseCommandCompletionHandler(f func(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func())) {
-	di._PlaybackCoordinatorDidIssuePauseCommandCompletionHandler = f
-}
-
-// Tells the delegate to pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750295-playbackcoordinator?language=objc
-func (di *PlaybackCoordinatorPlaybackControlDelegate) PlaybackCoordinatorDidIssuePauseCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func()) {
-	di._PlaybackCoordinatorDidIssuePauseCommandCompletionHandler(coordinator, pauseCommand, completionHandler)
-}
 func (di *PlaybackCoordinatorPlaybackControlDelegate) HasPlaybackCoordinatorDidIssuePlayCommandCompletionHandler() bool {
 	return di._PlaybackCoordinatorDidIssuePlayCommandCompletionHandler != nil
 }
@@ -110,39 +44,6 @@ var _ PPlaybackCoordinatorPlaybackControlDelegate = (*PlaybackCoordinatorPlaybac
 // A concrete type for the [PPlaybackCoordinatorPlaybackControlDelegate] protocol.
 type PlaybackCoordinatorPlaybackControlDelegateObject struct {
 	objc.Object
-}
-
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssueBufferingCommandCompletionHandler() bool {
-	return p_.RespondsToSelector(objc.Sel("playbackCoordinator:didIssueBufferingCommand:completionHandler:"))
-}
-
-// Tells the delegate to expect playback soon and to start buffering media data in preparation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750294-playbackcoordinator?language=objc
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueBufferingCommand:completionHandler:"), coordinator, bufferingCommand, completionHandler)
-}
-
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssueSeekCommandCompletionHandler() bool {
-	return p_.RespondsToSelector(objc.Sel("playbackCoordinator:didIssueSeekCommand:completionHandler:"))
-}
-
-// Tells the delegate to seek to a new time. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750298-playbackcoordinator?language=objc
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssueSeekCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueSeekCommand:completionHandler:"), coordinator, seekCommand, completionHandler)
-}
-
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssuePauseCommandCompletionHandler() bool {
-	return p_.RespondsToSelector(objc.Sel("playbackCoordinator:didIssuePauseCommand:completionHandler:"))
-}
-
-// Tells the delegate to pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750295-playbackcoordinator?language=objc
-func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssuePauseCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssuePauseCommand:completionHandler:"), coordinator, pauseCommand, completionHandler)
 }
 
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssuePlayCommandCompletionHandler() bool {

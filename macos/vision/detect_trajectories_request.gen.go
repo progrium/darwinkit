@@ -19,13 +19,13 @@ type _DetectTrajectoriesRequestClass struct {
 // An interface definition for the [DetectTrajectoriesRequest] class.
 type IDetectTrajectoriesRequest interface {
 	IStatefulRequest
-	ObjectMinimumNormalizedRadius() float32
-	SetObjectMinimumNormalizedRadius(value float32)
-	TargetFrameTime() coremedia.Time
-	SetTargetFrameTime(value coremedia.Time)
 	ObjectMaximumNormalizedRadius() float32
 	SetObjectMaximumNormalizedRadius(value float32)
+	TargetFrameTime() coremedia.Time
+	SetTargetFrameTime(value coremedia.Time)
 	TrajectoryLength() int
+	ObjectMinimumNormalizedRadius() float32
+	SetObjectMinimumNormalizedRadius(value float32)
 }
 
 // A request that detects the trajectories of shapes moving along a parabolic path. [Full Topic]
@@ -103,19 +103,19 @@ func NewDetectTrajectoriesRequestWithCompletionHandler(completionHandler Request
 	return instance
 }
 
-// The minimum radius of the bounding circle of the object to track. [Full Topic]
+// The maximum radius of the bounding circle of the object to track. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675671-objectminimumnormalizedradius?language=objc
-func (d_ DetectTrajectoriesRequest) ObjectMinimumNormalizedRadius() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("objectMinimumNormalizedRadius"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675670-objectmaximumnormalizedradius?language=objc
+func (d_ DetectTrajectoriesRequest) ObjectMaximumNormalizedRadius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("objectMaximumNormalizedRadius"))
 	return rv
 }
 
-// The minimum radius of the bounding circle of the object to track. [Full Topic]
+// The maximum radius of the bounding circle of the object to track. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675671-objectminimumnormalizedradius?language=objc
-func (d_ DetectTrajectoriesRequest) SetObjectMinimumNormalizedRadius(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setObjectMinimumNormalizedRadius:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675670-objectmaximumnormalizedradius?language=objc
+func (d_ DetectTrajectoriesRequest) SetObjectMaximumNormalizedRadius(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setObjectMaximumNormalizedRadius:"), value)
 }
 
 // The requested target frame time for processing trajectory detection. [Full Topic]
@@ -133,25 +133,25 @@ func (d_ DetectTrajectoriesRequest) SetTargetFrameTime(value coremedia.Time) {
 	objc.Call[objc.Void](d_, objc.Sel("setTargetFrameTime:"), value)
 }
 
-// The maximum radius of the bounding circle of the object to track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675670-objectmaximumnormalizedradius?language=objc
-func (d_ DetectTrajectoriesRequest) ObjectMaximumNormalizedRadius() float32 {
-	rv := objc.Call[float32](d_, objc.Sel("objectMaximumNormalizedRadius"))
-	return rv
-}
-
-// The maximum radius of the bounding circle of the object to track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675670-objectmaximumnormalizedradius?language=objc
-func (d_ DetectTrajectoriesRequest) SetObjectMaximumNormalizedRadius(value float32) {
-	objc.Call[objc.Void](d_, objc.Sel("setObjectMaximumNormalizedRadius:"), value)
-}
-
 // The number of points to detect before calculating a trajectory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675673-trajectorylength?language=objc
 func (d_ DetectTrajectoriesRequest) TrajectoryLength() int {
 	rv := objc.Call[int](d_, objc.Sel("trajectoryLength"))
 	return rv
+}
+
+// The minimum radius of the bounding circle of the object to track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675671-objectminimumnormalizedradius?language=objc
+func (d_ DetectTrajectoriesRequest) ObjectMinimumNormalizedRadius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("objectMinimumNormalizedRadius"))
+	return rv
+}
+
+// The minimum radius of the bounding circle of the object to track. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vndetecttrajectoriesrequest/3675671-objectminimumnormalizedradius?language=objc
+func (d_ DetectTrajectoriesRequest) SetObjectMinimumNormalizedRadius(value float32) {
+	objc.Call[objc.Void](d_, objc.Sel("setObjectMinimumNormalizedRadius:"), value)
 }

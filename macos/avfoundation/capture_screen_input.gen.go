@@ -20,16 +20,16 @@ type _CaptureScreenInputClass struct {
 // An interface definition for the [CaptureScreenInput] class.
 type ICaptureScreenInput interface {
 	ICaptureInput
-	CropRect() coregraphics.Rect
-	SetCropRect(value coregraphics.Rect)
-	ScaleFactor() float64
-	SetScaleFactor(value float64)
 	CapturesCursor() bool
 	SetCapturesCursor(value bool)
-	MinFrameDuration() coremedia.Time
-	SetMinFrameDuration(value coremedia.Time)
+	ScaleFactor() float64
+	SetScaleFactor(value float64)
 	CapturesMouseClicks() bool
 	SetCapturesMouseClicks(value bool)
+	MinFrameDuration() coremedia.Time
+	SetMinFrameDuration(value coremedia.Time)
+	CropRect() coregraphics.Rect
+	SetCropRect(value coregraphics.Rect)
 }
 
 // A capture input for recording from a screen in macOS. [Full Topic]
@@ -79,19 +79,19 @@ func (cc _CaptureScreenInputClass) Alloc() CaptureScreenInput {
 	return rv
 }
 
-// Indicates the bounding rectangle of the screen area to be captured, in pixels. [Full Topic]
+// A Boolean value that specifies whether the mouse cursor appears in the captured output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1390518-croprect?language=objc
-func (c_ CaptureScreenInput) CropRect() coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("cropRect"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385601-capturescursor?language=objc
+func (c_ CaptureScreenInput) CapturesCursor() bool {
+	rv := objc.Call[bool](c_, objc.Sel("capturesCursor"))
 	return rv
 }
 
-// Indicates the bounding rectangle of the screen area to be captured, in pixels. [Full Topic]
+// A Boolean value that specifies whether the mouse cursor appears in the captured output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1390518-croprect?language=objc
-func (c_ CaptureScreenInput) SetCropRect(value coregraphics.Rect) {
-	objc.Call[objc.Void](c_, objc.Sel("setCropRect:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385601-capturescursor?language=objc
+func (c_ CaptureScreenInput) SetCapturesCursor(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setCapturesCursor:"), value)
 }
 
 // Indicates the factor by which video buffers captured from the screen are to be scaled. [Full Topic]
@@ -109,19 +109,19 @@ func (c_ CaptureScreenInput) SetScaleFactor(value float64) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleFactor:"), value)
 }
 
-// A Boolean value that specifies whether the mouse cursor appears in the captured output. [Full Topic]
+// A Boolean value that specifies whether mouse clicks appear highlighted in the captured output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385601-capturescursor?language=objc
-func (c_ CaptureScreenInput) CapturesCursor() bool {
-	rv := objc.Call[bool](c_, objc.Sel("capturesCursor"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385722-capturesmouseclicks?language=objc
+func (c_ CaptureScreenInput) CapturesMouseClicks() bool {
+	rv := objc.Call[bool](c_, objc.Sel("capturesMouseClicks"))
 	return rv
 }
 
-// A Boolean value that specifies whether the mouse cursor appears in the captured output. [Full Topic]
+// A Boolean value that specifies whether mouse clicks appear highlighted in the captured output. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385601-capturescursor?language=objc
-func (c_ CaptureScreenInput) SetCapturesCursor(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setCapturesCursor:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385722-capturesmouseclicks?language=objc
+func (c_ CaptureScreenInput) SetCapturesMouseClicks(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setCapturesMouseClicks:"), value)
 }
 
 // The screen input's minimum frame duration. [Full Topic]
@@ -139,17 +139,17 @@ func (c_ CaptureScreenInput) SetMinFrameDuration(value coremedia.Time) {
 	objc.Call[objc.Void](c_, objc.Sel("setMinFrameDuration:"), value)
 }
 
-// A Boolean value that specifies whether mouse clicks appear highlighted in the captured output. [Full Topic]
+// Indicates the bounding rectangle of the screen area to be captured, in pixels. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385722-capturesmouseclicks?language=objc
-func (c_ CaptureScreenInput) CapturesMouseClicks() bool {
-	rv := objc.Call[bool](c_, objc.Sel("capturesMouseClicks"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1390518-croprect?language=objc
+func (c_ CaptureScreenInput) CropRect() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("cropRect"))
 	return rv
 }
 
-// A Boolean value that specifies whether mouse clicks appear highlighted in the captured output. [Full Topic]
+// Indicates the bounding rectangle of the screen area to be captured, in pixels. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1385722-capturesmouseclicks?language=objc
-func (c_ CaptureScreenInput) SetCapturesMouseClicks(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setCapturesMouseClicks:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturescreeninput/1390518-croprect?language=objc
+func (c_ CaptureScreenInput) SetCropRect(value coregraphics.Rect) {
+	objc.Call[objc.Void](c_, objc.Sel("setCropRect:"), value)
 }

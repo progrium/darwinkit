@@ -18,20 +18,20 @@ type _DateIntervalFormatterClass struct {
 // An interface definition for the [DateIntervalFormatter] class.
 type IDateIntervalFormatter interface {
 	IFormatter
-	StringFromDateToDate(fromDate IDate, toDate IDate) string
 	StringFromDateInterval(dateInterval IDateInterval) string
-	TimeZone() TimeZone
-	SetTimeZone(value ITimeZone)
-	DateTemplate() string
-	SetDateTemplate(value string)
+	StringFromDateToDate(fromDate IDate, toDate IDate) string
 	Locale() Locale
 	SetLocale(value ILocale)
+	TimeZone() TimeZone
+	SetTimeZone(value ITimeZone)
+	TimeStyle() DateIntervalFormatterStyle
+	SetTimeStyle(value DateIntervalFormatterStyle)
 	DateStyle() DateIntervalFormatterStyle
 	SetDateStyle(value DateIntervalFormatterStyle)
 	Calendar() Calendar
 	SetCalendar(value ICalendar)
-	TimeStyle() DateIntervalFormatterStyle
-	SetTimeStyle(value DateIntervalFormatterStyle)
+	DateTemplate() string
+	SetDateTemplate(value string)
 }
 
 // A formatter that creates string representations of time intervals. [Full Topic]
@@ -67,6 +67,14 @@ func (d_ DateIntervalFormatter) Init() DateIntervalFormatter {
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1642848-stringfromdateinterval?language=objc
+func (d_ DateIntervalFormatter) StringFromDateInterval(dateInterval IDateInterval) string {
+	rv := objc.Call[string](d_, objc.Sel("stringFromDateInterval:"), dateInterval)
+	return rv
+}
+
 // Returns a formatted string based on the specified start and end dates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1418368-stringfromdate?language=objc
@@ -75,12 +83,19 @@ func (d_ DateIntervalFormatter) StringFromDateToDate(fromDate IDate, toDate IDat
 	return rv
 }
 
-//	[Full Topic]
+// The locale to use when formatting date and time values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1642848-stringfromdateinterval?language=objc
-func (d_ DateIntervalFormatter) StringFromDateInterval(dateInterval IDateInterval) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDateInterval:"), dateInterval)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1409992-locale?language=objc
+func (d_ DateIntervalFormatter) Locale() Locale {
+	rv := objc.Call[Locale](d_, objc.Sel("locale"))
 	return rv
+}
+
+// The locale to use when formatting date and time values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1409992-locale?language=objc
+func (d_ DateIntervalFormatter) SetLocale(value ILocale) {
+	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
 }
 
 // The time zone with which to specify time values. [Full Topic]
@@ -98,34 +113,19 @@ func (d_ DateIntervalFormatter) SetTimeZone(value ITimeZone) {
 	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
-// The template for formatting one date and time value. [Full Topic]
+// The style to use when formatting hour, minute, and second information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1407373-datetemplate?language=objc
-func (d_ DateIntervalFormatter) DateTemplate() string {
-	rv := objc.Call[string](d_, objc.Sel("dateTemplate"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1415655-timestyle?language=objc
+func (d_ DateIntervalFormatter) TimeStyle() DateIntervalFormatterStyle {
+	rv := objc.Call[DateIntervalFormatterStyle](d_, objc.Sel("timeStyle"))
 	return rv
 }
 
-// The template for formatting one date and time value. [Full Topic]
+// The style to use when formatting hour, minute, and second information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1407373-datetemplate?language=objc
-func (d_ DateIntervalFormatter) SetDateTemplate(value string) {
-	objc.Call[objc.Void](d_, objc.Sel("setDateTemplate:"), value)
-}
-
-// The locale to use when formatting date and time values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1409992-locale?language=objc
-func (d_ DateIntervalFormatter) Locale() Locale {
-	rv := objc.Call[Locale](d_, objc.Sel("locale"))
-	return rv
-}
-
-// The locale to use when formatting date and time values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1409992-locale?language=objc
-func (d_ DateIntervalFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1415655-timestyle?language=objc
+func (d_ DateIntervalFormatter) SetTimeStyle(value DateIntervalFormatterStyle) {
+	objc.Call[objc.Void](d_, objc.Sel("setTimeStyle:"), value)
 }
 
 // The style to use when formatting day, month, and year information. [Full Topic]
@@ -158,17 +158,17 @@ func (d_ DateIntervalFormatter) SetCalendar(value ICalendar) {
 	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
-// The style to use when formatting hour, minute, and second information. [Full Topic]
+// The template for formatting one date and time value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1415655-timestyle?language=objc
-func (d_ DateIntervalFormatter) TimeStyle() DateIntervalFormatterStyle {
-	rv := objc.Call[DateIntervalFormatterStyle](d_, objc.Sel("timeStyle"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1407373-datetemplate?language=objc
+func (d_ DateIntervalFormatter) DateTemplate() string {
+	rv := objc.Call[string](d_, objc.Sel("dateTemplate"))
 	return rv
 }
 
-// The style to use when formatting hour, minute, and second information. [Full Topic]
+// The template for formatting one date and time value. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1415655-timestyle?language=objc
-func (d_ DateIntervalFormatter) SetTimeStyle(value DateIntervalFormatterStyle) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeStyle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1407373-datetemplate?language=objc
+func (d_ DateIntervalFormatter) SetDateTemplate(value string) {
+	objc.Call[objc.Void](d_, objc.Sel("setDateTemplate:"), value)
 }

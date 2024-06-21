@@ -18,10 +18,10 @@ type _ComputePassSampleBufferAttachmentDescriptorClass struct {
 // An interface definition for the [ComputePassSampleBufferAttachmentDescriptor] class.
 type IComputePassSampleBufferAttachmentDescriptor interface {
 	objc.IObject
-	EndOfEncoderSampleIndex() uint
-	SetEndOfEncoderSampleIndex(value uint)
 	StartOfEncoderSampleIndex() uint
 	SetStartOfEncoderSampleIndex(value uint)
+	EndOfEncoderSampleIndex() uint
+	SetEndOfEncoderSampleIndex(value uint)
 	SampleBuffer() CounterSampleBufferObject
 	SetSampleBuffer(value PCounterSampleBuffer)
 	SetSampleBufferObject(valueObject objc.IObject)
@@ -60,21 +60,6 @@ func (c_ ComputePassSampleBufferAttachmentDescriptor) Init() ComputePassSampleBu
 	return rv
 }
 
-// The index the Metal device object uses to store GPU counters when ending the compute pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564438-endofencodersampleindex?language=objc
-func (c_ ComputePassSampleBufferAttachmentDescriptor) EndOfEncoderSampleIndex() uint {
-	rv := objc.Call[uint](c_, objc.Sel("endOfEncoderSampleIndex"))
-	return rv
-}
-
-// The index the Metal device object uses to store GPU counters when ending the compute pass. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564438-endofencodersampleindex?language=objc
-func (c_ ComputePassSampleBufferAttachmentDescriptor) SetEndOfEncoderSampleIndex(value uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setEndOfEncoderSampleIndex:"), value)
-}
-
 // The index the Metal device object uses to store GPU counters when starting the compute pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564440-startofencodersampleindex?language=objc
@@ -88,6 +73,21 @@ func (c_ ComputePassSampleBufferAttachmentDescriptor) StartOfEncoderSampleIndex(
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564440-startofencodersampleindex?language=objc
 func (c_ ComputePassSampleBufferAttachmentDescriptor) SetStartOfEncoderSampleIndex(value uint) {
 	objc.Call[objc.Void](c_, objc.Sel("setStartOfEncoderSampleIndex:"), value)
+}
+
+// The index the Metal device object uses to store GPU counters when ending the compute pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564438-endofencodersampleindex?language=objc
+func (c_ ComputePassSampleBufferAttachmentDescriptor) EndOfEncoderSampleIndex() uint {
+	rv := objc.Call[uint](c_, objc.Sel("endOfEncoderSampleIndex"))
+	return rv
+}
+
+// The index the Metal device object uses to store GPU counters when ending the compute pass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564438-endofencodersampleindex?language=objc
+func (c_ ComputePassSampleBufferAttachmentDescriptor) SetEndOfEncoderSampleIndex(value uint) {
+	objc.Call[objc.Void](c_, objc.Sel("setEndOfEncoderSampleIndex:"), value)
 }
 
 // A specialized memory buffer that the GPU uses to store its counter data during the compute pass. [Full Topic]

@@ -19,12 +19,12 @@ type _CaptureInputPortClass struct {
 // An interface definition for the [CaptureInputPort] class.
 type ICaptureInputPort interface {
 	objc.IObject
+	Clock() coremedia.ClockRef
+	Input() CaptureInput
+	MediaType() MediaType
 	IsEnabled() bool
 	SetEnabled(value bool)
-	Input() CaptureInput
 	FormatDescription() coremedia.FormatDescriptionRef
-	MediaType() MediaType
-	Clock() coremedia.ClockRef
 }
 
 // An object that represents a stream of data that a capture input provides. [Full Topic]
@@ -60,6 +60,30 @@ func (c_ CaptureInputPort) Init() CaptureInputPort {
 	return rv
 }
 
+// An object that represents the capture device’s clock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1385908-clock?language=objc
+func (c_ CaptureInputPort) Clock() coremedia.ClockRef {
+	rv := objc.Call[coremedia.ClockRef](c_, objc.Sel("clock"))
+	return rv
+}
+
+// The input object that owns the port. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1387702-input?language=objc
+func (c_ CaptureInputPort) Input() CaptureInput {
+	rv := objc.Call[CaptureInput](c_, objc.Sel("input"))
+	return rv
+}
+
+// The media type of the port. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1387120-mediatype?language=objc
+func (c_ CaptureInputPort) MediaType() MediaType {
+	rv := objc.Call[MediaType](c_, objc.Sel("mediaType"))
+	return rv
+}
+
 // A Boolean value that indicates whether the port is in an enabled state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1386833-enabled?language=objc
@@ -75,34 +99,10 @@ func (c_ CaptureInputPort) SetEnabled(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setEnabled:"), value)
 }
 
-// The input object that owns the port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1387702-input?language=objc
-func (c_ CaptureInputPort) Input() CaptureInput {
-	rv := objc.Call[CaptureInput](c_, objc.Sel("input"))
-	return rv
-}
-
 // A description of the port format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1385890-formatdescription?language=objc
 func (c_ CaptureInputPort) FormatDescription() coremedia.FormatDescriptionRef {
 	rv := objc.Call[coremedia.FormatDescriptionRef](c_, objc.Sel("formatDescription"))
-	return rv
-}
-
-// The media type of the port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1387120-mediatype?language=objc
-func (c_ CaptureInputPort) MediaType() MediaType {
-	rv := objc.Call[MediaType](c_, objc.Sel("mediaType"))
-	return rv
-}
-
-// An object that represents the capture device’s clock. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureinputport/1385908-clock?language=objc
-func (c_ CaptureInputPort) Clock() coremedia.ClockRef {
-	rv := objc.Call[coremedia.ClockRef](c_, objc.Sel("clock"))
 	return rv
 }

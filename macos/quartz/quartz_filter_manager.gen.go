@@ -21,11 +21,11 @@ type _QuartzFilterManagerClass struct {
 type IQuartzFilterManager interface {
 	objc.IObject
 	SetDelegate(aDelegate objc.IObject)
-	Delegate() objc.Object
-	SelectedFilter() QuartzFilter
 	SelectFilter(filter IQuartzFilter) bool
-	FilterView() QuartzFilterView
 	FilterPanel() appkit.Panel
+	Delegate() objc.Object
+	FilterView() QuartzFilterView
+	SelectedFilter() QuartzFilter
 	ImportFilter(filterProperties foundation.Dictionary) QuartzFilter
 }
 
@@ -71,17 +71,18 @@ func (q_ QuartzFilterManager) SetDelegate(aDelegate objc.IObject) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503432-filtersindomains?language=objc
-func (qc _QuartzFilterManagerClass) FiltersInDomains(domains []objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](qc, objc.Sel("filtersInDomains:"), domains)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503913-selectfilter?language=objc
+func (q_ QuartzFilterManager) SelectFilter(filter IQuartzFilter) bool {
+	rv := objc.Call[bool](q_, objc.Sel("selectFilter:"), filter)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503432-filtersindomains?language=objc
-func QuartzFilterManager_FiltersInDomains(domains []objc.IObject) []objc.Object {
-	return QuartzFilterManagerClass.FiltersInDomains(domains)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1505297-filterpanel?language=objc
+func (q_ QuartzFilterManager) FilterPanel() appkit.Panel {
+	rv := objc.Call[appkit.Panel](q_, objc.Sel("filterPanel"))
+	return rv
 }
 
 //	[Full Topic]
@@ -89,6 +90,14 @@ func QuartzFilterManager_FiltersInDomains(domains []objc.IObject) []objc.Object 
 // [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503409-delegate?language=objc
 func (q_ QuartzFilterManager) Delegate() objc.Object {
 	rv := objc.Call[objc.Object](q_, objc.Sel("delegate"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1505290-filterview?language=objc
+func (q_ QuartzFilterManager) FilterView() QuartzFilterView {
+	rv := objc.Call[QuartzFilterView](q_, objc.Sel("filterView"))
 	return rv
 }
 
@@ -109,33 +118,24 @@ func QuartzFilterManager_FilterManager() QuartzFilterManager {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503432-filtersindomains?language=objc
+func (qc _QuartzFilterManagerClass) FiltersInDomains(domains []objc.IObject) []objc.Object {
+	rv := objc.Call[[]objc.Object](qc, objc.Sel("filtersInDomains:"), domains)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503432-filtersindomains?language=objc
+func QuartzFilterManager_FiltersInDomains(domains []objc.IObject) []objc.Object {
+	return QuartzFilterManagerClass.FiltersInDomains(domains)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1504816-selectedfilter?language=objc
 func (q_ QuartzFilterManager) SelectedFilter() QuartzFilter {
 	rv := objc.Call[QuartzFilter](q_, objc.Sel("selectedFilter"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503913-selectfilter?language=objc
-func (q_ QuartzFilterManager) SelectFilter(filter IQuartzFilter) bool {
-	rv := objc.Call[bool](q_, objc.Sel("selectFilter:"), filter)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1505290-filterview?language=objc
-func (q_ QuartzFilterManager) FilterView() QuartzFilterView {
-	rv := objc.Call[QuartzFilterView](q_, objc.Sel("filterView"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1505297-filterpanel?language=objc
-func (q_ QuartzFilterManager) FilterPanel() appkit.Panel {
-	rv := objc.Call[appkit.Panel](q_, objc.Sel("filterPanel"))
 	return rv
 }
 

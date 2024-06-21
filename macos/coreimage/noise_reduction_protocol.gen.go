@@ -19,20 +19,20 @@ type PNoiseReduction interface {
 	HasInputImage() bool
 
 	// optional
-	SetNoiseLevel(value float32)
-	HasSetNoiseLevel() bool
-
-	// optional
-	NoiseLevel() float32
-	HasNoiseLevel() bool
-
-	// optional
 	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
 	Sharpness() float32
 	HasSharpness() bool
+
+	// optional
+	SetNoiseLevel(value float32)
+	HasSetNoiseLevel() bool
+
+	// optional
+	NoiseLevel() float32
+	HasNoiseLevel() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,29 +66,6 @@ func (n_ NoiseReductionObject) InputImage() Image {
 	return rv
 }
 
-func (n_ NoiseReductionObject) HasSetNoiseLevel() bool {
-	return n_.RespondsToSelector(objc.Sel("setNoiseLevel:"))
-}
-
-// The amount of noise reduction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cinoisereduction/3228596-noiselevel?language=objc
-func (n_ NoiseReductionObject) SetNoiseLevel(value float32) {
-	objc.Call[objc.Void](n_, objc.Sel("setNoiseLevel:"), value)
-}
-
-func (n_ NoiseReductionObject) HasNoiseLevel() bool {
-	return n_.RespondsToSelector(objc.Sel("noiseLevel"))
-}
-
-// The amount of noise reduction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cinoisereduction/3228596-noiselevel?language=objc
-func (n_ NoiseReductionObject) NoiseLevel() float32 {
-	rv := objc.Call[float32](n_, objc.Sel("noiseLevel"))
-	return rv
-}
-
 func (n_ NoiseReductionObject) HasSetSharpness() bool {
 	return n_.RespondsToSelector(objc.Sel("setSharpness:"))
 }
@@ -109,5 +86,28 @@ func (n_ NoiseReductionObject) HasSharpness() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cinoisereduction/3228597-sharpness?language=objc
 func (n_ NoiseReductionObject) Sharpness() float32 {
 	rv := objc.Call[float32](n_, objc.Sel("sharpness"))
+	return rv
+}
+
+func (n_ NoiseReductionObject) HasSetNoiseLevel() bool {
+	return n_.RespondsToSelector(objc.Sel("setNoiseLevel:"))
+}
+
+// The amount of noise reduction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cinoisereduction/3228596-noiselevel?language=objc
+func (n_ NoiseReductionObject) SetNoiseLevel(value float32) {
+	objc.Call[objc.Void](n_, objc.Sel("setNoiseLevel:"), value)
+}
+
+func (n_ NoiseReductionObject) HasNoiseLevel() bool {
+	return n_.RespondsToSelector(objc.Sel("noiseLevel"))
+}
+
+// The amount of noise reduction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cinoisereduction/3228596-noiselevel?language=objc
+func (n_ NoiseReductionObject) NoiseLevel() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("noiseLevel"))
 	return rv
 }

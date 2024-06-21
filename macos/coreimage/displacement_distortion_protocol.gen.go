@@ -19,20 +19,20 @@ type PDisplacementDistortion interface {
 	HasScale() bool
 
 	// optional
-	SetDisplacementImage(value Image)
-	HasSetDisplacementImage() bool
-
-	// optional
-	DisplacementImage() Image
-	HasDisplacementImage() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetDisplacementImage(value Image)
+	HasSetDisplacementImage() bool
+
+	// optional
+	DisplacementImage() Image
+	HasDisplacementImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,29 +66,6 @@ func (d_ DisplacementDistortionObject) Scale() float32 {
 	return rv
 }
 
-func (d_ DisplacementDistortionObject) HasSetDisplacementImage() bool {
-	return d_.RespondsToSelector(objc.Sel("setDisplacementImage:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600127-displacementimage?language=objc
-func (d_ DisplacementDistortionObject) SetDisplacementImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setDisplacementImage:"), value)
-}
-
-func (d_ DisplacementDistortionObject) HasDisplacementImage() bool {
-	return d_.RespondsToSelector(objc.Sel("displacementImage"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600127-displacementimage?language=objc
-func (d_ DisplacementDistortionObject) DisplacementImage() Image {
-	rv := objc.Call[Image](d_, objc.Sel("displacementImage"))
-	return rv
-}
-
 func (d_ DisplacementDistortionObject) HasSetInputImage() bool {
 	return d_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
@@ -109,5 +86,28 @@ func (d_ DisplacementDistortionObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600128-inputimage?language=objc
 func (d_ DisplacementDistortionObject) InputImage() Image {
 	rv := objc.Call[Image](d_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (d_ DisplacementDistortionObject) HasSetDisplacementImage() bool {
+	return d_.RespondsToSelector(objc.Sel("setDisplacementImage:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600127-displacementimage?language=objc
+func (d_ DisplacementDistortionObject) SetDisplacementImage(value Image) {
+	objc.Call[objc.Void](d_, objc.Sel("setDisplacementImage:"), value)
+}
+
+func (d_ DisplacementDistortionObject) HasDisplacementImage() bool {
+	return d_.RespondsToSelector(objc.Sel("displacementImage"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600127-displacementimage?language=objc
+func (d_ DisplacementDistortionObject) DisplacementImage() Image {
+	rv := objc.Call[Image](d_, objc.Sel("displacementImage"))
 	return rv
 }

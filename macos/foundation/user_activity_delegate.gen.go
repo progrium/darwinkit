@@ -15,19 +15,19 @@ type PUserActivityDelegate interface {
 	HasUserActivityWasContinued() bool
 
 	// optional
-	UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)
-	HasUserActivityDidReceiveInputStreamOutputStream() bool
-
-	// optional
 	UserActivityWillSave(userActivity UserActivity)
 	HasUserActivityWillSave() bool
+
+	// optional
+	UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)
+	HasUserActivityDidReceiveInputStreamOutputStream() bool
 }
 
 // A delegate implementation builder for the [PUserActivityDelegate] protocol.
 type UserActivityDelegate struct {
 	_UserActivityWasContinued                      func(userActivity UserActivity)
-	_UserActivityDidReceiveInputStreamOutputStream func(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)
 	_UserActivityWillSave                          func(userActivity UserActivity)
+	_UserActivityDidReceiveInputStreamOutputStream func(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)
 }
 
 func (di *UserActivityDelegate) HasUserActivityWasContinued() bool {
@@ -47,23 +47,6 @@ func (di *UserActivityDelegate) SetUserActivityWasContinued(f func(userActivity 
 func (di *UserActivityDelegate) UserActivityWasContinued(userActivity UserActivity) {
 	di._UserActivityWasContinued(userActivity)
 }
-func (di *UserActivityDelegate) HasUserActivityDidReceiveInputStreamOutputStream() bool {
-	return di._UserActivityDidReceiveInputStreamOutputStream != nil
-}
-
-// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
-func (di *UserActivityDelegate) SetUserActivityDidReceiveInputStreamOutputStream(f func(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)) {
-	di._UserActivityDidReceiveInputStreamOutputStream = f
-}
-
-// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
-func (di *UserActivityDelegate) UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream) {
-	di._UserActivityDidReceiveInputStreamOutputStream(userActivity, inputStream, outputStream)
-}
 func (di *UserActivityDelegate) HasUserActivityWillSave() bool {
 	return di._UserActivityWillSave != nil
 }
@@ -80,6 +63,23 @@ func (di *UserActivityDelegate) SetUserActivityWillSave(f func(userActivity User
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1414848-useractivitywillsave?language=objc
 func (di *UserActivityDelegate) UserActivityWillSave(userActivity UserActivity) {
 	di._UserActivityWillSave(userActivity)
+}
+func (di *UserActivityDelegate) HasUserActivityDidReceiveInputStreamOutputStream() bool {
+	return di._UserActivityDidReceiveInputStreamOutputStream != nil
+}
+
+// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
+func (di *UserActivityDelegate) SetUserActivityDidReceiveInputStreamOutputStream(f func(userActivity UserActivity, inputStream InputStream, outputStream OutputStream)) {
+	di._UserActivityDidReceiveInputStreamOutputStream = f
+}
+
+// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
+func (di *UserActivityDelegate) UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream) {
+	di._UserActivityDidReceiveInputStreamOutputStream(userActivity, inputStream, outputStream)
 }
 
 // ensure impl type implements protocol interface
@@ -101,17 +101,6 @@ func (u_ UserActivityDelegateObject) UserActivityWasContinued(userActivity UserA
 	objc.Call[objc.Void](u_, objc.Sel("userActivityWasContinued:"), userActivity)
 }
 
-func (u_ UserActivityDelegateObject) HasUserActivityDidReceiveInputStreamOutputStream() bool {
-	return u_.RespondsToSelector(objc.Sel("userActivity:didReceiveInputStream:outputStream:"))
-}
-
-// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
-func (u_ UserActivityDelegateObject) UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream) {
-	objc.Call[objc.Void](u_, objc.Sel("userActivity:didReceiveInputStream:outputStream:"), userActivity, inputStream, outputStream)
-}
-
 func (u_ UserActivityDelegateObject) HasUserActivityWillSave() bool {
 	return u_.RespondsToSelector(objc.Sel("userActivityWillSave:"))
 }
@@ -121,4 +110,15 @@ func (u_ UserActivityDelegateObject) HasUserActivityWillSave() bool {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1414848-useractivitywillsave?language=objc
 func (u_ UserActivityDelegateObject) UserActivityWillSave(userActivity UserActivity) {
 	objc.Call[objc.Void](u_, objc.Sel("userActivityWillSave:"), userActivity)
+}
+
+func (u_ UserActivityDelegateObject) HasUserActivityDidReceiveInputStreamOutputStream() bool {
+	return u_.RespondsToSelector(objc.Sel("userActivity:didReceiveInputStream:outputStream:"))
+}
+
+// Notifies the user activity delegate that an input and output streams are available to open. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
+func (u_ UserActivityDelegateObject) UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream) {
+	objc.Call[objc.Void](u_, objc.Sel("userActivity:didReceiveInputStream:outputStream:"), userActivity, inputStream, outputStream)
 }

@@ -20,18 +20,18 @@ type _CaptureVideoDataOutputClass struct {
 // An interface definition for the [CaptureVideoDataOutput] class.
 type ICaptureVideoDataOutput interface {
 	ICaptureOutput
-	RecommendedVideoSettingsForVideoCodecTypeAssetWriterOutputFileType(videoCodecType VideoCodecType, outputFileType FileType) map[string]objc.Object
-	RecommendedVideoSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object
 	AvailableVideoCodecTypesForAssetWriterWithOutputFileType(outputFileType FileType) []VideoCodecType
+	RecommendedVideoSettingsForAssetWriterWithOutputFileType(outputFileType FileType) map[string]objc.Object
+	RecommendedVideoSettingsForVideoCodecTypeAssetWriterOutputFileType(videoCodecType VideoCodecType, outputFileType FileType) map[string]objc.Object
 	SetSampleBufferDelegateQueue(sampleBufferDelegate PCaptureVideoDataOutputSampleBufferDelegate, sampleBufferCallbackQueue dispatch.Queue)
 	SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue)
+	AvailableVideoCVPixelFormatTypes() []foundation.Number
 	VideoSettings() map[string]objc.Object
 	SetVideoSettings(value map[string]objc.IObject)
 	SampleBufferCallbackQueue() dispatch.Queue
 	AvailableVideoCodecTypes() []VideoCodecType
 	AlwaysDiscardsLateVideoFrames() bool
 	SetAlwaysDiscardsLateVideoFrames(value bool)
-	AvailableVideoCVPixelFormatTypes() []foundation.Number
 	SampleBufferDelegate() CaptureVideoDataOutputSampleBufferDelegateObject
 }
 
@@ -68,11 +68,11 @@ func (cc _CaptureVideoDataOutputClass) Alloc() CaptureVideoDataOutput {
 	return rv
 }
 
-// Returns a video settings dictionary appropriate for capturing video to be recorded to a file with the specified codec and type. [Full Topic]
+// The video codecs that the output supports for writing video to the output file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/2867900-recommendedvideosettingsforvideo?language=objc
-func (c_ CaptureVideoDataOutput) RecommendedVideoSettingsForVideoCodecTypeAssetWriterOutputFileType(videoCodecType VideoCodecType, outputFileType FileType) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("recommendedVideoSettingsForVideoCodecType:assetWriterOutputFileType:"), videoCodecType, outputFileType)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/2867901-availablevideocodectypesforasset?language=objc
+func (c_ CaptureVideoDataOutput) AvailableVideoCodecTypesForAssetWriterWithOutputFileType(outputFileType FileType) []VideoCodecType {
+	rv := objc.Call[[]VideoCodecType](c_, objc.Sel("availableVideoCodecTypesForAssetWriterWithOutputFileType:"), outputFileType)
 	return rv
 }
 
@@ -84,11 +84,11 @@ func (c_ CaptureVideoDataOutput) RecommendedVideoSettingsForAssetWriterWithOutpu
 	return rv
 }
 
-// The video codecs that the output supports for writing video to the output file. [Full Topic]
+// Returns a video settings dictionary appropriate for capturing video to be recorded to a file with the specified codec and type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/2867901-availablevideocodectypesforasset?language=objc
-func (c_ CaptureVideoDataOutput) AvailableVideoCodecTypesForAssetWriterWithOutputFileType(outputFileType FileType) []VideoCodecType {
-	rv := objc.Call[[]VideoCodecType](c_, objc.Sel("availableVideoCodecTypesForAssetWriterWithOutputFileType:"), outputFileType)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/2867900-recommendedvideosettingsforvideo?language=objc
+func (c_ CaptureVideoDataOutput) RecommendedVideoSettingsForVideoCodecTypeAssetWriterOutputFileType(videoCodecType VideoCodecType, outputFileType FileType) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("recommendedVideoSettingsForVideoCodecType:assetWriterOutputFileType:"), videoCodecType, outputFileType)
 	return rv
 }
 
@@ -105,6 +105,14 @@ func (c_ CaptureVideoDataOutput) SetSampleBufferDelegateQueue(sampleBufferDelega
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/1389008-setsamplebufferdelegate?language=objc
 func (c_ CaptureVideoDataOutput) SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue) {
 	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), sampleBufferDelegateObject, sampleBufferCallbackQueue)
+}
+
+// The video pixel formats that the output supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/1387050-availablevideocvpixelformattypes?language=objc
+func (c_ CaptureVideoDataOutput) AvailableVideoCVPixelFormatTypes() []foundation.Number {
+	rv := objc.Call[[]foundation.Number](c_, objc.Sel("availableVideoCVPixelFormatTypes"))
+	return rv
 }
 
 // A dictionary that contains the compression settings for the output. [Full Topic]
@@ -151,14 +159,6 @@ func (c_ CaptureVideoDataOutput) AlwaysDiscardsLateVideoFrames() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/1385780-alwaysdiscardslatevideoframes?language=objc
 func (c_ CaptureVideoDataOutput) SetAlwaysDiscardsLateVideoFrames(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlwaysDiscardsLateVideoFrames:"), value)
-}
-
-// The video pixel formats that the output supports. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/1387050-availablevideocvpixelformattypes?language=objc
-func (c_ CaptureVideoDataOutput) AvailableVideoCVPixelFormatTypes() []foundation.Number {
-	rv := objc.Call[[]foundation.Number](c_, objc.Sel("availableVideoCVPixelFormatTypes"))
-	return rv
 }
 
 // The capture object’s delegate. [Full Topic]

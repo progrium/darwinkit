@@ -11,10 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap?language=objc
 type PRasterizationRateMap interface {
 	// optional
-	CopyParameterDataToBufferOffset(buffer BufferObject, offset uint)
-	HasCopyParameterDataToBufferOffset() bool
-
-	// optional
 	MapPhysicalToScreenCoordinatesForLayer(physicalCoordinates Coordinate2D, layerIndex uint) Coordinate2D
 	HasMapPhysicalToScreenCoordinatesForLayer() bool
 
@@ -23,12 +19,12 @@ type PRasterizationRateMap interface {
 	HasPhysicalSizeForLayer() bool
 
 	// optional
-	MapScreenToPhysicalCoordinatesForLayer(screenCoordinates Coordinate2D, layerIndex uint) Coordinate2D
-	HasMapScreenToPhysicalCoordinatesForLayer() bool
+	CopyParameterDataToBufferOffset(buffer BufferObject, offset uint)
+	HasCopyParameterDataToBufferOffset() bool
 
 	// optional
-	LayerCount() uint
-	HasLayerCount() bool
+	MapScreenToPhysicalCoordinatesForLayer(screenCoordinates Coordinate2D, layerIndex uint) Coordinate2D
+	HasMapScreenToPhysicalCoordinatesForLayer() bool
 
 	// optional
 	ParameterBufferSizeAndAlign() SizeAndAlign
@@ -39,6 +35,10 @@ type PRasterizationRateMap interface {
 	HasScreenSize() bool
 
 	// optional
+	Device() DeviceObject
+	HasDevice() bool
+
+	// optional
 	PhysicalGranularity() Size
 	HasPhysicalGranularity() bool
 
@@ -47,8 +47,8 @@ type PRasterizationRateMap interface {
 	HasLabel() bool
 
 	// optional
-	Device() DeviceObject
-	HasDevice() bool
+	LayerCount() uint
+	HasLayerCount() bool
 }
 
 // ensure impl type implements protocol interface
@@ -57,18 +57,6 @@ var _ PRasterizationRateMap = (*RasterizationRateMapObject)(nil)
 // A concrete type for the [PRasterizationRateMap] protocol.
 type RasterizationRateMapObject struct {
 	objc.Object
-}
-
-func (r_ RasterizationRateMapObject) HasCopyParameterDataToBufferOffset() bool {
-	return r_.RespondsToSelector(objc.Sel("copyParameterDataToBuffer:offset:"))
-}
-
-// Copies the parameter data into the provided buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3153125-copyparameterdatatobuffer?language=objc
-func (r_ RasterizationRateMapObject) CopyParameterDataToBufferOffset(buffer BufferObject, offset uint) {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	objc.Call[objc.Void](r_, objc.Sel("copyParameterDataToBuffer:offset:"), po0, offset)
 }
 
 func (r_ RasterizationRateMapObject) HasMapPhysicalToScreenCoordinatesForLayer() bool {
@@ -95,6 +83,18 @@ func (r_ RasterizationRateMapObject) PhysicalSizeForLayer(layerIndex uint) Size 
 	return rv
 }
 
+func (r_ RasterizationRateMapObject) HasCopyParameterDataToBufferOffset() bool {
+	return r_.RespondsToSelector(objc.Sel("copyParameterDataToBuffer:offset:"))
+}
+
+// Copies the parameter data into the provided buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3153125-copyparameterdatatobuffer?language=objc
+func (r_ RasterizationRateMapObject) CopyParameterDataToBufferOffset(buffer BufferObject, offset uint) {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	objc.Call[objc.Void](r_, objc.Sel("copyParameterDataToBuffer:offset:"), po0, offset)
+}
+
 func (r_ RasterizationRateMapObject) HasMapScreenToPhysicalCoordinatesForLayer() bool {
 	return r_.RespondsToSelector(objc.Sel("mapScreenToPhysicalCoordinates:forLayer:"))
 }
@@ -104,18 +104,6 @@ func (r_ RasterizationRateMapObject) HasMapScreenToPhysicalCoordinatesForLayer()
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3173180-mapscreentophysicalcoordinates?language=objc
 func (r_ RasterizationRateMapObject) MapScreenToPhysicalCoordinatesForLayer(screenCoordinates Coordinate2D, layerIndex uint) Coordinate2D {
 	rv := objc.Call[Coordinate2D](r_, objc.Sel("mapScreenToPhysicalCoordinates:forLayer:"), screenCoordinates, layerIndex)
-	return rv
-}
-
-func (r_ RasterizationRateMapObject) HasLayerCount() bool {
-	return r_.RespondsToSelector(objc.Sel("layerCount"))
-}
-
-// The number of layers in the rate map. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3088867-layercount?language=objc
-func (r_ RasterizationRateMapObject) LayerCount() uint {
-	rv := objc.Call[uint](r_, objc.Sel("layerCount"))
 	return rv
 }
 
@@ -143,6 +131,18 @@ func (r_ RasterizationRateMapObject) ScreenSize() Size {
 	return rv
 }
 
+func (r_ RasterizationRateMapObject) HasDevice() bool {
+	return r_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The device object that created the rate map. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3088866-device?language=objc
+func (r_ RasterizationRateMapObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](r_, objc.Sel("device"))
+	return rv
+}
+
 func (r_ RasterizationRateMapObject) HasPhysicalGranularity() bool {
 	return r_.RespondsToSelector(objc.Sel("physicalGranularity"))
 }
@@ -167,14 +167,14 @@ func (r_ RasterizationRateMapObject) Label() string {
 	return rv
 }
 
-func (r_ RasterizationRateMapObject) HasDevice() bool {
-	return r_.RespondsToSelector(objc.Sel("device"))
+func (r_ RasterizationRateMapObject) HasLayerCount() bool {
+	return r_.RespondsToSelector(objc.Sel("layerCount"))
 }
 
-// The device object that created the rate map. [Full Topic]
+// The number of layers in the rate map. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3088866-device?language=objc
-func (r_ RasterizationRateMapObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](r_, objc.Sel("device"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemap/3088867-layercount?language=objc
+func (r_ RasterizationRateMapObject) LayerCount() uint {
+	rv := objc.Call[uint](r_, objc.Sel("layerCount"))
 	return rv
 }

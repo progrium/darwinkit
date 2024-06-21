@@ -18,26 +18,26 @@ type _OperationClass struct {
 // An interface definition for the [Operation] class.
 type IOperation interface {
 	objc.IObject
-	Main()
+	RemoveDependency(op IOperation)
 	AddDependency(op IOperation)
+	Main()
+	Start()
 	WaitUntilFinished()
 	Cancel()
-	Start()
-	RemoveDependency(op IOperation)
-	CompletionBlock() func()
-	SetCompletionBlock(value func())
+	IsCancelled() bool
 	IsExecuting() bool
 	Dependencies() []Operation
-	IsAsynchronous() bool
-	IsCancelled() bool
-	QualityOfService() QualityOfService
-	SetQualityOfService(value QualityOfService)
-	IsFinished() bool
 	Name() string
 	SetName(value string)
+	QualityOfService() QualityOfService
+	SetQualityOfService(value QualityOfService)
+	IsConcurrent() bool
 	QueuePriority() OperationQueuePriority
 	SetQueuePriority(value OperationQueuePriority)
-	IsConcurrent() bool
+	CompletionBlock() func()
+	SetCompletionBlock(value func())
+	IsAsynchronous() bool
+	IsFinished() bool
 	IsReady() bool
 }
 
@@ -74,11 +74,11 @@ func (o_ Operation) Init() Operation {
 	return rv
 }
 
-// Performs the receiver’s non-concurrent task. [Full Topic]
+// Removes the receiver’s dependence on the specified operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1407732-main?language=objc
-func (o_ Operation) Main() {
-	objc.Call[objc.Void](o_, objc.Sel("main"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1414945-removedependency?language=objc
+func (o_ Operation) RemoveDependency(op IOperation) {
+	objc.Call[objc.Void](o_, objc.Sel("removeDependency:"), op)
 }
 
 // Makes the receiver dependent on the completion of the specified operation. [Full Topic]
@@ -86,6 +86,20 @@ func (o_ Operation) Main() {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1412859-adddependency?language=objc
 func (o_ Operation) AddDependency(op IOperation) {
 	objc.Call[objc.Void](o_, objc.Sel("addDependency:"), op)
+}
+
+// Performs the receiver’s non-concurrent task. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1407732-main?language=objc
+func (o_ Operation) Main() {
+	objc.Call[objc.Void](o_, objc.Sel("main"))
+}
+
+// Begins the execution of the operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416837-start?language=objc
+func (o_ Operation) Start() {
+	objc.Call[objc.Void](o_, objc.Sel("start"))
 }
 
 // Blocks execution of the current thread until the operation object finishes its task. [Full Topic]
@@ -102,33 +116,12 @@ func (o_ Operation) Cancel() {
 	objc.Call[objc.Void](o_, objc.Sel("cancel"))
 }
 
-// Begins the execution of the operation. [Full Topic]
+// A Boolean value indicating whether the operation has been cancelled [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416837-start?language=objc
-func (o_ Operation) Start() {
-	objc.Call[objc.Void](o_, objc.Sel("start"))
-}
-
-// Removes the receiver’s dependence on the specified operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1414945-removedependency?language=objc
-func (o_ Operation) RemoveDependency(op IOperation) {
-	objc.Call[objc.Void](o_, objc.Sel("removeDependency:"), op)
-}
-
-// The block to execute after the operation’s main task is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408085-completionblock?language=objc
-func (o_ Operation) CompletionBlock() func() {
-	rv := objc.Call[func()](o_, objc.Sel("completionBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408418-cancelled?language=objc
+func (o_ Operation) IsCancelled() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isCancelled"))
 	return rv
-}
-
-// The block to execute after the operation’s main task is completed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408085-completionblock?language=objc
-func (o_ Operation) SetCompletionBlock(value func()) {
-	objc.Call[objc.Void](o_, objc.Sel("setCompletionBlock:"), value)
 }
 
 // A Boolean value indicating whether the operation is currently executing. [Full Topic]
@@ -147,20 +140,19 @@ func (o_ Operation) Dependencies() []Operation {
 	return rv
 }
 
-// A Boolean value indicating whether the operation executes its task asynchronously. [Full Topic]
+// The name of the operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408275-asynchronous?language=objc
-func (o_ Operation) IsAsynchronous() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isAsynchronous"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416089-name?language=objc
+func (o_ Operation) Name() string {
+	rv := objc.Call[string](o_, objc.Sel("name"))
 	return rv
 }
 
-// A Boolean value indicating whether the operation has been cancelled [Full Topic]
+// The name of the operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408418-cancelled?language=objc
-func (o_ Operation) IsCancelled() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isCancelled"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416089-name?language=objc
+func (o_ Operation) SetName(value string) {
+	objc.Call[objc.Void](o_, objc.Sel("setName:"), value)
 }
 
 // The relative amount of importance for granting system resources to the operation. [Full Topic]
@@ -178,27 +170,12 @@ func (o_ Operation) SetQualityOfService(value QualityOfService) {
 	objc.Call[objc.Void](o_, objc.Sel("setQualityOfService:"), value)
 }
 
-// A Boolean value indicating whether the operation has finished executing its task. [Full Topic]
+// A Boolean value indicating whether the operation executes its task asynchronously. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1413540-finished?language=objc
-func (o_ Operation) IsFinished() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isFinished"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1411089-concurrent?language=objc
+func (o_ Operation) IsConcurrent() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isConcurrent"))
 	return rv
-}
-
-// The name of the operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416089-name?language=objc
-func (o_ Operation) Name() string {
-	rv := objc.Call[string](o_, objc.Sel("name"))
-	return rv
-}
-
-// The name of the operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1416089-name?language=objc
-func (o_ Operation) SetName(value string) {
-	objc.Call[objc.Void](o_, objc.Sel("setName:"), value)
 }
 
 // The execution priority of the operation in an operation queue. [Full Topic]
@@ -216,11 +193,34 @@ func (o_ Operation) SetQueuePriority(value OperationQueuePriority) {
 	objc.Call[objc.Void](o_, objc.Sel("setQueuePriority:"), value)
 }
 
+// The block to execute after the operation’s main task is completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408085-completionblock?language=objc
+func (o_ Operation) CompletionBlock() func() {
+	rv := objc.Call[func()](o_, objc.Sel("completionBlock"))
+	return rv
+}
+
+// The block to execute after the operation’s main task is completed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408085-completionblock?language=objc
+func (o_ Operation) SetCompletionBlock(value func()) {
+	objc.Call[objc.Void](o_, objc.Sel("setCompletionBlock:"), value)
+}
+
 // A Boolean value indicating whether the operation executes its task asynchronously. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1411089-concurrent?language=objc
-func (o_ Operation) IsConcurrent() bool {
-	rv := objc.Call[bool](o_, objc.Sel("isConcurrent"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1408275-asynchronous?language=objc
+func (o_ Operation) IsAsynchronous() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isAsynchronous"))
+	return rv
+}
+
+// A Boolean value indicating whether the operation has finished executing its task. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1413540-finished?language=objc
+func (o_ Operation) IsFinished() bool {
+	rv := objc.Call[bool](o_, objc.Sel("isFinished"))
 	return rv
 }
 

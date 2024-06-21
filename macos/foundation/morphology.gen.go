@@ -19,10 +19,10 @@ type _MorphologyClass struct {
 type IMorphology interface {
 	objc.IObject
 	IsUnspecified() bool
-	GrammaticalGender() GrammaticalGender
-	SetGrammaticalGender(value GrammaticalGender)
 	PartOfSpeech() GrammaticalPartOfSpeech
 	SetPartOfSpeech(value GrammaticalPartOfSpeech)
+	GrammaticalGender() GrammaticalGender
+	SetGrammaticalGender(value GrammaticalGender)
 	Number() GrammaticalNumber
 	SetNumber(value GrammaticalNumber)
 }
@@ -68,36 +68,6 @@ func (m_ Morphology) IsUnspecified() bool {
 	return rv
 }
 
-// The grammatical gender used for inflecting strings with this morphology. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746949-grammaticalgender?language=objc
-func (m_ Morphology) GrammaticalGender() GrammaticalGender {
-	rv := objc.Call[GrammaticalGender](m_, objc.Sel("grammaticalGender"))
-	return rv
-}
-
-// The grammatical gender used for inflecting strings with this morphology. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746949-grammaticalgender?language=objc
-func (m_ Morphology) SetGrammaticalGender(value GrammaticalGender) {
-	objc.Call[objc.Void](m_, objc.Sel("setGrammaticalGender:"), value)
-}
-
-// The addressing preferences of the current user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746954-usermorphology?language=objc
-func (mc _MorphologyClass) UserMorphology() Morphology {
-	rv := objc.Call[Morphology](mc, objc.Sel("userMorphology"))
-	return rv
-}
-
-// The addressing preferences of the current user. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746954-usermorphology?language=objc
-func Morphology_UserMorphology() Morphology {
-	return MorphologyClass.UserMorphology()
-}
-
 // The grammatical part of speech used for inflecting strings with this morphology. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746951-partofspeech?language=objc
@@ -113,6 +83,21 @@ func (m_ Morphology) SetPartOfSpeech(value GrammaticalPartOfSpeech) {
 	objc.Call[objc.Void](m_, objc.Sel("setPartOfSpeech:"), value)
 }
 
+// The grammatical gender used for inflecting strings with this morphology. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746949-grammaticalgender?language=objc
+func (m_ Morphology) GrammaticalGender() GrammaticalGender {
+	rv := objc.Call[GrammaticalGender](m_, objc.Sel("grammaticalGender"))
+	return rv
+}
+
+// The grammatical gender used for inflecting strings with this morphology. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746949-grammaticalgender?language=objc
+func (m_ Morphology) SetGrammaticalGender(value GrammaticalGender) {
+	objc.Call[objc.Void](m_, objc.Sel("setGrammaticalGender:"), value)
+}
+
 // The grammatical number used for inflecting strings with this morphology. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746950-number?language=objc
@@ -126,4 +111,19 @@ func (m_ Morphology) Number() GrammaticalNumber {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746950-number?language=objc
 func (m_ Morphology) SetNumber(value GrammaticalNumber) {
 	objc.Call[objc.Void](m_, objc.Sel("setNumber:"), value)
+}
+
+// The addressing preferences of the current user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746954-usermorphology?language=objc
+func (mc _MorphologyClass) UserMorphology() Morphology {
+	rv := objc.Call[Morphology](mc, objc.Sel("userMorphology"))
+	return rv
+}
+
+// The addressing preferences of the current user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmorphology/3746954-usermorphology?language=objc
+func Morphology_UserMorphology() Morphology {
+	return MorphologyClass.UserMorphology()
 }

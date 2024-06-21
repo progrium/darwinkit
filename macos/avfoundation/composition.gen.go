@@ -20,11 +20,11 @@ type _CompositionClass struct {
 // An interface definition for the [Composition] class.
 type IComposition interface {
 	IAsset
-	TrackWithTrackID(trackID objc.IObject) CompositionTrack
-	TracksWithMediaCharacteristic(mediaCharacteristic MediaCharacteristic) []CompositionTrack
 	TracksWithMediaType(mediaType MediaType) []CompositionTrack
-	NaturalSize() coregraphics.Size
+	TracksWithMediaCharacteristic(mediaCharacteristic MediaCharacteristic) []CompositionTrack
+	TrackWithTrackID(trackID objc.IObject) CompositionTrack
 	URLAssetInitializationOptions() map[string]objc.Object
+	NaturalSize() coregraphics.Size
 }
 
 // An object that combines and arranges media from multiple assets into a single composite asset that you can play or process. [Full Topic]
@@ -72,11 +72,11 @@ func Composition_AssetWithURL(URL foundation.IURL) Composition {
 	return CompositionClass.AssetWithURL(URL)
 }
 
-// Returns a track that contains the specified identifier. [Full Topic]
+// Returns tracks that contain media of a specified type. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1388473-trackwithtrackid?language=objc
-func (c_ Composition) TrackWithTrackID(trackID objc.IObject) CompositionTrack {
-	rv := objc.Call[CompositionTrack](c_, objc.Sel("trackWithTrackID:"), trackID)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1386534-trackswithmediatype?language=objc
+func (c_ Composition) TracksWithMediaType(mediaType MediaType) []CompositionTrack {
+	rv := objc.Call[[]CompositionTrack](c_, objc.Sel("tracksWithMediaType:"), mediaType)
 	return rv
 }
 
@@ -88,19 +88,11 @@ func (c_ Composition) TracksWithMediaCharacteristic(mediaCharacteristic MediaCha
 	return rv
 }
 
-// Returns tracks that contain media of a specified type. [Full Topic]
+// Returns a track that contains the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1386534-trackswithmediatype?language=objc
-func (c_ Composition) TracksWithMediaType(mediaType MediaType) []CompositionTrack {
-	rv := objc.Call[[]CompositionTrack](c_, objc.Sel("tracksWithMediaType:"), mediaType)
-	return rv
-}
-
-// The authored size of the visual portion of the composition. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1387247-naturalsize?language=objc
-func (c_ Composition) NaturalSize() coregraphics.Size {
-	rv := objc.Call[coregraphics.Size](c_, objc.Sel("naturalSize"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1388473-trackwithtrackid?language=objc
+func (c_ Composition) TrackWithTrackID(trackID objc.IObject) CompositionTrack {
+	rv := objc.Call[CompositionTrack](c_, objc.Sel("trackWithTrackID:"), trackID)
 	return rv
 }
 
@@ -109,5 +101,13 @@ func (c_ Composition) NaturalSize() coregraphics.Size {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1387080-urlassetinitializationoptions?language=objc
 func (c_ Composition) URLAssetInitializationOptions() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("URLAssetInitializationOptions"))
+	return rv
+}
+
+// The authored size of the visual portion of the composition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1387247-naturalsize?language=objc
+func (c_ Composition) NaturalSize() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](c_, objc.Sel("naturalSize"))
 	return rv
 }

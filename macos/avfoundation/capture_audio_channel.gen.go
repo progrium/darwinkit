@@ -20,10 +20,10 @@ type ICaptureAudioChannel interface {
 	objc.IObject
 	Volume() float32
 	SetVolume(value float32)
-	IsEnabled() bool
-	SetEnabled(value bool)
 	AveragePowerLevel() float32
 	PeakHoldLevel() float32
+	IsEnabled() bool
+	SetEnabled(value bool)
 }
 
 // An object that monitors average and peak power levels for an audio channel in a capture connection. [Full Topic]
@@ -74,21 +74,6 @@ func (c_ CaptureAudioChannel) SetVolume(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setVolume:"), value)
 }
 
-// A Boolean value that indicates whether the channel is in an enabled state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388574-enabled?language=objc
-func (c_ CaptureAudioChannel) IsEnabled() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isEnabled"))
-	return rv
-}
-
-// A Boolean value that indicates whether the channel is in an enabled state. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388574-enabled?language=objc
-func (c_ CaptureAudioChannel) SetEnabled(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setEnabled:"), value)
-}
-
 // The instantaneous average power level in decibels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1387368-averagepowerlevel?language=objc
@@ -103,4 +88,19 @@ func (c_ CaptureAudioChannel) AveragePowerLevel() float32 {
 func (c_ CaptureAudioChannel) PeakHoldLevel() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("peakHoldLevel"))
 	return rv
+}
+
+// A Boolean value that indicates whether the channel is in an enabled state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388574-enabled?language=objc
+func (c_ CaptureAudioChannel) IsEnabled() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether the channel is in an enabled state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388574-enabled?language=objc
+func (c_ CaptureAudioChannel) SetEnabled(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setEnabled:"), value)
 }

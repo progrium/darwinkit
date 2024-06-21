@@ -18,12 +18,12 @@ type _AppleScriptClass struct {
 // An interface definition for the [AppleScript] class.
 type IAppleScript interface {
 	objc.IObject
-	ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor
 	CompileAndReturnError(errorInfo unsafe.Pointer) bool
+	ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor
 	ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo unsafe.Pointer) AppleEventDescriptor
-	IsCompiled() bool
 	RichTextSource() AttributedString
 	Source() string
+	IsCompiled() bool
 }
 
 // An object that provides the ability to load, compile, and execute scripts. [Full Topic]
@@ -87,14 +87,6 @@ func (a_ AppleScript) Init() AppleScript {
 	return rv
 }
 
-// Executes the receiver, compiling it first if it is not already compiled. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410034-executeandreturnerror?language=objc
-func (a_ AppleScript) ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAndReturnError:"), errorInfo)
-	return rv
-}
-
 // Compiles the receiver, if it is not already compiled. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1407582-compileandreturnerror?language=objc
@@ -103,19 +95,19 @@ func (a_ AppleScript) CompileAndReturnError(errorInfo unsafe.Pointer) bool {
 	return rv
 }
 
+// Executes the receiver, compiling it first if it is not already compiled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410034-executeandreturnerror?language=objc
+func (a_ AppleScript) ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAndReturnError:"), errorInfo)
+	return rv
+}
+
 // Executes an Apple event in the context of the receiver, as a means of allowing the application to invoke a handler in the script. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410807-executeappleevent?language=objc
 func (a_ AppleScript) ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo unsafe.Pointer) AppleEventDescriptor {
 	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAppleEvent:error:"), event, errorInfo)
-	return rv
-}
-
-// A Boolean value that indicates whether the receiver's script has been compiled. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410407-compiled?language=objc
-func (a_ AppleScript) IsCompiled() bool {
-	rv := objc.Call[bool](a_, objc.Sel("isCompiled"))
 	return rv
 }
 
@@ -132,5 +124,13 @@ func (a_ AppleScript) RichTextSource() AttributedString {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1408453-source?language=objc
 func (a_ AppleScript) Source() string {
 	rv := objc.Call[string](a_, objc.Sel("source"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver's script has been compiled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410407-compiled?language=objc
+func (a_ AppleScript) IsCompiled() bool {
+	rv := objc.Call[bool](a_, objc.Sel("isCompiled"))
 	return rv
 }

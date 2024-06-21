@@ -19,15 +19,15 @@ type _SpringAnimationClass struct {
 // An interface definition for the [SpringAnimation] class.
 type ISpringAnimation interface {
 	IBasicAnimation
-	SettlingDuration() corefoundation.TimeInterval
 	Stiffness() float64
 	SetStiffness(value float64)
-	Damping() float64
-	SetDamping(value float64)
-	Mass() float64
-	SetMass(value float64)
 	InitialVelocity() float64
 	SetInitialVelocity(value float64)
+	Mass() float64
+	SetMass(value float64)
+	Damping() float64
+	SetDamping(value float64)
+	SettlingDuration() corefoundation.TimeInterval
 }
 
 // An animation that applies a spring-like force to a layer's properties. [Full Topic]
@@ -87,14 +87,6 @@ func SpringAnimation_Animation() SpringAnimation {
 	return SpringAnimationClass.Animation()
 }
 
-// The estimated duration required for the spring system to be considered at rest. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412524-settlingduration?language=objc
-func (s_ SpringAnimation) SettlingDuration() corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](s_, objc.Sel("settlingDuration"))
-	return rv
-}
-
 // The spring stiffness coefficient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412515-stiffness?language=objc
@@ -110,19 +102,19 @@ func (s_ SpringAnimation) SetStiffness(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setStiffness:"), value)
 }
 
-// Defines how the spring’s motion should be damped due to the forces of friction. [Full Topic]
+// The initial velocity of the object attached to the spring. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412532-damping?language=objc
-func (s_ SpringAnimation) Damping() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("damping"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412443-initialvelocity?language=objc
+func (s_ SpringAnimation) InitialVelocity() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("initialVelocity"))
 	return rv
 }
 
-// Defines how the spring’s motion should be damped due to the forces of friction. [Full Topic]
+// The initial velocity of the object attached to the spring. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412532-damping?language=objc
-func (s_ SpringAnimation) SetDamping(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setDamping:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412443-initialvelocity?language=objc
+func (s_ SpringAnimation) SetInitialVelocity(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setInitialVelocity:"), value)
 }
 
 // The mass of the object attached to the end of the spring. [Full Topic]
@@ -140,17 +132,25 @@ func (s_ SpringAnimation) SetMass(value float64) {
 	objc.Call[objc.Void](s_, objc.Sel("setMass:"), value)
 }
 
-// The initial velocity of the object attached to the spring. [Full Topic]
+// Defines how the spring’s motion should be damped due to the forces of friction. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412443-initialvelocity?language=objc
-func (s_ SpringAnimation) InitialVelocity() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("initialVelocity"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412532-damping?language=objc
+func (s_ SpringAnimation) Damping() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("damping"))
 	return rv
 }
 
-// The initial velocity of the object attached to the spring. [Full Topic]
+// Defines how the spring’s motion should be damped due to the forces of friction. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412443-initialvelocity?language=objc
-func (s_ SpringAnimation) SetInitialVelocity(value float64) {
-	objc.Call[objc.Void](s_, objc.Sel("setInitialVelocity:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412532-damping?language=objc
+func (s_ SpringAnimation) SetDamping(value float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setDamping:"), value)
+}
+
+// The estimated duration required for the spring system to be considered at rest. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caspringanimation/1412524-settlingduration?language=objc
+func (s_ SpringAnimation) SettlingDuration() corefoundation.TimeInterval {
+	rv := objc.Call[corefoundation.TimeInterval](s_, objc.Sel("settlingDuration"))
+	return rv
 }

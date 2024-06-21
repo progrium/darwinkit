@@ -18,11 +18,11 @@ type _MutableCaptionRegionClass struct {
 // An interface definition for the [MutableCaptionRegion] class.
 type IMutableCaptionRegion interface {
 	ICaptionRegion
+	SetOrigin(value CaptionPoint)
+	SetScroll(value CaptionRegionScroll)
 	SetWritingMode(value CaptionRegionWritingMode)
 	SetSize(value CaptionSize)
 	SetDisplayAlignment(value CaptionRegionDisplayAlignment)
-	SetScroll(value CaptionRegionScroll)
-	SetOrigin(value CaptionPoint)
 }
 
 // A mutable caption region subclass that you use to create new caption regions. [Full Topic]
@@ -36,11 +36,6 @@ func MutableCaptionRegionFrom(ptr unsafe.Pointer) MutableCaptionRegion {
 	return MutableCaptionRegion{
 		CaptionRegion: CaptionRegionFrom(ptr),
 	}
-}
-
-func (m_ MutableCaptionRegion) Init() MutableCaptionRegion {
-	rv := objc.Call[MutableCaptionRegion](m_, objc.Sel("init"))
-	return rv
 }
 
 func (m_ MutableCaptionRegion) InitWithIdentifier(identifier string) MutableCaptionRegion {
@@ -57,6 +52,11 @@ func NewMutableCaptionRegionWithIdentifier(identifier string) MutableCaptionRegi
 	return instance
 }
 
+func (m_ MutableCaptionRegion) Init() MutableCaptionRegion {
+	rv := objc.Call[MutableCaptionRegion](m_, objc.Sel("init"))
+	return rv
+}
+
 func (mc _MutableCaptionRegionClass) Alloc() MutableCaptionRegion {
 	rv := objc.Call[MutableCaptionRegion](mc, objc.Sel("alloc"))
 	return rv
@@ -70,6 +70,20 @@ func (mc _MutableCaptionRegionClass) New() MutableCaptionRegion {
 
 func NewMutableCaptionRegion() MutableCaptionRegion {
 	return MutableCaptionRegionClass.New()
+}
+
+// The region’s top-left position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaptionregion/3857638-origin?language=objc
+func (m_ MutableCaptionRegion) SetOrigin(value CaptionPoint) {
+	objc.Call[objc.Void](m_, objc.Sel("setOrigin:"), value)
+}
+
+// The scroll mode of the region. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaptionregion/3752925-scroll?language=objc
+func (m_ MutableCaptionRegion) SetScroll(value CaptionRegionScroll) {
+	objc.Call[objc.Void](m_, objc.Sel("setScroll:"), value)
 }
 
 // The block and inline progression direction of the region. [Full Topic]
@@ -91,18 +105,4 @@ func (m_ MutableCaptionRegion) SetSize(value CaptionSize) {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaptionregion/3752919-displayalignment?language=objc
 func (m_ MutableCaptionRegion) SetDisplayAlignment(value CaptionRegionDisplayAlignment) {
 	objc.Call[objc.Void](m_, objc.Sel("setDisplayAlignment:"), value)
-}
-
-// The scroll mode of the region. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaptionregion/3752925-scroll?language=objc
-func (m_ MutableCaptionRegion) SetScroll(value CaptionRegionScroll) {
-	objc.Call[objc.Void](m_, objc.Sel("setScroll:"), value)
-}
-
-// The region’s top-left position. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaptionregion/3857638-origin?language=objc
-func (m_ MutableCaptionRegion) SetOrigin(value CaptionPoint) {
-	objc.Call[objc.Void](m_, objc.Sel("setOrigin:"), value)
 }

@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor?language=objc
 type PSpotColor interface {
 	// optional
-	SetReplacementColor3(value Color)
-	HasSetReplacementColor3() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	ReplacementColor3() Color
-	HasReplacementColor3() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetContrast2(value float32)
@@ -27,36 +27,20 @@ type PSpotColor interface {
 	HasContrast2() bool
 
 	// optional
-	SetCenterColor1(value Color)
-	HasSetCenterColor1() bool
+	SetCenterColor3(value Color)
+	HasSetCenterColor3() bool
 
 	// optional
-	CenterColor1() Color
-	HasCenterColor1() bool
+	CenterColor3() Color
+	HasCenterColor3() bool
 
 	// optional
-	SetCloseness1(value float32)
-	HasSetCloseness1() bool
+	SetCenterColor2(value Color)
+	HasSetCenterColor2() bool
 
 	// optional
-	Closeness1() float32
-	HasCloseness1() bool
-
-	// optional
-	SetCloseness3(value float32)
-	HasSetCloseness3() bool
-
-	// optional
-	Closeness3() float32
-	HasCloseness3() bool
-
-	// optional
-	SetReplacementColor2(value Color)
-	HasSetReplacementColor2() bool
-
-	// optional
-	ReplacementColor2() Color
-	HasReplacementColor2() bool
+	CenterColor2() Color
+	HasCenterColor2() bool
 
 	// optional
 	SetContrast3(value float32)
@@ -75,12 +59,36 @@ type PSpotColor interface {
 	HasCloseness2() bool
 
 	// optional
-	SetCenterColor2(value Color)
-	HasSetCenterColor2() bool
+	SetReplacementColor2(value Color)
+	HasSetReplacementColor2() bool
 
 	// optional
-	CenterColor2() Color
-	HasCenterColor2() bool
+	ReplacementColor2() Color
+	HasReplacementColor2() bool
+
+	// optional
+	SetReplacementColor3(value Color)
+	HasSetReplacementColor3() bool
+
+	// optional
+	ReplacementColor3() Color
+	HasReplacementColor3() bool
+
+	// optional
+	SetCloseness3(value float32)
+	HasSetCloseness3() bool
+
+	// optional
+	Closeness3() float32
+	HasCloseness3() bool
+
+	// optional
+	SetCloseness1(value float32)
+	HasSetCloseness1() bool
+
+	// optional
+	Closeness1() float32
+	HasCloseness1() bool
 
 	// optional
 	SetReplacementColor1(value Color)
@@ -91,12 +99,12 @@ type PSpotColor interface {
 	HasReplacementColor1() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetCenterColor1(value Color)
+	HasSetCenterColor1() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	CenterColor1() Color
+	HasCenterColor1() bool
 
 	// optional
 	SetContrast1(value float32)
@@ -105,14 +113,6 @@ type PSpotColor interface {
 	// optional
 	Contrast1() float32
 	HasContrast1() bool
-
-	// optional
-	SetCenterColor3(value Color)
-	HasSetCenterColor3() bool
-
-	// optional
-	CenterColor3() Color
-	HasCenterColor3() bool
 }
 
 // ensure impl type implements protocol interface
@@ -123,26 +123,26 @@ type SpotColorObject struct {
 	objc.Object
 }
 
-func (s_ SpotColorObject) HasSetReplacementColor3() bool {
-	return s_.RespondsToSelector(objc.Sel("setReplacementColor3:"))
+func (s_ SpotColorObject) HasSetInputImage() bool {
+	return s_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
-// A replacement color for the third color range. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228740-replacementcolor3?language=objc
-func (s_ SpotColorObject) SetReplacementColor3(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setReplacementColor3:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228737-inputimage?language=objc
+func (s_ SpotColorObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
-func (s_ SpotColorObject) HasReplacementColor3() bool {
-	return s_.RespondsToSelector(objc.Sel("replacementColor3"))
+func (s_ SpotColorObject) HasInputImage() bool {
+	return s_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
-// A replacement color for the third color range. [Full Topic]
+// The image to use as an input image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228740-replacementcolor3?language=objc
-func (s_ SpotColorObject) ReplacementColor3() Color {
-	rv := objc.Call[Color](s_, objc.Sel("replacementColor3"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228737-inputimage?language=objc
+func (s_ SpotColorObject) InputImage() Image {
+	rv := objc.Call[Image](s_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -169,95 +169,49 @@ func (s_ SpotColorObject) Contrast2() float32 {
 	return rv
 }
 
-func (s_ SpotColorObject) HasSetCenterColor1() bool {
-	return s_.RespondsToSelector(objc.Sel("setCenterColor1:"))
+func (s_ SpotColorObject) HasSetCenterColor3() bool {
+	return s_.RespondsToSelector(objc.Sel("setCenterColor3:"))
 }
 
-// The center value of the first color range to replace. [Full Topic]
+// The center value of the third color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228728-centercolor1?language=objc
-func (s_ SpotColorObject) SetCenterColor1(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setCenterColor1:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228730-centercolor3?language=objc
+func (s_ SpotColorObject) SetCenterColor3(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setCenterColor3:"), value)
 }
 
-func (s_ SpotColorObject) HasCenterColor1() bool {
-	return s_.RespondsToSelector(objc.Sel("centerColor1"))
+func (s_ SpotColorObject) HasCenterColor3() bool {
+	return s_.RespondsToSelector(objc.Sel("centerColor3"))
 }
 
-// The center value of the first color range to replace. [Full Topic]
+// The center value of the third color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228728-centercolor1?language=objc
-func (s_ SpotColorObject) CenterColor1() Color {
-	rv := objc.Call[Color](s_, objc.Sel("centerColor1"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228730-centercolor3?language=objc
+func (s_ SpotColorObject) CenterColor3() Color {
+	rv := objc.Call[Color](s_, objc.Sel("centerColor3"))
 	return rv
 }
 
-func (s_ SpotColorObject) HasSetCloseness1() bool {
-	return s_.RespondsToSelector(objc.Sel("setCloseness1:"))
+func (s_ SpotColorObject) HasSetCenterColor2() bool {
+	return s_.RespondsToSelector(objc.Sel("setCenterColor2:"))
 }
 
-// A value that indicates how closely the first color must match before it’s replaced. [Full Topic]
+// The center value of the second color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228731-closeness1?language=objc
-func (s_ SpotColorObject) SetCloseness1(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setCloseness1:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228729-centercolor2?language=objc
+func (s_ SpotColorObject) SetCenterColor2(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setCenterColor2:"), value)
 }
 
-func (s_ SpotColorObject) HasCloseness1() bool {
-	return s_.RespondsToSelector(objc.Sel("closeness1"))
+func (s_ SpotColorObject) HasCenterColor2() bool {
+	return s_.RespondsToSelector(objc.Sel("centerColor2"))
 }
 
-// A value that indicates how closely the first color must match before it’s replaced. [Full Topic]
+// The center value of the second color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228731-closeness1?language=objc
-func (s_ SpotColorObject) Closeness1() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("closeness1"))
-	return rv
-}
-
-func (s_ SpotColorObject) HasSetCloseness3() bool {
-	return s_.RespondsToSelector(objc.Sel("setCloseness3:"))
-}
-
-// A value that indicates how closely the third color must match before it’s replaced. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228733-closeness3?language=objc
-func (s_ SpotColorObject) SetCloseness3(value float32) {
-	objc.Call[objc.Void](s_, objc.Sel("setCloseness3:"), value)
-}
-
-func (s_ SpotColorObject) HasCloseness3() bool {
-	return s_.RespondsToSelector(objc.Sel("closeness3"))
-}
-
-// A value that indicates how closely the third color must match before it’s replaced. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228733-closeness3?language=objc
-func (s_ SpotColorObject) Closeness3() float32 {
-	rv := objc.Call[float32](s_, objc.Sel("closeness3"))
-	return rv
-}
-
-func (s_ SpotColorObject) HasSetReplacementColor2() bool {
-	return s_.RespondsToSelector(objc.Sel("setReplacementColor2:"))
-}
-
-// A replacement color for the second color range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228739-replacementcolor2?language=objc
-func (s_ SpotColorObject) SetReplacementColor2(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setReplacementColor2:"), value)
-}
-
-func (s_ SpotColorObject) HasReplacementColor2() bool {
-	return s_.RespondsToSelector(objc.Sel("replacementColor2"))
-}
-
-// A replacement color for the second color range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228739-replacementcolor2?language=objc
-func (s_ SpotColorObject) ReplacementColor2() Color {
-	rv := objc.Call[Color](s_, objc.Sel("replacementColor2"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228729-centercolor2?language=objc
+func (s_ SpotColorObject) CenterColor2() Color {
+	rv := objc.Call[Color](s_, objc.Sel("centerColor2"))
 	return rv
 }
 
@@ -307,26 +261,95 @@ func (s_ SpotColorObject) Closeness2() float32 {
 	return rv
 }
 
-func (s_ SpotColorObject) HasSetCenterColor2() bool {
-	return s_.RespondsToSelector(objc.Sel("setCenterColor2:"))
+func (s_ SpotColorObject) HasSetReplacementColor2() bool {
+	return s_.RespondsToSelector(objc.Sel("setReplacementColor2:"))
 }
 
-// The center value of the second color range to replace. [Full Topic]
+// A replacement color for the second color range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228729-centercolor2?language=objc
-func (s_ SpotColorObject) SetCenterColor2(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setCenterColor2:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228739-replacementcolor2?language=objc
+func (s_ SpotColorObject) SetReplacementColor2(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setReplacementColor2:"), value)
 }
 
-func (s_ SpotColorObject) HasCenterColor2() bool {
-	return s_.RespondsToSelector(objc.Sel("centerColor2"))
+func (s_ SpotColorObject) HasReplacementColor2() bool {
+	return s_.RespondsToSelector(objc.Sel("replacementColor2"))
 }
 
-// The center value of the second color range to replace. [Full Topic]
+// A replacement color for the second color range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228729-centercolor2?language=objc
-func (s_ SpotColorObject) CenterColor2() Color {
-	rv := objc.Call[Color](s_, objc.Sel("centerColor2"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228739-replacementcolor2?language=objc
+func (s_ SpotColorObject) ReplacementColor2() Color {
+	rv := objc.Call[Color](s_, objc.Sel("replacementColor2"))
+	return rv
+}
+
+func (s_ SpotColorObject) HasSetReplacementColor3() bool {
+	return s_.RespondsToSelector(objc.Sel("setReplacementColor3:"))
+}
+
+// A replacement color for the third color range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228740-replacementcolor3?language=objc
+func (s_ SpotColorObject) SetReplacementColor3(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setReplacementColor3:"), value)
+}
+
+func (s_ SpotColorObject) HasReplacementColor3() bool {
+	return s_.RespondsToSelector(objc.Sel("replacementColor3"))
+}
+
+// A replacement color for the third color range. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228740-replacementcolor3?language=objc
+func (s_ SpotColorObject) ReplacementColor3() Color {
+	rv := objc.Call[Color](s_, objc.Sel("replacementColor3"))
+	return rv
+}
+
+func (s_ SpotColorObject) HasSetCloseness3() bool {
+	return s_.RespondsToSelector(objc.Sel("setCloseness3:"))
+}
+
+// A value that indicates how closely the third color must match before it’s replaced. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228733-closeness3?language=objc
+func (s_ SpotColorObject) SetCloseness3(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setCloseness3:"), value)
+}
+
+func (s_ SpotColorObject) HasCloseness3() bool {
+	return s_.RespondsToSelector(objc.Sel("closeness3"))
+}
+
+// A value that indicates how closely the third color must match before it’s replaced. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228733-closeness3?language=objc
+func (s_ SpotColorObject) Closeness3() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("closeness3"))
+	return rv
+}
+
+func (s_ SpotColorObject) HasSetCloseness1() bool {
+	return s_.RespondsToSelector(objc.Sel("setCloseness1:"))
+}
+
+// A value that indicates how closely the first color must match before it’s replaced. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228731-closeness1?language=objc
+func (s_ SpotColorObject) SetCloseness1(value float32) {
+	objc.Call[objc.Void](s_, objc.Sel("setCloseness1:"), value)
+}
+
+func (s_ SpotColorObject) HasCloseness1() bool {
+	return s_.RespondsToSelector(objc.Sel("closeness1"))
+}
+
+// A value that indicates how closely the first color must match before it’s replaced. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228731-closeness1?language=objc
+func (s_ SpotColorObject) Closeness1() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("closeness1"))
 	return rv
 }
 
@@ -353,26 +376,26 @@ func (s_ SpotColorObject) ReplacementColor1() Color {
 	return rv
 }
 
-func (s_ SpotColorObject) HasSetInputImage() bool {
-	return s_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (s_ SpotColorObject) HasSetCenterColor1() bool {
+	return s_.RespondsToSelector(objc.Sel("setCenterColor1:"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The center value of the first color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228737-inputimage?language=objc
-func (s_ SpotColorObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228728-centercolor1?language=objc
+func (s_ SpotColorObject) SetCenterColor1(value Color) {
+	objc.Call[objc.Void](s_, objc.Sel("setCenterColor1:"), value)
 }
 
-func (s_ SpotColorObject) HasInputImage() bool {
-	return s_.RespondsToSelector(objc.Sel("inputImage"))
+func (s_ SpotColorObject) HasCenterColor1() bool {
+	return s_.RespondsToSelector(objc.Sel("centerColor1"))
 }
 
-// The image to use as an input image. [Full Topic]
+// The center value of the first color range to replace. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228737-inputimage?language=objc
-func (s_ SpotColorObject) InputImage() Image {
-	rv := objc.Call[Image](s_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228728-centercolor1?language=objc
+func (s_ SpotColorObject) CenterColor1() Color {
+	rv := objc.Call[Color](s_, objc.Sel("centerColor1"))
 	return rv
 }
 
@@ -396,28 +419,5 @@ func (s_ SpotColorObject) HasContrast1() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228734-contrast1?language=objc
 func (s_ SpotColorObject) Contrast1() float32 {
 	rv := objc.Call[float32](s_, objc.Sel("contrast1"))
-	return rv
-}
-
-func (s_ SpotColorObject) HasSetCenterColor3() bool {
-	return s_.RespondsToSelector(objc.Sel("setCenterColor3:"))
-}
-
-// The center value of the third color range to replace. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228730-centercolor3?language=objc
-func (s_ SpotColorObject) SetCenterColor3(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setCenterColor3:"), value)
-}
-
-func (s_ SpotColorObject) HasCenterColor3() bool {
-	return s_.RespondsToSelector(objc.Sel("centerColor3"))
-}
-
-// The center value of the third color range to replace. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotcolor/3228730-centercolor3?language=objc
-func (s_ SpotColorObject) CenterColor3() Color {
-	rv := objc.Call[Color](s_, objc.Sel("centerColor3"))
 	return rv
 }

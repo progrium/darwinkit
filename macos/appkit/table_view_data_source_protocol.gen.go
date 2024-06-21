@@ -12,44 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource?language=objc
 type PTableViewDataSource interface {
 	// optional
-	TableViewSetObjectValueForTableColumnRow(tableView TableView, object objc.Object, tableColumn TableColumn, row int)
-	HasTableViewSetObjectValueForTableColumnRow() bool
-
-	// optional
 	NumberOfRowsInTableView(tableView TableView) int
 	HasNumberOfRowsInTableView() bool
 
 	// optional
 	TableViewSortDescriptorsDidChange(tableView TableView, oldDescriptors []foundation.SortDescriptor)
 	HasTableViewSortDescriptorsDidChange() bool
-
-	// optional
-	TableViewDraggingSessionEndedAtPointOperation(tableView TableView, session DraggingSession, screenPoint foundation.Point, operation DragOperation)
-	HasTableViewDraggingSessionEndedAtPointOperation() bool
-
-	// optional
-	TableViewDraggingSessionWillBeginAtPointForRowIndexes(tableView TableView, session DraggingSession, screenPoint foundation.Point, rowIndexes foundation.IndexSet)
-	HasTableViewDraggingSessionWillBeginAtPointForRowIndexes() bool
-
-	// optional
-	TableViewAcceptDropRowDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) bool
-	HasTableViewAcceptDropRowDropOperation() bool
-
-	// optional
-	TableViewObjectValueForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) objc.Object
-	HasTableViewObjectValueForTableColumnRow() bool
-
-	// optional
-	TableViewPasteboardWriterForRow(tableView TableView, row int) PasteboardWritingObject
-	HasTableViewPasteboardWriterForRow() bool
-
-	// optional
-	TableViewUpdateDraggingItemsForDrag(tableView TableView, draggingInfo DraggingInfoObject)
-	HasTableViewUpdateDraggingItemsForDrag() bool
-
-	// optional
-	TableViewValidateDropProposedRowProposedDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) DragOperation
-	HasTableViewValidateDropProposedRowProposedDropOperation() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,17 +26,6 @@ var _ PTableViewDataSource = (*TableViewDataSourceObject)(nil)
 // A concrete type for the [PTableViewDataSource] protocol.
 type TableViewDataSourceObject struct {
 	objc.Object
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewSetObjectValueForTableColumnRow() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:setObjectValue:forTableColumn:row:"))
-}
-
-// Sets the data object for an item in the specified row and column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1526317-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewSetObjectValueForTableColumnRow(tableView TableView, object objc.Object, tableColumn TableColumn, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:setObjectValue:forTableColumn:row:"), tableView, object, tableColumn, row)
 }
 
 func (t_ TableViewDataSourceObject) HasNumberOfRowsInTableView() bool {
@@ -92,88 +49,4 @@ func (t_ TableViewDataSourceObject) HasTableViewSortDescriptorsDidChange() bool 
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1532935-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewSortDescriptorsDidChange(tableView TableView, oldDescriptors []foundation.SortDescriptor) {
 	objc.Call[objc.Void](t_, objc.Sel("tableView:sortDescriptorsDidChange:"), tableView, oldDescriptors)
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionEndedAtPointOperation() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:draggingSession:endedAtPoint:operation:"))
-}
-
-// Implement this method to determine when a dragging session has ended. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1534355-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewDraggingSessionEndedAtPointOperation(tableView TableView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:endedAtPoint:operation:"), tableView, session, screenPoint, operation)
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionWillBeginAtPointForRowIndexes() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"))
-}
-
-// Implement this method to determine when a dragging session will begin. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1528890-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewDraggingSessionWillBeginAtPointForRowIndexes(tableView TableView, session DraggingSession, screenPoint foundation.Point, rowIndexes foundation.IndexSet) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"), tableView, session, screenPoint, rowIndexes)
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewAcceptDropRowDropOperation() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:acceptDrop:row:dropOperation:"))
-}
-
-// Called by aTableView when the mouse button is released over a table view that previously decided to allow a drop. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1527733-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewAcceptDropRowDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) bool {
-	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[bool](t_, objc.Sel("tableView:acceptDrop:row:dropOperation:"), tableView, po1, row, dropOperation)
-	return rv
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewObjectValueForTableColumnRow() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:objectValueForTableColumn:row:"))
-}
-
-// Called by the table view to return the data object associated with the specified row and column. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1533674-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewObjectValueForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("tableView:objectValueForTableColumn:row:"), tableView, tableColumn, row)
-	return rv
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewPasteboardWriterForRow() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:pasteboardWriterForRow:"))
-}
-
-// Called to allow the table to support multiple item dragging. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1535294-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewPasteboardWriterForRow(tableView TableView, row int) PasteboardWritingObject {
-	rv := objc.Call[PasteboardWritingObject](t_, objc.Sel("tableView:pasteboardWriterForRow:"), tableView, row)
-	return rv
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewUpdateDraggingItemsForDrag() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:updateDraggingItemsForDrag:"))
-}
-
-// Implement this method to allow the table to update dragging items as they are dragged over a view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1535273-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewUpdateDraggingItemsForDrag(tableView TableView, draggingInfo DraggingInfoObject) {
-	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](t_, objc.Sel("tableView:updateDraggingItemsForDrag:"), tableView, po1)
-}
-
-func (t_ TableViewDataSourceObject) HasTableViewValidateDropProposedRowProposedDropOperation() bool {
-	return t_.RespondsToSelector(objc.Sel("tableView:validateDrop:proposedRow:proposedDropOperation:"))
-}
-
-// Used by aTableView to determine a valid drop target. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1532052-tableview?language=objc
-func (t_ TableViewDataSourceObject) TableViewValidateDropProposedRowProposedDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) DragOperation {
-	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[DragOperation](t_, objc.Sel("tableView:validateDrop:proposedRow:proposedDropOperation:"), tableView, po1, row, dropOperation)
-	return rv
 }

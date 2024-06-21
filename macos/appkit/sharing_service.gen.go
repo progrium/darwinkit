@@ -19,24 +19,24 @@ type _SharingServiceClass struct {
 // An interface definition for the [SharingService] class.
 type ISharingService interface {
 	objc.IObject
-	PerformWithItems(items []objc.IObject)
 	CanPerformWithItems(items []objc.IObject) bool
-	Subject() string
-	SetSubject(value string)
-	AlternateImage() Image
-	AttachmentFileURLs() []foundation.URL
-	AccountName() string
-	Title() string
-	MenuItemTitle() string
-	SetMenuItemTitle(value string)
+	PerformWithItems(items []objc.IObject)
 	PermanentLink() foundation.URL
-	Image() Image
+	MessageBody() string
+	AlternateImage() Image
 	Recipients() []string
 	SetRecipients(value []string)
 	Delegate() SharingServiceDelegateObject
 	SetDelegate(value PSharingServiceDelegate)
 	SetDelegateObject(valueObject objc.IObject)
-	MessageBody() string
+	MenuItemTitle() string
+	SetMenuItemTitle(value string)
+	AttachmentFileURLs() []foundation.URL
+	Title() string
+	Subject() string
+	SetSubject(value string)
+	Image() Image
+	AccountName() string
 }
 
 // An object that facilitates the sharing of content with social media services, or with apps like Mail or Safari. [Full Topic]
@@ -86,19 +86,19 @@ func (s_ SharingService) Init() SharingService {
 	return rv
 }
 
-// Manually performs the service on the provided items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402669-performwithitems?language=objc
-func (s_ SharingService) PerformWithItems(items []objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("performWithItems:"), items)
-}
-
 // Returns whether the service can share all the specified items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402662-canperformwithitems?language=objc
 func (s_ SharingService) CanPerformWithItems(items []objc.IObject) bool {
 	rv := objc.Call[bool](s_, objc.Sel("canPerformWithItems:"), items)
 	return rv
+}
+
+// Manually performs the service on the provided items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402669-performwithitems?language=objc
+func (s_ SharingService) PerformWithItems(items []objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("performWithItems:"), items)
 }
 
 // Returns a sharing service instance representing the specified service name. [Full Topic]
@@ -116,68 +116,6 @@ func SharingService_SharingServiceNamed(serviceName SharingServiceName) SharingS
 	return SharingServiceClass.SharingServiceNamed(serviceName)
 }
 
-// The subject of the post. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402626-subject?language=objc
-func (s_ SharingService) Subject() string {
-	rv := objc.Call[string](s_, objc.Sel("subject"))
-	return rv
-}
-
-// The subject of the post. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402626-subject?language=objc
-func (s_ SharingService) SetSubject(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setSubject:"), value)
-}
-
-// The alternate image representing the sharing service. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402650-alternateimage?language=objc
-func (s_ SharingService) AlternateImage() Image {
-	rv := objc.Call[Image](s_, objc.Sel("alternateImage"))
-	return rv
-}
-
-// An array of NSURL objects representing the files that were shared. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402707-attachmentfileurls?language=objc
-func (s_ SharingService) AttachmentFileURLs() []foundation.URL {
-	rv := objc.Call[[]foundation.URL](s_, objc.Sel("attachmentFileURLs"))
-	return rv
-}
-
-// The account name used for posting on Twitter or Sina Weibo. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402683-accountname?language=objc
-func (s_ SharingService) AccountName() string {
-	rv := objc.Call[string](s_, objc.Sel("accountName"))
-	return rv
-}
-
-// The title of the sharing service. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402637-title?language=objc
-func (s_ SharingService) Title() string {
-	rv := objc.Call[string](s_, objc.Sel("title"))
-	return rv
-}
-
-// The title of the service in the Share menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402693-menuitemtitle?language=objc
-func (s_ SharingService) MenuItemTitle() string {
-	rv := objc.Call[string](s_, objc.Sel("menuItemTitle"))
-	return rv
-}
-
-// The title of the service in the Share menu. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402693-menuitemtitle?language=objc
-func (s_ SharingService) SetMenuItemTitle(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setMenuItemTitle:"), value)
-}
-
 // A permanent URL (permalink) that your app can use to access the post. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402685-permanentlink?language=objc
@@ -186,11 +124,19 @@ func (s_ SharingService) PermanentLink() foundation.URL {
 	return rv
 }
 
-// The primary image representing the sharing service. [Full Topic]
+// The message body as a string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402654-image?language=objc
-func (s_ SharingService) Image() Image {
-	rv := objc.Call[Image](s_, objc.Sel("image"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402644-messagebody?language=objc
+func (s_ SharingService) MessageBody() string {
+	rv := objc.Call[string](s_, objc.Sel("messageBody"))
+	return rv
+}
+
+// The alternate image representing the sharing service. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402650-alternateimage?language=objc
+func (s_ SharingService) AlternateImage() Image {
+	rv := objc.Call[Image](s_, objc.Sel("alternateImage"))
 	return rv
 }
 
@@ -233,10 +179,64 @@ func (s_ SharingService) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
-// The message body as a string. [Full Topic]
+// The title of the service in the Share menu. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402644-messagebody?language=objc
-func (s_ SharingService) MessageBody() string {
-	rv := objc.Call[string](s_, objc.Sel("messageBody"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402693-menuitemtitle?language=objc
+func (s_ SharingService) MenuItemTitle() string {
+	rv := objc.Call[string](s_, objc.Sel("menuItemTitle"))
+	return rv
+}
+
+// The title of the service in the Share menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402693-menuitemtitle?language=objc
+func (s_ SharingService) SetMenuItemTitle(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setMenuItemTitle:"), value)
+}
+
+// An array of NSURL objects representing the files that were shared. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402707-attachmentfileurls?language=objc
+func (s_ SharingService) AttachmentFileURLs() []foundation.URL {
+	rv := objc.Call[[]foundation.URL](s_, objc.Sel("attachmentFileURLs"))
+	return rv
+}
+
+// The title of the sharing service. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402637-title?language=objc
+func (s_ SharingService) Title() string {
+	rv := objc.Call[string](s_, objc.Sel("title"))
+	return rv
+}
+
+// The subject of the post. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402626-subject?language=objc
+func (s_ SharingService) Subject() string {
+	rv := objc.Call[string](s_, objc.Sel("subject"))
+	return rv
+}
+
+// The subject of the post. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402626-subject?language=objc
+func (s_ SharingService) SetSubject(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setSubject:"), value)
+}
+
+// The primary image representing the sharing service. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402654-image?language=objc
+func (s_ SharingService) Image() Image {
+	rv := objc.Call[Image](s_, objc.Sel("image"))
+	return rv
+}
+
+// The account name used for posting on Twitter or Sina Weibo. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402683-accountname?language=objc
+func (s_ SharingService) AccountName() string {
+	rv := objc.Call[string](s_, objc.Sel("accountName"))
 	return rv
 }

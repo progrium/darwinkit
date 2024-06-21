@@ -18,10 +18,10 @@ type _RelativeSpecifierClass struct {
 // An interface definition for the [RelativeSpecifier] class.
 type IRelativeSpecifier interface {
 	IScriptObjectSpecifier
-	BaseSpecifier() ScriptObjectSpecifier
-	SetBaseSpecifier(value IScriptObjectSpecifier)
 	RelativePosition() RelativePosition
 	SetRelativePosition(value RelativePosition)
+	BaseSpecifier() ScriptObjectSpecifier
+	SetBaseSpecifier(value IScriptObjectSpecifier)
 }
 
 // A specifier that indicates an object in a collection by its position relative to another object. [Full Topic]
@@ -42,7 +42,7 @@ func (r_ RelativeSpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 	return rv
 }
 
-// Invokes the super class’s [foundation/nsscriptobjectspecifier/initwithcontainerclassdescriptio] method and initializes the relative position and base specifier to relPos and baseSpecifier. [Full Topic]
+// Invokes the super class’s initWithContainerClassDescription:containerSpecifier:key: method and initializes the relative position and base specifier to relPos and baseSpecifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409205-initwithcontainerclassdescriptio?language=objc
 func NewRelativeSpecifierWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, relPos RelativePosition, baseSpecifier IScriptObjectSpecifier) RelativeSpecifier {
@@ -99,21 +99,6 @@ func NewRelativeSpecifierWithContainerSpecifierKey(container IScriptObjectSpecif
 	return instance
 }
 
-// Sets the specifier for the base object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409071-basespecifier?language=objc
-func (r_ RelativeSpecifier) BaseSpecifier() ScriptObjectSpecifier {
-	rv := objc.Call[ScriptObjectSpecifier](r_, objc.Sel("baseSpecifier"))
-	return rv
-}
-
-// Sets the specifier for the base object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409071-basespecifier?language=objc
-func (r_ RelativeSpecifier) SetBaseSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](r_, objc.Sel("setBaseSpecifier:"), value)
-}
-
 // Sets the relative position encapsulated by the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1416001-relativeposition?language=objc
@@ -127,4 +112,19 @@ func (r_ RelativeSpecifier) RelativePosition() RelativePosition {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1416001-relativeposition?language=objc
 func (r_ RelativeSpecifier) SetRelativePosition(value RelativePosition) {
 	objc.Call[objc.Void](r_, objc.Sel("setRelativePosition:"), value)
+}
+
+// Sets the specifier for the base object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409071-basespecifier?language=objc
+func (r_ RelativeSpecifier) BaseSpecifier() ScriptObjectSpecifier {
+	rv := objc.Call[ScriptObjectSpecifier](r_, objc.Sel("baseSpecifier"))
+	return rv
+}
+
+// Sets the specifier for the base object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409071-basespecifier?language=objc
+func (r_ RelativeSpecifier) SetBaseSpecifier(value IScriptObjectSpecifier) {
+	objc.Call[objc.Void](r_, objc.Sel("setBaseSpecifier:"), value)
 }

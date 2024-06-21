@@ -20,9 +20,9 @@ type _MetadataMachineReadableCodeObjectClass struct {
 // An interface definition for the [MetadataMachineReadableCodeObject] class.
 type IMetadataMachineReadableCodeObject interface {
 	IMetadataObject
-	Descriptor() coreimage.BarcodeDescriptor
 	Corners() []foundation.Dictionary
 	StringValue() string
+	Descriptor() coreimage.BarcodeDescriptor
 }
 
 // Barcode information detected by a metadata capture output. [Full Topic]
@@ -58,14 +58,6 @@ func (m_ MetadataMachineReadableCodeObject) Init() MetadataMachineReadableCodeOb
 	return rv
 }
 
-// A barcode description for use in Core Image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatamachinereadablecodeobject/2875944-descriptor?language=objc
-func (m_ MetadataMachineReadableCodeObject) Descriptor() coreimage.BarcodeDescriptor {
-	rv := objc.Call[coreimage.BarcodeDescriptor](m_, objc.Sel("descriptor"))
-	return rv
-}
-
 // The points defining the (x, 	y) locations of the corners. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatamachinereadablecodeobject/1618815-corners?language=objc
@@ -79,5 +71,13 @@ func (m_ MetadataMachineReadableCodeObject) Corners() []foundation.Dictionary {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatamachinereadablecodeobject/1618800-stringvalue?language=objc
 func (m_ MetadataMachineReadableCodeObject) StringValue() string {
 	rv := objc.Call[string](m_, objc.Sel("stringValue"))
+	return rv
+}
+
+// A barcode description for use in Core Image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadatamachinereadablecodeobject/2875944-descriptor?language=objc
+func (m_ MetadataMachineReadableCodeObject) Descriptor() coreimage.BarcodeDescriptor {
+	rv := objc.Call[coreimage.BarcodeDescriptor](m_, objc.Sel("descriptor"))
 	return rv
 }

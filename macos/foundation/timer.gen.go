@@ -18,15 +18,15 @@ type _TimerClass struct {
 // An interface definition for the [Timer] class.
 type ITimer interface {
 	objc.IObject
-	Invalidate()
 	Fire()
-	IsValid() bool
-	Tolerance() TimeInterval
-	SetTolerance(value TimeInterval)
+	Invalidate()
 	TimeInterval() TimeInterval
 	FireDate() Date
 	SetFireDate(value IDate)
+	Tolerance() TimeInterval
+	SetTolerance(value TimeInterval)
 	UserInfo() objc.Object
+	IsValid() bool
 }
 
 // A timer that fires after a certain time interval has elapsed, sending a specified message to a target object. [Full Topic]
@@ -56,20 +56,6 @@ func NewTimerWithFireDateIntervalRepeatsBlock(date IDate, interval TimeInterval,
 	return instance
 }
 
-func (t_ Timer) InitWithFireDateIntervalTargetSelectorUserInfoRepeats(date IDate, ti TimeInterval, t objc.IObject, s objc.Selector, ui objc.IObject, rep bool) Timer {
-	rv := objc.Call[Timer](t_, objc.Sel("initWithFireDate:interval:target:selector:userInfo:repeats:"), date, ti, t, s, ui, rep)
-	return rv
-}
-
-// Initializes a timer using the specified object and selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415700-initwithfiredate?language=objc
-func NewTimerWithFireDateIntervalTargetSelectorUserInfoRepeats(date IDate, ti TimeInterval, t objc.IObject, s objc.Selector, ui objc.IObject, rep bool) Timer {
-	instance := TimerClass.Alloc().InitWithFireDateIntervalTargetSelectorUserInfoRepeats(date, ti, t, s, ui, rep)
-	instance.Autorelease()
-	return instance
-}
-
 func (tc _TimerClass) Alloc() Timer {
 	rv := objc.Call[Timer](tc, objc.Sel("alloc"))
 	return rv
@@ -88,88 +74,6 @@ func NewTimer() Timer {
 func (t_ Timer) Init() Timer {
 	rv := objc.Call[Timer](t_, objc.Sel("init"))
 	return rv
-}
-
-// Initializes a timer object with the specified time interval and block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/2091888-timerwithtimeinterval?language=objc
-func (tc _TimerClass) TimerWithTimeIntervalRepeatsBlock(interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:repeats:block:"), interval, repeats, block)
-	return rv
-}
-
-// Initializes a timer object with the specified time interval and block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/2091888-timerwithtimeinterval?language=objc
-func Timer_TimerWithTimeIntervalRepeatsBlock(interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
-	return TimerClass.TimerWithTimeIntervalRepeatsBlock(interval, repeats, block)
-}
-
-// Initializes a timer object with the specified object and selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1408356-timerwithtimeinterval?language=objc
-func (tc _TimerClass) TimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti TimeInterval, aTarget objc.IObject, aSelector objc.Selector, userInfo objc.IObject, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:target:selector:userInfo:repeats:"), ti, aTarget, aSelector, userInfo, yesOrNo)
-	return rv
-}
-
-// Initializes a timer object with the specified object and selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1408356-timerwithtimeinterval?language=objc
-func Timer_TimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti TimeInterval, aTarget objc.IObject, aSelector objc.Selector, userInfo objc.IObject, yesOrNo bool) Timer {
-	return TimerClass.TimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti, aTarget, aSelector, userInfo, yesOrNo)
-}
-
-// Initializes a timer object with the specified invocation object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1407170-timerwithtimeinterval?language=objc
-func (tc _TimerClass) TimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:invocation:repeats:"), ti, invocation, yesOrNo)
-	return rv
-}
-
-// Initializes a timer object with the specified invocation object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1407170-timerwithtimeinterval?language=objc
-func Timer_TimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	return TimerClass.TimerWithTimeIntervalInvocationRepeats(ti, invocation, yesOrNo)
-}
-
-// Creates a new timer and schedules it on the current run loop in the default mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415941-scheduledtimerwithtimeinterval?language=objc
-func (tc _TimerClass) ScheduledTimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("scheduledTimerWithTimeInterval:invocation:repeats:"), ti, invocation, yesOrNo)
-	return rv
-}
-
-// Creates a new timer and schedules it on the current run loop in the default mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415941-scheduledtimerwithtimeinterval?language=objc
-func Timer_ScheduledTimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	return TimerClass.ScheduledTimerWithTimeIntervalInvocationRepeats(ti, invocation, yesOrNo)
-}
-
-// Creates a timer and schedules it on the current run loop in the default mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1412416-scheduledtimerwithtimeinterval?language=objc
-func (tc _TimerClass) ScheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti TimeInterval, aTarget objc.IObject, aSelector objc.Selector, userInfo objc.IObject, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:"), ti, aTarget, aSelector, userInfo, yesOrNo)
-	return rv
-}
-
-// Creates a timer and schedules it on the current run loop in the default mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1412416-scheduledtimerwithtimeinterval?language=objc
-func Timer_ScheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti TimeInterval, aTarget objc.IObject, aSelector objc.Selector, userInfo objc.IObject, yesOrNo bool) Timer {
-	return TimerClass.ScheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti, aTarget, aSelector, userInfo, yesOrNo)
-}
-
-// Stops the timer from ever firing again and requests its removal from its run loop. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415405-invalidate?language=objc
-func (t_ Timer) Invalidate() {
-	objc.Call[objc.Void](t_, objc.Sel("invalidate"))
 }
 
 // Creates a timer and schedules it on the current run loop in the default mode. [Full Topic]
@@ -194,27 +98,26 @@ func (t_ Timer) Fire() {
 	objc.Call[objc.Void](t_, objc.Sel("fire"))
 }
 
-// A Boolean value that indicates whether the timer is currently valid. [Full Topic]
+// Initializes a timer object with the specified time interval and block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1408249-valid?language=objc
-func (t_ Timer) IsValid() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isValid"))
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/2091888-timerwithtimeinterval?language=objc
+func (tc _TimerClass) TimerWithTimeIntervalRepeatsBlock(interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
+	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:repeats:block:"), interval, repeats, block)
 	return rv
 }
 
-// The amount of time after the scheduled fire date that the timer may fire. [Full Topic]
+// Initializes a timer object with the specified time interval and block. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415085-tolerance?language=objc
-func (t_ Timer) Tolerance() TimeInterval {
-	rv := objc.Call[TimeInterval](t_, objc.Sel("tolerance"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/2091888-timerwithtimeinterval?language=objc
+func Timer_TimerWithTimeIntervalRepeatsBlock(interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
+	return TimerClass.TimerWithTimeIntervalRepeatsBlock(interval, repeats, block)
 }
 
-// The amount of time after the scheduled fire date that the timer may fire. [Full Topic]
+// Stops the timer from ever firing again and requests its removal from its run loop. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415085-tolerance?language=objc
-func (t_ Timer) SetTolerance(value TimeInterval) {
-	objc.Call[objc.Void](t_, objc.Sel("setTolerance:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415405-invalidate?language=objc
+func (t_ Timer) Invalidate() {
+	objc.Call[objc.Void](t_, objc.Sel("invalidate"))
 }
 
 // The timer’s time interval, in seconds. [Full Topic]
@@ -240,10 +143,33 @@ func (t_ Timer) SetFireDate(value IDate) {
 	objc.Call[objc.Void](t_, objc.Sel("setFireDate:"), value)
 }
 
+// The amount of time after the scheduled fire date that the timer may fire. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415085-tolerance?language=objc
+func (t_ Timer) Tolerance() TimeInterval {
+	rv := objc.Call[TimeInterval](t_, objc.Sel("tolerance"))
+	return rv
+}
+
+// The amount of time after the scheduled fire date that the timer may fire. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415085-tolerance?language=objc
+func (t_ Timer) SetTolerance(value TimeInterval) {
+	objc.Call[objc.Void](t_, objc.Sel("setTolerance:"), value)
+}
+
 // The receiver's userInfo object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1408911-userinfo?language=objc
 func (t_ Timer) UserInfo() objc.Object {
 	rv := objc.Call[objc.Object](t_, objc.Sel("userInfo"))
+	return rv
+}
+
+// A Boolean value that indicates whether the timer is currently valid. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1408249-valid?language=objc
+func (t_ Timer) IsValid() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isValid"))
 	return rv
 }

@@ -34,21 +34,6 @@ func CNNUpsamplingBilinearFrom(ptr unsafe.Pointer) CNNUpsamplingBilinear {
 	}
 }
 
-func (c_ CNNUpsamplingBilinear) InitWithDeviceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(device metal.PDevice, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinear {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNUpsamplingBilinear](c_, objc.Sel("initWithDevice:integerScaleFactorX:integerScaleFactorY:alignCorners:"), po0, integerScaleFactorX, integerScaleFactorY, alignCorners)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnupsamplingbilinear/2966661-initwithdevice?language=objc
-func NewCNNUpsamplingBilinearWithDeviceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(device metal.PDevice, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinear {
-	instance := CNNUpsamplingBilinearClass.Alloc().InitWithDeviceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(device, integerScaleFactorX, integerScaleFactorY, alignCorners)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNUpsamplingBilinear) InitWithDeviceIntegerScaleFactorXIntegerScaleFactorY(device metal.PDevice, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinear {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNUpsamplingBilinear](c_, objc.Sel("initWithDevice:integerScaleFactorX:integerScaleFactorY:"), po0, integerScaleFactorX, integerScaleFactorY)

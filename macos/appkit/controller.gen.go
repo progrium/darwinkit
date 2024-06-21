@@ -18,13 +18,13 @@ type _ControllerClass struct {
 // An interface definition for the [Controller] class.
 type IController interface {
 	objc.IObject
-	DiscardEditing()
+	CommitEditing() bool
 	ObjectDidBeginEditing(editor PEditor)
 	ObjectDidBeginEditingObject(editorObject objc.IObject)
 	ObjectDidEndEditing(editor PEditor)
 	ObjectDidEndEditingObject(editorObject objc.IObject)
 	CommitEditingWithDelegateDidCommitSelectorContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer)
-	CommitEditing() bool
+	DiscardEditing()
 	IsEditing() bool
 }
 
@@ -61,11 +61,12 @@ func NewController() Controller {
 	return ControllerClass.New()
 }
 
-// Discards any pending changes by registered editors. [Full Topic]
+// Causes the receiver to attempt to commit any pending edits, returning YES if successful or no edits were pending. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1528652-discardediting?language=objc
-func (c_ Controller) DiscardEditing() {
-	objc.Call[objc.Void](c_, objc.Sel("discardEditing"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1531472-commitediting?language=objc
+func (c_ Controller) CommitEditing() bool {
+	rv := objc.Call[bool](c_, objc.Sel("commitEditing"))
+	return rv
 }
 
 // Invoked to inform the receiver that editor has uncommitted changes that can affect the receiver. [Full Topic]
@@ -105,12 +106,11 @@ func (c_ Controller) CommitEditingWithDelegateDidCommitSelectorContextInfo(deleg
 	objc.Call[objc.Void](c_, objc.Sel("commitEditingWithDelegate:didCommitSelector:contextInfo:"), delegate, didCommitSelector, contextInfo)
 }
 
-// Causes the receiver to attempt to commit any pending edits, returning YES if successful or no edits were pending. [Full Topic]
+// Discards any pending changes by registered editors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1531472-commitediting?language=objc
-func (c_ Controller) CommitEditing() bool {
-	rv := objc.Call[bool](c_, objc.Sel("commitEditing"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1528652-discardediting?language=objc
+func (c_ Controller) DiscardEditing() {
+	objc.Call[objc.Void](c_, objc.Sel("discardEditing"))
 }
 
 // A Boolean value indicating if any editors are registered with the controller. [Full Topic]

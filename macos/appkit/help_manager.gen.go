@@ -19,13 +19,13 @@ type _HelpManagerClass struct {
 // An interface definition for the [HelpManager] class.
 type IHelpManager interface {
 	objc.IObject
-	FindStringInBook(query string, book HelpBookName)
-	ContextHelpForObject(object objc.IObject) foundation.AttributedString
+	RemoveContextHelpForObject(object objc.IObject)
 	OpenHelpAnchorInBook(anchor HelpAnchorName, book HelpBookName)
+	ContextHelpForObject(object objc.IObject) foundation.AttributedString
 	ShowContextHelpForObjectLocationHint(object objc.IObject, pt foundation.Point) bool
 	RegisterBooksInBundle(bundle foundation.IBundle) bool
 	SetContextHelpForObject(attrString foundation.IAttributedString, object objc.IObject)
-	RemoveContextHelpForObject(object objc.IObject)
+	FindStringInBook(query string, book HelpBookName)
 }
 
 // An object for displaying online help for an app. [Full Topic]
@@ -61,11 +61,18 @@ func (h_ HelpManager) Init() HelpManager {
 	return rv
 }
 
-// Performs a search for the specified string in the specified book. [Full Topic]
+// Removes the association between an object and its context-sensitive help. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500904-findstring?language=objc
-func (h_ HelpManager) FindStringInBook(query string, book HelpBookName) {
-	objc.Call[objc.Void](h_, objc.Sel("findString:inBook:"), query, book)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500906-removecontexthelpforobject?language=objc
+func (h_ HelpManager) RemoveContextHelpForObject(object objc.IObject) {
+	objc.Call[objc.Void](h_, objc.Sel("removeContextHelpForObject:"), object)
+}
+
+// Finds and displays the text at the given anchor location in the given book. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500908-openhelpanchor?language=objc
+func (h_ HelpManager) OpenHelpAnchorInBook(anchor HelpAnchorName, book HelpBookName) {
+	objc.Call[objc.Void](h_, objc.Sel("openHelpAnchor:inBook:"), anchor, book)
 }
 
 // Returns context-sensitive help for an object. [Full Topic]
@@ -74,13 +81,6 @@ func (h_ HelpManager) FindStringInBook(query string, book HelpBookName) {
 func (h_ HelpManager) ContextHelpForObject(object objc.IObject) foundation.AttributedString {
 	rv := objc.Call[foundation.AttributedString](h_, objc.Sel("contextHelpForObject:"), object)
 	return rv
-}
-
-// Finds and displays the text at the given anchor location in the given book. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500908-openhelpanchor?language=objc
-func (h_ HelpManager) OpenHelpAnchorInBook(anchor HelpAnchorName, book HelpBookName) {
-	objc.Call[objc.Void](h_, objc.Sel("openHelpAnchor:inBook:"), anchor, book)
 }
 
 // Displays the context-sensitive help for a given object at or near the point on the screen specified by a given point. [Full Topic]
@@ -106,26 +106,11 @@ func (h_ HelpManager) SetContextHelpForObject(attrString foundation.IAttributedS
 	objc.Call[objc.Void](h_, objc.Sel("setContextHelp:forObject:"), attrString, object)
 }
 
-// Removes the association between an object and its context-sensitive help. [Full Topic]
+// Performs a search for the specified string in the specified book. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500906-removecontexthelpforobject?language=objc
-func (h_ HelpManager) RemoveContextHelpForObject(object objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("removeContextHelpForObject:"), object)
-}
-
-// Returns the shared NSHelpManager instance, creating it if it does not already exist. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500924-sharedhelpmanager?language=objc
-func (hc _HelpManagerClass) SharedHelpManager() HelpManager {
-	rv := objc.Call[HelpManager](hc, objc.Sel("sharedHelpManager"))
-	return rv
-}
-
-// Returns the shared NSHelpManager instance, creating it if it does not already exist. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500924-sharedhelpmanager?language=objc
-func HelpManager_SharedHelpManager() HelpManager {
-	return HelpManagerClass.SharedHelpManager()
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500904-findstring?language=objc
+func (h_ HelpManager) FindStringInBook(query string, book HelpBookName) {
+	objc.Call[objc.Void](h_, objc.Sel("findString:inBook:"), query, book)
 }
 
 //	[Full Topic]
@@ -155,4 +140,19 @@ func (hc _HelpManagerClass) SetContextHelpModeActive(value bool) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/2870247-contexthelpmodeactive?language=objc
 func HelpManager_SetContextHelpModeActive(value bool) {
 	HelpManagerClass.SetContextHelpModeActive(value)
+}
+
+// Returns the shared NSHelpManager instance, creating it if it does not already exist. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500924-sharedhelpmanager?language=objc
+func (hc _HelpManagerClass) SharedHelpManager() HelpManager {
+	rv := objc.Call[HelpManager](hc, objc.Sel("sharedHelpManager"))
+	return rv
+}
+
+// Returns the shared NSHelpManager instance, creating it if it does not already exist. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500924-sharedhelpmanager?language=objc
+func HelpManager_SharedHelpManager() HelpManager {
+	return HelpManagerClass.SharedHelpManager()
 }

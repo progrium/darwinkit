@@ -20,10 +20,10 @@ type _ExtensionStreamFormatClass struct {
 // An interface definition for the [ExtensionStreamFormat] class.
 type IExtensionStreamFormat interface {
 	objc.IObject
+	MaxFrameDuration() coremedia.Time
 	MinFrameDuration() coremedia.Time
 	FormatDescription() coremedia.FormatDescriptionRef
 	ValidFrameDurations() []foundation.Dictionary
-	MaxFrameDuration() coremedia.Time
 }
 
 // An object that describes the format of a media stream. [Full Topic]
@@ -39,6 +39,18 @@ func ExtensionStreamFormatFrom(ptr unsafe.Pointer) ExtensionStreamFormat {
 	}
 }
 
+func (ec _ExtensionStreamFormatClass) StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription coremedia.FormatDescriptionRef, maxFrameDuration coremedia.Time, minFrameDuration coremedia.Time, validFrameDurations []foundation.Dictionary) ExtensionStreamFormat {
+	rv := objc.Call[ExtensionStreamFormat](ec, objc.Sel("streamFormatWithFormatDescription:maxFrameDuration:minFrameDuration:validFrameDurations:"), formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
+	return rv
+}
+
+// Returns a new stream format with a format description and frame durations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamformat/3915901-streamformatwithformatdescriptio?language=objc
+func ExtensionStreamFormat_StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription coremedia.FormatDescriptionRef, maxFrameDuration coremedia.Time, minFrameDuration coremedia.Time, validFrameDurations []foundation.Dictionary) ExtensionStreamFormat {
+	return ExtensionStreamFormatClass.StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
+}
+
 func (e_ ExtensionStreamFormat) InitWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription coremedia.FormatDescriptionRef, maxFrameDuration coremedia.Time, minFrameDuration coremedia.Time, validFrameDurations []foundation.Dictionary) ExtensionStreamFormat {
 	rv := objc.Call[ExtensionStreamFormat](e_, objc.Sel("initWithFormatDescription:maxFrameDuration:minFrameDuration:validFrameDurations:"), formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
 	return rv
@@ -51,18 +63,6 @@ func NewExtensionStreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurati
 	instance := ExtensionStreamFormatClass.Alloc().InitWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
 	instance.Autorelease()
 	return instance
-}
-
-func (ec _ExtensionStreamFormatClass) StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription coremedia.FormatDescriptionRef, maxFrameDuration coremedia.Time, minFrameDuration coremedia.Time, validFrameDurations []foundation.Dictionary) ExtensionStreamFormat {
-	rv := objc.Call[ExtensionStreamFormat](ec, objc.Sel("streamFormatWithFormatDescription:maxFrameDuration:minFrameDuration:validFrameDurations:"), formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
-	return rv
-}
-
-// Returns a new stream format with a format description and frame durations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamformat/3915901-streamformatwithformatdescriptio?language=objc
-func ExtensionStreamFormat_StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription coremedia.FormatDescriptionRef, maxFrameDuration coremedia.Time, minFrameDuration coremedia.Time, validFrameDurations []foundation.Dictionary) ExtensionStreamFormat {
-	return ExtensionStreamFormatClass.StreamFormatWithFormatDescriptionMaxFrameDurationMinFrameDurationValidFrameDurations(formatDescription, maxFrameDuration, minFrameDuration, validFrameDurations)
 }
 
 func (ec _ExtensionStreamFormatClass) Alloc() ExtensionStreamFormat {
@@ -82,6 +82,14 @@ func NewExtensionStreamFormat() ExtensionStreamFormat {
 
 func (e_ ExtensionStreamFormat) Init() ExtensionStreamFormat {
 	rv := objc.Call[ExtensionStreamFormat](e_, objc.Sel("init"))
+	return rv
+}
+
+// The maximum duration a stream supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamformat/3915899-maxframeduration?language=objc
+func (e_ ExtensionStreamFormat) MaxFrameDuration() coremedia.Time {
+	rv := objc.Call[coremedia.Time](e_, objc.Sel("maxFrameDuration"))
 	return rv
 }
 
@@ -106,13 +114,5 @@ func (e_ ExtensionStreamFormat) FormatDescription() coremedia.FormatDescriptionR
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamformat/3915902-validframedurations?language=objc
 func (e_ ExtensionStreamFormat) ValidFrameDurations() []foundation.Dictionary {
 	rv := objc.Call[[]foundation.Dictionary](e_, objc.Sel("validFrameDurations"))
-	return rv
-}
-
-// The maximum duration a stream supports. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamformat/3915899-maxframeduration?language=objc
-func (e_ ExtensionStreamFormat) MaxFrameDuration() coremedia.Time {
-	rv := objc.Call[coremedia.Time](e_, objc.Sel("maxFrameDuration"))
 	return rv
 }

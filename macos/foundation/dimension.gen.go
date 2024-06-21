@@ -34,6 +34,18 @@ func DimensionFrom(ptr unsafe.Pointer) Dimension {
 	}
 }
 
+func (dc _DimensionClass) BaseUnit() Dimension {
+	rv := objc.Call[Dimension](dc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func Dimension_BaseUnit() Dimension {
+	return DimensionClass.BaseUnit()
+}
+
 func (d_ Dimension) InitWithSymbolConverter(symbol string, converter IUnitConverter) Dimension {
 	rv := objc.Call[Dimension](d_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -46,18 +58,6 @@ func NewDimensionWithSymbolConverter(symbol string, converter IUnitConverter) Di
 	instance := DimensionClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (dc _DimensionClass) BaseUnit() Dimension {
-	rv := objc.Call[Dimension](dc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func Dimension_BaseUnit() Dimension {
-	return DimensionClass.BaseUnit()
 }
 
 func (dc _DimensionClass) Alloc() Dimension {

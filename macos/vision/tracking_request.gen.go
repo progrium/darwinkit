@@ -18,12 +18,12 @@ type _TrackingRequestClass struct {
 // An interface definition for the [TrackingRequest] class.
 type ITrackingRequest interface {
 	IImageBasedRequest
-	TrackingLevel() RequestTrackingLevel
-	SetTrackingLevel(value RequestTrackingLevel)
 	IsLastFrame() bool
 	SetLastFrame(value bool)
 	InputObservation() DetectedObjectObservation
 	SetInputObservation(value IDetectedObjectObservation)
+	TrackingLevel() RequestTrackingLevel
+	SetTrackingLevel(value RequestTrackingLevel)
 }
 
 // The abstract superclass for image analysis requests that track unique features across multiple images or video frames. [Full Topic]
@@ -73,21 +73,6 @@ func NewTrackingRequestWithCompletionHandler(completionHandler RequestCompletion
 	return instance
 }
 
-// A value for specifying whether to prioritize speed or location accuracy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887353-trackinglevel?language=objc
-func (t_ TrackingRequest) TrackingLevel() RequestTrackingLevel {
-	rv := objc.Call[RequestTrackingLevel](t_, objc.Sel("trackingLevel"))
-	return rv
-}
-
-// A value for specifying whether to prioritize speed or location accuracy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887353-trackinglevel?language=objc
-func (t_ TrackingRequest) SetTrackingLevel(value RequestTrackingLevel) {
-	objc.Call[objc.Void](t_, objc.Sel("setTrackingLevel:"), value)
-}
-
 // A Boolean that indicates the last frame in a tracking sequence. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887356-lastframe?language=objc
@@ -116,4 +101,19 @@ func (t_ TrackingRequest) InputObservation() DetectedObjectObservation {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887350-inputobservation?language=objc
 func (t_ TrackingRequest) SetInputObservation(value IDetectedObjectObservation) {
 	objc.Call[objc.Void](t_, objc.Sel("setInputObservation:"), value)
+}
+
+// A value for specifying whether to prioritize speed or location accuracy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887353-trackinglevel?language=objc
+func (t_ TrackingRequest) TrackingLevel() RequestTrackingLevel {
+	rv := objc.Call[RequestTrackingLevel](t_, objc.Sel("trackingLevel"))
+	return rv
+}
+
+// A value for specifying whether to prioritize speed or location accuracy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887353-trackinglevel?language=objc
+func (t_ TrackingRequest) SetTrackingLevel(value RequestTrackingLevel) {
+	objc.Call[objc.Void](t_, objc.Sel("setTrackingLevel:"), value)
 }

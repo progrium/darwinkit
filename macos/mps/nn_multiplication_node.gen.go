@@ -65,20 +65,6 @@ func NNMultiplicationNode_NodeWithSources(sourceNodes []INNImageNode) NNMultipli
 	return NNMultiplicationNodeClass.NodeWithSources(sourceNodes)
 }
 
-func (n_ NNMultiplicationNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
-	rv := objc.Call[NNMultiplicationNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
-func NewNNMultiplicationNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
-	instance := NNMultiplicationNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNMultiplicationNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
 	rv := objc.Call[NNMultiplicationNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
@@ -101,6 +87,20 @@ func (n_ NNMultiplicationNode) InitWithSources(sourceNodes []INNImageNode) NNMul
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890820-initwithsources?language=objc
 func NewNNMultiplicationNodeWithSources(sourceNodes []INNImageNode) NNMultiplicationNode {
 	instance := NNMultiplicationNodeClass.Alloc().InitWithSources(sourceNodes)
+	instance.Autorelease()
+	return instance
+}
+
+func (n_ NNMultiplicationNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
+	rv := objc.Call[NNMultiplicationNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2890825-initwithleftsource?language=objc
+func NewNNMultiplicationNodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
+	instance := NNMultiplicationNodeClass.Alloc().InitWithLeftSourceRightSource(left, right)
 	instance.Autorelease()
 	return instance
 }

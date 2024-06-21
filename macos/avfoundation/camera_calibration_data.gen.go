@@ -20,13 +20,13 @@ type _CameraCalibrationDataClass struct {
 // An interface definition for the [CameraCalibrationData] class.
 type ICameraCalibrationData interface {
 	objc.IObject
-	PixelSize() float32
-	IntrinsicMatrix() kernel.Matrix_float3x3
-	InverseLensDistortionLookupTable() []byte
 	LensDistortionCenter() coregraphics.Point
-	ExtrinsicMatrix() kernel.Matrix_float4x3
-	IntrinsicMatrixReferenceDimensions() coregraphics.Size
+	InverseLensDistortionLookupTable() []byte
 	LensDistortionLookupTable() []byte
+	IntrinsicMatrixReferenceDimensions() coregraphics.Size
+	IntrinsicMatrix() kernel.Matrix_float3x3
+	ExtrinsicMatrix() kernel.Matrix_float4x3
+	PixelSize() float32
 }
 
 // Information about the camera characteristics used to capture images and depth data. [Full Topic]
@@ -62,19 +62,11 @@ func (c_ CameraCalibrationData) Init() CameraCalibrationData {
 	return rv
 }
 
-// The size, in millimeters, of one image pixel. [Full Topic]
+// The offset of the distortion center of the camera lens from the top-left corner of the image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881128-pixelsize?language=objc
-func (c_ CameraCalibrationData) PixelSize() float32 {
-	rv := objc.Call[float32](c_, objc.Sel("pixelSize"))
-	return rv
-}
-
-// A matrix that relates a camera’s internal properties to an ideal pinhole-camera model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881135-intrinsicmatrix?language=objc
-func (c_ CameraCalibrationData) IntrinsicMatrix() kernel.Matrix_float3x3 {
-	rv := objc.Call[kernel.Matrix_float3x3](c_, objc.Sel("intrinsicMatrix"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881131-lensdistortioncenter?language=objc
+func (c_ CameraCalibrationData) LensDistortionCenter() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("lensDistortionCenter"))
 	return rv
 }
 
@@ -86,19 +78,11 @@ func (c_ CameraCalibrationData) InverseLensDistortionLookupTable() []byte {
 	return rv
 }
 
-// The offset of the distortion center of the camera lens from the top-left corner of the image. [Full Topic]
+// A map of floating-point values describing radial distortions imparted by the camera lens, for use in rectifying camera images. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881131-lensdistortioncenter?language=objc
-func (c_ CameraCalibrationData) LensDistortionCenter() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](c_, objc.Sel("lensDistortionCenter"))
-	return rv
-}
-
-// A matrix relating a camera’s position and orientation to a world or scene coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881130-extrinsicmatrix?language=objc
-func (c_ CameraCalibrationData) ExtrinsicMatrix() kernel.Matrix_float4x3 {
-	rv := objc.Call[kernel.Matrix_float4x3](c_, objc.Sel("extrinsicMatrix"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881129-lensdistortionlookuptable?language=objc
+func (c_ CameraCalibrationData) LensDistortionLookupTable() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("lensDistortionLookupTable"))
 	return rv
 }
 
@@ -110,10 +94,26 @@ func (c_ CameraCalibrationData) IntrinsicMatrixReferenceDimensions() coregraphic
 	return rv
 }
 
-// A map of floating-point values describing radial distortions imparted by the camera lens, for use in rectifying camera images. [Full Topic]
+// A matrix that relates a camera’s internal properties to an ideal pinhole-camera model. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881129-lensdistortionlookuptable?language=objc
-func (c_ CameraCalibrationData) LensDistortionLookupTable() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("lensDistortionLookupTable"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881135-intrinsicmatrix?language=objc
+func (c_ CameraCalibrationData) IntrinsicMatrix() kernel.Matrix_float3x3 {
+	rv := objc.Call[kernel.Matrix_float3x3](c_, objc.Sel("intrinsicMatrix"))
+	return rv
+}
+
+// A matrix relating a camera’s position and orientation to a world or scene coordinate system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881130-extrinsicmatrix?language=objc
+func (c_ CameraCalibrationData) ExtrinsicMatrix() kernel.Matrix_float4x3 {
+	rv := objc.Call[kernel.Matrix_float4x3](c_, objc.Sel("extrinsicMatrix"))
+	return rv
+}
+
+// The size, in millimeters, of one image pixel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881128-pixelsize?language=objc
+func (c_ CameraCalibrationData) PixelSize() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pixelSize"))
 	return rv
 }

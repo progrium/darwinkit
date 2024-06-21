@@ -19,22 +19,22 @@ type _PersistentStoreClass struct {
 // An interface definition for the [PersistentStore] class.
 type IPersistentStore interface {
 	objc.IObject
+	WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator)
 	DidAddToPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator)
 	LoadMetadata(error unsafe.Pointer) bool
-	WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator)
+	IsReadOnly() bool
+	SetReadOnly(value bool)
+	PersistentStoreCoordinator() PersistentStoreCoordinator
+	Options() foundation.Dictionary
 	Metadata() map[string]objc.Object
 	SetMetadata(value map[string]objc.IObject)
-	ConfigurationName() string
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
 	CoreSpotlightExporter() CoreDataCoreSpotlightDelegate
-	Options() foundation.Dictionary
-	PersistentStoreCoordinator() PersistentStoreCoordinator
+	ConfigurationName() string
 	Type() string
 	Identifier() string
 	SetIdentifier(value string)
-	IsReadOnly() bool
-	SetReadOnly(value bool)
 }
 
 // The abstract base class for all Core Data persistent stores. [Full Topic]
@@ -84,11 +84,26 @@ func (p_ PersistentStore) Init() PersistentStore {
 	return rv
 }
 
-// Invoked after the persistent store has been added to the persistent store coordinator. [Full Topic]
+// Invoked before the persistent store is removed from the persistent store coordinator. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506873-didaddtopersistentstorecoordinat?language=objc
-func (p_ PersistentStore) DidAddToPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
-	objc.Call[objc.Void](p_, objc.Sel("didAddToPersistentStoreCoordinator:"), coordinator)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506731-willremovefrompersistentstorecoo?language=objc
+func (p_ PersistentStore) WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
+	objc.Call[objc.Void](p_, objc.Sel("willRemoveFromPersistentStoreCoordinator:"), coordinator)
+}
+
+// Sets the metadata for the store at a given URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
+func (pc _PersistentStoreClass) SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](pc, objc.Sel("setMetadata:forPersistentStoreWithURL:error:"), metadata, url, error)
+	return rv
+}
+
+// Sets the metadata for the store at a given URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
+func PersistentStore_SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
+	return PersistentStoreClass.SetMetadataForPersistentStoreWithURLError(metadata, url, error)
 }
 
 // Returns the metadata from the persistent store at the given URL. [Full Topic]
@@ -104,6 +119,13 @@ func (pc _PersistentStoreClass) MetadataForPersistentStoreWithURLError(url found
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506741-metadataforpersistentstorewithur?language=objc
 func PersistentStore_MetadataForPersistentStoreWithURLError(url foundation.IURL, error unsafe.Pointer) map[string]objc.Object {
 	return PersistentStoreClass.MetadataForPersistentStoreWithURLError(url, error)
+}
+
+// Invoked after the persistent store has been added to the persistent store coordinator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506873-didaddtopersistentstorecoordinat?language=objc
+func (p_ PersistentStore) DidAddToPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
+	objc.Call[objc.Void](p_, objc.Sel("didAddToPersistentStoreCoordinator:"), coordinator)
 }
 
 // Instructs the persistent store to load its metadata. [Full Topic]
@@ -129,26 +151,35 @@ func PersistentStore_MigrationManagerClass() objc.Class {
 	return PersistentStoreClass.MigrationManagerClass()
 }
 
-// Sets the metadata for the store at a given URL. [Full Topic]
+// A Boolean value that indicates whether the persistent store is read-only. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
-func (pc _PersistentStoreClass) SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
-	rv := objc.Call[bool](pc, objc.Sel("setMetadata:forPersistentStoreWithURL:error:"), metadata, url, error)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506183-readonly?language=objc
+func (p_ PersistentStore) IsReadOnly() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isReadOnly"))
 	return rv
 }
 
-// Sets the metadata for the store at a given URL. [Full Topic]
+// A Boolean value that indicates whether the persistent store is read-only. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
-func PersistentStore_SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
-	return PersistentStoreClass.SetMetadataForPersistentStoreWithURLError(metadata, url, error)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506183-readonly?language=objc
+func (p_ PersistentStore) SetReadOnly(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setReadOnly:"), value)
 }
 
-// Invoked before the persistent store is removed from the persistent store coordinator. [Full Topic]
+// The persistent store coordinator that loads the persistent store. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506731-willremovefrompersistentstorecoo?language=objc
-func (p_ PersistentStore) WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
-	objc.Call[objc.Void](p_, objc.Sel("willRemoveFromPersistentStoreCoordinator:"), coordinator)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506226-persistentstorecoordinator?language=objc
+func (p_ PersistentStore) PersistentStoreCoordinator() PersistentStoreCoordinator {
+	rv := objc.Call[PersistentStoreCoordinator](p_, objc.Sel("persistentStoreCoordinator"))
+	return rv
+}
+
+// The options that Core Data uses to create the store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506821-options?language=objc
+func (p_ PersistentStore) Options() foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("options"))
+	return rv
 }
 
 // The metadata for the persistent store. [Full Topic]
@@ -164,14 +195,6 @@ func (p_ PersistentStore) Metadata() map[string]objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506564-metadata?language=objc
 func (p_ PersistentStore) SetMetadata(value map[string]objc.IObject) {
 	objc.Call[objc.Void](p_, objc.Sel("setMetadata:"), value)
-}
-
-// The name of the managed object model configuration that creates the persistent store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506620-configurationname?language=objc
-func (p_ PersistentStore) ConfigurationName() string {
-	rv := objc.Call[string](p_, objc.Sel("configurationName"))
-	return rv
 }
 
 // The URL for the persistent store. [Full Topic]
@@ -197,19 +220,11 @@ func (p_ PersistentStore) CoreSpotlightExporter() CoreDataCoreSpotlightDelegate 
 	return rv
 }
 
-// The options that Core Data uses to create the store. [Full Topic]
+// The name of the managed object model configuration that creates the persistent store. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506821-options?language=objc
-func (p_ PersistentStore) Options() foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("options"))
-	return rv
-}
-
-// The persistent store coordinator that loads the persistent store. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506226-persistentstorecoordinator?language=objc
-func (p_ PersistentStore) PersistentStoreCoordinator() PersistentStoreCoordinator {
-	rv := objc.Call[PersistentStoreCoordinator](p_, objc.Sel("persistentStoreCoordinator"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506620-configurationname?language=objc
+func (p_ PersistentStore) ConfigurationName() string {
+	rv := objc.Call[string](p_, objc.Sel("configurationName"))
 	return rv
 }
 
@@ -234,19 +249,4 @@ func (p_ PersistentStore) Identifier() string {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506215-identifier?language=objc
 func (p_ PersistentStore) SetIdentifier(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setIdentifier:"), value)
-}
-
-// A Boolean value that indicates whether the persistent store is read-only. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506183-readonly?language=objc
-func (p_ PersistentStore) IsReadOnly() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isReadOnly"))
-	return rv
-}
-
-// A Boolean value that indicates whether the persistent store is read-only. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506183-readonly?language=objc
-func (p_ PersistentStore) SetReadOnly(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setReadOnly:"), value)
 }

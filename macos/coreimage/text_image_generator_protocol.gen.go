@@ -11,14 +11,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator?language=objc
 type PTextImageGenerator interface {
 	// optional
-	SetFontName(value string)
-	HasSetFontName() bool
-
-	// optional
-	FontName() string
-	HasFontName() bool
-
-	// optional
 	SetScaleFactor(value float32)
 	HasSetScaleFactor() bool
 
@@ -27,20 +19,28 @@ type PTextImageGenerator interface {
 	HasScaleFactor() bool
 
 	// optional
-	SetText(value string)
-	HasSetText() bool
-
-	// optional
-	Text() string
-	HasText() bool
-
-	// optional
 	SetFontSize(value float32)
 	HasSetFontSize() bool
 
 	// optional
 	FontSize() float32
 	HasFontSize() bool
+
+	// optional
+	SetFontName(value string)
+	HasSetFontName() bool
+
+	// optional
+	FontName() string
+	HasFontName() bool
+
+	// optional
+	SetText(value string)
+	HasSetText() bool
+
+	// optional
+	Text() string
+	HasText() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,29 +49,6 @@ var _ PTextImageGenerator = (*TextImageGeneratorObject)(nil)
 // A concrete type for the [PTextImageGenerator] protocol.
 type TextImageGeneratorObject struct {
 	objc.Object
-}
-
-func (t_ TextImageGeneratorObject) HasSetFontName() bool {
-	return t_.RespondsToSelector(objc.Sel("setFontName:"))
-}
-
-// The name of the font to use for the generated text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228785-fontname?language=objc
-func (t_ TextImageGeneratorObject) SetFontName(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setFontName:"), value)
-}
-
-func (t_ TextImageGeneratorObject) HasFontName() bool {
-	return t_.RespondsToSelector(objc.Sel("fontName"))
-}
-
-// The name of the font to use for the generated text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228785-fontname?language=objc
-func (t_ TextImageGeneratorObject) FontName() string {
-	rv := objc.Call[string](t_, objc.Sel("fontName"))
-	return rv
 }
 
 func (t_ TextImageGeneratorObject) HasSetScaleFactor() bool {
@@ -97,29 +74,6 @@ func (t_ TextImageGeneratorObject) ScaleFactor() float32 {
 	return rv
 }
 
-func (t_ TextImageGeneratorObject) HasSetText() bool {
-	return t_.RespondsToSelector(objc.Sel("setText:"))
-}
-
-// The text to render. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228788-text?language=objc
-func (t_ TextImageGeneratorObject) SetText(value string) {
-	objc.Call[objc.Void](t_, objc.Sel("setText:"), value)
-}
-
-func (t_ TextImageGeneratorObject) HasText() bool {
-	return t_.RespondsToSelector(objc.Sel("text"))
-}
-
-// The text to render. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228788-text?language=objc
-func (t_ TextImageGeneratorObject) Text() string {
-	rv := objc.Call[string](t_, objc.Sel("text"))
-	return rv
-}
-
 func (t_ TextImageGeneratorObject) HasSetFontSize() bool {
 	return t_.RespondsToSelector(objc.Sel("setFontSize:"))
 }
@@ -140,5 +94,51 @@ func (t_ TextImageGeneratorObject) HasFontSize() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228786-fontsize?language=objc
 func (t_ TextImageGeneratorObject) FontSize() float32 {
 	rv := objc.Call[float32](t_, objc.Sel("fontSize"))
+	return rv
+}
+
+func (t_ TextImageGeneratorObject) HasSetFontName() bool {
+	return t_.RespondsToSelector(objc.Sel("setFontName:"))
+}
+
+// The name of the font to use for the generated text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228785-fontname?language=objc
+func (t_ TextImageGeneratorObject) SetFontName(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setFontName:"), value)
+}
+
+func (t_ TextImageGeneratorObject) HasFontName() bool {
+	return t_.RespondsToSelector(objc.Sel("fontName"))
+}
+
+// The name of the font to use for the generated text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228785-fontname?language=objc
+func (t_ TextImageGeneratorObject) FontName() string {
+	rv := objc.Call[string](t_, objc.Sel("fontName"))
+	return rv
+}
+
+func (t_ TextImageGeneratorObject) HasSetText() bool {
+	return t_.RespondsToSelector(objc.Sel("setText:"))
+}
+
+// The text to render. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228788-text?language=objc
+func (t_ TextImageGeneratorObject) SetText(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setText:"), value)
+}
+
+func (t_ TextImageGeneratorObject) HasText() bool {
+	return t_.RespondsToSelector(objc.Sel("text"))
+}
+
+// The text to render. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228788-text?language=objc
+func (t_ TextImageGeneratorObject) Text() string {
+	rv := objc.Call[string](t_, objc.Sel("text"))
 	return rv
 }

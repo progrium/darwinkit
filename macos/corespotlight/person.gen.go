@@ -18,11 +18,11 @@ type _PersonClass struct {
 // An interface definition for the [Person] class.
 type IPerson interface {
 	objc.IObject
-	DisplayName() string
 	HandleIdentifier() string
-	Handles() []string
 	ContactIdentifier() string
 	SetContactIdentifier(value string)
+	DisplayName() string
+	Handles() []string
 }
 
 // An object representing a person in the context of search results. [Full Topic]
@@ -72,27 +72,11 @@ func (p_ Person) Init() Person {
 	return rv
 }
 
-// A display name for the person. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618469-displayname?language=objc
-func (p_ Person) DisplayName() string {
-	rv := objc.Call[string](p_, objc.Sel("displayName"))
-	return rv
-}
-
 // A key that identifies the type of contact property represented by the person object’s handle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618466-handleidentifier?language=objc
 func (p_ Person) HandleIdentifier() string {
 	rv := objc.Call[string](p_, objc.Sel("handleIdentifier"))
-	return rv
-}
-
-// An array of contact handles related to the person. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618465-handles?language=objc
-func (p_ Person) Handles() []string {
-	rv := objc.Call[[]string](p_, objc.Sel("handles"))
 	return rv
 }
 
@@ -109,4 +93,20 @@ func (p_ Person) ContactIdentifier() string {
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618468-contactidentifier?language=objc
 func (p_ Person) SetContactIdentifier(value string) {
 	objc.Call[objc.Void](p_, objc.Sel("setContactIdentifier:"), value)
+}
+
+// A display name for the person. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618469-displayname?language=objc
+func (p_ Person) DisplayName() string {
+	rv := objc.Call[string](p_, objc.Sel("displayName"))
+	return rv
+}
+
+// An array of contact handles related to the person. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618465-handles?language=objc
+func (p_ Person) Handles() []string {
+	rv := objc.Call[[]string](p_, objc.Sel("handles"))
+	return rv
 }

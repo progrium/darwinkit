@@ -54,45 +54,16 @@ func (c_ CNNArithmeticGradientState) Init() CNNArithmeticGradientState {
 	return rv
 }
 
-func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
+func (c_ CNNArithmeticGradientState) InitWithResources(resources []metal.PResource) CNNArithmeticGradientState {
+	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithResources:"), resources)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
-func CNNArithmeticGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNArithmeticGradientState {
-	return CNNArithmeticGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
-}
-
-func (c_ CNNArithmeticGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942400-initwithdevice?language=objc
-func NewCNNArithmeticGradientStateWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
-	instance := CNNArithmeticGradientStateClass.Alloc().InitWithDeviceTextureDescriptor(device, descriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (c_ CNNArithmeticGradientState) InitWithResource(resource metal.PResource) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLResource", resource)
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithResource:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
-func NewCNNArithmeticGradientStateWithResource(resource metal.PResource) CNNArithmeticGradientState {
-	instance := CNNArithmeticGradientStateClass.Alloc().InitWithResource(resource)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
+func NewCNNArithmeticGradientStateWithResources(resources []metal.PResource) CNNArithmeticGradientState {
+	instance := CNNArithmeticGradientStateClass.Alloc().InitWithResources(resources)
 	instance.Autorelease()
 	return instance
 }
@@ -112,70 +83,30 @@ func NewCNNArithmeticGradientStateWithDeviceBufferSize(device metal.PDevice, buf
 	return instance
 }
 
-func (c_ CNNArithmeticGradientState) InitWithResources(resources []metal.PResource) CNNArithmeticGradientState {
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithResources:"), resources)
+func (c_ CNNArithmeticGradientState) InitWithResource(resource metal.PResource) CNNArithmeticGradientState {
+	po0 := objc.WrapAsProtocol("MTLResource", resource)
+	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithResource:"), po0)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947895-initwithresources?language=objc
-func NewCNNArithmeticGradientStateWithResources(resources []metal.PResource) CNNArithmeticGradientState {
-	instance := CNNArithmeticGradientStateClass.Alloc().InitWithResources(resources)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942390-initwithresource?language=objc
+func NewCNNArithmeticGradientStateWithResource(resource metal.PResource) CNNArithmeticGradientState {
+	instance := CNNArithmeticGradientStateClass.Alloc().InitWithResource(resource)
 	instance.Autorelease()
 	return instance
 }
 
-func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:bufferSize:"), po0, bufferSize)
+func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNArithmeticGradientState {
+	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
+	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942391-temporarystatewithcommandbuffer?language=objc
-func CNNArithmeticGradientState_TemporaryStateWithCommandBufferBufferSize(cmdBuf metal.PCommandBuffer, bufferSize uint) CNNArithmeticGradientState {
-	return CNNArithmeticGradientStateClass.TemporaryStateWithCommandBufferBufferSize(cmdBuf, bufferSize)
-}
-
-func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:"), po0)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942393-temporarystatewithcommandbuffer?language=objc
-func CNNArithmeticGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) CNNArithmeticGradientState {
-	return CNNArithmeticGradientStateClass.TemporaryStateWithCommandBuffer(cmdBuf)
-}
-
-func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942395-temporarystatewithcommandbuffer?language=objc
-func CNNArithmeticGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
-	return CNNArithmeticGradientStateClass.TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf, descriptor)
-}
-
-func (c_ CNNArithmeticGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNArithmeticGradientState {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947908-initwithdevice?language=objc
-func NewCNNArithmeticGradientStateWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNArithmeticGradientState {
-	instance := CNNArithmeticGradientStateClass.Alloc().InitWithDeviceResourceList(device, resourceList)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2947915-temporarystatewithcommandbuffer?language=objc
+func CNNArithmeticGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNArithmeticGradientState {
+	return CNNArithmeticGradientStateClass.TemporaryStateWithCommandBufferResourceList(commandBuffer, resourceList)
 }

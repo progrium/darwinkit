@@ -18,19 +18,19 @@ type _FaceLandmarks2DClass struct {
 // An interface definition for the [FaceLandmarks2D] class.
 type IFaceLandmarks2D interface {
 	IFaceLandmarks
-	AllPoints() FaceLandmarkRegion2D
-	Nose() FaceLandmarkRegion2D
-	RightEye() FaceLandmarkRegion2D
-	RightEyebrow() FaceLandmarkRegion2D
-	NoseCrest() FaceLandmarkRegion2D
 	RightPupil() FaceLandmarkRegion2D
-	OuterLips() FaceLandmarkRegion2D
-	LeftPupil() FaceLandmarkRegion2D
-	LeftEyebrow() FaceLandmarkRegion2D
-	FaceContour() FaceLandmarkRegion2D
+	Nose() FaceLandmarkRegion2D
 	InnerLips() FaceLandmarkRegion2D
+	LeftPupil() FaceLandmarkRegion2D
+	OuterLips() FaceLandmarkRegion2D
 	MedianLine() FaceLandmarkRegion2D
+	NoseCrest() FaceLandmarkRegion2D
+	RightEyebrow() FaceLandmarkRegion2D
+	FaceContour() FaceLandmarkRegion2D
+	AllPoints() FaceLandmarkRegion2D
+	LeftEyebrow() FaceLandmarkRegion2D
 	LeftEye() FaceLandmarkRegion2D
+	RightEye() FaceLandmarkRegion2D
 }
 
 // A collection of facial features that a request detects. [Full Topic]
@@ -66,11 +66,11 @@ func (f_ FaceLandmarks2D) Init() FaceLandmarks2D {
 	return rv
 }
 
-// The region containing all face landmark points. [Full Topic]
+// The region containing the point where the right pupil is located. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879430-allpoints?language=objc
-func (f_ FaceLandmarks2D) AllPoints() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("allPoints"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879441-rightpupil?language=objc
+func (f_ FaceLandmarks2D) RightPupil() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightPupil"))
 	return rv
 }
 
@@ -82,43 +82,11 @@ func (f_ FaceLandmarks2D) Nose() FaceLandmarkRegion2D {
 	return rv
 }
 
-// The region containing points that outline the right eye. [Full Topic]
+// The region containing points that outline the space between the lips. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879442-righteye?language=objc
-func (f_ FaceLandmarks2D) RightEye() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightEye"))
-	return rv
-}
-
-// The region containing points that trace the right eyebrow. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879432-righteyebrow?language=objc
-func (f_ FaceLandmarks2D) RightEyebrow() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightEyebrow"))
-	return rv
-}
-
-// The region containing points that trace the center crest of the nose. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879431-nosecrest?language=objc
-func (f_ FaceLandmarks2D) NoseCrest() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("noseCrest"))
-	return rv
-}
-
-// The region containing the point where the right pupil is located. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879441-rightpupil?language=objc
-func (f_ FaceLandmarks2D) RightPupil() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightPupil"))
-	return rv
-}
-
-// The region containing points that outline the outside of the lips. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879440-outerlips?language=objc
-func (f_ FaceLandmarks2D) OuterLips() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("outerLips"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879434-innerlips?language=objc
+func (f_ FaceLandmarks2D) InnerLips() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("innerLips"))
 	return rv
 }
 
@@ -130,27 +98,11 @@ func (f_ FaceLandmarks2D) LeftPupil() FaceLandmarkRegion2D {
 	return rv
 }
 
-// The region containing points that trace the left eyebrow. [Full Topic]
+// The region containing points that outline the outside of the lips. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879438-lefteyebrow?language=objc
-func (f_ FaceLandmarks2D) LeftEyebrow() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("leftEyebrow"))
-	return rv
-}
-
-// The region containing points that trace the face contour from the left cheek, over the chin, to the right cheek. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879437-facecontour?language=objc
-func (f_ FaceLandmarks2D) FaceContour() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("faceContour"))
-	return rv
-}
-
-// The region containing points that outline the space between the lips. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879434-innerlips?language=objc
-func (f_ FaceLandmarks2D) InnerLips() FaceLandmarkRegion2D {
-	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("innerLips"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879440-outerlips?language=objc
+func (f_ FaceLandmarks2D) OuterLips() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("outerLips"))
 	return rv
 }
 
@@ -162,10 +114,58 @@ func (f_ FaceLandmarks2D) MedianLine() FaceLandmarkRegion2D {
 	return rv
 }
 
+// The region containing points that trace the center crest of the nose. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879431-nosecrest?language=objc
+func (f_ FaceLandmarks2D) NoseCrest() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("noseCrest"))
+	return rv
+}
+
+// The region containing points that trace the right eyebrow. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879432-righteyebrow?language=objc
+func (f_ FaceLandmarks2D) RightEyebrow() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightEyebrow"))
+	return rv
+}
+
+// The region containing points that trace the face contour from the left cheek, over the chin, to the right cheek. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879437-facecontour?language=objc
+func (f_ FaceLandmarks2D) FaceContour() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("faceContour"))
+	return rv
+}
+
+// The region containing all face landmark points. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879430-allpoints?language=objc
+func (f_ FaceLandmarks2D) AllPoints() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("allPoints"))
+	return rv
+}
+
+// The region containing points that trace the left eyebrow. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879438-lefteyebrow?language=objc
+func (f_ FaceLandmarks2D) LeftEyebrow() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("leftEyebrow"))
+	return rv
+}
+
 // The region containing points that outline the left eye. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879426-lefteye?language=objc
 func (f_ FaceLandmarks2D) LeftEye() FaceLandmarkRegion2D {
 	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("leftEye"))
+	return rv
+}
+
+// The region containing points that outline the right eye. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnfacelandmarks2d/2879442-righteye?language=objc
+func (f_ FaceLandmarks2D) RightEye() FaceLandmarkRegion2D {
+	rv := objc.Call[FaceLandmarkRegion2D](f_, objc.Sel("rightEye"))
 	return rv
 }

@@ -11,12 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing?language=objc
 type PVideoCompositing interface {
 	// optional
-	PrerollForRenderingUsingHint(renderHint VideoCompositionRenderHint)
-	HasPrerollForRenderingUsingHint() bool
+	RenderContextChanged(newRenderContext VideoCompositionRenderContext)
+	HasRenderContextChanged() bool
 
 	// optional
 	AnticipateRenderingUsingHint(renderHint VideoCompositionRenderHint)
 	HasAnticipateRenderingUsingHint() bool
+
+	// optional
+	PrerollForRenderingUsingHint(renderHint VideoCompositionRenderHint)
+	HasPrerollForRenderingUsingHint() bool
 
 	// optional
 	CancelAllPendingVideoCompositionRequests()
@@ -27,28 +31,24 @@ type PVideoCompositing interface {
 	HasStartVideoCompositionRequest() bool
 
 	// optional
-	RenderContextChanged(newRenderContext VideoCompositionRenderContext)
-	HasRenderContextChanged() bool
+	SupportsHDRSourceFrames() bool
+	HasSupportsHDRSourceFrames() bool
 
 	// optional
 	SupportsWideColorSourceFrames() bool
 	HasSupportsWideColorSourceFrames() bool
 
 	// optional
-	SourcePixelBufferAttributes() map[string]objc.Object
-	HasSourcePixelBufferAttributes() bool
-
-	// optional
 	RequiredPixelBufferAttributesForRenderContext() map[string]objc.Object
 	HasRequiredPixelBufferAttributesForRenderContext() bool
 
 	// optional
-	SupportsHDRSourceFrames() bool
-	HasSupportsHDRSourceFrames() bool
-
-	// optional
 	CanConformColorOfSourceFrames() bool
 	HasCanConformColorOfSourceFrames() bool
+
+	// optional
+	SourcePixelBufferAttributes() map[string]objc.Object
+	HasSourcePixelBufferAttributes() bool
 }
 
 // ensure impl type implements protocol interface
@@ -59,15 +59,15 @@ type VideoCompositingObject struct {
 	objc.Object
 }
 
-func (v_ VideoCompositingObject) HasPrerollForRenderingUsingHint() bool {
-	return v_.RespondsToSelector(objc.Sel("prerollForRenderingUsingHint:"))
+func (v_ VideoCompositingObject) HasRenderContextChanged() bool {
+	return v_.RespondsToSelector(objc.Sel("renderContextChanged:"))
 }
 
-// Tells a custom video compositor to perform any work in the prerolling phase. [Full Topic]
+// Tells the compositor that the composition changed render contexts. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3227886-prerollforrenderingusinghint?language=objc
-func (v_ VideoCompositingObject) PrerollForRenderingUsingHint(renderHint VideoCompositionRenderHint) {
-	objc.Call[objc.Void](v_, objc.Sel("prerollForRenderingUsingHint:"), renderHint)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1390363-rendercontextchanged?language=objc
+func (v_ VideoCompositingObject) RenderContextChanged(newRenderContext VideoCompositionRenderContext) {
+	objc.Call[objc.Void](v_, objc.Sel("renderContextChanged:"), newRenderContext)
 }
 
 func (v_ VideoCompositingObject) HasAnticipateRenderingUsingHint() bool {
@@ -79,6 +79,17 @@ func (v_ VideoCompositingObject) HasAnticipateRenderingUsingHint() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3227885-anticipaterenderingusinghint?language=objc
 func (v_ VideoCompositingObject) AnticipateRenderingUsingHint(renderHint VideoCompositionRenderHint) {
 	objc.Call[objc.Void](v_, objc.Sel("anticipateRenderingUsingHint:"), renderHint)
+}
+
+func (v_ VideoCompositingObject) HasPrerollForRenderingUsingHint() bool {
+	return v_.RespondsToSelector(objc.Sel("prerollForRenderingUsingHint:"))
+}
+
+// Tells a custom video compositor to perform any work in the prerolling phase. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3227886-prerollforrenderingusinghint?language=objc
+func (v_ VideoCompositingObject) PrerollForRenderingUsingHint(renderHint VideoCompositionRenderHint) {
+	objc.Call[objc.Void](v_, objc.Sel("prerollForRenderingUsingHint:"), renderHint)
 }
 
 func (v_ VideoCompositingObject) HasCancelAllPendingVideoCompositionRequests() bool {
@@ -103,15 +114,16 @@ func (v_ VideoCompositingObject) StartVideoCompositionRequest(asyncVideoComposit
 	objc.Call[objc.Void](v_, objc.Sel("startVideoCompositionRequest:"), asyncVideoCompositionRequest)
 }
 
-func (v_ VideoCompositingObject) HasRenderContextChanged() bool {
-	return v_.RespondsToSelector(objc.Sel("renderContextChanged:"))
+func (v_ VideoCompositingObject) HasSupportsHDRSourceFrames() bool {
+	return v_.RespondsToSelector(objc.Sel("supportsHDRSourceFrames"))
 }
 
-// Tells the compositor that the composition changed render contexts. [Full Topic]
+// A Boolean value that indicates whether the compositor handles source frames that contain high dynamic range (HDR) properties. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1390363-rendercontextchanged?language=objc
-func (v_ VideoCompositingObject) RenderContextChanged(newRenderContext VideoCompositionRenderContext) {
-	objc.Call[objc.Void](v_, objc.Sel("renderContextChanged:"), newRenderContext)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3626026-supportshdrsourceframes?language=objc
+func (v_ VideoCompositingObject) SupportsHDRSourceFrames() bool {
+	rv := objc.Call[bool](v_, objc.Sel("supportsHDRSourceFrames"))
+	return rv
 }
 
 func (v_ VideoCompositingObject) HasSupportsWideColorSourceFrames() bool {
@@ -123,18 +135,6 @@ func (v_ VideoCompositingObject) HasSupportsWideColorSourceFrames() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1643657-supportswidecolorsourceframes?language=objc
 func (v_ VideoCompositingObject) SupportsWideColorSourceFrames() bool {
 	rv := objc.Call[bool](v_, objc.Sel("supportsWideColorSourceFrames"))
-	return rv
-}
-
-func (v_ VideoCompositingObject) HasSourcePixelBufferAttributes() bool {
-	return v_.RespondsToSelector(objc.Sel("sourcePixelBufferAttributes"))
-}
-
-// The pixel buffer attributes that the compositor accepts for source frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1388610-sourcepixelbufferattributes?language=objc
-func (v_ VideoCompositingObject) SourcePixelBufferAttributes() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](v_, objc.Sel("sourcePixelBufferAttributes"))
 	return rv
 }
 
@@ -150,18 +150,6 @@ func (v_ VideoCompositingObject) RequiredPixelBufferAttributesForRenderContext()
 	return rv
 }
 
-func (v_ VideoCompositingObject) HasSupportsHDRSourceFrames() bool {
-	return v_.RespondsToSelector(objc.Sel("supportsHDRSourceFrames"))
-}
-
-// A Boolean value that indicates whether the compositor handles source frames that contain high dynamic range (HDR) properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3626026-supportshdrsourceframes?language=objc
-func (v_ VideoCompositingObject) SupportsHDRSourceFrames() bool {
-	rv := objc.Call[bool](v_, objc.Sel("supportsHDRSourceFrames"))
-	return rv
-}
-
 func (v_ VideoCompositingObject) HasCanConformColorOfSourceFrames() bool {
 	return v_.RespondsToSelector(objc.Sel("canConformColorOfSourceFrames"))
 }
@@ -171,5 +159,17 @@ func (v_ VideoCompositingObject) HasCanConformColorOfSourceFrames() bool {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3750314-canconformcolorofsourceframes?language=objc
 func (v_ VideoCompositingObject) CanConformColorOfSourceFrames() bool {
 	rv := objc.Call[bool](v_, objc.Sel("canConformColorOfSourceFrames"))
+	return rv
+}
+
+func (v_ VideoCompositingObject) HasSourcePixelBufferAttributes() bool {
+	return v_.RespondsToSelector(objc.Sel("sourcePixelBufferAttributes"))
+}
+
+// The pixel buffer attributes that the compositor accepts for source frames. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1388610-sourcepixelbufferattributes?language=objc
+func (v_ VideoCompositingObject) SourcePixelBufferAttributes() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](v_, objc.Sel("sourcePixelBufferAttributes"))
 	return rv
 }

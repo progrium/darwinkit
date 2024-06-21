@@ -20,7 +20,7 @@ type IWebHistory interface {
 	objc.IObject
 }
 
-// WebHistory objects are used to maintain the pages visited by users. Visited pages are represented by WebHistoryItem objects. You add and remove history items using the [webkit/webhistory/additems] and [webkit/webhistory/removeitems] methods. These methods post appropriate notifications when items are added or removed so you can update the display. WebHistory organizes the WebHistoryItem objects by the day they were visited, ordered from most recent to oldest. You can request all the days that contain history items using the [webkit/webhistory/orderedlastvisiteddays] method or request the items visited on a particular day using the [webkit/webhistory/ordereditemslastvisitedonday] method. WebHistory objects can be loaded and saved by specifying a file URL (see [webkit/webhistory/loadfromurl]). [Full Topic]
+// WebHistory objects are used to maintain the pages visited by users. Visited pages are represented by WebHistoryItem objects. You add and remove history items using the addItems: and removeItems: methods. These methods post appropriate notifications when items are added or removed so you can update the display. WebHistory organizes the WebHistoryItem objects by the day they were visited, ordered from most recent to oldest. You can request all the days that contain history items using the orderedLastVisitedDays method or request the items visited on a particular day using the orderedItemsLastVisitedOnDay: method. WebHistory objects can be loaded and saved by specifying a file URL (see loadFromURL:error:). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webhistory?language=objc
 type WebHistory struct {

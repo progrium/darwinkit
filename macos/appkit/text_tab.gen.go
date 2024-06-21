@@ -19,8 +19,8 @@ type _TextTabClass struct {
 // An interface definition for the [TextTab] class.
 type ITextTab interface {
 	objc.IObject
-	Location() float64
 	Options() map[TextTabOptionKey]objc.Object
+	Location() float64
 	Alignment() TextAlignment
 }
 
@@ -86,19 +86,19 @@ func TextTab_ColumnTerminatorsForLocale(aLocale foundation.ILocale) foundation.C
 	return TextTabClass.ColumnTerminatorsForLocale(aLocale)
 }
 
-// The text tab’s ruler location relative to the back margin. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttab/1527968-location?language=objc
-func (t_ TextTab) Location() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("location"))
-	return rv
-}
-
 // The dictionary of attributes for the text tab. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttab/1534965-options?language=objc
 func (t_ TextTab) Options() map[TextTabOptionKey]objc.Object {
 	rv := objc.Call[map[TextTabOptionKey]objc.Object](t_, objc.Sel("options"))
+	return rv
+}
+
+// The text tab’s ruler location relative to the back margin. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttab/1527968-location?language=objc
+func (t_ TextTab) Location() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("location"))
 	return rv
 }
 

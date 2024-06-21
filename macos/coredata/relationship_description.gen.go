@@ -22,15 +22,15 @@ type IRelationshipDescription interface {
 	SetOrdered(value bool)
 	DestinationEntity() EntityDescription
 	SetDestinationEntity(value IEntityDescription)
-	MaxCount() uint
-	SetMaxCount(value uint)
 	DeleteRule() DeleteRule
 	SetDeleteRule(value DeleteRule)
+	MaxCount() uint
+	SetMaxCount(value uint)
+	IsToMany() bool
 	MinCount() uint
 	SetMinCount(value uint)
 	InverseRelationship() RelationshipDescription
 	SetInverseRelationship(value IRelationshipDescription)
-	IsToMany() bool
 }
 
 // A description of a relationship between two entities. [Full Topic]
@@ -96,6 +96,21 @@ func (r_ RelationshipDescription) SetDestinationEntity(value IEntityDescription)
 	objc.Call[objc.Void](r_, objc.Sel("setDestinationEntity:"), value)
 }
 
+// The rule to apply when you delete the relationship’s owning managed object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506870-deleterule?language=objc
+func (r_ RelationshipDescription) DeleteRule() DeleteRule {
+	rv := objc.Call[DeleteRule](r_, objc.Sel("deleteRule"))
+	return rv
+}
+
+// The rule to apply when you delete the relationship’s owning managed object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506870-deleterule?language=objc
+func (r_ RelationshipDescription) SetDeleteRule(value DeleteRule) {
+	objc.Call[objc.Void](r_, objc.Sel("setDeleteRule:"), value)
+}
+
 // The maximum number of managed objects the relationship can reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506780-maxcount?language=objc
@@ -111,19 +126,12 @@ func (r_ RelationshipDescription) SetMaxCount(value uint) {
 	objc.Call[objc.Void](r_, objc.Sel("setMaxCount:"), value)
 }
 
-// The rule to apply when you delete the relationship’s owning managed object. [Full Topic]
+// Returns a Boolean value that indicates whether the relationship can contain many managed objects. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506870-deleterule?language=objc
-func (r_ RelationshipDescription) DeleteRule() DeleteRule {
-	rv := objc.Call[DeleteRule](r_, objc.Sel("deleteRule"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506560-tomany?language=objc
+func (r_ RelationshipDescription) IsToMany() bool {
+	rv := objc.Call[bool](r_, objc.Sel("isToMany"))
 	return rv
-}
-
-// The rule to apply when you delete the relationship’s owning managed object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506870-deleterule?language=objc
-func (r_ RelationshipDescription) SetDeleteRule(value DeleteRule) {
-	objc.Call[objc.Void](r_, objc.Sel("setDeleteRule:"), value)
 }
 
 // The minimum number of managed objects the relationship can reference. [Full Topic]
@@ -154,12 +162,4 @@ func (r_ RelationshipDescription) InverseRelationship() RelationshipDescription 
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506596-inverserelationship?language=objc
 func (r_ RelationshipDescription) SetInverseRelationship(value IRelationshipDescription) {
 	objc.Call[objc.Void](r_, objc.Sel("setInverseRelationship:"), value)
-}
-
-// Returns a Boolean value that indicates whether the relationship can contain many managed objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506560-tomany?language=objc
-func (r_ RelationshipDescription) IsToMany() bool {
-	rv := objc.Call[bool](r_, objc.Sel("isToMany"))
-	return rv
 }

@@ -19,20 +19,18 @@ type _TextSelectionNavigationClass struct {
 // An interface definition for the [TextSelectionNavigation] class.
 type ITextSelectionNavigation interface {
 	objc.IObject
-	DestinationSelectionForTextSelectionDirectionDestinationExtendingConfined(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, extending bool, confined bool) TextSelection
 	TextSelectionsInteractingAtPointInContainerAtLocationAnchorsModifiersSelectingBounds(point coregraphics.Point, containerLocation PTextLocation, anchors []ITextSelection, modifiers TextSelectionNavigationModifier, selecting bool, bounds coregraphics.Rect) []TextSelection
 	TextSelectionsInteractingAtPointInContainerAtLocationObjectAnchorsModifiersSelectingBounds(point coregraphics.Point, containerLocationObject objc.IObject, anchors []ITextSelection, modifiers TextSelectionNavigationModifier, selecting bool, bounds coregraphics.Rect) []TextSelection
-	TextSelectionForSelectionGranularityEnclosingPointInContainerAtLocation(selectionGranularity TextSelectionGranularity, point coregraphics.Point, location PTextLocation) TextSelection
-	TextSelectionForSelectionGranularityEnclosingPointInContainerAtLocationObject(selectionGranularity TextSelectionGranularity, point coregraphics.Point, locationObject objc.IObject) TextSelection
-	TextSelectionForSelectionGranularityEnclosingTextSelection(selectionGranularity TextSelectionGranularity, textSelection ITextSelection) TextSelection
-	FlushLayoutCache()
-	DeletionRangesForTextSelectionDirectionDestinationAllowsDecomposition(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, allowsDecomposition bool) []TextRange
 	ResolvedInsertionLocationForTextSelectionWritingDirection(textSelection ITextSelection, writingDirection TextSelectionNavigationWritingDirection) TextLocationObject
-	AllowsNonContiguousRanges() bool
-	SetAllowsNonContiguousRanges(value bool)
+	TextSelectionForSelectionGranularityEnclosingTextSelection(selectionGranularity TextSelectionGranularity, textSelection ITextSelection) TextSelection
+	DestinationSelectionForTextSelectionDirectionDestinationExtendingConfined(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, extending bool, confined bool) TextSelection
+	DeletionRangesForTextSelectionDirectionDestinationAllowsDecomposition(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, allowsDecomposition bool) []TextRange
+	FlushLayoutCache()
+	TextSelectionDataSource() TextSelectionDataSourceObject
 	RotatesCoordinateSystemForLayoutOrientation() bool
 	SetRotatesCoordinateSystemForLayoutOrientation(value bool)
-	TextSelectionDataSource() TextSelectionDataSourceObject
+	AllowsNonContiguousRanges() bool
+	SetAllowsNonContiguousRanges(value bool)
 }
 
 // An interface used to expose methods for obtaining results from actions performed on text selections. [Full Topic]
@@ -83,14 +81,6 @@ func (t_ TextSelectionNavigation) Init() TextSelectionNavigation {
 	return rv
 }
 
-// Returns a new selection that results from applying the navigation operations you specify to the text selection you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801852-destinationselectionfortextselec?language=objc
-func (t_ TextSelectionNavigation) DestinationSelectionForTextSelectionDirectionDestinationExtendingConfined(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, extending bool, confined bool) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("destinationSelectionForTextSelection:direction:destination:extending:confined:"), textSelection, direction, destination, extending, confined)
-	return rv
-}
-
 // Returns an array of text selections produced by a tap or click at the point you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801869-textselectionsinteractingatpoint?language=objc
@@ -108,20 +98,11 @@ func (t_ TextSelectionNavigation) TextSelectionsInteractingAtPointInContainerAtL
 	return rv
 }
 
-// Returns a text selection that expands to the nearest boundaries for selection granularity and an enclosing point you specify. [Full Topic]
+// Returns the location for inserting the next input depending on the state of the current and secondary selections. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801858-textselectionforselectiongranula?language=objc
-func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingPointInContainerAtLocation(selectionGranularity TextSelectionGranularity, point coregraphics.Point, location PTextLocation) TextSelection {
-	po2 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingPoint:inContainerAtLocation:"), selectionGranularity, point, po2)
-	return rv
-}
-
-// Returns a text selection that expands to the nearest boundaries for selection granularity and an enclosing point you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801858-textselectionforselectiongranula?language=objc
-func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingPointInContainerAtLocationObject(selectionGranularity TextSelectionGranularity, point coregraphics.Point, locationObject objc.IObject) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingPoint:inContainerAtLocation:"), selectionGranularity, point, locationObject)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3852581-resolvedinsertionlocationfortext?language=objc
+func (t_ TextSelectionNavigation) ResolvedInsertionLocationForTextSelectionWritingDirection(textSelection ITextSelection, writingDirection TextSelectionNavigationWritingDirection) TextLocationObject {
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("resolvedInsertionLocationForTextSelection:writingDirection:"), textSelection, writingDirection)
 	return rv
 }
 
@@ -133,11 +114,12 @@ func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingT
 	return rv
 }
 
-// Flushes cached layout information. [Full Topic]
+// Returns a new selection that results from applying the navigation operations you specify to the text selection you provide. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801853-flushlayoutcache?language=objc
-func (t_ TextSelectionNavigation) FlushLayoutCache() {
-	objc.Call[objc.Void](t_, objc.Sel("flushLayoutCache"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801852-destinationselectionfortextselec?language=objc
+func (t_ TextSelectionNavigation) DestinationSelectionForTextSelectionDirectionDestinationExtendingConfined(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, extending bool, confined bool) TextSelection {
+	rv := objc.Call[TextSelection](t_, objc.Sel("destinationSelectionForTextSelection:direction:destination:extending:confined:"), textSelection, direction, destination, extending, confined)
+	return rv
 }
 
 // Returns the ranges for deleting the text based on the current selection and movement arguments. [Full Topic]
@@ -148,27 +130,19 @@ func (t_ TextSelectionNavigation) DeletionRangesForTextSelectionDirectionDestina
 	return rv
 }
 
-// Returns the location for inserting the next input depending on the state of the current and secondary selections. [Full Topic]
+// Flushes cached layout information. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3852581-resolvedinsertionlocationfortext?language=objc
-func (t_ TextSelectionNavigation) ResolvedInsertionLocationForTextSelectionWritingDirection(textSelection ITextSelection, writingDirection TextSelectionNavigationWritingDirection) TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("resolvedInsertionLocationForTextSelection:writingDirection:"), textSelection, writingDirection)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801853-flushlayoutcache?language=objc
+func (t_ TextSelectionNavigation) FlushLayoutCache() {
+	objc.Call[objc.Void](t_, objc.Sel("flushLayoutCache"))
 }
 
-// Determines if the instance could produce selections with multiple noncontiguous selections. [Full Topic]
+// The data source associated with this selection navigation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801850-allowsnoncontiguousranges?language=objc
-func (t_ TextSelectionNavigation) AllowsNonContiguousRanges() bool {
-	rv := objc.Call[bool](t_, objc.Sel("allowsNonContiguousRanges"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801857-textselectiondatasource?language=objc
+func (t_ TextSelectionNavigation) TextSelectionDataSource() TextSelectionDataSourceObject {
+	rv := objc.Call[TextSelectionDataSourceObject](t_, objc.Sel("textSelectionDataSource"))
 	return rv
-}
-
-// Determines if the instance could produce selections with multiple noncontiguous selections. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801850-allowsnoncontiguousranges?language=objc
-func (t_ TextSelectionNavigation) SetAllowsNonContiguousRanges(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setAllowsNonContiguousRanges:"), value)
 }
 
 // Determines if the framework rotates the coordinate system to match the layout orientation. [Full Topic]
@@ -186,10 +160,17 @@ func (t_ TextSelectionNavigation) SetRotatesCoordinateSystemForLayoutOrientation
 	objc.Call[objc.Void](t_, objc.Sel("setRotatesCoordinateSystemForLayoutOrientation:"), value)
 }
 
-// The data source associated with this selection navigation. [Full Topic]
+// Determines if the instance could produce selections with multiple noncontiguous selections. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801857-textselectiondatasource?language=objc
-func (t_ TextSelectionNavigation) TextSelectionDataSource() TextSelectionDataSourceObject {
-	rv := objc.Call[TextSelectionDataSourceObject](t_, objc.Sel("textSelectionDataSource"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801850-allowsnoncontiguousranges?language=objc
+func (t_ TextSelectionNavigation) AllowsNonContiguousRanges() bool {
+	rv := objc.Call[bool](t_, objc.Sel("allowsNonContiguousRanges"))
 	return rv
+}
+
+// Determines if the instance could produce selections with multiple noncontiguous selections. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801850-allowsnoncontiguousranges?language=objc
+func (t_ TextSelectionNavigation) SetAllowsNonContiguousRanges(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setAllowsNonContiguousRanges:"), value)
 }

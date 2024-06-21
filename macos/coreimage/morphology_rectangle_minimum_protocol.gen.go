@@ -11,6 +11,14 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum?language=objc
 type PMorphologyRectangleMinimum interface {
 	// optional
+	SetWidth(value float32)
+	HasSetWidth() bool
+
+	// optional
+	Width() float32
+	HasWidth() bool
+
+	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -25,14 +33,6 @@ type PMorphologyRectangleMinimum interface {
 	// optional
 	Height() float32
 	HasHeight() bool
-
-	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
-
-	// optional
-	Width() float32
-	HasWidth() bool
 }
 
 // ensure impl type implements protocol interface
@@ -41,6 +41,29 @@ var _ PMorphologyRectangleMinimum = (*MorphologyRectangleMinimumObject)(nil)
 // A concrete type for the [PMorphologyRectangleMinimum] protocol.
 type MorphologyRectangleMinimumObject struct {
 	objc.Object
+}
+
+func (m_ MorphologyRectangleMinimumObject) HasSetWidth() bool {
+	return m_.RespondsToSelector(objc.Sel("setWidth:"))
+}
+
+// The width, in pixels, of the morphological structuring element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum/3228589-width?language=objc
+func (m_ MorphologyRectangleMinimumObject) SetWidth(value float32) {
+	objc.Call[objc.Void](m_, objc.Sel("setWidth:"), value)
+}
+
+func (m_ MorphologyRectangleMinimumObject) HasWidth() bool {
+	return m_.RespondsToSelector(objc.Sel("width"))
+}
+
+// The width, in pixels, of the morphological structuring element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum/3228589-width?language=objc
+func (m_ MorphologyRectangleMinimumObject) Width() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("width"))
+	return rv
 }
 
 func (m_ MorphologyRectangleMinimumObject) HasSetInputImage() bool {
@@ -86,28 +109,5 @@ func (m_ MorphologyRectangleMinimumObject) HasHeight() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum/3228587-height?language=objc
 func (m_ MorphologyRectangleMinimumObject) Height() float32 {
 	rv := objc.Call[float32](m_, objc.Sel("height"))
-	return rv
-}
-
-func (m_ MorphologyRectangleMinimumObject) HasSetWidth() bool {
-	return m_.RespondsToSelector(objc.Sel("setWidth:"))
-}
-
-// The width, in pixels, of the morphological structuring element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum/3228589-width?language=objc
-func (m_ MorphologyRectangleMinimumObject) SetWidth(value float32) {
-	objc.Call[objc.Void](m_, objc.Sel("setWidth:"), value)
-}
-
-func (m_ MorphologyRectangleMinimumObject) HasWidth() bool {
-	return m_.RespondsToSelector(objc.Sel("width"))
-}
-
-// The width, in pixels, of the morphological structuring element. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectangleminimum/3228589-width?language=objc
-func (m_ MorphologyRectangleMinimumObject) Width() float32 {
-	rv := objc.Call[float32](m_, objc.Sel("width"))
 	return rv
 }

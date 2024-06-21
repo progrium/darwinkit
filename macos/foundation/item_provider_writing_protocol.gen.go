@@ -11,12 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemproviderwriting?language=objc
 type PItemProviderWriting interface {
 	// optional
+	ItemProviderVisibilityForRepresentationWithTypeIdentifier(typeIdentifier string) ItemProviderRepresentationVisibility
+	HasItemProviderVisibilityForRepresentationWithTypeIdentifier() bool
+
+	// optional
 	LoadDataWithTypeIdentifierForItemProviderCompletionHandler(typeIdentifier string, completionHandler func(data []byte, error Error)) Progress
 	HasLoadDataWithTypeIdentifierForItemProviderCompletionHandler() bool
 
 	// optional
-	ItemProviderVisibilityForRepresentationWithTypeIdentifier_(typeIdentifier string) ItemProviderRepresentationVisibility
-	HasItemProviderVisibilityForRepresentationWithTypeIdentifier_() bool
+	WritableTypeIdentifiersForItemProvider() []string
+	HasWritableTypeIdentifiersForItemProvider() bool
 }
 
 // ensure impl type implements protocol interface
@@ -25,6 +29,18 @@ var _ PItemProviderWriting = (*ItemProviderWritingObject)(nil)
 // A concrete type for the [PItemProviderWriting] protocol.
 type ItemProviderWritingObject struct {
 	objc.Object
+}
+
+func (i_ ItemProviderWritingObject) HasItemProviderVisibilityForRepresentationWithTypeIdentifier() bool {
+	return i_.RespondsToSelector(objc.Sel("itemProviderVisibilityForRepresentationWithTypeIdentifier:"))
+}
+
+// Asks the item provider for the representation visibility specification for the given UTI. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemproviderwriting/2921254-itemprovidervisibilityforreprese?language=objc
+func (i_ ItemProviderWritingObject) ItemProviderVisibilityForRepresentationWithTypeIdentifier(typeIdentifier string) ItemProviderRepresentationVisibility {
+	rv := objc.Call[ItemProviderRepresentationVisibility](i_, objc.Sel("itemProviderVisibilityForRepresentationWithTypeIdentifier:"), typeIdentifier)
+	return rv
 }
 
 func (i_ ItemProviderWritingObject) HasLoadDataWithTypeIdentifierForItemProviderCompletionHandler() bool {
@@ -39,14 +55,14 @@ func (i_ ItemProviderWritingObject) LoadDataWithTypeIdentifierForItemProviderCom
 	return rv
 }
 
-func (i_ ItemProviderWritingObject) HasItemProviderVisibilityForRepresentationWithTypeIdentifier_() bool {
-	return i_.RespondsToSelector(objc.Sel("itemProviderVisibilityForRepresentationWithTypeIdentifier:"))
+func (i_ ItemProviderWritingObject) HasWritableTypeIdentifiersForItemProvider() bool {
+	return i_.RespondsToSelector(objc.Sel("writableTypeIdentifiersForItemProvider"))
 }
 
-// Asks the item provider for the representation visibility specification for the given UTI. [Full Topic]
+// An array of UTI strings representing the types of data that can be loaded for an item provider. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemproviderwriting/2921254-itemprovidervisibilityforreprese?language=objc
-func (i_ ItemProviderWritingObject) ItemProviderVisibilityForRepresentationWithTypeIdentifier_(typeIdentifier string) ItemProviderRepresentationVisibility {
-	rv := objc.Call[ItemProviderRepresentationVisibility](i_, objc.Sel("itemProviderVisibilityForRepresentationWithTypeIdentifier:"), typeIdentifier)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemproviderwriting/2888299-writabletypeidentifiersforitempr?language=objc
+func (i_ ItemProviderWritingObject) WritableTypeIdentifiersForItemProvider() []string {
+	rv := objc.Call[[]string](i_, objc.Sel("writableTypeIdentifiersForItemProvider"))
 	return rv
 }

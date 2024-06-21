@@ -19,10 +19,10 @@ type _ListFormatterClass struct {
 type IListFormatter interface {
 	IFormatter
 	StringFromItems(items []objc.IObject) string
-	ItemFormatter() Formatter
-	SetItemFormatter(value IFormatter)
 	Locale() Locale
 	SetLocale(value ILocale)
+	ItemFormatter() Formatter
+	SetItemFormatter(value IFormatter)
 }
 
 // An object that provides locale-correct formatting of a list of items using the appropriate separator and conjunction. [Full Topic]
@@ -58,6 +58,14 @@ func (l_ ListFormatter) Init() ListFormatter {
 	return rv
 }
 
+// Creates a formatted string for an array of items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130992-stringfromitems?language=objc
+func (l_ ListFormatter) StringFromItems(items []objc.IObject) string {
+	rv := objc.Call[string](l_, objc.Sel("stringFromItems:"), items)
+	return rv
+}
+
 // Constructs a formatted string from an array of strings that uses the list format specific to the current locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130990-localizedstringbyjoiningstrings?language=objc
@@ -73,12 +81,19 @@ func ListFormatter_LocalizedStringByJoiningStrings(strings []string) string {
 	return ListFormatterClass.LocalizedStringByJoiningStrings(strings)
 }
 
-// Creates a formatted string for an array of items. [Full Topic]
+// The locale to use when formatting items in the list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130992-stringfromitems?language=objc
-func (l_ ListFormatter) StringFromItems(items []objc.IObject) string {
-	rv := objc.Call[string](l_, objc.Sel("stringFromItems:"), items)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130989-locale?language=objc
+func (l_ ListFormatter) Locale() Locale {
+	rv := objc.Call[Locale](l_, objc.Sel("locale"))
 	return rv
+}
+
+// The locale to use when formatting items in the list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130989-locale?language=objc
+func (l_ ListFormatter) SetLocale(value ILocale) {
+	objc.Call[objc.Void](l_, objc.Sel("setLocale:"), value)
 }
 
 // An object that formats each item in the list. [Full Topic]
@@ -94,19 +109,4 @@ func (l_ ListFormatter) ItemFormatter() Formatter {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130988-itemformatter?language=objc
 func (l_ ListFormatter) SetItemFormatter(value IFormatter) {
 	objc.Call[objc.Void](l_, objc.Sel("setItemFormatter:"), value)
-}
-
-// The locale to use when formatting items in the list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130989-locale?language=objc
-func (l_ ListFormatter) Locale() Locale {
-	rv := objc.Call[Locale](l_, objc.Sel("locale"))
-	return rv
-}
-
-// The locale to use when formatting items in the list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130989-locale?language=objc
-func (l_ ListFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](l_, objc.Sel("setLocale:"), value)
 }

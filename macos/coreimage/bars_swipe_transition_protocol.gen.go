@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition?language=objc
 type PBarsSwipeTransition interface {
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
+	SetWidth(value float32)
+	HasSetWidth() bool
 
 	// optional
-	Angle() float32
-	HasAngle() bool
+	Width() float32
+	HasWidth() bool
 
 	// optional
 	SetBarOffset(value float32)
@@ -27,12 +27,12 @@ type PBarsSwipeTransition interface {
 	HasBarOffset() bool
 
 	// optional
-	SetWidth(value float32)
-	HasSetWidth() bool
+	SetAngle(value float32)
+	HasSetAngle() bool
 
 	// optional
-	Width() float32
-	HasWidth() bool
+	Angle() float32
+	HasAngle() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type BarsSwipeTransitionObject struct {
 	objc.Object
 }
 
-func (b_ BarsSwipeTransitionObject) HasSetAngle() bool {
-	return b_.RespondsToSelector(objc.Sel("setAngle:"))
+func (b_ BarsSwipeTransitionObject) HasSetWidth() bool {
+	return b_.RespondsToSelector(objc.Sel("setWidth:"))
 }
 
-// The angle, in radians, of the bars. [Full Topic]
+// The width of each bar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
-func (b_ BarsSwipeTransitionObject) SetAngle(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
+func (b_ BarsSwipeTransitionObject) SetWidth(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setWidth:"), value)
 }
 
-func (b_ BarsSwipeTransitionObject) HasAngle() bool {
-	return b_.RespondsToSelector(objc.Sel("angle"))
+func (b_ BarsSwipeTransitionObject) HasWidth() bool {
+	return b_.RespondsToSelector(objc.Sel("width"))
 }
 
-// The angle, in radians, of the bars. [Full Topic]
+// The width of each bar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
-func (b_ BarsSwipeTransitionObject) Angle() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("angle"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
+func (b_ BarsSwipeTransitionObject) Width() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("width"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (b_ BarsSwipeTransitionObject) BarOffset() float32 {
 	return rv
 }
 
-func (b_ BarsSwipeTransitionObject) HasSetWidth() bool {
-	return b_.RespondsToSelector(objc.Sel("setWidth:"))
+func (b_ BarsSwipeTransitionObject) HasSetAngle() bool {
+	return b_.RespondsToSelector(objc.Sel("setAngle:"))
 }
 
-// The width of each bar. [Full Topic]
+// The angle, in radians, of the bars. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
-func (b_ BarsSwipeTransitionObject) SetWidth(value float32) {
-	objc.Call[objc.Void](b_, objc.Sel("setWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
+func (b_ BarsSwipeTransitionObject) SetAngle(value float32) {
+	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
 }
 
-func (b_ BarsSwipeTransitionObject) HasWidth() bool {
-	return b_.RespondsToSelector(objc.Sel("width"))
+func (b_ BarsSwipeTransitionObject) HasAngle() bool {
+	return b_.RespondsToSelector(objc.Sel("angle"))
 }
 
-// The width of each bar. [Full Topic]
+// The angle, in radians, of the bars. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
-func (b_ BarsSwipeTransitionObject) Width() float32 {
-	rv := objc.Call[float32](b_, objc.Sel("width"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
+func (b_ BarsSwipeTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("angle"))
 	return rv
 }

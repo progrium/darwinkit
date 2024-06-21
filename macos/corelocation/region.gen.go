@@ -18,11 +18,11 @@ type _RegionClass struct {
 // An interface definition for the [Region] class.
 type IRegion interface {
 	objc.IObject
-	Identifier() string
-	NotifyOnExit() bool
-	SetNotifyOnExit(value bool)
 	NotifyOnEntry() bool
 	SetNotifyOnEntry(value bool)
+	NotifyOnExit() bool
+	SetNotifyOnExit(value bool)
+	Identifier() string
 }
 
 // A base class representing an area that can be monitored. [Full Topic]
@@ -58,12 +58,19 @@ func (r_ Region) Init() Region {
 	return rv
 }
 
-// The identifier for the region object. [Full Topic]
+// A Boolean indicating that notifications are generated upon entry into the region. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423583-identifier?language=objc
-func (r_ Region) Identifier() string {
-	rv := objc.Call[string](r_, objc.Sel("identifier"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423566-notifyonentry?language=objc
+func (r_ Region) NotifyOnEntry() bool {
+	rv := objc.Call[bool](r_, objc.Sel("notifyOnEntry"))
 	return rv
+}
+
+// A Boolean indicating that notifications are generated upon entry into the region. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423566-notifyonentry?language=objc
+func (r_ Region) SetNotifyOnEntry(value bool) {
+	objc.Call[objc.Void](r_, objc.Sel("setNotifyOnEntry:"), value)
 }
 
 // A Boolean indicating that notifications are generated upon exit from the region. [Full Topic]
@@ -81,17 +88,10 @@ func (r_ Region) SetNotifyOnExit(value bool) {
 	objc.Call[objc.Void](r_, objc.Sel("setNotifyOnExit:"), value)
 }
 
-// A Boolean indicating that notifications are generated upon entry into the region. [Full Topic]
+// The identifier for the region object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423566-notifyonentry?language=objc
-func (r_ Region) NotifyOnEntry() bool {
-	rv := objc.Call[bool](r_, objc.Sel("notifyOnEntry"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423583-identifier?language=objc
+func (r_ Region) Identifier() string {
+	rv := objc.Call[string](r_, objc.Sel("identifier"))
 	return rv
-}
-
-// A Boolean indicating that notifications are generated upon entry into the region. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clregion/1423566-notifyonentry?language=objc
-func (r_ Region) SetNotifyOnEntry(value bool) {
-	objc.Call[objc.Void](r_, objc.Sel("setNotifyOnEntry:"), value)
 }

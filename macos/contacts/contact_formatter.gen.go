@@ -58,50 +58,12 @@ func (c_ ContactFormatter) Init() ContactFormatter {
 	return rv
 }
 
-// Returns the delimiter to use between name components. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397744-delimiterforcontact?language=objc
-func (cc _ContactFormatterClass) DelimiterForContact(contact IContact) string {
-	rv := objc.Call[string](cc, objc.Sel("delimiterForContact:"), contact)
-	return rv
-}
-
-// Returns the delimiter to use between name components. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397744-delimiterforcontact?language=objc
-func ContactFormatter_DelimiterForContact(contact IContact) string {
-	return ContactFormatterClass.DelimiterForContact(contact)
-}
-
 // Formats the contact name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397754-stringfromcontact?language=objc
 func (c_ ContactFormatter) StringFromContact(contact IContact) string {
 	rv := objc.Call[string](c_, objc.Sel("stringFromContact:"), contact)
 	return rv
-}
-
-// Formats the contact name as an attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397733-attributedstringfromcontact?language=objc
-func (c_ ContactFormatter) AttributedStringFromContactDefaultAttributes(contact IContact, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](c_, objc.Sel("attributedStringFromContact:defaultAttributes:"), contact, attributes)
-	return rv
-}
-
-// Returns the contact name, formatted with the specified formatter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397750-stringfromcontact?language=objc
-func (cc _ContactFormatterClass) StringFromContactStyle(contact IContact, style ContactFormatterStyle) string {
-	rv := objc.Call[string](cc, objc.Sel("stringFromContact:style:"), contact, style)
-	return rv
-}
-
-// Returns the contact name, formatted with the specified formatter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397750-stringfromcontact?language=objc
-func ContactFormatter_StringFromContactStyle(contact IContact, style ContactFormatterStyle) string {
-	return ContactFormatterClass.StringFromContactStyle(contact, style)
 }
 
 // Returns the required key descriptor for the specified formatting style of the contact. [Full Topic]
@@ -119,21 +81,6 @@ func ContactFormatter_DescriptorForRequiredKeysForStyle(style ContactFormatterSt
 	return ContactFormatterClass.DescriptorForRequiredKeysForStyle(style)
 }
 
-// Formats the contact name as an attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397748-attributedstringfromcontact?language=objc
-func (cc _ContactFormatterClass) AttributedStringFromContactStyleDefaultAttributes(contact IContact, style ContactFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](cc, objc.Sel("attributedStringFromContact:style:defaultAttributes:"), contact, style, attributes)
-	return rv
-}
-
-// Formats the contact name as an attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397748-attributedstringfromcontact?language=objc
-func ContactFormatter_AttributedStringFromContactStyleDefaultAttributes(contact IContact, style ContactFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	return ContactFormatterClass.AttributedStringFromContactStyleDefaultAttributes(contact, style, attributes)
-}
-
 // Returns the display name order. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397731-nameorderforcontact?language=objc
@@ -149,19 +96,42 @@ func ContactFormatter_NameOrderForContact(contact IContact) ContactDisplayNameOr
 	return ContactFormatterClass.NameOrderForContact(contact)
 }
 
-//	[Full Topic]
+// Formats the contact name as an attributed string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/3601126-descriptorforrequiredkeysfordeli?language=objc
-func (cc _ContactFormatterClass) DescriptorForRequiredKeysForDelimiter() objc.Object {
-	rv := objc.Call[objc.Object](cc, objc.Sel("descriptorForRequiredKeysForDelimiter"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397733-attributedstringfromcontact?language=objc
+func (c_ ContactFormatter) AttributedStringFromContactDefaultAttributes(contact IContact, attributes foundation.Dictionary) foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](c_, objc.Sel("attributedStringFromContact:defaultAttributes:"), contact, attributes)
 	return rv
 }
 
-//	[Full Topic]
+// Returns the delimiter to use between name components. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/3601126-descriptorforrequiredkeysfordeli?language=objc
-func ContactFormatter_DescriptorForRequiredKeysForDelimiter() objc.Object {
-	return ContactFormatterClass.DescriptorForRequiredKeysForDelimiter()
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397744-delimiterforcontact?language=objc
+func (cc _ContactFormatterClass) DelimiterForContact(contact IContact) string {
+	rv := objc.Call[string](cc, objc.Sel("delimiterForContact:"), contact)
+	return rv
+}
+
+// Returns the delimiter to use between name components. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397744-delimiterforcontact?language=objc
+func ContactFormatter_DelimiterForContact(contact IContact) string {
+	return ContactFormatterClass.DelimiterForContact(contact)
+}
+
+// The formatting style for the contact name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397758-style?language=objc
+func (c_ ContactFormatter) Style() ContactFormatterStyle {
+	rv := objc.Call[ContactFormatterStyle](c_, objc.Sel("style"))
+	return rv
+}
+
+// The formatting style for the contact name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397758-style?language=objc
+func (c_ ContactFormatter) SetStyle(value ContactFormatterStyle) {
+	objc.Call[objc.Void](c_, objc.Sel("setStyle:"), value)
 }
 
 //	[Full Topic]
@@ -179,17 +149,17 @@ func ContactFormatter_DescriptorForRequiredKeysForNameOrder() objc.Object {
 	return ContactFormatterClass.DescriptorForRequiredKeysForNameOrder()
 }
 
-// The formatting style for the contact name. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397758-style?language=objc
-func (c_ ContactFormatter) Style() ContactFormatterStyle {
-	rv := objc.Call[ContactFormatterStyle](c_, objc.Sel("style"))
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/3601126-descriptorforrequiredkeysfordeli?language=objc
+func (cc _ContactFormatterClass) DescriptorForRequiredKeysForDelimiter() objc.Object {
+	rv := objc.Call[objc.Object](cc, objc.Sel("descriptorForRequiredKeysForDelimiter"))
 	return rv
 }
 
-// The formatting style for the contact name. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397758-style?language=objc
-func (c_ ContactFormatter) SetStyle(value ContactFormatterStyle) {
-	objc.Call[objc.Void](c_, objc.Sel("setStyle:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/3601126-descriptorforrequiredkeysfordeli?language=objc
+func ContactFormatter_DescriptorForRequiredKeysForDelimiter() objc.Object {
+	return ContactFormatterClass.DescriptorForRequiredKeysForDelimiter()
 }

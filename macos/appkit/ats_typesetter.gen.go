@@ -5,6 +5,7 @@ package appkit
 import (
 	"unsafe"
 
+	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -18,6 +19,7 @@ type _ATSTypesetterClass struct {
 // An interface definition for the [ATSTypesetter] class.
 type IATSTypesetter interface {
 	ITypesetter
+	GetLineFragmentRectUsedRectForParagraphSeparatorGlyphRangeAtProposedOrigin(lineFragmentRect *foundation.Rect, lineFragmentUsedRect *foundation.Rect, paragraphSeparatorGlyphRange foundation.Range, lineOrigin foundation.Point)
 }
 
 // A concrete typesetter object that places glyphs during the text layout process. [Full Topic]
@@ -51,6 +53,13 @@ func NewATSTypesetter() ATSTypesetter {
 func (a_ ATSTypesetter) Init() ATSTypesetter {
 	rv := objc.Call[ATSTypesetter](a_, objc.Sel("init"))
 	return rv
+}
+
+// Calculates the line fragment rectangle and the portion of the rectangle that contains marks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsatstypesetter/1528343-getlinefragmentrect?language=objc
+func (a_ ATSTypesetter) GetLineFragmentRectUsedRectForParagraphSeparatorGlyphRangeAtProposedOrigin(lineFragmentRect *foundation.Rect, lineFragmentUsedRect *foundation.Rect, paragraphSeparatorGlyphRange foundation.Range, lineOrigin foundation.Point) {
+	objc.Call[objc.Void](a_, objc.Sel("getLineFragmentRect:usedRect:forParagraphSeparatorGlyphRange:atProposedOrigin:"), lineFragmentRect, lineFragmentUsedRect, paragraphSeparatorGlyphRange, lineOrigin)
 }
 
 // Returns a shared instance of the typesetter. [Full Topic]

@@ -11,24 +11,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable?language=objc
 type PAccessibilityTable interface {
 	// optional
-	AccessibilitySelectedCells() []objc.Object
-	HasAccessibilitySelectedCells() bool
-
-	// optional
-	AccessibilityVisibleColumns() []objc.Object
-	HasAccessibilityVisibleColumns() bool
-
-	// optional
-	AccessibilityRows() []AccessibilityRowObject
-	HasAccessibilityRows() bool
-
-	// optional
-	AccessibilitySelectedRows() []AccessibilityRowObject
-	HasAccessibilitySelectedRows() bool
-
-	// optional
-	AccessibilityVisibleRows() []AccessibilityRowObject
-	HasAccessibilityVisibleRows() bool
+	AccessibilityColumnHeaderUIElements() []objc.Object
+	HasAccessibilityColumnHeaderUIElements() bool
 
 	// optional
 	SetAccessibilitySelectedRows(selectedRows []AccessibilityRowObject)
@@ -39,24 +23,40 @@ type PAccessibilityTable interface {
 	HasAccessibilityRowHeaderUIElements() bool
 
 	// optional
-	AccessibilityColumns() []objc.Object
-	HasAccessibilityColumns() bool
+	AccessibilityVisibleRows() []AccessibilityRowObject
+	HasAccessibilityVisibleRows() bool
 
 	// optional
-	AccessibilityVisibleCells() []objc.Object
-	HasAccessibilityVisibleCells() bool
+	AccessibilitySelectedCells() []objc.Object
+	HasAccessibilitySelectedCells() bool
 
 	// optional
-	AccessibilityColumnHeaderUIElements() []objc.Object
-	HasAccessibilityColumnHeaderUIElements() bool
+	AccessibilityVisibleColumns() []objc.Object
+	HasAccessibilityVisibleColumns() bool
 
 	// optional
 	AccessibilityLabel() string
 	HasAccessibilityLabel() bool
 
 	// optional
+	AccessibilityColumns() []objc.Object
+	HasAccessibilityColumns() bool
+
+	// optional
+	AccessibilityRows() []AccessibilityRowObject
+	HasAccessibilityRows() bool
+
+	// optional
+	AccessibilityVisibleCells() []objc.Object
+	HasAccessibilityVisibleCells() bool
+
+	// optional
 	AccessibilitySelectedColumns() []objc.Object
 	HasAccessibilitySelectedColumns() bool
+
+	// optional
+	AccessibilitySelectedRows() []AccessibilityRowObject
+	HasAccessibilitySelectedRows() bool
 }
 
 // ensure impl type implements protocol interface
@@ -67,63 +67,15 @@ type AccessibilityTableObject struct {
 	objc.Object
 }
 
-func (a_ AccessibilityTableObject) HasAccessibilitySelectedCells() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedCells"))
+func (a_ AccessibilityTableObject) HasAccessibilityColumnHeaderUIElements() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityColumnHeaderUIElements"))
 }
 
-// The currently selected cells for the table. [Full Topic]
+// Returns the column header accessibility elements for the table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1525577-accessibilityselectedcells?language=objc
-func (a_ AccessibilityTableObject) AccessibilitySelectedCells() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilitySelectedCells"))
-	return rv
-}
-
-func (a_ AccessibilityTableObject) HasAccessibilityVisibleColumns() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleColumns"))
-}
-
-// Returns the visible columns for the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1530264-accessibilityvisiblecolumns?language=objc
-func (a_ AccessibilityTableObject) AccessibilityVisibleColumns() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityVisibleColumns"))
-	return rv
-}
-
-func (a_ AccessibilityTableObject) HasAccessibilityRows() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityRows"))
-}
-
-// Returns the row accessibility elements for the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526672-accessibilityrows?language=objc
-func (a_ AccessibilityTableObject) AccessibilityRows() []AccessibilityRowObject {
-	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilityRows"))
-	return rv
-}
-
-func (a_ AccessibilityTableObject) HasAccessibilitySelectedRows() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedRows"))
-}
-
-// Returns the currently selected rows for the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1529241-accessibilityselectedrows?language=objc
-func (a_ AccessibilityTableObject) AccessibilitySelectedRows() []AccessibilityRowObject {
-	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilitySelectedRows"))
-	return rv
-}
-
-func (a_ AccessibilityTableObject) HasAccessibilityVisibleRows() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleRows"))
-}
-
-// Returns the visible rows for the table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1535128-accessibilityvisiblerows?language=objc
-func (a_ AccessibilityTableObject) AccessibilityVisibleRows() []AccessibilityRowObject {
-	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilityVisibleRows"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526621-accessibilitycolumnheaderuieleme?language=objc
+func (a_ AccessibilityTableObject) AccessibilityColumnHeaderUIElements() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityColumnHeaderUIElements"))
 	return rv
 }
 
@@ -150,39 +102,39 @@ func (a_ AccessibilityTableObject) AccessibilityRowHeaderUIElements() []objc.Obj
 	return rv
 }
 
-func (a_ AccessibilityTableObject) HasAccessibilityColumns() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityColumns"))
+func (a_ AccessibilityTableObject) HasAccessibilityVisibleRows() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleRows"))
 }
 
-// Returns the column accessibility elements for the table. [Full Topic]
+// Returns the visible rows for the table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1524744-accessibilitycolumns?language=objc
-func (a_ AccessibilityTableObject) AccessibilityColumns() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityColumns"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1535128-accessibilityvisiblerows?language=objc
+func (a_ AccessibilityTableObject) AccessibilityVisibleRows() []AccessibilityRowObject {
+	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilityVisibleRows"))
 	return rv
 }
 
-func (a_ AccessibilityTableObject) HasAccessibilityVisibleCells() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleCells"))
+func (a_ AccessibilityTableObject) HasAccessibilitySelectedCells() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedCells"))
 }
 
-// Returns the visible cells for the table. [Full Topic]
+// The currently selected cells for the table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526711-accessibilityvisiblecells?language=objc
-func (a_ AccessibilityTableObject) AccessibilityVisibleCells() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityVisibleCells"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1525577-accessibilityselectedcells?language=objc
+func (a_ AccessibilityTableObject) AccessibilitySelectedCells() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilitySelectedCells"))
 	return rv
 }
 
-func (a_ AccessibilityTableObject) HasAccessibilityColumnHeaderUIElements() bool {
-	return a_.RespondsToSelector(objc.Sel("accessibilityColumnHeaderUIElements"))
+func (a_ AccessibilityTableObject) HasAccessibilityVisibleColumns() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleColumns"))
 }
 
-// Returns the column header accessibility elements for the table. [Full Topic]
+// Returns the visible columns for the table. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526621-accessibilitycolumnheaderuieleme?language=objc
-func (a_ AccessibilityTableObject) AccessibilityColumnHeaderUIElements() []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityColumnHeaderUIElements"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1530264-accessibilityvisiblecolumns?language=objc
+func (a_ AccessibilityTableObject) AccessibilityVisibleColumns() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityVisibleColumns"))
 	return rv
 }
 
@@ -198,6 +150,42 @@ func (a_ AccessibilityTableObject) AccessibilityLabel() string {
 	return rv
 }
 
+func (a_ AccessibilityTableObject) HasAccessibilityColumns() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityColumns"))
+}
+
+// Returns the column accessibility elements for the table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1524744-accessibilitycolumns?language=objc
+func (a_ AccessibilityTableObject) AccessibilityColumns() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityColumns"))
+	return rv
+}
+
+func (a_ AccessibilityTableObject) HasAccessibilityRows() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityRows"))
+}
+
+// Returns the row accessibility elements for the table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526672-accessibilityrows?language=objc
+func (a_ AccessibilityTableObject) AccessibilityRows() []AccessibilityRowObject {
+	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilityRows"))
+	return rv
+}
+
+func (a_ AccessibilityTableObject) HasAccessibilityVisibleCells() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilityVisibleCells"))
+}
+
+// Returns the visible cells for the table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1526711-accessibilityvisiblecells?language=objc
+func (a_ AccessibilityTableObject) AccessibilityVisibleCells() []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilityVisibleCells"))
+	return rv
+}
+
 func (a_ AccessibilityTableObject) HasAccessibilitySelectedColumns() bool {
 	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedColumns"))
 }
@@ -207,5 +195,17 @@ func (a_ AccessibilityTableObject) HasAccessibilitySelectedColumns() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1528430-accessibilityselectedcolumns?language=objc
 func (a_ AccessibilityTableObject) AccessibilitySelectedColumns() []objc.Object {
 	rv := objc.Call[[]objc.Object](a_, objc.Sel("accessibilitySelectedColumns"))
+	return rv
+}
+
+func (a_ AccessibilityTableObject) HasAccessibilitySelectedRows() bool {
+	return a_.RespondsToSelector(objc.Sel("accessibilitySelectedRows"))
+}
+
+// Returns the currently selected rows for the table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitytable/1529241-accessibilityselectedrows?language=objc
+func (a_ AccessibilityTableObject) AccessibilitySelectedRows() []AccessibilityRowObject {
+	rv := objc.Call[[]AccessibilityRowObject](a_, objc.Sel("accessibilitySelectedRows"))
 	return rv
 }

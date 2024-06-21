@@ -12,22 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile?language=objc
 type PTwelvefoldReflectedTile interface {
 	// optional
-	SetAngle(value float32)
-	HasSetAngle() bool
-
-	// optional
-	Angle() float32
-	HasAngle() bool
-
-	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetWidth(value float32)
 	HasSetWidth() bool
 
@@ -42,6 +26,22 @@ type PTwelvefoldReflectedTile interface {
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetAngle(value float32)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float32
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,52 +50,6 @@ var _ PTwelvefoldReflectedTile = (*TwelvefoldReflectedTileObject)(nil)
 // A concrete type for the [PTwelvefoldReflectedTile] protocol.
 type TwelvefoldReflectedTileObject struct {
 	objc.Object
-}
-
-func (t_ TwelvefoldReflectedTileObject) HasSetAngle() bool {
-	return t_.RespondsToSelector(objc.Sel("setAngle:"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
-func (t_ TwelvefoldReflectedTileObject) SetAngle(value float32) {
-	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
-}
-
-func (t_ TwelvefoldReflectedTileObject) HasAngle() bool {
-	return t_.RespondsToSelector(objc.Sel("angle"))
-}
-
-// The angle, in radians, of the tiled pattern. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
-func (t_ TwelvefoldReflectedTileObject) Angle() float32 {
-	rv := objc.Call[float32](t_, objc.Sel("angle"))
-	return rv
-}
-
-func (t_ TwelvefoldReflectedTileObject) HasSetCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
-func (t_ TwelvefoldReflectedTileObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
-}
-
-func (t_ TwelvefoldReflectedTileObject) HasCenter() bool {
-	return t_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The x and y position to use as the center of the effect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
-func (t_ TwelvefoldReflectedTileObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
-	return rv
 }
 
 func (t_ TwelvefoldReflectedTileObject) HasSetWidth() bool {
@@ -141,5 +95,51 @@ func (t_ TwelvefoldReflectedTileObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228816-inputimage?language=objc
 func (t_ TwelvefoldReflectedTileObject) InputImage() Image {
 	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (t_ TwelvefoldReflectedTileObject) HasSetAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
+func (t_ TwelvefoldReflectedTileObject) SetAngle(value float32) {
+	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
+}
+
+func (t_ TwelvefoldReflectedTileObject) HasAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
+func (t_ TwelvefoldReflectedTileObject) Angle() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("angle"))
+	return rv
+}
+
+func (t_ TwelvefoldReflectedTileObject) HasSetCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
+func (t_ TwelvefoldReflectedTileObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
+}
+
+func (t_ TwelvefoldReflectedTileObject) HasCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
+func (t_ TwelvefoldReflectedTileObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
 	return rv
 }

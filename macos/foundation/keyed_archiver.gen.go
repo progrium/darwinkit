@@ -18,9 +18,12 @@ type _KeyedArchiverClass struct {
 // An interface definition for the [KeyedArchiver] class.
 type IKeyedArchiver interface {
 	ICoder
-	ClassNameForClass_(cls objc.IClass) string
-	SetClassNameForClass_(codedName string, cls objc.IClass)
+	EncodeObjectForKey(object objc.IObject, key string)
+	EncodeConditionalObjectForKey(object objc.IObject, key string)
 	FinishEncoding()
+	ClassNameForClass(cls objc.IClass) string
+	SetClassNameForClass(codedName string, cls objc.IClass)
+	EncodeBytesLengthForKey(bytes *uint8, length uint, key string)
 	OutputFormat() PropertyListFormat
 	SetOutputFormat(value PropertyListFormat)
 	Delegate() KeyedArchiverDelegateObject
@@ -77,19 +80,18 @@ func (k_ KeyedArchiver) Init() KeyedArchiver {
 	return rv
 }
 
-// Returns the class name with which this archiver encodes instances of a given class. [Full Topic]
+// Encodes a given object and associates it with a given key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1407245-classnameforclass?language=objc
-func (k_ KeyedArchiver) ClassNameForClass_(cls objc.IClass) string {
-	rv := objc.Call[string](k_, objc.Sel("classNameForClass:"), cls)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1412067-encodeobject?language=objc
+func (k_ KeyedArchiver) EncodeObjectForKey(object objc.IObject, key string) {
+	objc.Call[objc.Void](k_, objc.Sel("encodeObject:forKey:"), object, key)
 }
 
-// Sets a mapping for this archiver to encode instances of a given class with the provided name, rather than their real name. [Full Topic]
+// Encodes a reference to a given object and associates it with a key only if it has been unconditionally encoded elsewhere in the archive. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1414746-setclassname?language=objc
-func (k_ KeyedArchiver) SetClassNameForClass_(codedName string, cls objc.IClass) {
-	objc.Call[objc.Void](k_, objc.Sel("setClassName:forClass:"), codedName, cls)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1413677-encodeconditionalobject?language=objc
+func (k_ KeyedArchiver) EncodeConditionalObjectForKey(object objc.IObject, key string) {
+	objc.Call[objc.Void](k_, objc.Sel("encodeConditionalObject:forKey:"), object, key)
 }
 
 // Instructs the receiver to construct the final data stream. [Full Topic]
@@ -97,6 +99,28 @@ func (k_ KeyedArchiver) SetClassNameForClass_(codedName string, cls objc.IClass)
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1413904-finishencoding?language=objc
 func (k_ KeyedArchiver) FinishEncoding() {
 	objc.Call[objc.Void](k_, objc.Sel("finishEncoding"))
+}
+
+// Returns the class name with which this archiver encodes instances of a given class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1407245-classnameforclass?language=objc
+func (k_ KeyedArchiver) ClassNameForClass(cls objc.IClass) string {
+	rv := objc.Call[string](k_, objc.Sel("classNameForClass:"), cls)
+	return rv
+}
+
+// Sets a mapping for this archiver to encode instances of a given class with the provided name, rather than their real name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1414746-setclassname?language=objc
+func (k_ KeyedArchiver) SetClassNameForClass(codedName string, cls objc.IClass) {
+	objc.Call[objc.Void](k_, objc.Sel("setClassName:forClass:"), codedName, cls)
+}
+
+// Encodes a given number of bytes from a given C array of bytes and associates them with a key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1417696-encodebytes?language=objc
+func (k_ KeyedArchiver) EncodeBytesLengthForKey(bytes *uint8, length uint, key string) {
+	objc.Call[objc.Void](k_, objc.Sel("encodeBytes:length:forKey:"), bytes, length, key)
 }
 
 // Encodes an object graph with the given root object into a data representation, optionally requiring secure coding. [Full Topic]

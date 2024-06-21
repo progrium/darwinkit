@@ -18,33 +18,33 @@ type _WebViewConfigurationClass struct {
 // An interface definition for the [WebViewConfiguration] class.
 type IWebViewConfiguration interface {
 	objc.IObject
+	UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerObject
 	SetURLSchemeHandlerForURLScheme(urlSchemeHandler PURLSchemeHandler, urlScheme string)
 	SetURLSchemeHandlerObjectForURLScheme(urlSchemeHandlerObject objc.IObject, urlScheme string)
-	UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerObject
+	LimitsNavigationsToAppBoundDomains() bool
+	SetLimitsNavigationsToAppBoundDomains(value bool)
+	UpgradeKnownHostsToHTTPS() bool
+	SetUpgradeKnownHostsToHTTPS(value bool)
 	UserContentController() UserContentController
 	SetUserContentController(value IUserContentController)
 	DefaultWebpagePreferences() WebpagePreferences
 	SetDefaultWebpagePreferences(value IWebpagePreferences)
-	MediaTypesRequiringUserActionForPlayback() AudiovisualMediaTypes
-	SetMediaTypesRequiringUserActionForPlayback(value AudiovisualMediaTypes)
-	SuppressesIncrementalRendering() bool
-	SetSuppressesIncrementalRendering(value bool)
-	UpgradeKnownHostsToHTTPS() bool
-	SetUpgradeKnownHostsToHTTPS(value bool)
-	ProcessPool() ProcessPool
-	SetProcessPool(value IProcessPool)
-	Preferences() Preferences
-	SetPreferences(value IPreferences)
-	LimitsNavigationsToAppBoundDomains() bool
-	SetLimitsNavigationsToAppBoundDomains(value bool)
 	WebsiteDataStore() WebsiteDataStore
 	SetWebsiteDataStore(value IWebsiteDataStore)
+	MediaTypesRequiringUserActionForPlayback() AudiovisualMediaTypes
+	SetMediaTypesRequiringUserActionForPlayback(value AudiovisualMediaTypes)
 	UserInterfaceDirectionPolicy() UserInterfaceDirectionPolicy
 	SetUserInterfaceDirectionPolicy(value UserInterfaceDirectionPolicy)
+	SuppressesIncrementalRendering() bool
+	SetSuppressesIncrementalRendering(value bool)
+	ProcessPool() ProcessPool
+	SetProcessPool(value IProcessPool)
 	AllowsAirPlayForMediaPlayback() bool
 	SetAllowsAirPlayForMediaPlayback(value bool)
 	ApplicationNameForUserAgent() string
 	SetApplicationNameForUserAgent(value string)
+	Preferences() Preferences
+	SetPreferences(value IPreferences)
 }
 
 // A collection of properties that you use to initialize a web view. [Full Topic]
@@ -80,6 +80,14 @@ func (w_ WebViewConfiguration) Init() WebViewConfiguration {
 	return rv
 }
 
+// Returns the currently registered handler object for the specified URL scheme. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc
+func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerObject {
+	rv := objc.Call[URLSchemeHandlerObject](w_, objc.Sel("urlSchemeHandlerForURLScheme:"), urlScheme)
+	return rv
+}
+
 // Registers an object to load resources associated with the specified URL scheme. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc
@@ -95,12 +103,34 @@ func (w_ WebViewConfiguration) SetURLSchemeHandlerObjectForURLScheme(urlSchemeHa
 	objc.Call[objc.Void](w_, objc.Sel("setURLSchemeHandler:forURLScheme:"), urlSchemeHandlerObject, urlScheme)
 }
 
-// Returns the currently registered handler object for the specified URL scheme. [Full Topic]
+// A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc
-func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerObject {
-	rv := objc.Call[URLSchemeHandlerObject](w_, objc.Sel("urlSchemeHandlerForURLScheme:"), urlScheme)
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc
+func (w_ WebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
+	rv := objc.Call[bool](w_, objc.Sel("limitsNavigationsToAppBoundDomains"))
 	return rv
+}
+
+// A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc
+func (w_ WebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(value bool) {
+	objc.Call[objc.Void](w_, objc.Sel("setLimitsNavigationsToAppBoundDomains:"), value)
+}
+
+// A Boolean value that indicates whether the web view should automatically upgrade supported HTTP requests to HTTPS. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc
+func (w_ WebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
+	rv := objc.Call[bool](w_, objc.Sel("upgradeKnownHostsToHTTPS"))
+	return rv
+}
+
+// A Boolean value that indicates whether the web view should automatically upgrade supported HTTP requests to HTTPS. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc
+func (w_ WebViewConfiguration) SetUpgradeKnownHostsToHTTPS(value bool) {
+	objc.Call[objc.Void](w_, objc.Sel("setUpgradeKnownHostsToHTTPS:"), value)
 }
 
 // The object that coordinates interactions between your app’s native code and the webpage’s scripts and other content. [Full Topic]
@@ -133,6 +163,21 @@ func (w_ WebViewConfiguration) SetDefaultWebpagePreferences(value IWebpagePrefer
 	objc.Call[objc.Void](w_, objc.Sel("setDefaultWebpagePreferences:"), value)
 }
 
+// The object you use to get and set the site’s cookies and to track the cached data objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc
+func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
+	rv := objc.Call[WebsiteDataStore](w_, objc.Sel("websiteDataStore"))
+	return rv
+}
+
+// The object you use to get and set the site’s cookies and to track the cached data objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc
+func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
+	objc.Call[objc.Void](w_, objc.Sel("setWebsiteDataStore:"), value)
+}
+
 // The media types that require a user gesture to begin playing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor?language=objc
@@ -146,6 +191,21 @@ func (w_ WebViewConfiguration) MediaTypesRequiringUserActionForPlayback() Audiov
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor?language=objc
 func (w_ WebViewConfiguration) SetMediaTypesRequiringUserActionForPlayback(value AudiovisualMediaTypes) {
 	objc.Call[objc.Void](w_, objc.Sel("setMediaTypesRequiringUserActionForPlayback:"), value)
+}
+
+// The directionality of user interface elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc
+func (w_ WebViewConfiguration) UserInterfaceDirectionPolicy() UserInterfaceDirectionPolicy {
+	rv := objc.Call[UserInterfaceDirectionPolicy](w_, objc.Sel("userInterfaceDirectionPolicy"))
+	return rv
+}
+
+// The directionality of user interface elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc
+func (w_ WebViewConfiguration) SetUserInterfaceDirectionPolicy(value UserInterfaceDirectionPolicy) {
+	objc.Call[objc.Void](w_, objc.Sel("setUserInterfaceDirectionPolicy:"), value)
 }
 
 // A Boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory. [Full Topic]
@@ -163,21 +223,6 @@ func (w_ WebViewConfiguration) SetSuppressesIncrementalRendering(value bool) {
 	objc.Call[objc.Void](w_, objc.Sel("setSuppressesIncrementalRendering:"), value)
 }
 
-// A Boolean value that indicates whether the web view should automatically upgrade supported HTTP requests to HTTPS. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc
-func (w_ WebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
-	rv := objc.Call[bool](w_, objc.Sel("upgradeKnownHostsToHTTPS"))
-	return rv
-}
-
-// A Boolean value that indicates whether the web view should automatically upgrade supported HTTP requests to HTTPS. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc
-func (w_ WebViewConfiguration) SetUpgradeKnownHostsToHTTPS(value bool) {
-	objc.Call[objc.Void](w_, objc.Sel("setUpgradeKnownHostsToHTTPS:"), value)
-}
-
 // The object that coordinates the processes the web view uses to render its web content and execute scripts. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395659-processpool?language=objc
@@ -191,66 +236,6 @@ func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395659-processpool?language=objc
 func (w_ WebViewConfiguration) SetProcessPool(value IProcessPool) {
 	objc.Call[objc.Void](w_, objc.Sel("setProcessPool:"), value)
-}
-
-// The object that manages the preference-related settings for the web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc
-func (w_ WebViewConfiguration) Preferences() Preferences {
-	rv := objc.Call[Preferences](w_, objc.Sel("preferences"))
-	return rv
-}
-
-// The object that manages the preference-related settings for the web view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc
-func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
-	objc.Call[objc.Void](w_, objc.Sel("setPreferences:"), value)
-}
-
-// A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc
-func (w_ WebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
-	rv := objc.Call[bool](w_, objc.Sel("limitsNavigationsToAppBoundDomains"))
-	return rv
-}
-
-// A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc
-func (w_ WebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(value bool) {
-	objc.Call[objc.Void](w_, objc.Sel("setLimitsNavigationsToAppBoundDomains:"), value)
-}
-
-// The object you use to get and set the site’s cookies and to track the cached data objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc
-func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
-	rv := objc.Call[WebsiteDataStore](w_, objc.Sel("websiteDataStore"))
-	return rv
-}
-
-// The object you use to get and set the site’s cookies and to track the cached data objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc
-func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
-	objc.Call[objc.Void](w_, objc.Sel("setWebsiteDataStore:"), value)
-}
-
-// The directionality of user interface elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc
-func (w_ WebViewConfiguration) UserInterfaceDirectionPolicy() UserInterfaceDirectionPolicy {
-	rv := objc.Call[UserInterfaceDirectionPolicy](w_, objc.Sel("userInterfaceDirectionPolicy"))
-	return rv
-}
-
-// The directionality of user interface elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc
-func (w_ WebViewConfiguration) SetUserInterfaceDirectionPolicy(value UserInterfaceDirectionPolicy) {
-	objc.Call[objc.Void](w_, objc.Sel("setUserInterfaceDirectionPolicy:"), value)
 }
 
 // A Boolean value that indicates whether the web view allows media playback over AirPlay. [Full Topic]
@@ -281,4 +266,19 @@ func (w_ WebViewConfiguration) ApplicationNameForUserAgent() string {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc
 func (w_ WebViewConfiguration) SetApplicationNameForUserAgent(value string) {
 	objc.Call[objc.Void](w_, objc.Sel("setApplicationNameForUserAgent:"), value)
+}
+
+// The object that manages the preference-related settings for the web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc
+func (w_ WebViewConfiguration) Preferences() Preferences {
+	rv := objc.Call[Preferences](w_, objc.Sel("preferences"))
+	return rv
+}
+
+// The object that manages the preference-related settings for the web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc
+func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
+	objc.Call[objc.Void](w_, objc.Sel("setPreferences:"), value)
 }

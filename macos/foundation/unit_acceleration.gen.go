@@ -53,6 +53,18 @@ func (u_ UnitAcceleration) Init() UnitAcceleration {
 	return rv
 }
 
+func (uc _UnitAccelerationClass) BaseUnit() UnitAcceleration {
+	rv := objc.Call[UnitAcceleration](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitAcceleration_BaseUnit() UnitAcceleration {
+	return UnitAccelerationClass.BaseUnit()
+}
+
 func (u_ UnitAcceleration) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAcceleration {
 	rv := objc.Call[UnitAcceleration](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -65,18 +77,6 @@ func NewUnitAccelerationWithSymbolConverter(symbol string, converter IUnitConver
 	instance := UnitAccelerationClass.Alloc().InitWithSymbolConverter(symbol, converter)
 	instance.Autorelease()
 	return instance
-}
-
-func (uc _UnitAccelerationClass) BaseUnit() UnitAcceleration {
-	rv := objc.Call[UnitAcceleration](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitAcceleration_BaseUnit() UnitAcceleration {
-	return UnitAccelerationClass.BaseUnit()
 }
 
 func (u_ UnitAcceleration) InitWithSymbol(symbol string) UnitAcceleration {
@@ -93,21 +93,6 @@ func NewUnitAccelerationWithSymbol(symbol string) UnitAcceleration {
 	return instance
 }
 
-// Returns the gravity unit of acceleration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1690681-gravity?language=objc
-func (uc _UnitAccelerationClass) Gravity() UnitAcceleration {
-	rv := objc.Call[UnitAcceleration](uc, objc.Sel("gravity"))
-	return rv
-}
-
-// Returns the gravity unit of acceleration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1690681-gravity?language=objc
-func UnitAcceleration_Gravity() UnitAcceleration {
-	return UnitAccelerationClass.Gravity()
-}
-
 // Returns the meter per second squared unit of acceleration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1856015-meterspersecondsquared?language=objc
@@ -121,4 +106,19 @@ func (uc _UnitAccelerationClass) MetersPerSecondSquared() UnitAcceleration {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1856015-meterspersecondsquared?language=objc
 func UnitAcceleration_MetersPerSecondSquared() UnitAcceleration {
 	return UnitAccelerationClass.MetersPerSecondSquared()
+}
+
+// Returns the gravity unit of acceleration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1690681-gravity?language=objc
+func (uc _UnitAccelerationClass) Gravity() UnitAcceleration {
+	rv := objc.Call[UnitAcceleration](uc, objc.Sel("gravity"))
+	return rv
+}
+
+// Returns the gravity unit of acceleration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitacceleration/1690681-gravity?language=objc
+func UnitAcceleration_Gravity() UnitAcceleration {
+	return UnitAccelerationClass.Gravity()
 }

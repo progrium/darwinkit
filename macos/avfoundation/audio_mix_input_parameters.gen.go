@@ -20,9 +20,9 @@ type _AudioMixInputParametersClass struct {
 type IAudioMixInputParameters interface {
 	objc.IObject
 	GetVolumeRampForTimeStartVolumeEndVolumeTimeRange(time coremedia.Time, startVolume *float32, endVolume *float32, timeRange *coremedia.TimeRange) bool
-	AudioTapProcessor() objc.Object
-	TrackID() objc.Object
 	AudioTimePitchAlgorithm() AudioTimePitchAlgorithm
+	TrackID() objc.Object
+	AudioTapProcessor() objc.Object
 }
 
 // An object that represents the parameters that you apply when adding an audio track to a mix. [Full Topic]
@@ -66,11 +66,11 @@ func (a_ AudioMixInputParameters) GetVolumeRampForTimeStartVolumeEndVolumeTimeRa
 	return rv
 }
 
-// The audio processing tap associated with the track. [Full Topic]
+// The processing algorithm used to manage audio pitch for scaled audio edits. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avaudiomixinputparameters/1388578-audiotapprocessor?language=objc
-func (a_ AudioMixInputParameters) AudioTapProcessor() objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("audioTapProcessor"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avaudiomixinputparameters/1387042-audiotimepitchalgorithm?language=objc
+func (a_ AudioMixInputParameters) AudioTimePitchAlgorithm() AudioTimePitchAlgorithm {
+	rv := objc.Call[AudioTimePitchAlgorithm](a_, objc.Sel("audioTimePitchAlgorithm"))
 	return rv
 }
 
@@ -82,10 +82,10 @@ func (a_ AudioMixInputParameters) TrackID() objc.Object {
 	return rv
 }
 
-// The processing algorithm used to manage audio pitch for scaled audio edits. [Full Topic]
+// The audio processing tap associated with the track. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avaudiomixinputparameters/1387042-audiotimepitchalgorithm?language=objc
-func (a_ AudioMixInputParameters) AudioTimePitchAlgorithm() AudioTimePitchAlgorithm {
-	rv := objc.Call[AudioTimePitchAlgorithm](a_, objc.Sel("audioTimePitchAlgorithm"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avaudiomixinputparameters/1388578-audiotapprocessor?language=objc
+func (a_ AudioMixInputParameters) AudioTapProcessor() objc.Object {
+	rv := objc.Call[objc.Object](a_, objc.Sel("audioTapProcessor"))
 	return rv
 }

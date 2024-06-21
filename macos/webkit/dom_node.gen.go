@@ -19,8 +19,8 @@ type _DOMNodeClass struct {
 // An interface definition for the [DOMNode] class.
 type IDOMNode interface {
 	IDOMObject
-	BoundingBox() foundation.Rect
 	LineBoxRects() []objc.Object
+	BoundingBox() foundation.Rect
 }
 
 //	[Full Topic]
@@ -56,18 +56,18 @@ func (d_ DOMNode) Init() DOMNode {
 	return rv
 }
 
-// Returns a rectangle that bounds the onscreen rendering of the node. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/domnode/1536392-boundingbox?language=objc
-func (d_ DOMNode) BoundingBox() foundation.Rect {
-	rv := objc.Call[foundation.Rect](d_, objc.Sel("boundingBox"))
-	return rv
-}
-
 // Returns the rectangles that bound each line of text in the node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/domnode/1536778-lineboxrects?language=objc
 func (d_ DOMNode) LineBoxRects() []objc.Object {
 	rv := objc.Call[[]objc.Object](d_, objc.Sel("lineBoxRects"))
+	return rv
+}
+
+// Returns a rectangle that bounds the onscreen rendering of the node. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/domnode/1536392-boundingbox?language=objc
+func (d_ DOMNode) BoundingBox() foundation.Rect {
+	rv := objc.Call[foundation.Rect](d_, objc.Sel("boundingBox"))
 	return rv
 }

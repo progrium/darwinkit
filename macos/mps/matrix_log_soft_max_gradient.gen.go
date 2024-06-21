@@ -54,21 +54,6 @@ func (m_ MatrixLogSoftMaxGradient) Init() MatrixLogSoftMaxGradient {
 	return rv
 }
 
-func (m_ MatrixLogSoftMaxGradient) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixLogSoftMaxGradient {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixLogSoftMaxGradient](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966651-copywithzone?language=objc
-func MatrixLogSoftMaxGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixLogSoftMaxGradient {
-	instance := MatrixLogSoftMaxGradientClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixLogSoftMaxGradient) InitWithDevice(device metal.PDevice) MatrixLogSoftMaxGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixLogSoftMaxGradient](m_, objc.Sel("initWithDevice:"), po0)
@@ -80,6 +65,21 @@ func (m_ MatrixLogSoftMaxGradient) InitWithDevice(device metal.PDevice) MatrixLo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966654-initwithdevice?language=objc
 func NewMatrixLogSoftMaxGradientWithDevice(device metal.PDevice) MatrixLogSoftMaxGradient {
 	instance := MatrixLogSoftMaxGradientClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixLogSoftMaxGradient) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixLogSoftMaxGradient {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixLogSoftMaxGradient](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966651-copywithzone?language=objc
+func MatrixLogSoftMaxGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixLogSoftMaxGradient {
+	instance := MatrixLogSoftMaxGradientClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

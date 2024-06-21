@@ -19,22 +19,22 @@ type _GridRowClass struct {
 // An interface definition for the [GridRow] class.
 type IGridRow interface {
 	objc.IObject
-	CellAtIndex(index int) GridCell
 	MergeCellsInRange(range_ foundation.Range)
-	Height() float64
-	SetHeight(value float64)
-	NumberOfCells() int
-	TopPadding() float64
-	SetTopPadding(value float64)
+	CellAtIndex(index int) GridCell
+	RowAlignment() GridRowAlignment
+	SetRowAlignment(value GridRowAlignment)
 	IsHidden() bool
 	SetHidden(value bool)
 	YPlacement() GridCellPlacement
 	SetYPlacement(value GridCellPlacement)
+	Height() float64
+	SetHeight(value float64)
+	GridView() GridView
 	BottomPadding() float64
 	SetBottomPadding(value float64)
-	GridView() GridView
-	RowAlignment() GridRowAlignment
-	SetRowAlignment(value GridRowAlignment)
+	NumberOfCells() int
+	TopPadding() float64
+	SetTopPadding(value float64)
 }
 
 // A row within a grid view. [Full Topic]
@@ -72,6 +72,13 @@ func (g_ GridRow) Init() GridRow {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639726-mergecellsinrange?language=objc
+func (g_ GridRow) MergeCellsInRange(range_ foundation.Range) {
+	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInRange:"), range_)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639712-cellatindex?language=objc
 func (g_ GridRow) CellAtIndex(index int) GridCell {
 	rv := objc.Call[GridCell](g_, objc.Sel("cellAtIndex:"), index)
@@ -80,47 +87,17 @@ func (g_ GridRow) CellAtIndex(index int) GridCell {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639726-mergecellsinrange?language=objc
-func (g_ GridRow) MergeCellsInRange(range_ foundation.Range) {
-	objc.Call[objc.Void](g_, objc.Sel("mergeCellsInRange:"), range_)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639728-height?language=objc
-func (g_ GridRow) Height() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("height"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1823690-rowalignment?language=objc
+func (g_ GridRow) RowAlignment() GridRowAlignment {
+	rv := objc.Call[GridRowAlignment](g_, objc.Sel("rowAlignment"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639728-height?language=objc
-func (g_ GridRow) SetHeight(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setHeight:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639685-numberofcells?language=objc
-func (g_ GridRow) NumberOfCells() int {
-	rv := objc.Call[int](g_, objc.Sel("numberOfCells"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639785-toppadding?language=objc
-func (g_ GridRow) TopPadding() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("topPadding"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639785-toppadding?language=objc
-func (g_ GridRow) SetTopPadding(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setTopPadding:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1823690-rowalignment?language=objc
+func (g_ GridRow) SetRowAlignment(value GridRowAlignment) {
+	objc.Call[objc.Void](g_, objc.Sel("setRowAlignment:"), value)
 }
 
 //	[Full Topic]
@@ -155,6 +132,29 @@ func (g_ GridRow) SetYPlacement(value GridCellPlacement) {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639728-height?language=objc
+func (g_ GridRow) Height() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("height"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639728-height?language=objc
+func (g_ GridRow) SetHeight(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setHeight:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639773-gridview?language=objc
+func (g_ GridRow) GridView() GridView {
+	rv := objc.Call[GridView](g_, objc.Sel("gridView"))
+	return rv
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639739-bottompadding?language=objc
 func (g_ GridRow) BottomPadding() float64 {
 	rv := objc.Call[float64](g_, objc.Sel("bottomPadding"))
@@ -170,23 +170,23 @@ func (g_ GridRow) SetBottomPadding(value float64) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639773-gridview?language=objc
-func (g_ GridRow) GridView() GridView {
-	rv := objc.Call[GridView](g_, objc.Sel("gridView"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639685-numberofcells?language=objc
+func (g_ GridRow) NumberOfCells() int {
+	rv := objc.Call[int](g_, objc.Sel("numberOfCells"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1823690-rowalignment?language=objc
-func (g_ GridRow) RowAlignment() GridRowAlignment {
-	rv := objc.Call[GridRowAlignment](g_, objc.Sel("rowAlignment"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639785-toppadding?language=objc
+func (g_ GridRow) TopPadding() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("topPadding"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1823690-rowalignment?language=objc
-func (g_ GridRow) SetRowAlignment(value GridRowAlignment) {
-	objc.Call[objc.Void](g_, objc.Sel("setRowAlignment:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrow/1639785-toppadding?language=objc
+func (g_ GridRow) SetTopPadding(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setTopPadding:"), value)
 }

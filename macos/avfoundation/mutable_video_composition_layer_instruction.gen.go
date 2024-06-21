@@ -20,12 +20,12 @@ type _MutableVideoCompositionLayerInstructionClass struct {
 // An interface definition for the [MutableVideoCompositionLayerInstruction] class.
 type IMutableVideoCompositionLayerInstruction interface {
 	IVideoCompositionLayerInstruction
-	SetOpacityAtTime(opacity float32, time coremedia.Time)
-	SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float32, endOpacity float32, timeRange coremedia.TimeRange)
-	SetTransformRampFromStartTransformToEndTransformTimeRange(startTransform coregraphics.AffineTransform, endTransform coregraphics.AffineTransform, timeRange coremedia.TimeRange)
 	SetCropRectangleRampFromStartCropRectangleToEndCropRectangleTimeRange(startCropRectangle coregraphics.Rect, endCropRectangle coregraphics.Rect, timeRange coremedia.TimeRange)
-	SetTransformAtTime(transform coregraphics.AffineTransform, time coremedia.Time)
+	SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float32, endOpacity float32, timeRange coremedia.TimeRange)
 	SetCropRectangleAtTime(cropRectangle coregraphics.Rect, time coremedia.Time)
+	SetOpacityAtTime(opacity float32, time coremedia.Time)
+	SetTransformRampFromStartTransformToEndTransformTimeRange(startTransform coregraphics.AffineTransform, endTransform coregraphics.AffineTransform, timeRange coremedia.TimeRange)
+	SetTransformAtTime(transform coregraphics.AffineTransform, time coremedia.Time)
 	SetTrackID(value objc.IObject)
 }
 
@@ -54,18 +54,6 @@ func MutableVideoCompositionLayerInstruction_VideoCompositionLayerInstruction() 
 	return MutableVideoCompositionLayerInstructionClass.VideoCompositionLayerInstruction()
 }
 
-func (mc _MutableVideoCompositionLayerInstructionClass) VideoCompositionLayerInstructionWithAssetTrack(track IAssetTrack) MutableVideoCompositionLayerInstruction {
-	rv := objc.Call[MutableVideoCompositionLayerInstruction](mc, objc.Sel("videoCompositionLayerInstructionWithAssetTrack:"), track)
-	return rv
-}
-
-// Creates a new mutable video composition layer instruction for the given track. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1389691-videocompositionlayerinstruction?language=objc
-func MutableVideoCompositionLayerInstruction_VideoCompositionLayerInstructionWithAssetTrack(track IAssetTrack) MutableVideoCompositionLayerInstruction {
-	return MutableVideoCompositionLayerInstructionClass.VideoCompositionLayerInstructionWithAssetTrack(track)
-}
-
 func (mc _MutableVideoCompositionLayerInstructionClass) Alloc() MutableVideoCompositionLayerInstruction {
 	rv := objc.Call[MutableVideoCompositionLayerInstruction](mc, objc.Sel("alloc"))
 	return rv
@@ -86,11 +74,11 @@ func (m_ MutableVideoCompositionLayerInstruction) Init() MutableVideoComposition
 	return rv
 }
 
-// Sets the opacity value at a specific time within the time range of the instruction. [Full Topic]
+// Sets a crop rectangle ramp to apply during the specified time range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1390758-setopacity?language=objc
-func (m_ MutableVideoCompositionLayerInstruction) SetOpacityAtTime(opacity float32, time coremedia.Time) {
-	objc.Call[objc.Void](m_, objc.Sel("setOpacity:atTime:"), opacity, time)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1385677-setcroprectanglerampfromstartcro?language=objc
+func (m_ MutableVideoCompositionLayerInstruction) SetCropRectangleRampFromStartCropRectangleToEndCropRectangleTimeRange(startCropRectangle coregraphics.Rect, endCropRectangle coregraphics.Rect, timeRange coremedia.TimeRange) {
+	objc.Call[objc.Void](m_, objc.Sel("setCropRectangleRampFromStartCropRectangle:toEndCropRectangle:timeRange:"), startCropRectangle, endCropRectangle, timeRange)
 }
 
 // Sets an opacity ramp to apply during a specified time range. [Full Topic]
@@ -100,6 +88,20 @@ func (m_ MutableVideoCompositionLayerInstruction) SetOpacityRampFromStartOpacity
 	objc.Call[objc.Void](m_, objc.Sel("setOpacityRampFromStartOpacity:toEndOpacity:timeRange:"), startOpacity, endOpacity, timeRange)
 }
 
+// Sets the crop rectangle  value at a time within the time range of the instruction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1387402-setcroprectangle?language=objc
+func (m_ MutableVideoCompositionLayerInstruction) SetCropRectangleAtTime(cropRectangle coregraphics.Rect, time coremedia.Time) {
+	objc.Call[objc.Void](m_, objc.Sel("setCropRectangle:atTime:"), cropRectangle, time)
+}
+
+// Sets the opacity value at a specific time within the time range of the instruction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1390758-setopacity?language=objc
+func (m_ MutableVideoCompositionLayerInstruction) SetOpacityAtTime(opacity float32, time coremedia.Time) {
+	objc.Call[objc.Void](m_, objc.Sel("setOpacity:atTime:"), opacity, time)
+}
+
 // Sets a transform ramp to apply during a given time range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1388192-settransformrampfromstarttransfo?language=objc
@@ -107,25 +109,11 @@ func (m_ MutableVideoCompositionLayerInstruction) SetTransformRampFromStartTrans
 	objc.Call[objc.Void](m_, objc.Sel("setTransformRampFromStartTransform:toEndTransform:timeRange:"), startTransform, endTransform, timeRange)
 }
 
-// Sets a crop rectangle ramp to apply during the specified time range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1385677-setcroprectanglerampfromstartcro?language=objc
-func (m_ MutableVideoCompositionLayerInstruction) SetCropRectangleRampFromStartCropRectangleToEndCropRectangleTimeRange(startCropRectangle coregraphics.Rect, endCropRectangle coregraphics.Rect, timeRange coremedia.TimeRange) {
-	objc.Call[objc.Void](m_, objc.Sel("setCropRectangleRampFromStartCropRectangle:toEndCropRectangle:timeRange:"), startCropRectangle, endCropRectangle, timeRange)
-}
-
 // Sets the transform value at a time within the time range of the instruction. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1390899-settransform?language=objc
 func (m_ MutableVideoCompositionLayerInstruction) SetTransformAtTime(transform coregraphics.AffineTransform, time coremedia.Time) {
 	objc.Call[objc.Void](m_, objc.Sel("setTransform:atTime:"), transform, time)
-}
-
-// Sets the crop rectangle  value at a time within the time range of the instruction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1387402-setcroprectangle?language=objc
-func (m_ MutableVideoCompositionLayerInstruction) SetCropRectangleAtTime(cropRectangle coregraphics.Rect, time coremedia.Time) {
-	objc.Call[objc.Void](m_, objc.Sel("setCropRectangle:atTime:"), cropRectangle, time)
 }
 
 // The track identifier of the source track to which the compositor applies the instruction. [Full Topic]

@@ -53,6 +53,18 @@ func (u_ UnitAngle) Init() UnitAngle {
 	return rv
 }
 
+func (uc _UnitAngleClass) BaseUnit() UnitAngle {
+	rv := objc.Call[UnitAngle](uc, objc.Sel("baseUnit"))
+	return rv
+}
+
+// Returns the base unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
+func UnitAngle_BaseUnit() UnitAngle {
+	return UnitAngleClass.BaseUnit()
+}
+
 func (u_ UnitAngle) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAngle {
 	rv := objc.Call[UnitAngle](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
@@ -67,18 +79,6 @@ func NewUnitAngleWithSymbolConverter(symbol string, converter IUnitConverter) Un
 	return instance
 }
 
-func (uc _UnitAngleClass) BaseUnit() UnitAngle {
-	rv := objc.Call[UnitAngle](uc, objc.Sel("baseUnit"))
-	return rv
-}
-
-// Returns the base unit. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1690740-baseunit?language=objc
-func UnitAngle_BaseUnit() UnitAngle {
-	return UnitAngleClass.BaseUnit()
-}
-
 func (u_ UnitAngle) InitWithSymbol(symbol string) UnitAngle {
 	rv := objc.Call[UnitAngle](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
@@ -91,6 +91,36 @@ func NewUnitAngleWithSymbol(symbol string) UnitAngle {
 	instance := UnitAngleClass.Alloc().InitWithSymbol(symbol)
 	instance.Autorelease()
 	return instance
+}
+
+// The revolutions unit of angle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1855992-revolutions?language=objc
+func (uc _UnitAngleClass) Revolutions() UnitAngle {
+	rv := objc.Call[UnitAngle](uc, objc.Sel("revolutions"))
+	return rv
+}
+
+// The revolutions unit of angle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1855992-revolutions?language=objc
+func UnitAngle_Revolutions() UnitAngle {
+	return UnitAngleClass.Revolutions()
+}
+
+// The arc seconds unit of angle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856114-arcseconds?language=objc
+func (uc _UnitAngleClass) ArcSeconds() UnitAngle {
+	rv := objc.Call[UnitAngle](uc, objc.Sel("arcSeconds"))
+	return rv
+}
+
+// The arc seconds unit of angle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856114-arcseconds?language=objc
+func UnitAngle_ArcSeconds() UnitAngle {
+	return UnitAngleClass.ArcSeconds()
 }
 
 // The arc minutes unit of angle. [Full Topic]
@@ -123,21 +153,6 @@ func UnitAngle_Gradians() UnitAngle {
 	return UnitAngleClass.Gradians()
 }
 
-// The revolutions unit of angle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1855992-revolutions?language=objc
-func (uc _UnitAngleClass) Revolutions() UnitAngle {
-	rv := objc.Call[UnitAngle](uc, objc.Sel("revolutions"))
-	return rv
-}
-
-// The revolutions unit of angle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1855992-revolutions?language=objc
-func UnitAngle_Revolutions() UnitAngle {
-	return UnitAngleClass.Revolutions()
-}
-
 // The radians unit of angle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856062-radians?language=objc
@@ -166,19 +181,4 @@ func (uc _UnitAngleClass) Degrees() UnitAngle {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856083-degrees?language=objc
 func UnitAngle_Degrees() UnitAngle {
 	return UnitAngleClass.Degrees()
-}
-
-// The arc seconds unit of angle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856114-arcseconds?language=objc
-func (uc _UnitAngleClass) ArcSeconds() UnitAngle {
-	rv := objc.Call[UnitAngle](uc, objc.Sel("arcSeconds"))
-	return rv
-}
-
-// The arc seconds unit of angle. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunitangle/1856114-arcseconds?language=objc
-func UnitAngle_ArcSeconds() UnitAngle {
-	return UnitAngleClass.ArcSeconds()
 }

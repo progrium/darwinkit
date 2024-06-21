@@ -18,8 +18,8 @@ type _StatusBarClass struct {
 // An interface definition for the [StatusBar] class.
 type IStatusBar interface {
 	objc.IObject
-	RemoveStatusItem(item IStatusItem)
 	StatusItemWithLength(length float64) StatusItem
+	RemoveStatusItem(item IStatusItem)
 	IsVertical() bool
 	Thickness() float64
 }
@@ -57,6 +57,14 @@ func (s_ StatusBar) Init() StatusBar {
 	return rv
 }
 
+// Returns a newly created status item that has been allotted a specified space within the status bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1532895-statusitemwithlength?language=objc
+func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
+	rv := objc.Call[StatusItem](s_, objc.Sel("statusItemWithLength:"), length)
+	return rv
+}
+
 // Removes the specified status item from the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530377-removestatusitem?language=objc
@@ -64,12 +72,19 @@ func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
 	objc.Call[objc.Void](s_, objc.Sel("removeStatusItem:"), item)
 }
 
-// Returns a newly created status item that has been allotted a specified space within the status bar. [Full Topic]
+// Returns the system-wide status bar located in the menu bar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1532895-statusitemwithlength?language=objc
-func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
-	rv := objc.Call[StatusItem](s_, objc.Sel("statusItemWithLength:"), length)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
+func (sc _StatusBarClass) SystemStatusBar() StatusBar {
+	rv := objc.Call[StatusBar](sc, objc.Sel("systemStatusBar"))
 	return rv
+}
+
+// Returns the system-wide status bar located in the menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
+func StatusBar_SystemStatusBar() StatusBar {
+	return StatusBarClass.SystemStatusBar()
 }
 
 // A Boolean value indicating whether the status bar has a vertical orientation. [Full Topic]
@@ -86,19 +101,4 @@ func (s_ StatusBar) IsVertical() bool {
 func (s_ StatusBar) Thickness() float64 {
 	rv := objc.Call[float64](s_, objc.Sel("thickness"))
 	return rv
-}
-
-// Returns the system-wide status bar located in the menu bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
-func (sc _StatusBarClass) SystemStatusBar() StatusBar {
-	rv := objc.Call[StatusBar](sc, objc.Sel("systemStatusBar"))
-	return rv
-}
-
-// Returns the system-wide status bar located in the menu bar. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
-func StatusBar_SystemStatusBar() StatusBar {
-	return StatusBarClass.SystemStatusBar()
 }

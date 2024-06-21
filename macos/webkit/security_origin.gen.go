@@ -18,8 +18,8 @@ type _SecurityOriginClass struct {
 // An interface definition for the [SecurityOrigin] class.
 type ISecurityOrigin interface {
 	objc.IObject
-	Port() int
 	Host() string
+	Port() int
 	Protocol() string
 }
 
@@ -56,19 +56,19 @@ func (s_ SecurityOrigin) Init() SecurityOrigin {
 	return rv
 }
 
-// The security origin's port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wksecurityorigin/1536403-port?language=objc
-func (s_ SecurityOrigin) Port() int {
-	rv := objc.Call[int](s_, objc.Sel("port"))
-	return rv
-}
-
 // The security origin’s host. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wksecurityorigin/1536794-host?language=objc
 func (s_ SecurityOrigin) Host() string {
 	rv := objc.Call[string](s_, objc.Sel("host"))
+	return rv
+}
+
+// The security origin's port. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wksecurityorigin/1536403-port?language=objc
+func (s_ SecurityOrigin) Port() int {
+	rv := objc.Call[int](s_, objc.Sel("port"))
 	return rv
 }
 

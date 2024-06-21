@@ -19,8 +19,8 @@ type _TextAlternativesClass struct {
 type ITextAlternatives interface {
 	objc.IObject
 	NoteSelectedAlternativeString(alternativeString string)
-	AlternativeStrings() []string
 	PrimaryString() string
+	AlternativeStrings() []string
 }
 
 // A list of alternative strings for a piece of text. [Full Topic]
@@ -77,18 +77,18 @@ func (t_ TextAlternatives) NoteSelectedAlternativeString(alternativeString strin
 	objc.Call[objc.Void](t_, objc.Sel("noteSelectedAlternativeString:"), alternativeString)
 }
 
-// An array of alternative possible interpretations that the user might select. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextalternatives/1527585-alternativestrings?language=objc
-func (t_ TextAlternatives) AlternativeStrings() []string {
-	rv := objc.Call[[]string](t_, objc.Sel("alternativeStrings"))
-	return rv
-}
-
 // The text that was initially chosen as the input string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextalternatives/1526166-primarystring?language=objc
 func (t_ TextAlternatives) PrimaryString() string {
 	rv := objc.Call[string](t_, objc.Sel("primaryString"))
+	return rv
+}
+
+// An array of alternative possible interpretations that the user might select. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextalternatives/1527585-alternativestrings?language=objc
+func (t_ TextAlternatives) AlternativeStrings() []string {
+	rv := objc.Call[[]string](t_, objc.Sel("alternativeStrings"))
 	return rv
 }

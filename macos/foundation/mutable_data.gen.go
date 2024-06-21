@@ -18,17 +18,16 @@ type _MutableDataClass struct {
 // An interface definition for the [MutableData] class.
 type IMutableData interface {
 	IData
-	SetData(data []byte)
-	CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
-	ResetBytesInRange(range_ Range)
-	IncreaseLengthBy(extraLength uint)
-	DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
 	AppendBytesLength(bytes unsafe.Pointer, length uint)
-	ReplaceBytesInRangeWithBytesLength(range_ Range, replacementBytes unsafe.Pointer, replacementLength uint)
-	AppendData(other []byte)
+	CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
 	ReplaceBytesInRangeWithBytes(range_ Range, bytes unsafe.Pointer)
-	SetLength(value uint)
+	SetData(data []byte)
+	AppendData(other []byte)
+	DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
+	IncreaseLengthBy(extraLength uint)
+	ResetBytesInRange(range_ Range)
 	MutableBytes() unsafe.Pointer
+	SetLength(value uint)
 }
 
 // An object representing a dynamic byte buffer in memory. [Full Topic]
@@ -42,32 +41,6 @@ func MutableDataFrom(ptr unsafe.Pointer) MutableData {
 	return MutableData{
 		Data: DataFrom(ptr),
 	}
-}
-
-func (m_ MutableData) InitWithCapacity(capacity uint) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithCapacity:"), capacity)
-	return rv
-}
-
-// Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
-func NewMutableDataWithCapacity(capacity uint) MutableData {
-	instance := MutableDataClass.Alloc().InitWithCapacity(capacity)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableDataClass) DataWithCapacity(aNumItems uint) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithCapacity:"), aNumItems)
-	return rv
-}
-
-// Creates and returns a mutable data object capable of holding the specified number of bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc
-func MutableData_DataWithCapacity(aNumItems uint) MutableData {
-	return MutableDataClass.DataWithCapacity(aNumItems)
 }
 
 func (m_ MutableData) InitWithLength(length uint) MutableData {
@@ -96,6 +69,32 @@ func MutableData_DataWithLength(length uint) MutableData {
 	return MutableDataClass.DataWithLength(length)
 }
 
+func (m_ MutableData) InitWithCapacity(capacity uint) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithCapacity:"), capacity)
+	return rv
+}
+
+// Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
+func NewMutableDataWithCapacity(capacity uint) MutableData {
+	instance := MutableDataClass.Alloc().InitWithCapacity(capacity)
+	instance.Autorelease()
+	return instance
+}
+
+func (mc _MutableDataClass) DataWithCapacity(aNumItems uint) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithCapacity:"), aNumItems)
+	return rv
+}
+
+// Creates and returns a mutable data object capable of holding the specified number of bytes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc
+func MutableData_DataWithCapacity(aNumItems uint) MutableData {
+	return MutableDataClass.DataWithCapacity(aNumItems)
+}
+
 func (mc _MutableDataClass) Alloc() MutableData {
 	rv := objc.Call[MutableData](mc, objc.Sel("alloc"))
 	return rv
@@ -116,28 +115,70 @@ func (m_ MutableData) Init() MutableData {
 	return rv
 }
 
-func (mc _MutableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
+func (m_ MutableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
-// Creates a data object by reading every byte from the file at a given path. [Full Topic]
+// Initializes a data object with the content of the file at a given path. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
-func MutableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	return MutableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
+func NewMutableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	instance := MutableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+	instance.Autorelease()
+	return instance
 }
 
-func (m_ MutableData) InitWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithBytesNoCopy:length:"), bytes, length)
+func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
-// Initializes a data object filled with a given number of bytes of data from a given buffer. [Full Topic]
+// Returns a new data object by compressing the data object’s bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1409454-initwithbytesnocopy?language=objc
-func NewMutableDataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) MutableData {
-	instance := MutableDataClass.Alloc().InitWithBytesNoCopyLength(bytes, length)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
+func MutableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
+	instance := MutableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
+}
+
+func (mc _MutableDataClass) DataWithContentsOfURL(url IURL) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:"), url)
+	return rv
+}
+
+// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc
+func MutableData_DataWithContentsOfURL(url IURL) MutableData {
+	return MutableDataClass.DataWithContentsOfURL(url)
+}
+
+func (m_ MutableData) InitWithData(data []byte) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithData:"), data)
+	return rv
+}
+
+// Initializes a data object with the contents of another data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
+func NewMutableDataWithData(data []byte) MutableData {
+	instance := MutableDataClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MutableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithBytesNoCopy:length:freeWhenDone:"), bytes, length, b)
+	return rv
+}
+
+// Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
+func NewMutableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
 	instance.Autorelease()
 	return instance
 }
@@ -166,30 +207,28 @@ func MutableData_DataWithData(data []byte) MutableData {
 	return MutableDataClass.DataWithData(data)
 }
 
-func (mc _MutableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
+func (mc _MutableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
-// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
+// Creates a data object by reading every byte from the file at a given path. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547238-datawithcontentsofurl?language=objc
-func MutableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	return MutableDataClass.DataWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
+func MutableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	return MutableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 }
 
-func (m_ MutableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithBase64EncodedString:options:"), base64String, options)
+func (mc _MutableDataClass) Data() MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("data"))
 	return rv
 }
 
-// Initializes a data object with the given Base64 encoded string. [Full Topic]
+// Creates an empty data object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
-func NewMutableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
-	instance := MutableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547234-data?language=objc
+func MutableData_Data() MutableData {
+	return MutableDataClass.Data()
 }
 
 func (m_ MutableData) InitWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
@@ -206,60 +245,6 @@ func NewMutableDataWithBytesLength(bytes unsafe.Pointer, length uint) MutableDat
 	return instance
 }
 
-func (m_ MutableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithBytesNoCopy:length:freeWhenDone:"), bytes, length, b)
-	return rv
-}
-
-// Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
-func NewMutableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
-	instance := MutableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
-	return rv
-}
-
-// Initializes a data object with the data from the location specified by a given URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1407864-initwithcontentsofurl?language=objc
-func NewMutableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	instance := MutableDataClass.Alloc().InitWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
-	return rv
-}
-
-// Initializes a data object with the content of the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func NewMutableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
-	instance := MutableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableDataClass) DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithBytesNoCopy:length:"), bytes, length)
-	return rv
-}
-
-// Creates a data object that holds a given number of bytes from a given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547229-datawithbytesnocopy?language=objc
-func MutableData_DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) MutableData {
-	return MutableDataClass.DataWithBytesNoCopyLength(bytes, length)
-}
-
 func (m_ MutableData) InitWithContentsOfURL(url IURL) MutableData {
 	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
@@ -270,124 +255,6 @@ func (m_ MutableData) InitWithContentsOfURL(url IURL) MutableData {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc
 func NewMutableDataWithContentsOfURL(url IURL) MutableData {
 	instance := MutableDataClass.Alloc().InitWithContentsOfURL(url)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithBytes:length:"), bytes, length)
-	return rv
-}
-
-// Creates a data object containing a given number of bytes copied from a given buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547231-datawithbytes?language=objc
-func MutableData_DataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
-	return MutableDataClass.DataWithBytesLength(bytes, length)
-}
-
-func (mc _MutableDataClass) Data() MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("data"))
-	return rv
-}
-
-// Creates an empty data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547234-data?language=objc
-func MutableData_Data() MutableData {
-	return MutableDataClass.Data()
-}
-
-func (m_ MutableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithBase64EncodedData:options:"), base64Data, options)
-	return rv
-}
-
-// Initializes a data object with the given Base64 encoded data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
-func NewMutableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
-	instance := MutableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableData) InitWithContentsOfFile(path string) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfFile:"), path)
-	return rv
-}
-
-// Initializes a data object with the content of the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1408672-initwithcontentsoffile?language=objc
-func NewMutableDataWithContentsOfFile(path string) MutableData {
-	instance := MutableDataClass.Alloc().InitWithContentsOfFile(path)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MutableData) InitWithBytesNoCopyLengthDeallocator(bytes unsafe.Pointer, length uint, deallocator func(bytes unsafe.Pointer, length uint)) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithBytesNoCopy:length:deallocator:"), bytes, length, deallocator)
-	return rv
-}
-
-// Initializes a data object filled with a given number of bytes of data from a given buffer, with a custom deallocator block. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417337-initwithbytesnocopy?language=objc
-func NewMutableDataWithBytesNoCopyLengthDeallocator(bytes unsafe.Pointer, length uint, deallocator func(bytes unsafe.Pointer, length uint)) MutableData {
-	instance := MutableDataClass.Alloc().InitWithBytesNoCopyLengthDeallocator(bytes, length, deallocator)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableDataClass) DataWithContentsOfFile(path string) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfFile:"), path)
-	return rv
-}
-
-// Creates a data object by reading every byte from the file at a given path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547226-datawithcontentsoffile?language=objc
-func MutableData_DataWithContentsOfFile(path string) MutableData {
-	return MutableDataClass.DataWithContentsOfFile(path)
-}
-
-func (m_ MutableData) InitWithData(data []byte) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithData:"), data)
-	return rv
-}
-
-// Initializes a data object with the contents of another data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
-func NewMutableDataWithData(data []byte) MutableData {
-	instance := MutableDataClass.Alloc().InitWithData(data)
-	instance.Autorelease()
-	return instance
-}
-
-func (mc _MutableDataClass) DataWithContentsOfURL(url IURL) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:"), url)
-	return rv
-}
-
-// Creates a data object containing the data from the location specified by a given URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc
-func MutableData_DataWithContentsOfURL(url IURL) MutableData {
-	return MutableDataClass.DataWithContentsOfURL(url)
-}
-
-func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
-	return rv
-}
-
-// Returns a new data object by compressing the data object’s bytes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
-func MutableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
-	instance := MutableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
 }
@@ -406,11 +273,51 @@ func MutableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAl
 	return instance
 }
 
-// Replaces the entire contents of the receiver with the contents of another data object. [Full Topic]
+func (m_ MutableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithBase64EncodedData:options:"), base64Data, options)
+	return rv
+}
+
+// Initializes a data object with the given Base64 encoded data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1417012-setdata?language=objc
-func (m_ MutableData) SetData(data []byte) {
-	objc.Call[objc.Void](m_, objc.Sel("setData:"), data)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
+func NewMutableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MutableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithBase64EncodedString:options:"), base64String, options)
+	return rv
+}
+
+// Initializes a data object with the given Base64 encoded string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
+func NewMutableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+	instance.Autorelease()
+	return instance
+}
+
+func (mc _MutableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithBytes:length:"), bytes, length)
+	return rv
+}
+
+// Creates a data object containing a given number of bytes copied from a given buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547231-datawithbytes?language=objc
+func MutableData_DataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
+	return MutableDataClass.DataWithBytesLength(bytes, length)
+}
+
+// Appends to the receiver a given number of bytes from a given buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes?language=objc
+func (m_ MutableData) AppendBytesLength(bytes unsafe.Pointer, length uint) {
+	objc.Call[objc.Void](m_, objc.Sel("appendBytes:length:"), bytes, length)
 }
 
 // Compresses the data object’s bytes using an algorithm that you specify. [Full Topic]
@@ -421,18 +328,25 @@ func (m_ MutableData) CompressUsingAlgorithmError(algorithm DataCompressionAlgor
 	return rv
 }
 
-// Replaces with zeroes the contents of the receiver in a given range. [Full Topic]
+// Replaces with a given set of bytes a given range within the contents of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1415526-resetbytesinrange?language=objc
-func (m_ MutableData) ResetBytesInRange(range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("resetBytesInRange:"), range_)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1414281-replacebytesinrange?language=objc
+func (m_ MutableData) ReplaceBytesInRangeWithBytes(range_ Range, bytes unsafe.Pointer) {
+	objc.Call[objc.Void](m_, objc.Sel("replaceBytesInRange:withBytes:"), range_, bytes)
 }
 
-// Increases the length of the receiver by a given number of bytes. [Full Topic]
+// Replaces the entire contents of the receiver with the contents of another data object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1416186-increaselengthby?language=objc
-func (m_ MutableData) IncreaseLengthBy(extraLength uint) {
-	objc.Call[objc.Void](m_, objc.Sel("increaseLengthBy:"), extraLength)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1417012-setdata?language=objc
+func (m_ MutableData) SetData(data []byte) {
+	objc.Call[objc.Void](m_, objc.Sel("setData:"), data)
+}
+
+// Appends the content of another data object to the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1410724-appenddata?language=objc
+func (m_ MutableData) AppendData(other []byte) {
+	objc.Call[objc.Void](m_, objc.Sel("appendData:"), other)
 }
 
 // Decompresses the data object’s bytes. [Full Topic]
@@ -443,39 +357,18 @@ func (m_ MutableData) DecompressUsingAlgorithmError(algorithm DataCompressionAlg
 	return rv
 }
 
-// Appends to the receiver a given number of bytes from a given buffer. [Full Topic]
+// Increases the length of the receiver by a given number of bytes. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes?language=objc
-func (m_ MutableData) AppendBytesLength(bytes unsafe.Pointer, length uint) {
-	objc.Call[objc.Void](m_, objc.Sel("appendBytes:length:"), bytes, length)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1416186-increaselengthby?language=objc
+func (m_ MutableData) IncreaseLengthBy(extraLength uint) {
+	objc.Call[objc.Void](m_, objc.Sel("increaseLengthBy:"), extraLength)
 }
 
-// Replaces with a given set of bytes a given range within the contents of the receiver. [Full Topic]
+// Replaces with zeroes the contents of the receiver in a given range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1412428-replacebytesinrange?language=objc
-func (m_ MutableData) ReplaceBytesInRangeWithBytesLength(range_ Range, replacementBytes unsafe.Pointer, replacementLength uint) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceBytesInRange:withBytes:length:"), range_, replacementBytes, replacementLength)
-}
-
-// Appends the content of another data object to the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1410724-appenddata?language=objc
-func (m_ MutableData) AppendData(other []byte) {
-	objc.Call[objc.Void](m_, objc.Sel("appendData:"), other)
-}
-
-// Replaces with a given set of bytes a given range within the contents of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1414281-replacebytesinrange?language=objc
-func (m_ MutableData) ReplaceBytesInRangeWithBytes(range_ Range, bytes unsafe.Pointer) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceBytesInRange:withBytes:"), range_, bytes)
-}
-
-// The number of bytes contained in the mutable data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc
-func (m_ MutableData) SetLength(value uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setLength:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1415526-resetbytesinrange?language=objc
+func (m_ MutableData) ResetBytesInRange(range_ Range) {
+	objc.Call[objc.Void](m_, objc.Sel("resetBytesInRange:"), range_)
 }
 
 // A pointer to the data contained by the mutable data object. [Full Topic]
@@ -484,4 +377,11 @@ func (m_ MutableData) SetLength(value uint) {
 func (m_ MutableData) MutableBytes() unsafe.Pointer {
 	rv := objc.Call[unsafe.Pointer](m_, objc.Sel("mutableBytes"))
 	return rv
+}
+
+// The number of bytes contained in the mutable data object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc
+func (m_ MutableData) SetLength(value uint) {
+	objc.Call[objc.Void](m_, objc.Sel("setLength:"), value)
 }

@@ -19,13 +19,13 @@ type _PersistentCloudKitContainerEventClass struct {
 // An interface definition for the [PersistentCloudKitContainerEvent] class.
 type IPersistentCloudKitContainerEvent interface {
 	objc.IObject
-	StartDate() foundation.Date
 	Error() foundation.Error
 	StoreIdentifier() string
-	Type() PersistentCloudKitContainerEventType
-	Identifier() foundation.UUID
-	EndDate() foundation.Date
 	Succeeded() bool
+	StartDate() foundation.Date
+	Type() PersistentCloudKitContainerEventType
+	EndDate() foundation.Date
+	Identifier() foundation.UUID
 }
 
 // An object that represents activity in a persistent CloudKit container. [Full Topic]
@@ -61,14 +61,6 @@ func (p_ PersistentCloudKitContainerEvent) Init() PersistentCloudKitContainerEve
 	return rv
 }
 
-// The start date of the operation that the event represents. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618804-startdate?language=objc
-func (p_ PersistentCloudKitContainerEvent) StartDate() foundation.Date {
-	rv := objc.Call[foundation.Date](p_, objc.Sel("startDate"))
-	return rv
-}
-
 // An error that indicates why an operation fails. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618802-error?language=objc
@@ -85,19 +77,27 @@ func (p_ PersistentCloudKitContainerEvent) StoreIdentifier() string {
 	return rv
 }
 
+// A Boolean value that indicates whether the operation the event represents is successful. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618806-succeeded?language=objc
+func (p_ PersistentCloudKitContainerEvent) Succeeded() bool {
+	rv := objc.Call[bool](p_, objc.Sel("succeeded"))
+	return rv
+}
+
+// The start date of the operation that the event represents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618804-startdate?language=objc
+func (p_ PersistentCloudKitContainerEvent) StartDate() foundation.Date {
+	rv := objc.Call[foundation.Date](p_, objc.Sel("startDate"))
+	return rv
+}
+
 // The type of event, either setup, import, or export. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618807-type?language=objc
 func (p_ PersistentCloudKitContainerEvent) Type() PersistentCloudKitContainerEventType {
 	rv := objc.Call[PersistentCloudKitContainerEventType](p_, objc.Sel("type"))
-	return rv
-}
-
-// A unique identifier for the event in a container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618803-identifier?language=objc
-func (p_ PersistentCloudKitContainerEvent) Identifier() foundation.UUID {
-	rv := objc.Call[foundation.UUID](p_, objc.Sel("identifier"))
 	return rv
 }
 
@@ -109,10 +109,10 @@ func (p_ PersistentCloudKitContainerEvent) EndDate() foundation.Date {
 	return rv
 }
 
-// A Boolean value that indicates whether the operation the event represents is successful. [Full Topic]
+// A unique identifier for the event in a container. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618806-succeeded?language=objc
-func (p_ PersistentCloudKitContainerEvent) Succeeded() bool {
-	rv := objc.Call[bool](p_, objc.Sel("succeeded"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontainerevent/3618803-identifier?language=objc
+func (p_ PersistentCloudKitContainerEvent) Identifier() foundation.UUID {
+	rv := objc.Call[foundation.UUID](p_, objc.Sel("identifier"))
 	return rv
 }

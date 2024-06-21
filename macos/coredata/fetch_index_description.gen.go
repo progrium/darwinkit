@@ -19,11 +19,11 @@ type _FetchIndexDescriptionClass struct {
 // An interface definition for the [FetchIndexDescription] class.
 type IFetchIndexDescription interface {
 	objc.IObject
-	Elements() []FetchIndexElementDescription
-	SetElements(value []IFetchIndexElementDescription)
 	Entity() EntityDescription
 	Name() string
 	SetName(value string)
+	Elements() []FetchIndexElementDescription
+	SetElements(value []IFetchIndexElementDescription)
 	PartialIndexPredicate() foundation.Predicate
 	SetPartialIndexPredicate(value foundation.IPredicate)
 }
@@ -75,21 +75,6 @@ func (f_ FetchIndexDescription) Init() FetchIndexDescription {
 	return rv
 }
 
-// An array of fetch index element descriptions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887054-elements?language=objc
-func (f_ FetchIndexDescription) Elements() []FetchIndexElementDescription {
-	rv := objc.Call[[]FetchIndexElementDescription](f_, objc.Sel("elements"))
-	return rv
-}
-
-// An array of fetch index element descriptions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887054-elements?language=objc
-func (f_ FetchIndexDescription) SetElements(value []IFetchIndexElementDescription) {
-	objc.Call[objc.Void](f_, objc.Sel("setElements:"), value)
-}
-
 // The entity description for the fetch index description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887055-entity?language=objc
@@ -111,6 +96,21 @@ func (f_ FetchIndexDescription) Name() string {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887056-name?language=objc
 func (f_ FetchIndexDescription) SetName(value string) {
 	objc.Call[objc.Void](f_, objc.Sel("setName:"), value)
+}
+
+// An array of fetch index element descriptions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887054-elements?language=objc
+func (f_ FetchIndexDescription) Elements() []FetchIndexElementDescription {
+	rv := objc.Call[[]FetchIndexElementDescription](f_, objc.Sel("elements"))
+	return rv
+}
+
+// An array of fetch index element descriptions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887054-elements?language=objc
+func (f_ FetchIndexDescription) SetElements(value []IFetchIndexElementDescription) {
+	objc.Call[objc.Void](f_, objc.Sel("setElements:"), value)
 }
 
 // A predicate that selects rows for indexing, if the index is a partial index. [Full Topic]

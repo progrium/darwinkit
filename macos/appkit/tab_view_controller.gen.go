@@ -19,29 +19,26 @@ type _TabViewControllerClass struct {
 // An interface definition for the [TabViewController] class.
 type ITabViewController interface {
 	IViewController
-	TabViewShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool
+	TabViewItemForViewController(viewController IViewController) TabViewItem
+	ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier
+	RemoveTabViewItem(tabViewItem ITabViewItem)
 	ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem
-	TabViewWillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem)
-	AddTabViewItem(tabViewItem ITabViewItem)
+	ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier
 	ToolbarSelectableItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier
 	InsertTabViewItemAtIndex(tabViewItem ITabViewItem, index int)
-	RemoveTabViewItem(tabViewItem ITabViewItem)
-	ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier
-	ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier
-	TabViewDidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem)
-	TabViewItemForViewController(viewController IViewController) TabViewItem
-	TransitionOptions() ViewControllerTransitionOptions
-	SetTransitionOptions(value ViewControllerTransitionOptions)
-	TabView() TabView
-	SetTabView(value ITabView)
-	SelectedTabViewItemIndex() int
-	SetSelectedTabViewItemIndex(value int)
+	AddTabViewItem(tabViewItem ITabViewItem)
 	CanPropagateSelectedChildViewControllerTitle() bool
 	SetCanPropagateSelectedChildViewControllerTitle(value bool)
 	TabStyle() TabViewControllerTabStyle
 	SetTabStyle(value TabViewControllerTabStyle)
 	TabViewItems() []TabViewItem
 	SetTabViewItems(value []ITabViewItem)
+	TabView() TabView
+	SetTabView(value ITabView)
+	TransitionOptions() ViewControllerTransitionOptions
+	SetTransitionOptions(value ViewControllerTransitionOptions)
+	SelectedTabViewItemIndex() int
+	SetSelectedTabViewItemIndex(value int)
 }
 
 // A container view controller that manages a tab view interface, which organizes multiple pages of content but displays only one page at a time. [Full Topic]
@@ -91,12 +88,27 @@ func NewTabViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil 
 	return instance
 }
 
-// Asks the tab view controller if the specified tab should be selected. [Full Topic]
+// Returns the tab view item for the specified child view controller. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428237-tabview?language=objc
-func (t_ TabViewController) TabViewShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tabView:shouldSelectTabViewItem:"), tabView, tabViewItem)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428233-tabviewitemforviewcontroller?language=objc
+func (t_ TabViewController) TabViewItemForViewController(viewController IViewController) TabViewItem {
+	rv := objc.Call[TabViewItem](t_, objc.Sel("tabViewItemForViewController:"), viewController)
 	return rv
+}
+
+// Returns the array of identifier strings for the allowed toolbar items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428229-toolbaralloweditemidentifiers?language=objc
+func (t_ TabViewController) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
+	return rv
+}
+
+// Removes the specified tab view item from the tab view controller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428235-removetabviewitem?language=objc
+func (t_ TabViewController) RemoveTabViewItem(tabViewItem ITabViewItem) {
+	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), tabViewItem)
 }
 
 // Returns the toolbar item for the specified identifier. [Full Topic]
@@ -107,18 +119,12 @@ func (t_ TabViewController) ToolbarItemForItemIdentifierWillBeInsertedIntoToolba
 	return rv
 }
 
-// Informs the tab view controller that the specified tab is about to be selected. [Full Topic]
+// Returns the array of identifier strings for the default toolbar items. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428231-tabview?language=objc
-func (t_ TabViewController) TabViewWillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:willSelectTabViewItem:"), tabView, tabViewItem)
-}
-
-// Adds the specified tab to the end of the tab view controller’s list of tabs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428214-addtabviewitem?language=objc
-func (t_ TabViewController) AddTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), tabViewItem)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428251-toolbardefaultitemidentifiers?language=objc
+func (t_ TabViewController) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
+	return rv
 }
 
 // Returns the array of identifier strings for the selectable toolbar items [Full Topic]
@@ -136,87 +142,11 @@ func (t_ TabViewController) InsertTabViewItemAtIndex(tabViewItem ITabViewItem, i
 	objc.Call[objc.Void](t_, objc.Sel("insertTabViewItem:atIndex:"), tabViewItem, index)
 }
 
-// Removes the specified tab view item from the tab view controller. [Full Topic]
+// Adds the specified tab to the end of the tab view controller’s list of tabs. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428235-removetabviewitem?language=objc
-func (t_ TabViewController) RemoveTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), tabViewItem)
-}
-
-// Returns the array of identifier strings for the default toolbar items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428251-toolbardefaultitemidentifiers?language=objc
-func (t_ TabViewController) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
-	return rv
-}
-
-// Returns the array of identifier strings for the allowed toolbar items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428229-toolbaralloweditemidentifiers?language=objc
-func (t_ TabViewController) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
-	return rv
-}
-
-// Informs the tab view controller that the specified tab was selected. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428243-tabview?language=objc
-func (t_ TabViewController) TabViewDidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), tabView, tabViewItem)
-}
-
-// Returns the tab view item for the specified child view controller. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428233-tabviewitemforviewcontroller?language=objc
-func (t_ TabViewController) TabViewItemForViewController(viewController IViewController) TabViewItem {
-	rv := objc.Call[TabViewItem](t_, objc.Sel("tabViewItemForViewController:"), viewController)
-	return rv
-}
-
-// The animation options to use when switching between tabs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428257-transitionoptions?language=objc
-func (t_ TabViewController) TransitionOptions() ViewControllerTransitionOptions {
-	rv := objc.Call[ViewControllerTransitionOptions](t_, objc.Sel("transitionOptions"))
-	return rv
-}
-
-// The animation options to use when switching between tabs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428257-transitionoptions?language=objc
-func (t_ TabViewController) SetTransitionOptions(value ViewControllerTransitionOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("setTransitionOptions:"), value)
-}
-
-// The tab view that manages the views of the interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428241-tabview?language=objc
-func (t_ TabViewController) TabView() TabView {
-	rv := objc.Call[TabView](t_, objc.Sel("tabView"))
-	return rv
-}
-
-// The tab view that manages the views of the interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428241-tabview?language=objc
-func (t_ TabViewController) SetTabView(value ITabView) {
-	objc.Call[objc.Void](t_, objc.Sel("setTabView:"), value)
-}
-
-// The index of the selected tab. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428220-selectedtabviewitemindex?language=objc
-func (t_ TabViewController) SelectedTabViewItemIndex() int {
-	rv := objc.Call[int](t_, objc.Sel("selectedTabViewItemIndex"))
-	return rv
-}
-
-// The index of the selected tab. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428220-selectedtabviewitemindex?language=objc
-func (t_ TabViewController) SetSelectedTabViewItemIndex(value int) {
-	objc.Call[objc.Void](t_, objc.Sel("setSelectedTabViewItemIndex:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428214-addtabviewitem?language=objc
+func (t_ TabViewController) AddTabViewItem(tabViewItem ITabViewItem) {
+	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), tabViewItem)
 }
 
 // A Boolean value indicating whether the tab view controller gets its title from the selected child view controller. [Full Topic]
@@ -262,4 +192,49 @@ func (t_ TabViewController) TabViewItems() []TabViewItem {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428222-tabviewitems?language=objc
 func (t_ TabViewController) SetTabViewItems(value []ITabViewItem) {
 	objc.Call[objc.Void](t_, objc.Sel("setTabViewItems:"), value)
+}
+
+// The tab view that manages the views of the interface. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428241-tabview?language=objc
+func (t_ TabViewController) TabView() TabView {
+	rv := objc.Call[TabView](t_, objc.Sel("tabView"))
+	return rv
+}
+
+// The tab view that manages the views of the interface. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428241-tabview?language=objc
+func (t_ TabViewController) SetTabView(value ITabView) {
+	objc.Call[objc.Void](t_, objc.Sel("setTabView:"), value)
+}
+
+// The animation options to use when switching between tabs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428257-transitionoptions?language=objc
+func (t_ TabViewController) TransitionOptions() ViewControllerTransitionOptions {
+	rv := objc.Call[ViewControllerTransitionOptions](t_, objc.Sel("transitionOptions"))
+	return rv
+}
+
+// The animation options to use when switching between tabs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428257-transitionoptions?language=objc
+func (t_ TabViewController) SetTransitionOptions(value ViewControllerTransitionOptions) {
+	objc.Call[objc.Void](t_, objc.Sel("setTransitionOptions:"), value)
+}
+
+// The index of the selected tab. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428220-selectedtabviewitemindex?language=objc
+func (t_ TabViewController) SelectedTabViewItemIndex() int {
+	rv := objc.Call[int](t_, objc.Sel("selectedTabViewItemIndex"))
+	return rv
+}
+
+// The index of the selected tab. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428220-selectedtabviewitemindex?language=objc
+func (t_ TabViewController) SetSelectedTabViewItemIndex(value int) {
+	objc.Call[objc.Void](t_, objc.Sel("setSelectedTabViewItemIndex:"), value)
 }

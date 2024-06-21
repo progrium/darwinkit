@@ -11,16 +11,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycontainstransientui?language=objc
 type PAccessibilityContainsTransientUI interface {
 	// optional
-	IsAccessibilityAlternateUIVisible() bool
-	HasIsAccessibilityAlternateUIVisible() bool
-
-	// optional
 	AccessibilityPerformShowDefaultUI() bool
 	HasAccessibilityPerformShowDefaultUI() bool
 
 	// optional
 	AccessibilityPerformShowAlternateUI() bool
 	HasAccessibilityPerformShowAlternateUI() bool
+
+	// optional
+	IsAccessibilityAlternateUIVisible() bool
+	HasIsAccessibilityAlternateUIVisible() bool
 }
 
 // ensure impl type implements protocol interface
@@ -29,18 +29,6 @@ var _ PAccessibilityContainsTransientUI = (*AccessibilityContainsTransientUIObje
 // A concrete type for the [PAccessibilityContainsTransientUI] protocol.
 type AccessibilityContainsTransientUIObject struct {
 	objc.Object
-}
-
-func (a_ AccessibilityContainsTransientUIObject) HasIsAccessibilityAlternateUIVisible() bool {
-	return a_.RespondsToSelector(objc.Sel("isAccessibilityAlternateUIVisible"))
-}
-
-// Returns a Boolean value that determines whether the accessibility element’s alternative UI is currently visible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycontainstransientui/1526272-isaccessibilityalternateuivisibl?language=objc
-func (a_ AccessibilityContainsTransientUIObject) IsAccessibilityAlternateUIVisible() bool {
-	rv := objc.Call[bool](a_, objc.Sel("isAccessibilityAlternateUIVisible"))
-	return rv
 }
 
 func (a_ AccessibilityContainsTransientUIObject) HasAccessibilityPerformShowDefaultUI() bool {
@@ -64,5 +52,17 @@ func (a_ AccessibilityContainsTransientUIObject) HasAccessibilityPerformShowAlte
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycontainstransientui/1535134-accessibilityperformshowalternat?language=objc
 func (a_ AccessibilityContainsTransientUIObject) AccessibilityPerformShowAlternateUI() bool {
 	rv := objc.Call[bool](a_, objc.Sel("accessibilityPerformShowAlternateUI"))
+	return rv
+}
+
+func (a_ AccessibilityContainsTransientUIObject) HasIsAccessibilityAlternateUIVisible() bool {
+	return a_.RespondsToSelector(objc.Sel("isAccessibilityAlternateUIVisible"))
+}
+
+// Returns a Boolean value that determines whether the accessibility element’s alternative UI is currently visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycontainstransientui/1526272-isaccessibilityalternateuivisibl?language=objc
+func (a_ AccessibilityContainsTransientUIObject) IsAccessibilityAlternateUIVisible() bool {
+	rv := objc.Call[bool](a_, objc.Sel("isAccessibilityAlternateUIVisible"))
 	return rv
 }

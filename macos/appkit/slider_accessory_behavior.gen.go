@@ -56,13 +56,6 @@ func (s_ SliderAccessoryBehavior) Init() SliderAccessoryBehavior {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544759-handleaction?language=objc
-func (s_ SliderAccessoryBehavior) HandleAction(sender ISliderAccessory) {
-	objc.Call[objc.Void](s_, objc.Sel("handleAction:"), sender)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544778-behaviorwithhandler?language=objc
 func (sc _SliderAccessoryBehaviorClass) BehaviorWithHandler(handler func(arg0 SliderAccessory)) SliderAccessoryBehavior {
 	rv := objc.Call[SliderAccessoryBehavior](sc, objc.Sel("behaviorWithHandler:"), handler)
@@ -93,17 +86,9 @@ func SliderAccessoryBehavior_BehaviorWithTargetAction(target objc.IObject, actio
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544780-automaticbehavior?language=objc
-func (sc _SliderAccessoryBehaviorClass) AutomaticBehavior() SliderAccessoryBehavior {
-	rv := objc.Call[SliderAccessoryBehavior](sc, objc.Sel("automaticBehavior"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544780-automaticbehavior?language=objc
-func SliderAccessoryBehavior_AutomaticBehavior() SliderAccessoryBehavior {
-	return SliderAccessoryBehaviorClass.AutomaticBehavior()
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544759-handleaction?language=objc
+func (s_ SliderAccessoryBehavior) HandleAction(sender ISliderAccessory) {
+	objc.Call[objc.Void](s_, objc.Sel("handleAction:"), sender)
 }
 
 //	[Full Topic]
@@ -119,6 +104,21 @@ func (sc _SliderAccessoryBehaviorClass) ValueStepBehavior() SliderAccessoryBehav
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544771-valuestepbehavior?language=objc
 func SliderAccessoryBehavior_ValueStepBehavior() SliderAccessoryBehavior {
 	return SliderAccessoryBehaviorClass.ValueStepBehavior()
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544780-automaticbehavior?language=objc
+func (sc _SliderAccessoryBehaviorClass) AutomaticBehavior() SliderAccessoryBehavior {
+	rv := objc.Call[SliderAccessoryBehavior](sc, objc.Sel("automaticBehavior"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544780-automaticbehavior?language=objc
+func SliderAccessoryBehavior_AutomaticBehavior() SliderAccessoryBehavior {
+	return SliderAccessoryBehaviorClass.AutomaticBehavior()
 }
 
 //	[Full Topic]

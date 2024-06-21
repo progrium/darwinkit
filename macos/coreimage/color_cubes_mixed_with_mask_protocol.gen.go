@@ -12,22 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask?language=objc
 type PColorCubesMixedWithMask interface {
 	// optional
-	SetCube1Data(value []byte)
-	HasSetCube1Data() bool
-
-	// optional
-	Cube1Data() []byte
-	HasCube1Data() bool
-
-	// optional
-	SetCube0Data(value []byte)
-	HasSetCube0Data() bool
-
-	// optional
-	Cube0Data() []byte
-	HasCube0Data() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -58,6 +42,22 @@ type PColorCubesMixedWithMask interface {
 	// optional
 	ColorSpace() coregraphics.ColorSpaceRef
 	HasColorSpace() bool
+
+	// optional
+	SetCube0Data(value []byte)
+	HasSetCube0Data() bool
+
+	// optional
+	Cube0Data() []byte
+	HasCube0Data() bool
+
+	// optional
+	SetCube1Data(value []byte)
+	HasSetCube1Data() bool
+
+	// optional
+	Cube1Data() []byte
+	HasCube1Data() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,52 +66,6 @@ var _ PColorCubesMixedWithMask = (*ColorCubesMixedWithMaskObject)(nil)
 // A concrete type for the [PColorCubesMixedWithMask] protocol.
 type ColorCubesMixedWithMaskObject struct {
 	objc.Object
-}
-
-func (c_ ColorCubesMixedWithMaskObject) HasSetCube1Data() bool {
-	return c_.RespondsToSelector(objc.Sel("setCube1Data:"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228145-cube1data?language=objc
-func (c_ ColorCubesMixedWithMaskObject) SetCube1Data(value []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("setCube1Data:"), value)
-}
-
-func (c_ ColorCubesMixedWithMaskObject) HasCube1Data() bool {
-	return c_.RespondsToSelector(objc.Sel("cube1Data"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228145-cube1data?language=objc
-func (c_ ColorCubesMixedWithMaskObject) Cube1Data() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("cube1Data"))
-	return rv
-}
-
-func (c_ ColorCubesMixedWithMaskObject) HasSetCube0Data() bool {
-	return c_.RespondsToSelector(objc.Sel("setCube0Data:"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228144-cube0data?language=objc
-func (c_ ColorCubesMixedWithMaskObject) SetCube0Data(value []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("setCube0Data:"), value)
-}
-
-func (c_ ColorCubesMixedWithMaskObject) HasCube0Data() bool {
-	return c_.RespondsToSelector(objc.Sel("cube0Data"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228144-cube0data?language=objc
-func (c_ ColorCubesMixedWithMaskObject) Cube0Data() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("cube0Data"))
-	return rv
 }
 
 func (c_ ColorCubesMixedWithMaskObject) HasSetInputImage() bool {
@@ -203,5 +157,51 @@ func (c_ ColorCubesMixedWithMaskObject) HasColorSpace() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228143-colorspace?language=objc
 func (c_ ColorCubesMixedWithMaskObject) ColorSpace() coregraphics.ColorSpaceRef {
 	rv := objc.Call[coregraphics.ColorSpaceRef](c_, objc.Sel("colorSpace"))
+	return rv
+}
+
+func (c_ ColorCubesMixedWithMaskObject) HasSetCube0Data() bool {
+	return c_.RespondsToSelector(objc.Sel("setCube0Data:"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228144-cube0data?language=objc
+func (c_ ColorCubesMixedWithMaskObject) SetCube0Data(value []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("setCube0Data:"), value)
+}
+
+func (c_ ColorCubesMixedWithMaskObject) HasCube0Data() bool {
+	return c_.RespondsToSelector(objc.Sel("cube0Data"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228144-cube0data?language=objc
+func (c_ ColorCubesMixedWithMaskObject) Cube0Data() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("cube0Data"))
+	return rv
+}
+
+func (c_ ColorCubesMixedWithMaskObject) HasSetCube1Data() bool {
+	return c_.RespondsToSelector(objc.Sel("setCube1Data:"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228145-cube1data?language=objc
+func (c_ ColorCubesMixedWithMaskObject) SetCube1Data(value []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("setCube1Data:"), value)
+}
+
+func (c_ ColorCubesMixedWithMaskObject) HasCube1Data() bool {
+	return c_.RespondsToSelector(objc.Sel("cube1Data"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228145-cube1data?language=objc
+func (c_ ColorCubesMixedWithMaskObject) Cube1Data() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("cube1Data"))
 	return rv
 }

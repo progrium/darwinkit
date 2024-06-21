@@ -20,9 +20,9 @@ type _RectangleFeatureClass struct {
 type IRectangleFeature interface {
 	IFeature
 	BottomRight() coregraphics.Point
-	TopLeft() coregraphics.Point
 	BottomLeft() coregraphics.Point
 	TopRight() coregraphics.Point
+	TopLeft() coregraphics.Point
 }
 
 // Information about a rectangular region detected in a still or video image. [Full Topic]
@@ -66,14 +66,6 @@ func (r_ RectangleFeature) BottomRight() coregraphics.Point {
 	return rv
 }
 
-// The upper-left corner of the detected rectangle, in image coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirectanglefeature/1437951-topleft?language=objc
-func (r_ RectangleFeature) TopLeft() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](r_, objc.Sel("topLeft"))
-	return rv
-}
-
 // The lower-left corner of the detected rectangle, in image coordinates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirectanglefeature/1437878-bottomleft?language=objc
@@ -87,5 +79,13 @@ func (r_ RectangleFeature) BottomLeft() coregraphics.Point {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirectanglefeature/1438071-topright?language=objc
 func (r_ RectangleFeature) TopRight() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](r_, objc.Sel("topRight"))
+	return rv
+}
+
+// The upper-left corner of the detected rectangle, in image coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cirectanglefeature/1437951-topleft?language=objc
+func (r_ RectangleFeature) TopLeft() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](r_, objc.Sel("topLeft"))
 	return rv
 }

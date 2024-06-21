@@ -18,20 +18,20 @@ type _PreferencesClass struct {
 // An interface definition for the [Preferences] class.
 type IPreferences interface {
 	objc.IObject
-	IsElementFullscreenEnabled() bool
-	SetElementFullscreenEnabled(value bool)
-	IsSiteSpecificQuirksModeEnabled() bool
-	SetSiteSpecificQuirksModeEnabled(value bool)
-	IsFraudulentWebsiteWarningEnabled() bool
-	SetFraudulentWebsiteWarningEnabled(value bool)
 	MinimumFontSize() float64
 	SetMinimumFontSize(value float64)
-	JavaScriptCanOpenWindowsAutomatically() bool
-	SetJavaScriptCanOpenWindowsAutomatically(value bool)
 	IsTextInteractionEnabled() bool
 	SetTextInteractionEnabled(value bool)
+	JavaScriptCanOpenWindowsAutomatically() bool
+	SetJavaScriptCanOpenWindowsAutomatically(value bool)
+	IsSiteSpecificQuirksModeEnabled() bool
+	SetSiteSpecificQuirksModeEnabled(value bool)
 	TabFocusesLinks() bool
 	SetTabFocusesLinks(value bool)
+	IsElementFullscreenEnabled() bool
+	SetElementFullscreenEnabled(value bool)
+	IsFraudulentWebsiteWarningEnabled() bool
+	SetFraudulentWebsiteWarningEnabled(value bool)
 }
 
 // An object that encapsulates the standard behaviors to apply to websites. [Full Topic]
@@ -67,51 +67,6 @@ func (p_ Preferences) Init() Preferences {
 	return rv
 }
 
-// A Boolean value that indicates whether a web view can display content full screen. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3917769-elementfullscreenenabled?language=objc
-func (p_ Preferences) IsElementFullscreenEnabled() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isElementFullscreenEnabled"))
-	return rv
-}
-
-// A Boolean value that indicates whether a web view can display content full screen. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3917769-elementfullscreenenabled?language=objc
-func (p_ Preferences) SetElementFullscreenEnabled(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setElementFullscreenEnabled:"), value)
-}
-
-// A Boolean that indicates whether to apply site-specific compatibility workarounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3916069-sitespecificquirksmodeenabled?language=objc
-func (p_ Preferences) IsSiteSpecificQuirksModeEnabled() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isSiteSpecificQuirksModeEnabled"))
-	return rv
-}
-
-// A Boolean that indicates whether to apply site-specific compatibility workarounds. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3916069-sitespecificquirksmodeenabled?language=objc
-func (p_ Preferences) SetSiteSpecificQuirksModeEnabled(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setSiteSpecificQuirksModeEnabled:"), value)
-}
-
-// A Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc
-func (p_ Preferences) IsFraudulentWebsiteWarningEnabled() bool {
-	rv := objc.Call[bool](p_, objc.Sel("isFraudulentWebsiteWarningEnabled"))
-	return rv
-}
-
-// A Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc
-func (p_ Preferences) SetFraudulentWebsiteWarningEnabled(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setFraudulentWebsiteWarningEnabled:"), value)
-}
-
 // The minimum font size, in points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize?language=objc
@@ -125,21 +80,6 @@ func (p_ Preferences) MinimumFontSize() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize?language=objc
 func (p_ Preferences) SetMinimumFontSize(value float64) {
 	objc.Call[objc.Void](p_, objc.Sel("setMinimumFontSize:"), value)
-}
-
-// A Boolean value that indicates whether JavaScript can open windows without user interaction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc
-func (p_ Preferences) JavaScriptCanOpenWindowsAutomatically() bool {
-	rv := objc.Call[bool](p_, objc.Sel("javaScriptCanOpenWindowsAutomatically"))
-	return rv
-}
-
-// A Boolean value that indicates whether JavaScript can open windows without user interaction. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc
-func (p_ Preferences) SetJavaScriptCanOpenWindowsAutomatically(value bool) {
-	objc.Call[objc.Void](p_, objc.Sel("setJavaScriptCanOpenWindowsAutomatically:"), value)
 }
 
 // A Boolean value that indicates whether to allow people to select or otherwise interact with text. [Full Topic]
@@ -157,6 +97,36 @@ func (p_ Preferences) SetTextInteractionEnabled(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setTextInteractionEnabled:"), value)
 }
 
+// A Boolean value that indicates whether JavaScript can open windows without user interaction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc
+func (p_ Preferences) JavaScriptCanOpenWindowsAutomatically() bool {
+	rv := objc.Call[bool](p_, objc.Sel("javaScriptCanOpenWindowsAutomatically"))
+	return rv
+}
+
+// A Boolean value that indicates whether JavaScript can open windows without user interaction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc
+func (p_ Preferences) SetJavaScriptCanOpenWindowsAutomatically(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setJavaScriptCanOpenWindowsAutomatically:"), value)
+}
+
+// A Boolean that indicates whether to apply site-specific compatibility workarounds. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3916069-sitespecificquirksmodeenabled?language=objc
+func (p_ Preferences) IsSiteSpecificQuirksModeEnabled() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isSiteSpecificQuirksModeEnabled"))
+	return rv
+}
+
+// A Boolean that indicates whether to apply site-specific compatibility workarounds. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3916069-sitespecificquirksmodeenabled?language=objc
+func (p_ Preferences) SetSiteSpecificQuirksModeEnabled(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setSiteSpecificQuirksModeEnabled:"), value)
+}
+
 // A Boolean value that indicates whether pressing the tab key changes the focus to links and form controls. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc
@@ -170,4 +140,34 @@ func (p_ Preferences) TabFocusesLinks() bool {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc
 func (p_ Preferences) SetTabFocusesLinks(value bool) {
 	objc.Call[objc.Void](p_, objc.Sel("setTabFocusesLinks:"), value)
+}
+
+// A Boolean value that indicates whether a web view can display content full screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3917769-elementfullscreenenabled?language=objc
+func (p_ Preferences) IsElementFullscreenEnabled() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isElementFullscreenEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether a web view can display content full screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3917769-elementfullscreenenabled?language=objc
+func (p_ Preferences) SetElementFullscreenEnabled(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setElementFullscreenEnabled:"), value)
+}
+
+// A Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc
+func (p_ Preferences) IsFraudulentWebsiteWarningEnabled() bool {
+	rv := objc.Call[bool](p_, objc.Sel("isFraudulentWebsiteWarningEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc
+func (p_ Preferences) SetFraudulentWebsiteWarningEnabled(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setFraudulentWebsiteWarningEnabled:"), value)
 }

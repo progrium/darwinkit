@@ -13,16 +13,16 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor?language=objc
 type PEditor interface {
 	// optional
-	CommitEditingAndReturnError(error unsafe.Pointer) bool
-	HasCommitEditingAndReturnError() bool
+	CommitEditing() bool
+	HasCommitEditing() bool
 
 	// optional
 	CommitEditingWithDelegateDidCommitSelectorContextInfo(delegate objc.Object, didCommitSelector objc.Selector, contextInfo unsafe.Pointer)
 	HasCommitEditingWithDelegateDidCommitSelectorContextInfo() bool
 
 	// optional
-	CommitEditing() bool
-	HasCommitEditing() bool
+	CommitEditingAndReturnError(error unsafe.Pointer) bool
+	HasCommitEditingAndReturnError() bool
 
 	// optional
 	DiscardEditing()
@@ -37,15 +37,15 @@ type EditorObject struct {
 	objc.Object
 }
 
-func (e_ EditorObject) HasCommitEditingAndReturnError() bool {
-	return e_.RespondsToSelector(objc.Sel("commitEditingAndReturnError:"))
+func (e_ EditorObject) HasCommitEditing() bool {
+	return e_.RespondsToSelector(objc.Sel("commitEditing"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor/3005184-commiteditingandreturnerror?language=objc
-func (e_ EditorObject) CommitEditingAndReturnError(error unsafe.Pointer) bool {
-	rv := objc.Call[bool](e_, objc.Sel("commitEditingAndReturnError:"), error)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor/3005183-commitediting?language=objc
+func (e_ EditorObject) CommitEditing() bool {
+	rv := objc.Call[bool](e_, objc.Sel("commitEditing"))
 	return rv
 }
 
@@ -60,15 +60,15 @@ func (e_ EditorObject) CommitEditingWithDelegateDidCommitSelectorContextInfo(del
 	objc.Call[objc.Void](e_, objc.Sel("commitEditingWithDelegate:didCommitSelector:contextInfo:"), delegate, didCommitSelector, contextInfo)
 }
 
-func (e_ EditorObject) HasCommitEditing() bool {
-	return e_.RespondsToSelector(objc.Sel("commitEditing"))
+func (e_ EditorObject) HasCommitEditingAndReturnError() bool {
+	return e_.RespondsToSelector(objc.Sel("commitEditingAndReturnError:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor/3005183-commitediting?language=objc
-func (e_ EditorObject) CommitEditing() bool {
-	rv := objc.Call[bool](e_, objc.Sel("commitEditing"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor/3005184-commiteditingandreturnerror?language=objc
+func (e_ EditorObject) CommitEditingAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("commitEditingAndReturnError:"), error)
 	return rv
 }
 

@@ -18,16 +18,16 @@ type _FunctionDescriptorClass struct {
 // An interface definition for the [FunctionDescriptor] class.
 type IFunctionDescriptor interface {
 	objc.IObject
-	Name() string
-	SetName(value string)
-	BinaryArchives() []BinaryArchiveObject
-	SetBinaryArchives(value []PBinaryArchive)
-	Options() FunctionOptions
-	SetOptions(value FunctionOptions)
 	ConstantValues() FunctionConstantValues
 	SetConstantValues(value IFunctionConstantValues)
+	Options() FunctionOptions
+	SetOptions(value FunctionOptions)
+	Name() string
+	SetName(value string)
 	SpecializedName() string
 	SetSpecializedName(value string)
+	BinaryArchives() []BinaryArchiveObject
+	SetBinaryArchives(value []PBinaryArchive)
 }
 
 // A description of a function object to create. [Full Topic]
@@ -78,34 +78,19 @@ func FunctionDescriptor_FunctionDescriptor() FunctionDescriptor {
 	return FunctionDescriptorClass.FunctionDescriptor()
 }
 
-// The name of the function to fetch from the library. [Full Topic]
+// The set of constant values assigned to the function constants. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553995-name?language=objc
-func (f_ FunctionDescriptor) Name() string {
-	rv := objc.Call[string](f_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553993-constantvalues?language=objc
+func (f_ FunctionDescriptor) ConstantValues() FunctionConstantValues {
+	rv := objc.Call[FunctionConstantValues](f_, objc.Sel("constantValues"))
 	return rv
 }
 
-// The name of the function to fetch from the library. [Full Topic]
+// The set of constant values assigned to the function constants. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553995-name?language=objc
-func (f_ FunctionDescriptor) SetName(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setName:"), value)
-}
-
-// The binary archives to search for a previously-compiled version of this function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553992-binaryarchives?language=objc
-func (f_ FunctionDescriptor) BinaryArchives() []BinaryArchiveObject {
-	rv := objc.Call[[]BinaryArchiveObject](f_, objc.Sel("binaryArchives"))
-	return rv
-}
-
-// The binary archives to search for a previously-compiled version of this function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553992-binaryarchives?language=objc
-func (f_ FunctionDescriptor) SetBinaryArchives(value []PBinaryArchive) {
-	objc.Call[objc.Void](f_, objc.Sel("setBinaryArchives:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553993-constantvalues?language=objc
+func (f_ FunctionDescriptor) SetConstantValues(value IFunctionConstantValues) {
+	objc.Call[objc.Void](f_, objc.Sel("setConstantValues:"), value)
 }
 
 // Flags specifying how Metal should create the new function object. [Full Topic]
@@ -123,19 +108,19 @@ func (f_ FunctionDescriptor) SetOptions(value FunctionOptions) {
 	objc.Call[objc.Void](f_, objc.Sel("setOptions:"), value)
 }
 
-// The set of constant values assigned to the function constants. [Full Topic]
+// The name of the function to fetch from the library. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553993-constantvalues?language=objc
-func (f_ FunctionDescriptor) ConstantValues() FunctionConstantValues {
-	rv := objc.Call[FunctionConstantValues](f_, objc.Sel("constantValues"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553995-name?language=objc
+func (f_ FunctionDescriptor) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
 	return rv
 }
 
-// The set of constant values assigned to the function constants. [Full Topic]
+// The name of the function to fetch from the library. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553993-constantvalues?language=objc
-func (f_ FunctionDescriptor) SetConstantValues(value IFunctionConstantValues) {
-	objc.Call[objc.Void](f_, objc.Sel("setConstantValues:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553995-name?language=objc
+func (f_ FunctionDescriptor) SetName(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setName:"), value)
 }
 
 // A new name for the created function object. [Full Topic]
@@ -151,4 +136,19 @@ func (f_ FunctionDescriptor) SpecializedName() string {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553997-specializedname?language=objc
 func (f_ FunctionDescriptor) SetSpecializedName(value string) {
 	objc.Call[objc.Void](f_, objc.Sel("setSpecializedName:"), value)
+}
+
+// The binary archives to search for a previously-compiled version of this function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553992-binaryarchives?language=objc
+func (f_ FunctionDescriptor) BinaryArchives() []BinaryArchiveObject {
+	rv := objc.Call[[]BinaryArchiveObject](f_, objc.Sel("binaryArchives"))
+	return rv
+}
+
+// The binary archives to search for a previously-compiled version of this function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553992-binaryarchives?language=objc
+func (f_ FunctionDescriptor) SetBinaryArchives(value []PBinaryArchive) {
+	objc.Call[objc.Void](f_, objc.Sel("setBinaryArchives:"), value)
 }

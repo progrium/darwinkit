@@ -11,12 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition?language=objc
 type PAccordionFoldTransition interface {
 	// optional
-	SetNumberOfFolds(value float32)
-	HasSetNumberOfFolds() bool
+	SetBottomHeight(value float32)
+	HasSetBottomHeight() bool
 
 	// optional
-	NumberOfFolds() float32
-	HasNumberOfFolds() bool
+	BottomHeight() float32
+	HasBottomHeight() bool
 
 	// optional
 	SetFoldShadowAmount(value float32)
@@ -27,12 +27,12 @@ type PAccordionFoldTransition interface {
 	HasFoldShadowAmount() bool
 
 	// optional
-	SetBottomHeight(value float32)
-	HasSetBottomHeight() bool
+	SetNumberOfFolds(value float32)
+	HasSetNumberOfFolds() bool
 
 	// optional
-	BottomHeight() float32
-	HasBottomHeight() bool
+	NumberOfFolds() float32
+	HasNumberOfFolds() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,26 +43,26 @@ type AccordionFoldTransitionObject struct {
 	objc.Object
 }
 
-func (a_ AccordionFoldTransitionObject) HasSetNumberOfFolds() bool {
-	return a_.RespondsToSelector(objc.Sel("setNumberOfFolds:"))
+func (a_ AccordionFoldTransitionObject) HasSetBottomHeight() bool {
+	return a_.RespondsToSelector(objc.Sel("setBottomHeight:"))
 }
 
-// The number of folds used in the transition. [Full Topic]
+// The height of the accordion-fold part of the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228052-numberoffolds?language=objc
-func (a_ AccordionFoldTransitionObject) SetNumberOfFolds(value float32) {
-	objc.Call[objc.Void](a_, objc.Sel("setNumberOfFolds:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228050-bottomheight?language=objc
+func (a_ AccordionFoldTransitionObject) SetBottomHeight(value float32) {
+	objc.Call[objc.Void](a_, objc.Sel("setBottomHeight:"), value)
 }
 
-func (a_ AccordionFoldTransitionObject) HasNumberOfFolds() bool {
-	return a_.RespondsToSelector(objc.Sel("numberOfFolds"))
+func (a_ AccordionFoldTransitionObject) HasBottomHeight() bool {
+	return a_.RespondsToSelector(objc.Sel("bottomHeight"))
 }
 
-// The number of folds used in the transition. [Full Topic]
+// The height of the accordion-fold part of the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228052-numberoffolds?language=objc
-func (a_ AccordionFoldTransitionObject) NumberOfFolds() float32 {
-	rv := objc.Call[float32](a_, objc.Sel("numberOfFolds"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228050-bottomheight?language=objc
+func (a_ AccordionFoldTransitionObject) BottomHeight() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("bottomHeight"))
 	return rv
 }
 
@@ -89,25 +89,25 @@ func (a_ AccordionFoldTransitionObject) FoldShadowAmount() float32 {
 	return rv
 }
 
-func (a_ AccordionFoldTransitionObject) HasSetBottomHeight() bool {
-	return a_.RespondsToSelector(objc.Sel("setBottomHeight:"))
+func (a_ AccordionFoldTransitionObject) HasSetNumberOfFolds() bool {
+	return a_.RespondsToSelector(objc.Sel("setNumberOfFolds:"))
 }
 
-// The height of the accordion-fold part of the transition. [Full Topic]
+// The number of folds used in the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228050-bottomheight?language=objc
-func (a_ AccordionFoldTransitionObject) SetBottomHeight(value float32) {
-	objc.Call[objc.Void](a_, objc.Sel("setBottomHeight:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228052-numberoffolds?language=objc
+func (a_ AccordionFoldTransitionObject) SetNumberOfFolds(value float32) {
+	objc.Call[objc.Void](a_, objc.Sel("setNumberOfFolds:"), value)
 }
 
-func (a_ AccordionFoldTransitionObject) HasBottomHeight() bool {
-	return a_.RespondsToSelector(objc.Sel("bottomHeight"))
+func (a_ AccordionFoldTransitionObject) HasNumberOfFolds() bool {
+	return a_.RespondsToSelector(objc.Sel("numberOfFolds"))
 }
 
-// The height of the accordion-fold part of the transition. [Full Topic]
+// The number of folds used in the transition. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228050-bottomheight?language=objc
-func (a_ AccordionFoldTransitionObject) BottomHeight() float32 {
-	rv := objc.Call[float32](a_, objc.Sel("bottomHeight"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaccordionfoldtransition/3228052-numberoffolds?language=objc
+func (a_ AccordionFoldTransitionObject) NumberOfFolds() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("numberOfFolds"))
 	return rv
 }

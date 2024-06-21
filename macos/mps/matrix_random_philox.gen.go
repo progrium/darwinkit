@@ -34,36 +34,6 @@ func MatrixRandomPhiloxFrom(ptr unsafe.Pointer) MatrixRandomPhilox {
 	}
 }
 
-func (m_ MatrixRandomPhilox) InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomPhilox {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomPhilox](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, distributionDescriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandomphilox/3242873-initwithdevice?language=objc
-func NewMatrixRandomPhiloxWithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomPhilox {
-	instance := MatrixRandomPhiloxClass.Alloc().InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device, destinationDataType, seed, distributionDescriptor)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MatrixRandomPhilox) InitWithDeviceDestinationDataTypeSeed(device metal.PDevice, destinationDataType DataType, seed uint) MatrixRandomPhilox {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomPhilox](m_, objc.Sel("initWithDevice:destinationDataType:seed:"), po0, destinationDataType, seed)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandomphilox/3242872-initwithdevice?language=objc
-func NewMatrixRandomPhiloxWithDeviceDestinationDataTypeSeed(device metal.PDevice, destinationDataType DataType, seed uint) MatrixRandomPhilox {
-	instance := MatrixRandomPhiloxClass.Alloc().InitWithDeviceDestinationDataTypeSeed(device, destinationDataType, seed)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixRandomPhilox) InitWithDevice(device metal.PDevice) MatrixRandomPhilox {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixRandomPhilox](m_, objc.Sel("initWithDevice:"), po0)

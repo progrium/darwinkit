@@ -18,10 +18,10 @@ type _AssetReaderTrackOutputClass struct {
 // An interface definition for the [AssetReaderTrackOutput] class.
 type IAssetReaderTrackOutput interface {
 	IAssetReaderOutput
-	Track() AssetTrack
 	AudioTimePitchAlgorithm() AudioTimePitchAlgorithm
 	SetAudioTimePitchAlgorithm(value AudioTimePitchAlgorithm)
 	OutputSettings() map[string]objc.Object
+	Track() AssetTrack
 }
 
 // An object that reads media data from a single track of an asset. [Full Topic]
@@ -83,14 +83,6 @@ func (a_ AssetReaderTrackOutput) Init() AssetReaderTrackOutput {
 	return rv
 }
 
-// The track from which the output reads sample buffers. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadertrackoutput/1386921-track?language=objc
-func (a_ AssetReaderTrackOutput) Track() AssetTrack {
-	rv := objc.Call[AssetTrack](a_, objc.Sel("track"))
-	return rv
-}
-
 // The processing algorithm to use for scaled audio edits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadertrackoutput/1387851-audiotimepitchalgorithm?language=objc
@@ -111,5 +103,13 @@ func (a_ AssetReaderTrackOutput) SetAudioTimePitchAlgorithm(value AudioTimePitch
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadertrackoutput/1387163-outputsettings?language=objc
 func (a_ AssetReaderTrackOutput) OutputSettings() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](a_, objc.Sel("outputSettings"))
+	return rv
+}
+
+// The track from which the output reads sample buffers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadertrackoutput/1386921-track?language=objc
+func (a_ AssetReaderTrackOutput) Track() AssetTrack {
+	rv := objc.Call[AssetTrack](a_, objc.Sel("track"))
 	return rv
 }

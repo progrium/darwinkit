@@ -71,21 +71,6 @@ func (m_ MatrixSolveLU) Init() MatrixSolveLU {
 	return rv
 }
 
-func (m_ MatrixSolveLU) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveLU {
-	po1 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixSolveLU](m_, objc.Sel("copyWithZone:device:"), zone, po1)
-	return rv
-}
-
-// Makes a copy of this kernel object for a new device. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
-func MatrixSolveLU_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveLU {
-	instance := MatrixSolveLUClass.Alloc().CopyWithZoneDevice(zone, device)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MatrixSolveLU) InitWithDevice(device metal.PDevice) MatrixSolveLU {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[MatrixSolveLU](m_, objc.Sel("initWithDevice:"), po0)
@@ -97,6 +82,21 @@ func (m_ MatrixSolveLU) InitWithDevice(device metal.PDevice) MatrixSolveLU {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618763-initwithdevice?language=objc
 func NewMatrixSolveLUWithDevice(device metal.PDevice) MatrixSolveLU {
 	instance := MatrixSolveLUClass.Alloc().InitWithDevice(device)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MatrixSolveLU) CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveLU {
+	po1 := objc.WrapAsProtocol("MTLDevice", device)
+	rv := objc.Call[MatrixSolveLU](m_, objc.Sel("copyWithZone:device:"), zone, po1)
+	return rv
+}
+
+// Makes a copy of this kernel object for a new device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpskernel/1618912-copywithzone?language=objc
+func MatrixSolveLU_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) MatrixSolveLU {
+	instance := MatrixSolveLUClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
 }

@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/darwinkit/macos/contacts"
-	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -20,14 +19,10 @@ type _GeocoderClass struct {
 // An interface definition for the [Geocoder] class.
 type IGeocoder interface {
 	objc.IObject
-	GeocodeAddressStringInRegionCompletionHandler(addressString string, region IRegion, completionHandler GeocodeCompletionHandler)
-	GeocodePostalAddressCompletionHandler(postalAddress contacts.IPostalAddress, completionHandler GeocodeCompletionHandler)
-	GeocodeAddressStringInRegionPreferredLocaleCompletionHandler(addressString string, region IRegion, locale foundation.ILocale, completionHandler GeocodeCompletionHandler)
-	ReverseGeocodeLocationPreferredLocaleCompletionHandler(location ILocation, locale foundation.ILocale, completionHandler GeocodeCompletionHandler)
-	GeocodePostalAddressPreferredLocaleCompletionHandler(postalAddress contacts.IPostalAddress, locale foundation.ILocale, completionHandler GeocodeCompletionHandler)
-	CancelGeocode()
-	GeocodeAddressStringCompletionHandler(addressString string, completionHandler GeocodeCompletionHandler)
 	ReverseGeocodeLocationCompletionHandler(location ILocation, completionHandler GeocodeCompletionHandler)
+	GeocodeAddressStringCompletionHandler(addressString string, completionHandler GeocodeCompletionHandler)
+	CancelGeocode()
+	GeocodePostalAddressCompletionHandler(postalAddress contacts.IPostalAddress, completionHandler GeocodeCompletionHandler)
 	IsGeocoding() bool
 }
 
@@ -64,46 +59,11 @@ func (g_ Geocoder) Init() Geocoder {
 	return rv
 }
 
-// Submits a forward-geocoding request using the specified string and region information. [Full Topic]
+// Submits a reverse-geocoding request for the specified location. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423591-geocodeaddressstring?language=objc
-func (g_ Geocoder) GeocodeAddressStringInRegionCompletionHandler(addressString string, region IRegion, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:completionHandler:"), addressString, region, completionHandler)
-}
-
-// Submits a forward-geocoding requesting using the specified Contacts framework information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890752-geocodepostaladdress?language=objc
-func (g_ Geocoder) GeocodePostalAddressCompletionHandler(postalAddress contacts.IPostalAddress, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:completionHandler:"), postalAddress, completionHandler)
-}
-
-// Submits a forward-geocoding requesting using the specified address string and locale information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890753-geocodeaddressstring?language=objc
-func (g_ Geocoder) GeocodeAddressStringInRegionPreferredLocaleCompletionHandler(addressString string, region IRegion, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:preferredLocale:completionHandler:"), addressString, region, locale, completionHandler)
-}
-
-// Submits a reverse-geocoding request for the specified location and locale. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2908779-reversegeocodelocation?language=objc
-func (g_ Geocoder) ReverseGeocodeLocationPreferredLocaleCompletionHandler(location ILocation, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:preferredLocale:completionHandler:"), location, locale, completionHandler)
-}
-
-// Submits a forward-geocoding requesting using the specified locale and Contacts framework information. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890750-geocodepostaladdress?language=objc
-func (g_ Geocoder) GeocodePostalAddressPreferredLocaleCompletionHandler(postalAddress contacts.IPostalAddress, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:preferredLocale:completionHandler:"), postalAddress, locale, completionHandler)
-}
-
-// Cancels a pending geocoding request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423562-cancelgeocode?language=objc
-func (g_ Geocoder) CancelGeocode() {
-	objc.Call[objc.Void](g_, objc.Sel("cancelGeocode"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423621-reversegeocodelocation?language=objc
+func (g_ Geocoder) ReverseGeocodeLocationCompletionHandler(location ILocation, completionHandler GeocodeCompletionHandler) {
+	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:completionHandler:"), location, completionHandler)
 }
 
 // Submits a forward-geocoding request using the specified string. [Full Topic]
@@ -113,11 +73,18 @@ func (g_ Geocoder) GeocodeAddressStringCompletionHandler(addressString string, c
 	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:completionHandler:"), addressString, completionHandler)
 }
 
-// Submits a reverse-geocoding request for the specified location. [Full Topic]
+// Cancels a pending geocoding request. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423621-reversegeocodelocation?language=objc
-func (g_ Geocoder) ReverseGeocodeLocationCompletionHandler(location ILocation, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:completionHandler:"), location, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423562-cancelgeocode?language=objc
+func (g_ Geocoder) CancelGeocode() {
+	objc.Call[objc.Void](g_, objc.Sel("cancelGeocode"))
+}
+
+// Submits a forward-geocoding requesting using the specified Contacts framework information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890752-geocodepostaladdress?language=objc
+func (g_ Geocoder) GeocodePostalAddressCompletionHandler(postalAddress contacts.IPostalAddress, completionHandler GeocodeCompletionHandler) {
+	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:completionHandler:"), postalAddress, completionHandler)
 }
 
 // A Boolean value indicating whether the receiver is in the middle of geocoding its value. [Full Topic]

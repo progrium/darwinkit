@@ -19,8 +19,8 @@ type _OrderedCollectionDifferenceClass struct {
 type IOrderedCollectionDifference interface {
 	objc.IObject
 	DifferenceByTransformingChangesWithBlock(block func(arg0 OrderedCollectionChange) OrderedCollectionChange) OrderedCollectionDifference
-	Insertions() []OrderedCollectionChange
 	Removals() []OrderedCollectionChange
+	Insertions() []OrderedCollectionChange
 	HasChanges() bool
 }
 
@@ -35,20 +35,6 @@ func OrderedCollectionDifferenceFrom(ptr unsafe.Pointer) OrderedCollectionDiffer
 	return OrderedCollectionDifference{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (o_ OrderedCollectionDifference) InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjectsAdditionalChanges(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject, changes []IOrderedCollectionChange) OrderedCollectionDifference {
-	rv := objc.Call[OrderedCollectionDifference](o_, objc.Sel("initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:additionalChanges:"), inserts, insertedObjects, removes, removedObjects, changes)
-	return rv
-}
-
-// Creates an ordered collection difference from arrays of inserted and removed objects with corresponding sets of indices, in addition to an array of ordered collection changes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152187-initwithinsertindexes?language=objc
-func NewOrderedCollectionDifferenceWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjectsAdditionalChanges(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject, changes []IOrderedCollectionChange) OrderedCollectionDifference {
-	instance := OrderedCollectionDifferenceClass.Alloc().InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjectsAdditionalChanges(inserts, insertedObjects, removes, removedObjects, changes)
-	instance.Autorelease()
-	return instance
 }
 
 func (o_ OrderedCollectionDifference) InitWithChanges(changes []IOrderedCollectionChange) OrderedCollectionDifference {
@@ -121,19 +107,19 @@ func (o_ OrderedCollectionDifference) DifferenceByTransformingChangesWithBlock(b
 	return rv
 }
 
-// A collection of insertion change objects. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152188-insertions?language=objc
-func (o_ OrderedCollectionDifference) Insertions() []OrderedCollectionChange {
-	rv := objc.Call[[]OrderedCollectionChange](o_, objc.Sel("insertions"))
-	return rv
-}
-
 // A collection of removal change objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152189-removals?language=objc
 func (o_ OrderedCollectionDifference) Removals() []OrderedCollectionChange {
 	rv := objc.Call[[]OrderedCollectionChange](o_, objc.Sel("removals"))
+	return rv
+}
+
+// A collection of insertion change objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152188-insertions?language=objc
+func (o_ OrderedCollectionDifference) Insertions() []OrderedCollectionChange {
+	rv := objc.Call[[]OrderedCollectionChange](o_, objc.Sel("insertions"))
 	return rv
 }
 

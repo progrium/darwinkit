@@ -18,8 +18,8 @@ type _MediaSelectionClass struct {
 // An interface definition for the [MediaSelection] class.
 type IMediaSelection interface {
 	objc.IObject
-	SelectedMediaOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption
 	MediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) bool
+	SelectedMediaOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption
 	Asset() Asset
 }
 
@@ -56,19 +56,19 @@ func (m_ MediaSelection) Init() MediaSelection {
 	return rv
 }
 
-// Returns the media selection option that’s currently selected in the specified group. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselection/1389197-selectedmediaoptioninmediaselect?language=objc
-func (m_ MediaSelection) SelectedMediaOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
-	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("selectedMediaOptionInMediaSelectionGroup:"), mediaSelectionGroup)
-	return rv
-}
-
 // Indicates whether the specified media selection group is subject to automatic media selection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselection/1386716-mediaselectioncriteriacanbeappli?language=objc
 func (m_ MediaSelection) MediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) bool {
 	rv := objc.Call[bool](m_, objc.Sel("mediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup:"), mediaSelectionGroup)
+	return rv
+}
+
+// Returns the media selection option that’s currently selected in the specified group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselection/1389197-selectedmediaoptioninmediaselect?language=objc
+func (m_ MediaSelection) SelectedMediaOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
+	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("selectedMediaOptionInMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 

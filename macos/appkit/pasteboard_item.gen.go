@@ -18,15 +18,15 @@ type _PasteboardItemClass struct {
 // An interface definition for the [PasteboardItem] class.
 type IPasteboardItem interface {
 	objc.IObject
-	SetDataProviderForTypes(dataProvider PPasteboardItemDataProvider, types []PasteboardType) bool
-	SetDataProviderObjectForTypes(dataProviderObject objc.IObject, types []PasteboardType) bool
-	SetDataForType(data []byte, type_ PasteboardType) bool
+	StringForType(type_ PasteboardType) string
+	SetPropertyListForType(propertyList objc.IObject, type_ PasteboardType) bool
 	SetStringForType(string_ string, type_ PasteboardType) bool
 	DataForType(type_ PasteboardType) []byte
-	PropertyListForType(type_ PasteboardType) objc.Object
-	SetPropertyListForType(propertyList objc.IObject, type_ PasteboardType) bool
+	SetDataForType(data []byte, type_ PasteboardType) bool
+	SetDataProviderForTypes(dataProvider PPasteboardItemDataProvider, types []PasteboardType) bool
+	SetDataProviderObjectForTypes(dataProviderObject objc.IObject, types []PasteboardType) bool
 	AvailableTypeFromArray(types []PasteboardType) PasteboardType
-	StringForType(type_ PasteboardType) string
+	PropertyListForType(type_ PasteboardType) objc.Object
 	Types() []PasteboardType
 }
 
@@ -63,28 +63,19 @@ func (p_ PasteboardItem) Init() PasteboardItem {
 	return rv
 }
 
-// Sets the data provider for the specified types. [Full Topic]
+// Returns the value for the specified type as a string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508502-setdataprovider?language=objc
-func (p_ PasteboardItem) SetDataProviderForTypes(dataProvider PPasteboardItemDataProvider, types []PasteboardType) bool {
-	po0 := objc.WrapAsProtocol("NSPasteboardItemDataProvider", dataProvider)
-	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), po0, types)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508490-stringfortype?language=objc
+func (p_ PasteboardItem) StringForType(type_ PasteboardType) string {
+	rv := objc.Call[string](p_, objc.Sel("stringForType:"), type_)
 	return rv
 }
 
-// Sets the data provider for the specified types. [Full Topic]
+// Sets the value for a specified type as a property list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508502-setdataprovider?language=objc
-func (p_ PasteboardItem) SetDataProviderObjectForTypes(dataProviderObject objc.IObject, types []PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), dataProviderObject, types)
-	return rv
-}
-
-// Sets the value for a specified type as a data object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508501-setdata?language=objc
-func (p_ PasteboardItem) SetDataForType(data []byte, type_ PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setData:forType:"), data, type_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508494-setpropertylist?language=objc
+func (p_ PasteboardItem) SetPropertyListForType(propertyList objc.IObject, type_ PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setPropertyList:forType:"), propertyList, type_)
 	return rv
 }
 
@@ -104,19 +95,28 @@ func (p_ PasteboardItem) DataForType(type_ PasteboardType) []byte {
 	return rv
 }
 
-// Returns the value for the specified type as a property list. [Full Topic]
+// Sets the value for a specified type as a data object. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508489-propertylistfortype?language=objc
-func (p_ PasteboardItem) PropertyListForType(type_ PasteboardType) objc.Object {
-	rv := objc.Call[objc.Object](p_, objc.Sel("propertyListForType:"), type_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508501-setdata?language=objc
+func (p_ PasteboardItem) SetDataForType(data []byte, type_ PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setData:forType:"), data, type_)
 	return rv
 }
 
-// Sets the value for a specified type as a property list. [Full Topic]
+// Sets the data provider for the specified types. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508494-setpropertylist?language=objc
-func (p_ PasteboardItem) SetPropertyListForType(propertyList objc.IObject, type_ PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setPropertyList:forType:"), propertyList, type_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508502-setdataprovider?language=objc
+func (p_ PasteboardItem) SetDataProviderForTypes(dataProvider PPasteboardItemDataProvider, types []PasteboardType) bool {
+	po0 := objc.WrapAsProtocol("NSPasteboardItemDataProvider", dataProvider)
+	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), po0, types)
+	return rv
+}
+
+// Sets the data provider for the specified types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508502-setdataprovider?language=objc
+func (p_ PasteboardItem) SetDataProviderObjectForTypes(dataProviderObject objc.IObject, types []PasteboardType) bool {
+	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), dataProviderObject, types)
 	return rv
 }
 
@@ -128,11 +128,11 @@ func (p_ PasteboardItem) AvailableTypeFromArray(types []PasteboardType) Pasteboa
 	return rv
 }
 
-// Returns the value for the specified type as a string. [Full Topic]
+// Returns the value for the specified type as a property list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508490-stringfortype?language=objc
-func (p_ PasteboardItem) StringForType(type_ PasteboardType) string {
-	rv := objc.Call[string](p_, objc.Sel("stringForType:"), type_)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508489-propertylistfortype?language=objc
+func (p_ PasteboardItem) PropertyListForType(type_ PasteboardType) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("propertyListForType:"), type_)
 	return rv
 }
 

@@ -18,10 +18,10 @@ type _XPCInterfaceClass struct {
 // An interface definition for the [XPCInterface] class.
 type IXPCInterface interface {
 	objc.IObject
-	ClassesForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) Set
 	SetClassesForSelectorArgumentIndexOfReply(classes ISet, sel objc.Selector, arg uint, ofReply bool)
-	SetInterfaceForSelectorArgumentIndexOfReply(ifc IXPCInterface, sel objc.Selector, arg uint, ofReply bool)
+	ClassesForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) Set
 	InterfaceForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) XPCInterface
+	SetInterfaceForSelectorArgumentIndexOfReply(ifc IXPCInterface, sel objc.Selector, arg uint, ofReply bool)
 	Protocol() objc.Protocol
 	SetProtocol(value objc.IProtocol)
 }
@@ -59,34 +59,11 @@ func (x_ XPCInterface) Init() XPCInterface {
 	return rv
 }
 
-// Returns the current list of allowed classes that can appear within the specified collection object argument to the specified method. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1418323-classesforselector?language=objc
-func (x_ XPCInterface) ClassesForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) Set {
-	rv := objc.Call[Set](x_, objc.Sel("classesForSelector:argumentIndex:ofReply:"), sel, arg, ofReply)
-	return rv
-}
-
 // Sets the classes that can appear within the (numerically) specified collection object argument to the specified method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1415555-setclasses?language=objc
 func (x_ XPCInterface) SetClassesForSelectorArgumentIndexOfReply(classes ISet, sel objc.Selector, arg uint, ofReply bool) {
 	objc.Call[objc.Void](x_, objc.Sel("setClasses:forSelector:argumentIndex:ofReply:"), classes, sel, arg, ofReply)
-}
-
-// Configures a specific parameter of a method to be sent as a proxy object instead of copied. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1414293-setinterface?language=objc
-func (x_ XPCInterface) SetInterfaceForSelectorArgumentIndexOfReply(ifc IXPCInterface, sel objc.Selector, arg uint, ofReply bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setInterface:forSelector:argumentIndex:ofReply:"), ifc, sel, arg, ofReply)
-}
-
-// Returns the interface previously set for the specified selector and parameter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1409127-interfaceforselector?language=objc
-func (x_ XPCInterface) InterfaceForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) XPCInterface {
-	rv := objc.Call[XPCInterface](x_, objc.Sel("interfaceForSelector:argumentIndex:ofReply:"), sel, arg, ofReply)
-	return rv
 }
 
 // Returns an NSXPCInterface instance for a given protocol. [Full Topic]
@@ -102,6 +79,29 @@ func (xc _XPCInterfaceClass) InterfaceWithProtocol(protocol objc.IProtocol) XPCI
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1410202-interfacewithprotocol?language=objc
 func XPCInterface_InterfaceWithProtocol(protocol objc.IProtocol) XPCInterface {
 	return XPCInterfaceClass.InterfaceWithProtocol(protocol)
+}
+
+// Returns the current list of allowed classes that can appear within the specified collection object argument to the specified method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1418323-classesforselector?language=objc
+func (x_ XPCInterface) ClassesForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) Set {
+	rv := objc.Call[Set](x_, objc.Sel("classesForSelector:argumentIndex:ofReply:"), sel, arg, ofReply)
+	return rv
+}
+
+// Returns the interface previously set for the specified selector and parameter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1409127-interfaceforselector?language=objc
+func (x_ XPCInterface) InterfaceForSelectorArgumentIndexOfReply(sel objc.Selector, arg uint, ofReply bool) XPCInterface {
+	rv := objc.Call[XPCInterface](x_, objc.Sel("interfaceForSelector:argumentIndex:ofReply:"), sel, arg, ofReply)
+	return rv
+}
+
+// Configures a specific parameter of a method to be sent as a proxy object instead of copied. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1414293-setinterface?language=objc
+func (x_ XPCInterface) SetInterfaceForSelectorArgumentIndexOfReply(ifc IXPCInterface, sel objc.Selector, arg uint, ofReply bool) {
+	objc.Call[objc.Void](x_, objc.Sel("setInterface:forSelector:argumentIndex:ofReply:"), ifc, sel, arg, ofReply)
 }
 
 // The Objective-C protocol that this interface is based on. [Full Topic]

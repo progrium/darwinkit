@@ -22,10 +22,6 @@ type ICNNBatchNormalizationGradient interface {
 	ICNNGradientKernel
 	EncodeBatchToCommandBufferSourceGradientsSourceImagesBatchNormalizationState(commandBuffer metal.PCommandBuffer, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) *foundation.Array
 	EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesBatchNormalizationState(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) *foundation.Array
-	EncodeToCommandBufferSourceGradientSourceImageBatchNormalizationStateDestinationGradient(commandBuffer metal.PCommandBuffer, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationGradient IImage)
-	EncodeToCommandBufferObjectSourceGradientSourceImageBatchNormalizationStateDestinationGradient(commandBufferObject objc.IObject, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationGradient IImage)
-	EncodeBatchToCommandBufferSourceGradientsSourceImagesBatchNormalizationStateDestinationGradients(commandBuffer metal.PCommandBuffer, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationGradients *foundation.Array)
-	EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesBatchNormalizationStateDestinationGradients(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationGradients *foundation.Array)
 	EncodeToCommandBufferSourceGradientSourceImageBatchNormalizationState(commandBuffer metal.PCommandBuffer, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState) Image
 	EncodeToCommandBufferObjectSourceGradientSourceImageBatchNormalizationState(commandBufferObject objc.IObject, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState) Image
 }
@@ -123,36 +119,6 @@ func (c_ CNNBatchNormalizationGradient) EncodeBatchToCommandBufferSourceGradient
 func (c_ CNNBatchNormalizationGradient) EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesBatchNormalizationState(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) *foundation.Array {
 	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:"), commandBufferObject, sourceGradients, sourceImages, batchNormalizationState)
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationgradient/2951895-encodetocommandbuffer?language=objc
-func (c_ CNNBatchNormalizationGradient) EncodeToCommandBufferSourceGradientSourceImageBatchNormalizationStateDestinationGradient(commandBuffer metal.PCommandBuffer, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationGradient IImage) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceGradient:sourceImage:batchNormalizationState:destinationGradient:"), po0, sourceGradient, sourceImage, batchNormalizationState, destinationGradient)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationgradient/2951895-encodetocommandbuffer?language=objc
-func (c_ CNNBatchNormalizationGradient) EncodeToCommandBufferObjectSourceGradientSourceImageBatchNormalizationStateDestinationGradient(commandBufferObject objc.IObject, sourceGradient IImage, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationGradient IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceGradient:sourceImage:batchNormalizationState:destinationGradient:"), commandBufferObject, sourceGradient, sourceImage, batchNormalizationState, destinationGradient)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationgradient/2942608-encodebatchtocommandbuffer?language=objc
-func (c_ CNNBatchNormalizationGradient) EncodeBatchToCommandBufferSourceGradientsSourceImagesBatchNormalizationStateDestinationGradients(commandBuffer metal.PCommandBuffer, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationGradients *foundation.Array) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:destinationGradients:"), po0, sourceGradients, sourceImages, batchNormalizationState, destinationGradients)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationgradient/2942608-encodebatchtocommandbuffer?language=objc
-func (c_ CNNBatchNormalizationGradient) EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesBatchNormalizationStateDestinationGradients(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationGradients *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:destinationGradients:"), commandBufferObject, sourceGradients, sourceImages, batchNormalizationState, destinationGradients)
 }
 
 //	[Full Topic]

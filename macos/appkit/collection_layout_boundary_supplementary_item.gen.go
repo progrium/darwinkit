@@ -5,7 +5,7 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -19,12 +19,12 @@ type _CollectionLayoutBoundarySupplementaryItemClass struct {
 // An interface definition for the [CollectionLayoutBoundarySupplementaryItem] class.
 type ICollectionLayoutBoundarySupplementaryItem interface {
 	ICollectionLayoutSupplementaryItem
-	Offset() foundation.Point
-	ExtendsBoundary() bool
-	SetExtendsBoundary(value bool)
 	Alignment() RectAlignment
 	PinToVisibleBounds() bool
 	SetPinToVisibleBounds(value bool)
+	Offset() coregraphics.Point
+	ExtendsBoundary() bool
+	SetExtendsBoundary(value bool)
 }
 
 // An object used to add headers or footers to a collection view. [Full Topic]
@@ -52,18 +52,6 @@ func CollectionLayoutBoundarySupplementaryItem_BoundarySupplementaryItemWithLayo
 	return CollectionLayoutBoundarySupplementaryItemClass.BoundarySupplementaryItemWithLayoutSizeElementKindAlignment(layoutSize, elementKind, alignment)
 }
 
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), layoutSize, elementKind, alignment, absoluteOffset)
-	return rv
-}
-
-// Creates a boundary supplementary item of the specified size and element kind, with an alignment relative to a section or layout at an absolute offset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3213820-boundarysupplementaryitemwithlay?language=objc
-func CollectionLayoutBoundarySupplementaryItem_BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize, elementKind, alignment, absoluteOffset)
-}
-
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) Alloc() CollectionLayoutBoundarySupplementaryItem {
 	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("alloc"))
 	return rv
@@ -82,18 +70,6 @@ func NewCollectionLayoutBoundarySupplementaryItem() CollectionLayoutBoundarySupp
 func (c_ CollectionLayoutBoundarySupplementaryItem) Init() CollectionLayoutBoundarySupplementaryItem {
 	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](c_, objc.Sel("init"))
 	return rv
-}
-
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), layoutSize, elementKind, containerAnchor)
-	return rv
-}
-
-// Creates a supplementary item of the specified size and element kind, with an anchor relative to a container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3213899-supplementaryitemwithlayoutsize?language=objc
-func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize, elementKind, containerAnchor)
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
@@ -120,41 +96,6 @@ func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSize(layoutSize ICo
 	return CollectionLayoutBoundarySupplementaryItemClass.ItemWithLayoutSize(layoutSize)
 }
 
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
-	return rv
-}
-
-// Creates an item of the specified size with an array of supplementary items to attach to the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213872-itemwithlayoutsize?language=objc
-func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
-// The floating-point value of the boundary supplementary item’s offset from the section or layout it’s attached to. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199043-offset?language=objc
-func (c_ CollectionLayoutBoundarySupplementaryItem) Offset() foundation.Point {
-	rv := objc.Call[foundation.Point](c_, objc.Sel("offset"))
-	return rv
-}
-
-// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
-func (c_ CollectionLayoutBoundarySupplementaryItem) ExtendsBoundary() bool {
-	rv := objc.Call[bool](c_, objc.Sel("extendsBoundary"))
-	return rv
-}
-
-// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
-func (c_ CollectionLayoutBoundarySupplementaryItem) SetExtendsBoundary(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setExtendsBoundary:"), value)
-}
-
 // The alignment of the boundary supplementary item relative to the section or layout it’s attached to. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199039-alignment?language=objc
@@ -176,4 +117,27 @@ func (c_ CollectionLayoutBoundarySupplementaryItem) PinToVisibleBounds() bool {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199044-pintovisiblebounds?language=objc
 func (c_ CollectionLayoutBoundarySupplementaryItem) SetPinToVisibleBounds(value bool) {
 	objc.Call[objc.Void](c_, objc.Sel("setPinToVisibleBounds:"), value)
+}
+
+// The floating-point value of the boundary supplementary item’s offset from the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199043-offset?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) Offset() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("offset"))
+	return rv
+}
+
+// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) ExtendsBoundary() bool {
+	rv := objc.Call[bool](c_, objc.Sel("extendsBoundary"))
+	return rv
+}
+
+// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) SetExtendsBoundary(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setExtendsBoundary:"), value)
 }

@@ -18,12 +18,12 @@ type _VectorClass struct {
 // An interface definition for the [Vector] class.
 type IVector interface {
 	objc.IObject
-	Length() float64
 	X() float64
-	R() float64
 	Y() float64
-	SquaredLength() float64
+	R() float64
+	Length() float64
 	Theta() float64
+	SquaredLength() float64
 }
 
 // An immutable, two-dimensional vector represented by its x-axis and y-axis projections. [Full Topic]
@@ -101,21 +101,6 @@ func (v_ Vector) Init() Vector {
 	return rv
 }
 
-// Creates a new vector by adding the specified vectors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548347-vectorbyaddingvector?language=objc
-func (vc _VectorClass) VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorByAddingVector:toVector:"), v1, v2)
-	return rv
-}
-
-// Creates a new vector by adding the specified vectors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548347-vectorbyaddingvector?language=objc
-func Vector_VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
-	return VectorClass.VectorByAddingVectorToVector(v1, v2)
-}
-
 // Creates a new vector by subtracting the first vector from the second vector. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548349-vectorbysubtractingvector?language=objc
@@ -129,21 +114,6 @@ func (vc _VectorClass) VectorBySubtractingVectorFromVector(v1 IVector, v2 IVecto
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548349-vectorbysubtractingvector?language=objc
 func Vector_VectorBySubtractingVectorFromVector(v1 IVector, v2 IVector) Vector {
 	return VectorClass.VectorBySubtractingVectorFromVector(v1, v2)
-}
-
-// Creates a new vector by multiplying the specified vector’s x-axis and y-axis projections by the scalar value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548348-vectorbymultiplyingvector?language=objc
-func (vc _VectorClass) VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorByMultiplyingVector:byScalar:"), vector, scalar)
-	return rv
-}
-
-// Creates a new vector by multiplying the specified vector’s x-axis and y-axis projections by the scalar value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548348-vectorbymultiplyingvector?language=objc
-func Vector_VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Vector {
-	return VectorClass.VectorByMultiplyingVectorByScalar(vector, scalar)
 }
 
 // Caclulates the dot product of two vectors. [Full Topic]
@@ -176,6 +146,52 @@ func Vector_UnitVectorForVector(vector IVector) Vector {
 	return VectorClass.UnitVectorForVector(vector)
 }
 
+// Creates a new vector by adding the specified vectors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548347-vectorbyaddingvector?language=objc
+func (vc _VectorClass) VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorByAddingVector:toVector:"), v1, v2)
+	return rv
+}
+
+// Creates a new vector by adding the specified vectors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548347-vectorbyaddingvector?language=objc
+func Vector_VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
+	return VectorClass.VectorByAddingVectorToVector(v1, v2)
+}
+
+// Creates a new vector by multiplying the specified vector’s x-axis and y-axis projections by the scalar value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548348-vectorbymultiplyingvector?language=objc
+func (vc _VectorClass) VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Vector {
+	rv := objc.Call[Vector](vc, objc.Sel("vectorByMultiplyingVector:byScalar:"), vector, scalar)
+	return rv
+}
+
+// Creates a new vector by multiplying the specified vector’s x-axis and y-axis projections by the scalar value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548348-vectorbymultiplyingvector?language=objc
+func Vector_VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Vector {
+	return VectorClass.VectorByMultiplyingVectorByScalar(vector, scalar)
+}
+
+// A signed projection that indicates the vector’s direction on the x-axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548350-x?language=objc
+func (v_ Vector) X() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("x"))
+	return rv
+}
+
+// A signed projection that indicates the vector’s direction on the y-axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548351-y?language=objc
+func (v_ Vector) Y() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("y"))
+	return rv
+}
+
 // A vector object with zero length. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548352-zerovector?language=objc
@@ -191,22 +207,6 @@ func Vector_ZeroVector() Vector {
 	return VectorClass.ZeroVector()
 }
 
-// The length, or absolute value, of the vector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548342-length?language=objc
-func (v_ Vector) Length() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("length"))
-	return rv
-}
-
-// A signed projection that indicates the vector’s direction on the x-axis. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548350-x?language=objc
-func (v_ Vector) X() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("x"))
-	return rv
-}
-
 // The radius, absolute value, or length of the vector. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548343-r?language=objc
@@ -215,19 +215,11 @@ func (v_ Vector) R() float64 {
 	return rv
 }
 
-// A signed projection that indicates the vector’s direction on the y-axis. [Full Topic]
+// The length, or absolute value, of the vector. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548351-y?language=objc
-func (v_ Vector) Y() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("y"))
-	return rv
-}
-
-// The squared length of the vector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548344-squaredlength?language=objc
-func (v_ Vector) SquaredLength() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("squaredLength"))
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548342-length?language=objc
+func (v_ Vector) Length() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("length"))
 	return rv
 }
 
@@ -236,5 +228,13 @@ func (v_ Vector) SquaredLength() float64 {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548345-theta?language=objc
 func (v_ Vector) Theta() float64 {
 	rv := objc.Call[float64](v_, objc.Sel("theta"))
+	return rv
+}
+
+// The squared length of the vector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548344-squaredlength?language=objc
+func (v_ Vector) SquaredLength() float64 {
+	rv := objc.Call[float64](v_, objc.Sel("squaredLength"))
 	return rv
 }

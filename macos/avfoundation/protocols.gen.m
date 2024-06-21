@@ -26,6 +26,5 @@ void importAVFoundationProtocols() {
     o = @protocol(AVPlayerPlaybackCoordinatorDelegate);
     o = @protocol(AVQueuedSampleBufferRendering);
     o = @protocol(AVVideoCompositing);
-    o = @protocol(AVVideoCompositionInstruction);
     o = @protocol(AVVideoCompositionValidationHandling);
 }

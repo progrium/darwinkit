@@ -20,9 +20,9 @@ type _PrinterClass struct {
 type IPrinter interface {
 	objc.IObject
 	PageSizeForPaper(paperName PrinterPaperName) foundation.Size
-	LanguageLevel() int
-	DeviceDescription() map[DeviceDescriptionKey]objc.Object
 	Name() string
+	DeviceDescription() map[DeviceDescriptionKey]objc.Object
+	LanguageLevel() int
 	Type() PrinterTypeName
 }
 
@@ -74,34 +74,11 @@ func Printer_PrinterWithType(type_ PrinterTypeName) Printer {
 	return PrinterClass.PrinterWithType(type_)
 }
 
-// Creates and returns a printer object initialized with the specified printer name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525202-printerwithname?language=objc
-func (pc _PrinterClass) PrinterWithName(name string) Printer {
-	rv := objc.Call[Printer](pc, objc.Sel("printerWithName:"), name)
-	return rv
-}
-
-// Creates and returns a printer object initialized with the specified printer name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525202-printerwithname?language=objc
-func Printer_PrinterWithName(name string) Printer {
-	return PrinterClass.PrinterWithName(name)
-}
-
 // Returns the size of the page for the specified paper type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525222-pagesizeforpaper?language=objc
 func (p_ Printer) PageSizeForPaper(paperName PrinterPaperName) foundation.Size {
 	rv := objc.Call[foundation.Size](p_, objc.Sel("pageSizeForPaper:"), paperName)
-	return rv
-}
-
-// The PostScript language level recognized by the printer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525215-languagelevel?language=objc
-func (p_ Printer) LanguageLevel() int {
-	rv := objc.Call[int](p_, objc.Sel("languageLevel"))
 	return rv
 }
 
@@ -120,6 +97,14 @@ func Printer_PrinterNames() []string {
 	return PrinterClass.PrinterNames()
 }
 
+// The printer’s name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525189-name?language=objc
+func (p_ Printer) Name() string {
+	rv := objc.Call[string](p_, objc.Sel("name"))
+	return rv
+}
+
 // A dictionary of keys and values that describe the device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525201-devicedescription?language=objc
@@ -128,11 +113,19 @@ func (p_ Printer) DeviceDescription() map[DeviceDescriptionKey]objc.Object {
 	return rv
 }
 
-// The printer’s name. [Full Topic]
+// The PostScript language level recognized by the printer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525189-name?language=objc
-func (p_ Printer) Name() string {
-	rv := objc.Call[string](p_, objc.Sel("name"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525215-languagelevel?language=objc
+func (p_ Printer) LanguageLevel() int {
+	rv := objc.Call[int](p_, objc.Sel("languageLevel"))
+	return rv
+}
+
+// A description of the printer’s make and model. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1524450-type?language=objc
+func (p_ Printer) Type() PrinterTypeName {
+	rv := objc.Call[PrinterTypeName](p_, objc.Sel("type"))
 	return rv
 }
 
@@ -149,12 +142,4 @@ func (pc _PrinterClass) PrinterTypes() []PrinterTypeName {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1525216-printertypes?language=objc
 func Printer_PrinterTypes() []PrinterTypeName {
 	return PrinterClass.PrinterTypes()
-}
-
-// A description of the printer’s make and model. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinter/1524450-type?language=objc
-func (p_ Printer) Type() PrinterTypeName {
-	rv := objc.Call[PrinterTypeName](p_, objc.Sel("type"))
-	return rv
 }

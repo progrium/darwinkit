@@ -19,16 +19,16 @@ type PURLAuthenticationChallengeSender interface {
 	HasContinueWithoutCredentialForAuthenticationChallenge() bool
 
 	// optional
-	UseCredentialForAuthenticationChallenge(credential URLCredential, challenge URLAuthenticationChallenge)
-	HasUseCredentialForAuthenticationChallenge() bool
-
-	// optional
 	PerformDefaultHandlingForAuthenticationChallenge(challenge URLAuthenticationChallenge)
 	HasPerformDefaultHandlingForAuthenticationChallenge() bool
 
 	// optional
 	RejectProtectionSpaceAndContinueWithChallenge(challenge URLAuthenticationChallenge)
 	HasRejectProtectionSpaceAndContinueWithChallenge() bool
+
+	// optional
+	UseCredentialForAuthenticationChallenge(credential URLCredential, challenge URLAuthenticationChallenge)
+	HasUseCredentialForAuthenticationChallenge() bool
 }
 
 // ensure impl type implements protocol interface
@@ -61,17 +61,6 @@ func (u_ URLAuthenticationChallengeSenderObject) ContinueWithoutCredentialForAut
 	objc.Call[objc.Void](u_, objc.Sel("continueWithoutCredentialForAuthenticationChallenge:"), challenge)
 }
 
-func (u_ URLAuthenticationChallengeSenderObject) HasUseCredentialForAuthenticationChallenge() bool {
-	return u_.RespondsToSelector(objc.Sel("useCredential:forAuthenticationChallenge:"))
-}
-
-// Attempt to use a given credential for a given authentication challenge. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1411062-usecredential?language=objc
-func (u_ URLAuthenticationChallengeSenderObject) UseCredentialForAuthenticationChallenge(credential URLCredential, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("useCredential:forAuthenticationChallenge:"), credential, challenge)
-}
-
 func (u_ URLAuthenticationChallengeSenderObject) HasPerformDefaultHandlingForAuthenticationChallenge() bool {
 	return u_.RespondsToSelector(objc.Sel("performDefaultHandlingForAuthenticationChallenge:"))
 }
@@ -92,4 +81,15 @@ func (u_ URLAuthenticationChallengeSenderObject) HasRejectProtectionSpaceAndCont
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1417331-rejectprotectionspaceandcontinue?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) RejectProtectionSpaceAndContinueWithChallenge(challenge URLAuthenticationChallenge) {
 	objc.Call[objc.Void](u_, objc.Sel("rejectProtectionSpaceAndContinueWithChallenge:"), challenge)
+}
+
+func (u_ URLAuthenticationChallengeSenderObject) HasUseCredentialForAuthenticationChallenge() bool {
+	return u_.RespondsToSelector(objc.Sel("useCredential:forAuthenticationChallenge:"))
+}
+
+// Attempt to use a given credential for a given authentication challenge. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1411062-usecredential?language=objc
+func (u_ URLAuthenticationChallengeSenderObject) UseCredentialForAuthenticationChallenge(credential URLCredential, challenge URLAuthenticationChallenge) {
+	objc.Call[objc.Void](u_, objc.Sel("useCredential:forAuthenticationChallenge:"), credential, challenge)
 }

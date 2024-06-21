@@ -19,10 +19,10 @@ type _FetchWebAuthTokenOperationClass struct {
 // An interface definition for the [FetchWebAuthTokenOperation] class.
 type IFetchWebAuthTokenOperation interface {
 	IDatabaseOperation
-	APIToken() string
-	SetAPIToken(value string)
 	FetchWebAuthTokenCompletionBlock() func(webAuthToken string, operationError foundation.Error)
 	SetFetchWebAuthTokenCompletionBlock(value func(webAuthToken string, operationError foundation.Error))
+	APIToken() string
+	SetAPIToken(value string)
 }
 
 // An operation that creates an authentication token for use with CloudKit web services. [Full Topic]
@@ -38,11 +38,6 @@ func FetchWebAuthTokenOperationFrom(ptr unsafe.Pointer) FetchWebAuthTokenOperati
 	}
 }
 
-func (f_ FetchWebAuthTokenOperation) Init() FetchWebAuthTokenOperation {
-	rv := objc.Call[FetchWebAuthTokenOperation](f_, objc.Sel("init"))
-	return rv
-}
-
 func (f_ FetchWebAuthTokenOperation) InitWithAPIToken(APIToken string) FetchWebAuthTokenOperation {
 	rv := objc.Call[FetchWebAuthTokenOperation](f_, objc.Sel("initWithAPIToken:"), APIToken)
 	return rv
@@ -55,6 +50,11 @@ func NewFetchWebAuthTokenOperationWithAPIToken(APIToken string) FetchWebAuthToke
 	instance := FetchWebAuthTokenOperationClass.Alloc().InitWithAPIToken(APIToken)
 	instance.Autorelease()
 	return instance
+}
+
+func (f_ FetchWebAuthTokenOperation) Init() FetchWebAuthTokenOperation {
+	rv := objc.Call[FetchWebAuthTokenOperation](f_, objc.Sel("init"))
+	return rv
 }
 
 func (fc _FetchWebAuthTokenOperationClass) Alloc() FetchWebAuthTokenOperation {
@@ -72,21 +72,6 @@ func NewFetchWebAuthTokenOperation() FetchWebAuthTokenOperation {
 	return FetchWebAuthTokenOperationClass.New()
 }
 
-// The API token that allows access to an app’s container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1515095-apitoken?language=objc
-func (f_ FetchWebAuthTokenOperation) APIToken() string {
-	rv := objc.Call[string](f_, objc.Sel("APIToken"))
-	return rv
-}
-
-// The API token that allows access to an app’s container. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1515095-apitoken?language=objc
-func (f_ FetchWebAuthTokenOperation) SetAPIToken(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setAPIToken:"), value)
-}
-
 // The block to execute when the operation finishes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1514980-fetchwebauthtokencompletionblock?language=objc
@@ -100,4 +85,19 @@ func (f_ FetchWebAuthTokenOperation) FetchWebAuthTokenCompletionBlock() func(web
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1514980-fetchwebauthtokencompletionblock?language=objc
 func (f_ FetchWebAuthTokenOperation) SetFetchWebAuthTokenCompletionBlock(value func(webAuthToken string, operationError foundation.Error)) {
 	objc.Call[objc.Void](f_, objc.Sel("setFetchWebAuthTokenCompletionBlock:"), value)
+}
+
+// The API token that allows access to an app’s container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1515095-apitoken?language=objc
+func (f_ FetchWebAuthTokenOperation) APIToken() string {
+	rv := objc.Call[string](f_, objc.Sel("APIToken"))
+	return rv
+}
+
+// The API token that allows access to an app’s container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1515095-apitoken?language=objc
+func (f_ FetchWebAuthTokenOperation) SetAPIToken(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setAPIToken:"), value)
 }

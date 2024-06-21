@@ -19,8 +19,8 @@ type _KernelClass struct {
 // An interface definition for the [Kernel] class.
 type IKernel interface {
 	objc.IObject
-	ApplyWithExtentRoiCallbackArguments(extent coregraphics.Rect, callback KernelROICallback, args []objc.IObject) Image
 	SetROISelector(method objc.Selector)
+	ApplyWithExtentRoiCallbackArguments(extent coregraphics.Rect, callback KernelROICallback, args []objc.IObject) Image
 	Name() string
 }
 
@@ -35,18 +35,6 @@ func KernelFrom(ptr unsafe.Pointer) Kernel {
 	return Kernel{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) Kernel {
-	rv := objc.Call[Kernel](kc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, error)
-	return rv
-}
-
-// Creates a single kernel object using a Metal Shading Language (MSL) kernel function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880194-kernelwithfunctionname?language=objc
-func Kernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) Kernel {
-	return KernelClass.KernelWithFunctionNameFromMetalLibraryDataError(name, data, error)
 }
 
 func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) Kernel {
@@ -81,6 +69,28 @@ func (k_ Kernel) Init() Kernel {
 	return rv
 }
 
+// Sets the selector Core Image uses to query the region of interest for image processing with the kernel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/1437691-setroiselector?language=objc
+func (k_ Kernel) SetROISelector(method objc.Selector) {
+	objc.Call[objc.Void](k_, objc.Sel("setROISelector:"), method)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
+func (kc _KernelClass) KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
+	rv := objc.Call[[]Kernel](kc, objc.Sel("kernelsWithMetalString:error:"), source, error)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
+func Kernel_KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
+	return KernelClass.KernelsWithMetalStringError(source, error)
+}
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3577535-kernelnamesfrommetallibrarydata?language=objc
@@ -102,28 +112,6 @@ func Kernel_KernelNamesFromMetalLibraryData(data []byte) []string {
 func (k_ Kernel) ApplyWithExtentRoiCallbackArguments(extent coregraphics.Rect, callback KernelROICallback, args []objc.IObject) Image {
 	rv := objc.Call[Image](k_, objc.Sel("applyWithExtent:roiCallback:arguments:"), extent, callback, args)
 	return rv
-}
-
-// Sets the selector Core Image uses to query the region of interest for image processing with the kernel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/1437691-setroiselector?language=objc
-func (k_ Kernel) SetROISelector(method objc.Selector) {
-	objc.Call[objc.Void](k_, objc.Sel("setROISelector:"), method)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
-func (kc _KernelClass) KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
-	rv := objc.Call[[]Kernel](kc, objc.Sel("kernelsWithMetalString:error:"), source, error)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
-func Kernel_KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
-	return KernelClass.KernelsWithMetalStringError(source, error)
 }
 
 // The name of the kernel routine. [Full Topic]

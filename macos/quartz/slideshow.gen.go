@@ -19,12 +19,12 @@ type _SlideshowClass struct {
 // An interface definition for the [Slideshow] class.
 type ISlideshow interface {
 	objc.IObject
-	ReloadSlideshowItemAtIndex(index uint)
-	ReloadData()
+	IndexOfCurrentSlideshowItem() uint
 	RunSlideshowWithDataSourceInModeOptions(dataSource PSlideshowDataSource, slideshowMode string, slideshowOptions foundation.Dictionary)
 	RunSlideshowWithDataSourceObjectInModeOptions(dataSourceObject objc.IObject, slideshowMode string, slideshowOptions foundation.Dictionary)
 	StopSlideshow(sender objc.IObject)
-	IndexOfCurrentSlideshowItem() uint
+	ReloadSlideshowItemAtIndex(index uint)
+	ReloadData()
 	AutoPlayDelay() foundation.TimeInterval
 	SetAutoPlayDelay(value foundation.TimeInterval)
 }
@@ -62,33 +62,26 @@ func (s_ Slideshow) Init() Slideshow {
 	return rv
 }
 
-// Reloads the data for a slideshow, starting at the specified index. [Full Topic]
+// Exports a slideshow item to the application that has the provided bundle identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504713-reloadslideshowitematindex?language=objc
-func (s_ Slideshow) ReloadSlideshowItemAtIndex(index uint) {
-	objc.Call[objc.Void](s_, objc.Sel("reloadSlideshowItemAtIndex:"), index)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503513-exportslideshowitem?language=objc
+func (sc _SlideshowClass) ExportSlideshowItemToApplication(item objc.IObject, applicationBundleIdentifier string) {
+	objc.Call[objc.Void](sc, objc.Sel("exportSlideshowItem:toApplication:"), item, applicationBundleIdentifier)
 }
 
-// Reloads the data for a slideshow. [Full Topic]
+// Exports a slideshow item to the application that has the provided bundle identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504298-reloaddata?language=objc
-func (s_ Slideshow) ReloadData() {
-	objc.Call[objc.Void](s_, objc.Sel("reloadData"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503513-exportslideshowitem?language=objc
+func Slideshow_ExportSlideshowItemToApplication(item objc.IObject, applicationBundleIdentifier string) {
+	SlideshowClass.ExportSlideshowItemToApplication(item, applicationBundleIdentifier)
 }
 
-// Returns a shared instance of a slideshow. [Full Topic]
+// Returns the index of the current slideshow item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504883-sharedslideshow?language=objc
-func (sc _SlideshowClass) SharedSlideshow() Slideshow {
-	rv := objc.Call[Slideshow](sc, objc.Sel("sharedSlideshow"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503700-indexofcurrentslideshowitem?language=objc
+func (s_ Slideshow) IndexOfCurrentSlideshowItem() uint {
+	rv := objc.Call[uint](s_, objc.Sel("indexOfCurrentSlideshowItem"))
 	return rv
-}
-
-// Returns a shared instance of a slideshow. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504883-sharedslideshow?language=objc
-func Slideshow_SharedSlideshow() Slideshow {
-	return SlideshowClass.SharedSlideshow()
 }
 
 // Runs a slideshow that contains the specified kind of items, provided from a data source. [Full Topic]
@@ -106,6 +99,13 @@ func (s_ Slideshow) RunSlideshowWithDataSourceObjectInModeOptions(dataSourceObje
 	objc.Call[objc.Void](s_, objc.Sel("runSlideshowWithDataSource:inMode:options:"), dataSourceObject, slideshowMode, slideshowOptions)
 }
 
+// Stops a slideshow. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503801-stopslideshow?language=objc
+func (s_ Slideshow) StopSlideshow(sender objc.IObject) {
+	objc.Call[objc.Void](s_, objc.Sel("stopSlideshow:"), sender)
+}
+
 // Finds out whether the slideshow can export its contents to an application. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504783-canexporttoapplication?language=objc
@@ -121,33 +121,33 @@ func Slideshow_CanExportToApplication(applicationBundleIdentifier string) bool {
 	return SlideshowClass.CanExportToApplication(applicationBundleIdentifier)
 }
 
-// Exports a slideshow item to the application that has the provided bundle identifier. [Full Topic]
+// Reloads the data for a slideshow, starting at the specified index. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503513-exportslideshowitem?language=objc
-func (sc _SlideshowClass) ExportSlideshowItemToApplication(item objc.IObject, applicationBundleIdentifier string) {
-	objc.Call[objc.Void](sc, objc.Sel("exportSlideshowItem:toApplication:"), item, applicationBundleIdentifier)
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504713-reloadslideshowitematindex?language=objc
+func (s_ Slideshow) ReloadSlideshowItemAtIndex(index uint) {
+	objc.Call[objc.Void](s_, objc.Sel("reloadSlideshowItemAtIndex:"), index)
 }
 
-// Exports a slideshow item to the application that has the provided bundle identifier. [Full Topic]
+// Returns a shared instance of a slideshow. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503513-exportslideshowitem?language=objc
-func Slideshow_ExportSlideshowItemToApplication(item objc.IObject, applicationBundleIdentifier string) {
-	SlideshowClass.ExportSlideshowItemToApplication(item, applicationBundleIdentifier)
-}
-
-// Stops a slideshow. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503801-stopslideshow?language=objc
-func (s_ Slideshow) StopSlideshow(sender objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("stopSlideshow:"), sender)
-}
-
-// Returns the index of the current slideshow item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1503700-indexofcurrentslideshowitem?language=objc
-func (s_ Slideshow) IndexOfCurrentSlideshowItem() uint {
-	rv := objc.Call[uint](s_, objc.Sel("indexOfCurrentSlideshowItem"))
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504883-sharedslideshow?language=objc
+func (sc _SlideshowClass) SharedSlideshow() Slideshow {
+	rv := objc.Call[Slideshow](sc, objc.Sel("sharedSlideshow"))
 	return rv
+}
+
+// Returns a shared instance of a slideshow. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504883-sharedslideshow?language=objc
+func Slideshow_SharedSlideshow() Slideshow {
+	return SlideshowClass.SharedSlideshow()
+}
+
+// Reloads the data for a slideshow. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504298-reloaddata?language=objc
+func (s_ Slideshow) ReloadData() {
+	objc.Call[objc.Void](s_, objc.Sel("reloadData"))
 }
 
 // Controls the interval of time before a slideshow starts to play automatically. [Full Topic]

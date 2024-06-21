@@ -40,7 +40,7 @@ func (n_ NameSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyNa
 	return rv
 }
 
-// Invokes the super class’s [foundation/nsscriptobjectspecifier/initwithcontainerclassdescriptio] method and then sets the name instance variable to name. [Full Topic]
+// Invokes the super class’s initWithContainerClassDescription:containerSpecifier:key: method and then sets the name instance variable to name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnamespecifier/1408615-initwithcontainerclassdescriptio?language=objc
 func NewNameSpecifierWithContainerClassDescriptionContainerSpecifierKeyName(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, name string) NameSpecifier {

@@ -19,13 +19,13 @@ type _PlayerItemErrorLogEventClass struct {
 // An interface definition for the [PlayerItemErrorLogEvent] class.
 type IPlayerItemErrorLogEvent interface {
 	objc.IObject
-	ErrorStatusCode() int
-	ErrorComment() string
-	ErrorDomain() string
 	Date() foundation.Date
-	ServerAddress() string
-	PlaybackSessionID() string
+	ErrorStatusCode() int
 	URI() string
+	ServerAddress() string
+	ErrorComment() string
+	PlaybackSessionID() string
+	ErrorDomain() string
 }
 
 // A single item in a player item’s error log. [Full Topic]
@@ -61,6 +61,14 @@ func (p_ PlayerItemErrorLogEvent) Init() PlayerItemErrorLogEvent {
 	return rv
 }
 
+// The date and time when the error occurred. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388416-date?language=objc
+func (p_ PlayerItemErrorLogEvent) Date() foundation.Date {
+	rv := objc.Call[foundation.Date](p_, objc.Sel("date"))
+	return rv
+}
+
 // A unique error code identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1387875-errorstatuscode?language=objc
@@ -69,27 +77,11 @@ func (p_ PlayerItemErrorLogEvent) ErrorStatusCode() int {
 	return rv
 }
 
-// A description of the error encountered [Full Topic]
+// The URI of the playback item that had an error. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388011-errorcomment?language=objc
-func (p_ PlayerItemErrorLogEvent) ErrorComment() string {
-	rv := objc.Call[string](p_, objc.Sel("errorComment"))
-	return rv
-}
-
-// The domain of the error. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388603-errordomain?language=objc
-func (p_ PlayerItemErrorLogEvent) ErrorDomain() string {
-	rv := objc.Call[string](p_, objc.Sel("errorDomain"))
-	return rv
-}
-
-// The date and time when the error occurred. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388416-date?language=objc
-func (p_ PlayerItemErrorLogEvent) Date() foundation.Date {
-	rv := objc.Call[foundation.Date](p_, objc.Sel("date"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1389302-uri?language=objc
+func (p_ PlayerItemErrorLogEvent) URI() string {
+	rv := objc.Call[string](p_, objc.Sel("URI"))
 	return rv
 }
 
@@ -101,6 +93,14 @@ func (p_ PlayerItemErrorLogEvent) ServerAddress() string {
 	return rv
 }
 
+// A description of the error encountered [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388011-errorcomment?language=objc
+func (p_ PlayerItemErrorLogEvent) ErrorComment() string {
+	rv := objc.Call[string](p_, objc.Sel("errorComment"))
+	return rv
+}
+
 // A GUID that identifies the playback session that had an error. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1385934-playbacksessionid?language=objc
@@ -109,10 +109,10 @@ func (p_ PlayerItemErrorLogEvent) PlaybackSessionID() string {
 	return rv
 }
 
-// The URI of the playback item that had an error. [Full Topic]
+// The domain of the error. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1389302-uri?language=objc
-func (p_ PlayerItemErrorLogEvent) URI() string {
-	rv := objc.Call[string](p_, objc.Sel("URI"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemerrorlogevent/1388603-errordomain?language=objc
+func (p_ PlayerItemErrorLogEvent) ErrorDomain() string {
+	rv := objc.Call[string](p_, objc.Sel("errorDomain"))
 	return rv
 }

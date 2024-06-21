@@ -34,20 +34,6 @@ func MachPortFrom(ptr unsafe.Pointer) MachPort {
 	}
 }
 
-func (m_ MachPort) InitWithMachPortOptions(machPort uint32, f MachPortOptions) MachPort {
-	rv := objc.Call[MachPort](m_, objc.Sel("initWithMachPort:options:"), machPort, f)
-	return rv
-}
-
-// Initializes a newly allocated NSMachPort object with a given Mach port and the specified options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmachport/1399559-initwithmachport?language=objc
-func NewMachPortWithMachPortOptions(machPort uint32, f MachPortOptions) MachPort {
-	instance := MachPortClass.Alloc().InitWithMachPortOptions(machPort, f)
-	instance.Autorelease()
-	return instance
-}
-
 func (m_ MachPort) InitWithMachPort(machPort uint32) MachPort {
 	rv := objc.Call[MachPort](m_, objc.Sel("initWithMachPort:"), machPort)
 	return rv
@@ -80,21 +66,6 @@ func NewMachPort() MachPort {
 func (m_ MachPort) Init() MachPort {
 	rv := objc.Call[MachPort](m_, objc.Sel("init"))
 	return rv
-}
-
-// Creates and returns a port object configured with the specified options and the given Mach port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmachport/1399551-portwithmachport?language=objc
-func (mc _MachPortClass) PortWithMachPortOptions(machPort uint32, f MachPortOptions) Port {
-	rv := objc.Call[Port](mc, objc.Sel("portWithMachPort:options:"), machPort, f)
-	return rv
-}
-
-// Creates and returns a port object configured with the specified options and the given Mach port. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmachport/1399551-portwithmachport?language=objc
-func MachPort_PortWithMachPortOptions(machPort uint32, f MachPortOptions) Port {
-	return MachPortClass.PortWithMachPortOptions(machPort, f)
 }
 
 // Creates and returns a port object configured with the given Mach port. [Full Topic]

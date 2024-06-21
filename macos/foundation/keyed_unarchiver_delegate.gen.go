@@ -11,20 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate?language=objc
 type PKeyedUnarchiverDelegate interface {
 	// optional
-	UnarchiverDidFinish(unarchiver KeyedUnarchiver)
-	HasUnarchiverDidFinish() bool
-
-	// optional
-	UnarchiverCannotDecodeObjectOfClassNameOriginalClasses(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class
-	HasUnarchiverCannotDecodeObjectOfClassNameOriginalClasses() bool
-
-	// optional
 	UnarchiverWillFinish(unarchiver KeyedUnarchiver)
 	HasUnarchiverWillFinish() bool
 
 	// optional
-	UnarchiverDidDecodeObject(unarchiver KeyedUnarchiver, object objc.Object) objc.Object
-	HasUnarchiverDidDecodeObject() bool
+	UnarchiverDidFinish(unarchiver KeyedUnarchiver)
+	HasUnarchiverDidFinish() bool
 
 	// optional
 	UnarchiverWillReplaceObjectWithObject(unarchiver KeyedUnarchiver, object objc.Object, newObject objc.Object)
@@ -33,47 +25,11 @@ type PKeyedUnarchiverDelegate interface {
 
 // A delegate implementation builder for the [PKeyedUnarchiverDelegate] protocol.
 type KeyedUnarchiverDelegate struct {
-	_UnarchiverDidFinish                                    func(unarchiver KeyedUnarchiver)
-	_UnarchiverCannotDecodeObjectOfClassNameOriginalClasses func(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class
-	_UnarchiverWillFinish                                   func(unarchiver KeyedUnarchiver)
-	_UnarchiverDidDecodeObject                              func(unarchiver KeyedUnarchiver, object objc.Object) objc.Object
-	_UnarchiverWillReplaceObjectWithObject                  func(unarchiver KeyedUnarchiver, object objc.Object, newObject objc.Object)
+	_UnarchiverWillFinish                  func(unarchiver KeyedUnarchiver)
+	_UnarchiverDidFinish                   func(unarchiver KeyedUnarchiver)
+	_UnarchiverWillReplaceObjectWithObject func(unarchiver KeyedUnarchiver, object objc.Object, newObject objc.Object)
 }
 
-func (di *KeyedUnarchiverDelegate) HasUnarchiverDidFinish() bool {
-	return di._UnarchiverDidFinish != nil
-}
-
-// Notifies the delegate that decoding has finished. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
-func (di *KeyedUnarchiverDelegate) SetUnarchiverDidFinish(f func(unarchiver KeyedUnarchiver)) {
-	di._UnarchiverDidFinish = f
-}
-
-// Notifies the delegate that decoding has finished. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
-func (di *KeyedUnarchiverDelegate) UnarchiverDidFinish(unarchiver KeyedUnarchiver) {
-	di._UnarchiverDidFinish(unarchiver)
-}
-func (di *KeyedUnarchiverDelegate) HasUnarchiverCannotDecodeObjectOfClassNameOriginalClasses() bool {
-	return di._UnarchiverCannotDecodeObjectOfClassNameOriginalClasses != nil
-}
-
-// Informs the delegate that the class with a given name is not available during decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1409948-unarchiver?language=objc
-func (di *KeyedUnarchiverDelegate) SetUnarchiverCannotDecodeObjectOfClassNameOriginalClasses(f func(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class) {
-	di._UnarchiverCannotDecodeObjectOfClassNameOriginalClasses = f
-}
-
-// Informs the delegate that the class with a given name is not available during decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1409948-unarchiver?language=objc
-func (di *KeyedUnarchiverDelegate) UnarchiverCannotDecodeObjectOfClassNameOriginalClasses(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class {
-	return di._UnarchiverCannotDecodeObjectOfClassNameOriginalClasses(unarchiver, name, classNames)
-}
 func (di *KeyedUnarchiverDelegate) HasUnarchiverWillFinish() bool {
 	return di._UnarchiverWillFinish != nil
 }
@@ -91,22 +47,22 @@ func (di *KeyedUnarchiverDelegate) SetUnarchiverWillFinish(f func(unarchiver Key
 func (di *KeyedUnarchiverDelegate) UnarchiverWillFinish(unarchiver KeyedUnarchiver) {
 	di._UnarchiverWillFinish(unarchiver)
 }
-func (di *KeyedUnarchiverDelegate) HasUnarchiverDidDecodeObject() bool {
-	return di._UnarchiverDidDecodeObject != nil
+func (di *KeyedUnarchiverDelegate) HasUnarchiverDidFinish() bool {
+	return di._UnarchiverDidFinish != nil
 }
 
-// Informs the delegate that a given object has been decoded. [Full Topic]
+// Notifies the delegate that decoding has finished. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1414187-unarchiver?language=objc
-func (di *KeyedUnarchiverDelegate) SetUnarchiverDidDecodeObject(f func(unarchiver KeyedUnarchiver, object objc.Object) objc.Object) {
-	di._UnarchiverDidDecodeObject = f
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
+func (di *KeyedUnarchiverDelegate) SetUnarchiverDidFinish(f func(unarchiver KeyedUnarchiver)) {
+	di._UnarchiverDidFinish = f
 }
 
-// Informs the delegate that a given object has been decoded. [Full Topic]
+// Notifies the delegate that decoding has finished. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1414187-unarchiver?language=objc
-func (di *KeyedUnarchiverDelegate) UnarchiverDidDecodeObject(unarchiver KeyedUnarchiver, object objc.Object) objc.Object {
-	return di._UnarchiverDidDecodeObject(unarchiver, object)
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
+func (di *KeyedUnarchiverDelegate) UnarchiverDidFinish(unarchiver KeyedUnarchiver) {
+	di._UnarchiverDidFinish(unarchiver)
 }
 func (di *KeyedUnarchiverDelegate) HasUnarchiverWillReplaceObjectWithObject() bool {
 	return di._UnarchiverWillReplaceObjectWithObject != nil
@@ -134,29 +90,6 @@ type KeyedUnarchiverDelegateObject struct {
 	objc.Object
 }
 
-func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidFinish() bool {
-	return k_.RespondsToSelector(objc.Sel("unarchiverDidFinish:"))
-}
-
-// Notifies the delegate that decoding has finished. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
-func (k_ KeyedUnarchiverDelegateObject) UnarchiverDidFinish(unarchiver KeyedUnarchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("unarchiverDidFinish:"), unarchiver)
-}
-
-func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverCannotDecodeObjectOfClassNameOriginalClasses() bool {
-	return k_.RespondsToSelector(objc.Sel("unarchiver:cannotDecodeObjectOfClassName:originalClasses:"))
-}
-
-// Informs the delegate that the class with a given name is not available during decoding. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1409948-unarchiver?language=objc
-func (k_ KeyedUnarchiverDelegateObject) UnarchiverCannotDecodeObjectOfClassNameOriginalClasses(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class {
-	rv := objc.Call[objc.Class](k_, objc.Sel("unarchiver:cannotDecodeObjectOfClassName:originalClasses:"), unarchiver, name, classNames)
-	return rv
-}
-
 func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverWillFinish() bool {
 	return k_.RespondsToSelector(objc.Sel("unarchiverWillFinish:"))
 }
@@ -168,16 +101,15 @@ func (k_ KeyedUnarchiverDelegateObject) UnarchiverWillFinish(unarchiver KeyedUna
 	objc.Call[objc.Void](k_, objc.Sel("unarchiverWillFinish:"), unarchiver)
 }
 
-func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidDecodeObject() bool {
-	return k_.RespondsToSelector(objc.Sel("unarchiver:didDecodeObject:"))
+func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidFinish() bool {
+	return k_.RespondsToSelector(objc.Sel("unarchiverDidFinish:"))
 }
 
-// Informs the delegate that a given object has been decoded. [Full Topic]
+// Notifies the delegate that decoding has finished. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1414187-unarchiver?language=objc
-func (k_ KeyedUnarchiverDelegateObject) UnarchiverDidDecodeObject(unarchiver KeyedUnarchiver, object objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](k_, objc.Sel("unarchiver:didDecodeObject:"), unarchiver, object)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
+func (k_ KeyedUnarchiverDelegateObject) UnarchiverDidFinish(unarchiver KeyedUnarchiver) {
+	objc.Call[objc.Void](k_, objc.Sel("unarchiverDidFinish:"), unarchiver)
 }
 
 func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverWillReplaceObjectWithObject() bool {

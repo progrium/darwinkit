@@ -19,8 +19,6 @@ type _NDArrayBinarySecondaryGradientKernelClass struct {
 // An interface definition for the [NDArrayBinarySecondaryGradientKernel] class.
 type INDArrayBinarySecondaryGradientKernel interface {
 	INDArrayMultiaryGradientKernel
-	EncodeToCommandBufferPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray)
-	EncodeToCommandBufferObjectPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray)
 	EncodeToCommandBufferPrimarySourceArraySecondarySourceArraySourceGradientGradientState(cmdBuf metal.PCommandBuffer, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState) NDArray
 	EncodeToCommandBufferObjectPrimarySourceArraySecondarySourceArraySourceGradientGradientState(cmdBufObject objc.IObject, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState) NDArray
 }
@@ -116,21 +114,6 @@ func NDArrayBinarySecondaryGradientKernel_CopyWithZoneDevice(zone unsafe.Pointer
 	instance := NDArrayBinarySecondaryGradientKernelClass.Alloc().CopyWithZoneDevice(zone, device)
 	instance.Autorelease()
 	return instance
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143518-encodetocommandbuffer?language=objc
-func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray) {
-	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), po0, primarySourceArray, secondarySourceArray, gradient, state, destination)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143518-encodetocommandbuffer?language=objc
-func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferObjectPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), cmdBufObject, primarySourceArray, secondarySourceArray, gradient, state, destination)
 }
 
 //	[Full Topic]

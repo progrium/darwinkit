@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient?language=objc
 type PRadialGradient interface {
 	// optional
-	SetColor1(value Color)
-	HasSetColor1() bool
-
-	// optional
-	Color1() Color
-	HasColor1() bool
-
-	// optional
 	SetRadius1(value float32)
 	HasSetRadius1() bool
 
@@ -36,20 +28,28 @@ type PRadialGradient interface {
 	HasRadius0() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
-
-	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
-
-	// optional
 	SetColor0(value Color)
 	HasSetColor0() bool
 
 	// optional
 	Color0() Color
 	HasColor0() bool
+
+	// optional
+	SetColor1(value Color)
+	HasSetColor1() bool
+
+	// optional
+	Color1() Color
+	HasColor1() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -58,29 +58,6 @@ var _ PRadialGradient = (*RadialGradientObject)(nil)
 // A concrete type for the [PRadialGradient] protocol.
 type RadialGradientObject struct {
 	objc.Object
-}
-
-func (r_ RadialGradientObject) HasSetColor1() bool {
-	return r_.RespondsToSelector(objc.Sel("setColor1:"))
-}
-
-// The second color to use in the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228687-color1?language=objc
-func (r_ RadialGradientObject) SetColor1(value Color) {
-	objc.Call[objc.Void](r_, objc.Sel("setColor1:"), value)
-}
-
-func (r_ RadialGradientObject) HasColor1() bool {
-	return r_.RespondsToSelector(objc.Sel("color1"))
-}
-
-// The second color to use in the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228687-color1?language=objc
-func (r_ RadialGradientObject) Color1() Color {
-	rv := objc.Call[Color](r_, objc.Sel("color1"))
-	return rv
 }
 
 func (r_ RadialGradientObject) HasSetRadius1() bool {
@@ -129,29 +106,6 @@ func (r_ RadialGradientObject) Radius0() float32 {
 	return rv
 }
 
-func (r_ RadialGradientObject) HasSetCenter() bool {
-	return r_.RespondsToSelector(objc.Sel("setCenter:"))
-}
-
-// The center of the effect as x and y coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228685-center?language=objc
-func (r_ RadialGradientObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](r_, objc.Sel("setCenter:"), value)
-}
-
-func (r_ RadialGradientObject) HasCenter() bool {
-	return r_.RespondsToSelector(objc.Sel("center"))
-}
-
-// The center of the effect as x and y coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228685-center?language=objc
-func (r_ RadialGradientObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](r_, objc.Sel("center"))
-	return rv
-}
-
 func (r_ RadialGradientObject) HasSetColor0() bool {
 	return r_.RespondsToSelector(objc.Sel("setColor0:"))
 }
@@ -172,5 +126,51 @@ func (r_ RadialGradientObject) HasColor0() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228686-color0?language=objc
 func (r_ RadialGradientObject) Color0() Color {
 	rv := objc.Call[Color](r_, objc.Sel("color0"))
+	return rv
+}
+
+func (r_ RadialGradientObject) HasSetColor1() bool {
+	return r_.RespondsToSelector(objc.Sel("setColor1:"))
+}
+
+// The second color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228687-color1?language=objc
+func (r_ RadialGradientObject) SetColor1(value Color) {
+	objc.Call[objc.Void](r_, objc.Sel("setColor1:"), value)
+}
+
+func (r_ RadialGradientObject) HasColor1() bool {
+	return r_.RespondsToSelector(objc.Sel("color1"))
+}
+
+// The second color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228687-color1?language=objc
+func (r_ RadialGradientObject) Color1() Color {
+	rv := objc.Call[Color](r_, objc.Sel("color1"))
+	return rv
+}
+
+func (r_ RadialGradientObject) HasSetCenter() bool {
+	return r_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The center of the effect as x and y coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228685-center?language=objc
+func (r_ RadialGradientObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](r_, objc.Sel("setCenter:"), value)
+}
+
+func (r_ RadialGradientObject) HasCenter() bool {
+	return r_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The center of the effect as x and y coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228685-center?language=objc
+func (r_ RadialGradientObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](r_, objc.Sel("center"))
 	return rv
 }

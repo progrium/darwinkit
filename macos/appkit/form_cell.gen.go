@@ -19,22 +19,22 @@ type _FormCellClass struct {
 // An interface definition for the [FormCell] class.
 type IFormCell interface {
 	IActionCell
-	TitleWidth(size foundation.Size) float64
 	TitleAlignment() TextAlignment
 	SetTitleAlignment(value TextAlignment)
-	AttributedTitle() foundation.AttributedString
-	SetAttributedTitle(value foundation.IAttributedString)
-	TitleBaseWritingDirection() WritingDirection
-	SetTitleBaseWritingDirection(value WritingDirection)
-	TitleFont() Font
-	SetTitleFont(value IFont)
-	PlaceholderString() string
-	SetPlaceholderString(value string)
+	TitleWidth() float64
+	SetTitleWidth(value float64)
 	PlaceholderAttributedString() foundation.AttributedString
 	SetPlaceholderAttributedString(value foundation.IAttributedString)
+	AttributedTitle() foundation.AttributedString
+	SetAttributedTitle(value foundation.IAttributedString)
 	PreferredTextFieldWidth() float64
 	SetPreferredTextFieldWidth(value float64)
-	SetTitleWidth(value float64)
+	TitleBaseWritingDirection() WritingDirection
+	SetTitleBaseWritingDirection(value WritingDirection)
+	PlaceholderString() string
+	SetPlaceholderString(value string)
+	TitleFont() Font
+	SetTitleFont(value IFont)
 }
 
 // The NSFormCell class is used to implement text entry fields in a form. The left part of an NSFormCell object contains a title. The right part contains an editable text entry field. [Full Topic]
@@ -98,14 +98,6 @@ func NewFormCellImageCell(image IImage) FormCell {
 	return instance
 }
 
-// Returns the width of the title field constrained to the specified size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526921-titlewidth?language=objc
-func (f_ FormCell) TitleWidth(size foundation.Size) float64 {
-	rv := objc.Call[float64](f_, objc.Sel("titleWidth:"), size)
-	return rv
-}
-
 // The alignment of the title. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525716-titlealignment?language=objc
@@ -121,64 +113,19 @@ func (f_ FormCell) SetTitleAlignment(value TextAlignment) {
 	objc.Call[objc.Void](f_, objc.Sel("setTitleAlignment:"), value)
 }
 
-// The title of the cell as an attributed string. [Full Topic]
+// The width of the title field. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527410-attributedtitle?language=objc
-func (f_ FormCell) AttributedTitle() foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](f_, objc.Sel("attributedTitle"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1535464-titlewidth?language=objc
+func (f_ FormCell) TitleWidth() float64 {
+	rv := objc.Call[float64](f_, objc.Sel("titleWidth"))
 	return rv
 }
 
-// The title of the cell as an attributed string. [Full Topic]
+// The width of the title field. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527410-attributedtitle?language=objc
-func (f_ FormCell) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](f_, objc.Sel("setAttributedTitle:"), value)
-}
-
-// The default writing direction used to render the form cell’s title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526419-titlebasewritingdirection?language=objc
-func (f_ FormCell) TitleBaseWritingDirection() WritingDirection {
-	rv := objc.Call[WritingDirection](f_, objc.Sel("titleBaseWritingDirection"))
-	return rv
-}
-
-// The default writing direction used to render the form cell’s title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526419-titlebasewritingdirection?language=objc
-func (f_ FormCell) SetTitleBaseWritingDirection(value WritingDirection) {
-	objc.Call[objc.Void](f_, objc.Sel("setTitleBaseWritingDirection:"), value)
-}
-
-// The font used to draw cell’s title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525255-titlefont?language=objc
-func (f_ FormCell) TitleFont() Font {
-	rv := objc.Call[Font](f_, objc.Sel("titleFont"))
-	return rv
-}
-
-// The font used to draw cell’s title. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525255-titlefont?language=objc
-func (f_ FormCell) SetTitleFont(value IFont) {
-	objc.Call[objc.Void](f_, objc.Sel("setTitleFont:"), value)
-}
-
-// The cell’s plain text placeholder string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1534043-placeholderstring?language=objc
-func (f_ FormCell) PlaceholderString() string {
-	rv := objc.Call[string](f_, objc.Sel("placeholderString"))
-	return rv
-}
-
-// The cell’s plain text placeholder string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1534043-placeholderstring?language=objc
-func (f_ FormCell) SetPlaceholderString(value string) {
-	objc.Call[objc.Void](f_, objc.Sel("setPlaceholderString:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1535464-titlewidth?language=objc
+func (f_ FormCell) SetTitleWidth(value float64) {
+	objc.Call[objc.Void](f_, objc.Sel("setTitleWidth:"), value)
 }
 
 // The cell’s attributed placeholder string. [Full Topic]
@@ -196,6 +143,21 @@ func (f_ FormCell) SetPlaceholderAttributedString(value foundation.IAttributedSt
 	objc.Call[objc.Void](f_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
+// The title of the cell as an attributed string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527410-attributedtitle?language=objc
+func (f_ FormCell) AttributedTitle() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](f_, objc.Sel("attributedTitle"))
+	return rv
+}
+
+// The title of the cell as an attributed string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527410-attributedtitle?language=objc
+func (f_ FormCell) SetAttributedTitle(value foundation.IAttributedString) {
+	objc.Call[objc.Void](f_, objc.Sel("setAttributedTitle:"), value)
+}
+
 // The preferred text field width. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527483-preferredtextfieldwidth?language=objc
@@ -211,9 +173,47 @@ func (f_ FormCell) SetPreferredTextFieldWidth(value float64) {
 	objc.Call[objc.Void](f_, objc.Sel("setPreferredTextFieldWidth:"), value)
 }
 
-// The width of the title field. [Full Topic]
+// The default writing direction used to render the form cell’s title. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1535464-titlewidth?language=objc
-func (f_ FormCell) SetTitleWidth(value float64) {
-	objc.Call[objc.Void](f_, objc.Sel("setTitleWidth:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526419-titlebasewritingdirection?language=objc
+func (f_ FormCell) TitleBaseWritingDirection() WritingDirection {
+	rv := objc.Call[WritingDirection](f_, objc.Sel("titleBaseWritingDirection"))
+	return rv
+}
+
+// The default writing direction used to render the form cell’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526419-titlebasewritingdirection?language=objc
+func (f_ FormCell) SetTitleBaseWritingDirection(value WritingDirection) {
+	objc.Call[objc.Void](f_, objc.Sel("setTitleBaseWritingDirection:"), value)
+}
+
+// The cell’s plain text placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1534043-placeholderstring?language=objc
+func (f_ FormCell) PlaceholderString() string {
+	rv := objc.Call[string](f_, objc.Sel("placeholderString"))
+	return rv
+}
+
+// The cell’s plain text placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1534043-placeholderstring?language=objc
+func (f_ FormCell) SetPlaceholderString(value string) {
+	objc.Call[objc.Void](f_, objc.Sel("setPlaceholderString:"), value)
+}
+
+// The font used to draw cell’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525255-titlefont?language=objc
+func (f_ FormCell) TitleFont() Font {
+	rv := objc.Call[Font](f_, objc.Sel("titleFont"))
+	return rv
+}
+
+// The font used to draw cell’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525255-titlefont?language=objc
+func (f_ FormCell) SetTitleFont(value IFont) {
+	objc.Call[objc.Void](f_, objc.Sel("setTitleFont:"), value)
 }

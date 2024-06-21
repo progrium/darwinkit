@@ -531,7 +531,7 @@ const (
 	AccessibilityUnitsUnknown     AccessibilityUnits = 0
 )
 
-// The NSAlert class defines the alert styles used by the [appkit/nsalert/alertstyle] property. [Full Topic]
+// The NSAlert class defines the alert styles used by the alertStyle property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalertstyle?language=objc
 type AlertStyle uint
@@ -687,7 +687,7 @@ const (
 	AppearanceNameVibrantLight                          AppearanceName = "NSAppearanceNameVibrantLight"
 )
 
-// The following flags are for [appkit/nsrunningapplication/activatewithoptions]. [Full Topic]
+// The following flags are for activateWithOptions:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationactivationoptions?language=objc
 type ApplicationActivationOptions uint
@@ -697,7 +697,7 @@ const (
 	ApplicationActivateIgnoringOtherApps ApplicationActivationOptions = 2
 )
 
-// Activation policies (used by [appkit/nsrunningapplication/activationpolicy]) that control whether and how an app may be activated. [Full Topic]
+// Activation policies (used by activationPolicy) that control whether and how an app may be activated. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationactivationpolicy?language=objc
 type ApplicationActivationPolicy int
@@ -896,7 +896,7 @@ const (
 	BackingStoreRetained    BackingStoreType = 0
 )
 
-// Bezel styles used by the [appkit/nsbuttoncell/bezelstyle] property. [Full Topic]
+// Bezel styles used by the bezelStyle property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezelstyle?language=objc
 type BezelStyle uint
@@ -1047,7 +1047,7 @@ const (
 	WidthBinding                            BindingName = "width"
 )
 
-// Values that are used as keys in the options dictionary passed to the [objectivec/nsobject/bind] method. [Full Topic]
+// Values that are used as keys in the options dictionary passed to the bind:toObject:withKeyPath:options: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindingoption?language=objc
 type BindingOption string
@@ -1183,7 +1183,7 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercolumnsautosavename?language=objc
 type BrowserColumnsAutosaveName string
 
-// The type used to specify the drop type of a drag-and-drop operation. See [appkit/nsbrowserdelegate/browser] for more information. [Full Topic]
+// The type used to specify the drop type of a drag-and-drop operation. See browser:objectValueForItem: for more information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdropoperation?language=objc
 type BrowserDropOperation uint
@@ -1193,7 +1193,7 @@ const (
 	BrowserDropOn    BrowserDropOperation = 0
 )
 
-// Button types that you can specify using [appkit/nsbuttoncell/setbuttontype]. [Full Topic]
+// Button types that you can specify using setButtonType:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontype?language=objc
 type ButtonType uint
@@ -1248,7 +1248,7 @@ const (
 	PushInCell                 CellAttribute = 2
 )
 
-// Constants used by the [appkit/nscell/hittestforevent] method to determine the effect of an event. [Full Topic]
+// Constants used by the hitTestForEvent:inRect:ofView: method to determine the effect of an event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscellhitresult?language=objc
 type CellHitResult uint
@@ -1377,7 +1377,7 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdecorationelementkind?language=objc
 type CollectionViewDecorationElementKind string
 
-// These constants specify if acceptance of a drop should be at the item it is dropped on or before the item. These constants are used by the  [appkit/nscollectionviewdelegate/collectionview] and [appkit/nscollectionviewdelegate/collectionview] methods in NSCollectionViewDelegate [Full Topic]
+// These constants specify if acceptance of a drop should be at the item it is dropped on or before the item. These constants are used by the  collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath: and collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath: methods in NSCollectionViewDelegate [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdropoperation?language=objc
 type CollectionViewDropOperation int
@@ -1708,7 +1708,7 @@ const (
 	CorrectionIndicatorTypeReversion CorrectionIndicatorType = 1
 )
 
-// The correction response passed to the[appkit/nsspellchecker/recordresponse] method. [Full Topic]
+// The correction response passed to therecordResponse:toCorrection:forWord:language:inSpellDocumentWithTag: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscorrectionresponse?language=objc
 type CorrectionResponse int
@@ -1851,7 +1851,6 @@ const (
 type DragOperation uint
 
 const (
-	DragOperationAll          DragOperation = 15
 	DragOperationAll_Obsolete DragOperation = 15
 	DragOperationCopy         DragOperation = 1
 	DragOperationDelete       DragOperation = 32
@@ -2154,7 +2153,7 @@ const (
 	TabletProximity             EventType = 24
 )
 
-// These constants define the tags for [appkit/nstextview/performfindpanelaction]. [Full Topic]
+// These constants define the tags for performFindPanelAction:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfindpanelaction?language=objc
 type FindPanelAction uint
@@ -2242,7 +2241,7 @@ const (
 	FontCollectionWasShown   FontCollectionActionTypeKey = "NSFontCollectionWasShown"
 )
 
-// These constants are used by the [appkit/nsfontcollection/matchingdescriptorswithoptions] and [appkit/nsfontcollection/matchingdescriptorsforfamily] options dictionary parameters. [Full Topic]
+// These constants are used by the matchingDescriptorsWithOptions: and matchingDescriptorsForFamily: options dictionary parameters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionmatchingoptionkey?language=objc
 type FontCollectionMatchingOptionKey string
@@ -2253,7 +2252,7 @@ const (
 	FontCollectionRemoveDuplicatesOption       FontCollectionMatchingOptionKey = "NSCTFontCollectionRemoveDuplicatesOption"
 )
 
-// The constants represent the standard mutable collection names—these names are included in the list of [appkit/nsfontcollection/allfontcollectionnames]--they have special meaning to the Cocoa font system and should not be hidden or renamed. [Full Topic]
+// The constants represent the standard mutable collection names—these names are included in the list of allFontCollectionNames--they have special meaning to the Cocoa font system and should not be hidden or renamed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionname?language=objc
 type FontCollectionName string
@@ -2397,15 +2396,6 @@ const (
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontfamilyclass?language=objc
 type FontFamilyClass uint32
-
-// Constant you use to access NSFontFamilyClass values in the upper four bits of NSFontSymbolicTraits. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1469940-nsfontfamilyclassmask?language=objc
-type FontFamilyClassMask int
-
-const (
-	KFontFamilyClassMask FontFamilyClassMask = 4026531840
-)
 
 //	[Full Topic]
 //
@@ -2559,7 +2549,7 @@ const (
 	GradientDrawsBeforeStartingLocation GradientDrawingOptions = 1
 )
 
-// Specify the gradients used by the [appkit/nsbuttoncell/gradienttype] property. [Full Topic]
+// Specify the gradients used by the gradientType property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradienttype?language=objc
 type GradientType uint
@@ -2657,7 +2647,7 @@ type HelpBookName string
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanagercontexthelpkey?language=objc
 type HelpManagerContextHelpKey string
 
-// Constants used by [appkit/nsimagecell/imagealignment] that allow you to specify the location of the image in the frame. [Full Topic]
+// Constants used by imageAlignment that allow you to specify the location of the image in the frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagealignment?language=objc
 type ImageAlignment uint
@@ -2941,7 +2931,7 @@ const (
 	ImageSymbolScaleSmall  ImageSymbolScale = 1
 )
 
-// These constants are used in NSResponder’s [appkit/nsresponder/interfacestyle] method. [Full Topic]
+// These constants are used in NSResponder’s interfaceStyle method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsinterfacestyle?language=objc
 type InterfaceStyle uint
@@ -3058,7 +3048,7 @@ const (
 // Constants that specify what happens when a line is too long for a container. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslinebreakmode?language=objc
-type LineBreakMode uint
+type LineBreakMode int
 
 const (
 	LineBreakByCharWrapping     LineBreakMode = 1
@@ -3157,7 +3147,7 @@ const (
 	MediaLibraryMovie MediaLibrary = 4
 )
 
-// These constants are used as a bitmask for specifying a set of menu or menu item properties, and are contained by the [appkit/nsmenu/propertiestoupdate] property. [Full Topic]
+// These constants are used as a bitmask for specifying a set of menu or menu item properties, and are contained by the propertiesToUpdate property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuproperties?language=objc
 type MenuProperties uint
@@ -3467,7 +3457,7 @@ const (
 	UnknownPointingDevice     PointingDeviceType = 0
 )
 
-// These constants are defined for use with the [appkit/nspopupbuttoncell/arrowposition] property. [Full Topic]
+// These constants are defined for use with the arrowPosition property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopuparrowposition?language=objc
 type PopUpArrowPosition uint
@@ -3734,7 +3724,7 @@ const (
 	RemoteNotificationTypeSound RemoteNotificationType = 2
 )
 
-// These constants specify the level of severity of a user attention request and are used by [appkit/nsapplication/canceluserattentionrequest] and [appkit/nsapplication/requestuserattention]. [Full Topic]
+// These constants specify the level of severity of a user attention request and are used by cancelUserAttentionRequest: and requestUserAttention:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrequestuserattentiontype?language=objc
 type RequestUserAttentionType uint
@@ -3756,7 +3746,7 @@ const (
 	RuleEditorNestingModeSingle   RuleEditorNestingMode = 0
 )
 
-// These strings are used as keys to the dictionary returned from the delegate’s [appkit/nsruleeditordelegate/ruleeditor] optional method. To construct a valid predicate, the union of the dictionaries for each item in the row must contain the required parts. [Full Topic]
+// These strings are used as keys to the dictionary returned from the delegate’s ruleEditor:numberOfChildrenForCriterion:withRowType: optional method. To construct a valid predicate, the union of the dictionaries for each item in the row must contain the required parts. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditorpredicatepartkey?language=objc
 type RuleEditorPredicatePartKey string
@@ -3781,7 +3771,7 @@ const (
 	RuleEditorRowTypeSimple   RuleEditorRowType = 0
 )
 
-// These constants are defined to specify a ruler’s orientation and are used by [appkit/nsrulerview/orientation]. [Full Topic]
+// These constants are defined to specify a ruler’s orientation and are used by orientation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerorientation?language=objc
 type RulerOrientation uint
@@ -3818,7 +3808,7 @@ const (
 	SaveToOperation            SaveOperationType = 2
 )
 
-// These constants specify where the scroller’s buttons appear and are used by the [appkit/nsscroller/arrowsposition] property. [Full Topic]
+// These constants specify where the scroller’s buttons appear and are used by the arrowsPosition property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollarrowposition?language=objc
 type ScrollArrowPosition uint
@@ -3852,7 +3842,7 @@ const (
 	ScrollViewFindBarPositionBelowContent         ScrollViewFindBarPosition = 2
 )
 
-// These constants describe the two scroller buttons and are used by [appkit/nsscroller/drawarrow]. [Full Topic]
+// These constants describe the two scroller buttons and are used by drawArrow:highlight:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollerarrow?language=objc
 type ScrollerArrow uint
@@ -3937,7 +3927,7 @@ const (
 	SegmentDistributionFit                SegmentDistribution = 0
 )
 
-// The following constants specify the visual style used to display the segmented control. They are used by [appkit/nssegmentedcontrol/segmentstyle]. [Full Topic]
+// The following constants specify the visual style used to display the segmented control. They are used by segmentStyle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentstyle?language=objc
 type SegmentStyle int
@@ -3953,7 +3943,7 @@ const (
 	SegmentStyleTexturedSquare  SegmentStyle = 4
 )
 
-// The following constants specify the type of tracking behavior a segmented control exhibits. They are used by [appkit/nssegmentedcontrol/trackingmode]. [Full Topic]
+// The following constants specify the type of tracking behavior a segmented control exhibits. They are used by trackingMode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentswitchtracking?language=objc
 type SegmentSwitchTracking uint
@@ -3965,7 +3955,7 @@ const (
 	SegmentSwitchTrackingSelectOne            SegmentSwitchTracking = 0
 )
 
-// These constants specify the preferred direction of selection. They’re used by [appkit/nstextview/selectionaffinity] and [appkit/nstextview/setselectedrange]. [Full Topic]
+// These constants specify the preferred direction of selection. They’re used by selectionAffinity and setSelectedRange:affinity:stillSelecting:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsselectionaffinity?language=objc
 type SelectionAffinity uint
@@ -3986,7 +3976,7 @@ const (
 	SelectingPrevious SelectionDirection = 2
 )
 
-// These constants specify how much the text view extends the selection when the user drags the mouse. They’re used by [appkit/nstextview/selectiongranularity], and [appkit/nstextview/selectionrangeforproposedrange]: [Full Topic]
+// These constants specify how much the text view extends the selection when the user drags the mouse. They’re used by selectionGranularity, and selectionRangeForProposedRange:granularity:: [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsselectiongranularity?language=objc
 type SelectionGranularity uint
@@ -4051,7 +4041,7 @@ const (
 	SliderAccessoryWidthWide    SliderAccessoryWidth = 72.000000
 )
 
-// The types of sliders, used by [appkit/nsslidercell/slidertype]. [Full Topic]
+// The types of sliders, used by sliderType. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertype?language=objc
 type SliderType uint
@@ -4073,7 +4063,7 @@ type SoundName string
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssoundplaybackdeviceidentifier?language=objc
 type SoundPlaybackDeviceIdentifier string
 
-// These constants are used to indicate where speech should be stopped and paused. See [appkit/nsspeechsynthesizer/pausespeakingatboundary] and [appkit/nsspeechsynthesizer/stopspeakingatboundary]. [Full Topic]
+// These constants are used to indicate where speech should be stopped and paused. See pauseSpeakingAtBoundary: and stopSpeakingAtBoundary:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechboundary?language=objc
 type SpeechBoundary uint
@@ -4094,7 +4084,7 @@ const (
 	SpeechCommandSuffix SpeechCommandDelimiterKey = "Suffix"
 )
 
-// These constants identify key-value pairs used to add vocabulary to the dictionary using [appkit/nsspeechsynthesizer/addspeechdictionary]. [Full Topic]
+// These constants identify key-value pairs used to add vocabulary to the dictionary using addSpeechDictionary:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechdictionarykey?language=objc
 type SpeechDictionaryKey string
@@ -4146,7 +4136,7 @@ const (
 	SpeechPhonemeInfoSymbol      SpeechPhonemeInfoKey = "Symbol"
 )
 
-// These constants are used with [appkit/nsspeechsynthesizer/setobject] and [appkit/nsspeechsynthesizer/objectforproperty] to get or set the characteristics of a synthesizer. [Full Topic]
+// These constants are used with setObject:forProperty:error: and objectForProperty:error: to get or set the characteristics of a synthesizer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechpropertykey?language=objc
 type SpeechPropertyKey string
@@ -4414,7 +4404,7 @@ const (
 	TabViewControllerTabStyleUnspecified              TabViewControllerTabStyle = -1
 )
 
-// These constants specify the tab view’s type as used by the [appkit/nstabview/tabviewtype] property. [Full Topic]
+// These constants specify the tab view’s type as used by the tabViewType property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewtype?language=objc
 type TabViewType uint
@@ -4470,7 +4460,7 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewautosavename?language=objc
 type TableViewAutosaveName string
 
-// The following constants specify the autoresizing styles. These constants are used by the  [appkit/nstableview/columnautoresizingstyle] property. [Full Topic]
+// The following constants specify the autoresizing styles. These constants are used by the  columnAutoresizingStyle property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewcolumnautoresizingstyle?language=objc
 type TableViewColumnAutoresizingStyle uint
@@ -4484,7 +4474,7 @@ const (
 	TableViewUniformColumnAutoresizingStyle           TableViewColumnAutoresizingStyle = 1
 )
 
-// These constants specify the drag styles displayed by the table view. They’re used by [appkit/nstableview/draggingdestinationfeedbackstyle]. [Full Topic]
+// These constants specify the drag styles displayed by the table view. They’re used by draggingDestinationFeedbackStyle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdraggingdestinationfeedbackstyle?language=objc
 type TableViewDraggingDestinationFeedbackStyle int
@@ -4506,7 +4496,7 @@ const (
 	TableViewDropOn    TableViewDropOperation = 0
 )
 
-// NSTableView defines these constants to specify grid styles. These constants are used by the [appkit/nstableview/gridstylemask] property. The mask can be either NSTableViewGridNone or it can contain either or both of the other options combined using the C bitwise OR operator. [Full Topic]
+// NSTableView defines these constants to specify grid styles. These constants are used by the gridStyleMask property. The mask can be either [appkit/nstableviewgridlinestyle/nstableviewgridnone] or it can contain either or both of the other options combined using the C bitwise OR operator. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewgridlinestyle?language=objc
 type TableViewGridLineStyle uint
@@ -4528,7 +4518,7 @@ const (
 	TableViewRowActionStyleRegular     TableViewRowActionStyle = 0
 )
 
-// The row size style constants define the size of the rows in the table view. They are used by the [appkit/nstableview/effectiverowsizestyle] and [appkit/nstableview/rowsizestyle] properties. You can also query the row size in the NSTableCellView class’ property [appkit/nstablecellview/rowsizestyle]. [Full Topic]
+// The row size style constants define the size of the rows in the table view. They are used by the effectiveRowSizeStyle and rowSizeStyle properties. You can also query the row size in the NSTableCellView class’ property rowSizeStyle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowsizestyle?language=objc
 type TableViewRowSizeStyle int
@@ -4541,7 +4531,7 @@ const (
 	TableViewRowSizeStyleSmall   TableViewRowSizeStyle = 1
 )
 
-// The following constants specify the selection highlight styles. These constants are used by the [appkit/nstableview/selectionhighlightstyle] property. [Full Topic]
+// The following constants specify the selection highlight styles. These constants are used by the selectionHighlightStyle property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewselectionhighlightstyle?language=objc
 type TableViewSelectionHighlightStyle int
@@ -4581,7 +4571,7 @@ const (
 	TextAlignmentNatural   TextAlignment = 4
 )
 
-// The following constants specify values used by the methods [appkit/nstextblock/setvalue], [appkit/nstextblock/valuefordimension], and [appkit/nstextblock/valuetypefordimension] to specify text block dimensions. [Full Topic]
+// The following constants specify values used by the methods setValue:type:forDimension:, valueForDimension:, and valueTypeForDimension: to specify text block dimensions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockdimension?language=objc
 type TextBlockDimension uint
@@ -4595,7 +4585,7 @@ const (
 	TextBlockWidth         TextBlockDimension = 0
 )
 
-// The following constants specify values used by the properties and methods [appkit/nstextblock/contentwidthvaluetype], [appkit/nstextblock/setwidth], [appkit/nstextblock/setwidth], [appkit/nstextblock/widthforlayer], and [appkit/nstextblock/widthvaluetypeforlayer] to specify text block layer values. [Full Topic]
+// The following constants specify values used by the properties and methods contentWidthValueType, setWidth:type:forLayer:, setWidth:type:forLayer:, widthForLayer:edge:, and widthValueTypeForLayer:edge: to specify text block layer values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblocklayer?language=objc
 type TextBlockLayer int
@@ -4606,7 +4596,7 @@ const (
 	TextBlockPadding TextBlockLayer = -1
 )
 
-// The following constants specify values used by the methods [appkit/nstextblock/setvalue] and [appkit/nstextblock/valuetypefordimension] to specify text block value types. [Full Topic]
+// The following constants specify values used by the methods setValue:type:forDimension: and valueTypeForDimension: to specify text block value types. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockvaluetype?language=objc
 type TextBlockValueType uint
@@ -4616,7 +4606,7 @@ const (
 	TextBlockPercentageValueType TextBlockValueType = 1
 )
 
-// The following constants specify values used by the property [appkit/nstextblock/verticalalignment] to specify vertical alignment. [Full Topic]
+// The following constants specify values used by the property verticalAlignment to specify vertical alignment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockverticalalignment?language=objc
 type TextBlockVerticalAlignment uint
@@ -4628,7 +4618,7 @@ const (
 	TextBlockTopAlignment      TextBlockVerticalAlignment = 0
 )
 
-// The constants are optional keys that can be used in the options dictionary parameter of the [appkit/nsspellchecker/checkstring], [appkit/nsspellchecker/requestcheckingofstring], and [appkit/nsspellchecker/menuforresult] methods. [Full Topic]
+// The constants are optional keys that can be used in the options dictionary parameter of the checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:, requestCheckingOfString:range:types:options:inSpellDocumentWithTag:completionHandler:, and menuForResult:string:options:atLocation:inView: methods. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingoptionkey?language=objc
 type TextCheckingOptionKey string
@@ -4686,7 +4676,7 @@ const (
 	TextFieldSquareBezel  TextFieldBezelStyle = 0
 )
 
-// These constants specify the user interface item tags that correspond find action. These constants are passed to the [appkit/nsresponder/performtextfinderaction] method, the responder will call the appropriate method for the tag. That method will, in turn, determine the desired action and invoke the appropriate method in the NSTextFinder object’s NSTextFinderClient protocol. [Full Topic]
+// These constants specify the user interface item tags that correspond find action. These constants are passed to the performTextFinderAction: method, the responder will call the appropriate method for the tag. That method will, in turn, determine the desired action and invoke the appropriate method in the NSTextFinder object’s NSTextFinderClient protocol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderaction?language=objc
 type TextFinderAction int
@@ -4985,7 +4975,7 @@ const (
 	RightTabStopType   TextTabType = 1
 )
 
-// These constants, specifying the type of text table layout algorithm, are used with [appkit/nstexttable/layoutalgorithm]. [Full Topic]
+// These constants, specifying the type of text table layout algorithm, are used with layoutAlgorithm. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttablelayoutalgorithm?language=objc
 type TextTableLayoutAlgorithm uint
@@ -5038,7 +5028,7 @@ const (
 	TitlebarSeparatorStyleShadow    TitlebarSeparatorStyle = 3
 )
 
-// The NSTokenStyle constants define how tokens are displayed and editable in the NSTokenFieldCell. These values are used by [appkit/nstokenfieldcell/tokenstyle] and the delegate method [appkit/nstokenfieldcelldelegate/tokenfieldcell]. [Full Topic]
+// The NSTokenStyle constants define how tokens are displayed and editable in the NSTokenFieldCell. These values are used by tokenStyle and the delegate method tokenFieldCell:editingStringForRepresentedObject:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenstyle?language=objc
 type TokenStyle uint
@@ -5209,7 +5199,7 @@ const (
 	TouchTypeMaskIndirect TouchTypeMask = 2
 )
 
-// The data type defined for the constants specified in the options parameter of [appkit/nstrackingarea/initwithrect]. These constants are described below; you can specify multiple constants by performing a bitwise-OR operation with them. In particular, you must supply one or more of the tracking-type constants (that is, NSTrackingMouseEnteredAndExited, NSTrackingMouseMoved, and NSTrackingCursorUpdate) and one of the active constants (that is, NSTrackingActiveWhenFirstResponder, NSTrackingActiveInKeyWindow, NSTrackingActiveInActiveApp, and NSTrackingActiveAlways). In addition, you may specify any of the behavior constants (that is, NSTrackingAssumeInside, NSTrackingInVisibleRect, and NSTrackingEnabledDuringMouseDrag). [Full Topic]
+// The data type defined for the constants specified in the options parameter of initWithRect:options:owner:userInfo:. These constants are described below; you can specify multiple constants by performing a bitwise-OR operation with them. In particular, you must supply one or more of the tracking-type constants (that is, [appkit/nstrackingareaoptions/nstrackingmouseenteredandexited], [appkit/nstrackingareaoptions/nstrackingmousemoved], and [appkit/nstrackingareaoptions/nstrackingcursorupdate]) and one of the active constants (that is, [appkit/nstrackingareaoptions/nstrackingactivewhenfirstresponder], [appkit/nstrackingareaoptions/nstrackingactiveinkeywindow], [appkit/nstrackingareaoptions/nstrackingactiveinactiveapp], and [appkit/nstrackingareaoptions/nstrackingactivealways]). In addition, you may specify any of the behavior constants (that is, [appkit/nstrackingareaoptions/nstrackingassumeinside], [appkit/nstrackingareaoptions/nstrackinginvisiblerect], and [appkit/nstrackingareaoptions/nstrackingenabledduringmousedrag]). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingareaoptions?language=objc
 type TrackingAreaOptions uint
@@ -5246,7 +5236,7 @@ const (
 	TypesetterOriginalBehavior                TypesetterBehavior = 0
 )
 
-// The following constants are possible values returned by the [appkit/nstypesetter/actionforcontrolcharacteratindex] method to determine the action associated with a control character. [Full Topic]
+// The following constants are possible values returned by the actionForControlCharacterAtIndex: method to determine the action associated with a control character. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesettercontrolcharacteraction?language=objc
 type TypesetterControlCharacterAction uint
@@ -5258,16 +5248,6 @@ const (
 	TypesetterParagraphBreakAction  TypesetterControlCharacterAction = 16
 	TypesetterWhitespaceAction      TypesetterControlCharacterAction = 2
 	TypesetterZeroAdvancementAction TypesetterControlCharacterAction = 1
-)
-
-// Constants that define the underline mask. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1580760-nsunderlinestrikethroughmask?language=objc
-type UnderlineStrikethroughMask int
-
-const (
-	NoUnderlineStyle     UnderlineStrikethroughMask = 0
-	SingleUnderlineStyle UnderlineStrikethroughMask = 1
 )
 
 // Constants for the underline style and strikethrough style attribute keys. [Full Topic]
@@ -5286,15 +5266,6 @@ const (
 	UnderlineStylePatternSolid      UnderlineStyle = 0
 	UnderlineStyleSingle            UnderlineStyle = 1
 	UnderlineStyleThick             UnderlineStyle = 2
-)
-
-// This constant is used by the NSRunLoop method [foundation/nsrunloop/performselector]. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/1428550-nsupdatewindowsrunloopordering?language=objc
-type UpdateWindowsRunLoopOrdering int
-
-const (
-	KUpdateWindowsRunLoopOrdering UpdateWindowsRunLoopOrdering = 500000
 )
 
 // These constants specify which parts of the scroller are visible. [Full Topic]
@@ -5350,7 +5321,7 @@ const (
 	ViewAnimationFadeOutEffect ViewAnimationEffectName = "NSViewAnimationFadeOutEffect"
 )
 
-// The following string constants are keys for the dictionaries in the array passed into [appkit/nsviewanimation/initwithviewanimations] and [appkit/nsviewanimation/viewanimations]. [Full Topic]
+// The following string constants are keys for the dictionaries in the array passed into initWithViewAnimations: and viewAnimations. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimationkey?language=objc
 type ViewAnimationKey string
@@ -5379,7 +5350,7 @@ const (
 	ViewControllerTransitionSlideUp              ViewControllerTransitionOptions = 16
 )
 
-// These constants are keys that you can use in the options dictionary in [appkit/nsview/enterfullscreenmode] and [appkit/nsview/exitfullscreenmodewithoptions]. [Full Topic]
+// These constants are keys that you can use in the options dictionary in enterFullScreenMode:withOptions: and exitFullScreenModeWithOptions:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewfullscreenmodeoptionkey?language=objc
 type ViewFullScreenModeOptionKey string
@@ -5391,7 +5362,7 @@ const (
 	FullScreenModeWindowLevel                    ViewFullScreenModeOptionKey = "NSFullScreenModeWindowLevel"
 )
 
-// These constants specify the location of the layer content when the content is not rerendered in response to view resizing. For more information, see the [appkit/nsview/layercontentsplacement] property. [Full Topic]
+// These constants specify the location of the layer content when the content is not rerendered in response to view resizing. For more information, see the layerContentsPlacement property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewlayercontentsplacement?language=objc
 type ViewLayerContentsPlacement int
@@ -5411,7 +5382,7 @@ const (
 	ViewLayerContentsPlacementTopRight                  ViewLayerContentsPlacement = 5
 )
 
-// Constants that specify how layer resizing is handled when a view is layer-backed or layer-hosting. For more information, see the  [appkit/nsview/layercontentsredrawpolicy] property. [Full Topic]
+// Constants that specify how layer resizing is handled when a view is layer-backed or layer-hosting. For more information, see the  layerContentsRedrawPolicy property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewlayercontentsredrawpolicy?language=objc
 type ViewLayerContentsRedrawPolicy int
@@ -5472,7 +5443,7 @@ const (
 	VisualEffectStateInactive                 VisualEffectState = 2
 )
 
-// The following constants are keys for the dictionary returned by [appkit/nsspeechsynthesizer/attributesforvoice]. [Full Topic]
+// The following constants are keys for the dictionary returned by attributesForVoice:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsvoiceattributekey?language=objc
 type VoiceAttributeKey string
@@ -5489,7 +5460,7 @@ const (
 	VoiceSupportedCharacters          VoiceAttributeKey = "VoiceSupportedCharacters"
 )
 
-// The following constants define voice gender attributes, which are the allowable values of the NSVoiceGender key returned by [appkit/nsspeechsynthesizer/attributesforvoice]. [Full Topic]
+// The following constants define voice gender attributes, which are the allowable values of the NSVoiceGender key returned by attributesForVoice:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsvoicegendername?language=objc
 type VoiceGenderName string
@@ -5768,7 +5739,7 @@ const (
 	WorkspaceDesktopImageScalingKey       WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageScalingKey"
 )
 
-// These constants specify different types of file operations used by [appkit/nsworkspace/performfileoperation]. [Full Topic]
+// These constants specify different types of file operations used by performFileOperation:source:destination:files:tag:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacefileoperationname?language=objc
 type WorkspaceFileOperationName string
@@ -5796,7 +5767,7 @@ const (
 	ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
 )
 
-// The following keys can be used in the configuration dictionary of the [appkit/nsworkspace/launchapplicationaturl] method.  Each key is optional, and if omitted, default behavior is applied. [Full Topic]
+// The following keys can be used in the configuration dictionary of the launchApplicationAtURL:options:configuration:error: method.  Each key is optional, and if omitted, default behavior is applied. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacelaunchconfigurationkey?language=objc
 type WorkspaceLaunchConfigurationKey string

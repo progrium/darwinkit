@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient?language=objc
 type PLinearGradient interface {
 	// optional
-	SetColor0(value Color)
-	HasSetColor0() bool
+	SetPoint1(value coregraphics.Point)
+	HasSetPoint1() bool
 
 	// optional
-	Color0() Color
-	HasColor0() bool
+	Point1() coregraphics.Point
+	HasPoint1() bool
 
 	// optional
 	SetPoint0(value coregraphics.Point)
@@ -28,20 +28,20 @@ type PLinearGradient interface {
 	HasPoint0() bool
 
 	// optional
+	SetColor0(value Color)
+	HasSetColor0() bool
+
+	// optional
+	Color0() Color
+	HasColor0() bool
+
+	// optional
 	SetColor1(value Color)
 	HasSetColor1() bool
 
 	// optional
 	Color1() Color
 	HasColor1() bool
-
-	// optional
-	SetPoint1(value coregraphics.Point)
-	HasSetPoint1() bool
-
-	// optional
-	Point1() coregraphics.Point
-	HasPoint1() bool
 }
 
 // ensure impl type implements protocol interface
@@ -52,26 +52,26 @@ type LinearGradientObject struct {
 	objc.Object
 }
 
-func (l_ LinearGradientObject) HasSetColor0() bool {
-	return l_.RespondsToSelector(objc.Sel("setColor0:"))
+func (l_ LinearGradientObject) HasSetPoint1() bool {
+	return l_.RespondsToSelector(objc.Sel("setPoint1:"))
 }
 
-// The first color to use in the gradient. [Full Topic]
+// The ending position of the gradient. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228542-color0?language=objc
-func (l_ LinearGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](l_, objc.Sel("setColor0:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228545-point1?language=objc
+func (l_ LinearGradientObject) SetPoint1(value coregraphics.Point) {
+	objc.Call[objc.Void](l_, objc.Sel("setPoint1:"), value)
 }
 
-func (l_ LinearGradientObject) HasColor0() bool {
-	return l_.RespondsToSelector(objc.Sel("color0"))
+func (l_ LinearGradientObject) HasPoint1() bool {
+	return l_.RespondsToSelector(objc.Sel("point1"))
 }
 
-// The first color to use in the gradient. [Full Topic]
+// The ending position of the gradient. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228542-color0?language=objc
-func (l_ LinearGradientObject) Color0() Color {
-	rv := objc.Call[Color](l_, objc.Sel("color0"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228545-point1?language=objc
+func (l_ LinearGradientObject) Point1() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](l_, objc.Sel("point1"))
 	return rv
 }
 
@@ -98,6 +98,29 @@ func (l_ LinearGradientObject) Point0() coregraphics.Point {
 	return rv
 }
 
+func (l_ LinearGradientObject) HasSetColor0() bool {
+	return l_.RespondsToSelector(objc.Sel("setColor0:"))
+}
+
+// The first color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228542-color0?language=objc
+func (l_ LinearGradientObject) SetColor0(value Color) {
+	objc.Call[objc.Void](l_, objc.Sel("setColor0:"), value)
+}
+
+func (l_ LinearGradientObject) HasColor0() bool {
+	return l_.RespondsToSelector(objc.Sel("color0"))
+}
+
+// The first color to use in the gradient. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228542-color0?language=objc
+func (l_ LinearGradientObject) Color0() Color {
+	rv := objc.Call[Color](l_, objc.Sel("color0"))
+	return rv
+}
+
 func (l_ LinearGradientObject) HasSetColor1() bool {
 	return l_.RespondsToSelector(objc.Sel("setColor1:"))
 }
@@ -118,28 +141,5 @@ func (l_ LinearGradientObject) HasColor1() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228543-color1?language=objc
 func (l_ LinearGradientObject) Color1() Color {
 	rv := objc.Call[Color](l_, objc.Sel("color1"))
-	return rv
-}
-
-func (l_ LinearGradientObject) HasSetPoint1() bool {
-	return l_.RespondsToSelector(objc.Sel("setPoint1:"))
-}
-
-// The ending position of the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228545-point1?language=objc
-func (l_ LinearGradientObject) SetPoint1(value coregraphics.Point) {
-	objc.Call[objc.Void](l_, objc.Sel("setPoint1:"), value)
-}
-
-func (l_ LinearGradientObject) HasPoint1() bool {
-	return l_.RespondsToSelector(objc.Sel("point1"))
-}
-
-// The ending position of the gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228545-point1?language=objc
-func (l_ LinearGradientObject) Point1() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](l_, objc.Sel("point1"))
 	return rv
 }

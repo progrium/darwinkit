@@ -19,24 +19,24 @@ type _ImageViewClass struct {
 // An interface definition for the [ImageView] class.
 type IImageView interface {
 	IControl
-	ImageAlignment() ImageAlignment
-	SetImageAlignment(value ImageAlignment)
-	Image() Image
-	SetImage(value IImage)
-	SymbolConfiguration() ImageSymbolConfiguration
-	SetSymbolConfiguration(value IImageSymbolConfiguration)
-	Animates() bool
-	SetAnimates(value bool)
-	AllowsCutCopyPaste() bool
-	SetAllowsCutCopyPaste(value bool)
-	ImageScaling() ImageScaling
-	SetImageScaling(value ImageScaling)
 	ContentTintColor() Color
 	SetContentTintColor(value IColor)
-	ImageFrameStyle() ImageFrameStyle
-	SetImageFrameStyle(value ImageFrameStyle)
+	ImageAlignment() ImageAlignment
+	SetImageAlignment(value ImageAlignment)
+	AllowsCutCopyPaste() bool
+	SetAllowsCutCopyPaste(value bool)
 	IsEditable() bool
 	SetEditable(value bool)
+	ImageScaling() ImageScaling
+	SetImageScaling(value ImageScaling)
+	SymbolConfiguration() ImageSymbolConfiguration
+	SetSymbolConfiguration(value IImageSymbolConfiguration)
+	ImageFrameStyle() ImageFrameStyle
+	SetImageFrameStyle(value ImageFrameStyle)
+	Animates() bool
+	SetAnimates(value bool)
+	Image() Image
+	SetImage(value IImage)
 }
 
 // A display of image data in a frame. [Full Topic]
@@ -98,6 +98,21 @@ func NewImageViewWithFrame(frameRect foundation.Rect) ImageView {
 	return instance
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc
+func (i_ ImageView) ContentTintColor() Color {
+	rv := objc.Call[Color](i_, objc.Sel("contentTintColor"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc
+func (i_ ImageView) SetContentTintColor(value IColor) {
+	objc.Call[objc.Void](i_, objc.Sel("setContentTintColor:"), value)
+}
+
 // The alignment of the cell’s image inside the image view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404963-imagealignment?language=objc
@@ -113,51 +128,6 @@ func (i_ ImageView) SetImageAlignment(value ImageAlignment) {
 	objc.Call[objc.Void](i_, objc.Sel("setImageAlignment:"), value)
 }
 
-// The image displayed by the image view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc
-func (i_ ImageView) Image() Image {
-	rv := objc.Call[Image](i_, objc.Sel("image"))
-	return rv
-}
-
-// The image displayed by the image view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc
-func (i_ ImageView) SetImage(value IImage) {
-	objc.Call[objc.Void](i_, objc.Sel("setImage:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3667456-symbolconfiguration?language=objc
-func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := objc.Call[ImageSymbolConfiguration](i_, objc.Sel("symbolConfiguration"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3667456-symbolconfiguration?language=objc
-func (i_ ImageView) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.Call[objc.Void](i_, objc.Sel("setSymbolConfiguration:"), value)
-}
-
-// A Boolean value indicating whether the image view automatically plays animated images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404950-animates?language=objc
-func (i_ ImageView) Animates() bool {
-	rv := objc.Call[bool](i_, objc.Sel("animates"))
-	return rv
-}
-
-// A Boolean value indicating whether the image view automatically plays animated images. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404950-animates?language=objc
-func (i_ ImageView) SetAnimates(value bool) {
-	objc.Call[objc.Void](i_, objc.Sel("setAnimates:"), value)
-}
-
 // A Boolean value indicating whether the image view lets the user cut, copy, and paste the image contents. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404961-allowscutcopypaste?language=objc
@@ -171,6 +141,21 @@ func (i_ ImageView) AllowsCutCopyPaste() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404961-allowscutcopypaste?language=objc
 func (i_ ImageView) SetAllowsCutCopyPaste(value bool) {
 	objc.Call[objc.Void](i_, objc.Sel("setAllowsCutCopyPaste:"), value)
+}
+
+// A Boolean value indicating whether the user can drag a new image into the image view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404954-editable?language=objc
+func (i_ ImageView) IsEditable() bool {
+	rv := objc.Call[bool](i_, objc.Sel("isEditable"))
+	return rv
+}
+
+// A Boolean value indicating whether the user can drag a new image into the image view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404954-editable?language=objc
+func (i_ ImageView) SetEditable(value bool) {
+	objc.Call[objc.Void](i_, objc.Sel("setEditable:"), value)
 }
 
 // The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
@@ -190,17 +175,17 @@ func (i_ ImageView) SetImageScaling(value ImageScaling) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc
-func (i_ ImageView) ContentTintColor() Color {
-	rv := objc.Call[Color](i_, objc.Sel("contentTintColor"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3667456-symbolconfiguration?language=objc
+func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
+	rv := objc.Call[ImageSymbolConfiguration](i_, objc.Sel("symbolConfiguration"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc
-func (i_ ImageView) SetContentTintColor(value IColor) {
-	objc.Call[objc.Void](i_, objc.Sel("setContentTintColor:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3667456-symbolconfiguration?language=objc
+func (i_ ImageView) SetSymbolConfiguration(value IImageSymbolConfiguration) {
+	objc.Call[objc.Void](i_, objc.Sel("setSymbolConfiguration:"), value)
 }
 
 // The style of frame that appears around the image. [Full Topic]
@@ -218,17 +203,32 @@ func (i_ ImageView) SetImageFrameStyle(value ImageFrameStyle) {
 	objc.Call[objc.Void](i_, objc.Sel("setImageFrameStyle:"), value)
 }
 
-// A Boolean value indicating whether the user can drag a new image into the image view. [Full Topic]
+// A Boolean value indicating whether the image view automatically plays animated images. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404954-editable?language=objc
-func (i_ ImageView) IsEditable() bool {
-	rv := objc.Call[bool](i_, objc.Sel("isEditable"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404950-animates?language=objc
+func (i_ ImageView) Animates() bool {
+	rv := objc.Call[bool](i_, objc.Sel("animates"))
 	return rv
 }
 
-// A Boolean value indicating whether the user can drag a new image into the image view. [Full Topic]
+// A Boolean value indicating whether the image view automatically plays animated images. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404954-editable?language=objc
-func (i_ ImageView) SetEditable(value bool) {
-	objc.Call[objc.Void](i_, objc.Sel("setEditable:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404950-animates?language=objc
+func (i_ ImageView) SetAnimates(value bool) {
+	objc.Call[objc.Void](i_, objc.Sel("setAnimates:"), value)
+}
+
+// The image displayed by the image view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc
+func (i_ ImageView) Image() Image {
+	rv := objc.Call[Image](i_, objc.Sel("image"))
+	return rv
+}
+
+// The image displayed by the image view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc
+func (i_ ImageView) SetImage(value IImage) {
+	objc.Call[objc.Void](i_, objc.Sel("setImage:"), value)
 }

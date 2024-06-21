@@ -12,20 +12,36 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault?language=objc
 type PColorPickingDefault interface {
 	// optional
-	ProvideNewButtonImage() Image
-	HasProvideNewButtonImage() bool
-
-	// optional
-	SetMode(mode ColorPanelMode)
-	HasSetMode() bool
+	AlphaControlAddedOrRemoved(sender objc.Object)
+	HasAlphaControlAddedOrRemoved() bool
 
 	// optional
 	InitWithPickerMaskColorPanel(mask uint, owningColorPanel ColorPanel) objc.Object
 	HasInitWithPickerMaskColorPanel() bool
 
 	// optional
-	AlphaControlAddedOrRemoved(sender objc.Object)
-	HasAlphaControlAddedOrRemoved() bool
+	AttachColorList(colorList ColorList)
+	HasAttachColorList() bool
+
+	// optional
+	InsertNewButtonImageIn(newButtonImage Image, buttonCell ButtonCell)
+	HasInsertNewButtonImageIn() bool
+
+	// optional
+	SetMode(mode ColorPanelMode)
+	HasSetMode() bool
+
+	// optional
+	DetachColorList(colorList ColorList)
+	HasDetachColorList() bool
+
+	// optional
+	ProvideNewButtonImage() Image
+	HasProvideNewButtonImage() bool
+
+	// optional
+	ButtonToolTip() string
+	HasButtonToolTip() bool
 
 	// optional
 	MinContentSize() foundation.Size
@@ -34,22 +50,6 @@ type PColorPickingDefault interface {
 	// optional
 	ViewSizeChanged(sender objc.Object)
 	HasViewSizeChanged() bool
-
-	// optional
-	DetachColorList(colorList ColorList)
-	HasDetachColorList() bool
-
-	// optional
-	AttachColorList(colorList ColorList)
-	HasAttachColorList() bool
-
-	// optional
-	ButtonToolTip() string
-	HasButtonToolTip() bool
-
-	// optional
-	InsertNewButtonImageIn(newButtonImage Image, buttonCell ButtonCell)
-	HasInsertNewButtonImageIn() bool
 }
 
 // ensure impl type implements protocol interface
@@ -60,27 +60,15 @@ type ColorPickingDefaultObject struct {
 	objc.Object
 }
 
-func (c_ ColorPickingDefaultObject) HasProvideNewButtonImage() bool {
-	return c_.RespondsToSelector(objc.Sel("provideNewButtonImage"))
+func (c_ ColorPickingDefaultObject) HasAlphaControlAddedOrRemoved() bool {
+	return c_.RespondsToSelector(objc.Sel("alphaControlAddedOrRemoved:"))
 }
 
-// Provides the image of the button used to select the receiver in the color panel. [Full Topic]
+// Sent when the color panel's opacity controls have been hidden or displayed. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1534615-providenewbuttonimage?language=objc
-func (c_ ColorPickingDefaultObject) ProvideNewButtonImage() Image {
-	rv := objc.Call[Image](c_, objc.Sel("provideNewButtonImage"))
-	return rv
-}
-
-func (c_ ColorPickingDefaultObject) HasSetMode() bool {
-	return c_.RespondsToSelector(objc.Sel("setMode:"))
-}
-
-// Specifies the receiver’s mode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1525088-setmode?language=objc
-func (c_ ColorPickingDefaultObject) SetMode(mode ColorPanelMode) {
-	objc.Call[objc.Void](c_, objc.Sel("setMode:"), mode)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1535478-alphacontroladdedorremoved?language=objc
+func (c_ ColorPickingDefaultObject) AlphaControlAddedOrRemoved(sender objc.Object) {
+	objc.Call[objc.Void](c_, objc.Sel("alphaControlAddedOrRemoved:"), sender)
 }
 
 func (c_ ColorPickingDefaultObject) HasInitWithPickerMaskColorPanel() bool {
@@ -95,15 +83,72 @@ func (c_ ColorPickingDefaultObject) InitWithPickerMaskColorPanel(mask uint, owni
 	return rv
 }
 
-func (c_ ColorPickingDefaultObject) HasAlphaControlAddedOrRemoved() bool {
-	return c_.RespondsToSelector(objc.Sel("alphaControlAddedOrRemoved:"))
+func (c_ ColorPickingDefaultObject) HasAttachColorList() bool {
+	return c_.RespondsToSelector(objc.Sel("attachColorList:"))
 }
 
-// Sent when the color panel's opacity controls have been hidden or displayed. [Full Topic]
+// Tells the receiver to attach the given color list, if it isn’t already displaying the list. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1535478-alphacontroladdedorremoved?language=objc
-func (c_ ColorPickingDefaultObject) AlphaControlAddedOrRemoved(sender objc.Object) {
-	objc.Call[objc.Void](c_, objc.Sel("alphaControlAddedOrRemoved:"), sender)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1531650-attachcolorlist?language=objc
+func (c_ ColorPickingDefaultObject) AttachColorList(colorList ColorList) {
+	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
+}
+
+func (c_ ColorPickingDefaultObject) HasInsertNewButtonImageIn() bool {
+	return c_.RespondsToSelector(objc.Sel("insertNewButtonImage:in:"))
+}
+
+// Sets the image of a given button cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1525078-insertnewbuttonimage?language=objc
+func (c_ ColorPickingDefaultObject) InsertNewButtonImageIn(newButtonImage Image, buttonCell ButtonCell) {
+	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
+}
+
+func (c_ ColorPickingDefaultObject) HasSetMode() bool {
+	return c_.RespondsToSelector(objc.Sel("setMode:"))
+}
+
+// Specifies the receiver’s mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1525088-setmode?language=objc
+func (c_ ColorPickingDefaultObject) SetMode(mode ColorPanelMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setMode:"), mode)
+}
+
+func (c_ ColorPickingDefaultObject) HasDetachColorList() bool {
+	return c_.RespondsToSelector(objc.Sel("detachColorList:"))
+}
+
+// Tells the receiver to detach the given color list, unless the receiver isn’t displaying the list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1532761-detachcolorlist?language=objc
+func (c_ ColorPickingDefaultObject) DetachColorList(colorList ColorList) {
+	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), colorList)
+}
+
+func (c_ ColorPickingDefaultObject) HasProvideNewButtonImage() bool {
+	return c_.RespondsToSelector(objc.Sel("provideNewButtonImage"))
+}
+
+// Provides the image of the button used to select the receiver in the color panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1534615-providenewbuttonimage?language=objc
+func (c_ ColorPickingDefaultObject) ProvideNewButtonImage() Image {
+	rv := objc.Call[Image](c_, objc.Sel("provideNewButtonImage"))
+	return rv
+}
+
+func (c_ ColorPickingDefaultObject) HasButtonToolTip() bool {
+	return c_.RespondsToSelector(objc.Sel("buttonToolTip"))
+}
+
+// Provides the toolbar button help tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1535160-buttontooltip?language=objc
+func (c_ ColorPickingDefaultObject) ButtonToolTip() string {
+	rv := objc.Call[string](c_, objc.Sel("buttonToolTip"))
+	return rv
 }
 
 func (c_ ColorPickingDefaultObject) HasMinContentSize() bool {
@@ -127,49 +172,4 @@ func (c_ ColorPickingDefaultObject) HasViewSizeChanged() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1535866-viewsizechanged?language=objc
 func (c_ ColorPickingDefaultObject) ViewSizeChanged(sender objc.Object) {
 	objc.Call[objc.Void](c_, objc.Sel("viewSizeChanged:"), sender)
-}
-
-func (c_ ColorPickingDefaultObject) HasDetachColorList() bool {
-	return c_.RespondsToSelector(objc.Sel("detachColorList:"))
-}
-
-// Tells the receiver to detach the given color list, unless the receiver isn’t displaying the list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1532761-detachcolorlist?language=objc
-func (c_ ColorPickingDefaultObject) DetachColorList(colorList ColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), colorList)
-}
-
-func (c_ ColorPickingDefaultObject) HasAttachColorList() bool {
-	return c_.RespondsToSelector(objc.Sel("attachColorList:"))
-}
-
-// Tells the receiver to attach the given color list, if it isn’t already displaying the list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1531650-attachcolorlist?language=objc
-func (c_ ColorPickingDefaultObject) AttachColorList(colorList ColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
-}
-
-func (c_ ColorPickingDefaultObject) HasButtonToolTip() bool {
-	return c_.RespondsToSelector(objc.Sel("buttonToolTip"))
-}
-
-// Provides the toolbar button help tag. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1535160-buttontooltip?language=objc
-func (c_ ColorPickingDefaultObject) ButtonToolTip() string {
-	rv := objc.Call[string](c_, objc.Sel("buttonToolTip"))
-	return rv
-}
-
-func (c_ ColorPickingDefaultObject) HasInsertNewButtonImageIn() bool {
-	return c_.RespondsToSelector(objc.Sel("insertNewButtonImage:in:"))
-}
-
-// Sets the image of a given button cell. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1525078-insertnewbuttonimage?language=objc
-func (c_ ColorPickingDefaultObject) InsertNewButtonImageIn(newButtonImage Image, buttonCell ButtonCell) {
-	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
 }

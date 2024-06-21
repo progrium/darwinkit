@@ -19,13 +19,11 @@ type _GradientClass struct {
 // An interface definition for the [Gradient] class.
 type IGradient interface {
 	objc.IObject
+	GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int)
+	DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundation.Point, startRadius float64, endCenter foundation.Point, endRadius float64, options GradientDrawingOptions)
 	DrawInRectRelativeCenterPosition(rect foundation.Rect, relativeCenterPosition foundation.Point)
 	InterpolatedColorAtLocation(location float64) Color
-	DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundation.Point, startRadius float64, endCenter foundation.Point, endRadius float64, options GradientDrawingOptions)
-	GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int)
-	DrawInRectAngle(rect foundation.Rect, angle float64)
 	DrawFromPointToPointOptions(startingPoint foundation.Point, endingPoint foundation.Point, options GradientDrawingOptions)
-	DrawInBezierPathRelativeCenterPosition(path IBezierPath, relativeCenterPosition foundation.Point)
 	DrawInBezierPathAngle(path IBezierPath, angle float64)
 	ColorSpace() ColorSpace
 	NumberOfColorStops() int
@@ -44,20 +42,6 @@ func GradientFrom(ptr unsafe.Pointer) Gradient {
 	}
 }
 
-func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithStartingColor:endingColor:"), startingColor, endingColor)
-	return rv
-}
-
-// Initializes a newly allocated gradient object with two colors. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1525448-initwithstartingcolor?language=objc
-func NewGradientWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
-	instance := GradientClass.Alloc().InitWithStartingColorEndingColor(startingColor, endingColor)
-	instance.Autorelease()
-	return instance
-}
-
 func (g_ Gradient) InitWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
 	rv := objc.Call[Gradient](g_, objc.Sel("initWithColorsAndLocations:"), append([]any{firstColor}, args...)...)
 	return rv
@@ -72,16 +56,16 @@ func NewGradientWithColorsAndLocations(firstColor IColor, args ...any) Gradient 
 	return instance
 }
 
-func (g_ Gradient) InitWithColorsAtLocationsColorSpace(colorArray []IColor, locations *float64, colorSpace IColorSpace) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithColors:atLocations:colorSpace:"), colorArray, locations, colorSpace)
+func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
+	rv := objc.Call[Gradient](g_, objc.Sel("initWithStartingColor:endingColor:"), startingColor, endingColor)
 	return rv
 }
 
-// Initializes a newly allocated gradient object with the specified colors, color locations, and color space. [Full Topic]
+// Initializes a newly allocated gradient object with two colors. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1524459-initwithcolors?language=objc
-func NewGradientWithColorsAtLocationsColorSpace(colorArray []IColor, locations *float64, colorSpace IColorSpace) Gradient {
-	instance := GradientClass.Alloc().InitWithColorsAtLocationsColorSpace(colorArray, locations, colorSpace)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1525448-initwithstartingcolor?language=objc
+func NewGradientWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
+	instance := GradientClass.Alloc().InitWithStartingColorEndingColor(startingColor, endingColor)
 	instance.Autorelease()
 	return instance
 }
@@ -120,6 +104,20 @@ func (g_ Gradient) Init() Gradient {
 	return rv
 }
 
+// Returns information about the color stop at the specified index in the receiver’s color array. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1533505-getcolor?language=objc
+func (g_ Gradient) GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int) {
+	objc.Call[objc.Void](g_, objc.Sel("getColor:location:atIndex:"), color, location, index)
+}
+
+// Draws a radial gradient between the specified circles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1530677-drawfromcenter?language=objc
+func (g_ Gradient) DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundation.Point, startRadius float64, endCenter foundation.Point, endRadius float64, options GradientDrawingOptions) {
+	objc.Call[objc.Void](g_, objc.Sel("drawFromCenter:radius:toCenter:radius:options:"), startCenter, startRadius, endCenter, endRadius, options)
+}
+
 // Draws a radial gradient starting at the center of the specified rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1533703-drawinrect?language=objc
@@ -135,39 +133,11 @@ func (g_ Gradient) InterpolatedColorAtLocation(location float64) Color {
 	return rv
 }
 
-// Draws a radial gradient between the specified circles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1530677-drawfromcenter?language=objc
-func (g_ Gradient) DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundation.Point, startRadius float64, endCenter foundation.Point, endRadius float64, options GradientDrawingOptions) {
-	objc.Call[objc.Void](g_, objc.Sel("drawFromCenter:radius:toCenter:radius:options:"), startCenter, startRadius, endCenter, endRadius, options)
-}
-
-// Returns information about the color stop at the specified index in the receiver’s color array. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1533505-getcolor?language=objc
-func (g_ Gradient) GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int) {
-	objc.Call[objc.Void](g_, objc.Sel("getColor:location:atIndex:"), color, location, index)
-}
-
-// Fills the specified rectangle with a linear gradient. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1529086-drawinrect?language=objc
-func (g_ Gradient) DrawInRectAngle(rect foundation.Rect, angle float64) {
-	objc.Call[objc.Void](g_, objc.Sel("drawInRect:angle:"), rect, angle)
-}
-
 // Draws a linear gradient between the specified start and end points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1532511-drawfrompoint?language=objc
 func (g_ Gradient) DrawFromPointToPointOptions(startingPoint foundation.Point, endingPoint foundation.Point, options GradientDrawingOptions) {
 	objc.Call[objc.Void](g_, objc.Sel("drawFromPoint:toPoint:options:"), startingPoint, endingPoint, options)
-}
-
-// Draws a radial gradient starting at the center point of the specified path. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1530168-drawinbezierpath?language=objc
-func (g_ Gradient) DrawInBezierPathRelativeCenterPosition(path IBezierPath, relativeCenterPosition foundation.Point) {
-	objc.Call[objc.Void](g_, objc.Sel("drawInBezierPath:relativeCenterPosition:"), path, relativeCenterPosition)
 }
 
 // Fills the specified path with a linear gradient. [Full Topic]

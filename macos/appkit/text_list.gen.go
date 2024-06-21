@@ -20,9 +20,9 @@ type ITextList interface {
 	objc.IObject
 	MarkerForItemNumber(itemNumber int) string
 	ListOptions() TextListOptions
-	MarkerFormat() TextListMarkerFormat
 	StartingItemNumber() int
 	SetStartingItemNumber(value int)
+	MarkerFormat() TextListMarkerFormat
 }
 
 // A section of text that forms a single list. [Full Topic]
@@ -88,14 +88,6 @@ func (t_ TextList) ListOptions() TextListOptions {
 	return rv
 }
 
-// Returns the marker format string used by the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlist/1533865-markerformat?language=objc
-func (t_ TextList) MarkerFormat() TextListMarkerFormat {
-	rv := objc.Call[TextListMarkerFormat](t_, objc.Sel("markerFormat"))
-	return rv
-}
-
 // Sets the starting item number for the text list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlist/1528597-startingitemnumber?language=objc
@@ -109,4 +101,12 @@ func (t_ TextList) StartingItemNumber() int {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlist/1528597-startingitemnumber?language=objc
 func (t_ TextList) SetStartingItemNumber(value int) {
 	objc.Call[objc.Void](t_, objc.Sel("setStartingItemNumber:"), value)
+}
+
+// Returns the marker format string used by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlist/1533865-markerformat?language=objc
+func (t_ TextList) MarkerFormat() TextListMarkerFormat {
+	rv := objc.Call[TextListMarkerFormat](t_, objc.Sel("markerFormat"))
+	return rv
 }

@@ -19,10 +19,10 @@ type _VisitClass struct {
 // An interface definition for the [Visit] class.
 type IVisit interface {
 	objc.IObject
-	ArrivalDate() foundation.Date
-	Coordinate() LocationCoordinate2D
-	DepartureDate() foundation.Date
 	HorizontalAccuracy() LocationAccuracy
+	Coordinate() LocationCoordinate2D
+	ArrivalDate() foundation.Date
+	DepartureDate() foundation.Date
 }
 
 // Information about the user's location during a specific period of time. [Full Topic]
@@ -58,11 +58,11 @@ func (v_ Visit) Init() Visit {
 	return rv
 }
 
-// The approximate time at which the user arrived at the specified location. [Full Topic]
+// The horizontal accuracy (in meters) of the specified coordinate. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clvisit/1614681-arrivaldate?language=objc
-func (v_ Visit) ArrivalDate() foundation.Date {
-	rv := objc.Call[foundation.Date](v_, objc.Sel("arrivalDate"))
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clvisit/1614679-horizontalaccuracy?language=objc
+func (v_ Visit) HorizontalAccuracy() LocationAccuracy {
+	rv := objc.Call[LocationAccuracy](v_, objc.Sel("horizontalAccuracy"))
 	return rv
 }
 
@@ -74,18 +74,18 @@ func (v_ Visit) Coordinate() LocationCoordinate2D {
 	return rv
 }
 
+// The approximate time at which the user arrived at the specified location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/corelocation/clvisit/1614681-arrivaldate?language=objc
+func (v_ Visit) ArrivalDate() foundation.Date {
+	rv := objc.Call[foundation.Date](v_, objc.Sel("arrivalDate"))
+	return rv
+}
+
 // The approximate time at which the user left the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clvisit/1614685-departuredate?language=objc
 func (v_ Visit) DepartureDate() foundation.Date {
 	rv := objc.Call[foundation.Date](v_, objc.Sel("departureDate"))
-	return rv
-}
-
-// The horizontal accuracy (in meters) of the specified coordinate. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/corelocation/clvisit/1614679-horizontalaccuracy?language=objc
-func (v_ Visit) HorizontalAccuracy() LocationAccuracy {
-	rv := objc.Call[LocationAccuracy](v_, objc.Sel("horizontalAccuracy"))
 	return rv
 }

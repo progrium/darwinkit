@@ -19,13 +19,13 @@ type _TextContentStorageClass struct {
 // An interface definition for the [TextContentStorage] class.
 type ITextContentStorage interface {
 	ITextContentManager
-	LocationFromLocationWithOffset(location PTextLocation, offset int) TextLocationObject
-	LocationFromLocationObjectWithOffset(locationObject objc.IObject, offset int) TextLocationObject
-	TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement
+	AdjustedRangeFromRangeForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange
 	OffsetFromLocationToLocation(from PTextLocation, to PTextLocation) int
 	OffsetFromLocationObjectToLocationObject(fromObject objc.IObject, toObject objc.IObject) int
 	AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString
-	AdjustedRangeFromRangeForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange
+	TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement
+	LocationFromLocationWithOffset(location PTextLocation, offset int) TextLocationObject
+	LocationFromLocationObjectWithOffset(locationObject objc.IObject, offset int) TextLocationObject
 	AttributedString() foundation.AttributedString
 	SetAttributedString(value foundation.IAttributedString)
 }
@@ -63,28 +63,11 @@ func (t_ TextContentStorage) Init() TextContentStorage {
 	return rv
 }
 
-// Returns a new text location from an existing location and offset you provide. [Full Topic]
+// Returns the text range, if any, in the backing store that required manual adjustment after editing. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852571-locationfromlocation?language=objc
-func (t_ TextContentStorage) LocationFromLocationWithOffset(location PTextLocation, offset int) TextLocationObject {
-	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), po0, offset)
-	return rv
-}
-
-// Returns a new text location from an existing location and offset you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852571-locationfromlocation?language=objc
-func (t_ TextContentStorage) LocationFromLocationObjectWithOffset(locationObject objc.IObject, offset int) TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), locationObject, offset)
-	return rv
-}
-
-// Returns the text element corresponding to object’s attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3809937-textelementforattributedstring?language=objc
-func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := objc.Call[TextElement](t_, objc.Sel("textElementForAttributedString:"), attributedString)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852570-adjustedrangefromrange?language=objc
+func (t_ TextContentStorage) AdjustedRangeFromRangeForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
+	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
 	return rv
 }
 
@@ -114,11 +97,28 @@ func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextEle
 	return rv
 }
 
-// Returns the text range, if any, in the backing store that required manual adjustment after editing. [Full Topic]
+// Returns the text element corresponding to object’s attributed string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852570-adjustedrangefromrange?language=objc
-func (t_ TextContentStorage) AdjustedRangeFromRangeForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3809937-textelementforattributedstring?language=objc
+func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
+	rv := objc.Call[TextElement](t_, objc.Sel("textElementForAttributedString:"), attributedString)
+	return rv
+}
+
+// Returns a new text location from an existing location and offset you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852571-locationfromlocation?language=objc
+func (t_ TextContentStorage) LocationFromLocationWithOffset(location PTextLocation, offset int) TextLocationObject {
+	po0 := objc.WrapAsProtocol("NSTextLocation", location)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), po0, offset)
+	return rv
+}
+
+// Returns a new text location from an existing location and offset you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852571-locationfromlocation?language=objc
+func (t_ TextContentStorage) LocationFromLocationObjectWithOffset(locationObject objc.IObject, offset int) TextLocationObject {
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), locationObject, offset)
 	return rv
 }
 

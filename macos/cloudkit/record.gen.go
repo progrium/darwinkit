@@ -19,29 +19,27 @@ type _RecordClass struct {
 // An interface definition for the [Record] class.
 type IRecord interface {
 	objc.IObject
-	EncodeSystemFieldsWithCoder(coder foundation.ICoder)
-	SetParentReferenceFromRecordID(parentRecordID IRecordID)
-	ChangedKeys() []RecordFieldKey
-	AllTokens() []string
-	SetParentReferenceFromRecord(parentRecord IRecord)
 	ObjectForKey(key RecordFieldKey) RecordValueObject
+	ObjectForKeyedSubscript(key RecordFieldKey) RecordValueObject
 	SetObjectForKeyedSubscript(object PRecordValue, key RecordFieldKey)
 	SetObjectObjectForKeyedSubscript(objectObject objc.IObject, key RecordFieldKey)
+	AllTokens() []string
+	SetParentReferenceFromRecordID(parentRecordID IRecordID)
+	SetParentReferenceFromRecord(parentRecord IRecord)
+	EncodeSystemFieldsWithCoder(coder foundation.ICoder)
 	AllKeys() []RecordFieldKey
-	ObjectForKeyedSubscript(key RecordFieldKey) RecordValueObject
-	SetObjectForKey(object PRecordValue, key RecordFieldKey)
-	SetObjectObjectForKey(objectObject objc.IObject, key RecordFieldKey)
-	CreatorUserRecordID() RecordID
-	ModificationDate() foundation.Date
-	RecordChangeTag() string
-	CreationDate() foundation.Date
-	LastModifiedUserRecordID() RecordID
-	EncryptedValues() RecordKeyValueSettingObject
+	ChangedKeys() []RecordFieldKey
+	RecordID() RecordID
 	Share() Reference
 	Parent() Reference
 	SetParent(value IReference)
+	LastModifiedUserRecordID() RecordID
+	ModificationDate() foundation.Date
+	RecordChangeTag() string
+	CreatorUserRecordID() RecordID
+	EncryptedValues() RecordKeyValueSettingObject
+	CreationDate() foundation.Date
 	RecordType() RecordType
-	RecordID() RecordID
 }
 
 // A collection of key-value pairs that store your app’s data. [Full Topic]
@@ -55,34 +53,6 @@ func RecordFrom(ptr unsafe.Pointer) Record {
 	return Record{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (r_ Record) InitWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Record {
-	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:recordID:"), recordType, recordID)
-	return rv
-}
-
-// Creates a record using an ID that you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462204-initwithrecordtype?language=objc
-func NewRecordWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Record {
-	instance := RecordClass.Alloc().InitWithRecordTypeRecordID(recordType, recordID)
-	instance.Autorelease()
-	return instance
-}
-
-func (r_ Record) InitWithRecordType(recordType RecordType) Record {
-	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:"), recordType)
-	return rv
-}
-
-// Creates a new record of the specified type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462225-initwithrecordtype?language=objc
-func NewRecordWithRecordType(recordType RecordType) Record {
-	instance := RecordClass.Alloc().InitWithRecordType(recordType)
-	instance.Autorelease()
-	return instance
 }
 
 func (r_ Record) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Record {
@@ -119,48 +89,19 @@ func (r_ Record) Init() Record {
 	return rv
 }
 
-// Encodes the record’s system fields using the specified archiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462200-encodesystemfieldswithcoder?language=objc
-func (r_ Record) EncodeSystemFieldsWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeSystemFieldsWithCoder:"), coder)
-}
-
-// Creates and sets a reference object for a parent from the parent’s record ID. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690508-setparentreferencefromrecordid?language=objc
-func (r_ Record) SetParentReferenceFromRecordID(parentRecordID IRecordID) {
-	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecordID:"), parentRecordID)
-}
-
-// Returns an array of keys with recent changes to their values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462197-changedkeys?language=objc
-func (r_ Record) ChangedKeys() []RecordFieldKey {
-	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("changedKeys"))
-	return rv
-}
-
-// Returns an array of strings to use for full-text searches of the field’s string-based values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462199-alltokens?language=objc
-func (r_ Record) AllTokens() []string {
-	rv := objc.Call[[]string](r_, objc.Sel("allTokens"))
-	return rv
-}
-
-// Creates and sets a reference object for a parent from its record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690507-setparentreferencefromrecord?language=objc
-func (r_ Record) SetParentReferenceFromRecord(parentRecord IRecord) {
-	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecord:"), parentRecord)
-}
-
 // Returns the object that the record stores for the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462216-objectforkey?language=objc
 func (r_ Record) ObjectForKey(key RecordFieldKey) RecordValueObject {
 	rv := objc.Call[RecordValueObject](r_, objc.Sel("objectForKey:"), key)
+	return rv
+}
+
+// Returns the object that the record stores for the specified key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462210-objectforkeyedsubscript?language=objc
+func (r_ Record) ObjectForKeyedSubscript(key RecordFieldKey) RecordValueObject {
+	rv := objc.Call[RecordValueObject](r_, objc.Sel("objectForKeyedSubscript:"), key)
 	return rv
 }
 
@@ -179,6 +120,35 @@ func (r_ Record) SetObjectObjectForKeyedSubscript(objectObject objc.IObject, key
 	objc.Call[objc.Void](r_, objc.Sel("setObject:forKeyedSubscript:"), objectObject, key)
 }
 
+// Returns an array of strings to use for full-text searches of the field’s string-based values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462199-alltokens?language=objc
+func (r_ Record) AllTokens() []string {
+	rv := objc.Call[[]string](r_, objc.Sel("allTokens"))
+	return rv
+}
+
+// Creates and sets a reference object for a parent from the parent’s record ID. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690508-setparentreferencefromrecordid?language=objc
+func (r_ Record) SetParentReferenceFromRecordID(parentRecordID IRecordID) {
+	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecordID:"), parentRecordID)
+}
+
+// Creates and sets a reference object for a parent from its record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690507-setparentreferencefromrecord?language=objc
+func (r_ Record) SetParentReferenceFromRecord(parentRecord IRecord) {
+	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecord:"), parentRecord)
+}
+
+// Encodes the record’s system fields using the specified archiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462200-encodesystemfieldswithcoder?language=objc
+func (r_ Record) EncodeSystemFieldsWithCoder(coder foundation.ICoder) {
+	objc.Call[objc.Void](r_, objc.Sel("encodeSystemFieldsWithCoder:"), coder)
+}
+
 // Returns an array of the record’s keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462220-allkeys?language=objc
@@ -187,74 +157,19 @@ func (r_ Record) AllKeys() []RecordFieldKey {
 	return rv
 }
 
-// Returns the object that the record stores for the specified key. [Full Topic]
+// Returns an array of keys with recent changes to their values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462210-objectforkeyedsubscript?language=objc
-func (r_ Record) ObjectForKeyedSubscript(key RecordFieldKey) RecordValueObject {
-	rv := objc.Call[RecordValueObject](r_, objc.Sel("objectForKeyedSubscript:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462197-changedkeys?language=objc
+func (r_ Record) ChangedKeys() []RecordFieldKey {
+	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("changedKeys"))
 	return rv
 }
 
-// Stores an object in the record using the specified key. [Full Topic]
+// The unique ID of the record. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462231-setobject?language=objc
-func (r_ Record) SetObjectForKey(object PRecordValue, key RecordFieldKey) {
-	po0 := objc.WrapAsProtocol("CKRecordValue", object)
-	objc.Call[objc.Void](r_, objc.Sel("setObject:forKey:"), po0, key)
-}
-
-// Stores an object in the record using the specified key. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462231-setobject?language=objc
-func (r_ Record) SetObjectObjectForKey(objectObject objc.IObject, key RecordFieldKey) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:forKey:"), objectObject, key)
-}
-
-// The ID of the user who creates the record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462208-creatoruserrecordid?language=objc
-func (r_ Record) CreatorUserRecordID() RecordID {
-	rv := objc.Call[RecordID](r_, objc.Sel("creatorUserRecordID"))
-	return rv
-}
-
-// The most recent time that CloudKit saved the record to the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462227-modificationdate?language=objc
-func (r_ Record) ModificationDate() foundation.Date {
-	rv := objc.Call[foundation.Date](r_, objc.Sel("modificationDate"))
-	return rv
-}
-
-// The server change token for the record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462195-recordchangetag?language=objc
-func (r_ Record) RecordChangeTag() string {
-	rv := objc.Call[string](r_, objc.Sel("recordChangeTag"))
-	return rv
-}
-
-// The time when CloudKit first saves the record to the server. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462223-creationdate?language=objc
-func (r_ Record) CreationDate() foundation.Date {
-	rv := objc.Call[foundation.Date](r_, objc.Sel("creationDate"))
-	return rv
-}
-
-// The ID of the user who most recently modified the record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462212-lastmodifieduserrecordid?language=objc
-func (r_ Record) LastModifiedUserRecordID() RecordID {
-	rv := objc.Call[RecordID](r_, objc.Sel("lastModifiedUserRecordID"))
-	return rv
-}
-
-// An object that manages the record’s encrypted key-value pairs. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/3746821-encryptedvalues?language=objc
-func (r_ Record) EncryptedValues() RecordKeyValueSettingObject {
-	rv := objc.Call[RecordKeyValueSettingObject](r_, objc.Sel("encryptedValues"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462229-recordid?language=objc
+func (r_ Record) RecordID() RecordID {
+	rv := objc.Call[RecordID](r_, objc.Sel("recordID"))
 	return rv
 }
 
@@ -281,18 +196,58 @@ func (r_ Record) SetParent(value IReference) {
 	objc.Call[objc.Void](r_, objc.Sel("setParent:"), value)
 }
 
+// The ID of the user who most recently modified the record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462212-lastmodifieduserrecordid?language=objc
+func (r_ Record) LastModifiedUserRecordID() RecordID {
+	rv := objc.Call[RecordID](r_, objc.Sel("lastModifiedUserRecordID"))
+	return rv
+}
+
+// The most recent time that CloudKit saved the record to the server. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462227-modificationdate?language=objc
+func (r_ Record) ModificationDate() foundation.Date {
+	rv := objc.Call[foundation.Date](r_, objc.Sel("modificationDate"))
+	return rv
+}
+
+// The server change token for the record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462195-recordchangetag?language=objc
+func (r_ Record) RecordChangeTag() string {
+	rv := objc.Call[string](r_, objc.Sel("recordChangeTag"))
+	return rv
+}
+
+// The ID of the user who creates the record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462208-creatoruserrecordid?language=objc
+func (r_ Record) CreatorUserRecordID() RecordID {
+	rv := objc.Call[RecordID](r_, objc.Sel("creatorUserRecordID"))
+	return rv
+}
+
+// An object that manages the record’s encrypted key-value pairs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/3746821-encryptedvalues?language=objc
+func (r_ Record) EncryptedValues() RecordKeyValueSettingObject {
+	rv := objc.Call[RecordKeyValueSettingObject](r_, objc.Sel("encryptedValues"))
+	return rv
+}
+
+// The time when CloudKit first saves the record to the server. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462223-creationdate?language=objc
+func (r_ Record) CreationDate() foundation.Date {
+	rv := objc.Call[foundation.Date](r_, objc.Sel("creationDate"))
+	return rv
+}
+
 // The value that your app defines to identify the type of record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462206-recordtype?language=objc
 func (r_ Record) RecordType() RecordType {
 	rv := objc.Call[RecordType](r_, objc.Sel("recordType"))
-	return rv
-}
-
-// The unique ID of the record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462229-recordid?language=objc
-func (r_ Record) RecordID() RecordID {
-	rv := objc.Call[RecordID](r_, objc.Sel("recordID"))
 	return rv
 }

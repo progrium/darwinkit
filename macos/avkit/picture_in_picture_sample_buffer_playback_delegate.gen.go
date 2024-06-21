@@ -12,16 +12,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate?language=objc
 type PPictureInPictureSampleBufferPlaybackDelegate interface {
 	// optional
-	PictureInPictureControllerDidTransitionToRenderSize(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions)
-	HasPictureInPictureControllerDidTransitionToRenderSize() bool
-
-	// optional
-	PictureInPictureControllerSkipByIntervalCompletionHandler(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func())
-	HasPictureInPictureControllerSkipByIntervalCompletionHandler() bool
-
-	// optional
-	PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool)
-	HasPictureInPictureControllerSetPlaying() bool
+	PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool
+	HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool
 
 	// optional
 	PictureInPictureControllerIsPlaybackPaused(pictureInPictureController PictureInPictureController) bool
@@ -32,70 +24,34 @@ type PPictureInPictureSampleBufferPlaybackDelegate interface {
 	HasPictureInPictureControllerTimeRangeForPlayback() bool
 
 	// optional
-	PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool
-	HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool
+	PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool)
+	HasPictureInPictureControllerSetPlaying() bool
 }
 
 // A delegate implementation builder for the [PPictureInPictureSampleBufferPlaybackDelegate] protocol.
 type PictureInPictureSampleBufferPlaybackDelegate struct {
-	_PictureInPictureControllerDidTransitionToRenderSize             func(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions)
-	_PictureInPictureControllerSkipByIntervalCompletionHandler       func(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func())
-	_PictureInPictureControllerSetPlaying                            func(pictureInPictureController PictureInPictureController, playing bool)
+	_PictureInPictureControllerShouldProhibitBackgroundAudioPlayback func(pictureInPictureController PictureInPictureController) bool
 	_PictureInPictureControllerIsPlaybackPaused                      func(pictureInPictureController PictureInPictureController) bool
 	_PictureInPictureControllerTimeRangeForPlayback                  func(pictureInPictureController PictureInPictureController) coremedia.TimeRange
-	_PictureInPictureControllerShouldProhibitBackgroundAudioPlayback func(pictureInPictureController PictureInPictureController) bool
+	_PictureInPictureControllerSetPlaying                            func(pictureInPictureController PictureInPictureController, playing bool)
 }
 
-func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerDidTransitionToRenderSize() bool {
-	return di._PictureInPictureControllerDidTransitionToRenderSize != nil
+func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool {
+	return di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback != nil
 }
 
-// Tells the delegate when the system Picture in Picture window changes size. [Full Topic]
+// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750333-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerDidTransitionToRenderSize(f func(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions)) {
-	di._PictureInPictureControllerDidTransitionToRenderSize = f
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
+func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerShouldProhibitBackgroundAudioPlayback(f func(pictureInPictureController PictureInPictureController) bool) {
+	di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback = f
 }
 
-// Tells the delegate when the system Picture in Picture window changes size. [Full Topic]
+// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750333-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerDidTransitionToRenderSize(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions) {
-	di._PictureInPictureControllerDidTransitionToRenderSize(pictureInPictureController, newRenderSize)
-}
-func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerSkipByIntervalCompletionHandler() bool {
-	return di._PictureInPictureControllerSkipByIntervalCompletionHandler != nil
-}
-
-// Tells the delegate that the user has requested skipping forward or backward by the indicated time interval. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750335-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerSkipByIntervalCompletionHandler(f func(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func())) {
-	di._PictureInPictureControllerSkipByIntervalCompletionHandler = f
-}
-
-// Tells the delegate that the user has requested skipping forward or backward by the indicated time interval. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750335-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerSkipByIntervalCompletionHandler(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func()) {
-	di._PictureInPictureControllerSkipByIntervalCompletionHandler(pictureInPictureController, skipInterval, completionHandler)
-}
-func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerSetPlaying() bool {
-	return di._PictureInPictureControllerSetPlaying != nil
-}
-
-// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerSetPlaying(f func(pictureInPictureController PictureInPictureController, playing bool)) {
-	di._PictureInPictureControllerSetPlaying = f
-}
-
-// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool) {
-	di._PictureInPictureControllerSetPlaying(pictureInPictureController, playing)
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
+func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool {
+	return di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController)
 }
 func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerIsPlaybackPaused() bool {
 	return di._PictureInPictureControllerIsPlaybackPaused != nil
@@ -131,22 +87,22 @@ func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureContr
 func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerTimeRangeForPlayback(pictureInPictureController PictureInPictureController) coremedia.TimeRange {
 	return di._PictureInPictureControllerTimeRangeForPlayback(pictureInPictureController)
 }
-func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool {
-	return di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback != nil
+func (di *PictureInPictureSampleBufferPlaybackDelegate) HasPictureInPictureControllerSetPlaying() bool {
+	return di._PictureInPictureControllerSetPlaying != nil
 }
 
-// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
+// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerShouldProhibitBackgroundAudioPlayback(f func(pictureInPictureController PictureInPictureController) bool) {
-	di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback = f
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
+func (di *PictureInPictureSampleBufferPlaybackDelegate) SetPictureInPictureControllerSetPlaying(f func(pictureInPictureController PictureInPictureController, playing bool)) {
+	di._PictureInPictureControllerSetPlaying = f
 }
 
-// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
+// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
-func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool {
-	return di._PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController)
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
+func (di *PictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool) {
+	di._PictureInPictureControllerSetPlaying(pictureInPictureController, playing)
 }
 
 // ensure impl type implements protocol interface
@@ -157,37 +113,16 @@ type PictureInPictureSampleBufferPlaybackDelegateObject struct {
 	objc.Object
 }
 
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerDidTransitionToRenderSize() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureController:didTransitionToRenderSize:"))
+func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool {
+	return p_.RespondsToSelector(objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"))
 }
 
-// Tells the delegate when the system Picture in Picture window changes size. [Full Topic]
+// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750333-pictureinpicturecontroller?language=objc
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerDidTransitionToRenderSize(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:didTransitionToRenderSize:"), pictureInPictureController, newRenderSize)
-}
-
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerSkipByIntervalCompletionHandler() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureController:skipByInterval:completionHandler:"))
-}
-
-// Tells the delegate that the user has requested skipping forward or backward by the indicated time interval. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750335-pictureinpicturecontroller?language=objc
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerSkipByIntervalCompletionHandler(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:skipByInterval:completionHandler:"), pictureInPictureController, skipInterval, completionHandler)
-}
-
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerSetPlaying() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureController:setPlaying:"))
-}
-
-// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:setPlaying:"), pictureInPictureController, playing)
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
+func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool {
+	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"), pictureInPictureController)
+	return rv
 }
 
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerIsPlaybackPaused() bool {
@@ -214,14 +149,13 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureCon
 	return rv
 }
 
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerShouldProhibitBackgroundAudioPlayback() bool {
-	return p_.RespondsToSelector(objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"))
+func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerSetPlaying() bool {
+	return p_.RespondsToSelector(objc.Sel("pictureInPictureController:setPlaying:"))
 }
 
-// Asks the delegate whether to always prohibit background audio playback. [Full Topic]
+// Tells the delegate that the user requested to begin or pause playback. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
-func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool {
-	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"), pictureInPictureController)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
+func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool) {
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:setPlaying:"), pictureInPictureController, playing)
 }

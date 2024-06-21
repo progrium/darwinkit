@@ -33,6 +33,18 @@ func CNNSoftMaxNodeFrom(ptr unsafe.Pointer) CNNSoftMaxNode {
 	}
 }
 
+func (cc _CNNSoftMaxNodeClass) NodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
+	rv := objc.Call[CNNSoftMaxNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnsoftmaxnode/2866455-nodewithsource?language=objc
+func CNNSoftMaxNode_NodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
+	return CNNSoftMaxNodeClass.NodeWithSource(sourceNode)
+}
+
 func (c_ CNNSoftMaxNode) InitWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
 	rv := objc.Call[CNNSoftMaxNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
@@ -45,18 +57,6 @@ func NewCNNSoftMaxNodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
 	instance := CNNSoftMaxNodeClass.Alloc().InitWithSource(sourceNode)
 	instance.Autorelease()
 	return instance
-}
-
-func (cc _CNNSoftMaxNodeClass) NodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
-	rv := objc.Call[CNNSoftMaxNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnsoftmaxnode/2866455-nodewithsource?language=objc
-func CNNSoftMaxNode_NodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
-	return CNNSoftMaxNodeClass.NodeWithSource(sourceNode)
 }
 
 func (cc _CNNSoftMaxNodeClass) Alloc() CNNSoftMaxNode {

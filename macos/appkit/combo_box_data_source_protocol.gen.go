@@ -11,20 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource?language=objc
 type PComboBoxDataSource interface {
 	// optional
-	ComboBoxObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.Object
-	HasComboBoxObjectValueForItemAtIndex() bool
-
-	// optional
-	ComboBoxCompletedString(comboBox ComboBox, string_ string) string
-	HasComboBoxCompletedString() bool
-
-	// optional
-	ComboBoxIndexOfItemWithStringValue(comboBox ComboBox, string_ string) uint
-	HasComboBoxIndexOfItemWithStringValue() bool
-
-	// optional
 	NumberOfItemsInComboBox(comboBox ComboBox) int
 	HasNumberOfItemsInComboBox() bool
+
+	// optional
+	ComboBoxObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.Object
+	HasComboBoxObjectValueForItemAtIndex() bool
 }
 
 // ensure impl type implements protocol interface
@@ -33,42 +25,6 @@ var _ PComboBoxDataSource = (*ComboBoxDataSourceObject)(nil)
 // A concrete type for the [PComboBoxDataSource] protocol.
 type ComboBoxDataSourceObject struct {
 	objc.Object
-}
-
-func (c_ ComboBoxDataSourceObject) HasComboBoxObjectValueForItemAtIndex() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBox:objectValueForItemAtIndex:"))
-}
-
-// Returns the object that corresponds to the item at the specified index in the combo box. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436753-combobox?language=objc
-func (c_ ComboBoxDataSourceObject) ComboBoxObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("comboBox:objectValueForItemAtIndex:"), comboBox, index)
-	return rv
-}
-
-func (c_ ComboBoxDataSourceObject) HasComboBoxCompletedString() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBox:completedString:"))
-}
-
-// Returns the first item from the pop-up list that starts with the text the user has typed. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436733-combobox?language=objc
-func (c_ ComboBoxDataSourceObject) ComboBoxCompletedString(comboBox ComboBox, string_ string) string {
-	rv := objc.Call[string](c_, objc.Sel("comboBox:completedString:"), comboBox, string_)
-	return rv
-}
-
-func (c_ ComboBoxDataSourceObject) HasComboBoxIndexOfItemWithStringValue() bool {
-	return c_.RespondsToSelector(objc.Sel("comboBox:indexOfItemWithStringValue:"))
-}
-
-// Returns the index of the combo box item matching the specified string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436713-combobox?language=objc
-func (c_ ComboBoxDataSourceObject) ComboBoxIndexOfItemWithStringValue(comboBox ComboBox, string_ string) uint {
-	rv := objc.Call[uint](c_, objc.Sel("comboBox:indexOfItemWithStringValue:"), comboBox, string_)
-	return rv
 }
 
 func (c_ ComboBoxDataSourceObject) HasNumberOfItemsInComboBox() bool {
@@ -80,5 +36,17 @@ func (c_ ComboBoxDataSourceObject) HasNumberOfItemsInComboBox() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436780-numberofitemsincombobox?language=objc
 func (c_ ComboBoxDataSourceObject) NumberOfItemsInComboBox(comboBox ComboBox) int {
 	rv := objc.Call[int](c_, objc.Sel("numberOfItemsInComboBox:"), comboBox)
+	return rv
+}
+
+func (c_ ComboBoxDataSourceObject) HasComboBoxObjectValueForItemAtIndex() bool {
+	return c_.RespondsToSelector(objc.Sel("comboBox:objectValueForItemAtIndex:"))
+}
+
+// Returns the object that corresponds to the item at the specified index in the combo box. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436753-combobox?language=objc
+func (c_ ComboBoxDataSourceObject) ComboBoxObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("comboBox:objectValueForItemAtIndex:"), comboBox, index)
 	return rv
 }

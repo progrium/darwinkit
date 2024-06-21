@@ -20,8 +20,8 @@ type _SequenceClass struct {
 type ISequence interface {
 	objc.IObject
 	StringValues() []string
-	Type() FeatureType
 	Int64Values() []foundation.Number
+	Type() FeatureType
 }
 
 // A machine learning collection type that stores a series of strings or integers. [Full Topic]
@@ -101,18 +101,18 @@ func (s_ Sequence) StringValues() []string {
 	return rv
 }
 
-// The underlying type of the sequence’s elements. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequence/2962875-type?language=objc
-func (s_ Sequence) Type() FeatureType {
-	rv := objc.Call[FeatureType](s_, objc.Sel("type"))
-	return rv
-}
-
 // An array of 64-bit integers in the sequence. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequence/2962871-int64values?language=objc
 func (s_ Sequence) Int64Values() []foundation.Number {
 	rv := objc.Call[[]foundation.Number](s_, objc.Sel("int64Values"))
+	return rv
+}
+
+// The underlying type of the sequence’s elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlsequence/2962875-type?language=objc
+func (s_ Sequence) Type() FeatureType {
+	rv := objc.Call[FeatureType](s_, objc.Sel("type"))
 	return rv
 }

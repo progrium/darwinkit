@@ -11,28 +11,24 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter-gce?language=objc
 type PFilter interface {
 	// optional
-	Apply(k Kernel, args ...any) Image
-	HasApply() bool
-
-	// optional
-	SetName(aString string)
-	HasSetName() bool
-
-	// optional
 	SetDefaults()
 	HasSetDefaults() bool
 
 	// optional
-	ApplyArgumentsOptions(k Kernel, args []objc.Object, dict map[string]objc.Object) Image
-	HasApplyArgumentsOptions() bool
+	Name() string
+	HasName() bool
 
 	// optional
-	OutputImage() Image
-	HasOutputImage() bool
+	Apply(k Kernel, args ...any) Image
+	HasApply() bool
 
 	// optional
-	Attributes() map[string]objc.Object
-	HasAttributes() bool
+	OutputKeys() []string
+	HasOutputKeys() bool
+
+	// optional
+	InputKeys() []string
+	HasInputKeys() bool
 
 	// optional
 	SetEnabled(value bool)
@@ -43,12 +39,12 @@ type PFilter interface {
 	HasIsEnabled() bool
 
 	// optional
-	InputKeys() []string
-	HasInputKeys() bool
+	Attributes() map[string]objc.Object
+	HasAttributes() bool
 
 	// optional
-	OutputKeys() []string
-	HasOutputKeys() bool
+	OutputImage() Image
+	HasOutputImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -57,6 +53,29 @@ var _ PFilter = (*FilterObject)(nil)
 // A concrete type for the [PFilter] protocol.
 type FilterObject struct {
 	objc.Object
+}
+
+func (f_ FilterObject) HasSetDefaults() bool {
+	return f_.RespondsToSelector(objc.Sel("setDefaults"))
+}
+
+// Sets all input values for a filter to default values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437902-setdefaults?language=objc
+func (f_ FilterObject) SetDefaults() {
+	objc.Call[objc.Void](f_, objc.Sel("setDefaults"))
+}
+
+func (f_ FilterObject) HasName() bool {
+	return f_.RespondsToSelector(objc.Sel("name"))
+}
+
+// A name associated with a filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437997-setname?language=objc
+func (f_ FilterObject) Name() string {
+	rv := objc.Call[string](f_, objc.Sel("name"))
+	return rv
 }
 
 func (f_ FilterObject) HasApply() bool {
@@ -71,61 +90,27 @@ func (f_ FilterObject) Apply(k Kernel, args ...any) Image {
 	return rv
 }
 
-func (f_ FilterObject) HasSetName() bool {
-	return f_.RespondsToSelector(objc.Sel("setName:"))
+func (f_ FilterObject) HasOutputKeys() bool {
+	return f_.RespondsToSelector(objc.Sel("outputKeys"))
 }
 
-// A name associated with a filter. [Full Topic]
+// The names of all output parameters from the filter. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437997-setname?language=objc
-func (f_ FilterObject) SetName(aString string) {
-	objc.Call[objc.Void](f_, objc.Sel("setName:"), aString)
-}
-
-func (f_ FilterObject) HasSetDefaults() bool {
-	return f_.RespondsToSelector(objc.Sel("setDefaults"))
-}
-
-// Sets all input values for a filter to default values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437902-setdefaults?language=objc
-func (f_ FilterObject) SetDefaults() {
-	objc.Call[objc.Void](f_, objc.Sel("setDefaults"))
-}
-
-func (f_ FilterObject) HasApplyArgumentsOptions() bool {
-	return f_.RespondsToSelector(objc.Sel("apply:arguments:options:"))
-}
-
-// Produces a CIImage object by applying arguments to a kernel function and using options to control how the kernel function is evaluated. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438077-apply?language=objc
-func (f_ FilterObject) ApplyArgumentsOptions(k Kernel, args []objc.Object, dict map[string]objc.Object) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:arguments:options:"), k, args, dict)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438122-outputkeys?language=objc
+func (f_ FilterObject) OutputKeys() []string {
+	rv := objc.Call[[]string](f_, objc.Sel("outputKeys"))
 	return rv
 }
 
-func (f_ FilterObject) HasOutputImage() bool {
-	return f_.RespondsToSelector(objc.Sel("outputImage"))
+func (f_ FilterObject) HasInputKeys() bool {
+	return f_.RespondsToSelector(objc.Sel("inputKeys"))
 }
 
-// A CIImage object that encapsulates the operations configured in the filter. [Full Topic]
+// The names of all input parameters to the filter. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/3228048-outputimage?language=objc
-func (f_ FilterObject) OutputImage() Image {
-	rv := objc.Call[Image](f_, objc.Sel("outputImage"))
-	return rv
-}
-
-func (f_ FilterObject) HasAttributes() bool {
-	return f_.RespondsToSelector(objc.Sel("attributes"))
-}
-
-// A dictionary of key-value pairs that describe the filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437661-attributes?language=objc
-func (f_ FilterObject) Attributes() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](f_, objc.Sel("attributes"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438013-inputkeys?language=objc
+func (f_ FilterObject) InputKeys() []string {
+	rv := objc.Call[[]string](f_, objc.Sel("inputKeys"))
 	return rv
 }
 
@@ -152,26 +137,26 @@ func (f_ FilterObject) IsEnabled() bool {
 	return rv
 }
 
-func (f_ FilterObject) HasInputKeys() bool {
-	return f_.RespondsToSelector(objc.Sel("inputKeys"))
+func (f_ FilterObject) HasAttributes() bool {
+	return f_.RespondsToSelector(objc.Sel("attributes"))
 }
 
-// The names of all input parameters to the filter. [Full Topic]
+// A dictionary of key-value pairs that describe the filter. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438013-inputkeys?language=objc
-func (f_ FilterObject) InputKeys() []string {
-	rv := objc.Call[[]string](f_, objc.Sel("inputKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437661-attributes?language=objc
+func (f_ FilterObject) Attributes() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](f_, objc.Sel("attributes"))
 	return rv
 }
 
-func (f_ FilterObject) HasOutputKeys() bool {
-	return f_.RespondsToSelector(objc.Sel("outputKeys"))
+func (f_ FilterObject) HasOutputImage() bool {
+	return f_.RespondsToSelector(objc.Sel("outputImage"))
 }
 
-// The names of all output parameters from the filter. [Full Topic]
+// A CIImage object that encapsulates the operations configured in the filter. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438122-outputkeys?language=objc
-func (f_ FilterObject) OutputKeys() []string {
-	rv := objc.Call[[]string](f_, objc.Sel("outputKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/3228048-outputimage?language=objc
+func (f_ FilterObject) OutputImage() Image {
+	rv := objc.Call[Image](f_, objc.Sel("outputImage"))
 	return rv
 }

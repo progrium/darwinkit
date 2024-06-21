@@ -18,12 +18,12 @@ type _AccessibilityCustomRotorSearchParametersClass struct {
 // An interface definition for the [AccessibilityCustomRotorSearchParameters] class.
 type IAccessibilityCustomRotorSearchParameters interface {
 	objc.IObject
-	FilterString() string
-	SetFilterString(value string)
 	SearchDirection() AccessibilityCustomRotorSearchDirection
 	SetSearchDirection(value AccessibilityCustomRotorSearchDirection)
 	CurrentItem() AccessibilityCustomRotorItemResult
 	SetCurrentItem(value IAccessibilityCustomRotorItemResult)
+	FilterString() string
+	SetFilterString(value string)
 }
 
 // Search parameters for a custom rotor. [Full Topic]
@@ -59,21 +59,6 @@ func (a_ AccessibilityCustomRotorSearchParameters) Init() AccessibilityCustomRot
 	return rv
 }
 
-// A string of text to filter the results against. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876328-filterstring?language=objc
-func (a_ AccessibilityCustomRotorSearchParameters) FilterString() string {
-	rv := objc.Call[string](a_, objc.Sel("filterString"))
-	return rv
-}
-
-// A string of text to filter the results against. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876328-filterstring?language=objc
-func (a_ AccessibilityCustomRotorSearchParameters) SetFilterString(value string) {
-	objc.Call[objc.Void](a_, objc.Sel("setFilterString:"), value)
-}
-
 // The direction to search for an item result. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876322-searchdirection?language=objc
@@ -102,4 +87,19 @@ func (a_ AccessibilityCustomRotorSearchParameters) CurrentItem() AccessibilityCu
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876332-currentitem?language=objc
 func (a_ AccessibilityCustomRotorSearchParameters) SetCurrentItem(value IAccessibilityCustomRotorItemResult) {
 	objc.Call[objc.Void](a_, objc.Sel("setCurrentItem:"), value)
+}
+
+// A string of text to filter the results against. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876328-filterstring?language=objc
+func (a_ AccessibilityCustomRotorSearchParameters) FilterString() string {
+	rv := objc.Call[string](a_, objc.Sel("filterString"))
+	return rv
+}
+
+// A string of text to filter the results against. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876328-filterstring?language=objc
+func (a_ AccessibilityCustomRotorSearchParameters) SetFilterString(value string) {
+	objc.Call[objc.Void](a_, objc.Sel("setFilterString:"), value)
 }

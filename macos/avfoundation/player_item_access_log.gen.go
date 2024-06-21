@@ -20,8 +20,8 @@ type _PlayerItemAccessLogClass struct {
 type IPlayerItemAccessLog interface {
 	objc.IObject
 	ExtendedLogData() []byte
-	ExtendedLogDataStringEncoding() foundation.StringEncoding
 	Events() []PlayerItemAccessLogEvent
+	ExtendedLogDataStringEncoding() foundation.StringEncoding
 }
 
 // An object used to retrieve the access log associated with a player item. [Full Topic]
@@ -65,18 +65,18 @@ func (p_ PlayerItemAccessLog) ExtendedLogData() []byte {
 	return rv
 }
 
-// The string encoding of the extended log data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemaccesslog/1390863-extendedlogdatastringencoding?language=objc
-func (p_ PlayerItemAccessLog) ExtendedLogDataStringEncoding() foundation.StringEncoding {
-	rv := objc.Call[foundation.StringEncoding](p_, objc.Sel("extendedLogDataStringEncoding"))
-	return rv
-}
-
 // A chronologically ordered array of player item access log events. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemaccesslog/1387406-events?language=objc
 func (p_ PlayerItemAccessLog) Events() []PlayerItemAccessLogEvent {
 	rv := objc.Call[[]PlayerItemAccessLogEvent](p_, objc.Sel("events"))
+	return rv
+}
+
+// The string encoding of the extended log data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemaccesslog/1390863-extendedlogdatastringencoding?language=objc
+func (p_ PlayerItemAccessLog) ExtendedLogDataStringEncoding() foundation.StringEncoding {
+	rv := objc.Call[foundation.StringEncoding](p_, objc.Sel("extendedLogDataStringEncoding"))
 	return rv
 }

@@ -19,12 +19,12 @@ type _FetchSubscriptionsOperationClass struct {
 // An interface definition for the [FetchSubscriptionsOperation] class.
 type IFetchSubscriptionsOperation interface {
 	IDatabaseOperation
+	FetchSubscriptionCompletionBlock() func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)
+	SetFetchSubscriptionCompletionBlock(value func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error))
 	PerSubscriptionCompletionBlock() func(subscriptionID SubscriptionID, subscription Subscription, error foundation.Error)
 	SetPerSubscriptionCompletionBlock(value func(subscriptionID SubscriptionID, subscription Subscription, error foundation.Error))
 	SubscriptionIDs() []SubscriptionID
 	SetSubscriptionIDs(value []SubscriptionID)
-	FetchSubscriptionCompletionBlock() func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)
-	SetFetchSubscriptionCompletionBlock(value func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error))
 }
 
 // An operation for fetching subscriptions. [Full Topic]
@@ -52,11 +52,6 @@ func FetchSubscriptionsOperation_FetchAllSubscriptionsOperation() FetchSubscript
 	return FetchSubscriptionsOperationClass.FetchAllSubscriptionsOperation()
 }
 
-func (f_ FetchSubscriptionsOperation) Init() FetchSubscriptionsOperation {
-	rv := objc.Call[FetchSubscriptionsOperation](f_, objc.Sel("init"))
-	return rv
-}
-
 func (f_ FetchSubscriptionsOperation) InitWithSubscriptionIDs(subscriptionIDs []SubscriptionID) FetchSubscriptionsOperation {
 	rv := objc.Call[FetchSubscriptionsOperation](f_, objc.Sel("initWithSubscriptionIDs:"), subscriptionIDs)
 	return rv
@@ -69,6 +64,11 @@ func NewFetchSubscriptionsOperationWithSubscriptionIDs(subscriptionIDs []Subscri
 	instance := FetchSubscriptionsOperationClass.Alloc().InitWithSubscriptionIDs(subscriptionIDs)
 	instance.Autorelease()
 	return instance
+}
+
+func (f_ FetchSubscriptionsOperation) Init() FetchSubscriptionsOperation {
+	rv := objc.Call[FetchSubscriptionsOperation](f_, objc.Sel("init"))
+	return rv
 }
 
 func (fc _FetchSubscriptionsOperationClass) Alloc() FetchSubscriptionsOperation {
@@ -84,6 +84,21 @@ func (fc _FetchSubscriptionsOperationClass) New() FetchSubscriptionsOperation {
 
 func NewFetchSubscriptionsOperation() FetchSubscriptionsOperation {
 	return FetchSubscriptionsOperationClass.New()
+}
+
+// The block to execute after the operation fetches the subscriptions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515261-fetchsubscriptioncompletionblock?language=objc
+func (f_ FetchSubscriptionsOperation) FetchSubscriptionCompletionBlock() func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error) {
+	rv := objc.Call[func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)](f_, objc.Sel("fetchSubscriptionCompletionBlock"))
+	return rv
+}
+
+// The block to execute after the operation fetches the subscriptions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515261-fetchsubscriptioncompletionblock?language=objc
+func (f_ FetchSubscriptionsOperation) SetFetchSubscriptionCompletionBlock(value func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setFetchSubscriptionCompletionBlock:"), value)
 }
 
 //	[Full Topic]
@@ -114,19 +129,4 @@ func (f_ FetchSubscriptionsOperation) SubscriptionIDs() []SubscriptionID {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515011-subscriptionids?language=objc
 func (f_ FetchSubscriptionsOperation) SetSubscriptionIDs(value []SubscriptionID) {
 	objc.Call[objc.Void](f_, objc.Sel("setSubscriptionIDs:"), value)
-}
-
-// The block to execute after the operation fetches the subscriptions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515261-fetchsubscriptioncompletionblock?language=objc
-func (f_ FetchSubscriptionsOperation) FetchSubscriptionCompletionBlock() func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error) {
-	rv := objc.Call[func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)](f_, objc.Sel("fetchSubscriptionCompletionBlock"))
-	return rv
-}
-
-// The block to execute after the operation fetches the subscriptions. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515261-fetchsubscriptioncompletionblock?language=objc
-func (f_ FetchSubscriptionsOperation) SetFetchSubscriptionCompletionBlock(value func(subscriptionsBySubscriptionID map[SubscriptionID]Subscription, operationError foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setFetchSubscriptionCompletionBlock:"), value)
 }

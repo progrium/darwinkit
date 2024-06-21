@@ -18,12 +18,12 @@ type _RasterizationRateLayerDescriptorClass struct {
 // An interface definition for the [RasterizationRateLayerDescriptor] class.
 type IRasterizationRateLayerDescriptor interface {
 	objc.IObject
+	HorizontalSampleStorage() *float32
 	VerticalSampleStorage() *float32
 	SampleCount() Size
-	Vertical() RasterizationRateSampleArray
 	MaxSampleCount() Size
 	Horizontal() RasterizationRateSampleArray
-	HorizontalSampleStorage() *float32
+	Vertical() RasterizationRateSampleArray
 }
 
 // The minimum rasterization rates to apply to sections of a layer in the render target. [Full Topic]
@@ -53,20 +53,6 @@ func NewRasterizationRateLayerDescriptorWithSampleCount(sampleCount Size) Raster
 	return instance
 }
 
-func (r_ RasterizationRateLayerDescriptor) InitWithSampleCountHorizontalVertical(sampleCount Size, horizontal *float32, vertical *float32) RasterizationRateLayerDescriptor {
-	rv := objc.Call[RasterizationRateLayerDescriptor](r_, objc.Sel("initWithSampleCount:horizontal:vertical:"), sampleCount, horizontal, vertical)
-	return rv
-}
-
-// Initializes the layer map with the provided grid size and rasterization rates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3131701-initwithsamplecount?language=objc
-func NewRasterizationRateLayerDescriptorWithSampleCountHorizontalVertical(sampleCount Size, horizontal *float32, vertical *float32) RasterizationRateLayerDescriptor {
-	instance := RasterizationRateLayerDescriptorClass.Alloc().InitWithSampleCountHorizontalVertical(sampleCount, horizontal, vertical)
-	instance.Autorelease()
-	return instance
-}
-
 func (rc _RasterizationRateLayerDescriptorClass) Alloc() RasterizationRateLayerDescriptor {
 	rv := objc.Call[RasterizationRateLayerDescriptor](rc, objc.Sel("alloc"))
 	return rv
@@ -87,6 +73,14 @@ func (r_ RasterizationRateLayerDescriptor) Init() RasterizationRateLayerDescript
 	return rv
 }
 
+// A pointer to the storage for the layer map's horizontal rasterization rates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088859-horizontalsamplestorage?language=objc
+func (r_ RasterizationRateLayerDescriptor) HorizontalSampleStorage() *float32 {
+	rv := objc.Call[*float32](r_, objc.Sel("horizontalSampleStorage"))
+	return rv
+}
+
 // A pointer to the storage for the layer map's vertical rasterization rates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088863-verticalsamplestorage?language=objc
@@ -100,14 +94,6 @@ func (r_ RasterizationRateLayerDescriptor) VerticalSampleStorage() *float32 {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088861-samplecount?language=objc
 func (r_ RasterizationRateLayerDescriptor) SampleCount() Size {
 	rv := objc.Call[Size](r_, objc.Sel("sampleCount"))
-	return rv
-}
-
-// The vertical rasterization rates for the layer map’s rows. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088862-vertical?language=objc
-func (r_ RasterizationRateLayerDescriptor) Vertical() RasterizationRateSampleArray {
-	rv := objc.Call[RasterizationRateSampleArray](r_, objc.Sel("vertical"))
 	return rv
 }
 
@@ -127,10 +113,10 @@ func (r_ RasterizationRateLayerDescriptor) Horizontal() RasterizationRateSampleA
 	return rv
 }
 
-// A pointer to the storage for the layer map's horizontal rasterization rates. [Full Topic]
+// The vertical rasterization rates for the layer map’s rows. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088859-horizontalsamplestorage?language=objc
-func (r_ RasterizationRateLayerDescriptor) HorizontalSampleStorage() *float32 {
-	rv := objc.Call[*float32](r_, objc.Sel("horizontalSampleStorage"))
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088862-vertical?language=objc
+func (r_ RasterizationRateLayerDescriptor) Vertical() RasterizationRateSampleArray {
+	rv := objc.Call[RasterizationRateSampleArray](r_, objc.Sel("vertical"))
 	return rv
 }

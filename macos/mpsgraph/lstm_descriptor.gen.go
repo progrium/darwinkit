@@ -18,26 +18,26 @@ type _LSTMDescriptorClass struct {
 // An interface definition for the [LSTMDescriptor] class.
 type ILSTMDescriptor interface {
 	objc.IObject
+	Activation() RNNActivation
+	SetActivation(value RNNActivation)
+	Training() bool
+	SetTraining(value bool)
 	ProduceCell() bool
 	SetProduceCell(value bool)
+	CellGateActivation() RNNActivation
+	SetCellGateActivation(value RNNActivation)
+	OutputGateActivation() RNNActivation
+	SetOutputGateActivation(value RNNActivation)
 	ForgetGateLast() bool
 	SetForgetGateLast(value bool)
 	Bidirectional() bool
 	SetBidirectional(value bool)
 	ForgetGateActivation() RNNActivation
 	SetForgetGateActivation(value RNNActivation)
-	Activation() RNNActivation
-	SetActivation(value RNNActivation)
-	CellGateActivation() RNNActivation
-	SetCellGateActivation(value RNNActivation)
 	Reverse() bool
 	SetReverse(value bool)
 	InputGateActivation() RNNActivation
 	SetInputGateActivation(value RNNActivation)
-	OutputGateActivation() RNNActivation
-	SetOutputGateActivation(value RNNActivation)
-	Training() bool
-	SetTraining(value bool)
 }
 
 //	[Full Topic]
@@ -87,6 +87,36 @@ func (l_ LSTMDescriptor) Init() LSTMDescriptor {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925436-activation?language=objc
+func (l_ LSTMDescriptor) Activation() RNNActivation {
+	rv := objc.Call[RNNActivation](l_, objc.Sel("activation"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925436-activation?language=objc
+func (l_ LSTMDescriptor) SetActivation(value RNNActivation) {
+	objc.Call[objc.Void](l_, objc.Sel("setActivation:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925446-training?language=objc
+func (l_ LSTMDescriptor) Training() bool {
+	rv := objc.Call[bool](l_, objc.Sel("training"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925446-training?language=objc
+func (l_ LSTMDescriptor) SetTraining(value bool) {
+	objc.Call[objc.Void](l_, objc.Sel("setTraining:"), value)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925444-producecell?language=objc
 func (l_ LSTMDescriptor) ProduceCell() bool {
 	rv := objc.Call[bool](l_, objc.Sel("produceCell"))
@@ -98,6 +128,36 @@ func (l_ LSTMDescriptor) ProduceCell() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925444-producecell?language=objc
 func (l_ LSTMDescriptor) SetProduceCell(value bool) {
 	objc.Call[objc.Void](l_, objc.Sel("setProduceCell:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925438-cellgateactivation?language=objc
+func (l_ LSTMDescriptor) CellGateActivation() RNNActivation {
+	rv := objc.Call[RNNActivation](l_, objc.Sel("cellGateActivation"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925438-cellgateactivation?language=objc
+func (l_ LSTMDescriptor) SetCellGateActivation(value RNNActivation) {
+	objc.Call[objc.Void](l_, objc.Sel("setCellGateActivation:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925443-outputgateactivation?language=objc
+func (l_ LSTMDescriptor) OutputGateActivation() RNNActivation {
+	rv := objc.Call[RNNActivation](l_, objc.Sel("outputGateActivation"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925443-outputgateactivation?language=objc
+func (l_ LSTMDescriptor) SetOutputGateActivation(value RNNActivation) {
+	objc.Call[objc.Void](l_, objc.Sel("setOutputGateActivation:"), value)
 }
 
 //	[Full Topic]
@@ -147,36 +207,6 @@ func (l_ LSTMDescriptor) SetForgetGateActivation(value RNNActivation) {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925436-activation?language=objc
-func (l_ LSTMDescriptor) Activation() RNNActivation {
-	rv := objc.Call[RNNActivation](l_, objc.Sel("activation"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925436-activation?language=objc
-func (l_ LSTMDescriptor) SetActivation(value RNNActivation) {
-	objc.Call[objc.Void](l_, objc.Sel("setActivation:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925438-cellgateactivation?language=objc
-func (l_ LSTMDescriptor) CellGateActivation() RNNActivation {
-	rv := objc.Call[RNNActivation](l_, objc.Sel("cellGateActivation"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925438-cellgateactivation?language=objc
-func (l_ LSTMDescriptor) SetCellGateActivation(value RNNActivation) {
-	objc.Call[objc.Void](l_, objc.Sel("setCellGateActivation:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925445-reverse?language=objc
 func (l_ LSTMDescriptor) Reverse() bool {
 	rv := objc.Call[bool](l_, objc.Sel("reverse"))
@@ -203,34 +233,4 @@ func (l_ LSTMDescriptor) InputGateActivation() RNNActivation {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925442-inputgateactivation?language=objc
 func (l_ LSTMDescriptor) SetInputGateActivation(value RNNActivation) {
 	objc.Call[objc.Void](l_, objc.Sel("setInputGateActivation:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925443-outputgateactivation?language=objc
-func (l_ LSTMDescriptor) OutputGateActivation() RNNActivation {
-	rv := objc.Call[RNNActivation](l_, objc.Sel("outputGateActivation"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925443-outputgateactivation?language=objc
-func (l_ LSTMDescriptor) SetOutputGateActivation(value RNNActivation) {
-	objc.Call[objc.Void](l_, objc.Sel("setOutputGateActivation:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925446-training?language=objc
-func (l_ LSTMDescriptor) Training() bool {
-	rv := objc.Call[bool](l_, objc.Sel("training"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphlstmdescriptor/3925446-training?language=objc
-func (l_ LSTMDescriptor) SetTraining(value bool) {
-	objc.Call[objc.Void](l_, objc.Sel("setTraining:"), value)
 }

@@ -12,28 +12,28 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider?language=objc
 type PTextElementProvider interface {
 	// optional
-	SynchronizeToBackingStore(completionHandler func(error foundation.Error))
-	HasSynchronizeToBackingStore() bool
+	ReplaceContentsInRangeWithTextElements(range_ TextRange, textElements []TextElement)
+	HasReplaceContentsInRangeWithTextElements() bool
 
 	// optional
 	AdjustedRangeFromRangeForEditingTextSelection(textRange TextRange, forEditingTextSelection bool) TextRange
 	HasAdjustedRangeFromRangeForEditingTextSelection() bool
 
 	// optional
-	LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject
-	HasLocationFromLocationWithOffset() bool
-
-	// optional
-	ReplaceContentsInRangeWithTextElements(range_ TextRange, textElements []TextElement)
-	HasReplaceContentsInRangeWithTextElements() bool
+	EnumerateTextElementsFromLocationOptionsUsingBlock(textLocation TextLocationObject, options TextContentManagerEnumerationOptions, block func(element TextElement) bool) TextLocationObject
+	HasEnumerateTextElementsFromLocationOptionsUsingBlock() bool
 
 	// optional
 	OffsetFromLocationToLocation(from TextLocationObject, to TextLocationObject) int
 	HasOffsetFromLocationToLocation() bool
 
 	// optional
-	EnumerateTextElementsFromLocationOptionsUsingBlock(textLocation TextLocationObject, options TextContentManagerEnumerationOptions, block func(element TextElement) bool) TextLocationObject
-	HasEnumerateTextElementsFromLocationOptionsUsingBlock() bool
+	SynchronizeToBackingStore(completionHandler func(error foundation.Error))
+	HasSynchronizeToBackingStore() bool
+
+	// optional
+	LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject
+	HasLocationFromLocationWithOffset() bool
 
 	// optional
 	DocumentRange() TextRange
@@ -48,15 +48,15 @@ type TextElementProviderObject struct {
 	objc.Object
 }
 
-func (t_ TextElementProviderObject) HasSynchronizeToBackingStore() bool {
-	return t_.RespondsToSelector(objc.Sel("synchronizeToBackingStore:"))
+func (t_ TextElementProviderObject) HasReplaceContentsInRangeWithTextElements() bool {
+	return t_.RespondsToSelector(objc.Sel("replaceContentsInRange:withTextElements:"))
 }
 
-// Synchronizes changes to the backing store. [Full Topic]
+// Replaces the characters specified by range with the text elements you provide. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809949-synchronizetobackingstore?language=objc
-func (t_ TextElementProviderObject) SynchronizeToBackingStore(completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](t_, objc.Sel("synchronizeToBackingStore:"), completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809948-replacecontentsinrange?language=objc
+func (t_ TextElementProviderObject) ReplaceContentsInRangeWithTextElements(range_ TextRange, textElements []TextElement) {
+	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), range_, textElements)
 }
 
 func (t_ TextElementProviderObject) HasAdjustedRangeFromRangeForEditingTextSelection() bool {
@@ -71,28 +71,17 @@ func (t_ TextElementProviderObject) AdjustedRangeFromRangeForEditingTextSelectio
 	return rv
 }
 
-func (t_ TextElementProviderObject) HasLocationFromLocationWithOffset() bool {
-	return t_.RespondsToSelector(objc.Sel("locationFromLocation:withOffset:"))
+func (t_ TextElementProviderObject) HasEnumerateTextElementsFromLocationOptionsUsingBlock() bool {
+	return t_.RespondsToSelector(objc.Sel("enumerateTextElementsFromLocation:options:usingBlock:"))
 }
 
-// Returns a new location from location with offset you provide. [Full Topic]
+// Enumerates text elements starting at the text location you provide. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809946-locationfromlocation?language=objc
-func (t_ TextElementProviderObject) LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject {
-	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), po0, offset)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809945-enumeratetextelementsfromlocatio?language=objc
+func (t_ TextElementProviderObject) EnumerateTextElementsFromLocationOptionsUsingBlock(textLocation TextLocationObject, options TextContentManagerEnumerationOptions, block func(element TextElement) bool) TextLocationObject {
+	po0 := objc.WrapAsProtocol("NSTextLocation", textLocation)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("enumerateTextElementsFromLocation:options:usingBlock:"), po0, options, block)
 	return rv
-}
-
-func (t_ TextElementProviderObject) HasReplaceContentsInRangeWithTextElements() bool {
-	return t_.RespondsToSelector(objc.Sel("replaceContentsInRange:withTextElements:"))
-}
-
-// Replaces the characters specified by range with the text elements you provide. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809948-replacecontentsinrange?language=objc
-func (t_ TextElementProviderObject) ReplaceContentsInRangeWithTextElements(range_ TextRange, textElements []TextElement) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), range_, textElements)
 }
 
 func (t_ TextElementProviderObject) HasOffsetFromLocationToLocation() bool {
@@ -109,16 +98,27 @@ func (t_ TextElementProviderObject) OffsetFromLocationToLocation(from TextLocati
 	return rv
 }
 
-func (t_ TextElementProviderObject) HasEnumerateTextElementsFromLocationOptionsUsingBlock() bool {
-	return t_.RespondsToSelector(objc.Sel("enumerateTextElementsFromLocation:options:usingBlock:"))
+func (t_ TextElementProviderObject) HasSynchronizeToBackingStore() bool {
+	return t_.RespondsToSelector(objc.Sel("synchronizeToBackingStore:"))
 }
 
-// Enumerates text elements starting at the text location you provide. [Full Topic]
+// Synchronizes changes to the backing store. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809945-enumeratetextelementsfromlocatio?language=objc
-func (t_ TextElementProviderObject) EnumerateTextElementsFromLocationOptionsUsingBlock(textLocation TextLocationObject, options TextContentManagerEnumerationOptions, block func(element TextElement) bool) TextLocationObject {
-	po0 := objc.WrapAsProtocol("NSTextLocation", textLocation)
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("enumerateTextElementsFromLocation:options:usingBlock:"), po0, options, block)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809949-synchronizetobackingstore?language=objc
+func (t_ TextElementProviderObject) SynchronizeToBackingStore(completionHandler func(error foundation.Error)) {
+	objc.Call[objc.Void](t_, objc.Sel("synchronizeToBackingStore:"), completionHandler)
+}
+
+func (t_ TextElementProviderObject) HasLocationFromLocationWithOffset() bool {
+	return t_.RespondsToSelector(objc.Sel("locationFromLocation:withOffset:"))
+}
+
+// Returns a new location from location with offset you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809946-locationfromlocation?language=objc
+func (t_ TextElementProviderObject) LocationFromLocationWithOffset(location TextLocationObject, offset int) TextLocationObject {
+	po0 := objc.WrapAsProtocol("NSTextLocation", location)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), po0, offset)
 	return rv
 }
 

@@ -19,12 +19,12 @@ type _AlignmentFeedbackFilterClass struct {
 // An interface definition for the [AlignmentFeedbackFilter] class.
 type IAlignmentFeedbackFilter interface {
 	objc.IObject
-	AlignmentFeedbackTokenForVerticalMovementInViewPreviousYAlignedYDefaultY(view IView, previousY float64, alignedY float64, defaultY float64) AlignmentFeedbackTokenObject
-	PerformFeedbackPerformanceTime(alignmentFeedbackTokens []PAlignmentFeedbackToken, performanceTime HapticFeedbackPerformanceTime)
 	UpdateWithEvent(event IEvent)
+	UpdateWithPanRecognizer(panRecognizer IPanGestureRecognizer)
+	PerformFeedbackPerformanceTime(alignmentFeedbackTokens []PAlignmentFeedbackToken, performanceTime HapticFeedbackPerformanceTime)
+	AlignmentFeedbackTokenForVerticalMovementInViewPreviousYAlignedYDefaultY(view IView, previousY float64, alignedY float64, defaultY float64) AlignmentFeedbackTokenObject
 	AlignmentFeedbackTokenForMovementInViewPreviousPointAlignedPointDefaultPoint(view IView, previousPoint foundation.Point, alignedPoint foundation.Point, defaultPoint foundation.Point) AlignmentFeedbackTokenObject
 	AlignmentFeedbackTokenForHorizontalMovementInViewPreviousXAlignedXDefaultX(view IView, previousX float64, alignedX float64, defaultX float64) AlignmentFeedbackTokenObject
-	UpdateWithPanRecognizer(panRecognizer IPanGestureRecognizer)
 }
 
 // An object that can filter the movement of an object and provides haptic feedback when alignment occurs. [Full Topic]
@@ -60,12 +60,18 @@ func (a_ AlignmentFeedbackFilter) Init() AlignmentFeedbackFilter {
 	return rv
 }
 
-// Requests a feedback token for the alignment of an object requiring vertical movement only. [Full Topic]
+// Informs the feedback filter about a new event. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1531563-alignmentfeedbacktokenforvertica?language=objc
-func (a_ AlignmentFeedbackFilter) AlignmentFeedbackTokenForVerticalMovementInViewPreviousYAlignedYDefaultY(view IView, previousY float64, alignedY float64, defaultY float64) AlignmentFeedbackTokenObject {
-	rv := objc.Call[AlignmentFeedbackTokenObject](a_, objc.Sel("alignmentFeedbackTokenForVerticalMovementInView:previousY:alignedY:defaultY:"), view, previousY, alignedY, defaultY)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1532257-updatewithevent?language=objc
+func (a_ AlignmentFeedbackFilter) UpdateWithEvent(event IEvent) {
+	objc.Call[objc.Void](a_, objc.Sel("updateWithEvent:"), event)
+}
+
+// Informs the feedback filter about a new pan (drag) gesture recognizer event. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1527844-updatewithpanrecognizer?language=objc
+func (a_ AlignmentFeedbackFilter) UpdateWithPanRecognizer(panRecognizer IPanGestureRecognizer) {
+	objc.Call[objc.Void](a_, objc.Sel("updateWithPanRecognizer:"), panRecognizer)
 }
 
 // Performs the haptic feedback described by one or more alignment feedback tokens. [Full Topic]
@@ -75,11 +81,12 @@ func (a_ AlignmentFeedbackFilter) PerformFeedbackPerformanceTime(alignmentFeedba
 	objc.Call[objc.Void](a_, objc.Sel("performFeedback:performanceTime:"), alignmentFeedbackTokens, performanceTime)
 }
 
-// Informs the feedback filter about a new event. [Full Topic]
+// Requests a feedback token for the alignment of an object requiring vertical movement only. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1532257-updatewithevent?language=objc
-func (a_ AlignmentFeedbackFilter) UpdateWithEvent(event IEvent) {
-	objc.Call[objc.Void](a_, objc.Sel("updateWithEvent:"), event)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1531563-alignmentfeedbacktokenforvertica?language=objc
+func (a_ AlignmentFeedbackFilter) AlignmentFeedbackTokenForVerticalMovementInViewPreviousYAlignedYDefaultY(view IView, previousY float64, alignedY float64, defaultY float64) AlignmentFeedbackTokenObject {
+	rv := objc.Call[AlignmentFeedbackTokenObject](a_, objc.Sel("alignmentFeedbackTokenForVerticalMovementInView:previousY:alignedY:defaultY:"), view, previousY, alignedY, defaultY)
+	return rv
 }
 
 // Requests a feedback token for the alignment of an object requiring horizontal and vertical movement. [Full Topic]
@@ -96,13 +103,6 @@ func (a_ AlignmentFeedbackFilter) AlignmentFeedbackTokenForMovementInViewPreviou
 func (a_ AlignmentFeedbackFilter) AlignmentFeedbackTokenForHorizontalMovementInViewPreviousXAlignedXDefaultX(view IView, previousX float64, alignedX float64, defaultX float64) AlignmentFeedbackTokenObject {
 	rv := objc.Call[AlignmentFeedbackTokenObject](a_, objc.Sel("alignmentFeedbackTokenForHorizontalMovementInView:previousX:alignedX:defaultX:"), view, previousX, alignedX, defaultX)
 	return rv
-}
-
-// Informs the feedback filter about a new pan (drag) gesture recognizer event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalignmentfeedbackfilter/1527844-updatewithpanrecognizer?language=objc
-func (a_ AlignmentFeedbackFilter) UpdateWithPanRecognizer(panRecognizer IPanGestureRecognizer) {
-	objc.Call[objc.Void](a_, objc.Sel("updateWithPanRecognizer:"), panRecognizer)
 }
 
 // Retrieves the event types the filter accepts. [Full Topic]

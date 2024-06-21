@@ -19,11 +19,11 @@ type _CIDiscoveredNodeClass struct {
 // An interface definition for the [CIDiscoveredNode] class.
 type ICIDiscoveredNode interface {
 	objc.IObject
-	SupportsProfiles() bool
-	Destination() EntityRef
 	SupportsProperties() bool
 	MaximumSysExSize() foundation.Number
+	SupportsProfiles() bool
 	DeviceInfo() CIDeviceInfo
+	Destination() EntityRef
 }
 
 // A discovered MIDI-CI node that represents a MIDI source and destination that respond to capability inquiries. [Full Topic]
@@ -59,22 +59,6 @@ func (c_ CIDiscoveredNode) Init() CIDiscoveredNode {
 	return rv
 }
 
-// A Boolean value that indicates whether this node supports MIDI-CI profiles. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580323-supportsprofiles?language=objc
-func (c_ CIDiscoveredNode) SupportsProfiles() bool {
-	rv := objc.Call[bool](c_, objc.Sel("supportsProfiles"))
-	return rv
-}
-
-// The node’s MIDI destination. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580320-destination?language=objc
-func (c_ CIDiscoveredNode) Destination() EntityRef {
-	rv := objc.Call[EntityRef](c_, objc.Sel("destination"))
-	return rv
-}
-
 // A Boolean value that indicates whether this node supports MIDI-CI properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580324-supportsproperties?language=objc
@@ -91,10 +75,26 @@ func (c_ CIDiscoveredNode) MaximumSysExSize() foundation.Number {
 	return rv
 }
 
+// A Boolean value that indicates whether this node supports MIDI-CI profiles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580323-supportsprofiles?language=objc
+func (c_ CIDiscoveredNode) SupportsProfiles() bool {
+	rv := objc.Call[bool](c_, objc.Sel("supportsProfiles"))
+	return rv
+}
+
 // The available MIDI-CI device information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580321-deviceinfo?language=objc
 func (c_ CIDiscoveredNode) DeviceInfo() CIDeviceInfo {
 	rv := objc.Call[CIDeviceInfo](c_, objc.Sel("deviceInfo"))
+	return rv
+}
+
+// The node’s MIDI destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremidi/midicidiscoverednode/3580320-destination?language=objc
+func (c_ CIDiscoveredNode) Destination() EntityRef {
+	rv := objc.Call[EntityRef](c_, objc.Sel("destination"))
 	return rv
 }

@@ -84,21 +84,6 @@ func NewCNNDilatedPoolingMaxGradientWithDeviceKernelWidthKernelHeight(device met
 	return instance
 }
 
-func (c_ CNNDilatedPoolingMaxGradient) InitWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device metal.PDevice, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNDilatedPoolingMaxGradient {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNDilatedPoolingMaxGradient](c_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), po0, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnpoolinggradient/2942347-initwithdevice?language=objc
-func NewCNNDilatedPoolingMaxGradientWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device metal.PDevice, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNDilatedPoolingMaxGradient {
-	instance := CNNDilatedPoolingMaxGradientClass.Alloc().InitWithDeviceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(device, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
-	instance.Autorelease()
-	return instance
-}
-
 func (c_ CNNDilatedPoolingMaxGradient) InitWithDevice(device metal.PDevice) CNNDilatedPoolingMaxGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNDilatedPoolingMaxGradient](c_, objc.Sel("initWithDevice:"), po0)

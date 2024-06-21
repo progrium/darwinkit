@@ -12,16 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate?language=objc
 type PToolbarDelegate interface {
 	// optional
-	ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier
-	HasToolbarDefaultItemIdentifiers() bool
+	ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier
+	HasToolbarAllowedItemIdentifiers() bool
 
 	// optional
 	ToolbarWillAddItem(notification foundation.Notification)
 	HasToolbarWillAddItem() bool
 
 	// optional
-	ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier
-	HasToolbarAllowedItemIdentifiers() bool
+	ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem
+	HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool
+
+	// optional
+	ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier
+	HasToolbarDefaultItemIdentifiers() bool
 
 	// optional
 	ToolbarSelectableItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier
@@ -30,38 +34,34 @@ type PToolbarDelegate interface {
 	// optional
 	ToolbarDidRemoveItem(notification foundation.Notification)
 	HasToolbarDidRemoveItem() bool
-
-	// optional
-	ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem
-	HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool
 }
 
 // A delegate implementation builder for the [PToolbarDelegate] protocol.
 type ToolbarDelegate struct {
-	_ToolbarDefaultItemIdentifiers                         func(toolbar Toolbar) []ToolbarItemIdentifier
-	_ToolbarWillAddItem                                    func(notification foundation.Notification)
 	_ToolbarAllowedItemIdentifiers                         func(toolbar Toolbar) []ToolbarItemIdentifier
+	_ToolbarWillAddItem                                    func(notification foundation.Notification)
+	_ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem
+	_ToolbarDefaultItemIdentifiers                         func(toolbar Toolbar) []ToolbarItemIdentifier
 	_ToolbarSelectableItemIdentifiers                      func(toolbar Toolbar) []ToolbarItemIdentifier
 	_ToolbarDidRemoveItem                                  func(notification foundation.Notification)
-	_ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem
 }
 
-func (di *ToolbarDelegate) HasToolbarDefaultItemIdentifiers() bool {
-	return di._ToolbarDefaultItemIdentifiers != nil
+func (di *ToolbarDelegate) HasToolbarAllowedItemIdentifiers() bool {
+	return di._ToolbarAllowedItemIdentifiers != nil
 }
 
-// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
-func (di *ToolbarDelegate) SetToolbarDefaultItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
-	di._ToolbarDefaultItemIdentifiers = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
+func (di *ToolbarDelegate) SetToolbarAllowedItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
+	di._ToolbarAllowedItemIdentifiers = f
 }
 
-// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
-func (di *ToolbarDelegate) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	return di._ToolbarDefaultItemIdentifiers(toolbar)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
+func (di *ToolbarDelegate) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	return di._ToolbarAllowedItemIdentifiers(toolbar)
 }
 func (di *ToolbarDelegate) HasToolbarWillAddItem() bool {
 	return di._ToolbarWillAddItem != nil
@@ -80,22 +80,39 @@ func (di *ToolbarDelegate) SetToolbarWillAddItem(f func(notification foundation.
 func (di *ToolbarDelegate) ToolbarWillAddItem(notification foundation.Notification) {
 	di._ToolbarWillAddItem(notification)
 }
-func (di *ToolbarDelegate) HasToolbarAllowedItemIdentifiers() bool {
-	return di._ToolbarAllowedItemIdentifiers != nil
+func (di *ToolbarDelegate) HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool {
+	return di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar != nil
 }
 
-// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
+// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
-func (di *ToolbarDelegate) SetToolbarAllowedItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
-	di._ToolbarAllowedItemIdentifiers = f
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
+func (di *ToolbarDelegate) SetToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(f func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem) {
+	di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar = f
 }
 
-// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
+// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
-func (di *ToolbarDelegate) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	return di._ToolbarAllowedItemIdentifiers(toolbar)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
+func (di *ToolbarDelegate) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
+	return di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
+}
+func (di *ToolbarDelegate) HasToolbarDefaultItemIdentifiers() bool {
+	return di._ToolbarDefaultItemIdentifiers != nil
+}
+
+// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
+func (di *ToolbarDelegate) SetToolbarDefaultItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
+	di._ToolbarDefaultItemIdentifiers = f
+}
+
+// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
+func (di *ToolbarDelegate) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	return di._ToolbarDefaultItemIdentifiers(toolbar)
 }
 func (di *ToolbarDelegate) HasToolbarSelectableItemIdentifiers() bool {
 	return di._ToolbarSelectableItemIdentifiers != nil
@@ -131,23 +148,6 @@ func (di *ToolbarDelegate) SetToolbarDidRemoveItem(f func(notification foundatio
 func (di *ToolbarDelegate) ToolbarDidRemoveItem(notification foundation.Notification) {
 	di._ToolbarDidRemoveItem(notification)
 }
-func (di *ToolbarDelegate) HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool {
-	return di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar != nil
-}
-
-// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
-func (di *ToolbarDelegate) SetToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(f func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem) {
-	di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar = f
-}
-
-// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
-func (di *ToolbarDelegate) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
-	return di._ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
-}
 
 // ensure impl type implements protocol interface
 var _ PToolbarDelegate = (*ToolbarDelegateObject)(nil)
@@ -157,15 +157,15 @@ type ToolbarDelegateObject struct {
 	objc.Object
 }
 
-func (t_ ToolbarDelegateObject) HasToolbarDefaultItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.Sel("toolbarDefaultItemIdentifiers:"))
+func (t_ ToolbarDelegateObject) HasToolbarAllowedItemIdentifiers() bool {
+	return t_.RespondsToSelector(objc.Sel("toolbarAllowedItemIdentifiers:"))
 }
 
-// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
-func (t_ ToolbarDelegateObject) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
+func (t_ ToolbarDelegateObject) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -180,15 +180,27 @@ func (t_ ToolbarDelegateObject) ToolbarWillAddItem(notification foundation.Notif
 	objc.Call[objc.Void](t_, objc.Sel("toolbarWillAddItem:"), notification)
 }
 
-func (t_ ToolbarDelegateObject) HasToolbarAllowedItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.Sel("toolbarAllowedItemIdentifiers:"))
+func (t_ ToolbarDelegateObject) HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool {
+	return t_.RespondsToSelector(objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"))
 }
 
-// Asks the delegate to provide the items allowed on the toolbar. [Full Topic]
+// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
-func (t_ ToolbarDelegateObject) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
+func (t_ ToolbarDelegateObject) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
+	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), toolbar, itemIdentifier, flag)
+	return rv
+}
+
+func (t_ ToolbarDelegateObject) HasToolbarDefaultItemIdentifiers() bool {
+	return t_.RespondsToSelector(objc.Sel("toolbarDefaultItemIdentifiers:"))
+}
+
+// Asks the delegate to provide the default items to display on the toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
+func (t_ ToolbarDelegateObject) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -213,16 +225,4 @@ func (t_ ToolbarDelegateObject) HasToolbarDidRemoveItem() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516970-toolbardidremoveitem?language=objc
 func (t_ ToolbarDelegateObject) ToolbarDidRemoveItem(notification foundation.Notification) {
 	objc.Call[objc.Void](t_, objc.Sel("toolbarDidRemoveItem:"), notification)
-}
-
-func (t_ ToolbarDelegateObject) HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool {
-	return t_.RespondsToSelector(objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"))
-}
-
-// Asks the delegate for the toolbar item associated with the specified identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
-func (t_ ToolbarDelegateObject) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
-	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), toolbar, itemIdentifier, flag)
-	return rv
 }

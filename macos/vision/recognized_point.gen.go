@@ -55,20 +55,6 @@ func (r_ RecognizedPoint) Init() RecognizedPoint {
 	return rv
 }
 
-func (r_ RecognizedPoint) InitWithLocation(location coregraphics.Point) RecognizedPoint {
-	rv := objc.Call[RecognizedPoint](r_, objc.Sel("initWithLocation:"), location)
-	return rv
-}
-
-// Creates a point object from the specified Core Graphics point. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548330-initwithlocation?language=objc
-func NewRecognizedPointWithLocation(location coregraphics.Point) RecognizedPoint {
-	instance := RecognizedPointClass.Alloc().InitWithLocation(location)
-	instance.Autorelease()
-	return instance
-}
-
 func (r_ RecognizedPoint) InitWithXY(x float64, y float64) RecognizedPoint {
 	rv := objc.Call[RecognizedPoint](r_, objc.Sel("initWithX:y:"), x, y)
 	return rv
@@ -79,6 +65,20 @@ func (r_ RecognizedPoint) InitWithXY(x float64, y float64) RecognizedPoint {
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548331-initwithx?language=objc
 func NewRecognizedPointWithXY(x float64, y float64) RecognizedPoint {
 	instance := RecognizedPointClass.Alloc().InitWithXY(x, y)
+	instance.Autorelease()
+	return instance
+}
+
+func (r_ RecognizedPoint) InitWithLocation(location coregraphics.Point) RecognizedPoint {
+	rv := objc.Call[RecognizedPoint](r_, objc.Sel("initWithLocation:"), location)
+	return rv
+}
+
+// Creates a point object from the specified Core Graphics point. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548330-initwithlocation?language=objc
+func NewRecognizedPointWithLocation(location coregraphics.Point) RecognizedPoint {
+	instance := RecognizedPointClass.Alloc().InitWithLocation(location)
 	instance.Autorelease()
 	return instance
 }

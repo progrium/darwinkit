@@ -20,17 +20,17 @@ type _NDArrayDescriptorClass struct {
 // An interface definition for the [NDArrayDescriptor] class.
 type INDArrayDescriptor interface {
 	objc.IObject
-	SliceRangeForDimension(dimensionIndex uint) DimensionSlice
-	LengthOfDimension(dimensionIndex uint) uint
-	ReshapeWithShape(shape []foundation.INumber)
-	TransposeDimensionWithDimension(dimensionIndex uint, dimensionIndex2 uint)
 	SliceDimensionWithSubrange(dimensionIndex uint, subRange DimensionSlice)
+	TransposeDimensionWithDimension(dimensionIndex uint, dimensionIndex2 uint)
+	SliceRangeForDimension(dimensionIndex uint) DimensionSlice
 	DimensionOrder() kernel.Vector_uchar16
+	LengthOfDimension(dimensionIndex uint) uint
 	ReshapeWithDimensionCountDimensionSizes(numberOfDimensions uint, dimensionSizes *uint)
-	NumberOfDimensions() uint
-	SetNumberOfDimensions(value uint)
+	ReshapeWithShape(shape []foundation.INumber)
 	DataType() DataType
 	SetDataType(value DataType)
+	NumberOfDimensions() uint
+	SetNumberOfDimensions(value uint)
 }
 
 //	[Full Topic]
@@ -44,30 +44,6 @@ func NDArrayDescriptorFrom(ptr unsafe.Pointer) NDArrayDescriptor {
 	return NDArrayDescriptor{
 		Object: objc.ObjectFrom(ptr),
 	}
-}
-
-func (nc _NDArrayDescriptorClass) DescriptorWithDataTypeDimensionCountDimensionSizes(dataType DataType, numberOfDimensions uint, dimensionSizes *uint) NDArrayDescriptor {
-	rv := objc.Call[NDArrayDescriptor](nc, objc.Sel("descriptorWithDataType:dimensionCount:dimensionSizes:"), dataType, numberOfDimensions, dimensionSizes)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114063-descriptorwithdatatype?language=objc
-func NDArrayDescriptor_DescriptorWithDataTypeDimensionCountDimensionSizes(dataType DataType, numberOfDimensions uint, dimensionSizes *uint) NDArrayDescriptor {
-	return NDArrayDescriptorClass.DescriptorWithDataTypeDimensionCountDimensionSizes(dataType, numberOfDimensions, dimensionSizes)
-}
-
-func (nc _NDArrayDescriptorClass) DescriptorWithDataTypeShape(dataType DataType, shape []foundation.INumber) NDArrayDescriptor {
-	rv := objc.Call[NDArrayDescriptor](nc, objc.Sel("descriptorWithDataType:shape:"), dataType, shape)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3143491-descriptorwithdatatype?language=objc
-func NDArrayDescriptor_DescriptorWithDataTypeShape(dataType DataType, shape []foundation.INumber) NDArrayDescriptor {
-	return NDArrayDescriptorClass.DescriptorWithDataTypeShape(dataType, shape)
 }
 
 func (nc _NDArrayDescriptorClass) DescriptorWithDataTypeDimensionSizes(dataType DataType, dimension0 uint, args ...any) NDArrayDescriptor {
@@ -104,9 +80,31 @@ func (n_ NDArrayDescriptor) Init() NDArrayDescriptor {
 
 //	[Full Topic]
 //
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114069-slicedimension?language=objc
+func (n_ NDArrayDescriptor) SliceDimensionWithSubrange(dimensionIndex uint, subRange DimensionSlice) {
+	objc.Call[objc.Void](n_, objc.Sel("sliceDimension:withSubrange:"), dimensionIndex, subRange)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114071-transposedimension?language=objc
+func (n_ NDArrayDescriptor) TransposeDimensionWithDimension(dimensionIndex uint, dimensionIndex2 uint) {
+	objc.Call[objc.Void](n_, objc.Sel("transposeDimension:withDimension:"), dimensionIndex, dimensionIndex2)
+}
+
+//	[Full Topic]
+//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114070-slicerangefordimension?language=objc
 func (n_ NDArrayDescriptor) SliceRangeForDimension(dimensionIndex uint) DimensionSlice {
 	rv := objc.Call[DimensionSlice](n_, objc.Sel("sliceRangeForDimension:"), dimensionIndex)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114065-dimensionorder?language=objc
+func (n_ NDArrayDescriptor) DimensionOrder() kernel.Vector_uchar16 {
+	rv := objc.Call[kernel.Vector_uchar16](n_, objc.Sel("dimensionOrder"))
 	return rv
 }
 
@@ -120,35 +118,6 @@ func (n_ NDArrayDescriptor) LengthOfDimension(dimensionIndex uint) uint {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3143493-reshapewithshape?language=objc
-func (n_ NDArrayDescriptor) ReshapeWithShape(shape []foundation.INumber) {
-	objc.Call[objc.Void](n_, objc.Sel("reshapeWithShape:"), shape)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114071-transposedimension?language=objc
-func (n_ NDArrayDescriptor) TransposeDimensionWithDimension(dimensionIndex uint, dimensionIndex2 uint) {
-	objc.Call[objc.Void](n_, objc.Sel("transposeDimension:withDimension:"), dimensionIndex, dimensionIndex2)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114069-slicedimension?language=objc
-func (n_ NDArrayDescriptor) SliceDimensionWithSubrange(dimensionIndex uint, subRange DimensionSlice) {
-	objc.Call[objc.Void](n_, objc.Sel("sliceDimension:withSubrange:"), dimensionIndex, subRange)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114065-dimensionorder?language=objc
-func (n_ NDArrayDescriptor) DimensionOrder() kernel.Vector_uchar16 {
-	rv := objc.Call[kernel.Vector_uchar16](n_, objc.Sel("dimensionOrder"))
-	return rv
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3143492-reshapewithdimensioncount?language=objc
 func (n_ NDArrayDescriptor) ReshapeWithDimensionCountDimensionSizes(numberOfDimensions uint, dimensionSizes *uint) {
 	objc.Call[objc.Void](n_, objc.Sel("reshapeWithDimensionCount:dimensionSizes:"), numberOfDimensions, dimensionSizes)
@@ -156,17 +125,9 @@ func (n_ NDArrayDescriptor) ReshapeWithDimensionCountDimensionSizes(numberOfDime
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114067-numberofdimensions?language=objc
-func (n_ NDArrayDescriptor) NumberOfDimensions() uint {
-	rv := objc.Call[uint](n_, objc.Sel("numberOfDimensions"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114067-numberofdimensions?language=objc
-func (n_ NDArrayDescriptor) SetNumberOfDimensions(value uint) {
-	objc.Call[objc.Void](n_, objc.Sel("setNumberOfDimensions:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3143493-reshapewithshape?language=objc
+func (n_ NDArrayDescriptor) ReshapeWithShape(shape []foundation.INumber) {
+	objc.Call[objc.Void](n_, objc.Sel("reshapeWithShape:"), shape)
 }
 
 //	[Full Topic]
@@ -182,4 +143,19 @@ func (n_ NDArrayDescriptor) DataType() DataType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114062-datatype?language=objc
 func (n_ NDArrayDescriptor) SetDataType(value DataType) {
 	objc.Call[objc.Void](n_, objc.Sel("setDataType:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114067-numberofdimensions?language=objc
+func (n_ NDArrayDescriptor) NumberOfDimensions() uint {
+	rv := objc.Call[uint](n_, objc.Sel("numberOfDimensions"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraydescriptor/3114067-numberofdimensions?language=objc
+func (n_ NDArrayDescriptor) SetNumberOfDimensions(value uint) {
+	objc.Call[objc.Void](n_, objc.Sel("setNumberOfDimensions:"), value)
 }

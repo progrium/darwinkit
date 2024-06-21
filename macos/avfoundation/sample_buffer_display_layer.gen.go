@@ -20,13 +20,13 @@ type _SampleBufferDisplayLayerClass struct {
 // An interface definition for the [SampleBufferDisplayLayer] class.
 type ISampleBufferDisplayLayer interface {
 	quartzcore.ILayer
-	PreventsCapture() bool
-	SetPreventsCapture(value bool)
-	ControlTimebase() coremedia.TimebaseRef
-	SetControlTimebase(value coremedia.TimebaseRef)
-	OutputObscuredDueToInsufficientExternalProtection() bool
 	VideoGravity() LayerVideoGravity
 	SetVideoGravity(value LayerVideoGravity)
+	OutputObscuredDueToInsufficientExternalProtection() bool
+	ControlTimebase() coremedia.TimebaseRef
+	SetControlTimebase(value coremedia.TimebaseRef)
+	PreventsCapture() bool
+	SetPreventsCapture(value bool)
 	PreventsDisplaySleepDuringVideoPlayback() bool
 	SetPreventsDisplaySleepDuringVideoPlayback(value bool)
 }
@@ -64,6 +64,32 @@ func (s_ SampleBufferDisplayLayer) Init() SampleBufferDisplayLayer {
 	return rv
 }
 
+func (sc _SampleBufferDisplayLayerClass) Layer() SampleBufferDisplayLayer {
+	rv := objc.Call[SampleBufferDisplayLayer](sc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func SampleBufferDisplayLayer_Layer() SampleBufferDisplayLayer {
+	return SampleBufferDisplayLayerClass.Layer()
+}
+
+func (s_ SampleBufferDisplayLayer) InitWithLayer(layer objc.IObject) SampleBufferDisplayLayer {
+	rv := objc.Call[SampleBufferDisplayLayer](s_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewSampleBufferDisplayLayerWithLayer(layer objc.IObject) SampleBufferDisplayLayer {
+	instance := SampleBufferDisplayLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (s_ SampleBufferDisplayLayer) ModelLayer() SampleBufferDisplayLayer {
 	rv := objc.Call[SampleBufferDisplayLayer](s_, objc.Sel("modelLayer"))
 	return rv
@@ -92,45 +118,27 @@ func SampleBufferDisplayLayer_PresentationLayer() SampleBufferDisplayLayer {
 	return instance
 }
 
-func (s_ SampleBufferDisplayLayer) InitWithLayer(layer objc.IObject) SampleBufferDisplayLayer {
-	rv := objc.Call[SampleBufferDisplayLayer](s_, objc.Sel("initWithLayer:"), layer)
+// A string defining how the video is displayed within the bounds rect of a sample buffer display layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/1387625-videogravity?language=objc
+func (s_ SampleBufferDisplayLayer) VideoGravity() LayerVideoGravity {
+	rv := objc.Call[LayerVideoGravity](s_, objc.Sel("videoGravity"))
 	return rv
 }
 
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+// A string defining how the video is displayed within the bounds rect of a sample buffer display layer. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewSampleBufferDisplayLayerWithLayer(layer objc.IObject) SampleBufferDisplayLayer {
-	instance := SampleBufferDisplayLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/1387625-videogravity?language=objc
+func (s_ SampleBufferDisplayLayer) SetVideoGravity(value LayerVideoGravity) {
+	objc.Call[objc.Void](s_, objc.Sel("setVideoGravity:"), value)
 }
 
-func (sc _SampleBufferDisplayLayerClass) Layer() SampleBufferDisplayLayer {
-	rv := objc.Call[SampleBufferDisplayLayer](sc, objc.Sel("layer"))
+// A Boolean value that indicates whether the system obscures decoded output due to insufficient external protection on the current device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3726154-outputobscuredduetoinsufficiente?language=objc
+func (s_ SampleBufferDisplayLayer) OutputObscuredDueToInsufficientExternalProtection() bool {
+	rv := objc.Call[bool](s_, objc.Sel("outputObscuredDueToInsufficientExternalProtection"))
 	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func SampleBufferDisplayLayer_Layer() SampleBufferDisplayLayer {
-	return SampleBufferDisplayLayerClass.Layer()
-}
-
-// A Boolean value that indicates whether the layer protects against screen capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3081651-preventscapture?language=objc
-func (s_ SampleBufferDisplayLayer) PreventsCapture() bool {
-	rv := objc.Call[bool](s_, objc.Sel("preventsCapture"))
-	return rv
-}
-
-// A Boolean value that indicates whether the layer protects against screen capture. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3081651-preventscapture?language=objc
-func (s_ SampleBufferDisplayLayer) SetPreventsCapture(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setPreventsCapture:"), value)
 }
 
 // The layer's control timebase, which governs how timestamps are interpreted. [Full Topic]
@@ -148,27 +156,19 @@ func (s_ SampleBufferDisplayLayer) SetControlTimebase(value coremedia.TimebaseRe
 	objc.Call[objc.Void](s_, objc.Sel("setControlTimebase:"), value)
 }
 
-// A Boolean value that indicates whether the system obscures decoded output due to insufficient external protection on the current device. [Full Topic]
+// A Boolean value that indicates whether the layer protects against screen capture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3726154-outputobscuredduetoinsufficiente?language=objc
-func (s_ SampleBufferDisplayLayer) OutputObscuredDueToInsufficientExternalProtection() bool {
-	rv := objc.Call[bool](s_, objc.Sel("outputObscuredDueToInsufficientExternalProtection"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3081651-preventscapture?language=objc
+func (s_ SampleBufferDisplayLayer) PreventsCapture() bool {
+	rv := objc.Call[bool](s_, objc.Sel("preventsCapture"))
 	return rv
 }
 
-// A string defining how the video is displayed within the bounds rect of a sample buffer display layer. [Full Topic]
+// A Boolean value that indicates whether the layer protects against screen capture. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/1387625-videogravity?language=objc
-func (s_ SampleBufferDisplayLayer) VideoGravity() LayerVideoGravity {
-	rv := objc.Call[LayerVideoGravity](s_, objc.Sel("videoGravity"))
-	return rv
-}
-
-// A string defining how the video is displayed within the bounds rect of a sample buffer display layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/1387625-videogravity?language=objc
-func (s_ SampleBufferDisplayLayer) SetVideoGravity(value LayerVideoGravity) {
-	objc.Call[objc.Void](s_, objc.Sel("setVideoGravity:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferdisplaylayer/3081651-preventscapture?language=objc
+func (s_ SampleBufferDisplayLayer) SetPreventsCapture(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setPreventsCapture:"), value)
 }
 
 // A Boolean value that indicates whether the layer prevents the system from sleeping during video playback. [Full Topic]

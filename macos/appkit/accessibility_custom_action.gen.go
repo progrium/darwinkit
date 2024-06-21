@@ -20,10 +20,10 @@ type IAccessibilityCustomAction interface {
 	objc.IObject
 	Target() objc.Object
 	SetTarget(value objc.IObject)
-	Selector() objc.Selector
-	SetSelector(value objc.Selector)
 	Name() string
 	SetName(value string)
+	Selector() objc.Selector
+	SetSelector(value objc.Selector)
 	Handler() func() bool
 	SetHandler(value func() bool)
 }
@@ -51,20 +51,6 @@ func (a_ AccessibilityCustomAction) InitWithNameHandler(name string, handler fun
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870120-initwithname?language=objc
 func NewAccessibilityCustomActionWithNameHandler(name string, handler func() bool) AccessibilityCustomAction {
 	instance := AccessibilityCustomActionClass.Alloc().InitWithNameHandler(name, handler)
-	instance.Autorelease()
-	return instance
-}
-
-func (a_ AccessibilityCustomAction) InitWithNameTargetSelector(name string, target objc.IObject, selector objc.Selector) AccessibilityCustomAction {
-	rv := objc.Call[AccessibilityCustomAction](a_, objc.Sel("initWithName:target:selector:"), name, target, selector)
-	return rv
-}
-
-// Creates a custom action object with the specified name, target, and selector. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870146-initwithname?language=objc
-func NewAccessibilityCustomActionWithNameTargetSelector(name string, target objc.IObject, selector objc.Selector) AccessibilityCustomAction {
-	instance := AccessibilityCustomActionClass.Alloc().InitWithNameTargetSelector(name, target, selector)
 	instance.Autorelease()
 	return instance
 }
@@ -104,21 +90,6 @@ func (a_ AccessibilityCustomAction) SetTarget(value objc.IObject) {
 	objc.Call[objc.Void](a_, objc.Sel("setTarget:"), value)
 }
 
-// The method to call on the target to perform the action. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870110-selector?language=objc
-func (a_ AccessibilityCustomAction) Selector() objc.Selector {
-	rv := objc.Call[objc.Selector](a_, objc.Sel("selector"))
-	return rv
-}
-
-// The method to call on the target to perform the action. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870110-selector?language=objc
-func (a_ AccessibilityCustomAction) SetSelector(value objc.Selector) {
-	objc.Call[objc.Void](a_, objc.Sel("setSelector:"), value)
-}
-
 // A localized name that describes the action. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870118-name?language=objc
@@ -132,6 +103,21 @@ func (a_ AccessibilityCustomAction) Name() string {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870118-name?language=objc
 func (a_ AccessibilityCustomAction) SetName(value string) {
 	objc.Call[objc.Void](a_, objc.Sel("setName:"), value)
+}
+
+// The method to call on the target to perform the action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870110-selector?language=objc
+func (a_ AccessibilityCustomAction) Selector() objc.Selector {
+	rv := objc.Call[objc.Selector](a_, objc.Sel("selector"))
+	return rv
+}
+
+// The method to call on the target to perform the action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870110-selector?language=objc
+func (a_ AccessibilityCustomAction) SetSelector(value objc.Selector) {
+	objc.Call[objc.Void](a_, objc.Sel("setSelector:"), value)
 }
 
 // The closure that handles the execution of the action. [Full Topic]

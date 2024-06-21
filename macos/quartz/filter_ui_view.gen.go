@@ -21,9 +21,9 @@ type _FilterUIViewClass struct {
 // An interface definition for the [FilterUIView] class.
 type IFilterUIView interface {
 	appkit.IView
-	InitWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object
-	Filter() coreimage.Filter
 	ObjectController() appkit.ObjectController
+	Filter() coreimage.Filter
+	InitWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object
 }
 
 // The IKFilterUIView class provides a view that contains input parameter controls for a Core Image filter (CIFilter). You need to use this class when providing a user interface for a custom filter. The class creates a view that has an object controller for the given filter. It also retains the filter. [Full Topic]
@@ -73,6 +73,30 @@ func NewFilterUIViewWithFrame(frameRect foundation.Rect) FilterUIView {
 	return instance
 }
 
+// Returns the object controller for the bindings between the filter and its view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504206-objectcontroller?language=objc
+func (f_ FilterUIView) ObjectController() appkit.ObjectController {
+	rv := objc.Call[appkit.ObjectController](f_, objc.Sel("objectController"))
+	return rv
+}
+
+// Returns the Core Image filter associated with the view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504622-filter?language=objc
+func (f_ FilterUIView) Filter() coreimage.Filter {
+	rv := objc.Call[coreimage.Filter](f_, objc.Sel("filter"))
+	return rv
+}
+
+// Initializes a view that contains controls for the input parameters of a filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504139-initwithframe?language=objc
+func (f_ FilterUIView) InitWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("initWithFrame:filter:"), frameRect, inFilter)
+	return rv
+}
+
 // Creates a view that contains controls for the input parameters of a filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504872-viewwithframe?language=objc
@@ -86,28 +110,4 @@ func (fc _FilterUIViewClass) ViewWithFrameFilter(frameRect foundation.Rect, inFi
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504872-viewwithframe?language=objc
 func FilterUIView_ViewWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object {
 	return FilterUIViewClass.ViewWithFrameFilter(frameRect, inFilter)
-}
-
-// Initializes a view that contains controls for the input parameters of a filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504139-initwithframe?language=objc
-func (f_ FilterUIView) InitWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("initWithFrame:filter:"), frameRect, inFilter)
-	return rv
-}
-
-// Returns the Core Image filter associated with the view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504622-filter?language=objc
-func (f_ FilterUIView) Filter() coreimage.Filter {
-	rv := objc.Call[coreimage.Filter](f_, objc.Sel("filter"))
-	return rv
-}
-
-// Returns the object controller for the bindings between the filter and its view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504206-objectcontroller?language=objc
-func (f_ FilterUIView) ObjectController() appkit.ObjectController {
-	rv := objc.Call[appkit.ObjectController](f_, objc.Sel("objectController"))
-	return rv
 }

@@ -18,13 +18,13 @@ type _AssetDownloadConfigurationClass struct {
 // An interface definition for the [AssetDownloadConfiguration] class.
 type IAssetDownloadConfiguration interface {
 	objc.IObject
-	AuxiliaryContentConfigurations() []AssetDownloadContentConfiguration
-	SetAuxiliaryContentConfigurations(value []IAssetDownloadContentConfiguration)
-	PrimaryContentConfiguration() AssetDownloadContentConfiguration
-	ArtworkData() []byte
-	SetArtworkData(value []byte)
 	OptimizesAuxiliaryContentConfigurations() bool
 	SetOptimizesAuxiliaryContentConfigurations(value bool)
+	AuxiliaryContentConfigurations() []AssetDownloadContentConfiguration
+	SetAuxiliaryContentConfigurations(value []IAssetDownloadContentConfiguration)
+	ArtworkData() []byte
+	SetArtworkData(value []byte)
+	PrimaryContentConfiguration() AssetDownloadContentConfiguration
 }
 
 // An object that provides the configuration for a download task. [Full Topic]
@@ -72,6 +72,21 @@ func (a_ AssetDownloadConfiguration) Init() AssetDownloadConfiguration {
 	return rv
 }
 
+// A Boolean value that indicates whether the task optimizes auxiliary content selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750221-optimizesauxiliarycontentconfigu?language=objc
+func (a_ AssetDownloadConfiguration) OptimizesAuxiliaryContentConfigurations() bool {
+	rv := objc.Call[bool](a_, objc.Sel("optimizesAuxiliaryContentConfigurations"))
+	return rv
+}
+
+// A Boolean value that indicates whether the task optimizes auxiliary content selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750221-optimizesauxiliarycontentconfigu?language=objc
+func (a_ AssetDownloadConfiguration) SetOptimizesAuxiliaryContentConfigurations(value bool) {
+	objc.Call[objc.Void](a_, objc.Sel("setOptimizesAuxiliaryContentConfigurations:"), value)
+}
+
 // The configuration for the auxiliary content that the task downloads. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750219-auxiliarycontentconfigurations?language=objc
@@ -85,14 +100,6 @@ func (a_ AssetDownloadConfiguration) AuxiliaryContentConfigurations() []AssetDow
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750219-auxiliarycontentconfigurations?language=objc
 func (a_ AssetDownloadConfiguration) SetAuxiliaryContentConfigurations(value []IAssetDownloadContentConfiguration) {
 	objc.Call[objc.Void](a_, objc.Sel("setAuxiliaryContentConfigurations:"), value)
-}
-
-// The configuration for the primary content that the task downloads. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750222-primarycontentconfiguration?language=objc
-func (a_ AssetDownloadConfiguration) PrimaryContentConfiguration() AssetDownloadContentConfiguration {
-	rv := objc.Call[AssetDownloadContentConfiguration](a_, objc.Sel("primaryContentConfiguration"))
-	return rv
 }
 
 // A data value that represents the asset’s artwork. [Full Topic]
@@ -110,17 +117,10 @@ func (a_ AssetDownloadConfiguration) SetArtworkData(value []byte) {
 	objc.Call[objc.Void](a_, objc.Sel("setArtworkData:"), value)
 }
 
-// A Boolean value that indicates whether the task optimizes auxiliary content selection. [Full Topic]
+// The configuration for the primary content that the task downloads. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750221-optimizesauxiliarycontentconfigu?language=objc
-func (a_ AssetDownloadConfiguration) OptimizesAuxiliaryContentConfigurations() bool {
-	rv := objc.Call[bool](a_, objc.Sel("optimizesAuxiliaryContentConfigurations"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750222-primarycontentconfiguration?language=objc
+func (a_ AssetDownloadConfiguration) PrimaryContentConfiguration() AssetDownloadContentConfiguration {
+	rv := objc.Call[AssetDownloadContentConfiguration](a_, objc.Sel("primaryContentConfiguration"))
 	return rv
-}
-
-// A Boolean value that indicates whether the task optimizes auxiliary content selection. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadconfiguration/3750221-optimizesauxiliarycontentconfigu?language=objc
-func (a_ AssetDownloadConfiguration) SetOptimizesAuxiliaryContentConfigurations(value bool) {
-	objc.Call[objc.Void](a_, objc.Sel("setOptimizesAuxiliaryContentConfigurations:"), value)
 }

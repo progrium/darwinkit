@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel?language=objc
 type PLightTunnel interface {
 	// optional
-	SetRotation(value float32)
-	HasSetRotation() bool
-
-	// optional
-	Rotation() float32
-	HasRotation() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -28,12 +20,12 @@ type PLightTunnel interface {
 	HasInputImage() bool
 
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetRotation(value float32)
+	HasSetRotation() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	Rotation() float32
+	HasRotation() bool
 
 	// optional
 	SetRadius(value float32)
@@ -42,6 +34,14 @@ type PLightTunnel interface {
 	// optional
 	Radius() float32
 	HasRadius() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -50,29 +50,6 @@ var _ PLightTunnel = (*LightTunnelObject)(nil)
 // A concrete type for the [PLightTunnel] protocol.
 type LightTunnelObject struct {
 	objc.Object
-}
-
-func (l_ LightTunnelObject) HasSetRotation() bool {
-	return l_.RespondsToSelector(objc.Sel("setRotation:"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
-func (l_ LightTunnelObject) SetRotation(value float32) {
-	objc.Call[objc.Void](l_, objc.Sel("setRotation:"), value)
-}
-
-func (l_ LightTunnelObject) HasRotation() bool {
-	return l_.RespondsToSelector(objc.Sel("rotation"))
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
-func (l_ LightTunnelObject) Rotation() float32 {
-	rv := objc.Call[float32](l_, objc.Sel("rotation"))
-	return rv
 }
 
 func (l_ LightTunnelObject) HasSetInputImage() bool {
@@ -98,26 +75,26 @@ func (l_ LightTunnelObject) InputImage() Image {
 	return rv
 }
 
-func (l_ LightTunnelObject) HasSetCenter() bool {
-	return l_.RespondsToSelector(objc.Sel("setCenter:"))
+func (l_ LightTunnelObject) HasSetRotation() bool {
+	return l_.RespondsToSelector(objc.Sel("setRotation:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600171-center?language=objc
-func (l_ LightTunnelObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](l_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
+func (l_ LightTunnelObject) SetRotation(value float32) {
+	objc.Call[objc.Void](l_, objc.Sel("setRotation:"), value)
 }
 
-func (l_ LightTunnelObject) HasCenter() bool {
-	return l_.RespondsToSelector(objc.Sel("center"))
+func (l_ LightTunnelObject) HasRotation() bool {
+	return l_.RespondsToSelector(objc.Sel("rotation"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600171-center?language=objc
-func (l_ LightTunnelObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](l_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
+func (l_ LightTunnelObject) Rotation() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("rotation"))
 	return rv
 }
 
@@ -141,5 +118,28 @@ func (l_ LightTunnelObject) HasRadius() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600173-radius?language=objc
 func (l_ LightTunnelObject) Radius() float32 {
 	rv := objc.Call[float32](l_, objc.Sel("radius"))
+	return rv
+}
+
+func (l_ LightTunnelObject) HasSetCenter() bool {
+	return l_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600171-center?language=objc
+func (l_ LightTunnelObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](l_, objc.Sel("setCenter:"), value)
+}
+
+func (l_ LightTunnelObject) HasCenter() bool {
+	return l_.RespondsToSelector(objc.Sel("center"))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600171-center?language=objc
+func (l_ LightTunnelObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](l_, objc.Sel("center"))
 	return rv
 }

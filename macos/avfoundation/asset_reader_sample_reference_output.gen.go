@@ -34,6 +34,18 @@ func AssetReaderSampleReferenceOutputFrom(ptr unsafe.Pointer) AssetReaderSampleR
 	}
 }
 
+func (ac _AssetReaderSampleReferenceOutputClass) AssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
+	rv := objc.Call[AssetReaderSampleReferenceOutput](ac, objc.Sel("assetReaderSampleReferenceOutputWithTrack:"), track)
+	return rv
+}
+
+// Returns a new object that supplies sample references. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadersamplereferenceoutput/1490320-assetreadersamplereferenceoutput?language=objc
+func AssetReaderSampleReferenceOutput_AssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
+	return AssetReaderSampleReferenceOutputClass.AssetReaderSampleReferenceOutputWithTrack(track)
+}
+
 func (a_ AssetReaderSampleReferenceOutput) InitWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
 	rv := objc.Call[AssetReaderSampleReferenceOutput](a_, objc.Sel("initWithTrack:"), track)
 	return rv
@@ -46,18 +58,6 @@ func NewAssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReader
 	instance := AssetReaderSampleReferenceOutputClass.Alloc().InitWithTrack(track)
 	instance.Autorelease()
 	return instance
-}
-
-func (ac _AssetReaderSampleReferenceOutputClass) AssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
-	rv := objc.Call[AssetReaderSampleReferenceOutput](ac, objc.Sel("assetReaderSampleReferenceOutputWithTrack:"), track)
-	return rv
-}
-
-// Returns a new object that supplies sample references. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadersamplereferenceoutput/1490320-assetreadersamplereferenceoutput?language=objc
-func AssetReaderSampleReferenceOutput_AssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
-	return AssetReaderSampleReferenceOutputClass.AssetReaderSampleReferenceOutputWithTrack(track)
 }
 
 func (ac _AssetReaderSampleReferenceOutputClass) Alloc() AssetReaderSampleReferenceOutput {

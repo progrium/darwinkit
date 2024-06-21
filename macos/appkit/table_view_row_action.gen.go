@@ -18,13 +18,13 @@ type _TableViewRowActionClass struct {
 // An interface definition for the [TableViewRowAction] class.
 type ITableViewRowAction interface {
 	objc.IObject
-	Image() Image
-	SetImage(value IImage)
+	Style() TableViewRowActionStyle
 	BackgroundColor() Color
 	SetBackgroundColor(value IColor)
 	Title() string
 	SetTitle(value string)
-	Style() TableViewRowActionStyle
+	Image() Image
+	SetImage(value IImage)
 }
 
 // A single action to present when the user swipes horizontally on a table row. [Full Topic]
@@ -72,19 +72,12 @@ func (t_ TableViewRowAction) Init() TableViewRowAction {
 	return rv
 }
 
-//	[Full Topic]
+// The style applied to the action button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
-func (t_ TableViewRowAction) Image() Image {
-	rv := objc.Call[Image](t_, objc.Sel("image"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401982-style?language=objc
+func (t_ TableViewRowAction) Style() TableViewRowActionStyle {
+	rv := objc.Call[TableViewRowActionStyle](t_, objc.Sel("style"))
 	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
-func (t_ TableViewRowAction) SetImage(value IImage) {
-	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }
 
 // The background color of the action button. [Full Topic]
@@ -117,10 +110,17 @@ func (t_ TableViewRowAction) SetTitle(value string) {
 	objc.Call[objc.Void](t_, objc.Sel("setTitle:"), value)
 }
 
-// The style applied to the action button. [Full Topic]
+//	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401982-style?language=objc
-func (t_ TableViewRowAction) Style() TableViewRowActionStyle {
-	rv := objc.Call[TableViewRowActionStyle](t_, objc.Sel("style"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
+func (t_ TableViewRowAction) Image() Image {
+	rv := objc.Call[Image](t_, objc.Sel("image"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
+func (t_ TableViewRowAction) SetImage(value IImage) {
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }

@@ -51,36 +51,6 @@ func NewMatrixRandomMTGP32WithDevice(device metal.PDevice) MatrixRandomMTGP32 {
 	return instance
 }
 
-func (m_ MatrixRandomMTGP32) InitWithDeviceDestinationDataTypeSeed(device metal.PDevice, destinationDataType DataType, seed uint) MatrixRandomMTGP32 {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomMTGP32](m_, objc.Sel("initWithDevice:destinationDataType:seed:"), po0, destinationDataType, seed)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandommtgp32/3242866-initwithdevice?language=objc
-func NewMatrixRandomMTGP32WithDeviceDestinationDataTypeSeed(device metal.PDevice, destinationDataType DataType, seed uint) MatrixRandomMTGP32 {
-	instance := MatrixRandomMTGP32Class.Alloc().InitWithDeviceDestinationDataTypeSeed(device, destinationDataType, seed)
-	instance.Autorelease()
-	return instance
-}
-
-func (m_ MatrixRandomMTGP32) InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomMTGP32 {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomMTGP32](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, distributionDescriptor)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandommtgp32/3242867-initwithdevice?language=objc
-func NewMatrixRandomMTGP32WithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomMTGP32 {
-	instance := MatrixRandomMTGP32Class.Alloc().InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device, destinationDataType, seed, distributionDescriptor)
-	instance.Autorelease()
-	return instance
-}
-
 func (mc _MatrixRandomMTGP32Class) Alloc() MatrixRandomMTGP32 {
 	rv := objc.Call[MatrixRandomMTGP32](mc, objc.Sel("alloc"))
 	return rv

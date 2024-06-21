@@ -19,21 +19,21 @@ type _SearchFieldClass struct {
 // An interface definition for the [SearchField] class.
 type ISearchField interface {
 	ITextField
-	SendsWholeSearchString() bool
-	SetSendsWholeSearchString(value bool)
-	CancelButtonBounds() foundation.Rect
-	RecentSearches() []string
-	SetRecentSearches(value []string)
-	MaximumRecents() int
-	SetMaximumRecents(value int)
-	SearchButtonBounds() foundation.Rect
-	SearchTextBounds() foundation.Rect
-	SearchMenuTemplate() Menu
-	SetSearchMenuTemplate(value IMenu)
 	RecentsAutosaveName() SearchFieldRecentsAutosaveName
 	SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName)
+	MaximumRecents() int
+	SetMaximumRecents(value int)
+	CancelButtonBounds() foundation.Rect
+	SendsWholeSearchString() bool
+	SetSendsWholeSearchString(value bool)
+	SearchMenuTemplate() Menu
+	SetSearchMenuTemplate(value IMenu)
 	SendsSearchStringImmediately() bool
 	SetSendsSearchStringImmediately(value bool)
+	RecentSearches() []string
+	SetRecentSearches(value []string)
+	SearchTextBounds() foundation.Rect
+	SearchButtonBounds() foundation.Rect
 }
 
 // A text field optimized for performing text-based searches. [Full Topic]
@@ -69,18 +69,6 @@ func (s_ SearchField) Init() SearchField {
 	return rv
 }
 
-func (sc _SearchFieldClass) LabelWithString(stringValue string) SearchField {
-	rv := objc.Call[SearchField](sc, objc.Sel("labelWithString:"), stringValue)
-	return rv
-}
-
-// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
-func SearchField_LabelWithString(stringValue string) SearchField {
-	return SearchFieldClass.LabelWithString(stringValue)
-}
-
 func (sc _SearchFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SearchField {
 	rv := objc.Call[SearchField](sc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
@@ -91,6 +79,18 @@ func (sc _SearchFieldClass) LabelWithAttributedString(attributedStringValue foun
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
 func SearchField_LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SearchField {
 	return SearchFieldClass.LabelWithAttributedString(attributedStringValue)
+}
+
+func (sc _SearchFieldClass) LabelWithString(stringValue string) SearchField {
+	rv := objc.Call[SearchField](sc, objc.Sel("labelWithString:"), stringValue)
+	return rv
+}
+
+// Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func SearchField_LabelWithString(stringValue string) SearchField {
+	return SearchFieldClass.LabelWithString(stringValue)
 }
 
 func (sc _SearchFieldClass) WrappingLabelWithString(stringValue string) SearchField {
@@ -131,42 +131,19 @@ func NewSearchFieldWithFrame(frameRect foundation.Rect) SearchField {
 	return instance
 }
 
-// A Boolean value indicating whether the cell calls its search action method when the user clicks the search button or presses Return, or after each keystroke. [Full Topic]
+// The name under which the search field automatically archives the list of recent search strings. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1533976-sendswholesearchstring?language=objc
-func (s_ SearchField) SendsWholeSearchString() bool {
-	rv := objc.Call[bool](s_, objc.Sel("sendsWholeSearchString"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1530035-recentsautosavename?language=objc
+func (s_ SearchField) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
+	rv := objc.Call[SearchFieldRecentsAutosaveName](s_, objc.Sel("recentsAutosaveName"))
 	return rv
 }
 
-// A Boolean value indicating whether the cell calls its search action method when the user clicks the search button or presses Return, or after each keystroke. [Full Topic]
+// The name under which the search field automatically archives the list of recent search strings. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1533976-sendswholesearchstring?language=objc
-func (s_ SearchField) SetSendsWholeSearchString(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setSendsWholeSearchString:"), value)
-}
-
-// The rectangle for the cancel button within the bounds of the search field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634323-cancelbuttonbounds?language=objc
-func (s_ SearchField) CancelButtonBounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("cancelButtonBounds"))
-	return rv
-}
-
-// The list of recent search strings for the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1531413-recentsearches?language=objc
-func (s_ SearchField) RecentSearches() []string {
-	rv := objc.Call[[]string](s_, objc.Sel("recentSearches"))
-	return rv
-}
-
-// The list of recent search strings for the control. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1531413-recentsearches?language=objc
-func (s_ SearchField) SetRecentSearches(value []string) {
-	objc.Call[objc.Void](s_, objc.Sel("setRecentSearches:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1530035-recentsautosavename?language=objc
+func (s_ SearchField) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
+	objc.Call[objc.Void](s_, objc.Sel("setRecentsAutosaveName:"), value)
 }
 
 // The maximum number of search strings that can appear in the search menu. [Full Topic]
@@ -184,20 +161,27 @@ func (s_ SearchField) SetMaximumRecents(value int) {
 	objc.Call[objc.Void](s_, objc.Sel("setMaximumRecents:"), value)
 }
 
-// The rectangle for the search button within the bounds of the search field. [Full Topic]
+// The rectangle for the cancel button within the bounds of the search field. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634324-searchbuttonbounds?language=objc
-func (s_ SearchField) SearchButtonBounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchButtonBounds"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634323-cancelbuttonbounds?language=objc
+func (s_ SearchField) CancelButtonBounds() foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("cancelButtonBounds"))
 	return rv
 }
 
-// The rectangle for the search text within the bounds of the search field. [Full Topic]
+// A Boolean value indicating whether the cell calls its search action method when the user clicks the search button or presses Return, or after each keystroke. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634325-searchtextbounds?language=objc
-func (s_ SearchField) SearchTextBounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchTextBounds"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1533976-sendswholesearchstring?language=objc
+func (s_ SearchField) SendsWholeSearchString() bool {
+	rv := objc.Call[bool](s_, objc.Sel("sendsWholeSearchString"))
 	return rv
+}
+
+// A Boolean value indicating whether the cell calls its search action method when the user clicks the search button or presses Return, or after each keystroke. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1533976-sendswholesearchstring?language=objc
+func (s_ SearchField) SetSendsWholeSearchString(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setSendsWholeSearchString:"), value)
 }
 
 // The menu object used to dynamically construct the search field’s pop-up icon menu. [Full Topic]
@@ -215,21 +199,6 @@ func (s_ SearchField) SetSearchMenuTemplate(value IMenu) {
 	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), value)
 }
 
-// The name under which the search field automatically archives the list of recent search strings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1530035-recentsautosavename?language=objc
-func (s_ SearchField) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
-	rv := objc.Call[SearchFieldRecentsAutosaveName](s_, objc.Sel("recentsAutosaveName"))
-	return rv
-}
-
-// The name under which the search field automatically archives the list of recent search strings. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1530035-recentsautosavename?language=objc
-func (s_ SearchField) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
-	objc.Call[objc.Void](s_, objc.Sel("setRecentsAutosaveName:"), value)
-}
-
 // A Boolean value indicating whether the cell calls its action method immediately when an appropriate action occurs. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1529081-sendssearchstringimmediately?language=objc
@@ -243,4 +212,35 @@ func (s_ SearchField) SendsSearchStringImmediately() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1529081-sendssearchstringimmediately?language=objc
 func (s_ SearchField) SetSendsSearchStringImmediately(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setSendsSearchStringImmediately:"), value)
+}
+
+// The list of recent search strings for the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1531413-recentsearches?language=objc
+func (s_ SearchField) RecentSearches() []string {
+	rv := objc.Call[[]string](s_, objc.Sel("recentSearches"))
+	return rv
+}
+
+// The list of recent search strings for the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1531413-recentsearches?language=objc
+func (s_ SearchField) SetRecentSearches(value []string) {
+	objc.Call[objc.Void](s_, objc.Sel("setRecentSearches:"), value)
+}
+
+// The rectangle for the search text within the bounds of the search field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634325-searchtextbounds?language=objc
+func (s_ SearchField) SearchTextBounds() foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchTextBounds"))
+	return rv
+}
+
+// The rectangle for the search button within the bounds of the search field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/3634324-searchbuttonbounds?language=objc
+func (s_ SearchField) SearchButtonBounds() foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("searchButtonBounds"))
+	return rv
 }

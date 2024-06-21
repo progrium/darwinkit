@@ -16,16 +16,16 @@ type PCounterSampleBuffer interface {
 	HasResolveCounterRange() bool
 
 	// optional
+	Device() DeviceObject
+	HasDevice() bool
+
+	// optional
 	SampleCount() uint
 	HasSampleCount() bool
 
 	// optional
 	Label() string
 	HasLabel() bool
-
-	// optional
-	Device() DeviceObject
-	HasDevice() bool
 }
 
 // ensure impl type implements protocol interface
@@ -45,6 +45,18 @@ func (c_ CounterSampleBufferObject) HasResolveCounterRange() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebuffer/3194377-resolvecounterrange?language=objc
 func (c_ CounterSampleBufferObject) ResolveCounterRange(range_ foundation.Range) []byte {
 	rv := objc.Call[[]byte](c_, objc.Sel("resolveCounterRange:"), range_)
+	return rv
+}
+
+func (c_ CounterSampleBufferObject) HasDevice() bool {
+	return c_.RespondsToSelector(objc.Sel("device"))
+}
+
+// The GPU device instance that owns the counter sample buffer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebuffer/3081726-device?language=objc
+func (c_ CounterSampleBufferObject) Device() DeviceObject {
+	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }
 
@@ -69,17 +81,5 @@ func (c_ CounterSampleBufferObject) HasLabel() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebuffer/3081727-label?language=objc
 func (c_ CounterSampleBufferObject) Label() string {
 	rv := objc.Call[string](c_, objc.Sel("label"))
-	return rv
-}
-
-func (c_ CounterSampleBufferObject) HasDevice() bool {
-	return c_.RespondsToSelector(objc.Sel("device"))
-}
-
-// The GPU device instance that owns the counter sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebuffer/3081726-device?language=objc
-func (c_ CounterSampleBufferObject) Device() DeviceObject {
-	rv := objc.Call[DeviceObject](c_, objc.Sel("device"))
 	return rv
 }

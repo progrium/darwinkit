@@ -19,24 +19,24 @@ type _FetchDatabaseChangesOperationClass struct {
 // An interface definition for the [FetchDatabaseChangesOperation] class.
 type IFetchDatabaseChangesOperation interface {
 	IDatabaseOperation
-	RecordZoneWithIDWasPurgedBlock() func(zoneID RecordZoneID)
-	SetRecordZoneWithIDWasPurgedBlock(value func(zoneID RecordZoneID))
-	RecordZoneWithIDWasDeletedBlock() func(zoneID RecordZoneID)
-	SetRecordZoneWithIDWasDeletedBlock(value func(zoneID RecordZoneID))
 	ChangeTokenUpdatedBlock() func(serverChangeToken ServerChangeToken)
 	SetChangeTokenUpdatedBlock(value func(serverChangeToken ServerChangeToken))
+	PreviousServerChangeToken() ServerChangeToken
+	SetPreviousServerChangeToken(value IServerChangeToken)
+	FetchDatabaseChangesCompletionBlock() func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)
+	SetFetchDatabaseChangesCompletionBlock(value func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error))
+	RecordZoneWithIDWasDeletedBlock() func(zoneID RecordZoneID)
+	SetRecordZoneWithIDWasDeletedBlock(value func(zoneID RecordZoneID))
 	FetchAllChanges() bool
 	SetFetchAllChanges(value bool)
 	RecordZoneWithIDChangedBlock() func(zoneID RecordZoneID)
 	SetRecordZoneWithIDChangedBlock(value func(zoneID RecordZoneID))
-	FetchDatabaseChangesCompletionBlock() func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)
-	SetFetchDatabaseChangesCompletionBlock(value func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error))
 	RecordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock() func(zoneID RecordZoneID)
 	SetRecordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock(value func(zoneID RecordZoneID))
+	RecordZoneWithIDWasPurgedBlock() func(zoneID RecordZoneID)
+	SetRecordZoneWithIDWasPurgedBlock(value func(zoneID RecordZoneID))
 	ResultsLimit() uint
 	SetResultsLimit(value uint)
-	PreviousServerChangeToken() ServerChangeToken
-	SetPreviousServerChangeToken(value IServerChangeToken)
 }
 
 // An operation that fetches database changes. [Full Topic]
@@ -86,19 +86,49 @@ func NewFetchDatabaseChangesOperation() FetchDatabaseChangesOperation {
 	return FetchDatabaseChangesOperationClass.New()
 }
 
-// The block to execute when CloudKit purges a record zone. [Full Topic]
+// The block to execute when the change token updates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/2866207-recordzonewithidwaspurgedblock?language=objc
-func (f_ FetchDatabaseChangesOperation) RecordZoneWithIDWasPurgedBlock() func(zoneID RecordZoneID) {
-	rv := objc.Call[func(zoneID RecordZoneID)](f_, objc.Sel("recordZoneWithIDWasPurgedBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640467-changetokenupdatedblock?language=objc
+func (f_ FetchDatabaseChangesOperation) ChangeTokenUpdatedBlock() func(serverChangeToken ServerChangeToken) {
+	rv := objc.Call[func(serverChangeToken ServerChangeToken)](f_, objc.Sel("changeTokenUpdatedBlock"))
 	return rv
 }
 
-// The block to execute when CloudKit purges a record zone. [Full Topic]
+// The block to execute when the change token updates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/2866207-recordzonewithidwaspurgedblock?language=objc
-func (f_ FetchDatabaseChangesOperation) SetRecordZoneWithIDWasPurgedBlock(value func(zoneID RecordZoneID)) {
-	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneWithIDWasPurgedBlock:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640467-changetokenupdatedblock?language=objc
+func (f_ FetchDatabaseChangesOperation) SetChangeTokenUpdatedBlock(value func(serverChangeToken ServerChangeToken)) {
+	objc.Call[objc.Void](f_, objc.Sel("setChangeTokenUpdatedBlock:"), value)
+}
+
+// The server change token. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640522-previousserverchangetoken?language=objc
+func (f_ FetchDatabaseChangesOperation) PreviousServerChangeToken() ServerChangeToken {
+	rv := objc.Call[ServerChangeToken](f_, objc.Sel("previousServerChangeToken"))
+	return rv
+}
+
+// The server change token. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640522-previousserverchangetoken?language=objc
+func (f_ FetchDatabaseChangesOperation) SetPreviousServerChangeToken(value IServerChangeToken) {
+	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
+}
+
+// The block to execute when the operation finishes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640434-fetchdatabasechangescompletionbl?language=objc
+func (f_ FetchDatabaseChangesOperation) FetchDatabaseChangesCompletionBlock() func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error) {
+	rv := objc.Call[func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)](f_, objc.Sel("fetchDatabaseChangesCompletionBlock"))
+	return rv
+}
+
+// The block to execute when the operation finishes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640434-fetchdatabasechangescompletionbl?language=objc
+func (f_ FetchDatabaseChangesOperation) SetFetchDatabaseChangesCompletionBlock(value func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setFetchDatabaseChangesCompletionBlock:"), value)
 }
 
 // The block to execute when a record zone no longer exists. [Full Topic]
@@ -114,21 +144,6 @@ func (f_ FetchDatabaseChangesOperation) RecordZoneWithIDWasDeletedBlock() func(z
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640428-recordzonewithidwasdeletedblock?language=objc
 func (f_ FetchDatabaseChangesOperation) SetRecordZoneWithIDWasDeletedBlock(value func(zoneID RecordZoneID)) {
 	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneWithIDWasDeletedBlock:"), value)
-}
-
-// The block to execute when the change token updates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640467-changetokenupdatedblock?language=objc
-func (f_ FetchDatabaseChangesOperation) ChangeTokenUpdatedBlock() func(serverChangeToken ServerChangeToken) {
-	rv := objc.Call[func(serverChangeToken ServerChangeToken)](f_, objc.Sel("changeTokenUpdatedBlock"))
-	return rv
-}
-
-// The block to execute when the change token updates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640467-changetokenupdatedblock?language=objc
-func (f_ FetchDatabaseChangesOperation) SetChangeTokenUpdatedBlock(value func(serverChangeToken ServerChangeToken)) {
-	objc.Call[objc.Void](f_, objc.Sel("setChangeTokenUpdatedBlock:"), value)
 }
 
 // A Boolean value that indicates whether to send repeated requests to the server. [Full Topic]
@@ -161,21 +176,6 @@ func (f_ FetchDatabaseChangesOperation) SetRecordZoneWithIDChangedBlock(value fu
 	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneWithIDChangedBlock:"), value)
 }
 
-// The block to execute when the operation finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640434-fetchdatabasechangescompletionbl?language=objc
-func (f_ FetchDatabaseChangesOperation) FetchDatabaseChangesCompletionBlock() func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error) {
-	rv := objc.Call[func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)](f_, objc.Sel("fetchDatabaseChangesCompletionBlock"))
-	return rv
-}
-
-// The block to execute when the operation finishes. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640434-fetchdatabasechangescompletionbl?language=objc
-func (f_ FetchDatabaseChangesOperation) SetFetchDatabaseChangesCompletionBlock(value func(serverChangeToken ServerChangeToken, moreComing bool, operationError foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setFetchDatabaseChangesCompletionBlock:"), value)
-}
-
 // The block to execute when a user-invoked account reset deletes a record zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/3746820-recordzonewithidwasdeletedduetou?language=objc
@@ -191,6 +191,21 @@ func (f_ FetchDatabaseChangesOperation) SetRecordZoneWithIDWasDeletedDueToUserEn
 	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock:"), value)
 }
 
+// The block to execute when CloudKit purges a record zone. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/2866207-recordzonewithidwaspurgedblock?language=objc
+func (f_ FetchDatabaseChangesOperation) RecordZoneWithIDWasPurgedBlock() func(zoneID RecordZoneID) {
+	rv := objc.Call[func(zoneID RecordZoneID)](f_, objc.Sel("recordZoneWithIDWasPurgedBlock"))
+	return rv
+}
+
+// The block to execute when CloudKit purges a record zone. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/2866207-recordzonewithidwaspurgedblock?language=objc
+func (f_ FetchDatabaseChangesOperation) SetRecordZoneWithIDWasPurgedBlock(value func(zoneID RecordZoneID)) {
+	objc.Call[objc.Void](f_, objc.Sel("setRecordZoneWithIDWasPurgedBlock:"), value)
+}
+
 // The maximum number of results that the operation fetches. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640520-resultslimit?language=objc
@@ -204,19 +219,4 @@ func (f_ FetchDatabaseChangesOperation) ResultsLimit() uint {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640520-resultslimit?language=objc
 func (f_ FetchDatabaseChangesOperation) SetResultsLimit(value uint) {
 	objc.Call[objc.Void](f_, objc.Sel("setResultsLimit:"), value)
-}
-
-// The server change token. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640522-previousserverchangetoken?language=objc
-func (f_ FetchDatabaseChangesOperation) PreviousServerChangeToken() ServerChangeToken {
-	rv := objc.Call[ServerChangeToken](f_, objc.Sel("previousServerChangeToken"))
-	return rv
-}
-
-// The server change token. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640522-previousserverchangetoken?language=objc
-func (f_ FetchDatabaseChangesOperation) SetPreviousServerChangeToken(value IServerChangeToken) {
-	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
 }

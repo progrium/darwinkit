@@ -18,10 +18,10 @@ type _ExtensionPropertyAttributesClass struct {
 // An interface definition for the [ExtensionPropertyAttributes] class.
 type IExtensionPropertyAttributes interface {
 	objc.IObject
-	MinValue() objc.Object
-	MaxValue() objc.Object
 	IsReadOnly() bool
 	ValidValues() []objc.Object
+	MinValue() objc.Object
+	MaxValue() objc.Object
 }
 
 // An object that describes the attributes of a property. [Full Topic]
@@ -37,6 +37,18 @@ func ExtensionPropertyAttributesFrom(ptr unsafe.Pointer) ExtensionPropertyAttrib
 	}
 }
 
+func (ec _ExtensionPropertyAttributesClass) PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
+	rv := objc.Call[ExtensionPropertyAttributes](ec, objc.Sel("propertyAttributesWithMinValue:maxValue:validValues:readOnly:"), minValue, maxValue, validValues, readOnly)
+	return rv
+}
+
+// Returns a new property attributes object with the specified configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915859-propertyattributeswithminvalue?language=objc
+func ExtensionPropertyAttributes_PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
+	return ExtensionPropertyAttributesClass.PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue, maxValue, validValues, readOnly)
+}
+
 func (e_ ExtensionPropertyAttributes) InitWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
 	rv := objc.Call[ExtensionPropertyAttributes](e_, objc.Sel("initWithMinValue:maxValue:validValues:readOnly:"), minValue, maxValue, validValues, readOnly)
 	return rv
@@ -49,18 +61,6 @@ func NewExtensionPropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minVa
 	instance := ExtensionPropertyAttributesClass.Alloc().InitWithMinValueMaxValueValidValuesReadOnly(minValue, maxValue, validValues, readOnly)
 	instance.Autorelease()
 	return instance
-}
-
-func (ec _ExtensionPropertyAttributesClass) PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
-	rv := objc.Call[ExtensionPropertyAttributes](ec, objc.Sel("propertyAttributesWithMinValue:maxValue:validValues:readOnly:"), minValue, maxValue, validValues, readOnly)
-	return rv
-}
-
-// Returns a new property attributes object with the specified configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915859-propertyattributeswithminvalue?language=objc
-func ExtensionPropertyAttributes_PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
-	return ExtensionPropertyAttributesClass.PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue, maxValue, validValues, readOnly)
 }
 
 func (ec _ExtensionPropertyAttributesClass) Alloc() ExtensionPropertyAttributes {
@@ -80,6 +80,22 @@ func NewExtensionPropertyAttributes() ExtensionPropertyAttributes {
 
 func (e_ ExtensionPropertyAttributes) Init() ExtensionPropertyAttributes {
 	rv := objc.Call[ExtensionPropertyAttributes](e_, objc.Sel("init"))
+	return rv
+}
+
+// A Boolean value that indicates whether a property is read-only. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915860-readonly?language=objc
+func (e_ ExtensionPropertyAttributes) IsReadOnly() bool {
+	rv := objc.Call[bool](e_, objc.Sel("isReadOnly"))
+	return rv
+}
+
+// An array of discrete values that this property supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915862-validvalues?language=objc
+func (e_ ExtensionPropertyAttributes) ValidValues() []objc.Object {
+	rv := objc.Call[[]objc.Object](e_, objc.Sel("validValues"))
 	return rv
 }
 
@@ -111,21 +127,5 @@ func ExtensionPropertyAttributes_ReadOnlyPropertyAttribute() ExtensionPropertyAt
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915857-maxvalue?language=objc
 func (e_ ExtensionPropertyAttributes) MaxValue() objc.Object {
 	rv := objc.Call[objc.Object](e_, objc.Sel("maxValue"))
-	return rv
-}
-
-// A Boolean value that indicates whether a property is read-only. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915860-readonly?language=objc
-func (e_ ExtensionPropertyAttributes) IsReadOnly() bool {
-	rv := objc.Call[bool](e_, objc.Sel("isReadOnly"))
-	return rv
-}
-
-// An array of discrete values that this property supports. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionpropertyattributes/3915862-validvalues?language=objc
-func (e_ ExtensionPropertyAttributes) ValidValues() []objc.Object {
-	rv := objc.Call[[]objc.Object](e_, objc.Sel("validValues"))
 	return rv
 }

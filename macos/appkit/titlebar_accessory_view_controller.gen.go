@@ -19,10 +19,10 @@ type _TitlebarAccessoryViewControllerClass struct {
 // An interface definition for the [TitlebarAccessoryViewController] class.
 type ITitlebarAccessoryViewController interface {
 	IViewController
-	IsHidden() bool
-	SetHidden(value bool)
 	AutomaticallyAdjustsSize() bool
 	SetAutomaticallyAdjustsSize(value bool)
+	IsHidden() bool
+	SetHidden(value bool)
 	LayoutAttribute() LayoutAttribute
 	SetLayoutAttribute(value LayoutAttribute)
 	FullScreenMinHeight() float64
@@ -78,21 +78,6 @@ func NewTitlebarAccessoryViewControllerWithNibNameBundle(nibNameOrNil NibName, n
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/2097084-hidden?language=objc
-func (t_ TitlebarAccessoryViewController) IsHidden() bool {
-	rv := objc.Call[bool](t_, objc.Sel("isHidden"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/2097084-hidden?language=objc
-func (t_ TitlebarAccessoryViewController) SetHidden(value bool) {
-	objc.Call[objc.Void](t_, objc.Sel("setHidden:"), value)
-}
-
-//	[Full Topic]
-//
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/3656518-automaticallyadjustssize?language=objc
 func (t_ TitlebarAccessoryViewController) AutomaticallyAdjustsSize() bool {
 	rv := objc.Call[bool](t_, objc.Sel("automaticallyAdjustsSize"))
@@ -104,6 +89,21 @@ func (t_ TitlebarAccessoryViewController) AutomaticallyAdjustsSize() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/3656518-automaticallyadjustssize?language=objc
 func (t_ TitlebarAccessoryViewController) SetAutomaticallyAdjustsSize(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setAutomaticallyAdjustsSize:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/2097084-hidden?language=objc
+func (t_ TitlebarAccessoryViewController) IsHidden() bool {
+	rv := objc.Call[bool](t_, objc.Sel("isHidden"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebaraccessoryviewcontroller/2097084-hidden?language=objc
+func (t_ TitlebarAccessoryViewController) SetHidden(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setHidden:"), value)
 }
 
 // The location of the accessory view, in relation to the window’s title bar. [Full Topic]

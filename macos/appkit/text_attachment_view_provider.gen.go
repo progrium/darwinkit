@@ -20,16 +20,16 @@ type _TextAttachmentViewProviderClass struct {
 // An interface definition for the [TextAttachmentViewProvider] class.
 type ITextAttachmentViewProvider interface {
 	objc.IObject
-	LoadView()
 	AttachmentBoundsForAttributesLocationTextContainerProposedLineFragmentPosition(attributes map[foundation.AttributedStringKey]objc.IObject, location PTextLocation, textContainer ITextContainer, proposedLineFragment coregraphics.Rect, position coregraphics.Point) coregraphics.Rect
 	AttachmentBoundsForAttributesLocationObjectTextContainerProposedLineFragmentPosition(attributes map[foundation.AttributedStringKey]objc.IObject, locationObject objc.IObject, textContainer ITextContainer, proposedLineFragment coregraphics.Rect, position coregraphics.Point) coregraphics.Rect
-	Location() TextLocationObject
-	TextAttachment() TextAttachment
+	LoadView()
 	TextLayoutManager() TextLayoutManager
+	Location() TextLocationObject
 	View() View
 	SetView(value IView)
 	TracksTextAttachmentViewBounds() bool
 	SetTracksTextAttachmentViewBounds(value bool)
+	TextAttachment() TextAttachment
 }
 
 // A container object that associates a text attachment at a particular document location with a view object. [Full Topic]
@@ -80,13 +80,6 @@ func (t_ TextAttachmentViewProvider) Init() TextAttachmentViewProvider {
 	return rv
 }
 
-// Draws the custom view hierarchy that text attachment view subclasses implement. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857596-loadview?language=objc
-func (t_ TextAttachmentViewProvider) LoadView() {
-	objc.Call[objc.Void](t_, objc.Sel("loadView"))
-}
-
 // Returns the layout bounds for an attachment at a specific text location that contains the text attributes you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857594-attachmentboundsforattributes?language=objc
@@ -104,20 +97,11 @@ func (t_ TextAttachmentViewProvider) AttachmentBoundsForAttributesLocationObject
 	return rv
 }
 
-// The location that indicates the start of the text attachment. [Full Topic]
+// Draws the custom view hierarchy that text attachment view subclasses implement. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857597-location?language=objc
-func (t_ TextAttachmentViewProvider) Location() TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("location"))
-	return rv
-}
-
-// The text attachment for this view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857598-textattachment?language=objc
-func (t_ TextAttachmentViewProvider) TextAttachment() TextAttachment {
-	rv := objc.Call[TextAttachment](t_, objc.Sel("textAttachment"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857596-loadview?language=objc
+func (t_ TextAttachmentViewProvider) LoadView() {
+	objc.Call[objc.Void](t_, objc.Sel("loadView"))
 }
 
 // The text layout manager for this view. [Full Topic]
@@ -125,6 +109,14 @@ func (t_ TextAttachmentViewProvider) TextAttachment() TextAttachment {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857599-textlayoutmanager?language=objc
 func (t_ TextAttachmentViewProvider) TextLayoutManager() TextLayoutManager {
 	rv := objc.Call[TextLayoutManager](t_, objc.Sel("textLayoutManager"))
+	return rv
+}
+
+// The location that indicates the start of the text attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857597-location?language=objc
+func (t_ TextAttachmentViewProvider) Location() TextLocationObject {
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("location"))
 	return rv
 }
 
@@ -156,4 +148,12 @@ func (t_ TextAttachmentViewProvider) TracksTextAttachmentViewBounds() bool {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857600-trackstextattachmentviewbounds?language=objc
 func (t_ TextAttachmentViewProvider) SetTracksTextAttachmentViewBounds(value bool) {
 	objc.Call[objc.Void](t_, objc.Sel("setTracksTextAttachmentViewBounds:"), value)
+}
+
+// The text attachment for this view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857598-textattachment?language=objc
+func (t_ TextAttachmentViewProvider) TextAttachment() TextAttachment {
+	rv := objc.Call[TextAttachment](t_, objc.Sel("textAttachment"))
+	return rv
 }

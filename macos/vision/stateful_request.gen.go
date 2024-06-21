@@ -19,8 +19,8 @@ type _StatefulRequestClass struct {
 // An interface definition for the [StatefulRequest] class.
 type IStatefulRequest interface {
 	IImageBasedRequest
-	FrameAnalysisSpacing() coremedia.Time
 	MinimumLatencyFrameCount() int
+	FrameAnalysisSpacing() coremedia.Time
 }
 
 // An abstract request type that builds evidence of a condition over time. [Full Topic]
@@ -84,18 +84,18 @@ func NewStatefulRequestWithCompletionHandler(completionHandler RequestCompletion
 	return instance
 }
 
-// A time value that indicates the interval between analysis operations. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnstatefulrequest/3675676-frameanalysisspacing?language=objc
-func (s_ StatefulRequest) FrameAnalysisSpacing() coremedia.Time {
-	rv := objc.Call[coremedia.Time](s_, objc.Sel("frameAnalysisSpacing"))
-	return rv
-}
-
 // The minimum number of frames a request processes before reporting an observation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnstatefulrequest/3564829-minimumlatencyframecount?language=objc
 func (s_ StatefulRequest) MinimumLatencyFrameCount() int {
 	rv := objc.Call[int](s_, objc.Sel("minimumLatencyFrameCount"))
+	return rv
+}
+
+// A time value that indicates the interval between analysis operations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnstatefulrequest/3675676-frameanalysisspacing?language=objc
+func (s_ StatefulRequest) FrameAnalysisSpacing() coremedia.Time {
+	rv := objc.Call[coremedia.Time](s_, objc.Sel("frameAnalysisSpacing"))
 	return rv
 }

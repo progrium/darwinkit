@@ -19,13 +19,13 @@ type _OperationClass struct {
 // An interface definition for the [Operation] class.
 type IOperation interface {
 	foundation.IOperation
+	OperationID() OperationID
 	LongLivedOperationWasPersistedBlock() func()
 	SetLongLivedOperationWasPersistedBlock(value func())
-	OperationID() OperationID
-	Group() OperationGroup
-	SetGroup(value IOperationGroup)
 	Configuration() OperationConfiguration
 	SetConfiguration(value IOperationConfiguration)
+	Group() OperationGroup
+	SetGroup(value IOperationGroup)
 }
 
 // The abstract base class for all operations that execute in a database. [Full Topic]
@@ -61,6 +61,14 @@ func NewOperation() Operation {
 	return OperationClass.New()
 }
 
+// A unique identifier for a long-lived operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/1452362-operationid?language=objc
+func (o_ Operation) OperationID() OperationID {
+	rv := objc.Call[OperationID](o_, objc.Sel("operationID"))
+	return rv
+}
+
 // The block to execute when the server begins to store callbacks for the long-lived operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/1452366-longlivedoperationwaspersistedbl?language=objc
@@ -76,12 +84,19 @@ func (o_ Operation) SetLongLivedOperationWasPersistedBlock(value func()) {
 	objc.Call[objc.Void](o_, objc.Sel("setLongLivedOperationWasPersistedBlock:"), value)
 }
 
-// A unique identifier for a long-lived operation. [Full Topic]
+// The operation’s configuration. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/1452362-operationid?language=objc
-func (o_ Operation) OperationID() OperationID {
-	rv := objc.Call[OperationID](o_, objc.Sel("operationID"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866213-configuration?language=objc
+func (o_ Operation) Configuration() OperationConfiguration {
+	rv := objc.Call[OperationConfiguration](o_, objc.Sel("configuration"))
 	return rv
+}
+
+// The operation’s configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866213-configuration?language=objc
+func (o_ Operation) SetConfiguration(value IOperationConfiguration) {
+	objc.Call[objc.Void](o_, objc.Sel("setConfiguration:"), value)
 }
 
 // The operation’s group. [Full Topic]
@@ -97,19 +112,4 @@ func (o_ Operation) Group() OperationGroup {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866228-group?language=objc
 func (o_ Operation) SetGroup(value IOperationGroup) {
 	objc.Call[objc.Void](o_, objc.Sel("setGroup:"), value)
-}
-
-// The operation’s configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866213-configuration?language=objc
-func (o_ Operation) Configuration() OperationConfiguration {
-	rv := objc.Call[OperationConfiguration](o_, objc.Sel("configuration"))
-	return rv
-}
-
-// The operation’s configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866213-configuration?language=objc
-func (o_ Operation) SetConfiguration(value IOperationConfiguration) {
-	objc.Call[objc.Void](o_, objc.Sel("setConfiguration:"), value)
 }

@@ -19,9 +19,8 @@ type _AssetDownloadURLSessionClass struct {
 // An interface definition for the [AssetDownloadURLSession] class.
 type IAssetDownloadURLSession interface {
 	foundation.IURLSession
-	AssetDownloadTaskWithConfiguration(downloadConfiguration IAssetDownloadConfiguration) AssetDownloadTask
-	AssetDownloadTaskWithURLAssetAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, title string, artworkData []byte, options map[string]objc.IObject) AssetDownloadTask
 	AggregateAssetDownloadTaskWithURLAssetMediaSelectionsAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, mediaSelections []IMediaSelection, title string, artworkData []byte, options map[string]objc.IObject) AggregateAssetDownloadTask
+	AssetDownloadTaskWithConfiguration(downloadConfiguration IAssetDownloadConfiguration) AssetDownloadTask
 }
 
 // A URL session that creates and executes asset download tasks. [Full Topic]
@@ -57,30 +56,6 @@ func (a_ AssetDownloadURLSession) Init() AssetDownloadURLSession {
 	return rv
 }
 
-// Creates a download task that uses the specified configuration. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/3751761-assetdownloadtaskwithconfigurati?language=objc
-func (a_ AssetDownloadURLSession) AssetDownloadTaskWithConfiguration(downloadConfiguration IAssetDownloadConfiguration) AssetDownloadTask {
-	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithConfiguration:"), downloadConfiguration)
-	return rv
-}
-
-// Creates a download task to download the asset. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1650938-assetdownloadtaskwithurlasset?language=objc
-func (a_ AssetDownloadURLSession) AssetDownloadTaskWithURLAssetAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, title string, artworkData []byte, options map[string]objc.IObject) AssetDownloadTask {
-	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithURLAsset:assetTitle:assetArtworkData:options:"), URLAsset, title, artworkData, options)
-	return rv
-}
-
-// Creates a download task to download the asset and media selections. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/2897242-aggregateassetdownloadtaskwithur?language=objc
-func (a_ AssetDownloadURLSession) AggregateAssetDownloadTaskWithURLAssetMediaSelectionsAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, mediaSelections []IMediaSelection, title string, artworkData []byte, options map[string]objc.IObject) AggregateAssetDownloadTask {
-	rv := objc.Call[AggregateAssetDownloadTask](a_, objc.Sel("aggregateAssetDownloadTaskWithURLAsset:mediaSelections:assetTitle:assetArtworkData:options:"), URLAsset, mediaSelections, title, artworkData, options)
-	return rv
-}
-
 // Creates a URL session to download assets. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1621015-sessionwithconfiguration?language=objc
@@ -110,4 +85,20 @@ func (ac _AssetDownloadURLSessionClass) SessionWithConfigurationAssetDownloadDel
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1621015-sessionwithconfiguration?language=objc
 func AssetDownloadURLSession_SessionWithConfigurationAssetDownloadDelegateObjectDelegateQueue(configuration foundation.IURLSessionConfiguration, delegateObject objc.IObject, delegateQueue foundation.IOperationQueue) AssetDownloadURLSession {
 	return AssetDownloadURLSessionClass.SessionWithConfigurationAssetDownloadDelegateObjectDelegateQueue(configuration, delegateObject, delegateQueue)
+}
+
+// Creates a download task to download the asset and media selections. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/2897242-aggregateassetdownloadtaskwithur?language=objc
+func (a_ AssetDownloadURLSession) AggregateAssetDownloadTaskWithURLAssetMediaSelectionsAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, mediaSelections []IMediaSelection, title string, artworkData []byte, options map[string]objc.IObject) AggregateAssetDownloadTask {
+	rv := objc.Call[AggregateAssetDownloadTask](a_, objc.Sel("aggregateAssetDownloadTaskWithURLAsset:mediaSelections:assetTitle:assetArtworkData:options:"), URLAsset, mediaSelections, title, artworkData, options)
+	return rv
+}
+
+// Creates a download task that uses the specified configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/3751761-assetdownloadtaskwithconfigurati?language=objc
+func (a_ AssetDownloadURLSession) AssetDownloadTaskWithConfiguration(downloadConfiguration IAssetDownloadConfiguration) AssetDownloadTask {
+	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithConfiguration:"), downloadConfiguration)
+	return rv
 }

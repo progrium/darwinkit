@@ -14,12 +14,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource?language=objc
 type PExtensionDeviceSource interface {
 	// optional
-	DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties
-	HasDevicePropertiesForPropertiesError() bool
-
-	// optional
 	SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError unsafe.Pointer) bool
 	HasSetDevicePropertiesError() bool
+
+	// optional
+	DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties
+	HasDevicePropertiesForPropertiesError() bool
 
 	// optional
 	AvailableProperties() foundation.Set
@@ -34,18 +34,6 @@ type ExtensionDeviceSourceObject struct {
 	objc.Object
 }
 
-func (e_ ExtensionDeviceSourceObject) HasDevicePropertiesForPropertiesError() bool {
-	return e_.RespondsToSelector(objc.Sel("devicePropertiesForProperties:error:"))
-}
-
-// Retrieves the state of device properties. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource/3915849-devicepropertiesforproperties?language=objc
-func (e_ ExtensionDeviceSourceObject) DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties {
-	rv := objc.Call[ExtensionDeviceProperties](e_, objc.Sel("devicePropertiesForProperties:error:"), properties, outError)
-	return rv
-}
-
 func (e_ ExtensionDeviceSourceObject) HasSetDevicePropertiesError() bool {
 	return e_.RespondsToSelector(objc.Sel("setDeviceProperties:error:"))
 }
@@ -55,6 +43,18 @@ func (e_ ExtensionDeviceSourceObject) HasSetDevicePropertiesError() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource/3915850-setdeviceproperties?language=objc
 func (e_ ExtensionDeviceSourceObject) SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError unsafe.Pointer) bool {
 	rv := objc.Call[bool](e_, objc.Sel("setDeviceProperties:error:"), deviceProperties, outError)
+	return rv
+}
+
+func (e_ ExtensionDeviceSourceObject) HasDevicePropertiesForPropertiesError() bool {
+	return e_.RespondsToSelector(objc.Sel("devicePropertiesForProperties:error:"))
+}
+
+// Retrieves the state of device properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource/3915849-devicepropertiesforproperties?language=objc
+func (e_ ExtensionDeviceSourceObject) DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties {
+	rv := objc.Call[ExtensionDeviceProperties](e_, objc.Sel("devicePropertiesForProperties:error:"), properties, outError)
 	return rv
 }
 

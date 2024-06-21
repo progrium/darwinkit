@@ -33,16 +33,16 @@ func CNNNeuronLogarithmNodeFrom(ptr unsafe.Pointer) CNNNeuronLogarithmNode {
 	}
 }
 
-func (cc _CNNNeuronLogarithmNodeClass) NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronLogarithmNode {
-	rv := objc.Call[CNNNeuronLogarithmNode](cc, objc.Sel("nodeWithSource:a:b:c:"), sourceNode, a, b, c)
+func (cc _CNNNeuronLogarithmNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronLogarithmNode {
+	rv := objc.Call[CNNNeuronLogarithmNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronlogarithmnode/2951943-nodewithsource?language=objc
-func CNNNeuronLogarithmNode_NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronLogarithmNode {
-	return CNNNeuronLogarithmNodeClass.NodeWithSourceABC(sourceNode, a, b, c)
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronlogarithmnode/2951931-nodewithsource?language=objc
+func CNNNeuronLogarithmNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronLogarithmNode {
+	return CNNNeuronLogarithmNodeClass.NodeWithSource(sourceNode)
 }
 
 func (c_ CNNNeuronLogarithmNode) InitWithSource(sourceNode INNImageNode) CNNNeuronLogarithmNode {
@@ -57,32 +57,6 @@ func NewCNNNeuronLogarithmNodeWithSource(sourceNode INNImageNode) CNNNeuronLogar
 	instance := CNNNeuronLogarithmNodeClass.Alloc().InitWithSource(sourceNode)
 	instance.Autorelease()
 	return instance
-}
-
-func (c_ CNNNeuronLogarithmNode) InitWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronLogarithmNode {
-	rv := objc.Call[CNNNeuronLogarithmNode](c_, objc.Sel("initWithSource:a:b:c:"), sourceNode, a, b, c)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronlogarithmnode/2951939-initwithsource?language=objc
-func NewCNNNeuronLogarithmNodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronLogarithmNode {
-	instance := CNNNeuronLogarithmNodeClass.Alloc().InitWithSourceABC(sourceNode, a, b, c)
-	instance.Autorelease()
-	return instance
-}
-
-func (cc _CNNNeuronLogarithmNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronLogarithmNode {
-	rv := objc.Call[CNNNeuronLogarithmNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronlogarithmnode/2951931-nodewithsource?language=objc
-func CNNNeuronLogarithmNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronLogarithmNode {
-	return CNNNeuronLogarithmNodeClass.NodeWithSource(sourceNode)
 }
 
 func (cc _CNNNeuronLogarithmNodeClass) Alloc() CNNNeuronLogarithmNode {

@@ -22,8 +22,8 @@ type IRecognizedPointsObservation interface {
 	RecognizedPointsForGroupKeyError(groupKey RecognizedPointGroupKey, error unsafe.Pointer) map[RecognizedPointKey]RecognizedPoint
 	RecognizedPointForKeyError(pointKey RecognizedPointKey, error unsafe.Pointer) RecognizedPoint
 	KeypointsMultiArrayAndReturnError(error unsafe.Pointer) coreml.MultiArray
-	AvailableGroupKeys() []RecognizedPointGroupKey
 	AvailableKeys() []RecognizedPointKey
+	AvailableGroupKeys() []RecognizedPointGroupKey
 }
 
 // An observation that provides the points the analysis recognized. [Full Topic]
@@ -83,18 +83,18 @@ func (r_ RecognizedPointsObservation) KeypointsMultiArrayAndReturnError(error un
 	return rv
 }
 
-// The available point group keys in the observation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3618960-availablegroupkeys?language=objc
-func (r_ RecognizedPointsObservation) AvailableGroupKeys() []RecognizedPointGroupKey {
-	rv := objc.Call[[]RecognizedPointGroupKey](r_, objc.Sel("availableGroupKeys"))
-	return rv
-}
-
 // The available point keys in the observation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3656174-availablekeys?language=objc
 func (r_ RecognizedPointsObservation) AvailableKeys() []RecognizedPointKey {
 	rv := objc.Call[[]RecognizedPointKey](r_, objc.Sel("availableKeys"))
+	return rv
+}
+
+// The available point group keys in the observation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3618960-availablegroupkeys?language=objc
+func (r_ RecognizedPointsObservation) AvailableGroupKeys() []RecognizedPointGroupKey {
+	rv := objc.Call[[]RecognizedPointGroupKey](r_, objc.Sel("availableGroupKeys"))
 	return rv
 }

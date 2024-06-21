@@ -22,10 +22,10 @@ type IMeasurementFormatter interface {
 	StringFromMeasurement(measurement IMeasurement) string
 	UnitOptions() MeasurementFormatterUnitOptions
 	SetUnitOptions(value MeasurementFormatterUnitOptions)
-	UnitStyle() FormattingUnitStyle
-	SetUnitStyle(value FormattingUnitStyle)
 	Locale() Locale
 	SetLocale(value ILocale)
+	UnitStyle() FormattingUnitStyle
+	SetUnitStyle(value FormattingUnitStyle)
 	NumberFormatter() NumberFormatter
 	SetNumberFormatter(value INumberFormatter)
 }
@@ -94,21 +94,6 @@ func (m_ MeasurementFormatter) SetUnitOptions(value MeasurementFormatterUnitOpti
 	objc.Call[objc.Void](m_, objc.Sel("setUnitOptions:"), value)
 }
 
-// The unit style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
-func (m_ MeasurementFormatter) UnitStyle() FormattingUnitStyle {
-	rv := objc.Call[FormattingUnitStyle](m_, objc.Sel("unitStyle"))
-	return rv
-}
-
-// The unit style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
-func (m_ MeasurementFormatter) SetUnitStyle(value FormattingUnitStyle) {
-	objc.Call[objc.Void](m_, objc.Sel("setUnitStyle:"), value)
-}
-
 // The locale of the formatter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642061-locale?language=objc
@@ -122,6 +107,21 @@ func (m_ MeasurementFormatter) Locale() Locale {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642061-locale?language=objc
 func (m_ MeasurementFormatter) SetLocale(value ILocale) {
 	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), value)
+}
+
+// The unit style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
+func (m_ MeasurementFormatter) UnitStyle() FormattingUnitStyle {
+	rv := objc.Call[FormattingUnitStyle](m_, objc.Sel("unitStyle"))
+	return rv
+}
+
+// The unit style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
+func (m_ MeasurementFormatter) SetUnitStyle(value FormattingUnitStyle) {
+	objc.Call[objc.Void](m_, objc.Sel("setUnitStyle:"), value)
 }
 
 // The number formatter used to format the quantity of a measurement. [Full Topic]

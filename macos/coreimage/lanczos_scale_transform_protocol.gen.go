@@ -11,20 +11,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform?language=objc
 type PLanczosScaleTransform interface {
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
-
-	// optional
-	InputImage() Image
-	HasInputImage() bool
-
-	// optional
 	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
 	Scale() float32
 	HasScale() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetAspectRatio(value float32)
@@ -41,29 +41,6 @@ var _ PLanczosScaleTransform = (*LanczosScaleTransformObject)(nil)
 // A concrete type for the [PLanczosScaleTransform] protocol.
 type LanczosScaleTransformObject struct {
 	objc.Object
-}
-
-func (l_ LanczosScaleTransformObject) HasSetInputImage() bool {
-	return l_.RespondsToSelector(objc.Sel("setInputImage:"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228517-inputimage?language=objc
-func (l_ LanczosScaleTransformObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
-}
-
-func (l_ LanczosScaleTransformObject) HasInputImage() bool {
-	return l_.RespondsToSelector(objc.Sel("inputImage"))
-}
-
-// The image to use as an input image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228517-inputimage?language=objc
-func (l_ LanczosScaleTransformObject) InputImage() Image {
-	rv := objc.Call[Image](l_, objc.Sel("inputImage"))
-	return rv
 }
 
 func (l_ LanczosScaleTransformObject) HasSetScale() bool {
@@ -86,6 +63,29 @@ func (l_ LanczosScaleTransformObject) HasScale() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228518-scale?language=objc
 func (l_ LanczosScaleTransformObject) Scale() float32 {
 	rv := objc.Call[float32](l_, objc.Sel("scale"))
+	return rv
+}
+
+func (l_ LanczosScaleTransformObject) HasSetInputImage() bool {
+	return l_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228517-inputimage?language=objc
+func (l_ LanczosScaleTransformObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
+}
+
+func (l_ LanczosScaleTransformObject) HasInputImage() bool {
+	return l_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228517-inputimage?language=objc
+func (l_ LanczosScaleTransformObject) InputImage() Image {
+	rv := objc.Call[Image](l_, objc.Sel("inputImage"))
 	return rv
 }
 

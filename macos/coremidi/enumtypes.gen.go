@@ -269,12 +269,3 @@ const (
 	KUtilityStatusJitterReductionTimestamp UtilityStatus = 2
 	KUtilityStatusNOOP                     UtilityStatus = 0
 )
-
-// An invalid unique identifier. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coremidi/1495307-kmidiinvaliduniqueid?language=objc
-type KInvalidUniqueID UniqueID
-
-const (
-	KKInvalidUniqueID KInvalidUniqueID = 0
-)

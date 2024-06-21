@@ -18,18 +18,18 @@ type _GroupTouchBarItemClass struct {
 // An interface definition for the [GroupTouchBarItem] class.
 type IGroupTouchBarItem interface {
 	ITouchBarItem
-	PrefersEqualWidths() bool
-	SetPrefersEqualWidths(value bool)
 	SetCustomizationLabel(value string)
-	EffectiveCompressionOptions() UserInterfaceCompressionOptions
 	PreferredItemWidth() float64
 	SetPreferredItemWidth(value float64)
-	GroupTouchBar() TouchBar
-	SetGroupTouchBar(value ITouchBar)
-	GroupUserInterfaceLayoutDirection() UserInterfaceLayoutDirection
-	SetGroupUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection)
+	EffectiveCompressionOptions() UserInterfaceCompressionOptions
 	PrioritizedCompressionOptions() []UserInterfaceCompressionOptions
 	SetPrioritizedCompressionOptions(value []IUserInterfaceCompressionOptions)
+	GroupUserInterfaceLayoutDirection() UserInterfaceLayoutDirection
+	SetGroupUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection)
+	GroupTouchBar() TouchBar
+	SetGroupTouchBar(value ITouchBar)
+	PrefersEqualWidths() bool
+	SetPrefersEqualWidths(value bool)
 }
 
 // A bar item that provides a bar to contain other items. [Full Topic]
@@ -69,18 +69,6 @@ func GroupTouchBarItem_AlertStyleGroupItemWithIdentifier(identifier TouchBarItem
 	return GroupTouchBarItemClass.AlertStyleGroupItemWithIdentifier(identifier)
 }
 
-func (gc _GroupTouchBarItemClass) GroupItemWithIdentifierItemsAllowedCompressionOptions(identifier TouchBarItemIdentifier, items []ITouchBarItem, allowedCompressionOptions IUserInterfaceCompressionOptions) GroupTouchBarItem {
-	rv := objc.Call[GroupTouchBarItem](gc, objc.Sel("groupItemWithIdentifier:items:allowedCompressionOptions:"), identifier, items, allowedCompressionOptions)
-	return rv
-}
-
-// Initializes and returns a group item whose bar is constructed from the supplied items, and with the specified compression options. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909988-groupitemwithidentifier?language=objc
-func GroupTouchBarItem_GroupItemWithIdentifierItemsAllowedCompressionOptions(identifier TouchBarItemIdentifier, items []ITouchBarItem, allowedCompressionOptions IUserInterfaceCompressionOptions) GroupTouchBarItem {
-	return GroupTouchBarItemClass.GroupItemWithIdentifierItemsAllowedCompressionOptions(identifier, items, allowedCompressionOptions)
-}
-
 func (gc _GroupTouchBarItemClass) Alloc() GroupTouchBarItem {
 	rv := objc.Call[GroupTouchBarItem](gc, objc.Sel("alloc"))
 	return rv
@@ -115,26 +103,26 @@ func NewGroupTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) Group
 	return instance
 }
 
-// A Boolean value that specifies that items should have equal widths when possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909972-prefersequalwidths?language=objc
-func (g_ GroupTouchBarItem) PrefersEqualWidths() bool {
-	rv := objc.Call[bool](g_, objc.Sel("prefersEqualWidths"))
-	return rv
-}
-
-// A Boolean value that specifies that items should have equal widths when possible. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909972-prefersequalwidths?language=objc
-func (g_ GroupTouchBarItem) SetPrefersEqualWidths(value bool) {
-	objc.Call[objc.Void](g_, objc.Sel("setPrefersEqualWidths:"), value)
-}
-
 // The user-visible string identifying this item during bar customization. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544877-customizationlabel?language=objc
 func (g_ GroupTouchBarItem) SetCustomizationLabel(value string) {
 	objc.Call[objc.Void](g_, objc.Sel("setCustomizationLabel:"), value)
+}
+
+// The preferred width for items in the group when prefersEqualWidths is YES. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909975-preferreditemwidth?language=objc
+func (g_ GroupTouchBarItem) PreferredItemWidth() float64 {
+	rv := objc.Call[float64](g_, objc.Sel("preferredItemWidth"))
+	return rv
+}
+
+// The preferred width for items in the group when prefersEqualWidths is YES. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909975-preferreditemwidth?language=objc
+func (g_ GroupTouchBarItem) SetPreferredItemWidth(value float64) {
+	objc.Call[objc.Void](g_, objc.Sel("setPreferredItemWidth:"), value)
 }
 
 // The compression options that are currently active on the group. [Full Topic]
@@ -145,34 +133,19 @@ func (g_ GroupTouchBarItem) EffectiveCompressionOptions() UserInterfaceCompressi
 	return rv
 }
 
-// The preferred width for items in the group when [appkit/nsgrouptouchbaritem/prefersequalwidths] is YES. [Full Topic]
+// The allowed compression options, in the order they should be applied. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909975-preferreditemwidth?language=objc
-func (g_ GroupTouchBarItem) PreferredItemWidth() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("preferredItemWidth"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909968-prioritizedcompressionoptions?language=objc
+func (g_ GroupTouchBarItem) PrioritizedCompressionOptions() []UserInterfaceCompressionOptions {
+	rv := objc.Call[[]UserInterfaceCompressionOptions](g_, objc.Sel("prioritizedCompressionOptions"))
 	return rv
 }
 
-// The preferred width for items in the group when [appkit/nsgrouptouchbaritem/prefersequalwidths] is YES. [Full Topic]
+// The allowed compression options, in the order they should be applied. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909975-preferreditemwidth?language=objc
-func (g_ GroupTouchBarItem) SetPreferredItemWidth(value float64) {
-	objc.Call[objc.Void](g_, objc.Sel("setPreferredItemWidth:"), value)
-}
-
-// A bar that holds this group's items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544717-grouptouchbar?language=objc
-func (g_ GroupTouchBarItem) GroupTouchBar() TouchBar {
-	rv := objc.Call[TouchBar](g_, objc.Sel("groupTouchBar"))
-	return rv
-}
-
-// A bar that holds this group's items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544717-grouptouchbar?language=objc
-func (g_ GroupTouchBarItem) SetGroupTouchBar(value ITouchBar) {
-	objc.Call[objc.Void](g_, objc.Sel("setGroupTouchBar:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909968-prioritizedcompressionoptions?language=objc
+func (g_ GroupTouchBarItem) SetPrioritizedCompressionOptions(value []IUserInterfaceCompressionOptions) {
+	objc.Call[objc.Void](g_, objc.Sel("setPrioritizedCompressionOptions:"), value)
 }
 
 // The user interface direction that controls the layout order of the items. [Full Topic]
@@ -190,17 +163,32 @@ func (g_ GroupTouchBarItem) SetGroupUserInterfaceLayoutDirection(value UserInter
 	objc.Call[objc.Void](g_, objc.Sel("setGroupUserInterfaceLayoutDirection:"), value)
 }
 
-// The allowed compression options, in the order they should be applied. [Full Topic]
+// A bar that holds this group's items. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909968-prioritizedcompressionoptions?language=objc
-func (g_ GroupTouchBarItem) PrioritizedCompressionOptions() []UserInterfaceCompressionOptions {
-	rv := objc.Call[[]UserInterfaceCompressionOptions](g_, objc.Sel("prioritizedCompressionOptions"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544717-grouptouchbar?language=objc
+func (g_ GroupTouchBarItem) GroupTouchBar() TouchBar {
+	rv := objc.Call[TouchBar](g_, objc.Sel("groupTouchBar"))
 	return rv
 }
 
-// The allowed compression options, in the order they should be applied. [Full Topic]
+// A bar that holds this group's items. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909968-prioritizedcompressionoptions?language=objc
-func (g_ GroupTouchBarItem) SetPrioritizedCompressionOptions(value []IUserInterfaceCompressionOptions) {
-	objc.Call[objc.Void](g_, objc.Sel("setPrioritizedCompressionOptions:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544717-grouptouchbar?language=objc
+func (g_ GroupTouchBarItem) SetGroupTouchBar(value ITouchBar) {
+	objc.Call[objc.Void](g_, objc.Sel("setGroupTouchBar:"), value)
+}
+
+// A Boolean value that specifies that items should have equal widths when possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909972-prefersequalwidths?language=objc
+func (g_ GroupTouchBarItem) PrefersEqualWidths() bool {
+	rv := objc.Call[bool](g_, objc.Sel("prefersEqualWidths"))
+	return rv
+}
+
+// A Boolean value that specifies that items should have equal widths when possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2909972-prefersequalwidths?language=objc
+func (g_ GroupTouchBarItem) SetPrefersEqualWidths(value bool) {
+	objc.Call[objc.Void](g_, objc.Sel("setPrefersEqualWidths:"), value)
 }

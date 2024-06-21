@@ -19,11 +19,11 @@ type _MergeConflictClass struct {
 type IMergeConflict interface {
 	objc.IObject
 	CachedSnapshot() map[string]objc.Object
-	SourceObject() ManagedObject
 	OldVersionNumber() uint
-	PersistedSnapshot() map[string]objc.Object
+	SourceObject() ManagedObject
 	NewVersionNumber() uint
 	ObjectSnapshot() map[string]objc.Object
+	PersistedSnapshot() map[string]objc.Object
 }
 
 // An encapsulation of conflicts that occur during an attempt to save changes in a managed object context. [Full Topic]
@@ -81,14 +81,6 @@ func (m_ MergeConflict) CachedSnapshot() map[string]objc.Object {
 	return rv
 }
 
-// The source object for the conflict. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506809-sourceobject?language=objc
-func (m_ MergeConflict) SourceObject() ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("sourceObject"))
-	return rv
-}
-
 // The old version number for the change. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506271-oldversionnumber?language=objc
@@ -97,11 +89,11 @@ func (m_ MergeConflict) OldVersionNumber() uint {
 	return rv
 }
 
-// A dictionary containing the values of the source object held in the persistent store. [Full Topic]
+// The source object for the conflict. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506412-persistedsnapshot?language=objc
-func (m_ MergeConflict) PersistedSnapshot() map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](m_, objc.Sel("persistedSnapshot"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506809-sourceobject?language=objc
+func (m_ MergeConflict) SourceObject() ManagedObject {
+	rv := objc.Call[ManagedObject](m_, objc.Sel("sourceObject"))
 	return rv
 }
 
@@ -118,5 +110,13 @@ func (m_ MergeConflict) NewVersionNumber() uint {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506454-objectsnapshot?language=objc
 func (m_ MergeConflict) ObjectSnapshot() map[string]objc.Object {
 	rv := objc.Call[map[string]objc.Object](m_, objc.Sel("objectSnapshot"))
+	return rv
+}
+
+// A dictionary containing the values of the source object held in the persistent store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506412-persistedsnapshot?language=objc
+func (m_ MergeConflict) PersistedSnapshot() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](m_, objc.Sel("persistedSnapshot"))
 	return rv
 }

@@ -12,14 +12,6 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace?language=objc
 type PColorCubeWithColorSpace interface {
 	// optional
-	SetCubeData(value []byte)
-	HasSetCubeData() bool
-
-	// optional
-	CubeData() []byte
-	HasCubeData() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
@@ -36,6 +28,14 @@ type PColorCubeWithColorSpace interface {
 	HasCubeDimension() bool
 
 	// optional
+	SetCubeData(value []byte)
+	HasSetCubeData() bool
+
+	// optional
+	CubeData() []byte
+	HasCubeData() bool
+
+	// optional
 	SetColorSpace(value coregraphics.ColorSpaceRef)
 	HasSetColorSpace() bool
 
@@ -50,29 +50,6 @@ var _ PColorCubeWithColorSpace = (*ColorCubeWithColorSpaceObject)(nil)
 // A concrete type for the [PColorCubeWithColorSpace] protocol.
 type ColorCubeWithColorSpaceObject struct {
 	objc.Object
-}
-
-func (c_ ColorCubeWithColorSpaceObject) HasSetCubeData() bool {
-	return c_.RespondsToSelector(objc.Sel("setCubeData:"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228139-cubedata?language=objc
-func (c_ ColorCubeWithColorSpaceObject) SetCubeData(value []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("setCubeData:"), value)
-}
-
-func (c_ ColorCubeWithColorSpaceObject) HasCubeData() bool {
-	return c_.RespondsToSelector(objc.Sel("cubeData"))
-}
-
-// The cube texture data to use as a color lookup table. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228139-cubedata?language=objc
-func (c_ ColorCubeWithColorSpaceObject) CubeData() []byte {
-	rv := objc.Call[[]byte](c_, objc.Sel("cubeData"))
-	return rv
 }
 
 func (c_ ColorCubeWithColorSpaceObject) HasSetInputImage() bool {
@@ -118,6 +95,29 @@ func (c_ ColorCubeWithColorSpaceObject) HasCubeDimension() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228140-cubedimension?language=objc
 func (c_ ColorCubeWithColorSpaceObject) CubeDimension() float32 {
 	rv := objc.Call[float32](c_, objc.Sel("cubeDimension"))
+	return rv
+}
+
+func (c_ ColorCubeWithColorSpaceObject) HasSetCubeData() bool {
+	return c_.RespondsToSelector(objc.Sel("setCubeData:"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228139-cubedata?language=objc
+func (c_ ColorCubeWithColorSpaceObject) SetCubeData(value []byte) {
+	objc.Call[objc.Void](c_, objc.Sel("setCubeData:"), value)
+}
+
+func (c_ ColorCubeWithColorSpaceObject) HasCubeData() bool {
+	return c_.RespondsToSelector(objc.Sel("cubeData"))
+}
+
+// The cube texture data to use as a color lookup table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228139-cubedata?language=objc
+func (c_ ColorCubeWithColorSpaceObject) CubeData() []byte {
+	rv := objc.Call[[]byte](c_, objc.Sel("cubeData"))
 	return rv
 }
 

@@ -21,35 +21,35 @@ type IEntityDescription interface {
 	objc.IObject
 	RelationshipsWithDestinationEntity(entity IEntityDescription) []RelationshipDescription
 	IsKindOfEntity(entity IEntityDescription) bool
-	IsAbstract() bool
-	SetAbstract(value bool)
-	Subentities() []EntityDescription
-	SetSubentities(value []IEntityDescription)
+	ManagedObjectModel() ManagedObjectModel
+	PropertiesByName() map[string]PropertyDescription
 	Name() string
 	SetName(value string)
-	AttributesByName() map[string]AttributeDescription
 	VersionHash() []byte
-	Indexes() []FetchIndexDescription
-	SetIndexes(value []IFetchIndexDescription)
-	PropertiesByName() map[string]PropertyDescription
-	RenamingIdentifier() string
-	SetRenamingIdentifier(value string)
-	ManagedObjectModel() ManagedObjectModel
 	Properties() []PropertyDescription
 	SetProperties(value []IPropertyDescription)
-	Superentity() EntityDescription
 	UniquenessConstraints() [][]objc.Object
 	SetUniquenessConstraints(value [][]objc.IObject)
-	SubentitiesByName() map[string]EntityDescription
-	CoreSpotlightDisplayNameExpression() foundation.Expression
-	SetCoreSpotlightDisplayNameExpression(value foundation.IExpression)
-	ManagedObjectClassName() string
-	SetManagedObjectClassName(value string)
-	RelationshipsByName() map[string]RelationshipDescription
 	UserInfo() foundation.Dictionary
 	SetUserInfo(value foundation.Dictionary)
+	ManagedObjectClassName() string
+	SetManagedObjectClassName(value string)
+	Subentities() []EntityDescription
+	SetSubentities(value []IEntityDescription)
+	CoreSpotlightDisplayNameExpression() foundation.Expression
+	SetCoreSpotlightDisplayNameExpression(value foundation.IExpression)
 	VersionHashModifier() string
 	SetVersionHashModifier(value string)
+	RenamingIdentifier() string
+	SetRenamingIdentifier(value string)
+	RelationshipsByName() map[string]RelationshipDescription
+	IsAbstract() bool
+	SetAbstract(value bool)
+	AttributesByName() map[string]AttributeDescription
+	Indexes() []FetchIndexDescription
+	SetIndexes(value []IFetchIndexDescription)
+	Superentity() EntityDescription
+	SubentitiesByName() map[string]EntityDescription
 }
 
 // A description of a Core Data entity. [Full Topic]
@@ -108,14 +108,6 @@ func (e_ EntityDescription) RelationshipsWithDestinationEntity(entity IEntityDes
 	return rv
 }
 
-// Returns a Boolean value that indicates whether the receiver is a sub-entity of another given entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425113-iskindofentity?language=objc
-func (e_ EntityDescription) IsKindOfEntity(entity IEntityDescription) bool {
-	rv := objc.Call[bool](e_, objc.Sel("isKindOfEntity:"), entity)
-	return rv
-}
-
 // Creates, configures, and returns an instance of the class for the entity with a given name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425093-insertnewobjectforentityforname?language=objc
@@ -131,34 +123,28 @@ func EntityDescription_InsertNewObjectForEntityForNameInManagedObjectContext(ent
 	return EntityDescriptionClass.InsertNewObjectForEntityForNameInManagedObjectContext(entityName, context)
 }
 
-// A Boolean value that indicates whether the receiver represents an abstract entity. [Full Topic]
+// Returns a Boolean value that indicates whether the receiver is a sub-entity of another given entity. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425097-abstract?language=objc
-func (e_ EntityDescription) IsAbstract() bool {
-	rv := objc.Call[bool](e_, objc.Sel("isAbstract"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425113-iskindofentity?language=objc
+func (e_ EntityDescription) IsKindOfEntity(entity IEntityDescription) bool {
+	rv := objc.Call[bool](e_, objc.Sel("isKindOfEntity:"), entity)
 	return rv
 }
 
-// A Boolean value that indicates whether the receiver represents an abstract entity. [Full Topic]
+// The managed object model with which the receiver is associated. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425097-abstract?language=objc
-func (e_ EntityDescription) SetAbstract(value bool) {
-	objc.Call[objc.Void](e_, objc.Sel("setAbstract:"), value)
-}
-
-// An array containing the sub-entities of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425104-subentities?language=objc
-func (e_ EntityDescription) Subentities() []EntityDescription {
-	rv := objc.Call[[]EntityDescription](e_, objc.Sel("subentities"))
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425121-managedobjectmodel?language=objc
+func (e_ EntityDescription) ManagedObjectModel() ManagedObjectModel {
+	rv := objc.Call[ManagedObjectModel](e_, objc.Sel("managedObjectModel"))
 	return rv
 }
 
-// An array containing the sub-entities of the receiver. [Full Topic]
+// A dictionary containing the properties of the receiver. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425104-subentities?language=objc
-func (e_ EntityDescription) SetSubentities(value []IEntityDescription) {
-	objc.Call[objc.Void](e_, objc.Sel("setSubentities:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425137-propertiesbyname?language=objc
+func (e_ EntityDescription) PropertiesByName() map[string]PropertyDescription {
+	rv := objc.Call[map[string]PropertyDescription](e_, objc.Sel("propertiesByName"))
+	return rv
 }
 
 // The entity name of the receiver. [Full Topic]
@@ -176,65 +162,11 @@ func (e_ EntityDescription) SetName(value string) {
 	objc.Call[objc.Void](e_, objc.Sel("setName:"), value)
 }
 
-// The attributes of the receiver in a dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425099-attributesbyname?language=objc
-func (e_ EntityDescription) AttributesByName() map[string]AttributeDescription {
-	rv := objc.Call[map[string]AttributeDescription](e_, objc.Sel("attributesByName"))
-	return rv
-}
-
 // The version hash for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425133-versionhash?language=objc
 func (e_ EntityDescription) VersionHash() []byte {
 	rv := objc.Call[[]byte](e_, objc.Sel("versionHash"))
-	return rv
-}
-
-// An array of fetch index descriptions for the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2887059-indexes?language=objc
-func (e_ EntityDescription) Indexes() []FetchIndexDescription {
-	rv := objc.Call[[]FetchIndexDescription](e_, objc.Sel("indexes"))
-	return rv
-}
-
-// An array of fetch index descriptions for the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2887059-indexes?language=objc
-func (e_ EntityDescription) SetIndexes(value []IFetchIndexDescription) {
-	objc.Call[objc.Void](e_, objc.Sel("setIndexes:"), value)
-}
-
-// A dictionary containing the properties of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425137-propertiesbyname?language=objc
-func (e_ EntityDescription) PropertiesByName() map[string]PropertyDescription {
-	rv := objc.Call[map[string]PropertyDescription](e_, objc.Sel("propertiesByName"))
-	return rv
-}
-
-// The renaming identifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425135-renamingidentifier?language=objc
-func (e_ EntityDescription) RenamingIdentifier() string {
-	rv := objc.Call[string](e_, objc.Sel("renamingIdentifier"))
-	return rv
-}
-
-// The renaming identifier for the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425135-renamingidentifier?language=objc
-func (e_ EntityDescription) SetRenamingIdentifier(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setRenamingIdentifier:"), value)
-}
-
-// The managed object model with which the receiver is associated. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425121-managedobjectmodel?language=objc
-func (e_ EntityDescription) ManagedObjectModel() ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](e_, objc.Sel("managedObjectModel"))
 	return rv
 }
 
@@ -253,14 +185,6 @@ func (e_ EntityDescription) SetProperties(value []IPropertyDescription) {
 	objc.Call[objc.Void](e_, objc.Sel("setProperties:"), value)
 }
 
-// The super-entity of the receiver. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425129-superentity?language=objc
-func (e_ EntityDescription) Superentity() EntityDescription {
-	rv := objc.Call[EntityDescription](e_, objc.Sel("superentity"))
-	return rv
-}
-
 // An array of arrays that contains one or more attributes with a value that must be unique over the instances of that entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425095-uniquenessconstraints?language=objc
@@ -274,52 +198,6 @@ func (e_ EntityDescription) UniquenessConstraints() [][]objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425095-uniquenessconstraints?language=objc
 func (e_ EntityDescription) SetUniquenessConstraints(value [][]objc.IObject) {
 	objc.Call[objc.Void](e_, objc.Sel("setUniquenessConstraints:"), value)
-}
-
-// A dictionary containing the receiver’s sub-entities. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425123-subentitiesbyname?language=objc
-func (e_ EntityDescription) SubentitiesByName() map[string]EntityDescription {
-	rv := objc.Call[map[string]EntityDescription](e_, objc.Sel("subentitiesByName"))
-	return rv
-}
-
-// The expression that computes the CoreSpotlight display name for instances of the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2892364-corespotlightdisplaynameexpressi?language=objc
-func (e_ EntityDescription) CoreSpotlightDisplayNameExpression() foundation.Expression {
-	rv := objc.Call[foundation.Expression](e_, objc.Sel("coreSpotlightDisplayNameExpression"))
-	return rv
-}
-
-// The expression that computes the CoreSpotlight display name for instances of the entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2892364-corespotlightdisplaynameexpressi?language=objc
-func (e_ EntityDescription) SetCoreSpotlightDisplayNameExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](e_, objc.Sel("setCoreSpotlightDisplayNameExpression:"), value)
-}
-
-// The name of the class that represents the receiver’s entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425131-managedobjectclassname?language=objc
-func (e_ EntityDescription) ManagedObjectClassName() string {
-	rv := objc.Call[string](e_, objc.Sel("managedObjectClassName"))
-	return rv
-}
-
-// The name of the class that represents the receiver’s entity. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425131-managedobjectclassname?language=objc
-func (e_ EntityDescription) SetManagedObjectClassName(value string) {
-	objc.Call[objc.Void](e_, objc.Sel("setManagedObjectClassName:"), value)
-}
-
-// The relationships of the receiver in a dictionary. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425106-relationshipsbyname?language=objc
-func (e_ EntityDescription) RelationshipsByName() map[string]RelationshipDescription {
-	rv := objc.Call[map[string]RelationshipDescription](e_, objc.Sel("relationshipsByName"))
-	return rv
 }
 
 // The user info dictionary of the receiver. [Full Topic]
@@ -337,6 +215,51 @@ func (e_ EntityDescription) SetUserInfo(value foundation.Dictionary) {
 	objc.Call[objc.Void](e_, objc.Sel("setUserInfo:"), value)
 }
 
+// The name of the class that represents the receiver’s entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425131-managedobjectclassname?language=objc
+func (e_ EntityDescription) ManagedObjectClassName() string {
+	rv := objc.Call[string](e_, objc.Sel("managedObjectClassName"))
+	return rv
+}
+
+// The name of the class that represents the receiver’s entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425131-managedobjectclassname?language=objc
+func (e_ EntityDescription) SetManagedObjectClassName(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setManagedObjectClassName:"), value)
+}
+
+// An array containing the sub-entities of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425104-subentities?language=objc
+func (e_ EntityDescription) Subentities() []EntityDescription {
+	rv := objc.Call[[]EntityDescription](e_, objc.Sel("subentities"))
+	return rv
+}
+
+// An array containing the sub-entities of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425104-subentities?language=objc
+func (e_ EntityDescription) SetSubentities(value []IEntityDescription) {
+	objc.Call[objc.Void](e_, objc.Sel("setSubentities:"), value)
+}
+
+// The expression that computes the CoreSpotlight display name for instances of the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2892364-corespotlightdisplaynameexpressi?language=objc
+func (e_ EntityDescription) CoreSpotlightDisplayNameExpression() foundation.Expression {
+	rv := objc.Call[foundation.Expression](e_, objc.Sel("coreSpotlightDisplayNameExpression"))
+	return rv
+}
+
+// The expression that computes the CoreSpotlight display name for instances of the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2892364-corespotlightdisplaynameexpressi?language=objc
+func (e_ EntityDescription) SetCoreSpotlightDisplayNameExpression(value foundation.IExpression) {
+	objc.Call[objc.Void](e_, objc.Sel("setCoreSpotlightDisplayNameExpression:"), value)
+}
+
 // The version hash modifier for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425119-versionhashmodifier?language=objc
@@ -350,4 +273,81 @@ func (e_ EntityDescription) VersionHashModifier() string {
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425119-versionhashmodifier?language=objc
 func (e_ EntityDescription) SetVersionHashModifier(value string) {
 	objc.Call[objc.Void](e_, objc.Sel("setVersionHashModifier:"), value)
+}
+
+// The renaming identifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425135-renamingidentifier?language=objc
+func (e_ EntityDescription) RenamingIdentifier() string {
+	rv := objc.Call[string](e_, objc.Sel("renamingIdentifier"))
+	return rv
+}
+
+// The renaming identifier for the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425135-renamingidentifier?language=objc
+func (e_ EntityDescription) SetRenamingIdentifier(value string) {
+	objc.Call[objc.Void](e_, objc.Sel("setRenamingIdentifier:"), value)
+}
+
+// The relationships of the receiver in a dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425106-relationshipsbyname?language=objc
+func (e_ EntityDescription) RelationshipsByName() map[string]RelationshipDescription {
+	rv := objc.Call[map[string]RelationshipDescription](e_, objc.Sel("relationshipsByName"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver represents an abstract entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425097-abstract?language=objc
+func (e_ EntityDescription) IsAbstract() bool {
+	rv := objc.Call[bool](e_, objc.Sel("isAbstract"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver represents an abstract entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425097-abstract?language=objc
+func (e_ EntityDescription) SetAbstract(value bool) {
+	objc.Call[objc.Void](e_, objc.Sel("setAbstract:"), value)
+}
+
+// The attributes of the receiver in a dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425099-attributesbyname?language=objc
+func (e_ EntityDescription) AttributesByName() map[string]AttributeDescription {
+	rv := objc.Call[map[string]AttributeDescription](e_, objc.Sel("attributesByName"))
+	return rv
+}
+
+// An array of fetch index descriptions for the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2887059-indexes?language=objc
+func (e_ EntityDescription) Indexes() []FetchIndexDescription {
+	rv := objc.Call[[]FetchIndexDescription](e_, objc.Sel("indexes"))
+	return rv
+}
+
+// An array of fetch index descriptions for the entity. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2887059-indexes?language=objc
+func (e_ EntityDescription) SetIndexes(value []IFetchIndexDescription) {
+	objc.Call[objc.Void](e_, objc.Sel("setIndexes:"), value)
+}
+
+// The super-entity of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425129-superentity?language=objc
+func (e_ EntityDescription) Superentity() EntityDescription {
+	rv := objc.Call[EntityDescription](e_, objc.Sel("superentity"))
+	return rv
+}
+
+// A dictionary containing the receiver’s sub-entities. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425123-subentitiesbyname?language=objc
+func (e_ EntityDescription) SubentitiesByName() map[string]EntityDescription {
+	rv := objc.Call[map[string]EntityDescription](e_, objc.Sel("subentitiesByName"))
+	return rv
 }

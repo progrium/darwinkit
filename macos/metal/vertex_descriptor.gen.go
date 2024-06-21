@@ -19,8 +19,8 @@ type _VertexDescriptorClass struct {
 type IVertexDescriptor interface {
 	objc.IObject
 	Reset()
-	Attributes() VertexAttributeDescriptorArray
 	Layouts() VertexBufferLayoutDescriptorArray
+	Attributes() VertexAttributeDescriptorArray
 }
 
 // An object that describes how to organize and map data to a vertex function. [Full Topic]
@@ -78,18 +78,18 @@ func (v_ VertexDescriptor) Reset() {
 	objc.Call[objc.Void](v_, objc.Sel("reset"))
 }
 
-// An array of state data that describes how vertex attribute data is stored in memory and is mapped to arguments for a vertex shader function. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexdescriptor/1515921-attributes?language=objc
-func (v_ VertexDescriptor) Attributes() VertexAttributeDescriptorArray {
-	rv := objc.Call[VertexAttributeDescriptorArray](v_, objc.Sel("attributes"))
-	return rv
-}
-
 // An array of state data that describes how data are fetched by a vertex shader function when rendering primitives. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexdescriptor/1515480-layouts?language=objc
 func (v_ VertexDescriptor) Layouts() VertexBufferLayoutDescriptorArray {
 	rv := objc.Call[VertexBufferLayoutDescriptorArray](v_, objc.Sel("layouts"))
+	return rv
+}
+
+// An array of state data that describes how vertex attribute data is stored in memory and is mapped to arguments for a vertex shader function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexdescriptor/1515921-attributes?language=objc
+func (v_ VertexDescriptor) Attributes() VertexAttributeDescriptorArray {
+	rv := objc.Call[VertexAttributeDescriptorArray](v_, objc.Sel("attributes"))
 	return rv
 }

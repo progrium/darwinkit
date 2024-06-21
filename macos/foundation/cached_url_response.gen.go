@@ -18,10 +18,10 @@ type _CachedURLResponseClass struct {
 // An interface definition for the [CachedURLResponse] class.
 type ICachedURLResponse interface {
 	objc.IObject
-	Response() URLResponse
 	UserInfo() Dictionary
-	StoragePolicy() URLCacheStoragePolicy
 	Data() []byte
+	Response() URLResponse
+	StoragePolicy() URLCacheStoragePolicy
 }
 
 // A cached response to a URL request. [Full Topic]
@@ -51,20 +51,6 @@ func NewCachedURLResponseWithResponseData(response IURLResponse, data []byte) Ca
 	return instance
 }
 
-func (c_ CachedURLResponse) InitWithResponseDataUserInfoStoragePolicy(response IURLResponse, data []byte, userInfo Dictionary, storagePolicy URLCacheStoragePolicy) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](c_, objc.Sel("initWithResponse:data:userInfo:storagePolicy:"), response, data, userInfo, storagePolicy)
-	return rv
-}
-
-// Creates a cached URL response object with a given server response, data, user-info dictionary, and storage policy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1411556-initwithresponse?language=objc
-func NewCachedURLResponseWithResponseDataUserInfoStoragePolicy(response IURLResponse, data []byte, userInfo Dictionary, storagePolicy URLCacheStoragePolicy) CachedURLResponse {
-	instance := CachedURLResponseClass.Alloc().InitWithResponseDataUserInfoStoragePolicy(response, data, userInfo, storagePolicy)
-	instance.Autorelease()
-	return instance
-}
-
 func (cc _CachedURLResponseClass) Alloc() CachedURLResponse {
 	rv := objc.Call[CachedURLResponse](cc, objc.Sel("alloc"))
 	return rv
@@ -85,14 +71,6 @@ func (c_ CachedURLResponse) Init() CachedURLResponse {
 	return rv
 }
 
-// The URL response object associated with the instance. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1411077-response?language=objc
-func (c_ CachedURLResponse) Response() URLResponse {
-	rv := objc.Call[URLResponse](c_, objc.Sel("response"))
-	return rv
-}
-
 // The cached response’s user info dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1411900-userinfo?language=objc
@@ -101,18 +79,26 @@ func (c_ CachedURLResponse) UserInfo() Dictionary {
 	return rv
 }
 
-// The cached response’s storage policy. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1412269-storagepolicy?language=objc
-func (c_ CachedURLResponse) StoragePolicy() URLCacheStoragePolicy {
-	rv := objc.Call[URLCacheStoragePolicy](c_, objc.Sel("storagePolicy"))
-	return rv
-}
-
 // The cached response’s data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1414011-data?language=objc
 func (c_ CachedURLResponse) Data() []byte {
 	rv := objc.Call[[]byte](c_, objc.Sel("data"))
+	return rv
+}
+
+// The URL response object associated with the instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1411077-response?language=objc
+func (c_ CachedURLResponse) Response() URLResponse {
+	rv := objc.Call[URLResponse](c_, objc.Sel("response"))
+	return rv
+}
+
+// The cached response’s storage policy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1412269-storagepolicy?language=objc
+func (c_ CachedURLResponse) StoragePolicy() URLCacheStoragePolicy {
+	rv := objc.Call[URLCacheStoragePolicy](c_, objc.Sel("storagePolicy"))
 	return rv
 }

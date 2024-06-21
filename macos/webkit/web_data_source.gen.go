@@ -20,7 +20,7 @@ type IWebDataSource interface {
 	objc.IObject
 }
 
-// WebDataSource encapsulates the web content to be displayed in a web frame view. A WebDataSource object has a representation object, conforming to the WebDocumentRepresentation protocol, that holds the data in an appropriate format depending on the MIME type. You can extend WebKit to support new MIME types by implementing your own view and representation classes, and specifying the mapping between them using the  [webkit/webview/registerviewclass] WebView class method. [Full Topic]
+// WebDataSource encapsulates the web content to be displayed in a web frame view. A WebDataSource object has a representation object, conforming to the WebDocumentRepresentation protocol, that holds the data in an appropriate format depending on the MIME type. You can extend WebKit to support new MIME types by implementing your own view and representation classes, and specifying the mapping between them using the  registerViewClass:representationClass:forMIMEType: WebView class method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webdatasource?language=objc
 type WebDataSource struct {

@@ -21,43 +21,43 @@ type _SavePanelClass struct {
 type ISavePanel interface {
 	IPanel
 	Ok(sender objc.IObject) objc.Object
-	Cancel(sender objc.IObject) objc.Object
-	ValidateVisibleColumns()
-	BeginSheetModalForWindowCompletionHandler(window IWindow, handler func(result ModalResponse))
-	BeginWithCompletionHandler(handler func(result ModalResponse))
 	RunModal() ModalResponse
-	CanCreateDirectories() bool
-	SetCanCreateDirectories(value bool)
+	ValidateVisibleColumns()
+	BeginWithCompletionHandler(handler func(result ModalResponse))
+	BeginSheetModalForWindowCompletionHandler(window IWindow, handler func(result ModalResponse))
+	Cancel(sender objc.IObject) objc.Object
 	NameFieldLabel() string
 	SetNameFieldLabel(value string)
-	IsExtensionHidden() bool
-	SetExtensionHidden(value bool)
-	IsExpanded() bool
-	DirectoryURL() foundation.URL
-	SetDirectoryURL(value foundation.IURL)
-	Message() string
-	SetMessage(value string)
-	AccessoryView() View
-	SetAccessoryView(value IView)
-	Prompt() string
-	SetPrompt(value string)
-	CanSelectHiddenExtension() bool
-	SetCanSelectHiddenExtension(value bool)
-	URL() foundation.URL
+	AllowsOtherFileTypes() bool
+	SetAllowsOtherFileTypes(value bool)
 	TagNames() []string
 	SetTagNames(value []string)
+	CanSelectHiddenExtension() bool
+	SetCanSelectHiddenExtension(value bool)
+	IsExpanded() bool
+	Prompt() string
+	SetPrompt(value string)
+	DirectoryURL() foundation.URL
+	SetDirectoryURL(value foundation.IURL)
+	CanCreateDirectories() bool
+	SetCanCreateDirectories(value bool)
+	ShowsTagField() bool
+	SetShowsTagField(value bool)
+	AccessoryView() View
+	SetAccessoryView(value IView)
+	URL() foundation.URL
+	ShowsHiddenFiles() bool
+	SetShowsHiddenFiles(value bool)
 	AllowedContentTypes() []uti.Type
 	SetAllowedContentTypes(value []uti.IType)
 	TreatsFilePackagesAsDirectories() bool
 	SetTreatsFilePackagesAsDirectories(value bool)
+	IsExtensionHidden() bool
+	SetExtensionHidden(value bool)
 	NameFieldStringValue() string
 	SetNameFieldStringValue(value string)
-	ShowsHiddenFiles() bool
-	SetShowsHiddenFiles(value bool)
-	AllowsOtherFileTypes() bool
-	SetAllowsOtherFileTypes(value bool)
-	ShowsTagField() bool
-	SetShowsTagField(value bool)
+	Message() string
+	SetMessage(value string)
 }
 
 // A panel that prompts the user for information about where to save a file. [Full Topic]
@@ -119,18 +119,20 @@ func NewSavePanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundati
 	return instance
 }
 
-func (s_ SavePanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
-	rv := objc.Call[SavePanel](s_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
+// The action method that the panel calls when the user clicks the OK button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535364-ok?language=objc
+func (s_ SavePanel) Ok(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("ok:"), sender)
 	return rv
 }
 
-// Initializes the window with the specified values. [Full Topic]
+// Displays the panel and begins its event loop with the current working (or last-selected) directory as the default starting point. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewSavePanelWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
-	instance := SavePanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525357-runmodal?language=objc
+func (s_ SavePanel) RunModal() ModalResponse {
+	rv := objc.Call[ModalResponse](s_, objc.Sel("runModal"))
+	return rv
 }
 
 // Creates a new Save panel and initializes it with default information. [Full Topic]
@@ -148,34 +150,11 @@ func SavePanel_SavePanel() SavePanel {
 	return SavePanelClass.SavePanel()
 }
 
-// The action method that the panel calls when the user clicks the OK button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535364-ok?language=objc
-func (s_ SavePanel) Ok(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("ok:"), sender)
-	return rv
-}
-
-// The action method that the panel calls when the user clicks the Cancel button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1534357-cancel?language=objc
-func (s_ SavePanel) Cancel(sender objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("cancel:"), sender)
-	return rv
-}
-
 // Validates and reloads the browser columns visible in the panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1526381-validatevisiblecolumns?language=objc
 func (s_ SavePanel) ValidateVisibleColumns() {
 	objc.Call[objc.Void](s_, objc.Sel("validateVisibleColumns"))
-}
-
-// Presents the panel as a sheet modal to the specified window. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535870-beginsheetmodalforwindow?language=objc
-func (s_ SavePanel) BeginSheetModalForWindowCompletionHandler(window IWindow, handler func(result ModalResponse)) {
-	objc.Call[objc.Void](s_, objc.Sel("beginSheetModalForWindow:completionHandler:"), window, handler)
 }
 
 // Presents the panel as a modeless window. [Full Topic]
@@ -185,27 +164,19 @@ func (s_ SavePanel) BeginWithCompletionHandler(handler func(result ModalResponse
 	objc.Call[objc.Void](s_, objc.Sel("beginWithCompletionHandler:"), handler)
 }
 
-// Displays the panel and begins its event loop with the current working (or last-selected) directory as the default starting point. [Full Topic]
+// Presents the panel as a sheet modal to the specified window. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525357-runmodal?language=objc
-func (s_ SavePanel) RunModal() ModalResponse {
-	rv := objc.Call[ModalResponse](s_, objc.Sel("runModal"))
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535870-beginsheetmodalforwindow?language=objc
+func (s_ SavePanel) BeginSheetModalForWindowCompletionHandler(window IWindow, handler func(result ModalResponse)) {
+	objc.Call[objc.Void](s_, objc.Sel("beginSheetModalForWindow:completionHandler:"), window, handler)
 }
 
-// A Boolean value that indicates whether the panel displays UI for creating directories. [Full Topic]
+// The action method that the panel calls when the user clicks the Cancel button. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1532626-cancreatedirectories?language=objc
-func (s_ SavePanel) CanCreateDirectories() bool {
-	rv := objc.Call[bool](s_, objc.Sel("canCreateDirectories"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1534357-cancel?language=objc
+func (s_ SavePanel) Cancel(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("cancel:"), sender)
 	return rv
-}
-
-// A Boolean value that indicates whether the panel displays UI for creating directories. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1532626-cancreatedirectories?language=objc
-func (s_ SavePanel) SetCanCreateDirectories(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setCanCreateDirectories:"), value)
 }
 
 // The label text displayed in front of the filename text field. [Full Topic]
@@ -223,87 +194,34 @@ func (s_ SavePanel) SetNameFieldLabel(value string) {
 	objc.Call[objc.Void](s_, objc.Sel("setNameFieldLabel:"), value)
 }
 
-// A Boolean value that indicates whether to display filename extensions. [Full Topic]
+// A Boolean value that indicates whether the panel allows the user to save files with a filename extension that’s not in the list of allowed types. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1529267-extensionhidden?language=objc
-func (s_ SavePanel) IsExtensionHidden() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isExtensionHidden"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1526960-allowsotherfiletypes?language=objc
+func (s_ SavePanel) AllowsOtherFileTypes() bool {
+	rv := objc.Call[bool](s_, objc.Sel("allowsOtherFileTypes"))
 	return rv
 }
 
-// A Boolean value that indicates whether to display filename extensions. [Full Topic]
+// A Boolean value that indicates whether the panel allows the user to save files with a filename extension that’s not in the list of allowed types. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1529267-extensionhidden?language=objc
-func (s_ SavePanel) SetExtensionHidden(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setExtensionHidden:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1526960-allowsotherfiletypes?language=objc
+func (s_ SavePanel) SetAllowsOtherFileTypes(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setAllowsOtherFileTypes:"), value)
 }
 
-// A Boolean value that indicates whether whether the panel is expanded. [Full Topic]
+// The tag names that you want to include on a saved file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1534515-expanded?language=objc
-func (s_ SavePanel) IsExpanded() bool {
-	rv := objc.Call[bool](s_, objc.Sel("isExpanded"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535928-tagnames?language=objc
+func (s_ SavePanel) TagNames() []string {
+	rv := objc.Call[[]string](s_, objc.Sel("tagNames"))
 	return rv
 }
 
-// The current directory shown in the panel. [Full Topic]
+// The tag names that you want to include on a saved file. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1531279-directoryurl?language=objc
-func (s_ SavePanel) DirectoryURL() foundation.URL {
-	rv := objc.Call[foundation.URL](s_, objc.Sel("directoryURL"))
-	return rv
-}
-
-// The current directory shown in the panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1531279-directoryurl?language=objc
-func (s_ SavePanel) SetDirectoryURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setDirectoryURL:"), value)
-}
-
-// The message text displayed in the panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1528581-message?language=objc
-func (s_ SavePanel) Message() string {
-	rv := objc.Call[string](s_, objc.Sel("message"))
-	return rv
-}
-
-// The message text displayed in the panel. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1528581-message?language=objc
-func (s_ SavePanel) SetMessage(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setMessage:"), value)
-}
-
-// The custom accessory view for the current app. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525544-accessoryview?language=objc
-func (s_ SavePanel) AccessoryView() View {
-	rv := objc.Call[View](s_, objc.Sel("accessoryView"))
-	return rv
-}
-
-// The custom accessory view for the current app. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525544-accessoryview?language=objc
-func (s_ SavePanel) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), value)
-}
-
-// The text to display in the default button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525227-prompt?language=objc
-func (s_ SavePanel) Prompt() string {
-	rv := objc.Call[string](s_, objc.Sel("prompt"))
-	return rv
-}
-
-// The text to display in the default button. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525227-prompt?language=objc
-func (s_ SavePanel) SetPrompt(value string) {
-	objc.Call[objc.Void](s_, objc.Sel("setPrompt:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535928-tagnames?language=objc
+func (s_ SavePanel) SetTagNames(value []string) {
+	objc.Call[objc.Void](s_, objc.Sel("setTagNames:"), value)
 }
 
 // A Boolean value that indicates whether the panel displays UI for hiding or showing filename extensions. [Full Topic]
@@ -321,6 +239,89 @@ func (s_ SavePanel) SetCanSelectHiddenExtension(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setCanSelectHiddenExtension:"), value)
 }
 
+// A Boolean value that indicates whether whether the panel is expanded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1534515-expanded?language=objc
+func (s_ SavePanel) IsExpanded() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isExpanded"))
+	return rv
+}
+
+// The text to display in the default button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525227-prompt?language=objc
+func (s_ SavePanel) Prompt() string {
+	rv := objc.Call[string](s_, objc.Sel("prompt"))
+	return rv
+}
+
+// The text to display in the default button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525227-prompt?language=objc
+func (s_ SavePanel) SetPrompt(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setPrompt:"), value)
+}
+
+// The current directory shown in the panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1531279-directoryurl?language=objc
+func (s_ SavePanel) DirectoryURL() foundation.URL {
+	rv := objc.Call[foundation.URL](s_, objc.Sel("directoryURL"))
+	return rv
+}
+
+// The current directory shown in the panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1531279-directoryurl?language=objc
+func (s_ SavePanel) SetDirectoryURL(value foundation.IURL) {
+	objc.Call[objc.Void](s_, objc.Sel("setDirectoryURL:"), value)
+}
+
+// A Boolean value that indicates whether the panel displays UI for creating directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1532626-cancreatedirectories?language=objc
+func (s_ SavePanel) CanCreateDirectories() bool {
+	rv := objc.Call[bool](s_, objc.Sel("canCreateDirectories"))
+	return rv
+}
+
+// A Boolean value that indicates whether the panel displays UI for creating directories. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1532626-cancreatedirectories?language=objc
+func (s_ SavePanel) SetCanCreateDirectories(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setCanCreateDirectories:"), value)
+}
+
+// A Boolean value that indicates whether the panel displays the Tags field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525589-showstagfield?language=objc
+func (s_ SavePanel) ShowsTagField() bool {
+	rv := objc.Call[bool](s_, objc.Sel("showsTagField"))
+	return rv
+}
+
+// A Boolean value that indicates whether the panel displays the Tags field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525589-showstagfield?language=objc
+func (s_ SavePanel) SetShowsTagField(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setShowsTagField:"), value)
+}
+
+// The custom accessory view for the current app. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525544-accessoryview?language=objc
+func (s_ SavePanel) AccessoryView() View {
+	rv := objc.Call[View](s_, objc.Sel("accessoryView"))
+	return rv
+}
+
+// The custom accessory view for the current app. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525544-accessoryview?language=objc
+func (s_ SavePanel) SetAccessoryView(value IView) {
+	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), value)
+}
+
 // A URL that contains the fully specified location of the targeted file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1534384-url?language=objc
@@ -329,19 +330,19 @@ func (s_ SavePanel) URL() foundation.URL {
 	return rv
 }
 
-// The tag names that you want to include on a saved file. [Full Topic]
+// A Boolean value that indicates whether the panel displays files that are normally hidden from the user. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535928-tagnames?language=objc
-func (s_ SavePanel) TagNames() []string {
-	rv := objc.Call[[]string](s_, objc.Sel("tagNames"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1524285-showshiddenfiles?language=objc
+func (s_ SavePanel) ShowsHiddenFiles() bool {
+	rv := objc.Call[bool](s_, objc.Sel("showsHiddenFiles"))
 	return rv
 }
 
-// The tag names that you want to include on a saved file. [Full Topic]
+// A Boolean value that indicates whether the panel displays files that are normally hidden from the user. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535928-tagnames?language=objc
-func (s_ SavePanel) SetTagNames(value []string) {
-	objc.Call[objc.Void](s_, objc.Sel("setTagNames:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1524285-showshiddenfiles?language=objc
+func (s_ SavePanel) SetShowsHiddenFiles(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setShowsHiddenFiles:"), value)
 }
 
 // An array of types that specify the files types to which you can save. [Full Topic]
@@ -374,6 +375,21 @@ func (s_ SavePanel) SetTreatsFilePackagesAsDirectories(value bool) {
 	objc.Call[objc.Void](s_, objc.Sel("setTreatsFilePackagesAsDirectories:"), value)
 }
 
+// A Boolean value that indicates whether to display filename extensions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1529267-extensionhidden?language=objc
+func (s_ SavePanel) IsExtensionHidden() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isExtensionHidden"))
+	return rv
+}
+
+// A Boolean value that indicates whether to display filename extensions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1529267-extensionhidden?language=objc
+func (s_ SavePanel) SetExtensionHidden(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setExtensionHidden:"), value)
+}
+
 // The user-editable filename currently shown in the name field. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1529299-namefieldstringvalue?language=objc
@@ -389,47 +405,17 @@ func (s_ SavePanel) SetNameFieldStringValue(value string) {
 	objc.Call[objc.Void](s_, objc.Sel("setNameFieldStringValue:"), value)
 }
 
-// A Boolean value that indicates whether the panel displays files that are normally hidden from the user. [Full Topic]
+// The message text displayed in the panel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1524285-showshiddenfiles?language=objc
-func (s_ SavePanel) ShowsHiddenFiles() bool {
-	rv := objc.Call[bool](s_, objc.Sel("showsHiddenFiles"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1528581-message?language=objc
+func (s_ SavePanel) Message() string {
+	rv := objc.Call[string](s_, objc.Sel("message"))
 	return rv
 }
 
-// A Boolean value that indicates whether the panel displays files that are normally hidden from the user. [Full Topic]
+// The message text displayed in the panel. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1524285-showshiddenfiles?language=objc
-func (s_ SavePanel) SetShowsHiddenFiles(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setShowsHiddenFiles:"), value)
-}
-
-// A Boolean value that indicates whether the panel allows the user to save files with a filename extension that’s not in the list of allowed types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1526960-allowsotherfiletypes?language=objc
-func (s_ SavePanel) AllowsOtherFileTypes() bool {
-	rv := objc.Call[bool](s_, objc.Sel("allowsOtherFileTypes"))
-	return rv
-}
-
-// A Boolean value that indicates whether the panel allows the user to save files with a filename extension that’s not in the list of allowed types. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1526960-allowsotherfiletypes?language=objc
-func (s_ SavePanel) SetAllowsOtherFileTypes(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setAllowsOtherFileTypes:"), value)
-}
-
-// A Boolean value that indicates whether the panel displays the Tags field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525589-showstagfield?language=objc
-func (s_ SavePanel) ShowsTagField() bool {
-	rv := objc.Call[bool](s_, objc.Sel("showsTagField"))
-	return rv
-}
-
-// A Boolean value that indicates whether the panel displays the Tags field. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525589-showstagfield?language=objc
-func (s_ SavePanel) SetShowsTagField(value bool) {
-	objc.Call[objc.Void](s_, objc.Sel("setShowsTagField:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1528581-message?language=objc
+func (s_ SavePanel) SetMessage(value string) {
+	objc.Call[objc.Void](s_, objc.Sel("setMessage:"), value)
 }

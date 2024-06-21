@@ -19,9 +19,9 @@ type _MultiArrayShapeConstraintClass struct {
 // An interface definition for the [MultiArrayShapeConstraint] class.
 type IMultiArrayShapeConstraint interface {
 	objc.IObject
-	Type() MultiArrayShapeConstraintType
 	EnumeratedShapes() [][]foundation.Number
 	SizeRangeForDimension() []foundation.Value
+	Type() MultiArrayShapeConstraintType
 }
 
 // The lists of shapes or ranges of shapes that constrain a multiarray feature. [Full Topic]
@@ -57,14 +57,6 @@ func (m_ MultiArrayShapeConstraint) Init() MultiArrayShapeConstraint {
 	return rv
 }
 
-// The type of the shape constraint. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayshapeconstraint/2994315-type?language=objc
-func (m_ MultiArrayShapeConstraint) Type() MultiArrayShapeConstraintType {
-	rv := objc.Call[MultiArrayShapeConstraintType](m_, objc.Sel("type"))
-	return rv
-}
-
 // Array of allowed shapes for a multiarray feature. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayshapeconstraint/2994313-enumeratedshapes?language=objc
@@ -78,5 +70,13 @@ func (m_ MultiArrayShapeConstraint) EnumeratedShapes() [][]foundation.Number {
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayshapeconstraint/2994314-sizerangefordimension?language=objc
 func (m_ MultiArrayShapeConstraint) SizeRangeForDimension() []foundation.Value {
 	rv := objc.Call[[]foundation.Value](m_, objc.Sel("sizeRangeForDimension"))
+	return rv
+}
+
+// The type of the shape constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarrayshapeconstraint/2994315-type?language=objc
+func (m_ MultiArrayShapeConstraint) Type() MultiArrayShapeConstraintType {
+	rv := objc.Call[MultiArrayShapeConstraintType](m_, objc.Sel("type"))
 	return rv
 }

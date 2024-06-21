@@ -19,12 +19,12 @@ type _QRCodeFeatureClass struct {
 // An interface definition for the [QRCodeFeature] class.
 type IQRCodeFeature interface {
 	IFeature
-	TopLeft() coregraphics.Point
-	SymbolDescriptor() QRCodeDescriptor
-	MessageString() string
-	BottomLeft() coregraphics.Point
 	BottomRight() coregraphics.Point
+	BottomLeft() coregraphics.Point
 	TopRight() coregraphics.Point
+	SymbolDescriptor() QRCodeDescriptor
+	TopLeft() coregraphics.Point
+	MessageString() string
 }
 
 // Information about a Quick Response code (a kind of 2D barcode) detected in a still or video image. [Full Topic]
@@ -60,27 +60,11 @@ func (q_ QRCodeFeature) Init() QRCodeFeature {
 	return rv
 }
 
-// The upper-left corner of the detected barcode, in image coordinates. [Full Topic]
+// The lower-right corner of the detected barcode, in image coordinates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1437780-topleft?language=objc
-func (q_ QRCodeFeature) TopLeft() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](q_, objc.Sel("topLeft"))
-	return rv
-}
-
-// An abstract representation of a QR Code symbol. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/2875553-symboldescriptor?language=objc
-func (q_ QRCodeFeature) SymbolDescriptor() QRCodeDescriptor {
-	rv := objc.Call[QRCodeDescriptor](q_, objc.Sel("symbolDescriptor"))
-	return rv
-}
-
-// The string decoded from the detected barcode. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1438035-messagestring?language=objc
-func (q_ QRCodeFeature) MessageString() string {
-	rv := objc.Call[string](q_, objc.Sel("messageString"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1438245-bottomright?language=objc
+func (q_ QRCodeFeature) BottomRight() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](q_, objc.Sel("bottomRight"))
 	return rv
 }
 
@@ -92,18 +76,34 @@ func (q_ QRCodeFeature) BottomLeft() coregraphics.Point {
 	return rv
 }
 
-// The lower-right corner of the detected barcode, in image coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1438245-bottomright?language=objc
-func (q_ QRCodeFeature) BottomRight() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](q_, objc.Sel("bottomRight"))
-	return rv
-}
-
 // The upper-right corner of the detected barcode, in image coordinates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1437896-topright?language=objc
 func (q_ QRCodeFeature) TopRight() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](q_, objc.Sel("topRight"))
+	return rv
+}
+
+// An abstract representation of a QR Code symbol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/2875553-symboldescriptor?language=objc
+func (q_ QRCodeFeature) SymbolDescriptor() QRCodeDescriptor {
+	rv := objc.Call[QRCodeDescriptor](q_, objc.Sel("symbolDescriptor"))
+	return rv
+}
+
+// The upper-left corner of the detected barcode, in image coordinates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1437780-topleft?language=objc
+func (q_ QRCodeFeature) TopLeft() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](q_, objc.Sel("topLeft"))
+	return rv
+}
+
+// The string decoded from the detected barcode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodefeature/1438035-messagestring?language=objc
+func (q_ QRCodeFeature) MessageString() string {
+	rv := objc.Call[string](q_, objc.Sel("messageString"))
 	return rv
 }

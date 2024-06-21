@@ -20,8 +20,8 @@ type _CaptionRendererClass struct {
 // An interface definition for the [CaptionRenderer] class.
 type ICaptionRenderer interface {
 	objc.IObject
-	CaptionSceneChangesInRange(consideredTimeRange coremedia.TimeRange) []CaptionRendererScene
 	RenderInContextForTime(ctx coregraphics.ContextRef, time coremedia.Time)
+	CaptionSceneChangesInRange(consideredTimeRange coremedia.TimeRange) []CaptionRendererScene
 	Captions() []Caption
 	SetCaptions(value []ICaption)
 	Bounds() coregraphics.Rect
@@ -61,19 +61,19 @@ func (c_ CaptionRenderer) Init() CaptionRenderer {
 	return rv
 }
 
+// Draw the captions for the time you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrenderer/3752971-renderincontext?language=objc
+func (c_ CaptionRenderer) RenderInContextForTime(ctx coregraphics.ContextRef, time coremedia.Time) {
+	objc.Call[objc.Void](c_, objc.Sel("renderInContext:forTime:"), ctx, time)
+}
+
 // Determine render time ranges within an enclosing time range to account for visual changes among captions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrenderer/3752969-captionscenechangesinrange?language=objc
 func (c_ CaptionRenderer) CaptionSceneChangesInRange(consideredTimeRange coremedia.TimeRange) []CaptionRendererScene {
 	rv := objc.Call[[]CaptionRendererScene](c_, objc.Sel("captionSceneChangesInRange:"), consideredTimeRange)
 	return rv
-}
-
-// Draw the captions for the time you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionrenderer/3752971-renderincontext?language=objc
-func (c_ CaptionRenderer) RenderInContextForTime(ctx coregraphics.ContextRef, time coremedia.Time) {
-	objc.Call[objc.Void](c_, objc.Sel("renderInContext:forTime:"), ctx, time)
 }
 
 // The captions to render. [Full Topic]

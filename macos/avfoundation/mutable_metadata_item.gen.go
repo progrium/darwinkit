@@ -20,17 +20,17 @@ type _MutableMetadataItemClass struct {
 // An interface definition for the [MutableMetadataItem] class.
 type IMutableMetadataItem interface {
 	IMetadataItem
-	SetIdentifier(value MetadataIdentifier)
 	SetKeySpace(value MetadataKeySpace)
-	SetLocale(value foundation.ILocale)
 	SetExtendedLanguageTag(value string)
-	SetStartDate(value foundation.IDate)
-	SetExtraAttributes(value map[MetadataExtraAttributeKey]objc.IObject)
-	SetTime(value coremedia.Time)
-	SetValue(value objc.IObject)
-	SetDuration(value coremedia.Time)
 	SetKey(value objc.IObject)
+	SetValue(value objc.IObject)
+	SetExtraAttributes(value map[MetadataExtraAttributeKey]objc.IObject)
+	SetLocale(value foundation.ILocale)
+	SetTime(value coremedia.Time)
 	SetDataType(value string)
+	SetStartDate(value foundation.IDate)
+	SetDuration(value coremedia.Time)
+	SetIdentifier(value MetadataIdentifier)
 }
 
 // A mutable metadata item for an audiovisual asset or for one of its tracks. [Full Topic]
@@ -81,25 +81,11 @@ func MutableMetadataItem_MetadataItem() MutableMetadataItem {
 	return MutableMetadataItemClass.MetadataItem()
 }
 
-// Indicates the identifier of the metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1386688-identifier?language=objc
-func (m_ MutableMetadataItem) SetIdentifier(value MetadataIdentifier) {
-	objc.Call[objc.Void](m_, objc.Sel("setIdentifier:"), value)
-}
-
 // The key space of the metadata item’s key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1385655-keyspace?language=objc
 func (m_ MutableMetadataItem) SetKeySpace(value MetadataKeySpace) {
 	objc.Call[objc.Void](m_, objc.Sel("setKeySpace:"), value)
-}
-
-// The locale for a mutable metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389292-locale?language=objc
-func (m_ MutableMetadataItem) SetLocale(value foundation.ILocale) {
-	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), value)
 }
 
 // The IETF BCP 47 (RFC 4646) language identifier of the metadata item. [Full Topic]
@@ -109,25 +95,11 @@ func (m_ MutableMetadataItem) SetExtendedLanguageTag(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setExtendedLanguageTag:"), value)
 }
 
-// The start date of the timed metadata. [Full Topic]
+// The key for a mutable metadata item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389966-startdate?language=objc
-func (m_ MutableMetadataItem) SetStartDate(value foundation.IDate) {
-	objc.Call[objc.Void](m_, objc.Sel("setStartDate:"), value)
-}
-
-// A dictionary of additional attributes for a metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1390397-extraattributes?language=objc
-func (m_ MutableMetadataItem) SetExtraAttributes(value map[MetadataExtraAttributeKey]objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setExtraAttributes:"), value)
-}
-
-// The timestamp for a mutable metadata item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389990-time?language=objc
-func (m_ MutableMetadataItem) SetTime(value coremedia.Time) {
-	objc.Call[objc.Void](m_, objc.Sel("setTime:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1386776-key?language=objc
+func (m_ MutableMetadataItem) SetKey(value objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setKey:"), value)
 }
 
 // The value for the mutable metadata item. [Full Topic]
@@ -137,18 +109,25 @@ func (m_ MutableMetadataItem) SetValue(value objc.IObject) {
 	objc.Call[objc.Void](m_, objc.Sel("setValue:"), value)
 }
 
-// The duration of a mutable metadata item. [Full Topic]
+// A dictionary of additional attributes for a metadata item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389980-duration?language=objc
-func (m_ MutableMetadataItem) SetDuration(value coremedia.Time) {
-	objc.Call[objc.Void](m_, objc.Sel("setDuration:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1390397-extraattributes?language=objc
+func (m_ MutableMetadataItem) SetExtraAttributes(value map[MetadataExtraAttributeKey]objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setExtraAttributes:"), value)
 }
 
-// The key for a mutable metadata item. [Full Topic]
+// The locale for a mutable metadata item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1386776-key?language=objc
-func (m_ MutableMetadataItem) SetKey(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setKey:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389292-locale?language=objc
+func (m_ MutableMetadataItem) SetLocale(value foundation.ILocale) {
+	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), value)
+}
+
+// The timestamp for a mutable metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389990-time?language=objc
+func (m_ MutableMetadataItem) SetTime(value coremedia.Time) {
+	objc.Call[objc.Void](m_, objc.Sel("setTime:"), value)
 }
 
 // The data type of the metadata item’s value. [Full Topic]
@@ -156,4 +135,25 @@ func (m_ MutableMetadataItem) SetKey(value objc.IObject) {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389471-datatype?language=objc
 func (m_ MutableMetadataItem) SetDataType(value string) {
 	objc.Call[objc.Void](m_, objc.Sel("setDataType:"), value)
+}
+
+// The start date of the timed metadata. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389966-startdate?language=objc
+func (m_ MutableMetadataItem) SetStartDate(value foundation.IDate) {
+	objc.Call[objc.Void](m_, objc.Sel("setStartDate:"), value)
+}
+
+// The duration of a mutable metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389980-duration?language=objc
+func (m_ MutableMetadataItem) SetDuration(value coremedia.Time) {
+	objc.Call[objc.Void](m_, objc.Sel("setDuration:"), value)
+}
+
+// Indicates the identifier of the metadata item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1386688-identifier?language=objc
+func (m_ MutableMetadataItem) SetIdentifier(value MetadataIdentifier) {
+	objc.Call[objc.Void](m_, objc.Sel("setIdentifier:"), value)
 }

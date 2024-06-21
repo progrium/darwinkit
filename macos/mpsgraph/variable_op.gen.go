@@ -20,8 +20,8 @@ type _VariableOpClass struct {
 // An interface definition for the [VariableOp] class.
 type IVariableOp interface {
 	IOperation
-	DataType() mps.DataType
 	Shape() *foundation.Array
+	DataType() mps.DataType
 }
 
 //	[Full Topic]
@@ -59,16 +59,16 @@ func (v_ VariableOp) Init() VariableOp {
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphvariableop/3564693-datatype?language=objc
-func (v_ VariableOp) DataType() mps.DataType {
-	rv := objc.Call[mps.DataType](v_, objc.Sel("dataType"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphvariableop/3564695-shape?language=objc
+func (v_ VariableOp) Shape() *foundation.Array {
+	rv := objc.Call[*foundation.Array](v_, objc.Sel("shape"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphvariableop/3564695-shape?language=objc
-func (v_ VariableOp) Shape() *foundation.Array {
-	rv := objc.Call[*foundation.Array](v_, objc.Sel("shape"))
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphvariableop/3564693-datatype?language=objc
+func (v_ VariableOp) DataType() mps.DataType {
+	rv := objc.Call[mps.DataType](v_, objc.Sel("dataType"))
 	return rv
 }

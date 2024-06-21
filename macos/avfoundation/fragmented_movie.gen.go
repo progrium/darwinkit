@@ -54,30 +54,6 @@ func (f_ FragmentedMovie) Init() FragmentedMovie {
 	return rv
 }
 
-func (fc _FragmentedMovieClass) MovieWithDataOptions(data []byte, options map[string]objc.IObject) FragmentedMovie {
-	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithData:options:"), data, options)
-	return rv
-}
-
-// Returns a new movie object from a movie file’s data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458261-moviewithdata?language=objc
-func FragmentedMovie_MovieWithDataOptions(data []byte, options map[string]objc.IObject) FragmentedMovie {
-	return FragmentedMovieClass.MovieWithDataOptions(data, options)
-}
-
-func (fc _FragmentedMovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
-	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithURL:options:"), URL, options)
-	return rv
-}
-
-// Returns a new movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458223-moviewithurl?language=objc
-func FragmentedMovie_MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
-	return FragmentedMovieClass.MovieWithURLOptions(URL, options)
-}
-
 func (f_ FragmentedMovie) InitWithDataOptions(data []byte, options map[string]objc.IObject) FragmentedMovie {
 	rv := objc.Call[FragmentedMovie](f_, objc.Sel("initWithData:options:"), data, options)
 	return rv
@@ -92,6 +68,18 @@ func NewFragmentedMovieWithDataOptions(data []byte, options map[string]objc.IObj
 	return instance
 }
 
+func (fc _FragmentedMovieClass) MovieWithDataOptions(data []byte, options map[string]objc.IObject) FragmentedMovie {
+	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithData:options:"), data, options)
+	return rv
+}
+
+// Returns a new movie object from a movie file’s data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458261-moviewithdata?language=objc
+func FragmentedMovie_MovieWithDataOptions(data []byte, options map[string]objc.IObject) FragmentedMovie {
+	return FragmentedMovieClass.MovieWithDataOptions(data, options)
+}
+
 func (f_ FragmentedMovie) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
 	rv := objc.Call[FragmentedMovie](f_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
@@ -104,6 +92,18 @@ func NewFragmentedMovieWithURLOptions(URL foundation.IURL, options map[string]ob
 	instance := FragmentedMovieClass.Alloc().InitWithURLOptions(URL, options)
 	instance.Autorelease()
 	return instance
+}
+
+func (fc _FragmentedMovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
+	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithURL:options:"), URL, options)
+	return rv
+}
+
+// Returns a new movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1458223-moviewithurl?language=objc
+func FragmentedMovie_MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
+	return FragmentedMovieClass.MovieWithURLOptions(URL, options)
 }
 
 func (fc _FragmentedMovieClass) AssetWithURL(URL foundation.IURL) FragmentedMovie {

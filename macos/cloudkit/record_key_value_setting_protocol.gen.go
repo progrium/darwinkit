@@ -11,12 +11,8 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting?language=objc
 type PRecordKeyValueSetting interface {
 	// optional
-	AllKeys() []RecordFieldKey
-	HasAllKeys() bool
-
-	// optional
-	ChangedKeys() []RecordFieldKey
-	HasChangedKeys() bool
+	ObjectForKey(key RecordFieldKey) RecordValueObject
+	HasObjectForKey() bool
 
 	// optional
 	ObjectForKeyedSubscript(key RecordFieldKey) RecordValueObject
@@ -27,12 +23,12 @@ type PRecordKeyValueSetting interface {
 	HasSetObjectForKeyedSubscript() bool
 
 	// optional
-	SetObjectForKey(object RecordValueObject, key RecordFieldKey)
-	HasSetObjectForKey() bool
+	AllKeys() []RecordFieldKey
+	HasAllKeys() bool
 
 	// optional
-	ObjectForKey(key RecordFieldKey) RecordValueObject
-	HasObjectForKey() bool
+	ChangedKeys() []RecordFieldKey
+	HasChangedKeys() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,27 +39,15 @@ type RecordKeyValueSettingObject struct {
 	objc.Object
 }
 
-func (r_ RecordKeyValueSettingObject) HasAllKeys() bool {
-	return r_.RespondsToSelector(objc.Sel("allKeys"))
+func (r_ RecordKeyValueSettingObject) HasObjectForKey() bool {
+	return r_.RespondsToSelector(objc.Sel("objectForKey:"))
 }
 
-// Returns an array of the record’s keys. [Full Topic]
+// Returns the object that the record stores for the specified key. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976183-allkeys?language=objc
-func (r_ RecordKeyValueSettingObject) AllKeys() []RecordFieldKey {
-	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("allKeys"))
-	return rv
-}
-
-func (r_ RecordKeyValueSettingObject) HasChangedKeys() bool {
-	return r_.RespondsToSelector(objc.Sel("changedKeys"))
-}
-
-// Returns an array of keys with recent changes to their values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976184-changedkeys?language=objc
-func (r_ RecordKeyValueSettingObject) ChangedKeys() []RecordFieldKey {
-	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("changedKeys"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976185-objectforkey?language=objc
+func (r_ RecordKeyValueSettingObject) ObjectForKey(key RecordFieldKey) RecordValueObject {
+	rv := objc.Call[RecordValueObject](r_, objc.Sel("objectForKey:"), key)
 	return rv
 }
 
@@ -91,26 +75,26 @@ func (r_ RecordKeyValueSettingObject) SetObjectForKeyedSubscript(object RecordVa
 	objc.Call[objc.Void](r_, objc.Sel("setObject:forKeyedSubscript:"), po0, key)
 }
 
-func (r_ RecordKeyValueSettingObject) HasSetObjectForKey() bool {
-	return r_.RespondsToSelector(objc.Sel("setObject:forKey:"))
+func (r_ RecordKeyValueSettingObject) HasAllKeys() bool {
+	return r_.RespondsToSelector(objc.Sel("allKeys"))
 }
 
-// Stores an object in the record using the specified key. [Full Topic]
+// Returns an array of the record’s keys. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976187-setobject?language=objc
-func (r_ RecordKeyValueSettingObject) SetObjectForKey(object RecordValueObject, key RecordFieldKey) {
-	po0 := objc.WrapAsProtocol("CKRecordValue", object)
-	objc.Call[objc.Void](r_, objc.Sel("setObject:forKey:"), po0, key)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976183-allkeys?language=objc
+func (r_ RecordKeyValueSettingObject) AllKeys() []RecordFieldKey {
+	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("allKeys"))
+	return rv
 }
 
-func (r_ RecordKeyValueSettingObject) HasObjectForKey() bool {
-	return r_.RespondsToSelector(objc.Sel("objectForKey:"))
+func (r_ RecordKeyValueSettingObject) HasChangedKeys() bool {
+	return r_.RespondsToSelector(objc.Sel("changedKeys"))
 }
 
-// Returns the object that the record stores for the specified key. [Full Topic]
+// Returns an array of keys with recent changes to their values. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976185-objectforkey?language=objc
-func (r_ RecordKeyValueSettingObject) ObjectForKey(key RecordFieldKey) RecordValueObject {
-	rv := objc.Call[RecordValueObject](r_, objc.Sel("objectForKey:"), key)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordkeyvaluesetting/2976184-changedkeys?language=objc
+func (r_ RecordKeyValueSettingObject) ChangedKeys() []RecordFieldKey {
+	rv := objc.Call[[]RecordFieldKey](r_, objc.Sel("changedKeys"))
 	return rv
 }

@@ -10,7 +10,6 @@ import (
 	"github.com/progrium/darwinkit/macos/coremedia"
 	"github.com/progrium/darwinkit/macos/corevideo"
 	"github.com/progrium/darwinkit/macos/foundation"
-	"github.com/progrium/darwinkit/macos/imageio"
 	"github.com/progrium/darwinkit/objc"
 )
 
@@ -63,226 +62,16 @@ func (g_ GenerateOpticalFlowRequest) Init() GenerateOpticalFlowRequest {
 	return rv
 }
 
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCGImageOrientationOptions(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCGImage:orientation:options:"), cgImage, orientation, options)
+func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
 	return rv
 }
 
-// Creates a new request targeting a Core Graphics image of known orientation. [Full Topic]
+// Creates a new request targeting an image at the specified URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923444-initwithtargetedcgimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCGImageOrientationOptions(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCGImageOrientationOptions(cgImage, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCGImage:options:"), cgImage, options)
-	return rv
-}
-
-// Creates a new request targeting a Core Graphics image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923452-initwithtargetedcgimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCGImageOptions(cgImage, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), imageURL, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image at the specified URL, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923453-initwithtargetedimageurl?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageURLOptionsCompletionHandler(imageURL, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageData:options:"), imageData, options)
-	return rv
-}
-
-// Creates a new request targeting an image as raw data. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923460-initwithtargetedimagedata?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageDataOptions(imageData, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCVPixelBuffer:options:completionHandler:"), pixelBuffer, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image in a CVPixelBufferRef, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923446-initwithtargetedcvpixelbuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCVPixelBufferOptionsCompletionHandler(pixelBuffer, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCMSampleBuffer:options:completionHandler:"), sampleBuffer, options, completionHandler)
-	return rv
-}
-
-// Creates a new request with a completion handler that targets an image in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571275-initwithtargetedcmsamplebuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCMSampleBufferOptionsCompletionHandler(sampleBuffer, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageDataOrientationOptionsCompletionHandler(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageData:orientation:options:completionHandler:"), imageData, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a raw data image of known orientation, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923443-initwithtargetedimagedata?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageDataOrientationOptionsCompletionHandler(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageDataOrientationOptionsCompletionHandler(imageData, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCMSampleBuffer:orientation:options:"), sampleBuffer, orientation, options)
-	return rv
-}
-
-// Creates a new request that targets an image of a known orientation in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571276-initwithtargetedcmsamplebuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOrientationOptions(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCMSampleBufferOrientationOptions(sampleBuffer, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCVPixelBuffer:options:"), pixelBuffer, options)
-	return rv
-}
-
-// Creates a new request targeting an image in a CVPixelBufferRef. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923445-initwithtargetedcvpixelbuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCVPixelBufferOptions(pixelBuffer, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageDataOptionsCompletionHandler(imageData []byte, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageData:options:completionHandler:"), imageData, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image as raw data, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923455-initwithtargetedimagedata?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageDataOptionsCompletionHandler(imageData []byte, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageDataOptionsCompletionHandler(imageData, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), ciImage, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a CIImage, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923454-initwithtargetedciimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCIImageOptionsCompletionHandler(ciImage, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:"), ciImage, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting a CIImage of known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923459-initwithtargetedciimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCIImageOrientationOptions(ciImage, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:"), imageURL, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting an image of known orientation, at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923456-initwithtargetedimageurl?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageURLOrientationOptions(imageURL, orientation, options)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), ciImage, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a CIImage of known orientation, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923451-initwithtargetedciimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCGImageOptionsCompletionHandler(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCGImage:options:completionHandler:"), cgImage, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting a Core Graphics image, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923448-initwithtargetedcgimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCGImageOptionsCompletionHandler(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCGImageOptionsCompletionHandler(cgImage, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageData:orientation:options:"), imageData, orientation, options)
-	return rv
-}
-
-// Creates a new request targeting a raw data image of known orientation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923441-initwithtargetedimagedata?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageDataOrientationOptions(imageData []byte, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageDataOrientationOptions(imageData, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923458-initwithtargetedimageurl?language=objc
+func NewGenerateOpticalFlowRequestWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageURLOptions(imageURL, options)
 	instance.Autorelease()
 	return instance
 }
@@ -301,34 +90,6 @@ func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOptions(sampleBuffer
 	return instance
 }
 
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), imageURL, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request targeting an image of known orientation, at the specified URL, executing the completion handler when done. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923457-initwithtargetedimageurl?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCMSampleBuffer:orientation:options:completionHandler:"), sampleBuffer, orientation, options, completionHandler)
-	return rv
-}
-
-// Creates a new request with a completion handler that targets an image of a known orientation in a sample buffer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/3571277-initwithtargetedcmsamplebuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer coremedia.SampleBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCMSampleBufferOrientationOptionsCompletionHandler(sampleBuffer, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOptions(ciImage coreimage.IImage, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
 	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:"), ciImage, options)
 	return rv
@@ -343,58 +104,44 @@ func NewGenerateOpticalFlowRequestWithTargetedCIImageOptions(ciImage coreimage.I
 	return instance
 }
 
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCGImage:orientation:options:completionHandler:"), cgImage, orientation, options, completionHandler)
+func (g_ GenerateOpticalFlowRequest) InitWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCVPixelBuffer:options:"), pixelBuffer, options)
 	return rv
 }
 
-// Creates a new request targeting a Core Graphics image of known orientation, executing the completion handler when done. [Full Topic]
+// Creates a new request targeting an image in a CVPixelBufferRef. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923450-initwithtargetedcgimage?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCGImageOrientationOptionsCompletionHandler(cgImage, orientation, options, completionHandler)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923445-initwithtargetedcvpixelbuffer?language=objc
+func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCVPixelBufferOptions(pixelBuffer, options)
 	instance.Autorelease()
 	return instance
 }
 
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCVPixelBuffer:orientation:options:"), pixelBuffer, orientation, options)
+func (g_ GenerateOpticalFlowRequest) InitWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCGImage:options:"), cgImage, options)
 	return rv
 }
 
-// Creates a new request targeting an image in a CVPixelBufferRef of known orientation. [Full Topic]
+// Creates a new request targeting a Core Graphics image. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923442-initwithtargetedcvpixelbuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOrientationOptions(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCVPixelBufferOrientationOptions(pixelBuffer, orientation, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923452-initwithtargetedcgimage?language=objc
+func NewGenerateOpticalFlowRequestWithTargetedCGImageOptions(cgImage coregraphics.ImageRef, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCGImageOptions(cgImage, options)
 	instance.Autorelease()
 	return instance
 }
 
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCVPixelBuffer:orientation:options:completionHandler:"), pixelBuffer, orientation, options, completionHandler)
+func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageData:options:"), imageData, options)
 	return rv
 }
 
-// Creates a new request targeting an image in a CVPixelBufferRef of known orientation, executing the completion handler when done. [Full Topic]
+// Creates a new request targeting an image as raw data. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923449-initwithtargetedcvpixelbuffer?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer corevideo.PixelBufferRef, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedCVPixelBufferOrientationOptionsCompletionHandler(pixelBuffer, orientation, options, completionHandler)
-	instance.Autorelease()
-	return instance
-}
-
-func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
-	return rv
-}
-
-// Creates a new request targeting an image at the specified URL. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923458-initwithtargetedimageurl?language=objc
-func NewGenerateOpticalFlowRequestWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageURLOptions(imageURL, options)
+// [Full Topic]: https://developer.apple.com/documentation/vision/vntargetedimagerequest/2923460-initwithtargetedimagedata?language=objc
+func NewGenerateOpticalFlowRequestWithTargetedImageDataOptions(imageData []byte, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
+	instance := GenerateOpticalFlowRequestClass.Alloc().InitWithTargetedImageDataOptions(imageData, options)
 	instance.Autorelease()
 	return instance
 }

@@ -22,10 +22,10 @@ type _MutableCompositionClass struct {
 type IMutableComposition interface {
 	IComposition
 	RemoveTimeRange(timeRange coremedia.TimeRange)
-	ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time)
 	MutableTrackCompatibleWithTrack(track IAssetTrack) MutableCompositionTrack
-	AddMutableTrackWithMediaTypePreferredTrackID(mediaType MediaType, preferredTrackID objc.IObject) MutableCompositionTrack
 	RemoveTrack(track ICompositionTrack)
+	AddMutableTrackWithMediaTypePreferredTrackID(mediaType MediaType, preferredTrackID objc.IObject) MutableCompositionTrack
+	ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time)
 	InsertEmptyTimeRange(timeRange coremedia.TimeRange)
 	SetNaturalSize(value coregraphics.Size)
 }
@@ -106,19 +106,19 @@ func (m_ MutableComposition) RemoveTimeRange(timeRange coremedia.TimeRange) {
 	objc.Call[objc.Void](m_, objc.Sel("removeTimeRange:"), timeRange)
 }
 
-// Changes the duration of all tracks in a given time range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1390549-scaletimerange?language=objc
-func (m_ MutableComposition) ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time) {
-	objc.Call[objc.Void](m_, objc.Sel("scaleTimeRange:toDuration:"), timeRange, duration)
-}
-
 // Returns a composition track into which you can insert any time range of the specified asset track. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1386662-mutabletrackcompatiblewithtrack?language=objc
 func (m_ MutableComposition) MutableTrackCompatibleWithTrack(track IAssetTrack) MutableCompositionTrack {
 	rv := objc.Call[MutableCompositionTrack](m_, objc.Sel("mutableTrackCompatibleWithTrack:"), track)
 	return rv
+}
+
+// Removes a specified track from the composition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1386818-removetrack?language=objc
+func (m_ MutableComposition) RemoveTrack(track ICompositionTrack) {
+	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), track)
 }
 
 // Adds an empty track to a composition. [Full Topic]
@@ -129,11 +129,11 @@ func (m_ MutableComposition) AddMutableTrackWithMediaTypePreferredTrackID(mediaT
 	return rv
 }
 
-// Removes a specified track from the composition. [Full Topic]
+// Changes the duration of all tracks in a given time range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1386818-removetrack?language=objc
-func (m_ MutableComposition) RemoveTrack(track ICompositionTrack) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), track)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1390549-scaletimerange?language=objc
+func (m_ MutableComposition) ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time) {
+	objc.Call[objc.Void](m_, objc.Sel("scaleTimeRange:toDuration:"), timeRange, duration)
 }
 
 // Adds or extends an empty time range within all tracks of the composition. [Full Topic]

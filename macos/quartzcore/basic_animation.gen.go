@@ -18,12 +18,12 @@ type _BasicAnimationClass struct {
 // An interface definition for the [BasicAnimation] class.
 type IBasicAnimation interface {
 	IPropertyAnimation
-	ToValue() objc.Object
-	SetToValue(value objc.IObject)
-	FromValue() objc.Object
-	SetFromValue(value objc.IObject)
 	ByValue() objc.Object
 	SetByValue(value objc.IObject)
+	FromValue() objc.Object
+	SetFromValue(value objc.IObject)
+	ToValue() objc.Object
+	SetToValue(value objc.IObject)
 }
 
 // An object that provides basic, single-keyframe animation capabilities for a layer property. [Full Topic]
@@ -83,19 +83,19 @@ func BasicAnimation_Animation() BasicAnimation {
 	return BasicAnimationClass.Animation()
 }
 
-// Defines the value the receiver uses to end interpolation. [Full Topic]
+// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
-func (b_ BasicAnimation) ToValue() objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("toValue"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
+func (b_ BasicAnimation) ByValue() objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("byValue"))
 	return rv
 }
 
-// Defines the value the receiver uses to end interpolation. [Full Topic]
+// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
-func (b_ BasicAnimation) SetToValue(value objc.IObject) {
-	objc.Call[objc.Void](b_, objc.Sel("setToValue:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
+func (b_ BasicAnimation) SetByValue(value objc.IObject) {
+	objc.Call[objc.Void](b_, objc.Sel("setByValue:"), value)
 }
 
 // Defines the value the receiver uses to start interpolation. [Full Topic]
@@ -113,17 +113,17 @@ func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
 	objc.Call[objc.Void](b_, objc.Sel("setFromValue:"), value)
 }
 
-// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
+// Defines the value the receiver uses to end interpolation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
-func (b_ BasicAnimation) ByValue() objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("byValue"))
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
+func (b_ BasicAnimation) ToValue() objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("toValue"))
 	return rv
 }
 
-// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
+// Defines the value the receiver uses to end interpolation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
-func (b_ BasicAnimation) SetByValue(value objc.IObject) {
-	objc.Call[objc.Void](b_, objc.Sel("setByValue:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
+func (b_ BasicAnimation) SetToValue(value objc.IObject) {
+	objc.Call[objc.Void](b_, objc.Sel("setToValue:"), value)
 }

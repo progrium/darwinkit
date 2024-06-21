@@ -34,16 +34,16 @@ func NNDefaultPaddingFrom(ptr unsafe.Pointer) NNDefaultPadding {
 	}
 }
 
-func (nc _NNDefaultPaddingClass) PaddingForTensorflowAveragePoolingValidOnly() NNDefaultPadding {
-	rv := objc.Call[NNDefaultPadding](nc, objc.Sel("paddingForTensorflowAveragePoolingValidOnly"))
+func (nc _NNDefaultPaddingClass) PaddingForTensorflowAveragePooling() NNDefaultPadding {
+	rv := objc.Call[NNDefaultPadding](nc, objc.Sel("paddingForTensorflowAveragePooling"))
 	return rv
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnndefaultpadding/2947962-paddingfortensorflowaveragepooli?language=objc
-func NNDefaultPadding_PaddingForTensorflowAveragePoolingValidOnly() NNDefaultPadding {
-	return NNDefaultPaddingClass.PaddingForTensorflowAveragePoolingValidOnly()
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnndefaultpadding/2867164-paddingfortensorflowaveragepooli?language=objc
+func NNDefaultPadding_PaddingForTensorflowAveragePooling() NNDefaultPadding {
+	return NNDefaultPaddingClass.PaddingForTensorflowAveragePooling()
 }
 
 func (nc _NNDefaultPaddingClass) PaddingWithMethod(method NNPaddingMethod) NNDefaultPadding {
@@ -56,18 +56,6 @@ func (nc _NNDefaultPaddingClass) PaddingWithMethod(method NNPaddingMethod) NNDef
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnndefaultpadding/2867160-paddingwithmethod?language=objc
 func NNDefaultPadding_PaddingWithMethod(method NNPaddingMethod) NNDefaultPadding {
 	return NNDefaultPaddingClass.PaddingWithMethod(method)
-}
-
-func (nc _NNDefaultPaddingClass) PaddingForTensorflowAveragePooling() NNDefaultPadding {
-	rv := objc.Call[NNDefaultPadding](nc, objc.Sel("paddingForTensorflowAveragePooling"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnndefaultpadding/2867164-paddingfortensorflowaveragepooli?language=objc
-func NNDefaultPadding_PaddingForTensorflowAveragePooling() NNDefaultPadding {
-	return NNDefaultPaddingClass.PaddingForTensorflowAveragePooling()
 }
 
 func (nc _NNDefaultPaddingClass) Alloc() NNDefaultPadding {

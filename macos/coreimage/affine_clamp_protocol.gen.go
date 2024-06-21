@@ -12,20 +12,20 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp?language=objc
 type PAffineClamp interface {
 	// optional
-	SetTransform(value coregraphics.AffineTransform)
-	HasSetTransform() bool
-
-	// optional
-	Transform() coregraphics.AffineTransform
-	HasTransform() bool
-
-	// optional
 	SetInputImage(value Image)
 	HasSetInputImage() bool
 
 	// optional
 	InputImage() Image
 	HasInputImage() bool
+
+	// optional
+	SetTransform(value coregraphics.AffineTransform)
+	HasSetTransform() bool
+
+	// optional
+	Transform() coregraphics.AffineTransform
+	HasTransform() bool
 }
 
 // ensure impl type implements protocol interface
@@ -34,29 +34,6 @@ var _ PAffineClamp = (*AffineClampObject)(nil)
 // A concrete type for the [PAffineClamp] protocol.
 type AffineClampObject struct {
 	objc.Object
-}
-
-func (a_ AffineClampObject) HasSetTransform() bool {
-	return a_.RespondsToSelector(objc.Sel("setTransform:"))
-}
-
-// The transform to apply to the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228055-transform?language=objc
-func (a_ AffineClampObject) SetTransform(value coregraphics.AffineTransform) {
-	objc.Call[objc.Void](a_, objc.Sel("setTransform:"), value)
-}
-
-func (a_ AffineClampObject) HasTransform() bool {
-	return a_.RespondsToSelector(objc.Sel("transform"))
-}
-
-// The transform to apply to the image. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228055-transform?language=objc
-func (a_ AffineClampObject) Transform() coregraphics.AffineTransform {
-	rv := objc.Call[coregraphics.AffineTransform](a_, objc.Sel("transform"))
-	return rv
 }
 
 func (a_ AffineClampObject) HasSetInputImage() bool {
@@ -79,5 +56,28 @@ func (a_ AffineClampObject) HasInputImage() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228054-inputimage?language=objc
 func (a_ AffineClampObject) InputImage() Image {
 	rv := objc.Call[Image](a_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (a_ AffineClampObject) HasSetTransform() bool {
+	return a_.RespondsToSelector(objc.Sel("setTransform:"))
+}
+
+// The transform to apply to the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228055-transform?language=objc
+func (a_ AffineClampObject) SetTransform(value coregraphics.AffineTransform) {
+	objc.Call[objc.Void](a_, objc.Sel("setTransform:"), value)
+}
+
+func (a_ AffineClampObject) HasTransform() bool {
+	return a_.RespondsToSelector(objc.Sel("transform"))
+}
+
+// The transform to apply to the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228055-transform?language=objc
+func (a_ AffineClampObject) Transform() coregraphics.AffineTransform {
+	rv := objc.Call[coregraphics.AffineTransform](a_, objc.Sel("transform"))
 	return rv
 }

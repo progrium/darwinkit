@@ -19,20 +19,20 @@ type PPaletteCentroid interface {
 	HasInputImage() bool
 
 	// optional
-	SetPaletteImage(value Image)
-	HasSetPaletteImage() bool
-
-	// optional
-	PaletteImage() Image
-	HasPaletteImage() bool
-
-	// optional
 	SetPerceptual(value bool)
 	HasSetPerceptual() bool
 
 	// optional
 	Perceptual() bool
 	HasPerceptual() bool
+
+	// optional
+	SetPaletteImage(value Image)
+	HasSetPaletteImage() bool
+
+	// optional
+	PaletteImage() Image
+	HasPaletteImage() bool
 }
 
 // ensure impl type implements protocol interface
@@ -66,29 +66,6 @@ func (p_ PaletteCentroidObject) InputImage() Image {
 	return rv
 }
 
-func (p_ PaletteCentroidObject) HasSetPaletteImage() bool {
-	return p_.RespondsToSelector(objc.Sel("setPaletteImage:"))
-}
-
-// The input color palette, obtained by using a k-means clustering filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228633-paletteimage?language=objc
-func (p_ PaletteCentroidObject) SetPaletteImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), value)
-}
-
-func (p_ PaletteCentroidObject) HasPaletteImage() bool {
-	return p_.RespondsToSelector(objc.Sel("paletteImage"))
-}
-
-// The input color palette, obtained by using a k-means clustering filter. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228633-paletteimage?language=objc
-func (p_ PaletteCentroidObject) PaletteImage() Image {
-	rv := objc.Call[Image](p_, objc.Sel("paletteImage"))
-	return rv
-}
-
 func (p_ PaletteCentroidObject) HasSetPerceptual() bool {
 	return p_.RespondsToSelector(objc.Sel("setPerceptual:"))
 }
@@ -109,5 +86,28 @@ func (p_ PaletteCentroidObject) HasPerceptual() bool {
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228634-perceptual?language=objc
 func (p_ PaletteCentroidObject) Perceptual() bool {
 	rv := objc.Call[bool](p_, objc.Sel("perceptual"))
+	return rv
+}
+
+func (p_ PaletteCentroidObject) HasSetPaletteImage() bool {
+	return p_.RespondsToSelector(objc.Sel("setPaletteImage:"))
+}
+
+// The input color palette, obtained by using a k-means clustering filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228633-paletteimage?language=objc
+func (p_ PaletteCentroidObject) SetPaletteImage(value Image) {
+	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), value)
+}
+
+func (p_ PaletteCentroidObject) HasPaletteImage() bool {
+	return p_.RespondsToSelector(objc.Sel("paletteImage"))
+}
+
+// The input color palette, obtained by using a k-means clustering filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228633-paletteimage?language=objc
+func (p_ PaletteCentroidObject) PaletteImage() Image {
+	rv := objc.Call[Image](p_, objc.Sel("paletteImage"))
 	return rv
 }

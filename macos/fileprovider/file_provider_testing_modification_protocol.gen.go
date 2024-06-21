@@ -11,20 +11,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification?language=objc
 type PFileProviderTestingModification interface {
 	// optional
-	ChangedFields() FileProviderItemFields
-	HasChangedFields() bool
+	TargetSide() FileProviderTestingOperationSide
+	HasTargetSide() bool
 
 	// optional
 	TargetItemIdentifier() FileProviderItemIdentifier
 	HasTargetItemIdentifier() bool
-
-	// optional
-	SourceItem() objc.Object
-	HasSourceItem() bool
-
-	// optional
-	TargetSide() FileProviderTestingOperationSide
-	HasTargetSide() bool
 
 	// optional
 	DomainVersion() FileProviderDomainVersion
@@ -33,6 +25,14 @@ type PFileProviderTestingModification interface {
 	// optional
 	TargetItemBaseVersion() FileProviderItemVersion
 	HasTargetItemBaseVersion() bool
+
+	// optional
+	SourceItem() objc.Object
+	HasSourceItem() bool
+
+	// optional
+	ChangedFields() FileProviderItemFields
+	HasChangedFields() bool
 }
 
 // ensure impl type implements protocol interface
@@ -43,15 +43,15 @@ type FileProviderTestingModificationObject struct {
 	objc.Object
 }
 
-func (f_ FileProviderTestingModificationObject) HasChangedFields() bool {
-	return f_.RespondsToSelector(objc.Sel("changedFields"))
+func (f_ FileProviderTestingModificationObject) HasTargetSide() bool {
+	return f_.RespondsToSelector(objc.Sel("targetSide"))
 }
 
-// A list of the fields that changed. [Full Topic]
+// The target location for the modification operation. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736241-changedfields?language=objc
-func (f_ FileProviderTestingModificationObject) ChangedFields() FileProviderItemFields {
-	rv := objc.Call[FileProviderItemFields](f_, objc.Sel("changedFields"))
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736246-targetside?language=objc
+func (f_ FileProviderTestingModificationObject) TargetSide() FileProviderTestingOperationSide {
+	rv := objc.Call[FileProviderTestingOperationSide](f_, objc.Sel("targetSide"))
 	return rv
 }
 
@@ -64,30 +64,6 @@ func (f_ FileProviderTestingModificationObject) HasTargetItemIdentifier() bool {
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736245-targetitemidentifier?language=objc
 func (f_ FileProviderTestingModificationObject) TargetItemIdentifier() FileProviderItemIdentifier {
 	rv := objc.Call[FileProviderItemIdentifier](f_, objc.Sel("targetItemIdentifier"))
-	return rv
-}
-
-func (f_ FileProviderTestingModificationObject) HasSourceItem() bool {
-	return f_.RespondsToSelector(objc.Sel("sourceItem"))
-}
-
-// A description of the source item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736243-sourceitem?language=objc
-func (f_ FileProviderTestingModificationObject) SourceItem() objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("sourceItem"))
-	return rv
-}
-
-func (f_ FileProviderTestingModificationObject) HasTargetSide() bool {
-	return f_.RespondsToSelector(objc.Sel("targetSide"))
-}
-
-// The target location for the modification operation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736246-targetside?language=objc
-func (f_ FileProviderTestingModificationObject) TargetSide() FileProviderTestingOperationSide {
-	rv := objc.Call[FileProviderTestingOperationSide](f_, objc.Sel("targetSide"))
 	return rv
 }
 
@@ -112,5 +88,29 @@ func (f_ FileProviderTestingModificationObject) HasTargetItemBaseVersion() bool 
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736244-targetitembaseversion?language=objc
 func (f_ FileProviderTestingModificationObject) TargetItemBaseVersion() FileProviderItemVersion {
 	rv := objc.Call[FileProviderItemVersion](f_, objc.Sel("targetItemBaseVersion"))
+	return rv
+}
+
+func (f_ FileProviderTestingModificationObject) HasSourceItem() bool {
+	return f_.RespondsToSelector(objc.Sel("sourceItem"))
+}
+
+// A description of the source item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736243-sourceitem?language=objc
+func (f_ FileProviderTestingModificationObject) SourceItem() objc.Object {
+	rv := objc.Call[objc.Object](f_, objc.Sel("sourceItem"))
+	return rv
+}
+
+func (f_ FileProviderTestingModificationObject) HasChangedFields() bool {
+	return f_.RespondsToSelector(objc.Sel("changedFields"))
+}
+
+// A list of the fields that changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidertestingmodification/3736241-changedfields?language=objc
+func (f_ FileProviderTestingModificationObject) ChangedFields() FileProviderItemFields {
+	rv := objc.Call[FileProviderItemFields](f_, objc.Sel("changedFields"))
 	return rv
 }

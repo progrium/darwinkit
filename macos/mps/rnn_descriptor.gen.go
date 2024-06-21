@@ -18,16 +18,16 @@ type _RNNDescriptorClass struct {
 // An interface definition for the [RNNDescriptor] class.
 type IRNNDescriptor interface {
 	objc.IObject
+	LayerSequenceDirection() RNNSequenceDirection
+	SetLayerSequenceDirection(value RNNSequenceDirection)
+	OutputFeatureChannels() uint
+	SetOutputFeatureChannels(value uint)
 	UseLayerInputUnitTransformMode() bool
 	SetUseLayerInputUnitTransformMode(value bool)
 	InputFeatureChannels() uint
 	SetInputFeatureChannels(value uint)
 	UseFloat32Weights() bool
 	SetUseFloat32Weights(value bool)
-	OutputFeatureChannels() uint
-	SetOutputFeatureChannels(value uint)
-	LayerSequenceDirection() RNNSequenceDirection
-	SetLayerSequenceDirection(value RNNSequenceDirection)
 }
 
 // A description of a recursive neural network block or layer. [Full Topic]
@@ -61,6 +61,36 @@ func NewRNNDescriptor() RNNDescriptor {
 func (r_ RNNDescriptor) Init() RNNDescriptor {
 	rv := objc.Call[RNNDescriptor](r_, objc.Sel("init"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865730-layersequencedirection?language=objc
+func (r_ RNNDescriptor) LayerSequenceDirection() RNNSequenceDirection {
+	rv := objc.Call[RNNSequenceDirection](r_, objc.Sel("layerSequenceDirection"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865730-layersequencedirection?language=objc
+func (r_ RNNDescriptor) SetLayerSequenceDirection(value RNNSequenceDirection) {
+	objc.Call[objc.Void](r_, objc.Sel("setLayerSequenceDirection:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865702-outputfeaturechannels?language=objc
+func (r_ RNNDescriptor) OutputFeatureChannels() uint {
+	rv := objc.Call[uint](r_, objc.Sel("outputFeatureChannels"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865702-outputfeaturechannels?language=objc
+func (r_ RNNDescriptor) SetOutputFeatureChannels(value uint) {
+	objc.Call[objc.Void](r_, objc.Sel("setOutputFeatureChannels:"), value)
 }
 
 //	[Full Topic]
@@ -106,34 +136,4 @@ func (r_ RNNDescriptor) UseFloat32Weights() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2881202-usefloat32weights?language=objc
 func (r_ RNNDescriptor) SetUseFloat32Weights(value bool) {
 	objc.Call[objc.Void](r_, objc.Sel("setUseFloat32Weights:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865702-outputfeaturechannels?language=objc
-func (r_ RNNDescriptor) OutputFeatureChannels() uint {
-	rv := objc.Call[uint](r_, objc.Sel("outputFeatureChannels"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865702-outputfeaturechannels?language=objc
-func (r_ RNNDescriptor) SetOutputFeatureChannels(value uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setOutputFeatureChannels:"), value)
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865730-layersequencedirection?language=objc
-func (r_ RNNDescriptor) LayerSequenceDirection() RNNSequenceDirection {
-	rv := objc.Call[RNNSequenceDirection](r_, objc.Sel("layerSequenceDirection"))
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnndescriptor/2865730-layersequencedirection?language=objc
-func (r_ RNNDescriptor) SetLayerSequenceDirection(value RNNSequenceDirection) {
-	objc.Call[objc.Void](r_, objc.Sel("setLayerSequenceDirection:"), value)
 }

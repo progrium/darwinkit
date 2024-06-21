@@ -18,8 +18,8 @@ type _PipelineBufferDescriptorArrayClass struct {
 // An interface definition for the [PipelineBufferDescriptorArray] class.
 type IPipelineBufferDescriptorArray interface {
 	objc.IObject
-	SetObjectAtIndexedSubscript(buffer IPipelineBufferDescriptor, bufferIndex uint)
 	ObjectAtIndexedSubscript(bufferIndex uint) PipelineBufferDescriptor
+	SetObjectAtIndexedSubscript(buffer IPipelineBufferDescriptor, bufferIndex uint)
 }
 
 // An array of pipeline buffer descriptor objects. [Full Topic]
@@ -55,17 +55,17 @@ func (p_ PipelineBufferDescriptorArray) Init() PipelineBufferDescriptorArray {
 	return rv
 }
 
-// Sets a pipeline buffer descriptor at the specified array index. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpipelinebufferdescriptorarray/2879310-setobject?language=objc
-func (p_ PipelineBufferDescriptorArray) SetObjectAtIndexedSubscript(buffer IPipelineBufferDescriptor, bufferIndex uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setObject:atIndexedSubscript:"), buffer, bufferIndex)
-}
-
 // Returns the pipeline buffer descriptor at the specified array index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlpipelinebufferdescriptorarray/2879272-objectatindexedsubscript?language=objc
 func (p_ PipelineBufferDescriptorArray) ObjectAtIndexedSubscript(bufferIndex uint) PipelineBufferDescriptor {
 	rv := objc.Call[PipelineBufferDescriptor](p_, objc.Sel("objectAtIndexedSubscript:"), bufferIndex)
 	return rv
+}
+
+// Sets a pipeline buffer descriptor at the specified array index. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlpipelinebufferdescriptorarray/2879310-setobject?language=objc
+func (p_ PipelineBufferDescriptorArray) SetObjectAtIndexedSubscript(buffer IPipelineBufferDescriptor, bufferIndex uint) {
+	objc.Call[objc.Void](p_, objc.Sel("setObject:atIndexedSubscript:"), buffer, bufferIndex)
 }

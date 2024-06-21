@@ -2,7 +2,7 @@
 
 package quartz
 
-// These constants specify the display mode used by the camera view. These constants are used by [quartz/ikcameradeviceview/mode]. [Full Topic]
+// These constants specify the display mode used by the camera view. These constants are used by mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdisplaymode?language=objc
 type CameraDeviceViewDisplayMode int
@@ -13,7 +13,7 @@ const (
 	CameraDeviceViewDisplayModeTable CameraDeviceViewDisplayMode = 0
 )
 
-// These constants specify the transfer mode used by the camera view. These constants are used by [quartz/ikcameradeviceview/mode]. [Full Topic]
+// These constants specify the transfer mode used by the camera view. These constants are used by mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewtransfermode?language=objc
 type CameraDeviceViewTransferMode int
@@ -34,7 +34,7 @@ const (
 	DeviceBrowserViewDisplayModeTable   DeviceBrowserViewDisplayMode = 0
 )
 
-// The possible states for the browser cell. These values are used by the [quartz/ikimagebrowsercell/cellstate] method. [Full Topic]
+// The possible states for the browser cell. These values are used by the cellState method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowsercellstate?language=objc
 type ImageBrowserCellState int
@@ -45,7 +45,7 @@ const (
 	ImageStateReady   ImageBrowserCellState = 2
 )
 
-// These constants specify the locations for dropping items onto the browser view. Used by the method [quartz/ikimagebrowserview/setdropindex]. [Full Topic]
+// These constants specify the locations for dropping items onto the browser view. Used by the method setDropIndex:dropOperation:. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimagebrowserdropoperation?language=objc
 type ImageBrowserDropOperation int
@@ -55,7 +55,7 @@ const (
 	ImageBrowserDropOn     ImageBrowserDropOperation = 0
 )
 
-// These constants specify the display mode the scanner view will use. They are used by the [quartz/ikscannerdeviceview/mode] property. [Full Topic]
+// These constants specify the display mode the scanner view will use. They are used by the mode property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewdisplaymode?language=objc
 type ScannerDeviceViewDisplayMode int
@@ -66,7 +66,7 @@ const (
 	ScannerDeviceViewDisplayModeSimple   ScannerDeviceViewDisplayMode = 0
 )
 
-// These constants determine how the scanner data is returned to the delegate. They are used by the [quartz/ikscannerdeviceview/transfermode] property. [Full Topic]
+// These constants determine how the scanner data is returned to the delegate. They are used by the transferMode property. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewtransfermode?language=objc
 type ScannerDeviceViewTransferMode int

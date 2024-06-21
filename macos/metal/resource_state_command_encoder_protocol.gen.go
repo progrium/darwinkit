@@ -15,10 +15,6 @@ type PResourceStateCommandEncoder interface {
 	HasUpdateTextureMappingsModeRegionsMipLevelsSlicesNumRegions() bool
 
 	// optional
-	WaitForFence(fence FenceObject)
-	HasWaitForFence() bool
-
-	// optional
 	UpdateTextureMappingModeIndirectBufferIndirectBufferOffset(texture TextureObject, mode SparseTextureMappingMode, indirectBuffer BufferObject, indirectBufferOffset uint)
 	HasUpdateTextureMappingModeIndirectBufferIndirectBufferOffset() bool
 
@@ -27,8 +23,8 @@ type PResourceStateCommandEncoder interface {
 	HasUpdateFence() bool
 
 	// optional
-	UpdateTextureMappingModeRegionMipLevelSlice(texture TextureObject, mode SparseTextureMappingMode, region Region, mipLevel uint, slice uint)
-	HasUpdateTextureMappingModeRegionMipLevelSlice() bool
+	WaitForFence(fence FenceObject)
+	HasWaitForFence() bool
 }
 
 // ensure impl type implements protocol interface
@@ -49,18 +45,6 @@ func (r_ ResourceStateCommandEncoderObject) HasUpdateTextureMappingsModeRegionsM
 func (r_ ResourceStateCommandEncoderObject) UpdateTextureMappingsModeRegionsMipLevelsSlicesNumRegions(texture TextureObject, mode SparseTextureMappingMode, regions *Region, mipLevels *uint, slices *uint, numRegions uint) {
 	po0 := objc.WrapAsProtocol("MTLTexture", texture)
 	objc.Call[objc.Void](r_, objc.Sel("updateTextureMappings:mode:regions:mipLevels:slices:numRegions:"), po0, mode, regions, mipLevels, slices, numRegions)
-}
-
-func (r_ ResourceStateCommandEncoderObject) HasWaitForFence() bool {
-	return r_.RespondsToSelector(objc.Sel("waitForFence:"))
-}
-
-// Prevents the command encoder from enqueuing further GPU commands until the given fence is reached. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatecommandencoder/3114015-waitforfence?language=objc
-func (r_ ResourceStateCommandEncoderObject) WaitForFence(fence FenceObject) {
-	po0 := objc.WrapAsProtocol("MTLFence", fence)
-	objc.Call[objc.Void](r_, objc.Sel("waitForFence:"), po0)
 }
 
 func (r_ ResourceStateCommandEncoderObject) HasUpdateTextureMappingModeIndirectBufferIndirectBufferOffset() bool {
@@ -88,14 +72,14 @@ func (r_ ResourceStateCommandEncoderObject) UpdateFence(fence FenceObject) {
 	objc.Call[objc.Void](r_, objc.Sel("updateFence:"), po0)
 }
 
-func (r_ ResourceStateCommandEncoderObject) HasUpdateTextureMappingModeRegionMipLevelSlice() bool {
-	return r_.RespondsToSelector(objc.Sel("updateTextureMapping:mode:region:mipLevel:slice:"))
+func (r_ ResourceStateCommandEncoderObject) HasWaitForFence() bool {
+	return r_.RespondsToSelector(objc.Sel("waitForFence:"))
 }
 
-// Encodes a command to update the texture mappings for a region in a single texture mipmap. [Full Topic]
+// Prevents the command encoder from enqueuing further GPU commands until the given fence is reached. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatecommandencoder/3043994-updatetexturemapping?language=objc
-func (r_ ResourceStateCommandEncoderObject) UpdateTextureMappingModeRegionMipLevelSlice(texture TextureObject, mode SparseTextureMappingMode, region Region, mipLevel uint, slice uint) {
-	po0 := objc.WrapAsProtocol("MTLTexture", texture)
-	objc.Call[objc.Void](r_, objc.Sel("updateTextureMapping:mode:region:mipLevel:slice:"), po0, mode, region, mipLevel, slice)
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatecommandencoder/3114015-waitforfence?language=objc
+func (r_ ResourceStateCommandEncoderObject) WaitForFence(fence FenceObject) {
+	po0 := objc.WrapAsProtocol("MTLFence", fence)
+	objc.Call[objc.Void](r_, objc.Sel("waitForFence:"), po0)
 }

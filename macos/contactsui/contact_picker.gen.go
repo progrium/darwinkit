@@ -22,11 +22,11 @@ type IContactPicker interface {
 	objc.IObject
 	Close()
 	ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView appkit.IView, preferredEdge foundation.RectEdge)
-	DisplayedKeys() []string
-	SetDisplayedKeys(value []string)
 	Delegate() ContactPickerDelegateObject
 	SetDelegate(value PContactPickerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
+	DisplayedKeys() []string
+	SetDisplayedKeys(value []string)
 }
 
 // A popover-based interface for selecting a contact. [Full Topic]
@@ -76,21 +76,6 @@ func (c_ ContactPicker) ShowRelativeToRectOfViewPreferredEdge(positioningRect fo
 	objc.Call[objc.Void](c_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, positioningView, preferredEdge)
 }
 
-// The keys to be displayed when a contact is expanded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522585-displayedkeys?language=objc
-func (c_ ContactPicker) DisplayedKeys() []string {
-	rv := objc.Call[[]string](c_, objc.Sel("displayedKeys"))
-	return rv
-}
-
-// The keys to be displayed when a contact is expanded. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522585-displayedkeys?language=objc
-func (c_ ContactPicker) SetDisplayedKeys(value []string) {
-	objc.Call[objc.Void](c_, objc.Sel("setDisplayedKeys:"), value)
-}
-
 // The picker delegate to be notified when the user chooses a contact. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522588-delegate?language=objc
@@ -113,4 +98,19 @@ func (c_ ContactPicker) SetDelegate(value PContactPickerDelegate) {
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522588-delegate?language=objc
 func (c_ ContactPicker) SetDelegateObject(valueObject objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
+}
+
+// The keys to be displayed when a contact is expanded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522585-displayedkeys?language=objc
+func (c_ ContactPicker) DisplayedKeys() []string {
+	rv := objc.Call[[]string](c_, objc.Sel("displayedKeys"))
+	return rv
+}
+
+// The keys to be displayed when a contact is expanded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522585-displayedkeys?language=objc
+func (c_ ContactPicker) SetDisplayedKeys(value []string) {
+	objc.Call[objc.Void](c_, objc.Sel("setDisplayedKeys:"), value)
 }

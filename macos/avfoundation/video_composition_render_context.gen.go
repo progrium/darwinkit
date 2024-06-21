@@ -21,13 +21,13 @@ type _VideoCompositionRenderContextClass struct {
 type IVideoCompositionRenderContext interface {
 	objc.IObject
 	NewPixelBuffer() corevideo.PixelBufferRef
-	RenderScale() float32
 	HighQualityRendering() bool
+	VideoComposition() VideoComposition
+	RenderTransform() coregraphics.AffineTransform
 	PixelAspectRatio() PixelAspectRatio
 	EdgeWidths() EdgeWidths
-	RenderTransform() coregraphics.AffineTransform
+	RenderScale() float32
 	Size() coregraphics.Size
-	VideoComposition() VideoComposition
 }
 
 // An object that defines the context in which custom compositors render pixel buffers. [Full Topic]
@@ -71,19 +71,27 @@ func (v_ VideoCompositionRenderContext) NewPixelBuffer() corevideo.PixelBufferRe
 	return rv
 }
 
-// A scaling ratio that is applied when rendering frames. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1387408-renderscale?language=objc
-func (v_ VideoCompositionRenderContext) RenderScale() float32 {
-	rv := objc.Call[float32](v_, objc.Sel("renderScale"))
-	return rv
-}
-
 // The rendering quality to use. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1388758-highqualityrendering?language=objc
 func (v_ VideoCompositionRenderContext) HighQualityRendering() bool {
 	rv := objc.Call[bool](v_, objc.Sel("highQualityRendering"))
+	return rv
+}
+
+// The video composition being rendered. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1390647-videocomposition?language=objc
+func (v_ VideoCompositionRenderContext) VideoComposition() VideoComposition {
+	rv := objc.Call[VideoComposition](v_, objc.Sel("videoComposition"))
+	return rv
+}
+
+// A transform to apply to the source image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1389831-rendertransform?language=objc
+func (v_ VideoCompositionRenderContext) RenderTransform() coregraphics.AffineTransform {
+	rv := objc.Call[coregraphics.AffineTransform](v_, objc.Sel("renderTransform"))
 	return rv
 }
 
@@ -103,11 +111,11 @@ func (v_ VideoCompositionRenderContext) EdgeWidths() EdgeWidths {
 	return rv
 }
 
-// A transform to apply to the source image. [Full Topic]
+// A scaling ratio that is applied when rendering frames. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1389831-rendertransform?language=objc
-func (v_ VideoCompositionRenderContext) RenderTransform() coregraphics.AffineTransform {
-	rv := objc.Call[coregraphics.AffineTransform](v_, objc.Sel("renderTransform"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1387408-renderscale?language=objc
+func (v_ VideoCompositionRenderContext) RenderScale() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("renderScale"))
 	return rv
 }
 
@@ -116,13 +124,5 @@ func (v_ VideoCompositionRenderContext) RenderTransform() coregraphics.AffineTra
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1389718-size?language=objc
 func (v_ VideoCompositionRenderContext) Size() coregraphics.Size {
 	rv := objc.Call[coregraphics.Size](v_, objc.Sel("size"))
-	return rv
-}
-
-// The video composition being rendered. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1390647-videocomposition?language=objc
-func (v_ VideoCompositionRenderContext) VideoComposition() VideoComposition {
-	rv := objc.Call[VideoComposition](v_, objc.Sel("videoComposition"))
 	return rv
 }

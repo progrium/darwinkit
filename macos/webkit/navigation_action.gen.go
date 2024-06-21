@@ -20,13 +20,13 @@ type _NavigationActionClass struct {
 // An interface definition for the [NavigationAction] class.
 type INavigationAction interface {
 	objc.IObject
-	ShouldPerformDownload() bool
-	SourceFrame() FrameInfo
-	NavigationType() NavigationType
-	TargetFrame() FrameInfo
-	ButtonNumber() int
 	Request() foundation.URLRequest
 	ModifierFlags() appkit.EventModifierFlags
+	ButtonNumber() int
+	SourceFrame() FrameInfo
+	TargetFrame() FrameInfo
+	ShouldPerformDownload() bool
+	NavigationType() NavigationType
 }
 
 // An object that contains information about an action that causes navigation to occur. [Full Topic]
@@ -62,46 +62,6 @@ func (n_ NavigationAction) Init() NavigationAction {
 	return rv
 }
 
-// A Boolean value that indicates whether the web content provided an attribute that indicates a download. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/3727357-shouldperformdownload?language=objc
-func (n_ NavigationAction) ShouldPerformDownload() bool {
-	rv := objc.Call[bool](n_, objc.Sel("shouldPerformDownload"))
-	return rv
-}
-
-// The frame that requested the navigation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401926-sourceframe?language=objc
-func (n_ NavigationAction) SourceFrame() FrameInfo {
-	rv := objc.Call[FrameInfo](n_, objc.Sel("sourceFrame"))
-	return rv
-}
-
-// The type of action that triggered the navigation. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401914-navigationtype?language=objc
-func (n_ NavigationAction) NavigationType() NavigationType {
-	rv := objc.Call[NavigationType](n_, objc.Sel("navigationType"))
-	return rv
-}
-
-// The frame in which to display the new content. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401918-targetframe?language=objc
-func (n_ NavigationAction) TargetFrame() FrameInfo {
-	rv := objc.Call[FrameInfo](n_, objc.Sel("targetFrame"))
-	return rv
-}
-
-// The number of the mouse button that caused the navigation request. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401916-buttonnumber?language=objc
-func (n_ NavigationAction) ButtonNumber() int {
-	rv := objc.Call[int](n_, objc.Sel("buttonNumber"))
-	return rv
-}
-
 // The URL request object associated with the navigation action. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401910-request?language=objc
@@ -115,5 +75,45 @@ func (n_ NavigationAction) Request() foundation.URLRequest {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401934-modifierflags?language=objc
 func (n_ NavigationAction) ModifierFlags() appkit.EventModifierFlags {
 	rv := objc.Call[appkit.EventModifierFlags](n_, objc.Sel("modifierFlags"))
+	return rv
+}
+
+// The number of the mouse button that caused the navigation request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401916-buttonnumber?language=objc
+func (n_ NavigationAction) ButtonNumber() int {
+	rv := objc.Call[int](n_, objc.Sel("buttonNumber"))
+	return rv
+}
+
+// The frame that requested the navigation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401926-sourceframe?language=objc
+func (n_ NavigationAction) SourceFrame() FrameInfo {
+	rv := objc.Call[FrameInfo](n_, objc.Sel("sourceFrame"))
+	return rv
+}
+
+// The frame in which to display the new content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401918-targetframe?language=objc
+func (n_ NavigationAction) TargetFrame() FrameInfo {
+	rv := objc.Call[FrameInfo](n_, objc.Sel("targetFrame"))
+	return rv
+}
+
+// A Boolean value that indicates whether the web content provided an attribute that indicates a download. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/3727357-shouldperformdownload?language=objc
+func (n_ NavigationAction) ShouldPerformDownload() bool {
+	rv := objc.Call[bool](n_, objc.Sel("shouldPerformDownload"))
+	return rv
+}
+
+// The type of action that triggered the navigation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401914-navigationtype?language=objc
+func (n_ NavigationAction) NavigationType() NavigationType {
+	rv := objc.Call[NavigationType](n_, objc.Sel("navigationType"))
 	return rv
 }

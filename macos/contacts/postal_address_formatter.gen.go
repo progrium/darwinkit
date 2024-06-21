@@ -19,8 +19,8 @@ type _PostalAddressFormatterClass struct {
 // An interface definition for the [PostalAddressFormatter] class.
 type IPostalAddressFormatter interface {
 	foundation.IFormatter
-	AttributedStringFromPostalAddressWithDefaultAttributes(postalAddress IPostalAddress, attributes foundation.Dictionary) foundation.AttributedString
 	StringFromPostalAddress(postalAddress IPostalAddress) string
+	AttributedStringFromPostalAddressWithDefaultAttributes(postalAddress IPostalAddress, attributes foundation.Dictionary) foundation.AttributedString
 	Style() PostalAddressFormatterStyle
 	SetStyle(value PostalAddressFormatterStyle)
 }
@@ -58,29 +58,6 @@ func (p_ PostalAddressFormatter) Init() PostalAddressFormatter {
 	return rv
 }
 
-// Returns a postal address as a string and formatted for the specified style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403291-stringfrompostaladdress?language=objc
-func (pc _PostalAddressFormatterClass) StringFromPostalAddressStyle(postalAddress IPostalAddress, style PostalAddressFormatterStyle) string {
-	rv := objc.Call[string](pc, objc.Sel("stringFromPostalAddress:style:"), postalAddress, style)
-	return rv
-}
-
-// Returns a postal address as a string and formatted for the specified style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403291-stringfrompostaladdress?language=objc
-func PostalAddressFormatter_StringFromPostalAddressStyle(postalAddress IPostalAddress, style PostalAddressFormatterStyle) string {
-	return PostalAddressFormatterClass.StringFromPostalAddressStyle(postalAddress, style)
-}
-
-// Returns a formatted postal address as an attributed string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1402831-attributedstringfrompostaladdres?language=objc
-func (p_ PostalAddressFormatter) AttributedStringFromPostalAddressWithDefaultAttributes(postalAddress IPostalAddress, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedStringFromPostalAddress:withDefaultAttributes:"), postalAddress, attributes)
-	return rv
-}
-
 // Returns a formatted postal address. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403011-stringfrompostaladdress?language=objc
@@ -89,19 +66,12 @@ func (p_ PostalAddressFormatter) StringFromPostalAddress(postalAddress IPostalAd
 	return rv
 }
 
-// Returns a postal address as an attributed string and formatted for the specified style. [Full Topic]
+// Returns a formatted postal address as an attributed string. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403336-attributedstringfrompostaladdres?language=objc
-func (pc _PostalAddressFormatterClass) AttributedStringFromPostalAddressStyleWithDefaultAttributes(postalAddress IPostalAddress, style PostalAddressFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](pc, objc.Sel("attributedStringFromPostalAddress:style:withDefaultAttributes:"), postalAddress, style, attributes)
+// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1402831-attributedstringfrompostaladdres?language=objc
+func (p_ PostalAddressFormatter) AttributedStringFromPostalAddressWithDefaultAttributes(postalAddress IPostalAddress, attributes foundation.Dictionary) foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedStringFromPostalAddress:withDefaultAttributes:"), postalAddress, attributes)
 	return rv
-}
-
-// Returns a postal address as an attributed string and formatted for the specified style. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403336-attributedstringfrompostaladdres?language=objc
-func PostalAddressFormatter_AttributedStringFromPostalAddressStyleWithDefaultAttributes(postalAddress IPostalAddress, style PostalAddressFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	return PostalAddressFormatterClass.AttributedStringFromPostalAddressStyleWithDefaultAttributes(postalAddress, style, attributes)
 }
 
 // The style to apply when formatting strings. [Full Topic]

@@ -18,11 +18,11 @@ type _TextRangeClass struct {
 // An interface definition for the [TextRange] class.
 type ITextRange interface {
 	objc.IObject
-	IntersectsWithTextRange(textRange ITextRange) bool
-	ContainsRange(textRange ITextRange) bool
+	IsEqualToTextRange(textRange ITextRange) bool
 	ContainsLocation(location PTextLocation) bool
 	ContainsLocationObject(locationObject objc.IObject) bool
-	IsEqualToTextRange(textRange ITextRange) bool
+	ContainsRange(textRange ITextRange) bool
+	IntersectsWithTextRange(textRange ITextRange) bool
 	IsEmpty() bool
 	Location() TextLocationObject
 	EndLocation() TextLocationObject
@@ -41,20 +41,6 @@ func TextRangeFrom(ptr unsafe.Pointer) TextRange {
 	}
 }
 
-func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByIntersectingWithTextRange:"), textRange)
-	return rv
-}
-
-// Returns the range, if any, where two text ranges intersect. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801814-textrangebyintersectingwithtextr?language=objc
-func TextRange_TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	instance := TextRangeClass.Alloc().TextRangeByIntersectingWithTextRange(textRange)
-	instance.Autorelease()
-	return instance
-}
-
 func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
 	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByFormingUnionWithTextRange:"), textRange)
 	return rv
@@ -65,22 +51,6 @@ func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) T
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801813-textrangebyformingunionwithtextr?language=objc
 func TextRange_TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
 	instance := TextRangeClass.Alloc().TextRangeByFormingUnionWithTextRange(textRange)
-	instance.Autorelease()
-	return instance
-}
-
-func (t_ TextRange) InitWithLocationEndLocation(location PTextLocation, endLocation PTextLocation) TextRange {
-	po0 := objc.WrapAsProtocol("NSTextLocation", location)
-	po1 := objc.WrapAsProtocol("NSTextLocation", endLocation)
-	rv := objc.Call[TextRange](t_, objc.Sel("initWithLocation:endLocation:"), po0, po1)
-	return rv
-}
-
-// Creates a new text range with the starting and ending locations you specify. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801809-initwithlocation?language=objc
-func NewTextRangeWithLocationEndLocation(location PTextLocation, endLocation PTextLocation) TextRange {
-	instance := TextRangeClass.Alloc().InitWithLocationEndLocation(location, endLocation)
 	instance.Autorelease()
 	return instance
 }
@@ -96,6 +66,20 @@ func (t_ TextRange) InitWithLocation(location PTextLocation) TextRange {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801808-initwithlocation?language=objc
 func NewTextRangeWithLocation(location PTextLocation) TextRange {
 	instance := TextRangeClass.Alloc().InitWithLocation(location)
+	instance.Autorelease()
+	return instance
+}
+
+func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
+	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByIntersectingWithTextRange:"), textRange)
+	return rv
+}
+
+// Returns the range, if any, where two text ranges intersect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801814-textrangebyintersectingwithtextr?language=objc
+func TextRange_TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
+	instance := TextRangeClass.Alloc().TextRangeByIntersectingWithTextRange(textRange)
 	instance.Autorelease()
 	return instance
 }
@@ -120,19 +104,11 @@ func (t_ TextRange) Init() TextRange {
 	return rv
 }
 
-// Determines if two ranges intersect. [Full Topic]
+// Compares two text ranges. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801810-intersectswithtextrange?language=objc
-func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("intersectsWithTextRange:"), textRange)
-	return rv
-}
-
-// Determines if the text range you specify is in the current text range. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801805-containsrange?language=objc
-func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("containsRange:"), textRange)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801811-isequaltotextrange?language=objc
+func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
+	rv := objc.Call[bool](t_, objc.Sel("isEqualToTextRange:"), textRange)
 	return rv
 }
 
@@ -153,11 +129,19 @@ func (t_ TextRange) ContainsLocationObject(locationObject objc.IObject) bool {
 	return rv
 }
 
-// Compares two text ranges. [Full Topic]
+// Determines if the text range you specify is in the current text range. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801811-isequaltotextrange?language=objc
-func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isEqualToTextRange:"), textRange)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801805-containsrange?language=objc
+func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
+	rv := objc.Call[bool](t_, objc.Sel("containsRange:"), textRange)
+	return rv
+}
+
+// Determines if two ranges intersect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801810-intersectswithtextrange?language=objc
+func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
+	rv := objc.Call[bool](t_, objc.Sel("intersectsWithTextRange:"), textRange)
 	return rv
 }
 

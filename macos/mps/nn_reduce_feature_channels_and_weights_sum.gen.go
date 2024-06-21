@@ -50,21 +50,6 @@ func NewNNReduceFeatureChannelsAndWeightsSumWithDevice(device metal.PDevice) NNR
 	return instance
 }
 
-func (n_ NNReduceFeatureChannelsAndWeightsSum) InitWithDeviceDoWeightedSumByNonZeroWeights(device metal.PDevice, doWeightedSumByNonZeroWeights bool) NNReduceFeatureChannelsAndWeightsSum {
-	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNReduceFeatureChannelsAndWeightsSum](n_, objc.Sel("initWithDevice:doWeightedSumByNonZeroWeights:"), po0, doWeightedSumByNonZeroWeights)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreducefeaturechannelsandweightssum/2942551-initwithdevice?language=objc
-func NewNNReduceFeatureChannelsAndWeightsSumWithDeviceDoWeightedSumByNonZeroWeights(device metal.PDevice, doWeightedSumByNonZeroWeights bool) NNReduceFeatureChannelsAndWeightsSum {
-	instance := NNReduceFeatureChannelsAndWeightsSumClass.Alloc().InitWithDeviceDoWeightedSumByNonZeroWeights(device, doWeightedSumByNonZeroWeights)
-	instance.Autorelease()
-	return instance
-}
-
 func (nc _NNReduceFeatureChannelsAndWeightsSumClass) Alloc() NNReduceFeatureChannelsAndWeightsSum {
 	rv := objc.Call[NNReduceFeatureChannelsAndWeightsSum](nc, objc.Sel("alloc"))
 	return rv

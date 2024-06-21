@@ -58,6 +58,32 @@ func (s_ ScrollLayer) Init() ScrollLayer {
 	return rv
 }
 
+func (sc _ScrollLayerClass) Layer() ScrollLayer {
+	rv := objc.Call[ScrollLayer](sc, objc.Sel("layer"))
+	return rv
+}
+
+// Creates and returns an instance of the layer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func ScrollLayer_Layer() ScrollLayer {
+	return ScrollLayerClass.Layer()
+}
+
+func (s_ ScrollLayer) InitWithLayer(layer objc.IObject) ScrollLayer {
+	rv := objc.Call[ScrollLayer](s_, objc.Sel("initWithLayer:"), layer)
+	return rv
+}
+
+// Override to copy or initialize custom fields of the specified layer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
+func NewScrollLayerWithLayer(layer objc.IObject) ScrollLayer {
+	instance := ScrollLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
+}
+
 func (s_ ScrollLayer) ModelLayer() ScrollLayer {
 	rv := objc.Call[ScrollLayer](s_, objc.Sel("modelLayer"))
 	return rv
@@ -84,32 +110,6 @@ func ScrollLayer_PresentationLayer() ScrollLayer {
 	instance := ScrollLayerClass.Alloc().PresentationLayer()
 	instance.Autorelease()
 	return instance
-}
-
-func (s_ ScrollLayer) InitWithLayer(layer objc.IObject) ScrollLayer {
-	rv := objc.Call[ScrollLayer](s_, objc.Sel("initWithLayer:"), layer)
-	return rv
-}
-
-// Override to copy or initialize custom fields of the specified layer. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func NewScrollLayerWithLayer(layer objc.IObject) ScrollLayer {
-	instance := ScrollLayerClass.Alloc().InitWithLayer(layer)
-	instance.Autorelease()
-	return instance
-}
-
-func (sc _ScrollLayerClass) Layer() ScrollLayer {
-	rv := objc.Call[ScrollLayer](sc, objc.Sel("layer"))
-	return rv
-}
-
-// Creates and returns an instance of the layer object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
-func ScrollLayer_Layer() ScrollLayer {
-	return ScrollLayerClass.Layer()
 }
 
 // Changes the origin of the receiver to the specified point. [Full Topic]

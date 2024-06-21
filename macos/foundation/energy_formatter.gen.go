@@ -18,10 +18,10 @@ type _EnergyFormatterClass struct {
 // An interface definition for the [EnergyFormatter] class.
 type IEnergyFormatter interface {
 	IFormatter
-	UnitStringFromJoulesUsedUnit(numberInJoules float64, unitp *EnergyFormatterUnit) string
 	StringFromJoules(numberInJoules float64) string
 	StringFromValueUnit(value float64, unit EnergyFormatterUnit) string
 	UnitStringFromValueUnit(value float64, unit EnergyFormatterUnit) string
+	UnitStringFromJoulesUsedUnit(numberInJoules float64, unitp *EnergyFormatterUnit) string
 	UnitStyle() FormattingUnitStyle
 	SetUnitStyle(value FormattingUnitStyle)
 	NumberFormatter() NumberFormatter
@@ -63,14 +63,6 @@ func (e_ EnergyFormatter) Init() EnergyFormatter {
 	return rv
 }
 
-// Returns the unit string for the provided value. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsenergyformatter/1408656-unitstringfromjoules?language=objc
-func (e_ EnergyFormatter) UnitStringFromJoulesUsedUnit(numberInJoules float64, unitp *EnergyFormatterUnit) string {
-	rv := objc.Call[string](e_, objc.Sel("unitStringFromJoules:usedUnit:"), numberInJoules, unitp)
-	return rv
-}
-
 // Returns an energy string for the provided value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsenergyformatter/1409502-stringfromjoules?language=objc
@@ -92,6 +84,14 @@ func (e_ EnergyFormatter) StringFromValueUnit(value float64, unit EnergyFormatte
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsenergyformatter/1411180-unitstringfromvalue?language=objc
 func (e_ EnergyFormatter) UnitStringFromValueUnit(value float64, unit EnergyFormatterUnit) string {
 	rv := objc.Call[string](e_, objc.Sel("unitStringFromValue:unit:"), value, unit)
+	return rv
+}
+
+// Returns the unit string for the provided value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsenergyformatter/1408656-unitstringfromjoules?language=objc
+func (e_ EnergyFormatter) UnitStringFromJoulesUsedUnit(numberInJoules float64, unitp *EnergyFormatterUnit) string {
+	rv := objc.Call[string](e_, objc.Sel("unitStringFromJoules:usedUnit:"), numberInJoules, unitp)
 	return rv
 }
 

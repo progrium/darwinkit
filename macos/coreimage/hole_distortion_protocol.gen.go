@@ -12,12 +12,12 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion?language=objc
 type PHoleDistortion interface {
 	// optional
-	SetCenter(value coregraphics.Point)
-	HasSetCenter() bool
+	SetInputImage(value Image)
+	HasSetInputImage() bool
 
 	// optional
-	Center() coregraphics.Point
-	HasCenter() bool
+	InputImage() Image
+	HasInputImage() bool
 
 	// optional
 	SetRadius(value float32)
@@ -28,12 +28,12 @@ type PHoleDistortion interface {
 	HasRadius() bool
 
 	// optional
-	SetInputImage(value Image)
-	HasSetInputImage() bool
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
 
 	// optional
-	InputImage() Image
-	HasInputImage() bool
+	Center() coregraphics.Point
+	HasCenter() bool
 }
 
 // ensure impl type implements protocol interface
@@ -44,26 +44,26 @@ type HoleDistortionObject struct {
 	objc.Object
 }
 
-func (h_ HoleDistortionObject) HasSetCenter() bool {
-	return h_.RespondsToSelector(objc.Sel("setCenter:"))
+func (h_ HoleDistortionObject) HasSetInputImage() bool {
+	return h_.RespondsToSelector(objc.Sel("setInputImage:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600167-center?language=objc
-func (h_ HoleDistortionObject) SetCenter(value coregraphics.Point) {
-	objc.Call[objc.Void](h_, objc.Sel("setCenter:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600168-inputimage?language=objc
+func (h_ HoleDistortionObject) SetInputImage(value Image) {
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
-func (h_ HoleDistortionObject) HasCenter() bool {
-	return h_.RespondsToSelector(objc.Sel("center"))
+func (h_ HoleDistortionObject) HasInputImage() bool {
+	return h_.RespondsToSelector(objc.Sel("inputImage"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600167-center?language=objc
-func (h_ HoleDistortionObject) Center() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](h_, objc.Sel("center"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600168-inputimage?language=objc
+func (h_ HoleDistortionObject) InputImage() Image {
+	rv := objc.Call[Image](h_, objc.Sel("inputImage"))
 	return rv
 }
 
@@ -90,25 +90,25 @@ func (h_ HoleDistortionObject) Radius() float32 {
 	return rv
 }
 
-func (h_ HoleDistortionObject) HasSetInputImage() bool {
-	return h_.RespondsToSelector(objc.Sel("setInputImage:"))
+func (h_ HoleDistortionObject) HasSetCenter() bool {
+	return h_.RespondsToSelector(objc.Sel("setCenter:"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600168-inputimage?language=objc
-func (h_ HoleDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600167-center?language=objc
+func (h_ HoleDistortionObject) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](h_, objc.Sel("setCenter:"), value)
 }
 
-func (h_ HoleDistortionObject) HasInputImage() bool {
-	return h_.RespondsToSelector(objc.Sel("inputImage"))
+func (h_ HoleDistortionObject) HasCenter() bool {
+	return h_.RespondsToSelector(objc.Sel("center"))
 }
 
 //	[Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600168-inputimage?language=objc
-func (h_ HoleDistortionObject) InputImage() Image {
-	rv := objc.Call[Image](h_, objc.Sel("inputImage"))
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/ciholedistortion/3600167-center?language=objc
+func (h_ HoleDistortionObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](h_, objc.Sel("center"))
 	return rv
 }

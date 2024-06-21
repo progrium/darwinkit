@@ -19,8 +19,8 @@ type _RectangleObservationClass struct {
 // An interface definition for the [RectangleObservation] class.
 type IRectangleObservation interface {
 	IDetectedObjectObservation
-	BottomLeft() coregraphics.Point
 	BottomRight() coregraphics.Point
+	BottomLeft() coregraphics.Point
 	TopRight() coregraphics.Point
 	TopLeft() coregraphics.Point
 }
@@ -82,19 +82,19 @@ func RectangleObservation_ObservationWithRequestRevisionBoundingBox(requestRevis
 	return RectangleObservationClass.ObservationWithRequestRevisionBoundingBox(requestRevision, boundingBox)
 }
 
-// The coordinates of the lower-left corner of the observation bounding box. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/vision/vnrectangleobservation/2867201-bottomleft?language=objc
-func (r_ RectangleObservation) BottomLeft() coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](r_, objc.Sel("bottomLeft"))
-	return rv
-}
-
 // The coordinates of the lower-right corner of the observation bounding box. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrectangleobservation/2867226-bottomright?language=objc
 func (r_ RectangleObservation) BottomRight() coregraphics.Point {
 	rv := objc.Call[coregraphics.Point](r_, objc.Sel("bottomRight"))
+	return rv
+}
+
+// The coordinates of the lower-left corner of the observation bounding box. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/vision/vnrectangleobservation/2867201-bottomleft?language=objc
+func (r_ RectangleObservation) BottomLeft() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](r_, objc.Sel("bottomLeft"))
 	return rv
 }
 

@@ -21,14 +21,14 @@ type IDraggingSession interface {
 	objc.IObject
 	EnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool))
 	DraggingPasteboard() Pasteboard
-	DraggingLocation() foundation.Point
 	DraggingFormation() DraggingFormation
 	SetDraggingFormation(value DraggingFormation)
-	DraggingSequenceNumber() int
-	AnimatesToStartingPositionsOnCancelOrFail() bool
-	SetAnimatesToStartingPositionsOnCancelOrFail(value bool)
 	DraggingLeaderIndex() int
 	SetDraggingLeaderIndex(value int)
+	AnimatesToStartingPositionsOnCancelOrFail() bool
+	SetAnimatesToStartingPositionsOnCancelOrFail(value bool)
+	DraggingLocation() foundation.Point
+	DraggingSequenceNumber() int
 }
 
 // The encapsulation of a drag-and-drop action that supports modification of the drag while in progress. [Full Topic]
@@ -79,14 +79,6 @@ func (d_ DraggingSession) DraggingPasteboard() Pasteboard {
 	return rv
 }
 
-// The current cursor location of the drag in screen coordinates. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1529395-dragginglocation?language=objc
-func (d_ DraggingSession) DraggingLocation() foundation.Point {
-	rv := objc.Call[foundation.Point](d_, objc.Sel("draggingLocation"))
-	return rv
-}
-
 // Controls the dragging formation when the drag is not over the source or a valid destination. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1524544-draggingformation?language=objc
@@ -102,12 +94,19 @@ func (d_ DraggingSession) SetDraggingFormation(value DraggingFormation) {
 	objc.Call[objc.Void](d_, objc.Sel("setDraggingFormation:"), value)
 }
 
-// Returns a number that uniquely identifies the dragging session. [Full Topic]
+// The index of the dragging item under the cursor. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533229-draggingsequencenumber?language=objc
-func (d_ DraggingSession) DraggingSequenceNumber() int {
-	rv := objc.Call[int](d_, objc.Sel("draggingSequenceNumber"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533729-draggingleaderindex?language=objc
+func (d_ DraggingSession) DraggingLeaderIndex() int {
+	rv := objc.Call[int](d_, objc.Sel("draggingLeaderIndex"))
 	return rv
+}
+
+// The index of the dragging item under the cursor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533729-draggingleaderindex?language=objc
+func (d_ DraggingSession) SetDraggingLeaderIndex(value int) {
+	objc.Call[objc.Void](d_, objc.Sel("setDraggingLeaderIndex:"), value)
 }
 
 // Controls whether the dragging image animates back to its starting point on a cancelled or failed drag. [Full Topic]
@@ -125,17 +124,18 @@ func (d_ DraggingSession) SetAnimatesToStartingPositionsOnCancelOrFail(value boo
 	objc.Call[objc.Void](d_, objc.Sel("setAnimatesToStartingPositionsOnCancelOrFail:"), value)
 }
 
-// The index of the dragging item under the cursor. [Full Topic]
+// The current cursor location of the drag in screen coordinates. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533729-draggingleaderindex?language=objc
-func (d_ DraggingSession) DraggingLeaderIndex() int {
-	rv := objc.Call[int](d_, objc.Sel("draggingLeaderIndex"))
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1529395-dragginglocation?language=objc
+func (d_ DraggingSession) DraggingLocation() foundation.Point {
+	rv := objc.Call[foundation.Point](d_, objc.Sel("draggingLocation"))
 	return rv
 }
 
-// The index of the dragging item under the cursor. [Full Topic]
+// Returns a number that uniquely identifies the dragging session. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533729-draggingleaderindex?language=objc
-func (d_ DraggingSession) SetDraggingLeaderIndex(value int) {
-	objc.Call[objc.Void](d_, objc.Sel("setDraggingLeaderIndex:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1533229-draggingsequencenumber?language=objc
+func (d_ DraggingSession) DraggingSequenceNumber() int {
+	rv := objc.Call[int](d_, objc.Sel("draggingSequenceNumber"))
+	return rv
 }

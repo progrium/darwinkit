@@ -18,14 +18,14 @@ type _DepthStencilDescriptorClass struct {
 // An interface definition for the [DepthStencilDescriptor] class.
 type IDepthStencilDescriptor interface {
 	objc.IObject
-	DepthCompareFunction() CompareFunction
-	SetDepthCompareFunction(value CompareFunction)
 	BackFaceStencil() StencilDescriptor
 	SetBackFaceStencil(value IStencilDescriptor)
-	Label() string
-	SetLabel(value string)
 	FrontFaceStencil() StencilDescriptor
 	SetFrontFaceStencil(value IStencilDescriptor)
+	DepthCompareFunction() CompareFunction
+	SetDepthCompareFunction(value CompareFunction)
+	Label() string
+	SetLabel(value string)
 	IsDepthWriteEnabled() bool
 	SetDepthWriteEnabled(value bool)
 }
@@ -63,21 +63,6 @@ func (d_ DepthStencilDescriptor) Init() DepthStencilDescriptor {
 	return rv
 }
 
-// The comparison that is performed between a fragment’s depth value and the depth value in the attachment, which determines whether to discard the fragment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462463-depthcomparefunction?language=objc
-func (d_ DepthStencilDescriptor) DepthCompareFunction() CompareFunction {
-	rv := objc.Call[CompareFunction](d_, objc.Sel("depthCompareFunction"))
-	return rv
-}
-
-// The comparison that is performed between a fragment’s depth value and the depth value in the attachment, which determines whether to discard the fragment. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462463-depthcomparefunction?language=objc
-func (d_ DepthStencilDescriptor) SetDepthCompareFunction(value CompareFunction) {
-	objc.Call[objc.Void](d_, objc.Sel("setDepthCompareFunction:"), value)
-}
-
 // The stencil descriptor for back-facing primitives. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462507-backfacestencil?language=objc
@@ -93,21 +78,6 @@ func (d_ DepthStencilDescriptor) SetBackFaceStencil(value IStencilDescriptor) {
 	objc.Call[objc.Void](d_, objc.Sel("setBackFaceStencil:"), value)
 }
 
-// A string that identifies this object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462483-label?language=objc
-func (d_ DepthStencilDescriptor) Label() string {
-	rv := objc.Call[string](d_, objc.Sel("label"))
-	return rv
-}
-
-// A string that identifies this object. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462483-label?language=objc
-func (d_ DepthStencilDescriptor) SetLabel(value string) {
-	objc.Call[objc.Void](d_, objc.Sel("setLabel:"), value)
-}
-
 // The stencil descriptor for front-facing primitives. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462476-frontfacestencil?language=objc
@@ -121,6 +91,36 @@ func (d_ DepthStencilDescriptor) FrontFaceStencil() StencilDescriptor {
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462476-frontfacestencil?language=objc
 func (d_ DepthStencilDescriptor) SetFrontFaceStencil(value IStencilDescriptor) {
 	objc.Call[objc.Void](d_, objc.Sel("setFrontFaceStencil:"), value)
+}
+
+// The comparison that is performed between a fragment’s depth value and the depth value in the attachment, which determines whether to discard the fragment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462463-depthcomparefunction?language=objc
+func (d_ DepthStencilDescriptor) DepthCompareFunction() CompareFunction {
+	rv := objc.Call[CompareFunction](d_, objc.Sel("depthCompareFunction"))
+	return rv
+}
+
+// The comparison that is performed between a fragment’s depth value and the depth value in the attachment, which determines whether to discard the fragment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462463-depthcomparefunction?language=objc
+func (d_ DepthStencilDescriptor) SetDepthCompareFunction(value CompareFunction) {
+	objc.Call[objc.Void](d_, objc.Sel("setDepthCompareFunction:"), value)
+}
+
+// A string that identifies this object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462483-label?language=objc
+func (d_ DepthStencilDescriptor) Label() string {
+	rv := objc.Call[string](d_, objc.Sel("label"))
+	return rv
+}
+
+// A string that identifies this object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462483-label?language=objc
+func (d_ DepthStencilDescriptor) SetLabel(value string) {
+	objc.Call[objc.Void](d_, objc.Sel("setLabel:"), value)
 }
 
 // A Boolean value that indicates whether depth values can be written to the depth attachment. [Full Topic]

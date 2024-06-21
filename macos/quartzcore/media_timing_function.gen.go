@@ -34,6 +34,18 @@ func MediaTimingFunctionFrom(ptr unsafe.Pointer) MediaTimingFunction {
 	}
 }
 
+func (mc _MediaTimingFunctionClass) FunctionWithName(name MediaTimingFunctionName) MediaTimingFunction {
+	rv := objc.Call[MediaTimingFunction](mc, objc.Sel("functionWithName:"), name)
+	return rv
+}
+
+// Creates and returns a new instance of CAMediaTimingFunction configured with the predefined timing function specified by name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1521979-functionwithname?language=objc
+func MediaTimingFunction_FunctionWithName(name MediaTimingFunctionName) MediaTimingFunction {
+	return MediaTimingFunctionClass.FunctionWithName(name)
+}
+
 func (m_ MediaTimingFunction) InitWithControlPoints(c1x float32) MediaTimingFunction {
 	rv := objc.Call[MediaTimingFunction](m_, objc.Sel("initWithControlPoints:"), c1x)
 	return rv
@@ -46,18 +58,6 @@ func NewMediaTimingFunctionWithControlPoints(c1x float32) MediaTimingFunction {
 	instance := MediaTimingFunctionClass.Alloc().InitWithControlPoints(c1x)
 	instance.Autorelease()
 	return instance
-}
-
-func (mc _MediaTimingFunctionClass) FunctionWithName(name MediaTimingFunctionName) MediaTimingFunction {
-	rv := objc.Call[MediaTimingFunction](mc, objc.Sel("functionWithName:"), name)
-	return rv
-}
-
-// Creates and returns a new instance of CAMediaTimingFunction configured with the predefined timing function specified by name. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1521979-functionwithname?language=objc
-func MediaTimingFunction_FunctionWithName(name MediaTimingFunctionName) MediaTimingFunction {
-	return MediaTimingFunctionClass.FunctionWithName(name)
 }
 
 func (mc _MediaTimingFunctionClass) FunctionWithControlPoints(c1x float32) MediaTimingFunction {

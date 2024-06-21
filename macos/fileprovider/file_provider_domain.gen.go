@@ -18,14 +18,14 @@ type _FileProviderDomainClass struct {
 // An interface definition for the [FileProviderDomain] class.
 type IFileProviderDomain interface {
 	objc.IObject
+	IsHidden() bool
+	SetHidden(value bool)
+	UserEnabled() bool
 	IsDisconnected() bool
 	TestingModes() FileProviderDomainTestingModes
 	SetTestingModes(value FileProviderDomainTestingModes)
-	UserEnabled() bool
-	Identifier() FileProviderDomainIdentifier
 	DisplayName() string
-	IsHidden() bool
-	SetHidden(value bool)
+	Identifier() FileProviderDomainIdentifier
 	BackingStoreIdentity() []byte
 }
 
@@ -76,6 +76,29 @@ func (f_ FileProviderDomain) Init() FileProviderDomain {
 	return rv
 }
 
+// A Boolean value that determines whether the domain is visible to users. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553283-hidden?language=objc
+func (f_ FileProviderDomain) IsHidden() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isHidden"))
+	return rv
+}
+
+// A Boolean value that determines whether the domain is visible to users. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553283-hidden?language=objc
+func (f_ FileProviderDomain) SetHidden(value bool) {
+	objc.Call[objc.Void](f_, objc.Sel("setHidden:"), value)
+}
+
+// A Boolean value that indicates whether the user has enabled or disabled the domain. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553284-userenabled?language=objc
+func (f_ FileProviderDomain) UserEnabled() bool {
+	rv := objc.Call[bool](f_, objc.Sel("userEnabled"))
+	return rv
+}
+
 // A Boolean value indicating that the domain is present, but disconnected from the file extension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3294483-disconnected?language=objc
@@ -99,11 +122,11 @@ func (f_ FileProviderDomain) SetTestingModes(value FileProviderDomainTestingMode
 	objc.Call[objc.Void](f_, objc.Sel("setTestingModes:"), value)
 }
 
-// A Boolean value that indicates whether the user has enabled or disabled the domain. [Full Topic]
+// The name of the domain displayed in the user interface. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553284-userenabled?language=objc
-func (f_ FileProviderDomain) UserEnabled() bool {
-	rv := objc.Call[bool](f_, objc.Sel("userEnabled"))
+// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/2882119-displayname?language=objc
+func (f_ FileProviderDomain) DisplayName() string {
+	rv := objc.Call[string](f_, objc.Sel("displayName"))
 	return rv
 }
 
@@ -113,29 +136,6 @@ func (f_ FileProviderDomain) UserEnabled() bool {
 func (f_ FileProviderDomain) Identifier() FileProviderDomainIdentifier {
 	rv := objc.Call[FileProviderDomainIdentifier](f_, objc.Sel("identifier"))
 	return rv
-}
-
-// The name of the domain displayed in the user interface. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/2882119-displayname?language=objc
-func (f_ FileProviderDomain) DisplayName() string {
-	rv := objc.Call[string](f_, objc.Sel("displayName"))
-	return rv
-}
-
-// A Boolean value that determines whether the domain is visible to users. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553283-hidden?language=objc
-func (f_ FileProviderDomain) IsHidden() bool {
-	rv := objc.Call[bool](f_, objc.Sel("isHidden"))
-	return rv
-}
-
-// A Boolean value that determines whether the domain is visible to users. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomain/3553283-hidden?language=objc
-func (f_ FileProviderDomain) SetHidden(value bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setHidden:"), value)
 }
 
 // A unique identifier for the backing store used by the system. [Full Topic]

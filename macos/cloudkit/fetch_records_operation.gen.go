@@ -19,16 +19,16 @@ type _FetchRecordsOperationClass struct {
 // An interface definition for the [FetchRecordsOperation] class.
 type IFetchRecordsOperation interface {
 	IDatabaseOperation
-	PerRecordProgressBlock() func(recordID RecordID, progress float64)
-	SetPerRecordProgressBlock(value func(recordID RecordID, progress float64))
-	PerRecordCompletionBlock() func(record Record, recordID RecordID, error foundation.Error)
-	SetPerRecordCompletionBlock(value func(record Record, recordID RecordID, error foundation.Error))
 	FetchRecordsCompletionBlock() func(recordsByRecordID foundation.Dictionary, operationError foundation.Error)
 	SetFetchRecordsCompletionBlock(value func(recordsByRecordID foundation.Dictionary, operationError foundation.Error))
-	DesiredKeys() []RecordFieldKey
-	SetDesiredKeys(value []RecordFieldKey)
 	RecordIDs() []RecordID
 	SetRecordIDs(value []IRecordID)
+	PerRecordCompletionBlock() func(record Record, recordID RecordID, error foundation.Error)
+	SetPerRecordCompletionBlock(value func(record Record, recordID RecordID, error foundation.Error))
+	PerRecordProgressBlock() func(recordID RecordID, progress float64)
+	SetPerRecordProgressBlock(value func(recordID RecordID, progress float64))
+	DesiredKeys() []RecordFieldKey
+	SetDesiredKeys(value []RecordFieldKey)
 }
 
 // An operation for retrieving records from a database. [Full Topic]
@@ -44,23 +44,6 @@ func FetchRecordsOperationFrom(ptr unsafe.Pointer) FetchRecordsOperation {
 	}
 }
 
-func (fc _FetchRecordsOperationClass) FetchCurrentUserRecordOperation() FetchRecordsOperation {
-	rv := objc.Call[FetchRecordsOperation](fc, objc.Sel("fetchCurrentUserRecordOperation"))
-	return rv
-}
-
-// Returns a fetch operation for retrieving the current user record. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476070-fetchcurrentuserrecordoperation?language=objc
-func FetchRecordsOperation_FetchCurrentUserRecordOperation() FetchRecordsOperation {
-	return FetchRecordsOperationClass.FetchCurrentUserRecordOperation()
-}
-
-func (f_ FetchRecordsOperation) Init() FetchRecordsOperation {
-	rv := objc.Call[FetchRecordsOperation](f_, objc.Sel("init"))
-	return rv
-}
-
 func (f_ FetchRecordsOperation) InitWithRecordIDs(recordIDs []IRecordID) FetchRecordsOperation {
 	rv := objc.Call[FetchRecordsOperation](f_, objc.Sel("initWithRecordIDs:"), recordIDs)
 	return rv
@@ -73,6 +56,23 @@ func NewFetchRecordsOperationWithRecordIDs(recordIDs []IRecordID) FetchRecordsOp
 	instance := FetchRecordsOperationClass.Alloc().InitWithRecordIDs(recordIDs)
 	instance.Autorelease()
 	return instance
+}
+
+func (f_ FetchRecordsOperation) Init() FetchRecordsOperation {
+	rv := objc.Call[FetchRecordsOperation](f_, objc.Sel("init"))
+	return rv
+}
+
+func (fc _FetchRecordsOperationClass) FetchCurrentUserRecordOperation() FetchRecordsOperation {
+	rv := objc.Call[FetchRecordsOperation](fc, objc.Sel("fetchCurrentUserRecordOperation"))
+	return rv
+}
+
+// Returns a fetch operation for retrieving the current user record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476070-fetchcurrentuserrecordoperation?language=objc
+func FetchRecordsOperation_FetchCurrentUserRecordOperation() FetchRecordsOperation {
+	return FetchRecordsOperationClass.FetchCurrentUserRecordOperation()
 }
 
 func (fc _FetchRecordsOperationClass) Alloc() FetchRecordsOperation {
@@ -90,19 +90,34 @@ func NewFetchRecordsOperation() FetchRecordsOperation {
 	return FetchRecordsOperationClass.New()
 }
 
-// The block to execute with progress information for individual records. [Full Topic]
+// The block to execute after CloudKit retrieves all of the records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476080-perrecordprogressblock?language=objc
-func (f_ FetchRecordsOperation) PerRecordProgressBlock() func(recordID RecordID, progress float64) {
-	rv := objc.Call[func(recordID RecordID, progress float64)](f_, objc.Sel("perRecordProgressBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476078-fetchrecordscompletionblock?language=objc
+func (f_ FetchRecordsOperation) FetchRecordsCompletionBlock() func(recordsByRecordID foundation.Dictionary, operationError foundation.Error) {
+	rv := objc.Call[func(recordsByRecordID foundation.Dictionary, operationError foundation.Error)](f_, objc.Sel("fetchRecordsCompletionBlock"))
 	return rv
 }
 
-// The block to execute with progress information for individual records. [Full Topic]
+// The block to execute after CloudKit retrieves all of the records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476080-perrecordprogressblock?language=objc
-func (f_ FetchRecordsOperation) SetPerRecordProgressBlock(value func(recordID RecordID, progress float64)) {
-	objc.Call[objc.Void](f_, objc.Sel("setPerRecordProgressBlock:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476078-fetchrecordscompletionblock?language=objc
+func (f_ FetchRecordsOperation) SetFetchRecordsCompletionBlock(value func(recordsByRecordID foundation.Dictionary, operationError foundation.Error)) {
+	objc.Call[objc.Void](f_, objc.Sel("setFetchRecordsCompletionBlock:"), value)
+}
+
+// The record IDs of the records to fetch. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476076-recordids?language=objc
+func (f_ FetchRecordsOperation) RecordIDs() []RecordID {
+	rv := objc.Call[[]RecordID](f_, objc.Sel("recordIDs"))
+	return rv
+}
+
+// The record IDs of the records to fetch. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476076-recordids?language=objc
+func (f_ FetchRecordsOperation) SetRecordIDs(value []IRecordID) {
+	objc.Call[objc.Void](f_, objc.Sel("setRecordIDs:"), value)
 }
 
 // The block to execute when a record becomes available. [Full Topic]
@@ -120,19 +135,19 @@ func (f_ FetchRecordsOperation) SetPerRecordCompletionBlock(value func(record Re
 	objc.Call[objc.Void](f_, objc.Sel("setPerRecordCompletionBlock:"), value)
 }
 
-// The block to execute after CloudKit retrieves all of the records. [Full Topic]
+// The block to execute with progress information for individual records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476078-fetchrecordscompletionblock?language=objc
-func (f_ FetchRecordsOperation) FetchRecordsCompletionBlock() func(recordsByRecordID foundation.Dictionary, operationError foundation.Error) {
-	rv := objc.Call[func(recordsByRecordID foundation.Dictionary, operationError foundation.Error)](f_, objc.Sel("fetchRecordsCompletionBlock"))
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476080-perrecordprogressblock?language=objc
+func (f_ FetchRecordsOperation) PerRecordProgressBlock() func(recordID RecordID, progress float64) {
+	rv := objc.Call[func(recordID RecordID, progress float64)](f_, objc.Sel("perRecordProgressBlock"))
 	return rv
 }
 
-// The block to execute after CloudKit retrieves all of the records. [Full Topic]
+// The block to execute with progress information for individual records. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476078-fetchrecordscompletionblock?language=objc
-func (f_ FetchRecordsOperation) SetFetchRecordsCompletionBlock(value func(recordsByRecordID foundation.Dictionary, operationError foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("setFetchRecordsCompletionBlock:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476080-perrecordprogressblock?language=objc
+func (f_ FetchRecordsOperation) SetPerRecordProgressBlock(value func(recordID RecordID, progress float64)) {
+	objc.Call[objc.Void](f_, objc.Sel("setPerRecordProgressBlock:"), value)
 }
 
 // The fields of the records to fetch. [Full Topic]
@@ -148,19 +163,4 @@ func (f_ FetchRecordsOperation) DesiredKeys() []RecordFieldKey {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476088-desiredkeys?language=objc
 func (f_ FetchRecordsOperation) SetDesiredKeys(value []RecordFieldKey) {
 	objc.Call[objc.Void](f_, objc.Sel("setDesiredKeys:"), value)
-}
-
-// The record IDs of the records to fetch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476076-recordids?language=objc
-func (f_ FetchRecordsOperation) RecordIDs() []RecordID {
-	rv := objc.Call[[]RecordID](f_, objc.Sel("recordIDs"))
-	return rv
-}
-
-// The record IDs of the records to fetch. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476076-recordids?language=objc
-func (f_ FetchRecordsOperation) SetRecordIDs(value []IRecordID) {
-	objc.Call[objc.Void](f_, objc.Sel("setRecordIDs:"), value)
 }

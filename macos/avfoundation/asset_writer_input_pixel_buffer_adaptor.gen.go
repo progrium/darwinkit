@@ -21,9 +21,9 @@ type _AssetWriterInputPixelBufferAdaptorClass struct {
 type IAssetWriterInputPixelBufferAdaptor interface {
 	objc.IObject
 	AppendPixelBufferWithPresentationTime(pixelBuffer corevideo.PixelBufferRef, presentationTime coremedia.Time) bool
-	PixelBufferPool() corevideo.PixelBufferPoolRef
-	SourcePixelBufferAttributes() map[string]objc.Object
 	AssetWriterInput() AssetWriterInput
+	SourcePixelBufferAttributes() map[string]objc.Object
+	PixelBufferPool() corevideo.PixelBufferPoolRef
 }
 
 // An object that appends video samples to an asset writer input. [Full Topic]
@@ -93,11 +93,11 @@ func (a_ AssetWriterInputPixelBufferAdaptor) AppendPixelBufferWithPresentationTi
 	return rv
 }
 
-// A pool of pixel buffers to append to the adaptor’s input. [Full Topic]
+// The asset writer input to which the adaptor appends pixel buffers. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputpixelbufferadaptor/1389662-pixelbufferpool?language=objc
-func (a_ AssetWriterInputPixelBufferAdaptor) PixelBufferPool() corevideo.PixelBufferPoolRef {
-	rv := objc.Call[corevideo.PixelBufferPoolRef](a_, objc.Sel("pixelBufferPool"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputpixelbufferadaptor/1387565-assetwriterinput?language=objc
+func (a_ AssetWriterInputPixelBufferAdaptor) AssetWriterInput() AssetWriterInput {
+	rv := objc.Call[AssetWriterInput](a_, objc.Sel("assetWriterInput"))
 	return rv
 }
 
@@ -109,10 +109,10 @@ func (a_ AssetWriterInputPixelBufferAdaptor) SourcePixelBufferAttributes() map[s
 	return rv
 }
 
-// The asset writer input to which the adaptor appends pixel buffers. [Full Topic]
+// A pool of pixel buffers to append to the adaptor’s input. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputpixelbufferadaptor/1387565-assetwriterinput?language=objc
-func (a_ AssetWriterInputPixelBufferAdaptor) AssetWriterInput() AssetWriterInput {
-	rv := objc.Call[AssetWriterInput](a_, objc.Sel("assetWriterInput"))
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputpixelbufferadaptor/1389662-pixelbufferpool?language=objc
+func (a_ AssetWriterInputPixelBufferAdaptor) PixelBufferPool() corevideo.PixelBufferPoolRef {
+	rv := objc.Call[corevideo.PixelBufferPoolRef](a_, objc.Sel("pixelBufferPool"))
 	return rv
 }

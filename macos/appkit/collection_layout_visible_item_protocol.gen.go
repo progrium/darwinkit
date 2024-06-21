@@ -3,6 +3,7 @@
 package appkit
 
 import (
+	"github.com/progrium/darwinkit/macos/coregraphics"
 	"github.com/progrium/darwinkit/macos/foundation"
 	"github.com/progrium/darwinkit/objc"
 )
@@ -12,7 +13,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem?language=objc
 type PCollectionLayoutVisibleItem interface {
 	// optional
-	Bounds() foundation.Rect
+	SetHidden(value bool)
+	HasSetHidden() bool
+
+	// optional
+	IsHidden() bool
+	HasIsHidden() bool
+
+	// optional
+	Name() string
+	HasName() bool
+
+	// optional
+	Bounds() coregraphics.Rect
 	HasBounds() bool
 
 	// optional
@@ -20,28 +33,8 @@ type PCollectionLayoutVisibleItem interface {
 	HasRepresentedElementKind() bool
 
 	// optional
-	SetZIndex(value int)
-	HasSetZIndex() bool
-
-	// optional
-	ZIndex() int
-	HasZIndex() bool
-
-	// optional
-	IndexPath() foundation.IndexPath
-	HasIndexPath() bool
-
-	// optional
 	RepresentedElementCategory() CollectionElementCategory
 	HasRepresentedElementCategory() bool
-
-	// optional
-	Frame() foundation.Rect
-	HasFrame() bool
-
-	// optional
-	Name() string
-	HasName() bool
 
 	// optional
 	SetAlpha(value float64)
@@ -52,19 +45,27 @@ type PCollectionLayoutVisibleItem interface {
 	HasAlpha() bool
 
 	// optional
-	SetHidden(value bool)
-	HasSetHidden() bool
+	IndexPath() foundation.IndexPath
+	HasIndexPath() bool
 
 	// optional
-	IsHidden() bool
-	HasIsHidden() bool
+	Frame() coregraphics.Rect
+	HasFrame() bool
 
 	// optional
-	SetCenter(value foundation.Point)
+	SetZIndex(value int)
+	HasSetZIndex() bool
+
+	// optional
+	ZIndex() int
+	HasZIndex() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
 	HasSetCenter() bool
 
 	// optional
-	Center() foundation.Point
+	Center() coregraphics.Point
 	HasCenter() bool
 }
 
@@ -76,6 +77,41 @@ type CollectionLayoutVisibleItemObject struct {
 	objc.Object
 }
 
+func (c_ CollectionLayoutVisibleItemObject) HasSetHidden() bool {
+	return c_.RespondsToSelector(objc.Sel("setHidden:"))
+}
+
+// A Boolean value that determines whether the item is hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199121-hidden?language=objc
+func (c_ CollectionLayoutVisibleItemObject) SetHidden(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setHidden:"), value)
+}
+
+func (c_ CollectionLayoutVisibleItemObject) HasIsHidden() bool {
+	return c_.RespondsToSelector(objc.Sel("isHidden"))
+}
+
+// A Boolean value that determines whether the item is hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199121-hidden?language=objc
+func (c_ CollectionLayoutVisibleItemObject) IsHidden() bool {
+	rv := objc.Call[bool](c_, objc.Sel("isHidden"))
+	return rv
+}
+
+func (c_ CollectionLayoutVisibleItemObject) HasName() bool {
+	return c_.RespondsToSelector(objc.Sel("name"))
+}
+
+// The name of the item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199122-name?language=objc
+func (c_ CollectionLayoutVisibleItemObject) Name() string {
+	rv := objc.Call[string](c_, objc.Sel("name"))
+	return rv
+}
+
 func (c_ CollectionLayoutVisibleItemObject) HasBounds() bool {
 	return c_.RespondsToSelector(objc.Sel("bounds"))
 }
@@ -83,8 +119,8 @@ func (c_ CollectionLayoutVisibleItemObject) HasBounds() bool {
 // The bounds rectangle, which describes the item's location and size in its own coordinate system. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199117-bounds?language=objc
-func (c_ CollectionLayoutVisibleItemObject) Bounds() foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("bounds"))
+func (c_ CollectionLayoutVisibleItemObject) Bounds() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("bounds"))
 	return rv
 }
 
@@ -100,41 +136,6 @@ func (c_ CollectionLayoutVisibleItemObject) RepresentedElementKind() string {
 	return rv
 }
 
-func (c_ CollectionLayoutVisibleItemObject) HasSetZIndex() bool {
-	return c_.RespondsToSelector(objc.Sel("setZIndex:"))
-}
-
-// The vertical stacking order of the item in relation to other items in the section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199127-zindex?language=objc
-func (c_ CollectionLayoutVisibleItemObject) SetZIndex(value int) {
-	objc.Call[objc.Void](c_, objc.Sel("setZIndex:"), value)
-}
-
-func (c_ CollectionLayoutVisibleItemObject) HasZIndex() bool {
-	return c_.RespondsToSelector(objc.Sel("zIndex"))
-}
-
-// The vertical stacking order of the item in relation to other items in the section. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199127-zindex?language=objc
-func (c_ CollectionLayoutVisibleItemObject) ZIndex() int {
-	rv := objc.Call[int](c_, objc.Sel("zIndex"))
-	return rv
-}
-
-func (c_ CollectionLayoutVisibleItemObject) HasIndexPath() bool {
-	return c_.RespondsToSelector(objc.Sel("indexPath"))
-}
-
-// The index path of the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199120-indexpath?language=objc
-func (c_ CollectionLayoutVisibleItemObject) IndexPath() foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
-	return rv
-}
-
 func (c_ CollectionLayoutVisibleItemObject) HasRepresentedElementCategory() bool {
 	return c_.RespondsToSelector(objc.Sel("representedElementCategory"))
 }
@@ -144,30 +145,6 @@ func (c_ CollectionLayoutVisibleItemObject) HasRepresentedElementCategory() bool
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199123-representedelementcategory?language=objc
 func (c_ CollectionLayoutVisibleItemObject) RepresentedElementCategory() CollectionElementCategory {
 	rv := objc.Call[CollectionElementCategory](c_, objc.Sel("representedElementCategory"))
-	return rv
-}
-
-func (c_ CollectionLayoutVisibleItemObject) HasFrame() bool {
-	return c_.RespondsToSelector(objc.Sel("frame"))
-}
-
-// The frame rectangle, which describes the item's location and size in its section's coordinate system. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199119-frame?language=objc
-func (c_ CollectionLayoutVisibleItemObject) Frame() foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("frame"))
-	return rv
-}
-
-func (c_ CollectionLayoutVisibleItemObject) HasName() bool {
-	return c_.RespondsToSelector(objc.Sel("name"))
-}
-
-// The name of the item. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199122-name?language=objc
-func (c_ CollectionLayoutVisibleItemObject) Name() string {
-	rv := objc.Call[string](c_, objc.Sel("name"))
 	return rv
 }
 
@@ -194,26 +171,50 @@ func (c_ CollectionLayoutVisibleItemObject) Alpha() float64 {
 	return rv
 }
 
-func (c_ CollectionLayoutVisibleItemObject) HasSetHidden() bool {
-	return c_.RespondsToSelector(objc.Sel("setHidden:"))
+func (c_ CollectionLayoutVisibleItemObject) HasIndexPath() bool {
+	return c_.RespondsToSelector(objc.Sel("indexPath"))
 }
 
-// A Boolean value that determines whether the item is hidden. [Full Topic]
+// The index path of the item. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199121-hidden?language=objc
-func (c_ CollectionLayoutVisibleItemObject) SetHidden(value bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setHidden:"), value)
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199120-indexpath?language=objc
+func (c_ CollectionLayoutVisibleItemObject) IndexPath() foundation.IndexPath {
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPath"))
+	return rv
 }
 
-func (c_ CollectionLayoutVisibleItemObject) HasIsHidden() bool {
-	return c_.RespondsToSelector(objc.Sel("isHidden"))
+func (c_ CollectionLayoutVisibleItemObject) HasFrame() bool {
+	return c_.RespondsToSelector(objc.Sel("frame"))
 }
 
-// A Boolean value that determines whether the item is hidden. [Full Topic]
+// The frame rectangle, which describes the item's location and size in its section's coordinate system. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199121-hidden?language=objc
-func (c_ CollectionLayoutVisibleItemObject) IsHidden() bool {
-	rv := objc.Call[bool](c_, objc.Sel("isHidden"))
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199119-frame?language=objc
+func (c_ CollectionLayoutVisibleItemObject) Frame() coregraphics.Rect {
+	rv := objc.Call[coregraphics.Rect](c_, objc.Sel("frame"))
+	return rv
+}
+
+func (c_ CollectionLayoutVisibleItemObject) HasSetZIndex() bool {
+	return c_.RespondsToSelector(objc.Sel("setZIndex:"))
+}
+
+// The vertical stacking order of the item in relation to other items in the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199127-zindex?language=objc
+func (c_ CollectionLayoutVisibleItemObject) SetZIndex(value int) {
+	objc.Call[objc.Void](c_, objc.Sel("setZIndex:"), value)
+}
+
+func (c_ CollectionLayoutVisibleItemObject) HasZIndex() bool {
+	return c_.RespondsToSelector(objc.Sel("zIndex"))
+}
+
+// The vertical stacking order of the item in relation to other items in the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199127-zindex?language=objc
+func (c_ CollectionLayoutVisibleItemObject) ZIndex() int {
+	rv := objc.Call[int](c_, objc.Sel("zIndex"))
 	return rv
 }
 
@@ -224,7 +225,7 @@ func (c_ CollectionLayoutVisibleItemObject) HasSetCenter() bool {
 // The center point of the item's frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199118-center?language=objc
-func (c_ CollectionLayoutVisibleItemObject) SetCenter(value foundation.Point) {
+func (c_ CollectionLayoutVisibleItemObject) SetCenter(value coregraphics.Point) {
 	objc.Call[objc.Void](c_, objc.Sel("setCenter:"), value)
 }
 
@@ -235,7 +236,7 @@ func (c_ CollectionLayoutVisibleItemObject) HasCenter() bool {
 // The center point of the item's frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutvisibleitem/3199118-center?language=objc
-func (c_ CollectionLayoutVisibleItemObject) Center() foundation.Point {
-	rv := objc.Call[foundation.Point](c_, objc.Sel("center"))
+func (c_ CollectionLayoutVisibleItemObject) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("center"))
 	return rv
 }

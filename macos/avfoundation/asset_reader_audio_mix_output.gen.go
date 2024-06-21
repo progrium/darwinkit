@@ -18,12 +18,12 @@ type _AssetReaderAudioMixOutputClass struct {
 // An interface definition for the [AssetReaderAudioMixOutput] class.
 type IAssetReaderAudioMixOutput interface {
 	IAssetReaderOutput
-	AudioTracks() []AssetTrack
 	AudioTimePitchAlgorithm() AudioTimePitchAlgorithm
 	SetAudioTimePitchAlgorithm(value AudioTimePitchAlgorithm)
 	AudioSettings() map[string]objc.Object
 	AudioMix() AudioMix
 	SetAudioMix(value IAudioMix)
+	AudioTracks() []AssetTrack
 }
 
 // An object that reads audio samples that result from mixing audio from one or more tracks. [Full Topic]
@@ -85,14 +85,6 @@ func (a_ AssetReaderAudioMixOutput) Init() AssetReaderAudioMixOutput {
 	return rv
 }
 
-// The tracks from which the output reads audio. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderaudiomixoutput/1385635-audiotracks?language=objc
-func (a_ AssetReaderAudioMixOutput) AudioTracks() []AssetTrack {
-	rv := objc.Call[[]AssetTrack](a_, objc.Sel("audioTracks"))
-	return rv
-}
-
 // The processing algorithm to use for scaled audio edits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderaudiomixoutput/1388713-audiotimepitchalgorithm?language=objc
@@ -129,4 +121,12 @@ func (a_ AssetReaderAudioMixOutput) AudioMix() AudioMix {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderaudiomixoutput/1387074-audiomix?language=objc
 func (a_ AssetReaderAudioMixOutput) SetAudioMix(value IAudioMix) {
 	objc.Call[objc.Void](a_, objc.Sel("setAudioMix:"), value)
+}
+
+// The tracks from which the output reads audio. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderaudiomixoutput/1385635-audiotracks?language=objc
+func (a_ AssetReaderAudioMixOutput) AudioTracks() []AssetTrack {
+	rv := objc.Call[[]AssetTrack](a_, objc.Sel("audioTracks"))
+	return rv
 }

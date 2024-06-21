@@ -16,10 +16,6 @@ type PLayerDelegate interface {
 	HasDrawLayerInContext() bool
 
 	// optional
-	DisplayLayer(layer Layer)
-	HasDisplayLayer() bool
-
-	// optional
 	LayoutSublayersOfLayer(layer Layer)
 	HasLayoutSublayersOfLayer() bool
 
@@ -30,15 +26,19 @@ type PLayerDelegate interface {
 	// optional
 	LayerWillDraw(layer Layer)
 	HasLayerWillDraw() bool
+
+	// optional
+	DisplayLayer(layer Layer)
+	HasDisplayLayer() bool
 }
 
 // A delegate implementation builder for the [PLayerDelegate] protocol.
 type LayerDelegate struct {
 	_DrawLayerInContext     func(layer Layer, ctx coregraphics.ContextRef)
-	_DisplayLayer           func(layer Layer)
 	_LayoutSublayersOfLayer func(layer Layer)
 	_ActionForLayerForKey   func(layer Layer, event string) ActionObject
 	_LayerWillDraw          func(layer Layer)
+	_DisplayLayer           func(layer Layer)
 }
 
 func (di *LayerDelegate) HasDrawLayerInContext() bool {
@@ -57,23 +57,6 @@ func (di *LayerDelegate) SetDrawLayerInContext(f func(layer Layer, ctx coregraph
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097262-drawlayer?language=objc
 func (di *LayerDelegate) DrawLayerInContext(layer Layer, ctx coregraphics.ContextRef) {
 	di._DrawLayerInContext(layer, ctx)
-}
-func (di *LayerDelegate) HasDisplayLayer() bool {
-	return di._DisplayLayer != nil
-}
-
-// Tells the delegate to implement the display process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
-func (di *LayerDelegate) SetDisplayLayer(f func(layer Layer)) {
-	di._DisplayLayer = f
-}
-
-// Tells the delegate to implement the display process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
-func (di *LayerDelegate) DisplayLayer(layer Layer) {
-	di._DisplayLayer(layer)
 }
 func (di *LayerDelegate) HasLayoutSublayersOfLayer() bool {
 	return di._LayoutSublayersOfLayer != nil
@@ -96,14 +79,14 @@ func (di *LayerDelegate) HasActionForLayerForKey() bool {
 	return di._ActionForLayerForKey != nil
 }
 
-// Returns the default action of the [quartzcore/calayer/actionforkey] method. [Full Topic]
+// Returns the default action of the actionForKey: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097264-actionforlayer?language=objc
 func (di *LayerDelegate) SetActionForLayerForKey(f func(layer Layer, event string) ActionObject) {
 	di._ActionForLayerForKey = f
 }
 
-// Returns the default action of the [quartzcore/calayer/actionforkey] method. [Full Topic]
+// Returns the default action of the actionForKey: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097264-actionforlayer?language=objc
 func (di *LayerDelegate) ActionForLayerForKey(layer Layer, event string) ActionObject {
@@ -126,6 +109,23 @@ func (di *LayerDelegate) SetLayerWillDraw(f func(layer Layer)) {
 func (di *LayerDelegate) LayerWillDraw(layer Layer) {
 	di._LayerWillDraw(layer)
 }
+func (di *LayerDelegate) HasDisplayLayer() bool {
+	return di._DisplayLayer != nil
+}
+
+// Tells the delegate to implement the display process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
+func (di *LayerDelegate) SetDisplayLayer(f func(layer Layer)) {
+	di._DisplayLayer = f
+}
+
+// Tells the delegate to implement the display process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
+func (di *LayerDelegate) DisplayLayer(layer Layer) {
+	di._DisplayLayer(layer)
+}
 
 // ensure impl type implements protocol interface
 var _ PLayerDelegate = (*LayerDelegateObject)(nil)
@@ -146,17 +146,6 @@ func (l_ LayerDelegateObject) DrawLayerInContext(layer Layer, ctx coregraphics.C
 	objc.Call[objc.Void](l_, objc.Sel("drawLayer:inContext:"), layer, ctx)
 }
 
-func (l_ LayerDelegateObject) HasDisplayLayer() bool {
-	return l_.RespondsToSelector(objc.Sel("displayLayer:"))
-}
-
-// Tells the delegate to implement the display process. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
-func (l_ LayerDelegateObject) DisplayLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("displayLayer:"), layer)
-}
-
 func (l_ LayerDelegateObject) HasLayoutSublayersOfLayer() bool {
 	return l_.RespondsToSelector(objc.Sel("layoutSublayersOfLayer:"))
 }
@@ -172,7 +161,7 @@ func (l_ LayerDelegateObject) HasActionForLayerForKey() bool {
 	return l_.RespondsToSelector(objc.Sel("actionForLayer:forKey:"))
 }
 
-// Returns the default action of the [quartzcore/calayer/actionforkey] method. [Full Topic]
+// Returns the default action of the actionForKey: method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097264-actionforlayer?language=objc
 func (l_ LayerDelegateObject) ActionForLayerForKey(layer Layer, event string) ActionObject {
@@ -189,4 +178,15 @@ func (l_ LayerDelegateObject) HasLayerWillDraw() bool {
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097263-layerwilldraw?language=objc
 func (l_ LayerDelegateObject) LayerWillDraw(layer Layer) {
 	objc.Call[objc.Void](l_, objc.Sel("layerWillDraw:"), layer)
+}
+
+func (l_ LayerDelegateObject) HasDisplayLayer() bool {
+	return l_.RespondsToSelector(objc.Sel("displayLayer:"))
+}
+
+// Tells the delegate to implement the display process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
+func (l_ LayerDelegateObject) DisplayLayer(layer Layer) {
+	objc.Call[objc.Void](l_, objc.Sel("displayLayer:"), layer)
 }

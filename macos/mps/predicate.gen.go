@@ -51,6 +51,19 @@ func NewPredicateWithDevice(device metal.PDevice) Predicate {
 	return instance
 }
 
+func (pc _PredicateClass) PredicateWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
+	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
+	rv := objc.Call[Predicate](pc, objc.Sel("predicateWithBuffer:offset:"), po0, offset)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpspredicate/3114038-predicatewithbuffer?language=objc
+func Predicate_PredicateWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
+	return PredicateClass.PredicateWithBufferOffset(buffer, offset)
+}
+
 func (p_ Predicate) InitWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
 	rv := objc.Call[Predicate](p_, objc.Sel("initWithBuffer:offset:"), po0, offset)
@@ -64,19 +77,6 @@ func NewPredicateWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
 	instance := PredicateClass.Alloc().InitWithBufferOffset(buffer, offset)
 	instance.Autorelease()
 	return instance
-}
-
-func (pc _PredicateClass) PredicateWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
-	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Predicate](pc, objc.Sel("predicateWithBuffer:offset:"), po0, offset)
-	return rv
-}
-
-//	[Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpspredicate/3114038-predicatewithbuffer?language=objc
-func Predicate_PredicateWithBufferOffset(buffer metal.PBuffer, offset uint) Predicate {
-	return PredicateClass.PredicateWithBufferOffset(buffer, offset)
 }
 
 func (pc _PredicateClass) Alloc() Predicate {

@@ -19,10 +19,10 @@ type _QuerySubscriptionClass struct {
 // An interface definition for the [QuerySubscription] class.
 type IQuerySubscription interface {
 	ISubscription
-	Predicate() foundation.Predicate
 	QuerySubscriptionOptions() QuerySubscriptionOptions
 	ZoneID() RecordZoneID
 	SetZoneID(value IRecordZoneID)
+	Predicate() foundation.Predicate
 	RecordType() RecordType
 }
 
@@ -37,20 +37,6 @@ func QuerySubscriptionFrom(ptr unsafe.Pointer) QuerySubscription {
 	return QuerySubscription{
 		Subscription: SubscriptionFrom(ptr),
 	}
-}
-
-func (q_ QuerySubscription) InitWithRecordTypePredicateSubscriptionIDOptions(recordType RecordType, predicate foundation.IPredicate, subscriptionID SubscriptionID, querySubscriptionOptions QuerySubscriptionOptions) QuerySubscription {
-	rv := objc.Call[QuerySubscription](q_, objc.Sel("initWithRecordType:predicate:subscriptionID:options:"), recordType, predicate, subscriptionID, querySubscriptionOptions)
-	return rv
-}
-
-// Creates a named query-based subscription that queries records of a specific type. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerysubscription/1640505-initwithrecordtype?language=objc
-func NewQuerySubscriptionWithRecordTypePredicateSubscriptionIDOptions(recordType RecordType, predicate foundation.IPredicate, subscriptionID SubscriptionID, querySubscriptionOptions QuerySubscriptionOptions) QuerySubscription {
-	instance := QuerySubscriptionClass.Alloc().InitWithRecordTypePredicateSubscriptionIDOptions(recordType, predicate, subscriptionID, querySubscriptionOptions)
-	instance.Autorelease()
-	return instance
 }
 
 func (qc _QuerySubscriptionClass) Alloc() QuerySubscription {
@@ -70,14 +56,6 @@ func NewQuerySubscription() QuerySubscription {
 
 func (q_ QuerySubscription) Init() QuerySubscription {
 	rv := objc.Call[QuerySubscription](q_, objc.Sel("init"))
-	return rv
-}
-
-// The matching criteria to apply to records. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerysubscription/1640485-predicate?language=objc
-func (q_ QuerySubscription) Predicate() foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](q_, objc.Sel("predicate"))
 	return rv
 }
 
@@ -102,6 +80,14 @@ func (q_ QuerySubscription) ZoneID() RecordZoneID {
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerysubscription/1640390-zoneid?language=objc
 func (q_ QuerySubscription) SetZoneID(value IRecordZoneID) {
 	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), value)
+}
+
+// The matching criteria to apply to records. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerysubscription/1640485-predicate?language=objc
+func (q_ QuerySubscription) Predicate() foundation.Predicate {
+	rv := objc.Call[foundation.Predicate](q_, objc.Sel("predicate"))
+	return rv
 }
 
 // The type of record that the subscription queries. [Full Topic]

@@ -19,13 +19,13 @@ type _QueuePlayerClass struct {
 // An interface definition for the [QueuePlayer] class.
 type IQueuePlayer interface {
 	IPlayer
-	InsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem)
-	InitWithItems(items []IPlayerItem) QueuePlayer
-	AdvanceToNextItem()
-	CanInsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) bool
 	Items() []PlayerItem
 	RemoveAllItems()
 	RemoveItem(item IPlayerItem)
+	InitWithItems(items []IPlayerItem) QueuePlayer
+	CanInsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) bool
+	AdvanceToNextItem()
+	InsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem)
 }
 
 // An object that plays a sequence of player items. [Full Topic]
@@ -85,16 +85,18 @@ func QueuePlayer_PlayerWithPlayerItem(item IPlayerItem) QueuePlayer {
 	return QueuePlayerClass.PlayerWithPlayerItem(item)
 }
 
-func (qc _QueuePlayerClass) PlayerWithURL(URL foundation.IURL) QueuePlayer {
-	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithURL:"), URL)
+func (q_ QueuePlayer) InitWithURL(URL foundation.IURL) QueuePlayer {
+	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
-// Returns a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
+// Creates a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1538409-playerwithurl?language=objc
-func QueuePlayer_PlayerWithURL(URL foundation.IURL) QueuePlayer {
-	return QueuePlayerClass.PlayerWithURL(URL)
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385706-initwithurl?language=objc
+func NewQueuePlayerWithURL(URL foundation.IURL) QueuePlayer {
+	instance := QueuePlayerClass.Alloc().InitWithURL(URL)
+	instance.Autorelease()
+	return instance
 }
 
 func (q_ QueuePlayer) InitWithPlayerItem(item IPlayerItem) QueuePlayer {
@@ -111,48 +113,16 @@ func NewQueuePlayerWithPlayerItem(item IPlayerItem) QueuePlayer {
 	return instance
 }
 
-func (q_ QueuePlayer) InitWithURL(URL foundation.IURL) QueuePlayer {
-	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithURL:"), URL)
+func (qc _QueuePlayerClass) PlayerWithURL(URL foundation.IURL) QueuePlayer {
+	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithURL:"), URL)
 	return rv
 }
 
-// Creates a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
+// Returns a new player to play a single audiovisual resource referenced by a given URL. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1385706-initwithurl?language=objc
-func NewQueuePlayerWithURL(URL foundation.IURL) QueuePlayer {
-	instance := QueuePlayerClass.Alloc().InitWithURL(URL)
-	instance.Autorelease()
-	return instance
-}
-
-// Inserts a player item after another player item in the queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1388543-insertitem?language=objc
-func (q_ QueuePlayer) InsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) {
-	objc.Call[objc.Void](q_, objc.Sel("insertItem:afterItem:"), item, afterItem)
-}
-
-// Creates an object that plays a queue of items. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1389345-initwithitems?language=objc
-func (q_ QueuePlayer) InitWithItems(items []IPlayerItem) QueuePlayer {
-	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithItems:"), items)
-	return rv
-}
-
-// Ends playback of the current item and starts playback of the next item in the player’s queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1389318-advancetonextitem?language=objc
-func (q_ QueuePlayer) AdvanceToNextItem() {
-	objc.Call[objc.Void](q_, objc.Sel("advanceToNextItem"))
-}
-
-// Returns a Boolean value that indicates whether you can insert a player item into the player’s queue. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1387289-caninsertitem?language=objc
-func (q_ QueuePlayer) CanInsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) bool {
-	rv := objc.Call[bool](q_, objc.Sel("canInsertItem:afterItem:"), item, afterItem)
-	return rv
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1538409-playerwithurl?language=objc
+func QueuePlayer_PlayerWithURL(URL foundation.IURL) QueuePlayer {
+	return QueuePlayerClass.PlayerWithURL(URL)
 }
 
 // Returns an array of the currently enqueued items. [Full Topic]
@@ -175,4 +145,34 @@ func (q_ QueuePlayer) RemoveAllItems() {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1387400-removeitem?language=objc
 func (q_ QueuePlayer) RemoveItem(item IPlayerItem) {
 	objc.Call[objc.Void](q_, objc.Sel("removeItem:"), item)
+}
+
+// Creates an object that plays a queue of items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1389345-initwithitems?language=objc
+func (q_ QueuePlayer) InitWithItems(items []IPlayerItem) QueuePlayer {
+	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithItems:"), items)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether you can insert a player item into the player’s queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1387289-caninsertitem?language=objc
+func (q_ QueuePlayer) CanInsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) bool {
+	rv := objc.Call[bool](q_, objc.Sel("canInsertItem:afterItem:"), item, afterItem)
+	return rv
+}
+
+// Ends playback of the current item and starts playback of the next item in the player’s queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1389318-advancetonextitem?language=objc
+func (q_ QueuePlayer) AdvanceToNextItem() {
+	objc.Call[objc.Void](q_, objc.Sel("advanceToNextItem"))
+}
+
+// Inserts a player item after another player item in the queue. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1388543-insertitem?language=objc
+func (q_ QueuePlayer) InsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) {
+	objc.Call[objc.Void](q_, objc.Sel("insertItem:afterItem:"), item, afterItem)
 }
