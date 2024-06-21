@@ -2,6 +2,9 @@
 
 Native Apple APIs for Golang!
 
+
+
+
 [![GoDoc](https://godoc.org/github.com/progrium/darwinkit?status.svg)](https://pkg.go.dev/github.com/progrium/darwinkit@main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/progrium/darwinkit)](https://goreportcard.com/report/github.com/progrium/darwinkit)
 <a href="https://twitter.com/progrium" title="@progrium on Twitter"><img src="https://img.shields.io/badge/twitter-@progrium-55acee.svg" alt="@progrium on Twitter"></a>
@@ -13,7 +16,14 @@ Native Apple APIs for Golang!
 
 ------
 
-<img alt="SnowScape Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/71fea878-878b-4fa8-ad19-c19458b0594e" style="height:125px;" /><img alt="ClipTrail Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/29cc3907-9fc3-44c6-bd15-91ae0a8a74ba" style="height:125px;" /><img alt="ScanDrop Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/339168f9-b768-461d-a90e-559689bd3a82" style="height:125px;" /><img alt="MenuSpacer Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/04da4dd8-c329-4e80-b8c1-72683712f0fc" style="height:125px;" />
+![LargeType Demo](https://github.com/progrium/darwinkit/assets/1813419/b54a8015-dfef-40ce-bc56-f75cb8455306)
+![ScanDrop Demo](https://github.com/progrium/darwinkit/assets/1813419/e66e4ca1-af6b-4952-9e53-f10ab436993f)
+![SnowScape Demo](https://github.com/progrium/darwinkit/assets/1813419/3b04b849-4292-41c5-8563-7735ff46c745)
+![LiveTemp Demo](https://github.com/progrium/darwinkit/assets/1813419/c57cd196-3ff6-4068-bd0a-05b9283d199d)
+![MenuSpacer Demo](https://github.com/progrium/darwinkit/assets/1813419/ed86724d-f1fc-42e4-b9c9-0112fffd86fc)
+![ClipTrail Demo](https://github.com/progrium/darwinkit/assets/1813419/c018851d-5af7-4cf6-8e21-213c28752438)
+![FocusTimer Demo](https://github.com/progrium/darwinkit/assets/1813419/9e14fe2f-88a9-4b89-9f9c-a305fb103d4c)
+
 
 DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/github.com/progrium/darwinkit/macos@main#section-directories) and build native applications using Go. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
 
@@ -84,7 +94,13 @@ This is all tenable for simple programs, but these are the reasons we don't *rec
 
 There are basic usage examples [here in this repo](./macos/_examples), but there are higher-quality full utilities you can use as examples or starter templates [when you sponsor](https://github.com/sponsors/darwinkitdev).
 
-<img alt="SnowScape Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/71fea878-878b-4fa8-ad19-c19458b0594e" style="height:125px;" /><img alt="ClipTrail Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/29cc3907-9fc3-44c6-bd15-91ae0a8a74ba" style="height:125px;" /><img alt="ScanDrop Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/339168f9-b768-461d-a90e-559689bd3a82" style="height:125px;" /><img alt="MenuSpacer Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/04da4dd8-c329-4e80-b8c1-72683712f0fc" style="height:125px;" />
+![LargeType Demo](https://github.com/progrium/darwinkit/assets/1813419/b54a8015-dfef-40ce-bc56-f75cb8455306)
+![ScanDrop Demo](https://github.com/progrium/darwinkit/assets/1813419/e66e4ca1-af6b-4952-9e53-f10ab436993f)
+![SnowScape Demo](https://github.com/progrium/darwinkit/assets/1813419/3b04b849-4292-41c5-8563-7735ff46c745)
+![LiveTemp Demo](https://github.com/progrium/darwinkit/assets/1813419/c57cd196-3ff6-4068-bd0a-05b9283d199d)
+![MenuSpacer Demo](https://github.com/progrium/darwinkit/assets/1813419/ed86724d-f1fc-42e4-b9c9-0112fffd86fc)
+![ClipTrail Demo](https://github.com/progrium/darwinkit/assets/1813419/c018851d-5af7-4cf6-8e21-213c28752438)
+![FocusTimer Demo](https://github.com/progrium/darwinkit/assets/1813419/9e14fe2f-88a9-4b89-9f9c-a305fb103d4c)
 
 
 ## How it works
