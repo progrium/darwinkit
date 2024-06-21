@@ -29,6 +29,9 @@ func (m *ModuleWriter) WriteCode() {
 	m.WriteDocFile()
 	m.WriteEnumAliases()
 	m.WriteTypeAliases()
+	if m.Module.Flags.GenerateFunctions {
+		m.WriteFunctions()
+	}
 	if m.Module.Package == "coreimage" {
 		// filter protocols maybe arent "real" protocols?
 		// get "cannot find protocol declaration" with protocol imports
