@@ -1,4 +1,4 @@
-# DarwinKit
+<img alt="DarwinKit Logo" src="https://github.com/progrium/darwinkit/raw/main/darwinkit.png" style="height:125px;" />
 
 Native Apple APIs for Golang!
 
