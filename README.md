@@ -6,7 +6,7 @@ Native Apple APIs for Golang!
 [![Go Report Card](https://goreportcard.com/badge/github.com/progrium/darwinkit)](https://goreportcard.com/report/github.com/progrium/darwinkit)
 <a href="https://twitter.com/progrium" title="@progrium on Twitter"><img src="https://img.shields.io/badge/twitter-@progrium-55acee.svg" alt="@progrium on Twitter"></a>
 <a href="https://github.com/progrium/darwinkit/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
-<a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
+<a href="https://github.com/sponsors/darwinkitdev" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
 > [!IMPORTANT]
 > June 13, 2024: **MacDriver is now DarwinKit and we're about to release 0.5.0!** The [legacy branch](https://github.com/progrium/darwinkit/tree/legacy) and [previous releases](https://github.com/progrium/darwinkit/releases) are still available for existing code to work against. Use `main` until 0.5.0 is released.
@@ -82,22 +82,10 @@ This is all tenable for simple programs, but these are the reasons we don't *rec
 
 ## Examples
 
-### [largetype](./macos/_examples/largetype/main.go)
-A Contacts/Quicksilver-style Large Type utility in under 80 lines:
+There are basic usage examples [here in this repo](./macos/_examples), but there are higher-quality full utilities you can use as examples or starter templates [when you sponsor](https://github.com/sponsors/darwinkitdev).
 
-![largetype screenshot](./macos/_examples/largetype/largetype.jpeg?raw=true)
+<img alt="SnowScape Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/71fea878-878b-4fa8-ad19-c19458b0594e" style="height:125px;" /><img alt="ClipTrail Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/29cc3907-9fc3-44c6-bd15-91ae0a8a74ba" style="height:125px;" /><img alt="ScanDrop Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/339168f9-b768-461d-a90e-559689bd3a82" style="height:125px;" /><img alt="MenuSpacer Demo" src="https://github.com/darwinkitdev/darwinkit-sponsors/assets/1813419/04da4dd8-c329-4e80-b8c1-72683712f0fc" style="height:125px;" />
 
-### [pomodoro](./macos/_examples/pomodoro/main.go)
-A menu bar pomodoro timer in under 80 lines:
-
-![pomodoro gif](./macos/_examples/pomodoro/pomodoro.gif?raw=true)
-
-### [webshot](./macos/_examples/webshot/main.go)
-A webview PNG capture example in under 100 lines:
-
-![webshot screenshot](./macos/_examples/webshot/webshot.png?raw=true)
-
-### [See all examples](./macos/_examples)
 
 ## How it works
 
