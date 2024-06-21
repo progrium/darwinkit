@@ -14,7 +14,10 @@ type RefType struct {
 }
 
 func (s *RefType) GoImports() set.Set[string] {
-	return set.New("unsafe")
+	if s.Module == nil {
+		return set.New("unsafe")
+	}
+	return set.New("github.com/progrium/darwinkit/macos/" + s.Module.Package)
 }
 
 func (s *RefType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
