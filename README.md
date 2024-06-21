@@ -16,13 +16,10 @@ Native Apple APIs for Golang!
 
 ------
 
-![LargeType Demo](https://github.com/progrium/darwinkit/assets/1813419/b54a8015-dfef-40ce-bc56-f75cb8455306)
 ![ScanDrop Demo](https://github.com/progrium/darwinkit/assets/1813419/e66e4ca1-af6b-4952-9e53-f10ab436993f)
 ![SnowScape Demo](https://github.com/progrium/darwinkit/assets/1813419/3b04b849-4292-41c5-8563-7735ff46c745)
-![LiveTemp Demo](https://github.com/progrium/darwinkit/assets/1813419/c57cd196-3ff6-4068-bd0a-05b9283d199d)
 ![MenuSpacer Demo](https://github.com/progrium/darwinkit/assets/1813419/ed86724d-f1fc-42e4-b9c9-0112fffd86fc)
 ![ClipTrail Demo](https://github.com/progrium/darwinkit/assets/1813419/c018851d-5af7-4cf6-8e21-213c28752438)
-![FocusTimer Demo](https://github.com/progrium/darwinkit/assets/1813419/9e14fe2f-88a9-4b89-9f9c-a305fb103d4c)
 
 
 DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/github.com/progrium/darwinkit/macos@main#section-directories) and build native applications using Go. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
