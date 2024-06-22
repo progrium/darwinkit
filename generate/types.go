@@ -267,9 +267,6 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		if _, ok := typ.(*typing.VoidType); ok {
 			typ = &typing.VoidPointerType{}
 		} else {
-			if typ == nil {
-				panic("nil type")
-			}
 			typ = &typing.PointerType{
 				Type: typ,
 			}
