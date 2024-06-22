@@ -160,18 +160,6 @@ func shouldSkipFunction(f *Function) bool {
 	if hasBlockParam(f.Parameters) {
 		return true
 	}
-	if _, ok := map[string]bool{
-		"CGDirectDisplayCopyCurrentMetalDevice":            true,
-		"CGColorSpaceCreateWithPropertyList":               true,
-		"CGDisplayIOServicePort":                           true,
-		"CGGetEventTapList":                                true,
-		"CGColorConversionInfoCreateFromListWithArguments": true,
-		"CGEventKeyboardSetUnicodeString":                  true,
-		"CGEventPostToPid":                                 true,
-		"CGEventKeyboardGetUnicodeString":                  true,
-	}[f.Name]; ok {
-		return true
-	}
 	return false
 }
 
