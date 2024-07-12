@@ -12,7 +12,7 @@ Native Apple APIs for Golang!
 <a href="https://github.com/sponsors/darwinkitdev" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
 > [!IMPORTANT]
-> June 13, 2024: **MacDriver is now DarwinKit and we're about to release 0.5.0!** The [legacy branch](https://github.com/progrium/darwinkit/tree/legacy) and [previous releases](https://github.com/progrium/darwinkit/releases) are still available for existing code to work against. Use `main` until 0.5.0 is released.
+> July 11, 2024: **MacDriver is now DarwinKit!** You can also now get high-quality example starter apps when you [support the project as a sponsor](https://github.com/sponsors/darwinkitdev).
 
 ------
 
