@@ -41,7 +41,7 @@ func main() {
 		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 		app.ActivateIgnoringOtherApps(true)
 
-		url := foundation.URL_URLWithString("http://progrium.com")
+		url := foundation.URL_URLWithString("https://github.com/sponsors/darwinkitdev")
 		req := foundation.NewURLRequestWithURL(url)
 		frame := foundation.Rect{Size: foundation.Size{1440, 900}}
 
