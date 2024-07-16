@@ -24,6 +24,10 @@ func (i *InstanceType) ObjcName() string {
 	panic("implement me")
 }
 
+func (i *InstanceType) CName() string {
+	panic("implement me")
+}
+
 func (i *InstanceType) DeclareModule() *modules.Module {
 	return nil
 }

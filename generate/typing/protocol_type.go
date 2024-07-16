@@ -26,6 +26,14 @@ func (p *ProtocolType) ObjcName() string {
 	return "id<" + p.Name + ">"
 }
 
+func (p *ProtocolType) CName() string {
+	return "void *"
+}
+
+func (p *ProtocolType) CSignature() string {
+	return "void *"
+}
+
 func (p *ProtocolType) GoImports() set.Set[string] {
 	return set.New("github.com/progrium/darwinkit/objc", "github.com/progrium/darwinkit/macos/"+p.Module.Package)
 }

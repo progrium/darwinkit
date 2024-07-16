@@ -23,6 +23,10 @@ func (d *VoidType) ObjcName() string {
 	return "void"
 }
 
+func (d *VoidType) CName() string {
+	return "void"
+}
+
 func (d *VoidType) DeclareModule() *modules.Module {
 	return nil
 }

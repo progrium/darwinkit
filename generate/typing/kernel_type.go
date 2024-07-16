@@ -54,6 +54,10 @@ func (k *KernelType) ObjcName() string {
 	return k.ObjcName_
 }
 
+func (k *KernelType) CName() string {
+	return k.ObjcName_
+}
+
 func (k *KernelType) DeclareModule() *modules.Module {
 	return modules.Get("kernel")
 }

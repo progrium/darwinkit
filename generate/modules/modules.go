@@ -13,6 +13,13 @@ type Module struct {
 	Package  string   // go package for this module
 	Header   string   // objc header file
 	Prefixes []string // symbol prefixes
+
+	Flags ModuleCodeGenFlags // controls code generation behavior
+}
+
+type ModuleCodeGenFlags struct {
+	GenerateStructs   bool
+	GenerateFunctions bool
 }
 
 func (m *Module) String() string {
@@ -102,6 +109,7 @@ func CanIgnoreNotFound(p any) bool {
 		"QuickLook",
 		"force feedback",
 		"opengl es",
+		"ColorSync",
 	} {
 		if strings.EqualFold(m, mod) {
 			return true
@@ -110,53 +118,58 @@ func CanIgnoreNotFound(p any) bool {
 	return false
 }
 
-var All = []Module{
-	{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}},
-	{"dispatch", "Dispatch", "dispatch", "dispatch/dispatch.h", []string{}},
-	{"Kernel", "Kernel", "kernel", "Kernel/Kernel.h", []string{}},
+var DefaultFlags = ModuleCodeGenFlags{
+	GenerateStructs:   false,
+	GenerateFunctions: false,
+}
 
-	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}},
-	{"AppKit", "AppKit", "appkit", "AppKit/AppKit.h", []string{"NS"}},
-	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
-	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
-	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
-	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},
-	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}},
-	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}},
-	{"IOBluetooth", "IOBluetooth", "iobluetooth", "IOBluetooth/IOBluetooth.h", []string{"kIOBluetooth", "kBluetooth", "IOBluetooth", "Bluetooth", "kFTS", "kOBEX"}},
-	{"CoreGraphics", "Core Graphics", "coregraphics", "CoreGraphics/CoreGraphics.h", []string{"CG", "kCG"}},
-	{"CoreFoundation", "Core Foundation", "corefoundation", "CoreFoundation/CoreFoundation.h", []string{"CF", "kCF"}},
-	{"QuartzCore", "Core Animation", "quartzcore", "QuartzCore/QuartzCore.h", []string{"kCA", "CA"}},
-	{"Vision", "Vision", "vision", "Vision/Vision.h", []string{"VN"}},
-	{"CoreSpotlight", "Core Spotlight", "corespotlight", "CoreSpotlight/CoreSpotlight.h", []string{"CS"}},
-	{"CoreAudioKit", "Core Audio Kit", "coreaudiokit", "CoreAudioKit/CoreAudioKit.h", []string{"CA", "AU"}},
-	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}},
-	{"CoreData", "Core Data", "coredata", "CoreData/CoreData.h", []string{"NS"}},
-	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CMIOHardware.h", []string{"CMIO"}},
-	{"CoreMedia", "Core Media", "coremedia", "CoreMedia/CoreMedia.h", []string{"CM"}},
-	{"CoreImage", "Core Image", "coreimage", "CoreImage/CoreImage.h", []string{"CI"}},
-	{"CoreMIDI", "Core MIDI", "coremidi", "CoreMIDI/CoreMIDI.h", []string{"MIDI", "kMIDI"}},
-	{"CoreVideo", "Core Video", "corevideo", "CoreVideo/CoreVideo.h", []string{"CV", "kCV"}},
-	{"CloudKit", "Cloud Kit", "cloudkit", "CloudKit/CloudKit.h", []string{"CK"}},
-	{"AudioToolbox", "Audio Toolbox", "audiotoolbox", "AudioToolbox/AudioToolbox.h", []string{"AU"}},
-	{"CoreAudio", "Core Audio", "coreaudio", "CoreAudio/CoreAudio.h", []string{"Audio", "kAudio"}},
-	{"CoreAudioTypes", "Core Audio Types", "coreaudiotypes", "CoreAudio/CoreAudioTypes.h", []string{"AV"}},
-	{"CoreLocation", "Core Location", "corelocation", "CoreLocation/CoreLocation.h", []string{"CL"}},
-	{"Contacts", "Contacts", "contacts", "Contacts/Contacts.h", []string{"CN"}},
-	{"ContactsUI", "Contacts UI", "contactsui", "ContactsUI/ContactsUI.h", []string{"CN"}},
-	{"ImageIO", "Image I/O", "imageio", "ImageIO/ImageIO.h", []string{"CG", "kCG", "kCF"}},
-	{"AVFAudio", "AVFAudio", "avfaudio", "AVFAudio/AVFAudio.h", []string{"AVAudio"}},
-	{"AVFoundation", "AVFoundation", "avfoundation", "AVFoundation/AVFoundation.h", []string{"AV"}},
-	{"AVKit", "AVKit", "avkit", "AVKit/AVKit.h", []string{"AV"}},
-	{"GameplayKit", "GameplayKit", "gameplaykit", "GameplayKit/GameplayKit.h", []string{"GK"}},
-	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}},
-	{"SceneKit", "SceneKit", "scenekit", "SceneKit/SceneKit.h", []string{"SCN"}},
-	{"SpriteKit", "SpriteKit", "spritekit", "SpriteKit/SpriteKit.h", []string{"SK"}},
-	{"ModelIO", "Model I/O", "modelio", "ModelIO/ModelIO.h", []string{"MDL"}},
-	{"IOSurface", "IOSurface", "iosurface", "IOSurface/IOSurface.h", []string{"IOSurface", "kIOSurface"}},
-	{"Metal", "Metal", "metal", "Metal/Metal.h", []string{"MTL"}},
-	{"MetalKit", "Metal Kit", "metalkit", "MetalKit/MetalKit.h", []string{"MTK"}},
-	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}},
-	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}},
-	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
+var All = []Module{
+	{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}, DefaultFlags},
+	{"dispatch", "Dispatch", "dispatch", "dispatch/dispatch.h", []string{}, DefaultFlags},
+	{"Kernel", "Kernel", "kernel", "Kernel/Kernel.h", []string{}, DefaultFlags},
+
+	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}, DefaultFlags},
+	{"AppKit", "AppKit", "appkit", "AppKit/AppKit.h", []string{"NS"}, DefaultFlags},
+	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}, DefaultFlags},
+	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}, DefaultFlags},
+	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}, DefaultFlags},
+	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}, DefaultFlags},
+	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}, DefaultFlags},
+	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}, DefaultFlags},
+	{"IOBluetooth", "IOBluetooth", "iobluetooth", "IOBluetooth/IOBluetooth.h", []string{"kIOBluetooth", "kBluetooth", "IOBluetooth", "Bluetooth", "kFTS", "kOBEX"}, DefaultFlags},
+	{"CoreGraphics", "Core Graphics", "coregraphics", "CoreGraphics/CoreGraphics.h", []string{"CG", "kCG"}, DefaultFlags},
+	{"CoreFoundation", "Core Foundation", "corefoundation", "CoreFoundation/CoreFoundation.h", []string{"CF", "kCF"}, DefaultFlags},
+	{"QuartzCore", "Core Animation", "quartzcore", "QuartzCore/QuartzCore.h", []string{"kCA", "CA"}, DefaultFlags},
+	{"Vision", "Vision", "vision", "Vision/Vision.h", []string{"VN"}, DefaultFlags},
+	{"CoreSpotlight", "Core Spotlight", "corespotlight", "CoreSpotlight/CoreSpotlight.h", []string{"CS"}, DefaultFlags},
+	{"CoreAudioKit", "Core Audio Kit", "coreaudiokit", "CoreAudioKit/CoreAudioKit.h", []string{"CA", "AU"}, DefaultFlags},
+	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}, DefaultFlags},
+	{"CoreData", "Core Data", "coredata", "CoreData/CoreData.h", []string{"NS"}, DefaultFlags},
+	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CMIOHardware.h", []string{"CMIO"}, DefaultFlags},
+	{"CoreMedia", "Core Media", "coremedia", "CoreMedia/CoreMedia.h", []string{"CM"}, DefaultFlags},
+	{"CoreImage", "Core Image", "coreimage", "CoreImage/CoreImage.h", []string{"CI"}, DefaultFlags},
+	{"CoreMIDI", "Core MIDI", "coremidi", "CoreMIDI/CoreMIDI.h", []string{"MIDI", "kMIDI"}, DefaultFlags},
+	{"CoreVideo", "Core Video", "corevideo", "CoreVideo/CoreVideo.h", []string{"CV", "kCV"}, DefaultFlags},
+	{"CloudKit", "Cloud Kit", "cloudkit", "CloudKit/CloudKit.h", []string{"CK"}, DefaultFlags},
+	{"AudioToolbox", "Audio Toolbox", "audiotoolbox", "AudioToolbox/AudioToolbox.h", []string{"AU"}, DefaultFlags},
+	{"CoreAudio", "Core Audio", "coreaudio", "CoreAudio/CoreAudio.h", []string{"Audio", "kAudio"}, DefaultFlags},
+	{"CoreAudioTypes", "Core Audio Types", "coreaudiotypes", "CoreAudio/CoreAudioTypes.h", []string{"AV"}, DefaultFlags},
+	{"CoreLocation", "Core Location", "corelocation", "CoreLocation/CoreLocation.h", []string{"CL"}, DefaultFlags},
+	{"Contacts", "Contacts", "contacts", "Contacts/Contacts.h", []string{"CN"}, DefaultFlags},
+	{"ContactsUI", "Contacts UI", "contactsui", "ContactsUI/ContactsUI.h", []string{"CN"}, DefaultFlags},
+	{"ImageIO", "Image I/O", "imageio", "ImageIO/ImageIO.h", []string{"CG", "kCG", "kCF"}, DefaultFlags},
+	{"AVFAudio", "AVFAudio", "avfaudio", "AVFAudio/AVFAudio.h", []string{"AVAudio"}, DefaultFlags},
+	{"AVFoundation", "AVFoundation", "avfoundation", "AVFoundation/AVFoundation.h", []string{"AV"}, DefaultFlags},
+	{"AVKit", "AVKit", "avkit", "AVKit/AVKit.h", []string{"AV"}, DefaultFlags},
+	{"GameplayKit", "GameplayKit", "gameplaykit", "GameplayKit/GameplayKit.h", []string{"GK"}, DefaultFlags},
+	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}, DefaultFlags},
+	{"SceneKit", "SceneKit", "scenekit", "SceneKit/SceneKit.h", []string{"SCN"}, DefaultFlags},
+	{"SpriteKit", "SpriteKit", "spritekit", "SpriteKit/SpriteKit.h", []string{"SK"}, DefaultFlags},
+	{"ModelIO", "Model I/O", "modelio", "ModelIO/ModelIO.h", []string{"MDL"}, DefaultFlags},
+	{"IOSurface", "IOSurface", "iosurface", "IOSurface/IOSurface.h", []string{"IOSurface", "kIOSurface"}, DefaultFlags},
+	{"Metal", "Metal", "metal", "Metal/Metal.h", []string{"MTL"}, DefaultFlags},
+	{"MetalKit", "Metal Kit", "metalkit", "MetalKit/MetalKit.h", []string{"MTK"}, DefaultFlags},
+	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}, DefaultFlags},
+	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}, DefaultFlags},
+	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}, DefaultFlags},
 }

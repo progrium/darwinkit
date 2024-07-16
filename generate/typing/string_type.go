@@ -9,7 +9,7 @@ var _ Type = (*StringType)(nil)
 
 // StringType string
 type StringType struct {
-	NeedNil bool // string type need nil value.If set to true, will use foundation.String instread string for generated go code.
+	NeedNil bool // string type need nil value.If set to true, will use foundation.String instead string for generated go code.
 }
 
 func (s *StringType) GoImports() set.Set[string] {
@@ -24,6 +24,10 @@ func (s *StringType) GoName(currentModule *modules.Module, receiveFromObjc bool)
 }
 
 func (s *StringType) ObjcName() string {
+	return "NSString*"
+}
+
+func (s *StringType) CName() string {
 	return "NSString*"
 }
 

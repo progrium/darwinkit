@@ -24,6 +24,10 @@ func (i *IDType) ObjcName() string {
 	return "id"
 }
 
+func (i *IDType) CName() string {
+	return "void *"
+}
+
 func (i *IDType) DeclareModule() *modules.Module {
 	return Object.DeclareModule()
 }

@@ -5,33 +5,34 @@ import (
 	"github.com/progrium/darwinkit/internal/set"
 )
 
-var _ Type = (*ClassType)(nil)
+var _ Type = (*FunctionType)(nil)
 
-// ClassType Objective-c interface type
-type ClassType struct {
+type Parameter struct {
+	Type Type
+	Name string // the param name
+}
+
+// FunctionType Objective-c function type
+type FunctionType struct {
 	Name   string          // objc type name
 	GName  string          // Go name, usually is objc type name without prefix 'NS'
 	Module *modules.Module // object-c module
+
+	Parameters []Parameter // function parameters
+	ReturnType Type        // function return type
 }
 
-// Object is the objc object root class type
-var Object = &ClassType{
-	Name:   "NSObject",
-	GName:  "Object",
+var Function = &FunctionType{
+	Name:   "Function",
+	GName:  "Function",
 	Module: modules.Get("objc"),
 }
 
-var Class = &ClassType{
-	Name:   "Class",
-	GName:  "Class",
-	Module: modules.Get("objc"),
-}
-
-func (c *ClassType) GoImports() set.Set[string] {
+func (c *FunctionType) GoImports() set.Set[string] {
 	return set.New("github.com/progrium/darwinkit/macos/" + c.Module.Package)
 }
 
-func (c *ClassType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
+func (c *FunctionType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	if receiveFromObjc {
 		return FullGoName(*c.Module, c.GoStructName(), *currentModule)
 	} else {
@@ -39,28 +40,24 @@ func (c *ClassType) GoName(currentModule *modules.Module, receiveFromObjc bool) 
 	}
 }
 
-func (c *ClassType) ObjcName() string {
+func (c *FunctionType) ObjcName() string {
 	return c.Name + "*"
 }
 
-func (c *ClassType) CName() string {
+func (c *FunctionType) CName() string {
 	return c.Name + "*"
 }
 
-func (c *ClassType) CSignature() string {
-	return "void *"
-}
-
-func (c *ClassType) DeclareModule() *modules.Module {
+func (c *FunctionType) DeclareModule() *modules.Module {
 	return c.Module
 }
 
 // GoInterfaceName return the go wrapper interface name
-func (c *ClassType) GoInterfaceName() string {
+func (c *FunctionType) GoInterfaceName() string {
 	return "I" + c.GName
 }
 
 // GoStructName return the go wrapper struct name
-func (c *ClassType) GoStructName() string {
+func (c *FunctionType) GoStructName() string {
 	return c.GName
 }

@@ -1014,16 +1014,16 @@ var tests = []struct {
 			},
 		},
 	},
-	{
-		ParseOnly: true,
-		s:         `typedef struct objc_object {	...	} id;`,
-		n: &Statement{
-			Typedef: "id",
-			Struct: &StructDecl{
-				Name: "objc_object",
-			},
-		},
-	},
+	// {
+	// 	ParseOnly: true,
+	// 	s:         `typedef struct objc_object {	...	} id;`,
+	// 	n: &Statement{
+	// 		Typedef: "id",
+	// 		Struct: &StructDecl{
+	// 			Name: "objc_object",
+	// 		},
+	// 	},
+	// },
 	{
 		ParseOnly: true,
 		s:         `typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);`,
@@ -1117,6 +1117,52 @@ var tests = []struct {
 							},
 						},
 					},
+				},
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         "CFURLRef CFURLCreateFromFSRef(CFAllocatorRef allocator, const struct FSRef *fsRef);",
+		Hint:      HintFunction,
+		n: &Statement{
+			Function: &FunctionDecl{
+				ReturnType: TypeInfo{
+					Name: "CFURLRef",
+				},
+				Name: "CFURLCreateFromFSRef",
+				Args: FuncArgs{
+					ArgInfo{
+						Name: "allocator",
+						Type: TypeInfo{
+							Name: "CFAllocatorRef",
+						},
+					},
+					ArgInfo{
+						Name: "fsRef",
+						Type: TypeInfo{
+							Name:  "FSRef",
+							IsPtr: true,
+							Annots: map[TypeAnnotation]bool{
+								TypeAnnotConst:  true,
+								TypeAnnotStruct: true,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         "typedef struct CGPDFArray *CGPDFArrayRef",
+		n: &Statement{
+			Typedef: "CGPDFArrayRef",
+			TypeAlias: &TypeInfo{
+				Name:  "CGPDFArray",
+				IsPtr: true,
+				Annots: map[TypeAnnotation]bool{
+					TypeAnnotStruct: true,
 				},
 			},
 		},

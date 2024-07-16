@@ -26,6 +26,10 @@ func (c *PointerRefType) ObjcName() string {
 	return c.Name
 }
 
+func (c *PointerRefType) CName() string {
+	return c.Name
+}
+
 func (c *PointerRefType) DeclareModule() *modules.Module {
 	return c.Module
 }

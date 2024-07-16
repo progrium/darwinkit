@@ -23,6 +23,7 @@ type Generator struct {
 	genCache      map[string]codegen.CodeGen
 }
 
+// Generate generates the code for the given platform, version, and framework
 func (db *Generator) Generate(platform string, version int, rootDir string, framework string, ignoreTypes set.Set[string]) {
 	db.Platform = platform
 	db.Version = version
@@ -136,9 +137,31 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				})
 				continue
 			}
-			// any other type aliases can be added manually
-			// since they're just a go type alias or an
-			// unsafe.Pointer type
+
+			if st.TypeAlias.Annots[declparse.TypeAnnotStruct] {
+				mw.StructAliases = append(mw.StructAliases, &codegen.AliasInfo{
+					AliasType: typing.AliasType{
+						Name:  s.Name,
+						GName: modules.TrimPrefix(s.Name),
+						Type:  db.ParseType(*st.TypeAlias),
+					},
+					Description: s.Description,
+					DocURL:      s.DocURL(),
+				})
+				continue
+			}
+		case "Function":
+			fn := db.ToFunction(framework, s)
+			if fn == nil {
+				continue
+			}
+			mw.Functions = append(mw.Functions, fn)
+		case "Struct":
+			s := db.ToStruct(framework, s)
+			if s == nil {
+				continue
+			}
+			mw.Structs = append(mw.Structs, s)
 		}
 	}
 	mw.WriteCode()
@@ -164,6 +187,17 @@ func (db *Generator) TypeFromSymbolName(name string) typing.Type {
 	}
 	s := db.FindTypeSymbol(name)
 	if s == nil {
+
+		// __ prefixed symbols are generally structs
+		if strings.HasPrefix(name, "__") {
+			s := &typing.StructType{
+				Name:   name,
+				GName:  modules.TrimPrefix(name),
+				Module: modules.Get(db.Framework),
+			}
+			log.Printf("using Struct for unknown symbol: %s\n", name)
+			return s
+		}
 		log.Printf("using NSObject for unknown symbol: %s\n", name)
 		return typing.Object
 	}

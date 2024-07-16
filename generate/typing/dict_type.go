@@ -38,6 +38,10 @@ func (d *DictType) ObjcName() string {
 	return "NSDictionary*"
 }
 
+func (d *DictType) CName() string {
+	return "NSDictionary*"
+}
+
 func (d *DictType) DeclareModule() *modules.Module {
 	return d.ValueType.DeclareModule()
 }

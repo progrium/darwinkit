@@ -25,6 +25,14 @@ func (c *VoidPointerType) ObjcName() string {
 	return "void*"
 }
 
+func (c *VoidPointerType) CName() string {
+	return "void*"
+}
+
+func (c *VoidPointerType) CSignature() string {
+	return "void *"
+}
+
 func (c *VoidPointerType) DeclareModule() *modules.Module {
 	return nil
 }

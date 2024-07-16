@@ -77,6 +77,18 @@ func (p *Parser) Parse() (*Statement, error) {
 		}
 		return &Statement{Enum: decl.(*EnumDecl), Typedef: p.finishTypedef()}, nil
 	case keywords.STRUCT:
+		if p.typedef {
+			ti, err := p.expectType(false)
+			if err != nil {
+				return nil, err
+			}
+			typedef := p.finishTypedef()
+			if typedef == "" && ti.Func != nil {
+				typedef = ti.Func.Name
+				ti.Func.Name = ""
+			}
+			return &Statement{TypeAlias: ti, Typedef: typedef}, nil
+		}
 		decl, err := p.parse(parseStruct)
 		if err != nil {
 			return nil, err

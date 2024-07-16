@@ -5,10 +5,11 @@ import (
 	"github.com/progrium/darwinkit/internal/set"
 )
 
-var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL"}
+var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL", CName_: "bool"}
+var Boolean = &PrimitiveType{GoName_: "bool", ObjcName_: "Boolean", CName_: "bool"}
 
-var Int = &PrimitiveType{GoName_: "int", ObjcName_: "NSInteger"}
-var UInt = &PrimitiveType{GoName_: "uint", ObjcName_: "NSUInteger"}
+var Int = &PrimitiveType{GoName_: "int", ObjcName_: "NSInteger", CName_: "long"}
+var UInt = &PrimitiveType{GoName_: "uint", ObjcName_: "NSUInteger", CName_: "uint"}
 
 var Float = &PrimitiveType{GoName_: "float32", ObjcName_: "float"}
 var Double = &PrimitiveType{GoName_: "float64", ObjcName_: "double"}
@@ -16,6 +17,7 @@ var Double = &PrimitiveType{GoName_: "float64", ObjcName_: "double"}
 var Int8 = &PrimitiveType{GoName_: "int8", ObjcName_: "int8_t"}
 var UInt8 = &PrimitiveType{GoName_: "uint8", ObjcName_: "uint8_t"}
 var Byte = &PrimitiveType{GoName_: "byte", ObjcName_: "char"}
+var OffT = &PrimitiveType{GoName_: "float64", ObjcName_: "off_t"}
 
 var Int16 = &PrimitiveType{GoName_: "int16", ObjcName_: "int16_t"}
 var UInt16 = &PrimitiveType{GoName_: "uint16", ObjcName_: "uint16_t"}
@@ -42,7 +44,7 @@ func init() {
 	primitiveMap["size_t"] = UInt
 	primitiveMap["uintptr_t"] = UInt
 
-	primitiveMap["Boolean"] = Bool
+	primitiveMap["Boolean"] = Boolean
 	primitiveMap["SInt8"] = Int8
 	primitiveMap["SInt16"] = Int16
 	primitiveMap["SInt32"] = Int32
@@ -65,6 +67,7 @@ func GetPrimitiveType(typeName string) (*PrimitiveType, bool) {
 type PrimitiveType struct {
 	GoName_   string // go type name
 	ObjcName_ string // objc type name
+	CName_    string
 }
 
 func (p *PrimitiveType) GoImports() set.Set[string] {
@@ -77,6 +80,14 @@ func (p *PrimitiveType) GoName(currentModule *modules.Module, receiveFromObjc bo
 
 func (p *PrimitiveType) ObjcName() string {
 	return p.ObjcName_
+}
+
+func (p *PrimitiveType) CName() string {
+	n := p.CName_
+	if n == "" {
+		return p.ObjcName_
+	}
+	return n
 }
 
 func (p *PrimitiveType) DeclareModule() *modules.Module {

@@ -27,6 +27,10 @@ func (s *StructType) ObjcName() string {
 	return s.Name
 }
 
+func (s *StructType) CName() string {
+	return s.Name
+}
+
 func (s *StructType) DeclareModule() *modules.Module {
 	return s.Module
 }
