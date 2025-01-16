@@ -55,7 +55,7 @@ func Call[T any](o Handle, selector Selector, params ...any) T {
 		return ret
 	}
 	cif, status := ffi.PrepCIF(retType, argTypes)
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep cif status not ok")
 	}
 	ffi.Call(cif, imp.ptr, retPtr, args)
@@ -200,7 +200,7 @@ func wrapGoFuncAsMethodIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep cif status not ok")
 	}
 
@@ -216,7 +216,7 @@ func wrapGoFuncAsMethodIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 			setGoValueToObjcPointer(results[0], ret)
 		}
 	})
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep closure status not ok")
 	}
 
