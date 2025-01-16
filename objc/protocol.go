@@ -272,7 +272,7 @@ func addProtocolMethod(class IClass, md methodDescription, method reflect.Method
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep cif status not ok")
 	}
 
@@ -293,7 +293,7 @@ func addProtocolMethod(class IClass, md methodDescription, method reflect.Method
 		}
 	})
 	_ = handle // never free
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep closure status not ok")
 	}
 	flag := class.AddMethod(md.Name, IMPFrom(fn), md.Types)

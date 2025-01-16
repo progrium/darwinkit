@@ -125,7 +125,7 @@ func callBlock(b Block, params []reflect.Value, rt reflect.Type) reflect.Value {
 	}
 
 	cif, status := ffi.PrepCIF(retType, argTypes)
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep cif status not ok")
 	}
 	ffi.Call(cif, fn, retPtr, args)
@@ -190,7 +190,7 @@ func wrapGoFuncAsBlockIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep cif status not ok")
 	}
 
@@ -204,7 +204,7 @@ func wrapGoFuncAsBlockIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 			setGoValueToObjcPointer(results[0], ret)
 		}
 	})
-	if status != ffi.OK {
+	if status != ffi.FFIStatusOK {
 		panic("ffi prep closure status not ok")
 	}
 
