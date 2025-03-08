@@ -52,11 +52,26 @@ func TrimPrefix(symbolName string) string {
 // modules that will cause types to become IObject/unsafe.Pointer or more primitive type
 func CanAbstractModuleCoupling(in string, mod string) bool {
 	mods, ok := map[string][]string{
-		"foundation": []string{"appkit", "coreimage", "corespotlight", "fileprovider", "gameplaykit", "iobluetooth", "uti"},
-		"appkit":     []string{"spritekit", "cloudkit"},
+		"foundation": []string{"appkit", "coreimage", "corespotlight", "fileprovider", "gameplaykit", "iobluetooth", "uti", "eventkit", "healthkit", "homekit", "gamekit", "security", "javascriptcore", "usernotifications", "coreservices", "corebluetooth", "networkextension", "intents", "pdfkit", "speech", "corehaptics"},
+		"appkit":     []string{"spritekit", "cloudkit", "eventkit", "gamekit", "healthkit", "usernotifications", "pdfkit"},
 		"coreimage":  []string{"appkit"},
 		"coredata":   []string{"corespotlight"},
 		"cloudkit":   []string{"corelocation"},
+		"eventkit":   []string{"corelocation"},
+		"healthkit":  []string{"corelocation"},
+		"homekit":    []string{"corelocation"},
+		"gamekit":    []string{"corelocation", "cloudkit"},
+		"security":   []string{"foundation"},
+		"javascriptcore": []string{"foundation"},
+		"usernotifications": []string{"foundation"},
+		"coreservices": []string{"foundation"},
+		"corebluetooth": []string{"foundation"},
+		"networkextension": []string{"foundation", "security"},
+		"intents": []string{"foundation"},
+		"fileprovider": []string{"foundation"},
+		"pdfkit": []string{"foundation", "appkit"},
+		"speech": []string{"foundation", "avfoundation"},
+		"corehaptics": []string{"foundation"},
 	}[in]
 	if !ok {
 		return false
@@ -72,10 +87,22 @@ func CanAbstractModuleCoupling(in string, mod string) bool {
 // modules that will cause methods/props to be skipped
 func CanSkipModuleCoupling(in string, mod string) bool {
 	mods, ok := map[string][]string{
-		"foundation": []string{"webkit", "scenekit", "quartzcore", "corelocation", "cloudkit"},
-		"appkit":     []string{},
+		"foundation": []string{"webkit", "scenekit", "quartzcore", "corelocation", "cloudkit", "corebluetooth", "networkextension"},
+		"appkit":     []string{"pdfkit"},
 		"coreimage":  []string{"avfoundation", "quartz"},
 		"quartzcore": []string{"scenekit"},
+		"eventkit":   []string{"contacts", "mapkit"},
+		"healthkit":  []string{"coredata", "eventkit"},
+		"homekit":    []string{"coredata", "eventkit"},
+		"gamekit":    []string{"uikit", "coredata"},
+		"coreservices": []string{"uti", "foundation"},
+		"corebluetooth": []string{"foundation"},
+		"networkextension": []string{"foundation"},
+		"intents": []string{"foundation"},
+		"fileprovider": []string{"foundation"},
+		"pdfkit": []string{"foundation"},
+		"speech": []string{"foundation", "avfoundation"},
+		"corehaptics": []string{"foundation"},
 	}[in]
 	if !ok {
 		return false
@@ -91,14 +118,8 @@ func CanSkipModuleCoupling(in string, mod string) bool {
 func CanIgnoreNotFound(p any) bool {
 	mod := strings.TrimPrefix(p.(string), "module not found: ")
 	for _, m := range []string{
-		"Security",
-		"JavaScriptCore",
 		"ImageCaptureCore",
-		"User Notifications",
-		"Core Services",
 		"XPC",
-		"MapKit",
-		"Intents",
 		"QuickLook",
 		"force feedback",
 		"opengl es",
@@ -159,4 +180,20 @@ var All = []Module{
 	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}},
 	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}},
 	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
+	{"EventKit", "Event Kit", "eventkit", "EventKit/EventKit.h", []string{"EK"}},
+	{"MapKit", "Map Kit", "mapkit", "MapKit/MapKit.h", []string{"MK"}},
+	{"HealthKit", "Health Kit", "healthkit", "HealthKit/HealthKit.h", []string{"HK"}},
+	{"HomeKit", "Home Kit", "homekit", "HomeKit/HomeKit.h", []string{"HM"}},
+	{"GameKit", "Game Kit", "gamekit", "GameKit/GameKit.h", []string{"GK"}},
+	{"Security", "Security", "security", "Security/Security.h", []string{"SEC", "kSEC"}},
+	{"JavaScriptCore", "JavaScript Core", "javascriptcore", "JavaScriptCore/JavaScriptCore.h", []string{"JS"}},
+	{"UserNotifications", "User Notifications", "usernotifications", "UserNotifications/UserNotifications.h", []string{"UN"}},
+	{"CoreServices", "Core Services", "coreservices", "CoreServices/CoreServices.h", []string{"LS", "kLS", "CS", "FSE"}},
+	{"CoreBluetooth", "Core Bluetooth", "corebluetooth", "CoreBluetooth/CoreBluetooth.h", []string{"CB"}},
+	{"NetworkExtension", "Network Extension", "networkextension", "NetworkExtension/NetworkExtension.h", []string{"NE"}},
+	{"Intents", "Intents", "intents", "Intents/Intents.h", []string{"IN"}},
+	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NSFileProvider"}},
+	{"PDFKit", "PDF Kit", "pdfkit", "PDFKit/PDFKit.h", []string{"PDF"}},
+	{"Speech", "Speech", "speech", "Speech/Speech.h", []string{"SF"}},
+	{"CoreHaptics", "Core Haptics", "corehaptics", "CoreHaptics/CoreHaptics.h", []string{"CH"}},
 }

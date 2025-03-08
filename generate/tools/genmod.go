@@ -28,7 +28,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer db.Close()
+	// No Close method on SymbolCache, so removing defer db.Close()
 
 	fmt.Printf("Generating %s...\n", os.Getenv("GOPACKAGE"))
 
