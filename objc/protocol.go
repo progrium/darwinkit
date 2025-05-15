@@ -315,6 +315,11 @@ func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
 	if mi.required {
 		return true
 	}
+	// invalid hasFunc means no HasXXX method, but the XXX method does exist.
+	// this indicates the optional method is implemented by this implementation.
+	if !mi.hasFunc.IsValid() {
+		return true
+	}
 
 	return mi.hasFunc.Call([]reflect.Value{v})[0].Bool()
 }
