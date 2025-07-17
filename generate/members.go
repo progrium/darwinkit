@@ -63,6 +63,8 @@ func (db *Generator) shouldSkipType(ti declparse.TypeInfo) bool {
 		"mach_port_t",
 		"cpu_type_t",
 		"ptrdiff_t",
+		"VZGraphicsDisplayConfiguration",    // probably provided by arm only header
+		"VZMacGraphicsDisplayConfiguration", // probably provided by arm only header
 	} {
 		if ti.Name == n {
 			return true

@@ -147,6 +147,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 			"kBluetoothKeyboardISOReturn",
 			"kBluetoothKeyboardANSIReturn",
 			"MTLGPUFamilyApple8", // prob not on my platform
+			"VZMacAuxiliaryStorageInitializationOptionAllowOverwrite",
 		}, s.Name) {
 			continue
 		}
@@ -269,6 +270,9 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 	}
 	if framework.Package == "coremediaio" {
 		extraInclude = "#import <CoreMediaIO/CMIOExtension.h>"
+	}
+	if framework.Package == "virtualization" {
+		extraLoad = "-framework CoreFoundation"
 	}
 	source := fmt.Sprintf(`package main
 
