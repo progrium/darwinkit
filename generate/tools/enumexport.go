@@ -147,6 +147,9 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 			"kBluetoothKeyboardISOReturn",
 			"kBluetoothKeyboardANSIReturn",
 			"MTLGPUFamilyApple8", // prob not on my platform
+			"VZLinuxRosettaAvailabilityInstalled",
+			"VZLinuxRosettaAvailabilityNotInstalled",
+			"VZLinuxRosettaAvailabilityNotSupported",
 			"VZMacAuxiliaryStorageInitializationOptionAllowOverwrite",
 		}, s.Name) {
 			continue

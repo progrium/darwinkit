@@ -20,6 +20,8 @@ type _VirtualMachineViewClass struct {
 // An interface definition for the [VirtualMachineView] class.
 type IVirtualMachineView interface {
 	appkit.IView
+	AutomaticallyReconfiguresDisplay() bool
+	SetAutomaticallyReconfiguresDisplay(value bool)
 	VirtualMachine() VirtualMachine
 	SetVirtualMachine(value IVirtualMachine)
 	CapturesSystemKeys() bool
@@ -71,6 +73,21 @@ func NewVirtualMachineViewWithFrame(frameRect foundation.Rect) VirtualMachineVie
 	instance := VirtualMachineViewClass.Alloc().InitWithFrame(frameRect)
 	instance.Autorelease()
 	return instance
+}
+
+// A Boolean value that indicates whether the graphics display associated with this view automatically reconfigures with respect to view changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineview/4168520-automaticallyreconfiguresdisplay?language=objc
+func (v_ VirtualMachineView) AutomaticallyReconfiguresDisplay() bool {
+	rv := objc.Call[bool](v_, objc.Sel("automaticallyReconfiguresDisplay"))
+	return rv
+}
+
+// A Boolean value that indicates whether the graphics display associated with this view automatically reconfigures with respect to view changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineview/4168520-automaticallyreconfiguresdisplay?language=objc
+func (v_ VirtualMachineView) SetAutomaticallyReconfiguresDisplay(value bool) {
+	objc.Call[objc.Void](v_, objc.Sel("setAutomaticallyReconfiguresDisplay:"), value)
 }
 
 // The VM to display in the view. [Full Topic]

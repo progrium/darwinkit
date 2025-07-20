@@ -20,13 +20,17 @@ type _VirtualMachineClass struct {
 // An interface definition for the [VirtualMachine] class.
 type IVirtualMachine interface {
 	objc.IObject
+	SaveMachineStateToURLCompletionHandler(saveFileURL foundation.IURL, completionHandler func(errorOrNil foundation.Error))
 	StartWithCompletionHandler(completionHandler func(errorOrNil foundation.Error))
 	RequestStopWithError(error unsafe.Pointer) bool
 	ResumeWithCompletionHandler(completionHandler func(errorOrNil foundation.Error))
+	StartWithOptionsCompletionHandler(options IVirtualMachineStartOptions, completionHandler func(errorOrNil foundation.Error))
+	RestoreMachineStateFromURLCompletionHandler(saveFileURL foundation.IURL, completionHandler func(errorOrNil foundation.Error))
 	PauseWithCompletionHandler(completionHandler func(errorOrNil foundation.Error))
 	StopWithCompletionHandler(completionHandler func(errorOrNil foundation.Error))
 	DirectorySharingDevices() []DirectorySharingDevice
 	CanResume() bool
+	ConsoleDevices() []ConsoleDevice
 	MemoryBalloonDevices() []MemoryBalloonDevice
 	NetworkDevices() []NetworkDevice
 	Delegate() VirtualMachineDelegateObject
@@ -35,6 +39,7 @@ type IVirtualMachine interface {
 	CanPause() bool
 	State() VirtualMachineState
 	CanRequestStop() bool
+	GraphicsDevices() []GraphicsDevice
 	SocketDevices() []SocketDevice
 	CanStop() bool
 	CanStart() bool
@@ -101,6 +106,13 @@ func (v_ VirtualMachine) Init() VirtualMachine {
 	return rv
 }
 
+// Saves the state of a VM. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/4168516-savemachinestatetourl?language=objc
+func (v_ VirtualMachine) SaveMachineStateToURLCompletionHandler(saveFileURL foundation.IURL, completionHandler func(errorOrNil foundation.Error)) {
+	objc.Call[objc.Void](v_, objc.Sel("saveMachineStateToURL:completionHandler:"), saveFileURL, completionHandler)
+}
+
 // Starts the VM and notifies the specified completion handler if startup was successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656703-startwithcompletionhandler?language=objc
@@ -123,6 +135,20 @@ func (v_ VirtualMachine) ResumeWithCompletionHandler(completionHandler func(erro
 	objc.Call[objc.Void](v_, objc.Sel("resumeWithCompletionHandler:"), completionHandler)
 }
 
+// Starts the VM with the options and a completion handler you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/4013559-startwithoptions?language=objc
+func (v_ VirtualMachine) StartWithOptionsCompletionHandler(options IVirtualMachineStartOptions, completionHandler func(errorOrNil foundation.Error)) {
+	objc.Call[objc.Void](v_, objc.Sel("startWithOptions:completionHandler:"), options, completionHandler)
+}
+
+// Restores a VM from a previously saved state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/4168515-restoremachinestatefromurl?language=objc
+func (v_ VirtualMachine) RestoreMachineStateFromURLCompletionHandler(saveFileURL foundation.IURL, completionHandler func(errorOrNil foundation.Error)) {
+	objc.Call[objc.Void](v_, objc.Sel("restoreMachineStateFromURL:completionHandler:"), saveFileURL, completionHandler)
+}
+
 // Pauses a running VM and notifies the specified completion handler of the results. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656699-pausewithcompletionhandler?language=objc
@@ -137,7 +163,7 @@ func (v_ VirtualMachine) StopWithCompletionHandler(completionHandler func(errorO
 	objc.Call[objc.Void](v_, objc.Sel("stopWithCompletionHandler:"), completionHandler)
 }
 
-// The list of directory sharing devices configured on this VM. [Full Topic]
+// The list of configured directory-sharing devices on the VM. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3787645-directorysharingdevices?language=objc
 func (v_ VirtualMachine) DirectorySharingDevices() []DirectorySharingDevice {
@@ -153,6 +179,14 @@ func (v_ VirtualMachine) CanResume() bool {
 	return rv
 }
 
+// The list of configured console devices on the VM. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/4024747-consoledevices?language=objc
+func (v_ VirtualMachine) ConsoleDevices() []ConsoleDevice {
+	rv := objc.Call[[]ConsoleDevice](v_, objc.Sel("consoleDevices"))
+	return rv
+}
+
 // The array of devices that you use to adjust the amount of memory available to the guest system. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656698-memoryballoondevices?language=objc
@@ -161,7 +195,7 @@ func (v_ VirtualMachine) MemoryBalloonDevices() []MemoryBalloonDevice {
 	return rv
 }
 
-// The list of network devices configured on this VM. [Full Topic]
+// The list of configured network devices on the VM. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3869834-networkdevices?language=objc
 func (v_ VirtualMachine) NetworkDevices() []NetworkDevice {
@@ -217,19 +251,27 @@ func (v_ VirtualMachine) CanRequestStop() bool {
 	return rv
 }
 
-// A Boolean value that indicates whether the system supports virtualization. [Full Topic]
+// The list of configured graphics devices on the virtual machine. [Full Topic]
 //
-// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656705-supported?language=objc
-func (vc _VirtualMachineClass) Supported() bool {
-	rv := objc.Call[bool](vc, objc.Sel("supported"))
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/4168514-graphicsdevices?language=objc
+func (v_ VirtualMachine) GraphicsDevices() []GraphicsDevice {
+	rv := objc.Call[[]GraphicsDevice](v_, objc.Sel("graphicsDevices"))
 	return rv
 }
 
 // A Boolean value that indicates whether the system supports virtualization. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656705-supported?language=objc
-func VirtualMachine_Supported() bool {
-	return VirtualMachineClass.Supported()
+func (vc _VirtualMachineClass) IsSupported() bool {
+	rv := objc.Call[bool](vc, objc.Sel("isSupported"))
+	return rv
+}
+
+// A Boolean value that indicates whether the system supports virtualization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachine/3656705-supported?language=objc
+func VirtualMachine_IsSupported() bool {
+	return VirtualMachineClass.IsSupported()
 }
 
 // The array of socket devices that the VM configures for use ports in the guest VM. [Full Topic]

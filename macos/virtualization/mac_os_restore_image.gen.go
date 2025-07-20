@@ -20,6 +20,7 @@ type _MacOSRestoreImageClass struct {
 type IMacOSRestoreImage interface {
 	objc.IObject
 	URL() foundation.URL
+	IsSupported() bool
 	MostFeaturefulSupportedConfiguration() MacOSConfigurationRequirements
 	OperatingSystemVersion() foundation.OperatingSystemVersion
 	BuildVersion() string
@@ -91,6 +92,14 @@ func MacOSRestoreImage_FetchLatestSupportedWithCompletionHandler(completionHandl
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacosrestoreimage/3835971-url?language=objc
 func (m_ MacOSRestoreImage) URL() foundation.URL {
 	rv := objc.Call[foundation.URL](m_, objc.Sel("URL"))
+	return rv
+}
+
+// A Boolean value that indicates whether the current host supports this restore image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacosrestoreimage/3955615-supported?language=objc
+func (m_ MacOSRestoreImage) IsSupported() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isSupported"))
 	return rv
 }
 

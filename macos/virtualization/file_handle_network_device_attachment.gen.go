@@ -19,6 +19,8 @@ type _FileHandleNetworkDeviceAttachmentClass struct {
 // An interface definition for the [FileHandleNetworkDeviceAttachment] class.
 type IFileHandleNetworkDeviceAttachment interface {
 	INetworkDeviceAttachment
+	MaximumTransmissionUnit() int
+	SetMaximumTransmissionUnit(value int)
 	FileHandle() foundation.FileHandle
 }
 
@@ -67,6 +69,21 @@ func NewFileHandleNetworkDeviceAttachment() FileHandleNetworkDeviceAttachment {
 func (f_ FileHandleNetworkDeviceAttachment) Init() FileHandleNetworkDeviceAttachment {
 	rv := objc.Call[FileHandleNetworkDeviceAttachment](f_, objc.Sel("init"))
 	return rv
+}
+
+// An integer value that indicates the maximum transmission unit (MTU) associated with this attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzfilehandlenetworkdeviceattachment/3969266-maximumtransmissionunit?language=objc
+func (f_ FileHandleNetworkDeviceAttachment) MaximumTransmissionUnit() int {
+	rv := objc.Call[int](f_, objc.Sel("maximumTransmissionUnit"))
+	return rv
+}
+
+// An integer value that indicates the maximum transmission unit (MTU) associated with this attachment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzfilehandlenetworkdeviceattachment/3969266-maximumtransmissionunit?language=objc
+func (f_ FileHandleNetworkDeviceAttachment) SetMaximumTransmissionUnit(value int) {
+	objc.Call[objc.Void](f_, objc.Sel("setMaximumTransmissionUnit:"), value)
 }
 
 // The file handle assigned to this attachment. [Full Topic]

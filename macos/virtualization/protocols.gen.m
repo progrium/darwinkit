@@ -4,6 +4,9 @@
 
 void importVirtualizationProtocols() {
     id o;
+    o = @protocol(VZGraphicsDisplayObserver);
+    o = @protocol(VZNetworkBlockDeviceStorageDeviceAttachmentDelegate);
+    o = @protocol(VZVirtioConsoleDeviceDelegate);
     o = @protocol(VZVirtioSocketListenerDelegate);
     o = @protocol(VZVirtualMachineDelegate);
 }

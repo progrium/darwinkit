@@ -35,6 +35,34 @@ func MacAuxiliaryStorageFrom(ptr unsafe.Pointer) MacAuxiliaryStorage {
 	}
 }
 
+func (m_ MacAuxiliaryStorage) InitWithContentsOfURL(URL foundation.IURL) MacAuxiliaryStorage {
+	rv := objc.Call[MacAuxiliaryStorage](m_, objc.Sel("initWithContentsOfURL:"), URL)
+	return rv
+}
+
+// Initializes an auxiliary storage object with data from the location at the URL you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacauxiliarystorage/3816043-initwithcontentsofurl?language=objc
+func NewMacAuxiliaryStorageWithContentsOfURL(URL foundation.IURL) MacAuxiliaryStorage {
+	instance := MacAuxiliaryStorageClass.Alloc().InitWithContentsOfURL(URL)
+	instance.Autorelease()
+	return instance
+}
+
+func (m_ MacAuxiliaryStorage) InitWithURL(URL foundation.IURL) MacAuxiliaryStorage {
+	rv := objc.Call[MacAuxiliaryStorage](m_, objc.Sel("initWithURL:"), URL)
+	return rv
+}
+
+// Initializes an auxiliary storage object with data from the location at the URL you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacauxiliarystorage/3955613-initwithurl?language=objc
+func NewMacAuxiliaryStorageWithURL(URL foundation.IURL) MacAuxiliaryStorage {
+	instance := MacAuxiliaryStorageClass.Alloc().InitWithURL(URL)
+	instance.Autorelease()
+	return instance
+}
+
 func (m_ MacAuxiliaryStorage) InitCreatingStorageAtURLHardwareModelOptionsError(URL foundation.IURL, hardwareModel IMacHardwareModel, options MacAuxiliaryStorageInitializationOptions, error unsafe.Pointer) MacAuxiliaryStorage {
 	rv := objc.Call[MacAuxiliaryStorage](m_, objc.Sel("initCreatingStorageAtURL:hardwareModel:options:error:"), URL, hardwareModel, options, error)
 	return rv

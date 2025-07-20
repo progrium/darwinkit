@@ -18,6 +18,8 @@ type _MacGraphicsDeviceConfigurationClass struct {
 // An interface definition for the [MacGraphicsDeviceConfiguration] class.
 type IMacGraphicsDeviceConfiguration interface {
 	IGraphicsDeviceConfiguration
+	Displays() []MacGraphicsDisplayConfiguration
+	SetDisplays(value []IMacGraphicsDisplayConfiguration)
 }
 
 // Configuration for a display attached to a Mac graphics device. [Full Topic]
@@ -51,4 +53,19 @@ func (mc _MacGraphicsDeviceConfigurationClass) New() MacGraphicsDeviceConfigurat
 
 func NewMacGraphicsDeviceConfiguration() MacGraphicsDeviceConfiguration {
 	return MacGraphicsDeviceConfigurationClass.New()
+}
+
+// The displays associated with this graphics device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacgraphicsdeviceconfiguration/3816047-displays?language=objc
+func (m_ MacGraphicsDeviceConfiguration) Displays() []MacGraphicsDisplayConfiguration {
+	rv := objc.Call[[]MacGraphicsDisplayConfiguration](m_, objc.Sel("displays"))
+	return rv
+}
+
+// The displays associated with this graphics device. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzmacgraphicsdeviceconfiguration/3816047-displays?language=objc
+func (m_ MacGraphicsDeviceConfiguration) SetDisplays(value []IMacGraphicsDisplayConfiguration) {
+	objc.Call[objc.Void](m_, objc.Sel("setDisplays:"), value)
 }

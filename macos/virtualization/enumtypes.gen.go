@@ -24,19 +24,58 @@ const (
 	DiskImageSynchronizationModeNone  DiskImageSynchronizationMode = 3
 )
 
+// Values that describe the synchronization modes available to the guest OS. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzdisksynchronizationmode?language=objc
+type DiskSynchronizationMode int
+
+const (
+	DiskSynchronizationModeFull DiskSynchronizationMode = 0
+	DiskSynchronizationModeNone DiskSynchronizationMode = 1
+)
+
+// Constants that describe the options available when creating a new Extensible Firmware Interface (EFI) variable store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzefivariablestoreinitializationoptions?language=objc
+type EFIVariableStoreInitializationOptions uint
+
+const (
+	EFIVariableStoreInitializationOptionAllowOverwrite EFIVariableStoreInitializationOptions = 1
+)
+
 // Errors you might encounter when configuring or using a virtual machine. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzerrorcode?language=objc
 type ErrorCode int
 
 const (
+	ErrorInstallationFailed                   ErrorCode = 10007
+	ErrorInstallationRequiresUpdate           ErrorCode = 10006
 	ErrorInternal                             ErrorCode = 1
 	ErrorInvalidDiskImage                     ErrorCode = 5
+	ErrorInvalidRestoreImage                  ErrorCode = 10005
+	ErrorInvalidRestoreImageCatalog           ErrorCode = 10002
 	ErrorInvalidVirtualMachineConfiguration   ErrorCode = 2
 	ErrorInvalidVirtualMachineState           ErrorCode = 3
 	ErrorInvalidVirtualMachineStateTransition ErrorCode = 4
+	ErrorNetworkBlockDeviceDisconnected       ErrorCode = 20002
+	ErrorNetworkBlockDeviceNegotiationFailed  ErrorCode = 20001
+	ErrorNetworkError                         ErrorCode = 7
+	ErrorNoSupportedRestoreImagesInCatalog    ErrorCode = 10003
+	ErrorNotSupported                         ErrorCode = 10
+	ErrorOperationCancelled                   ErrorCode = 9
+	ErrorOutOfDiskSpace                       ErrorCode = 8
+	ErrorRestore                              ErrorCode = 12
+	ErrorRestoreImageCatalogLoadFailed        ErrorCode = 10001
+	ErrorRestoreImageLoadFailed               ErrorCode = 10004
+	ErrorSave                                 ErrorCode = 11
 	ErrorVirtualMachineLimitExceeded          ErrorCode = 6
 )
+
+// Constants that describe the availability and installation status of Rosetta. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzlinuxrosettaavailability?language=objc
+type LinuxRosettaAvailability int
 
 // Options you can set when creating new auxiliary storage. [Full Topic]
 //
@@ -49,12 +88,14 @@ type MacAuxiliaryStorageInitializationOptions uint
 type VirtualMachineState int
 
 const (
-	VirtualMachineStateError    VirtualMachineState = 3
-	VirtualMachineStatePaused   VirtualMachineState = 2
-	VirtualMachineStatePausing  VirtualMachineState = 5
-	VirtualMachineStateResuming VirtualMachineState = 6
-	VirtualMachineStateRunning  VirtualMachineState = 1
-	VirtualMachineStateStarting VirtualMachineState = 4
-	VirtualMachineStateStopped  VirtualMachineState = 0
-	VirtualMachineStateStopping VirtualMachineState = 7
+	VirtualMachineStateError     VirtualMachineState = 3
+	VirtualMachineStatePaused    VirtualMachineState = 2
+	VirtualMachineStatePausing   VirtualMachineState = 5
+	VirtualMachineStateRestoring VirtualMachineState = 9
+	VirtualMachineStateResuming  VirtualMachineState = 6
+	VirtualMachineStateRunning   VirtualMachineState = 1
+	VirtualMachineStateSaving    VirtualMachineState = 8
+	VirtualMachineStateStarting  VirtualMachineState = 4
+	VirtualMachineStateStopped   VirtualMachineState = 0
+	VirtualMachineStateStopping  VirtualMachineState = 7
 )

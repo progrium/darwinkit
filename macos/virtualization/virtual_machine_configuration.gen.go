@@ -18,6 +18,7 @@ type _VirtualMachineConfigurationClass struct {
 // An interface definition for the [VirtualMachineConfiguration] class.
 type IVirtualMachineConfiguration interface {
 	objc.IObject
+	ValidateSaveRestoreSupportWithError(error unsafe.Pointer) bool
 	ValidateWithError(error unsafe.Pointer) bool
 	SerialPorts() []SerialPortConfiguration
 	SetSerialPorts(value []ISerialPortConfiguration)
@@ -37,6 +38,8 @@ type IVirtualMachineConfiguration interface {
 	SetAudioDevices(value []IAudioDeviceConfiguration)
 	EntropyDevices() []EntropyDeviceConfiguration
 	SetEntropyDevices(value []IEntropyDeviceConfiguration)
+	ConsoleDevices() []ConsoleDeviceConfiguration
+	SetConsoleDevices(value []IConsoleDeviceConfiguration)
 	MemorySize() uint64
 	SetMemorySize(value uint64)
 	GraphicsDevices() []GraphicsDeviceConfiguration
@@ -81,6 +84,14 @@ func NewVirtualMachineConfiguration() VirtualMachineConfiguration {
 
 func (v_ VirtualMachineConfiguration) Init() VirtualMachineConfiguration {
 	rv := objc.Call[VirtualMachineConfiguration](v_, objc.Sel("init"))
+	return rv
+}
+
+// Determines whether the framework can save or restore the VM’s current configuration. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineconfiguration/4168519-validatesaverestoresupportwither?language=objc
+func (v_ VirtualMachineConfiguration) ValidateSaveRestoreSupportWithError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](v_, objc.Sel("validateSaveRestoreSupportWithError:"), error)
 	return rv
 }
 
@@ -270,6 +281,21 @@ func (vc _VirtualMachineConfigurationClass) MinimumAllowedCPUCount() uint {
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineconfiguration/3656722-minimumallowedcpucount?language=objc
 func VirtualMachineConfiguration_MinimumAllowedCPUCount() uint {
 	return VirtualMachineConfigurationClass.MinimumAllowedCPUCount()
+}
+
+// The array of console devices that you expose to the guest operating system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineconfiguration/4024748-consoledevices?language=objc
+func (v_ VirtualMachineConfiguration) ConsoleDevices() []ConsoleDeviceConfiguration {
+	rv := objc.Call[[]ConsoleDeviceConfiguration](v_, objc.Sel("consoleDevices"))
+	return rv
+}
+
+// The array of console devices that you expose to the guest operating system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtualmachineconfiguration/4024748-consoledevices?language=objc
+func (v_ VirtualMachineConfiguration) SetConsoleDevices(value []IConsoleDeviceConfiguration) {
+	objc.Call[objc.Void](v_, objc.Sel("setConsoleDevices:"), value)
 }
 
 // The amount of physical memory the guest operating system recognizes. [Full Topic]

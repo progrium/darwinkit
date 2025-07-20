@@ -21,6 +21,7 @@ const (
 	CONST
 	TYPEDEF
 	STRUCT
+	EXTERN
 
 	endKeywords
 )
@@ -33,6 +34,7 @@ var tokenMap = map[lexer.Token]string{
 	CONST:     "const",
 	TYPEDEF:   "typedef",
 	STRUCT:    "struct",
+	EXTERN:    "extern",
 }
 
 // IsKeyword returns true if the token is a keyword.

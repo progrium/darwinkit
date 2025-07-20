@@ -86,6 +86,21 @@ func VirtioFileSystemDeviceConfiguration_ValidateTagError(tag string, error unsa
 	return VirtioFileSystemDeviceConfigurationClass.ValidateTagError(tag, error)
 }
 
+// A value that indicates that the guest needs to automount this file system device in the guest VM. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtiofilesystemdeviceconfiguration/3969279-macosguestautomounttag?language=objc
+func (vc _VirtioFileSystemDeviceConfigurationClass) MacOSGuestAutomountTag() string {
+	rv := objc.Call[string](vc, objc.Sel("macOSGuestAutomountTag"))
+	return rv
+}
+
+// A value that indicates that the guest needs to automount this file system device in the guest VM. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtiofilesystemdeviceconfiguration/3969279-macosguestautomounttag?language=objc
+func VirtioFileSystemDeviceConfiguration_MacOSGuestAutomountTag() string {
+	return VirtioFileSystemDeviceConfigurationClass.MacOSGuestAutomountTag()
+}
+
 // A label that identifies this device in the guest VM. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/virtualization/vzvirtiofilesystemdeviceconfiguration/3787643-tag?language=objc

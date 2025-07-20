@@ -18,6 +18,8 @@ type _GenericPlatformConfigurationClass struct {
 // An interface definition for the [GenericPlatformConfiguration] class.
 type IGenericPlatformConfiguration interface {
 	IPlatformConfiguration
+	MachineIdentifier() GenericMachineIdentifier
+	SetMachineIdentifier(value IGenericMachineIdentifier)
 }
 
 // The platform configuration for a generic Intel or ARM virtual machine. [Full Topic]
@@ -51,4 +53,19 @@ func (gc _GenericPlatformConfigurationClass) New() GenericPlatformConfiguration 
 
 func NewGenericPlatformConfiguration() GenericPlatformConfiguration {
 	return GenericPlatformConfigurationClass.New()
+}
+
+// A value that represents a unique identifier for the virtual machine. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzgenericplatformconfiguration/3969271-machineidentifier?language=objc
+func (g_ GenericPlatformConfiguration) MachineIdentifier() GenericMachineIdentifier {
+	rv := objc.Call[GenericMachineIdentifier](g_, objc.Sel("machineIdentifier"))
+	return rv
+}
+
+// A value that represents a unique identifier for the virtual machine. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/virtualization/vzgenericplatformconfiguration/3969271-machineidentifier?language=objc
+func (g_ GenericPlatformConfiguration) SetMachineIdentifier(value IGenericMachineIdentifier) {
+	objc.Call[objc.Void](g_, objc.Sel("setMachineIdentifier:"), value)
 }

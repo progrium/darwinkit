@@ -71,7 +71,7 @@ func main() {
 	configuration.SetMemorySize(2 * 1024 * 1024 * 1024)
 	configuration.SetSerialPorts([]virtualization.ISerialPortConfiguration{serialConsole()})
 	configuration.SetBootLoader(bootLoader(
-		foundation.NewURLFileURLWithPath("macos/_examples/virtualmachine/vmlinuz"),
+		foundation.NewURLFileURLWithPath("./macos/_examples/virtualmachine/vmlinuz"),
 		foundation.NewURLFileURLWithPath("./macos/_examples/virtualmachine/initrd.img"),
 	))
 
