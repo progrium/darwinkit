@@ -27,6 +27,7 @@ func GetKernelType(typeName string) (Type, bool) {
 		"pid_t",
 		"gid_t",
 		"uid_t",
+		"ether_addr_t",
 	} {
 		if typeName == name {
 			return &KernelType{ObjcName_: typeName}, true

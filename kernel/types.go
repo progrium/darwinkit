@@ -22,6 +22,8 @@ type Matrix_float4x4 unsafe.Pointer
 type Matrix_float4x3 unsafe.Pointer
 type Matrix_double4x4 unsafe.Pointer
 
+type Ether_addr unsafe.Pointer // need to be tested
+
 // https://developer.apple.com/documentation/kernel/kernel_data_types?language=objc
 // https://github.com/apple/darwin-xnu/blob/main/bsd/sys/_types.h
 type Pid = int32

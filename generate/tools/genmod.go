@@ -16,7 +16,7 @@ import (
 const TargetPlatform = "macos"
 
 // TODO: replace with autodetect+env var
-const TargetVersion = 12
+const TargetVersion = 14
 
 func main() {
 	cwd, err := os.Getwd()
