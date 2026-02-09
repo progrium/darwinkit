@@ -311,11 +311,15 @@ func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
 		return false
 	}
 
-	v := reflect.ValueOf(ii.instance)
 	if mi.required {
 		return true
 	}
 
+	if !mi.hasFunc.IsValid() {
+		return true
+	}
+
+	v := reflect.ValueOf(ii.instance)
 	return mi.hasFunc.Call([]reflect.Value{v})[0].Bool()
 }
 
