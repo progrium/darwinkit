@@ -46,7 +46,7 @@ void* to_ns_array(array array) {
 
 array to_c_array(void* ptr) {
     NSArray* result_ = (NSArray*)ptr;
-    array result_Array;
+    array result_Array = {0};
     int result_count = [result_ count];
     if (result_count > 0) {
         void** result_Data = malloc(result_count * sizeof(void*));

@@ -44,6 +44,8 @@ func getTypeEncoding(t reflect.Type) string {
 			return "^" + getTypeEncoding(t.Elem())
 		}
 
+	case reflect.Func:
+		return "@?" // ObjC block
 	case reflect.String, reflect.Slice, reflect.Map:
 		return "@"
 	case reflect.Array:
