@@ -65,10 +65,30 @@ func MakeStructType(types []*Type) *Type {
 
 func PrepCIF(rtype *Type, argtypes []*Type) (*CIF, Status) {
 	var cif CIF
+	// ffi_prep_cif stores rtype and the address of argtypes' backing array
+	// inside the CIF (cif->rtype and cif->arg_types) for as long as the CIF
+	// -- and any closure built from it -- stays in use, which for a closure
+	// can be well after this call returns (e.g. an AppKit delegate callback
+	// firing long after the closure was created). runtime.KeepAlive only
+	// kept them alive through this call, not past it, so once Go 1.25's
+	// smarter escape analysis started stack-allocating argtypes' backing
+	// array instead of heap-allocating it, that memory got reused/clobbered
+	// before the closure ever fired (progrium/darwinkit#286); a
+	// heap-allocated rtype (e.g. from MakeStructType) is exposed to the same
+	// risk once nothing else references it. Wrapping both in a cgo.Handle
+	// forces them onto the heap and keeps a live Go reference for as long as
+	// the CIF is reachable; the finalizer below drops that reference once
+	// the CIF itself is no longer needed.
+	retained := cgo.NewHandle(struct {
+		rtype    *Type
+		argtypes []*Type
+	}{rtype, argtypes})
 	s := C.ffi_prep_cif0(toUintptrT(&cif), DEFAULT_ABI, C.uint(len(argtypes)), toUintptrT(rtype), toUintptrT(&argtypes[0]))
-	runtime.KeepAlive(rtype)
-	runtime.KeepAlive(argtypes)
-	return &cif, s
+	cifPtr := &cif
+	runtime.SetFinalizer(cifPtr, func(*CIF) {
+		retained.Delete()
+	})
+	return cifPtr, s
 }
 
 func Call(cif *CIF, fn unsafe.Pointer, rvalue unsafe.Pointer, avalues []unsafe.Pointer) {
